@@ -1,0 +1,8 @@
+{
+	"event.oneMemberWent": "1メンバーが行ってきました",
+	"event.xMembersWent": "{count} メンバーが行ってきました",
+	"event.oneMemberGoing": "行く1メンバー",
+	"event.xMembersGoing": "行く {count} メンバー",
+	"event.oneSpotLeft": "1スポットは左",
+	"event.xSpotsLeft": "{count} スポットは左"
+}

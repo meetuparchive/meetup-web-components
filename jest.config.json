@@ -1,0 +1,11 @@
+{
+  "coverageDirectory": "<rootDir>/coverage",
+  "setupFiles": [
+    "<rootDir>/utils/jestSystemShim.js"
+  ],
+  "moduleFileExtensions": [
+    "js",
+    "jsx"
+  ],
+  "testRegex": "(components|utils)/.*\\.test\\.jsx?$"
+}

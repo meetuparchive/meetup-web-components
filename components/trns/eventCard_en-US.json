@@ -1,0 +1,8 @@
+{
+	"event.oneMemberWent": "1 member went",
+	"event.xMembersWent": "{count} members went",
+	"event.oneMemberGoing": "1 member going",
+	"event.xMembersGoing": "{count} members going",
+	"event.oneSpotLeft": "1 spot left",
+	"event.xSpotsLeft": "{count} spots left"
+}
