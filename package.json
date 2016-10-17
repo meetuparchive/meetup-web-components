@@ -61,7 +61,6 @@
   },
   "devDependencies": {
     "@kadira/storybook": "2.2.2",
-    "ascii-progress": "1.0.3",
     "coveralls": "2.11.9",
     "jest-cli": "15.1.1"
   }
