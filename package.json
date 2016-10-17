@@ -1,5 +1,5 @@
 {
-  "name": "meetup-foundation-react",
+  "name": "foundation-react",
   "version": "0.1.0",
   "license": "UNLICENSED",
   "private": true,
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.dev.meetup.com/meetup/mup-web.git"
+    "url": "https://github.com/meetup/foundation-react.git"
   },
   "dependencies": {
     "babel-cli": "6.14.0",
