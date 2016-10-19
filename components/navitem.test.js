@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Link from 'react-router/lib/Link';
 import NavItem from './NavItem';
-import { componentHasProperty } from './foundationTestUtils';
+import { componentHasProperty } from '../utils/foundationTestUtils';
 
 describe('NavItem', function() {
 	beforeEach(function() {

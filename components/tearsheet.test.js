@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { IntlProvider } from 'react-intl';
 import { MOCK_DATETIME } from 'meetup-web-platform/util/mocks/app';
+import { hasChildByClassName } from '../utils/foundationTestUtils';
 import TearSheet from './TearSheet';
-import { hasChildByClassName } from './foundationTestUtils';
 
 describe('TearSheet', () => {
 	let tearsheetEl;

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Button from './Button';
 import Icon from './Icon';
-import { hasRoleAttribute, variantTest } from './foundationTestUtils';
+import { hasRoleAttribute, variantTest } from '../utils/foundationTestUtils';
 
 describe('Button', () => {
 	const BUTTON_CLASS = 'button';

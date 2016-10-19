@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Nav from './Nav';
-import { hasRoleAttribute } from './foundationTestUtils';
+import { hasRoleAttribute } from '../utils/foundationTestUtils';
 
 describe ('Nav', () => {
 	it('exists', () => {
