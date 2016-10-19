@@ -1,8 +1,0 @@
-{
-	"event.oneMemberWent": "un membre a",
-	"event.xMembersWent": "{count} membres ont",
-	"event.oneMemberGoing": "un membre va",
-	"event.xMembersGoing": "{count} membres vont",
-	"event.oneSpotLeft": "une tache gauche",
-	"event.xSpotsLeft": "{count} taches laissées"
-}
