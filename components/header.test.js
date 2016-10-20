@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Header from './Header';
-import { hasRoleAttribute } from '../utils/foundationTestUtils';
+import { hasRoleAttribute } from '../utils/testUtils';
 
 describe ('Header', () => {
 	let headerEl;

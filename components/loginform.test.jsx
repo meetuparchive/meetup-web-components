@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import LoginForm from './LoginForm';
-import { hasAttribute, hasRoleAttribute } from '../utils/foundationTestUtils';
+import { hasAttribute, hasRoleAttribute } from '../utils/testUtils';
 
 describe('LoginForm', () => {
 	it('exists', () => {

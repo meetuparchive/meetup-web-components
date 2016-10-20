@@ -1,5 +1,5 @@
-# foundation-react
-Meetup React library of Foundation components.
+# meetup-web-components
+Meetup library of React UI components for the web.
 
 Table of Contents
 =================

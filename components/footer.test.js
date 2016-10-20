@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Footer from './Footer';
-import { hasRoleAttribute } from '../utils/foundationTestUtils';
+import { hasRoleAttribute } from '../utils/testUtils';
 
 describe('Footer', () => {
 	let footerEl;

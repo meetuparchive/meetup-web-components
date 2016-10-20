@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Link from 'react-router/lib/Link';
 import Avatar from './Avatar';
-import { variantTest } from '../utils/foundationTestUtils';
+import { variantTest } from '../utils/testUtils';
 
 describe('Avatar', function() {
 

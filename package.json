@@ -1,22 +1,22 @@
 {
-  "name": "foundation-react",
+  "name": "meetup-web-components",
   "version": "0.1.0",
   "license": "UNLICENSED",
   "private": true,
-  "description": "Meetup Foundation React Component Library",
+  "description": "Meetup Web UI Component Library",
   "engine": "node >=6.5.0",
   "scripts": {
     "generate": "node utils/generate.js",
     "lint": "eslint . --ext .js,.jsx --fix",
     "lint:base": "eslint . --ext .js,.jsx",
     "modules:clean": "rm -rf node_modules",
-    "storybook": "node foundation-react/util/create-icon-story && start-storybook -p 9001",
+    "storybook": "node utils/create-icon-story && start-storybook -p 9001",
     "test": "npm-run-all --parallel lint:base test:unit",
     "test:unit": "jest --silent --config jest.config.json"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/meetup/foundation-react.git"
+    "url": "https://github.com/meetup/meetup-web-components.git"
   },
   "dependencies": {
     "babel-cli": "6.14.0",
