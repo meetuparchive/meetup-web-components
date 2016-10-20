@@ -2,10 +2,10 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@kadira/storybook';
 import { Inverted } from './util/storyComponents';
-import TearSheet from './TearSheet';
+import DateDisplay from './DateDisplay';
 
 
-storiesOf('TearSheet', module)
+storiesOf('DateDisplay', module)
 	.addDecorator(story => {
 		return (
 			<IntlProvider locale='en'>
@@ -13,6 +13,6 @@ storiesOf('TearSheet', module)
 			</IntlProvider>
 		);
 	})
-	.add('Simple', () => <TearSheet datetime={new Date()} />)
-	.add('Inverted', () => <Inverted><TearSheet datetime={new Date()} /></Inverted>);
+	.add('Simple', () => <DateDisplay datetime={new Date()} />)
+	.add('Inverted', () => <Inverted><DateDisplay datetime={new Date()} /></Inverted>);
 
