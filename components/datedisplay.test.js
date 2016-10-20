@@ -4,42 +4,42 @@ import TestUtils from 'react-addons-test-utils';
 import { IntlProvider } from 'react-intl';
 import { MOCK_DATETIME } from 'meetup-web-platform/util/mocks/app';
 import { hasChildByClassName } from '../utils/foundationTestUtils';
-import TearSheet from './TearSheet';
+import DateDisplay from './DateDisplay';
 
-describe('TearSheet', () => {
-	let tearsheetEl;
+describe('DateDisplay', () => {
+	let dateDisplayEl;
 
 	beforeEach(() => {
-		const tearsheet = TestUtils.renderIntoDocument(
+		const dateDisplay = TestUtils.renderIntoDocument(
 			<IntlProvider locale='en'>
-				<TearSheet datetime={MOCK_DATETIME}/>
+				<DateDisplay datetime={MOCK_DATETIME}/>
 			</IntlProvider>
 		);
 
-		tearsheetEl = ReactDOM.findDOMNode(tearsheet);
+		dateDisplayEl = ReactDOM.findDOMNode(dateDisplay);
 	});
 
 	afterEach(() => {
-		tearsheetEl = null;
+		dateDisplayEl = null;
 	});
 
 	it('exists', () => {
-		expect(tearsheetEl).not.toBeNull();
+		expect(dateDisplayEl).not.toBeNull();
 	});
 
 	it('creates an HTML time element', () => {
-		expect(tearsheetEl.nodeName).toBe('TIME');
+		expect(dateDisplayEl.nodeName).toBe('TIME');
 	});
 
 	it('has child nodes', () => {
-		expect(tearsheetEl.hasChildNodes()).toBe(true);
+		expect(dateDisplayEl.hasChildNodes()).toBe(true);
 	});
 
 	it('creates a SQ2 date element', () => {
-		hasChildByClassName(tearsheetEl, 'tearsheet-date');
+		hasChildByClassName(dateDisplayEl, 'dateDisplay-day');
 	});
 
 	it('creates a SQ2 month element', () => {
-		hasChildByClassName(tearsheetEl, 'tearsheet-month');
+		hasChildByClassName(dateDisplayEl, 'dateDisplay-month');
 	});
 });

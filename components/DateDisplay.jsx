@@ -3,12 +3,12 @@ import { FormattedDate } from 'react-intl';
 import cx from 'classnames';
 
 /**
- * SQ2 TearSheet component
- * @see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_tearsheet.scss}
- * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#tearsheet}
- * @module TearSheet
+ * SQ2 DateDisplay component
+ * @see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_dateDisplay.scss}
+ * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#dateDisplay}
+ * @module DateDisplay
  */
-class TearSheet extends React.Component {
+class DateDisplay extends React.Component {
 	render() {
 		const {
 			datetime,
@@ -16,19 +16,19 @@ class TearSheet extends React.Component {
 			...other
 		} = this.props;
 
-		const classNames = cx('tearsheet', className);
+		const classNames = cx('dateDisplay', className);
 
 		return (
 			<time
 				dateTime={datetime}
 				className={classNames}
 				{...other}>
-				<span className='tearsheet-date'>
+				<span className='dateDisplay-day'>
 					<FormattedDate
 						value={datetime}
 						day='numeric' />
 				</span>
-				<span className='tearsheet-month'>
+				<span className='dateDisplay-month'>
 					<FormattedDate
 						value={datetime}
 						month='short' />
@@ -38,7 +38,7 @@ class TearSheet extends React.Component {
 	}
 }
 
-TearSheet.propTypes = {
+DateDisplay.propTypes = {
 	datetime: React.PropTypes.oneOfType([
 		React.PropTypes.string,
 		React.PropTypes.number,
@@ -46,4 +46,4 @@ TearSheet.propTypes = {
 	]).isRequired,
 };
 
-export default TearSheet;
+export default DateDisplay;
