@@ -1,20 +1,9 @@
-const IntlProvider = `
-	.addDecorator(story => {
-		const locale = 'en-US';
-		return (
-			<IntlProvider locale={locale}>
-				{story()}
-			</IntlProvider>
-		);
-	})`;
-
-export default (name, isIntl) => `
+export default (name) => `
 import React from 'react';
-${isIntl ? 'import { IntlProvider } from \'react-intl\'' : ''}
 import ${name} from './${name}';
 import { storiesOf } from '@kadira/storybook';
 
-storiesOf('${name}', module)${isIntl ? IntlProvider : ''}
+storiesOf('${name}', module)
 	.add('default', () => <${name} />)
 `;
 

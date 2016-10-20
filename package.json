@@ -6,11 +6,13 @@
   "description": "Meetup Foundation React Component Library",
   "engine": "node >=6.5.0",
   "scripts": {
-    "coveralls": "if [ \"${COVERALLS_REPO_TOKEN}\" != \"\" ]; then cat coverage/lcov.info | coveralls; fi",
     "generate": "node utils/generate.js",
     "lint": "eslint . --ext .js,.jsx --fix",
+    "lint:base": "eslint . --ext .js,.jsx",
+    "modules:clean": "rm -rf node_modules",
     "storybook": "node foundation-react/util/create-icon-story && start-storybook -p 9001",
-    "test": "jest --silent --config jest.config.json --coverage"
+    "test": "npm-run-all --parallel lint:base test:unit",
+    "test:unit": "jest --silent --config jest.config.json"
   },
   "repository": {
     "type": "git",
@@ -21,7 +23,6 @@
     "babel-core": "6.14.0",
     "babel-jest": "15.0.0",
     "babel-loader": "6.2.4",
-    "babel-plugin-react-intl": "2.1.3",
     "babel-plugin-react-transform": "2.0.2",
     "babel-preset-es2015": "6.14.0",
     "babel-preset-react": "6.11.1",
@@ -40,9 +41,7 @@
     "react": "15.3.0",
     "react-addons-test-utils": "15.3.0",
     "react-dom": "15.3.0",
-    "react-intl": "2.1.3",
     "react-transform-catch-errors": "1.0.2",
-    "react-transform-hmr": "1.0.4",
     "sass-loader": "4.0.2",
     "sassquatch2": "2.3.0",
     "style-loader": "0.13.1",
@@ -53,7 +52,8 @@
   },
   "devDependencies": {
     "@kadira/storybook": "2.2.2",
-    "coveralls": "2.11.9",
-    "jest-cli": "15.1.1"
+    "inquirer": "1.2.2",
+    "jest-cli": "15.1.1",
+    "npm-run-all": "2.3.0"
   }
 }
