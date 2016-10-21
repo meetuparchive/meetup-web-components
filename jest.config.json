@@ -1,11 +1,13 @@
 {
-  "coverageDirectory": "<rootDir>/coverage",
   "setupFiles": [
     "<rootDir>/utils/jestSystemShim.js"
   ],
   "moduleFileExtensions": [
     "js",
     "jsx"
+  ],
+  "preprocessorIgnorePatterns": [
+    "node_modules(?!\/meetup-web-platform)"
   ],
   "testRegex": "(components|utils)/.*\\.test\\.jsx?$"
 }
