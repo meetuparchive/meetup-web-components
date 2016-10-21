@@ -1,16 +1,9 @@
 const path = require('path');
 const SvgStore = require('webpack-svgstore-plugin');
 
-const ICON_PATH = path.resolve(__dirname, '../foundation-react', 'icons', '**/*.svg');
-const settings = require('../scripts/webpack/settings.js');
+const ICON_PATH = path.resolve(__dirname, '../icons', '**/*.svg');
 
-const config = {
-	resolve: {
-		alias: {
-			'trns': path.resolve(__dirname, '../', 'src', 'trns', 'en-US'),
-		},
-		extensions: ['', '.js', '.jsx']  // module name extensions
-	},
+module.exports = {
 	module: {
 		loaders: [
 			{
@@ -22,22 +15,11 @@ const config = {
 				test: /\.scss$/,
 				loaders: ['style', 'css', 'sass'],
 				include: path.resolve(__dirname, '../')
-			},
-			{
-				test: /\.json$/,
-				exclude: /node_modules/,
-				loader: 'json'
-			},
-			{
-				test: /\.jsx?$/,
-				include: [
-					settings.appPath,
-					settings.platformPath,
-					settings.foundationPath,
-				],
-				loader: 'babel-loader',
 			}
 		]
+	},
+	resolve: {
+		extensions: ['.js', '.jsx']
 	},
 	plugins: [
 		new SvgStore(
@@ -57,7 +39,6 @@ const config = {
 				}
 			}
 		)
-	],  // plugins will be injected as needed by webpack consumers
+	]
 };
 
-module.exports = config;
