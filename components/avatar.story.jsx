@@ -2,7 +2,7 @@ import React from 'react';
 import Avatar from './Avatar.jsx';
 import { storiesOf, action } from '@kadira/storybook';
 import { MOCK_MEMBER } from 'meetup-web-platform/util/mocks/api';
-import { Annotate } from './util/storyComponents';
+import { Annotate } from '../utils/storyComponents';
 
 const MOCK_IMAGE_SRC = 'http://placekitten.com/g/400/400';
 

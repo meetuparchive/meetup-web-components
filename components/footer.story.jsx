@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Annotate } from './util/storyComponents';
+import { Annotate } from '../utils/storyComponents';
 import Footer from './Footer';
 
 storiesOf('Footer', module)

@@ -1,51 +1,51 @@
 const path = require('path');
 const SvgStore = require('webpack-svgstore-plugin');
 
-const ICON_PATH = path.resolve(__dirname, '../foundation-react', 'icons', '**/*.svg');
-const settings = require('../scripts/webpack/settings.js');
+const ICON_PATH = path.resolve(__dirname, '../icons', '**/*.svg');
+const SCSS_PATH = path.resolve(__dirname, '../assets', 'scss');
+const CSS_PATH = path.resolve(__dirname, '../assets', 'css');
+const SRC_PATH = path.resolve(__dirname, '../components');
+const PLATFORM_PATH = /node_modules\/meetup-web-platform/;
 
-const config = {
-	resolve: {
-		alias: {
-			'trns': path.resolve(__dirname, '../', 'src', 'trns', 'en-US'),
-		},
-		extensions: ['', '.js', '.jsx']  // module name extensions
-	},
+module.exports = {
 	module: {
+		preLoaders: [
+			{
+				test: /\.jsx?$/,
+				loader: 'eslint-loader?{fix:true}',
+				include: SRC_PATH
+			}
+		],
 		loaders: [
 			{
 				test: /\.css$/,
 				loaders: ['style', 'css'],
-				include: path.resolve(__dirname, '../')
+				include: CSS_PATH
 			},
 			{
 				test: /\.scss$/,
 				loaders: ['style', 'css', 'sass'],
-				include: path.resolve(__dirname, '../')
-			},
-			{
-				test: /\.json$/,
-				exclude: /node_modules/,
-				loader: 'json'
+				include: SCSS_PATH
 			},
 			{
 				test: /\.jsx?$/,
-				include: [
-					settings.appPath,
-					settings.platformPath,
-					settings.foundationPath,
-				],
 				loader: 'babel-loader',
+				include: [
+					SRC_PATH,
+					PLATFORM_PATH
+				]
 			}
 		]
 	},
+
+	resolve: {
+		extensions: ['', '.js', '.jsx']
+	},
+
 	plugins: [
 		new SvgStore(
-			//=========> input path
-			[ICON_PATH],
-			//=========> output path
-			'svg',
-			//=========> options
+			[ICON_PATH], // input path
+			'svg',       // output path
 			{
 				name: '[hash].sprite.svg',
 				chunk: 'preview',
@@ -57,7 +57,6 @@ const config = {
 				}
 			}
 		)
-	],  // plugins will be injected as needed by webpack consumers
+	]
 };
 
-module.exports = config;
