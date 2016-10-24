@@ -17,5 +17,5 @@ npm-debug.log
 .swp
 
 # Generated icon library file
-iconLibrary.story.jsx
+/iconLibrary.story.jsx
 

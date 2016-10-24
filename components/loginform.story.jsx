@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import { storiesOf, action } from '@kadira/storybook';
-import { Inverted } from './util/storyComponents';
+import { Inverted } from '../utils/storyComponents';
 
 const loginAction = ({ password, email }) => {
 	action(`Log in submitted for ${email}:${password}`)({});

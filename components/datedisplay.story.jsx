@@ -1,7 +1,7 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { storiesOf } from '@kadira/storybook';
-import { Inverted } from './util/storyComponents';
+import { Inverted } from '../utils/storyComponents';
 import DateDisplay from './DateDisplay';
 
 

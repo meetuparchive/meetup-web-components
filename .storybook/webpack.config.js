@@ -5,6 +5,7 @@ const ICON_PATH = path.resolve(__dirname, '../icons', '**/*.svg');
 const SCSS_PATH = path.resolve(__dirname, '../assets', 'scss');
 const CSS_PATH = path.resolve(__dirname, '../assets', 'css');
 const SRC_PATH = path.resolve(__dirname, '../components');
+const PLATFORM_PATH = /node_modules\/meetup-web-platform/;
 
 module.exports = {
 	module: {
@@ -29,13 +30,18 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				loader: 'babel-loader',
-				include: SRC_PATH
+				include: [
+					SRC_PATH,
+					PLATFORM_PATH
+				]
 			}
 		]
 	},
+
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: ['', '.js', '.jsx']
 	},
+
 	plugins: [
 		new SvgStore(
 			[ICON_PATH], // input path
