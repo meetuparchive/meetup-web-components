@@ -54,8 +54,6 @@
     "npm-run-all": "2.3.0",
     "sass-loader": "4.0.2",
     "style-loader": "0.13.1",
-    "webpack": "2.1.0-beta.15",
-    "webpack-dev-server": "2.1.0-beta.0",
     "webpack-svgstore-plugin": "3.0.3"
   }
 }
