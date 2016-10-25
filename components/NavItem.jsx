@@ -33,8 +33,4 @@ class NavItem extends React.Component {
 	}
 }
 
-NavItem.propTypes = {
-	Link: React.PropTypes.string.isRequired,
-};
-
 export default NavItem;
