@@ -20,7 +20,9 @@ class Header extends React.Component {
 				role='banner'
 				aria-label='Site header'
 				{...other}>
-					{children}
+					<div className='padding--all'>
+						{children}
+					</div>
 			</header>
 		);
 	}

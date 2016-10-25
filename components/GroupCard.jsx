@@ -2,6 +2,11 @@ import React from 'react';
 import Link from 'react-router/lib/Link';
 import cx from 'classnames';
 
+import {
+	FormattedDate,
+	FormattedMessage,
+	defineMessages } from 'react-intl';
+
 /**
  *	SQ2 Group Card component
  *	@see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_card.scss}
@@ -12,6 +17,7 @@ export class GroupCard extends React.Component {
 	render() {
 		const {
 			group,
+			showNextEvent,
 			className,
 			style,
 			...other
@@ -24,21 +30,49 @@ export class GroupCard extends React.Component {
 			className
 		);
 
-		const photoUrl = group.duotoneUrl || (group.key_photo || group.group_photo || {}).thumb_link;
+		const photoUrl = group.duotoneUrl || (group.key_photo || group.group_photo || {}).photo_link;
 		const backgroundImage = photoUrl && `url(${photoUrl})`;
 
 		return (
 			<Link
 				to={`/${group.urlname}`}
-				className={cardClassNames}
-				style={{ ...(style || {}), backgroundImage }}
-				{...other}>
+				>
+				<div
+					className={cardClassNames}
+					style={{ ...(style || {}), backgroundImage }}
+					{...other}>
 
-				<div className='card--group-content'>
-					<h4 className='card--group-content-name'>{group.name}</h4>
-					<p className='card--group-content-members'>{group.members} {group.who}</p>
+					<div className='card--group-content'>
+						<h4 className='card--group-content-name'>{group.name}</h4>
+						{/*
+							<p className='card--group-content-members'>{group.members} {group.who}</p>
+						*/}
+					</div>
+
+
 				</div>
+					{showNextEvent &&
+						<div className='text--small'>
+							{group.next_event &&
+								<div>
+									<div className='lineClamp'>{group.next_event.name}</div>
+									<div className='text--secondary'>
+										<FormattedDate
+											value={group.next_event.time}
+											day='numeric'
+											month='long'
+											hour='numeric'
+											minute='numeric'
+											/>
+									</div>
+								</div>
+							}
 
+							{!group.next_event &&
+								<div>Next Meetup TBD</div>
+							}
+						</div>
+					}
 			</Link>
 		);
 	}
