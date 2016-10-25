@@ -20,7 +20,7 @@ class NavItem extends React.Component {
 			'row-item',
 			'row-item--shrink',
 			'row-item--alignMiddle',
-			'padding--all',
+			'padding--right',
 			'text--big',
 			className
 		);
