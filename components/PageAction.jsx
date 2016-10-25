@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import Icon from 'foundation-react/Icon';
+import Icon from './Icon';
 import {
 	//Chunk,
 	//Flex,
