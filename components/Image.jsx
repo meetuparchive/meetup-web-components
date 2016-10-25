@@ -7,49 +7,46 @@ import cx from 'classnames';
  * full component has a lof of cool things
  */
 class Image extends React.Component {
-	render() {
-		const {
-			children,
-			className,
-			style,
-			source,
-			...other
-		} = this.props;
+  render() {
+    const {
+      children,
+      className,
+      style,
+      source,
+      ...other
+    } = this.props;
 
-		const classNames = cx(
-			'image',
-			className,
-		);
+    const classNames = cx(
+      'image',
+      className,
+    );
 
-		const resizeMode = this.props.resizeMode || 'cover';
-		const backgroundImage = `url('${source}')`;
-		return (
-			<div
-				className={classNames}
-				style={{
-		          ...styles.initial,
-		          ...style,
-		          backgroundImage,
-		          ...resizeModeStyles[resizeMode]
-		        }}
-				{...other}>
-				{/* React.createElement('img', {src: source, style: styles.img }) */}
-		        {children ? (
-		          <View children={children} pointerEvents='box-none' style={styles.children} />
-		        ) : null}
-			</div>
-		);
-	}
+    const resizeMode = this.props.resizeMode || 'cover';
+    const backgroundImage = `url('${source}')`;
+    return (
+      <div
+        className={classNames}
+        style={{
+              ...styles.initial,
+              ...style,
+              backgroundImage,
+              ...resizeModeStyles[resizeMode]
+            }}
+        {...other}>
+        {/* React.createElement('img', {src: source, style: styles.img }) */}
+            {children}
+      </div>
+    );
+  }
 }
 
 Image.propTypes = {
-	resizeMode: React.PropTypes.oneOf(['center', 'contain', 'cover', 'none', 'repeat', 'stretch']),
-	source: React.PropTypes.string
+  resizeMode: React.PropTypes.oneOf(['center', 'contain', 'cover', 'none', 'repeat', 'stretch']),
+  source: React.PropTypes.string
 };
 
 const styles = {
   initial: {
-    alignSelf: 'flex-start',
     backgroundColor: 'transparent',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
