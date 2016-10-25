@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'react-router/lib/Link';
 import cx from 'classnames';
 
 /**
@@ -11,7 +10,6 @@ class NavItem extends React.Component {
 	render() {
 		const {
 			className,
-			to,
 			children,
 			...other
 		} = this.props;
@@ -29,16 +27,14 @@ class NavItem extends React.Component {
 			<li
 				className={classNames}
 				{...other}>
-					<Link to={to}>
-						{children}
-					</Link>
+					{children}
 			</li>
 		);
 	}
 }
 
 NavItem.propTypes = {
-	to: React.PropTypes.string.isRequired,
+	Link: React.PropTypes.string.isRequired,
 };
 
 export default NavItem;
