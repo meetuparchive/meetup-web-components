@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { IntlProvider } from 'react-intl'
+import { IntlProvider } from 'react-intl';
 import GridList from './GridList';
 import { storiesOf } from '@kadira/storybook';
 
@@ -13,4 +13,4 @@ storiesOf('GridList', module)
 			</IntlProvider>
 		);
 	})
-	.add('default', () => <GridList />)
+	.add('default', () => <GridList />);

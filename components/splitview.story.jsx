@@ -5,4 +5,4 @@ import Splitview from './Splitview';
 import { storiesOf } from '@kadira/storybook';
 
 storiesOf('Splitview', module)
-	.add('default', () => <Splitview />)
+	.add('default', () => <Splitview />);

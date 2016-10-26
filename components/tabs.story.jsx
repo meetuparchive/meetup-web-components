@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { IntlProvider } from 'react-intl'
+import { IntlProvider } from 'react-intl';
 import Tabs from './Tabs';
 import { storiesOf } from '@kadira/storybook';
 
@@ -13,4 +13,4 @@ storiesOf('Tabs', module)
 			</IntlProvider>
 		);
 	})
-	.add('default', () => <Tabs />)
+	.add('default', () => <Tabs />);

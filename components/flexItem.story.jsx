@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { IntlProvider } from 'react-intl'
+import { IntlProvider } from 'react-intl';
 import FlexItem from './FlexItem';
 import { storiesOf } from '@kadira/storybook';
 
@@ -13,4 +13,4 @@ storiesOf('FlexItem', module)
 			</IntlProvider>
 		);
 	})
-	.add('default', () => <FlexItem />)
+	.add('default', () => <FlexItem />);

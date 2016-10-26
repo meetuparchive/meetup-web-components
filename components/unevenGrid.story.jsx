@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { IntlProvider } from 'react-intl'
+import { IntlProvider } from 'react-intl';
 import UnevenGrid from './UnevenGrid';
 import { storiesOf } from '@kadira/storybook';
 
@@ -13,4 +13,4 @@ storiesOf('UnevenGrid', module)
 			</IntlProvider>
 		);
 	})
-	.add('default', () => <UnevenGrid />)
+	.add('default', () => <UnevenGrid />);

@@ -1,10 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 import {
-	//Chunk,
-	//Flex,
+	// Chunk,
+	// Flex,
 	FlexItem,
-	//Section,
+	// Section,
 } from './layoutUtils';
 /**
  * @module PageTitle
@@ -27,7 +27,7 @@ class PageTitle extends React.Component {
 			<FlexItem
 				className={classNames}
 				{...other}>
-					<h1 className="text--display1">{title}</h1>
+					<h1 className='text--display1'>{title}</h1>
 					{children}
 			</FlexItem>
 		);

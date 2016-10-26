@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { IntlProvider } from 'react-intl'
+import { IntlProvider } from 'react-intl';
 import DropMenu from './DropMenu';
 import { storiesOf } from '@kadira/storybook';
 
@@ -13,4 +13,4 @@ storiesOf('DropMenu', module)
 			</IntlProvider>
 		);
 	})
-	.add('default', () => <DropMenu />)
+	.add('default', () => <DropMenu />);

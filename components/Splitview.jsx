@@ -1,10 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 import {
-	//Chunk,
+	// Chunk,
 	Flex,
 	FlexItem,
-	//Section,
+	// Section,
 } from './layoutUtils';
 
 /**
@@ -34,12 +34,12 @@ class Splitview extends React.Component {
 				noGutters
 				className={classNames}
 				{...other}>
-					<FlexItem shrink className="splitview-list">
-						<div className="splitview-listwrap">
+					<FlexItem shrink className='splitview-list'>
+						<div className='splitview-listwrap'>
 							{list}
 						</div>
 					</FlexItem>
-					<FlexItem className="splitview-detail">
+					<FlexItem className='splitview-detail'>
 						{detail}
 					</FlexItem>
 					{children}

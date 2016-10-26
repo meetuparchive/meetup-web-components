@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { IntlProvider } from 'react-intl'
+import { IntlProvider } from 'react-intl';
 import StickyCTA from './StickyCTA';
 import { storiesOf } from '@kadira/storybook';
 
@@ -13,4 +13,4 @@ storiesOf('StickyCTA', module)
 			</IntlProvider>
 		);
 	})
-	.add('default', () => <StickyCTA />)
+	.add('default', () => <StickyCTA />);

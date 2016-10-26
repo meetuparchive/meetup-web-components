@@ -1,9 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 import {
-	//Chunk,
+	// Chunk,
 	Flex,
-	//FlexItem,
+	// FlexItem,
 	Section,
 } from './layoutUtils';
 
@@ -28,7 +28,7 @@ class PageHead extends React.Component {
 				className={classNames}
 				{...other}>
 					<Flex
-						spread="atMedium"
+						spread='atMedium'
 						>
 						{children}
 					</Flex>

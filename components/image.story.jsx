@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { IntlProvider } from 'react-intl'
+import { IntlProvider } from 'react-intl';
 import Image from './Image';
 import { storiesOf } from '@kadira/storybook';
 
@@ -13,4 +13,4 @@ storiesOf('Image', module)
 			</IntlProvider>
 		);
 	})
-	.add('default', () => <Image />)
+	.add('default', () => <Image />);

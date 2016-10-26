@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { IntlProvider } from 'react-intl'
+import { IntlProvider } from 'react-intl';
 import HScroll from './HScroll';
 import { storiesOf } from '@kadira/storybook';
 
@@ -13,4 +13,4 @@ storiesOf('HScroll', module)
 			</IntlProvider>
 		);
 	})
-	.add('default', () => <HScroll />)
+	.add('default', () => <HScroll />);

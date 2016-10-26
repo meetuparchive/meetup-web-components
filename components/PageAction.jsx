@@ -2,10 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 import Icon from './Icon';
 import {
-	//Chunk,
-	//Flex,
+	// Chunk,
+	// Flex,
 	FlexItem,
-	//Section,
+	// Section,
 } from './layoutUtils';
 
 /**
@@ -35,7 +35,7 @@ class PageAction extends React.Component {
 						<Icon shape={icon} />
 					}
 					{label &&
-						<div className="text--small text--secondary">{label}</div>
+						<div className='text--small text--secondary'>{label}</div>
 					}
 					{children}
 			</FlexItem>
