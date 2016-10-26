@@ -4,8 +4,9 @@ import cx from 'classnames';
 
 import {
 	FormattedDate,
-	FormattedMessage,
-	defineMessages } from 'react-intl';
+//	FormattedMessage,
+//	defineMessages
+} from 'react-intl';
 
 /**
  *	SQ2 Group Card component

@@ -1,10 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import { Link } from 'react-router';
-// import {
-// 	Chunk,
-// } from 'foundation-react/layoutUtils';
-
 
 /**
  * @module AlbumGrid

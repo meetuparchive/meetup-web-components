@@ -1,16 +1,22 @@
 
 import React from 'react';
-import { IntlProvider } from 'react-intl';
-import DropMenu from './DropMenu';
+import { DropMenu, DropMenuTrigger, DropMenuOptions, DropMenuOption } from './DropMenu';
 import { storiesOf } from '@kadira/storybook';
 
 storiesOf('DropMenu', module)
-	.addDecorator(story => {
-		const locale = 'en-US';
-		return (
-			<IntlProvider locale={locale}>
-				{story()}
-			</IntlProvider>
-		);
-	})
-	.add('default', () => <DropMenu />);
+	.add('Default', () => (
+	<DropMenu>
+		<DropMenuTrigger tabIndex={0}>Trigger dropdown</DropMenuTrigger>
+		<DropMenuOptions>
+			<DropMenuOption>
+				Option One
+			</DropMenuOption>
+			<DropMenuOption>
+				Option Two
+			</DropMenuOption>
+			<DropMenuOption>
+				Option Three
+			</DropMenuOption>
+		</DropMenuOptions>
+	</DropMenu>
+	));

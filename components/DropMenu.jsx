@@ -33,6 +33,7 @@ class DropMenuTrigger extends React.Component {
 			children,
 			className,
 			active,
+			tabIndex,
 			...other
 		} = this.props;
 
@@ -50,7 +51,7 @@ class DropMenuTrigger extends React.Component {
 				className={classNames}
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
-				tabIndex='0'
+				tabIndex={tabIndex ? tabIndex : -1}
 				role='button'
 				{...other}
 			>
@@ -168,8 +169,8 @@ class DropMenuOptions extends React.Component {
 
 	handleKeys(e) {
 		const options = {
-			'ArrowDown': this.moveSelectionDown,
-			'ArrowUp': this.moveSelectionUp
+			ArrowDown: this.moveSelectionDown,
+			ArrowUp: this.moveSelectionUp
 		};
 		if(options[e.key]){
 			options[e.key].call(this);
@@ -284,7 +285,7 @@ class DropMenu extends React.Component {
 	}
 
 	focusTrigger() {
-		findDOMNode(this.refs.trigger).focus();
+		findDOMNode(this.trigger).focus();
 	}
 
 	onSelectionMade() {
@@ -309,14 +310,14 @@ class DropMenu extends React.Component {
 
 	afterTriggerToggle() {
 		if (this.state.active) {
-			// this.refs.options.focusOption(0);
+			// this.options.focusOption(0);
 			this.updatePositioning();
 		}
 	}
 
 	updatePositioning() {
-		const triggerRect = findDOMNode(this.refs.trigger).getBoundingClientRect();
-		const optionsRect = findDOMNode(this.refs.options).getBoundingClientRect();
+		const triggerRect = findDOMNode(this.trigger).getBoundingClientRect();
+		const optionsRect = findDOMNode(this.options).getBoundingClientRect();
 		const positionState = {
 			horizontalPlacement: this.props.preferredHorizontal,
 			verticalPlacement: this.props.preferredVertical,
@@ -348,7 +349,7 @@ class DropMenu extends React.Component {
 		React.Children.forEach(this.props.children, function(child){
 			if (child.type === DropMenuTrigger) {
 				trigger = React.cloneElement(child, {
-					ref: 'trigger',
+					ref: (div) => this.trigger = div,
 					onToggleActive: this.handleTriggerToggle,
 					active: this.state.active
 				});
@@ -362,7 +363,7 @@ class DropMenu extends React.Component {
 		React.Children.forEach(this.props.children, function(child){
 			if (child.type === DropMenuOptions) {
 				options = React.cloneElement(child, {
-					ref: 'options',
+					ref: (div) => this.options = div,
 					active: this.state.active,
 					horizontalPlacement: this.state.horizontalPlacement,
 					verticalPlacement: this.state.verticalPlacement,
