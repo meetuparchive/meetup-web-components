@@ -37,15 +37,15 @@
 }
 
 //
-// DropMenu
+// Popover
 //
-$dropMenuShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C_border;
+$popoverShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C_border;
 
-.dropMenu {
+.popover {
 	position: relative;
 }
 
-.dropMenu-trigger{
+.popover-trigger{
 	&:focus {
 		outline: 0;
 	}
@@ -55,16 +55,20 @@ $dropMenuShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $
 	}
 }
 
-.dropMenu-options {
+.popover-container {
 	border-radius: $defaultRadius;
 	background-color: $C_contentBG;
 	box-sizing: border-box;
-	box-shadow: $dropMenuShadow;
+	box-shadow: $popoverShadow;
 	position: absolute;
+	width: $view-minWidth;
+}
+
+.popover-container--menu {
 	width: $block-4;
 }
 
-.dropMenu-option {
+.popover-option {
 	padding: $space-half $space;
 	&:focus {
 		outline: 0;
@@ -72,14 +76,21 @@ $dropMenuShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $
 	}
 }
 
-.dropMenu-options--horizontal-left {
+.popover-container--horizontal-left {
 	right: 0;
 }
 
-.dropMenu-options--horizontal-right {
+.popover-container--horizontal-right {
 	left: 0;
 }
 
 .visibility--a11yShow { // Needed to render box-shadow until https://github.com/meetup/sassquatch2/issues/308 is resolved
 	clip: initial;
+}
+
+//
+// Section
+//
+.section {
+	padding: $space-2 $space $space $space;
 }

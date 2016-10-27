@@ -40,9 +40,9 @@ class EmptyState extends React.Component {
 					}
 
 					<Chunk>
-						<h3 className='text--display3'>{message}</h3>
+						<h3 className='text--tertiary text--display3'>{message}</h3>
 						{caption &&
-							<p>{caption}</p>
+							<p className='text--secondary'>{caption}</p>
 						}
 					</Chunk>
 

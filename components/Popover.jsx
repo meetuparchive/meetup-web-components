@@ -3,9 +3,9 @@ import cx from 'classnames';
 import { findDOMNode } from 'react-dom';
 
 /**
- * @module DropMenuTrigger
+ * @module PopoverTrigger
  */
-class DropMenuTrigger extends React.Component {
+class PopoverTrigger extends React.Component {
 	constructor (props) {
 		super(props);
 
@@ -38,10 +38,10 @@ class DropMenuTrigger extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'dropMenu-trigger',
+			'popover-trigger',
 			{
-				'dropMenu-trigger--active': active,
-				'dropMenu-trigger--inactive': !active
+				'popover-trigger--active': active,
+				'popover-trigger--inactive': !active
 			},
 			className
 		);
@@ -63,9 +63,9 @@ class DropMenuTrigger extends React.Component {
 }
 
 /**
- * @module DropMenuOption
+ * @module PopoverMenuOption
  */
-class DropMenuOption extends React.Component {
+class PopoverMenuOption extends React.Component {
 	constructor (props) {
 		super(props);
 
@@ -110,9 +110,9 @@ class DropMenuOption extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'dropMenu-option',
+			'popover-option',
 			{
-				'dropMenu-option--active': active
+				'popover-option--active': active
 			},
 			className
 		);
@@ -135,9 +135,9 @@ class DropMenuOption extends React.Component {
 }
 
 /**
- * @module DropMenuOptions
+ * @module PopoverMenu
  */
-class DropMenuOptions extends React.Component {
+class PopoverMenu extends React.Component {
 	constructor (props) {
 		super(props);
 
@@ -192,7 +192,7 @@ class DropMenuOptions extends React.Component {
 	}
 
 	updateFocusIndexBy(delta) {
-		const optionNodes = findDOMNode(this).querySelectorAll('.dropMenu-option');
+		const optionNodes = findDOMNode(this).querySelectorAll('.popover-option');
 		this.normalizeSelectedBy(delta, optionNodes.length);
 		this.setState({activeIndex: this.selectedIndex}, function () {
 			optionNodes[this.selectedIndex].focus();
@@ -203,7 +203,7 @@ class DropMenuOptions extends React.Component {
 		let index = 0;
 		return React.Children.map(this.props.children, function(c){
 			let clonedOption = c;
-			if (c.type === DropMenuOption) {
+			if (c.type === PopoverMenuOption) {
 				const active = this.state.activeIndex === index;
 				clonedOption = React.cloneElement(c, {
 					active: active,
@@ -228,12 +228,13 @@ class DropMenuOptions extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'dropMenu-options',
+			'popover-container',
+			'popover-container--menu',
 			{
 				'visibility--a11yHide': !active,
 				'visibility--a11yShow': active,
-				[`dropMenu-options--horizontal-${horizontalPlacement}`]: typeof horizontalPlacement === 'string',
-				[`dropMenu-options--vertical-${verticalPlacement}`]: typeof verticalPlacement === 'string',
+				[`popover-container--horizontal-${horizontalPlacement}`]: typeof horizontalPlacement === 'string',
+				[`popover-container--vertical-${verticalPlacement}`]: typeof verticalPlacement === 'string',
 			},
 			className
 		);
@@ -256,9 +257,48 @@ class DropMenuOptions extends React.Component {
 }
 
 /**
- * @module DropMenu
+ * @module PopoverContent
  */
-class DropMenu extends React.Component {
+class PopoverContent extends React.Component {
+	render() {
+		const {
+			className,
+			active,
+			horizontalPlacement,
+			verticalPlacement,
+			height,
+			children,
+			...other
+		} = this.props;
+
+		const classNames = cx(
+			'popover-container',
+			{
+				'visibility--a11yHide': !active,
+				'visibility--a11yShow': active,
+				[`popover-container--horizontal-${horizontalPlacement}`]: typeof horizontalPlacement === 'string',
+				[`popover-container--vertical-${verticalPlacement}`]: typeof verticalPlacement === 'string',
+			},
+			className
+		);
+
+		return (
+			<div
+				className={classNames}
+				aria-expanded={active}
+				style={{bottom: verticalPlacement == 'top' ? `${height}px` : 'initial'}}
+				{...other}
+			>
+				{children}
+			</div>
+		);
+	}
+}
+
+/**
+ * @module Popover
+ */
+class Popover extends React.Component {
 	constructor (props) {
 		super(props);
 
@@ -310,29 +350,28 @@ class DropMenu extends React.Component {
 
 	afterTriggerToggle() {
 		if (this.state.active) {
-			// this.options.focusOption(0);
 			this.updatePositioning();
 		}
 	}
 
 	updatePositioning() {
 		const triggerRect = findDOMNode(this.trigger).getBoundingClientRect();
-		const optionsRect = findDOMNode(this.options).getBoundingClientRect();
+		const containerRect = findDOMNode(this.container).getBoundingClientRect();
 		const positionState = {
 			horizontalPlacement: this.props.preferredHorizontal,
 			verticalPlacement: this.props.preferredVertical,
-			height: optionsRect.height
+			height: containerRect.height
 		};
 		// Only update preferred placement positions if necessary to keep menu from
 		// appearing off-screen.
-		if (triggerRect.left + optionsRect.width > window.innerWidth) {
+		if (triggerRect.left + containerRect.width > window.innerWidth) {
 			positionState.horizontalPlacement = 'left';
-		} else if (optionsRect.left < 0) {
+		} else if (containerRect.left < 0) {
 			positionState.horizontalPlacement = 'right';
 		}
-		if (triggerRect.bottom + optionsRect.height > window.innerHeight) {
+		if (triggerRect.bottom + containerRect.height > window.innerHeight) {
 			positionState.verticalPlacement = 'top';
-		} else if (optionsRect.top < 0) {
+		} else if (containerRect.top < 0) {
 			positionState.verticalPlacement = 'bottom';
 		}
 		this.setState(positionState);
@@ -347,7 +386,7 @@ class DropMenu extends React.Component {
 	renderTrigger() {
 		let trigger;
 		React.Children.forEach(this.props.children, function(child){
-			if (child.type === DropMenuTrigger) {
+			if (child.type === PopoverTrigger) {
 				trigger = React.cloneElement(child, {
 					ref: (div) => this.trigger = div,
 					onToggleActive: this.handleTriggerToggle,
@@ -361,9 +400,9 @@ class DropMenu extends React.Component {
 	renderMenuOptions() {
 		let options;
 		React.Children.forEach(this.props.children, function(child){
-			if (child.type === DropMenuOptions) {
+			if (child.type === PopoverMenu) {
 				options = React.cloneElement(child, {
-					ref: (div) => this.options = div,
+					ref: (div) => this.container = div,
 					active: this.state.active,
 					horizontalPlacement: this.state.horizontalPlacement,
 					verticalPlacement: this.state.verticalPlacement,
@@ -373,6 +412,22 @@ class DropMenu extends React.Component {
 			}
 		}.bind(this));
 		return options;
+	}
+
+	renderMenuContainer() {
+		let container;
+		React.Children.forEach(this.props.children, function(child){
+			if (child.type === PopoverContent) {
+				container = React.cloneElement(child, {
+					ref: (div) => this.container = div,
+					active: this.state.active,
+					horizontalPlacement: this.state.horizontalPlacement,
+					verticalPlacement: this.state.verticalPlacement,
+					height: this.state.height
+				});
+			}
+		}.bind(this));
+		return container;
 	}
 
 	componentDidMount() {
@@ -390,7 +445,7 @@ class DropMenu extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'dropMenu',
+			'popover',
 			className
 		);
 
@@ -403,14 +458,15 @@ class DropMenu extends React.Component {
 			>
 				{this.renderTrigger()}
 				{this.renderMenuOptions()}
+				{this.renderMenuContainer()}
 			</div>
 		);
 	}
 }
 
-DropMenuOption.propTypes = {
+PopoverMenuOption.propTypes = {
 	active: React.PropTypes.bool,
 	onSelect: React.PropTypes.func
 };
 
-module.exports = { DropMenu, DropMenuTrigger, DropMenuOptions, DropMenuOption };
+module.exports = { Popover, PopoverTrigger, PopoverMenu, PopoverMenuOption, PopoverContent };

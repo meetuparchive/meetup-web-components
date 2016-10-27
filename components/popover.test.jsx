@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { IntlProvider } from 'react-intl'
-import DropMenuContainer from './DropMenuContainer';
+import { IntlProvider } from 'react-intl';
+import PopoverContainer from './PopoverContainer';
 
 function intlRender(component) {
 	return TestUtils.renderIntoDocument(
@@ -12,13 +12,13 @@ function intlRender(component) {
 	);
 }
 
-describe('DropMenuContainer', function() {
+describe('PopoverContainer', function() {
 
 	it('exists', function() {
-		const dropMenu = intlRender(<DropMenuContainer />);
-		const dropMenuNode = ReactDOM.findDOMNode(dropMenu);
+		const popover = intlRender(<PopoverContainer />);
+		const popoverNode = ReactDOM.findDOMNode(popover);
 
-		expect(dropMenuNode).not.toBeNull();
+		expect(popoverNode).not.toBeNull();
 	});
 
 });
