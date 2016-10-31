@@ -9,5 +9,5 @@
   "preprocessorIgnorePatterns": [
     "node_modules(?!\/meetup-web-platform)"
   ],
-  "testRegex": "(components|utils)/.*\\.test\\.jsx?$"
+  "testRegex": "(src|utils)/.*\\.test\\.jsx?$"
 }
