@@ -27,19 +27,22 @@ before_install:
 after_success:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
-  - export GIT_TAG=$(make version)
+  - >
+    [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
+    export GIT_TAG=$(make version) ||
+    export GIT_TAG=$(make version)-beta
+  - >
+    [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
+    export NPM_TAG=latest ||
+    export NPM_TAG=beta
   - echo "GIT_TAG=$GIT_TAG"
-  - echo ${TRAVIS_PULL_REQUEST}
+  - echo "NPM_TAG=$NPM_TAG"
   - >
-    [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
-    npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID"
-    || echo "skipping versioning"
-  - >
-    [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
-    git push -q https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG --tags || true
-  - >
-    [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
-    npm publish
+    [ "${TRAVIS_BRANCH}" = "master" ] &&
+    npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" &&
+    git push -q https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG --tags &&
+    npm publish --tag $NPM_TAG ||
+    echo "skipping versioning"
 
 notifications:
   # slack integration
