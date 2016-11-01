@@ -30,7 +30,7 @@ class AvatarMember extends React.Component {
 				src={(member.photo || {}).photo_link}
 				className={classNames}
 				{...other} />
-			);
+		);
 	}
 }
 

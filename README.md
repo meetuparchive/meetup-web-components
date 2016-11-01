@@ -4,6 +4,8 @@ Meetup library of React UI components for the web.
 Table of Contents
 =================
 
+  * [Releases](#releases)
+    * [Development/Beta release](#developmentbeta-releases)
   * [Getting started](#getting-started)
     * [Components](#components)
     * [Icons](#icons)
@@ -13,10 +15,60 @@ Table of Contents
   * [Linting](#linting)
   * [Storybook](#storybook)
 
+## Releases
+
+This package uses semver versioning to tag releases, although the patch version
+is determined exclusively by the Travis build number for pushes to `master`.
+Major and minor versions are hard-coded into the [Makefile](Makefile#L2).
+
+Manual pushes to `master` and PR merges to master will be built by Travis, and
+will kick off the npm publish routine. The currently-published version of the
+package is shown on the repo homepage on GitHub in a badge at the top of the
+README.
+
+### Development/Beta releases
+
+When developing a consumer application that requires changes to the platform
+code, you can release a beta version of the platform on npm by opening a PR in
+the meetup-web-platform repo. When it builds successfully, a new beta version
+will be added to the list of available npm versions. The generated version number
+is in the Travis build logs, which you can navigate to by clicking on 'Show all
+checks' in the box that says 'All checks have passed', and then getting the
+'Details' of the Travis build.
+
+<img width="797" alt="screen shot 2016-10-29 at 10 25 20 am" src="https://cloud.githubusercontent.com/assets/1885153/19822867/26d007dc-9dc2-11e6-8059-96d368411e78.png">
+
+<img width="685" alt="screen shot 2016-10-29 at 10 25 29 am" src="https://cloud.githubusercontent.com/assets/1885153/19822869/28d1f432-9dc2-11e6-8157-3d381746f315.png">
+
+At the bottom of the build log, there is a line that `echo`s the `GIT_TAG`.
+If you click the disclosure arrow, the version number will be displayed, e.g.
+`0.5.177-beta`.
+
+<img width="343" alt="screen shot 2016-10-29 at 10 25 59 am" src="https://cloud.githubusercontent.com/assets/1885153/19822874/312a9792-9dc2-11e6-97bc-62f61d252d4e.png">
+
+<img width="418" alt="screen shot 2016-10-29 at 10 26 06 am" src="https://cloud.githubusercontent.com/assets/1885153/19822876/34182e9c-9dc2-11e6-9901-c8e68591dc12.png">
+
+You can then install this beta version into your consumer application with
+
+```sh
+> npm install meetup-web-components@<version tag>
+```
+
+Each time you push a change to your `meetup-web-components` PR, you'll need to
+re-install it with the new tag in your consumer application code.
+
+The overall workflow is:
+
+1. Open a PR for your `meetup-web-components` branch
+2. Wait for Travis to successfully build your branch (this can take 5+ minutes)
+3. Get the version string from the build logs under `GIT_TAG`
+4. (if needed) Push changes to your `meetup-web-components` branch
+5. Repeat steps 2-3
+
 ## Getting started
 
 You can generate the boilerplate files for React components using
-`npm run generate`, which invokes `utils/generate.js`.
+`npm run generate`, which invokes `src/utils/generate.js`.
 
 The command will prompt you for a 'type' (select from the list of options),
 and a 'name'. It generates the following files in `src/` :

@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from './Nav.jsx';
 import NavItem from './NavItem.jsx';
 import { storiesOf, action } from '@kadira/storybook';
-import { Annotate } from '../utils/storyComponents';
+import { Annotate } from './utils/storyComponents';
 
 const onClick = route => e => {
 	e.preventDefault();

@@ -1,7 +1,7 @@
 export default (name, iconRefs, iconStories) => `
 import React from 'react';
 import Icon from './Icon';
-import { Annotate, Inverted } from '../utils/storyComponents';
+import { Annotate, Inverted } from './utils/storyComponents';
 import { storiesOf, linkTo } from '@kadira/storybook';
 
 storiesOf('${name}', module)

@@ -1,0 +1,20 @@
+# Runtime data
+pids
+*.pid
+*.seed
+
+# node-waf configuration
+.lock-wscript
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+
+.DS_Store
+npm-debug.log
+.swo
+.swp
+
+# Generated icon library file
+/src/iconLibrary.story.jsx
+

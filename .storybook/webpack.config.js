@@ -4,7 +4,7 @@ const SvgStore = require('webpack-svgstore-plugin');
 const ICON_PATH = path.resolve(__dirname, '../icons', '**/*.svg');
 const SCSS_PATH = path.resolve(__dirname, '../assets', 'scss');
 const CSS_PATH = path.resolve(__dirname, '../assets', 'css');
-const SRC_PATH = path.resolve(__dirname, '../components');
+const SRC_PATH = path.resolve(__dirname, '../src');
 const PLATFORM_PATH = /node_modules\/meetup-web-platform/;
 
 module.exports = {

@@ -2,7 +2,7 @@ import { configure } from '@kadira/storybook';
 import '../assets/scss/main.scss';
 import '../assets/css/storybook.css';
 
-const componentStories = require.context('../components', true, /\.story\.jsx$/)
+const componentStories = require.context('../src', false, /\.story\.jsx$/)
 
 function loadStories() {
 	componentStories.keys().forEach(componentStories);
