@@ -2,14 +2,16 @@
   "name": "meetup-web-components",
   "version": "0.1.0",
   "license": "UNLICENSED",
-  "private": true,
   "description": "Meetup Web UI Component Library",
+  "author": "Meetup",
   "engine": "node >=6.5.0",
   "scripts": {
+    "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx",
     "generate": "node utils/generate.js",
     "lint": "eslint . --ext .js,.jsx --fix",
     "lint:base": "eslint . --ext .js,.jsx",
     "modules:clean": "rm -rf node_modules",
+    "prepublish": "npm run build",
     "storybook": "node utils/create-icon-story && start-storybook -p 9001 -c .storybook",
     "test": "npm-run-all --parallel lint:base test:unit",
     "test:unit": "jest --silent --config jest.config.json"
@@ -18,6 +20,10 @@
     "type": "git",
     "url": "https://github.com/meetup/meetup-web-components.git"
   },
+  "bugs": {
+    "url": "https://github.com/meetup/meetup-web-components/issues"
+  },
+  "homepage": "https://github.com/meetup/meetup-web-components#readme",
   "dependencies": {
     "babel-cli": "6.18.0",
     "babel-core": "6.18.0",
