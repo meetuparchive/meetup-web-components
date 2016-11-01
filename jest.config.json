@@ -1,6 +1,6 @@
 {
   "setupFiles": [
-    "<rootDir>/utils/jestSystemShim.js"
+    "<rootDir>/src/utils/jestSystemShim.js"
   ],
   "moduleFileExtensions": [
     "js",
@@ -9,5 +9,5 @@
   "preprocessorIgnorePatterns": [
     "node_modules(?!\/meetup-web-platform)"
   ],
-  "testRegex": "(src|utils)/.*\\.test\\.jsx?$"
+  "testRegex": "src/.*\\.test\\.jsx?$"
 }

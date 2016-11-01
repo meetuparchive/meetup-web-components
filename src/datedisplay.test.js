@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { IntlProvider } from 'react-intl';
 import { MOCK_DATETIME } from 'meetup-web-platform/lib/util/mocks/app';
-import { hasChildByClassName } from '../utils/testUtils';
+import { hasChildByClassName } from './utils/testUtils';
 import DateDisplay from './DateDisplay';
 
 describe('DateDisplay', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import Icon from './Icon';
-import { Annotate, Inverted } from '../utils/storyComponents';
+import { Annotate, Inverted } from './utils/storyComponents';
 
 
 storiesOf('Icon', module)

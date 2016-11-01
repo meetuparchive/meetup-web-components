@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Annotate } from '../utils/storyComponents';
+import { Annotate } from './utils/storyComponents';
 import Header from './Header';
 
 storiesOf('Header', module)

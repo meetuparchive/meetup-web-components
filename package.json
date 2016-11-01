@@ -7,12 +7,12 @@
   "engine": "node >=6.5.0",
   "scripts": {
     "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx",
-    "generate": "node utils/generate.js",
+    "generate": "node src/utils/generate.js",
     "lint": "eslint . --ext .js,.jsx --fix",
     "lint:base": "eslint . --ext .js,.jsx",
     "modules:clean": "rm -rf node_modules",
     "prepublish": "npm run build",
-    "storybook": "node utils/create-icon-story && start-storybook -p 9001 -c .storybook",
+    "storybook": "node src/utils/create-icon-story && start-storybook -p 9001 -c .storybook",
     "test": "npm-run-all --parallel lint:base test:unit",
     "test:unit": "jest --silent --config jest.config.json"
   },

@@ -68,7 +68,7 @@ The overall workflow is:
 ## Getting started
 
 You can generate the boilerplate files for React components using
-`npm run generate`, which invokes `utils/generate.js`.
+`npm run generate`, which invokes `src/utils/generate.js`.
 
 The command will prompt you for a 'type' (select from the list of options),
 and a 'name'. It generates the following files in `src/` :
