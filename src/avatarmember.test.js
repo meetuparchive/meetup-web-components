@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { MOCK_MEMBER } from 'meetup-web-platform/util/mocks/api';
+import { MOCK_MEMBER } from 'meetup-web-platform/lib/util/mocks/api';
 import AvatarMember from './AvatarMember';
 
 describe('AvatarMember', function() {
