@@ -30,7 +30,7 @@ function promptCreate() {
 promptCreate()
 	.then(answers => ({
 		answers,
-		createPath: path.resolve(__dirname, '../components/')
+		createPath: path.resolve(__dirname, '../src/')
 	}))
 	.then((config) => {
 		'use strict';

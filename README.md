@@ -19,7 +19,7 @@ You can generate the boilerplate files for React components using
 `npm run generate`, which invokes `utils/generate.js`.
 
 The command will prompt you for a 'type' (select from the list of options),
-and a 'name'. It generates the following files in `components/` :
+and a 'name'. It generates the following files in `src/` :
 
 - `<ComponentName>.jsx` Component JSX module
 - `<componentname>.test.jsx` Component test script
@@ -27,7 +27,7 @@ and a 'name'. It generates the following files in `components/` :
 
 ### Components
 
-Located in the `components/` directory, component files live alongside
+Located in the `src/` directory, component files live alongside
 their corresponding `.test` and `.story` files.
 
 Filename casing convenctions:
