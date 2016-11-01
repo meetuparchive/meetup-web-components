@@ -7,3 +7,93 @@
 @import "~sassquatch2/sass/sassquatch.scss";
 
 // [import partials here]
+
+//
+// Album Grid
+//
+.albumGrid {
+	@include display(flex);
+	@include flex-wrap(wrap);
+	&:after {
+		content: '';
+		flex-grow: 9999;
+	}
+}
+
+.albumGrid-item {
+	margin: 0 $space-quarter $space-quarter 0;
+	position: relative;
+}
+
+.albumGrid-itemShim {
+	display: block;
+}
+
+.albumGrid-img {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	vertical-align: bottom;
+}
+
+//
+// Popover
+//
+$popoverShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C_border;
+
+.popover {
+	position: relative;
+}
+
+.popover-trigger{
+	&:focus {
+		outline: 0;
+	}
+	&--active {
+		background: $C_selection;
+		box-shadow: 0 0 0 8px $C_selection;
+	}
+}
+
+.popover-container {
+	border-radius: $defaultRadius;
+	background-color: $C_contentBG;
+	box-sizing: border-box;
+	box-shadow: $popoverShadow;
+	max-height: $block-6;
+	overflow: scroll;
+	position: absolute;
+	width: $view-minWidth;
+	z-index: 1; //map-get($zindex-map, "popover") wasn't working
+}
+
+.popover-container--menu {
+	width: $block-4;
+}
+
+.popover-option {
+	padding: $space-half $space;
+	&:focus {
+		outline: 0;
+		background: $C_selection;
+	}
+}
+
+.popover-container--horizontal-left {
+	right: 0;
+}
+
+.popover-container--horizontal-right {
+	left: 0;
+}
+
+.visibility--a11yShow { // Needed to render box-shadow until https://github.com/meetup/sassquatch2/issues/308 is resolved
+	clip: initial;
+}
+
+//
+// Section
+//
+.section {
+	padding: $space-2 $space $space $space;
+}

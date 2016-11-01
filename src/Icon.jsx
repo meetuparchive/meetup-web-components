@@ -25,7 +25,7 @@ class Icon extends React.Component {
 	render() {
 		const {
 			className,
-			//shape,
+			// shape,
 			size,
 			...other
 		} = this.props;
