@@ -29,10 +29,4 @@ describe('GroupCard', function() {
 			.toBe(`${MOCK_GROUP.members} ${MOCK_GROUP.who}`);
 	});
 
-	it('has a link to the group', function() {
-		const groupCard = TestUtils.renderIntoDocument(<GroupCard group={MOCK_GROUP} />);
-		const node = ReactDOM.findDOMNode(groupCard);
-
-		expect(node.tagName).toEqual('A');
-	});
 });
