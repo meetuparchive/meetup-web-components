@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'react-router/lib/Link';
 import cx from 'classnames';
 
 /**
@@ -28,8 +27,7 @@ export class GroupCard extends React.Component {
 		const backgroundImage = photoUrl && `url(${photoUrl})`;
 
 		return (
-			<Link
-				to={`/${group.urlname}`}
+			<span
 				className={cardClassNames}
 				style={{ ...(style || {}), backgroundImage }}
 				{...other}>
@@ -39,7 +37,7 @@ export class GroupCard extends React.Component {
 					<p className='card--group-content-members'>{group.members} {group.who}</p>
 				</div>
 
-			</Link>
+			</span>
 		);
 	}
 }
