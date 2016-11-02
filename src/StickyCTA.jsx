@@ -24,13 +24,13 @@ class StickyCTA extends React.Component {
 		);
 
 		return (
-			<Section
+			<div
 				className={classNames}
 				{...other}>
 					<div className='stickyCTA-container'>
 						{children}
 					</div>
-			</Section>
+			</div>
 		);
 	}
 }
