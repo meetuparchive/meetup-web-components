@@ -29,9 +29,6 @@ class RsvpBox extends React.Component {
 			'text--caption',
 			className
 		);
-		const baseStyle = {
-			height: '100px',
-		};
 
 		// configure rsvp open/close info
 		let rsvpTimeLimitMessage, rsvpTimeLimitTime;
@@ -96,7 +93,7 @@ class RsvpBox extends React.Component {
 				});
 			}
 		}
-		const rsvpResponse = (event.self.rsvp || {}).response;
+		const rsvpResponse = event.self === undefined ? null : (event.self.rsvp || {}).response;
 		if (rsvpResponse === 'yes') {
 			Object.assign(rsvpButtonProps, {
 				children: 'I\'m going',
@@ -145,7 +142,7 @@ class RsvpBox extends React.Component {
 		return (
 			<div
 				className={classNames}
-				style={{ ...baseStyle, ...(style || {}) }}
+				style={{ ...(style || {}) }}
 				{...other}>
 				{rsvpButton}
 				{rsvpFeeItem}
