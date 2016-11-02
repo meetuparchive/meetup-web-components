@@ -21,7 +21,6 @@ class Card extends React.Component {
 			<div
 				className={classNames}
 				{...other}>
-					Hello from Card
 					{children}
 			</div>
 		);
