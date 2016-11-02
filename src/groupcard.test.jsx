@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { GroupCard } from './GroupCard';
-import { MOCK_GROUP } from 'meetup-web-platform/util/mocks/api';
+import { MOCK_GROUP } from 'meetup-web-platform/lib/util/mocks/api';
 
 describe('GroupCard', function() {
 
@@ -29,10 +29,4 @@ describe('GroupCard', function() {
 			.toBe(`${MOCK_GROUP.members} ${MOCK_GROUP.who}`);
 	});
 
-	it('has a link to the group', function() {
-		const groupCard = TestUtils.renderIntoDocument(<GroupCard group={MOCK_GROUP} />);
-		const node = ReactDOM.findDOMNode(groupCard);
-
-		expect(node.tagName).toEqual('A');
-	});
 });

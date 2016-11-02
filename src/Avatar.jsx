@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import Link from 'react-router/lib/Link';
 
 const NO_PHOTO_SRC = '';  // default 'no photo' src
 
@@ -55,18 +54,10 @@ class Avatar extends React.Component {
 			...other
 		};
 
-		let Component = 'span';
-		if (other.href) {
-			Component = 'a';
-		}
-		if (other.to) {
-			Component = Link;
-		}
-
 		return (
-			<Component {...allProps}>
+			<span {...allProps}>
 				{alt}
-			</Component>
+			</span>
 		);
 	}
 }

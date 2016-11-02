@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 require('babel-register');  // process all further imports through babel
 
-const ICONS_PATH = path.resolve(__dirname, '../icons');
-const FOUNDATION_PATH = path.resolve(__dirname, '../src');
+const ICONS_PATH = path.resolve(__dirname, '../../icons');
+const FOUNDATION_PATH = path.resolve(__dirname, '../../src');
 
 function generateIconStory() {
 	'use strict';

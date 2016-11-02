@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 import Icon from './Icon';
 import { storiesOf, action } from '@kadira/storybook';
-import { Inverted } from '../utils/storyComponents';
+import { Inverted } from './utils/storyComponents';
 
 
 storiesOf('Button', module)

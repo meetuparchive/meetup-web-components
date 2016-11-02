@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from 'react-router/lib/Link';
 import cx from 'classnames';
+import { Link } from 'react-router';
 
 import {
 	FormattedDate,
@@ -49,7 +49,6 @@ export class GroupCard extends React.Component {
 							<p className='card--group-content-members'>{group.members} {group.who}</p>
 						*/}
 					</div>
-
 
 				</div>
 					{showNextEvent &&
