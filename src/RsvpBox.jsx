@@ -25,7 +25,6 @@ class RsvpBox extends React.Component {
 
 		const classNames = cx(
 			'rsvpbox',
-			'column',
 			'text--caption',
 			className
 		);
@@ -54,7 +53,7 @@ class RsvpBox extends React.Component {
 			rsvpTimeLimitTime = openDate;
 		}
 		const rsvpTimeLimit = rsvpTimeLimitMessage && !narrow ? (
-			<div className={cx('column-item column')} style={{ justifyContent: 'flex-end' }}>
+			<div style={{ justifyContent: 'flex-end' }}>
 				<p className='event-timeLimit'>
 					{rsvpTimeLimitMessage}<br />
 					<FormattedDate
@@ -117,7 +116,7 @@ class RsvpBox extends React.Component {
 			});
 		}
 		const rsvpButton = rsvpButtonProps.children ? (
-			<div className='column-item column-item--shrink'>
+			<div>
 				{ narrow ? rsvpButtonProps.icon : (
 					<Button
 						{ ...rsvpButtonProps }
@@ -134,7 +133,7 @@ class RsvpBox extends React.Component {
 		const rsvpFeeMessage = event.fee ?
 			`${event.fee.currency}${event.fee.amount} ${event.fee.description}` : null;
 		const rsvpFeeItem = rsvpFeeMessage && !narrow ? (
-			<span className='event-fee column-item column-item--grow text--caption'>
+			<span className='event-fee text--caption'>
 				{rsvpFeeMessage}
 			</span>
 		) : null;
