@@ -21,9 +21,6 @@ addons:
     packages:
       - g++-4.8
 
-before_install:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
-
 after_success:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
