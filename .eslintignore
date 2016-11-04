@@ -1,5 +1,7 @@
+assets/
 build/
 coverage/
+icons/
 lib/
 node_modules/
 svg/

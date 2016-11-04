@@ -22,6 +22,7 @@ addons:
       - g++-4.8
 
 after_success:
+  - npm run coveralls
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
   - >
