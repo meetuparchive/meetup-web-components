@@ -39,9 +39,9 @@ after_success:
   - echo "NPM_TAG=$NPM_TAG"
   - >
     [ "${TRAVIS_BRANCH}" = "master" ] &&
+    git commit -am "Commit .npmrc in tag pushed to npm" &&
     npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" &&
     git push -q https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG --tags &&
-    git commit -am "Temp commit of .npmrc changes - do not push" &&
     npm publish --tag $NPM_TAG ||
     echo "skipping versioning"
 
