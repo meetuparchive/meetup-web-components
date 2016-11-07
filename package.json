@@ -7,13 +7,15 @@
   "engine": "node >=6.5.0",
   "scripts": {
     "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx",
+    "coverage": "npm run test:unit -- --coverage",
+    "coveralls": "cat coverage/lcov.info | coveralls",
     "generate": "node src/utils/generate.js",
-    "lint": "eslint . --ext .js,.jsx --fix",
+    "lint": "npm run lint:base -- --fix",
     "lint:base": "eslint . --ext .js,.jsx",
     "modules:clean": "rm -rf node_modules",
     "prepublish": "npm run build",
     "storybook": "node src/utils/create-icon-story && start-storybook -p 9001 -c .storybook",
-    "test": "npm-run-all --parallel lint:base test:unit",
+    "test": "npm-run-all --parallel lint:base coverage",
     "test:unit": "jest --silent --config jest.config.json"
   },
   "repository": {
@@ -52,6 +54,7 @@
   "devDependencies": {
     "@kadira/storybook": "2.24.1",
     "babel-loader": "6.2.4",
+    "coveralls": "2.11.14",
     "css-loader": "0.23.1",
     "eslint-loader": "1.5.0",
     "inquirer": "1.2.2",
