@@ -10,7 +10,7 @@
     "coverage": "npm run test:unit -- --coverage",
     "coveralls": "cat coverage/lcov.info | coveralls",
     "generate": "node src/utils/generate.js",
-    "lint": "eslint . --ext .js,.jsx --fix",
+    "lint": "npm run lint:base -- --fix",
     "lint:base": "eslint . --ext .js,.jsx",
     "modules:clean": "rm -rf node_modules",
     "prepublish": "npm run build",
