@@ -9,6 +9,7 @@ class SectionTitle extends React.Component {
 		const {
 			children,
 			className,
+			'text--display2',
 			...other
 		} = this.props;
 
