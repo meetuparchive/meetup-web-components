@@ -40,7 +40,7 @@
     "eslint-plugin-react": "6.4.1",
     "julep": "1.4.5",
     "meetup-swatches": "3.1.1",
-    "meetup-web-platform": "0.5.189",
+    "meetup-web-platform": "0.5.239-beta",
     "node-sass": "3.10.1",
     "react": "15.3.2",
     "react-addons-test-utils": "15.3.2",
