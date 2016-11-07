@@ -21,6 +21,9 @@ addons:
     packages:
       - g++-4.8
 
+before_install:
+    - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+
 after_success:
   - npm run coveralls
   - git config --global user.email "builds@travis-ci.com"
@@ -37,6 +40,7 @@ after_success:
   - echo "NPM_TAG=$NPM_TAG"
   - >
     [ "${TRAVIS_BRANCH}" = "master" ] &&
+    git commit -am "Commit .npmrc in tag pushed to npm" &&
     npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" &&
     git push -q https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG --tags &&
     npm publish --tag $NPM_TAG ||
