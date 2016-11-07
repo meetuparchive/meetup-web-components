@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/meetup/meetup-web-components/badge.svg?branch=master)](https://coveralls.io/github/meetup/meetup-web-components?branch=master)
+
 # meetup-web-components
 Meetup library of React UI components for the web.
 
