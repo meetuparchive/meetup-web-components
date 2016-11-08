@@ -49,7 +49,7 @@ class Modal extends React.Component {
 				<div className='view view--modalSnap' >
 					<div className='padding--all'>
 						<Link to={this.props.closeUrl}>
-							<Icon shape="close" size="s" />
+							<Icon shape='close' size='s' />
 						</Link>
 					</div>
 					{children}

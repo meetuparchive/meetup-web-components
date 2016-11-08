@@ -1,8 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { Section } from './layoutUtils';
-
 /**
  * @module StickyCTA
  */
