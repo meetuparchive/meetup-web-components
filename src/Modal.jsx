@@ -30,11 +30,13 @@ class Modal extends React.Component {
 		const {
 			children,
 			className,
+			fullScreen,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'modal',
+			{'view--modalFull': fullScreen},
 			className
 		);
 
@@ -60,6 +62,7 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
+	full: React.PropTypes.bool
 };
 
 export default Modal;
