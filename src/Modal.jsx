@@ -36,7 +36,6 @@ class Modal extends React.Component {
 
 		const classNames = cx(
 			'modal',
-			{'view--modalFull': fullScreen},
 			className
 		);
 
@@ -48,7 +47,15 @@ class Modal extends React.Component {
 					<div className='overlayShim-content inverted'>
 					</div>
 				</div>
-				<div className='view view--modalSnap' >
+				<div
+					className={cx(
+						'view',
+						{
+							'view--modalFull': fullScreen,
+							'view--modalSnap': !fullScreen
+						}
+					)}
+				>
 					<div className='padding--all'>
 						<Link to={this.props.closeUrl}>
 							<Icon shape='close' size='s' />
