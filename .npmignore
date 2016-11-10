@@ -11,9 +11,12 @@ pids
 node_modules
 
 .DS_Store
+coverage
 npm-debug.log
 .swo
 .swp
+.*.swp
+.npmrc
 
 # Generated icon library file
 /src/iconLibrary.story.jsx

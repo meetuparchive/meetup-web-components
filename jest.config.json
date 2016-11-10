@@ -1,4 +1,9 @@
 {
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx}",
+    "!**/{node_modules,lib,coverage,assets,icons}/**"
+  ],
+  "coverageDirectory": "<rootDir>/coverage",
   "setupFiles": [
     "<rootDir>/src/utils/jestSystemShim.js"
   ],

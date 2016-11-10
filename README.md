@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/meetup-web-components.svg)](https://badge.fury.io/js/meetup-web-components) [![Build Status](https://travis-ci.org/meetup/meetup-web-components.svg?branch=master)](https://travis-ci.org/meetup/meetup-web-components) [![Coverage Status](https://coveralls.io/repos/github/meetup/meetup-web-components/badge.svg?branch=master)](https://coveralls.io/github/meetup/meetup-web-components?branch=master)
+
 # meetup-web-components
 Meetup library of React UI components for the web.
 
