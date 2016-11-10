@@ -203,7 +203,9 @@ class PopoverMenu extends React.Component {
 		let index = 0;
 		return React.Children.map(this.props.children, function(c){
 			let clonedOption = c;
-			if (c.type === PopoverMenuOption) {
+			if (c === null) {
+				return false;
+			} else if (c.type === PopoverMenuOption) {
 				const active = this.state.activeIndex === index;
 				clonedOption = React.cloneElement(c, {
 					active: active,

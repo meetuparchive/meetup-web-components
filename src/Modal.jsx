@@ -30,6 +30,7 @@ class Modal extends React.Component {
 		const {
 			children,
 			className,
+			fullScreen,
 			...other
 		} = this.props;
 
@@ -46,10 +47,18 @@ class Modal extends React.Component {
 					<div className='overlayShim-content inverted'>
 					</div>
 				</div>
-				<div className='view view--modalSnap' >
+				<div
+					className={cx(
+						'view',
+						{
+							'view--modalFull': fullScreen,
+							'view--modalSnap': !fullScreen
+						}
+					)}
+				>
 					<div className='padding--all'>
 						<Link to={this.props.closeUrl}>
-							<Icon shape="close" size="s" />
+							<Icon shape='close' size='s' />
 						</Link>
 					</div>
 					{children}
@@ -60,6 +69,7 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
+	full: React.PropTypes.bool
 };
 
 export default Modal;
