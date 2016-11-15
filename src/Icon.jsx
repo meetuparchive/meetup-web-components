@@ -11,6 +11,8 @@ export const MEDIA_SIZES = {
 	xl: '72',
 };
 
+const spritePath = require('file!swarm-icons/dist/sprite/sprite.inc');
+
 /**
  * Icon component used to insert an svg icon into a component or page
  *
@@ -47,8 +49,10 @@ class Icon extends React.Component {
 					viewBox={`0 0 ${dim} ${dim}`}
 					className='svg-icon valign--middle'
 					role='img'
+					aria-labelledby={`${shape}_title`}
 					{...other}>
-					<use xlinkHref={`#icon-${shape}`}></use>
+					<title id={`${shape}_title`} />
+					<use role='presentation' xlinkHref={`${spritePath}#icon-${shape}`} />
 				</svg>
 			</span>
 		);
@@ -61,7 +65,7 @@ Icon.defaultProps = {
 
 Icon.propTypes = {
 	shape: React.PropTypes.string.isRequired,
-	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
+	size: React.PropTypes.oneOf(Object.keys(MEDIA_SIZES))
 };
 
 export default Icon;
