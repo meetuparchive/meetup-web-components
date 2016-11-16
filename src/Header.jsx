@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 
 /**
  * Site-wide header component using SQ2 styles
@@ -7,22 +8,25 @@ import React from 'react';
  */
 class Header extends React.Component {
 	render() {
-		const { children, ...other } = this.props;
+		const {
+			children,
+			className,
+			...other
+		} = this.props;
 
-		const navStyle = {
-			borderBottom: '1px solid gray',
-			backgroundColor: 'rgba(230, 233, 236, 1)',
-		};
+
+		const classNames = cx(
+			'header',
+			className
+		);
 
 		return (
 			<header
-				style={navStyle}
+				className={classNames}
 				role='banner'
 				aria-label='Site header'
 				{...other}>
-					<div className='padding--all'>
-						{children}
-					</div>
+					{children}
 			</header>
 		);
 	}
