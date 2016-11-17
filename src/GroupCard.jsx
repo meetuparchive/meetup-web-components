@@ -1,9 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 import { Link } from 'react-router';
+import moment from 'moment';
 
 import {
-	FormattedDate,
+//	FormattedDate,
 //	FormattedMessage,
 //	defineMessages
 } from 'react-intl';
@@ -57,13 +58,7 @@ export class GroupCard extends React.Component {
 								<div>
 									<div className='lineClamp'>{group.next_event.name}</div>
 									<div className='text--secondary'>
-										<FormattedDate
-											value={group.next_event.time}
-											day='numeric'
-											month='long'
-											hour='numeric'
-											minute='numeric'
-											/>
+										{moment(group.next_event.time, 'x').format('dddd, MM D LT')}
 									</div>
 								</div>
 							}
