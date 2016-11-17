@@ -1,9 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
-import { Link } from 'react-router';
+//import { Link } from 'react-router';
+import moment from 'moment';
 
 import {
-	FormattedDate,
+//	FormattedDate,
 //	FormattedMessage,
 //	defineMessages
 } from 'react-intl';
@@ -35,9 +36,7 @@ export class GroupCard extends React.Component {
 		const backgroundImage = photoUrl && `url(${photoUrl})`;
 
 		return (
-			<Link
-				to={`/${group.urlname}`}
-				>
+				<div>
 				<div
 					className={cardClassNames}
 					style={{ ...(style || {}), backgroundImage }}
@@ -45,35 +44,26 @@ export class GroupCard extends React.Component {
 
 					<div className='card--group-content'>
 						<h4 className='card--group-content-name'>{group.name}</h4>
-						{/*
-							<p className='card--group-content-members'>{group.members} {group.who}</p>
-						*/}
 					</div>
 
 				</div>
-					{showNextEvent &&
-						<div className='text--small'>
-							{group.next_event &&
-								<div>
-									<div className='lineClamp'>{group.next_event.name}</div>
-									<div className='text--secondary'>
-										<FormattedDate
-											value={group.next_event.time}
-											day='numeric'
-											month='long'
-											hour='numeric'
-											minute='numeric'
-											/>
-									</div>
+				{showNextEvent &&
+					<div className='text--small'>
+						{group.next_event &&
+							<div>
+								<div className='lineClamp'>{group.next_event.name}</div>
+								<div className='text--secondary'>
+									{moment(group.next_event.time, 'x').format('dddd, MM D LT')}
 								</div>
-							}
+							</div>
+						}
 
-							{!group.next_event &&
-								<div>Next Meetup TBD</div>
-							}
-						</div>
-					}
-			</Link>
+						{!group.next_event &&
+							<div>Next Meetup TBD</div>
+						}
+					</div>
+				}
+				</div>
 		);
 	}
 }
