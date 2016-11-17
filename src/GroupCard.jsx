@@ -36,6 +36,7 @@ export class GroupCard extends React.Component {
 		const backgroundImage = photoUrl && `url(${photoUrl})`;
 
 		return (
+				<div>
 				<div
 					className={cardClassNames}
 					style={{ ...(style || {}), backgroundImage }}
@@ -43,9 +44,6 @@ export class GroupCard extends React.Component {
 
 					<div className='card--group-content'>
 						<h4 className='card--group-content-name'>{group.name}</h4>
-						{/*
-							<p className='card--group-content-members'>{group.members} {group.who}</p>
-						*/}
 					</div>
 
 				</div>
@@ -65,6 +63,7 @@ export class GroupCard extends React.Component {
 						}
 					</div>
 				}
+				</div>
 		);
 	}
 }
