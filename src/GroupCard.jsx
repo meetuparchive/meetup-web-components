@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { Link } from 'react-router';
+//import { Link } from 'react-router';
 import moment from 'moment';
 
 import {
@@ -36,9 +36,6 @@ export class GroupCard extends React.Component {
 		const backgroundImage = photoUrl && `url(${photoUrl})`;
 
 		return (
-			<Link
-				to={`/${group.urlname}`}
-				>
 				<div
 					className={cardClassNames}
 					style={{ ...(style || {}), backgroundImage }}
@@ -52,23 +49,22 @@ export class GroupCard extends React.Component {
 					</div>
 
 				</div>
-					{showNextEvent &&
-						<div className='text--small'>
-							{group.next_event &&
-								<div>
-									<div className='lineClamp'>{group.next_event.name}</div>
-									<div className='text--secondary'>
-										{moment(group.next_event.time, 'x').format('dddd, MM D LT')}
-									</div>
+				{showNextEvent &&
+					<div className='text--small'>
+						{group.next_event &&
+							<div>
+								<div className='lineClamp'>{group.next_event.name}</div>
+								<div className='text--secondary'>
+									{moment(group.next_event.time, 'x').format('dddd, MM D LT')}
 								</div>
-							}
+							</div>
+						}
 
-							{!group.next_event &&
-								<div>Next Meetup TBD</div>
-							}
-						</div>
-					}
-			</Link>
+						{!group.next_event &&
+							<div>Next Meetup TBD</div>
+						}
+					</div>
+				}
 		);
 	}
 }
