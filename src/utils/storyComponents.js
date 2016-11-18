@@ -33,6 +33,10 @@ export const Inverted = (props) => (
 	</div>
 );
 
+//
+// renders an SVG sprite that contains
+// a single symbol, `heart-houtline`
+//
 export const TestIconSprite = (props) => (
 	<div class='display--none'>
 		<svg xmlns='http://www.w3.org/2000/svg'>
