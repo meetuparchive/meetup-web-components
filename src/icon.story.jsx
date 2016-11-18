@@ -1,33 +1,55 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import Icon from './Icon';
-import { Annotate, Inverted } from './utils/storyComponents';
+import { Annotate, Inverted, TestIconSprite } from './utils/storyComponents';
 
+const ICON_NAME = 'heart-outline';
 
 storiesOf('Icon', module)
 	.add('Default', () => (
-		<Icon shape='chevron-right' />
+		<div class="chunk">
+			<TestIconSprite />
+			<Icon shape={ICON_NAME} />
+		</div>
 	))
 	.add('Accessible', () => (
-		<Annotate notes='This Icon has an `aria-label` attribute to improve accesibility'>
-			<Icon shape='chevron-right' aria-label='Go west and seek your fortune' />
-		</Annotate>
+		<div class="chunk">
+			<TestIconSprite />
+			<Annotate notes='This Icon has an `aria-label` attribute to improve accesibility'>
+				<Icon shape={ICON_NAME} aria-label='Go west and seek your fortune' />
+			</Annotate>
+		</div>
 	))
 	.add('Inverted', () => (
-		<Inverted>
-			<Icon shape='chevron-right' inverted />
-		</Inverted>
+		<div class="chunk">
+			<TestIconSprite />
+			<Inverted>
+				<Icon shape={ICON_NAME} inverted />
+			</Inverted>
+		</div>
 	))
 	.add('x-Small', () => (
-		<Icon shape='chevron-right' size='xs' />
+		<div class="chunk">
+			<TestIconSprite />
+			<Icon shape={ICON_NAME} size='xs' />
+		</div>
 	))
 	.add('Small', () => (
-		<Icon shape='chevron-right' size='s' />
+		<div class="chunk">
+			<TestIconSprite />
+			<Icon shape={ICON_NAME} size='s' />
+		</div>
 	))
 	.add('Large', () => (
-		<Icon shape='chevron-right' size='l' />
+		<div class="chunk">
+			<TestIconSprite />
+			<Icon shape={ICON_NAME} size='l' />
+		</div>
 	))
 	.add('X-Large', () => (
-		<Icon shape='chevron-right' size='xl' />
+		<div class="chunk">
+			<TestIconSprite />
+			<Icon shape={ICON_NAME} size='xl' />
+		</div>
 	));
 
