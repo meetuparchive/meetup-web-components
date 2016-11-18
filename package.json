@@ -14,7 +14,7 @@
     "lint:base": "eslint . --ext .js,.jsx",
     "modules:clean": "rm -rf node_modules",
     "prepublish": "npm run build",
-    "storybook": "node src/utils/create-icon-story && start-storybook -p 9001 -c .storybook",
+    "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "npm-run-all --parallel lint:base coverage",
     "test:unit": "jest --silent --config jest.config.json"
   },

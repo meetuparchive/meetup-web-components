@@ -7,13 +7,13 @@ const ICON_NAME = 'heart-outline';
 
 storiesOf('Icon', module)
 	.add('Default', () => (
-		<div class="chunk">
+		<div class='chunk'>
 			<TestIconSprite />
 			<Icon shape={ICON_NAME} />
 		</div>
 	))
 	.add('Accessible', () => (
-		<div class="chunk">
+		<div class='chunk'>
 			<TestIconSprite />
 			<Annotate notes='This Icon has an `aria-label` attribute to improve accesibility'>
 				<Icon shape={ICON_NAME} aria-label='Go west and seek your fortune' />
@@ -21,7 +21,7 @@ storiesOf('Icon', module)
 		</div>
 	))
 	.add('Inverted', () => (
-		<div class="chunk">
+		<div class='chunk'>
 			<TestIconSprite />
 			<Inverted>
 				<Icon shape={ICON_NAME} inverted />
@@ -29,25 +29,25 @@ storiesOf('Icon', module)
 		</div>
 	))
 	.add('x-Small', () => (
-		<div class="chunk">
+		<div class='chunk'>
 			<TestIconSprite />
 			<Icon shape={ICON_NAME} size='xs' />
 		</div>
 	))
 	.add('Small', () => (
-		<div class="chunk">
+		<div class='chunk'>
 			<TestIconSprite />
 			<Icon shape={ICON_NAME} size='s' />
 		</div>
 	))
 	.add('Large', () => (
-		<div class="chunk">
+		<div class='chunk'>
 			<TestIconSprite />
 			<Icon shape={ICON_NAME} size='l' />
 		</div>
 	))
 	.add('X-Large', () => (
-		<div class="chunk">
+		<div class='chunk'>
 			<TestIconSprite />
 			<Icon shape={ICON_NAME} size='xl' />
 		</div>
