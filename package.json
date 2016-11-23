@@ -36,20 +36,17 @@
     "babel-preset-react": "6.16.0",
     "babel-preset-stage-2": "6.18.0",
     "babel-register": "6.18.0",
-    "bourbon": "4.2.7",
     "classnames": "2.2.5",
     "eslint": "3.9.1",
     "eslint-plugin-react": "6.4.1",
-    "julep": "1.4.5",
-    "meetup-swatches": "3.1.1",
-    "meetup-web-platform": "0.5.189",
+    "meetup-web-mocks": "0.1.6",
     "node-sass": "3.10.1",
     "react": "15.3.2",
     "react-addons-test-utils": "15.3.2",
     "react-dom": "15.3.2",
     "react-intl": "2.1.5",
     "react-transform-catch-errors": "1.0.2",
-    "sassquatch2": "2.4.2"
+    "sassquatch2": "2.4.4"
   },
   "devDependencies": {
     "@kadira/storybook": "2.24.1",
