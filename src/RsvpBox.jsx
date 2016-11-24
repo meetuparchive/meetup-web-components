@@ -73,7 +73,6 @@ class RsvpBox extends React.Component {
 
 		// Configure RSVP status button
 		const rsvpButtonProps = {
-			style: { width: '120px' },
 			disabled: (
 				(event.rsvp_rules || {}).closed ||
 				((event.self || {}).actions || []).indexOf('rsvp') === -1
@@ -141,7 +140,6 @@ class RsvpBox extends React.Component {
 		return (
 			<div
 				className={classNames}
-				style={{ ...(style || {}) }}
 				{...other}>
 				{rsvpButton}
 				{rsvpFeeItem}
