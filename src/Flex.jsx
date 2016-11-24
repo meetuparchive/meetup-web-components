@@ -10,6 +10,7 @@ class Flex extends React.Component {
 			wrap,
 			noGutters,
 			justify,
+			align,
 			column,
 			spread,
 			rowReverse,
@@ -26,6 +27,7 @@ class Flex extends React.Component {
 				'flex--wrap': wrap,
 				'flex--noGutters': noGutters,
 				[`flex--${justify}`]: typeof justify === 'string',
+				[`flex--align-${align}`]: typeof align === 'string',
 
 				// vertical layout
 				'flex--column': column,
@@ -56,6 +58,11 @@ Flex.propTypes = {
 		'spaceAround',
 		'spaceBetween',
 		'flexEnd'
+	]),
+	align: React.PropTypes.oneOf([
+		'top',
+		'bottom',
+		'center',
 	]),
 	spread: React.PropTypes.oneOf([
 		'atAll',

@@ -23,13 +23,23 @@ class PageActions extends React.Component {
 			className
 		);
 
+
+		const childrenWithProps = React.Children.map(children,
+			(child) => React.cloneElement(child, {
+				pageActionsCount: children.length
+			})
+		);
+
 		return (
 			<FlexItem
 				shrink
+				data-count={children.length}
 				className={classNames}
 				{...other}>
-					<Flex>
-						{children}
+					<Flex
+						justify='spaceAround'
+						>
+						{childrenWithProps}
 					</Flex>
 			</FlexItem>
 		);
