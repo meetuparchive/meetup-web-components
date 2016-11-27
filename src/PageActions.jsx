@@ -13,10 +13,12 @@ import {
 class PageActions extends React.Component {
 	render() {
 		const {
-			children,
 			className,
+			children,
 			...other
 		} = this.props;
+
+		const childrenCount = children.length || 0;
 
 		const classNames = cx(
 			'pageActions',
@@ -26,14 +28,14 @@ class PageActions extends React.Component {
 
 		const childrenWithProps = React.Children.map(children,
 			(child) => React.cloneElement(child, {
-				pageActionsCount: children.length || 0
+				pageActionsCount: childrenCount
 			})
 		);
 
 		return (
 			<FlexItem
 				shrink
-				data-count={children.length}
+				data-count={childrenCount}
 				className={classNames}
 				{...other}>
 					<Flex
