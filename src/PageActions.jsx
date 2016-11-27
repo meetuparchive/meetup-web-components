@@ -26,7 +26,7 @@ class PageActions extends React.Component {
 
 		const childrenWithProps = React.Children.map(children,
 			(child) => React.cloneElement(child, {
-				pageActionsCount: children.length
+				pageActionsCount: children.length || 0
 			})
 		);
 
