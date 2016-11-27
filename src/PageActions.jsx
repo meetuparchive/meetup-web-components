@@ -18,7 +18,7 @@ class PageActions extends React.Component {
 			...other
 		} = this.props;
 
-		const childrenCount = (children && children.length) ? children.length || 0;
+		const childrenCount = (children && children.length) ? children.length : 0;
 
 		const classNames = cx(
 			'pageActions',
