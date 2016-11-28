@@ -27,7 +27,7 @@ class PageTitle extends React.Component {
 			<FlexItem
 				className={classNames}
 				{...other}>
-					<h1 className='text--display1'>{title}</h1>
+					<h1 className='text--display1 align--center atMedium_align--left'>{title}</h1>
 					{children}
 			</FlexItem>
 		);
