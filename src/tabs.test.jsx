@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import TabsContainer from './TabsContainer';
+import { Tabs, TabsList, TabsListTab, TabsPanel } from './Tabs';
 
 describe('TabsContainer', function() {
 
