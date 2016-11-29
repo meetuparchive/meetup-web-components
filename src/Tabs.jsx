@@ -51,7 +51,7 @@ class Tabs extends React.Component {
 		);
 
 		return (
-			<nav className='padding--left padding--right'>
+			<nav className='padding--left padding--right tabs-container'>
 				<ul className={classNames} {...other}>
 					{tabList.map((tab,i)=>{
 						return (
