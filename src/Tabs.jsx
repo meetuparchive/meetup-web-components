@@ -64,7 +64,6 @@ export const TabsList = React.createClass({
 		const { tabsRef, children } = this.props;
 
 		return React.Children.map(children, (kid, index) => {
-			// pass `tabsRef` prop to list and panel children
 			if (kid.type === TabsListTab) {
 				return React.cloneElement(kid, { tabsRef: tabsRef, tabsIndex: index });
 			} else {
