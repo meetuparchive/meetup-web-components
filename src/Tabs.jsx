@@ -10,8 +10,6 @@ import cx from 'classnames';
  */
 export const TabsListTab = React.createClass({
 	propTypes: {
-		id: React.PropTypes.string.isRequired,
-		ariaControls: React.PropTypes.string.isRequired,
 		selected: React.PropTypes.bool,
 		onClick: React.PropTypes.func,
 	},
@@ -22,10 +20,10 @@ export const TabsListTab = React.createClass({
 		const {
 			children,
 			className,
-			id,
-			ariaControls,
 			selected,
 			onClick,
+			tabsRef,
+			tabsIndex,
 			...other
 		} = this.props;
 
@@ -40,8 +38,8 @@ export const TabsListTab = React.createClass({
 		return (
 			<li
 				role='tab'
-				id={id}
-				aria-controls={ariaControls}
+				id={`${tabsRef}_tab_${tabsIndex}`}
+				aria-controls={`${tabsRef}_panel_${tabsIndex}`}
 				onClick={onClick}
 				className={classNames} {...other}>
 				{children}
@@ -62,9 +60,20 @@ export const TabsList = React.createClass({
 	defaultProps: {
 		full: false
 	},
+	renderChildren() {
+		const { tabsRef, children } = this.props;
+
+		return React.Children.map(children, (kid, index) => {
+			// pass `tabsRef` prop to list and panel children
+			if (kid.type === TabsListTab) {
+				return React.cloneElement(kid, { tabsRef: tabsRef, tabsIndex: index });
+			} else {
+				return new Error('Children of TabsList must be of type: "TabsListTab"');
+			}
+		});
+	},
 	render() {
 		const {
-			children,
 			className,
 			full,
 			...other
@@ -81,7 +90,7 @@ export const TabsList = React.createClass({
 		return (
 			<nav className='chunk'>
 				<ul role='tablist' className={classNames} {...other}>
-					{children}
+					{this.renderChildren()}
 				</ul>
 			</nav>
 		);
@@ -107,9 +116,9 @@ export const TabsPanel = React.createClass({
 		const {
 			children,
 			className,
-			id,
-			ariaLabelledBy,
 			selected,
+			tabsRef,
+			tabsIndex,
 			...other
 		} = this.props;
 
@@ -124,8 +133,8 @@ export const TabsPanel = React.createClass({
 		return (
 			<div
 				role='tabpanel'
-				id={id}
-				aria-lablledby={ariaLabelledBy}
+				id={`${tabsRef}_panel_${tabsIndex}`}
+				aria-lablledby={`${tabsRef}_tab_${tabsIndex}`}
 				className={classNames} {...other}>
 				{children}
 			</div>
@@ -137,18 +146,34 @@ export const TabsPanel = React.createClass({
  * @module Tabs
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#tabs}
  * Parent for composite Tabs component
+ *
+ * The `tabsRef` prop provides a unique identifier for providing aria attributes
  */
 export const Tabs = React.createClass({
+	propTypes: {
+		tabsRef: React.PropTypes.string.isRequired,
+	},
+	renderChildren() {
+		const { tabsRef, children } = this.props;
+
+		return React.Children.map(children, (kid, index) => {
+			// pass `tabsRef` prop to list and panel children
+			if (kid.type === TabsList || kid.type === TabsPanel) {
+				return React.cloneElement(kid, { tabsRef: tabsRef, tabsIndex: index });
+			} else {
+				return kid;
+			}
+		});
+	},
 	render() {
 		const {
-			children,
 			className,
 			...other
 		} = this.props;
 
 		return (
 			<div className={className} {...other}>
-				{children}
+				{this.renderChildren()}
 			</div>
 		);
 	}

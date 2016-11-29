@@ -7,72 +7,40 @@ import { Annotate } from './utils/storyComponents';
 storiesOf('Tabs', module)
 	.add('first selected', () => {
 		return (
-			<Tabs>
+		<Annotate notes='The `tabsRef` prop of `Tabs` will generate aria attributes'>
+			<Tabs tabsRef='fauna'>
 				<TabsList>
-					<TabsListTab
-						ariaControls='badgerPanel'
-						id='badgerTab'
-						selected>
-						Badger
-					</TabsListTab>
-					<TabsListTab
-						ariaControls='shroomPanel'
-						id='shroomTab'>
-						Mushroom
-					</TabsListTab>
-					<TabsListTab
-						ariaControls='snakePanel'
-						id='snakeTab'>
-						Snake
-					</TabsListTab>
+					<TabsListTab selected>Badger</TabsListTab>
+					<TabsListTab>Mushroom</TabsListTab>
+					<TabsListTab>Snake</TabsListTab>
 				</TabsList>
 
-				<TabsPanel
-					ariaLabelledBy='badgerTab'
-					id='badgerPanel'
-					selected>
+				<TabsPanel selected>
 					<p className='text--bold'>Badger content</p>
 				</TabsPanel>
-				<TabsPanel
-					ariaLabelledBy='shroomTab'
-					id='shroomPanel'>
+				<TabsPanel>
 					<p className='text--bold'>Mushroom content</p>
 				</TabsPanel>
-				<TabsPanel
-					ariaLabelledBy='snakeTab'
-					id='snakePanel'>
+				<TabsPanel>
 					<p className='text--bold'>Snake content</p>
 				</TabsPanel>
 			</Tabs>
+		</Annotate>
 		);
 	})
 	.add('full width tab control', () => {
 		return (
 		<Annotate notes='The boolean prop `full` on `TabsList` will make `Tabs` 100% width'>
-			<Tabs>
+			<Tabs tabsRef='pets'>
 				<TabsList full>
-					<TabsListTab
-						id='dogTab'
-						ariaControls='dogPanel'
-						selected>
-						Dogs
-					</TabsListTab>
-					<TabsListTab
-						id='catTab'
-						ariaControls='catPanel'>
-						Cats
-					</TabsListTab>
+					<TabsListTab selected>Dogs</TabsListTab>
+					<TabsListTab>Cats</TabsListTab>
 				</TabsList>
 
-				<TabsPanel
-					id='dogPanel'
-					ariaLabelledBy='dogTab'
-					selected>
+				<TabsPanel selected>
 					<p className='chunk text--bold'>bark</p>
 				</TabsPanel>
-				<TabsPanel
-					id='catPanel'
-					ariaLabelledBy='catTab'>
+				<TabsPanel>
 					<p className='text--bold'>meow</p>
 				</TabsPanel>
 			</Tabs>
