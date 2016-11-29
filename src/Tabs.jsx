@@ -135,6 +135,7 @@ export const TabsPanel = React.createClass({
 				role='tabpanel'
 				id={`${tabsRef}_panel_${tabsIndex}`}
 				aria-lablledby={`${tabsRef}_tab_${tabsIndex}`}
+				aria-hidden={!selected}
 				className={classNames} {...other}>
 				{children}
 			</div>
