@@ -11,6 +11,15 @@ import {
  * @module PageActions
  */
 class PageActions extends React.Component {
+
+	getChildContext() {
+		const { children } = this.props;
+		const childrenCount = (children && children.length) ? children.length : 0;
+		return {
+			pageActionsCount: childrenCount
+		};
+	};
+
 	render() {
 		const {
 			className,
@@ -18,7 +27,7 @@ class PageActions extends React.Component {
 			...other
 		} = this.props;
 
-		const childrenCount = (children && children.length) ? children.length : 0;
+
 
 		const classNames = cx(
 			'pageActions',
@@ -26,27 +35,25 @@ class PageActions extends React.Component {
 		);
 
 
-		const childrenWithProps = React.Children.map(children,
-			(child) => React.cloneElement(child, {
-				pageActionsCount: childrenCount
-			})
-		);
 
 		return (
 			<FlexItem
 				shrink
-				data-count={childrenCount}
 				className={classNames}
 				{...other}>
 					<Flex
 						justify='spaceAround'
 						>
-						{childrenWithProps}
+						{children}
 					</Flex>
 			</FlexItem>
 		);
 	}
 }
+
+PageActions.childContextTypes = {
+	pageActionsCount: React.PropTypes.number
+};
 
 PageActions.propTypes = {
 };

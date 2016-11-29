@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
+import { MOCK_GROUP } from 'meetup-web-mocks/lib/api';
 import { GroupCard } from './GroupCard';
-import { MOCK_GROUP } from 'meetup-web-platform/lib/util/mocks/api';
 
 describe('GroupCard', function() {
 
