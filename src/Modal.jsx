@@ -56,7 +56,7 @@ class Modal extends React.Component {
 						}
 					)}
 				>
-					<div className='padding--all'>
+					<div className='modal-close padding--all'>
 						<Link to={this.props.closeUrl}>
 							<Icon shape='close' size='s' />
 						</Link>
