@@ -52,7 +52,7 @@ class PageActions extends React.Component {
 }
 
 PageActions.childContextTypes = {
-	pageActions: React.PropTypes.number
+	pageActionsCount: React.PropTypes.number
 };
 
 PageActions.propTypes = {
