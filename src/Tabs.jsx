@@ -15,7 +15,7 @@ class Tab extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'tabs-tab',
+			'tabs-tab align--center atMedium_align--left',
 			{'tabs-tab--selected': isCurrent}
 		);
 
