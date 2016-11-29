@@ -3,7 +3,7 @@ import cx from 'classnames';
 import Icon from './Icon';
 import {
 	// Chunk,
-	Flex,
+	// Flex,
 	FlexItem,
 	// Section,
 } from './layoutUtils';
@@ -16,13 +16,9 @@ class PageAction extends React.Component {
 		const {
 			children,
 			className,
-			pageActionsCount,
-			icon,
-			label,
 			...other
 		} = this.props;
 
-		const isShort = pageActionsCount <= 2;
 
 		const classNames = cx(
 			'pageAction',
@@ -34,22 +30,6 @@ class PageAction extends React.Component {
 				className={classNames}
 				shrink
 				{...other}>
-					<Flex
-						spread={ isShort ? 'atAll' : 'atMedium'}
-						rowReverse='atMedium'
-						align='center'
-						>
-						{icon &&
-							<FlexItem shrink>
-								<Icon shape={icon} />
-							</FlexItem>
-						}
-						{label &&
-							<FlexItem>
-								<div className='text--small text--secondary'>{label}</div>
-							</FlexItem>
-						}
-					</Flex>
 					{children}
 			</FlexItem>
 		);
