@@ -32,11 +32,11 @@ class Flex extends React.Component {
 			{
 				// horizontal default
 				'flex--row' : direction == 'row',
-				[`${spread}_flex--column`]: direction == 'row' && typeof switchDirection === 'string',
+				[`${switchDirection}_flex--column`]: direction == 'row' && typeof switchDirection === 'string',
 
 				// vertical default
 				'flex--column': direction == 'column',
-				[`${spread}_flex--row`]: direction == 'column' && typeof switchDirection === 'string',
+				[`${switchDirection}_flex--row`]: direction == 'column' && typeof switchDirection === 'string',
 
 				// other
 				'flex--wrap': wrap,
