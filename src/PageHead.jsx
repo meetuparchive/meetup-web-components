@@ -28,7 +28,8 @@ class PageHead extends React.Component {
 				className={classNames}
 				{...other}>
 					<Flex
-						spread='atMedium'
+						direction='column'
+						switchDirection='atMedium'
 						>
 						{children}
 					</Flex>

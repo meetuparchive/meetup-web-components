@@ -31,7 +31,8 @@ class PageActionButton extends React.Component {
 		return (
 			<Flex
 				className={classNames}
-				spread={ isShort ? 'atAll' : 'atMedium'}
+				direction='column'
+				switchDirection={ isShort ? 'atAll' : 'atMedium'}
 				rowReverse='atMedium'
 				align='center'
 				{...other}>
