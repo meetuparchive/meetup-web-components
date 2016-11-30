@@ -19,7 +19,7 @@ class PageTitle extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'pageTitle align--center atMedium_align--left',
+			'pageTitle',
 			className
 		);
 
@@ -27,8 +27,10 @@ class PageTitle extends React.Component {
 			<FlexItem
 				className={classNames}
 				{...other}>
-					<h1 className='text--display1'>{title}</h1>
-					{children}
+					<div className='align--center atMedium_align--left'>
+						<h1 className='text--display1'>{title}</h1>
+						{children}
+					</div>
 			</FlexItem>
 		);
 	}
