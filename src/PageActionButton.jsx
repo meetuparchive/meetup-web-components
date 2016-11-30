@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import Icon from './Icon';
 import {
-	// Chunk,
+	Chunk,
 	Flex,
 	FlexItem,
 	// Section,
@@ -29,26 +29,28 @@ class PageActionButton extends React.Component {
 		);
 
 		return (
-			<Flex
+			<Chunk
 				className={classNames}
-				direction='column'
-				switchDirection={ isShort ? 'atAll' : 'atMedium'}
-				rowReverse='atMedium'
-				align='center'
 				{...other}>
-				{icon &&
-					<FlexItem shrink>
-						<Icon shape={icon} />
-					</FlexItem>
-				}
-				{label &&
-					<FlexItem>
-						<div className='text--small text--secondary'>{label}</div>
-					</FlexItem>
-				}
-				{children}
-			</Flex>
-
+				<Flex
+					direction='column'
+					switchDirection={ isShort ? 'atAll' : 'atMedium'}
+					rowReverse='atMedium'
+					align='center'
+					>
+					{icon &&
+						<FlexItem shrink>
+							<Icon shape={icon} />
+						</FlexItem>
+					}
+					{label &&
+						<FlexItem>
+							<div className='text--small text--secondary'>{label}</div>
+						</FlexItem>
+					}
+					{children}
+				</Flex>
+			</Chunk>
 		);
 	}
 }
