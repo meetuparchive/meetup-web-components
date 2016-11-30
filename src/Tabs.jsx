@@ -15,7 +15,7 @@ class Tab extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'tabs-tab',
+			'tabs-tab align--center atMedium_align--left',
 			{'tabs-tab--selected': isCurrent}
 		);
 
@@ -51,7 +51,7 @@ class Tabs extends React.Component {
 		);
 
 		return (
-			<nav className='padding--left padding--right'>
+			<nav className='padding--left padding--right tabs-container'>
 				<ul className={classNames} {...other}>
 					{tabList.map((tab,i)=>{
 						return (
