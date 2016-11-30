@@ -5,14 +5,21 @@ import cx from 'classnames';
  * @module Flex
  */
 class Flex extends React.Component {
+
+	static get defaultProps() {
+		return {
+			direction: 'row'
+		};
+	}
+
 	render() {
 		const {
+			direction,
+			switchDirection,
 			wrap,
 			noGutters,
 			justify,
 			align,
-			column,
-			spread,
 			rowReverse,
 			columnReverse,
 			children,
@@ -23,18 +30,19 @@ class Flex extends React.Component {
 		const classNames = cx(
 			'flex',
 			{
-				// horizontal layout
+				// horizontal default
+				'flex--row' : direction == 'row',
+				[`${switchDirection}_flex--column`]: direction == 'row' && typeof switchDirection === 'string',
+
+				// vertical default
+				'flex--column': direction == 'column',
+				[`${switchDirection}_flex--row`]: direction == 'column' && typeof switchDirection === 'string',
+
+				// other
 				'flex--wrap': wrap,
 				'flex--noGutters': noGutters,
 				[`flex--${justify}`]: typeof justify === 'string',
 				[`flex--align-${align}`]: typeof align === 'string',
-
-				// vertical layout
-				'flex--column': column,
-
-				// media-conditional layout
-				'flex--spread' : typeof spread === 'string',
-				[`${spread}_flex--spread`]: typeof spread === 'string',
 				[`${rowReverse}_flex--rowReverse`]: typeof rowReverse === 'string',
 				[`${columnReverse}_flex--columnReverse`]: typeof columnReverse === 'string',
 			}, className);
@@ -52,7 +60,6 @@ class Flex extends React.Component {
 Flex.propTypes = {
 	wrap: React.PropTypes.bool,
 	noGutters: React.PropTypes.bool,
-	column: React.PropTypes.bool,
 	justify: React.PropTypes.oneOf([
 		'center',
 		'spaceAround',
@@ -64,7 +71,11 @@ Flex.propTypes = {
 		'bottom',
 		'center',
 	]),
-	spread: React.PropTypes.oneOf([
+	direction: React.PropTypes.oneOf([
+		'row',
+		'column'
+	]),
+	switchDirection: React.PropTypes.oneOf([
 		'atAll',
 		'atMedium',
 		'atLarge'
