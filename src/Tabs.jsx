@@ -34,7 +34,8 @@ export class TabsListTab extends React.Component {
 				id={`${tabsRef}_tab_${tabsIndex}`}
 				aria-controls={`${tabsRef}_panel_${tabsIndex}`}
 				onClick={onClick}
-				className={classNames} {...other}>
+				className={classNames}
+				{...other}>
 				{children}
 			</li>
 		);
@@ -57,12 +58,8 @@ export class TabsList extends React.Component {
 	renderChildren() {
 		const { tabsRef, children } = this.props;
 
-		return React.Children.map(children, (kid, index) => {
-			if (kid.type === TabsListTab) {
-				return React.cloneElement(kid, { tabsRef: tabsRef, tabsIndex: index });
-			} else {
-				return new Error('Children of TabsList must be of type: "TabsListTab"');
-			}
+		return React.Children.map(children, (kid, tabsIndex) => {
+				return React.cloneElement(kid, { tabsRef, tabsIndex });
 		});
 	}
 	render() {
@@ -82,7 +79,10 @@ export class TabsList extends React.Component {
 
 		return (
 			<nav className='chunk'>
-				<ul role='tablist' className={classNames} {...other}>
+				<ul
+					role='tablist'
+					className={classNames}
+					{...other}>
 					{this.renderChildren()}
 				</ul>
 			</nav>
@@ -91,6 +91,16 @@ export class TabsList extends React.Component {
 }
 TabsList.propTypes = {
 	full: React.PropTypes.bool
+	children(props, propName, componentName) {
+		const prop = props[propName];
+		let error = null;
+		React.Children.forEach(prop, child => {
+			if (child.type !== TabsListTab) {
+				error = new Error('Children of TabsList must be of type: "TabsListTab"');
+			}
+		})
+		return error;
+	}
 };
 TabsList.defaultProps = {
 	full: false
@@ -127,7 +137,8 @@ export class TabsPanel extends React.Component {
 				id={`${tabsRef}_panel_${tabsIndex}`}
 				aria-labelledby={`${tabsRef}_tab_${tabsIndex}`}
 				aria-hidden={!selected}
-				className={classNames} {...other}>
+				className={classNames}
+				{...other}>
 				{children}
 			</div>
 		);
@@ -156,10 +167,10 @@ export class Tabs extends React.Component {
 		return (
 			<div>
 				{
-					React.Children.map(children, (kid, index) => {
+					React.Children.map(children, (kid, tabsIndex) => {
 						// pass `tabsRef` prop to list and panel children
 						if (kid.type === TabsList || kid.type === TabsPanel) {
-							return React.cloneElement(kid, { tabsRef: tabsRef, tabsIndex: index });
+							return React.cloneElement(kid, { tabsRef, tabsIndex });
 						} else {
 							return <div>Nope</div>;
 						}
@@ -176,7 +187,9 @@ export class Tabs extends React.Component {
 		const children = this.renderChildren();
 
 		return (
-			<div className={className} {...other}>
+			<div
+				className={className}
+				{...other}>
 				{children}
 			</div>
 		);
