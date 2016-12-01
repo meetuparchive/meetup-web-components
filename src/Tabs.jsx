@@ -42,6 +42,7 @@ class Tabs extends React.Component {
 			className,
 			tabList,
 			activeTab,
+			bordered,
 			...other
 		} = this.props;
 
@@ -51,7 +52,7 @@ class Tabs extends React.Component {
 		);
 
 		return (
-			<nav className='padding--left padding--right tabs-container'>
+			<nav className={cx('padding--left padding--right tabs-container', {'tabs-container--bordered': bordered})}>
 				<ul className={classNames} {...other}>
 					{tabList.map((tab,i)=>{
 						return (
