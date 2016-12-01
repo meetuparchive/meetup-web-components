@@ -9,6 +9,13 @@ import {
 //	defineMessages
 } from 'react-intl';
 
+import {
+	Chunk,
+	// Flex,
+	// FlexItem,
+	// Section,
+} from './layoutUtils';
+
 /**
  *	SQ2 Group Card component
  *	@see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_card.scss}
@@ -48,20 +55,24 @@ export class GroupCard extends React.Component {
 
 				</div>
 				{showNextEvent &&
-					<div className='text--small'>
-						{group.next_event &&
-							<div>
-								<div className='lineClamp'>{group.next_event.name}</div>
-								<div className='text--secondary'>
-									{moment(group.next_event.time, 'x').format('dddd, MM D LT')}
+					<Chunk>
+						<div className='text--small'>
+							{group.next_event &&
+								<div>
+									<div className=''>
+										{moment(group.next_event.time, 'x').format('dddd, MM/D LT')}
+									</div>
+									<div className='lineClamp text--secondary'>
+										{group.next_event.name}
+									</div>
 								</div>
-							</div>
-						}
+							}
 
-						{!group.next_event &&
-							<div>Next Meetup TBD</div>
-						}
-					</div>
+							{!group.next_event &&
+								<div>Next Meetup TBD</div>
+							}
+						</div>
+					</Chunk>
 				}
 				</div>
 		);
