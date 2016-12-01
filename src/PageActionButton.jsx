@@ -55,6 +55,10 @@ class PageActionButton extends React.Component {
 	}
 }
 
+PageActionButton.contextTypes = {
+	pageActionsCount: React.PropTypes.number
+}
+
 PageActionButton.propTypes = {
 };
 
