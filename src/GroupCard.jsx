@@ -60,7 +60,7 @@ export class GroupCard extends React.Component {
 						<div className='text--small'>
 							{group.next_event &&
 								<div>
-									<div className='lineClamp '>
+									<div>
 										{group.next_event.name}
 									</div>
 									<div className='text--secondary'>
@@ -112,9 +112,9 @@ export class GroupCardAlt extends React.Component {
 		const backgroundImage = photoUrl && `url(${photoUrl})`;
 
 		return (
-				<div>
+				<Chunk>
 					<div className='text--small'>
-						{ group.next_event ? moment(group.next_event.time, 'x').format('dddd, MM/D LT') : 'Next Meetup TBD'}
+						{ group.next_event ? <span><span className='text--bold'>moment(group.next_event.time, 'x').format('dddd, MM/D LT')</span> <span className='text--secondary'>moment(group.next_event.time, 'x').format('dddd, MM/D LT')</span></span> : 'Next Meetup TBD'}
 					</div>
 					<div
 						className={cardClassNames}
@@ -125,15 +125,13 @@ export class GroupCardAlt extends React.Component {
 							<p className='card--group-content-name text--small'>{group.name}</p>
 							{group.next_event &&
 								<div>
-									<div className='lineClamp'>
-										<h4>{group.next_event.name}</h4>
-									</div>
+									<h4>{group.next_event.name}</h4>
 								</div>
 							}
 						</div>
 
 					</div>
-				</div>
+				</Chunk>
 		);
 	}
 }
