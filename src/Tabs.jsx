@@ -8,14 +8,7 @@ import cx from 'classnames';
  * Renders individual tab control.
  * Accepts a `selected` prop.
  */
-export const TabsListTab = React.createClass({
-	propTypes: {
-		selected: React.PropTypes.bool,
-		onClick: React.PropTypes.func,
-	},
-	defaultProps: {
-		selected: false
-	},
+export class TabsListTab extends React.Component {
 	render() {
 		const {
 			children,
@@ -46,20 +39,21 @@ export const TabsListTab = React.createClass({
 			</li>
 		);
 	}
-});
+}
+TabsListTab.propTypes = {
+	selected: React.PropTypes.bool,
+	onClick: React.PropTypes.func,
+};
+TabsListTab.defaultProps = {
+	selected: false,
+};
 
 /**
  * @module TabsList
  * Direct child of `Tabs`.
  * Renders a `nav` and `ul` to contain tab conrols
  */
-export const TabsList = React.createClass({
-	propTypes: {
-		full: React.PropTypes.bool
-	},
-	defaultProps: {
-		full: false
-	},
+export class TabsList extends React.Component {
 	renderChildren() {
 		const { tabsRef, children } = this.props;
 
@@ -70,7 +64,7 @@ export const TabsList = React.createClass({
 				return new Error('Children of TabsList must be of type: "TabsListTab"');
 			}
 		});
-	},
+	}
 	render() {
 		const {
 			className,
@@ -94,7 +88,13 @@ export const TabsList = React.createClass({
 			</nav>
 		);
 	}
-});
+}
+TabsList.propTypes = {
+	full: React.PropTypes.bool
+};
+TabsList.defaultProps = {
+	full: false
+};
 
 /**
  * @module TabsPanel
@@ -102,15 +102,7 @@ export const TabsList = React.createClass({
  * Contains panel content rendered under `TabsList`.
  * a `TabsPanel` is visible when the `selected` prop is passed.
  */
-export const TabsPanel = React.createClass({
-	propTypes: {
-		id: React.PropTypes.string.isRequired,
-		ariaLabelledBy: React.PropTypes.string.isRequired,
-		selected: React.PropTypes.bool
-	},
-	defaultProps: {
-		selected: false
-	},
+export class TabsPanel extends React.Component {
 	render() {
 		const {
 			children,
@@ -133,14 +125,22 @@ export const TabsPanel = React.createClass({
 			<div
 				role='tabpanel'
 				id={`${tabsRef}_panel_${tabsIndex}`}
-				aria-lablledby={`${tabsRef}_tab_${tabsIndex}`}
+				aria-labelledby={`${tabsRef}_tab_${tabsIndex}`}
 				aria-hidden={!selected}
 				className={classNames} {...other}>
 				{children}
 			</div>
 		);
 	}
-});
+}
+TabsPanel.propTypes = {
+	id: React.PropTypes.string.isRequired,
+	ariaLabelledBy: React.PropTypes.string.isRequired,
+	selected: React.PropTypes.bool
+};
+TabsPanel.defaultProps = {
+	selected: false
+};
 
 /**
  * @module Tabs
@@ -149,32 +149,40 @@ export const TabsPanel = React.createClass({
  *
  * The `tabsRef` prop provides a unique identifier for providing aria attributes
  */
-export const Tabs = React.createClass({
-	propTypes: {
-		tabsRef: React.PropTypes.string.isRequired,
-	},
+export class Tabs extends React.Component {
 	renderChildren() {
 		const { tabsRef, children } = this.props;
 
-		return React.Children.map(children, (kid, index) => {
-			// pass `tabsRef` prop to list and panel children
-			if (kid.type === TabsList || kid.type === TabsPanel) {
-				return React.cloneElement(kid, { tabsRef: tabsRef, tabsIndex: index });
-			} else {
-				return kid;
-			}
-		});
-	},
+		return (
+			<div>
+				{
+					React.Children.map(children, (kid, index) => {
+						// pass `tabsRef` prop to list and panel children
+						if (kid.type === TabsList || kid.type === TabsPanel) {
+							return React.cloneElement(kid, { tabsRef: tabsRef, tabsIndex: index });
+						} else {
+							return <div>Nope</div>;
+						}
+					})
+				}
+			</div>
+		);
+	}
 	render() {
 		const {
 			className,
 			...other
 		} = this.props;
+		const children = this.renderChildren();
 
 		return (
 			<div className={className} {...other}>
-				{this.renderChildren()}
+				{children}
 			</div>
 		);
 	}
-});
+}
+Tabs.propTypes = {
+	tabsRef: React.PropTypes.string.isRequired,
+};
+
