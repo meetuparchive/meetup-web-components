@@ -78,8 +78,66 @@ export class GroupCard extends React.Component {
 		);
 	}
 }
-
 GroupCard.propTypes = {
+	group: React.PropTypes.object.isRequired,
+};
+
+
+/**
+ *	SQ2 Group Card component
+ *	@see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_card.scss}
+ *	@see {@link http://meetup.github.io/sassquatch2/ui_components.html#uiCard}
+ *	@module GroupCard
+*/
+export class GroupCardAlt extends React.Component {
+	render() {
+		const {
+			group,
+			showNextEvent,
+			className,
+			style,
+			...other
+		} = this.props;
+
+		const cardClassNames = cx(
+			'card',
+			'card--group',
+			'pseudoLine',
+			'inverted',
+			className
+		);
+
+		const photoUrl = group.duotoneUrl || (group.key_photo || group.group_photo || {}).photo_link;
+		const backgroundImage = photoUrl && `url(${photoUrl})`;
+
+		return (
+				<div>
+					<div className=''>
+						{ group.next_event ? moment(group.next_event.time, 'x').format('dddd, MM/D LT') : 'Next Meetup TBD'}
+					</div>
+					<div
+						className={cardClassNames}
+						style={{ ...(style || {}), backgroundImage }}
+						{...other}>
+
+						<div className='card--group-content'>
+							<p className='card--group-content-name text--small'>{group.name}</p>
+							{group.next_event &&
+								<div>
+									<div className='lineClamp'>
+										<h4>{group.next_event.name}</h4>
+									</div>
+								</div>
+							}
+						</div>
+
+					</div>
+				</div>
+		);
+	}
+}
+
+GroupCardAlt.propTypes = {
 	group: React.PropTypes.object.isRequired,
 };
 
