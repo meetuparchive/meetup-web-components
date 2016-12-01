@@ -22,6 +22,15 @@ class PageActionButton extends React.Component {
 		} = this.props;
 
 		const isShort = this.context.pageActionsCount <= 2;
+		const isVertical = this.context.isVertical;
+		const switchDirection = () => {
+			if (isVertical) {
+				return null;
+			} else {
+				return isShort ? 'atAll' : 'atMedium';
+			}
+
+		};
 
 		const classNames = cx(
 			'pageActionButton',
@@ -33,18 +42,18 @@ class PageActionButton extends React.Component {
 				className={classNames}
 				{...other}>
 				<Flex
-					direction='column'
-					switchDirection={ isShort ? 'atAll' : 'atMedium'}
-					rowReverse='atMedium'
-					align='center'
+					direction={isVertical ? 'row' : 'column'}
+					switchDirection={ switchDirection }
+					rowReverse={isVertical ? null : 'atMedium'}
+					align={isVertical ? null : 'center'}
 					>
 					{icon &&
-						<FlexItem shrink>
+						<FlexItem shrink className='valign--middle'>
 							<Icon shape={icon} />
 						</FlexItem>
 					}
 					{label &&
-						<FlexItem>
+						<FlexItem className='valign--middle'>
 							<div className='text--small text--secondary'>{label}</div>
 						</FlexItem>
 					}
@@ -56,8 +65,9 @@ class PageActionButton extends React.Component {
 }
 
 PageActionButton.contextTypes = {
+	isVertical: React.PropTypes.bool,
 	pageActionsCount: React.PropTypes.number
-}
+};
 
 PageActionButton.propTypes = {
 };
