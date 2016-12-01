@@ -34,18 +34,18 @@ class PageActionButton extends React.Component {
 				className={classNames}
 				{...other}>
 				<Flex
-					direction='column'
+					direction={isVertical ? 'row' : 'column'}
 					switchDirection={ !isVertical && isShort ? 'atAll' : 'atMedium'}
 					rowReverse={isVertical ? null : 'atMedium'}
 					align={isVertical ? null : 'center'}
 					>
 					{icon &&
-						<FlexItem shrink>
+						<FlexItem shrink className='valign--middle'>
 							<Icon shape={icon} />
 						</FlexItem>
 					}
 					{label &&
-						<FlexItem>
+						<FlexItem className='valign--middle'>
 							<div className='text--small text--secondary'>{label}</div>
 						</FlexItem>
 					}

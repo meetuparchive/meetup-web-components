@@ -45,12 +45,16 @@ class PageActions extends React.Component {
 				{...other}>
 					{vertical ?
 						<Flex
-							justify='spaceAround'
+							column
 							>
 							{children}
 						</Flex>
 						:
-						{children}
+						<Flex
+							justify='spaceAround'
+							>
+							{children}
+						</Flex>
 					}
 			</FlexItem>
 		);
