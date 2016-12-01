@@ -57,6 +57,7 @@ class PageActionButton extends React.Component {
 }
 
 PageActionButton.contextTypes = {
+	isVertical: React.PropTypes.bool,
 	pageActionsCount: React.PropTypes.number
 };
 

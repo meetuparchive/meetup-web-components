@@ -58,6 +58,7 @@ class PageActions extends React.Component {
 }
 
 PageActions.childContextTypes = {
+	isVertical: React.PropTypes.bool,
 	pageActionsCount: React.PropTypes.number
 };
 
