@@ -43,19 +43,12 @@ class PageActions extends React.Component {
 				shrink
 				className={classNames}
 				{...other}>
-					{vertical ?
-						<Flex
-							column
-							>
-							{children}
-						</Flex>
-						:
-						<Flex
-							justify='spaceAround'
-							>
-							{children}
-						</Flex>
-					}
+					<Flex
+						direction={vertical ? 'column' : 'row'}
+						justify={vertical ? null : 'spaceAround'}
+						>
+						{children}
+					</Flex>
 			</FlexItem>
 		);
 	}
