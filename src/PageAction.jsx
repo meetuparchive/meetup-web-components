@@ -21,7 +21,7 @@ class PageAction extends React.Component {
 
 		const classNames = cx(
 			'pageAction',
-			className,
+			className
 		);
 
 		return (

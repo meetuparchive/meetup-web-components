@@ -13,17 +13,19 @@ import {
 class PageActions extends React.Component {
 
 	getChildContext() {
-		const { children } = this.props;
+		const { children, vertical } = this.props;
 		const childrenCount = (children && children.length) ? children.length : 0;
 		return {
-			pageActionsCount: childrenCount
+			pageActionsCount: childrenCount,
+			isVertical: vertical
 		};
-	};
+	}
 
 	render() {
 		const {
 			className,
 			children,
+			vertical,
 			...other
 		} = this.props;
 
@@ -41,11 +43,15 @@ class PageActions extends React.Component {
 				shrink
 				className={classNames}
 				{...other}>
-					<Flex
-						justify='spaceAround'
-						>
+					{vertical ?
+						<Flex
+							justify='spaceAround'
+							>
+							{children}
+						</Flex>
+						:
 						{children}
-					</Flex>
+					}
 			</FlexItem>
 		);
 	}

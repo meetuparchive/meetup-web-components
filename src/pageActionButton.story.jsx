@@ -5,4 +5,4 @@ import PageActionButton from './PageActionButton';
 import { storiesOf } from '@kadira/storybook';
 
 storiesOf('PageActionButton', module)
-	.add('default', () => <PageActionButton />)
+	.add('default', () => <PageActionButton />);

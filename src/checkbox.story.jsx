@@ -5,4 +5,4 @@ import Checkbox from './Checkbox';
 import { storiesOf } from '@kadira/storybook';
 
 storiesOf('Checkbox', module)
-	.add('default', () => <Checkbox />)
+	.add('default', () => <Checkbox />);
