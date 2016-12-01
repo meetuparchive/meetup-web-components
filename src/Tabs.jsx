@@ -59,7 +59,7 @@ export class TabsList extends React.Component {
 		const { tabsRef, children } = this.props;
 
 		return React.Children.map(children, (kid, tabsIndex) => {
-				return React.cloneElement(kid, { tabsRef, tabsIndex });
+			return React.cloneElement(kid, { tabsRef, tabsIndex });
 		});
 	}
 	render() {
@@ -90,7 +90,7 @@ export class TabsList extends React.Component {
 	}
 }
 TabsList.propTypes = {
-	full: React.PropTypes.bool
+	full: React.PropTypes.bool,
 	children(props, propName, componentName) {
 		const prop = props[propName];
 		let error = null;
@@ -98,7 +98,7 @@ TabsList.propTypes = {
 			if (child.type !== TabsListTab) {
 				error = new Error('Children of TabsList must be of type: "TabsListTab"');
 			}
-		})
+		});
 		return error;
 	}
 };
