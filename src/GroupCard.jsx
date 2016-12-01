@@ -113,8 +113,8 @@ export class GroupCardAlt extends React.Component {
 
 		return (
 				<Chunk>
-					<div className='text--small'>
-						{ group.next_event ? <span><span className='text--bold'>{moment(group.next_event.time, 'x').format('dddd')}</span> <span className='text--secondary'>{moment(group.next_event.time, 'x').format('LT')}</span></span> : <span className='text--hint'>Help plan</span>}
+					<div className='text--bodySize'>
+						{ group.next_event ? <span><span className='text--bold'>{moment(group.next_event.time, 'x').format('dddd')}</span> <span className='text--secondary'>{moment(group.next_event.time, 'x').format('LT')}</span></span> : <span className='text--hint'> </span>}
 					</div>
 					<div
 						className={cardClassNames}
