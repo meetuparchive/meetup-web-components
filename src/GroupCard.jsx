@@ -35,6 +35,7 @@ export class GroupCard extends React.Component {
 		const cardClassNames = cx(
 			'card',
 			'card--group',
+			'pseudoLine',
 			'inverted',
 			className
 		);
@@ -59,11 +60,11 @@ export class GroupCard extends React.Component {
 						<div className='text--small'>
 							{group.next_event &&
 								<div>
-									<div className=''>
-										{moment(group.next_event.time, 'x').format('dddd, MM/D LT')}
-									</div>
-									<div className='lineClamp text--secondary'>
+									<div className='lineClamp '>
 										{group.next_event.name}
+									</div>
+									<div className='text--secondary'>
+										{moment(group.next_event.time, 'x').format('dddd, MM/D LT')}
 									</div>
 								</div>
 							}
@@ -112,7 +113,7 @@ export class GroupCardAlt extends React.Component {
 
 		return (
 				<div>
-					<div className=''>
+					<div className='text--small'>
 						{ group.next_event ? moment(group.next_event.time, 'x').format('dddd, MM/D LT') : 'Next Meetup TBD'}
 					</div>
 					<div
