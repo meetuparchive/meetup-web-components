@@ -48,15 +48,15 @@ describe('Test tabs', function() {
 		const tabNodes = TestUtils.scryRenderedDOMComponentsWithClass(tabs, 'tabs-tab');
 		const panelNodes = TestUtils.scryRenderedDOMComponentsWithClass(tabs, 'tabs-panel');
 
-		tabNodes.forEach( (tab, index) => {
+		tabNodes.forEach((tab, index) => {
 			expect(tab.getAttribute('id')).toBe(`fauna_tab_${index}`);
 			expect(tab.getAttribute('aria-controls')).toBe(`fauna_panel_${index}`);
-		})
+		});
 
-		panelNodes.forEach( (tab, index) => {
+		panelNodes.forEach((tab, index) => {
 			expect(tab.getAttribute('id')).toBe(`fauna_panel_${index}`);
 			expect(tab.getAttribute('aria-labelledby')).toBe(`fauna_tab_${index}`);
-		})
+		});
 	});
 
 });
