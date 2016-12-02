@@ -42,17 +42,26 @@ class Tabs extends React.Component {
 			className,
 			tabList,
 			activeTab,
+			bordered,
 			...other
 		} = this.props;
 
-		const classNames = cx(
+		const tabListClassNames = cx(
 			'tabs',
 			className
 		);
 
+		const tabContainerClassNames = cx(
+			'tabs-container',
+			{
+				'padding--left padding--right': !this.context.pageHeadTabs,
+				'tabs-container--bordered': bordered
+			}
+		);
+
 		return (
-			<nav className='padding--left padding--right tabs-container'>
-				<ul className={classNames} {...other}>
+			<nav className={tabContainerClassNames}>
+				<ul className={tabListClassNames} {...other}>
 					{tabList.map((tab,i)=>{
 						return (
 							<Tab
@@ -68,6 +77,10 @@ class Tabs extends React.Component {
 		);
 	}
 }
+
+Tabs.contextTypes = {
+	pageHeadTabs: React.PropTypes.bool
+};
 
 Tabs.propTypes = {
 	tabList: React.PropTypes.array

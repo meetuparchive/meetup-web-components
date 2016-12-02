@@ -94,7 +94,6 @@ export class GroupCardAlt extends React.Component {
 	render() {
 		const {
 			group,
-			showNextEvent,
 			className,
 			style,
 			...other
