@@ -22,6 +22,36 @@ class PageHead extends React.Component {
 		};
 	}
 
+	renderTabs() {
+		let tabs;
+		React.Children.forEach(this.props.children, function(child){
+			if (child.type.name === 'Tabs') {
+				tabs = React.cloneElement(child);
+			}
+		}.bind(this));
+		return tabs;
+	}
+
+	renderTitle() {
+		let title;
+		React.Children.forEach(this.props.children, function(child){
+			if (child.type.name === 'PageTitle') {
+				title = React.cloneElement(child);
+			}
+		}.bind(this));
+		return title;
+	}
+
+	renderActions() {
+		let actions;
+		React.Children.forEach(this.props.children, function(child){
+			if (child.type.name === 'PageActions') {
+				actions = React.cloneElement(child);
+			}
+		}.bind(this));
+		return actions;
+	}
+
 	render() {
 		const {
 			children,
@@ -49,8 +79,10 @@ class PageHead extends React.Component {
 						direction='column'
 						switchDirection='atMedium'
 						>
-						{children}
+						{this.renderTitle()}
+						{this.renderActions()}
 					</Flex>
+					{this.renderTabs()}
 			</Section>
 		);
 	}
