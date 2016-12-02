@@ -38,28 +38,25 @@ class PageActionButton extends React.Component {
 		);
 
 		return (
-			<Chunk
+			<Flex
+				direction={isVertical ? 'row' : 'column'}
+				switchDirection={ switchDirection }
+				rowReverse={isVertical ? null : 'atMedium'}
+				align={isVertical ? null : 'center'}
 				className={classNames}
 				{...other}>
-				<Flex
-					direction={isVertical ? 'row' : 'column'}
-					switchDirection={ switchDirection }
-					rowReverse={isVertical ? null : 'atMedium'}
-					align={isVertical ? null : 'center'}
-					>
-					{icon &&
-						<FlexItem shrink className='valign--middle'>
-							<Icon shape={icon} />
-						</FlexItem>
-					}
-					{label &&
-						<FlexItem className='valign--middle'>
-							<div className='text--small text--secondary'>{label}</div>
-						</FlexItem>
-					}
-					{children}
-				</Flex>
-			</Chunk>
+				{icon &&
+					<FlexItem shrink className='valign--middle'>
+						<Icon shape={icon} />
+					</FlexItem>
+				}
+				{label &&
+					<FlexItem className='valign--middle'>
+						<div className='text--small text--secondary'>{label}</div>
+					</FlexItem>
+				}
+				{children}
+			</Flex>
 		);
 	}
 }
