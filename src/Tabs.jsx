@@ -171,10 +171,11 @@ export class Tabs extends React.Component {
 				{
 					React.Children.map(children, (kid, tabsIndex) => {
 						// pass `tabsRef` prop to list and panel children
-						if (kid.type === TabsList || kid.type === TabsPanel) {
+						if (kid.type === TabsList ) {
 							return React.cloneElement(kid, { tabsRef, tabsIndex });
 						} else {
-							return <div>Nope</div>;
+							// account for `TabsList` as first direct child of `Tabs`
+							return React.cloneElement(kid, { tabsRef, tabsIndex: tabsIndex - 1 });
 						}
 					})
 				}

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { Tabs, TabsList, TabsListTab, TabsPanel } from './Tabs';
 
-describe('Test correctly composed tabs', function() {
+describe('Test tabs', function() {
 	const tabs = TestUtils.renderIntoDocument(
 		<Tabs tabsRef='fauna'>
 			<TabsList>
@@ -23,50 +23,40 @@ describe('Test correctly composed tabs', function() {
 			</TabsPanel>
 		</Tabs>
 	);
-	const tabsNode = ReactDOM.findDOMNode(tabs);
 
 	it('exists', function() {
-		expect(tabsNode).not.toBeNull();
+		const mainNode = ReactDOM.findDOMNode(tabs);
+		expect(mainNode).not.toBeNull();
+	});
+
+	it('applies correct selected classes', function() {
+		const selectedTabNode = TestUtils.scryRenderedDOMComponentsWithClass(tabs, 'tabs-tab--selected');
+		const panelNodes = TestUtils.scryRenderedDOMComponentsWithClass(tabs, 'tabs-panel');
+
+		// only one tab should have the selected class
+		expect(selectedTabNode.length).toBe(1);
+
+		// only one panel should be visible at a time
+		const visiblePanels = panelNodes
+			.map(node => node.getAttribute('class'))
+			.filter(classes => !classes.includes('display--none'));
+
+		expect(visiblePanels.length).toBe(1);
 	});
 
 	it('generates correct ids and aria attributes', function() {
-		// TODO: complete stub
-		expect(true).toBe(true);
-	});
+		const tabNodes = TestUtils.scryRenderedDOMComponentsWithClass(tabs, 'tabs-tab');
+		const panelNodes = TestUtils.scryRenderedDOMComponentsWithClass(tabs, 'tabs-panel');
 
-});
+		tabNodes.forEach( (tab, index) => {
+			expect(tab.getAttribute('id')).toBe(`fauna_tab_${index}`);
+			expect(tab.getAttribute('aria-controls')).toBe(`fauna_panel_${index}`);
+		})
 
-describe('Test validation of incorrectly composed tabs', function() {
-
-	it('validates that one panel and one tab are selected', function() {
-		// TODO: complete stub
-		const tabs = TestUtils.renderIntoDocument(
-			<Tabs tabsRef='noSelection'>
-				<TabsList>
-					<TabsListTab>Tab one</TabsListTab>
-					<TabsListTab>Tab two</TabsListTab>
-				</TabsList>
-				<TabsPanel>panel one</TabsPanel>
-				<TabsPanel>panel two</TabsPanel>
-			</Tabs>
-		);
-		const tabsNode = ReactDOM.findDOMNode(tabs);
-		expect(true).toBe(true);
-	});
-
-	it('validates number of panels match number of tabs', function() {
-		// TODO: complete stub
-		const tabs = TestUtils.renderIntoDocument(
-			<Tabs tabsRef='badPanels'>
-				<TabsList>
-					<TabsListTab selected>Tab one</TabsListTab>
-					<TabsListTab>Tab two</TabsListTab>
-				</TabsList>
-				<TabsPanel selected>panel one</TabsPanel>
-			</Tabs>
-		);
-		const tabsNode = ReactDOM.findDOMNode(tabs);
-		expect(true).toBe(true);
+		panelNodes.forEach( (tab, index) => {
+			expect(tab.getAttribute('id')).toBe(`fauna_panel_${index}`);
+			expect(tab.getAttribute('aria-labelledby')).toBe(`fauna_tab_${index}`);
+		})
 	});
 
 });
