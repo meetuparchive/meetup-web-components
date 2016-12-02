@@ -78,7 +78,7 @@ export class TabsList extends React.Component {
 			className
 		);
 
-		// remove non-standard DOM attributs before render returns
+		// remove non-standard DOM attributes before render returns
 		delete tabsListProps.tabsRef;
 
 		return (
@@ -189,7 +189,7 @@ export class Tabs extends React.Component {
 			...other
 		} = tabsProps;
 
-		// remove non-standard DOM attributs before render returns
+		// remove non-standard DOM attributes before render returns
 		delete tabsProps.tabsRef;
 
 		return (
