@@ -11,8 +11,8 @@ import {
 
 import {
 	Chunk,
-	// Flex,
-	// FlexItem,
+	Flex,
+	FlexItem,
 	// Section,
 } from './layoutUtils';
 
@@ -102,9 +102,9 @@ export class GroupCardAlt extends React.Component {
 
 		const cardClassNames = cx(
 			'card',
-			'card--group',
-			'pseudoLine',
-			'inverted',
+			'card--groupAlt',
+			'padding--none',
+			'text--bodySize',
 			className
 		);
 
@@ -112,30 +112,46 @@ export class GroupCardAlt extends React.Component {
 		const backgroundImage = photoUrl && `url(${photoUrl})`;
 
 		return (
-				<Chunk>
-					<div className='text--bodySize'>
-						{ group.next_event ? <span><span className='text--bold'>{moment(group.next_event.time, 'x').format('dddd')}</span> <span className='text--secondary'>{moment(group.next_event.time, 'x').format('LT')}</span></span> : <span className='text--hint'>&nbsp;</span>}
-					</div>
-					<div
-						className={cardClassNames}
-						style={{ ...(style || {}), backgroundImage }}
-						{...other}>
+				<div
+					className={cardClassNames}
+					style={{ ...(style || {})}}
+					{...other}>
 
-						<div className='card--group-content'>
-							<p className='card--group-content-name text--small'>{group.name}</p>
-							{group.next_event &&
-								<div>
-									<h4>{group.next_event.name}</h4>
+					<Flex direction='column' style={{height: '100%'}}>
+						<FlexItem growFactor={4}>
+							{ group.next_event &&
+								<div className='padding--all'>
+									<p>
+										<span className='text--bold'>{moment(group.next_event.time, 'x').format('dddd')}</span>
+										<span className='text--secondary'> {moment(group.next_event.time, 'x').format('LT')}</span>
+									</p>
+									<p className='lineClamp'>
+										{group.next_event.name}
+									</p>
 								</div>
 							}
-						</div>
-
-					</div>
-				</Chunk>
+						</FlexItem>
+						<FlexItem growFactor={6}
+							style={{
+								backgroundImage,
+								backgroundPosition: 'center center',
+								backgroundSize: 'cover'
+							}}
+							className=''
+							>
+							<Flex direction='column' style={{height: '100%'}} justify='flexEnd'>
+								<FlexItem className='align--right' shrink style={{width: '100%'}}>
+									<div className='inverted padding--all'>
+										<h4>{group.name}</h4>
+									</div>
+								</FlexItem>
+							</Flex>
+						</FlexItem>
+					</Flex>
+				</div>
 		);
 	}
 }
-
 GroupCardAlt.propTypes = {
 	group: React.PropTypes.object.isRequired,
 };
