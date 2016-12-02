@@ -63,7 +63,10 @@ export class TabsList extends React.Component {
 		});
 	}
 	render() {
+		// remove non-standard DOM attributes before render returns
 		const tabsListProps = Object.assign({}, this.props);
+		delete tabsListProps.tabsRef;
+		delete tabsListProps.tabsIndex;
 		const {
 			className,
 			full,
@@ -77,9 +80,6 @@ export class TabsList extends React.Component {
 			},
 			className
 		);
-
-		// remove non-standard DOM attributes before render returns
-		delete tabsListProps.tabsRef;
 
 		return (
 			<nav className='chunk'>
@@ -183,14 +183,15 @@ export class Tabs extends React.Component {
 	}
 	render() {
 		const children = this.renderChildren();
+
+		// remove non-standard DOM attributes before render returns
 		const tabsProps = Object.assign({}, this.props);
+		delete tabsProps.tabsRef;
 		const {
 			className,
 			...other
 		} = tabsProps;
 
-		// remove non-standard DOM attributes before render returns
-		delete tabsProps.tabsRef;
 
 		return (
 			<div
