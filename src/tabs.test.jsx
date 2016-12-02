@@ -53,9 +53,9 @@ describe('Test tabs', function() {
 			expect(tab.getAttribute('aria-controls')).toBe(`fauna_panel_${index}`);
 		});
 
-		panelNodes.forEach((tab, index) => {
-			expect(tab.getAttribute('id')).toBe(`fauna_panel_${index}`);
-			expect(tab.getAttribute('aria-labelledby')).toBe(`fauna_tab_${index}`);
+		panelNodes.forEach((panel, index) => {
+			expect(panel.getAttribute('id')).toBe(`fauna_panel_${index}`);
+			expect(panel.getAttribute('aria-labelledby')).toBe(`fauna_tab_${index}`);
 		});
 	});
 
