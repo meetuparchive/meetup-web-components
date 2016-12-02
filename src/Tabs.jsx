@@ -63,11 +63,12 @@ export class TabsList extends React.Component {
 		});
 	}
 	render() {
+		const tabsListProps = Object.assign({}, this.props);
 		const {
 			className,
 			full,
 			...other
-		} = this.props;
+		} = tabsListProps;
 
 		const classNames = cx(
 			'tabs',
@@ -76,6 +77,9 @@ export class TabsList extends React.Component {
 			},
 			className
 		);
+
+		// remove non-standard DOM attributs before render returns
+		delete tabsListProps.tabsRef;
 
 		return (
 			<nav className='chunk'>
@@ -145,8 +149,6 @@ export class TabsPanel extends React.Component {
 	}
 }
 TabsPanel.propTypes = {
-	id: React.PropTypes.string.isRequired,
-	ariaLabelledBy: React.PropTypes.string.isRequired,
 	selected: React.PropTypes.bool
 };
 TabsPanel.defaultProps = {
@@ -180,11 +182,15 @@ export class Tabs extends React.Component {
 		);
 	}
 	render() {
+		const children = this.renderChildren();
+		const tabsProps = Object.assign({}, this.props);
 		const {
 			className,
 			...other
-		} = this.props;
-		const children = this.renderChildren();
+		} = tabsProps;
+
+		// remove non-standard DOM attributs before render returns
+		delete tabsProps.tabsRef;
 
 		return (
 			<div
