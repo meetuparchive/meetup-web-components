@@ -1,7 +1,7 @@
 import React from 'react';
 import AvatarMember from './AvatarMember.jsx';
 import { storiesOf } from '@kadira/storybook';
-import { MOCK_MEMBER } from 'meetup-web-platform/lib/util/mocks/api';
+import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 
 storiesOf('AvatarMember', module)
 	.add('default', () => <AvatarMember member={MOCK_MEMBER}></AvatarMember>)

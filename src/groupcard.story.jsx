@@ -1,7 +1,7 @@
 import React from 'react';
 import GroupCard from './GroupCard.jsx';
 import { storiesOf } from '@kadira/storybook';
-import { MOCK_GROUP } from 'meetup-web-platform/lib/util/mocks/api';
+import { MOCK_GROUP } from 'meetup-web-mocks/lib/api';
 
 storiesOf('GroupCard', module)
 	.add('default', () => (

@@ -11,8 +11,8 @@
     "js",
     "jsx"
   ],
-  "preprocessorIgnorePatterns": [
-    "node_modules(?!\/meetup-web-platform)"
-  ],
-  "testRegex": "src/.*\\.test\\.jsx?$"
+  "testRegex": "src/.*\\.test\\.jsx?$",
+  "transformIgnorePatterns": [
+    "node_modules(?!\/meetup-web-components)"
+  ]
 }
