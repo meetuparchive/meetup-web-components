@@ -11,6 +11,17 @@ import {
  * @module PageHead
  */
 class PageHead extends React.Component {
+	getChildContext() {
+		const { children } = this.props;
+		const checkForTabs = (element) => {
+			return element.type.name === 'Tabs';
+		};
+
+		return {
+			pageHeadTabs: children.some(checkForTabs)
+		};
+	}
+
 	render() {
 		const {
 			children,
@@ -18,8 +29,15 @@ class PageHead extends React.Component {
 			...other
 		} = this.props;
 
+		const checkForTabs = (element) => {
+			return element.type.name === 'Tabs';
+		};
+
 		const classNames = cx(
 			'pageHead',
+			{
+				'flush--bottom': children.some(checkForTabs)
+			},
 			className
 		);
 
@@ -28,7 +46,8 @@ class PageHead extends React.Component {
 				className={classNames}
 				{...other}>
 					<Flex
-						spread='atMedium'
+						direction='column'
+						switchDirection='atMedium'
 						>
 						{children}
 					</Flex>
@@ -36,6 +55,10 @@ class PageHead extends React.Component {
 		);
 	}
 }
+
+PageHead.childContextTypes = {
+	pageHeadTabs: React.PropTypes.bool,
+};
 
 PageHead.propTypes = {
 };
