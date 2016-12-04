@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+	// Chunk,
+	Flex,
+	// FlexItem,
+	// Section,
+} from './layoutUtils';
 
 /**
  * Navigation component using SQ2 styles
@@ -16,9 +22,9 @@ class Nav extends React.Component {
 			<nav
 				role='navigation'
 				{...other}>
-				<ul className='row resetList'>
+				<Flex>
 					{children}
-				</ul>
+				</Flex>
 			</nav>
 		);
 	}

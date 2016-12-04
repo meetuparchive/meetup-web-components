@@ -1,6 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
-
+import {
+	// Chunk,
+	// Flex,
+	FlexItem,
+	// Section,
+} from './layoutUtils';
 /**
  * Navigation item component using SQ2 styles
  * @see {@link http://meetup.github.io/sassquatch2/}
@@ -15,19 +20,17 @@ class NavItem extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'row-item',
-			'row-item--shrink',
-			'row-item--alignMiddle',
 			'align--center',
 			className
 		);
 
 		return (
-			<li
+			<FlexItem
+				shrink
 				className={classNames}
 				{...other}>
 					{children}
-			</li>
+			</FlexItem>
 		);
 	}
 }

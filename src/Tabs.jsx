@@ -54,7 +54,7 @@ class Tabs extends React.Component {
 		const tabContainerClassNames = cx(
 			'tabs-container',
 			{
-				'padding--left padding--right': !this.context.pageHeadTabs,
+				// 'padding--left padding--right': !this.context.pageHeadTabs,
 				'tabs-container--bordered': bordered
 			}
 		);
@@ -78,9 +78,11 @@ class Tabs extends React.Component {
 	}
 }
 
+/*
 Tabs.contextTypes = {
 	pageHeadTabs: React.PropTypes.bool
 };
+*/
 
 Tabs.propTypes = {
 	tabList: React.PropTypes.array
