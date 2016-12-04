@@ -63,9 +63,10 @@ class Tabs extends React.Component {
 			<nav className={tabContainerClassNames}>
 				<ul className={tabListClassNames} {...other}>
 					{tabList.map((tab,i)=>{
+						const isCurrent = this.context.router.isActive(tab.url, true);
 						return (
 							<Tab
-								isCurrent={(activeTab === tab.id)}
+								isCurrent={isCurrent}
 								key={i}
 								url={tab.url}
 								name={tab.name}
@@ -83,6 +84,13 @@ Tabs.contextTypes = {
 	pageHeadTabs: React.PropTypes.bool
 };
 */
+
+
+
+Tabs.contextTypes = {
+    router: React.PropTypes.func.isRequired
+};
+
 
 Tabs.propTypes = {
 	tabList: React.PropTypes.array
