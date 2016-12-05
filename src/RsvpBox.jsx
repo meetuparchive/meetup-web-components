@@ -73,8 +73,8 @@ class RsvpBox extends React.Component {
 		// Configure RSVP status button
 		const rsvpButtonProps = {
 			disabled: (
-				(event.rsvp_rules || {}).closed ||
-				((event.self || {}).actions || []).indexOf('rsvp') === -1
+				(event.rsvp_rules || {}).closed
+				// ((event.self || {}).actions || []).indexOf('rsvp') === -1
 			),
 		};
 		if (event.status === 'upcoming' /* && event.self.actions.indexOf('rsvp') !== -1 */) {
@@ -131,7 +131,6 @@ class RsvpBox extends React.Component {
 				)*/}
 				<Button
 					{ ...rsvpButtonProps }
-					style={{border: 'none', color: '#ed1c40'}}
 					className={cx('rsvpButton', { 'display--none': rsvpButtonProps.disabled }, rsvpButtonProps.className)}
 					onClick={onRsvpClick}
 					small
