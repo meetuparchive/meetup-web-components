@@ -152,7 +152,7 @@ class RsvpBox extends React.Component {
 				className={classNames}
 				{...other}>
 				{rsvpButton}
-				{rsvpFeeItem}
+				{/* rsvpFeeItem */ }
 				{rsvpTimeLimit}
 			</div>
 		);
