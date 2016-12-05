@@ -63,15 +63,13 @@ export class TabsList extends React.Component {
 		});
 	}
 	render() {
-		// remove non-standard DOM attributes before render returns
-		const tabsListProps = Object.assign({}, this.props);
-		delete tabsListProps.tabsRef;
-		delete tabsListProps.tabsIndex;
 		const {
+			tabsRef,   // eslint-disable-line no-unused-vars
+			tabsIndex, // eslint-disable-line no-unused-vars
 			className,
 			full,
 			...other
-		} = tabsListProps;
+		} = this.props;
 
 		const classNames = cx(
 			'tabs',
@@ -185,13 +183,11 @@ export class Tabs extends React.Component {
 	render() {
 		const children = this.renderChildren();
 
-		// remove non-standard DOM attributes before render returns
-		const tabsProps = Object.assign({}, this.props);
-		delete tabsProps.tabsRef;
 		const {
+			tabsRef, // eslint-disable-line no-unused-vars
 			className,
 			...other
-		} = tabsProps;
+		} = this.props;
 
 
 		return (
