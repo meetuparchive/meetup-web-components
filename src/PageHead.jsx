@@ -11,6 +11,7 @@ import {
  * @module PageHead
  */
 class PageHead extends React.Component {
+	/*
 	getChildContext() {
 		const { children } = this.props;
 		const checkForTabs = (element) => {
@@ -18,7 +19,7 @@ class PageHead extends React.Component {
 		};
 
 		return {
-			pageHeadTabs: children.some(checkForTabs)
+			pageHeadTabs: children && children.some(checkForTabs)
 		};
 	}
 
@@ -51,6 +52,7 @@ class PageHead extends React.Component {
 		}.bind(this));
 		return actions;
 	}
+	*/
 
 	render() {
 		const {
@@ -59,14 +61,16 @@ class PageHead extends React.Component {
 			...other
 		} = this.props;
 
+		/*
 		const checkForTabs = (element) => {
 			return element.type.name === 'Tabs';
 		};
+		*/
 
 		const classNames = cx(
 			'pageHead',
 			{
-				'flush--bottom': children.some(checkForTabs)
+				'flush--bottom': this.props.tabs
 			},
 			className
 		);
@@ -79,18 +83,19 @@ class PageHead extends React.Component {
 						direction='column'
 						switchDirection='atMedium'
 						>
-						{this.renderTitle()}
-						{this.renderActions()}
+						{children}
 					</Flex>
-					{this.renderTabs()}
+					{this.props.tabs}
 			</Section>
 		);
 	}
 }
 
+/*
 PageHead.childContextTypes = {
 	pageHeadTabs: React.PropTypes.bool,
 };
+*/
 
 PageHead.propTypes = {
 };

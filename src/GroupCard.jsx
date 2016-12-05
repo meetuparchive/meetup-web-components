@@ -60,7 +60,7 @@ export class GroupCard extends React.Component {
 						<div className='text--small'>
 							{group.next_event &&
 								<div>
-									<div>
+									<div className='lineClamp'>
 										{group.next_event.name}
 									</div>
 									<div className='text--secondary'>
@@ -70,7 +70,7 @@ export class GroupCard extends React.Component {
 							}
 
 							{!group.next_event &&
-								<div>Next Meetup TBD</div>
+								<div className='text--hint'>Next Meetup TBD</div>
 							}
 						</div>
 					</Chunk>
