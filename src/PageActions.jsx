@@ -12,12 +12,18 @@ import {
  */
 class PageActions extends React.Component {
 
+	static get defaultProps() {
+		return {
+			direction: 'row'
+		};
+	}
+
 	getChildContext() {
-		const { children, vertical } = this.props;
+		const { children, direction } = this.props;
 		const childrenCount = (children && children.length) ? children.length : 0;
 		return {
+			pageActionsDirection: direction,
 			pageActionsCount: childrenCount,
-			isVertical: vertical
 		};
 	}
 
@@ -25,18 +31,14 @@ class PageActions extends React.Component {
 		const {
 			className,
 			children,
-			vertical,
+			direction,
 			...other
 		} = this.props;
-
-
 
 		const classNames = cx(
 			'pageActions',
 			className
 		);
-
-
 
 		return (
 			<FlexItem
@@ -44,8 +46,8 @@ class PageActions extends React.Component {
 				className={classNames}
 				{...other}>
 					<Flex
-						direction={vertical ? 'column' : 'row'}
-						justify={vertical ? null : 'spaceAround'}
+						direction={direction}
+						justify='spaceAround'
 						>
 						{children}
 					</Flex>
@@ -55,7 +57,10 @@ class PageActions extends React.Component {
 }
 
 PageActions.childContextTypes = {
-	isVertical: React.PropTypes.bool,
+	pageActionsDirection: React.PropTypes.oneOf([
+		'row',
+		'column'
+	]),
 	pageActionsCount: React.PropTypes.number
 };
 

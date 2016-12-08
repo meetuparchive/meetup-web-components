@@ -54,7 +54,7 @@ class Tabs extends React.Component {
 		const tabContainerClassNames = cx(
 			'tabs-container',
 			{
-				'padding--left padding--right': !this.context.pageHeadTabs,
+				// 'padding--left padding--right': !this.context.pageHeadTabs,
 				'tabs-container--bordered': bordered
 			}
 		);
@@ -63,9 +63,10 @@ class Tabs extends React.Component {
 			<nav className={tabContainerClassNames}>
 				<ul className={tabListClassNames} {...other}>
 					{tabList.map((tab,i)=>{
+						const isCurrent = this.context.router.isActive(tab.url, true);
 						return (
 							<Tab
-								isCurrent={(activeTab === tab.id)}
+								isCurrent={isCurrent}
 								key={i}
 								url={tab.url}
 								name={tab.name}
@@ -78,9 +79,18 @@ class Tabs extends React.Component {
 	}
 }
 
+/*
 Tabs.contextTypes = {
 	pageHeadTabs: React.PropTypes.bool
 };
+*/
+
+
+
+Tabs.contextTypes = {
+    router: React.PropTypes.func.isRequired
+};
+
 
 Tabs.propTypes = {
 	tabList: React.PropTypes.array

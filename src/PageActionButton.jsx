@@ -21,16 +21,27 @@ class PageActionButton extends React.Component {
 			...other
 		} = this.props;
 
-		const isShort = this.context.pageActionsCount <= 2;
-		const isVertical = this.context.isVertical;
-		const switchDirection = () => {
-			if (isVertical) {
-				return null;
-			} else {
-				return isShort ? 'atAll' : 'atMedium';
-			}
 
-		};
+		let direction, align, switchDirection, rowReverse;
+		if(this.context.pageActionsDirection == 'column'){
+			// this is not in PageHead
+			// always a nice column of actions
+			// each action is a horizontal icon and label
+			direction = 'row';
+			align = null;
+			switchDirection = null;
+			rowReverse = null;
+		}
+		else{
+			// this is in PageHead
+			// actions in a row,
+			// adjust to take up space based on position and numbers
+			const isShort = this.context.pageActionsCount <= 2;
+			direction = 'column';
+			align = null;
+			switchDirection = isShort ? 'atAll' : 'atMedium';
+			rowReverse = isShort ? 'atMedium' : null;
+		}
 
 		const classNames = cx(
 			'pageActionButton',
@@ -38,34 +49,34 @@ class PageActionButton extends React.Component {
 		);
 
 		return (
-			<Chunk
+			<Flex
+				direction={direction}
+				switchDirection={switchDirection}
+				rowReverse={rowReverse}
+				align={align}
 				className={classNames}
 				{...other}>
-				<Flex
-					direction={isVertical ? 'row' : 'column'}
-					switchDirection={ switchDirection }
-					rowReverse={isVertical ? null : 'atMedium'}
-					align={isVertical ? null : 'center'}
-					>
-					{icon &&
-						<FlexItem shrink className='valign--middle'>
-							<Icon shape={icon} />
-						</FlexItem>
-					}
-					{label &&
-						<FlexItem className='valign--middle'>
-							<div className='text--small text--secondary'>{label}</div>
-						</FlexItem>
-					}
-					{children}
-				</Flex>
-			</Chunk>
+				{icon &&
+					<FlexItem shrink className='valign--middle'>
+						<Icon shape={icon} />
+					</FlexItem>
+				}
+				{label &&
+					<FlexItem className='valign--middle'>
+						<div className='text--small text--secondary'>{label}</div>
+					</FlexItem>
+				}
+				{children}
+			</Flex>
 		);
 	}
 }
 
 PageActionButton.contextTypes = {
-	isVertical: React.PropTypes.bool,
+	pageActionsDirection: React.PropTypes.oneOf([
+		'row',
+		'column'
+	]),
 	pageActionsCount: React.PropTypes.number
 };
 

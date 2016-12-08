@@ -18,7 +18,6 @@ class RsvpBox extends React.Component {
 			event,
 			onRsvpClick,
 			className,
-			style,
 			narrow,
 			...other
 		} = this.props;
@@ -74,19 +73,21 @@ class RsvpBox extends React.Component {
 		// Configure RSVP status button
 		const rsvpButtonProps = {
 			disabled: (
-				(event.rsvp_rules || {}).closed ||
-				((event.self || {}).actions || []).indexOf('rsvp') === -1
+				(event.rsvp_rules || {}).closed
+				// ((event.self || {}).actions || []).indexOf('rsvp') === -1
 			),
 		};
 		if (event.status === 'upcoming' /* && event.self.actions.indexOf('rsvp') !== -1 */) {
 			Object.assign(rsvpButtonProps, {
-				children: 'RSVP',
+				children: '+',
+				text: 'RSVP',
 				className: 'rsvpButton--rsvp',
 			});
 			const spotsLeft = event.rsvp_limit - event.yes_rsvp_count;
 			if (spotsLeft < 1) {
 				Object.assign(rsvpButtonProps, {
-					children: 'Waitlist',
+					children: '+',
+					text: 'Waitlist',
 					className: 'rsvpButton--waitlist',
 				});
 			}
@@ -94,29 +95,32 @@ class RsvpBox extends React.Component {
 		const rsvpResponse = event.self === undefined ? null : (event.self.rsvp || {}).response;
 		if (rsvpResponse === 'yes') {
 			Object.assign(rsvpButtonProps, {
-				children: 'I\'m going',
+				children: '✔',
 				icon: '✔',
+				text: 'I\'m going',
 				className: 'rsvpButton--going',
 			});
 		}
 		if (rsvpResponse === 'no') {
 			Object.assign(rsvpButtonProps, {
-				children: 'Not going',
+				children: '✘',
 				icon: '✘',
+				text: 'Not going',
 				className: 'rsvpButton--notGoing',
 			});
 		}
 		if (rsvpResponse === 'waitlist') {
 			Object.assign(rsvpButtonProps, {
-				children: 'Waitlist',
+				children: '⏸',
 				icon: '⏸',
+				text: 'Waitlist',
 				contrast: true,
 				className: 'rsvpButton--waitlisted',
 			});
 		}
 		const rsvpButton = rsvpButtonProps.children ? (
 			<div>
-				{ narrow ? rsvpButtonProps.icon : (
+				{/* narrow ? rsvpButtonProps.icon : (
 					<Button
 						{ ...rsvpButtonProps }
 						className={cx('rsvpButton', rsvpButtonProps.className)}
@@ -124,7 +128,13 @@ class RsvpBox extends React.Component {
 						fullWidth
 						small
 					/>
-				)}
+				)*/}
+				<Button
+					{ ...rsvpButtonProps }
+					className={cx('rsvpButton', { 'display--none': rsvpButtonProps.disabled }, rsvpButtonProps.className)}
+					onClick={onRsvpClick}
+					small
+				/>
 			</div>
 		) : null;
 
@@ -142,7 +152,7 @@ class RsvpBox extends React.Component {
 				className={classNames}
 				{...other}>
 				{rsvpButton}
-				{rsvpFeeItem}
+				{/* rsvpFeeItem */ }
 				{rsvpTimeLimit}
 			</div>
 		);
