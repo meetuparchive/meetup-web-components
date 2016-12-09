@@ -1,16 +1,16 @@
-
 import React from 'react';
-import { IntlProvider } from 'react-intl';
 import Tabs from './Tabs';
 import { storiesOf } from '@kadira/storybook';
+import { locale } from './utils/decorators';
 
 storiesOf('Tabs', module)
-	.addDecorator(story => {
-		const locale = 'en-US';
+	.addDecorator(locale)
+	.add('default', () => {
+		const tabsList = [
+			{ name: 'Other page', url: '/dogs' },
+			{ name: 'Current page', url: '/' },
+		];
 		return (
-			<IntlProvider locale={locale}>
-				{story()}
-			</IntlProvider>
+			<Tabs tabList={tabsList} />
 		);
-	})
-	.add('default', () => <Tabs />);
+	});

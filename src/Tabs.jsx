@@ -36,12 +36,10 @@ class Tab extends React.Component {
  * @module Tabs
  */
 class Tabs extends React.Component {
-
 	render() {
 		const {
 			className,
 			tabList,
-			activeTab,
 			bordered,
 			...other
 		} = this.props;
@@ -54,41 +52,37 @@ class Tabs extends React.Component {
 		const tabContainerClassNames = cx(
 			'tabs-container',
 			{
-				// 'padding--left padding--right': !this.context.pageHeadTabs,
 				'tabs-container--bordered': bordered
 			}
 		);
 
 		return (
-			<nav className={tabContainerClassNames}>
-				<ul className={tabListClassNames} {...other}>
-					{tabList.map((tab,i)=>{
-						const isCurrent = this.context.router.isActive(tab.url, true);
-						return (
-							<Tab
-								isCurrent={isCurrent}
-								key={i}
-								url={tab.url}
-								name={tab.name}
-							/>
-						);
-					})}
-				</ul>
-			</nav>
+			<div>
+				<p className='debug'>{location.pathname}</p>
+				<nav className={tabContainerClassNames}>
+					<ul className={tabListClassNames} {...other}>
+						{tabList.map((tab,i)=>{
+							const isCurrent = this.context.router.isActive(tab.url, true);
+							return (
+								<Tab
+									isCurrent={isCurrent}
+									key={i}
+									url={tab.url}
+									name={tab.name}
+								/>
+							);
+						})}
+					</ul>
+				</nav>
+			</div>
 		);
 	}
 }
 
-/*
-Tabs.contextTypes = {
-	pageHeadTabs: React.PropTypes.bool
-};
-*/
-
 
 
 Tabs.contextTypes = {
-    router: React.PropTypes.func.isRequired
+	router: React.PropTypes.func.isRequired
 };
 
 
