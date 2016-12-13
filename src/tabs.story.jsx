@@ -1,16 +1,22 @@
 import React from 'react';
-import Tabs from './Tabs';
 import { storiesOf } from '@kadira/storybook';
 import { locale } from './utils/decorators';
+import { Tabs, TabsTab } from './Tabs';
 
 storiesOf('Tabs', module)
 	.addDecorator(locale)
 	.add('default', () => {
-		const tabsList = [
-			{ name: 'Other page', url: '/dogs' },
-			{ name: 'Current page', url: '/' },
-		];
 		return (
-			<Tabs tabList={tabsList} />
+			<Tabs>
+				<TabsTab isActive
+					url='/foo'
+					label='First Tab' />
+				<TabsTab
+					url='/bar'
+					label='Second Tab' />
+				<TabsTab
+					url='/bar'
+					label='Third Tab' />
+			</Tabs>
 		);
 	});

@@ -5,18 +5,18 @@ import cx from 'classnames';
 /**
  * @module TabsTab
  */
-class TabsTab extends React.Component {
+export class TabsTab extends React.Component {
 	render() {
 		const {
 			url,
-			name,
-			isCurrent,
+			label,
+			isActive,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'tabs-tab align--center atMedium_align--left',
-			{'tabs-tab--selected': isCurrent}
+			{'tabs-tab--selected': isActive}
 		);
 
 		return(
@@ -24,9 +24,9 @@ class TabsTab extends React.Component {
 				className={classNames}
 				{...other}>
 				<Link
-					role="menuitem"
+					role='menuitem'
 					to={url}>
-					{name}
+					{label}
 				</Link>
 			</li>
 		);
@@ -36,21 +36,17 @@ class TabsTab extends React.Component {
 /**
  * @module Tabs
  */
-class Tabs extends React.Component {
+export class Tabs extends React.Component {
 	render() {
 		const {
+			children,
 			className,
-			tabList,
 			bordered,
 			...other
 		} = this.props;
 
-		const tabListClassNames = cx(
-			'tabs',
-			className
-		);
-
 		const tabContainerClassNames = cx(
+			className,
 			'tabs-container',
 			{
 				'tabs-container--bordered': bordered
@@ -58,40 +54,25 @@ class Tabs extends React.Component {
 		);
 
 		return (
-			<div>
-				<p className='debug'>{location.pathname}</p>
-				<nav className={tabContainerClassNames}>
-					<ul
-						role="menu"
-						className={tabListClassNames}
-						{...other}>
-						{tabList.map((tab,i)=>{
-							const isCurrent = this.context.router.isActive(tab.url, true);
-							return (
-								<Tab
-									isCurrent={isCurrent}
-									key={i}
-									url={tab.url}
-									name={tab.name}
-								/>
-							);
-						})}
-					</ul>
-				</nav>
-			</div>
+			<nav className={tabContainerClassNames}>
+				<ul
+					role='menu'
+					{...other}>
+					{children}
+				</ul>
+			</nav>
 		);
 	}
 }
-
-
-
-Tabs.contextTypes = {
-	router: React.PropTypes.func.isRequired
-};
-
-
 Tabs.propTypes = {
-	tabList: React.PropTypes.array
+	children(props, propName, componentName) {
+		const prop = props[propName];
+		let error = null;
+		React.Children.forEach(prop, child => {
+			if (componentName !== 'TabsTab') {
+				error = new Error(`Tabs: Expected child of type "TabsTab"; received "${componentName}"`);
+			}
+		});
+		return error;
+	}
 };
-
-export default Tabs;
