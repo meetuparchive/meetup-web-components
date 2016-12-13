@@ -7,5 +7,14 @@
 @import "~sassquatch2/sass/sassquatch.scss";
 @import "util.scss";
 
-// components
+// layout components
+@import "bounds.scss";
 @import "chunk.scss";
+@import "flex.scss";
+@import "gridList.scss";
+@import "pageHead.scss";
+@import "section.scss";
+@import "stripe.scss";
+
+// other components
+/* ... */

@@ -1,0 +1,22 @@
+// bounds always wide
+.bounds, .bounds--wide{
+	max-width: 1100px;
+	padding: 0;
+	overflow: hidden;
+}
+
+.bounds--shrink {
+	max-width: $breakpoint-s;
+}
+
+@include atMediaUp(medium) {
+	.atMedium_bounds--shrink {
+		max-width: $breakpoint-m;
+	}
+}
+
+@include atMediaUp(large) {
+	.atLarge_bounds--shrink {
+		max-width: 1100px;
+	}
+}
