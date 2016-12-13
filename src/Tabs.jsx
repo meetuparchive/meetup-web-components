@@ -42,19 +42,23 @@ export class Tabs extends React.Component {
 			children,
 			className,
 			bordered,
+			full,
 			...other
 		} = this.props;
 
-		const tabContainerClassNames = cx(
+		const classNames = cx(
 			className,
-			'tabs-container',
+			'tabs',
 			{
-				'tabs-container--bordered': bordered
+				'tabs--bordered': bordered
+			},
+			{
+				'tabs--full': full
 			}
 		);
 
 		return (
-			<nav className={tabContainerClassNames}>
+			<nav className={classNames}>
 				<ul
 					role='menu'
 					{...other}>
@@ -65,6 +69,8 @@ export class Tabs extends React.Component {
 	}
 }
 Tabs.propTypes = {
+	full: React.PropTypes.bool,
+	bordered: React.PropTypes.bool,
 	children(props, propName, componentName) {
 		const prop = props[propName];
 		let error = null;
