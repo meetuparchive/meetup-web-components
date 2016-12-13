@@ -3,9 +3,9 @@ import { Link } from 'react-router';
 import cx from 'classnames';
 
 /**
- * @module Tab
+ * @module TabsTab
  */
-class Tab extends React.Component {
+class TabsTab extends React.Component {
 	render() {
 		const {
 			url,
@@ -22,9 +22,10 @@ class Tab extends React.Component {
 		return(
 			<li
 				className={classNames}
-				{...other}
-			>
-				<Link to={url}>
+				{...other}>
+				<Link
+					role="menuitem"
+					to={url}>
 					{name}
 				</Link>
 			</li>
@@ -60,7 +61,10 @@ class Tabs extends React.Component {
 			<div>
 				<p className='debug'>{location.pathname}</p>
 				<nav className={tabContainerClassNames}>
-					<ul className={tabListClassNames} {...other}>
+					<ul
+						role="menu"
+						className={tabListClassNames}
+						{...other}>
 						{tabList.map((tab,i)=>{
 							const isCurrent = this.context.router.isActive(tab.url, true);
 							return (
