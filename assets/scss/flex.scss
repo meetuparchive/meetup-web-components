@@ -154,25 +154,6 @@ Class                            | Description
 `.flex--columnReverse`           | reverses column order
 `.atMedium_flex--columnReverse`  | reverses column order for medium breakpoint and up
 `.atLarge_flex--columnReverse`   | reverses column order for large breakpoint and up
-
-Content justification variants are also available (see also: <a class="link" target="_blank" href="https://css-tricks.com/almanac/properties/j/justify-content/">css tricks flexbox demo</a>)
-Using this signature: `.at[Breakpoint]_flex--[justification]`
-
-Class                   | Variants
------------------------ | -------------------------------
-`.flex--flexEnd`        | justifies content to `flex-end`
-`.flex--center`         | justifies content to `center`
-`.flex--spaceBetween`   | justifies content to `spaceBetween`
-`.flex--spaceAround`    | justifies content to `spaceAround`
-
-Alignment variants are also available using `align-items` (see also: <a class="link" target="_blank" href="https://css-tricks.com/almanac/properties/a/align-items/">css tricks flexbox demo</a>)
-
-Class                   | Variants
------------------------ | -------------------------------
-`flex--alignTop`        | aligns content to `flex-start`
-`flex--alignBottom`     | aligns content to `flex-end`
-`flex--alignCenter`     | aligns content to `center`
-
 */
 
 .flex--noGutters > .flex-item {
@@ -212,6 +193,17 @@ Class                   | Variants
 
 }
 
+/*
+Content justification variants are also available (see also: <a class="link" target="_blank" href="https://css-tricks.com/almanac/properties/j/justify-content/">css tricks flexbox demo</a>)
+Using this signature: `.at[Breakpoint]_flex--[justification]`
+
+Class                   | Variants
+----------------------- | -------------------------------
+`.flex--flexEnd`        | justifies content to `flex-end`
+`.flex--center`         | justifies content to `center`
+`.flex--spaceBetween`   | justifies content to `spaceBetween`
+`.flex--spaceAround`    | justifies content to `spaceAround`
+*/
 @each $jName, $jprop in $flexJustifyMap {
 
 	.flex--#{$jName} {
@@ -220,6 +212,15 @@ Class                   | Variants
 
 }
 
+/*
+Alignment variants are also available using `align-items` (see also: <a class="link" target="_blank" href="https://css-tricks.com/almanac/properties/a/align-items/">css tricks flexbox demo</a>)
+
+Class                   | Variants
+----------------------- | -------------------------------
+`flex--alignTop`        | aligns content to `flex-start`
+`flex--alignBottom`     | aligns content to `flex-end`
+`flex--alignCenter`     | aligns content to `center`
+*/
 @each $aName, $aprop in $flexAlignMap {
 
 	.flex--align#{str-firstCharToUpper($aName))} {

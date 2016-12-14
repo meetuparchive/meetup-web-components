@@ -1,6 +1,7 @@
 
 import React from 'react';
-import {Flex, FlexItem} from './Flex';
+import Flex from './Flex';
+import FlexItem from './FlexItem';
 import { storiesOf } from '@kadira/storybook';
 import { Annotate } from './utils/storyComponents';
 
@@ -141,7 +142,7 @@ storiesOf('Flex', module)
 			</Flex>
 	))
 	.add('Row reverse', () => (
-		<Flex rowReverse style={flexParentStyles}>
+		<Flex rowReverse='atAll' style={flexParentStyles}>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
@@ -168,7 +169,7 @@ storiesOf('Flex', module)
 		</Flex>
 	))
 	.add('Column reverse', () => (
-		<Flex direction='column' columnReverse style={flexParentStyles}>
+		<Flex direction='column' columnReverse='atAll' style={flexParentStyles}>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
@@ -211,51 +212,4 @@ storiesOf('Flex', module)
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
 		</Flex>
-	))
-	.add('Flex Item grow (default)', () => (
-		<Flex style={flexParentStyles}>
-			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
-			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-		</Flex>
-	))
-	.add('Flex Item shrink', () => (
-		<Flex style={flexParentStyles}>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-		</Flex>
-	))
-	.add('Flex Item growFactors', () => (
-		<div style={{height: '100vh', width: '100%'}}>
-			<Flex style={flexParentStyles}>
-				<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-				<FlexItem growFactor={7} style={flexItemStyles}><div style={boxStyles}>7</div></FlexItem>
-			</Flex>
-			<Flex style={flexParentStyles}>
-				<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-				<FlexItem growFactor={6} style={flexItemStyles}><div style={boxStyles}>6</div></FlexItem>
-			</Flex>
-			<Flex style={flexParentStyles}>
-				<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-				<FlexItem growFactor={5} style={flexItemStyles}><div style={boxStyles}>5</div></FlexItem>
-			</Flex>
-			<Flex style={flexParentStyles}>
-				<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-				<FlexItem growFactor={4} style={flexItemStyles}><div style={boxStyles}>4</div></FlexItem>
-			</Flex>
-			<Flex style={flexParentStyles}>
-				<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-				<FlexItem growFactor={3} style={flexItemStyles}><div style={boxStyles}>3</div></FlexItem>
-			</Flex>
-			<Flex style={flexParentStyles}>
-				<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-				<FlexItem growFactor={2} style={flexItemStyles}><div style={boxStyles}>2</div></FlexItem>
-			</Flex>
-			<Flex style={flexParentStyles}>
-				<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-				<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-			</Flex>
-		</div>
-	))
-	;
+	));
