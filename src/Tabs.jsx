@@ -41,7 +41,6 @@ class Tabs extends React.Component {
 		const {
 			className,
 			tabList,
-			activeTab,
 			bordered,
 			...other
 		} = this.props;
@@ -88,7 +87,7 @@ Tabs.contextTypes = {
 
 
 Tabs.contextTypes = {
-    router: React.PropTypes.func.isRequired
+	router: React.PropTypes.func.isRequired
 };
 
 

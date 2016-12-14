@@ -27,6 +27,8 @@ class Flex extends React.Component {
 			...other
 		} = this.props;
 
+		const alignCapitalized = align == undefined ? null : align.charAt(0).toUpperCase() + align.slice(1);
+
 		const classNames = cx(
 			'flex',
 			{
@@ -42,8 +44,10 @@ class Flex extends React.Component {
 				'flex--wrap': wrap,
 				'flex--noGutters': noGutters,
 				[`flex--${justify}`]: typeof justify === 'string',
-				[`flex--align-${align}`]: typeof align === 'string',
+				[`flex--align${alignCapitalized}`]: typeof align === 'string',
+				'atSmall_flex--rowReverse': typeof rowReverse === 'boolean',
 				[`${rowReverse}_flex--rowReverse`]: typeof rowReverse === 'string',
+				'atSmall_flex--columnReverse': typeof columnReverse === 'boolean',
 				[`${columnReverse}_flex--columnReverse`]: typeof columnReverse === 'string',
 			}, className);
 
@@ -76,20 +80,63 @@ Flex.propTypes = {
 		'column'
 	]),
 	switchDirection: React.PropTypes.oneOf([
-		'atAll',
+		'atSmall',
 		'atMedium',
 		'atLarge'
 	]),
-	columnReverse: React.PropTypes.oneOf([
-		'atAll',
-		'atMedium',
-		'atLarge'
+	columnReverse: React.PropTypes.oneOfType([
+		React.PropTypes.bool,
+		React.PropTypes.oneOf([
+			'atSmall',
+			'atMedium',
+			'atLarge'
+		])
 	]),
-	rowReverse: React.PropTypes.oneOf([
-		'atAll',
-		'atMedium',
-		'atLarge'
+	rowReverse: React.PropTypes.oneOfType([
+		React.PropTypes.bool,
+		React.PropTypes.oneOf([
+			'atSmall',
+			'atMedium',
+			'atLarge'
+		])
 	])
 };
 
-export default Flex;
+/**
+ * @module FlexItem
+ */
+class FlexItem extends React.Component {
+	render() {
+		const {
+			children,
+			className,
+			shrink,
+			growFactor,
+			...other
+		} = this.props;
+
+		const classNames = cx(
+			'flex-item',
+			{
+				'flex-item--shrink': shrink,
+				[`flex-item--${growFactor}`] : typeof growFactor === 'number',
+			},
+			className
+		);
+
+		return (
+			<div
+				className={classNames}
+				{...other}>
+					{children}
+			</div>
+		);
+	}
+}
+
+FlexItem.propTypes = {
+	shrink: React.PropTypes.bool,
+	growFactor: React.PropTypes.oneOf([1,2,3,4,5,6,7])
+};
+
+module.exports = { Flex, FlexItem };

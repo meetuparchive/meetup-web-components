@@ -95,6 +95,7 @@ Breakpoints        | Direction       | Description
 
 @include _bpModifierFixed(flex, row) {
 	@include flexParent('row', false);
+	height: auto;
 
 	> .flex-item {
 		@include responsiveBase() {
