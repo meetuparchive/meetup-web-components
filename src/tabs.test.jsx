@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { IntlProvider } from 'react-intl';
-import Tabs from './Tabs';
+import { Tabs, TabsTab } from './Tabs';
 
 describe('Tabs', function() {
 	const tabs = TestUtils.renderIntoDocument(
-		<Tabs>
+		<Tabs
+			bordered={true}
+			full={true} >
 			<TabsTab
 				isActive={true}
 				url='/foo'
@@ -19,10 +21,27 @@ describe('Tabs', function() {
 				label='Third Tab' />
 		</Tabs>
 	);
+	const tabsNode = ReactDOM.findDOMNode(tabs);
 
 	it('exists', function() {
-		const tabsNode = ReactDOM.findDOMNode(tabs);
 		expect(tabsNode).not.toBeNull();
+	});
+
+	it('applies selected tab class correctly', function() {
+		const selectedTabNodes = TestUtils.scryRenderedDOMComponentsWithClass(tabs, 'tabs-tab--selected');
+		const firstTabClass = selectedTabNodes[0].getAttribute('class');
+
+		expect(selectedTabNodes.length).toBe(1);
+		expect(firstTabClass.indexOf('tabs-tab--selected') > -1).toBe(true);
+	});
+
+	it('applies variant classes correctly', function() {
+		const tabsClass = tabsNode.getAttribute('class');
+		const hasFullWidthClass = tabsClass.indexOf('tabs--full') > -1;
+		const hasBorderedClass = tabsClass.indexOf('tabs--bordered') > -1;
+
+		expect(hasFullWidthClass).toBe(true);
+		expect(hasBorderedClass).toBe(true);
 	});
 
 });

@@ -75,8 +75,8 @@ Tabs.propTypes = {
 		const prop = props[propName];
 		let error = null;
 		React.Children.forEach(prop, child => {
-			if (componentName !== 'TabsTab') {
-				error = new Error(`Tabs: Expected child of type "TabsTab"; received "${componentName}"`);
+			if (child.type !== TabsTab) {
+				error = new Error(`Tabs: Expected child of type "TabsTab"; received "${child.type.displayName}"`);
 			}
 		});
 		return error;
