@@ -2,11 +2,9 @@ import React from 'react';
 import cx from 'classnames';
 
 /**
- * Site-wide header component using SQ2 styles
- * @see {@link http://meetup.github.io/sassquatch2/}
- * @module Header
+ * @module SectionTitle
  */
-class Header extends React.Component {
+class SectionTitle extends React.Component {
 	render() {
 		const {
 			children,
@@ -14,22 +12,23 @@ class Header extends React.Component {
 			...other
 		} = this.props;
 
-
 		const classNames = cx(
-			'header',
+			'sectionTitle',
+			'text--display2',
 			className
 		);
 
 		return (
-			<header
+			<h2
 				className={classNames}
-				role='banner'
-				aria-label='Site header'
 				{...other}>
 					{children}
-			</header>
+			</h2>
 		);
 	}
 }
 
-export default Header;
+SectionTitle.propTypes = {
+};
+
+export default SectionTitle;

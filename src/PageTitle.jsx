@@ -1,38 +1,42 @@
 import React from 'react';
 import cx from 'classnames';
 import {
-	// Chunk,
+	Chunk,
 	// Flex,
 	FlexItem,
 	// Section,
 } from './layoutUtils';
 /**
- * Navigation item component using SQ2 styles
- * @see {@link http://meetup.github.io/sassquatch2/}
- * @module NavItem
+ * @module PageTitle
  */
-class NavItem extends React.Component {
+class PageTitle extends React.Component {
 	render() {
 		const {
-			className,
 			children,
+			className,
+			title,
 			...other
 		} = this.props;
 
 		const classNames = cx(
-			'align--center',
+			'pageTitle',
 			className
 		);
 
 		return (
 			<FlexItem
-				shrink
 				className={classNames}
 				{...other}>
+				<Chunk className='align--center atMedium_align--left'>
+					<h1 className='text--display1'>{title}</h1>
 					{children}
+				</Chunk>
 			</FlexItem>
 		);
 	}
 }
 
-export default NavItem;
+PageTitle.propTypes = {
+};
+
+export default PageTitle;

@@ -1,0 +1,25 @@
+.overlayShim{
+	position: fixed;
+}
+@include atMediaUp(large) {
+	.media-content {
+		min-height: calc(100vh - #{$view-head-height}); // prevent photo modal from scrolling
+	}
+}
+@include atMediaUpFixed(medium) {
+	.view--modalSnap .bounds{
+		padding-left: map-get($breakpointBaseMap, 'medium');
+		padding-right: map-get($breakpointBaseMap, 'medium');
+	}
+}
+@include atMediaUpFixed(large) {
+	.view--modalSnap .bounds{
+		padding-left: map-get($breakpointBaseMap, 'large');
+		padding-right: map-get($breakpointBaseMap, 'large');
+	}
+}
+
+.modal-close {
+	box-sizing: border-box;
+	height: $view-head-height;
+}

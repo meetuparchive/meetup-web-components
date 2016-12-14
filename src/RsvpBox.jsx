@@ -18,20 +18,15 @@ class RsvpBox extends React.Component {
 			event,
 			onRsvpClick,
 			className,
-			style,
 			narrow,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'rsvpbox',
-			'column',
 			'text--caption',
 			className
 		);
-		const baseStyle = {
-			height: '100px',
-		};
 
 		// configure rsvp open/close info
 		let rsvpTimeLimitMessage, rsvpTimeLimitTime;
@@ -57,7 +52,7 @@ class RsvpBox extends React.Component {
 			rsvpTimeLimitTime = openDate;
 		}
 		const rsvpTimeLimit = rsvpTimeLimitMessage && !narrow ? (
-			<div className={cx('column-item column')} style={{ justifyContent: 'flex-end' }}>
+			<div style={{ justifyContent: 'flex-end' }}>
 				<p className='event-timeLimit'>
 					{rsvpTimeLimitMessage}<br />
 					<FormattedDate
@@ -77,51 +72,55 @@ class RsvpBox extends React.Component {
 
 		// Configure RSVP status button
 		const rsvpButtonProps = {
-			style: { width: '120px' },
 			disabled: (
-				(event.rsvp_rules || {}).closed ||
-				((event.self || {}).actions || []).indexOf('rsvp') === -1
+				(event.rsvp_rules || {}).closed
+				// ((event.self || {}).actions || []).indexOf('rsvp') === -1
 			),
 		};
 		if (event.status === 'upcoming' /* && event.self.actions.indexOf('rsvp') !== -1 */) {
 			Object.assign(rsvpButtonProps, {
-				children: 'RSVP',
+				children: '+',
+				text: 'RSVP',
 				className: 'rsvpButton--rsvp',
 			});
 			const spotsLeft = event.rsvp_limit - event.yes_rsvp_count;
 			if (spotsLeft < 1) {
 				Object.assign(rsvpButtonProps, {
-					children: 'Waitlist',
+					children: '+',
+					text: 'Waitlist',
 					className: 'rsvpButton--waitlist',
 				});
 			}
 		}
-		const rsvpResponse = (event.self.rsvp || {}).response;
+		const rsvpResponse = event.self === undefined ? null : (event.self.rsvp || {}).response;
 		if (rsvpResponse === 'yes') {
 			Object.assign(rsvpButtonProps, {
-				children: 'I\'m going',
+				children: '✔',
 				icon: '✔',
+				text: 'I\'m going',
 				className: 'rsvpButton--going',
 			});
 		}
 		if (rsvpResponse === 'no') {
 			Object.assign(rsvpButtonProps, {
-				children: 'Not going',
+				children: '✘',
 				icon: '✘',
+				text: 'Not going',
 				className: 'rsvpButton--notGoing',
 			});
 		}
 		if (rsvpResponse === 'waitlist') {
 			Object.assign(rsvpButtonProps, {
-				children: 'Waitlist',
+				children: '⏸',
 				icon: '⏸',
+				text: 'Waitlist',
 				contrast: true,
 				className: 'rsvpButton--waitlisted',
 			});
 		}
 		const rsvpButton = rsvpButtonProps.children ? (
-			<div className='column-item column-item--shrink'>
-				{ narrow ? rsvpButtonProps.icon : (
+			<div>
+				{/* narrow ? rsvpButtonProps.icon : (
 					<Button
 						{ ...rsvpButtonProps }
 						className={cx('rsvpButton', rsvpButtonProps.className)}
@@ -129,7 +128,13 @@ class RsvpBox extends React.Component {
 						fullWidth
 						small
 					/>
-				)}
+				)*/}
+				<Button
+					{ ...rsvpButtonProps }
+					className={cx('rsvpButton', { 'display--none': rsvpButtonProps.disabled }, rsvpButtonProps.className)}
+					onClick={onRsvpClick}
+					small
+				/>
 			</div>
 		) : null;
 
@@ -137,7 +142,7 @@ class RsvpBox extends React.Component {
 		const rsvpFeeMessage = event.fee ?
 			`${event.fee.currency}${event.fee.amount} ${event.fee.description}` : null;
 		const rsvpFeeItem = rsvpFeeMessage && !narrow ? (
-			<span className='event-fee column-item column-item--grow text--caption'>
+			<span className='event-fee text--caption'>
 				{rsvpFeeMessage}
 			</span>
 		) : null;
@@ -145,10 +150,9 @@ class RsvpBox extends React.Component {
 		return (
 			<div
 				className={classNames}
-				style={{ ...baseStyle, ...(style || {}) }}
 				{...other}>
 				{rsvpButton}
-				{rsvpFeeItem}
+				{/* rsvpFeeItem */ }
 				{rsvpTimeLimit}
 			</div>
 		);

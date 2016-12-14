@@ -2,11 +2,9 @@ import React from 'react';
 import cx from 'classnames';
 
 /**
- * Site-wide header component using SQ2 styles
- * @see {@link http://meetup.github.io/sassquatch2/}
- * @module Header
+ * @module GridListItem
  */
-class Header extends React.Component {
+class GridListItem extends React.Component {
 	render() {
 		const {
 			children,
@@ -14,22 +12,22 @@ class Header extends React.Component {
 			...other
 		} = this.props;
 
-
 		const classNames = cx(
-			'header',
+			'gridList-item',
 			className
 		);
 
 		return (
-			<header
+			<li
 				className={classNames}
-				role='banner'
-				aria-label='Site header'
 				{...other}>
 					{children}
-			</header>
+			</li>
 		);
 	}
 }
 
-export default Header;
+GridListItem.propTypes = {
+};
+
+export default GridListItem;

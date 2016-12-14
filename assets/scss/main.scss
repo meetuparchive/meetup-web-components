@@ -5,5 +5,17 @@
 // `src/assets/scss/` as sass partials
 //
 @import "~sassquatch2/sass/sassquatch.scss";
+@import "util.scss";
 
-// [import partials here]
+// layout components
+@import "bounds.scss";
+@import "chunk.scss";
+@import "flex.scss";
+@import "gridList.scss";
+@import "pageHead.scss";
+@import "section.scss";
+@import "stripe.scss";
+
+// other components
+@import "modal.scss";
+@import "pageHead.scss";

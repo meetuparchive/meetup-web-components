@@ -24,6 +24,9 @@ class AvatarMember extends React.Component {
 			},
 			className);
 
+		if(!member)
+			return null;
+
 		return (
 			<Avatar
 				alt={member.name}

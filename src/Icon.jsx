@@ -25,10 +25,15 @@ class Icon extends React.Component {
 	render() {
 		const {
 			className,
-			shape,
+			// shape,
 			size,
 			...other
 		} = this.props;
+
+		// remove when icons are working again
+		const shape = 'bus';
+		const tempdim = '90';
+		const dim = MEDIA_SIZES[size];
 
 		const classNames = cx(
 			ICON_CLASS,
@@ -36,7 +41,7 @@ class Icon extends React.Component {
 			className
 		);
 
-		const dim = MEDIA_SIZES[size];
+
 
 		return (
 			<span className={classNames}>
@@ -44,7 +49,7 @@ class Icon extends React.Component {
 					preserveAspectRatio='xMinYMin meet'
 					width={dim}
 					height={dim}
-					viewBox={`0 0 ${dim} ${dim}`}
+					viewBox={`0 0 ${tempdim} ${tempdim}`}
 					className='svg-icon valign--middle'
 					role='img'
 					{...other}>

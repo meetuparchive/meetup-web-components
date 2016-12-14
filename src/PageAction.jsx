@@ -1,12 +1,16 @@
 import React from 'react';
 import cx from 'classnames';
+import {
+	// Chunk,
+	// Flex,
+	FlexItem,
+	// Section,
+} from './layoutUtils';
 
 /**
- * Site-wide header component using SQ2 styles
- * @see {@link http://meetup.github.io/sassquatch2/}
- * @module Header
+ * @module PageAction
  */
-class Header extends React.Component {
+class PageAction extends React.Component {
 	render() {
 		const {
 			children,
@@ -16,20 +20,22 @@ class Header extends React.Component {
 
 
 		const classNames = cx(
-			'header',
+			'pageAction',
 			className
 		);
 
 		return (
-			<header
+			<FlexItem
 				className={classNames}
-				role='banner'
-				aria-label='Site header'
+				shrink
 				{...other}>
 					{children}
-			</header>
+			</FlexItem>
 		);
 	}
 }
 
-export default Header;
+PageAction.propTypes = {
+};
+
+export default PageAction;

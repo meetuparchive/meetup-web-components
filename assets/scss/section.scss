@@ -1,0 +1,5 @@
+@include responsiveBase() {
+	.section {
+		padding: $base*2 $base 0;
+	}
+}
