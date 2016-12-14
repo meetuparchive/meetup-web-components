@@ -1,12 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { Annotate } from './utils/storyComponents';
-import { locale } from './utils/decorators';
+import { decorateWithLocale } from './utils/decorators';
 import Tabs from './Tabs';
 import TabsTab from './TabsTab';
 
 storiesOf('Tabs', module)
-	.addDecorator(locale)
+	.addDecorator(decorateWithLocale)
 	.add('default', () => {
 		return (
 			<Tabs>
