@@ -2,32 +2,43 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { IntlProvider } from 'react-intl';
-import { Tabs, TabsTab } from './Tabs';
+import Tabs from './Tabs';
+import TabsTab from './TabsTab';
 
 describe('Tabs', function() {
-	const tabs = TestUtils.renderIntoDocument(
-		<Tabs
-			bordered={true}
-			full={true} >
-			<TabsTab
-				isActive={true}
-				url='/foo'
-				label='First Tab' />
-			<TabsTab
-				url='/bar'
-				label='Second Tab' />
-			<TabsTab
-				url='/bar'
-				label='Third Tab' />
-		</Tabs>
-	);
-	const tabsNode = ReactDOM.findDOMNode(tabs);
 
 	it('exists', function() {
+		const tabs = TestUtils.renderIntoDocument(
+			<Tabs bordered full>
+				<TabsTab isActive
+					url='/foo'
+					label='First Tab' />
+				<TabsTab
+					url='/bar'
+					label='Second Tab' />
+				<TabsTab
+					url='/bar'
+					label='Third Tab' />
+			</Tabs>
+		);
+		const tabsNode = ReactDOM.findDOMNode(tabs);
 		expect(tabsNode).not.toBeNull();
 	});
 
 	it('applies selected tab class correctly', function() {
+		const tabs = TestUtils.renderIntoDocument(
+			<Tabs bordered full>
+				<TabsTab isActive
+					url='/foo'
+					label='First Tab' />
+				<TabsTab
+					url='/bar'
+					label='Second Tab' />
+				<TabsTab
+					url='/bar'
+					label='Third Tab' />
+			</Tabs>
+		);
 		const selectedTabNodes = TestUtils.scryRenderedDOMComponentsWithClass(tabs, 'tabs-tab--selected');
 		const firstTabClass = selectedTabNodes[0].getAttribute('class');
 
@@ -36,12 +47,45 @@ describe('Tabs', function() {
 	});
 
 	it('applies variant classes correctly', function() {
+		const tabs = TestUtils.renderIntoDocument(
+			<Tabs bordered full>
+				<TabsTab isActive
+					url='/foo'
+					label='First Tab' />
+				<TabsTab
+					url='/bar'
+					label='Second Tab' />
+				<TabsTab
+					url='/bar'
+					label='Third Tab' />
+			</Tabs>
+		);
+		const tabsNode = ReactDOM.findDOMNode(tabs);
 		const tabsClass = tabsNode.getAttribute('class');
-		const hasFullWidthClass = tabsClass.indexOf('tabs--full') > -1;
-		const hasBorderedClass = tabsClass.indexOf('tabs--bordered') > -1;
 
-		expect(hasFullWidthClass).toBe(true);
-		expect(hasBorderedClass).toBe(true);
+		expect(tabsClass.indexOf('tabs--full')).toBeGreaterThan(-1);
+		expect(tabsClass.indexOf('tabs--bordered')).toBeGreaterThan(-1);
+	});
+
+	it('only applies variant classes when set by props', function() {
+		const tabs = TestUtils.renderIntoDocument(
+			<Tabs>
+				<TabsTab isActive
+					url='/foo'
+					label='First Tab' />
+				<TabsTab
+					url='/bar'
+					label='Second Tab' />
+				<TabsTab
+					url='/bar'
+					label='Third Tab' />
+			</Tabs>
+		);
+		const tabsNode = ReactDOM.findDOMNode(tabs);
+		const tabsClass = tabsNode.getAttribute('class');
+
+		expect(tabsClass.indexOf('tabs--full')).toBe(-1);
+		expect(tabsClass.indexOf('tabs--bordered')).toBe(-1);
 	});
 
 });

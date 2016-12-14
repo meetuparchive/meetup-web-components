@@ -1,42 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router';
 import cx from 'classnames';
-
-/**
- * @module TabsTab
- */
-export class TabsTab extends React.Component {
-	render() {
-		const {
-			url,
-			label,
-			isActive,
-			...other
-		} = this.props;
-
-		const classNames = cx(
-			'tabs-tab align--center atMedium_align--left',
-			{'tabs-tab--selected': isActive}
-		);
-
-		return(
-			<li
-				className={classNames}
-				{...other}>
-				<Link
-					role='menuitem'
-					to={url}>
-					{label}
-				</Link>
-			</li>
-		);
-	}
-}
+import TabsTab from './TabsTab';
 
 /**
  * @module Tabs
  */
-export class Tabs extends React.Component {
+class Tabs extends React.Component {
 	render() {
 		const {
 			children,
@@ -50,10 +19,8 @@ export class Tabs extends React.Component {
 			className,
 			'tabs',
 			{
-				'tabs--bordered': bordered
-			},
-			{
-				'tabs--full': full
+				'tabs--bordered': bordered,
+				'tabs--full': full,
 			}
 		);
 
@@ -82,3 +49,5 @@ Tabs.propTypes = {
 		return error;
 	}
 };
+
+export default Tabs;

@@ -2,7 +2,8 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { Annotate } from './utils/storyComponents';
 import { locale } from './utils/decorators';
-import { Tabs, TabsTab } from './Tabs';
+import Tabs from './Tabs';
+import TabsTab from './TabsTab';
 
 storiesOf('Tabs', module)
 	.addDecorator(locale)
