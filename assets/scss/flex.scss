@@ -118,10 +118,10 @@ title: Flex Item Variants
 The following classes are optional variants.
 
 
-Class                   | Description
------------------------ | -------------------------------
-`.flex--noGutters`      | removes padding from all `.flex-item` children
-`.flex--noGutters`      | removes padding from all `.flex-item` children
+Class                       | Description
+--------------------------- | -------------------------------
+`.flex-item--shrink`        | Gives a shrink factor, shrinking item to fit content
+`.flex-item--growFactor[n]` | Sets grow factor
 */
 $flexGrowFactors: 1, 2, 3, 4, 5, 6, 7;
 @each $factor in $flexGrowFactors {
@@ -140,7 +140,8 @@ $flexGrowFactors: 1, 2, 3, 4, 5, 6, 7;
 ---
 title: Flex Variants
 ---
-The following
+The following classes are variants that can be by adding
+props to the <Flex> component
 
 Class                            | Description
 -------------------------------- | -------------------------------
