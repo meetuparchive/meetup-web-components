@@ -15,7 +15,6 @@
 	}
 }
 
-
 //
 // responsiveBase
 // lets values scale with a "base" unit for each breakpoint
@@ -40,3 +39,22 @@ $breakpointBaseMap: (
 	}
 }
 
+///
+/// BP Modifier (temporary)
+/// Uses `atMediaUpFixed` instead of `atMediaUp` to
+/// generate media-conditional modifier placeholders
+/// and classes (ie. `.atMedium_margin--none`).
+///
+@mixin _bpModifierFixed($base, $modification) {
+
+	@each $breakpoint in (small, medium, large) {
+
+		@include atMediaUpFixed($breakpoint) {
+			.at#{str-firstCharToUpper($breakpoint)}_#{$base}--#{$modification} {
+				@content;
+			}
+		}
+
+	}
+
+}
