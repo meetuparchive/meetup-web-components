@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { IntlProvider } from 'react-intl';
 import Tabs from './Tabs';
 import TabsTab from './TabsTab';
 
