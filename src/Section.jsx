@@ -9,11 +9,15 @@ class Section extends React.Component {
 		const {
 			children,
 			className,
+			bordered,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'section',
+			{
+				bordered: typeof bordered === 'boolean'
+			},
 			className
 		);
 

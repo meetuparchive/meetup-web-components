@@ -1,5 +1,123 @@
-@include responsiveBase() {
-	.stripe{
+/*doc
+---
+title: Stripe
+---
+A `.stripe` class is rendered by the `<Stripe>` component to
+visually divide the page with borders or stripes of color.
+
+To align content within a stripe, nest children in a
+`<Bounds>` component.
+
+#### Stripe variants
+A class of `.stripe` is default; the following classes are
+optional variants:
+
+Class                | Description
+-------------------- | ------------------------------------------------------------
+`.stripe--inverted`  |  rendered by the `inverted` prop, applies the standard `$C_contentBGInverted` background color
+`.stripe--collection`|  rendered by the `collection` prop, applies a light gray background; for use with card collections
+`.stripe--red`       |  applies the standard `$C_red` background color
+`.stripe--purple`    |  applies the standard `$C_purple` background color
+`.stripe--plum`      |  applies the standard `$C_plum` background color
+`.stripe--black`     |  applies the standard `$C_black` background color
+`.stripe--photoHero` |  rendered by the `backgroundImage` prop, for hero sections with a photo (see below)
+*/
+
+%stripe,
+.stripe {
+	@include standardBorder();
+	background-color: $C_contentBG;
+	margin-bottom: 0;
+	@include responsiveBase() {
 		padding-bottom: $base*2;
+	}
+}
+
+.stripe--collection {
+	@extend %stripe;
+	background-color: $C_collectionBG;
+}
+
+.stripe--inverted {
+	@extend %stripe;
+	background-color: $C_contentBGInverted;
+	border-top: 1px solid $C_borderInverted;
+}
+
+// color variants
+@each $colorName, $color in (
+	'red': $C_red,
+	'purple': $C_purple,
+	'black': $C_black,
+	'plum': $C_plum
+) {
+	.stripe--#{$colorName} {
+		background-color: $color;
+	}
+}
+
+
+/*doc
+---
+title: Hero Stripes
+---
+Special `<Stripe>` variants are avaiable for "hero" sections
+by using the boolean `isHero` prop.
+Viewport size adjustments are built-in.
+
+**Note:** _Hero stripes render a div with the classes
+`.bounds` and `.stripe-heroContent` to properly position
+content within a hero. See examples below._
+
+### Basic hero
+Uses the `isHero` prop to render the `.stripe--hero` class.
+
+### Photo hero
+Uses the `isHero` prop to render the `.stripe--hero` class,
+and sets a background image using a URL passed into the
+`backgroundImage` prop.
+
+*/
+
+%_heroStripe {
+	@extend %stripe;
+	@include display(flex); // Allows IE10-11 correctly align hero content to bottom
+	background-color: $C_accent;
+	background-size: cover;
+	background-position: center 20%;
+	background-repeat: no-repeat;
+	border-top: none;
+	overflow: hidden;
+	position: relative;
+
+	//
+	// for use with valignChildren
+	// on stripe-heroContent in IE9 and below
+	//
+	@include browser-lessThanIE( 10 ) {
+		display: table;
+		width: 100%;
+	}
+}
+
+.stripe--hero {
+	@extend %_heroStripe;
+	@include textProtectionScrim();
+}
+
+.stripe-heroContent {
+	@include valignChildren(bottom);
+	min-height: $block-5;
+	position: relative;
+	text-align: center;
+	max-width: $bounds-wide;
+	padding-top: $view-head-height;
+
+	@include atMediaUp(medium) {
+		min-height: $block-6;
+	}
+
+	@include atMediaUp(large) {
+		padding-top: $view-head-height-tablet;
 	}
 }
