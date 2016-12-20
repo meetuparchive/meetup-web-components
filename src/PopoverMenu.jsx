@@ -8,6 +8,7 @@ class PopoverMenu extends React.Component {
 
 	render() {
 		const {
+			children,
 			className,
 			handleKeyDown,
 			isActive,
@@ -15,9 +16,10 @@ class PopoverMenu extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'menu-actions',
+			'popover-container',
+			'popover-container--menu',
 			{
-				'menu-actions--active': !isActive
+				'display--none': !isActive
 			},
 			className
 		);
@@ -27,15 +29,14 @@ class PopoverMenu extends React.Component {
 				onKeyDown={handleKeyDown}
 				className={classNames}
 				{...other}>
-				<li role='menuitem' className='menu-actions-item text--red'>I'm a fucking menu item</li>
-				<li role='menuitem' className='menu-actions-item text--blue'>I'm another fucking menu item</li>
+				{children}
 			</ul>
 		);
 	}
 }
-PopoverMenu.defaultProps = {
-};
 PopoverMenu.propTypes = {
+	handleKeyDown: React.PropTypes.func.isRequired,
+	isActive: React.PropTypes.bool.isRequired,
 };
 
 export default PopoverMenu;

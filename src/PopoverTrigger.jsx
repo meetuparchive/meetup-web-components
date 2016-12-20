@@ -12,11 +12,15 @@ class PopoverTrigger extends React.Component {
 			className,
 			handleClick,
 			handleKeyDown,
+			isActive,
 			...other
 		} = this.props;
 
 		const classNames = cx(
-			'menu-toggle',
+			'popover-trigger',
+			{
+				poop: isActive
+			},
 			className
 		);
 
@@ -32,9 +36,10 @@ class PopoverTrigger extends React.Component {
 		);
 	}
 }
-PopoverTrigger.defaultProps = {
-};
 PopoverTrigger.propTypes = {
+	handleClick: React.PropTypes.func.isRequired,
+	handleKeyDown: React.PropTypes.func.isRequired,
+	isActive: React.PropTypes.bool.isRequired,
 };
 
 export default PopoverTrigger;

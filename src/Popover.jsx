@@ -71,7 +71,7 @@ class Popover extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'menu',
+			'popover',
 			className
 		);
 
@@ -86,9 +86,5 @@ class Popover extends React.Component {
 		);
 	}
 }
-Popover.defaultProps = {
-};
-Popover.propTypes = {
-};
 
 export default Popover;

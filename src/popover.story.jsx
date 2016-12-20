@@ -4,13 +4,18 @@ import { storiesOf } from '@kadira/storybook';
 import Popover from './Popover';
 import PopoverTrigger from './PopoverTrigger';
 import PopoverMenu from './PopoverMenu';
+import PopoverMenuItem from './PopoverMenuItem';
 
 storiesOf('placeholder')
 	.add('Popover, active', () => (
 		<div className='hasJS'>
 			<Popover>
 				<PopoverTrigger>Trigger</PopoverTrigger>
-				<PopoverMenu />
+				<PopoverMenu>
+					<PopoverMenuItem>One</PopoverMenuItem>
+					<PopoverMenuItem>Two</PopoverMenuItem>
+					<PopoverMenuItem>Three</PopoverMenuItem>
+				</PopoverMenu>
 			</Popover>
 		</div>
 	));
