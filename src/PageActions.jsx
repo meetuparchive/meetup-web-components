@@ -41,17 +41,12 @@ class PageActions extends React.Component {
 		);
 
 		return (
-			<FlexItem
-				shrink
-				className={classNames}
-				{...other}>
-					<Flex
-						direction={direction}
-						justify='spaceAround'
-						>
-						{children}
-					</Flex>
-			</FlexItem>
+			<Flex
+				direction={direction}
+				justify='spaceAround'
+				>
+				{children}
+			</Flex>
 		);
 	}
 }
