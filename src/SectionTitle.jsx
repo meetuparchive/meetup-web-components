@@ -3,11 +3,6 @@ import cx from 'classnames';
 import Chunk from './Chunk';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
-// import {
-// 	Chunk,
-// 	Flex,
-// 	FlexItem
-// } from './layoutUtils';
 
 /**
  * @module SectionTitle
