@@ -19,7 +19,7 @@ class PopoverTrigger extends React.Component {
 		const classNames = cx(
 			'popover-trigger',
 			{
-				poop: isActive
+				'popover-trigger--active': isActive
 			},
 			className
 		);
@@ -36,10 +36,5 @@ class PopoverTrigger extends React.Component {
 		);
 	}
 }
-PopoverTrigger.propTypes = {
-	handleClick: React.PropTypes.func.isRequired,
-	handleKeyDown: React.PropTypes.func.isRequired,
-	isActive: React.PropTypes.bool.isRequired,
-};
 
 export default PopoverTrigger;

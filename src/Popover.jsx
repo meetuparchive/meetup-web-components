@@ -12,6 +12,7 @@ class Popover extends React.Component {
 		super(props);
 
 		this.toggleMenu = this.toggleMenu.bind(this);
+		this.closeMenu = this.closeMenu.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 
@@ -20,6 +21,10 @@ class Popover extends React.Component {
 
 	toggleMenu() {
 		this.setState({ isActive: !this.state.isActive });
+	}
+
+	closeMenu() {
+		this.setState({ isActive: false });
 	}
 
 	handleClick(e) {
@@ -36,17 +41,18 @@ class Popover extends React.Component {
 			this.toggleMenu();
 			break;
 		case 'Escape':
-			this.setState({ isActive: false });
+			this.closeMenu();
 			break;
 		}
 	}
 
 	renderTrigger() {
 		const { handleKeyDown, handleClick } = this;
+		const isActive = this.state.isActive;
 		let trigger;
 		React.Children.forEach(this.props.children, function(child) {
 			if (child.type === PopoverTrigger) {
-				trigger = React.cloneElement(child, { handleKeyDown, handleClick });
+				trigger = React.cloneElement(child, { handleKeyDown, handleClick, isActive });
 			}
 		});
 		return trigger;
@@ -79,6 +85,7 @@ class Popover extends React.Component {
 			<div
 				className={classNames}
 				aria-haspopup='true'
+				onBlur={this.closeMenu}
 				{...other}>
 				{this.renderTrigger()}
 				{this.renderMenu()}

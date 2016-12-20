@@ -34,9 +34,5 @@ class PopoverMenu extends React.Component {
 		);
 	}
 }
-PopoverMenu.propTypes = {
-	handleKeyDown: React.PropTypes.func.isRequired,
-	isActive: React.PropTypes.bool.isRequired,
-};
 
 export default PopoverMenu;
