@@ -1,16 +1,18 @@
 import React from 'react';
+import { findDOMNode } from 'react-dom';
 import cx from 'classnames';
+import PopoverMenuItem from './PopoverMenuItem';
 
 /**
  * @module PopoverMenu
  */
 class PopoverMenu extends React.Component {
-	constructor() {
+	constructor(props) {
 		super(props);
 
 		this.selectedIndex = 0;
-		this.handleKeys = this.handleKeys.bind(this);
-		this.updateFocusIndexBy = this.updateFocusIndexBy.bind(this);
+		this.updateFocusBy = this.updateFocusBy.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this);
 	}
 
 	updateFocusBy(delta) {
@@ -27,7 +29,7 @@ class PopoverMenu extends React.Component {
 		menuItems[targetIndex].focus();
 	}
 
-	handleKeyDown(e) {
+	handleKeyUp(e) {
 		switch(e.key) {
 		case 'ArrowDown':
 			this.updateFocusBy(1);
@@ -38,9 +40,26 @@ class PopoverMenu extends React.Component {
 		}
 	}
 
+	componentDidUpdate() {
+		if (this.props.isActive) {
+			const menuItems = findDOMNode(this).querySelectorAll('.popover-option');
+			menuItems[this.selectedIndex].focus();
+		}
+	}
+
+	renderMenuItems() {
+		const { handleKeyUp } = this;
+		let menuItems;
+		React.Children.forEach(this.props.children, function(child) {
+			if (child.type == PopoverMenuItem) {
+				menuItems.push(React.cloneElement(child, { handleKeyUp }));
+			}
+		});
+		return menuItems;
+	}
+
 	render() {
 		const {
-			children,
 			className,
 			handleKeyDown,
 			isActive,
@@ -61,7 +80,7 @@ class PopoverMenu extends React.Component {
 				onKeyDown={handleKeyDown}
 				className={classNames}
 				{...other}>
-				{children}
+				{this.renderMenuItems()}
 			</ul>
 		);
 	}

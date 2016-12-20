@@ -10,6 +10,7 @@ class PopoverMenuItem extends React.Component {
 		const {
 			children,
 			className,
+			handleKeyUp,
 			...other
 		} = this.props;
 
@@ -21,6 +22,7 @@ class PopoverMenuItem extends React.Component {
 		return (
 			<li
 				role='menuItem'
+				onKeyUp={handleKeyUp}
 				className={classNames}
 				{...other}>
 				{children}

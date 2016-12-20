@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-
 import PopoverTrigger from './PopoverTrigger';
 import PopoverMenu from './PopoverMenu';
 
