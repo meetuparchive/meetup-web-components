@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import Icon from './Icon';
 
 /**
@@ -11,6 +11,17 @@ class Modal extends React.Component {
 	constructor(props){
 		super(props);
 		this._handleOutClick = this._handleOutClick.bind(this);
+
+		this.onDismiss = this.onDismiss.bind(this);
+	}
+
+	onDismiss(e) {
+		e.stopPropagation();
+
+		if (this.props.onDismiss) {
+			this.props.onDismiss(e);
+		}
+		console.log('onDismiss - here for testing');
 	}
 
 	_handleOutClick(event){
@@ -24,11 +35,12 @@ class Modal extends React.Component {
 	render() {
 		const {
 			className,
-			closeUrl,
 			children,
 			fullscreen,
 			...other
 		} = this.props;
+
+		delete other.onDismiss;
 
 		const classNames = cx(
 			className,
@@ -49,16 +61,14 @@ class Modal extends React.Component {
 				className={classNames}
 				{...other}>
 
-				<div className='overlayShim' onClick={this._handleOutClick}>
+				<div className='overlayShim' onClick={this.onDismiss}>
 					<div className='overlayShim-content inverted'>
 					</div>
 				</div>
 
 				<div className={modalClasses} >
 					<div className='modal-close'>
-						<Link to={closeUrl}>
-							<Icon shape='close' size='s' />
-						</Link>
+						<Icon shape='close' size='s' />
 					</div>
 
 					{children}
