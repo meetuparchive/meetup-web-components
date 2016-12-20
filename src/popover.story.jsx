@@ -1,20 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
-import Button from './Button';
+import Popover from './Popover';
+import PopoverTrigger from './PopoverTrigger';
+import PopoverMenu from './PopoverMenu';
 
 storiesOf('placeholder')
-	.add('Simple', () => (
-		<Button onClick={action('clicked')}>Button Label</Button>
-	))
 	.add('Popover, active', () => (
-		<Popover isActive>
-			<PopoverTrigger>Trigger</PopoverTrigger>
-			<PopoverMenu>
-				<PopoverMenuOption>Option one</PopoverMenuOption>
-				<PopoverMenuOption>Option two</PopoverMenuOption>
-				<PopoverMenuOption>Option three</PopoverMenuOption>
-			</PopoverMenu>
-		</Popover>
+		<div className='hasJS'>
+			<Popover>
+				<PopoverTrigger>Trigger</PopoverTrigger>
+				<PopoverMenu />
+			</Popover>
+		</div>
 	));
 
