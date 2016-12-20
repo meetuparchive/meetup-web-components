@@ -1,5 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
+import Chunk from './Chunk';
+import Flex from './Flex';
+import FlexItem from './FlexItem';
+// import {
+// 	Chunk,
+// 	Flex,
+// 	FlexItem
+// } from './layoutUtils';
 
 /**
  * @module SectionTitle
@@ -9,21 +17,35 @@ class SectionTitle extends React.Component {
 		const {
 			children,
 			className,
+			title,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'sectionTitle',
-			'text--display2',
 			className
 		);
 
 		return (
-			<h2
+			<Flex
+				align='center'
 				className={classNames}
-				{...other}>
-					{children}
-			</h2>
+				{...other}
+				>
+				<FlexItem>
+					<Chunk>
+						<h2 className='text--display2'>{title}</h2>
+					</Chunk>
+				</FlexItem>
+				{children &&
+					<Chunk>
+						<FlexItem shrink
+							>
+							{children}
+						</FlexItem>
+					</Chunk>
+				}
+			</Flex>
 		);
 	}
 }

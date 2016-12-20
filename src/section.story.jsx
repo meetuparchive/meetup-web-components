@@ -23,12 +23,12 @@ storiesOf('Section', module)
 							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
 						</div>
 					</Chunk>
-					<ul class='inlineblockList'><li><a class='token token--link' href='/topics/91146/tech-talks'>Tech Talks</a></li><li><a class='token token--link' href='/topics/10209/web'>Web Technology</a></li><li><a class='token token--link' href='/topics/16216/mobile-technology'>Mobile Technology</a></li><li><a class='token token--link' href='/topics/3833/softwaredev'>Software Development</a></li><li><a class='token token--link' href='/topics/48471/computer-programming'>Computer programming</a></li><li><a class='token token--link' href='/topics/127567/ios-development'>iOS Development</a></li><li><a class='token token--link' href='/topics/20346/android-developers'>Android Development</a></li><li><a class='token token--link' href='/topics/1040/ruby'>Ruby</a></li><li><a class='token token--link' href='/topics/563/opensource'>Open Source</a></li><li><a class='token token--link' href='/topics/189/java'>Java</a></li></ul>
+					<ul className='inlineblockList'><li><a className='token token--link' href='/topics/91146/tech-talks'>Tech Talks</a></li><li><a className='token token--link' href='/topics/10209/web'>Web Technology</a></li><li><a className='token token--link' href='/topics/16216/mobile-technology'>Mobile Technology</a></li><li><a className='token token--link' href='/topics/3833/softwaredev'>Software Development</a></li><li><a className='token token--link' href='/topics/48471/computer-programming'>Computer programming</a></li><li><a className='token token--link' href='/topics/127567/ios-development'>iOS Development</a></li><li><a className='token token--link' href='/topics/20346/android-developers'>Android Development</a></li><li><a className='token token--link' href='/topics/1040/ruby'>Ruby</a></li><li><a className='token token--link' href='/topics/563/opensource'>Open Source</a></li><li><a className='token token--link' href='/topics/189/java'>Java</a></li></ul>
 				</Section>
 
 				<Section style={shadingStyles}>
 					<h2 className='text--display2'>Organized by</h2>
-					<ul class='inlineblockList inlineblockList--bulleted'>
+					<ul className='inlineblockList inlineblockList--bulleted'>
 						<li>Ana</li>
 						<li>Maria</li>
 						<li>Helen Ford</li>
