@@ -2,16 +2,11 @@ import React from 'react';
 import cx from 'classnames';
 import { Link } from 'react-router';
 import Icon from './Icon';
+
 /**
  * @module Modal
  */
 class Modal extends React.Component {
-
-	static get contextTypes() {
-		return {
-			router: React.PropTypes.object,
-		};
-	}
 
 	constructor(props){
 		super(props);
@@ -23,53 +18,59 @@ class Modal extends React.Component {
 		// TODO:
 		// detect if this should actually jump back in history instead of pushing forward
 		// click should drop you to the underlying layer, but that's not always where you came from
-		this.context.router.push(this.props.closeUrl);
+		// this.context.router.push(this.props.closeUrl);
 	}
 
 	render() {
 		const {
-			children,
 			className,
-			fullScreen,
+			closeUrl,
+			children,
+			fullscreen,
 			...other
 		} = this.props;
 
 		const classNames = cx(
-			'modal',
-			className
+			className,
+			'modal'
+		);
+
+		const modalClasses = cx(
+			'view',
+			'padding--all',
+			{
+				'view--modalFull': fullscreen,
+				'view--modalSnap': !fullscreen
+			}
 		);
 
 		return (
 			<div
 				className={classNames}
 				{...other}>
+
 				<div className='overlayShim' onClick={this._handleOutClick}>
 					<div className='overlayShim-content inverted'>
 					</div>
 				</div>
-				<div
-					className={cx(
-						'view',
-						{
-							'view--modalFull': fullScreen,
-							'view--modalSnap': !fullScreen
-						}
-					)}
-				>
-					<div className='modal-close padding--all'>
-						<Link to={this.props.closeUrl}>
+
+				<div className={modalClasses} >
+					<div className='modal-close'>
+						<Link to={closeUrl}>
 							<Icon shape='close' size='s' />
 						</Link>
 					</div>
+
 					{children}
 				</div>
+
 			</div>
 		);
 	}
 }
 
 Modal.propTypes = {
-	full: React.PropTypes.bool
+	fullscreen: React.PropTypes.bool
 };
 
 export default Modal;
