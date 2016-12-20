@@ -33,10 +33,6 @@ class Popover extends React.Component {
 
 	handleKeyDown(e) {
 		switch(e.key) {
-		case 'ArrowDown':
-			break;
-		case 'ArrowUp':
-			break;
 		case 'Enter':
 			this.toggleMenu();
 			break;
