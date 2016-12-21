@@ -3,6 +3,8 @@ import cx from 'classnames';
 import Icon from './Icon';
 import Button from './Button';
 
+export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
+
 /**
  * SQ2 Modal component
  * @see {@link http://meetup.github.io/sassquatch2/views.html#modals}
@@ -53,6 +55,11 @@ class Modal extends React.Component {
 			}
 		);
 
+		const dismissButtonClasses = cx(
+			MODAL_CLOSE_BUTTON,
+			'border--none'
+		);
+
 		return (
 			<div
 				role='dialog'
@@ -67,7 +74,7 @@ class Modal extends React.Component {
 
 				<div className={modalClasses} >
 					<div className='align--right'>
-						<Button onClick={this.onDismiss} className='modal-close border--none'>
+						<Button onClick={this.onDismiss} className={dismissButtonClasses}>
 							<Icon shape='cross' size='s' />
 						</Button>
 					</div>

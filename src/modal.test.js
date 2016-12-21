@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import Modal from './Modal';
-import Icon from './Icon';
-import Button from './Button';
+import Modal, { MODAL_CLOSE_BUTTON } from './Modal';
 
 describe('Modal', () => {
 
@@ -39,18 +37,20 @@ describe('Modal', () => {
 		expect(modalEl.innerHTML).toContain(content);
 	});
 
-	it('creates a Button component for dismissal', () => {
-		const len = TestUtils.scryRenderedComponentsWithType(modal, Button).length;
-		expect(len).toBeGreaterThan(0);
+	it('creates an Icon component for dismissal', () => {
+		const icon = modalEl.getElementsByClassName('svg-icon')[0];
+
+		expect(icon).not.toBeNull();
 	});
 
-	it('creates an Icon component for dismissal', () => {
-		const len = TestUtils.scryRenderedComponentsWithType(modal, Icon).length;
-		expect(len).toBeGreaterThan(0);
+	it('creates a Button component for dismissal', () => {
+		const closeButton = modalEl.getElementsByClassName(MODAL_CLOSE_BUTTON)[0];
+
+		expect(closeButton).not.toBeNull();
 	});
 
 	it('executes onDismiss when dismiss button is clicked', () => {
-		const closeButton = modalEl.getElementsByTagName('button')[0];
+		const closeButton = modalEl.getElementsByClassName(MODAL_CLOSE_BUTTON)[0];
 
 		TestUtils.Simulate.click(closeButton);
 
