@@ -56,4 +56,10 @@ describe('Modal', () => {
 
 		expect(spyable.onDismiss).toHaveBeenCalled();
 	});
+
+	it('executes onDismiss when Escape key is pressed', () => {
+		TestUtils.Simulate.keyDown(modalEl, {key: 'Escape', keyCode: 27});
+
+		expect(spyable.onDismiss).toHaveBeenCalled();
+	});
 });
