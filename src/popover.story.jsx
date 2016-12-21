@@ -6,8 +6,8 @@ import PopoverTrigger from './PopoverTrigger';
 import PopoverMenu from './PopoverMenu';
 import PopoverMenuItem from './PopoverMenuItem';
 
-storiesOf('placeholder')
-	.add('Popover, active', () => (
+storiesOf('Popover')
+	.add('Popover', () => (
 		<div className='hasJS'>
 			<Popover>
 				<PopoverTrigger>Trigger</PopoverTrigger>
