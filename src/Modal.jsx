@@ -55,6 +55,7 @@ class Modal extends React.Component {
 
 		return (
 			<div
+				role='dialog'
 				tabIndex='0'
 				onKeyDown={this.onKeyDown}
 				className={classNames}
