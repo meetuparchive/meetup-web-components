@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Modal from './Modal';
+import Icon from './Icon';
+import Button from './Button';
 
 describe('Modal', () => {
 
-	let modalEl, spyable;
+	let modal, modalEl, spyable;
 	const content = 'Test model content';
 
 	beforeEach(() => {
@@ -15,7 +17,7 @@ describe('Modal', () => {
 
 		spyOn(spyable, 'onDismiss');
 
-		const modal = TestUtils.renderIntoDocument(
+		modal = TestUtils.renderIntoDocument(
 			<Modal onDismiss={spyable.onDismiss}>{content}</Modal>
 		);
 		modalEl = ReactDOM.findDOMNode(modal);
@@ -33,18 +35,24 @@ describe('Modal', () => {
 		expect(modalEl.classList).toContain('modal');
 	});
 
-	it('has dismiss button', () => {
-		expect(modalEl.innerHTML).toContain('button');
-	});
-
 	it('displays modal content', () => {
 		expect(modalEl.innerHTML).toContain(content);
 	});
 
-	it('executes onDismiss when dismiss button is clicked', () => {
-		const closeIcon = modalEl.getElementsByTagName('button')[0];
+	it('creates a Button component for dismissal', () => {
+		const len = TestUtils.scryRenderedComponentsWithType(modal, Button).length;
+		expect(len).toBeGreaterThan(0);
+	});
 
-		TestUtils.Simulate.click(closeIcon);
+	it('creates an Icon component for dismissal', () => {
+		const len = TestUtils.scryRenderedComponentsWithType(modal, Icon).length;
+		expect(len).toBeGreaterThan(0);
+	});
+
+	it('executes onDismiss when dismiss button is clicked', () => {
+		const closeButton = modalEl.getElementsByTagName('button')[0];
+
+		TestUtils.Simulate.click(closeButton);
 
 		expect(spyable.onDismiss).toHaveBeenCalled();
 	});
