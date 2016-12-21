@@ -1,15 +1,16 @@
 import React from 'react';
 import cx from 'classnames';
 import Icon from './Icon';
+import Button from './Button';
 
 /**
+ * SQ2 Modal component
+ * @see {@link http://meetup.github.io/sassquatch2/views.html#modals}
  * @module Modal
  */
 class Modal extends React.Component {
-
 	constructor(props){
 		super(props);
-
 		this.onDismiss = this.onDismiss.bind(this);
 	}
 
@@ -19,7 +20,6 @@ class Modal extends React.Component {
 		if (this.props.onDismiss) {
 			this.props.onDismiss(e);
 		}
-		console.log('onDismiss - here for testing');
 	}
 
 	render() {
@@ -30,7 +30,7 @@ class Modal extends React.Component {
 			...other
 		} = this.props;
 
-		delete other.onDismiss;
+		delete other.onDismiss; // onDismiss is consumed in this.onDismiss - do not pass it along to children
 
 		const classNames = cx(
 			className,
@@ -57,13 +57,14 @@ class Modal extends React.Component {
 				</div>
 
 				<div className={modalClasses} >
-					<div className='modal-close align--right'>
-						<Icon onClick={this.onDismiss} shape='cross' size='s' />
+					<div className='align--right'>
+						<Button onClick={this.onDismiss} className='modal-close border--none'>
+							<Icon shape='cross' size='s' />
+						</Button>
 					</div>
 
 					{children}
 				</div>
-
 			</div>
 		);
 	}
