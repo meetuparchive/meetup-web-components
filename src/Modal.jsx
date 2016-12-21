@@ -62,8 +62,7 @@ class Modal extends React.Component {
 				{...other}>
 
 				<div className='overlayShim' onClick={this.onDismiss}>
-					<div className='overlayShim-content inverted'>
-					</div>
+					<div className='inverted'></div>
 				</div>
 
 				<div className={modalClasses} >
@@ -81,7 +80,12 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
+	onDismiss: React.PropTypes.func.isRequired,
 	fullscreen: React.PropTypes.bool
+};
+
+Modal.defaultProps = {
+	fullscreen: false
 };
 
 export default Modal;
