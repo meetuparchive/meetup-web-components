@@ -12,6 +12,7 @@ class Modal extends React.Component {
 	constructor(props){
 		super(props);
 		this.onDismiss = this.onDismiss.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this);
 	}
 
 	onDismiss(e) {
@@ -19,6 +20,12 @@ class Modal extends React.Component {
 
 		if (this.props.onDismiss) {
 			this.props.onDismiss(e);
+		}
+	}
+
+	handleKeyDown(e) {
+		if (e.key === 'Escape') {
+			this.onDismiss(e);
 		}
 	}
 
@@ -48,6 +55,8 @@ class Modal extends React.Component {
 
 		return (
 			<div
+				tabIndex='0'
+				onKeyDown={this.handleKeyDown}
 				className={classNames}
 				{...other}>
 
