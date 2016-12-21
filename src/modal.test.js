@@ -10,7 +10,7 @@ describe('Modal', () => {
 
 	beforeEach(() => {
 		spyable = {
-			onDismiss: (e) => {console.log('HELLO');}
+			onDismiss: (e) => {}
 		};
 
 		spyOn(spyable, 'onDismiss');
