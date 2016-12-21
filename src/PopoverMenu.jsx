@@ -1,7 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import cx from 'classnames';
-import PopoverMenuItem from './PopoverMenuItem';
 
 /**
  * @module PopoverMenu
@@ -12,7 +11,7 @@ class PopoverMenu extends React.Component {
 
 		this.selectedIndex = 0;
 		this.updateFocusBy = this.updateFocusBy.bind(this);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
+		this.handleKeyUp = this.handleKeyUp.bind(this);
 	}
 
 	updateFocusBy(delta) {
@@ -42,29 +41,20 @@ class PopoverMenu extends React.Component {
 
 	componentDidUpdate() {
 		if (this.props.isActive) {
-			const menuItems = findDOMNode(this).querySelectorAll('.popover-option');
-			menuItems[this.selectedIndex].focus();
+			this.updateFocusBy(0);
 		}
-	}
-
-	renderMenuItems() {
-		const { handleKeyUp } = this;
-		let menuItems;
-		React.Children.forEach(this.props.children, function(child) {
-			if (child.type == PopoverMenuItem) {
-				menuItems.push(React.cloneElement(child, { handleKeyUp }));
-			}
-		});
-		return menuItems;
 	}
 
 	render() {
 		const {
+			children,
 			className,
 			handleKeyDown,
 			isActive,
 			...other
 		} = this.props;
+
+		const { handleKeyUp } = this;
 
 		const classNames = cx(
 			'popover-container',
@@ -80,7 +70,11 @@ class PopoverMenu extends React.Component {
 				onKeyDown={handleKeyDown}
 				className={classNames}
 				{...other}>
-				{this.renderMenuItems()}
+				{
+					React.Children.map(children, (child) => {
+						return React.cloneElement(child, { handleKeyUp });
+					})
+				}
 			</ul>
 		);
 	}

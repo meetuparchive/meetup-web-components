@@ -6,6 +6,10 @@ import cx from 'classnames';
  */
 class PopoverMenuItem extends React.Component {
 
+	handleFocus() {
+		console.warn('fucking focus', this);
+	}
+
 	render() {
 		const {
 			children,
@@ -23,6 +27,7 @@ class PopoverMenuItem extends React.Component {
 			<li
 				role='menuItem'
 				onKeyUp={handleKeyUp}
+				onFocus={this.handleFocus}
 				className={classNames}
 				{...other}>
 				{children}
