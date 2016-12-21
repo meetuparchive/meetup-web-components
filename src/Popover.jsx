@@ -80,7 +80,6 @@ class Popover extends React.Component {
 			<div
 				className={classNames}
 				aria-haspopup='true'
-				onBlur={this.closeMenu}
 				{...other}>
 				{this.renderTrigger()}
 				{this.renderMenu()}

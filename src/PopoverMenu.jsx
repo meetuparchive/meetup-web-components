@@ -22,8 +22,6 @@ class PopoverMenu extends React.Component {
 			return;
 		}
 
-		console.warn('moving selection to: ', menuItems[targetIndex]);
-
 		this.selectedIndex = targetIndex;
 		menuItems[targetIndex].focus();
 	}
