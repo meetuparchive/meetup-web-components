@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { IntlProvider } from 'react-intl'
-import GridListContainer from './GridListContainer';
+import GridList from './GridList';
 
 function intlRender(component) {
 	return TestUtils.renderIntoDocument(
@@ -12,10 +11,10 @@ function intlRender(component) {
 	);
 }
 
-describe('GridListContainer', function() {
+describe('GridList', function() {
 
 	it('exists', function() {
-		const gridList = intlRender(<GridListContainer />);
+		const gridList = intlRender(<GridList />);
 		const gridListNode = ReactDOM.findDOMNode(gridList);
 
 		expect(gridListNode).not.toBeNull();

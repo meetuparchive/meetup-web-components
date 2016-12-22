@@ -35,7 +35,7 @@ class GridList extends React.Component {
 
 GridList.propTypes = {
 	columns: React.PropTypes.shape({
-		default: React.PropTypes.number,
+		default: React.PropTypes.number.isRequired,
 		medium: React.PropTypes.number,
 		large: React.PropTypes.number
 	})

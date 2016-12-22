@@ -1,1 +1,74 @@
-// TODO
+/*doc
+---
+title: Grid List
+---
+A grid layout with breakpoint-specific configurable columns.
+Useful for collections of photos, group cards, or event cards.
+
+For a layout with a fixed number of columns, use `.flex`.
+```
+*/
+$glColumns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+
+
+.gridList {
+	margin: 0 #{-$space} 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0; // shrink whitespace inside .gridList
+}
+
+.gridList-item {
+	font-size: 1rem; // reset to normal inside each LI element
+	display: inline-block;
+	margin: 0;
+	padding: 0 $space $space 0;
+	vertical-align: top;
+	width: 50%;
+	box-sizing: border-box;
+	> a {
+		display: block;
+	}
+}
+
+/*doc
+---
+title: Grid List variants
+---
+
+By default, gridList creates a 2 column grid.
+
+The following classes are optional variants that can be
+used by adding props to the <GridList> component:
+
+Class                         | Description
+----------------------------- | ------------------------------
+`.gridList--photoGrid`        | Optimizes list item spacing for a grid of photos
+`.gridList--has[n]`           | Adjusts number of columns (ie. `.gridList--has4` creates a 4 column grid for all screen sizes)
+`.atMedium_gridList--has[n]`  | Sets number of columns for medium breakpoint and up (ie. `.atMedium_gridList--has6`)
+`.atLarge_gridList--has[n]`   | Sets number of columns for large breakpoint and up (ie. `.atLarge_gridList--has10`)
+
+*/
+.gridList--photoGrid {
+	margin: 0 #{-($space + $space-half)} 0 #{-$space};
+	padding: 0;
+	> .gridList-item {
+		padding: 0 $space-quarter $space-quarter 0;
+	}
+}
+
+// small/default
+@each $col in $glColumns {
+	.gridList--has#{$col} > .gridList-item {
+		width: percentage(1 / $col);
+	}
+}
+
+// larger breakpoints
+@each $col in $glColumns {
+	@include _bpModifier(gridList, has#{$col}) {
+		> .gridList-item {
+			width: percentage(1 / $col);
+		}
+	}
+}
