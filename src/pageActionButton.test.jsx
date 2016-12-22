@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-import PageActionButtonContainer from './PageActionButtonContainer';
+import PageActionButton from './PageActionButton';
 
 
-describe('PageActionButtonContainer', function() {
+describe('PageActionButton', function() {
 
 	it('exists', function() {
-		const pageActionButton = TestUtils.renderIntoDocument(<PageActionButtonContainer />);
+		const pageActionButton = TestUtils.renderIntoDocument(<PageActionButton />);
 		const pageActionButtonNode = ReactDOM.findDOMNode(pageActionButton);
 
 		expect(pageActionButtonNode).not.toBeNull();

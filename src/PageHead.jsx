@@ -1,34 +1,23 @@
 import React from 'react';
 import cx from 'classnames';
-import {
-	// Chunk,
-	// Flex,
-	// FlexItem,
-	Section,
-} from './layoutUtils';
+import Section from './Section';
 
 /**
  * @module PageHead
  */
 class PageHead extends React.Component {
-
 	render() {
 		const {
 			children,
 			className,
+			tabs,
 			...other
 		} = this.props;
-
-		/*
-		const checkForTabs = (element) => {
-			return element.type.name === 'Tabs';
-		};
-		*/
 
 		const classNames = cx(
 			'pageHead',
 			{
-				'flush--bottom': this.props.tabs
+				'flush--bottom': tabs
 			},
 			className
 		);
@@ -38,6 +27,7 @@ class PageHead extends React.Component {
 				className={classNames}
 				{...other}>
 					{children}
+					{tabs}
 			</Section>
 		);
 	}

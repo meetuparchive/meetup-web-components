@@ -1,11 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import {
-	// Chunk,
-	Flex,
-	FlexItem,
-	// Section,
-} from './layoutUtils';
+import Flex from './Flex';
 
 /**
  * @module PageActions
@@ -44,6 +39,8 @@ class PageActions extends React.Component {
 			<Flex
 				direction={direction}
 				justify='spaceAround'
+				{...other}
+				className={classNames}
 				>
 				{children}
 			</Flex>

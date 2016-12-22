@@ -1,11 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 import Icon from './Icon';
-import {
-	Flex,
-	FlexItem,
-	// Section,
-} from './layoutUtils';
+import Flex from './Flex';
+import FlexItem from './FlexItem';
 
 /**
  * @module PageActionButton

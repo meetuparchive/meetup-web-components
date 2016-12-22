@@ -1,1 +1,14 @@
-// TODO
+@include responsiveBase() {
+	.pageHead {
+		padding-bottom: $base*2 - $base;
+		&:before{
+			left: $base;
+			right: $base;
+		}
+	}
+
+	.pageActionButton{
+		min-height: $base*2.25*1.25; // text--display height * line-height
+		justify-content: center;
+	}
+}
