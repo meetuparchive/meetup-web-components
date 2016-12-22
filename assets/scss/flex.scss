@@ -206,7 +206,7 @@ Class                   | Variants
 */
 @each $jName, $jprop in $flexJustifyMap {
 
-	.flex--#{$jName} {
+	.justify--#{$jName} {
 		@include justify-content($jprop);
 	}
 
