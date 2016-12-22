@@ -46,8 +46,8 @@ describe('Modal', () => {
 	});
 
 	it('creates a Button component for dismissal', () => {
-		const closeButton = findComponentsWithType(modal, 'Button')[0];
-		expect(closeButton.props.className).toContain(MODAL_CLOSE_BUTTON);
+		const buttons = findComponentsWithType(modal, 'Button');
+		expect(buttons.filter(button => button.props.className.includes(MODAL_CLOSE_BUTTON)).length).toBe(1);
 	});
 
 	it('executes onDismiss when dismiss button is clicked', () => {
