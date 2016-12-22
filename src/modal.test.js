@@ -38,17 +38,18 @@ describe('Modal', () => {
 		expect(modalEl.innerHTML).toContain(content);
 	});
 
-	it('creates an Icon component for dismissal', () => {
+	it('creates a Button component for dismissal', () => {
+		const buttons = findComponentsWithType(modal, 'Button');
+		expect(buttons.filter(button => button.props.className.includes(MODAL_CLOSE_BUTTON)).length).toBe(1);
+	});
+
+	it('creates an svg icon with `svg--cross` for dismissal', () => {
 		const closeButton = modalEl.getElementsByClassName(MODAL_CLOSE_BUTTON)[0];
 		const icon = closeButton.getElementsByClassName('svg--cross');
 
 		expect(icon.length).toBe(1);
 	});
 
-	it('creates a Button component for dismissal', () => {
-		const buttons = findComponentsWithType(modal, 'Button');
-		expect(buttons.filter(button => button.props.className.includes(MODAL_CLOSE_BUTTON)).length).toBe(1);
-	});
 
 	it('executes onDismiss when dismiss button is clicked', () => {
 		const closeButton = modalEl.getElementsByClassName(MODAL_CLOSE_BUTTON)[0];
