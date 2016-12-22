@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
+import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
 import Modal, { MODAL_CLOSE_BUTTON } from './Modal';
 
 describe('Modal', () => {
@@ -38,15 +39,15 @@ describe('Modal', () => {
 	});
 
 	it('creates an Icon component for dismissal', () => {
-		const icon = modalEl.getElementsByClassName('svg-icon')[0];
+		const closeButton = modalEl.getElementsByClassName(MODAL_CLOSE_BUTTON)[0];
+		const icon = closeButton.getElementsByClassName('svg--cross');
 
-		expect(icon).not.toBeNull();
+		expect(icon.length).toBe(1);
 	});
 
 	it('creates a Button component for dismissal', () => {
-		const closeButton = modalEl.getElementsByClassName(MODAL_CLOSE_BUTTON)[0];
-
-		expect(closeButton).not.toBeNull();
+		const closeButton = findComponentsWithType(modal, 'Button')[0];
+		expect(closeButton.props.className).toContain(MODAL_CLOSE_BUTTON);
 	});
 
 	it('executes onDismiss when dismiss button is clicked', () => {
