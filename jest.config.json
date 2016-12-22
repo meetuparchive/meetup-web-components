@@ -1,7 +1,8 @@
 {
   "collectCoverageFrom": [
     "src/**/*.{js,jsx}",
-    "!**/{node_modules,lib,coverage,assets,icons}/**"
+    "!**/{node_modules,lib,coverage,assets,icons,utils}/**",
+    "!**/*.story.{js,jsx}"
   ],
   "coverageDirectory": "<rootDir>/coverage",
   "setupFiles": [
