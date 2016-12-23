@@ -21,8 +21,8 @@ class PopoverMenuItem extends React.Component {
 
 		return (
 			<li
-				role='menuItem'
-				tabIndex='0'
+				role='menuitem'
+				tabIndex='-1'
 				onKeyUp={handleKeyUp}
 				className={classNames}
 				{...other}>

@@ -14,6 +14,7 @@ class Popover extends React.Component {
 		this.closeMenu = this.closeMenu.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleClick = this.handleClick.bind(this);
+		this.handleBlur = this.handleBlur.bind(this);
 
 		this.state = { isActive: false };
 	}
@@ -24,6 +25,24 @@ class Popover extends React.Component {
 
 	closeMenu() {
 		this.setState({ isActive: false });
+	}
+
+	handleBlur() {
+		// On blur, browsers always focus `<body>` before moving focus
+		// to the next actual focused element.
+		//
+		// This zero-length timeout ensures the browser will return the
+		// actual focused element instead of `<body>`
+		window.setTimeout(() => {
+			const focusedElementClass = document.activeElement.getAttribute('class');
+
+			// don't close the popover if we're moving focus to an option
+			if (focusedElementClass && focusedElementClass.indexOf('popover-option') > -1) {
+				return;
+			}
+
+			this.closeMenu();
+		}, 0);
 	}
 
 	handleClick(e) {
@@ -42,12 +61,12 @@ class Popover extends React.Component {
 	}
 
 	renderTrigger() {
-		const { handleKeyDown, handleClick } = this;
+		const { handleKeyDown, handleClick, handleBlur } = this;
 		const isActive = this.state.isActive;
 		let trigger;
 		React.Children.forEach(this.props.children, function(child) {
 			if (child.type === PopoverTrigger) {
-				trigger = React.cloneElement(child, { handleKeyDown, handleClick, isActive });
+				trigger = React.cloneElement(child, { handleKeyDown, handleClick, handleBlur, isActive });
 			}
 		});
 		return trigger;
@@ -80,6 +99,7 @@ class Popover extends React.Component {
 			<div
 				className={classNames}
 				aria-haspopup='true'
+				onBlur={this.handleBlur}
 				{...other}>
 				{this.renderTrigger()}
 				{this.renderMenu()}

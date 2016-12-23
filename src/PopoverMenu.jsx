@@ -65,8 +65,10 @@ class PopoverMenu extends React.Component {
 
 		return (
 			<ul
+				role='menu'
 				onKeyDown={handleKeyDown}
 				className={classNames}
+				aria-hidden={!isActive}
 				{...other}>
 				{
 					React.Children.map(children, (child) => {

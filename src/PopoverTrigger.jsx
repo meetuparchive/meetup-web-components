@@ -12,6 +12,7 @@ class PopoverTrigger extends React.Component {
 			className,
 			handleClick,
 			handleKeyDown,
+			handleBlur,
 			isActive,
 			...other
 		} = this.props;
@@ -29,6 +30,7 @@ class PopoverTrigger extends React.Component {
 				onClick={handleClick}
 				onKeyDown={handleKeyDown}
 				className={classNames}
+				onBlur={handleBlur}
 				tabIndex='0'
 				{...other}>
 				{children}
