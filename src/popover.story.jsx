@@ -1,10 +1,14 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf, action } from '@kadira/storybook';
 
 import Popover from './Popover';
 import PopoverTrigger from './PopoverTrigger';
 import PopoverMenu from './PopoverMenu';
 import PopoverMenuItem from './PopoverMenuItem';
+
+const logSelection = e => {
+	action(`Selected option ${e.target}`);
+};
 
 storiesOf('Popover')
 	.add('Popover', () => (
@@ -12,9 +16,9 @@ storiesOf('Popover')
 			<Popover>
 				<PopoverTrigger>Trigger</PopoverTrigger>
 				<PopoverMenu>
-					<PopoverMenuItem>One</PopoverMenuItem>
-					<PopoverMenuItem>Two</PopoverMenuItem>
-					<PopoverMenuItem>Three</PopoverMenuItem>
+					<PopoverMenuItem onClick={logSelection}>One</PopoverMenuItem>
+					<PopoverMenuItem onClick={logSelection}>Two</PopoverMenuItem>
+					<PopoverMenuItem onClick={logSelection}>Three</PopoverMenuItem>
 				</PopoverMenu>
 			</Popover>
 		</div>

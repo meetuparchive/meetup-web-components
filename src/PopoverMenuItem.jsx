@@ -10,6 +10,7 @@ class PopoverMenuItem extends React.Component {
 		const {
 			children,
 			className,
+			onClick,
 			handleKeyUp,
 			...other
 		} = this.props;
@@ -24,6 +25,7 @@ class PopoverMenuItem extends React.Component {
 				role='menuitem'
 				tabIndex='-1'
 				onKeyUp={handleKeyUp}
+				onClick={onClick}
 				className={classNames}
 				{...other}>
 				{children}
@@ -31,5 +33,8 @@ class PopoverMenuItem extends React.Component {
 		);
 	}
 }
+PopoverMenuItem.propTypes = {
+	onClick: React.PropTypes.func
+};
 
 export default PopoverMenuItem;
