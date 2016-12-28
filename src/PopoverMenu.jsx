@@ -15,7 +15,7 @@ class PopoverMenu extends React.Component {
 	}
 
 	updateFocusBy(delta) {
-		const menuItems = findDOMNode(this).querySelectorAll('.popover-option');
+		const menuItems = findDOMNode(this).querySelectorAll('.popover-menu-item');
 		const targetIndex = this.selectedIndex + delta;
 
 		if (menuItems[targetIndex] == undefined) {

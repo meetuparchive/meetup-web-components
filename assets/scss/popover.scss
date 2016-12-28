@@ -35,7 +35,7 @@ $popoverShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C
 	width: $block-4;
 }
 
-.popover-option {
+.popover-menu-item {
 	cursor: pointer;
 	display: block;
 	padding: $space-half $space;
@@ -63,8 +63,4 @@ $popoverShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C
 
 .popover-container--horizontal-right {
 	left: 0;
-}
-
-.visibility--a11yShow { // Needed to render box-shadow until https://github.com/meetup/sassquatch2/issues/308 is resolved
-	clip: initial;
 }

@@ -17,7 +17,7 @@ class PopoverMenuItem extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'popover-option',
+			'popover-menu-item',
 			className
 		);
 
