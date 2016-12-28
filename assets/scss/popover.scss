@@ -46,7 +46,7 @@ $popoverShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C
 }
 
 .popover-container:hover {
-	.popover-option {
+	.popover-menu {
 		&:focus {
 			background: transparent;
 		}

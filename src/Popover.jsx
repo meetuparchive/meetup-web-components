@@ -37,7 +37,7 @@ class Popover extends React.Component {
 			const focusedElementClass = document.activeElement.getAttribute('class');
 
 			// don't close the popover if we're moving focus to an option
-			if (focusedElementClass && focusedElementClass.indexOf('popover-option') > -1) {
+			if (focusedElementClass && focusedElementClass.indexOf('popover-menu-item') > -1) {
 				return;
 			}
 
