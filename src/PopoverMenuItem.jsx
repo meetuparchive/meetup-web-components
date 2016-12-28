@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import cx from 'classnames';
 
 /**
@@ -9,8 +10,8 @@ class PopoverMenuItem extends React.Component {
 	render() {
 		const {
 			children,
+			url,
 			className,
-			onClick,
 			handleKeyUp,
 			...other
 		} = this.props;
@@ -21,15 +22,15 @@ class PopoverMenuItem extends React.Component {
 		);
 
 		return (
-			<li
+			<Link
 				role='menuitem'
-				tabIndex='-1'
-				onKeyUp={handleKeyUp}
-				onClick={onClick}
+				tabIndex='0'
 				className={classNames}
+				onKeyUp={handleKeyUp}
+				to={url}
 				{...other}>
 				{children}
-			</li>
+			</Link>
 		);
 	}
 }

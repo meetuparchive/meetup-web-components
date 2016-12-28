@@ -64,7 +64,7 @@ class PopoverMenu extends React.Component {
 		);
 
 		return (
-			<ul
+			<div
 				role='menu'
 				onKeyDown={handleKeyDown}
 				className={classNames}
@@ -75,7 +75,7 @@ class PopoverMenu extends React.Component {
 						return React.cloneElement(child, { handleKeyUp });
 					})
 				}
-			</ul>
+			</div>
 		);
 	}
 }
