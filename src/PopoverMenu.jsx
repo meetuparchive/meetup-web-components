@@ -1,5 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
+import bindAll from './utils/bindAll';
 import cx from 'classnames';
 
 /**
@@ -9,9 +10,12 @@ class PopoverMenu extends React.Component {
 	constructor(props) {
 		super(props);
 
+		bindAll(this,
+			'updateFocusBy',
+			'handleKeyUp'
+		);
+
 		this.selectedIndex = 0;
-		this.updateFocusBy = this.updateFocusBy.bind(this);
-		this.handleKeyUp = this.handleKeyUp.bind(this);
 	}
 
 	updateFocusBy(delta) {

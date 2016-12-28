@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import bindAll from './utils/bindAll';
 import PopoverTrigger from './PopoverTrigger';
 import PopoverMenu from './PopoverMenu';
 
@@ -10,11 +11,13 @@ class Popover extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.toggleMenu = this.toggleMenu.bind(this);
-		this.closeMenu = this.closeMenu.bind(this);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
-		this.handleClick = this.handleClick.bind(this);
-		this.handleBlur = this.handleBlur.bind(this);
+		bindAll(this,
+			'toggleMenu',
+			'closeMenu',
+			'handleKeyDown',
+			'handleClick',
+			'handleBlur'
+		);
 
 		this.state = { isActive: false };
 	}
