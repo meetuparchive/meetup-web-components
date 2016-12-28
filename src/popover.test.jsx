@@ -6,79 +6,71 @@ import PopoverTrigger from './PopoverTrigger';
 import PopoverMenu from './PopoverMenu';
 import PopoverMenuItem from './PopoverMenuItem';
 
-describe('Popover', () => {
-	const class_menu = 'popover-container',
-		class_trigger = 'popover-trigger',
-		class_option = 'popover-menu-item',
-		class_hidden = 'display--none';
+const class_hidden = 'display--none',
+	popoverComponent = (
+	<Popover>
+		<PopoverTrigger>Trigger</PopoverTrigger>
+		<PopoverMenu>
+			<PopoverMenuItem>One</PopoverMenuItem>
+			<PopoverMenuItem>Two</PopoverMenuItem>
+			<PopoverMenuItem>Three</PopoverMenuItem>
+		</PopoverMenu>
+	</Popover>
+);
+
+describe('Popover defaults', () => {
 
 	let popover,
-		popoverEl,
-		triggerEl,
-		menuEl,
-		optionEls;
+		trigger,
+		menu,
+		options;
 
 	beforeEach(() => {
-		popover = TestUtils.renderIntoDocument(
-			<Popover>
-				<PopoverTrigger>Trigger</PopoverTrigger>
-				<PopoverMenu>
-					<PopoverMenuItem>One</PopoverMenuItem>
-					<PopoverMenuItem>Two</PopoverMenuItem>
-					<PopoverMenuItem>Three</PopoverMenuItem>
-				</PopoverMenu>
-			</Popover>
-		);
-		popoverEl = ReactDOM.findDOMNode(popover);
-		triggerEl = TestUtils.scryRenderedDOMComponentsWithClass(class_trigger)[0];
-		menuEl = TestUtils.scryRenderedDOMComponentsWithClass(class_menu)[0];
-		optionEls = TestUtils.scryRenderedDOMComponentsWithClass(class_option);
+		popover = TestUtils.renderIntoDocument(popoverComponent);
+		trigger = TestUtils.findRenderedComponentWithType(popover, PopoverTrigger);
+		menu = TestUtils.findRenderedComponentWithType(popover, PopoverMenu);
+		options = TestUtils.scryRenderedComponentsWithType(popover, PopoverMenuItem);
 	});
 
 	afterEach(() => {
 		popover = null;
-		popoverEl = null;
-		triggerEl = null;
-		menuEl = null;
-		optionEls = null;
+		trigger = null;
+		menu = null;
+		options = null;
 	});
 
 	it('exists; menu hidden by default', () => {
-		console.warn(popoverEl);
+		const popoverEl = ReactDOM.findDOMNode(popover);
+		const menuEl = ReactDOM.findDOMNode(menu);
+
 		expect(popoverEl).not.toBeNull();
 		expect(menuEl.classList.contains(class_hidden)).toBe(true);
 	});
 
 	it('menu appears on trigger click', () => {
+		const triggerEl = ReactDOM.findDOMNode(trigger);
+		const menuEl = ReactDOM.findDOMNode(menu);
+
 		TestUtils.Simulate.click(triggerEl);
 
 		expect(menuEl.classList.contains(class_hidden)).toBe(false);
 	});
 
-	it('menu dismissed on popover blur', () => {
-		TestUtils.Simulate.click(triggerEl);
-		TestUtils.Simulate.blur(popoverEl);
-
-		expect(menuEl.classList.contains(class_hidden)).toBe(true);
-	});
-
-	it('menu dismissed on option selection', () => {
-		TestUtils.Simulate.click(triggerEl);
-		TestUtils.Simulate.click(optionEls[0]);
-
-		expect(menuEl.classList.contains(class_hidden)).toBe(true);
-	});
-
 	it('menu is keyboard navigatable with escape key', () => {
+		const triggerEl = ReactDOM.findDOMNode(trigger);
+		const menuEl = ReactDOM.findDOMNode(menu);
+		const firstOption = ReactDOM.findDOMNode(options[0]);
+
 		TestUtils.Simulate.click(triggerEl);
-		TestUtils.Simulate.keyDown(optionEls[0], {key: 'Escape'});
+		TestUtils.Simulate.keyDown(firstOption, {key: 'Escape'});
 
 		expect(menuEl.classList.contains(class_hidden)).toBe(true);
 	});
 
 	it('menu is keyboard navigatable with arrows', () => {
-		const defaultSelected = optionEls[0];
-		const targetSelected = optionEls[1];
+		const defaultSelected = ReactDOM.findDOMNode(options[0]);
+		const targetSelected = ReactDOM.findDOMNode(options[1]);
+		const triggerEl = ReactDOM.findDOMNode(trigger);
 
 		TestUtils.Simulate.click(triggerEl);
 		TestUtils.Simulate.keyUp(defaultSelected, {key: 'ArrowDown'});
