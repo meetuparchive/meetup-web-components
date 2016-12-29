@@ -15,18 +15,20 @@ class PopoverMenu extends React.Component {
 			'handleKeyUp'
 		);
 
-		this.selectedIndex = 0;
+		this.state = {
+			selectedIndex: 0
+		};
 	}
 
 	updateFocusBy(delta) {
 		const menuItems = findDOMNode(this).querySelectorAll('.popover-menu-item');
-		const targetIndex = this.selectedIndex + delta;
+		const targetIndex = this.state.selectedIndex + delta;
 
 		if (menuItems[targetIndex] == undefined) {
 			return;
 		}
 
-		this.selectedIndex = targetIndex;
+		this.setState({ selectedIndex: targetIndex });
 		menuItems[targetIndex].focus();
 	}
 
