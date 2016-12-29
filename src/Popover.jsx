@@ -103,12 +103,16 @@ class Popover extends React.Component {
 				className={classNames}
 				aria-haspopup='true'
 				onBlur={this.handleBlur}
-				{...other}>
+				{...other}
+			>
 				{this.renderTrigger()}
 				{this.renderMenu()}
 			</div>
 		);
 	}
 }
+Popover.propTypes = {
+	className: React.PropTypes.string
+};
 
 export default Popover;

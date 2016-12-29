@@ -32,11 +32,19 @@ class PopoverTrigger extends React.Component {
 				className={classNames}
 				onBlur={handleBlur}
 				tabIndex='0'
-				{...other}>
+				{...other}
+			>
 				{children}
 			</div>
 		);
 	}
 }
+PopoverTrigger.propTypes = {
+	className: React.PropTypes.string,
+	handleClick: React.PropTypes.func,
+	handleKeyDown: React.PropTypes.func,
+	handleBlur: React.PropTypes.func,
+	isActive: React.PropTypes.bool,
+};
 
 export default PopoverTrigger;

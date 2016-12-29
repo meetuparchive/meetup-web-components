@@ -28,14 +28,17 @@ class PopoverMenuItem extends React.Component {
 				className={classNames}
 				onKeyUp={handleKeyUp}
 				to={url}
-				{...other}>
+				{...other}
+			>
 				{children}
 			</Link>
 		);
 	}
 }
 PopoverMenuItem.propTypes = {
-	onClick: React.PropTypes.func
+	url: React.PropTypes.object,
+	onClick: React.PropTypes.func,
+	handleKeyUp: React.PropTypes.func,
 };
 
 export default PopoverMenuItem;

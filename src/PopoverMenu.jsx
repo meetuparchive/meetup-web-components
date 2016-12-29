@@ -73,7 +73,8 @@ class PopoverMenu extends React.Component {
 				onKeyDown={handleKeyDown}
 				className={classNames}
 				aria-hidden={!isActive}
-				{...other}>
+				{...other}
+			>
 				{
 					React.Children.map(children, (child) => {
 						return React.cloneElement(child, { handleKeyUp });
@@ -83,5 +84,10 @@ class PopoverMenu extends React.Component {
 		);
 	}
 }
+PopoverMenu.propTypes = {
+	className: React.PropTypes.string,
+	handleKeyDown: React.PropTypes.func,
+	isActive: React.PropTypes.bool,
+};
 
 export default PopoverMenu;
