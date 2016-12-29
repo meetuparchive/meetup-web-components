@@ -16,9 +16,9 @@ storiesOf('Popover')
 			<Popover>
 				<PopoverTrigger>Trigger</PopoverTrigger>
 				<PopoverMenu>
-					<PopoverMenuItem onClick={logSelection}>One</PopoverMenuItem>
-					<PopoverMenuItem onClick={logSelection}>Two</PopoverMenuItem>
-					<PopoverMenuItem onClick={logSelection}>Three</PopoverMenuItem>
+					<PopoverMenuItem to='/fakeurl' onClick={logSelection}>One</PopoverMenuItem>
+					<PopoverMenuItem to='/fakeurl' onClick={logSelection}>Two</PopoverMenuItem>
+					<PopoverMenuItem to='/fakeurl' onClick={logSelection}>Three</PopoverMenuItem>
 				</PopoverMenu>
 			</Popover>
 		</div>
