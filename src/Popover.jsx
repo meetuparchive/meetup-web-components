@@ -14,9 +14,9 @@ class Popover extends React.Component {
 		bindAll(this,
 			'toggleMenu',
 			'closeMenu',
-			'handleKeyDown',
-			'handleClick',
-			'handleBlur'
+			'onKeyDown',
+			'onClick',
+			'onBlur'
 		);
 
 		this.state = { isActive: false };
@@ -30,7 +30,7 @@ class Popover extends React.Component {
 		this.setState({ isActive: false });
 	}
 
-	handleBlur() {
+	onBlur() {
 		// On blur, browsers always focus `<body>` before moving focus
 		// to the next actual focused element.
 		//
@@ -48,11 +48,11 @@ class Popover extends React.Component {
 		}, 0);
 	}
 
-	handleClick(e) {
+	onClick(e) {
 		this.toggleMenu();
 	}
 
-	handleKeyDown(e) {
+	onKeyDown(e) {
 		switch(e.key) {
 		case 'Enter':
 			this.toggleMenu();
@@ -64,24 +64,24 @@ class Popover extends React.Component {
 	}
 
 	renderTrigger() {
-		const { handleKeyDown, handleClick, handleBlur } = this;
+		const { onKeyDown, onClick, onBlur } = this;
 		const isActive = this.state.isActive;
 		let trigger;
 		React.Children.forEach(this.props.children, function(child) {
 			if (child.type === PopoverTrigger) {
-				trigger = React.cloneElement(child, { handleKeyDown, handleClick, handleBlur, isActive });
+				trigger = React.cloneElement(child, { onKeyDown, onClick, onBlur, isActive });
 			}
 		});
 		return trigger;
 	}
 
 	renderMenu() {
-		const { handleKeyDown } = this;
+		const { onKeyDown } = this;
 		const isActive = this.state.isActive;
 		let menu;
 		React.Children.forEach(this.props.children, function(child) {
 			if (child.type === PopoverMenu) {
-				menu = React.cloneElement(child, { handleKeyDown, isActive });
+				menu = React.cloneElement(child, { onKeyDown, isActive });
 			}
 		});
 		return menu;
@@ -102,7 +102,7 @@ class Popover extends React.Component {
 			<div
 				className={classNames}
 				aria-haspopup='true'
-				onBlur={this.handleBlur}
+				onBlur={this.onBlur}
 				{...other}
 			>
 				{this.renderTrigger()}

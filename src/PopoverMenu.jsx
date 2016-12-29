@@ -12,7 +12,7 @@ class PopoverMenu extends React.Component {
 
 		bindAll(this,
 			'updateFocusBy',
-			'handleKeyUp'
+			'onKeyUp'
 		);
 
 		this.state = {
@@ -32,7 +32,7 @@ class PopoverMenu extends React.Component {
 		menuItems[targetIndex].focus();
 	}
 
-	handleKeyUp(e) {
+	onKeyUp(e) {
 		switch(e.key) {
 		case 'ArrowDown':
 			this.updateFocusBy(1);
@@ -53,12 +53,12 @@ class PopoverMenu extends React.Component {
 		const {
 			children,
 			className,
-			handleKeyDown,
+			onKeyDown,
 			isActive,
 			...other
 		} = this.props;
 
-		const { handleKeyUp } = this;
+		const { onKeyUp } = this;
 
 		const classNames = cx(
 			'popover-container',
@@ -72,14 +72,14 @@ class PopoverMenu extends React.Component {
 		return (
 			<div
 				role='menu'
-				onKeyDown={handleKeyDown}
+				onKeyDown={onKeyDown}
 				className={classNames}
 				aria-hidden={!isActive}
 				{...other}
 			>
 				{
 					React.Children.map(children, (child) => {
-						return React.cloneElement(child, { handleKeyUp });
+						return React.cloneElement(child, { onKeyUp });
 					})
 				}
 			</div>
@@ -88,7 +88,7 @@ class PopoverMenu extends React.Component {
 }
 PopoverMenu.propTypes = {
 	className: React.PropTypes.string,
-	handleKeyDown: React.PropTypes.func,
+	onKeyDown: React.PropTypes.func,
 	isActive: React.PropTypes.bool,
 };
 

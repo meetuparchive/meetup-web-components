@@ -10,9 +10,9 @@ class PopoverTrigger extends React.Component {
 		const {
 			children,
 			className,
-			handleClick,
-			handleKeyDown,
-			handleBlur,
+			onClick,
+			onKeyDown,
+			onBlur,
 			isActive,
 			...other
 		} = this.props;
@@ -27,10 +27,10 @@ class PopoverTrigger extends React.Component {
 
 		return (
 			<div
-				onClick={handleClick}
-				onKeyDown={handleKeyDown}
+				onClick={onClick}
+				onKeyDown={onKeyDown}
 				className={classNames}
-				onBlur={handleBlur}
+				onBlur={onBlur}
 				tabIndex='0'
 				{...other}
 			>
@@ -41,9 +41,9 @@ class PopoverTrigger extends React.Component {
 }
 PopoverTrigger.propTypes = {
 	className: React.PropTypes.string,
-	handleClick: React.PropTypes.func,
-	handleKeyDown: React.PropTypes.func,
-	handleBlur: React.PropTypes.func,
+	onClick: React.PropTypes.func,
+	onKeyDown: React.PropTypes.func,
+	onBlur: React.PropTypes.func,
 	isActive: React.PropTypes.bool,
 };
 
