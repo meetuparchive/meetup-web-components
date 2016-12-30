@@ -13,6 +13,7 @@
  * 	anotherMethod);
  * ```
  */
-export const bindAll = (context, ...names) => {
+const bindAll = (context, ...names) => {
 	names.forEach(name => context[name] = context[name].bind(context));
 };
+export default bindAll;
