@@ -1,5 +1,4 @@
 import React from 'react';
-import { findDOMNode } from 'react-dom';
 import bindAll from './utils/bindAll';
 import cx from 'classnames';
 
@@ -21,15 +20,12 @@ class PopoverMenu extends React.Component {
 	}
 
 	updateFocusBy(delta) {
-		const menuItems = findDOMNode(this).querySelectorAll('.popover-menu-item');
 		const targetIndex = this.state.selectedIndex + delta;
+		const itemLength = React.Children.toArray(this.props.children).length;
 
-		if (menuItems[targetIndex] == undefined) {
-			return;
+		if (targetIndex >= 0 && targetIndex <= itemLength) {
+			this.setState({ selectedIndex: targetIndex });
 		}
-
-		this.setState({ selectedIndex: targetIndex });
-		menuItems[targetIndex].focus();
 	}
 
 	onKeyUp(e) {
@@ -40,12 +36,6 @@ class PopoverMenu extends React.Component {
 		case 'ArrowUp':
 			this.updateFocusBy(-1);
 			break;
-		}
-	}
-
-	componentDidUpdate() {
-		if (this.props.isActive) {
-			this.updateFocusBy(0);
 		}
 	}
 
@@ -78,8 +68,13 @@ class PopoverMenu extends React.Component {
 				{...other}
 			>
 				{
-					React.Children.map(children, (child) => {
-						return React.cloneElement(child, { onKeyUp });
+					React.Children.map(children, (child, i) => {
+						const isSelected = isActive && this.state.selectedIndex === i;
+						const newProps = Object.assign({},
+							{ onKeyUp },
+							{ isSelected }
+						);
+						return React.cloneElement(child, newProps);
 					})
 				}
 			</div>

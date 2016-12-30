@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import ReactDOM from 'react-dom';
 import cx from 'classnames';
 
 /**
@@ -7,12 +8,19 @@ import cx from 'classnames';
  */
 class PopoverMenuItem extends React.Component {
 
+	componentDidUpdate() {
+		if (this.selectedItem) {
+			ReactDOM.findDOMNode(this.selectedItem).focus();
+		}
+	}
+
 	render() {
 		const {
 			children,
 			to,
 			className,
 			onKeyUp,
+			isSelected,
 			...other
 		} = this.props;
 
@@ -23,6 +31,11 @@ class PopoverMenuItem extends React.Component {
 
 		return (
 			<Link
+				ref={(item) => {
+					if (isSelected) {
+						this.selectedItem = item;
+					}
+				}}
 				role='menuitem'
 				tabIndex='0'
 				className={classNames}
