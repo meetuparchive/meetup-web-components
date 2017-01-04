@@ -25,10 +25,12 @@ class Tabs extends React.Component {
 		);
 
 		return (
-			<nav className={classNames}>
+			<nav>
 				<ul
 					role='menu'
-					{...other}>
+					className={classNames}
+					{...other}
+				>
 					{children}
 				</ul>
 			</nav>
