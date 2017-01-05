@@ -15,8 +15,7 @@ class Tabs extends React.Component {
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			className,
+		const ulClasses = cx(
 			'tabs',
 			{
 				'tabs--bordered': bordered,
@@ -25,10 +24,12 @@ class Tabs extends React.Component {
 		);
 
 		return (
-			<nav className={classNames}>
+			<nav className={className}>
 				<ul
 					role='menu'
-					{...other}>
+					className={ulClasses}
+					{...other}
+				>
 					{children}
 				</ul>
 			</nav>
