@@ -59,7 +59,6 @@ describe('Tabs', function() {
 					label='Third Tab' />
 			</Tabs>
 		);
-		const tabsNode = ReactDOM.findDOMNode(tabs);
 		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(tabs, 'UL')[0];
 		const tabsClass = tabsUlEl.getAttribute('class');
 
@@ -81,7 +80,6 @@ describe('Tabs', function() {
 					label='Third Tab' />
 			</Tabs>
 		);
-		const tabsNode = ReactDOM.findDOMNode(tabs);
 		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(tabs, 'UL')[0];
 		const tabsClass = tabsUlEl.getAttribute('class');
 
