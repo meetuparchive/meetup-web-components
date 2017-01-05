@@ -60,7 +60,8 @@ describe('Tabs', function() {
 			</Tabs>
 		);
 		const tabsNode = ReactDOM.findDOMNode(tabs);
-		const tabsClass = tabsNode.getAttribute('class');
+		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(tabs, 'UL')[0];
+		const tabsClass = tabsUlEl.getAttribute('class');
 
 		expect(tabsClass.indexOf('tabs--full')).toBeGreaterThan(-1);
 		expect(tabsClass.indexOf('tabs--bordered')).toBeGreaterThan(-1);
@@ -81,7 +82,8 @@ describe('Tabs', function() {
 			</Tabs>
 		);
 		const tabsNode = ReactDOM.findDOMNode(tabs);
-		const tabsClass = tabsNode.getAttribute('class');
+		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(tabs, 'UL')[0];
+		const tabsClass = tabsUlEl.getAttribute('class');
 
 		expect(tabsClass.indexOf('tabs--full')).toBe(-1);
 		expect(tabsClass.indexOf('tabs--bordered')).toBe(-1);
