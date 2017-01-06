@@ -1,23 +1,24 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf, action } from '@kadira/storybook';
 import { decorateWithLocale } from './utils/decorators';
+import { Link } from 'react-router';
 import Popover from './Popover';
-import PopoverOption from './PopoverOption';
+import Button from './Button';
 
 const logSelection = e => {
 	action(`Selected option ${e.target}`);
 };
 
-storiesOf('MenuButton', module)
+storiesOf('Popover', module)
 	.addDecorator(decorateWithLocale)
 	.add('default', () => {
 		return (
 			<Popover
 				trigger={<Button>Open</Button>}
 				options={[
-					<PopoverOption to='somepath/' onClick={logSelection}>First option</MenuButtonOption>,
-					<PopoverOption to='somepath/' onClick={logSelection}>Second option</MenuButtonOption>,
-					<PopoverOption to='somepath/' onClick={logSelection}>Third option</MenuButtonOption>,
+					<Link to='somepath/' onClick={logSelection}>First option</Link>,
+					<Link to='somepath/' onClick={logSelection}>Second option</Link>,
+					<Link to='somepath/' onClick={logSelection}>Third option</Link>,
 				]}
 			/>
 		);
