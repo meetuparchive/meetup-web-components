@@ -12,7 +12,7 @@ const logSelection = e => {
 
 storiesOf('Popover', module)
 	.addDecorator(decorateWithLocale)
-	.add('default', () => {
+	.add('Button trigger with Link options', () => {
 		return (
 			<div>
 				<TestIconSprite />
@@ -24,6 +24,21 @@ storiesOf('Popover', module)
 						<Link to='somepath/' onClick={logSelection}>First option</Link>,
 						<Link to='somepath/' onClick={logSelection}>Second option</Link>,
 						<Link to='somepath/' onClick={logSelection}>Third option</Link>,
+					]}
+				/>
+			</div>
+		);
+	})
+	.add('DIV trigger with SPAN options', () => {
+		return (
+			<div>
+				<TestIconSprite />
+				<Popover
+					trigger={<div>Open</div>}
+					options={[
+						<span onClick={logSelection}>First option</span>,
+						<span to='somepath/' onClick={logSelection}>Second option</span>,
+						<span to='somepath/' onClick={logSelection}>Third option</span>,
 					]}
 				/>
 			</div>
