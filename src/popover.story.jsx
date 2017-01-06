@@ -4,6 +4,7 @@ import { decorateWithLocale } from './utils/decorators';
 import { Link } from 'react-router';
 import Popover from './Popover';
 import Button from './Button';
+import { TestIconSprite } from './utils/storyComponents';
 
 const logSelection = e => {
 	action(`Selected option ${e.target}`);
@@ -13,13 +14,18 @@ storiesOf('Popover', module)
 	.addDecorator(decorateWithLocale)
 	.add('default', () => {
 		return (
-			<Popover
-				trigger={<Button>Open</Button>}
-				options={[
-					<Link to='somepath/' onClick={logSelection}>First option</Link>,
-					<Link to='somepath/' onClick={logSelection}>Second option</Link>,
-					<Link to='somepath/' onClick={logSelection}>Third option</Link>,
-				]}
-			/>
+			<div>
+				<TestIconSprite />
+				<Popover
+					trigger={
+						<Button>Open</Button>
+					}
+					options={[
+						<Link to='somepath/' onClick={logSelection}>First option</Link>,
+						<Link to='somepath/' onClick={logSelection}>Second option</Link>,
+						<Link to='somepath/' onClick={logSelection}>Third option</Link>,
+					]}
+				/>
+			</div>
 		);
 	});

@@ -12,7 +12,7 @@ class Popover extends React.Component {
 
 		bindAll(this,
 			'updateFocusBy',
-			'toggleMenu',
+			'openMenu',
 			'closeMenu',
 			'onClick',
 			'onKeyUp',
@@ -36,8 +36,8 @@ class Popover extends React.Component {
 		}
 	}
 
-	toggleMenu() {
-		this.setState({ isActive: !this.state.isActive });
+	openMenu() {
+		this.setState({ isActive: true });
 	}
 
 	closeMenu() {
@@ -51,10 +51,10 @@ class Popover extends React.Component {
 		// This zero-length timeout ensures the browser will return the
 		// actual focused element instead of `<body>`
 		window.setTimeout(() => {
-			const focusedElementClass = document.activeElement.getAttribute('class');
+			const focusedOptionClass = document.activeElement.parentNode.getAttribute('class');
 
 			// don't close the popover if we're moving focus to an option
-			if (focusedElementClass && focusedElementClass.indexOf('popover-menu-option') > -1) {
+			if (focusedOptionClass && focusedOptionClass.indexOf('popover-menu-option') > -1) {
 				return;
 			}
 
@@ -63,15 +63,13 @@ class Popover extends React.Component {
 	}
 
 	onClick(e) {
-		this.toggleMenu();
+		this.openMenu();
 	}
 
 	onKeyDown(e) {
 		switch(e.key) {
 		case 'Enter':
-			if (!this.state.isActive) {
-				this.toggleMenu();
-			}
+			this.openMenu();
 			break;
 		case 'Escape':
 			this.closeMenu();
@@ -161,17 +159,24 @@ class Popover extends React.Component {
 								return(
 									<li
 										key={i}
-										ref={(item) => {
-											if (isSelected) {
-												this.selectedItemEl = item;
-											}
-										}}
-										role='menuitem'
-										tabIndex='0'
 										className={classNames.option}
-										onKeyUp={onKeyUp}
 										>
-										{option}
+											{/*
+											* treat each user-provided option element as the
+											* keyboard-navigable, focusable 'menuitem' role
+											*/}
+											{
+												React.cloneElement(option, {
+													ref: (el) => {
+														if (isSelected) {
+															this.selectedItemEl = el;
+														}
+													},
+													role: 'menuitem',
+													tabIndex: '0',
+													onKeyUp
+												})
+											}
 									</li>
 								);
 							})
