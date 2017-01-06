@@ -109,27 +109,30 @@ class Popover extends React.Component {
 				onBlur
 			} = this;
 
-		const popoverClassNames = cx(
-			'popover',
-			className
-		);
-		const triggerClassNames = cx(
-			'popover-trigger',
-			{
-				'popover-trigger--active': isActive
-			}
-		);
-		const menuClassNames = cx(
-			'popover-container',
-			'popover-menu',
-			{
-				'display--none': !isActive
-			}
-		);
+		const classNames = {
+			popover: cx(
+				'popover',
+				className
+			),
+			trigger: cx(
+				'popover-trigger',
+				{
+					'popover-trigger--active': isActive
+				}
+			),
+			menu: cx(
+				'popover-container',
+				'popover-menu',
+				{
+					'display--none': !isActive
+				}
+			),
+			option: 'popover-menu-item'
+		};
 
 		return (
 			<div
-				className={popoverClassNames}
+				className={classNames.popover}
 				aria-haspopup='true'
 				onKeyDown={onKeyDown}
 				onBlur={onBlur}
@@ -137,7 +140,7 @@ class Popover extends React.Component {
 			>
 
 				<div
-					className={triggerClassNames}
+					className={className.trigger}
 					tabIndex='0'
 					onClick={onClick}
 				>
@@ -146,7 +149,7 @@ class Popover extends React.Component {
 
 				<nav>
 					<ul
-						className={menuClassNames}
+						className={classNames.menu}
 						role='menu'
 						aria-hidden={!isActive}
 					>
@@ -163,7 +166,7 @@ class Popover extends React.Component {
 										}}
 										role='menuitem'
 										tabIndex='0'
-										className='popover-menu-item'
+										className={classNames.option}
 										onKeyUp={onKeyUp}
 										>
 										{option}
