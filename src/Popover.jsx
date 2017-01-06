@@ -103,20 +103,46 @@ class Popover extends React.Component {
 		}
 	}
 
+	renderOptionItems() {
+		return this.props.options.map((option,i) => {
+			const isSelected = this.state.isActive && this.state.selectedIndex === i;
+
+			return (
+				<li
+					key={i}
+					className='popover-menu-option'
+				>
+					{/*
+					* treat each user-provided option element as the
+					* keyboard-navigable, focusable 'menuitem' role
+					*/}
+					{
+						React.cloneElement(option,
+							{
+								ref: (el) => {
+									if (isSelected) {
+										this.selectedItemEl = el;
+									}
+								},
+								role: 'menuitem',
+								tabIndex: '-1',
+								onKeyUp: this.onKeyUp
+							}
+						)
+					}
+				</li>
+			);
+		});
+	}
+
 	render() {
-		const isActive = this.state.isActive,
-			{
+		const isActive = this.state.isActive;
+		const {
 				trigger,
-				options,
+				options, // eslint-disable-line no-unused-vars
 				className,
 				...other
-			} = this.props,
-			{
-				onClick,
-				onKeyUp,
-				onKeyDown,
-				onBlur
-			} = this;
+			} = this.props;
 
 		const classNames = {
 			popover: cx(
@@ -135,23 +161,22 @@ class Popover extends React.Component {
 				{
 					'display--none': !isActive
 				}
-			),
-			option: 'popover-menu-option'
+			)
 		};
 
 		return (
 			<div
 				className={classNames.popover}
 				aria-haspopup='true'
-				onKeyDown={onKeyDown}
-				onBlur={onBlur}
+				onKeyDown={this.onKeyDown}
+				onBlur={this.onBlur}
 				{...other}
 			>
 
 				<div
 					className={classNames.trigger}
 					tabIndex='0'
-					onClick={onClick}
+					onClick={this.onClick}
 				>
 					{trigger}
 				</div>
@@ -162,36 +187,7 @@ class Popover extends React.Component {
 						role='menu'
 						aria-hidden={!isActive}
 					>
-						{
-							options.map((option,i) => {
-								const isSelected = isActive && this.state.selectedIndex === i;
-								return(
-									<li
-										key={i}
-										className={classNames.option}
-										>
-											{/*
-											* treat each user-provided option element as the
-											* keyboard-navigable, focusable 'menuitem' role
-											*/}
-											{
-												React.cloneElement(option,
-													{
-														ref: (el) => {
-															if (isSelected) {
-																this.selectedItemEl = el;
-															}
-														},
-														role: 'menuitem',
-														tabIndex: '-1',
-														onKeyUp,
-													}
-												)
-											}
-									</li>
-								);
-							})
-						}
+						{this.renderOptionItems()}
 					</ul>
 				</nav>
 			</div>
