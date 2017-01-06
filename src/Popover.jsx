@@ -54,7 +54,7 @@ class Popover extends React.Component {
 			const focusedElementClass = document.activeElement.getAttribute('class');
 
 			// don't close the popover if we're moving focus to an option
-			if (focusedElementClass && focusedElementClass.indexOf('popover-menu-item') > -1) {
+			if (focusedElementClass && focusedElementClass.indexOf('popover-menu-option') > -1) {
 				return;
 			}
 
@@ -69,7 +69,9 @@ class Popover extends React.Component {
 	onKeyDown(e) {
 		switch(e.key) {
 		case 'Enter':
-			this.toggleMenu();
+			if (!this.state.isActive) {
+				this.toggleMenu();
+			}
 			break;
 		case 'Escape':
 			this.closeMenu();
@@ -127,7 +129,7 @@ class Popover extends React.Component {
 					'display--none': !isActive
 				}
 			),
-			option: 'popover-menu-item'
+			option: 'popover-menu-option'
 		};
 
 		return (
@@ -140,7 +142,7 @@ class Popover extends React.Component {
 			>
 
 				<div
-					className={className.trigger}
+					className={classNames.trigger}
 					tabIndex='0'
 					onClick={onClick}
 				>
