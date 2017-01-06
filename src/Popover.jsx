@@ -63,14 +63,23 @@ class Popover extends React.Component {
 	}
 
 	onClick(e) {
+		console.warn('click!');
 		this.openMenu();
 	}
 
 	onKeyDown(e) {
 		switch(e.key) {
 		case 'Enter':
-			this.openMenu();
-			break;
+			if (this.state.isActive
+				&& this.selectedItemEl
+				&& this.selectedItemEl.props.onClick
+			) {
+				this.selectedItemEl.props.onClick(e);
+				break;
+			} else {
+				this.openMenu();
+				break;
+			}
 		case 'Escape':
 			this.closeMenu();
 			break;
@@ -166,16 +175,18 @@ class Popover extends React.Component {
 											* keyboard-navigable, focusable 'menuitem' role
 											*/}
 											{
-												React.cloneElement(option, {
-													ref: (el) => {
-														if (isSelected) {
-															this.selectedItemEl = el;
-														}
-													},
-													role: 'menuitem',
-													tabIndex: '0',
-													onKeyUp
-												})
+												React.cloneElement(option,
+													{
+														ref: (el) => {
+															if (isSelected) {
+																this.selectedItemEl = el;
+															}
+														},
+														role: 'menuitem',
+														tabIndex: '-1',
+														onKeyUp,
+													}
+												)
 											}
 									</li>
 								);
