@@ -35,23 +35,28 @@ $popoverShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C
 	width: $block-4;
 }
 
-.popover-menu-item {
+.popover-menu-option {
 	cursor: pointer;
-	display: block;
-	padding: $space-half $space;
-	&:focus {
-		outline: 0;
-		background: $C_selection;
+	a, span, div, button {
+		display: block;
+		padding: $space-half $space;
+
+		&:focus {
+			outline: 0;
+			background: $C_selection;
+		}
 	}
 }
 
 .popover-container--menu:hover {
-	.popover-menu-item {
-		&:focus {
-			background: transparent;
-		}
-		&:hover {
-			background: $C_selection;
+	.popover-menu-option {
+		a, span, div, button {
+			&:focus {
+				background: transparent;
+			}
+			&:hover {
+				background: $C_selection;
+			}
 		}
 	}
 }

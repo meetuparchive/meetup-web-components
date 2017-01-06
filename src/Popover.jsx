@@ -1,8 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import bindAll from './utils/bindAll';
-import PopoverTrigger from './PopoverTrigger';
-import PopoverMenu from './PopoverMenu';
 
 /**
  * @module Popover
@@ -12,18 +11,33 @@ class Popover extends React.Component {
 		super(props);
 
 		bindAll(this,
-			'toggleMenu',
+			'updateFocusBy',
+			'openMenu',
 			'closeMenu',
+			'onClick',
+			'onKeyUp',
 			'onKeyDown',
 			'onClick',
 			'onBlur'
 		);
 
-		this.state = { isActive: false };
+		this.state = {
+			isActive: false,
+			selectedIndex: 0
+		};
 	}
 
-	toggleMenu() {
-		this.setState({ isActive: !this.state.isActive });
+	updateFocusBy(delta) {
+		const targetIndex = this.state.selectedIndex + delta;
+		const optionsLength = this.props.options.length;
+
+		if (targetIndex >= 0 && targetIndex <= optionsLength) {
+			this.setState({ selectedIndex: targetIndex });
+		}
+	}
+
+	openMenu() {
+		this.setState({ isActive: true });
 	}
 
 	closeMenu() {
@@ -37,10 +51,10 @@ class Popover extends React.Component {
 		// This zero-length timeout ensures the browser will return the
 		// actual focused element instead of `<body>`
 		window.setTimeout(() => {
-			const focusedElementClass = document.activeElement.getAttribute('class');
+			const focusedOptionClass = document.activeElement.parentNode.getAttribute('class');
 
 			// don't close the popover if we're moving focus to an option
-			if (focusedElementClass && focusedElementClass.indexOf('popover-menu-item') > -1) {
+			if (focusedOptionClass && focusedOptionClass.indexOf('popover-menu-option') > -1) {
 				return;
 			}
 
@@ -49,13 +63,13 @@ class Popover extends React.Component {
 	}
 
 	onClick(e) {
-		this.toggleMenu();
+		this.openMenu();
 	}
 
 	onKeyDown(e) {
 		switch(e.key) {
 		case 'Enter':
-			this.toggleMenu();
+			this.openMenu();
 			break;
 		case 'Escape':
 			this.closeMenu();
@@ -63,56 +77,119 @@ class Popover extends React.Component {
 		}
 	}
 
-	renderTrigger() {
-		const { onKeyDown, onClick, onBlur } = this;
-		const isActive = this.state.isActive;
-		let trigger;
-		React.Children.forEach(this.props.children, function(child) {
-			if (child.type === PopoverTrigger) {
-				trigger = React.cloneElement(child, { onKeyDown, onClick, onBlur, isActive });
-			}
-		});
-		return trigger;
+	onKeyUp(e) {
+		switch(e.key) {
+		case 'ArrowDown':
+			this.updateFocusBy(1);
+			break;
+		case 'ArrowUp':
+			this.updateFocusBy(-1);
+			break;
+		}
 	}
 
-	renderMenu() {
-		const { onKeyDown } = this;
-		const isActive = this.state.isActive;
-		let menu;
-		React.Children.forEach(this.props.children, function(child) {
-			if (child.type === PopoverMenu) {
-				menu = React.cloneElement(child, { onKeyDown, isActive });
-			}
-		});
-		return menu;
+	componentDidUpdate() {
+		if (this.selectedItemEl) {
+			ReactDOM.findDOMNode(this.selectedItemEl).focus();
+		}
 	}
 
 	render() {
-		const {
-			className,
-			...other
-		} = this.props;
+		const isActive = this.state.isActive,
+			{
+				trigger,
+				options,
+				className,
+				...other
+			} = this.props,
+			{
+				onClick,
+				onKeyUp,
+				onKeyDown,
+				onBlur
+			} = this;
 
-		const classNames = cx(
-			'popover',
-			className
-		);
+		const classNames = {
+			popover: cx(
+				'popover',
+				className
+			),
+			trigger: cx(
+				'popover-trigger',
+				{
+					'popover-trigger--active': isActive
+				}
+			),
+			menu: cx(
+				'popover-container',
+				'popover-menu',
+				{
+					'display--none': !isActive
+				}
+			),
+			option: 'popover-menu-option'
+		};
 
 		return (
 			<div
-				className={classNames}
+				className={classNames.popover}
 				aria-haspopup='true'
-				onBlur={this.onBlur}
+				onKeyDown={onKeyDown}
+				onBlur={onBlur}
 				{...other}
 			>
-				{this.renderTrigger()}
-				{this.renderMenu()}
+
+				<div
+					className={classNames.trigger}
+					tabIndex='0'
+					onClick={onClick}
+				>
+					{trigger}
+				</div>
+
+				<nav>
+					<ul
+						className={classNames.menu}
+						role='menu'
+						aria-hidden={!isActive}
+					>
+						{
+							options.map((option,i) => {
+								const isSelected = isActive && this.state.selectedIndex === i;
+								return(
+									<li
+										key={i}
+										className={classNames.option}
+										>
+											{/*
+											* treat each user-provided option element as the
+											* keyboard-navigable, focusable 'menuitem' role
+											*/}
+											{
+												React.cloneElement(option, {
+													ref: (el) => {
+														if (isSelected) {
+															this.selectedItemEl = el;
+														}
+													},
+													role: 'menuitem',
+													tabIndex: '0',
+													onKeyUp
+												})
+											}
+									</li>
+								);
+							})
+						}
+					</ul>
+				</nav>
 			</div>
 		);
 	}
 }
 Popover.propTypes = {
-	className: React.PropTypes.string
+	trigger: React.PropTypes.element.isRequired,
+	options: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
+	className: React.PropTypes.string,
 };
-
 export default Popover;
