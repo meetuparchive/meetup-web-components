@@ -71,12 +71,10 @@ class Popover extends React.Component {
 		case 'Enter':
 			if (!this.state.isActive) {
 				this.openMenu();
-				break;
-			}
-			if (this.selectedItemEl && this.selectedItemEl.props.onClick) {
+			} else if (this.selectedItemEl && this.selectedItemEl.props.onClick) {
 				this.selectedItemEl.props.onClick(e);
-				break;
 			}
+			break;
 		case 'Escape':
 			this.closeMenu();
 			break;
