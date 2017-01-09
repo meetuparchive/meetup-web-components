@@ -63,7 +63,6 @@ class Popover extends React.Component {
 	}
 
 	onClick(e) {
-		console.warn('click!');
 		this.openMenu();
 	}
 
@@ -126,7 +125,8 @@ class Popover extends React.Component {
 								},
 								role: 'menuitem',
 								tabIndex: '-1',
-								onKeyUp: this.onKeyUp
+								onKeyUp: this.onKeyUp,
+								className: 'popover-menu-option-target'
 							}
 						)
 					}
@@ -157,7 +157,7 @@ class Popover extends React.Component {
 			),
 			menu: cx(
 				'popover-container',
-				'popover-menu',
+				'popover-container--menu',
 				{
 					'display--none': !isActive
 				}
