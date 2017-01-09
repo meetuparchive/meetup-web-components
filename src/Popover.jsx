@@ -31,7 +31,7 @@ class Popover extends React.Component {
 		const targetIndex = this.state.selectedIndex + delta;
 		const optionsLength = this.props.options.length;
 
-		if (targetIndex >= 0 && targetIndex <= optionsLength) {
+		if (targetIndex >= 0 && targetIndex < optionsLength) {
 			this.setState({ selectedIndex: targetIndex });
 		}
 	}
@@ -51,10 +51,10 @@ class Popover extends React.Component {
 		// This zero-length timeout ensures the browser will return the
 		// actual focused element instead of `<body>`
 		window.setTimeout(() => {
-			const focusedOptionClass = document.activeElement.parentNode.getAttribute('class');
+			const focusedOptionClass = document.activeElement.parentNode.classList;
 
 			// don't close the popover if we're moving focus to an option
-			if (focusedOptionClass && focusedOptionClass.indexOf('popover-menu-option') > -1) {
+			if (focusedOptionClass && focusedOptionClass.contains('popover-menu-option')) {
 				return;
 			}
 
@@ -69,14 +69,12 @@ class Popover extends React.Component {
 	onKeyDown(e) {
 		switch(e.key) {
 		case 'Enter':
-			if (this.state.isActive
-				&& this.selectedItemEl
-				&& this.selectedItemEl.props.onClick
-			) {
-				this.selectedItemEl.props.onClick(e);
-				break;
-			} else {
+			if (!this.state.isActive) {
 				this.openMenu();
+				break;
+			}
+			if (this.selectedItemEl && this.selectedItemEl.props.onClick) {
+				this.selectedItemEl.props.onClick(e);
 				break;
 			}
 		case 'Escape':
