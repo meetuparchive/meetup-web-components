@@ -35,9 +35,7 @@ class Stripe extends React.Component {
 				{ isHero ?
 					<Bounds className='stripe-heroContent'>
 						{children}
-					</Bounds>
-					:
-					children
+					</Bounds> : children
 				}
 			</div>
 		);
@@ -45,6 +43,10 @@ class Stripe extends React.Component {
 }
 
 Stripe.propTypes = {
+	backgroundImage: React.PropTypes.string,
+	collection: React.PropTypes.bool,
+	inverted: React.PropTypes.bool,
+	isHero: React.PropTypes.bool
 };
 
 export default Stripe;

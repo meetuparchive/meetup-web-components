@@ -34,8 +34,7 @@ class SectionTitle extends React.Component {
 				</FlexItem>
 				{children &&
 					<Chunk>
-						<FlexItem shrink
-							>
+						<FlexItem shrink>
 							{children}
 						</FlexItem>
 					</Chunk>

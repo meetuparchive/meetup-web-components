@@ -26,8 +26,9 @@ class FlexItem extends React.Component {
 		return (
 			<div
 				className={classNames}
-				{...other}>
-					{children}
+				{...other}
+			>
+				{children}
 			</div>
 		);
 	}

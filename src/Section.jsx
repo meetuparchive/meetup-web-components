@@ -16,7 +16,7 @@ class Section extends React.Component {
 		const classNames = cx(
 			'section',
 			{
-				bordered: typeof bordered === 'boolean'
+				bordered: bordered
 			},
 			className
 		);
