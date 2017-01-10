@@ -15,7 +15,6 @@ class Popover extends React.Component {
 			'openMenu',
 			'closeMenu',
 			'onClick',
-			'onKeyUp',
 			'onKeyDown',
 			'onClick',
 			'onBlur'
@@ -80,7 +79,7 @@ class Popover extends React.Component {
 		}
 	}
 
-	onKeyUp(e) {
+	onKeyDownMenuItem(e) {
 		switch(e.key) {
 		case 'ArrowDown':
 			this.updateFocusBy(1);
@@ -97,7 +96,7 @@ class Popover extends React.Component {
 		}
 	}
 
-	renderOptionItems() {
+	renderMenuItems() {
 		return this.props.menuItems.map((menuItem, i) => {
 			const isSelected = this.state.isActive && this.state.selectedIndex === i;
 
@@ -120,7 +119,7 @@ class Popover extends React.Component {
 								},
 								role: 'menuitem',
 								tabIndex: '-1',
-								onKeyUp: this.onKeyUp,
+								onKeyDown: this.onKeyDownMenuItem,
 								className: 'popover-menu-option-target'
 							}
 						)
@@ -182,7 +181,7 @@ class Popover extends React.Component {
 						role='menu'
 						aria-hidden={!isActive}
 					>
-						{this.renderOptionItems()}
+						{this.renderMenuItems()}
 					</ul>
 				</nav>
 			</div>
