@@ -2,10 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 import {
 	Chunk,
-	// Flex,
+	Flex,
 	FlexItem,
-	// Section,
 } from './layoutUtils';
+
 /**
  * @module PageTitle
  */
@@ -14,6 +14,7 @@ class PageTitle extends React.Component {
 		const {
 			children,
 			className,
+			subTitle,
 			title,
 			...other
 		} = this.props;
@@ -24,14 +25,26 @@ class PageTitle extends React.Component {
 		);
 
 		return (
-			<FlexItem
+			<Flex
 				className={classNames}
-				{...other}>
-				<Chunk className='align--center atMedium_align--left'>
-					<h1 className='text--display1'>{title}</h1>
-					{children}
-				</Chunk>
-			</FlexItem>
+				direction='column'
+				switchDirection='atMedium'
+				{...other}
+				>
+				<FlexItem>
+					<Chunk className='align--center atMedium_align--left'>
+						<h1 className='text--display1'>{title}</h1>
+						{subTitle &&
+							<p className='text--secondary'>{subTitle}</p>
+						}
+					</Chunk>
+				</FlexItem>
+				{children &&
+					<FlexItem shrink>
+						{children}
+					</FlexItem>
+				}
+			</Flex>
 		);
 	}
 }
