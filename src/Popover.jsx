@@ -68,12 +68,6 @@ class Popover extends React.Component {
 
 	onKeyDown(e) {
 		switch(e.key) {
-		// case 'ArrowDown':
-		// 	this.updateFocusBy(1);
-		// 	break;
-		// case 'ArrowUp':
-		// 	this.updateFocusBy(-1);
-		// 	break;
 		case 'Enter':
 			if (!this.state.isActive) {
 				this.openMenu();
