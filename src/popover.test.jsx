@@ -68,7 +68,7 @@ describe('Popover placeholder', function() {
 		expect(getIsActive(menuEl)).toBe(true);
 	});
 
-	it('menu is keyboard navigatable with escape key', () => {
+	it('menu is keyboard navigable with escape key', () => {
 		const firstOption = optionEls[0];
 
 		TestUtils.Simulate.click(triggerEl);
@@ -78,24 +78,23 @@ describe('Popover placeholder', function() {
 		expect(getIsActive(menuEl)).toBe(false);
 	});
 
-	it('trigger should be active element when `click`ed', () => {
-		const firstOption = optionEls[0];
+	describe('keys', () => {
+		let firstOption,
+			secondOption;
 
-		TestUtils.Simulate.click(triggerEl);
-		expect(getIsActive(menuEl)).toBe(true);
-		expect(document.activeElement).toBe(firstOption);
-	});
-	it('menu is keyboard navigatable with arrows', () => {
-		const firstOption = optionEls[0];
-		const secondOption = optionEls[1];
+		beforeEach(() => {
+			firstOption = optionEls[0];
+			secondOption = optionEls[1];
+			popover.openMenu();
+		});
 
-		popover.openMenu();
-
-		TestUtils.Simulate.keyUp(firstOption, {key: 'ArrowDown'});
-		console.log('secondOption', secondOption);
-		// expect(document.activeElement).toBe(secondOption);
-
-		// TestUtils.Simulate.keyUp(firstOption, {key: 'ArrowUp'});
-		// expect(document.activeElement).toBe(firstOption);
+		it('menu is keyboard navigable with arrows Down', () => {
+			TestUtils.Simulate.keyDown(firstOption, {key: 'ArrowDown'});
+			expect(document.activeElement).toBe(secondOption);
+		});
+		it('menu is keyboard navigable with arrows Up', () => {
+			TestUtils.Simulate.keyDown(firstOption, {key: 'ArrowUp'});
+			expect(document.activeElement).toBe(firstOption);
+		});
 	});
 });
