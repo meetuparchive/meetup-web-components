@@ -29,9 +29,8 @@ class Popover extends React.Component {
 
 	updateFocusBy(delta) {
 		const targetIndex = this.state.selectedIndex + delta;
-		const optionsLength = this.props.options.length;
 
-		if (targetIndex >= 0 && targetIndex < optionsLength) {
+		if (targetIndex >= 0 && targetIndex < this.props.menuItems.length) {
 			this.setState({ selectedIndex: targetIndex });
 		}
 	}
@@ -53,7 +52,7 @@ class Popover extends React.Component {
 		window.setTimeout(() => {
 			const focusedOptionClass = document.activeElement.parentNode.classList;
 
-			// don't close the popover if we're moving focus to an option
+			// don't close the popover if we're moving focus to an menu item
 			if (focusedOptionClass && focusedOptionClass.contains('popover-menu-option')) {
 				return;
 			}
@@ -99,7 +98,7 @@ class Popover extends React.Component {
 	}
 
 	renderOptionItems() {
-		return this.props.options.map((option,i) => {
+		return this.props.menuItems.map((menuItem, i) => {
 			const isSelected = this.state.isActive && this.state.selectedIndex === i;
 
 			return (
@@ -108,11 +107,11 @@ class Popover extends React.Component {
 					className='popover-menu-option'
 				>
 					{/*
-					* treat each user-provided option element as the
+					* treat each user-provided menu item element as the
 					* keyboard-navigable, focusable 'menuitem' role
 					*/}
 					{
-						React.cloneElement(option,
+						React.cloneElement(menuItem,
 							{
 								ref: (el) => {
 									if (isSelected) {
@@ -135,7 +134,7 @@ class Popover extends React.Component {
 		const isActive = this.state.isActive;
 		const {
 				trigger,
-				options, // eslint-disable-line no-unused-vars
+				menuItems, // eslint-disable-line no-unused-vars
 				className,
 				...other
 			} = this.props;
@@ -190,9 +189,11 @@ class Popover extends React.Component {
 		);
 	}
 }
+
 Popover.propTypes = {
 	trigger: React.PropTypes.element.isRequired,
-	options: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
+	menuItems: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
 	className: React.PropTypes.string,
 };
+
 export default Popover;

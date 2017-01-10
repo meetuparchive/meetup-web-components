@@ -18,7 +18,7 @@ const popoverComponent = (
 		trigger={
 			<Button>Open</Button>
 		}
-		options={[
+		menuItems={[
 			<Link to='somepath1/'>First option</Link>,
 			<Link to='somepath2/'>Second option</Link>,
 			<Link to='somepath3/'>Third option</Link>,
