@@ -4,7 +4,6 @@ import TestUtils from 'react-addons-test-utils';
 
 import FlexItem from './FlexItem';
 
-
 describe('FlexItem', function() {
 
 	it('exists', function() {

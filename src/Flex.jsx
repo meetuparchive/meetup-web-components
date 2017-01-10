@@ -45,9 +45,9 @@ class Flex extends React.Component {
 				'flex--noGutters': noGutters,
 				[`flex--${justify}`]: typeof justify === 'string',
 				[`flex--align${alignCapitalized}`]: typeof align === 'string',
-				'atSmall_flex--rowReverse': typeof rowReverse === 'boolean',
+				'atAll_flex--rowReverse': typeof rowReverse === 'boolean',
 				[`${rowReverse}_flex--rowReverse`]: typeof rowReverse === 'string',
-				'atSmall_flex--columnReverse': typeof columnReverse === 'boolean',
+				'atAll_flex--columnReverse': typeof columnReverse === 'boolean',
 				[`${columnReverse}_flex--columnReverse`]: typeof columnReverse === 'string',
 			}, className);
 
@@ -62,81 +62,44 @@ class Flex extends React.Component {
 }
 
 Flex.propTypes = {
-	wrap: React.PropTypes.bool,
-	noGutters: React.PropTypes.bool,
+	align: React.PropTypes.oneOf([
+		'top',
+		'bottom',
+		'center',
+	]),
+	columnReverse: React.PropTypes.oneOfType([
+		React.PropTypes.bool,
+		React.PropTypes.oneOf([
+			'atAll',
+			'atMedium',
+			'atLarge'
+		])
+	]),
+	direction: React.PropTypes.oneOf([
+		'row',
+		'column'
+	]),
 	justify: React.PropTypes.oneOf([
 		'center',
 		'spaceAround',
 		'spaceBetween',
 		'flexEnd'
 	]),
-	align: React.PropTypes.oneOf([
-		'top',
-		'bottom',
-		'center',
-	]),
-	direction: React.PropTypes.oneOf([
-		'row',
-		'column'
-	]),
-	switchDirection: React.PropTypes.oneOf([
-		'atSmall',
-		'atMedium',
-		'atLarge'
-	]),
-	columnReverse: React.PropTypes.oneOfType([
-		React.PropTypes.bool,
-		React.PropTypes.oneOf([
-			'atSmall',
-			'atMedium',
-			'atLarge'
-		])
-	]),
+	noGutters: React.PropTypes.bool,
 	rowReverse: React.PropTypes.oneOfType([
 		React.PropTypes.bool,
 		React.PropTypes.oneOf([
-			'atSmall',
+			'atAll',
 			'atMedium',
 			'atLarge'
 		])
-	])
+	]),
+	switchDirection: React.PropTypes.oneOf([
+		'atAll',
+		'atMedium',
+		'atLarge'
+	]),
+	wrap: React.PropTypes.bool
 };
 
-/**
- * @module FlexItem
- */
-class FlexItem extends React.Component {
-	render() {
-		const {
-			children,
-			className,
-			shrink,
-			growFactor,
-			...other
-		} = this.props;
-
-		const classNames = cx(
-			'flex-item',
-			{
-				'flex-item--shrink': shrink,
-				[`flex-item--${growFactor}`] : typeof growFactor === 'number',
-			},
-			className
-		);
-
-		return (
-			<div
-				className={classNames}
-				{...other}>
-					{children}
-			</div>
-		);
-	}
-}
-
-FlexItem.propTypes = {
-	shrink: React.PropTypes.bool,
-	growFactor: React.PropTypes.oneOf([1,2,3,4,5,6,7])
-};
-
-module.exports = { Flex, FlexItem };
+export default Flex;
