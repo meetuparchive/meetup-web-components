@@ -16,6 +16,7 @@ class Popover extends React.Component {
 			'closeMenu',
 			'onClick',
 			'onKeyDown',
+			'onKeyDownMenuItem',
 			'onClick',
 			'onBlur'
 		);
@@ -24,12 +25,13 @@ class Popover extends React.Component {
 			isActive: false,
 			selectedIndex: 0
 		};
+
+		this._menuItems = new Map();
 	}
 
 	updateFocusBy(delta) {
 		const targetIndex = this.state.selectedIndex + delta;
-
-		if (targetIndex >= 0 && targetIndex < this.props.menuItems.length) {
+		if (targetIndex >= 0 && targetIndex < this.menuItems.length) {
 			this.setState({ selectedIndex: targetIndex });
 		}
 	}
@@ -66,11 +68,15 @@ class Popover extends React.Component {
 
 	onKeyDown(e) {
 		switch(e.key) {
+		// case 'ArrowDown':
+		// 	this.updateFocusBy(1);
+		// 	break;
+		// case 'ArrowUp':
+		// 	this.updateFocusBy(-1);
+		// 	break;
 		case 'Enter':
 			if (!this.state.isActive) {
 				this.openMenu();
-			} else if (this.selectedItemEl && this.selectedItemEl.props.onClick) {
-				this.selectedItemEl.props.onClick(e);
 			}
 			break;
 		case 'Escape':
@@ -87,46 +93,48 @@ class Popover extends React.Component {
 		case 'ArrowUp':
 			this.updateFocusBy(-1);
 			break;
+		case 'Enter':
+			if (this._menuItems.get(this.state.selectedIndex)) {
+				this._menuItems.get(this.state.selectedIndex).props.onClick(e);
+			}
+			break;
 		}
 	}
 
 	componentDidUpdate() {
-		if (this.selectedItemEl) {
-			ReactDOM.findDOMNode(this.selectedItemEl).focus();
+		const selectedItemEl = this._menuItems.get(this.state.selectedIndex);
+		if (selectedItemEl) {
+			ReactDOM.findDOMNode(selectedItemEl).focus();
 		}
 	}
 
 	renderMenuItems() {
-		return this.props.menuItems.map((menuItem, i) => {
-			const isSelected = this.state.isActive && this.state.selectedIndex === i;
-
+		this.menuItems = this.props.menuItems.map((menuItem, i) => {
 			return (
 				<li
 					key={i}
-					className='popover-menu-option'
+					className='popover-menu-option arg'
+					role='menuitem'
+					onKeyDown={this.onKeyDownMenuItem}
 				>
-					{/*
-					* treat each user-provided menu item element as the
-					* keyboard-navigable, focusable 'menuitem' role
-					*/}
 					{
+						/*
+						* treat each user-provided menu item element as the
+						* keyboard-navigable, focusable 'menuitem' role
+						*/
 						React.cloneElement(menuItem,
 							{
-								ref: (el) => {
-									if (isSelected) {
-										this.selectedItemEl = el;
-									}
-								},
-								role: 'menuitem',
 								tabIndex: '-1',
-								onKeyDown: this.onKeyDownMenuItem,
-								className: 'popover-menu-option-target'
+								className: 'popover-menu-option-target',
+								ref: (el) => this._menuItems.set(i, el),
 							}
 						)
 					}
 				</li>
 			);
 		});
+
+		return this.menuItems;
 	}
 
 	render() {

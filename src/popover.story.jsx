@@ -6,6 +6,7 @@ import Popover from './Popover';
 import Button from './Button';
 
 const logSelection = e => {
+	console.log('yowerewr');
 	action(`Selected option ${e.target}`);
 };
 
