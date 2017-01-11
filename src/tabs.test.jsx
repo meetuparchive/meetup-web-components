@@ -87,4 +87,11 @@ describe('Tabs', function() {
 		expect(tabsClass.indexOf('tabs--bordered')).toBe(-1);
 	});
 
+	it('should throw an error if tab elements aren\'t of type `TabsTab`', function() {
+		expect(TestUtils.renderIntoDocument(
+			<Tabs>
+				<button>Hello world</button>
+			</Tabs>
+		)).toThrow();
+	});
 });
