@@ -120,7 +120,7 @@ class Popover extends React.Component {
 							{
 								tabIndex: '-1',
 								onKeyDown: this.onKeyDownMenuItem,
-								className: cx('popover-menu-option-target', menuItem.props.className)
+								className: cx('popover-menu-option-target', menuItem.props.className),
 								ref: (el) => this._menuItems.set(i, el),
 							}
 						)
