@@ -27,27 +27,37 @@ describe('Stripe', function() {
 	});
 
 	describe('collection', () => {
-		let stripeCollection;
+		let stripeCollection,
+			stripeNode;
 		beforeEach(() => {
 			stripeCollection = TestUtils.renderIntoDocument(<Stripe collection/>);
+			stripeNode = ReactDOM.findDOMNode(stripeCollection);
 		});
 		afterEach(() => {
 			stripeCollection = null;
+			stripeNode = null;
+		});
+		it(`check that the component has '${STRIPE_CLASS}' class`, function() {
+			expect(stripeNode.classList).toContain(STRIPE_CLASS);
 		});
 		it(`check that default component has '${STRIPE_COLLECTION_CLASS}' class`, function() {
-			const stripeNode = ReactDOM.findDOMNode(stripeCollection);
-
 			expect(stripeNode.classList).toContain(STRIPE_COLLECTION_CLASS);
 		});
 	});
 
 	describe('inverted', () => {
-		let stripeInverted;
+		let stripeInverted,
+			stripeNode;
 		beforeEach(() => {
 			stripeInverted = TestUtils.renderIntoDocument(<Stripe inverted/>);
+			stripeNode = ReactDOM.findDOMNode(stripeInverted);
 		});
 		afterEach(() => {
 			stripeInverted = null;
+			stripeNode = null;
+		});
+		it(`check that the component has '${STRIPE_CLASS}' class`, function() {
+			expect(stripeNode.classList).toContain(STRIPE_CLASS);
 		});
 		it(`check that default component has '${STRIPE_INVERTED_CLASS}' class`, function() {
 			const stripeNode = ReactDOM.findDOMNode(stripeInverted);
@@ -58,42 +68,48 @@ describe('Stripe', function() {
 
 
 	describe('hero', () => {
-		let stripeHero;
+		let stripeHero,
+			stripeNode;
 		beforeEach(() => {
 			stripeHero = TestUtils.renderIntoDocument(<Stripe hero/>);
+			stripeNode = ReactDOM.findDOMNode(stripeHero);
 		});
 		afterEach(() => {
 			stripeHero = null;
+			stripeNode = null;
 		});
-		it(`check that component has '${STRIPE_CLASS}' class`, function() {
-			const stripeNode = ReactDOM.findDOMNode(stripeHero);
-
+		it(`check that the component has '${STRIPE_CLASS}' class`, function() {
+			expect(stripeNode.classList).toContain(STRIPE_CLASS);
+		});
+		it(`check that component has '${STRIPE_HERO_CLASS}' class`, function() {
 			expect(stripeNode.classList).toContain(STRIPE_HERO_CLASS);
 		});
 		it('should render a `Bounds` component', () => {
 			const boundComponent = findComponentsWithType(stripeHero, 'Bounds');
 			expect(boundComponent.length).toBe(1);
 		});
-		describe('backgroundImage', () => {
-			const src = 'https://placekitten.com/g/200/300';
-			beforeEach(() => {
-				stripeHero = TestUtils.renderIntoDocument(<Stripe backgroundImage={src} />);
-			});
-			afterEach(() => {
-				stripeHero = null;
-			});
-			it(`check that component has '${STRIPE_CLASS}' class`, function() {
-				const stripeNode = ReactDOM.findDOMNode(stripeHero);
-				expect(stripeNode.classList).toContain(STRIPE_HERO_CLASS);
-			});
-			it('should set backgroundImage style', () => {
-				const stripeNode = ReactDOM.findDOMNode(stripeHero);
-				expect(stripeNode.style.backgroundImage.indexOf(src)).not.toBe(-1);
-			});
-			it('should NOT render a hero component if `backgroundImage` provided but no `hero` flag', () => {
-				const boundComponent = findComponentsWithType(stripeHero, 'Bounds');
-				expect(boundComponent.length).toBe(0);
-			});
+	});
+
+	describe('backgroundImage', () => {
+		const src = 'https://placekitten.com/g/200/300';
+		let stripeImg,
+			stripeNode;
+		beforeEach(() => {
+			stripeImg = TestUtils.renderIntoDocument(<Stripe backgroundImage={src} />);
+			stripeNode = ReactDOM.findDOMNode(stripeImg);
+		});
+		afterEach(() => {
+			stripeImg = null;
+			stripeNode = null;
+		});
+		it(`check that the component has '${STRIPE_CLASS}' class`, function() {
+			expect(stripeNode.classList).toContain(STRIPE_CLASS);
+		});
+		it(`check that component has '${STRIPE_HERO_CLASS}' class`, function() {
+			expect(stripeNode.classList).toContain(STRIPE_HERO_CLASS);
+		});
+		it('should set backgroundImage style', () => {
+			expect(stripeNode.style.backgroundImage).toEqual(`url(${src})`);
 		});
 	});
 });

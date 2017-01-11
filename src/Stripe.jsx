@@ -16,6 +16,7 @@ class Stripe extends React.Component {
 		const {
 			children,
 			className,
+			style,
 			backgroundImage,
 			collection,
 			inverted,
@@ -33,7 +34,10 @@ class Stripe extends React.Component {
 			className
 		);
 
-		const styles = backgroundImage ? {backgroundImage: `url(${backgroundImage})`} : null;
+		const styles = backgroundImage ? {
+			...style,
+			backgroundImage: `url(${backgroundImage})`
+		} : style;
 
 		return (
 			<div
@@ -41,9 +45,12 @@ class Stripe extends React.Component {
 				style={styles}
 				{...other}>
 				{ hero ?
-					<Bounds className='stripe-heroContent'>
-						{children}
-					</Bounds> : children
+					(
+						<Bounds className='stripe-heroContent'>
+							{children}
+						</Bounds>
+					) :
+					children
 				}
 			</div>
 		);

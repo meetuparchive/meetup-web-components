@@ -23,7 +23,8 @@ class Bounds extends React.Component {
 		return (
 			<div
 				className={classNames}
-				{...other}>
+				{...other}
+			>
 					{children}
 			</div>
 		);
