@@ -12,6 +12,7 @@ let popover,
 	optionEls;
 
 const class_hidden = 'display--none';
+const MOCK_HANDLER = jest.genMockFunction();
 
 const popoverComponent = (
 	<Popover
@@ -19,16 +20,12 @@ const popoverComponent = (
 			<Button>Open</Button>
 		}
 		menuItems={[
-			<Link to='somepath1/'>First option</Link>,
-			<Link to='somepath2/'>Second option</Link>,
-			<Link to='somepath3/'>Third option</Link>,
+			<Link to='somepath1/' onClick={MOCK_HANDLER}>First option</Link>,
+			<Link to='somepath2/' onClick={MOCK_HANDLER}>Second option</Link>,
+			<Link to='somepath3/' onClick={MOCK_HANDLER}>Third option</Link>,
 		]}
 	/>
 );
-
-// const renderPopoverComponent = () => {
-
-// };
 
 const getIsActive = (menuEl) => {
 	return !menuEl.classList.contains(class_hidden);
@@ -62,23 +59,50 @@ describe('Popover placeholder', function() {
 		expect(getIsActive(menuEl)).toBe(false);
 	});
 
+	describe('focusCheck', () => {
+		it('should be active if focus is on menu items', () => {
+			popover.openMenu();
+			popover.focusCheck();
+			expect(popover.state.isActive).toBe(true);
+		});
+		it('should close menu if focus not on items', () => {
+			popover.openMenu();
+			document.activeElement.blur();
+			popover.focusCheck();
+			expect(popover.state.isActive).toBe(false);
+		});
+	});
+
 	it('menu appears on trigger click', () => {
 		expect(getIsActive(menuEl)).toBe(false);
 		TestUtils.Simulate.click(triggerEl);
 		expect(getIsActive(menuEl)).toBe(true);
 	});
 
-	it('menu is keyboard navigable with escape key', () => {
-		const firstOption = optionEls[0];
-
-		TestUtils.Simulate.click(triggerEl);
-		expect(getIsActive(menuEl)).toBe(true);
-
-		TestUtils.Simulate.keyDown(firstOption, {key: 'Escape'});
-		expect(getIsActive(menuEl)).toBe(false);
+	describe('onBlur', () => {
+		it('should add timeout when `blur`ed', () => {
+			spyOn(window, 'setTimeout');
+			popover.onBlur();
+			expect(window.setTimeout).toHaveBeenCalled();
+		});
 	});
 
-	describe('keys', () => {
+	describe('onKeyDown', () => {
+		it('menu is keyboard navigable with `escape` key', () => {
+			const firstOption = optionEls[0];
+
+			popover.openMenu();
+
+			TestUtils.Simulate.keyDown(firstOption, {key: 'Escape'});
+			expect(getIsActive(menuEl)).toBe(false);
+		});
+		it('menu is keyboard navigable with `enter` key', () => {
+			TestUtils.Simulate.keyDown(triggerEl, {key: 'Enter'});
+			expect(getIsActive(menuEl)).toBe(true);
+		});
+	});
+
+	describe('onKeyDownMenuItem', () => {
 		let firstOption,
 			secondOption;
 
@@ -88,13 +112,17 @@ describe('Popover placeholder', function() {
 			popover.openMenu();
 		});
 
-		it('menu is keyboard navigable with arrows Down', () => {
+		it('menu is keyboard navigable with arrows `Down`', () => {
 			TestUtils.Simulate.keyDown(firstOption, {key: 'ArrowDown'});
 			expect(document.activeElement).toBe(secondOption);
 		});
-		it('menu is keyboard navigable with arrows Up', () => {
+		it('menu is keyboard navigable with arrows `Up`', () => {
 			TestUtils.Simulate.keyDown(firstOption, {key: 'ArrowUp'});
 			expect(document.activeElement).toBe(firstOption);
+		});
+		it('menu is keyboard navigable with arrows `Enter`', () => {
+			TestUtils.Simulate.keyDown(firstOption, {key: 'Enter'});
+			expect(MOCK_HANDLER).toHaveBeenCalled();
 		});
 	});
 

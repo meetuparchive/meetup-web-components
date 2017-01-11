@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import bindAll from './utils/bindAll';
 
+const POPOVER_MENU_CLASS = 'popover-menu-option';
 /**
  * @module Popover
  */
@@ -44,22 +45,23 @@ class Popover extends React.Component {
 		this.setState({ isActive: false });
 	}
 
+	focusCheck() {
+		const focusedOptionClass = document.activeElement.parentNode.classList;
+		// don't close the popover if we're moving focus to an menu item
+		if (focusedOptionClass && focusedOptionClass.contains(POPOVER_MENU_CLASS)) {
+			return;
+		}
+
+		this.closeMenu();
+	}
+
 	onBlur() {
 		// On blur, browsers always focus `<body>` before moving focus
 		// to the next actual focused element.
 		//
 		// This zero-length timeout ensures the browser will return the
 		// actual focused element instead of `<body>`
-		window.setTimeout(() => {
-			const focusedOptionClass = document.activeElement.parentNode.classList;
-
-			// don't close the popover if we're moving focus to an menu item
-			if (focusedOptionClass && focusedOptionClass.contains('popover-menu-option')) {
-				return;
-			}
-
-			this.closeMenu();
-		}, 0);
+		window.setTimeout(() => this.focusCheck(), 0);
 	}
 
 	onClick(e) {
@@ -88,7 +90,7 @@ class Popover extends React.Component {
 			this.updateFocusBy(-1);
 			break;
 		case 'Enter':
-			if (this._menuItems.get(this.state.selectedIndex)) {
+			if (this._menuItems.get(this.state.selectedIndex) && this._menuItems.get(this.state.selectedIndex).props.onClick) {
 				this._menuItems.get(this.state.selectedIndex).props.onClick(e);
 			}
 			break;
@@ -107,7 +109,7 @@ class Popover extends React.Component {
 			return (
 				<li
 					key={i}
-					className='popover-menu-option arg'
+					className={POPOVER_MENU_CLASS}
 					role='menuitem'
 					onKeyDown={this.onKeyDownMenuItem}
 				>
