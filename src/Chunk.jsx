@@ -1,7 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 
+export const CHUNK_CLASS = 'chunk';
 /**
+ * Design System Component: Provides `stripe` styled container for components
  * @module Chunk
  */
 class Chunk extends React.Component {
@@ -13,21 +15,19 @@ class Chunk extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'chunk',
+			CHUNK_CLASS,
 			className
 		);
 
 		return (
 			<div
 				className={classNames}
-				{...other}>
-					{children}
+				{...other}
+			>
+				{children}
 			</div>
 		);
 	}
 }
-
-Chunk.propTypes = {
-};
 
 export default Chunk;
