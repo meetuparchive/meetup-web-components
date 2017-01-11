@@ -1,7 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 
+export const BOUNDS_CLASS = 'bounds';
+
 /**
+ * Design System Component: Provides `bounds` container for components
  * @module Bounds
  */
 class Bounds extends React.Component {
@@ -13,7 +16,7 @@ class Bounds extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'bounds',
+			BOUNDS_CLASS,
 			className
 		);
 
@@ -26,9 +29,5 @@ class Bounds extends React.Component {
 		);
 	}
 }
-
-Bounds.propTypes = {
-
-};
 
 export default Bounds;
