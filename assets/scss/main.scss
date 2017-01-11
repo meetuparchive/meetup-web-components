@@ -6,4 +6,15 @@
 //
 @import "~sassquatch2/sass/sassquatch.scss";
 
-@import "./popover";
+@import "_util";
+
+//
+// DESIGN SYSTEM SPECIFIC
+//
+@import "bounds";
+@import "stripe";
+
+//
+// COMPONENT SPECIFIC
+//
+@import "popover";
