@@ -90,9 +90,9 @@ describe('Stripe', function() {
 				const stripeNode = ReactDOM.findDOMNode(stripeHero);
 				expect(stripeNode.style.backgroundImage.indexOf(src)).not.toBe(-1);
 			});
-			it('should render a hero component if `backgroundImage` provided', () => {
+			it('should NOT render a hero component if `backgroundImage` provided but no `hero` flag', () => {
 				const boundComponent = findComponentsWithType(stripeHero, 'Bounds');
-				expect(boundComponent.length).toBe(1);
+				expect(boundComponent.length).toBe(0);
 			});
 		});
 	});

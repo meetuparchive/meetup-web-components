@@ -23,14 +23,12 @@ class Stripe extends React.Component {
 			...other
 		} = this.props;
 
-		const isHero = backgroundImage || hero;
-
 		const classNames = cx(
 			STRIPE_CLASS,
 			{
 				[STRIPE_COLLECTION_CLASS]: collection,
 				[`${STRIPE_INVERTED_CLASS} inverted`]: inverted,
-				[`${STRIPE_HERO_CLASS} inverted`]: isHero
+				[`${STRIPE_HERO_CLASS} inverted`]: backgroundImage || hero
 			},
 			className
 		);
@@ -42,7 +40,7 @@ class Stripe extends React.Component {
 				className={classNames}
 				style={styles}
 				{...other}>
-				{ isHero ?
+				{ hero ?
 					<Bounds className='stripe-heroContent'>
 						{children}
 					</Bounds> : children

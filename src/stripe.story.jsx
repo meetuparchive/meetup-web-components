@@ -23,7 +23,7 @@ storiesOf('Stripe', module)
 					<p>Stripes go full-width and are used to separate distinct regions of a view</p>
 				</Stripe>
 
-				<Stripe backgroundImage='http://photos2.meetupstatic.com/photos/event/4/a/2/9/600_434238985.jpeg'>
+				<Stripe backgroundImage='https://placekitten.com/g/600/600'>
 					<div style={{zIndex: '1'}}>
 						<h3 className='text--display2'>Stripe with bg photo</h3>
 						<p>Stripes go full-width and are used to separate distinct regions of a view</p>
@@ -34,7 +34,7 @@ storiesOf('Stripe', module)
 	))
 	.add('hero stripe', () => (
 		<div style={{width: '100%'}}>
-			<Stripe isHero backgroundImage='http://photos2.meetupstatic.com/photos/event/4/a/2/9/600_434238985.jpeg'>
+			<Stripe hero backgroundImage='https://placekitten.com/g/600/600'>
 				<h3 className='text--display2'>Hero stripe with bg photo</h3>
 				<p>Stripes go full-width and are used to separate distinct regions of a view</p>
 				<p>Hero stripes have a built-in Bounds to wrangle internal content</p>
