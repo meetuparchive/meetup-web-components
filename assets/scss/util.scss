@@ -50,7 +50,7 @@ $breakpointBaseMap: (
 	@each $breakpoint in (small, medium, large) {
 
 		@include atMediaUpFixed($breakpoint) {
-			.at#{str-firstCharToUpper($breakpoint)}_#{$base}--#{$modification} {
+			.at#{str-firstCharToUpper(str-replace($breakpoint, 'small', 'all'))}_#{$base}--#{$modification} {
 				@content;
 			}
 		}

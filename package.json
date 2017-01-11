@@ -46,7 +46,7 @@
     "react-dom": "15.4.1",
     "react-intl": "2.1.5",
     "react-transform-catch-errors": "1.0.2",
-    "sassquatch2": "git+https://github.com/meetup/sassquatch2#responsify"
+    "sassquatch2": "git+https://github.com/meetup/sassquatch2"
   },
   "devDependencies": {
     "@kadira/storybook": "2.33.1",

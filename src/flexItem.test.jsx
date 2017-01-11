@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import GridList from './GridList';
+import { IntlProvider } from 'react-intl';
+import FlexItem from './FlexItem';
 
 function intlRender(component) {
 	return TestUtils.renderIntoDocument(
@@ -11,13 +12,13 @@ function intlRender(component) {
 	);
 }
 
-describe('GridList', function() {
+describe('FlexItem', function() {
 
 	it('exists', function() {
-		const gridList = intlRender(<GridList />);
-		const gridListNode = ReactDOM.findDOMNode(gridList);
+		const flexItem = intlRender(<FlexItem />);
+		const flexItemNode = ReactDOM.findDOMNode(flexItem);
 
-		expect(gridListNode).not.toBeNull();
+		expect(flexItemNode).not.toBeNull();
 	});
 
 });
