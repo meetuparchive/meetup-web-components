@@ -1,0 +1,70 @@
+//
+// Popover
+//
+$popoverShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C_border;
+
+.popover {
+	position: relative;
+}
+
+.popover-trigger {
+	cursor: pointer;
+	&--active {
+		background: $C_selection;
+		box-shadow: 0 0 0 8px $C_selection;
+		&:focus {
+			outline: 0;
+		}
+	}
+}
+
+.popover-container {
+	border-radius: $defaultRadius;
+	background-color: $C_contentBG;
+	box-sizing: border-box;
+	box-shadow: $popoverShadow;
+	max-height: $block-6;
+	overflow: scroll;
+	position: absolute;
+	width: $view-minWidth;
+	z-index: 1;
+	text-align: left !important;
+}
+
+.popover-container--menu {
+	width: $block-4;
+}
+
+.popover-menu-option {
+	cursor: pointer;
+	a, span, div, button {
+		display: block;
+		padding: $space-half $space;
+
+		&:focus {
+			outline: 0;
+			background: $C_selection;
+		}
+	}
+}
+
+.popover-container--menu:hover {
+	.popover-menu-option {
+		a, span, div, button {
+			&:focus {
+				background: transparent;
+			}
+			&:hover {
+				background: $C_selection;
+			}
+		}
+	}
+}
+
+.popover-container--horizontal-left {
+	right: 0;
+}
+
+.popover-container--horizontal-right {
+	left: 0;
+}
