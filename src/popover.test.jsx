@@ -97,4 +97,41 @@ describe('Popover placeholder', function() {
 			expect(document.activeElement).toBe(firstOption);
 		});
 	});
+
+	describe('updateFocusBy', () => {
+		it('should increase the selectedIndex state for positive delta', () => {
+			expect(popover.state.selectedIndex).toBe(0);
+			popover.updateFocusBy(1);
+			expect(popover.state.selectedIndex).toBe(1);
+		});
+		it('should not increase the selectedIndex state for zero delta', () => {
+			expect(popover.state.selectedIndex).toBe(0);
+			popover.updateFocusBy(0);
+			expect(popover.state.selectedIndex).toBe(0);
+		});
+		it('should decrease the selectedIndex state for negative delta', () => {
+			popover.updateFocusBy(1);
+			expect(popover.state.selectedIndex).toBe(1);
+			popover.updateFocusBy(-1);
+			expect(popover.state.selectedIndex).toBe(0);
+		});
+	});
+
+	describe('openMenu', () => {
+		it('should set the component state to active', () => {
+			expect(popover.state.isActive).toBe(false);
+			popover.openMenu();
+			expect(popover.state.isActive).toBe(true);
+		});
+	});
+
+	describe('closeMenu', () => {
+		it('should set the component state to inactive', () => {
+			popover.openMenu();
+			expect(popover.state.isActive).toBe(true);
+			popover.closeMenu();
+			expect(popover.state.isActive).toBe(false);
+		});
+	});
+
 });
