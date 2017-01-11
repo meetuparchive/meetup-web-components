@@ -58,7 +58,7 @@ export default class TogglePill extends React.Component {
 			}
 		);
 
-		const topicShape = (this.state.isChecked) ? 'fullheart' : 'emptyheart';
+		const topicShape = (this.state.isChecked) ? 'heart' : 'heart-outline';
 
 		const topicChildren = (
 			<Icon

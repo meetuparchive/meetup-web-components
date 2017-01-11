@@ -1,98 +1,54 @@
 import React from 'react';
-import { Link } from 'react-router';
 import cx from 'classnames';
-
-/**
- * @module Tab
- */
-class Tab extends React.Component {
-	render() {
-		const {
-			url,
-			name,
-			isCurrent,
-			...other
-		} = this.props;
-
-		const classNames = cx(
-			'tabs-tab align--center atMedium_align--left',
-			{'tabs-tab--selected': isCurrent}
-		);
-
-		return(
-			<li
-				className={classNames}
-				{...other}
-			>
-				<Link to={url}>
-					{name}
-				</Link>
-			</li>
-		);
-	}
-}
-
+import TabsTab from './TabsTab';
 /**
  * @module Tabs
  */
 class Tabs extends React.Component {
-
 	render() {
 		const {
+			children,
 			className,
-			tabList,
 			bordered,
+			full,
 			...other
 		} = this.props;
 
-		const tabListClassNames = cx(
+		const ulClasses = cx(
 			'tabs',
-			className
-		);
-
-		const tabContainerClassNames = cx(
-			'tabs-container',
 			{
-				// 'padding--left padding--right': !this.context.pageHeadTabs,
-				'tabs-container--bordered': bordered
+				'tabs--bordered': bordered,
+				'tabs--full': full,
 			}
 		);
 
 		return (
-			<nav className={tabContainerClassNames}>
-				<ul className={tabListClassNames} {...other}>
-					{tabList.map((tab,i)=>{
-						const isCurrent = this.context.router.isActive(tab.url, true);
-						return (
-							<Tab
-								isCurrent={isCurrent}
-								key={i}
-								url={tab.url}
-								name={tab.name}
-							/>
-						);
-					})}
+			<nav className={className}>
+				<ul
+					role='menu'
+					className={ulClasses}
+					{...other}
+				>
+					{children}
 				</ul>
 			</nav>
 		);
 	}
 }
 
-/*
-Tabs.contextTypes = {
-	pageHeadTabs: React.PropTypes.bool
-};
-*/
-
-
-
-Tabs.contextTypes = {
-	router: React.PropTypes.func.isRequired
-};
-
-
 Tabs.propTypes = {
-	tabList: React.PropTypes.array
+	full: React.PropTypes.bool,
+	bordered: React.PropTypes.bool,
+	children(props, propName, componentName) {
+		const prop = props[propName];
+		let error = null;
+		React.Children.forEach(prop, child => {
+			if (child.type !== TabsTab) {
+				error = new Error(`Tabs: Expected child of type "TabsTab"; received "${child.type.displayName}"`);
+			}
+		});
+		return error;
+	}
 };
 
 export default Tabs;

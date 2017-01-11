@@ -1,16 +1,62 @@
 
 import React from 'react';
-import { IntlProvider } from 'react-intl';
-import Tabs from './Tabs';
 import { storiesOf } from '@kadira/storybook';
+import { Annotate } from './utils/storyComponents';
+import { decorateWithLocale } from './utils/decorators';
+import Tabs from './Tabs';
+import TabsTab from './TabsTab';
 
 storiesOf('Tabs', module)
-	.addDecorator(story => {
-		const locale = 'en-US';
+	.addDecorator(decorateWithLocale)
+	.add('default', () => {
 		return (
-			<IntlProvider locale={locale}>
-				{story()}
-			</IntlProvider>
+			<Tabs>
+				<TabsTab
+					isActive
+					url='/foo'
+					label='First Tab' />
+				<TabsTab
+					url='/bar'
+					label='Second Tab' />
+				<TabsTab
+					url='/bar'
+					label='Third Tab' />
+			</Tabs>
 		);
 	})
-	.add('default', () => <Tabs />);
+	.add('Bordered tabs', () => {
+		return (
+			<Annotate notes='For bordered tabs, add the boolean prop `bordered` to `Tabs`'>
+				<Tabs bordered>
+					<TabsTab
+						isActive
+						url='/foo'
+						label='First Tab' />
+					<TabsTab
+						url='/bar'
+						label='Second Tab' />
+					<TabsTab
+						url='/bar'
+						label='Third Tab' />
+				</Tabs>
+			</Annotate>
+		);
+	})
+	.add('Full width tabs', () => {
+		return (
+			<Annotate notes='For full-width tabs, add the boolean prop `full` to `Tabs`'>
+				<Tabs full>
+					<TabsTab
+						isActive
+						url='/foo'
+						label='First Tab' />
+					<TabsTab
+						url='/bar'
+						label='Second Tab' />
+					<TabsTab
+						url='/bar'
+						label='Third Tab' />
+				</Tabs>
+			</Annotate>
+		);
+	});

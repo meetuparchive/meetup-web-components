@@ -1,39 +1,40 @@
-
 import React from 'react';
-import { Popover, PopoverTrigger, PopoverMenu, PopoverMenuOption, PopoverContent } from './Popover';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf, action } from '@kadira/storybook';
+import { decorateWithLocale } from './utils/decorators';
+import { Link } from 'react-router';
+import Popover from './Popover';
+import Button from './Button';
 
-import {
-	Chunk,
-	Section
-} from './layoutUtils';
+const logSelection = e => {
+	console.log('yowerewr');
+	action(`Selected option ${e.target}`);
+};
 
 storiesOf('Popover', module)
-	.add('Default', () => (
-	<Popover>
-		<PopoverTrigger tabIndex={0}>Trigger popover</PopoverTrigger>
-		<PopoverMenu>
-			<PopoverMenuOption>
-				Option One
-			</PopoverMenuOption>
-			<PopoverMenuOption>
-				Option Two
-			</PopoverMenuOption>
-			<PopoverMenuOption>
-				Option Three
-			</PopoverMenuOption>
-		</PopoverMenu>
-	</Popover>
-	))
-	.add('Container', () => (
-	<Popover>
-		<PopoverTrigger tabIndex={1}>Trigger popover</PopoverTrigger>
-		<PopoverContent>
-			<Section>
-				<Chunk>
-					<p>Arbitrary HTML can go in here</p>
-				</Chunk>
-			</Section>
-		</PopoverContent>
-	</Popover>
-	));
+	.addDecorator(decorateWithLocale)
+	.add('Button trigger with Link menu items', () => {
+		return (
+			<Popover
+				trigger={
+					<Button>Open</Button>
+				}
+				menuItems={[
+					<Link to='somepath/' onClick={logSelection}>First option</Link>,
+					<Link to='somepath/' onClick={logSelection}>Second option</Link>,
+					<Link to='somepath/' onClick={logSelection}>Third option</Link>,
+				]}
+			/>
+		);
+	})
+	.add('DIV trigger with SPAN menu items', () => {
+		return (
+			<Popover
+				trigger={<div>Open</div>}
+				menuItems={[
+					<span className='first-option' onClick={logSelection}>First option</span>,
+					<span className='second-option' onClick={logSelection}>Second option</span>,
+					<span className='third-option' onClick={logSelection}>Third option</span>,
+				]}
+			/>
+		);
+	});
