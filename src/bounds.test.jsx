@@ -14,7 +14,7 @@ describe('Bounds', function() {
 	it('exists', function() {
 		expect(boundsNode).not.toBeNull();
 	});
-	it(`check that default component has \'${BOUNDS_CLASS}\' class`, function() {
+	it(`check that default component has '${BOUNDS_CLASS}' class`, function() {
 		expect(boundsNode.classList).toContain(BOUNDS_CLASS);
 	});
 

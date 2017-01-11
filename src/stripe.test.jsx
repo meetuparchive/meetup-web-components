@@ -19,7 +19,7 @@ describe('Stripe', function() {
 		expect(stripeNode).not.toBeNull();
 	});
 
-	it(`check that default component has \'${STRIPE_CLASS}\' class`, function() {
+	it(`check that default component has '${STRIPE_CLASS}' class`, function() {
 		const stripe = TestUtils.renderIntoDocument(<Stripe />);
 		const stripeNode = ReactDOM.findDOMNode(stripe);
 
@@ -34,7 +34,7 @@ describe('Stripe', function() {
 		afterEach(() => {
 			stripeCollection = null;
 		});
-		it(`check that default component has \'${STRIPE_COLLECTION_CLASS}\' class`, function() {
+		it(`check that default component has '${STRIPE_COLLECTION_CLASS}' class`, function() {
 			const stripeNode = ReactDOM.findDOMNode(stripeCollection);
 
 			expect(stripeNode.classList).toContain(STRIPE_COLLECTION_CLASS);
@@ -49,7 +49,7 @@ describe('Stripe', function() {
 		afterEach(() => {
 			stripeInverted = null;
 		});
-		it(`check that default component has \'${STRIPE_INVERTED_CLASS}\' class`, function() {
+		it(`check that default component has '${STRIPE_INVERTED_CLASS}' class`, function() {
 			const stripeNode = ReactDOM.findDOMNode(stripeInverted);
 
 			expect(stripeNode.classList).toContain(STRIPE_INVERTED_CLASS);
@@ -65,7 +65,7 @@ describe('Stripe', function() {
 		afterEach(() => {
 			stripeHero = null;
 		});
-		it(`check that component has \'${STRIPE_CLASS}\' class`, function() {
+		it(`check that component has '${STRIPE_CLASS}' class`, function() {
 			const stripeNode = ReactDOM.findDOMNode(stripeHero);
 
 			expect(stripeNode.classList).toContain(STRIPE_HERO_CLASS);
@@ -82,7 +82,7 @@ describe('Stripe', function() {
 			afterEach(() => {
 				stripeHero = null;
 			});
-			it(`check that component has \'${STRIPE_CLASS}\' class`, function() {
+			it(`check that component has '${STRIPE_CLASS}' class`, function() {
 				const stripeNode = ReactDOM.findDOMNode(stripeHero);
 				expect(stripeNode.classList).toContain(STRIPE_HERO_CLASS);
 			});
