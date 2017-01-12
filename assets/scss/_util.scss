@@ -1,7 +1,7 @@
 //
 // atMediaUpFixed (temporary)
 // Replaces existing atMediaUp, adding a breakpoint for "all" that starts at zero
-// Rhis is necessary to do "base size" math. "all" is ignored by atMediaUp.
+// This is necessary to do "base size" math. "all" is ignored by atMediaUp.>>>>>>> 7a7893f4c184c2c46ea002b334adfd4c8557a132
 // Maybe there's a smarter way?
 //
 @mixin atMediaUpFixed($breakpoint){
@@ -56,5 +56,4 @@ $breakpointBaseMap: (
 		}
 
 	}
-
 }

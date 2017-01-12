@@ -34,7 +34,10 @@ class TabsTab extends React.Component {
 }
 TabsTab.propTypes = {
 	url: React.PropTypes.string.isRequired,
-	label: React.PropTypes.string.isRequired,
+	label: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element,
+	]).isRequired,
 	isActive: React.PropTypes.bool,
 };
 
