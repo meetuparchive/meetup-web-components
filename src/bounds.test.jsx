@@ -6,7 +6,6 @@ import Bounds, {
 	BOUNDS_CLASS
 } from './Bounds';
 
-
 describe('Bounds', function() {
 	const bounds = TestUtils.renderIntoDocument(<Bounds />);
 	const boundsNode = ReactDOM.findDOMNode(bounds);
