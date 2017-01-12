@@ -34,5 +34,5 @@ describe('Section', function() {
 		it(`check that default component has '${SECTION_PADDED_CLASS}' class`, function() {
 			expect(sectionNode.classList).toContain(SECTION_PADDED_CLASS);
 		});
-	})
+	});
 });
