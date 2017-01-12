@@ -25,12 +25,12 @@ class Section extends React.Component {
 		);
 
 		return (
-			<div
+			<section
 				className={classNames}
 				{...other}
 			>
 				{children}
-			</div>
+			</section>
 		);
 	}
 }
