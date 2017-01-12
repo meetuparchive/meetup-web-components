@@ -9,11 +9,15 @@ class Section extends React.Component {
 		const {
 			children,
 			className,
+			noBorder,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'section',
+			{
+				noBorder: noBorder
+			},
 			className
 		);
 

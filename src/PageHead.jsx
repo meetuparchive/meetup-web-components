@@ -24,6 +24,7 @@ class PageHead extends React.Component {
 
 		return (
 			<Section
+				noBorder
 				className={classNames}
 				{...other}>
 					{children}
