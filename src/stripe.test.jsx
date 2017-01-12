@@ -66,7 +66,6 @@ describe('Stripe', function() {
 		});
 	});
 
-
 	describe('hero', () => {
 		let stripeHero,
 			stripeNode;
