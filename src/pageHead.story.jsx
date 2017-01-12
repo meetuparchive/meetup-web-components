@@ -41,9 +41,6 @@ storiesOf('PageHead', module)
 						<PageAction>
 							<PageActionButton icon='edit' label='Edit' />
 						</PageAction>
-						<PageAction>
-							<PageActionButton icon='share' label='Share' />
-						</PageAction>
 					</PageActions>
 				</PageTitle>
 			</PageHead>

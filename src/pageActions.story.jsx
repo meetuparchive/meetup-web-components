@@ -6,7 +6,7 @@ import { storiesOf } from '@kadira/storybook';
 
 storiesOf('PageActions', module)
 	.add('Row (default)', () => (
-		<div style={{width: '100%'}}>
+		<div style={{width: '100%', padding: '16px'}}>
 			<PageActions>
 				<PageAction>
 					<PageActionButton icon='magnifying-glass' label='Search' />
