@@ -37,4 +37,23 @@ describe('Avatar', function() {
 		const avatarWithSrcNode = ReactDOM.findDOMNode(avatarWithSrc);
 		expect(avatarWithSrcNode.classList.contains('avatar--noPhoto')).toBe(false);
 	});
+
+	it('renders a link element if `href` passed in', () => {
+		const avatar = TestUtils.renderIntoDocument(<Avatar className='test' href='/' />);
+		const avatarComponent = TestUtils.findRenderedDOMComponentWithClass(avatar, 'test');
+
+		expect(avatarComponent.tagName.toLowerCase()).toBe('a');
+	});
+	it('renders a link element if `to` passed in', () => {
+		const avatar = TestUtils.renderIntoDocument(<Avatar className='test' to='/' />);
+		const avatarComponent = TestUtils.findRenderedDOMComponentWithClass(avatar, 'test');
+
+		expect(avatarComponent.tagName.toLowerCase()).toBe('a');
+	});
+	it('renders a span element if `href` passed in', () => {
+		const avatar = TestUtils.renderIntoDocument(<Avatar className='test' />);
+		const avatarComponent = TestUtils.findRenderedDOMComponentWithClass(avatar, 'test');
+
+		expect(avatarComponent.tagName.toLowerCase()).toBe('span');
+	});
 });

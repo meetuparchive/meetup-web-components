@@ -54,6 +54,14 @@ class Avatar extends React.Component {
 			...other
 		};
 
+		if (this.props.to || this.props.href) {
+			return (
+				<a {...allProps}>
+					{alt}
+				</a>
+			);
+		}
+
 		return (
 			<span {...allProps}>
 				{alt}
