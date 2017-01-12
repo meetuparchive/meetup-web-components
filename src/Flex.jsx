@@ -28,8 +28,6 @@ class Flex extends React.Component {
 			...other
 		} = this.props;
 
-		const alignCapitalized = align == undefined ? null : align.charAt(0).toUpperCase() + align.slice(1);
-
 		const classNames = cx(
 			'flex',
 			{
@@ -44,12 +42,12 @@ class Flex extends React.Component {
 				// other
 				'flex--wrap': wrap,
 				'flex--noGutters': noGutters,
-				[`flex--${justify}`]: typeof justify === 'string',
-				[`flex--align${alignCapitalized}`]: typeof align === 'string',
-				'atAll_flex--rowReverse': typeof rowReverse === 'boolean',
-				[`${rowReverse}_flex--rowReverse`]: typeof rowReverse === 'string',
-				'atAll_flex--columnReverse': typeof columnReverse === 'boolean',
-				[`${columnReverse}_flex--columnReverse`]: typeof columnReverse === 'string',
+				[`flex--${justify}`]: justify,
+				[`flex--align${align.charAt(0).toUpperCase() + align.slice(1)}`]: align,
+				'atAll_flex--rowReverse': rowReverse,
+				[`${rowReverse}_flex--rowReverse`]: rowReverseDirection,
+				'atAll_flex--columnReverse': columnReverse,
+				[`${columnReverse}_flex--columnReverse`]: columnReverseDirection,
 			}, className);
 
 		return (
@@ -68,13 +66,11 @@ Flex.propTypes = {
 		'bottom',
 		'center',
 	]),
-	columnReverse: React.PropTypes.oneOfType([
-		React.PropTypes.bool,
-		React.PropTypes.oneOf([
-			'atAll',
-			'atMedium',
-			'atLarge'
-		])
+	columnReverse: React.PropTypes.bool,
+	columnReverseDirection: React.PropTypes.oneOf([
+		'atAll',
+		'atMedium',
+		'atLarge'
 	]),
 	direction: React.PropTypes.oneOf([
 		'row',
@@ -87,13 +83,11 @@ Flex.propTypes = {
 		'flexEnd'
 	]),
 	noGutters: React.PropTypes.bool,
-	rowReverse: React.PropTypes.oneOfType([
-		React.PropTypes.bool,
-		React.PropTypes.oneOf([
-			'atAll',
-			'atMedium',
-			'atLarge'
-		])
+	rowReverse: React.PropTypes.bool,
+	rowReverseDirection: React.PropTypes.oneOf([
+		'atAll',
+		'atMedium',
+		'atLarge'
 	]),
 	switchDirection: React.PropTypes.oneOf([
 		'atAll',
