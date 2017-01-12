@@ -1,6 +1,5 @@
 import { configure } from '@kadira/storybook';
-import '../assets/scss/main.scss';
-import '../assets/css/storybook.css';
+import '../assets/scss/storybook.scss';
 
 const componentStories = require.context('../src', false, /\.story\.jsx$/)
 
