@@ -206,7 +206,7 @@ Class                   | Variants
 */
 @each $jName, $jprop in $flexJustifyMap {
 
-	.justify--#{$jName} {
+	.flex--justify#{str-firstCharToUpper($jName)} {
 		@include justify-content($jprop);
 	}
 
