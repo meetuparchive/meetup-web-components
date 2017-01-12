@@ -9,14 +9,14 @@ class Section extends React.Component {
 		const {
 			children,
 			className,
-			bordered,
+			noBorder,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'section',
 			{
-				bordered: bordered
+				noBorder: noBorder
 			},
 			className
 		);
