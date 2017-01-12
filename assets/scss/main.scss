@@ -11,9 +11,11 @@
 //
 // DESIGN SYSTEM SPECIFIC
 //
+@import "bounds";
 @import "flex";
+@import "stripe";
 
 //
 // COMPONENT SPECIFIC
 //
-@import "./popover";
+@import "popover";
