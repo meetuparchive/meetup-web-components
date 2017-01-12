@@ -60,13 +60,13 @@ class Avatar extends React.Component {
 					{alt}
 				</a>
 			);
-		} else {
-			return (
-				<span {...allProps}>
-					{alt}
-				</span>
-			);
 		}
+
+		return (
+			<span {...allProps}>
+				{alt}
+			</span>
+		);
 	}
 }
 
