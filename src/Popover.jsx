@@ -201,12 +201,9 @@ class Popover extends React.Component {
 Popover.propTypes = {
 	trigger: React.PropTypes.element.isRequired,
 	menuItems: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
+	alignLeft: React.PropTypes.bool,
+	alignRight: React.PropTypes.bool,
 	className: React.PropTypes.string,
-};
-
-Popover.defaultProps = {
-	alignLeft: false,
-	alignRight: false,
 };
 
 export default Popover;
