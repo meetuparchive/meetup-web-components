@@ -139,6 +139,8 @@ class Popover extends React.Component {
 		const {
 				trigger,
 				menuItems, // eslint-disable-line no-unused-vars
+				alignLeft,
+				alignRight,
 				className,
 				...other
 			} = this.props;
@@ -158,7 +160,9 @@ class Popover extends React.Component {
 				'popover-container',
 				'popover-container--menu',
 				{
-					'display--none': !isActive
+					'display--none': !isActive,
+					'popover-container--horizontal-left': alignLeft,
+					'popover-container--horizontal-right': alignRight
 				}
 			)
 		};
@@ -197,6 +201,8 @@ class Popover extends React.Component {
 Popover.propTypes = {
 	trigger: React.PropTypes.element.isRequired,
 	menuItems: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
+	alignLeft: React.PropTypes.bool,
+	alignRight: React.PropTypes.bool,
 	className: React.PropTypes.string,
 };
 
