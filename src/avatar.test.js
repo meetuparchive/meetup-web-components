@@ -50,7 +50,7 @@ describe('Avatar', function() {
 
 		expect(avatarComponent.tagName.toLowerCase()).toBe('a');
 	});
-	it('renders a span element if `href` passed in', () => {
+	it('renders a span element if no `href` or `to` prop passed in', () => {
 		const avatar = TestUtils.renderIntoDocument(<Avatar className='test' />);
 		const avatarComponent = TestUtils.findRenderedDOMComponentWithClass(avatar, 'test');
 
