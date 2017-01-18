@@ -37,4 +37,34 @@ storiesOf('Popover', module)
 				]}
 			/>
 		);
+	})
+	.add('Left aligned menu items', () => {
+		return (
+			<Popover
+				trigger={
+					<Button>Open</Button>
+				}
+				align='left'
+				menuItems={[
+					<Link to='somepath/' onClick={logSelection}>First option</Link>,
+					<Link to='somepath/' onClick={logSelection}>Second option</Link>,
+					<Link to='somepath/' onClick={logSelection}>Third option</Link>,
+				]}
+			/>
+		);
+	})
+	.add('Right aligned menu items', () => {
+		return (
+			<Popover
+				trigger={
+					<Button>Open</Button>
+				}
+				align='right'
+				menuItems={[
+					<Link to='somepath/' onClick={logSelection}>First option</Link>,
+					<Link to='somepath/' onClick={logSelection}>Second option</Link>,
+					<Link to='somepath/' onClick={logSelection}>Third option</Link>,
+				]}
+			/>
+		);
 	});
