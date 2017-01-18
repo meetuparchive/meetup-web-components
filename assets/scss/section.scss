@@ -16,7 +16,8 @@ $sectionSpaceMultiple: 2;
 			left: $base;
 			right: $base;
 		}
-		&.noBorder{
+		&.noBorder,
+		&:last-child {
 			padding: $base*$sectionSpaceMultiple $base 0;
 			&:before{
 				display: none;
