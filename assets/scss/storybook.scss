@@ -1,0 +1,20 @@
+//storybook styles
+html, body, #root {
+	height: 100%;
+}
+
+#root {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+//
+// SASS BASE FILE
+//
+// include any additional scss from
+// `src/assets/scss/` as sass partials
+//
+@import "~sassquatch2/sass/sassquatch.scss";
+
+@import "main";
