@@ -162,4 +162,33 @@ describe('Popover placeholder', function() {
 		});
 	});
 
+	describe('Alignment Style', () => {
+		describe('align right', () => {
+			const popoverItem = (
+				<Popover
+					trigger={<Button>Open</Button>}
+					align='right'
+					menuItems={[]}
+				/>
+			);
+
+			popover = TestUtils.renderIntoDocument(popoverItem);
+			menuEl = TestUtils.findRenderedDOMComponentWithClass(popover, 'popover-container--menu');
+			expect(menuEl.classList).toContain('popover-container--horizontal-right');
+		});
+
+		describe('align left', () => {
+			const popoverItem = (
+				<Popover
+					trigger={<Button>Open</Button>}
+					align='left'
+					menuItems={[]}
+				/>
+			);
+
+			popover = TestUtils.renderIntoDocument(popoverItem);
+			menuEl = TestUtils.findRenderedDOMComponentWithClass(popover, 'popover-container--menu');
+			expect(menuEl.classList).toContain('popover-container--horizontal-left');
+		});
+	});
 });

@@ -44,7 +44,7 @@ storiesOf('Popover', module)
 				trigger={
 					<Button>Open</Button>
 				}
-				alignLeft
+				align='left'
 				menuItems={[
 					<Link to='somepath/' onClick={logSelection}>First option</Link>,
 					<Link to='somepath/' onClick={logSelection}>Second option</Link>,
@@ -59,7 +59,7 @@ storiesOf('Popover', module)
 				trigger={
 					<Button>Open</Button>
 				}
-				alignRight
+				align='right'
 				menuItems={[
 					<Link to='somepath/' onClick={logSelection}>First option</Link>,
 					<Link to='somepath/' onClick={logSelection}>Second option</Link>,
