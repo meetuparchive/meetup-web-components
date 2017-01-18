@@ -1,8 +1,27 @@
 import React from 'react';
 import cx from 'classnames';
 
+
+export const VALID_ALIGNMENTS = {
+	top: 'Top',
+	bottom: 'Bottom',
+	center: 'Center',
+};
+
+export const VALID_BREAKPOINTS = {
+	all: 'atAll',
+	medium: 'atMedium',
+	large: 'atLarge',
+};
+
+export const VALID_SPACE = {
+	center: 'center',
+	around: 'spaceAround',
+	between: 'spaceBetween',
+	flex: 'flexEnd'
+};
+
 /**
- * Design System Component: Provides `Flex` styled container for FlexItems
  * @module Flex
  */
 class Flex extends React.Component {
@@ -15,7 +34,8 @@ class Flex extends React.Component {
 
 	render() {
 		const {
-			direction,
+			row,
+			column,
 			switchDirection,
 			wrap,
 			noGutters,
@@ -28,26 +48,29 @@ class Flex extends React.Component {
 			...other
 		} = this.props;
 
+		const columnReverseBreakpoint = VALID_BREAKPOINTS[columnReverse] || VALID_BREAKPOINTS['all'];
+		const rowReverseBreakpoint = VALID_BREAKPOINTS[rowReverse] || VALID_BREAKPOINTS['all'];
+
 		const classNames = cx(
 			'flex',
 			{
 				// horizontal default
-				'flex--row' : direction == 'row',
-				[`${switchDirection}_flex--column`]: direction == 'row' && typeof switchDirection === 'string',
+				'flex--row' : row,
+				[`${switchDirection}_flex--column`]: row && switchDirection,
 
 				// vertical default
-				'flex--column': direction == 'column',
-				[`${switchDirection}_flex--row`]: direction == 'column' && typeof switchDirection === 'string',
+				'flex--column': column,
+				[`${switchDirection}_flex--row`]: column && switchDirection,
 
 				// other
 				'flex--wrap': wrap,
 				'flex--noGutters': noGutters,
-				[`flex--${justify}`]: justify,
-				[`flex--align${align.charAt(0).toUpperCase() + align.slice(1)}`]: align,
-				'atAll_flex--rowReverse': rowReverse,
-				[`${rowReverse}_flex--rowReverse`]: rowReverseDirection,
-				'atAll_flex--columnReverse': columnReverse,
-				[`${columnReverse}_flex--columnReverse`]: columnReverseDirection,
+				[`flex--${VALID_SPACE[justify]}`]: justify,
+				[`flex--align${VALID_ALIGNMENTS[align]}`]: align,
+
+				// reverse breakpoint modifiers
+				[`${rowReverseBreakpoint}_flex--rowReverse`]: rowReverse,
+				[`${columnReverseBreakpoint}_flex--columnReverse`]: columnReverse,
 			}, className);
 
 		return (
@@ -61,39 +84,23 @@ class Flex extends React.Component {
 }
 
 Flex.propTypes = {
-	align: React.PropTypes.oneOf([
-		'top',
-		'bottom',
-		'center',
-	]),
-	columnReverse: React.PropTypes.bool,
-	columnReverseDirection: React.PropTypes.oneOf([
-		'atAll',
-		'atMedium',
-		'atLarge'
-	]),
-	direction: React.PropTypes.oneOf([
-		'row',
-		'column'
-	]),
-	justify: React.PropTypes.oneOf([
-		'center',
-		'spaceAround',
-		'spaceBetween',
-		'flexEnd'
-	]),
+	align: React.PropTypes.oneOf(Object.keys(VALID_ALIGNMENTS)),
+	justify: React.PropTypes.oneOf(Object.keys(VALID_SPACE)),
 	noGutters: React.PropTypes.bool,
-	rowReverse: React.PropTypes.bool,
-	rowReverseDirection: React.PropTypes.oneOf([
-		'atAll',
-		'atMedium',
-		'atLarge'
+
+	row: React.PropTypes.bool,
+	column: React.PropTypes.bool,
+	switchDirection: React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
+
+	columnReverse: React.PropTypes.oneOfType([
+		React.PropTypes.bool,
+		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	]),
-	switchDirection: React.PropTypes.oneOf([
-		'atAll',
-		'atMedium',
-		'atLarge'
+	rowReverse: React.PropTypes.oneOfType([
+		React.PropTypes.bool,
+		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	]),
+
 	wrap: React.PropTypes.bool
 };
 

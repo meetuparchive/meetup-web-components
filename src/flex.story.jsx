@@ -40,7 +40,7 @@ storiesOf('Flex', module)
 		</Flex>
 	))
 	.add('Column', () => (
-		<Flex direction='column' style={flexParentStyles}>
+		<Flex column style={flexParentStyles}>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
@@ -88,7 +88,7 @@ storiesOf('Flex', module)
 		</Flex>
 	))
 	.add('Justify spaceAround', () => (
-		<Flex justify='spaceAround' style={flexParentStyles}>
+		<Flex justify='around' style={flexParentStyles}>
 			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
@@ -97,7 +97,7 @@ storiesOf('Flex', module)
 		</Flex>
 	))
 	.add('Justify spaceBetween', () => (
-		<Flex justify='spaceBetween' style={flexParentStyles}>
+		<Flex justify='between' style={flexParentStyles}>
 			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
@@ -169,7 +169,7 @@ storiesOf('Flex', module)
 		</Flex>
 	))
 	.add('Column reverse', () => (
-		<Flex direction='column' columnReverse='atAll' style={flexParentStyles}>
+		<Flex direction='column' columnReverse='all' style={flexParentStyles}>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
@@ -178,7 +178,7 @@ storiesOf('Flex', module)
 		</Flex>
 	))
 	.add('Column reverse (at medium breakpoint)', () => (
-		<Flex direction='column' columnReverse='atMedium' style={flexParentStyles}>
+		<Flex direction='column' columnReverse='medium' style={flexParentStyles}>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
@@ -187,7 +187,7 @@ storiesOf('Flex', module)
 		</Flex>
 	))
 	.add('Column reverse (at large breakpoint)', () => (
-		<Flex direction='column' columnReverse='atLarge' style={flexParentStyles}>
+		<Flex direction='column' columnReverse='large' style={flexParentStyles}>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 			<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
