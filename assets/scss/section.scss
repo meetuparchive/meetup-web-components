@@ -11,7 +11,7 @@ $sectionSpaceMultiple: 2;
 
 @include responsiveBase() {
 	.section {
-		padding-bottom: $base*$sectionSpaceMultiple - $base;
+		padding: $base*$sectionSpaceMultiple $base $base*$sectionSpaceMultiple - $base;
 		&:before{
 			left: $base;
 			right: $base;
