@@ -32,7 +32,7 @@ class Section extends React.Component {
 }
 
 Section.propTypes = {
-
+	noBorder: React.PropTypes.bool
 };
 
 export default Section;
