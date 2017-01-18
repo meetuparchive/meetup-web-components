@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 
 export const SECTION_CLASS = 'section';
-export const SECTION_PADDED_CLASS = 'padded';
+export const SECTION_PADDED_CLASS = 'section--padded';
 /**
  * Design System Component: Provides `section` container for components
  * @module Section

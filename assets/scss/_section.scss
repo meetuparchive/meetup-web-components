@@ -12,7 +12,7 @@ $sectionSpaceMultiple: 2;
 @include responsiveBase() {
 	.section {
 		padding: $base*$sectionSpaceMultiple $base 0;
-		&.padded {
+		&.section--padded {
 			padding-bottom: $base*$sectionSpaceMultiple - $base;
 			&:before{
 				left: $base;
@@ -23,7 +23,7 @@ $sectionSpaceMultiple: 2;
 }
 
 .section{
-	&.padded {
+	&.section--padded {
 		position: relative;
 		border-top: 0;
 		&:before {
