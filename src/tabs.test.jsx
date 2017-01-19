@@ -2,23 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Tabs from './Tabs';
-import TabsTab from './TabsTab';
 
 describe('Tabs', function() {
 
 	it('exists', function() {
 		const tabs = TestUtils.renderIntoDocument(
-			<Tabs bordered full>
-				<TabsTab isActive
-					url='/foo'
-					label='First Tab' />
-				<TabsTab
-					url='/bar'
-					label='Second Tab' />
-				<TabsTab
-					url='/bar'
-					label='Third Tab' />
-			</Tabs>
+			<Tabs
+				tabs={[
+					<span>First tab</span>,
+					<span isSelected>Second tab</span>,
+					<span>Third tab</span>,
+				]}
+			/>
 		);
 		const tabsNode = ReactDOM.findDOMNode(tabs);
 		expect(tabsNode).not.toBeNull();
@@ -26,17 +21,13 @@ describe('Tabs', function() {
 
 	it('applies selected tab class correctly', function() {
 		const tabs = TestUtils.renderIntoDocument(
-			<Tabs bordered full>
-				<TabsTab isActive
-					url='/foo'
-					label='First Tab' />
-				<TabsTab
-					url='/bar'
-					label='Second Tab' />
-				<TabsTab
-					url='/bar'
-					label='Third Tab' />
-			</Tabs>
+			<Tabs
+				tabs={[
+					<span isSelected>First tab</span>,
+					<span>Second tab</span>,
+					<span>Third tab</span>,
+				]}
+			/>
 		);
 		const selectedTabNodes = TestUtils.scryRenderedDOMComponentsWithClass(tabs, 'tabs-tab--selected');
 		const firstTabClass = selectedTabNodes[0].getAttribute('class');
@@ -47,17 +38,15 @@ describe('Tabs', function() {
 
 	it('applies variant classes correctly', function() {
 		const tabs = TestUtils.renderIntoDocument(
-			<Tabs bordered full>
-				<TabsTab isActive
-					url='/foo'
-					label='First Tab' />
-				<TabsTab
-					url='/bar'
-					label='Second Tab' />
-				<TabsTab
-					url='/bar'
-					label='Third Tab' />
-			</Tabs>
+			<Tabs
+				bordered
+				full
+				tabs={[
+					<span isSelected>First tab</span>,
+					<span>Second tab</span>,
+					<span>Third tab</span>,
+				]}
+			/>
 		);
 		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(tabs, 'UL')[0];
 		const tabsClass = tabsUlEl.getAttribute('class');
@@ -68,17 +57,13 @@ describe('Tabs', function() {
 
 	it('only applies variant classes when set by props', function() {
 		const tabs = TestUtils.renderIntoDocument(
-			<Tabs>
-				<TabsTab isActive
-					url='/foo'
-					label='First Tab' />
-				<TabsTab
-					url='/bar'
-					label='Second Tab' />
-				<TabsTab
-					url='/bar'
-					label='Third Tab' />
-			</Tabs>
+			<Tabs
+				tabs={[
+					<span isSelected>First tab</span>,
+					<span>Second tab</span>,
+					<span>Third tab</span>,
+				]}
+			/>
 		);
 		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(tabs, 'UL')[0];
 		const tabsClass = tabsUlEl.getAttribute('class');
@@ -87,11 +72,4 @@ describe('Tabs', function() {
 		expect(tabsClass.indexOf('tabs--bordered')).toBe(-1);
 	});
 
-	it('should throw an error if tab elements aren\'t of type `TabsTab`', function() {
-		expect(TestUtils.renderIntoDocument(
-			<Tabs>
-				<button>Hello world</button>
-			</Tabs>
-		)).toThrow();
-	});
 });
