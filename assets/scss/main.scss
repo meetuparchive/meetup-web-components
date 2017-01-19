@@ -7,6 +7,15 @@
 @import "~sassquatch2/sass/sassquatch.scss";
 @import "util.scss";
 
+// constants
+$breakpointBaseMap: (
+	small:	16px,
+	medium:	18px,
+	large:	20px
+);
+$spaceMultiple: .75;
+$spaceMultipleBig: 1.5;
+
 // layout components
 @import "bounds.scss";
 @import "chunk.scss";

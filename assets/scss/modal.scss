@@ -8,14 +8,14 @@
 }
 @include atMediaUpFixed(medium) {
 	.view--modalSnap .bounds{
-		padding-left: map-get($breakpointBaseMap, 'medium');
-		padding-right: map-get($breakpointBaseMap, 'medium');
+		padding-left: map-get($breakpointBaseMap, 'medium')*$spaceMultipleBig;
+		padding-right: map-get($breakpointBaseMap, 'medium')*$spaceMultipleBig;
 	}
 }
 @include atMediaUpFixed(large) {
 	.view--modalSnap .bounds{
-		padding-left: map-get($breakpointBaseMap, 'large');
-		padding-right: map-get($breakpointBaseMap, 'large');
+		padding-left: map-get($breakpointBaseMap, 'large')*$spaceMultipleBig;
+		padding-right: map-get($breakpointBaseMap, 'large')*$spaceMultipleBig;
 	}
 }
 
