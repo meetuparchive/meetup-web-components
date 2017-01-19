@@ -11,6 +11,14 @@ const subtitleWithLink = (
 	<span>I am a subtitle with a <a href='#' className='link'>link</a></span>
 );
 
+/*
+ * -- Inline SVG icon sprite --
+ *
+ * raw SVG sprite from `swarm-icons`
+ */
+const iconSpriteStyle = { display: 'none' };
+const iconSprite = require('raw-loader!swarm-icons/dist/sprite/sprite.inc');
+
 storiesOf('PageHead', module)
 	.add('With title', () => (
 		<div style={{width: '100%'}}>
@@ -36,7 +44,7 @@ storiesOf('PageHead', module)
 				<PageTitle title='Page title'>
 					<PageActions>
 						<PageAction>
-							<PageActionButton icon='magnifying-glass' label='Search' />
+							<PageActionButton icon='search' label='Search' />
 						</PageAction>
 						<PageAction>
 							<PageActionButton icon='edit' label='Edit' />
@@ -44,6 +52,7 @@ storiesOf('PageHead', module)
 					</PageActions>
 				</PageTitle>
 			</PageHead>
+			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 		</div>
 	))
 	.add('With title, actions, and tabs', () => (
