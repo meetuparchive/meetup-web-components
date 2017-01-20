@@ -27,6 +27,19 @@ storiesOf('PageActions', module)
 				</PageAction>
 			</PageActions>
 			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+    </div>
+	))
+	.add('Row with less than 3 actions', () => (
+		<div style={{width: '100%', padding: '16px'}}>
+			<PageActions>
+				<PageAction>
+					<PageActionButton icon='search' label='Search' />
+				</PageAction>
+				<PageAction>
+					<PageActionButton icon='edit' label='Edit' />
+				</PageAction>
+			</PageActions>
+			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 		</div>
 	))
 	.add('Column', () => (

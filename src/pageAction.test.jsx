@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-import PageActionContainer from './PageActionContainer';
+import PageAction from './PageAction';
 
 
-describe('PageActionContainer', function() {
+describe('PageAction', function() {
 
 	it('exists', function() {
-		const pageAction = TestUtils.renderIntoDocument(<PageActionContainer />);
+		const pageAction = TestUtils.renderIntoDocument(<PageAction />);
 		const pageActionNode = ReactDOM.findDOMNode(pageAction);
 
 		expect(pageActionNode).not.toBeNull();
