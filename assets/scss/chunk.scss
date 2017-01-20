@@ -1,5 +1,5 @@
 @include responsiveBase() {
 	.chunk{
-		margin-bottom: $base!important; // why is this being set with important in sassquatch?
+		margin-bottom: ($baseSpace)!important; // why is this being set with important in sassquatch?
 	}
 }

@@ -22,16 +22,17 @@ export const MEDIA_SIZES = {
  */
 class Icon extends React.Component {
 
+	/**
+ * @return {React.element} this component
+ */
 	render() {
 		const {
 			className,
-			// shape,
+			shape,
 			size,
 			...other
 		} = this.props;
 
-		// remove when icons are working again
-		const shape = 'bus';
 		const tempdim = '90';
 		const dim = MEDIA_SIZES[size];
 
@@ -61,6 +62,7 @@ class Icon extends React.Component {
 }
 
 Icon.defaultProps = {
+	shape: 'overflow',
 	size: 'm'
 };
 

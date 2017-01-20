@@ -1,5 +1,3 @@
-@include responsiveBase() {
-	.stripe{
-		padding-bottom: $base*2;
-	}
+.stripe{
+	padding-bottom: 0;
 }

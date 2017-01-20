@@ -11,14 +11,14 @@ $sectionSpaceMultiple: 2;
 
 @include responsiveBase() {
 	.section {
-		padding-bottom: $base*$sectionSpaceMultiple - $base;
+		padding: $baseSpaceBig $baseSpaceBig ($baseSpaceBig - $baseSpace);
 		&:before{
 			left: $base;
 			right: $base;
 		}
 		&.noBorder{
-			padding: $base*$sectionSpaceMultiple $base 0;
-			&:before{
+  		padding: $baseSpaceBig $baseSpaceBig 0;
+      &:before{
 				display: none;
 			}
 		}

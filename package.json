@@ -41,12 +41,14 @@
     "eslint-plugin-react": "6.7.1",
     "meetup-web-mocks": "0.1.10",
     "node-sass": "3.13.0",
+    "raw-loader": "0.5.1",
     "react": "15.4.1",
     "react-addons-test-utils": "15.4.1",
     "react-dom": "15.4.1",
     "react-intl": "2.1.5",
     "react-transform-catch-errors": "1.0.2",
-    "sassquatch2": "git+https://github.com/meetup/sassquatch2#responsify"
+    "sassquatch2": "git+https://github.com/meetup/sassquatch2",
+    "swarm-icons": "git+https://github.com/meetup/swarm-icons"
   },
   "devDependencies": {
     "@kadira/storybook": "2.33.1",
