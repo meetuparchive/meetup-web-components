@@ -1,5 +1,14 @@
-@include responsiveBase() {
-	.chunk{
-		margin-bottom: ($baseSpace)!important; // why is this being set with important in sassquatch?
-	}
+/*doc
+---
+title: Chunk
+---
+Adds bottom space to an element
+or a group of elements.
+```
+*/
+%chunk,
+.chunk {
+  @include responsiveBase() {
+    margin-bottom: ($baseSpace)!important; // why is this being set with important in sassquatch?
+  }
 }

@@ -1,5 +1,14 @@
-// bounds always wide
-.bounds, .bounds--wide{
-	max-width: 1100px;
+/*doc
+---
+title: Bounds
+---
+Used as a non-visual content container that manages content measure.
+
+Centers children with auto margin, clears floats, applies
+padding, and sets a max-width.
+*/
+
+.bounds {
+	max-width: $bounds-wide;
 	padding: 0;
 }

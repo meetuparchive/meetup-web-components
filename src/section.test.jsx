@@ -1,21 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { IntlProvider } from 'react-intl'
-import SectionContainer from './SectionContainer';
 
-function intlRender(component) {
-	return TestUtils.renderIntoDocument(
-		<IntlProvider locale='en-US'>
-			{component}
-		</IntlProvider>
-	);
-}
+import Section from './Section';
 
-describe('SectionContainer', function() {
+describe('Section', function() {
 
 	it('exists', function() {
-		const section = intlRender(<SectionContainer />);
+		const section = TestUtils.renderIntoDocument(<Section />);
 		const sectionNode = ReactDOM.findDOMNode(section);
 
 		expect(sectionNode).not.toBeNull();

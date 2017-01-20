@@ -1,10 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
-import {
-	Chunk,
-	Flex,
-	FlexItem,
-} from './layoutUtils';
+import Chunk from './Chunk';
+import Flex from './Flex';
+import FlexItem from './FlexItem';
 
 /**
  * @module SectionTitle
@@ -25,6 +23,7 @@ class SectionTitle extends React.Component {
 
 		return (
 			<Flex
+				align='center'
 				className={classNames}
 				{...other}
 				>
@@ -34,9 +33,11 @@ class SectionTitle extends React.Component {
 					</Chunk>
 				</FlexItem>
 				{children &&
-					<FlexItem shrink>
-						{children}
-					</FlexItem>
+					<Chunk>
+						<FlexItem shrink>
+							{children}
+						</FlexItem>
+					</Chunk>
 				}
 			</Flex>
 		);

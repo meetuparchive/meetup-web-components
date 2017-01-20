@@ -12,17 +12,23 @@ $sectionSpaceMultiple: 2;
 @include responsiveBase() {
 	.section {
 		padding: $baseSpaceBig $baseSpaceBig ($baseSpaceBig - $baseSpace);
-		&:before{
+
+    &:before{
 			left: $base;
 			right: $base;
 		}
-		&.noBorder{
+
+    &.noBorder {
   		padding: $baseSpaceBig $baseSpaceBig 0;
-      &:before{
+
+      &:before,
+      &:last-child {
 				display: none;
 			}
-		}
-	}
+
+    }
+
+  }
 }
 
 .section {

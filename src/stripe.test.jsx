@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-import StripeContainer from './StripeContainer';
+import Stripe from './Stripe';
 
 
-describe('StripeContainer', function() {
+describe('Stripe', function() {
 
 	it('exists', function() {
-		const stripe = TestUtils.renderIntoDocument(<StripeContainer />);
+		const stripe = TestUtils.renderIntoDocument(<Stripe />);
 		const stripeNode = ReactDOM.findDOMNode(stripe);
 
 		expect(stripeNode).not.toBeNull();

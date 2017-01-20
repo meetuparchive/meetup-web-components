@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-import SectionTitleContainer from './SectionTitleContainer';
+import SectionTitle from './SectionTitle';
 
 
-describe('SectionTitleContainer', function() {
+describe('SectionTitle', function() {
 
 	it('exists', function() {
-		const sectionTitle = TestUtils.renderIntoDocument(<SectionTitleContainer />);
+		const sectionTitle = TestUtils.renderIntoDocument(<SectionTitle />);
 		const sectionTitleNode = ReactDOM.findDOMNode(sectionTitle);
 
 		expect(sectionTitleNode).not.toBeNull();

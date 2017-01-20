@@ -1,3 +1,54 @@
-.stripe{
-	padding-bottom: 0;
+/*doc
+---
+title: Stripe
+---
+A `.stripe` class is rendered by the `<Stripe>` component to
+visually divide the page with borders or stripes of color.
+
+To align content within a stripe, nest children in a
+`<Bounds>` component.
+
+#### Stripe variants
+A class of `.stripe` is default; the following classes are
+optional variants:
+
+Class                | Description
+-------------------- | ------------------------------------------------------------
+`.stripe--inverted`  |  rendered by the `inverted` prop, applies the standard `$C_contentBGInverted` background color
+`.stripe--collection`|  rendered by the `collection` prop, applies a light gray background; for use with card collections
+`.stripe--red`       |  applies the standard `$C_red` background color
+`.stripe--purple`    |  applies the standard `$C_purple` background color
+`.stripe--plum`      |  applies the standard `$C_plum` background color
+`.stripe--black`     |  applies the standard `$C_black` background color
+`.stripe--photoHero` |  rendered by the `backgroundImage` prop, for hero sections with a photo (see below)
+*/
+
+%stripe,
+.stripe {
+	@include responsiveBase() {
+		padding-bottom: $baseSpace*2;
+	}
 }
+
+
+/*doc
+---
+title: Hero Stripes
+---
+Special `<Stripe>` variants are avaiable for "hero" sections
+by using the boolean `isHero` prop.
+Viewport size adjustments are built-in.
+
+**Note:** _Hero stripes render a div with the classes
+`.bounds` and `.stripe-heroContent` to properly position
+content within a hero. See examples below._
+
+### Basic hero
+Uses the `isHero` prop to render the `.stripe--hero` class.
+
+### Photo hero
+Uses the `isHero` prop to render the `.stripe--hero` class,
+and sets a background image using a URL passed into the
+`backgroundImage` prop.
+
+*/
