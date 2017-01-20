@@ -1,11 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import {
-	// Chunk,
-	// Flex,
-	FlexItem,
-	// Section,
-} from './layoutUtils';
+import FlexItem from './FlexItem';
 
 /**
  * @module PageAction

@@ -12,6 +12,11 @@ class Flex extends React.Component {
 		};
 	}
 
+	capitalizePropVal(prop) {
+		if (prop == undefined) return;
+		return prop.charAt(0).toUpperCase() + prop.slice(1);
+	}
+
 	render() {
 		const {
 			direction,
@@ -27,8 +32,6 @@ class Flex extends React.Component {
 			...other
 		} = this.props;
 
-		const alignCapitalized = align == undefined ? null : align.charAt(0).toUpperCase() + align.slice(1);
-
 		const classNames = cx(
 			'flex',
 			{
@@ -43,8 +46,8 @@ class Flex extends React.Component {
 				// other
 				'flex--wrap': wrap,
 				'flex--noGutters': noGutters,
-				[`flex--${justify}`]: typeof justify === 'string',
-				[`flex--align${alignCapitalized}`]: typeof align === 'string',
+				[`flex--justify${this.capitalizePropVal(justify)}`]: typeof justify === 'string',
+				[`flex--align${this.capitalizePropVal(align)}`]: typeof align === 'string',
 				'atAll_flex--rowReverse': typeof rowReverse === 'boolean',
 				[`${rowReverse}_flex--rowReverse`]: typeof rowReverse === 'string',
 				'atAll_flex--columnReverse': typeof columnReverse === 'boolean',

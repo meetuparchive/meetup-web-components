@@ -1,10 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
-import {
-	Chunk,
-	Flex,
-	FlexItem,
-} from './layoutUtils';
+import Chunk from './Chunk';
+import Flex from './Flex';
+import FlexItem from './FlexItem';
 
 /**
  * @module PageTitle
@@ -14,7 +12,7 @@ class PageTitle extends React.Component {
 		const {
 			children,
 			className,
-			subTitle,
+			subtitle,
 			title,
 			...other
 		} = this.props;
@@ -34,8 +32,8 @@ class PageTitle extends React.Component {
 				<FlexItem>
 					<Chunk className='align--center atMedium_align--left'>
 						<h1 className='text--display1'>{title}</h1>
-						{subTitle &&
-							<p className='text--secondary'>{subTitle}</p>
+						{subtitle &&
+							<p className='text--secondary'>{subtitle}</p>
 						}
 					</Chunk>
 				</FlexItem>

@@ -8,7 +8,7 @@ or a group of elements.
 */
 %chunk,
 .chunk {
-	@include responsiveBase() {
-		margin-bottom: $base!important; // why is this being set with important in sassquatch?
-	}
+  @include responsiveBase() {
+    margin-bottom: ($baseSpace)!important; // why is this being set with important in sassquatch?
+  }
 }
