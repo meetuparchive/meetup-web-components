@@ -13,22 +13,22 @@ $sectionSpaceMultiple: 2;
 	.section {
 		padding: $baseSpaceBig $baseSpaceBig ($baseSpaceBig - $baseSpace);
 
-    &:before{
+		&:before{
 			left: $base;
 			right: $base;
 		}
 
-    &.noBorder {
-  		padding: $baseSpaceBig $baseSpaceBig 0;
+		&.noBorder,
+		&:last-child {
+			padding: $baseSpaceBig $baseSpaceBig 0;
 
-      &:before,
-      &:last-child {
+			&:before {
 				display: none;
 			}
 
-    }
+		}
 
-  }
+	}
 }
 
 .section {
