@@ -1,0 +1,35 @@
+/*doc
+---
+title: Section
+---
+Used to group sets of related components
+into discrete sections by adding padding
+around it's children.
+*/
+
+$sectionSpaceMultiple: 2;
+
+@include responsiveBase() {
+	.section {
+		padding: $base*$sectionSpaceMultiple $base 0;
+	}
+	.section--padded {
+		padding-bottom: $base*$sectionSpaceMultiple - $base;
+		&:before{
+			left: $base;
+			right: $base;
+		}
+	}
+}
+
+.section--padded {
+	position: relative;
+	border-top: 0;
+	&:before {
+		content: "";
+		background: $C_border;
+		height: 1px;
+		bottom: 0;
+		position: absolute;
+	}
+}

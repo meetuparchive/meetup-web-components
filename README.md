@@ -10,7 +10,6 @@ Table of Contents
     * [Development/Beta release](#developmentbeta-releases)
   * [Getting started](#getting-started)
     * [Components](#components)
-    * [Icons](#icons)
   * [Testing](#testing)
     * [Simulating interactions](#simulating-interactions)
     * [Verifying child elements](#verifying-child-elements)
@@ -89,10 +88,6 @@ Filename casing convenctions:
 - Test files: `alllowercase`, i.e. `rsvptag.test.js`
 - Story files: `alllowercase`, i.e. `rsvptag.story.jsx`
 
-### Icons
-
-SVG icons live in the `icons/` directory. These filenames are *all lowercase
-with dashes*.
 
 ## Testing
 
