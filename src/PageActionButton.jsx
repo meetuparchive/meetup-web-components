@@ -44,11 +44,6 @@ class PageActionButton extends React.Component {
 			className
 		);
 
-
-		const fauxIconStyles = {
-			boxShadow: 'inset 0px 0px 0px 1px rgba(0,0,0,.12)'
-		};
-
 		return (
 			<Flex
 				direction={direction}
@@ -59,7 +54,7 @@ class PageActionButton extends React.Component {
 				{...other}>
 				{icon &&
 					<FlexItem shrink className='valign--middle'>
-						<Icon shape={icon} style={fauxIconStyles}/>
+						<Icon shape={icon} />
 					</FlexItem>
 				}
 				{label &&
