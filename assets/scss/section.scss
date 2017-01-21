@@ -11,13 +11,13 @@ $sectionSpaceMultiple: 2;
 
 @include responsiveBase() {
 	.section {
-		padding: $baseSpaceBig $baseSpaceBig ($baseSpaceBig - $baseSpace);
-
+		padding: $baseSpaceBig 0 ($baseSpaceBig - $baseSpace);
+		margin: 0 $baseSpaceBig;
+		/*
 		&:before{
 			left: $base;
 			right: $base;
 		}
-
 		&.noBorder,
 		&:last-child {
 			padding: $baseSpaceBig $baseSpaceBig 0;
@@ -27,11 +27,17 @@ $sectionSpaceMultiple: 2;
 			}
 
 		}
+		*/
 
 	}
 }
 
 .section {
+	border-bottom: 1px solid $C_border;
+	&.noBorder{
+		border-bottom: none;
+	}
+	/*
 	position: relative;
 	border-top: 0;
 	&:before{
@@ -41,4 +47,5 @@ $sectionSpaceMultiple: 2;
 		bottom: 0;
 		position: absolute;
 	}
+	*/
 }
