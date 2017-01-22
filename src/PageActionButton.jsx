@@ -54,12 +54,12 @@ class PageActionButton extends React.Component {
 				{...other}>
 				{icon &&
 					<FlexItem shrink className='valign--middle'>
-						<Icon shape={icon} />
+						<Icon shape={icon} className='text--secondary' />
 					</FlexItem>
 				}
 				{label &&
 					<FlexItem className='valign--middle align--center atMedium_align--left'>
-						<div className='text--small text--secondary'>{label}</div>
+						<div className='text--small text--hint'>{label}</div>
 					</FlexItem>
 				}
 				{children}
