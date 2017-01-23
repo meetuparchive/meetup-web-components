@@ -12,14 +12,8 @@ class TextField extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	// question es6 in react??
 	handleChange(e) {
-		console.log('changed', e.target.value);
 		this.setState({ value: e.target.value });
-	}
-
-	getValue() {
-		return this.state.value;
 	}
 
 	render() {
@@ -28,17 +22,15 @@ class TextField extends React.Component {
 			name,
 			label,
 			placeholder,
+			formAttrs,
 			children,
 			className,
 			...other
 		} = this.props;
 
 		const classNames = cx(
-			'textField',
 			className
 		);
-
-		console.log('render', this.state.value);
 
 		return (
 			<div>
@@ -48,8 +40,9 @@ class TextField extends React.Component {
 					id={elId}
 					name={name}
 					placeholder={placeholder}
-					value={this.getValue}
+					value={this.state.value}
 					onChange={this.handleChange}
+					{...formAttrs}
 					className={classNames}
 					{...other} />
 					{children}
