@@ -32,6 +32,7 @@ export const FLEX_NOGUTTER_CLASS = `${FLEX_CLASS}--noGutters`;
 export const FLEX_ALIGN_CLASS = `${FLEX_CLASS}--align`;
 
 /**
+ * Design System Component: Provides `Flex` styled container for ideal use with `FlexItem` content
  * @module Flex
  */
 class Flex extends React.Component {
