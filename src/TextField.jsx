@@ -39,7 +39,7 @@ class TextField extends React.Component {
 		);
 
 		const labelClassNames = cx(
-			{ required: formAttrs.required },
+			{ required: formAttrs ? formAttrs.required : false },
 			labelClassName
 		);
 
@@ -47,7 +47,6 @@ class TextField extends React.Component {
 			'text--error',
 			{ 'display--none': !this.state.hasError }
 		);
-
 
 		return (
 			<div>
