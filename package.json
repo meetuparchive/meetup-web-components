@@ -46,7 +46,8 @@
     "react-dom": "15.4.2",
     "react-intl": "2.2.3",
     "react-transform-catch-errors": "1.0.2",
-    "sassquatch2": "2.4.4"
+    "sassquatch2": "2.4.4",
+    "swarm-icons": "0.1.0"
   },
   "devDependencies": {
     "@kadira/storybook": "2.35.3",
