@@ -8,13 +8,13 @@ import { storiesOf } from '@kadira/storybook';
 storiesOf('TextField', module)
 	.add('default', () => <TextField
 		label='Your name'
-		elId='fullname'
+		inputId='fullname'
 		name='name'
 		value=''
 		placeholder='Not your email...' />)
 	.add('has a value', () => <TextField
 		label='Your name'
-		elId='fullname'
+		inputId='fullname'
 		name='name'
 		value='Phife Dawg'
 		placeholder='Not your email...' />)
@@ -25,7 +25,7 @@ storiesOf('TextField', module)
 		};
 		return (<TextField
 			label='Your name'
-			elId='fullname'
+			inputId='fullname'
 			name='name'
 			value='Thisisover10charslong'
 			formAttrs={rules}
@@ -37,7 +37,7 @@ storiesOf('TextField', module)
 		return (<form>
 			<TextField
 				label='Your name'
-				elId='fullname'
+				inputId='fullname'
 				name='name'
 				value='>5'
 				formAttrs={rules}
@@ -48,6 +48,16 @@ storiesOf('TextField', module)
 				Submit
 			</Button>
 		</form>);
+	}).add('has an error', () => {
+		return (<form>
+			<TextField
+				label='Your name'
+				inputId='fullname'
+				name='name'
+				value=''
+				error='this would be a trned error'
+				placeholder='Not your email...' />
+		</form>);
 	}).add('is required', () => {
 		const rules = {
 			required: 'required'
@@ -55,7 +65,7 @@ storiesOf('TextField', module)
 		return (<form>
 			<TextField
 				label='Your name'
-				elId='fullname'
+				inputId='fullname'
 				name='name'
 				value=''
 				formAttrs={rules}
@@ -66,6 +76,5 @@ storiesOf('TextField', module)
 				Submit
 			</Button>
 		</form>);
-
 	});
 
