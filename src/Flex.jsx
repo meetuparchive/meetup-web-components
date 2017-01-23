@@ -36,6 +36,9 @@ export const FLEX_ALIGN_CLASS = `${FLEX_CLASS}--align`;
  * @module Flex
  */
 class Flex extends React.Component {
+	/**
+	 * @return {React.element} the commend form React element
+	 */
 	render() {
 		const {
 			direction,

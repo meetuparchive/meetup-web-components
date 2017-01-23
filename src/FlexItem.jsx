@@ -10,6 +10,9 @@ export const FLEX_GROW_FACTORS = [1,2,3,4,5,6,7];
  * @module FlexItem
  */
 class FlexItem extends React.Component {
+	/**
+	 * @return {React.element} the commend form React element
+	 */
 	render() {
 		const {
 			children,
