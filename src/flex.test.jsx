@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { IntlProvider } from 'react-intl';
+
 import Flex, {
 	DIRECTION_ROW,
 	DIRECTION_COLUMN,
@@ -41,7 +41,7 @@ describe('Flex', function() {
 			expect(flexNode.classList).toContain(FLEX_ROW_CLASS);
 		});
 		describe('switchDirection', () => {
-			it(`check break point classes for switchDirection`, function() {
+			it('check break point classes for switchDirection', function() {
 				Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
 					const flex = TestUtils.renderIntoDocument(<Flex direction={DIRECTION_ROW} switchDirection={breakpoint}/>);
 					const flexNode = ReactDOM.findDOMNode(flex);
@@ -60,7 +60,7 @@ describe('Flex', function() {
 			expect(flexNode.classList).toContain(FLEX_COLUMN_CLASS);
 		});
 		describe('switchDirection', () => {
-			it(`check break point classes for switchDirection`, function() {
+			it('check break point classes for switchDirection', function() {
 				Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
 					const flex = TestUtils.renderIntoDocument(<Flex direction={DIRECTION_COLUMN} switchDirection={breakpoint}/>);
 					const flexNode = ReactDOM.findDOMNode(flex);
@@ -88,7 +88,7 @@ describe('Flex', function() {
 		});
 	});
 	describe('justify', () => {
-		it(`check set justify classes`, function() {
+		it('check set justify classes', function() {
 			Object.keys(VALID_SPACE).forEach(justify => {
 				const flex = TestUtils.renderIntoDocument(<Flex justify={justify}/>);
 				const flexNode = ReactDOM.findDOMNode(flex);
@@ -98,7 +98,7 @@ describe('Flex', function() {
 		});
 	});
 	describe('align', () => {
-		it(`check set align classes`, function() {
+		it('check set align classes', function() {
 			Object.keys(VALID_ALIGNMENTS).forEach(align => {
 				const flex = TestUtils.renderIntoDocument(<Flex align={align}/>);
 				const flexNode = ReactDOM.findDOMNode(flex);
@@ -114,7 +114,7 @@ describe('Flex', function() {
 			expect(flexNode.classList).toContain(FLEX_CLASS);
 			expect(flexNode.classList).toContain(`${VALID_BREAKPOINTS['all']}_flex--rowReverse`);
 		});
-		it(`check rowReverse at valid breakpoints classes`, function() {
+		it('check rowReverse at valid breakpoints classes', function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
 				const flex = TestUtils.renderIntoDocument(<Flex rowReverse={breakpoint}/>);
 				const flexNode = ReactDOM.findDOMNode(flex);
@@ -131,7 +131,7 @@ describe('Flex', function() {
 			expect(flexNode.classList).toContain(FLEX_CLASS);
 			expect(flexNode.classList).toContain(`${VALID_BREAKPOINTS['all']}_flex--columnReverse`);
 		});
-		it(`check columnReverse at valid breakpoints classes`, function() {
+		it('check columnReverse at valid breakpoints classes', function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
 				const flex = TestUtils.renderIntoDocument(<Flex columnReverse={breakpoint}/>);
 				const flexNode = ReactDOM.findDOMNode(flex);
