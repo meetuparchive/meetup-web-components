@@ -33,7 +33,7 @@ describe('FlexItem', function() {
 		});
 	});
 	describe('growFactor', () => {
-		it(`check that component has correct 'growFactor' class`, function() {
+		it('check that component has correct \'growFactor\' class', function() {
 			FLEX_GROW_FACTORS.forEach(growFactor => {
 				const flexItem = TestUtils.renderIntoDocument(<FlexItem growFactor={growFactor} />);
 				const flexItemNode = ReactDOM.findDOMNode(flexItem);
