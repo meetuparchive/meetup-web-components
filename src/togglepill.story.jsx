@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import { decorateWithLocale } from './utils/decorators';
 import TogglePill from './TogglePill';
 
 const onChange = e => {
@@ -8,6 +9,7 @@ const onChange = e => {
 
 
 storiesOf('TogglePill', module)
+	.addDecorator(decorateWithLocale)
 	.add('Default', () => (
 		<TogglePill
 			onChange={onChange}
