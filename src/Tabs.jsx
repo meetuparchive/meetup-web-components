@@ -1,14 +1,30 @@
 import React from 'react';
 import cx from 'classnames';
-import TabsTab from './TabsTab';
 
 /**
  * @module Tabs
  */
 class Tabs extends React.Component {
+	renderTabs() {
+		const tabs = this.props.tabs.map((tab, i) => {
+			const classNames = cx(
+				'tabs-tab align--center atMedium_align--left',
+				{'tabs-tab--selected': tab.props.isSelected}
+			);
+
+			return (
+				<li
+					key={i}
+					className={classNames}>
+					{tab.props.children}
+				</li>
+			);
+		});
+		return tabs;
+	}
 	render() {
 		const {
-			children,
+			tabs, // eslint-disable-line no-unused-vars
 			className,
 			bordered,
 			full,
@@ -26,29 +42,19 @@ class Tabs extends React.Component {
 		return (
 			<nav className={className}>
 				<ul
-					role='menu'
 					className={ulClasses}
 					{...other}
 				>
-					{children}
+					{this.renderTabs()}
 				</ul>
 			</nav>
 		);
 	}
 }
 Tabs.propTypes = {
+	tabs: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
 	full: React.PropTypes.bool,
 	bordered: React.PropTypes.bool,
-	children(props, propName, componentName) {
-		const prop = props[propName];
-		let error = null;
-		React.Children.forEach(prop, child => {
-			if (child.type !== TabsTab) {
-				error = new Error(`Tabs: Expected child of type "TabsTab"; received "${child.type.displayName}"`);
-			}
-		});
-		return error;
-	}
 };
 
 export default Tabs;
