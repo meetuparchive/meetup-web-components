@@ -21,21 +21,23 @@ export const VALID_SPACE = {
 	flex: 'flexEnd'
 };
 
+export const DIRECTION_ROW = 'row';
+export const DIRECTION_COLUMN = 'column';
+
+export const FLEX_CLASS = 'flex';
+export const FLEX_ROW_CLASS = `${FLEX_CLASS}--${DIRECTION_ROW}`;
+export const FLEX_COLUMN_CLASS = `${FLEX_CLASS}--${DIRECTION_COLUMN}`;
+export const FLEX_WRAP_CLASS = `${FLEX_CLASS}--wrap`;
+export const FLEX_NOGUTTER_CLASS = `${FLEX_CLASS}--noGutters`;
+export const FLEX_ALIGN_CLASS = `${FLEX_CLASS}--align`;
+
 /**
  * @module Flex
  */
 class Flex extends React.Component {
-
-	static get defaultProps() {
-		return {
-			direction: 'row'
-		};
-	}
-
 	render() {
 		const {
-			row,
-			column,
+			direction,
 			switchDirection,
 			wrap,
 			noGutters,
@@ -51,26 +53,27 @@ class Flex extends React.Component {
 		const columnReverseBreakpoint = VALID_BREAKPOINTS[columnReverse] || VALID_BREAKPOINTS['all'];
 		const rowReverseBreakpoint = VALID_BREAKPOINTS[rowReverse] || VALID_BREAKPOINTS['all'];
 
+		const isColumn = direction === DIRECTION_COLUMN;
 		const classNames = cx(
-			'flex',
+			FLEX_CLASS,
 			{
 				// horizontal default
-				'flex--row' : row,
-				[`${switchDirection}_flex--column`]: row && switchDirection,
+				[FLEX_ROW_CLASS]: !isColumn,
+				[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_COLUMN_CLASS}`]: !isColumn && switchDirection,
 
 				// vertical default
-				'flex--column': column,
-				[`${switchDirection}_flex--row`]: column && switchDirection,
-
-				// other
-				'flex--wrap': wrap,
-				'flex--noGutters': noGutters,
-				[`flex--${VALID_SPACE[justify]}`]: justify,
-				[`flex--align${VALID_ALIGNMENTS[align]}`]: align,
+				[FLEX_COLUMN_CLASS]: isColumn,
+				[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_ROW_CLASS}`]: isColumn && switchDirection,
 
 				// reverse breakpoint modifiers
 				[`${rowReverseBreakpoint}_flex--rowReverse`]: rowReverse,
 				[`${columnReverseBreakpoint}_flex--columnReverse`]: columnReverse,
+
+				// other
+				[FLEX_WRAP_CLASS]: wrap,
+				[FLEX_NOGUTTER_CLASS]: noGutters,
+				[`${FLEX_CLASS}--${VALID_SPACE[justify]}`]: justify,
+				[`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`]: align,
 			}, className);
 
 		return (
@@ -86,22 +89,28 @@ class Flex extends React.Component {
 Flex.propTypes = {
 	align: React.PropTypes.oneOf(Object.keys(VALID_ALIGNMENTS)),
 	justify: React.PropTypes.oneOf(Object.keys(VALID_SPACE)),
+	wrap: React.PropTypes.bool,
 	noGutters: React.PropTypes.bool,
 
-	row: React.PropTypes.bool,
-	column: React.PropTypes.bool,
+	direction: React.PropTypes.oneOf([
+		DIRECTION_ROW,
+		DIRECTION_COLUMN,
+	]),
 	switchDirection: React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 
-	columnReverse: React.PropTypes.oneOfType([
-		React.PropTypes.bool,
-		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
-	]),
 	rowReverse: React.PropTypes.oneOfType([
 		React.PropTypes.bool,
 		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	]),
+	columnReverse: React.PropTypes.oneOfType([
+		React.PropTypes.bool,
+		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+	]),
 
-	wrap: React.PropTypes.bool
+};
+
+Flex.defaultProps = {
+	direction: DIRECTION_ROW,
 };
 
 export default Flex;
