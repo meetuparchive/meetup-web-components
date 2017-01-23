@@ -14,8 +14,10 @@ export const decorateWithLocale = story => {
 
 	return (
 		<IntlProvider locale={locale}>
-			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
-			{story()}
+			<div>
+				<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+				{story()}
+			</div>
 		</IntlProvider>
 	);
 };

@@ -1,7 +1,5 @@
 const path = require('path');
-const SvgStore = require('webpack-svgstore-plugin');
 
-const ICON_PATH = path.resolve(__dirname, '../icons', '**/*.svg');
 const SCSS_PATH = path.resolve(__dirname, '../assets', 'scss');
 const CSS_PATH = path.resolve(__dirname, '../assets', 'css');
 const SRC_PATH = path.resolve(__dirname, '../src');
@@ -42,21 +40,5 @@ module.exports = {
 		extensions: ['', '.js', '.jsx']
 	},
 
-	plugins: [
-		new SvgStore(
-			[ICON_PATH], // input path
-			'svg',       // output path
-			{
-				name: '[hash].sprite.svg',
-				chunk: 'preview',
-				prefix: 'icon-',
-				svgoOptions: {
-					plugins: [
-						{ removeTitle: true }
-					]
-				}
-			}
-		)
-	]
 };
 
