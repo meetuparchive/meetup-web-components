@@ -10,7 +10,6 @@ class TextField extends React.Component {
 		super(props);
 		this.state = {
 			value: props.value,
-			hasError: props.error,
 			error: props.error
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -22,47 +21,42 @@ class TextField extends React.Component {
 
 	render() {
 		const {
-			inputId,
 			label,
 			labelClassName,
-			formAttrs,
 			className,
 			children,
+			error,
 			...other
 		} = this.props;
 
 		const classNames = cx(
-			{ 'field--error': this.state.hasError },
+			{ 'field--error': this.state.error },
 			className
 		);
 
 		const labelClassNames = cx(
-			{ required : formAttrs ? formAttrs.required : false },
+			{ required : other ? other.required : false },
 			labelClassName
 		);
 
 		const errorElClassNames = cx(
 			'text--error',
-			{ 'display--none': !this.state.hasError }
+			{ 'display--none': !this.state.error }
 		);
-
-		const isRequired = formAttrs ? formAttrs.required : false;
 
 		return (
 			<div>
-				<label className={labelClassNames} htmlFor={inputId}>
+				<label className={labelClassNames} htmlFor={other.id}>
 					{label}
 				</label>
 
 				<input type='text'
-					id={inputId}
-					{...formAttrs}
 					value={this.state.value}
 					className={classNames}
 					onChange={this.handleChange}
 					{...other} />
 
-				<p className={errorElClassNames}>{this.state.error}</p>
+				<p className={errorElClassNames}>{error}</p>
 				{children}
 			</div>
 		);

@@ -15,14 +15,15 @@ describe('TextField', function() {
 
 	beforeEach(() => {
 		const formAttrs = {
-			required: 'required',
-			maxLength: MAX_LEN
+			id: NAME_ATTR,
+			name: NAME_ATTR,
+			maxLength: MAX_LEN,
+			required: 'required'
 		};
 		const textField = TestUtils.renderIntoDocument(<TextField
-			name={NAME_ATTR}
 			label={LABEL_TEXT}
 			value={VALUE}
-			formAttrs={formAttrs} />);
+			{...formAttrs} />);
 
 		textFieldEl = ReactDOM.findDOMNode(textField);
 		inputEl = textFieldEl.querySelector('input');
