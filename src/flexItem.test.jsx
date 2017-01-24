@@ -10,13 +10,11 @@ import FlexItem, {
 } from './FlexItem';
 
 describe('FlexItem', function() {
-
 	it('exists', function() {
 		const flexItem = TestUtils.renderIntoDocument(<FlexItem />);
 		const flexItemNode = ReactDOM.findDOMNode(flexItem);
 		expect(flexItemNode).not.toBeNull();
 	});
-
 	describe('default', () => {
 		it(`check that the component has '${FLEX_ITEM_CLASS}' class`, function() {
 			const flexItem = TestUtils.renderIntoDocument(<FlexItem />);

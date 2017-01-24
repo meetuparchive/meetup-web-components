@@ -24,7 +24,7 @@ const boxStyles = {
 	display: 'flex',
 	height: '100%',
 	justifyContent : 'center',
-	fontSize: '28px',
+	fontSize: '18px',
 	fontWeight: '700',
 	padding: '20px',
 };
@@ -79,40 +79,48 @@ storiesOf('Flex', module)
 		</Flex>
 	))
 	.add('Justify center', () => (
-		<Flex justify='center' style={flexParentStyles}>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
-		</Flex>
+		<div style={{width:'800px', border:'1px dotted red'}}>
+			<Flex justify='center' style={flexParentStyles}>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
+			</Flex>
+		</div>
 	))
 	.add('Justify spaceAround', () => (
-		<Flex justify='around' style={flexParentStyles}>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
-		</Flex>
+		<div style={{width:'800px', border:'1px dotted red'}}>
+			<Flex justify='around' style={flexParentStyles}>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
+			</Flex>
+		</div>
 	))
 	.add('Justify spaceBetween', () => (
-		<Flex justify='between' style={flexParentStyles}>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
-		</Flex>
+		<div style={{width:'800px', border:'1px dotted red'}}>
+			<Flex justify='between' style={flexParentStyles}>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
+			</Flex>
+		</div>
 	))
-	.add('Justify flex', () => (
-		<Flex justify='flex' style={flexParentStyles}>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
-			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
-		</Flex>
+	.add('Justify end', () => (
+		<div style={{width:'800px', border:'1px dotted red'}}>
+			<Flex justify='end' style={flexParentStyles}>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
+			</Flex>
+		</div>
 	))
 	.add('Align top', () => (
 			<Flex align='top' style={flexParentStyles}>
