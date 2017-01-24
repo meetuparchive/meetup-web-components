@@ -1,23 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { storiesOf } from '@kadira/storybook';
-import { Annotate } from './utils/storyComponents';
+import { Annotate, InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
 import Tabs from './Tabs';
 
 storiesOf('Tabs', module)
 	.addDecorator(decorateWithLocale)
-	.add('default', () => {
-		return (
-			<Tabs
-				tabs={[
-					<Link>First tab</Link>,
-					<Link isSelected>Second tab</Link>,
-					<Link>Third tab</Link>,
-				]}
-			/>
-		);
-	})
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+				<Tabs
+					tabs={[
+						<Link>First tab</Link>,
+						<Link isSelected>Second tab</Link>,
+						<Link>Third tab</Link>,
+					]}
+				/>
+			</InfoWrapper>
+		)
+	)
 	.add('Bordered tabs', () => {
 		return (
 			<Annotate notes='For bordered tabs, add the boolean prop `bordered` to `Tabs`'>

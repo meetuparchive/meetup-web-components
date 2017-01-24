@@ -1,21 +1,17 @@
 import React from 'react';
+import { WithNotes } from '@kadira/storybook-addon-notes';
 
 export const Annotate = (props) => (
-	<div style={props.style}>
+	<WithNotes notes={props.notes}>
 		{props.children}
-		<p style={{
-			padding: '0.6em 1em',
-			backgroundColor: 'rgba(0, 100, 255, 0.05)',
-			color: 'gray',
-			borderTop: '1px solid #ececec',
-			fontSize: '0.8em',
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			right: 0
-		}}>
-			{props.notes}
-		</p>
+	</WithNotes>
+);
+
+export const InfoWrapper = (props) => (
+	<div>
+		{props.children}
+		<br />
+		<p className='padding--top text--secondary text--small'>Click the "?" mark at top-right to view the info.</p>
 	</div>
 );
 

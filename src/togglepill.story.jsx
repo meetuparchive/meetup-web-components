@@ -10,20 +10,32 @@ const onChange = e => {
 
 storiesOf('TogglePill', module)
 	.addDecorator(decorateWithLocale)
-	.add('Default', () => (
-		<TogglePill
-			onChange={onChange}
-			id='togglePillId'
-			name='togglePillName'
-			value='toggle-pill'>Toggle Pill Label</TogglePill>
-	))
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+				<TogglePill
+					onChange={onChange}
+					id='togglePillId'
+					name='togglePillName'
+					value='toggle-pill'
+				>
+					Toggle Pill Label
+				</TogglePill>
+			</InfoWrapper>
+		)
+	)
 	.add('Default Selected', () => (
 		<TogglePill
 			onChange={onChange}
 			id='togglePillId'
 			name='togglePillName'
 			value='toggle-pill'
-			checked>Toggle Pill Label</TogglePill>
+			checked
+		>
+			Toggle Pill Label
+		</TogglePill>
 	))
 	.add('Topic Pill', () => (
 		<TogglePill
@@ -31,7 +43,10 @@ storiesOf('TogglePill', module)
 			onChange={onChange}
 			id='togglePillId'
 			name='togglePillName'
-			value='toggle-pill'>Toggle Pill Label</TogglePill>
+			value='toggle-pill'
+		>
+			Toggle Pill Label
+		</TogglePill>
 	))
 	.add('Topic Pill Selected', () => (
 		<TogglePill
@@ -40,5 +55,8 @@ storiesOf('TogglePill', module)
 			id='togglePillId'
 			name='togglePillName'
 			value='toggle-pill'
-			checked>Toggle Pill Label</TogglePill>
+			checked
+		>
+			Toggle Pill Label
+		</TogglePill>
 	));
