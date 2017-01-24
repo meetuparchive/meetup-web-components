@@ -1,14 +1,20 @@
 import React from 'react';
+import { storiesOf, action } from '@kadira/storybook';
+import { InfoWrapper } from './utils/storyComponents';
+import { Inverted } from './utils/storyComponents';
 import Button from './Button';
 import Icon from './Icon';
-import { storiesOf, action } from '@kadira/storybook';
-import { Inverted } from './utils/storyComponents';
-
 
 storiesOf('Button', module)
-	.add('Simple', () => (
-		<Button onClick={action('clicked')}>Button Label</Button>
-	))
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+        <Button onClick={action('clicked')}>Button Label</Button>
+			</InfoWrapper>
+		)
+	)
 	.add('Contrast', () => (
 		<Button onClick={action('clicked')} contrast>Button Label</Button>
 	))
