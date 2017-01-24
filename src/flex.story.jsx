@@ -1,10 +1,8 @@
-
 import React from 'react';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
 import { storiesOf } from '@kadira/storybook';
 import { Annotate } from './utils/storyComponents';
-
 
 const flexParentStyles = {
 	minHeight: '200px',
