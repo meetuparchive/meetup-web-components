@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 
-
 export const VALID_ALIGNMENTS = {
 	top: 'Top',
 	bottom: 'Bottom',
@@ -18,7 +17,7 @@ export const VALID_SPACE = {
 	center: 'center',
 	around: 'spaceAround',
 	between: 'spaceBetween',
-	flex: 'flexEnd'
+	end: 'flexEnd'
 };
 
 export const DIRECTION_ROW = 'row';
@@ -83,8 +82,9 @@ class Flex extends React.Component {
 		return (
 			<div
 				className={classNames}
-				{...other}>
-					{children}
+				{...other}
+			>
+				{children}
 			</div>
 		);
 	}
@@ -110,7 +110,6 @@ Flex.propTypes = {
 		React.PropTypes.bool,
 		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	]),
-
 };
 
 Flex.defaultProps = {

@@ -17,14 +17,11 @@ import Flex, {
 } from './Flex';
 
 describe('Flex', function() {
-
 	it('exists', function() {
 		const flex = TestUtils.renderIntoDocument(<Flex />);
 		const flexNode = ReactDOM.findDOMNode(flex);
-
 		expect(flexNode).not.toBeNull();
 	});
-
 	describe('default', () => {
 		it(`check that the component has '${FLEX_CLASS}' & '${FLEX_ROW_CLASS}' class`, function() {
 			const flex = TestUtils.renderIntoDocument(<Flex />);
@@ -123,7 +120,6 @@ describe('Flex', function() {
 			});
 		});
 	});
-
 	describe('columnReverse', () => {
 		it(`check columnReverse default value is ${VALID_BREAKPOINTS['all']} class`, function() {
 			const flex = TestUtils.renderIntoDocument(<Flex columnReverse/>);
@@ -140,5 +136,4 @@ describe('Flex', function() {
 			});
 		});
 	});
-
 });

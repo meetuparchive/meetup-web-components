@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
@@ -26,7 +25,6 @@ const boxStyles = {
 	fontWeight: '700',
 	padding: '20px',
 };
-
 
 storiesOf('FlexItem', module)
 	.add('Flex Item grow (default)', () => (
