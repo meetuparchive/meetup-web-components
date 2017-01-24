@@ -4,11 +4,22 @@ import Icon from './Icon';
 import { storiesOf, action } from '@kadira/storybook';
 import { Inverted } from './utils/storyComponents';
 
-
 storiesOf('Button', module)
-	.add('Simple', () => (
-		<Button onClick={action('clicked')}>Button Label</Button>
-	))
+	.addWithInfo(
+    'Simple',
+    `
+      This is the basic usage with the button with providing a label to show the text.
+    `,
+    () => (
+      <div>
+        <Button onClick={action('clicked')}>Button Label</Button>
+        <br />
+        <p>
+          Click the "?" mark at top-right to view the info.
+        </p>
+      </div>
+    )
+  )
 	.add('Contrast', () => (
 		<Button onClick={action('clicked')} contrast>Button Label</Button>
 	))

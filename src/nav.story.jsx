@@ -17,7 +17,7 @@ storiesOf('Nav.NavItem', module)
 				<NavItem
 					to='/'
 					onClick={onClick('/')}>
-					<img alt='Home' src='http://placekitten.com/g/200/100' className='margin--left' />
+					<img alt='Home' src='https://placekitten.com/g/200/100' className='margin--left' />
 				</NavItem>
 				<NavItem
 					to='/'
