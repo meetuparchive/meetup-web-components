@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import Label from './Label';
 
 /**
  * @module TextField
@@ -24,10 +23,8 @@ class TextField extends React.Component {
 	render() {
 		const {
 			inputId,
-			name,
 			label,
 			labelClassName,
-			placeholder,
 			formAttrs,
 			className,
 			children,
@@ -39,6 +36,11 @@ class TextField extends React.Component {
 			className
 		);
 
+		const labelClassNames = cx(
+			{ required : formAttrs ? formAttrs.required : false },
+			labelClassName
+		);
+
 		const errorElClassNames = cx(
 			'text--error',
 			{ 'display--none': !this.state.hasError }
@@ -48,19 +50,18 @@ class TextField extends React.Component {
 
 		return (
 			<div>
-				<Label className={labelClassName}
-					inputId={inputId}
-					text={label}
-					isRequired={isRequired} />
+				<label className={labelClassNames} htmlFor={inputId}>
+					{label}
+				</label>
+
 				<input type='text'
 					id={inputId}
-					name={name}
-					placeholder={placeholder}
+					{...formAttrs}
 					value={this.state.value}
 					className={classNames}
-					{...formAttrs}
 					onChange={this.handleChange}
 					{...other} />
+
 				<p className={errorElClassNames}>{this.state.error}</p>
 				{children}
 			</div>
@@ -68,8 +69,6 @@ class TextField extends React.Component {
 	}
 }
 
-TextField.propTypes = {
-	name: React.PropTypes.string.isRequired,
-};
+TextField.propTypes = {};
 
 export default TextField;

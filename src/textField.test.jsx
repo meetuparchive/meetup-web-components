@@ -5,15 +5,23 @@ import TextField from './TextField';
 
 describe('TextField', function() {
 
+	const LABEL_TEXT = 'Super Hero',
+		VALUE = 'Batman',
+		NAME_ATTR = 'superhero',
+		MAX_LEN = '20';
+
 	let textFieldEl,
 		inputEl;
 
 	beforeEach(() => {
-		const formAttrs = { required: 'required' };
+		const formAttrs = {
+			required: 'required',
+			maxLength: MAX_LEN
+		};
 		const textField = TestUtils.renderIntoDocument(<TextField
-			name="superhero"
-			label='Super Hero'
-			value='Batman'
+			name={NAME_ATTR}
+			label={LABEL_TEXT}
+			value={VALUE}
 			formAttrs={formAttrs} />);
 
 		textFieldEl = ReactDOM.findDOMNode(textField);
@@ -29,19 +37,25 @@ describe('TextField', function() {
 		expect(textFieldEl).not.toBeNull();
 	});
 
-	it('should have a value when one is specified', () => {
-		expect(inputEl.value).toEqual('Batman');
+	it('should have a name attribute', () => {
+		expect(inputEl.name).toEqual(NAME_ATTR);
 	});
 
-	it('should have a label when labelText is given', () => {
+	it('should have a value when one is specified', () => {
+		expect(inputEl.value).toEqual(VALUE);
+	});
+
+	it('should have a label when label is given', () => {
 		const labelEl = textFieldEl.querySelector('label');
 		expect(labelEl).not.toBeNull();
-		expect(labelEl.textContent).toEqual('Super Hero');
+		expect(labelEl.textContent).toEqual(LABEL_TEXT);
 	});
 
 	it('should have a required attribute when specified', () => {
 		expect(inputEl.attributes.required).not.toBeNull();
 	});
 
-	it('should specify attributes that are passed in', function() {});
+	it('should specify attributes that are passed in', function() {
+		expect(inputEl.getAttribute('maxLength')).toEqual(MAX_LEN);
+	});
 });
