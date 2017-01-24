@@ -8,7 +8,7 @@ import PageHead from './PageHead';
 describe('PageHead', function() {
 
 	it('exists', function() {
-		const pageHead = TestUtils.renderIntoDocument(<PageHead />);
+		const pageHead = TestUtils.renderIntoDocument(<PageHead title='hello world' />);
 		const pageHeadNode = ReactDOM.findDOMNode(pageHead);
 
 		expect(pageHeadNode).not.toBeNull();

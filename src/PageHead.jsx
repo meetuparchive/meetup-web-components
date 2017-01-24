@@ -15,14 +15,15 @@ class PageHead extends React.Component {
 			className,
 			subtitle,
 			title,
-			tabs,
+			menu,
+			flushBottom,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'pageHead',
 			{
-				'flush--bottom': tabs
+				'flush--bottom': flushBottom
 			},
 			className
 		);
@@ -30,13 +31,13 @@ class PageHead extends React.Component {
 		return (
 			<Section
 				className={classNames}
-				{...other}>
+				{...other}
+			>
 				<Flex
 					className='pageTitle'
 					direction='column'
 					switchDirection='medium'
-					{...other}
-					>
+				>
 					<FlexItem>
 						<Chunk className='align--center atMedium_align--left'>
 							<h1 className='text--display1'>{title}</h1>
@@ -45,21 +46,26 @@ class PageHead extends React.Component {
 							}
 						</Chunk>
 					</FlexItem>
-					{children &&
+					{menu &&
 						<FlexItem shrink>
-							{children}
+							{menu}
 						</FlexItem>
 					}
 				</Flex>
-				{tabs}
+				{children}
 			</Section>
 		);
 	}
 }
 
 PageHead.propTypes = {
-	title: React.PropTypes.element.isRequired,
+	title: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]).isRequired,
 	subtitle: React.PropTypes.element,
+	menu: React.PropTypes.element,
+	flushBottom: React.PropTypes.bool,
 };
 
 export default PageHead;

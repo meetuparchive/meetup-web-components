@@ -1,6 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
-import Flex from './Flex';
+import Flex, {
+	DIRECTION_ROW,
+	DIRECTION_COLUMN,
+} from './Flex';
 
 /**
  * @module PageActions
@@ -39,9 +42,9 @@ class PageActions extends React.Component {
 			<Flex
 				direction={direction}
 				justify='around'
-				{...other}
 				className={classNames}
-				>
+				{...other}
+			>
 				{children}
 			</Flex>
 		);
@@ -50,8 +53,8 @@ class PageActions extends React.Component {
 
 PageActions.childContextTypes = {
 	pageActionsDirection: React.PropTypes.oneOf([
-		'row',
-		'column'
+		DIRECTION_ROW,
+		DIRECTION_COLUMN
 	]),
 	pageActionsCount: React.PropTypes.number
 };
