@@ -26,7 +26,7 @@ class PageTitle extends React.Component {
 			<Flex
 				className={classNames}
 				direction='column'
-				switchDirection='atMedium'
+				switchDirection='medium'
 				{...other}
 				>
 				<FlexItem>

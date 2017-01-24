@@ -35,8 +35,8 @@ class PageActionButton extends React.Component {
 			const isShort = this.context.pageActionsCount <= 2;
 			direction = 'column';
 			align = null;
-			switchDirection = isShort ? 'atAll' : 'atMedium';
-			rowReverse = isShort ? 'atMedium' : null;
+			switchDirection = isShort ? 'all' : 'medium';
+			rowReverse = isShort ? 'medium' : null;
 		}
 
 		const classNames = cx(

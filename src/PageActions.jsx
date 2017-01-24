@@ -38,7 +38,7 @@ class PageActions extends React.Component {
 		return (
 			<Flex
 				direction={direction}
-				justify='spaceAround'
+				justify='around'
 				{...other}
 				className={classNames}
 				>
