@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import { InfoWrapper } from './utils/storyComponents';
 import Button from './Button';
 import Modal from './Modal';
 
@@ -22,21 +23,24 @@ const content = (
 );
 
 storiesOf('Modal', module)
-	.add('default', () => {
-		return (
-			<Modal
-				onDismiss={onDismiss}>
-				{content}
-			</Modal>
-		);
-	}).add('fullscreen', () => {
-		return (
-			<Modal
-				onDismiss={onDismiss}
-				fullscreen >
-				{content}
-			</Modal>
-		);
-	});
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+				<Modal
+					onDismiss={onDismiss}>
+					{content}
+				</Modal>
+			</InfoWrapper>
+		)
+	)
+	.add('fullscreen', () => (
+		<Modal
+			onDismiss={onDismiss}
+			fullscreen >
+			{content}
+		</Modal>
+	));
 
 

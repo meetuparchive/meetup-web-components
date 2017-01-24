@@ -1,26 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { storiesOf } from '@kadira/storybook';
-import { Annotate } from './utils/storyComponents';
+import { WithNotes } from '@kadira/storybook-addon-notes';
+import { InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
 import Tabs from './Tabs';
 
 storiesOf('Tabs', module)
 	.addDecorator(decorateWithLocale)
-	.add('default', () => {
-		return (
-			<Tabs
-				tabs={[
-					<Link>First tab</Link>,
-					<Link isSelected>Second tab</Link>,
-					<Link>Third tab</Link>,
-				]}
-			/>
-		);
-	})
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+				<Tabs
+					tabs={[
+						<Link>First tab</Link>,
+						<Link isSelected>Second tab</Link>,
+						<Link>Third tab</Link>,
+					]}
+				/>
+			</InfoWrapper>
+		)
+	)
 	.add('Bordered tabs', () => {
 		return (
-			<Annotate notes='For bordered tabs, add the boolean prop `bordered` to `Tabs`'>
+			<WithNotes notes='For bordered tabs, add the boolean prop `bordered` to `Tabs`'>
 				<Tabs
 					bordered
 					tabs={[
@@ -29,12 +34,12 @@ storiesOf('Tabs', module)
 						<Link>Third tab</Link>,
 					]}
 				/>
-			</Annotate>
+			</WithNotes>
 		);
 	})
 	.add('Full width tabs', () => {
 		return (
-			<Annotate notes='For full-width tabs, add the boolean prop `full` to `Tabs`'>
+			<WithNotes notes='For full-width tabs, add the boolean prop `full` to `Tabs`'>
 				<Tabs
 					full
 					tabs={[
@@ -43,6 +48,6 @@ storiesOf('Tabs', module)
 						<Link isSelected>Third tab</Link>,
 					]}
 				/>
-			</Annotate>
+			</WithNotes>
 		);
 	});

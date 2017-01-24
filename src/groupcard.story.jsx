@@ -1,11 +1,17 @@
 import React from 'react';
-import GroupCard from './GroupCard.jsx';
 import { storiesOf } from '@kadira/storybook';
+import { InfoWrapper } from './utils/storyComponents';
 import { MOCK_GROUP } from 'meetup-web-mocks/lib/api';
+import GroupCard from './GroupCard.jsx';
 
 storiesOf('GroupCard', module)
-	.add('default', () => (
-			<GroupCard group={ MOCK_GROUP } />
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+				<GroupCard group={ MOCK_GROUP } />
+			</InfoWrapper>
 		)
 	)
 	.add('no group photo', () => {
