@@ -16,7 +16,7 @@ class Tabs extends React.Component {
 				<li
 					key={i}
 					className={classNames}>
-					{tab.props.children}
+					{tab}
 				</li>
 			);
 		});
