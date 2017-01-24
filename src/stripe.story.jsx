@@ -1,37 +1,43 @@
 import React from 'react';
-import Stripe from './Stripe';
 import { storiesOf } from '@kadira/storybook';
-import { Annotate } from './utils/storyComponents';
+import { Annotate, InfoWrapper } from './utils/storyComponents';
+import Stripe from './Stripe';
 
 storiesOf('Stripe', module)
-	.add('default', () => (
-		<Annotate notes='Stripes are almost never used alone. The <Bounds> and <Section> components provide padding and align content within a <Stripe>.'>
-			<div style={{width: '100%'}}>
-				<Stripe>
-					<h3 className='text--display2'>Default stripe</h3>
-					<p>Stripes go full-width and are used to separate distinct regions of a view</p>
-				</Stripe>
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+				<Annotate notes='Stripes are almost never used alone. The <Bounds> and <Section> components provide padding and align content within a <Stripe>.'>
+					<div style={{width: '100%'}}>
+						<Stripe>
+							<h3 className='text--display2'>Default stripe</h3>
+							<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+						</Stripe>
 
-				<Stripe collection>
-					<h3 className='text--display2'>Collection stripe</h3>
-					<p>Stripes go full-width and are used to separate distinct regions of a view</p>
-					<p>Collection stripes have an off-white background to help make Cards appear like they have depth, but cards aren't required.</p>
-				</Stripe>
+						<Stripe collection>
+							<h3 className='text--display2'>Collection stripe</h3>
+							<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+							<p>Collection stripes have an off-white background to help make Cards appear like they have depth, but cards aren't required.</p>
+						</Stripe>
 
-				<Stripe inverted>
-					<h3 className='text--display2'>Stripe</h3>
-					<p>Stripes go full-width and are used to separate distinct regions of a view</p>
-				</Stripe>
+						<Stripe inverted>
+							<h3 className='text--display2'>Stripe</h3>
+							<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+						</Stripe>
 
-				<Stripe backgroundImage='https://placekitten.com/g/600/600'>
-					<div style={{zIndex: '1'}}>
-						<h3 className='text--display2'>Stripe with bg photo</h3>
-						<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+						<Stripe backgroundImage='https://placekitten.com/g/600/600'>
+							<div style={{zIndex: '1'}}>
+								<h3 className='text--display2'>Stripe with bg photo</h3>
+								<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+							</div>
+						</Stripe>
 					</div>
-				</Stripe>
-			</div>
-		</Annotate>
-	))
+				</Annotate>
+			</InfoWrapper>
+		)
+	)
 	.add('hero stripe', () => (
 		<div style={{width: '100%'}}>
 			<Stripe hero backgroundImage='https://placekitten.com/g/600/600'>

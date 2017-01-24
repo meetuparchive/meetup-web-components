@@ -1,18 +1,22 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import Icon from './Icon';
-import { Annotate, Inverted } from './utils/storyComponents';
+import { Annotate, InfoWrapper, Inverted } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
 
 const ICON_NAME = 'heart-outline';
 
 storiesOf('Icon', module)
 	.addDecorator(decorateWithLocale)
-	.add('Default', () => (
-		<div className='margin--center'>
-			<Icon shape={ICON_NAME} />
-		</div>
-	))
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+				<Icon shape={ICON_NAME} />
+			</InfoWrapper>
+		)
+	)
 	.add('Accessible', () => (
 		<div className='margin--center'>
 			<Annotate notes='This Icon has an `aria-label` attribute to improve accesibility'>
