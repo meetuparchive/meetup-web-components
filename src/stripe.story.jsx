@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Annotate, InfoWrapper } from './utils/storyComponents';
+import { WithNotes } from '@kadira/storybook-addon-notes';
+import { InfoWrapper } from './utils/storyComponents';
 import Stripe from './Stripe';
 
 storiesOf('Stripe', module)
@@ -9,7 +10,7 @@ storiesOf('Stripe', module)
 		'This is the basic usage with the component.',
 		() => (
 			<InfoWrapper>
-				<Annotate notes='Stripes are almost never used alone. The <Bounds> and <Section> components provide padding and align content within a <Stripe>.'>
+				<WithNotes notes='Stripes are almost never used alone. The <Bounds> and <Section> components provide padding and align content within a <Stripe>.'>
 					<div style={{width: '100%'}}>
 						<Stripe>
 							<h3 className='text--display2'>Default stripe</h3>
@@ -34,7 +35,7 @@ storiesOf('Stripe', module)
 							</div>
 						</Stripe>
 					</div>
-				</Annotate>
+				</WithNotes>
 			</InfoWrapper>
 		)
 	)

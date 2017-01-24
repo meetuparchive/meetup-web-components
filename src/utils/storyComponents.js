@@ -1,11 +1,4 @@
 import React from 'react';
-import { WithNotes } from '@kadira/storybook-addon-notes';
-
-export const Annotate = (props) => (
-	<WithNotes notes={props.notes}>
-		{props.children}
-	</WithNotes>
-);
 
 export const InfoWrapper = (props) => (
 	<div>

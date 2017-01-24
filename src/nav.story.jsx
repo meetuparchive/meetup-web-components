@@ -1,8 +1,9 @@
 import React from 'react';
+import { WithNotes } from '@kadira/storybook-addon-notes';
+import { storiesOf, action } from '@kadira/storybook';
+import { InfoWrapper } from './utils/storyComponents';
 import Nav from './Nav.jsx';
 import NavItem from './NavItem.jsx';
-import { storiesOf, action } from '@kadira/storybook';
-import { Annotate, InfoWrapper } from './utils/storyComponents';
 
 const onClick = route => e => {
 	e.preventDefault();
@@ -14,9 +15,7 @@ storiesOf('Nav.NavItem', module)
 		'This is the basic usage with the component.',
 		() => (
 			<InfoWrapper>
-				<Annotate
-					notes='Each item is clickable, but will throw errors without a React Router'
-					style={{ width: '100%', textAlign: 'center' }}>
+				<WithNotes notes='Each item is clickable, but will throw errors without a React Router'>
 					<Nav style={{ border: '1px dashed #ccc' }}>
 						<NavItem
 							to='/'
@@ -34,7 +33,7 @@ storiesOf('Nav.NavItem', module)
 							Foo
 						</NavItem>
 					</Nav>
-				</Annotate>
+				</WithNotes>
 			</InfoWrapper>
 		)
 	);

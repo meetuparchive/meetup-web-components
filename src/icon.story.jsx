@@ -1,8 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import Icon from './Icon';
-import { Annotate, InfoWrapper, Inverted } from './utils/storyComponents';
+import { WithNotes } from '@kadira/storybook-addon-notes';
+import { InfoWrapper, Inverted } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
+import Icon from './Icon';
 
 const ICON_NAME = 'heart-outline';
 
@@ -19,9 +20,9 @@ storiesOf('Icon', module)
 	)
 	.add('Accessible', () => (
 		<div className='margin--center'>
-			<Annotate notes='This Icon has an `aria-label` attribute to improve accesibility'>
+			<WithNotes notes='This Icon has an `aria-label` attribute to improve accesibility'>
 				<Icon shape={ICON_NAME} aria-label='Go west and seek your fortune' />
-			</Annotate>
+			</WithNotes>
 		</div>
 	))
 	.add('Inverted', () => (

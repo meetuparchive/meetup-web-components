@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Annotate, InfoWrapper } from './utils/storyComponents';
+import { WithNotes } from '@kadira/storybook-addon-notes';
+import { InfoWrapper } from './utils/storyComponents';
 import Footer from './Footer';
 
 storiesOf('Footer', module)
@@ -9,11 +10,9 @@ storiesOf('Footer', module)
 		'This is the basic usage with the component.',
 		() => (
 			<InfoWrapper>
-				<Annotate
-					notes='The Footer provides minimally-styled wrapper for other content'
-					style={{ width: '100%' }}>
+				<WithNotes notes='The Footer provides minimally-styled wrapper for other content'>
 					<Footer>Footer content</Footer>
-				</Annotate>
+				</WithNotes>
 			</InfoWrapper>
 		)
 	);

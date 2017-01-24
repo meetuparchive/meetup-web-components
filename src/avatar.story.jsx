@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
-import { Annotate } from './utils/storyComponents';
+import { WithNotes } from '@kadira/storybook-addon-notes';
 import { InfoWrapper } from './utils/storyComponents';
 import Avatar from './Avatar.jsx';
 
@@ -20,7 +20,7 @@ storiesOf('Avatar', module)
 	.add('small', () => <Avatar src={MOCK_IMAGE_SRC} small></Avatar>)
 	.add('big', () => <Avatar src={MOCK_IMAGE_SRC} big></Avatar>)
 	.add('link to external URL', () => (
-		<Annotate notes='To link within the app, supply a `to` prop instead of `href`'>
+		<WithNotes notes='To link within the app, supply a `to` prop instead of `href`'>
 			<Avatar
 				href='http://google.com'
 				onClick={(e) => {
@@ -29,7 +29,7 @@ storiesOf('Avatar', module)
 				}}
 				src={MOCK_IMAGE_SRC}>
 			</Avatar>
-		</Annotate>
+		</WithNotes>
 	))
 	.add('no photo', () => {
 		const MOCK_MEMBER_NO_PHOTO = { ...MOCK_MEMBER };  // treat the mock as immutable
