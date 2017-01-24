@@ -1,15 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import TextFieldContainer from './TextFieldContainer';
+import TextField from './TextField';
 
-describe('TextFieldContainer', function() {
+describe('TextField', function() {
 
-	it('exists', function() {
-		const textField = TestUtils.renderIntoDocument(<TextFieldContainer />);
-		const textFieldNode = ReactDOM.findDOMNode(textField);
+	let textFieldEl,
+		inputEl;
 
-		expect(textFieldNode).not.toBeNull();
+	beforeEach(() => {
+		const formAttrs = { required: 'required' };
+		const textField = TestUtils.renderIntoDocument(<TextField
+			name="superhero"
+			label='Super Hero'
+			value='Batman'
+			formAttrs={formAttrs} />);
+
+		textFieldEl = ReactDOM.findDOMNode(textField);
+		inputEl = textFieldEl.querySelector('input');
 	});
 
+	afterEach(() => {
+		textFieldEl = null;
+		inputEl = null;
+	});
+
+	it('exists', () => {
+		expect(textFieldEl).not.toBeNull();
+	});
+
+	it('should have a value when one is specified', () => {
+		expect(inputEl.value).toEqual('Batman');
+	});
+
+	it('should have a label when labelText is given', () => {
+		const labelEl = textFieldEl.querySelector('label');
+		expect(labelEl).not.toBeNull();
+		expect(labelEl.textContent).toEqual('Super Hero');
+	});
+
+	it('should have a required attribute when specified', () => {
+		expect(inputEl.attributes.required).not.toBeNull();
+	});
+
+	it('should specify attributes that are passed in', function() {});
 });
