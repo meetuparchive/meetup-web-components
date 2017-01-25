@@ -1,24 +1,25 @@
-
 import React from 'react';
+import { storiesOf } from '@kadira/storybook';
+import { InfoWrapper } from './utils/storyComponents';
 import PageHead from './PageHead';
-import PageTitle from './PageTitle';
 import PageActions from './PageActions';
 import PageAction from './PageAction';
 import PageActionButton from './PageActionButton';
-import { storiesOf } from '@kadira/storybook';
 
 const subtitleWithLink = (
 	<span>I am a subtitle with a <a href='#' className='link'>link</a></span>
 );
 
 storiesOf('PageHead', module)
-	.add('With title', () => (
-		<div style={{width: '100%'}}>
-			<PageHead>
-				<PageTitle title='Page title' />
-			</PageHead>
-		</div>
-	))
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper style={{justifyContent: 'left'}}>
+				<PageHead title='Page title' />
+			</InfoWrapper>
+		)
+	)
 	.add('With title and subtitle', () => (
 		<div style={{width: '100%'}}>
 			<PageHead title='Page title' subtitle='I am a subtitle' />
