@@ -1,16 +1,21 @@
 import React from 'react';
-import LoginForm from './LoginForm';
 import { storiesOf, action } from '@kadira/storybook';
-import { Inverted } from './utils/storyComponents';
+import { InfoWrapper, Inverted } from './utils/storyComponents';
+import LoginForm from './LoginForm';
 
 const loginAction = ({ password, email }) => {
 	action(`Log in submitted for ${email}:${password}`)({});
 };
 storiesOf('LoginForm', module)
-	.add('default', () => (
-		<LoginForm
-			loginAction={loginAction} />
-	))
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+				<LoginForm loginAction={loginAction} />
+			</InfoWrapper>
+		)
+	)
 	.add('pre-populated', () => (
 		<LoginForm
 			email='foo@example.com'
