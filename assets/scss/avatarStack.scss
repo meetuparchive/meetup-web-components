@@ -1,0 +1,63 @@
+/*doc
+---
+title: Avatar Stack
+---
+Used to render a single row of overlapping member avatars.
+*/
+.avatarStack {
+	height: $media-s;
+	overflow-y: hidden;
+	@include atMediaUp(small) {
+		height: $media-m;
+	}
+}
+
+.avatarStack-item {
+	line-height: 1;
+
+	&.flex-item {
+		padding-left: 0;
+	}
+
+	&:first-child .avatar--person {
+		margin-left: 0;
+	}
+
+	.avatar--person {
+		margin-left: -#{$space-half};
+	}
+
+	&--big {
+
+		.avatar--person {
+			margin-left: -#{$space-3};
+		}
+
+	}
+
+}
+
+/*doc
+---
+title: Avatar Stack variants
+---
+
+By default, the height of avatarStack is set to match
+the default height of an avatar
+
+The following classes are optional variants that can be
+used by setting the `size` props on the <AvatarStack> component:
+
+Class              | Description
+-------------------| ------------------------------
+`.gridList--big`   | Increases the height of the avatar stack container for large avatars
+`.gridList--small` | Decreases the height of the avatar stack container for small avatars
+
+*/
+.avatarStack--small {
+	height: $media-xs;
+}
+
+.avatarStack--big {
+	height: $space-6;
+}
