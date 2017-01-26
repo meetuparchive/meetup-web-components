@@ -23,6 +23,7 @@ class TextField extends React.Component {
 	render() {
 		const {
 			name,
+			value,
 			label,
 			labelClassName,
 			className,
@@ -40,6 +41,9 @@ class TextField extends React.Component {
 			{ required : other && other.required },
 			labelClassName
 		);
+
+		// hack to use value some how but prevent it from being added to other
+		console.log('value', value);
 
 		return (
 			<div>

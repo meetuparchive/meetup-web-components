@@ -11,7 +11,8 @@ describe('TextField', function() {
 		MAX_LEN = '20',
 		ERROR_TEXT = 'Too wimpy.';
 
-	let textFieldEl,
+	let textField,
+		textFieldEl,
 		inputEl;
 
 	beforeEach(() => {
@@ -21,7 +22,7 @@ describe('TextField', function() {
 			error: ERROR_TEXT,
 			required: 'required'
 		};
-		const textField = TestUtils.renderIntoDocument(<TextField
+		textField = TestUtils.renderIntoDocument(<TextField
 			name={NAME_ATTR}
 			label={LABEL_TEXT}
 			value={VALUE}
@@ -72,20 +73,28 @@ describe('TextField', function() {
 		expect(inputEl.getAttribute('maxLength')).toEqual(MAX_LEN);
 	});
 
-	it('should call onChange with text input', function() {
-		const changeSpy = spyOn(TextField.prototype, 'onChange').and.callThrough();
-		const stateSpy = spyOn(TextField.prototype, 'setState');
+	it('should set its value on input change', function() {
+		const newValue = `${VALUE}r`;
+		expect(inputEl.value).toEqual(VALUE);
+		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
+		expect(inputEl.value).toEqual(newValue);
+	});
 
-		const textField = TestUtils.renderIntoDocument(<TextField
+	it('should call onChange and setState with input change', function() {
+		const newValue = `${VALUE}r`;
+		const changeSpy = spyOn(TextField.prototype, 'onChange').and.callThrough();
+		const stateSpy = spyOn(TextField.prototype, 'setState').and.callThrough();
+
+		const boundTextField = TestUtils.renderIntoDocument(<TextField
 			name={NAME_ATTR}
 			label={LABEL_TEXT}
 			value={VALUE} />);
 
-		textFieldEl = ReactDOM.findDOMNode(textField);
+		textFieldEl = ReactDOM.findDOMNode(boundTextField);
 		inputEl = textFieldEl.querySelector('input');
-		TestUtils.Simulate.change(inputEl, { target: { value: `${VALUE}r` } });
+		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
 
 		expect(changeSpy).toHaveBeenCalled();
-		expect(stateSpy).toHaveBeenCalledWith({ value: `${VALUE}r` });
+		expect(stateSpy).toHaveBeenCalledWith({ value: newValue });
 	});
 });
