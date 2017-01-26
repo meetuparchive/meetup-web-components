@@ -74,7 +74,7 @@ describe('TextField', function() {
 
 	it('should call onChange with text input', function() {
 		const changeSpy = spyOn(TextField.prototype, 'onChange').and.callThrough();
-		const stateSpy = spyOn(TextField.prototype, 'setState').and.callThrough();
+		const stateSpy = spyOn(TextField.prototype, 'setState');
 
 		const textField = TestUtils.renderIntoDocument(<TextField
 			name={NAME_ATTR}
@@ -83,9 +83,9 @@ describe('TextField', function() {
 
 		textFieldEl = ReactDOM.findDOMNode(textField);
 		inputEl = textFieldEl.querySelector('input');
-		TestUtils.Simulate.keyDown(inputEl, { keycode: 82 });
+		TestUtils.Simulate.change(inputEl, { target: { value: `${VALUE}r` } });
 
 		expect(changeSpy).toHaveBeenCalled();
-		expect(stateSpy).toHaveBeenCalled();
+		expect(stateSpy).toHaveBeenCalledWith({ value: `${VALUE}r` });
 	});
 });
