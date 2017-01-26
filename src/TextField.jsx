@@ -21,6 +21,7 @@ class TextField extends React.Component {
 
 	render() {
 		const {
+			name,
 			label,
 			labelClassName,
 			className,
@@ -35,13 +36,8 @@ class TextField extends React.Component {
 		);
 
 		const labelClassNames = cx(
-			{ required : other ? other.required : false },
+			{ required : other && other.required },
 			labelClassName
-		);
-
-		const errorElClassNames = cx(
-			'text--error',
-			{ 'display--none': !this.state.error }
 		);
 
 		return (
@@ -51,18 +47,21 @@ class TextField extends React.Component {
 				</label>
 
 				<input type='text'
+					name={name}
 					value={this.state.value}
 					className={classNames}
 					onChange={this.handleChange}
 					{...other} />
 
-				<p className={errorElClassNames}>{error}</p>
+				{ this.state.error && <p className='text--error'>{error}</p> }
 				{children}
 			</div>
 		);
 	}
 }
 
-TextField.propTypes = {};
+TextField.propTypes = {
+	name: React.PropTypes.string.isRequired
+};
 
 export default TextField;

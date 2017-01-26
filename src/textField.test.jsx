@@ -8,7 +8,8 @@ describe('TextField', function() {
 	const LABEL_TEXT = 'Super Hero',
 		VALUE = 'Batman',
 		NAME_ATTR = 'superhero',
-		MAX_LEN = '20';
+		MAX_LEN = '20',
+		ERROR_TEXT = 'Too wimpy.';
 
 	let textFieldEl,
 		inputEl;
@@ -16,11 +17,12 @@ describe('TextField', function() {
 	beforeEach(() => {
 		const formAttrs = {
 			id: NAME_ATTR,
-			name: NAME_ATTR,
 			maxLength: MAX_LEN,
+			error: ERROR_TEXT,
 			required: 'required'
 		};
 		const textField = TestUtils.renderIntoDocument(<TextField
+			name={NAME_ATTR}
 			label={LABEL_TEXT}
 			value={VALUE}
 			{...formAttrs} />);
@@ -56,6 +58,15 @@ describe('TextField', function() {
 		expect(inputEl.attributes.required).not.toBeNull();
 	});
 
+	it('should specify attributes that are passed in', function() {
+		expect(inputEl.getAttribute('maxLength')).toEqual(MAX_LEN);
+	});
+
+	it('should have an error when one is specified', function() {
+		const errorEl = textFieldEl.querySelector('.text--error');
+		expect(errorEl).not.toBeNull();
+		expect(errorEl.textContent).toEqual(ERROR_TEXT);
+	});
 	it('should specify attributes that are passed in', function() {
 		expect(inputEl.getAttribute('maxLength')).toEqual(MAX_LEN);
 	});
