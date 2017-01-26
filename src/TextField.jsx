@@ -12,10 +12,10 @@ class TextField extends React.Component {
 			value: props.value,
 			error: props.error
 		};
-		this.handleChange = this.handleChange.bind(this);
+		this.onChange = this.onChange.bind(this);
 	}
 
-	handleChange(e) {
+	onChange(e) {
 		this.setState({ value: e.target.value });
 	}
 
@@ -50,7 +50,7 @@ class TextField extends React.Component {
 					name={name}
 					value={this.state.value}
 					className={classNames}
-					onChange={this.handleChange}
+					onChange={this.onChange}
 					{...other} />
 
 				{ this.state.error && <p className='text--error'>{error}</p> }

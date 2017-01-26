@@ -67,7 +67,25 @@ describe('TextField', function() {
 		expect(errorEl).not.toBeNull();
 		expect(errorEl.textContent).toEqual(ERROR_TEXT);
 	});
+
 	it('should specify attributes that are passed in', function() {
 		expect(inputEl.getAttribute('maxLength')).toEqual(MAX_LEN);
+	});
+
+	it('should call onChange with text input', function() {
+		const changeSpy = spyOn(TextField.prototype, 'onChange').and.callThrough();
+		const stateSpy = spyOn(TextField.prototype, 'setState').and.callThrough();
+
+		const textField = TestUtils.renderIntoDocument(<TextField
+			name={NAME_ATTR}
+			label={LABEL_TEXT}
+			value={VALUE} />);
+
+		textFieldEl = ReactDOM.findDOMNode(textField);
+		inputEl = textFieldEl.querySelector('input');
+		TestUtils.Simulate.keyDown(inputEl, { keycode: 82 });
+
+		expect(changeSpy).toHaveBeenCalled();
+		expect(stateSpy).toHaveBeenCalled();
 	});
 });
