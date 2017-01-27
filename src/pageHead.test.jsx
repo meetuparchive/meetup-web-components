@@ -4,10 +4,8 @@ import { Link } from 'react-router';
 import TestUtils from 'react-addons-test-utils';
 import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
 import PageHead, {
-	PAGE_HEAD_CLASS,
 	PAGE_TITLE_CLASS,
 	PAGE_ACTIONS_CLASS,
-	PAGE_ACTION_CLASS,
 } from './PageHead';
 import PageActionButton from './PageActionButton';
 import Popover from './Popover';
@@ -86,7 +84,7 @@ describe('PageHead', function() {
 			const subtitleEl = pageHeadEl.getElementsByTagName('P');
 			expect(subtitleEl.length).toBe(1);
 			expect(subtitleEl[0].classList).toContain('text--secondary');
-		});	
+		});
 	});
 
 	describe('menuItems', () => {
@@ -103,7 +101,7 @@ describe('PageHead', function() {
 			expect(pageActions.length).toBe(1);
 		});
 
-		it(`should render provided components in \'menuItems\' array`, () => {
+		it('should render provided components in \'menuItems\' array', () => {
 			const flexItems = findComponentsWithType(pageHead, 'Flex');
 			const pageActions = flexItems.filter(flex => flex.props.className && flex.props.className.indexOf(PAGE_ACTIONS_CLASS) !== -1)[0];
 			const pageActionsEl = ReactDOM.findDOMNode(pageActions);
