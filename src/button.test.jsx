@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
+import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
+import { hasRoleAttribute, variantTest } from './utils/testUtils';
 import Button from './Button';
 import Icon from './Icon';
-import { hasRoleAttribute, variantTest } from './utils/testUtils';
 
 describe('Button', () => {
 	const BUTTON_CLASS = 'button';
@@ -63,73 +64,53 @@ describe('Button', () => {
 			label = 'Icon Button',
 			BUTTON_LABEL = 'button--label',
 			BUTTON_ICON = 'button--icon';
-
-		let buttonEl;
+		let button;
 
 		beforeEach(() => {
-			const button = TestUtils.renderIntoDocument(
+			button = TestUtils.renderIntoDocument(
 				<Button icon={icon} primary>
 					{label}
 				</Button>
 			);
-
-			buttonEl = ReactDOM.findDOMNode(button);
 		});
 
 		afterEach(() => {
-			buttonEl = null;
+			button = null;
 		});
 
-		it('creates a first-child icon element', () => {
-			const iconEl = buttonEl.firstChild;
-			expect(iconEl.classList.contains(BUTTON_ICON)).toBe(true);
+		it('should render a `Flex` container for icons and label', () => {
+			const flex = findComponentsWithType(button, 'Flex');
+			expect(flex.length).toBe(1);
+			expect(flex[0].props.rowReverse).toBeUndefined();
 		});
 
-		it('creates a label', () => {
-			const labelEl = buttonEl.lastChild;
-			expect(labelEl.nodeName).toBe('SPAN');
-			expect(labelEl.classList.contains(BUTTON_LABEL)).toBe(true);
-			expect(labelEl.textContent).toEqual(label);
+		it('creates a `FlexItem` with icon class', () => {
+			const flexItems = findComponentsWithType(button, 'FlexItem');
+			const iconItem = flexItems.filter(item => item.props.className.indexOf(BUTTON_ICON) >= 0);
+			expect(iconItem.length).toBe(1);
 		});
 
+		it('creates a `FlexItem` with label class', () => {
+			const flexItems = findComponentsWithType(button, 'FlexItem');
+			const labelItem = flexItems.filter(item => item.props.className.indexOf(BUTTON_LABEL) >= 0);
+			expect(labelItem.length).toBe(1);
+			const content = ReactDOM.findDOMNode(labelItem[0]);
+			expect(content.innerHTML).toEqual(label);
+		});
+
+		describe('right', () => {
+			it('should render a `Flex` container for icons and label', () => {
+				const icon = <Icon shape='chevron-right' />;
+				const button = TestUtils.renderIntoDocument(
+					<Button icon={icon} primary right>
+						{label}
+					</Button>
+				);
+				const flex = findComponentsWithType(button, 'Flex');
+				expect(flex[0].props.rowReverse).toBe('all');
+			});
+
+		});
 	});
-
-
-	describe('Button with icon right', () => {
-		const icon = <Icon shape='chevron-right' />,
-			label = 'Icon Button',
-			BUTTON_LABEL = 'button--label',
-			BUTTON_ICON = 'button--icon';
-
-		let buttonEl;
-
-		beforeEach(() => {
-			const button = TestUtils.renderIntoDocument(
-				<Button icon={icon} primary right>
-					{label}
-				</Button>
-			);
-
-			buttonEl = ReactDOM.findDOMNode(button);
-		});
-
-		afterEach(() => {
-			buttonEl = null;
-		});
-
-		it('creates a second-child icon element', () => {
-			const iconEl = buttonEl.lastChild;
-			expect(iconEl.classList.contains(BUTTON_ICON)).toBe(true);
-		});
-
-		it('creates a label', () => {
-			const labelEl = buttonEl.firstChild;
-			expect(labelEl.nodeName).toBe('SPAN');
-			expect(labelEl.classList.contains(BUTTON_LABEL)).toBe(true);
-			expect(labelEl.textContent).toEqual(label);
-		});
-
-	});
-
 });
 
