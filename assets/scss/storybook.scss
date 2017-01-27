@@ -9,8 +9,10 @@ html, body, #root {
 	justify-content: center;
 }
 div[data-reactroot] {
-	position: relative;
 	width: 100%;
+	div {
+		width: 100%;
+	}
 }
 //
 // SASS BASE FILE

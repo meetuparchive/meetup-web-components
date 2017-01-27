@@ -11,10 +11,16 @@ export const decorateWithLocale = story => {
 	 */
 	const iconSpriteStyle = { display: 'none' };
 	const iconSprite = require('raw-loader!swarm-icons/dist/sprite/sprite.inc');
+	const styles = {
+		display:'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: '100%',
+	};
 
 	return (
 		<IntlProvider locale={locale}>
-			<div>
+			<div style={styles}>
 				<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 				{story()}
 			</div>

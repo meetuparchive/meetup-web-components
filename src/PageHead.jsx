@@ -5,8 +5,16 @@ import Flex from './Flex';
 import FlexItem from './FlexItem';
 import Section from './Section';
 
+export const PAGE_HEAD_CLASS = 'pageHead';
+export const PAGE_TITLE_CLASS = 'pageTitle';
+export const PAGE_ACTIONS_CLASS = 'pageActions';
+export const PAGE_ACTION_CLASS = 'pageAction';
+
 /**
  * @module PageHead
+ * @description  Creates a header, and subtitle container for pages,
+ * and provides an optional Flex side menu. The side menu can contain
+ * any number of items which appropriately adjusts to stacked or column view
  */
 class PageHead extends React.Component {
 	render() {
@@ -15,18 +23,20 @@ class PageHead extends React.Component {
 			className,
 			subtitle,
 			title,
-			menu,
-			flushBottom,
+			menuItems,
 			...other
 		} = this.props;
 
 		const classNames = cx(
-			'pageHead',
-			{
-				'flush--bottom': flushBottom
-			},
+			PAGE_HEAD_CLASS,
 			className
 		);
+
+		const menuRender = menuItems.map((menuItem, i) => (
+			<FlexItem className={PAGE_ACTION_CLASS} key={i} shrink>
+				{menuItem}
+			</FlexItem>
+		));
 
 		return (
 			<Section
@@ -34,7 +44,7 @@ class PageHead extends React.Component {
 				{...other}
 			>
 				<Flex
-					className='pageTitle'
+					className={PAGE_TITLE_CLASS}
 					direction='column'
 					switchDirection='medium'
 				>
@@ -46,9 +56,11 @@ class PageHead extends React.Component {
 							}
 						</Chunk>
 					</FlexItem>
-					{menu &&
+					{Boolean(menuItems.length) &&
 						<FlexItem shrink>
-							{menu}
+							<Flex justify='around' className={PAGE_ACTIONS_CLASS}>
+								{menuRender}
+							</Flex>
 						</FlexItem>
 					}
 				</Flex>
@@ -63,9 +75,14 @@ PageHead.propTypes = {
 		React.PropTypes.string,
 		React.PropTypes.element
 	]).isRequired,
-	subtitle: React.PropTypes.element,
-	menu: React.PropTypes.element,
-	flushBottom: React.PropTypes.bool,
+	subtitle: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]),
+	menuItems: React.PropTypes.array,
+};
+PageHead.defaultProps = {
+	menuItems: []
 };
 
 export default PageHead;

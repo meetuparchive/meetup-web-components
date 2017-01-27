@@ -1,8 +1,10 @@
 import React from 'react';
-import cx from 'classnames';
+import Button from './Button';
 import Icon from './Icon';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
+
+export const PAGE_ACTION_BUTTON_CLASS = 'pageActionButton';
 
 /**
  * @module PageActionButton
@@ -14,69 +16,67 @@ class PageActionButton extends React.Component {
 			className,
 			icon,
 			label,
+			stackedIcon,
+			short,
+			onClick,
 			...other
 		} = this.props;
 
+		let direction,
+			switchDirection,
+			justify;
 
-		let direction, align, switchDirection, rowReverse;
-		if(this.context.pageActionsDirection == 'column'){
-			// this is not in PageHead
-			// always a nice column of actions
-			// each action is a horizontal icon and label
-			direction = 'row';
-			align = null;
-			switchDirection = null;
-			rowReverse = null;
-		}
-		else{
-			// this is in PageHead
-			// actions in a row,
-			// adjust to take up space based on position and numbers
-			const isShort = this.context.pageActionsCount <= 2;
+		// if column
+		// icons and labels in rows,
+		// adjust to take up space based on position and numbers
+		//
+		//  OTHERWISE:
+		// always a nice column of actions
+		// each action is a horizontal icon and label
+		if (stackedIcon) {
 			direction = 'column';
-			align = null;
-			switchDirection = isShort ? 'all' : 'medium';
-			rowReverse = isShort ? 'medium' : null;
+			justify = 'center';
+			switchDirection = short ? 'all' : 'medium';
 		}
-
-		const classNames = cx(
-			'pageActionButton',
-			className
-		);
 
 		return (
-			<Flex
-				direction={direction}
-				switchDirection={switchDirection}
-				rowReverse={rowReverse}
-				align={align}
-				className={classNames}
-				{...other}>
-				{icon &&
-					<FlexItem shrink className='valign--middle'>
-						<Icon shape={icon} className='text--secondary' />
-					</FlexItem>
-				}
-				{label &&
-					<FlexItem className='valign--middle align--center atMedium_align--left'>
-						<div className='text--small text--hint'>{label}</div>
-					</FlexItem>
-				}
-				{children}
-			</Flex>
+			<Button
+				className={PAGE_ACTION_BUTTON_CLASS}
+				onClick={onClick}
+			>
+				<Flex
+					direction={direction}
+					switchDirection={switchDirection}
+					justify={justify}
+					className={className}
+					{...other}
+				>
+					{icon &&
+						<FlexItem shrink className='valign--middle'>
+							<Icon shape={icon} className='text--secondary' />
+						</FlexItem>
+					}
+					{label &&
+						<FlexItem shrink className='valign--middle align--center atMedium_align--left'>
+							<div className='text--small text--hint'>{label}</div>
+						</FlexItem>
+					}
+					{children}
+				</Flex>
+			</Button>
 		);
 	}
 }
 
-PageActionButton.contextTypes = {
-	pageActionsDirection: React.PropTypes.oneOf([
-		'row',
-		'column'
-	]),
-	pageActionsCount: React.PropTypes.number
-};
-
 PageActionButton.propTypes = {
+	icon: React.PropTypes.string.isRequired,
+	label: React.PropTypes.oneOfType([
+		React.PropTypes.element,
+		React.PropTypes.string
+	]).isRequired,
+	stackedIcon: React.PropTypes.bool,
+	short: React.PropTypes.bool,
+	onClick: React.PropTypes.func,
 };
 
 export default PageActionButton;
