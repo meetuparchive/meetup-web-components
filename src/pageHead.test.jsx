@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import TestUtils from 'react-addons-test-utils';
-import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
 import PageHead, {
 	PAGE_TITLE_CLASS,
 	PAGE_SUBTITLE_CLASS,
@@ -61,7 +60,7 @@ describe('PageHead', function() {
 			const pageActions = TestUtils.scryRenderedDOMComponentsWithClass(pageHead, PAGE_ACTIONS_CLASS);
 			expect(pageActions.length).toBe(0);
 		});
-		it(`should NOT have a \'${PAGE_SUBTITLE_CLASS}\' tag`, () => {
+		it(`should NOT have a '${PAGE_SUBTITLE_CLASS}' tag`, () => {
 			const subtitleEl = pageHeadEl.getElementsByClassName(PAGE_SUBTITLE_CLASS);
 			expect(subtitleEl.length).toBe(0);
 		});
@@ -79,7 +78,7 @@ describe('PageHead', function() {
 			expect(pageHeadEl.innerHTML.indexOf(subtitle)).not.toBe(-1);
 		});
 
-		it(`should have an element with class of \'${PAGE_SUBTITLE_CLASS}\'`, () => {
+		it(`should have an element with class of '${PAGE_SUBTITLE_CLASS}'`, () => {
 			const subtitleEl = pageHeadEl.getElementsByClassName(PAGE_SUBTITLE_CLASS);
 			expect(subtitleEl.length).toBe(1);
 		});
