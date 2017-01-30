@@ -33,7 +33,7 @@ class Radio extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'checkboxComponent',
+			'minTouchHeight',
 			className
 		);
 
@@ -41,6 +41,7 @@ class Radio extends React.Component {
 
 		return (
 			<Flex
+				align='center'
 				className={classNames}
 				{...other}>
 				<FlexItem shrink>
