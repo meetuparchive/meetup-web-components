@@ -7,6 +7,7 @@ import Section from './Section';
 
 export const PAGE_HEAD_CLASS = 'pageHead';
 export const PAGE_TITLE_CLASS = 'pageTitle';
+export const PAGE_SUBTITLE_CLASS = 'pageSubtitle';
 export const PAGE_ACTIONS_CLASS = 'pageActions';
 export const PAGE_ACTION_CLASS = 'pageAction';
 
@@ -46,19 +47,19 @@ class PageHead extends React.Component {
 				<Flex
 					className={PAGE_TITLE_CLASS}
 					direction='column'
-					switchDirection='medium'
+					switchDirection='large'
 				>
 					<FlexItem>
 						<Chunk className='align--center atMedium_align--left'>
 							<h1 className='text--display1'>{title}</h1>
 							{subtitle &&
-								<p className='text--secondary'>{subtitle}</p>
+								<p className={`${PAGE_SUBTITLE_CLASS} text--secondary`}>{subtitle}</p>
 							}
 						</Chunk>
 					</FlexItem>
-					{Boolean(menuItems.length) &&
+					{menuItems.length > 0 &&
 						<FlexItem shrink>
-							<Flex justify='around' className={PAGE_ACTIONS_CLASS}>
+							<Flex justify='center' className={PAGE_ACTIONS_CLASS}>
 								{menuRender}
 							</Flex>
 						</FlexItem>

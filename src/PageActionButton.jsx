@@ -26,13 +26,10 @@ class PageActionButton extends React.Component {
 			switchDirection,
 			justify;
 
-		// if column
-		// icons and labels in rows,
-		// adjust to take up space based on position and numbers
-		//
-		//  OTHERWISE:
-		// always a nice column of actions
-		// each action is a horizontal icon and label
+		// if (direction is column)
+		// icons and labels in stacked rows,
+		// Otherwise, always labels and icons
+		// are side by side in a row
 		if (stackedIcon) {
 			direction = 'column';
 			justify = 'center';

@@ -84,18 +84,14 @@ describe('Button', () => {
 			expect(flex[0].props.rowReverse).toBeUndefined();
 		});
 
-		it('creates a `FlexItem` with icon class', () => {
-			const flexItems = findComponentsWithType(button, 'FlexItem');
-			const iconItem = flexItems.filter(item => item.props.className.indexOf(BUTTON_ICON) >= 0);
-			expect(iconItem.length).toBe(1);
+		it('creates an element with icon class', () => {
+			const iconItem = TestUtils.findRenderedDOMComponentWithClass(button, BUTTON_ICON);
+			expect(iconItem).not.toBeUndefined();
 		});
 
-		it('creates a `FlexItem` with label class', () => {
-			const flexItems = findComponentsWithType(button, 'FlexItem');
-			const labelItem = flexItems.filter(item => item.props.className.indexOf(BUTTON_LABEL) >= 0);
-			expect(labelItem.length).toBe(1);
-			const content = ReactDOM.findDOMNode(labelItem[0]);
-			expect(content.innerHTML).toEqual(label);
+		it('creates an element with label class', () => {
+			const labelItem = TestUtils.findRenderedDOMComponentWithClass(button, BUTTON_LABEL);
+			expect(labelItem).not.toBeUndefined();
 		});
 
 		describe('right', () => {

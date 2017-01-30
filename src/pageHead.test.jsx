@@ -5,6 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
 import PageHead, {
 	PAGE_TITLE_CLASS,
+	PAGE_SUBTITLE_CLASS,
 	PAGE_ACTIONS_CLASS,
 } from './PageHead';
 import PageActionButton from './PageActionButton';
@@ -52,18 +53,16 @@ describe('PageHead', function() {
 		it('should display a title area', () => {
 			expect(pageHeadEl.innerHTML.indexOf(pageTitle)).not.toBe(-1);
 		});
-		it(`should have a 'Flex' component with a class of ${PAGE_TITLE_CLASS}`, () => {
-			const flexItems = findComponentsWithType(pageHead, 'Flex');
-			const pageTitle = flexItems.filter(flex => flex.props.className.indexOf(PAGE_TITLE_CLASS) !== -1);
+		it(`should have a component with a class of ${PAGE_TITLE_CLASS}`, () => {
+			const pageTitle = TestUtils.scryRenderedDOMComponentsWithClass(pageHead, PAGE_TITLE_CLASS);
 			expect(pageTitle.length).toBe(1);
 		});
-		it(`should NOT have a 'Flex' component with a class of ${PAGE_ACTIONS_CLASS}`, () => {
-			const flexItems = findComponentsWithType(pageHead, 'Flex');
-			const pageActions = flexItems.filter(flex => flex.props.className.indexOf(PAGE_ACTIONS_CLASS) !== -1);
+		it(`should NOT have a component with a class of ${PAGE_ACTIONS_CLASS}`, () => {
+			const pageActions = TestUtils.scryRenderedDOMComponentsWithClass(pageHead, PAGE_ACTIONS_CLASS);
 			expect(pageActions.length).toBe(0);
 		});
-		it('should NOT have a \'<p>\' tag', () => {
-			const subtitleEl = pageHeadEl.getElementsByTagName('P');
+		it(`should NOT have a \'${PAGE_SUBTITLE_CLASS}\' tag`, () => {
+			const subtitleEl = pageHeadEl.getElementsByClassName(PAGE_SUBTITLE_CLASS);
 			expect(subtitleEl.length).toBe(0);
 		});
 	});
@@ -80,10 +79,9 @@ describe('PageHead', function() {
 			expect(pageHeadEl.innerHTML.indexOf(subtitle)).not.toBe(-1);
 		});
 
-		it('should have a \'<p>\' tag with a class of \'text--secondary\'', () => {
-			const subtitleEl = pageHeadEl.getElementsByTagName('P');
+		it(`should have an element with class of \'${PAGE_SUBTITLE_CLASS}\'`, () => {
+			const subtitleEl = pageHeadEl.getElementsByClassName(PAGE_SUBTITLE_CLASS);
 			expect(subtitleEl.length).toBe(1);
-			expect(subtitleEl[0].classList).toContain('text--secondary');
 		});
 	});
 
@@ -95,15 +93,13 @@ describe('PageHead', function() {
 			pageHeadEl = ReactDOM.findDOMNode(pageHead);
 		});
 
-		it(`should have a 'Flex' component with a class of ${PAGE_ACTIONS_CLASS}`, () => {
-			const flexItems = findComponentsWithType(pageHead, 'Flex');
-			const pageActions = flexItems.filter(flex => flex.props.className && flex.props.className.indexOf(PAGE_ACTIONS_CLASS) !== -1);
+		it(`should have a component with a class of ${PAGE_ACTIONS_CLASS}`, () => {
+			const pageActions = TestUtils.scryRenderedDOMComponentsWithClass(pageHead, PAGE_ACTIONS_CLASS);
 			expect(pageActions.length).toBe(1);
 		});
 
 		it('should render provided components in \'menuItems\' array', () => {
-			const flexItems = findComponentsWithType(pageHead, 'Flex');
-			const pageActions = flexItems.filter(flex => flex.props.className && flex.props.className.indexOf(PAGE_ACTIONS_CLASS) !== -1)[0];
+			const pageActions = TestUtils.scryRenderedDOMComponentsWithClass(pageHead, PAGE_ACTIONS_CLASS)[0];
 			const pageActionsEl = ReactDOM.findDOMNode(pageActions);
 			menu.forEach(menuItem => {
 				const menuItemRender = TestUtils.renderIntoDocument(menuItem);

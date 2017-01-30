@@ -88,18 +88,24 @@ storiesOf('PageHead', module)
 		];
 		return (
 			<div style={{border:'1px dotted red', width:'100%'}}>
-				<PageHead title='Sirloin short ribs rump ham turducken pork chop drumstick' menuItems={menu} />
+				<PageHead
+					title='Sirloin short ribs rump ham turducken pork chop drumstick'
+					menuItems={menu}
+				/>
 			</div>
 		);
 	})
-	.add('title and actions column & short menu + popover', () => {
+	.add('title and actions column & short menu', () => {
 		const menu = [
 			<PageActionButton icon='search' label='Search' stackedIcon short />,
 			<PageActionButton icon='edit' label='Edit' stackedIcon short />,
 		];
 		return (
 			<div style={{border:'1px dotted red', width:'100%'}}>
-				<PageHead title='Sirloin short ribs rump ham turducken pork chop drumstick' menuItems={menu} />
+				<PageHead
+					title='Sirloin short ribs rump ham turducken pork chop drumstick'
+					menuItems={menu}
+				/>
 			</div>
 		);
 	})
@@ -110,7 +116,7 @@ storiesOf('PageHead', module)
 			<Popover
 				align='left'
 				trigger={
-					<PageActionButton icon='overflow' label='More' stackedIcon />
+					<PageActionButton icon='overflow' label='More' />
 				}
 				menuItems={[
 					<Link to='somepath/' onClick={logSelection}>First option</Link>,
