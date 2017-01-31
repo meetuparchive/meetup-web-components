@@ -44,8 +44,8 @@ class AvatarStack extends React.Component {
 		const {
 			size,
 			memberList, // eslint-disable-line no-unused-vars
+			stackThreshold, // eslint-disable-line no-unused-vars
 			className,
-			stackThreshold,
 			...other
 		} = this.props;
 
@@ -57,10 +57,24 @@ class AvatarStack extends React.Component {
 			className
 		);
 
+		const rowJustify = () => {
+			// if stackThreshold is not set
+			// if stackThreshold is set AND memberlist.length is greater than or equal to it
+				// justify avatars (return 'spaceBetween')
+
+			// if stackThreshold is set AND memberlist.length is less than it
+				// flesh avatars left (return 'flexStart')
+			if (this.props.stackThreshold) {
+				return this.props.memberList.length >= this.props.stackThreshold ? 'spaceBetween' : 'flexStart';
+			} else {
+				return 'spaceBetween';
+			}
+		};
+
 		return (
 			<Flex
 				wrap
-				justify={stackThreshold && memberList.length >= stackThreshold ? 'spaceBetween' : 'flexStart'}
+				justify={rowJustify()}
 				className={classNames}
 				{...other}>
 					{this.renderAvatars()}
@@ -71,7 +85,8 @@ class AvatarStack extends React.Component {
 }
 
 AvatarStack.defaultProps = {
-	size: 'default'
+	size: 'default',
+	stackThreshold: false
 };
 
 AvatarStack.propTypes = {

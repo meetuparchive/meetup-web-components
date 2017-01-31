@@ -24,13 +24,17 @@ Used to render a single row of overlapping member avatars.
 	}
 
 	.avatar--person {
-		margin-left: -#{$space-half};
+		@include responsiveBase() {
+			margin-left: $baseSpace/2;
+		}
 	}
 
 	&--big {
 
 		.avatar--person {
-			margin-left: -#{$space-3};
+			@include responsiveBase() {
+				margin-left: $baseSpace;
+			}
 		}
 
 	}
