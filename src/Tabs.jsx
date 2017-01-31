@@ -12,6 +12,10 @@ class Tabs extends React.Component {
 				{'tabs-tab--selected': tab.props.isSelected}
 			);
 
+			// remove prop that is not standard DOM
+			// before rendering
+			delete tab.props.isSelected;
+
 			return (
 				<li
 					key={i}
