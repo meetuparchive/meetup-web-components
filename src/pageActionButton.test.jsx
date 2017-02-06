@@ -48,10 +48,10 @@ describe('PageActionButton', function() {
 		expect(button[0].props.onClick).toBe(spyable.onClick);
 	});
 
-	it('should render a `Icon` component', () => {
-		const icon = findComponentsWithType(pageActionButton, 'Icon');
-		expect(icon.length).toBe(1);
-		expect(icon[0].props.shape).toBe(shape);
+	it('should render a provided icon element in component', () => {
+		const iconRender = TestUtils.renderIntoDocument(shape);
+		const iconEl = ReactDOM.findDOMNode(iconRender);
+		expect(pageActionButtonEl.innerHTML).toContain(iconEl.innerHTML);
 	});
 
 	it('should render label for button', () => {
