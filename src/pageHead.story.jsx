@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { storiesOf, action } from '@kadira/storybook';
 import { InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
+import Icon from './Icon';
 import PageHead from './PageHead';
 import PageActionButton from './PageActionButton';
 import Popover from './Popover';
@@ -38,8 +39,8 @@ storiesOf('PageHead', module)
 	))
 	.add('title and actions', () => {
 		const menu = [
-			<PageActionButton icon='search' label='Search' />,
-			<PageActionButton icon='edit' label='Edit' />,
+			<PageActionButton icon={<Icon shape='search' className='text--secondary' />} label='Search' />,
+			<PageActionButton icon={<Icon shape='edit' className='text--secondary' />} label='Edit' />,
 		];
 		return (
 			<div style={{border:'1px dotted red', width:'100%'}}>
@@ -49,12 +50,12 @@ storiesOf('PageHead', module)
 	})
 	.add('title and actions row menu + popover', () => {
 		const menu = [
-			<PageActionButton icon='search' label='Search' />,
-			<PageActionButton icon='edit' label='Edit' />,
+			<PageActionButton icon={<Icon shape='search' className='text--secondary' />} label='Search' />,
+			<PageActionButton icon={<Icon shape='edit' className='text--secondary' />} label='Edit' />,
 			<Popover
 				align='left'
 				trigger={
-					<PageActionButton icon='overflow' label='More' />
+					<PageActionButton icon={<Icon shape='overflow' className='text--secondary' />} label='More' />
 				}
 				menuItems={[
 					<Link to='somepath/' onClick={logSelection}>First option</Link>,
@@ -71,13 +72,13 @@ storiesOf('PageHead', module)
 	})
 	.add('title and actions column menu + popover', () => {
 		const menu = [
-			<PageActionButton icon='search' label='Search' stackedIcon />,
-			<PageActionButton icon='edit' label='Edit' stackedIcon />,
-			<PageActionButton icon='location' label='Location' stackedIcon />,
+			<PageActionButton icon={<Icon shape='search' className='text--secondary' />} label='Search' stackedIcon />,
+			<PageActionButton icon={<Icon shape='edit' className='text--secondary' />} label='Edit' stackedIcon />,
+			<PageActionButton icon={<Icon shape='location' className='text--secondary' />} label='Location' stackedIcon />,
 			<Popover
 				align='left'
 				trigger={
-					<PageActionButton icon='overflow' label='More' stackedIcon />
+					<PageActionButton icon={<Icon shape='overflow' className='text--secondary' />} label='More' stackedIcon />
 				}
 				menuItems={[
 					<Link to='somepath/' onClick={logSelection}>First option</Link>,
@@ -97,8 +98,8 @@ storiesOf('PageHead', module)
 	})
 	.add('title and actions column & short menu', () => {
 		const menu = [
-			<PageActionButton icon='search' label='Search' stackedIcon short />,
-			<PageActionButton icon='edit' label='Edit' stackedIcon short />,
+			<PageActionButton icon={<Icon shape='search' className='text--secondary' />} label='Search' stackedIcon short />,
+			<PageActionButton icon={<Icon shape='edit' className='text--secondary' />} label='Edit' stackedIcon short />,
 		];
 		return (
 			<div style={{border:'1px dotted red', width:'100%'}}>
@@ -111,8 +112,8 @@ storiesOf('PageHead', module)
 	})
 	.add('With title, actions + popover and children content', () => {
 		const menu = [
-			<PageActionButton icon='search' label='Search' />,
-			<PageActionButton icon='edit' label='Edit' />,
+			<PageActionButton icon={<Icon shape='search' className='text--secondary' />} label='Search' />,
+			<PageActionButton icon={<Icon shape='edit' className='text--secondary' />} label='Edit' />,
 			<Popover
 				align='left'
 				trigger={
