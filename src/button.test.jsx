@@ -62,6 +62,7 @@ describe('Button', () => {
 	describe('Button with icon', () => {
 		const icon = <Icon shape='chevron-right' />,
 			label = 'Icon Button',
+			BUTTON_ICON_WRAPPER = 'button--icon-wrapper',
 			BUTTON_LABEL = 'button--label',
 			BUTTON_ICON = 'button--icon';
 		let button;
@@ -78,24 +79,23 @@ describe('Button', () => {
 			button = null;
 		});
 
-		it('should render a `Flex` container for icons and label', () => {
-			const flex = findComponentsWithType(button, 'Flex');
-			expect(flex.length).toBe(1);
-			expect(flex[0].props.rowReverse).toBeUndefined();
+		it('should render wrapper for icons and label', () => {
+			const iconItem = TestUtils.findRenderedDOMComponentWithClass(button, BUTTON_ICON_WRAPPER);
+			expect(iconItem).not.toBeUndefined();
 		});
 
-		it('creates an element with icon class', () => {
+		it('should render an element with icon class', () => {
 			const iconItem = TestUtils.findRenderedDOMComponentWithClass(button, BUTTON_ICON);
 			expect(iconItem).not.toBeUndefined();
 		});
 
-		it('creates an element with label class', () => {
+		it('should render an element with label class', () => {
 			const labelItem = TestUtils.findRenderedDOMComponentWithClass(button, BUTTON_LABEL);
 			expect(labelItem).not.toBeUndefined();
 		});
 
 		describe('right', () => {
-			it('should render a `Flex` container for icons and label', () => {
+			it('should set icon container to reverse', () => {
 				const icon = <Icon shape='chevron-right' />;
 				const button = TestUtils.renderIntoDocument(
 					<Button icon={icon} primary right>

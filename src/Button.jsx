@@ -38,7 +38,7 @@ class Button extends React.Component {
 		const opts = right ? { rowReverse: 'all' } : {};
 
 		const iconChildren = (
-			<Flex {...opts}>
+			<Flex className='button--icon-wrapper' {...opts}>
 				{icon &&
 					<FlexItem shrink className='button--icon valign--middle'>
 						{icon}
