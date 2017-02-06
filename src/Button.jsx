@@ -1,5 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
+import Flex from './Flex';
+import FlexItem from './FlexItem';
 
 /**
  * SQ2 Button component
@@ -33,22 +35,30 @@ class Button extends React.Component {
 			},
 			className
 		);
+		const opts = right ? { rowReverse: 'all' } : {};
 
-		const iconChildren = [
-			<span className='button--icon' key={0}>{icon}</span>,
-			'\u00a0',  // non-breaking space
-			<span className='button--label' key={2}>{children}</span>
-		];
-		if (right) {
-			iconChildren.reverse();
-		}
+		const iconChildren = (
+			<Flex className='button--icon-wrapper' {...opts}>
+				{icon &&
+					<FlexItem shrink className='button--icon valign--middle'>
+						{icon}
+					</FlexItem>
+				}
+				{children &&
+					<FlexItem className='button--label valign--middle align--center atMedium_align--left'>
+						{children}
+					</FlexItem>
+				}
+			</Flex>
+		);
 
 		return (
 			<button
 				className={classNames}
 				onClick={onClick}
 				role='button'
-				{...other}>
+				{...other}
+			>
 				{ icon ? iconChildren : children }
 			</button>
 		);
@@ -65,7 +75,6 @@ Button.propTypes = {
 	primary: React.PropTypes.bool,
 	small: React.PropTypes.bool,
 	icon: React.PropTypes.any,
-	right: React.PropTypes.bool
+	right: React.PropTypes.bool,
 };
-
 export default Button;
