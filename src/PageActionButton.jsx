@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from './Button';
-import Icon from './Icon';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
 
@@ -50,7 +49,7 @@ class PageActionButton extends React.Component {
 				>
 					{icon &&
 						<FlexItem shrink className='valign--middle'>
-							<Icon shape={icon} className='text--secondary' />
+							{icon}
 						</FlexItem>
 					}
 					{label &&
@@ -66,7 +65,7 @@ class PageActionButton extends React.Component {
 }
 
 PageActionButton.propTypes = {
-	icon: React.PropTypes.string.isRequired,
+	icon: React.PropTypes.element.isRequired,
 	label: React.PropTypes.oneOfType([
 		React.PropTypes.element,
 		React.PropTypes.string

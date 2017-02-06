@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
+import Icon from './Icon';
 import PageActionButton, {
 	PAGE_ACTION_BUTTON_CLASS
 } from './PageActionButton';
 
 const label = 'hello world';
-const shape = 'search';
+const shape = (<Icon shape='search' className='text--secondary' />);
 const spyable = {
 	onClick: () => {}
 };
