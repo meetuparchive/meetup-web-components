@@ -31,7 +31,7 @@ const getIsActive = (menuEl) => {
 	return !menuEl.classList.contains(class_hidden);
 };
 
-describe('Popover placeholder', function() {
+describe('Popover', function() {
 
 	beforeEach(() => {
 		popover = TestUtils.renderIntoDocument(popoverComponent);
