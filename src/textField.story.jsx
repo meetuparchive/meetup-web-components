@@ -24,16 +24,13 @@ storiesOf('TextField', module)
 		error='Not so fast. You have an error.'
 		placeholder='Not your email' />)
 	.add('required', () => {
-		const rules = {
-			required: 'required'
-		};
 		return (<form>
 			<TextField
 				label='Your name'
 				id='fullname'
 				name='name'
 				value=''
-				{...rules}
+				required='true'
 				placeholder='Not your email' />
 			<Button
 				contrast

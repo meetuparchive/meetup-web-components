@@ -28,6 +28,7 @@ class TextField extends React.Component {
 			className,
 			children,
 			error,
+			required,
 			...other
 		} = this.props;
 
@@ -37,7 +38,7 @@ class TextField extends React.Component {
 		);
 
 		const labelClassNames = cx(
-			{ required : other && other.required },
+			{ required },
 			labelClassName
 		);
 
@@ -50,6 +51,7 @@ class TextField extends React.Component {
 				<input type='text'
 					name={name}
 					value={this.state.value}
+					required={required}
 					className={classNames}
 					onChange={this.onChange}
 					{...other} />
