@@ -16,14 +16,13 @@ class TextField extends React.Component {
 	}
 
 	onChange(e) {
-		console.log('change', e.target.value);
 		this.setState({ value: e.target.value });
 	}
 
 	render() {
 		const {
 			name,
-			value,
+			value,	// eslint-disable-line no-unused-vars
 			label,
 			labelClassName,
 			className,
@@ -42,9 +41,6 @@ class TextField extends React.Component {
 			labelClassName
 		);
 
-		// hack to use value some how but prevent it from being added to other
-		console.log('value', value);
-
 		return (
 			<div>
 				<label className={labelClassNames} htmlFor={other.id}>
@@ -57,6 +53,8 @@ class TextField extends React.Component {
 					className={classNames}
 					onChange={this.onChange}
 					{...other} />
+
+				{ this.props.maxLength && <p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p> }
 
 				{ this.state.error && <p className='text--error'>{error}</p> }
 				{children}

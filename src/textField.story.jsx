@@ -10,20 +10,20 @@ storiesOf('TextField', module)
 		name='name'
 		value=''
 		placeholder='Not your email' />)
-	.add('has a value', () => <TextField
+	.add('with value', () => <TextField
 		label='Your name'
 		id='fullname'
 		name='name'
 		value='Phife Dawg'
 		placeholder='Not your email' />)
-	.add('has an error', () => <TextField
+	.add('error state', () => <TextField
 		label='Your name'
 		id='fullname'
 		name='name'
 		value=''
 		error='Not so fast. You have an error.'
 		placeholder='Not your email' />)
-	.add('is required', () => {
+	.add('required', () => {
 		const rules = {
 			required: 'required'
 		};
@@ -42,7 +42,7 @@ storiesOf('TextField', module)
 			</Button>
 		</form>);
 	})
-	.add('has a maxLength value', () => {
+	.add('with char counter (maxLength)', () => {
 		const rules = {
 			maxLength: 10,
 			pattern:'.{5,10}'
