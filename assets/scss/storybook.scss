@@ -15,6 +15,8 @@ html, body, #root {
 // include any additional scss from
 // `src/assets/scss/` as sass partials
 //
-@import "~sassquatch2/sass/sassquatch.scss";
+@import "~swarm-sasstools/scss/reset/all";
 
 @import "main";
+
+@import "~swarm-sasstools/scss/modifierClasses/all";

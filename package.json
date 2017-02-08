@@ -31,8 +31,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-intl": "^2.2.3",
-    "react-router": "^3.0.2",
-    "sassquatch2": "^2.4.4"
+    "react-router": "^3.0.2"
   },
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "3.3.0",
@@ -67,7 +66,7 @@
     "react-intl": "2.2.3",
     "react-router": "3.0.2",
     "sass-loader": "4.1.1",
-    "sassquatch2": "2.4.4",
+    "swarm-sasstools": "1.0.0",
     "storybook-addon-i18n-tools": "1.0.0",
     "style-loader": "0.13.1",
     "swarm-icons": "0.1.0"
