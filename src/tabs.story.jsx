@@ -1,61 +1,53 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { storiesOf } from '@kadira/storybook';
-import { Annotate } from './utils/storyComponents';
+import { WithNotes } from '@kadira/storybook-addon-notes';
+import { InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
 import Tabs from './Tabs';
-import TabsTab from './TabsTab';
 
 storiesOf('Tabs', module)
 	.addDecorator(decorateWithLocale)
-	.add('default', () => {
-		return (
-			<Tabs>
-				<TabsTab
-					isActive
-					url='/foo'
-					label='First Tab' />
-				<TabsTab
-					url='/bar'
-					label='Second Tab' />
-				<TabsTab
-					url='/bar'
-					label='Third Tab' />
-			</Tabs>
-		);
-	})
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+				<Tabs
+					tabs={[
+						<Link>First tab</Link>,
+						<Link isSelected>Second tab</Link>,
+						<Link>Third tab</Link>,
+					]}
+				/>
+			</InfoWrapper>
+		)
+	)
 	.add('Bordered tabs', () => {
 		return (
-			<Annotate notes='For bordered tabs, add the boolean prop `bordered` to `Tabs`'>
-				<Tabs bordered>
-					<TabsTab
-						isActive
-						url='/foo'
-						label='First Tab' />
-					<TabsTab
-						url='/bar'
-						label='Second Tab' />
-					<TabsTab
-						url='/bar'
-						label='Third Tab' />
-				</Tabs>
-			</Annotate>
+			<WithNotes notes='For bordered tabs, add the boolean prop `bordered` to `Tabs`'>
+				<Tabs
+					bordered
+					tabs={[
+						<Link isSelected>First tab</Link>,
+						<Link>Second tab</Link>,
+						<Link>Third tab</Link>,
+					]}
+				/>
+			</WithNotes>
 		);
 	})
 	.add('Full width tabs', () => {
 		return (
-			<Annotate notes='For full-width tabs, add the boolean prop `full` to `Tabs`'>
-				<Tabs full>
-					<TabsTab
-						isActive
-						url='/foo'
-						label='First Tab' />
-					<TabsTab
-						url='/bar'
-						label='Second Tab' />
-					<TabsTab
-						url='/bar'
-						label='Third Tab' />
-				</Tabs>
-			</Annotate>
+			<WithNotes notes='For full-width tabs, add the boolean prop `full` to `Tabs`'>
+				<Tabs
+					full
+					tabs={[
+						<Link>First tab</Link>,
+						<Link>Second tab</Link>,
+						<Link isSelected>Third tab</Link>,
+					]}
+				/>
+			</WithNotes>
 		);
 	});
