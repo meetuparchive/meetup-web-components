@@ -13,6 +13,7 @@
     "lint": "npm run lint:base -- --fix",
     "lint:base": "eslint . --ext .js,.jsx",
     "modules:clean": "rm -rf node_modules",
+    "precommit": "git status --porcelain | awk 'match($1, \"[ACM]\"){print $2}' | grep '[js|jsx]$' | xargs eslint",
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "npm-run-all --parallel lint:base coverage",
