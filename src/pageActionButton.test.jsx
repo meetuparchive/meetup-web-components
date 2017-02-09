@@ -12,7 +12,7 @@ const spyable = {
 
 describe('PageActionButton', function() {
 	let pageActionButton;
-	beforeAll(() => {
+	beforeEach(() => {
 		pageActionButton = TestUtils.renderIntoDocument(
 			<PageActionButton
 				icon={shape}
@@ -21,7 +21,7 @@ describe('PageActionButton', function() {
 			/>
 		);
 	});
-	afterAll(() => {
+	afterEach(() => {
 		pageActionButton = null;
 	});
 	it('exists', function() {
@@ -53,7 +53,7 @@ describe('PageActionButton', function() {
 	});
 	describe('option: stacked icon', () => {
 		let flex;
-		beforeAll(() => {
+		beforeEach(() => {
 			pageActionButton = TestUtils.renderIntoDocument(
 				<PageActionButton
 					icon={shape}
@@ -64,7 +64,7 @@ describe('PageActionButton', function() {
 			);
 			flex = TestUtils.scryRenderedComponentsWithType(pageActionButton, Flex)[0];
 		});
-		afterAll(() => {
+		afterEach(() => {
 			pageActionButton = null;
 			flex = null;
 		});
@@ -80,7 +80,7 @@ describe('PageActionButton', function() {
 	});
 	describe('option: stacked icon until medium, becomes horizontal', () => {
 		let flex;
-		beforeAll(() => {
+		beforeEach(() => {
 			pageActionButton = TestUtils.renderIntoDocument(
 				<PageActionButton
 					icon={shape}
@@ -91,7 +91,7 @@ describe('PageActionButton', function() {
 			);
 			flex = TestUtils.scryRenderedComponentsWithType(pageActionButton, Flex)[0];
 		});
-		afterAll(() => {
+		afterEach(() => {
 			pageActionButton = null;
 			flex = null;
 		});

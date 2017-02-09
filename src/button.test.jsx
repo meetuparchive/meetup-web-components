@@ -10,11 +10,11 @@ describe('Button', () => {
 	describe('is a HTML button element', () => {
 		let button;
 
-		beforeAll(() => {
+		beforeEach(() => {
 			button = TestUtils.renderIntoDocument(<Button />);
 		});
 
-		afterAll(() => {
+		afterEach(() => {
 			button = null;
 		});
 
@@ -65,7 +65,7 @@ describe('Button', () => {
 			BUTTON_ICON = 'button--icon';
 		let button;
 
-		beforeAll(() => {
+		beforeEach(() => {
 			button = TestUtils.renderIntoDocument(
 				<Button icon={icon} primary>
 					{label}
@@ -73,7 +73,7 @@ describe('Button', () => {
 			);
 		});
 
-		afterAll(() => {
+		afterEach(() => {
 			button = null;
 		});
 

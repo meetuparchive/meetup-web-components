@@ -32,12 +32,12 @@ const menu = [
 let pageHead;
 
 describe('PageHead', function() {
-	beforeAll(() => {
+	beforeEach(() => {
 		pageHead = TestUtils.renderIntoDocument(
 			<PageHead title={pageTitle} />
 		);
 	});
-	afterAll(() => {
+	afterEach(() => {
 		pageHead = null;
 	});
 	it('exists', function() {
@@ -63,7 +63,7 @@ describe('PageHead', function() {
 		});
 	});
 	describe('subtitle', () => {
-		beforeAll(() => {
+		beforeEach(() => {
 			pageHead = TestUtils.renderIntoDocument(
 				<PageHead title={pageTitle} subtitle={subtitle} />
 			);
@@ -79,7 +79,7 @@ describe('PageHead', function() {
 		});
 	});
 	describe('menuItems', () => {
-		beforeAll(() => {
+		beforeEach(() => {
 			pageHead = TestUtils.renderIntoDocument(
 				<PageHead title={pageTitle} menuItems={menu} />
 			);
