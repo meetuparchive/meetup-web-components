@@ -12,10 +12,11 @@ export const PAGE_ACTIONS_CLASS = 'pageActions';
 export const PAGE_ACTION_CLASS = 'pageAction';
 
 /**
+ * @description   Design System Component: `PageHead` creates a
+ * header, and subtitle container for pages, and provides an optional Flex
+ * side menu. The side menu can contain any number of items which
+ * appropriately adjusts to stacked or column view.
  * @module PageHead
- * @description  Creates a header, and subtitle container for pages,
- * and provides an optional Flex side menu. The side menu can contain
- * any number of items which appropriately adjusts to stacked or column view
  */
 class PageHead extends React.Component {
 	render() {

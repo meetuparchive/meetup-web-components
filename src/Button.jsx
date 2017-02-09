@@ -3,6 +3,8 @@ import cx from 'classnames';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
 
+export const BUTTON_CLASS = 'button';
+
 /**
  * SQ2 Button component
  * @see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_buttons.scss}
@@ -26,7 +28,7 @@ class Button extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'button',
+			BUTTON_CLASS,
 			{
 				'button--contrast': contrast,
 				'button--fullWidth': fullWidth,

@@ -3,34 +3,33 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
 import { hasRoleAttribute, variantTest } from './utils/testUtils';
-import Button from './Button';
+import Button, { BUTTON_CLASS } from './Button';
+import Flex from './Flex';
 import Icon from './Icon';
 
 describe('Button', () => {
-	const BUTTON_CLASS = 'button';
-
 	describe('is a HTML button element', () => {
-		let buttonEl;
+		let button;
 
-		beforeEach(() => {
-			const button = TestUtils.renderIntoDocument(<Button />);
-			buttonEl = ReactDOM.findDOMNode(button);
+		beforeAll(() => {
+			button = TestUtils.renderIntoDocument(<Button />);
 		});
 
-		afterEach(() => {
-			buttonEl = null;
+		afterAll(() => {
+			button = null;
 		});
 
 		it('exists', () => {
-			expect(buttonEl).not.toBeNull();
-			expect(buttonEl.nodeName).toBe('BUTTON');
+			expect(() => TestUtils.findRenderedComponentWithType(button, Button)).not.toThrow();
 		});
 
 		it('has SQ2 button styles', () => {
-			expect(buttonEl.classList.contains(BUTTON_CLASS)).toBe(true);
+			const btn = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_CLASS);
+			expect(btn.length).toBe(1);
 		});
 
 		it('has a `button` role attribute', () => {
+			const buttonEl = ReactDOM.findDOMNode(button);
 			hasRoleAttribute(buttonEl, 'button');
 		});
 	});
@@ -48,14 +47,14 @@ describe('Button', () => {
 
 	it('executes onClick when clicked', () => {
 		const spyable = {
-			onClick: () => {}
+			onClick: jest.fn()
 		};
 
 		spyOn(spyable, 'onClick');
 		const button = TestUtils.renderIntoDocument(<Button onClick={spyable.onClick} />);
-		const buttonEl = ReactDOM.findDOMNode(button);
+		const buttonNode = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_CLASS)[0];
 
-		TestUtils.Simulate.click(buttonEl);
+		TestUtils.Simulate.click(buttonNode);
 		expect(spyable.onClick).toHaveBeenCalled();
 	});
 
@@ -67,7 +66,7 @@ describe('Button', () => {
 			BUTTON_ICON = 'button--icon';
 		let button;
 
-		beforeEach(() => {
+		beforeAll(() => {
 			button = TestUtils.renderIntoDocument(
 				<Button icon={icon} primary>
 					{label}
@@ -75,23 +74,23 @@ describe('Button', () => {
 			);
 		});
 
-		afterEach(() => {
+		afterAll(() => {
 			button = null;
 		});
 
 		it('should render wrapper for icons and label', () => {
-			const iconItem = TestUtils.findRenderedDOMComponentWithClass(button, BUTTON_ICON_WRAPPER);
-			expect(iconItem).not.toBeUndefined();
+			const iconItem = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_ICON_WRAPPER);
+			expect(iconItem.length).toBe(1);
 		});
 
 		it('should render an element with icon class', () => {
-			const iconItem = TestUtils.findRenderedDOMComponentWithClass(button, BUTTON_ICON);
-			expect(iconItem).not.toBeUndefined();
+			const iconItem = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_ICON);
+			expect(iconItem.length).toBe(1);
 		});
 
 		it('should render an element with label class', () => {
-			const labelItem = TestUtils.findRenderedDOMComponentWithClass(button, BUTTON_LABEL);
-			expect(labelItem).not.toBeUndefined();
+			const labelItem = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_LABEL);
+			expect(labelItem.length).toBe(1);
 		});
 
 		describe('right', () => {
@@ -102,7 +101,7 @@ describe('Button', () => {
 						{label}
 					</Button>
 				);
-				const flex = findComponentsWithType(button, 'Flex');
+				const flex = TestUtils.scryRenderedComponentsWithType(button, Flex);
 				expect(flex[0].props.rowReverse).toBe('all');
 			});
 

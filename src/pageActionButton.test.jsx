@@ -28,10 +28,11 @@ describe('PageActionButton', function() {
 		pageActionButton = null;
 	});
 	it('exists', function() {
-		expect(() => TestUtils.findRenderedDOMComponentWithClass(pageActionButton, PAGE_ACTION_BUTTON_CLASS)).not.toThrow();
+		expect(() => TestUtils.findRenderedComponentWithType(pageActionButton, PageActionButton)).not.toThrow();
 	});
 	it(`should render a 'button' '${PAGE_ACTION_BUTTON_CLASS}'`, () => {
-		expect(TestUtils.scryRenderedDOMComponentsWithClass(pageActionButton, PAGE_ACTION_BUTTON_CLASS).length).toBe(1);
+		const pageBtn = TestUtils.scryRenderedDOMComponentsWithClass(pageActionButton, PAGE_ACTION_BUTTON_CLASS);
+		expect(pageBtn.length).toBe(1);
 	});
 	it('should call handler on \'button\' when clicked', () => {
 		const button = TestUtils.scryRenderedDOMComponentsWithClass(pageActionButton, PAGE_ACTION_BUTTON_CLASS)[0];

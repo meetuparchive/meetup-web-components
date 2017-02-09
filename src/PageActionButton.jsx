@@ -6,6 +6,10 @@ import FlexItem from './FlexItem';
 export const PAGE_ACTION_BUTTON_CLASS = 'pageActionButton';
 
 /**
+ * @description  Design System Component: Provides `PageActionButtion` button which offers a larger button
+ * with stacked icon/label or side by side view options. It differs from `Button` in that there
+ * is now visible button border and offers more enhanced stacking options. Common usage would be
+ * with `PageHead` component
  * @module PageActionButton
  */
 class PageActionButton extends React.Component {
