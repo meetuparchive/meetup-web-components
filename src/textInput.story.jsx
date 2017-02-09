@@ -1,21 +1,21 @@
 import React from 'react';
-import TextField from './TextField';
+import TextInput from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@kadira/storybook';
 
-storiesOf('TextField', module)
-	.add('default', () => <TextField
+storiesOf('TextInput', module)
+	.add('default', () => <TextInput
 		label='Your name'
 		id='fullname'
 		name='name'
 		placeholder='Not your email' />)
-	.add('with value', () => <TextField
+	.add('with value', () => <TextInput
 		label='Your name'
 		id='fullname'
 		name='name'
 		value='Phife Dawg'
 		placeholder='Not your email' />)
-	.add('error state', () => <TextField
+	.add('error state', () => <TextInput
 		label='Your name'
 		id='fullname'
 		name='name'
@@ -23,7 +23,7 @@ storiesOf('TextField', module)
 		placeholder='Not your email' />)
 	.add('required', () => {
 		return (<form>
-			<TextField
+			<TextInput
 				label='Your name'
 				id='fullname'
 				name='name'
@@ -41,7 +41,7 @@ storiesOf('TextField', module)
 			maxLength: 10,
 			pattern:'.{5,10}'
 		};
-		return (<TextField
+		return (<TextInput
 			label='Your name'
 			id='fullname'
 			name='name'
@@ -54,7 +54,7 @@ storiesOf('TextField', module)
 			pattern:'.{5,10}'
 		};
 		return (<form>
-			<TextField
+			<TextInput
 				label='Your name'
 				id='fullname'
 				name='name'

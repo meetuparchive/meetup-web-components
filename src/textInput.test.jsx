@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import TextField from './TextField';
+import TextInput from './TextInput';
 
-describe('TextField', function() {
+describe('TextInput', function() {
 
 	const LABEL_TEXT = 'Super Hero',
 		VALUE = 'Batman',
@@ -11,8 +11,8 @@ describe('TextField', function() {
 		MAX_LEN = '20',
 		ERROR_TEXT = 'Too wimpy.';
 
-	let textField,
-		textFieldEl,
+	let textInput,
+		textInputEl,
 		inputEl;
 
 	beforeEach(() => {
@@ -22,23 +22,23 @@ describe('TextField', function() {
 			error: ERROR_TEXT,
 			required: 'required'
 		};
-		textField = TestUtils.renderIntoDocument(<TextField
+		textInput = TestUtils.renderIntoDocument(<TextInput
 			name={NAME_ATTR}
 			label={LABEL_TEXT}
 			value={VALUE}
 			{...formAttrs} />);
 
-		textFieldEl = ReactDOM.findDOMNode(textField);
-		inputEl = textFieldEl.querySelector('input');
+		textInputEl = ReactDOM.findDOMNode(textInput);
+		inputEl = textInputEl.querySelector('input');
 	});
 
 	afterEach(() => {
-		textFieldEl = null;
+		textInputEl = null;
 		inputEl = null;
 	});
 
 	it('exists', () => {
-		expect(textFieldEl).not.toBeNull();
+		expect(textInputEl).not.toBeNull();
 	});
 
 	it('should have a name attribute', () => {
@@ -50,7 +50,7 @@ describe('TextField', function() {
 	});
 
 	it('should have a label when label is given', () => {
-		const labelEl = textFieldEl.querySelector('label');
+		const labelEl = textInputEl.querySelector('label');
 		expect(labelEl).not.toBeNull();
 		expect(labelEl.textContent).toEqual(LABEL_TEXT);
 	});
@@ -64,7 +64,7 @@ describe('TextField', function() {
 	});
 
 	it('should have an error when one is specified', function() {
-		const errorEl = textFieldEl.querySelector('.text--error');
+		const errorEl = textInputEl.querySelector('.text--error');
 		expect(errorEl).not.toBeNull();
 		expect(errorEl.textContent).toEqual(ERROR_TEXT);
 	});
@@ -82,16 +82,16 @@ describe('TextField', function() {
 
 	it('should call onChange and setState with input change', function() {
 		const newValue = `${VALUE}r`;
-		const changeSpy = spyOn(TextField.prototype, 'onChange').and.callThrough();
-		const stateSpy = spyOn(TextField.prototype, 'setState').and.callThrough();
+		const changeSpy = spyOn(TextInput.prototype, 'onChange').and.callThrough();
+		const stateSpy = spyOn(TextInput.prototype, 'setState').and.callThrough();
 
-		const boundTextField = TestUtils.renderIntoDocument(<TextField
+		const boundTextInput = TestUtils.renderIntoDocument(<TextInput
 			name={NAME_ATTR}
 			label={LABEL_TEXT}
 			value={VALUE} />);
 
-		textFieldEl = ReactDOM.findDOMNode(boundTextField);
-		inputEl = textFieldEl.querySelector('input');
+		textInputEl = ReactDOM.findDOMNode(boundTextInput);
+		inputEl = textInputEl.querySelector('input');
 		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
 
 		expect(changeSpy).toHaveBeenCalled();

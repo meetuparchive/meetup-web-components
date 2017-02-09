@@ -2,9 +2,9 @@ import React from 'react';
 import cx from 'classnames';
 
 /**
- * @module TextField
+ * @module TextInput
  */
-class TextField extends React.Component {
+class TextInput extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -64,7 +64,7 @@ class TextField extends React.Component {
 	}
 }
 
-TextField.propTypes = {
+TextInput.propTypes = {
 	id: React.PropTypes.string,
 	name: React.PropTypes.string.isRequired,
 	error: React.PropTypes.string,
@@ -74,4 +74,4 @@ TextField.propTypes = {
 	required: React.PropTypes.bool
 };
 
-export default TextField;
+export default TextInput;
