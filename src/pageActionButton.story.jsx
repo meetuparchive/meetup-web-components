@@ -20,13 +20,23 @@ storiesOf('PageActionButton', module)
 			</InfoWrapper>
 		)
 	)
-	.add('stacked', () => (
+	.add('stacked icon + label', () => (
 		<div style={{border:'1px dotted red', width:'150px'}}>
 			<PageActionButton
 				icon={<Icon shape='search' className='text--secondary' />}
 				label='Find my Meetup'
-				direction='column'
 				onClick={action('clicked')}
+				stackVertical
+			/>
+		</div>
+	))
+	.add('horizontal at mobile, stacked at medium', () => (
+		<div style={{border:'1px dotted red', width:'150px'}}>
+			<PageActionButton
+				icon={<Icon shape='search' className='text--secondary' />}
+				label='Find my Meetup'
+				onClick={action('clicked')}
+				stackVerticalAtMedium
 			/>
 		</div>
 	));

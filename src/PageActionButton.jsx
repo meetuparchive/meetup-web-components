@@ -15,8 +15,8 @@ class PageActionButton extends React.Component {
 			className,
 			icon,
 			label,
-			stackedIcon,
-			short,
+			stackVertical,
+			stackVerticalAtMedium,
 			onClick,
 			...other
 		} = this.props;
@@ -29,10 +29,10 @@ class PageActionButton extends React.Component {
 		// icons and labels in stacked rows,
 		// Otherwise, always labels and icons
 		// are side by side in a row
-		if (stackedIcon) {
+		if (stackVertical || stackVerticalAtMedium) {
 			direction = 'column';
 			justify = 'center';
-			switchDirection = short ? 'all' : 'medium';
+			switchDirection = stackVerticalAtMedium ? 'medium' : '';
 		}
 
 		return (
@@ -70,8 +70,8 @@ PageActionButton.propTypes = {
 		React.PropTypes.element,
 		React.PropTypes.string
 	]).isRequired,
-	stackedIcon: React.PropTypes.bool,
-	short: React.PropTypes.bool,
+	stackVertical: React.PropTypes.bool,
+	stackVerticalAtMedium: React.PropTypes.bool,
 	onClick: React.PropTypes.func,
 };
 
