@@ -9,8 +9,7 @@ class TextField extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: props.value,
-			error: props.error
+			value: props.value || '',
 		};
 		this.onChange = this.onChange.bind(this);
 	}

@@ -19,7 +19,6 @@ storiesOf('TextField', module)
 		label='Your name'
 		id='fullname'
 		name='name'
-		value=''
 		error='Not so fast. You have an error.'
 		placeholder='Not your email' />)
 	.add('required', () => {
@@ -28,7 +27,6 @@ storiesOf('TextField', module)
 				label='Your name'
 				id='fullname'
 				name='name'
-				value=''
 				required
 				placeholder='Not your email' />
 			<Button
