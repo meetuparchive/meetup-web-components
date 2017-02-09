@@ -66,7 +66,12 @@ class TextField extends React.Component {
 }
 
 TextField.propTypes = {
-	name: React.PropTypes.string.isRequired
+	id: React.PropTypes.string,
+	name: React.PropTypes.string.isRequired,
+	label: React.PropTypes.string,
+	labelClassName: React.PropTypes.string,
+	value: React.PropTypes.string,
+	required: React.PropTypes.bool
 };
 
 export default TextField;

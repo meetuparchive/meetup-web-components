@@ -8,7 +8,6 @@ storiesOf('TextField', module)
 		label='Your name'
 		id='fullname'
 		name='name'
-		value=''
 		placeholder='Not your email' />)
 	.add('with value', () => <TextField
 		label='Your name'
@@ -30,7 +29,7 @@ storiesOf('TextField', module)
 				id='fullname'
 				name='name'
 				value=''
-				required='true'
+				required
 				placeholder='Not your email' />
 			<Button
 				contrast
