@@ -29,8 +29,7 @@ const menu = [
 	pageTitle = 'Page title',
 	subtitle = 'Sub title';
 
-let pageHead,
-	pageHeadEl;
+let pageHead;
 
 describe('PageHead', function() {
 	beforeAll(() => {

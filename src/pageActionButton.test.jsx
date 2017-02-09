@@ -1,8 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
-import Button from './Button';
 import Flex from './Flex';
 import Icon from './Icon';
 import PageActionButton, { PAGE_ACTION_BUTTON_CLASS } from './PageActionButton';
@@ -49,7 +46,7 @@ describe('PageActionButton', function() {
 		expect(pageButtonNode.textContent).toBe(label);
 	});
 	it('should NOT set `Flex` props when is default version', () => {
-		const flex = findComponentsWithType(pageActionButton, 'Flex')[0];
+		const flex = TestUtils.scryRenderedComponentsWithType(pageActionButton, Flex)[0];
 		expect(flex.props.direction).toBe('row');
 		expect(flex.props.justify).toBeUndefined();
 		expect(flex.props.switchDirection).toBeUndefined();

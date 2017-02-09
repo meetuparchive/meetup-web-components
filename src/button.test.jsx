@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
 import { hasRoleAttribute, variantTest } from './utils/testUtils';
 import Button, { BUTTON_CLASS } from './Button';
 import Flex from './Flex';
