@@ -10,7 +10,7 @@ class Checkbox extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			checked: props.checked
+			checked: props.checked || false
 		};
 		this.onChange = this.onChange.bind(this);
 	}
@@ -24,6 +24,7 @@ class Checkbox extends React.Component {
 			checked, // eslint-disable-line no-unused-vars
 			children,
 			className,
+			id,
 			label,
 			name,
 			value,
@@ -35,7 +36,7 @@ class Checkbox extends React.Component {
 			className
 		);
 
-		const id = `${name}-${value}`;
+		const elId = id || `${name}-${value}`;
 
 		return (
 			<Flex align='center'
@@ -46,12 +47,12 @@ class Checkbox extends React.Component {
 						name={name}
 						value={value}
 						checked={this.state.checked}
-						id={id}
+						id={elId}
 						onChange={this.onChange}
 					/>
 				</FlexItem>
 				<FlexItem>
-					<label className='label--minor' htmlFor={id}>{label}</label>
+					<label className='label--minor' htmlFor={elId}>{label}</label>
 					{children}
 				</FlexItem>
 			</Flex>
@@ -61,9 +62,10 @@ class Checkbox extends React.Component {
 
 Checkbox.propTypes = {
 	checked: React.PropTypes.bool,
-	id: React.PropTypes.string.isRequired,
+	id: React.PropTypes.string,
 	label: React.PropTypes.string,
-	name: React.PropTypes.string.isRequired
+	name: React.PropTypes.string.isRequired,
+	value: React.PropTypes.string.isRequired
 };
 
 export default Checkbox;
