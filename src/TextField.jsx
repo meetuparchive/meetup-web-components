@@ -32,7 +32,7 @@ class TextField extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			{ 'field--error': this.state.error },
+			{ 'field--error': error },
 			className
 		);
 
@@ -57,7 +57,7 @@ class TextField extends React.Component {
 
 				{ this.props.maxLength && <p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p> }
 
-				{ this.state.error && <p className='text--error'>{error}</p> }
+				{ error && <p className='text--error'>{error}</p> }
 				{children}
 			</div>
 		);
@@ -67,6 +67,7 @@ class TextField extends React.Component {
 TextField.propTypes = {
 	id: React.PropTypes.string,
 	name: React.PropTypes.string.isRequired,
+	error: React.PropTypes.string,
 	label: React.PropTypes.string,
 	labelClassName: React.PropTypes.string,
 	value: React.PropTypes.string,
