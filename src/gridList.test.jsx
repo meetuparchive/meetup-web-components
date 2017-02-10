@@ -9,15 +9,15 @@ const JSX_GridListStatic = (
 			default: 3
 		}}
 		items={[
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>
 		]}
 	/>
 );
@@ -34,18 +34,18 @@ const JSX_GridListResponsive = (
 			large: responsiveColsLarge
 		}}
 		items={[
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>,
-			<div style={boxStyles}>GridItem</div>
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>
 		]}
 	/>
-)
+);
 
 let gridList,
 	gridListNode;
@@ -83,7 +83,7 @@ describe('Responsive GridList', function() {
 		gridListNode = null;
 		glClassList = null;
 	});
-	
+
 	it('sets correct default columns class', function() {
 		const defaultClass = `gridList--has${responsiveColsDefault}`;
 		expect(glClassList.contains(defaultClass)).toBe(true);
@@ -95,7 +95,7 @@ describe('Responsive GridList', function() {
 	});
 
 	it('sets correct large breakpoint columns class', function() {
-		const mediumClass = `atLarge_gridList--has${responsiveColsLarge}`;
+		const largeClass = `atLarge_gridList--has${responsiveColsLarge}`;
 		expect(glClassList.contains(largeClass)).toBe(true);
 	});
 });
