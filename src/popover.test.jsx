@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { Link } from 'react-router';
+import Link from 'react-router-dom/Link';
 import Popover from './Popover';
 import Button from './Button';
 

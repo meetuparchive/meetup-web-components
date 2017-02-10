@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import Link from 'react-router-dom/Link';
 import { storiesOf, action } from '@kadira/storybook';
 import { InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
