@@ -95,8 +95,6 @@ class AccordionPanel extends React.Component {
 			)
 		};
 
-		console.log(onTriggerClick);
-
 		return(
 			<Flex
 				className={classNames.accordionPanel}
@@ -112,7 +110,7 @@ class AccordionPanel extends React.Component {
 							aria-expanded={this.state.open}
 							aria-selected={this.state.open}
 							className='accordionPanel-label display--block span--100'
-							onClick={onTriggerClick}>
+							onClick={onTriggerClick || this._handleToggle}>
 								{triggerLabel}
 						</button>
 					</Chunk>
@@ -134,7 +132,7 @@ class AccordionPanel extends React.Component {
 				{triggerIconShape &&
 					<FlexItem
 						className='accordionPanel-icon'
-						onClick={onTriggerClick}
+						onClick={onTriggerClick || this._handleToggle}
 						shrink>
 							{this.state.open && triggerIconShapeActive ?
 								<Icon
@@ -163,7 +161,7 @@ AccordionPanel.propTypes = {
 	isOpen: React.PropTypes.bool,
 	triggerIconAlign: React.PropTypes.string,
 	triggerIconShape: React.PropTypes.string,
-	triggerIconSize: React.React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+	triggerIconSize: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
 };
 
 export default AccordionPanel;

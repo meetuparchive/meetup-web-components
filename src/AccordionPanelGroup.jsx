@@ -121,7 +121,7 @@ AccordionPanelGroup.propTypes = {
 	multiSelectable: React.PropTypes.bool,
 	triggerIconAlign: React.PropTypes.string,
 	triggerIconShape: React.PropTypes.string,
-	triggerIconSize: React.React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+	triggerIconSize: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
 };
 
 export default AccordionPanelGroup;
