@@ -84,6 +84,7 @@ class AccordionPanelGroup extends React.Component {
 			accordionPanels, // eslint-disable-line no-unused-vars
 			triggerIconAlign, // eslint-disable-line no-unused-vars
 			triggerIconShape, // eslint-disable-line no-unused-vars
+			triggerIconShapeActive, // eslint-disable-line no-unused-vars
 			triggerIconSize, // eslint-disable-line no-unused-vars
 			multiSelectable,
 			className,
@@ -120,6 +121,7 @@ AccordionPanelGroup.propTypes = {
 	accordionPanels: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
 	multiSelectable: React.PropTypes.bool,
 	triggerIconAlign: React.PropTypes.string,
+	triggerIconShapeActive: React.PropTypes.string,
 	triggerIconShape: React.PropTypes.string,
 	triggerIconSize: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
 };
