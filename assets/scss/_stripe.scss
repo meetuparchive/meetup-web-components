@@ -28,7 +28,7 @@ Class                | Description
 	@include standardBorder();
 	background-color: $C_contentBG;
 	margin-bottom: 0;
-	@include responsiveBase() {
+	@include responsiveVarContext--base() {
 		padding-bottom: $base*2;
 	}
 }
