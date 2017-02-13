@@ -58,7 +58,7 @@
     "eslint-plugin-react": "6.9.0",
     "inquirer": "2.0.0",
     "jest-cli": "18.1.0",
-    "meetup-web-mocks": "0.1.51",
+    "meetup-web-mocks": "0.1.53",
     "node-sass": "4.5.0",
     "npm-run-all": "4.0.1",
     "raw-loader": "0.5.1",
