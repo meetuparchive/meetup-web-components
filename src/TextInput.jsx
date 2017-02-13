@@ -65,12 +65,10 @@ class TextInput extends React.Component {
 }
 
 TextInput.propTypes = {
-	id: React.PropTypes.string,
 	name: React.PropTypes.string.isRequired,
 	error: React.PropTypes.string,
 	label: React.PropTypes.string,
 	labelClassName: React.PropTypes.string,
-	value: React.PropTypes.string,
 	required: React.PropTypes.bool
 };
 
