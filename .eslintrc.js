@@ -16,7 +16,8 @@ const config = {
 		"es6": true
 	},
 	"plugins": [
-		"react"
+		"react",
+		"meetup"
 	],
 	"rules": {
 		"array-callback-return": 2,
