@@ -7,13 +7,13 @@
   "engine": "node >=6.5.0",
   "scripts": {
     "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx --source-maps",
-    "coverage": "npm run test:unit -- --coverage",
+    "coverage": "yarn run test:unit -- --coverage",
     "coveralls": "cat coverage/lcov.info | coveralls",
     "generate": "node src/utils/generate.js",
-    "lint": "npm run lint:base -- --fix",
+    "lint": "yarn run lint:base -- --fix",
     "lint:base": "eslint . --ext .js,.jsx",
     "modules:clean": "rm -rf node_modules",
-    "prepublish": "npm run build",
+    "prepublish": "yarn run build",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "npm-run-all --parallel lint:base coverage",
     "test:unit": "jest --silent --config jest.config.json"
