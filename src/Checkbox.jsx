@@ -24,6 +24,7 @@ class Checkbox extends React.Component {
 			checked, // eslint-disable-line no-unused-vars
 			children,
 			className,
+			labelClassName,
 			id,
 			label,
 			name,
@@ -34,6 +35,11 @@ class Checkbox extends React.Component {
 		const classNames = cx(
 			'minTouchHeight',
 			className
+		);
+
+		const labelClassNames = cx(
+			'label--minor',
+			labelClassName
 		);
 
 		const elId = id || `${name}-${value}`;
@@ -52,7 +58,7 @@ class Checkbox extends React.Component {
 					/>
 				</FlexItem>
 				<FlexItem>
-					<label className='label--minor' htmlFor={elId}>{label}</label>
+					<label classNames={labelClassNames} htmlFor={elId}>{label}</label>
 					{children}
 				</FlexItem>
 			</Flex>
@@ -62,7 +68,11 @@ class Checkbox extends React.Component {
 
 Checkbox.propTypes = {
 	checked: React.PropTypes.bool,
-	label: React.PropTypes.string,
+	label: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]).isRequired,
+	labelClassName: React.PropTypes.string,
 	name: React.PropTypes.string.isRequired,
 	value: React.PropTypes.string.isRequired
 };
