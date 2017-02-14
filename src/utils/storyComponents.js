@@ -1,12 +1,26 @@
 import React from 'react';
 
-export const InfoWrapper = (props) => (
-	<div>
-		{props.children}
-		<br />
-		<p className='padding--top text--secondary text--small'>Click the "?" mark at top-right to view the info.</p>
-	</div>
-);
+export const InfoWrapper = (props) => {
+	const {
+		children,
+		style={},
+		...other,
+	} = props;
+	const styles = {
+		display:'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		...style,
+	};
+	return (
+		<div>
+			<div style={styles} {...other}>
+				{children}
+			</div>
+			<p style={{position:'fixed', bottom:0, left:0}} className='padding--top text--secondary text--small'>Click the "?" mark at top-right to view the info.</p>
+		</div>
+	);
+};
 
 export const Inverted = (props) => (
 	<div
