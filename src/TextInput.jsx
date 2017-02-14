@@ -67,7 +67,10 @@ class TextInput extends React.Component {
 TextInput.propTypes = {
 	name: React.PropTypes.string.isRequired,
 	error: React.PropTypes.string,
-	label: React.PropTypes.string,
+	label: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]),
 	labelClassName: React.PropTypes.string,
 	required: React.PropTypes.bool
 };

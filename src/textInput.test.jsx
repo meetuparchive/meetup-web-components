@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import TextInput from './TextInput';
 
@@ -11,8 +10,7 @@ describe('TextInput', function() {
 		MAX_LEN = '20',
 		ERROR_TEXT = 'Too wimpy.';
 
-	let textInput,
-		textInputEl,
+	let textInputComponent,
 		inputEl;
 
 	beforeEach(() => {
@@ -20,25 +18,24 @@ describe('TextInput', function() {
 			id: NAME_ATTR,
 			maxLength: MAX_LEN,
 			error: ERROR_TEXT,
-			required: 'required'
+			required: true
 		};
-		textInput = TestUtils.renderIntoDocument(<TextInput
+		textInputComponent = TestUtils.renderIntoDocument(<TextInput
 			name={NAME_ATTR}
 			label={LABEL_TEXT}
 			value={VALUE}
 			{...formAttrs} />);
 
-		textInputEl = ReactDOM.findDOMNode(textInput);
-		inputEl = textInputEl.querySelector('input');
+		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
 	});
 
 	afterEach(() => {
-		textInputEl = null;
+		textInputComponent = null;
 		inputEl = null;
 	});
 
 	it('exists', () => {
-		expect(textInputEl).not.toBeNull();
+		expect(inputEl).not.toBeNull();
 	});
 
 	it('should have a name attribute', () => {
@@ -50,7 +47,7 @@ describe('TextInput', function() {
 	});
 
 	it('should have a label when label is given', () => {
-		const labelEl = textInputEl.querySelector('label');
+		const labelEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'label');
 		expect(labelEl).not.toBeNull();
 		expect(labelEl.textContent).toEqual(LABEL_TEXT);
 	});
@@ -64,7 +61,7 @@ describe('TextInput', function() {
 	});
 
 	it('should have an error when one is specified', function() {
-		const errorEl = textInputEl.querySelector('.text--error');
+		const errorEl = TestUtils.findRenderedDOMComponentWithClass(textInputComponent, 'text--error');
 		expect(errorEl).not.toBeNull();
 		expect(errorEl.textContent).toEqual(ERROR_TEXT);
 	});
@@ -85,13 +82,12 @@ describe('TextInput', function() {
 		const changeSpy = spyOn(TextInput.prototype, 'onChange').and.callThrough();
 		const stateSpy = spyOn(TextInput.prototype, 'setState').and.callThrough();
 
-		const boundTextInput = TestUtils.renderIntoDocument(<TextInput
+		const boundComponent = TestUtils.renderIntoDocument(<TextInput
 			name={NAME_ATTR}
 			label={LABEL_TEXT}
 			value={VALUE} />);
 
-		textInputEl = ReactDOM.findDOMNode(boundTextInput);
-		inputEl = textInputEl.querySelector('input');
+		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
 		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
 
 		expect(changeSpy).toHaveBeenCalled();
