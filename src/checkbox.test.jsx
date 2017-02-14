@@ -22,7 +22,7 @@ describe('Checkbox', function() {
 	});
 
 	it('exists', function() {
-		expect(checkbox).not.toBeNull();
+		expect(() => TestUtils.findRenderedDOMComponentWithTag(checkboxComponent, 'input')).not.toThrow();
 	});
 
 	it('has a label with correct for attribute', function() {
