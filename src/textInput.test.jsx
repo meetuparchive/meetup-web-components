@@ -35,7 +35,7 @@ describe('TextInput', function() {
 	});
 
 	it('exists', () => {
-		expect(inputEl).not.toBeNull();
+		expect(() => TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input')).not.toThrow();
 	});
 
 	it('should have a name attribute', () => {
