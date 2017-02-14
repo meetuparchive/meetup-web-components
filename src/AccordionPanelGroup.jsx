@@ -8,18 +8,17 @@ import cx from 'classnames';
 class AccordionPanelGroup extends React.Component {
 	constructor(props) {
 		super(props);
-		const activePanelsArr = [];
-
-		this.accordionPanels = this.props.accordionPanels.map((accordionPanel, i) => {
-			if(accordionPanel.props.isOpen) {
-				activePanelsArr.push(i);
+		const activePanelsArr = this.props.accordionPanels.reduce((panels, panel, i) => {
+			if (panel.props.isOpen) {
+				panels.push(i);
 			}
-			return activePanelsArr;
-		});
+			return panels;
+		}, []);
 
 		this.state = {
-			activePanels: activePanelsArr || []
+			activePanels: activePanelsArr
 		};
+
 		this._onClickTrigger = this._onClickTrigger.bind(this);
 	}
 
@@ -55,7 +54,7 @@ class AccordionPanelGroup extends React.Component {
 				<li
 					className='list-item'
 					key={i}
-				>
+					>
 					{
 						React.cloneElement(accordionPanel,
 							{
@@ -63,7 +62,7 @@ class AccordionPanelGroup extends React.Component {
 								triggerIconShape: this.props.triggerIconShape,
 								triggerIconShapeActive: this.props.triggerIconShapeActive,
 								triggerIconSize: this.props.triggerIconSize,
-								animated: this.props.animated,
+								isAnimated: this.props.isAnimated,
 								name: toCamelCase(accordionPanel.props.triggerLabel),
 								className: accordionPanel.props.className,
 								isOpen: this.state.activePanels.includes(i),
@@ -80,7 +79,7 @@ class AccordionPanelGroup extends React.Component {
 
 	render() {
 		const {
-			animated, // eslint-disable-line no-unused-vars
+			isAnimated, // eslint-disable-line no-unused-vars
 			accordionPanels, // eslint-disable-line no-unused-vars
 			triggerIconAlign, // eslint-disable-line no-unused-vars
 			triggerIconShape, // eslint-disable-line no-unused-vars
@@ -102,7 +101,8 @@ class AccordionPanelGroup extends React.Component {
 				role='tabList'
 				aria-multiselectable={multiSelectable}
 				className={classNames}
-				{...other}>
+				{...other}
+				>
 					{this.renderAccordionPanels()}
 			</ul>
 		);

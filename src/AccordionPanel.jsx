@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import cx from 'classnames';
 
 import Chunk from './Chunk';
@@ -21,7 +20,7 @@ class AccordionPanel extends React.Component {
 		};
 
 		this._handleToggle = this._handleToggle.bind(this);
-		this._updateHeight = this._updateHeight.bind(this);
+		this._getContentHeight = this._getContentHeight.bind(this);
 	}
 
 	/**
@@ -33,30 +32,22 @@ class AccordionPanel extends React.Component {
 		});
 	}
 
-	_updateHeight() {
-		const content = ReactDOM.findDOMNode(this.content);
-		const animator = ReactDOM.findDOMNode(this.animator);
-		const height = this.props.isOpen ? content.clientHeight : 0;
-		const cssHeight = `${height}px`;
-
-		if (animator.style.height === cssHeight) {
-			return;
-		}
-
-		animator.style.height = cssHeight;
+	_getContentHeight() {
+		return `${this.props.isOpen * this.content.getBoundingClientRect().height}px`;
 	}
 
 	componentDidMount() {
-		this._updateHeight();
+		this.setState({
+			height: this._getContentHeight()
+		});
 	}
 
-	componentDidUpdate() {
-		this._updateHeight();
-	}
-
-	componentWillReceiveProps(nextProps) {
+	componentWillUpdate(nextProps, nextState) {
 		if (nextProps.isOpen !== this.state.open) {
-			this.setState({ open: nextProps.isOpen });
+			this.setState({
+				open: nextProps.isOpen,
+				height: this._getContentHeight()
+			});
 		}
 	}
 
@@ -71,7 +62,7 @@ class AccordionPanel extends React.Component {
 			triggerIconSize,
 			triggerIconAlign,
 			triggerLabel,
-			animated,
+			isAnimated,
 			classNamesActive,
 			className,
 			...other
@@ -88,18 +79,21 @@ class AccordionPanel extends React.Component {
 			),
 			content: cx(
 				{
-					'accordionPanel-animator': animated,
+					'accordionPanel-animator': isAnimated,
 					'accordionPanel-animator--collapse': !this.state.open,
-					'visibility--a11yHide': !animated && !this.state.open
+					'visibility--a11yHide': !isAnimated && !this.state.open
 				}
 			)
 		};
 
+		const iconShape = this.state.open && triggerIconShapeActive ? triggerIconShapeActive : triggerIconShape;
+
 		return(
 			<Flex
 				className={classNames.accordionPanel}
-				rowReverse={triggerIconAlign == 'left' ? 'atAll' : null}
-				{...other}>
+				rowReverse={triggerIconAlign === 'left' && 'atAll'}
+				{...other}
+				>
 
 				<FlexItem>
 					<Chunk>
@@ -120,7 +114,7 @@ class AccordionPanel extends React.Component {
 						aria-labelledby={`label-${name}`}
 						aria-hidden={!this.state.open}
 						className={classNames.content}
-						ref={(el) => { this.animator = el; }}>
+						style={{height: this.state.height}}>
 						<div
 							className='accordionPanel-content'
 							ref={(div) => { this.content = div; }}>
@@ -129,21 +123,15 @@ class AccordionPanel extends React.Component {
 					</Chunk>
 				</FlexItem>
 
-				{triggerIconShape &&
-					<FlexItem
-						className='accordionPanel-icon'
-						onClick={onTriggerClick || this._handleToggle}
-						shrink>
-							{this.state.open && triggerIconShapeActive ?
-								<Icon
-									shape={triggerIconShapeActive}
-									size={triggerIconSize} /> :
-								<Icon
-									shape={triggerIconShape}
-									size={triggerIconSize} />
-								}
-					</FlexItem>
-				}
+				<FlexItem
+					className='accordionPanel-icon'
+					onClick={onTriggerClick || this._handleToggle}
+					shrink
+					>
+					<Icon
+						shape={iconShape}
+						size={triggerIconSize} />
+				</FlexItem>
 
 			</Flex>
 		);
@@ -158,10 +146,17 @@ AccordionPanel.defaultProps = {
 };
 
 AccordionPanel.propTypes = {
+	classNamesActive: React.PropTypes.string,
 	isOpen: React.PropTypes.bool,
+	isAnimated: React.PropTypes.bool,
+	name: React.PropTypes.string,
+	onTriggerClick: React.PropTypes.func,
+	panelContent: React.PropTypes.element,
 	triggerIconAlign: React.PropTypes.string,
 	triggerIconShape: React.PropTypes.string,
+	triggerIconShapeActive: React.PropTypes.string,
 	triggerIconSize: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+	triggerLabel: React.PropTypes.string
 };
 
 export default AccordionPanel;

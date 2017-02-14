@@ -121,10 +121,10 @@ storiesOf('AccordionPanelGroup', module)
 			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 		</div>
 	))
-	.add('Animated', () => (
+	.add('isAnimated', () => (
 		<div className='span--100 padding--all'>
 			<AccordionPanelGroup
-				animated
+				isAnimated
 				accordionPanels={[
 					<AccordionPanel
 						triggerLabel='First Section'
@@ -157,7 +157,7 @@ storiesOf('AccordionPanelGroup', module)
 			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 		</div>
 	))
-	.add('Select open panels', () => (
+	.add('Panel open by default', () => (
 		<div className='span--100 padding--all'>
 			<AccordionPanelGroup
 				accordionPanels={[
@@ -193,7 +193,7 @@ storiesOf('AccordionPanelGroup', module)
 			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 		</div>
 	))
-	.add('One panel at a time', () => (
+	.add('Not multiSelectable', () => (
 		<div className='span--100 padding--all'>
 			<AccordionPanelGroup
 				multiSelectable={false}
@@ -226,6 +226,18 @@ storiesOf('AccordionPanelGroup', module)
 							</div>
 						} />,
 				]}/>
+			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+		</div>
+	))
+	.add('Standalone AccordionPanel', () => (
+		<div className='span--100 padding--all'>
+			<AccordionPanel
+				triggerLabel='First Section'
+				panelContent={
+					<div className='runningText'>
+						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+					</div>
+				} />
 			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 		</div>
 	));
