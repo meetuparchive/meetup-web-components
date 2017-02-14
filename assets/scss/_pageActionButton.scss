@@ -1,0 +1,12 @@
+.pageActionButton {
+	border: none;
+	border-radius: 0;
+	width: 100%;
+}
+
+@include responsiveBase() {
+	.pageActionButton {
+		min-height: $base*$line-height-largeText*2; // text--display height * line-height
+		justify-content: center;
+	}
+}
