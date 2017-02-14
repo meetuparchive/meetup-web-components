@@ -58,7 +58,7 @@ class Checkbox extends React.Component {
 					/>
 				</FlexItem>
 				<FlexItem>
-					<label classNames={labelClassNames} htmlFor={elId}>{label}</label>
+					<label className={labelClassNames} htmlFor={elId}>{label}</label>
 					{children}
 				</FlexItem>
 			</Flex>
@@ -71,7 +71,7 @@ Checkbox.propTypes = {
 	label: React.PropTypes.oneOfType([
 		React.PropTypes.string,
 		React.PropTypes.element
-	]).isRequired,
+	]),
 	labelClassName: React.PropTypes.string,
 	name: React.PropTypes.string.isRequired,
 	value: React.PropTypes.string.isRequired

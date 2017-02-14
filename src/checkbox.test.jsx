@@ -7,67 +7,66 @@ import Checkbox from './Checkbox';
 
 describe('Checkbox', function() {
 
-	let checkbox,
-		checkboxNode;
+	let checkboxComponent,
+		checkbox;
 
 	beforeEach(() => {
-		checkbox = TestUtils.renderIntoDocument(
+		checkboxComponent = TestUtils.renderIntoDocument(
 			<Checkbox label='Hello!' name='greeting' id='hello' value='hello' />
 		);
-		checkboxNode = ReactDOM.findDOMNode(checkbox);
+		checkbox = TestUtils.findRenderedDOMComponentWithTag(checkboxComponent, 'input');
 	});
 
 	afterEach(() => {
+		checkboxComponent = null;
 		checkbox = null;
-		checkboxNode = null;
 	});
 
 	it('exists', function() {
-		expect(checkboxNode).not.toBeNull();
+		expect(checkbox).not.toBeNull();
 	});
 
 	it('has a label with correct for attribute', function() {
-		const labelEl = checkboxNode.querySelector('label');
-		expect(labelEl.getAttribute('for')).toEqual('hello');
+		const label = TestUtils.findRenderedDOMComponentWithTag(checkboxComponent, 'label');
+		expect(label.getAttribute('for')).toEqual('hello');
 	});
 
 	it('has a correct for attribute with generated id if no id is given', function() {
 		const name = 'greeting',
 			value = 'hello';
-		checkbox = TestUtils.renderIntoDocument(
+		checkboxComponent = TestUtils.renderIntoDocument(
 			<Checkbox label='Hello!' name={name} value={value} checked={false} />
 		);
-		checkboxNode = ReactDOM.findDOMNode(checkbox);
-		const checkboxEl = checkboxNode.querySelector('input[type=checkbox]');
-		const labelEl = checkboxNode.querySelector('label');
+		const checkbox = TestUtils.findRenderedDOMComponentWithTag(checkboxComponent, 'input');
+		const label = TestUtils.findRenderedDOMComponentWithTag(checkboxComponent, 'label');
 
-		expect(checkboxEl.getAttribute('id')).toEqual(`${name}-${value}`);
-		expect(labelEl.getAttribute('for')).toEqual(`${name}-${value}`);
+		expect(checkbox.getAttribute('id')).toEqual(`${name}-${value}`);
+		expect(label.getAttribute('for')).toEqual(`${name}-${value}`);
 	});
 
 
 	it('should be checked when specified', function() {
-		checkbox = TestUtils.renderIntoDocument(<Checkbox name='greeting' id='hello' value='hello' checked />);
-		checkboxNode = ReactDOM.findDOMNode(checkbox);
+		checkboxComponent = TestUtils.renderIntoDocument(
+			<Checkbox name='greeting' id='hello' value='hello' checked />
+		);
 
-		const checkboxEl = checkboxNode.querySelector('input[type=checkbox]');
-		expect(checkboxEl.checked).toEqual(true);
+		const checkbox = TestUtils.findRenderedDOMComponentWithTag(checkboxComponent, 'input');
+		expect(checkbox.checked).toEqual(true);
 	});
 
 	it('should not be checked when unspecified', function() {
-		const checkboxEl = checkboxNode.querySelector('input[type=checkbox]');
-		expect(checkboxEl.checked).toEqual(false);
+		const checkbox = TestUtils.findRenderedDOMComponentWithTag(checkboxComponent, 'input');
+		expect(checkbox.checked).toEqual(false);
 	});
 
 	it('calls onChange and sets state when clicked', function() {
 		const changeSpy	= spyOn(Checkbox.prototype, 'onChange').and.callThrough();
 		const stateSpy	= spyOn(Checkbox.prototype, 'setState');
 
-		checkbox = TestUtils.renderIntoDocument(<Checkbox name='greeting' id='hello' value='hello' />);
-		checkboxNode = ReactDOM.findDOMNode(checkbox);
-		const checkboxEl = checkboxNode.querySelector('input[type=checkbox]');
+		checkboxComponent = TestUtils.renderIntoDocument(<Checkbox name='greeting' id='hello' value='hello' />);
+		checkbox = TestUtils.findRenderedDOMComponentWithTag(checkboxComponent, 'input');
 
-		TestUtils.Simulate.change(checkboxEl, { target: { checked : true }});
+		TestUtils.Simulate.change(checkbox, { target: { checked : true }});
 		expect(changeSpy).toHaveBeenCalled();
 		expect(stateSpy).toHaveBeenCalledWith({ checked: true });
 	});
