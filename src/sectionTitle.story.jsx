@@ -28,9 +28,12 @@ storiesOf('SectionTitle', module)
 		<div style={{height: '100vh', width: '100%'}}>
 			<Bounds>
 				<Section>
-					<SectionTitle title='Section One'>
-						<a href='#see-all' className='link'>See all</a>
-					</SectionTitle>
+					<SectionTitle
+						title='Section One'
+						action={(
+							<a href='#see-all' className='link'>See all</a>
+						)}
+					/>
 					<ul className='gridList gridList--has2 atMedium_gridList--has4'><li className='gridList-item'><div><div className='card card--group pseudoLine inverted'><div className='card--group-content'><h4 className='card--group-content-name'>The NYC Small Dog Social Group</h4></div></div></div></li><li className='gridList-item'><div><div className='card card--group pseudoLine inverted'><div className='card--group-content'><h4 className='card--group-content-name'>Awesome Things to Do</h4></div></div></div></li><li className='gridList-item'><div><div className='card card--group pseudoLine inverted'><div className='card--group-content'><h4 className='card--group-content-name'>Brooklyn Wildlife: Art, Parties and Music</h4></div></div></div></li><li className='gridList-item'><div><div className='card card--group pseudoLine inverted'><div className='card--group-content'><h4 className='card--group-content-name'>Brooklyn Society for Ethical Culture</h4></div></div></div></li></ul>
 				</Section>
 			</Bounds>
