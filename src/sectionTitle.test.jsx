@@ -25,6 +25,12 @@ describe('SectionTitle without action', function() {
 		expect(flexItems.length).toBe(1);
 	});
 
+	it('renders title element', function() {
+		const renderedTitle = TestUtils.scryRenderedDOMComponentsWithClass(component, 'text--display2');
+
+		expect(renderedTitle.length).toBe(1);
+	});
+
 });
 
 describe('SectionTitle with action', function() {
@@ -49,7 +55,7 @@ describe('SectionTitle with action', function() {
 		expect(shrinkFlexItems.length).toBe(1);
 	});
 
-	it('renders action component', function() {
+	it('renders action element', function() {
 		const renderedAction = TestUtils.findRenderedDOMComponentWithTag(component, 'a');
 
 		expect(renderedAction).not.toBe(null);
