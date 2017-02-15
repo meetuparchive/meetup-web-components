@@ -47,8 +47,8 @@ describe('TextInput', function() {
 	});
 
 	it('should have a label when label is given', () => {
+		expect(() => TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'label')).not.toThrow();
 		const labelEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'label');
-		expect(labelEl).not.toBeNull();
 		expect(labelEl.textContent).toEqual(LABEL_TEXT);
 	});
 
@@ -61,8 +61,8 @@ describe('TextInput', function() {
 	});
 
 	it('should have an error when one is specified', function() {
+		expect(() => TestUtils.findRenderedDOMComponentWithClass(textInputComponent, 'text--error')).not.toThrow();
 		const errorEl = TestUtils.findRenderedDOMComponentWithClass(textInputComponent, 'text--error');
-		expect(errorEl).not.toBeNull();
 		expect(errorEl.textContent).toEqual(ERROR_TEXT);
 	});
 
