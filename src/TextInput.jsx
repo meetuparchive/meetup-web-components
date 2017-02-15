@@ -14,6 +14,10 @@ class TextInput extends React.Component {
 		this.onChange = this.onChange.bind(this);
 	}
 
+	componentDidMount() {
+		this.input.setCustomValidity(this.props.customValidityMessage);
+	}
+
 	onChange(e) {
 		this.setState({ value: e.target.value });
 	}
@@ -53,6 +57,7 @@ class TextInput extends React.Component {
 					required={required}
 					className={classNames}
 					onChange={this.onChange}
+					ref={(input) => { this.input = input; }}
 					{...other} />
 
 				{ this.props.maxLength && <p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p> }
@@ -66,7 +71,14 @@ class TextInput extends React.Component {
 
 TextInput.propTypes = {
 	name: React.PropTypes.string.isRequired,
-	error: React.PropTypes.string,
+	customValidityMessage: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]),
+	error: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]),
 	label: React.PropTypes.oneOfType([
 		React.PropTypes.string,
 		React.PropTypes.element
