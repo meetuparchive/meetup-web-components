@@ -15,9 +15,9 @@ export const VALID_BREAKPOINTS = {
 
 export const VALID_SPACE = {
 	center: 'center',
-	around: 'spaceAround',
-	between: 'spaceBetween',
-	end: 'flexEnd'
+	spaceAround: 'spaceAround',
+	spaceBetween: 'spaceBetween',
+	flexEnd: 'flexEnd'
 };
 
 export const DIRECTION_ROW = 'row';
