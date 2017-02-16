@@ -60,7 +60,6 @@ storiesOf('TextInput', module)
 				name='name'
 				value='>5'
 				placeholder='Not your email'
-				customValidityMessage='not long enough'
 				{...rules} />
 			<Button
 				contrast
