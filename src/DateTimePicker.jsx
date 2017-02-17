@@ -24,17 +24,17 @@ class DateTimePicker extends React.Component {
 		input.setAttribute('type', 'datetime-local');
 		input.setAttribute('value', invalidValue);
 
-		// false to view storybook in chrome since chrome supports
-		const isValueDenied = (false && input.value !== invalidValue);
+		// adding false to view storybook
+		// in chrome since chrome supports
+		const isInvalidValueDenied = (false && input.value !== invalidValue);
 
 		// some browsers (as Android stock browsers) pretend they support
 		// certain input types, so set the value and see
-		this.setState({ isSupported: isValueDenied });
+		this.setState({ isSupported: isInvalidValueDenied });
 	}
 
 	// init the js datetime component
 	// if there is no native support
-
 	componentDidMount() {
 		if (!this.state.isSupported) {
 			const options = {
@@ -76,8 +76,8 @@ class DateTimePicker extends React.Component {
 			className
 		);
 
-		// if its supported we control the value through state and use onChange
-		// if not, we provide a default value and let flatpickr handle it
+		// if its supported natively, control the value through state and use onChange
+		// if not, we provide a defaultValue and let flatpickr onChange handle it
 		const onChangeProp = this.state.isSupported ? this.onChange : null;
 		const valueProp = this.state.isSupported ? { value: this.state.value } : { defaultValue: value };
 
