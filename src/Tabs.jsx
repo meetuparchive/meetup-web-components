@@ -2,29 +2,56 @@ import React from 'react';
 import cx from 'classnames';
 
 /**
+ * @module TabsTab
+ */
+export class TabsTab extends React.Component {
+	render() {
+		const {
+			isSelected,
+			children,
+			className,
+			...other
+		} = this.props;
+
+		const classNames = cx(
+			className,
+			'tabs-tab align--center atMedium_align--left',
+			{'tabs-tab--selected': isSelected}
+		);
+
+		return (
+			<li
+				className={classNames}
+				{...other}
+			>
+				{children}
+			</li>
+		);
+	}
+}
+TabsTab.propTypes = {
+	isSelected: React.PropTypes.bool
+};
+
+/**
  * @module Tabs
  */
-class Tabs extends React.Component {
-	renderTabs() {
-		const tabs = this.props.tabs.map((tab, i) => {
-			const classNames = cx(
-				'tabs-tab align--center atMedium_align--left',
-				{'tabs-tab--selected': tab.props.isSelected}
-			);
-
+export class Tabs extends React.Component {
+	renderTabs(tabs) {
+		return tabs.map((tab, i) => {
 			return (
-				<li
+				<TabsTab
 					key={i}
-					className={classNames}>
-					{tab}
-				</li>
+					isSelected={tab.props.isSelected}
+				>
+				{tab.props.children}
+				</TabsTab>
 			);
 		});
-		return tabs;
 	}
 	render() {
 		const {
-			tabs, // eslint-disable-line no-unused-vars
+			tabs,
 			className,
 			bordered,
 			full,
@@ -45,16 +72,16 @@ class Tabs extends React.Component {
 					className={ulClasses}
 					{...other}
 				>
-					{this.renderTabs()}
+					{this.renderTabs(tabs)}
 				</ul>
 			</nav>
 		);
 	}
 }
 Tabs.propTypes = {
-	tabs: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
+	tabs: React.PropTypes.arrayOf(
+		React.PropTypes.element
+	).isRequired,
 	full: React.PropTypes.bool,
 	bordered: React.PropTypes.bool,
 };
-
-export default Tabs;
