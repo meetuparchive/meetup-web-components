@@ -13,6 +13,7 @@ storiesOf('DateTimePicker', module)
 			<DateTimePicker
 				label='Start at'
 				value='2017-02-18T14:30'
+				forceFlatpickr
 				datepickerOptions={opts}
 			/>
 		</div>);

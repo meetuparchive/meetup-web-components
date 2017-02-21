@@ -1,6 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
-import Flatpickr from 'flatpickr';
+import Flatpickr from './FlatpickrComponent';
+import TimeInput from './TimeInput';
+import DateTimeLocalInput from './DateTimeLocalInput';
 
 /**
  * @module DateTimePicker
@@ -10,55 +12,45 @@ class DateTimePicker extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: props.value || '',
-			isSupported: false
+			value: {
+				date: props.value.date || '',
+				time: props.value.time || ''
+			},
+			isDateTimeLocalSupported: false
 		};
-		this.onChange = this.onChange.bind(this);
+		this.setDate = this.setDate.bind(this);
+		this.setTime = this.setTime.bind(this);
+		this.setDateTime = this.setDateTime.bind(this);
 	}
 
-	// test for browser support
 	componentWillMount() {
+		this.setState({ isDateTimeLocalSupported: this.hasBrowserSupport() });
+	}
+
+	hasBrowserSupport() {
 		const input = document.createElement('input'),
 			invalidValue = 'notadate';
+
+		// some browsers (as Android stock browsers) pretend they support
+		// certain input types,
+		// so set the value to an invalid value and see if browser rejects
 
 		input.setAttribute('type', 'datetime-local');
 		input.setAttribute('value', invalidValue);
 
-		// adding false to view storybook
-		// in chrome since chrome supports
-		const isInvalidValueDenied = (false && input.value !== invalidValue);
-
-		// some browsers (as Android stock browsers) pretend they support
-		// certain input types, so set the value and see
-		this.setState({ isSupported: isInvalidValueDenied });
+		return !(this.props.forceFlatpickr || input.value === invalidValue);
 	}
 
-	// init the js datetime component
-	// if there is no native support
-	componentDidMount() {
-		if (!this.state.isSupported) {
-			const options = {
-				...this.props.datepickerOptions,
-				onChange: this.onChange,
-				altInput: true,
-				altFormat: 'M d, Y h:i K' // TODO localize
-			};
-			this.flatpickr = new Flatpickr(this.node, options);
-		}
+	setDate(value) {
+		this.setState({ value: { date: value }});
 	}
 
-	componentWillReceiveProps(props) {
-		this.flatpickr && this.flatpickr.setDate(this.state.value);
+	setTime(value) {
+		this.setState({ value: { time: value }});
 	}
 
-	componentWillUnmount() {
-		this.flatpickr && this.flatpickr.destroy();
-	}
-
-	// conforms with flatpickr onChange args
-	onChange(selectedDates, dateStr, instance) {
-		const newValue = (this.flatpickr) ? selectedDates[0] : selectedDates.target.value;
-		this.setState({ value: newValue });
+	setDateTime(value) {
+		this.setState(value);
 	}
 
 	render() {
@@ -66,7 +58,7 @@ class DateTimePicker extends React.Component {
 			datepickerOptions,  // eslint-disable-line no-unused-vars
 			id,
 			label,
-			value,
+			value,				// eslint-disable-line no-unused-vars
 			className,
 			...other
 		} = this.props;
@@ -76,22 +68,25 @@ class DateTimePicker extends React.Component {
 			className
 		);
 
-		// if its supported natively, control the value through state and use onChange
-		// if not, we provide a defaultValue and let flatpickr onChange handle it
-		const onChangeProp = this.state.isSupported ? this.onChange : null;
-		const valueProp = this.state.isSupported ? { value: this.state.value } : { defaultValue: value };
+		if (this.state.isDateTimeLocalSupported) {
+			// TODO set date and time together as value
+			return (
+				<div>
+					<label htmlFor={id}>{label}</label>
+					<DateTimeLocalInput
+						value={this.state.value}
+						className={classNames}
+						callback={this.setDateTime}
+						{...other} />
+				</div>
+			);
+		}
 
 		return (
 			<div>
 				<label htmlFor={id}>{label}</label>
-				<input
-					id={id}
-					type={this.state.isSupported ? 'datetime-local' : 'text'}
-					className={classNames}
-					ref={ node => this.node = node }
-					{...valueProp}
-					onChange={onChangeProp}
-					{...other} />
+				<Flatpickr callback={this.setDate} value={this.state.value.date} />
+				<TimeInput callback={this.setTime} value={this.state.value.time} />
 			</div>
 		);
 	}
