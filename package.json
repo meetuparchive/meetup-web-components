@@ -61,7 +61,7 @@
     "jest-cli": "18.1.0",
     "meetup-web-mocks": "0.1.55",
     "node-sass": "4.5.0",
-    "npm-run-all": "4.0.1",
+    "npm-run-all": "4.0.2",
     "raw-loader": "0.5.1",
     "react": "15.4.2",
     "react-addons-test-utils": "15.4.2",
