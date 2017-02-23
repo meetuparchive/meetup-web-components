@@ -89,7 +89,7 @@ storiesOf('Flex', module)
 	))
 	.add('Justify spaceAround', () => (
 		<div style={{width:'800px', border:'1px dotted red'}}>
-			<Flex justify='around' style={flexParentStyles}>
+			<Flex justify='spaceAround' style={flexParentStyles}>
 				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
@@ -100,7 +100,7 @@ storiesOf('Flex', module)
 	))
 	.add('Justify spaceBetween', () => (
 		<div style={{width:'800px', border:'1px dotted red'}}>
-			<Flex justify='between' style={flexParentStyles}>
+			<Flex justify='spaceBetween' style={flexParentStyles}>
 				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
@@ -111,7 +111,7 @@ storiesOf('Flex', module)
 	))
 	.add('Justify end', () => (
 		<div style={{width:'800px', border:'1px dotted red'}}>
-			<Flex justify='end' style={flexParentStyles}>
+			<Flex justify='flexEnd' style={flexParentStyles}>
 				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
