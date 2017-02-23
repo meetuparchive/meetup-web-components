@@ -4,7 +4,8 @@ import Flatpickr from 'flatpickr';
 
 /**
  * @module FlatpickrComponent
- */
+ * inits flatpickr js date picker over a text input
+*/
 class FlatpickrComponent extends React.Component {
 
 	constructor(props) {
@@ -15,14 +16,14 @@ class FlatpickrComponent extends React.Component {
 		this.onChange = this.onChange.bind(this);
 	}
 
-	// init the js datetime component
-	// if there is no native support
+	/**
+	* init the js date flatpickr component
+	*/
 	componentDidMount() {
 		const options = {
-			...this.props.datepickerOptions,
+			...this.props.opts,
 			onChange: this.onChange,
 			altInput: true,
-			// altFormat: 'M d, Y h:i K', // TODO localize
 			altFormat: 'D M d, Y', // TODO localize
 			defaultDate: this.props.value
 		};
@@ -33,6 +34,10 @@ class FlatpickrComponent extends React.Component {
 		this.flatpickr && this.flatpickr.destroy();
 	}
 
+	/**
+	* @function onChange
+	* conforms to the onChange handler flatpickr expects
+	*/
 	onChange(selectedDates, dateStr, instance) {
 		this.setState({ value: selectedDates[0] });
 		this.props.callback && this.props.callback(selectedDates[0]);
@@ -41,9 +46,10 @@ class FlatpickrComponent extends React.Component {
 	render() {
 		const {
 			callback,	// eslint-disable-line no-unused-vars
-			value,	// eslint-disable-line no-unused-vars
-			id,
 			className,
+			id,
+			name,
+			value,		// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -56,6 +62,7 @@ class FlatpickrComponent extends React.Component {
 			<input
 				id={id}
 				type='text'
+				name={name}
 				defaultValue={this.state.value}
 				className={classNames}
 				ref={ node => this.node = node }
@@ -64,6 +71,11 @@ class FlatpickrComponent extends React.Component {
 	}
 }
 
-FlatpickrComponent.propTypes = {};
+FlatpickrComponent.propTypes = {
+	name: React.PropTypes.string.isRequired,
+	// required: React.PropTypes.bool,
+	callback: React.PropTypes.func
+};
+
 export default FlatpickrComponent;
 

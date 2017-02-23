@@ -70,11 +70,12 @@ class DateTimePicker extends React.Component {
 	render() {
 		const {
 			callback,			// eslint-disable-line no-unused-vars
+			className,
 			datepickerOptions,  // eslint-disable-line no-unused-vars
 			id,
 			label,
 			value,				// eslint-disable-line no-unused-vars
-			className,
+			required,			// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -99,13 +100,21 @@ class DateTimePicker extends React.Component {
 		return (
 			<div>
 				<label htmlFor={id}>{label}</label>
-				<Flatpickr callback={this.setDate} value={this.state.value.date} />
+				<Flatpickr callback={this.setDate} value={this.state.value.date} opts={datepickerOptions} />
 				<TimeInput callback={this.setTime} value={this.state.value.time} />
 			</div>
 		);
 	}
 }
 
-DateTimePicker.propTypes = {};
+DateTimePicker.PropTypes = {
+	name: React.PropTypes.string.isRequired,
+	label: React.PropTypes.oneOfType([
+		React.PropTypes.element,
+		React.PropTypes.string
+	]),
+	required: React.PropTypes.bool,
+	callback: React.PropTypes.func
+};
 
 export default DateTimePicker;
