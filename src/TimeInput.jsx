@@ -15,16 +15,20 @@ class TimeInput extends React.Component {
 	}
 
 	onChange(e) {
-		const value = e.target.value;
-		this.setState(value);
-		this.props.callback && this.props.callback(value);
+		this.setState({ value: e.target.value });
+		console.log(this.state);
+		this.props.callback && this.props.callback(e.target.value);
 	}
 
 	render() {
 		const {
+			callback,	// eslint-disable-line no-unused-vars
+			label,
 			id,
-			value,
 			className,
+			error,
+			required,
+			value,		// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -33,20 +37,34 @@ class TimeInput extends React.Component {
 			className
 		);
 
+		const labelClassNames = cx({ required });
 		return (
-			<input
-				id={id}
-				type='time'
-				value={value}
-				className={classNames}
-				onChange={this.onChange}
-				{...other} />
+			<div>
+				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
+				<input
+					id={id}
+					type='time'
+					value={this.state.value}
+					className={classNames}
+					onChange={this.onChange}
+					required={required}
+					{...other} />
+				{ error && <p className='text--error'>{error}</p> }
+			</div>
 		);
 
 	}
 }
 
-TimeInput.propTypes = {};
+TimeInput.propTypes = {
+	name: React.PropTypes.string.isRequired,
+	error: React.PropTypes.string,
+	label: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]),
+	required: React.PropTypes.bool
+};
 
 export default TimeInput;
 

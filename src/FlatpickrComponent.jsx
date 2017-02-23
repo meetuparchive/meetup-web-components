@@ -9,11 +9,10 @@ class FlatpickrComponent extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			value: this.props.value || ''
+		};
 		this.onChange = this.onChange.bind(this);
-	}
-
-	componentWillReceiveProps(props) {
-		this.flatpickr && this.flatpickr.setDate(this.props.value);
 	}
 
 	// init the js datetime component
@@ -23,7 +22,9 @@ class FlatpickrComponent extends React.Component {
 			...this.props.datepickerOptions,
 			onChange: this.onChange,
 			altInput: true,
-			altFormat: 'M d, Y h:i K' // TODO localize
+			// altFormat: 'M d, Y h:i K', // TODO localize
+			altFormat: 'D M d, Y', // TODO localize
+			defaultDate: this.props.value
 		};
 		this.flatpickr = new Flatpickr(this.node, options);
 	}
@@ -33,14 +34,15 @@ class FlatpickrComponent extends React.Component {
 	}
 
 	onChange(selectedDates, dateStr, instance) {
-		this.setState({ date: selectedDates[0] });
-		// this.props.callback && this.props.callback(selectedDates[0]);
+		this.setState({ value: selectedDates[0] });
+		this.props.callback && this.props.callback(selectedDates[0]);
 	}
 
 	render() {
 		const {
+			callback,	// eslint-disable-line no-unused-vars
+			value,	// eslint-disable-line no-unused-vars
 			id,
-			value,
 			className,
 			...other
 		} = this.props;
@@ -54,7 +56,7 @@ class FlatpickrComponent extends React.Component {
 			<input
 				id={id}
 				type='text'
-				defaultValue={value}
+				defaultValue={this.state.value}
 				className={classNames}
 				ref={ node => this.node = node }
 				{...other} />

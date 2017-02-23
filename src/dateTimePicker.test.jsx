@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import DateTimePickerContainer from './DateTimePickerContainer';
+import DateTimePicker from './DateTimePicker';
 
-describe('DateTimePickerContainer', function() {
+describe('DateTimePicker', function() {
 
 	it('exists', function() {
-		const dateTimePicker = TestUtils.renderIntoDocument(<DateTimePickerContainer />);
+		const dateTimePicker = TestUtils.renderIntoDocument(<DateTimePicker />);
 		const dateTimePickerNode = ReactDOM.findDOMNode(dateTimePicker);
 
 		expect(dateTimePickerNode).not.toBeNull();

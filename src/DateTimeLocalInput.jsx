@@ -8,17 +8,21 @@ class DateTimeLocalInput extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.processInput = this.processInput.bind(this);
+		this.state = {
+			value: this.props.value || ''
+		};
+		this.onChange = this.onChange.bind(this);
 	}
 
-	processInput(e) {
-		this.onChange({ datetime: e.target.value });
+	onChange(e) {
+		this.setState({ value: e.target.value });
+		this.props.callback && this.props.callback(e.target.value);
 	}
 
 	render() {
 		const {
+			callback,	// eslint-disable-line no-unused-vars
 			id,
-			value,
 			className,
 			...other
 		} = this.props;
@@ -32,9 +36,9 @@ class DateTimeLocalInput extends React.Component {
 			<input
 				id={id}
 				type='datetime-local'
-				value={value}
+				value={this.state.value}
 				className={classNames}
-				onChange={this.processInput}
+				onChange={this.onChange}
 				{...other} />
 		);
 

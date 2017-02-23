@@ -11,16 +11,21 @@ class DateTimePicker extends React.Component {
 
 	constructor(props) {
 		super(props);
+
+		const defaultDate = new Date();
+		defaultDate.setMinutes(defaultDate.getMinutes() + 30);
+
 		this.state = {
 			value: {
-				date: props.value.date || '',
-				time: props.value.time || ''
+				date: props.value.date || defaultDate,
+				time: props.value.time || `${defaultDate.getHours()}:${defaultDate.getMinutes()}:00`
 			},
 			isDateTimeLocalSupported: false
 		};
+
 		this.setDate = this.setDate.bind(this);
 		this.setTime = this.setTime.bind(this);
-		this.setDateTime = this.setDateTime.bind(this);
+		this.parseDateTime = this.parseDateTime.bind(this);
 	}
 
 	componentWillMount() {
@@ -33,7 +38,7 @@ class DateTimePicker extends React.Component {
 
 		// some browsers (as Android stock browsers) pretend they support
 		// certain input types,
-		// so set the value to an invalid value and see if browser rejects
+		// so we set the value to an invalid value and see if browser rejects
 
 		input.setAttribute('type', 'datetime-local');
 		input.setAttribute('value', invalidValue);
@@ -49,12 +54,22 @@ class DateTimePicker extends React.Component {
 		this.setState({ value: { time: value }});
 	}
 
-	setDateTime(value) {
-		this.setState(value);
+	parseDateTime(value) {
+		const datetime = value.split('T'),
+			newState = {
+				date: datetime[0],
+				time: datetime[1]
+			};
+		this.setState(newState);
+	}
+
+	getDateTime() {
+		[this.state.value.date, this.state.value.time].join('T');
 	}
 
 	render() {
 		const {
+			callback,			// eslint-disable-line no-unused-vars
 			datepickerOptions,  // eslint-disable-line no-unused-vars
 			id,
 			label,
@@ -69,14 +84,13 @@ class DateTimePicker extends React.Component {
 		);
 
 		if (this.state.isDateTimeLocalSupported) {
-			// TODO set date and time together as value
 			return (
 				<div>
 					<label htmlFor={id}>{label}</label>
 					<DateTimeLocalInput
-						value={this.state.value}
+						value={this.getDateTime()}
 						className={classNames}
-						callback={this.setDateTime}
+						callback={this.parseDateTime}
 						{...other} />
 				</div>
 			);
