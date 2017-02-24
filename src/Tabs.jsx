@@ -63,7 +63,9 @@ export class Tabs extends React.Component {
 	}
 }
 Tabs.propTypes = {
-	tabs: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
+	children: React.PropTypes.arrayOf(
+		React.PropTypes.instanceOf(TabsTab)
+	).isRequired,
 	full: React.PropTypes.bool,
 	bordered: React.PropTypes.bool,
 };
