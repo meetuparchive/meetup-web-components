@@ -107,14 +107,16 @@ class DateTimePicker extends React.Component {
 	}
 }
 
-DateTimePicker.PropTypes = {
-	name: React.PropTypes.string.isRequired,
+DateTimePicker.propTypes = {
+	callback: React.PropTypes.func,
+	datepickerOptions: React.PropTypes.object,
 	label: React.PropTypes.oneOfType([
 		React.PropTypes.element,
 		React.PropTypes.string
 	]),
+	name: React.PropTypes.string.isRequired,
 	required: React.PropTypes.bool,
-	callback: React.PropTypes.func
+	value: React.PropTypes.string
 };
 
 export default DateTimePicker;
