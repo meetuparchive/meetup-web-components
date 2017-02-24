@@ -26,7 +26,8 @@ class GridList extends React.Component {
 		return (
 			<ul
 				className={classNames}
-				{...other}>
+				{...other}
+			>
 				{items.map((item, key) =>
 					<div key={key} className='gridList-item'>{item}</div>
 				)}
