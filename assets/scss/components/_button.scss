@@ -1,0 +1,390 @@
+/*doc
+---
+title: Button personality placeholder
+name: buttonPersonality
+parent: button
+---
+Disables user-select, sets cursor, and resets text-decoration.
+
+```
+@extend %buttonPersonality;
+```
+*/
+%buttonPersonality {
+	@include user-select(none);
+	cursor: pointer;
+	text-decoration: none !important;
+}
+
+/*doc
+---
+title: Button base mixin
+name: buttonBaseMixin
+parent: buttons
+---
+Applies base button styles using a mixin.
+
+_(The `extend` directive can cause ugly cascade problems)_
+
+```
+@include buttonBase();
+```
+*/
+@mixin buttonBase() {
+	@extend %buttonPersonality;
+	@include display(inline-flex);
+	@include flex-direction(row);
+	@include justify-content(center);
+	@include align-items(center);
+	@include transition(background .15s);
+	@include standardBorder(all);
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	border-radius: $defaultRadius;
+	background: transparent;
+	font-size: $font-size;
+	font-weight: $W_bold;
+	line-height: $line-height;
+	min-height: $space-3;
+	outline: 0;
+	padding: 0 $space;
+	vertical-align: middle;
+
+	@include browser-ie11() {
+		min-height: 0;
+		padding-top: 0.33em;
+		padding-bottom: 0.5em;
+	}
+}
+
+/*doc
+---
+title: Pill base mixin
+name: pillBaseMixin
+parent: buttons
+---
+Applies base pill styles using a mixin (for tokens and toggle pills)
+
+_(The `extend` directive can cause ugly cascade problems)_
+
+```
+@include pillBase();
+```
+*/
+@mixin pillBase() {
+	@extend %buttonPersonality;
+	@extend %text--small;
+	@include display(inline-flex);
+	@include flex-direction(row);
+	@include justify-content(center);
+	@include align-items(center);
+	@include transition(background .15s);
+	@include standardBorder(all);
+	vertical-align: middle;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	border-radius: $defaultRadius;
+	background: transparent;
+	min-height: $space-2;
+	outline: 0;
+	padding: 0 $space/2;
+	margin: 0;
+	font-weight: normal;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: $C_selection;
+	}
+}
+
+/*doc
+---
+title: Button hover placeholder
+name: buttonHoverPlaceholder
+parent: buttons
+---
+Applies default button `:hover`,
+`:active`, and `:focus` styles
+
+```
+// lightens "bgColor" on hover
+@mixin buttonHover($bgColor: $C_textPrimary);
+```
+*/
+@mixin buttonHover($bgColor: $C_textPrimary) {
+	&:hover,
+	&:focus {
+		background: transparentize($bgColor, .8);
+		border-color: transparent;
+	}
+
+	&:active {
+		background: transparentize($bgColor, .75);
+		border-color: transparent;
+	}
+}
+
+
+/*doc
+---
+title: Button color mixin
+name: buttonColorMixin
+parent: button
+---
+Sets color properties for a button
+
+```
+.button--myOrangeButton {
+	@include buttonColor(orange);
+}
+```
+*/
+@mixin buttonColor($bgColor: $C_button) {
+	@include color-all(getPrimaryTextColor($bgColor), true);
+	background: $bgColor;
+	border-color: $bgColor;
+
+	&:hover,
+	&:focus {
+			background: darken($bgColor, 8%);
+	}
+
+	&:active {
+		background: darken($bgColor, 12%);
+	}
+}
+
+
+/*doc
+---
+title: Buttons
+name: buttons
+category: UI Components
+---
+
+#### Example
+
+```html_example
+<ul class="list">
+	<li class="list-item chunk">
+		<h3>Standard Buttons</h3>
+		<button class="button" href="#">Button</button>
+		<button class="button button--primary" href="#">Primary Button</button>
+	</li>
+	<li class="list-item chunk stripe--inverted inverted padding--all">
+		<h3>Contrast Buttons</h3>
+		<button class="button button--contrast" href="#">Contrast Button</button>
+		<button class="button button--contrast button--primary" href="#">Primary Contrast Button</button>
+	</li>
+	<li class="list-item chunk">
+		<h3>Small buttons</h3>
+		<div class="chunk">
+			<button class="button button--small" href="#">Small Button</button>
+			<button class="button button--primary button--small" href="#">Small Button</button>
+		</div>
+		<div class="chunk">
+			<span class="text--small">Inline text with button</span><button class="button button--primary button--small margin--left" href="#">Inline button with text</button>
+		</div>
+	</li>
+	<li class="list-item chunk">
+		<h3>Full width button</h3>
+		<div class="chunk">
+			<button class="button button--fullWidth" href="#">Wide load</button>
+		</div>
+		<div class="chunk">
+			<button class="button button--primary button--fullWidth" href="#">Wide load</button>
+		</div>
+	</li>
+	<li class="list-item chunk">
+		<h3>Icon buttons</h3>
+		<div class="chunk">
+			<button class="button button--icon" href="#">
+				<span class="button-label">Button with right Icon</span>
+				<span class="button-icon">X</span>
+			</button>
+		</div>
+		<div class="chunk">
+			<button class="button button--icon button--primary" href="#">
+				<span class="button-icon">X</span>
+				<span class="button-label">Primary button with left Icon</span>
+			</button>
+		</div>
+		<div class="chunk">
+			<button class="button button--primary button--icon button--fullWidth" href="#">
+				<span class="button-icon">ヘ(◕。◕ヘ)</span>
+				<span class="button-label">Full width primary button with left Icon</span>
+			</button>
+		</div>
+	</li>
+	<li class="list-item chunk">
+		<h3>Disabled buttons</h3>
+		<button class="button button--disabled" href="#">Stop</button>
+		<button class="button button--primary" disabled>Can't touch this</button>
+		<input type="submit" class="button" value="Disabled" disabled />
+	</li>
+	<li class="list-item chunk">
+		<h3>Buttons with form fields</h3>
+		<div class="row">
+			<div class="row-item">
+				<input type="text" placeholder="Field by a button" />
+			</div>
+			<div class="row-item row-item--shrink">
+				<button class="button button--primary">Button by a field</button>
+			</div>
+		</div>
+	</li>
+</ul>
+```
+
+#### Button variants
+A class of `.button` is __required__ for buttons. The following
+classes are optional variants:
+
+Class                   | Description
+----------------------- | ----------------------------------------
+`.button--primary`      | rounded button with dark background; for primary actions
+`.button--contrast`     | bold, dark text; use on dark or colorful backgrounds or on photos
+`.button--small`        | decreases size of button
+`.button--fullWidth`    | makes button fill width
+`.button--icon`         | button with icon (see example for markup pattern)
+*/
+
+.button {
+	@include buttonBase();
+	@include buttonHover();
+	@include color-all($C_textPrimary);
+	background: $C_contentBG;
+}
+
+%button--primary,
+.button--primary {
+	@include buttonColor($C_button);
+	.inverted & {
+		@include standardBorder(none);
+	}
+	&.button--contrast {
+		@include buttonColor($C_contentBG);
+		&:hover,
+		&:active,
+		&:focus {
+			background: $C_borderDarkInverted;
+		}
+	}
+}
+
+%button--contrast,
+.button--contrast {
+	@include color-all( $C_textPrimary );
+	.inverted & {
+		@include color-all( $C_textPrimaryInverted );
+	}
+	background: $C_textHint;
+	border-color: $C_borderInverted;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: $C_textHint;
+		border-color: $C_borderDarkInverted;
+	}
+}
+
+
+//
+// Disabled buttons
+//
+.button[disabled],
+.button--disabled {
+	@include color-all($C_textSecondary, true);
+	@include standardBorder(all);
+	outline: none;
+	background: transparentize($C_mediumGray, .88) !important;
+	cursor: default;
+
+	&,
+	&:hover,
+	&:active {
+		@include standardBorder(all);
+	}
+
+}
+
+//
+// Button size modifiers
+//
+%button--small,
+.button--small {
+	font-size: $font-size-small;
+	min-height: $space-2;
+	padding: 0 $space-half;
+}
+
+//
+// Full width button
+//
+%button--fullWidth,
+.button--fullWidth,
+.button.span-100 {
+	display: block;
+	width: 100%;
+	text-align: center;
+	padding: 0.5em;
+}
+
+//
+// Icon buttons
+//
+$_iconGutter: $space;
+%button--icon,
+.button--icon,
+.button--icon.button--fullWidth {
+	@include display(inline-flex);
+	@include flex-wrap(nowrap);
+	@include flex-direction(row);
+	@include justify-content(space-between);
+}
+
+.button-label,
+.button-icon {
+	@include align-self(center);
+}
+
+.button-label {
+	text-align: center;
+
+	// this full shorthand property for `flex`
+	// is required to prevent IE11 from "shrinkwrapping" text nodes
+	@include flex(1 1 auto);
+}
+
+.button-icon {
+	@include flex-grow(0);
+	@include flex-shrink(0);
+	@include flex-basis(auto);
+	width: initial;
+	line-height: 0;
+
+	&:first-child {
+		margin-right: $_iconGutter;
+	}
+	&:last-child {
+		margin-left: $_iconGutter;
+	}
+
+	.button--fullWidth & {
+		margin: 0;
+	}
+}
+
+.button--small .button-icon {
+	min-height: $font-size;
+}
+
+//
+// DEPRECATED
+// .button--borderless => .button--contrast
+//
+.button--borderless {
+	@extend %button--contrast;
+}
