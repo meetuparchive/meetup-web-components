@@ -13,7 +13,7 @@ export class TabsTab extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'tabs-tab align--center atMedium_align--left',
+			'tabs-tab align--center',
 			{'tabs-tab--selected': isSelected}
 		);
 
