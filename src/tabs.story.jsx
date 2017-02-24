@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { storiesOf } from '@kadira/storybook';
-import { WithNotes } from '@kadira/storybook-addon-notes';
 import { InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
 import { Tabs, TabsTab } from './Tabs';
@@ -21,25 +20,25 @@ storiesOf('Tabs', module)
 			</InfoWrapper>
 		)
 	)
-	.add('Bordered tabs', () => {
+	.addWithInfo('Bordered tabs', () => {
 		return (
-			<WithNotes notes='For bordered tabs, add the boolean prop `bordered` to `Tabs`'>
+			<InfoWrapper>
 				<Tabs bordered>
 					<TabsTab isSelected><Link>First tab</Link></TabsTab>
 					<TabsTab><Link>Second tab</Link></TabsTab>
 					<TabsTab><Link>Third tab</Link></TabsTab>
 				</Tabs>
-			</WithNotes>
+			</InfoWrapper>
 		);
 	})
-	.add('Full width tabs', () => {
+	.addWithInfo('Full width tabs', () => {
 		return (
-			<WithNotes notes='For full-width tabs, add the boolean prop `full` to `Tabs`'>
+			<InfoWrapper>
 				<Tabs full>
 					<TabsTab><Link>First tab</Link></TabsTab>
 					<TabsTab><Link>Second tab</Link></TabsTab>
 					<TabsTab isSelected><Link>Third tab</Link></TabsTab>
 				</Tabs>
-			</WithNotes>
+			</InfoWrapper>
 		);
 	});
