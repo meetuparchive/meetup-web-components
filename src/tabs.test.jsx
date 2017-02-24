@@ -1,19 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import Tabs from './Tabs';
+import { Tabs, TabsTab } from './Tabs';
 
 describe('Tabs', function() {
 
 	it('exists', function() {
 		const tabs = TestUtils.renderIntoDocument(
-			<Tabs
-				tabs={[
-					<span>First tab</span>,
-					<span isSelected>Second tab</span>,
-					<span>Third tab</span>,
-				]}
-			/>
+			<Tabs>
+				<TabsTab>First tab</TabsTab>
+				<TabsTab isSelected>Second tab</TabsTab>
+				<TabsTab>Third tab</TabsTab>
+			</Tabs>
 		);
 		const tabsNode = ReactDOM.findDOMNode(tabs);
 		expect(tabsNode).not.toBeNull();
