@@ -71,7 +71,7 @@
     "sass-loader": "6.0.0",
     "sassquatch2": "2.4.4",
     "storybook-addon-i18n-tools": "1.0.0",
-    "style-loader": "0.13.1",
+    "style-loader": "0.13.2",
     "swarm-icons": "0.1.0",
     "webpack": "^2.2"
   }
