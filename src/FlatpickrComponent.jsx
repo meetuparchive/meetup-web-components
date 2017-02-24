@@ -50,6 +50,7 @@ class FlatpickrComponent extends React.Component {
 			id,
 			name,
 			value,		// eslint-disable-line no-unused-vars
+			opts,		// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 

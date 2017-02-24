@@ -12,13 +12,11 @@ class DateTimePicker extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const defaultDate = new Date();
-		defaultDate.setMinutes(defaultDate.getMinutes() + 30);
-
+		const propsValue = props.value || {};
 		this.state = {
 			value: {
-				date: props.value.date || defaultDate,
-				time: props.value.time || `${defaultDate.getHours()}:${defaultDate.getMinutes()}:00`
+				date: propsValue.date || '',
+				time: propsValue.time || ''
 			},
 			isDateTimeLocalSupported: false
 		};
@@ -63,9 +61,7 @@ class DateTimePicker extends React.Component {
 		this.setState(newState);
 	}
 
-	getDateTime() {
-		[this.state.value.date, this.state.value.time].join('T');
-	}
+	getDateTime() { return `${this.state.value.date}T${this.state.value.time}`; }
 
 	render() {
 		const {
@@ -75,32 +71,44 @@ class DateTimePicker extends React.Component {
 			id,
 			label,
 			value,				// eslint-disable-line no-unused-vars
-			required,			// eslint-disable-line no-unused-vars
+			required,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'dateTimePicker',
+			{required},
 			className
 		);
 
+		const labelClassNames = cx({required});
+
 		if (this.state.isDateTimeLocalSupported) {
+
+			const dateTimeLocalOpts = {
+				min: `${datepickerOptions.minDate}T00:00:00`,
+				max: `${datepickerOptions.maxDate}T00:00:00`
+			};
+
 			return (
 				<DateTimeLocalInput
 					id={id}
 					label={label}
 					value={this.getDateTime()}
+					required={required}
 					className={classNames}
 					callback={this.parseDateTime}
+					{...dateTimeLocalOpts}
 					{...other} />
 			);
 		}
 
+		// TODO disambiguate name
 		return (
 			<div>
-				<label htmlFor={id}>{label}</label>
-				<Flatpickr callback={this.setDate} value={this.state.value.date} opts={datepickerOptions} />
-				<TimeInput callback={this.setTime} value={this.state.value.time} />
+				<label htmlFor={id} className={labelClassNames}>{label}</label>
+				<Flatpickr name={name} callback={this.setDate} value={this.state.value.date} opts={datepickerOptions} />
+				<TimeInput name={name} callback={this.setTime} value={this.state.value.time} />
 			</div>
 		);
 	}
@@ -115,7 +123,7 @@ DateTimePicker.propTypes = {
 	]),
 	name: React.PropTypes.string.isRequired,
 	required: React.PropTypes.bool,
-	value: React.PropTypes.string
+	value: React.PropTypes.object
 };
 
 export default DateTimePicker;

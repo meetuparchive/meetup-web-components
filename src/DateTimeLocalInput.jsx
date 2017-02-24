@@ -25,6 +25,7 @@ class DateTimeLocalInput extends React.Component {
 			label,
 			callback,	// eslint-disable-line no-unused-vars
 			className,
+			required,
 			...other
 		} = this.props;
 
@@ -33,15 +34,18 @@ class DateTimeLocalInput extends React.Component {
 			className
 		);
 
+		const labelClassNames = cx({required});
+		console.log(this.state.value);
 		return (
 			<div>
-				<label htmlFor={id}>{label}</label>
+				<label htmlFor={id} className={labelClassNames}>{label}</label>
 				<input
 					id={id}
 					type='datetime-local'
 					value={this.state.value}
 					className={classNames}
 					onChange={this.onChange}
+					required={required}
 					{...other} />
 			</div>
 		);

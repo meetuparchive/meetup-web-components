@@ -25,6 +25,7 @@ class TimeInput extends React.Component {
 			callback,	// eslint-disable-line no-unused-vars
 			label,
 			id,
+			name,
 			className,
 			error,
 			required,
@@ -44,6 +45,7 @@ class TimeInput extends React.Component {
 				<input
 					id={id}
 					type='time'
+					name={name}
 					value={this.state.value}
 					className={classNames}
 					onChange={this.onChange}

@@ -11,6 +11,7 @@ storiesOf('DateTimePicker', module)
 			<InfoWrapper>
 				<div className='span--50'>
 					<DateTimePicker
+						name='event_time'
 						label='Start at'
 						value={Date.now()}
 						forceFlatpickr
@@ -20,8 +21,50 @@ storiesOf('DateTimePicker', module)
 			</InfoWrapper>
 		)
 	)
-	.add('sets a valid date range', () => {})
-	.add('sets a default date and time', () => {})
+	.add('required', () => {
+		return (<div className='span--50'>
+			<DateTimePicker
+				name='event_time'
+				label='Start at'
+				date={Date.now()}
+				required
+				forceFlatpickr
+			/>
+		</div>);
+	})
+	.add('sets a valid date range', () => {
+		const opts = {
+			allowInput: true,
+			minDate: '2018-01-01',
+			maxDate: '2018-02-01'
+		};
+
+		return (<div className='span--50'>
+			<DateTimePicker
+				name='event_time'
+				label='Start date between Jan Feb 2018'
+				forceFlatpickr
+				datepickerOptions={opts}
+			/>
+		</div>);
+	})
+	.add('sets a default date and time', () => {
+		const opts = {
+				allowInput: true,
+				minDate: Date.now()
+			},
+			date = { date: '3000-01-01' };
+
+		return (<div className='span--50'>
+			<DateTimePicker
+				name='event_time'
+				label='In the year 3000'
+				value={date}
+				datepickerOptions={opts}
+				forceFlatpickr
+			/>
+		</div>);
+	})
 	.add('uses datetime-local if supported', () => {
 		const opts = {
 				allowInput: true,
@@ -31,6 +74,7 @@ storiesOf('DateTimePicker', module)
 
 		return (<div className='span--50'>
 			<DateTimePicker
+				name='event_time'
 				label='Start at'
 				value={date}
 				datepickerOptions={opts}
@@ -40,12 +84,14 @@ storiesOf('DateTimePicker', module)
 	.add('datetime-local with min and max', () => {
 		const opts = {
 				allowInput: true,
-				minDate: Date.now()
+				minDate: Date.now(),
+				maxDate: '2017-02-01'
 			},
 			date = { date: '2017-02-18' };
 
 		return (<div className='span--50'>
 			<DateTimePicker
+				name='event_time'
 				label='Start at'
 				value={date}
 				datepickerOptions={opts}
