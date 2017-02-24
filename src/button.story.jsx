@@ -1,11 +1,13 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import { decorateWithLocale } from './utils/decorators';
 import { InfoWrapper } from './utils/storyComponents';
 import { Inverted } from './utils/storyComponents';
 import Button from './Button';
 import Icon from './Icon';
 
 storiesOf('Button', module)
+	.addDecorator(decorateWithLocale)
 	.addWithInfo(
 		'default',
 		'This is the basic usage with the component.',
@@ -46,10 +48,10 @@ storiesOf('Button', module)
 		<Button onClick={action('clicked')} small>Button Label</Button>
 	))
 	.add('Icon', () => (
-		<Button onClick={action('clicked')} icon={<Icon shape='chevron-left' size='s' />}>Button Label</Button>
+		<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />}>Button Label</Button>
 	))
 	.add('Icon Right', () => (
-		<Button onClick={action('clicked')} icon={<Icon shape='chevron-right' size='s' />} right>Button Label</Button>
+		<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />} right>Button Label</Button>
 	))
 	.add('No Label', () => (
 		<Button></Button>

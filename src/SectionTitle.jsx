@@ -11,7 +11,7 @@ export const SECTIONTITLE_CLASS = 'sectionTitle';
 class SectionTitle extends React.Component {
 	render() {
 		const {
-			children,
+			action,
 			className,
 			title,
 			...other
@@ -33,16 +33,23 @@ class SectionTitle extends React.Component {
 						<h2 className='text--display2'>{title}</h2>
 					</Chunk>
 				</FlexItem>
-				{children &&
-					<Chunk>
-						<FlexItem shrink>
-							{children}
-						</FlexItem>
-					</Chunk>
+				{action &&
+					<FlexItem shrink>
+						<Chunk>
+							{action}
+						</Chunk>
+					</FlexItem>
 				}
 			</Flex>
 		);
 	}
 }
+SectionTitle.propTypes = {
+	title: React.PropTypes.oneOf([
+		React.PropTypes.element,
+		React.PropTypes.string
+	]).isRequired,
+	action: React.PropTypes.element
+};
 
 export default SectionTitle;

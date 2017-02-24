@@ -8,7 +8,12 @@ html, body, #root {
 	align-items: center;
 	justify-content: center;
 }
-
+div[data-reactroot] {
+	width: 100%;
+	div {
+		width: 100%;
+	}
+}
 //
 // SASS BASE FILE
 //
