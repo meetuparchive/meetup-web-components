@@ -3683,10 +3683,6 @@ jsx-ast-utils@^1.3.4:
   dependencies:
     object-assign "^4.1.0"
 
-julep@1.4.6:
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/julep/-/julep-1.4.6.tgz#b5643b9e5da4acfd3dec8b976694f37816fbd3e2"
-
 keycode@^2.1.1:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.1.8.tgz#94d2b7098215eff0e8f9a8931d5a59076c4532fb"
@@ -5536,14 +5532,6 @@ sass-loader@6.0.0:
     lodash.tail "^4.1.1"
     pify "^2.3.0"
 
-sassquatch2@2.4.4:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/sassquatch2/-/sassquatch2-2.4.4.tgz#0f04bf3c8cb894899f7c12f3ff53cfb3ba66bd2f"
-  dependencies:
-    bourbon "4.2.3"
-    julep "1.4.6"
-    meetup-swatches "3.1.1"
-
 sax@^1.2.1, sax@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.1.tgz#7b8e656190b228e81a66aea748480d828cd2d37a"
@@ -5902,6 +5890,13 @@ svgo@^0.7.0:
 swarm-icons@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-0.1.0.tgz#86595e99f3a8d9f91ab636b9d0e9545481e00734"
+
+swarm-sasstools@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.0.4.tgz#086872a6217971f438a6d1a957d03447f2218700"
+  dependencies:
+    bourbon "4.2.3"
+    meetup-swatches "3.1.1"
 
 symbol-observable@^1.0.1, symbol-observable@^1.0.2:
   version "1.0.4"

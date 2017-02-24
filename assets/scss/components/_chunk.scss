@@ -10,7 +10,7 @@ or a group of elements.
 .chunk {
 	@extend %clearfix;
 	display: block;
-	@include responsiveBase() {
-		margin-bottom: $base!important; // why is this being set with important in sassquatch?
+	@include responsiveVarContext--base() {
+		margin-bottom: $base !important;
 	}
 }
