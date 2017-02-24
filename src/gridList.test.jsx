@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import GridList from './GridList';
 
@@ -47,21 +46,14 @@ const JSX_GridListResponsive = (
 	/>
 );
 
-let gridList,
-	gridListNode;
+let gridList;
 
 describe('Static GridList', function() {
 	beforeEach(() => {
 		gridList = TestUtils.renderIntoDocument(JSX_GridListStatic);
-		gridListNode = ReactDOM.findDOMNode(gridList);
 	});
 	afterEach(() => {
 		gridList = null;
-		gridListNode = null;
-	});
-
-	it('exists', function() {
-		expect(gridListNode).not.toBeNull();
 	});
 
 	it('wraps gridList items with element containing className "gridList-item"', function() {
@@ -75,27 +67,25 @@ describe('Responsive GridList', function() {
 
 	beforeEach(() => {
 		gridList = TestUtils.renderIntoDocument(JSX_GridListResponsive);
-		gridListNode = ReactDOM.findDOMNode(gridList);
-		glClassList = gridListNode.classList;
+		glClassList = TestUtils.scryRenderedDOMComponentsWithTag(gridList, 'UL')[0].className;
 	});
 	afterEach(() => {
 		gridList = null;
-		gridListNode = null;
 		glClassList = null;
 	});
 
 	it('sets correct default columns class', function() {
 		const defaultClass = `gridList--has${responsiveColsDefault}`;
-		expect(glClassList.contains(defaultClass)).toBe(true);
+		expect(glClassList).toContain(defaultClass);
 	});
 
 	it('sets correct medium breakpoint columns class', function() {
 		const mediumClass = `atMedium_gridList--has${responsiveColsMedium}`;
-		expect(glClassList.contains(mediumClass)).toBe(true);
+		expect(glClassList).toContain(mediumClass);
 	});
 
 	it('sets correct large breakpoint columns class', function() {
 		const largeClass = `atLarge_gridList--has${responsiveColsLarge}`;
-		expect(glClassList.contains(largeClass)).toBe(true);
+		expect(glClassList).toContain(largeClass);
 	});
 });
