@@ -86,14 +86,13 @@ class DateTimePicker extends React.Component {
 
 		if (this.state.isDateTimeLocalSupported) {
 			return (
-				<div>
-					<label htmlFor={id}>{label}</label>
-					<DateTimeLocalInput
-						value={this.getDateTime()}
-						className={classNames}
-						callback={this.parseDateTime}
-						{...other} />
-				</div>
+				<DateTimeLocalInput
+					id={id}
+					label={label}
+					value={this.getDateTime()}
+					className={classNames}
+					callback={this.parseDateTime}
+					{...other} />
 			);
 		}
 

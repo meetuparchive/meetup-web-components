@@ -21,8 +21,9 @@ class DateTimeLocalInput extends React.Component {
 
 	render() {
 		const {
-			callback,	// eslint-disable-line no-unused-vars
 			id,
+			label,
+			callback,	// eslint-disable-line no-unused-vars
 			className,
 			...other
 		} = this.props;
@@ -33,19 +34,29 @@ class DateTimeLocalInput extends React.Component {
 		);
 
 		return (
-			<input
-				id={id}
-				type='datetime-local'
-				value={this.state.value}
-				className={classNames}
-				onChange={this.onChange}
-				{...other} />
+			<div>
+				<label htmlFor={id}>{label}</label>
+				<input
+					id={id}
+					type='datetime-local'
+					value={this.state.value}
+					className={classNames}
+					onChange={this.onChange}
+					{...other} />
+			</div>
 		);
 
 	}
 }
 
-DateTimeLocalInput.propTypes = {};
+DateTimeLocalInput.propTypes = {
+	id: React.PropTypes.string,
+	label: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.string,
+	]),
+	callback: React.PropTypes.func
+};
 
 export default DateTimeLocalInput;
 
