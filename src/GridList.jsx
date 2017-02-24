@@ -5,33 +5,20 @@ import cx from 'classnames';
  * @module GridList
  */
 class GridList extends React.Component {
-	renderItems() {
-		this.gridListItems = this.props.items.map((item, i) => {
-			return (
-				<div
-					key={i}
-					className='gridList-item'
-				>
-					{item}
-				</div>
-			);
-		});
-		return this.gridListItems;
-	}
 	render() {
 		const {
 			className,
 			columns,
-			items, // eslint-disable-line no-unused-vars
+			items,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'gridList',
 			{
-				[`gridList--has${columns.default}`]: typeof columns.default === 'number',
-				[`atMedium_gridList--has${columns.medium}`]: typeof columns.medium === 'number',
-				[`atLarge_gridList--has${columns.large}`]: typeof columns.large === 'number'
+				[`gridList--has${columns.default}`]: !!columns.default,
+				[`atMedium_gridList--has${columns.medium}`]: !!columns.medium,
+				[`atLarge_gridList--has${columns.large}`]: !!columns.large
 			},
 			className
 		);
@@ -40,7 +27,9 @@ class GridList extends React.Component {
 			<ul
 				className={classNames}
 				{...other}>
-					{this.renderItems()}
+				{items.map((item, key) =>
+					<div key={key} className='gridList-item'>{item}</div>
+				)}
 			</ul>
 		);
 	}
