@@ -1,0 +1,137 @@
+/*doc
+---
+title: Cards
+name: uiCard
+category: UI Components
+---
+Card-like boxes.
+
+## Standard, Group, and Event cards
+(This example uses `gridList`, but cards may placed anywhere)
+
+```html_example
+<section class="stripe--collection">
+	<div class="bounds">
+		<ul class="gridList gridList--has1 atMedium_gridList--has3">
+
+			<!-- Base card styles -->
+			<li class="gridList-item">
+				<div class="card">
+					<h4>Look at this card</h4>
+					<p>Just <em>look at it</em></p>
+				</div>
+			</li>
+
+			<!-- Group card -->
+			<li class="gridList-item">
+				<div class="card card--group inverted" style="background-image: url(http://photos4.meetupstatic.com/photos/event/7/6/f/8/600_434010456.jpeg);">
+					<div class="card--group-content column">
+						<h4 class="column-item text--heavy">Some Meetup Group Name</h4>
+						<p class="column-item column-item--shrink">457 [chapter.who]</p>
+					</div>
+				</div>
+			</li>
+
+			<!-- Group card with long name -->
+			<li class="gridList-item">
+				<div class="card card--group inverted" style="background-image: url(http://photos4.meetupstatic.com/photos/event/7/6/f/8/600_434010456.jpeg);">
+					<div class="card--group-content column">
+						<h4 class="text--heavy column-item">Béchamel Hell: French Cuisine for Survivalists Meetup</h4>
+						<p class="column-item column-item--shrink">457 [chapter.who]</p>
+					</div>
+				</div>
+			</li>
+
+			<!-- Seeded card -->
+			<li class="gridList-item">
+				<div class="card card--seeded">
+					<div class="card--seeded-content column">
+						<h4 class="column-item text--heavy">The Tupelo JavaScript Meetup</h4>
+						<p class="column-item column-item--shrink text--small">457 members interested</p>
+					</div>
+				</div>
+			</li>
+
+			<!-- Event card -->
+			<li class="gridList-item">
+				<div class="card card--event">
+					<h4>I'm an event card</h4>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>
+```
+*/
+
+$_eventStripes: (
+	past: $C_mediumGray,
+	canceled: $C_mediumGray,
+	featured: $C_orange,
+	draft: $C_teal
+);
+
+.card {
+	@include standardBorder(all);
+	box-sizing: border-box;
+	display: block;
+	background: $C_contentBG;
+	border-radius: $defaultRadius;
+	padding: $space $space 0;
+	position: relative;
+	background-size: cover;
+	background-clip: padding-box;
+	min-height: $block-4;
+}
+
+.card--group {
+	@include textProtectionScrim(top);
+	@include filter(grayscale(20%) contrast(110%));
+	border-radius: 0;
+	padding: $space;
+	height: $block-4;
+	text-shadow: 1px 1px 0 $C_textHint;
+}
+
+.card--seeded {
+	background: transparent;
+	border-style: dotted;
+	border-width: 2px;
+	border-color: $C_border;
+	padding: $space;
+
+	.card--seeded-content {
+		height: #{$block-4 - ($space * 2)};
+	}
+
+}
+
+.card--group-content {
+	position: relative;
+	white-space: normal;
+	text-align: left;
+}
+
+.card--event {
+	position: relative;
+	&:before {
+		background: $C_accent;
+		content: '';
+		display: block;
+		height: $space-quarter;
+		left: 0;
+		position: absolute;
+
+
+		// to overlap border
+		left: -1px;
+		right: -1px;
+		top: -1px;
+	}
+}
+
+@each $eventVariant, $stripeColor in $_eventStripes {
+	.card--event--#{$eventVariant} {
+		&:before { background: $stripeColor; }
+	}
+}
