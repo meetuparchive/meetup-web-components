@@ -30,12 +30,12 @@ class DateTimeLocalInput extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'dateTimePicker',
+			'input--dateTimeLocal',
 			className
 		);
 
 		const labelClassNames = cx({required});
-		console.log(this.state.value);
+
 		return (
 			<div>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>

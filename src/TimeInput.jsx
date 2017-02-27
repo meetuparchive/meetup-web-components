@@ -16,15 +16,14 @@ class TimeInput extends React.Component {
 
 	onChange(e) {
 		this.setState({ value: e.target.value });
-		console.log(this.state);
 		this.props.callback && this.props.callback(e.target.value);
 	}
 
 	render() {
 		const {
 			callback,	// eslint-disable-line no-unused-vars
-			label,
 			id,
+			label,
 			name,
 			className,
 			error,
@@ -34,11 +33,12 @@ class TimeInput extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'dateTimePicker',
+			'input--time',
 			className
 		);
 
 		const labelClassNames = cx({ required });
+
 		return (
 			<div>
 				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
@@ -59,6 +59,7 @@ class TimeInput extends React.Component {
 }
 
 TimeInput.propTypes = {
+	callback: React.PropTypes.func,
 	name: React.PropTypes.string.isRequired,
 	error: React.PropTypes.string,
 	label: React.PropTypes.oneOfType([

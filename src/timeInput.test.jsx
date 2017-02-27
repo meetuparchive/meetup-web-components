@@ -13,7 +13,7 @@ describe('TimeInput', function() {
 
 	beforeEach(() => {
 		timeInputComponent = TestUtils.renderIntoDocument(
-			<TimeInput name='time' value={timeValue} callback={callbackSpy} />);
+			<TimeInput name='time' value={timeValue} callback={callbackSpy} required />);
 		timeInputEl = TestUtils.findRenderedDOMComponentWithTag(timeInputComponent, 'input');
 	});
 
@@ -32,6 +32,10 @@ describe('TimeInput', function() {
 
 	it('sets state with its value', function() {
 		expect(timeInputComponent.state).toEqual({ value: timeValue });
+	});
+
+	it('should have a required attribute when specified', () => {
+		expect(timeInputEl.attributes.required).not.toBeNull();
 	});
 
 	it('calls onChange and sets state when value is changed', function() {
