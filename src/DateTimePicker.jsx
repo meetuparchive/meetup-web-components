@@ -82,7 +82,6 @@ class DateTimePicker extends React.Component {
 		);
 
 		const labelClassNames = cx({required});
-
 		if (this.state.isDateTimeLocalSupported) {
 
 			const dateTimeLocalOpts = {
@@ -123,7 +122,8 @@ DateTimePicker.propTypes = {
 	]),
 	name: React.PropTypes.string.isRequired,
 	required: React.PropTypes.bool,
-	value: React.PropTypes.object
+	value: React.PropTypes.object,
+	forceFlatpickr: React.PropTypes.bool
 };
 
 export default DateTimePicker;
