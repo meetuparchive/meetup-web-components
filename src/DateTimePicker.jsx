@@ -67,6 +67,7 @@ class DateTimePicker extends React.Component {
 		const {
 			callback,			// eslint-disable-line no-unused-vars
 			className,
+			dateOnly,
 			datepickerOptions,  // eslint-disable-line no-unused-vars
 			id,
 			label,
@@ -102,12 +103,12 @@ class DateTimePicker extends React.Component {
 			);
 		}
 
-		// TODO disambiguate name
+		// TODO disambiguate name prop
 		return (
 			<div>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>
 				<Flatpickr name={name} callback={this.setDate} value={this.state.value.date} opts={datepickerOptions} />
-				<TimeInput name={name} callback={this.setTime} value={this.state.value.time} />
+				{ !dateOnly && <TimeInput name={name} callback={this.setTime} value={this.state.value.time} /> }
 			</div>
 		);
 	}
@@ -123,6 +124,7 @@ DateTimePicker.propTypes = {
 	name: React.PropTypes.string.isRequired,
 	required: React.PropTypes.bool,
 	value: React.PropTypes.object,
+	dateOnly: React.PropTypes.bool,
 	forceFlatpickr: React.PropTypes.bool
 };
 

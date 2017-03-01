@@ -65,27 +65,10 @@ storiesOf('DateTimePicker', module)
 			/>
 		</div>);
 	})
-	.add('uses datetime-local if supported', () => {
+	.add('renders datetime-local if supported with props', () => {
 		const opts = {
 				allowInput: true,
 				minDate: Date.now()
-			},
-			date = { date: '2017-02-18' };
-
-		return (<div className='span--50'>
-			<DateTimePicker
-				name='event_time'
-				label='Start at'
-				value={date}
-				datepickerOptions={opts}
-			/>
-		</div>);
-	})
-	.add('datetime-local with min and max', () => {
-		const opts = {
-				allowInput: true,
-				minDate: Date.now(),
-				maxDate: '2017-02-01'
 			},
 			date = { date: '2017-02-18' };
 

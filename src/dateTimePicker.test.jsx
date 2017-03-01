@@ -46,13 +46,26 @@ describe('DateTimePicker', function() {
 		expect(timeInputEl.value).toEqual(time1);
 	});
 
-	/*
-	it('allows for date only', function() {});
-	it('sets a date range to select from', function() {});
-	*/
-	it('exists', function() {
-		dateTimeComponent = TestUtils.renderIntoDocument(<DateTimePicker name='start_time' forceFlatpickr />);
+	it('renders a date component only if specified', function() {
+		dateTimeComponent = TestUtils.renderIntoDocument(
+			<DateTimePicker name='start_time'
+				forceFlatpickr
+				dateOnly />);
 		expect(() => TestUtils.findRenderedComponentWithType(dateTimeComponent, FlatpickrComponent)).not.toThrow();
-		expect(() => TestUtils.findRenderedComponentWithType(dateTimeComponent, TimeInput)).not.toThrow();
+		expect(() => TestUtils.findRenderedComponentWithType(dateTimeComponent, TimeInput)).toThrow();
+	});
+
+	it('passes options and sets a date range to select from', function() {
+		const min = new Date(),
+			max = new Date();
+		max.setDate(max.getDate() + 5);
+		dateTimeComponent = TestUtils.renderIntoDocument(
+			<DateTimePicker name='start_time'
+				forceFlatpickr
+				datepickerOptions={{ minDate: min, maxDate: max }}
+			/>);
+		flatpickrComponent = TestUtils.findRenderedComponentWithType(dateTimeComponent, FlatpickrComponent);
+		expect(flatpickrComponent.flatpickr.instanceConfig.minDate).toEqual(min);
+		expect(flatpickrComponent.flatpickr.instanceConfig.maxDate).toEqual(max);
 	});
 });
