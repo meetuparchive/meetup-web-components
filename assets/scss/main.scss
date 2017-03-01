@@ -15,3 +15,7 @@
 // COMPONENT SPECIFIC
 //
 @import "popover";
+
+// TODO: get this imported at the component level
+// and add any custom meetup styling
+@import '~flatpickr/dist/flatpickr.css';
