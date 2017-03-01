@@ -28,7 +28,7 @@ Class                | Description
 	@include standardBorder();
 	background-color: $C_contentBG;
 	margin-bottom: 0;
-	@include responsiveBase() {
+	@include responsiveVarContext--base() {
 		padding-bottom: $base*2;
 	}
 }
@@ -100,6 +100,29 @@ and sets a background image using a URL passed into the
 	}
 }
 
+/// PRIVATE
+/// legacy text protection mixin from SQ2
+@mixin textProtectionScrim($placement: 'bottom') {
+	&:before {
+		content: '';
+		display: block;
+		height: 100%;
+		position: absolute;
+		width: 100%;
+		z-index: 0;
+		left: 0;
+		mix-blend-mode: hard-light;
+
+		@if $placement == 'bottom' {
+			@include linear-gradient(180deg, transparentize($C_black, .85) 25%, transparentize($C_black, .6) 100%);
+			bottom: 0;
+		} @else {
+			@include linear-gradient(0deg, transparentize($C_black, .85) 25%, transparentize($C_black, .6) 100%);
+			top: 0;
+		}
+	}
+}
+
 .stripe--hero {
 	@extend %_heroStripe;
 	@include textProtectionScrim();
@@ -111,13 +134,8 @@ and sets a background image using a URL passed into the
 	position: relative;
 	text-align: center;
 	max-width: $bounds-wide;
-	padding-top: $view-head-height;
 
 	@include atMediaUp(medium) {
 		min-height: $block-6;
-	}
-
-	@include atMediaUp(large) {
-		padding-top: $view-head-height-tablet;
 	}
 }
