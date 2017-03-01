@@ -4,7 +4,7 @@
 	width: 100%;
 }
 
-@include responsiveBase() {
+@include responsiveVarContext--base() {
 	.pageActionButton {
 		min-height: $base*$line-height-largeText*2; // text--display height * line-height
 		justify-content: center;
