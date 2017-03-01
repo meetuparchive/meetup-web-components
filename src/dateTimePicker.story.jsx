@@ -13,7 +13,7 @@ storiesOf('DateTimePicker', module)
 					<DateTimePicker
 						name='event_time'
 						label='Start at'
-						value={Date.now()}
+						date={Date.now()}
 						forceFlatpickr
 						datepickerOptions={{ allowInput: true }}
 					/>
