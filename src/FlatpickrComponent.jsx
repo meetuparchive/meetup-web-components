@@ -21,12 +21,13 @@ class FlatpickrComponent extends React.Component {
 	*/
 	componentDidMount() {
 		const options = {
-			...this.props.opts,
 			onChange: this.onChange,
 			altInput: true,
 			altFormat: 'D M d, Y', // TODO localize
 			defaultDate: this.props.value
 		};
+
+		Object.assign(options, this.props.opts);
 		this.flatpickr = new Flatpickr(this.node, options);
 	}
 
