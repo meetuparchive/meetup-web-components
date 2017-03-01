@@ -1,75 +1,64 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import Tabs from './Tabs';
+import { Tabs, TabsTab } from './Tabs';
 
 describe('Tabs', function() {
+	let componentBasic,
+		componentWithVariants;
 
-	it('exists', function() {
-		const tabs = TestUtils.renderIntoDocument(
-			<Tabs
-				tabs={[
-					<span>First tab</span>,
-					<span isSelected>Second tab</span>,
-					<span>Third tab</span>,
-				]}
-			/>
+	beforeEach(() => {
+		componentBasic = TestUtils.renderIntoDocument(
+			<Tabs>
+				<TabsTab>First tab</TabsTab>
+				<TabsTab isSelected>Second tab</TabsTab>
+				<TabsTab>Third tab</TabsTab>
+			</Tabs>
 		);
-		const tabsNode = ReactDOM.findDOMNode(tabs);
-		expect(tabsNode).not.toBeNull();
+		componentWithVariants = TestUtils.renderIntoDocument(
+			<Tabs
+				full
+				bordered
+			>
+				<TabsTab>First tab</TabsTab>
+				<TabsTab isSelected>Second tab</TabsTab>
+				<TabsTab>Third tab</TabsTab>
+			</Tabs>
+		);
+	});
+	afterEach(() => {
+		componentBasic = null;
+		componentWithVariants = null;
 	});
 
 	it('applies selected tab class correctly', function() {
-		const tabs = TestUtils.renderIntoDocument(
-			<Tabs
-				tabs={[
-					<span isSelected>First tab</span>,
-					<span>Second tab</span>,
-					<span>Third tab</span>,
-				]}
-			/>
+		const selectedTabNodes = TestUtils.scryRenderedDOMComponentsWithClass(
+			componentBasic,
+			'tabs-tab--selected'
 		);
-		const selectedTabNodes = TestUtils.scryRenderedDOMComponentsWithClass(tabs, 'tabs-tab--selected');
-		const firstTabClass = selectedTabNodes[0].getAttribute('class');
+		const firstTabClass = selectedTabNodes[0].classList;
 
 		expect(selectedTabNodes.length).toBe(1);
-		expect(firstTabClass.indexOf('tabs-tab--selected') > -1).toBe(true);
+		expect(firstTabClass).toContain('tabs-tab--selected');
 	});
 
 	it('applies variant classes correctly', function() {
-		const tabs = TestUtils.renderIntoDocument(
-			<Tabs
-				bordered
-				full
-				tabs={[
-					<span isSelected>First tab</span>,
-					<span>Second tab</span>,
-					<span>Third tab</span>,
-				]}
-			/>
-		);
-		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(tabs, 'UL')[0];
-		const tabsClass = tabsUlEl.getAttribute('class');
+		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(
+			componentWithVariants,
+			'UL'
+		)[0];
 
-		expect(tabsClass.indexOf('tabs--full')).toBeGreaterThan(-1);
-		expect(tabsClass.indexOf('tabs--bordered')).toBeGreaterThan(-1);
+		expect(tabsUlEl.classList).toContain('tabs--full');
+		expect(tabsUlEl.classList).toContain('tabs--bordered');
 	});
 
 	it('only applies variant classes when set by props', function() {
-		const tabs = TestUtils.renderIntoDocument(
-			<Tabs
-				tabs={[
-					<span isSelected>First tab</span>,
-					<span>Second tab</span>,
-					<span>Third tab</span>,
-				]}
-			/>
-		);
-		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(tabs, 'UL')[0];
-		const tabsClass = tabsUlEl.getAttribute('class');
+		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(
+			componentBasic,
+			'UL'
+		)[0];
 
-		expect(tabsClass.indexOf('tabs--full')).toBe(-1);
-		expect(tabsClass.indexOf('tabs--bordered')).toBe(-1);
+		expect(tabsUlEl.classList).not.toContain('tabs--full');
+		expect(tabsUlEl.classList).not.toContain('tabs--bordered');
 	});
 
 });
