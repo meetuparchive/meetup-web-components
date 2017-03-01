@@ -3856,9 +3856,9 @@ meetup-swatches@3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/meetup-swatches/-/meetup-swatches-3.1.1.tgz#71d150983deab5f353c77367c6935e126614919e"
 
-meetup-web-mocks@0.1.66:
-  version "0.1.66"
-  resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-0.1.66.tgz#3a3ed24470109ae6165b8c4c1203c2ca1f56f2ea"
+meetup-web-mocks@0.1.68:
+  version "0.1.68"
+  resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-0.1.68.tgz#127a255a0660e13cadd8e9f66364eb8bd8a11031"
   dependencies:
     react "^15.4.2"
     react-addons-test-utils "15.4.2"
