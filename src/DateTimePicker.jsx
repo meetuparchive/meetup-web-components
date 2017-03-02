@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import Flatpickr from './FlatpickrComponent';
 import TimeInput from './TimeInput';
+import DateTimeLocalInput from './DateTimeLocalInput';
 
 /**
  * @module DateTimePicker
@@ -23,8 +24,24 @@ class DateTimePicker extends React.Component {
 		this.setDate = this.setDate.bind(this);
 		this.setTime = this.setTime.bind(this);
 		this.parseDateTime = this.parseDateTime.bind(this);
+	}
 
-		this.usingMobileInput = false;
+	componentWillMount() {
+		this.setState({ isDateTimeLocalSupported: this.hasBrowserSupport() });
+	}
+
+	hasBrowserSupport() {
+		const input = document.createElement('input'),
+			invalidValue = 'notadate';
+
+		// some browsers (as Android stock browsers) pretend they support
+		// certain input types,
+		// so we set the value to an invalid value and see if browser rejects
+
+		input.setAttribute('type', 'datetime-local');
+		input.setAttribute('value', invalidValue);
+
+		return !(this.props.forceFlatpickr || input.value === invalidValue);
 	}
 
 	setDate(value) {
@@ -46,46 +63,52 @@ class DateTimePicker extends React.Component {
 
 	getDateTime() { return `${this.state.value.date}T${this.state.value.time}`; }
 
-	setIsMobile(component) {
-		if (!component) { // check in case component ref is cleared out and null
-			return;
-		}
-		this.isMobile = !!(component.flatpickr.isMobile);
-	}
-
 	render() {
 		const {
 			callback,			// eslint-disable-line no-unused-vars
 			className,
-			datepickerOptions,  // eslint-disable-line no-unused-vars
 			dateOnly,
+			datepickerOptions,  // eslint-disable-line no-unused-vars
 			id,
 			label,
 			value,				// eslint-disable-line no-unused-vars
 			required,
-			...other			// eslint-disable-line no-unused-vars
+			...other
 		} = this.props;
 
 		const classNames = cx(
-			'dateTimePicker--wrap',
-			className),
-			labelClassNames = cx({required});
+			'dateTimePicker',
+			{required},
+			className
+		);
 
+		const labelClassNames = cx({required});
+		if (this.state.isDateTimeLocalSupported) {
 
-		const timeName = `${name}-time`,
-			setIsMobile = this.setIsMobile.bind(this);
+			const dateTimeLocalOpts = {
+				min: `${datepickerOptions.minDate}T00:00:00`,
+				max: `${datepickerOptions.maxDate}T00:00:00`
+			};
 
+			return (
+				<DateTimeLocalInput
+					id={id}
+					label={label}
+					value={this.getDateTime()}
+					required={required}
+					className={classNames}
+					callback={this.parseDateTime}
+					{...dateTimeLocalOpts}
+					{...other} />
+			);
+		}
+
+		// TODO disambiguate name prop
 		return (
-			<div className={classNames}>
+			<div>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>
-				<Flatpickr ref={setIsMobile}
-					name={name}
-					callback={this.setDate}
-					value={this.state.value.date}
-					opts={datepickerOptions}
-					dateOnly={dateOnly}
-				/>
-				{ !(dateOnly || this.isMobile) && <TimeInput name={timeName} callback={this.setTime} value={this.state.value.time} /> }
+				<Flatpickr name={name} callback={this.setDate} value={this.state.value.date} opts={datepickerOptions} />
+				{ !dateOnly && <TimeInput name={name} callback={this.setTime} value={this.state.value.time} /> }
 			</div>
 		);
 	}

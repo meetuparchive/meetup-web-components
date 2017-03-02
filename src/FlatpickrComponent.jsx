@@ -14,22 +14,17 @@ class FlatpickrComponent extends React.Component {
 			value: this.props.value || ''
 		};
 		this.onChange = this.onChange.bind(this);
-		this.onReady = this.onReady.bind(this);
 	}
 
 	/**
 	* init the js date flatpickr component
 	*/
 	componentDidMount() {
-
 		const options = {
 			onChange: this.onChange,
-			onReady: this.onReady,
 			altInput: true,
 			altFormat: 'D M d, Y', // TODO localize
-			defaultDate: this.props.value,
-			enableTime: typeof(this.props.dateOnly) === 'undefined' ? true : !(this.props.dateOnly)
-			// we override this onReady depending if mobile or dateOnly
+			defaultDate: this.props.value
 		};
 
 		Object.assign(options, this.props.opts);
@@ -49,18 +44,6 @@ class FlatpickrComponent extends React.Component {
 		this.props.callback && this.props.callback(selectedDates[0]);
 	}
 
-	// if we are rendering date and time, disable time if we are not
-	// on mobile since we will draw a separate time input
-
-	onReady(selectedDates, dateStr, instance) {
-		if (this.props.dateOnly === !(instance.instanceConfig.enableTime)) {
-			return;
-		}
-		if (this.props.dateOnly || !this.props.isMobile) {
-			instance.set('enableTime', false);
-		}
-	}
-
 	render() {
 		const {
 			callback,	// eslint-disable-line no-unused-vars
@@ -69,7 +52,6 @@ class FlatpickrComponent extends React.Component {
 			name,
 			value,		// eslint-disable-line no-unused-vars
 			opts,		// eslint-disable-line no-unused-vars
-			dateOnly,	// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
