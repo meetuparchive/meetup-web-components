@@ -65,7 +65,7 @@ storiesOf('DateTimePicker', module)
 			/>
 		</div>);
 	})
-	.add('renders datetime-local if supported with props', () => {
+	.add('can render date only', () => {
 		const opts = {
 				allowInput: true,
 				minDate: Date.now()
@@ -77,6 +77,40 @@ storiesOf('DateTimePicker', module)
 				name='event_time'
 				label='Start at'
 				value={date}
+				dateOnly
+				datepickerOptions={opts}
+			/>
+		</div>);
+	})
+	.add('renders datetime-local on mobile with props', () => {
+		const opts = {
+				allowInput: true,
+				minDate: Date.now()
+			},
+			date = { date: '2017-02-18' };
+
+		return (<div className='span--50'>
+			<DateTimePicker
+				name='event_time'
+				label='Start at'
+				value={date}
+				datepickerOptions={opts}
+			/>
+		</div>);
+	})
+	.add('can render date only on mobile', () => {
+		const opts = {
+				allowInput: true,
+				minDate: Date.now()
+			},
+			date = { date: '2017-02-18' };
+
+		return (<div className='span--50'>
+			<DateTimePicker
+				name='event_time'
+				label='Start at'
+				value={date}
+				dateOnly
 				datepickerOptions={opts}
 			/>
 		</div>);
