@@ -1,77 +1,74 @@
-import _ from 'lodash';
 import React from 'react';
 import cx from 'classnames';
 
+export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
 /**
  * @module AccordionPanelGroup
  */
 class AccordionPanelGroup extends React.Component {
 	constructor(props) {
 		super(props);
-		const activePanelsArr = this.props.accordionPanels.reduce((panels, panel, i) => {
-			if (panel.props.isOpen) {
-				panels.push(i);
-			}
-			return panels;
-		}, []);
+		this.accordionPanels = this.props.accordionPanels.map((accordionPanel, i) => {
+			return this.clonePanels(accordionPanel, i, accordionPanel.props.isOpen);
+		});
 
 		this.state = {
-			activePanels: activePanelsArr
+			clickedPanel: null
 		};
 
-		this._onClickTrigger = this._onClickTrigger.bind(this);
+		this.clonePanels = this.clonePanels.bind(this);
+		this.setClickedPanel = this.setClickedPanel.bind(this);
 	}
 
 	/**
-	 * Document this for PR
+	 * @param clickedPanel is the `AccordionPanel` component passed in from `_handleToggle`
+	 * @returns {undefined}
+	 *
+	 * Keeps track of the clicked panel in order to support AccordionPanelGroups that only
+	 * have one panel open at a time.
 	 */
-	_onClickTrigger(e, i){
-		const index = this.state.activePanels.indexOf(i);
-		const activePanelArr = this.state.activePanels;
-		const filtered = activePanelArr.filter(panel => i !== activePanelArr.indexOf(i));
-
-		if (index > -1){
-			activePanelArr.splice(index, 1);
-		} else {
-			activePanelArr.push(i);
-		}
-
-		if (!this.props.multiSelectable) {
-			_.pullAll(activePanelArr, filtered);
-		}
-
-		this.setState({
-			activePanels: activePanelArr
-		});
-
+	setClickedPanel(clickedPanel) {
+		this.setState({ clickedPanel });
 	}
 
-	renderAccordionPanels() {
-		const toCamelCase = (str) => str.slice(0,20).replace(/(?:^\w|[A-Z]|\b\w)/g, (ltr, idx) => idx === 0 ? ltr.toLowerCase() : ltr.toUpperCase()).replace(/\s+/g, '');
-		this.accordionPanels = this.props.accordionPanels.map((accordionPanel, i) => {
+	/**
+	 * @param {Object} accordionPanel - `AccordionPanel` components to clone
+	 * @param {number} i - index of the `AccordionPanel`
+	 * @param {boolean} isOpen - whether the `AccordionPanel` is open or not
+	 * @returns {Array} `AccordionPanel` components with props from `AccordionPanelGroup`
+	 */
+	clonePanels(accordionPanel, i, isOpen) {
+		const toCamelCase = (str) => str.slice(0,20).replace(/-(\w)/g, g => g[1].toUpperCase());
 
-			return (
-				<li
-					className='list-item'
-					key={i}
-					>
+		return (
+
+				React.cloneElement(accordionPanel,
 					{
-						React.cloneElement(accordionPanel,
-							{
-								triggerIconAlign: this.props.triggerIconAlign,
-								triggerIconShape: this.props.triggerIconShape,
-								triggerIconShapeActive: this.props.triggerIconShapeActive,
-								triggerIconSize: this.props.triggerIconSize,
-								isAnimated: this.props.isAnimated,
-								name: toCamelCase(accordionPanel.props.triggerLabel),
-								className: accordionPanel.props.className,
-								isOpen: this.state.activePanels.includes(i),
-								onTriggerClick: (e) => this._onClickTrigger(e, i),
-							}
-						)
+						key: i,
+						panelId: i,
+						triggerIconAlign: this.props.triggerIconAlign,
+						triggerIconShape: this.props.triggerIconShape,
+						triggerIconShapeActive: this.props.triggerIconShapeActive,
+						triggerIconSize: this.props.triggerIconSize,
+						isAnimated: this.props.isAnimated,
+						name: toCamelCase(accordionPanel.props.triggerLabel),
+						className: accordionPanel.props.className,
+						setClickedPanel: this.props.multiSelectable ? false : this.setClickedPanel,
+						isOpen: isOpen,
 					}
-				</li>
-			);
+				)
+
+		);
+	}
+
+	/**
+	 * @returns {Array} `AccordionPanel` components with the correct value for `isOpen` prop
+	 */
+	renderAccordionPanels() {
+		this.accordionPanels = this.accordionPanels.map((accordionPanel, i) => {
+			const isOpen = accordionPanel.props.isOpen && this.state.clickedPanel == null;
+
+			return this.clonePanels(accordionPanel, i, isOpen);
 		});
 
 		return this.accordionPanels;
@@ -91,7 +88,7 @@ class AccordionPanelGroup extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'accordionPanelGroup',
+			ACCORDIONPANELGROUP_CLASS,
 			'list',
 			className
 		);

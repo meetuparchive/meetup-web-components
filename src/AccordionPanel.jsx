@@ -6,13 +6,13 @@ import Flex from './Flex';
 import FlexItem from './FlexItem';
 import Icon from './Icon';
 
+export const PANEL_CLASS = 'accordionPanel';
+export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
+
 /**
  * @module AccordionPanel
  */
 class AccordionPanel extends React.Component {
-	/**
-	 * Document this for PR
-	 */
 	constructor(props){
 		super(props);
 		this.state = {
@@ -20,33 +20,49 @@ class AccordionPanel extends React.Component {
 		};
 
 		this._handleToggle = this._handleToggle.bind(this);
-		this._getContentHeight = this._getContentHeight.bind(this);
 	}
 
 	/**
-	 * Document this for PR
+	 * @returns {undefined}
+	 *
+	 * Updates state to toggle `AccordionPanel` open and closed
 	 */
-	_handleToggle(event){
+	_handleToggle(){
+		const newState = !this.state.open;
+		const { setClickedPanel } = this.props;
+
+		if (setClickedPanel) {
+			setClickedPanel(this);
+		}
+
 		this.setState({
-			open: !this.state.open
+			height: `${newState * this.content.getBoundingClientRect().height}px`,
+			open: newState
 		});
+
 	}
 
-	_getContentHeight() {
-		return `${this.props.isOpen * this.content.getBoundingClientRect().height}px`;
-	}
-
+	/**
+	 * @returns {undefined}
+	 *
+	 * Sets height of `AccordionPanel` to be appear open or closed when mounting
+	 */
 	componentDidMount() {
 		this.setState({
-			height: this._getContentHeight()
+			height: `${this.state.open * this.content.getBoundingClientRect().height}px`
 		});
 	}
 
+	/**
+	 * @returns {undefined}
+	 *
+	 * Updates state to toggle `AccordionPanel` open and closed
+	 */
 	componentWillUpdate(nextProps, nextState) {
 		if (nextProps.isOpen !== this.state.open) {
 			this.setState({
 				open: nextProps.isOpen,
-				height: this._getContentHeight()
+				height: `${nextProps.isOpen * this.content.getBoundingClientRect().height}px`
 			});
 		}
 	}
@@ -55,8 +71,9 @@ class AccordionPanel extends React.Component {
 		const {
 			isOpen, // eslint-disable-line no-unused-vars
 			name,
-			onTriggerClick,
 			panelContent,
+			panelId, // eslint-disable-line no-unused-vars
+			setClickedPanel, // eslint-disable-line no-unused-vars
 			triggerIconShape,
 			triggerIconShapeActive,
 			triggerIconSize,
@@ -70,9 +87,9 @@ class AccordionPanel extends React.Component {
 
 		const classNames = {
 			accordionPanel: cx(
-				'accordionPanel',
+				PANEL_CLASS,
 				{
-					'accordionPanel--active': this.state.open,
+					[ACTIVEPANEL_CLASS]: this.state.open,
 					[classNamesActive]: this.state.open && classNamesActive
 				},
 				className
@@ -89,51 +106,56 @@ class AccordionPanel extends React.Component {
 		const iconShape = this.state.open && triggerIconShapeActive ? triggerIconShapeActive : triggerIconShape;
 
 		return(
-			<Flex
-				className={classNames.accordionPanel}
-				rowReverse={triggerIconAlign === 'left' && 'atAll'}
-				{...other}
+			<li
+				className='list-item'
+				key={panelId}
 				>
-
-				<FlexItem>
-					<Chunk>
-						<button
-							role='tab'
-							id={`label-${name}`}
-							aria-controls={`panel-${name}`}
-							aria-expanded={this.state.open}
-							aria-selected={this.state.open}
-							className='accordionPanel-label display--block span--100'
-							onClick={onTriggerClick || this._handleToggle}>
-								{triggerLabel}
-						</button>
-					</Chunk>
-
-					<Chunk
-						role='tabpanel'
-						aria-labelledby={`label-${name}`}
-						aria-hidden={!this.state.open}
-						className={classNames.content}
-						style={{height: this.state.height}}>
-						<div
-							className='accordionPanel-content'
-							ref={(div) => { this.content = div; }}>
-							{panelContent}
-						</div>
-					</Chunk>
-				</FlexItem>
-
-				<FlexItem
-					className='accordionPanel-icon'
-					onClick={onTriggerClick || this._handleToggle}
-					shrink
+				<Flex
+					className={classNames.accordionPanel}
+					rowReverse={triggerIconAlign === 'left' && 'atAll'}
+					{...other}
 					>
-					<Icon
-						shape={iconShape}
-						size={triggerIconSize} />
-				</FlexItem>
 
-			</Flex>
+					<FlexItem>
+						<Chunk>
+							<button
+								role='tab'
+								id={`label-${name}`}
+								aria-controls={`panel-${name}`}
+								aria-expanded={this.state.open}
+								aria-selected={this.state.open}
+								className='accordionPanel-label display--block span--100'
+								onClick={this._handleToggle}>
+									{triggerLabel}
+							</button>
+						</Chunk>
+
+						<Chunk
+							role='tabpanel'
+							aria-labelledby={`label-${name}`}
+							aria-hidden={!this.state.open}
+							className={classNames.content}
+							style={{height: this.state.height}}>
+							<div
+								className='accordionPanel-content'
+								ref={(div) => { this.content = div; }}>
+								{panelContent}
+							</div>
+						</Chunk>
+					</FlexItem>
+
+					<FlexItem
+						className='accordionPanel-icon'
+						onClick={this._handleToggle}
+						shrink
+						>
+						<Icon
+							shape={iconShape}
+							size={triggerIconSize} />
+					</FlexItem>
+
+				</Flex>
+			</li>
 		);
 	}
 }
@@ -150,8 +172,8 @@ AccordionPanel.propTypes = {
 	isOpen: React.PropTypes.bool,
 	isAnimated: React.PropTypes.bool,
 	name: React.PropTypes.string,
-	onTriggerClick: React.PropTypes.func,
 	panelContent: React.PropTypes.element,
+	panelId: React.PropTypes.number,
 	triggerIconAlign: React.PropTypes.string,
 	triggerIconShape: React.PropTypes.string,
 	triggerIconShapeActive: React.PropTypes.string,

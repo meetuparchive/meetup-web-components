@@ -10,6 +10,7 @@ $A_duration: 0.2s;
 .accordionPanel-animator {
 	overflow: hidden;
 	transition: height $A_duration $A_curve-default;
+	will-change: height;
 }
 
 .accordionPanel-animator--collapse {
@@ -22,6 +23,11 @@ $A_duration: 0.2s;
 	border: inherit;
 	text-align: inherit;
 	padding: 0;
+	outline: 0;
+
+	&:focus {
+		font-weight: bold;
+	}
 }
 
 .accordionPanel-icon .svg--chevron-down .svg-icon {
