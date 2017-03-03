@@ -38,7 +38,7 @@ class TimeInput extends React.Component {
 		);
 
 		const labelClassNames = cx({ required });
-
+		console.log('TIME IS', this.state.value);
 		return (
 			<div>
 				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }

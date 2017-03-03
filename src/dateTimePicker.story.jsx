@@ -13,7 +13,7 @@ storiesOf('DateTimePicker', module)
 					<DateTimePicker
 						name='event_time'
 						label='Start at'
-						date={Date.now()}
+						value={new Date()}
 						forceFlatpickr
 						datepickerOptions={{ allowInput: true }}
 					/>
@@ -26,23 +26,28 @@ storiesOf('DateTimePicker', module)
 			<DateTimePicker
 				name='event_time'
 				label='Start at'
-				date={Date.now()}
+				value={new Date()}
 				required
 				forceFlatpickr
 			/>
 		</div>);
 	})
 	.add('sets a valid date range', () => {
+		const min = new Date(),
+			max = new Date(),
+			now = Date.now();
+		min.setDate(min.getDate() - 2);
+		max.setDate(max.getDate() + 12);
 		const opts = {
 			allowInput: true,
-			minDate: '2018-01-01',
-			maxDate: '2018-02-01'
+			minDate: min,
+			maxDate: max
 		};
-
 		return (<div className='span--50'>
 			<DateTimePicker
 				name='event_time'
 				label='Start date between Jan Feb 2018'
+				value={now}
 				forceFlatpickr
 				datepickerOptions={opts}
 			/>
@@ -53,8 +58,7 @@ storiesOf('DateTimePicker', module)
 				allowInput: true,
 				minDate: Date.now()
 			},
-			date = { date: '3000-01-01' };
-
+			date = new Date(3000,1,1,15,0,0);
 		return (<div className='span--50'>
 			<DateTimePicker
 				name='event_time'
@@ -65,18 +69,53 @@ storiesOf('DateTimePicker', module)
 			/>
 		</div>);
 	})
-	.add('renders datetime-local if supported with props', () => {
+	.add('can render date only', () => {
 		const opts = {
 				allowInput: true,
 				minDate: Date.now()
 			},
-			date = { date: '2017-02-18' };
+			date = '2017-02-18';
 
 		return (<div className='span--50'>
 			<DateTimePicker
 				name='event_time'
 				label='Start at'
 				value={date}
+				dateOnly
+				datepickerOptions={opts}
+				forceFlatpickr
+			/>
+		</div>);
+	})
+	.add('renders datetime-local on mobile with props', () => {
+		const opts = {
+				allowInput: true,
+				minDate: Date.now()
+			},
+			date = '2017-02-18';
+
+		return (<div className='span--50'>
+			<DateTimePicker
+				name='event_time'
+				label='Start at'
+				value={date}
+				datepickerOptions={opts}
+			/>
+		</div>);
+	})
+	.add('can render date only on mobile', () => {
+		const opts = {
+				allowInput: true,
+				minDate: Date.now()
+			},
+			date = '2017-02-18';
+
+		return (<div className='span--50'>
+			<DateTimePicker
+				name='event_time'
+				label='Start at'
+				value={date}
+				dateOnly
 				datepickerOptions={opts}
 			/>
 		</div>);

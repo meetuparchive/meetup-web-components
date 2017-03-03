@@ -6,24 +6,24 @@ import DateTimeLocalInput from './DateTimeLocalInput';
 
 /**
  * @module DateTimePicker
+ * a component that renders a calendar ui and time input
+ * defaults to datetime-local on supported mobile browsers
  */
 class DateTimePicker extends React.Component {
 
 	constructor(props) {
+		console.log(props.value);
 		super(props);
-
-		const propsValue = props.value || {};
 		this.state = {
-			value: {
-				date: propsValue.date || '',
-				time: propsValue.time || ''
-			},
+			datetime: props.value ? new Date(props.value).toISOString() : '',
 			isDateTimeLocalSupported: false
 		};
-
+		console.log(this.state);
+		this.getDate = this.getDate.bind(this);
 		this.setDate = this.setDate.bind(this);
+		this.getTime = this.getTime.bind(this);
 		this.setTime = this.setTime.bind(this);
-		this.parseDateTime = this.parseDateTime.bind(this);
+		this.setDateTime = this.setDateTime.bind(this);
 	}
 
 	componentWillMount() {
@@ -44,24 +44,42 @@ class DateTimePicker extends React.Component {
 		return !(this.props.forceFlatpickr || input.value === invalidValue);
 	}
 
+	getDate() {
+		if (!this.state.datetime) {
+			return;
+		}
+		const datetime = new Date(this.state.datetime);
+		return new Date(datetime.getFullYear(), datetime.getMonth(), datetime.getDate());
+	}
+
 	setDate(value) {
-		this.setState({ value: { date: value }});
+		const newDate = new Date(value);
+		const datetime = new Date(this.state.datetime);
+
+		datetime.setFullYear(newDate.getFullYear(), newDate.getFullMonth(), newDate.getDate());
+		this.setState({ datetime });
+	}
+
+	getTime() {
+		if (!this.state.datetime) {
+			return;
+		}
+		const datetime = new Date(this.state.datetime);
+		return (datetime.toTimeString().split(' ')[0]).split(':', 2).join(':');
+		// TODO localize toLocaleTimeString ?
 	}
 
 	setTime(value) {
-		this.setState({ value: { time: value }});
+		const newTime = new Date(value);
+		const datetime = new Date(this.state.datetime);
+
+		datetime.setTime(newTime.getTime());
+		this.setState({ datetime });
 	}
 
-	parseDateTime(value) {
-		const datetime = value.split('T'),
-			newState = {
-				date: datetime[0],
-				time: datetime[1]
-			};
-		this.setState(newState);
+	setDateTime(value) {
+		this.setState({ datetime: new Date(value) });
 	}
-
-	getDateTime() { return `${this.state.value.date}T${this.state.value.time}`; }
 
 	render() {
 		const {
@@ -80,9 +98,10 @@ class DateTimePicker extends React.Component {
 			'dateTimePicker',
 			{required},
 			className
-		);
+		),
+			labelClassNames = cx({required}),
+			timeInputName = `${name}-time`;
 
-		const labelClassNames = cx({required});
 		if (this.state.isDateTimeLocalSupported) {
 
 			const dateTimeLocalOpts = {
@@ -94,21 +113,27 @@ class DateTimePicker extends React.Component {
 				<DateTimeLocalInput
 					id={id}
 					label={label}
-					value={this.getDateTime()}
+					value={this.state.datetime}
 					required={required}
 					className={classNames}
-					callback={this.parseDateTime}
+					callback={this.setDateTime}
 					{...dateTimeLocalOpts}
 					{...other} />
 			);
 		}
 
-		// TODO disambiguate name prop
 		return (
-			<div>
+			<div className={classNames}>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>
-				<Flatpickr name={name} callback={this.setDate} value={this.state.value.date} opts={datepickerOptions} />
-				{ !dateOnly && <TimeInput name={name} callback={this.setTime} value={this.state.value.time} /> }
+				<Flatpickr name={name}
+					callback={this.setDate}
+					value={this.getDate()}
+					opts={datepickerOptions} />
+
+				{ !dateOnly &&
+					<TimeInput name={timeInputName}
+						callback={this.setTime}
+						value={this.getTime()} /> }
 			</div>
 		);
 	}
@@ -123,7 +148,10 @@ DateTimePicker.propTypes = {
 	]),
 	name: React.PropTypes.string.isRequired,
 	required: React.PropTypes.bool,
-	value: React.PropTypes.object,
+	value: React.PropTypes.oneOfType([
+		React.PropTypes.number,
+		React.PropTypes.string // ISO, SHort, Long, Full Date
+	]),
 	dateOnly: React.PropTypes.bool,
 	forceFlatpickr: React.PropTypes.bool
 };
