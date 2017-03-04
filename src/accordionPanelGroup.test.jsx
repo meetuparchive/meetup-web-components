@@ -4,7 +4,7 @@ import TestUtils from 'react-addons-test-utils';
 import AccordionPanelGroup from './AccordionPanelGroup';
 import AccordionPanel, { ACTIVEPANEL_CLASS, PANEL_CLASS } from './AccordionPanel';
 
-describe('AccordionPanelGroup', function(){
+fdescribe('AccordionPanelGroup', function(){
 	let accordionPanelGroup,
 		accordionPanelGroupToggle;
 
@@ -152,11 +152,11 @@ describe('AccordionPanel', function() {
 	});
 
 	it('changes state to be open onClick', function() {
-		const node = TestUtils.scryRenderedDOMComponentsWithClass(panel, PANEL_CLASS);
+		const node = TestUtils.findRenderedDOMComponentWithTag(panel, 'button');
 
-		expect(node.state.open).toBe(false);
+		expect(panel.state.open).toBe(false);
 		TestUtils.Simulate.click(node);
-		expect(node.state.open).toBe(true);
+		expect(panel.state.open).toBe(true);
 	});
 
 	it('reverses Flex direction when icon is right-aligned', function(){
@@ -165,20 +165,20 @@ describe('AccordionPanel', function() {
 		expect(node.length).toBe(1);
 	});
 
-	it('should render an icon', function(){
+	it('should render an icon component', function(){
 		const node = TestUtils.scryRenderedDOMComponentsWithClass(panel, 'svg');
 
 		expect(node.length).toBe(1);
 	});
 
-	it('should render custom icons', function(){
-		const node = TestUtils.scryRenderedDOMComponentsWithClass(panelCustomIcon, `svg--${customIcon}`);
-		const activeNode = TestUtils.scryRenderedDOMComponentsWithClass(panelCustomIcon, `svg--${customIconActive}`);
+	fit('should render custom icons', function(){
+		const node = TestUtils.findRenderedDOMComponentWithTag(panelCustomIcon, 'button');
+		const iconNode = TestUtils.scryRenderedDOMComponentsWithClass(panelCustomIcon, `svg--${customIcon}`);
+		const activeIconNode = TestUtils.scryRenderedDOMComponentsWithClass(panelCustomIcon, `svg--${customIconActive}`);
 
-		expect(node.length).toBe(1);
-
+		expect(iconNode.length).toBe(1);
 		TestUtils.Simulate.click(node);
-		expect(activeNode.length).toBe(1);
+		expect(activeIconNode.length).toBe(1);
 	});
 
 });
