@@ -58,6 +58,7 @@
     "eslint": "3.17.0",
     "eslint-loader": "1.6.3",
     "eslint-plugin-react": "6.9.0",
+    "flatpickr": "2.4.2",
     "husky": "0.13.1",
     "inquirer": "3.0.6",
     "jest-cli": "19.0.2",
