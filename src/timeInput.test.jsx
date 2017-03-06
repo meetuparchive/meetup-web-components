@@ -26,7 +26,7 @@ describe('TimeInput', function() {
 		expect(timeInputEl).not.toBeNull();
 	});
 
-	it('takes a value', function() {
+	it('takes a value in HH:mm format', function() {
 		expect(timeInputEl.value).toEqual(timeValue);
 	});
 

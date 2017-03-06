@@ -35,11 +35,11 @@ describe('DateTimeLocal', function() {
 	});
 
 	it('should take an initial value', function() {
-		expect(dateTimeComponent.state).toEqual({ value: value });
+		expect(dateTimeComponent.state).toEqual({ value });
 	});
 
 	it('sets state with its value', function() {
-		expect(dateTimeComponent.state).toEqual({ value: value });
+		expect(dateTimeComponent.state).toEqual({ value });
 	});
 
 

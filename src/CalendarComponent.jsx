@@ -3,10 +3,10 @@ import cx from 'classnames';
 import Flatpickr from 'flatpickr';
 
 /**
- * @module FlatpickrComponent
+ * @module CalendarComponent
  * inits flatpickr js date picker over a text input
 */
-class FlatpickrComponent extends React.Component {
+class CalendarComponent extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -17,7 +17,7 @@ class FlatpickrComponent extends React.Component {
 	}
 
 	/**
-	* init the js date flatpickr component
+	* @description init the js date flatpickr component
 	*/
 	componentDidMount() {
 		const options = {
@@ -37,7 +37,11 @@ class FlatpickrComponent extends React.Component {
 
 	/**
 	* @function onChange
-	* conforms to the onChange handler flatpickr expects
+	* @param Array selectedDates
+	* @param dateStr
+	* @param Object instance the calendar instance
+	* @description signature conforms to the onChange handler flatpickr expects
+	* calls the callback with the selectedDates value (callback used in wrapping components)
 	*/
 	onChange(selectedDates, dateStr, instance) {
 		this.setState({ value: selectedDates[0] });
@@ -73,11 +77,10 @@ class FlatpickrComponent extends React.Component {
 	}
 }
 
-FlatpickrComponent.propTypes = {
+CalendarComponent.propTypes = {
 	name: React.PropTypes.string.isRequired,
-	// required: React.PropTypes.bool,
 	callback: React.PropTypes.func
 };
 
-export default FlatpickrComponent;
+export default CalendarComponent;
 

@@ -1,28 +1,29 @@
 import React from 'react';
 import cx from 'classnames';
-import Flatpickr from './FlatpickrComponent';
+import CalendarComponent from './CalendarComponent';
 import TimeInput from './TimeInput';
 import DateTimeLocalInput from './DateTimeLocalInput';
 
 /**
  * @module DateTimePicker
- * a component that renders a calendar ui and time input
- * defaults to datetime-local on supported mobile browsers
+ * @description a component that renders a calendar ui and time input
+ * defaults to datetime-local input on supported mobile browsers.
  */
 class DateTimePicker extends React.Component {
 
 	constructor(props) {
-		console.log(props.value);
 		super(props);
 		this.state = {
-			datetime: props.value ? new Date(props.value).toISOString() : '',
+			datetime: props.value ? new Date(props.value) : '',
 			isDateTimeLocalSupported: false
 		};
-		console.log(this.state);
+
 		this.getDate = this.getDate.bind(this);
 		this.setDate = this.setDate.bind(this);
+
 		this.getTime = this.getTime.bind(this);
 		this.setTime = this.setTime.bind(this);
+
 		this.setDateTime = this.setDateTime.bind(this);
 	}
 
@@ -30,6 +31,11 @@ class DateTimePicker extends React.Component {
 		this.setState({ isDateTimeLocalSupported: this.hasBrowserSupport() });
 	}
 
+	/**
+	* @function hasBrowserSupport
+	* @description test if this browser supports datetime local
+	* @return bool whether or not this browser supports datetime local
+	*/
 	hasBrowserSupport() {
 		const input = document.createElement('input'),
 			invalidValue = 'notadate';
@@ -41,9 +47,14 @@ class DateTimePicker extends React.Component {
 		input.setAttribute('type', 'datetime-local');
 		input.setAttribute('value', invalidValue);
 
-		return !(this.props.forceFlatpickr || input.value === invalidValue);
+		return !(this.props.forceCalendar || input.value === invalidValue);
 	}
 
+	/**
+	* @function getDate
+	* @description gets a date from the datetime value in state
+	* @return Date
+	*/
 	getDate() {
 		if (!this.state.datetime) {
 			return;
@@ -52,6 +63,11 @@ class DateTimePicker extends React.Component {
 		return new Date(datetime.getFullYear(), datetime.getMonth(), datetime.getDate());
 	}
 
+	/**
+	* @function setDate
+	* @description sets the date portion of the state's datetime
+	* @param Date value date to set in state
+	*/
 	setDate(value) {
 		const newDate = new Date(value);
 		const datetime = new Date(this.state.datetime);
@@ -60,15 +76,29 @@ class DateTimePicker extends React.Component {
 		this.setState({ datetime });
 	}
 
+	parseTimeFromDateTime(datetime) {
+		return (datetime.toTimeString().split(' ')[0]).split(':', 2).join(':'); // TODO localize toLocaleTimeString ?
+	}
+
+	/**
+	* @function getTime
+	* @description gets the time portion of the state's datetime
+	* @return String time portion of datetime  (hour and min)
+	*/
 	getTime() {
 		if (!this.state.datetime) {
 			return;
 		}
 		const datetime = new Date(this.state.datetime);
-		return (datetime.toTimeString().split(' ')[0]).split(':', 2).join(':');
-		// TODO localize toLocaleTimeString ?
+		// split on space and leave off timezone and seconds
+		return this.parseTimeFromDateTime(datetime);
 	}
 
+	/**
+	* @function setTime
+	* @description gsets the time portion of the state's datetime
+	* @param value String valid time string
+	*/
 	setTime(value) {
 		const newTime = new Date(value);
 		const datetime = new Date(this.state.datetime);
@@ -103,11 +133,7 @@ class DateTimePicker extends React.Component {
 			timeInputName = `${name}-time`;
 
 		if (this.state.isDateTimeLocalSupported) {
-
-			const dateTimeLocalOpts = {
-				min: `${datepickerOptions.minDate}T00:00:00`,
-				max: `${datepickerOptions.maxDate}T00:00:00`
-			};
+			// TODO datetime-local opts ?
 
 			return (
 				<DateTimeLocalInput
@@ -117,7 +143,6 @@ class DateTimePicker extends React.Component {
 					required={required}
 					className={classNames}
 					callback={this.setDateTime}
-					{...dateTimeLocalOpts}
 					{...other} />
 			);
 		}
@@ -125,7 +150,7 @@ class DateTimePicker extends React.Component {
 		return (
 			<div className={classNames}>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>
-				<Flatpickr name={name}
+				<CalendarComponent name={name}
 					callback={this.setDate}
 					value={this.getDate()}
 					opts={datepickerOptions} />
@@ -150,10 +175,11 @@ DateTimePicker.propTypes = {
 	required: React.PropTypes.bool,
 	value: React.PropTypes.oneOfType([
 		React.PropTypes.number,
-		React.PropTypes.string // ISO, SHort, Long, Full Date
+		React.PropTypes.object,
+		React.PropTypes.string
 	]),
 	dateOnly: React.PropTypes.bool,
-	forceFlatpickr: React.PropTypes.bool
+	forceCalendar: React.PropTypes.bool
 };
 
 export default DateTimePicker;

@@ -6,7 +6,7 @@ import { InfoWrapper } from './utils/storyComponents';
 storiesOf('DateTimePicker', module)
 	.addWithInfo(
 		'default',
-		'renders date and time inputs, using datetime-local where supported. Use `forceFlatpickr` option to not use datetime-local if supported',
+		'renders date and time inputs, using datetime-local where supported. Use `forceCalendar` option to not use datetime-local if supported',
 		() => (
 			<InfoWrapper>
 				<div className='span--50'>
@@ -14,7 +14,7 @@ storiesOf('DateTimePicker', module)
 						name='event_time'
 						label='Start at'
 						value={new Date()}
-						forceFlatpickr
+						forceCalendar
 						datepickerOptions={{ allowInput: true }}
 					/>
 				</div>
@@ -28,7 +28,7 @@ storiesOf('DateTimePicker', module)
 				label='Start at'
 				value={new Date()}
 				required
-				forceFlatpickr
+				forceCalendar
 			/>
 		</div>);
 	})
@@ -48,7 +48,7 @@ storiesOf('DateTimePicker', module)
 				name='event_time'
 				label='Start date between Jan Feb 2018'
 				value={now}
-				forceFlatpickr
+				forceCalendar
 				datepickerOptions={opts}
 			/>
 		</div>);
@@ -65,7 +65,7 @@ storiesOf('DateTimePicker', module)
 				label='In the year 3000'
 				value={date}
 				datepickerOptions={opts}
-				forceFlatpickr
+				forceCalendar
 			/>
 		</div>);
 	})
@@ -83,7 +83,7 @@ storiesOf('DateTimePicker', module)
 				value={date}
 				dateOnly
 				datepickerOptions={opts}
-				forceFlatpickr
+				forceCalendar
 			/>
 		</div>);
 	})
