@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { storiesOf } from '@kadira/storybook';
-import { WithNotes } from '@kadira/storybook-addon-notes';
 import { InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
-import Tabs from './Tabs';
+import { Tabs, TabsTab } from './Tabs';
 
 storiesOf('Tabs', module)
 	.addDecorator(decorateWithLocale)
@@ -13,41 +12,33 @@ storiesOf('Tabs', module)
 		'This is the basic usage with the component.',
 		() => (
 			<InfoWrapper>
-				<Tabs
-					tabs={[
-						<Link>First tab</Link>,
-						<Link isSelected>Second tab</Link>,
-						<Link>Third tab</Link>,
-					]}
-				/>
+				<Tabs>
+					<TabsTab><Link>First tab</Link></TabsTab>
+					<TabsTab isSelected><Link>Second tab</Link></TabsTab>
+					<TabsTab><Link>Third tab</Link></TabsTab>
+				</Tabs>
 			</InfoWrapper>
 		)
 	)
-	.add('Bordered tabs', () => {
+	.addWithInfo('Bordered tabs', () => {
 		return (
-			<WithNotes notes='For bordered tabs, add the boolean prop `bordered` to `Tabs`'>
-				<Tabs
-					bordered
-					tabs={[
-						<Link isSelected>First tab</Link>,
-						<Link>Second tab</Link>,
-						<Link>Third tab</Link>,
-					]}
-				/>
-			</WithNotes>
+			<InfoWrapper>
+				<Tabs bordered>
+					<TabsTab isSelected><Link>First tab</Link></TabsTab>
+					<TabsTab><Link>Second tab</Link></TabsTab>
+					<TabsTab><Link>Third tab</Link></TabsTab>
+				</Tabs>
+			</InfoWrapper>
 		);
 	})
-	.add('Full width tabs', () => {
+	.addWithInfo('Full width tabs', () => {
 		return (
-			<WithNotes notes='For full-width tabs, add the boolean prop `full` to `Tabs`'>
-				<Tabs
-					full
-					tabs={[
-						<Link>First tab</Link>,
-						<Link>Second tab</Link>,
-						<Link isSelected>Third tab</Link>,
-					]}
-				/>
-			</WithNotes>
+			<InfoWrapper>
+				<Tabs full>
+					<TabsTab><Link>First tab</Link></TabsTab>
+					<TabsTab><Link>Second tab</Link></TabsTab>
+					<TabsTab isSelected><Link>Third tab</Link></TabsTab>
+				</Tabs>
+			</InfoWrapper>
 		);
 	});

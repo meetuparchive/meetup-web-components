@@ -88,6 +88,11 @@ Filename casing convenctions:
 - Test files: `alllowercase`, i.e. `rsvptag.test.js`
 - Story files: `alllowercase`, i.e. `rsvptag.story.jsx`
 
+### Layout conventions
+
+The `src/` directory contains layout helpers, like `Section` and `Chunk`. These are 
+documented in Storybook, but a [more detailed guide can be found here](https://meetup.atlassian.net/wiki/display/SDS/Guide+to+Layout+Components).
+
 
 ## Testing
 
