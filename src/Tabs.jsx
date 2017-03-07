@@ -64,12 +64,15 @@ export class Tabs extends React.Component {
 }
 Tabs.propTypes = {
 	children: (props, propName, componentName) => {
+		let error;
 		const expectedName = 'TabsTab';
+
 		React.Children.forEach(props[propName], child => {
 			if (typeof child === 'undefined' || child.type.name !== expectedName) {
-				return new Error(`Children must be React elements of type ${expectedName}`);
+				error = new Error(`Children must be React elements of type ${expectedName}`);
 			}
 		});
+		return error;
 	},
 	full: React.PropTypes.bool,
 	bordered: React.PropTypes.bool
