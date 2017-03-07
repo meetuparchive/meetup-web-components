@@ -33,9 +33,6 @@
     "react-dom": "^15.4.2",
     "react-intl": "^2.2.3"
   },
-  "dependencies": {
-    "swarm-sasstools": "1.0.6"
-  },
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "3.3.0",
     "@kadira/storybook": "2.35.3",
@@ -74,6 +71,7 @@
     "storybook-addon-i18n-tools": "1.0.0",
     "style-loader": "0.13.2",
     "swarm-icons": "0.1.0",
+    "swarm-sasstools": "1.0.9",
     "webpack": "^2.2"
   }
 }
