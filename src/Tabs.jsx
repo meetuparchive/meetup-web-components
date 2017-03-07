@@ -63,9 +63,15 @@ export class Tabs extends React.Component {
 	}
 }
 Tabs.propTypes = {
-	children: React.PropTypes.arrayOf(
-		React.PropTypes.instanceOf(TabsTab)
-	).isRequired,
+	children: (props, propName, componentName) => {
+		let error;
+		React.Children.forEach(props[propName], child => {
+			if (typeof child === 'undefined' || child.type !== TabsTab) {
+				error = new Error('Children must be React elements of type TabsTab');
+			}
+		});
+		return error;
+	},
 	full: React.PropTypes.bool,
-	bordered: React.PropTypes.bool,
+	bordered: React.PropTypes.bool
 };
