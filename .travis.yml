@@ -1,7 +1,7 @@
 sudo: required
 language: node_js
 node_js:
-  - "6.1"
+  - "7.7.1"
 
 branches:  # pushes only get built for master
   only:
