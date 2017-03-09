@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
-import Modal, { MODAL_CLOSE_BUTTON } from './Modal';
+import
+	Modal,
+	{ MODAL_CLOSE_BUTTON }
+from './Modal';
+
+import { findComponentsWithType } from './utils/testUtils';
 
 describe('Modal', () => {
 

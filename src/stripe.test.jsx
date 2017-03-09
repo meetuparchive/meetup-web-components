@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
 
 import Stripe, {
 	STRIPE_CLASS,
@@ -9,6 +8,8 @@ import Stripe, {
 	STRIPE_INVERTED_CLASS,
 	STRIPE_HERO_CLASS,
 } from './Stripe';
+
+import { findComponentsWithType } from './utils/testUtils';
 
 describe('Stripe', function() {
 
