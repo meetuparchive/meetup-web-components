@@ -9,7 +9,7 @@ import Stripe, {
 	STRIPE_HERO_CLASS,
 } from './Stripe';
 
-import { findComponentsWithType } from './utils/testUtils';
+import Bounds from './Bounds';
 
 describe('Stripe', function() {
 
@@ -85,7 +85,7 @@ describe('Stripe', function() {
 			expect(stripeNode.classList).toContain(STRIPE_HERO_CLASS);
 		});
 		it('should render a `Bounds` component', () => {
-			const boundComponent = findComponentsWithType(stripeHero, 'Bounds');
+			const boundComponent = TestUtils.scryRenderedComponentsWithType(stripeHero, Bounds);
 			expect(boundComponent.length).toBe(1);
 		});
 	});

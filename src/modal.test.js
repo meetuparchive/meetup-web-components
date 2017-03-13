@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import
-	Modal,
-	{ MODAL_CLOSE_BUTTON }
-from './Modal';
 
-import { findComponentsWithType } from './utils/testUtils';
+import Button from './Button';
+import Modal, {
+	MODAL_CLOSE_BUTTON
+} from './Modal';
 
 describe('Modal', () => {
 
@@ -43,7 +42,7 @@ describe('Modal', () => {
 	});
 
 	it('creates a Button component for dismissal', () => {
-		const buttons = findComponentsWithType(modal, 'Button');
+		const buttons = TestUtils.scryRenderedComponentsWithType(modal, Button);
 		expect(buttons.filter(button => button.props.className.includes(MODAL_CLOSE_BUTTON)).length).toBe(1);
 	});
 
