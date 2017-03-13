@@ -58,7 +58,7 @@
     "husky": "0.13.2",
     "inquirer": "3.0.6",
     "jest-cli": "19.0.2",
-    "meetup-web-mocks": "0.1.76",
+    "meetup-web-mocks": "0.1.79",
     "node-sass": "4.5.0",
     "npm-run-all": "4.0.2",
     "raw-loader": "0.5.1",
