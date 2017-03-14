@@ -25,13 +25,13 @@ storiesOf('TextInput', module)
 		error='Not so fast. You have an error.'
 		placeholder='Not your email' />)
 	.add('error state formatted', () => {
-		const trn = defineMessages({ error: {
-			defaultMessage: 'This error is a formatted message.',
-			id: 'stroybook.anError',
-			description: { jira: 'SDS-204' },
-		}
-		}
-		);
+		const trn = defineMessages({
+			error: {
+				defaultMessage: 'This error is a formatted message.',
+				id: 'storybook.anError',
+				description: { jira: 'SDS-204' },
+			}
+		});
 		return (
 			<IntlProvider defaultLocale='en-US' locale='en-US'>
 				<TextInput label='Your name'
