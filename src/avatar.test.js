@@ -28,16 +28,6 @@ describe('Avatar', function() {
 		expect(avatarNode.style.backgroundImage.indexOf(src)).not.toBe(-1);
 	});
 
-	it('renders the noPhoto variant only when a `src` is not passed in', function() {
-		const avatar = TestUtils.renderIntoDocument(<Avatar />);
-		const avatarNode = ReactDOM.findDOMNode(avatar);
-		expect(avatarNode.classList.contains('avatar--noPhoto')).toBe(true);
-
-		const avatarWithSrc = TestUtils.renderIntoDocument(<Avatar src={'image.jpg'} />);
-		const avatarWithSrcNode = ReactDOM.findDOMNode(avatarWithSrc);
-		expect(avatarWithSrcNode.classList.contains('avatar--noPhoto')).toBe(false);
-	});
-
 	it('renders a link element if `href` passed in', () => {
 		const avatar = TestUtils.renderIntoDocument(<Avatar className='test' href='/' />);
 		const avatarComponent = TestUtils.findRenderedDOMComponentWithClass(avatar, 'test');
