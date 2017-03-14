@@ -66,7 +66,10 @@ class TextInput extends React.Component {
 
 TextInput.propTypes = {
 	name: React.PropTypes.string.isRequired,
-	error: React.PropTypes.string,
+	error: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]),
 	label: React.PropTypes.oneOfType([
 		React.PropTypes.string,
 		React.PropTypes.element
