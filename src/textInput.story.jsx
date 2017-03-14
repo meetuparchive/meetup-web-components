@@ -28,7 +28,7 @@ storiesOf('TextInput', module)
 		const trn = defineMessages({ error: {
 			defaultMessage: 'This error is a formatted message.',
 			id: 'stroybook.anError',
-			description: { jira: 'SDS-575' },
+			description: { jira: 'SDS-204' },
 		}
 		}
 		);
