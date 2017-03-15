@@ -65,7 +65,7 @@ Breakpoints        | Direction       | Description
 	}
 }
 
-@include _bpModifier(flex, column) {
+@include _bpModifier(flex, column, true) { // `true` arg generates "atAll" conditional class
 	@include flexParent('column', false);
 	> .flex-item {
 		width: 100%;
@@ -82,7 +82,7 @@ Breakpoints        | Direction       | Description
 	}
 }
 
-@include _bpModifier(flex, row) {
+@include _bpModifier(flex, row, true) {
 	@include flexParent('row', false);
 	height: auto;
 	> .flex-item {
@@ -153,11 +153,11 @@ Class                            | Description
 	@include flex-wrap(wrap);
 }
 
-@include _bpModifier(flex, columnReverse) {
+@include _bpModifier(flex, columnReverse, true) {
 	@include flex-direction(column-reverse);
 }
 
-@include _bpModifier(flex, rowReverse) {
+@include _bpModifier(flex, rowReverse, true) {
 	@include flex-direction(row-reverse);
 	> .flex-item {
 		&:first-child {
