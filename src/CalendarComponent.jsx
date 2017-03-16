@@ -29,6 +29,7 @@ class CalendarComponent extends React.Component {
 
 		Object.assign(options, this.props.opts);
 		this.flatpickr = new Flatpickr(this.node, options);
+		console.log('flatpickr');
 	}
 
 	componentWillUnmount() {
@@ -60,7 +61,7 @@ class CalendarComponent extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'dateTimePicker',
+			'input--dateTimePicker',
 			className
 		);
 

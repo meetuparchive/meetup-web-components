@@ -17,6 +17,7 @@ class DateTimePicker extends React.Component {
 			datetime: props.value ? new Date(props.value) : '',
 			isDateTimeLocalSupported: false
 		};
+		console.log('datetime', this.state.datetime);
 
 		this.getDate = this.getDate.bind(this);
 		this.setDate = this.setDate.bind(this);
@@ -126,6 +127,7 @@ class DateTimePicker extends React.Component {
 
 		const classNames = cx(
 			'dateTimePicker',
+			{calendarTimeComponent : !dateOnly },
 			{required},
 			className
 		),
@@ -149,16 +151,19 @@ class DateTimePicker extends React.Component {
 
 		return (
 			<div className={classNames}>
-				<label htmlFor={id} className={labelClassNames}>{label}</label>
-				<CalendarComponent name={name}
-					callback={this.setDate}
-					value={this.getDate()}
-					opts={datepickerOptions} />
 
-				{ !dateOnly &&
-					<TimeInput name={timeInputName}
-						callback={this.setTime}
-						value={this.getTime()} /> }
+				<label htmlFor={id} className={labelClassNames}>{label}</label>
+				<div>
+					<CalendarComponent name={name}
+						callback={this.setDate}
+						value={this.getDate()}
+						opts={datepickerOptions} />
+
+					{ !dateOnly &&
+						<TimeInput name={timeInputName}
+							callback={this.setTime}
+							value={this.getTime()} /> }
+				</div>
 			</div>
 		);
 	}

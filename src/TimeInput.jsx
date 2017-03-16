@@ -39,7 +39,7 @@ class TimeInput extends React.Component {
 
 		const labelClassNames = cx({ required });
 		return (
-			<div>
+			<span>
 				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
 				<input
 					id={id}
@@ -51,7 +51,7 @@ class TimeInput extends React.Component {
 					required={required}
 					{...other} />
 				{ error && <p className='text--error'>{error}</p> }
-			</div>
+			</span>
 		);
 
 	}

@@ -1,0 +1,21 @@
+@import "~flatpickr/dist/flatpickr.css"; // calendar component
+
+.calendarTimeComponent {	
+	.input--dateTimePicker {
+		display:inline-block;	
+		border-right:none !important;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		width:50%;
+	}
+
+	.input--time {
+		display:inline-block;	
+		border-left:none !important;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		width:50%;
+		text-align:right;
+	}
+}
+
