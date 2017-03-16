@@ -1311,6 +1311,10 @@ bourbon@4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/bourbon/-/bourbon-4.2.3.tgz#d6061c90c0e28737c1a0d015672d72be9770fff0"
 
+bourbon@^4.2.7:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/bourbon/-/bourbon-4.3.3.tgz#c51cb80c6a437aa55c16659597e5c4a86884ea38"
+
 brace-expansion@^1.0.0:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.6.tgz#7197d7eaa9b87e648390ea61fc66c84427420df9"
@@ -5803,6 +5807,11 @@ svgo@^0.7.0:
     mkdirp "~0.5.1"
     sax "~1.2.1"
     whet.extend "~0.9.9"
+
+"swarm-animation@file:../swarm-animation":
+  version "0.0.1"
+  dependencies:
+    bourbon "^4.2.7"
 
 swarm-icons@0.1.0:
   version "0.1.0"

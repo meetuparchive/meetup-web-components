@@ -158,8 +158,10 @@ class Popover extends React.Component {
 			menu: cx(
 				'popover-container',
 				'popover-container--menu',
+				'anim-opacity--short',
 				{
-					'display--none': !isActive,
+					'anim-opacity--0': !isActive,
+					'anim-opacity--1': isActive,
 					'popover-container--horizontal-left': (align === 'left'),
 					'popover-container--horizontal-right': (align === 'right')
 				}
