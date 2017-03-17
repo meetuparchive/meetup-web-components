@@ -22,6 +22,7 @@ describe('DateTimeLocal', function() {
 				callback={callbackSpy}
 				min={min}
 				max={max}
+				required
 			/>
 		);
 		dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent, 'input');
