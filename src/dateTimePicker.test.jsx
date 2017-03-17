@@ -41,36 +41,6 @@ describe('DateTimePicker', function() {
 		expect(dateTimeComponent.state.datetime).toEqual(datetime);
 	});
 
-	it('accepts a Date as a value', function() {
-		dateTimeComponent = TestUtils.renderIntoDocument(
-			<DateTimePicker name='start_time'
-				value={new Date(dateStr)}
-				forceCalendar
-			/>
-		);
-		expect(dateTimeComponent.state.datetime).toEqual(new Date(dateStr));
-	});
-
-	it('accepts a datetime object as value', function() {
-		dateTimeComponent = TestUtils.renderIntoDocument(
-			<DateTimePicker name='start_time'
-				value={datetime}
-				forceCalendar
-			/>
-		);
-		expect(dateTimeComponent.state.datetime).toEqual(datetime);
-	});
-
-	it('accepts a date string value', function() {
-		dateTimeComponent = TestUtils.renderIntoDocument(
-			<DateTimePicker name='start_time'
-				value={dateStr}
-				forceCalendar
-			/>
-		);
-		expect(dateTimeComponent.state.datetime).toEqual(new Date(Date.UTC(year, month, day)));
-	});
-
 	it('values for date and time are set in child components', function() {
 		const timeComponent = TestUtils.findRenderedComponentWithType(dateTimeComponent, TimeInput);
 		const timeInputEl = TestUtils.findRenderedDOMComponentWithTag(timeComponent, 'input');
@@ -104,5 +74,130 @@ describe('DateTimePicker', function() {
 		const calendarComponent = TestUtils.findRenderedComponentWithType(dateTimeComponent, CalendarComponent);
 		expect(calendarComponent.flatpickr.instanceConfig.minDate).toEqual(min);
 		expect(calendarComponent.flatpickr.instanceConfig.maxDate).toEqual(max);
+	});
+
+	describe('accepts different value types', function() {
+		it('accepts a Date as a value', function() {
+			dateTimeComponent = TestUtils.renderIntoDocument(
+				<DateTimePicker name='start_time'
+					value={new Date(dateStr)}
+					forceCalendar
+				/>
+			);
+			expect(dateTimeComponent.state.datetime).toEqual(new Date(dateStr));
+		});
+
+		it('accepts a datetime object as value', function() {
+			dateTimeComponent = TestUtils.renderIntoDocument(
+				<DateTimePicker name='start_time'
+					value={datetime}
+					forceCalendar
+				/>
+			);
+			expect(dateTimeComponent.state.datetime).toEqual(datetime);
+		});
+
+		it('accepts a date string value', function() {
+			dateTimeComponent = TestUtils.renderIntoDocument(
+				<DateTimePicker name='start_time'
+					value={dateStr}
+					forceCalendar
+				/>
+			);
+			expect(dateTimeComponent.state.datetime).toEqual(new Date(Date.UTC(year, month, day)));
+		});
+	});
+
+	describe('callbacks passed to child components are working', function() {
+		let focusSpy,
+			blurSpy,
+			dateInputEl,
+			timeInputEl;
+
+		beforeEach(() => {
+			focusSpy = spyOn(DateTimePicker.prototype, 'onFocus').and.callThrough();
+			blurSpy = spyOn(DateTimePicker.prototype, 'onBlur');
+			dateTimeComponent = TestUtils.renderIntoDocument(
+				<DateTimePicker name='start_time'
+					value={dateStr}
+					forceCalendar
+				/>
+			);
+			timeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent.timeComponent, 'input');
+			dateInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent.dateComponent, 'input');
+		});
+
+		afterEach(() => {
+			focusSpy = null;
+			blurSpy = null;
+			dateInputEl = null;
+			timeInputEl = null;
+		});
+
+		it('has an onFocus callback that gets called when time input is focused', function() {
+			TestUtils.Simulate.focus(timeInputEl);
+			expect(focusSpy).toHaveBeenCalled();
+		});
+
+		it('has an onFocus callback that gets called when calendar input is focused', function() {
+			TestUtils.Simulate.focus(dateInputEl);
+			expect(focusSpy).toHaveBeenCalled();
+		});
+
+		it('has an onFocus callback that applied focused class', function() {
+			dateTimeComponent.onFocus();
+			expect(() => TestUtils.findRenderedDOMComponentWithClass(dateTimeComponent, 'focused')).not.toThrow();
+		});
+
+		it('has an onBlur callback that gets called when time input is blurred', function() {
+			TestUtils.Simulate.blur(dateInputEl);
+			expect(blurSpy).toHaveBeenCalled();
+		});
+
+		it('has an onBlur callback that gets called when calendar input is blurred', function() {
+			TestUtils.Simulate.blur(dateInputEl);
+			expect(blurSpy).toHaveBeenCalled();
+		});
+	});
+
+	describe('onChangeCallback\'s get called when child components change', function() {
+		it('has setTime callback called when time input changes', function() {
+			const setTimeSpy = spyOn(DateTimePicker.prototype, 'setTime');
+			dateTimeComponent = TestUtils.renderIntoDocument(
+				<DateTimePicker name='start_time'
+					value={dateStr}
+					forceCalendar
+				/>
+			);
+			const timeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent.timeComponent, 'input');
+			TestUtils.Simulate.change(timeInputEl);
+			expect(setTimeSpy).toHaveBeenCalled();
+		});
+
+		it('has setDate callback called when date input changes', function() {
+			const setDateSpy = spyOn(DateTimePicker.prototype, 'setDate');
+			dateTimeComponent = TestUtils.renderIntoDocument(
+				<DateTimePicker name='start_time'
+					value={dateStr}
+					forceCalendar
+				/>
+			);
+			dateTimeComponent.dateComponent.flatpickr.setDate(dateStr);
+			expect(setDateSpy).toHaveBeenCalled();
+		});
+
+		it('has setDateTime callback called when datetime input changes', function() {
+			const setDateTimeSpy = spyOn(DateTimePicker.prototype, 'setDateTime');
+			dateTimeComponent = TestUtils.renderIntoDocument(
+				<DateTimePicker name='start_time'
+					value={dateStr}
+				/>
+			);
+			dateTimeComponent.setState({ isDateTimeLocalSupported: true }); // forcing datetimelocal
+			const dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent, 'input');
+			TestUtils.Simulate.change(dateTimeInputEl);
+			expect(setDateTimeSpy).toHaveBeenCalled();
+		});
+
 	});
 });

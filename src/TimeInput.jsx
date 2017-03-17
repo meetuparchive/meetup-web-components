@@ -16,7 +16,7 @@ class TimeInput extends React.Component {
 
 	onChange(e) {
 		this.setState({ value: e.target.value });
-		this.props.callback && this.props.callback(e.target.value);
+		this.props.onChangeCallback && this.props.onChangeCallback(e.target.value);
 	}
 
 	render() {

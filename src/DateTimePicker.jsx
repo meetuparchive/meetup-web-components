@@ -118,6 +118,11 @@ class DateTimePicker extends React.Component {
 		this.setState({ datetime });
 	}
 
+	/**
+	* @function setDateTime
+	* @description sets the state with the datetime value
+	* @param value  datetime
+	*/
 	setDateTime(value) {
 		this.setState({ datetime: new Date(value) });
 	}
@@ -201,7 +206,6 @@ class DateTimePicker extends React.Component {
 							opts={datepickerOptions}
 							ref={ comp => this.dateComponent = comp }
 						/>
-
 						{ !dateOnly &&
 								<TimeInput name={timeInputName}
 									onChangeCallback={this.setTime}
