@@ -14,6 +14,8 @@ class CalendarComponent extends React.Component {
 			value: this.props.value || ''
 		};
 		this.onChange = this.onChange.bind(this);
+		this.onOpen = this.onOpen.bind(this);
+		this.onClose = this.onClose.bind(this);
 	}
 
 	/**
@@ -22,6 +24,8 @@ class CalendarComponent extends React.Component {
 	componentDidMount() {
 		const options = {
 			onChange: this.onChange,
+			onOpen: this.onOpen,
+			onClose: this.onClose,
 			altInput: true,
 			altFormat: 'D M d, Y', // TODO localize
 			defaultDate: this.props.value
@@ -29,7 +33,6 @@ class CalendarComponent extends React.Component {
 
 		Object.assign(options, this.props.opts);
 		this.flatpickr = new Flatpickr(this.node, options);
-		console.log('flatpickr');
 	}
 
 	componentWillUnmount() {
@@ -47,6 +50,24 @@ class CalendarComponent extends React.Component {
 	onChange(selectedDates, dateStr, instance) {
 		this.setState({ value: selectedDates[0] });
 		this.props.callback && this.props.callback(selectedDates[0]);
+	}
+
+	/**
+	* @function onOpen
+	* @description event hook for flatpickr, used to call onFocus
+	* and apply focus highlight if this is a DateTimePicker
+	*/
+	onOpen() {
+		this.props.onFocus && this.props.onFocus();
+	}
+
+	/**
+	* @function onClose
+	* @description event hook for flatpickr, used to call onBlur
+	* and remove focus highlight if this is a DateTimePicker
+	*/
+	onClose() {
+		this.props.onBlur && this.props.onBlur();
 	}
 
 	render() {

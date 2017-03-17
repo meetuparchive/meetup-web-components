@@ -26,6 +26,8 @@ class DateTimePicker extends React.Component {
 		this.setTime = this.setTime.bind(this);
 
 		this.setDateTime = this.setDateTime.bind(this);
+		this.onFocus = this.onFocus.bind(this);
+		this.onBlur = this.onBlur.bind(this);
 	}
 
 	componentWillMount() {
@@ -112,6 +114,16 @@ class DateTimePicker extends React.Component {
 		this.setState({ datetime: new Date(value) });
 	}
 
+	onFocus(e) {
+		console.log('focused');
+		this.backgroundEl.classList.add('focused');
+	}
+
+	onBlur(e) {
+		console.log('blur');
+		this.backgroundEl.classList.remove('focused');
+	}
+
 	render() {
 		const {
 			callback,			// eslint-disable-line no-unused-vars
@@ -149,22 +161,38 @@ class DateTimePicker extends React.Component {
 			);
 		}
 
+
+		const onFocus = (dateOnly) ? null : this.onFocus;
+		const onBlur = (dateOnly) ? null : this.onBlur;
+
 		return (
-			<div className={classNames}>
-
+			<span>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>
-				<div>
-					<CalendarComponent name={name}
-						callback={this.setDate}
-						value={this.getDate()}
-						opts={datepickerOptions} />
+				<div className={classNames}>
 
-					{ !dateOnly &&
-						<TimeInput name={timeInputName}
-							callback={this.setTime}
-							value={this.getTime()} /> }
+					<div>
+						<CalendarComponent name={name}
+							callback={this.setDate}
+							value={this.getDate()}
+							onFocus={onFocus}
+							onBlur={onBlur}
+							opts={datepickerOptions} />
+
+						{ !dateOnly &&
+								<TimeInput name={timeInputName}
+									callback={this.setTime}
+									onFocus={onFocus}
+									onBlur={onBlur}
+									value={this.getTime()} />
+						}
+						{ !dateOnly &&
+							<input type='text'
+									id='datetime-background'
+									ref={ el => this.backgroundEl = el } />
+						}
+					</div>
 				</div>
-			</div>
+			</span>
 		);
 	}
 }
