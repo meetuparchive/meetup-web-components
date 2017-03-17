@@ -9,9 +9,8 @@ class DateTimeLocalInput extends React.Component {
 
 	constructor(props) {
 		super(props);
-		console.log('value',this.props.value);
 		this.state = {
-			value: this.props.value ? (this.props.value.toISOString()).split('.')[0] : ''
+			value: this.props.value ? (new Date(this.props.value).toISOString()).split('.')[0] : ''
 			// example: 2017-02-18T00:00:00
 			// leaving off milliseconds
 			// datetime local wont set value with milliseconds
