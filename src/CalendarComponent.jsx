@@ -27,6 +27,7 @@ class CalendarComponent extends React.Component {
 			onOpen: this.onOpen,
 			onClose: this.onClose,
 			altInput: true,
+			allowInput: true,
 			altFormat: 'D M d, Y', // TODO localize
 			defaultDate: this.props.value
 		};
