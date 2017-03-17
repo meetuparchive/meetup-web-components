@@ -79,6 +79,11 @@ class DateTimePicker extends React.Component {
 		this.setState({ datetime });
 	}
 
+	/**
+	* @function parseTimeFromDateTime
+	* @description gets the time string part of our datetime state
+	* @return String
+	*/
 	parseTimeFromDateTime(datetime) {
 		return (datetime.toTimeString().split(' ')[0]).split(':', 2).join(':'); // TODO localize toLocaleTimeString ?
 	}
@@ -126,13 +131,13 @@ class DateTimePicker extends React.Component {
 
 	render() {
 		const {
-			callback,			// eslint-disable-line no-unused-vars
+			callback,	// eslint-disable-line no-unused-vars
 			className,
 			dateOnly,
-			datepickerOptions,  // eslint-disable-line no-unused-vars
+			datepickerOptions,	// eslint-disable-line no-unused-vars
 			id,
 			label,
-			value,				// eslint-disable-line no-unused-vars
+			value,	// eslint-disable-line no-unused-vars
 			required,
 			...other
 		} = this.props;
