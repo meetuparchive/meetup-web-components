@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import CalendarComponent from './CalendarComponent';
 import TimeInput from './TimeInput';
@@ -40,6 +39,10 @@ class DateTimePicker extends React.Component {
 	* @return bool whether or not this browser supports datetime local
 	*/
 	hasBrowserSupport() {
+		if (this.props.forceCalendar) {
+			return;
+		}
+
 		const input = document.createElement('input'),
 			invalidValue = 'notadate';
 
@@ -50,7 +53,7 @@ class DateTimePicker extends React.Component {
 		input.setAttribute('type', 'datetime-local');
 		input.setAttribute('value', invalidValue);
 
-		return !(this.props.forceCalendar || input.value === invalidValue);
+		return input.value !== invalidValue;
 	}
 
 	/**
@@ -136,8 +139,8 @@ class DateTimePicker extends React.Component {
 	* takes off focus class when neither of them are in focus
 	*/
 	onBlur(e) {
-		const timeInput = ReactDOM.findDOMNode(this.timeComponent).querySelector('input[type=time]');
-		const dateInput = ReactDOM.findDOMNode(this.dateComponent).querySelector('input');
+		const timeInput = (this.timeComponent).querySelector('input[type=time]');
+		const dateInput = (this.dateComponent).querySelector('input');
 		if (document.activeElement !== timeInput && document.activeElement !== dateInput) {
 			this.backgroundEl.classList.remove('focused');
 		}
@@ -145,7 +148,6 @@ class DateTimePicker extends React.Component {
 
 	render() {
 		const {
-			callback,	// eslint-disable-line no-unused-vars
 			className,
 			dateOnly,
 			datepickerOptions,	// eslint-disable-line no-unused-vars
@@ -161,9 +163,9 @@ class DateTimePicker extends React.Component {
 			{calendarTimeComponent : !dateOnly },
 			{required},
 			className
-		),
-			labelClassNames = cx({required}),
-			timeInputName = `${name}-time`;
+		);
+		const labelClassNames = cx({required});
+		const timeInputName = `${name}-time`;
 
 		if (this.state.isDateTimeLocalSupported) {
 			// TODO datetime-local opts ?
@@ -175,7 +177,8 @@ class DateTimePicker extends React.Component {
 					value={this.state.datetime}
 					required={required}
 					className={classNames}
-					callback={this.setDateTime}
+					onChangeCallback={this.setDateTime}
+
 					{...other} />
 			);
 		}
@@ -191,26 +194,28 @@ class DateTimePicker extends React.Component {
 
 					<div>
 						<CalendarComponent name={name}
-							callback={this.setDate}
+							onChangeCallback={this.setDate}
 							value={this.getDate()}
 							onFocus={onFocus}
 							onBlur={onBlur}
 							opts={datepickerOptions}
-							ref={ comp => this.dateComponent = comp } />
+							ref={ comp => this.dateComponent = comp }
 						/>
 
 						{ !dateOnly &&
 								<TimeInput name={timeInputName}
-									callback={this.setTime}
+									onChangeCallback={this.setTime}
 									onFocus={onFocus}
 									onBlur={onBlur}
 									value={this.getTime()}
-									ref={ comp => this.timeComponent = comp } />
+									ref={ comp => this.timeComponent = comp }
+								/>
 						}
 						{ !dateOnly &&
 							<input type='text'
 									id='datetime-background'
-									ref={ el => this.backgroundEl = el } />
+									ref={ el => this.backgroundEl = el }
+							/>
 						}
 					</div>
 				</div>
@@ -220,7 +225,6 @@ class DateTimePicker extends React.Component {
 }
 
 DateTimePicker.propTypes = {
-	callback: React.PropTypes.func,
 	datepickerOptions: React.PropTypes.object,
 	label: React.PropTypes.oneOfType([
 		React.PropTypes.element,

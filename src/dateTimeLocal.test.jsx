@@ -21,7 +21,9 @@ describe('DateTimeLocal', function() {
 				value={value}
 				callback={callbackSpy}
 				min={min}
-				max={max} />);
+				max={max}
+			/>
+		);
 		dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent, 'input');
 	});
 
@@ -31,17 +33,12 @@ describe('DateTimeLocal', function() {
 	});
 
 	it('should exist', function() {
-		expect(dateTimeInputEl).not.toBeNull();
+		expect(() => TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent, 'input')).not.toThrow();
 	});
 
-	it('should take an initial value', function() {
+	it('should take an initial value and set its state', function() {
 		expect(dateTimeComponent.state).toEqual({ value });
 	});
-
-	it('sets state with its value', function() {
-		expect(dateTimeComponent.state).toEqual({ value });
-	});
-
 
 	it('should set a min value', function() {
 		expect(dateTimeInputEl.min).toEqual(min);
@@ -52,7 +49,7 @@ describe('DateTimeLocal', function() {
 	});
 
 	it('should have a required attribute when specified', () => {
-		expect(dateTimeInputEl.attributes.required).not.toBeNull();
+		expect(dateTimeInputEl.attributes.required).not.toBeFalsy();
 	});
 
 	it('calls onChange and sets state when value is changed', function() {

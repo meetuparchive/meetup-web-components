@@ -50,7 +50,7 @@ class CalendarComponent extends React.Component {
 	*/
 	onChange(selectedDates, dateStr, instance) {
 		this.setState({ value: selectedDates[0] });
-		this.props.callback && this.props.callback(selectedDates[0]);
+		this.props.onChangeCallback && this.props.onChangeCallback(selectedDates[0]);
 	}
 
 	/**
@@ -73,7 +73,7 @@ class CalendarComponent extends React.Component {
 
 	render() {
 		const {
-			callback,	// eslint-disable-line no-unused-vars
+			onChangeCallback,	// eslint-disable-line no-unused-vars
 			className,
 			id,
 			name,
@@ -102,7 +102,7 @@ class CalendarComponent extends React.Component {
 
 CalendarComponent.propTypes = {
 	name: React.PropTypes.string.isRequired,
-	callback: React.PropTypes.func
+	onChangeCallback: React.PropTypes.func
 };
 
 export default CalendarComponent;

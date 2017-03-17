@@ -9,7 +9,7 @@ describe('TimeInput', function() {
 
 	const timeValue = '22:00',
 		newTime = '23:00',
-		callbackSpy = jasmine.createSpy('foo');
+		callbackSpy = jest.fn();
 
 	beforeEach(() => {
 		timeInputComponent = TestUtils.renderIntoDocument(

@@ -4,12 +4,9 @@ import DateTimePicker from './DateTimePicker';
 import CalendarComponent from './CalendarComponent';
 import TimeInput from './TimeInput';
 
-fdescribe('DateTimePicker', function() {
+describe('DateTimePicker', function() {
 
-	let dateTimeComponent,
-		calendarComponent,
-		timeComponent;
-		// dateTimeLocalComponent;
+	let dateTimeComponent;
 
 	const year = 2018,
 		month = 0,
@@ -25,15 +22,13 @@ fdescribe('DateTimePicker', function() {
 		dateTimeComponent = TestUtils.renderIntoDocument(
 			<DateTimePicker name='start_time'
 				value={datetime}
-				forceCalendar />);
-		calendarComponent = TestUtils.findRenderedComponentWithType(dateTimeComponent, CalendarComponent);
-		timeComponent = TestUtils.findRenderedComponentWithType(dateTimeComponent, TimeInput);
+				forceCalendar
+			/>
+		);
 	});
 
 	afterEach(() => {
 		dateTimeComponent = null;
-		timeComponent = null;
-		calendarComponent = null;
 	});
 
 	it('exists', function() {
@@ -50,7 +45,9 @@ fdescribe('DateTimePicker', function() {
 		dateTimeComponent = TestUtils.renderIntoDocument(
 			<DateTimePicker name='start_time'
 				value={new Date(dateStr)}
-				forceCalendar />);
+				forceCalendar
+			/>
+		);
 		expect(dateTimeComponent.state.datetime).toEqual(new Date(dateStr));
 	});
 
@@ -58,7 +55,9 @@ fdescribe('DateTimePicker', function() {
 		dateTimeComponent = TestUtils.renderIntoDocument(
 			<DateTimePicker name='start_time'
 				value={datetime}
-				forceCalendar />);
+				forceCalendar
+			/>
+		);
 		expect(dateTimeComponent.state.datetime).toEqual(datetime);
 	});
 
@@ -66,12 +65,16 @@ fdescribe('DateTimePicker', function() {
 		dateTimeComponent = TestUtils.renderIntoDocument(
 			<DateTimePicker name='start_time'
 				value={dateStr}
-				forceCalendar />);
+				forceCalendar
+			/>
+		);
 		expect(dateTimeComponent.state.datetime).toEqual(new Date(Date.UTC(year, month, day)));
 	});
 
 	it('values for date and time are set in child components', function() {
+		const timeComponent = TestUtils.findRenderedComponentWithType(dateTimeComponent, TimeInput);
 		const timeInputEl = TestUtils.findRenderedDOMComponentWithTag(timeComponent, 'input');
+		const calendarComponent = TestUtils.findRenderedComponentWithType(dateTimeComponent, CalendarComponent);
 		expect(calendarComponent.flatpickr.selectedDates[0])
 			.toEqual(new Date(datetime.getFullYear(), datetime.getMonth(), datetime.getDate()));
 		expect(timeInputEl.value).toEqual(dateTimeComponent.parseTimeFromDateTime(datetime));
@@ -81,7 +84,9 @@ fdescribe('DateTimePicker', function() {
 		dateTimeComponent = TestUtils.renderIntoDocument(
 			<DateTimePicker name='start_time'
 				forceCalendar
-				dateOnly />);
+				dateOnly
+			/>
+		);
 		expect(() => TestUtils.findRenderedComponentWithType(dateTimeComponent, CalendarComponent)).not.toThrow();
 		expect(() => TestUtils.findRenderedComponentWithType(dateTimeComponent, TimeInput)).toThrow();
 	});
@@ -94,8 +99,9 @@ fdescribe('DateTimePicker', function() {
 			<DateTimePicker name='start_time'
 				forceCalendar
 				datepickerOptions={{ minDate: min, maxDate: max }}
-			/>);
-		calendarComponent = TestUtils.findRenderedComponentWithType(dateTimeComponent, CalendarComponent);
+			/>
+		);
+		const calendarComponent = TestUtils.findRenderedComponentWithType(dateTimeComponent, CalendarComponent);
 		expect(calendarComponent.flatpickr.instanceConfig.minDate).toEqual(min);
 		expect(calendarComponent.flatpickr.instanceConfig.maxDate).toEqual(max);
 	});

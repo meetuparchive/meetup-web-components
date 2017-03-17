@@ -21,7 +21,7 @@ class TimeInput extends React.Component {
 
 	render() {
 		const {
-			callback,	// eslint-disable-line no-unused-vars
+			onChangeCallback,	// eslint-disable-line no-unused-vars
 			id,
 			label,
 			name,
@@ -49,7 +49,8 @@ class TimeInput extends React.Component {
 					className={classNames}
 					onChange={this.onChange}
 					required={required}
-					{...other} />
+					{...other}
+				/>
 				{ error && <p className='text--error'>{error}</p> }
 			</span>
 		);
@@ -58,7 +59,7 @@ class TimeInput extends React.Component {
 }
 
 TimeInput.propTypes = {
-	callback: React.PropTypes.func,
+	onChangeCallback: React.PropTypes.func,
 	name: React.PropTypes.string.isRequired,
 	error: React.PropTypes.string,
 	label: React.PropTypes.oneOfType([
