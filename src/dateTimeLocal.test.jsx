@@ -19,7 +19,7 @@ describe('DateTimeLocal', function() {
 			<DateTimeLocalInput
 				name='datetime'
 				value={value}
-				callback={callbackSpy}
+				onChangeCallback={callbackSpy}
 				min={min}
 				max={max}
 				required
@@ -56,8 +56,7 @@ describe('DateTimeLocal', function() {
 	it('calls onChange and sets state when value is changed', function() {
 		const onChangeSpy = spyOn(DateTimeLocalInput.prototype, 'onChange').and.callThrough();
 		const setStateSpy = spyOn(DateTimeLocalInput.prototype, 'setState');
-		dateTimeComponent = TestUtils.renderIntoDocument(
-			<DateTimeLocalInput name='time' value={value} />);
+		dateTimeComponent = TestUtils.renderIntoDocument(<DateTimeLocalInput name='time' value={value} />);
 		dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent, 'input');
 
 		TestUtils.Simulate.change(dateTimeInputEl, { target: { value: newValue } });

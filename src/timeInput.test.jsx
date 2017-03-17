@@ -13,7 +13,7 @@ describe('TimeInput', function() {
 
 	beforeEach(() => {
 		timeInputComponent = TestUtils.renderIntoDocument(
-			<TimeInput name='time' value={timeValue} callback={callbackSpy} required />);
+			<TimeInput name='time' value={timeValue} onChangeCallback={callbackSpy} required />);
 		timeInputEl = TestUtils.findRenderedDOMComponentWithTag(timeInputComponent, 'input');
 	});
 
@@ -42,7 +42,7 @@ describe('TimeInput', function() {
 		const onChangeSpy = spyOn(TimeInput.prototype, 'onChange').and.callThrough();
 		const setStateSpy = spyOn(TimeInput.prototype, 'setState');
 		timeInputComponent = TestUtils.renderIntoDocument(
-			<TimeInput name='time' value={timeValue} callback={callbackSpy} />);
+			<TimeInput name='time' value={timeValue} onChangeCallback={callbackSpy} />);
 		timeInputEl = TestUtils.findRenderedDOMComponentWithTag(timeInputComponent, 'input');
 
 		TestUtils.Simulate.change(timeInputEl, { target: { value: newTime } });
