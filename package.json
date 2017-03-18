@@ -75,6 +75,6 @@
     "webpack": "^2.2"
   },
   "dependencies": {
-    "swarm-animation": "file:../swarm-animation"
+    "swarm-animation": "git+ssh://git@github.com/meetup/swarm-animation.git"
   }
 }
