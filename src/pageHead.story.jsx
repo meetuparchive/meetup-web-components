@@ -41,6 +41,14 @@ storiesOf('PageHead', module)
 			/>
 		</div>
 	))
+	.add('title and titleLabel', () => (
+		<div style={{border:'1px dotted red', width:'100%'}}>
+			<PageHead
+				titleLabel='Not vegetarian'
+				title='Sirloin short ribs rump ham turducken pork chop drumstick'
+			/>
+		</div>
+	))
 	.add('title and actions', () => {
 		const menu = [
 			<PageActionButton icon={searchIcon} label='Search' />,

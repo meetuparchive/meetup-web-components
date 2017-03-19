@@ -7,6 +7,7 @@ import Section from './Section';
 
 export const PAGE_HEAD_CLASS = 'pageHead';
 export const PAGE_TITLE_CLASS = 'pageTitle';
+export const PAGE_TITLELABEL_CLASS = 'pageTitleLabel';
 export const PAGE_SUBTITLE_CLASS = 'pageSubtitle';
 export const PAGE_ACTIONS_CLASS = 'pageActions';
 export const PAGE_ACTION_CLASS = 'pageAction';
@@ -25,6 +26,7 @@ class PageHead extends React.Component {
 			className,
 			subtitle,
 			title,
+			titleLabel,
 			menuItems,
 			...other
 		} = this.props;
@@ -52,6 +54,9 @@ class PageHead extends React.Component {
 				>
 					<FlexItem>
 						<Chunk className='align--center atMedium_align--left'>
+							{titleLabel &&
+								<p className={`${PAGE_TITLELABEL_CLASS} text--label`}>{titleLabel}</p>
+							}
 							<h1 className='text--display1'>{title}</h1>
 							{subtitle &&
 								<p className={`${PAGE_SUBTITLE_CLASS} text--secondary`}>{subtitle}</p>

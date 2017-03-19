@@ -5,6 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import PageHead, {
 	PAGE_HEAD_CLASS,
 	PAGE_TITLE_CLASS,
+	PAGE_TITLELABEL_CLASS,
 	PAGE_SUBTITLE_CLASS,
 	PAGE_ACTIONS_CLASS,
 } from './PageHead';
@@ -27,6 +28,7 @@ const menu = [
 		/>
 	],
 	pageTitle = 'Page title',
+	titleLabel = 'Title label',
 	subtitle = 'Sub title';
 
 let pageHead;
@@ -60,6 +62,27 @@ describe('PageHead', function() {
 			const pageHeadEl = ReactDOM.findDOMNode(pageHead);
 			const subtitleEl = pageHeadEl.getElementsByClassName(PAGE_SUBTITLE_CLASS);
 			expect(subtitleEl.length).toBe(0);
+		});
+		it(`should NOT have a '${PAGE_TITLELABEL_CLASS}' tag`, () => {
+			const pageHeadEl = ReactDOM.findDOMNode(pageHead);
+			const titleLabelEl = pageHeadEl.getElementsByClassName(PAGE_TITLELABEL_CLASS);
+			expect(titleLabelEl.length).toBe(0);
+		});
+	});
+	describe('titleLabel', () => {
+		beforeEach(() => {
+			pageHead = TestUtils.renderIntoDocument(
+				<PageHead title={pageTitle} titleLabel={titleLabel} />
+			);
+		});
+		it('should display a text label area', () => {
+			const pageTitle = TestUtils.scryRenderedDOMComponentsWithClass(pageHead, PAGE_TITLE_CLASS)[0];
+			expect(pageTitle.textContent).toContain(titleLabel);
+		});
+		it(`should have an element with class of '${PAGE_TITLELABEL_CLASS}'`, () => {
+			const pageHeadEl = ReactDOM.findDOMNode(pageHead);
+			const titleLabelEl = pageHeadEl.getElementsByClassName(PAGE_TITLELABEL_CLASS);
+			expect(titleLabelEl.length).toBe(1);
 		});
 	});
 	describe('subtitle', () => {
