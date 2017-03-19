@@ -21,7 +21,7 @@ class Textarea extends React.Component {
 	}
 
 	componentDidMount() {
-		if (this.props.autoheight){
+		if (this.props.rows === 'auto'){
 			autosize(this.textarea);
 		}
 	}
@@ -33,29 +33,29 @@ class Textarea extends React.Component {
 			label,
 			labelClassName,
 			className,
-			children,
 			error,
 			required,
-			autoheight,
-			maxLength,
-			style,
+			rows,
+			style={},
 			maxHeight,
 			minHeight,
+			id,
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			{
-				'field--error': error,
-				'textarea--autoheight': autoheight
-			},
-			className
-		);
-
-		const labelClassNames = cx(
-			{ required },
-			labelClassName
-		);
+		const classNames = {
+			textarea: cx(
+				{
+					'field--error': error,
+					'textarea--autoheight': rows === 'auto'
+				},
+				className
+			),
+			label: cx(
+				{ required },
+				labelClassName
+			)
+		};
 
 		const heightConstraints = {
 			minHeight: minHeight,
@@ -64,32 +64,32 @@ class Textarea extends React.Component {
 
 		return (
 			<div>
-				<label className={labelClassNames} htmlFor={other.id}>
+				<label className={classNames.label} htmlFor={id}>
 					{label}
 				</label>
 				<textarea type='text'
 					name={name}
 					required={required}
-					className={classNames}
+					className={classNames.textarea}
 					onChange={this.onChange}
-					rows={autoheight ? 1 : 'auto'}
+					rows={rows == 'auto' ? 1 : rows}
 					ref={(textarea) => {this.textarea = textarea;}}
-					style={{ ...(style || {}), ...heightConstraints }}
+					style={{ ...style, ...heightConstraints }}
 					value={this.state.value}
+					id={id}
 					{...other}
-					>
-				</textarea>
+				/>
 
-				{ maxLength && <p className='text--caption align--right'>{this.state.value.length} / {maxLength}</p> }
+				{ this.props.maxLength && <p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p> }
 
 				{ error && <p className='text--error'>{error}</p> }
-				{children}
 			</div>
 		);
 	}
 }
 
 Textarea.propTypes = {
+	id: React.PropTypes.string.isRequired,
 	name: React.PropTypes.string.isRequired,
 	error: React.PropTypes.string,
 	label: React.PropTypes.oneOfType([
@@ -101,7 +101,10 @@ Textarea.propTypes = {
 	autoHeight: React.PropTypes.bool,
 	minHeight: React.PropTypes.number,
 	maxHeight: React.PropTypes.number,
-	maxLength: React.PropTypes.number
+	rows: React.PropTypes.oneOfType([
+		React.PropTypes.number,
+		React.PropTypes.string
+	])
 };
 
 export default Textarea;

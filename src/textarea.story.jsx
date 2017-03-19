@@ -1,14 +1,25 @@
-
 import React from 'react';
-import Textarea from './Textarea';
 import { storiesOf } from '@kadira/storybook';
+import { decorateWithLocale } from './utils/decorators';
+import { InfoWrapper } from './utils/storyComponents';
+import Textarea from './Textarea';
 
 storiesOf('Textarea', module)
-	.add('default', () => <Textarea
-		label='Your biography'
-		id='yourBio'
-		name='bio'
-		placeholder='Tell me about your life' />)
+	.addDecorator(decorateWithLocale)
+	.addWithInfo(
+		'default',
+		'This is the basic usage with the component.',
+		() => (
+			<InfoWrapper>
+				<Textarea
+					label='Your biography'
+					id='yourBio'
+					name='bio'
+					placeholder='Tell me about your life'
+				/>
+			</InfoWrapper>
+		)
+	)
 	.add('error state', () => <Textarea
 		required
 		label='Your biography'
