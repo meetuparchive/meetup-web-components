@@ -2,6 +2,9 @@ import React from 'react';
 import TextInput from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@kadira/storybook';
+import { IntlProvider,
+	FormattedMessage,
+	defineMessages } from 'react-intl';
 
 storiesOf('TextInput', module)
 	.add('default', () => <TextInput
@@ -21,6 +24,24 @@ storiesOf('TextInput', module)
 		name='name'
 		error='Not so fast. You have an error.'
 		placeholder='Not your email' />)
+	.add('error state formatted', () => {
+		const trn = defineMessages({
+			error: {
+				defaultMessage: 'This error is a formatted message.',
+				id: 'storybook.anError',
+				description: { jira: 'SDS-204' },
+			}
+		});
+		return (
+			<IntlProvider defaultLocale='en-US' locale='en-US'>
+				<TextInput label='Your name'
+					id='fullname'
+					name='name'
+					error={<FormattedMessage {...trn.error} />}
+					placeholder='Not your email' />
+			</IntlProvider>
+		);
+	})
 	.add('required', () => {
 		return (<form>
 			<TextInput
