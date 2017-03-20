@@ -40,15 +40,12 @@ class AccordionPanelGroup extends React.Component {
 	clonePanels(accordionPanel, i, isOpen) {
 		const panelProps = {
 			key: i,
+			icon: this.props.icons,
 			isAnimated: this.props.isAnimated,
 			className: accordionPanel.props.className,
 			setClickedPanel: this.props.multiSelectable ? false : this.setClickedPanel,
 			isOpen: isOpen
 		};
-
-		if (this.props.iconOptions) {
-			panelProps['icon'] = this.props.iconOptions;
-		}
 
 		return (
 			<li
@@ -76,7 +73,7 @@ class AccordionPanelGroup extends React.Component {
 		const {
 			isAnimated, // eslint-disable-line no-unused-vars
 			accordionPanels, // eslint-disable-line no-unused-vars
-			iconOptions, // eslint-disable-line no-unused-vars
+			icons, // eslint-disable-line no-unused-vars
 			multiSelectable,
 			className,
 			...other
@@ -103,12 +100,17 @@ class AccordionPanelGroup extends React.Component {
 
 AccordionPanelGroup.defaultProps = {
 	multiSelectable: true,
+	icons: {
+		align: 'right',
+		shape: 'chevron-down',
+		size: 'xs'
+	}
 };
 
 AccordionPanelGroup.propTypes = {
 	accordionPanels: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
 	multiSelectable: React.PropTypes.bool,
-	iconOptions: React.PropTypes.shape({
+	icons: React.PropTypes.shape({
 		align: React.PropTypes.string,
 		shape: React.PropTypes.string,
 		shapeActive: React.PropTypes.string,

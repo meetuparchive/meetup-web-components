@@ -57,7 +57,7 @@ storiesOf('AccordionPanelGroup', module)
 	.add('Custom icons', () => (
 		<div className='span--100 padding--all'>
 			<AccordionPanelGroup
-				iconOptions={{
+				icons={{
 					shape: 'plus',
 					shapeActive: 'minus'
 				}}
@@ -102,7 +102,7 @@ storiesOf('AccordionPanelGroup', module)
 	.add('Left-aligned icon', () => (
 		<div className='span--100 padding--all'>
 			<AccordionPanelGroup
-				iconOptions={{
+				icons={{
 					align: 'left'
 				}}
 				accordionPanels={[

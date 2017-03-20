@@ -17,13 +17,6 @@ class AccordionPanel extends React.Component {
 	constructor(props){
 		super(props);
 
-		props.trigger.icon = props.trigger.icon || {};
-		props.trigger.icon = {
-			align: 'right',
-			shape: 'chevron-down',
-			size: 'xs'
-		};
-
 		this.state = {
 			open: this.props.isOpen
 		};
@@ -82,6 +75,7 @@ class AccordionPanel extends React.Component {
 			panelContent,
 			setClickedPanel, // eslint-disable-line no-unused-vars
 			trigger,
+			icon,
 			isAnimated,
 			classNamesActive,
 			className,
@@ -113,12 +107,15 @@ class AccordionPanel extends React.Component {
 		// create valid attribute name from trigger label
 		const ariaId = trigger.label.replace(/\s+/g, '').toLowerCase();
 
-		const iconShape = this.state.open && trigger.icon.shapeActive ? trigger.icon.shapActive : trigger.icon.shape;
+		let iconShape = icon.shape;
+		if (this.state.open && icon.shapeActive) {
+			iconShape = icon.shapeActive;
+		}
 
 		return(
 			<Flex
 				className={classNames.accordionPanel}
-				rowReverse={trigger.icon.align === 'left' && 'atAll'}
+				rowReverse={icon.align === 'left' && 'atAll'}
 				{...other}
 				>
 
@@ -157,7 +154,7 @@ class AccordionPanel extends React.Component {
 					>
 					<Icon
 						shape={iconShape}
-						size={trigger.icon.size} />
+						size={icon.size} />
 				</FlexItem>
 
 			</Flex>
@@ -166,7 +163,12 @@ class AccordionPanel extends React.Component {
 }
 
 AccordionPanel.defaultProps = {
-	isOpen: false
+	isOpen: false,
+	icon: {
+		align: 'right',
+		shape: 'chevron-down',
+		size: 'xs'
+	}
 };
 
 AccordionPanel.propTypes = {
@@ -177,13 +179,13 @@ AccordionPanel.propTypes = {
 	trigger: React.PropTypes.shape({
 		onclick: React.PropTypes.func,
 		label: React.PropTypes.string.isRequired,
-		className: React.PropTypes.string,
-		icon: React.PropTypes.shape({
-			align: React.PropTypes.string,
-			shape: React.PropTypes.string,
-			shapeActive: React.PropTypes.string,
-			size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-		})
+		className: React.PropTypes.string
+	}),
+	icon: React.PropTypes.shape({
+		align: React.PropTypes.string,
+		shape: React.PropTypes.string,
+		shapeActive: React.PropTypes.string,
+		size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
 	})
 };
 
