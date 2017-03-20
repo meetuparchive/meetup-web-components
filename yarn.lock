@@ -5812,9 +5812,9 @@ swarm-icons@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-0.1.0.tgz#86595e99f3a8d9f91ab636b9d0e9545481e00734"
 
-swarm-sasstools@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.0.6.tgz#8e9a2e364f0e40d24877e24bfa752ef715e6666e"
+swarm-sasstools@1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.0.9.tgz#1fd7ad049b8903fd01d296704751582803ef0048"
   dependencies:
     bourbon "4.2.3"
     meetup-swatches "3.1.1"
