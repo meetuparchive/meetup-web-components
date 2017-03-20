@@ -19,20 +19,24 @@ $A_duration: 0.2s;
 }
 
 .accordionPanel-label {
+	@extend %buttonPersonality;
 	background: inherit;
 	border: inherit;
 	text-align: inherit;
 	padding: 0;
 }
 
-.accordionPanel-icon .svg--chevron-down .svg-icon {
-	-webkit-transform: rotate(0deg);
-	transform: rotate(0deg);
-	transition: transform $A_duration $A_curve-default;
+.accordionPanel-icon {
+	@extend %buttonPersonality;
 
-	.accordionPanel--active & {
-		-webkit-transform: rotate(180deg);
-		transform: rotate(180deg);
+	.svg--chevron-down .svg-icon {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+		transition: transform $A_duration $A_curve-default;
+
+		.accordionPanel--active & {
+			-webkit-transform: rotate(180deg);
+			transform: rotate(180deg);
+		}
 	}
-
 }

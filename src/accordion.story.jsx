@@ -19,7 +19,7 @@ storiesOf('AccordionPanelGroup', module)
 				accordionPanels={[
 					<AccordionPanel
 						trigger={{
-							label: 'First Section'
+							label: 'First in default group'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -28,7 +28,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Second Section'
+							label: 'Second in default group'
 						}}
 						panelContent={
 							<div>
@@ -43,7 +43,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Third Section'
+							label: 'Third in default group'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -64,7 +64,7 @@ storiesOf('AccordionPanelGroup', module)
 				accordionPanels={[
 					<AccordionPanel
 						trigger={{
-							label: 'First Section'
+							label: 'First with custom icon'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -73,7 +73,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Next Section'
+							label: 'Second with custom icon'
 						}}
 						panelContent={
 							<div>
@@ -88,7 +88,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Third Section'
+							label: 'Third with custom icon'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -108,7 +108,7 @@ storiesOf('AccordionPanelGroup', module)
 				accordionPanels={[
 					<AccordionPanel
 						trigger={{
-							label: 'First Section'
+							label: 'First with left icon'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -117,7 +117,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Next Section'
+							label: 'Second with left icon'
 						}}
 						panelContent={
 							<div>
@@ -132,7 +132,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Third Section'
+							label: 'Third with left icon'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -150,7 +150,7 @@ storiesOf('AccordionPanelGroup', module)
 				accordionPanels={[
 					<AccordionPanel
 						trigger={{
-							label: 'First Section'
+							label: 'First animated section'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -159,7 +159,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Next Section'
+							label: 'Section animated section'
 						}}
 						panelContent={
 							<div>
@@ -174,7 +174,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Third Section'
+							label: 'Third animated section'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -192,7 +192,7 @@ storiesOf('AccordionPanelGroup', module)
 					<AccordionPanel
 						isOpen
 						trigger={{
-							label: 'First Section'
+							label: 'First (open by default)'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -201,7 +201,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Next Section'
+							label: 'Second (not open by default)'
 						}}
 						panelContent={
 							<div>
@@ -216,7 +216,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Third Section'
+							label: 'Third (not open by default)'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -234,7 +234,7 @@ storiesOf('AccordionPanelGroup', module)
 				accordionPanels={[
 					<AccordionPanel
 						trigger={{
-							label: 'First Section'
+							label: 'First'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -243,7 +243,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Next Section'
+							label: 'Second'
 						}}
 						panelContent={
 							<div>
@@ -258,7 +258,7 @@ storiesOf('AccordionPanelGroup', module)
 						} />,
 					<AccordionPanel
 						trigger={{
-							label: 'Third Section'
+							label: 'Last'
 						}}
 						panelContent={
 							<div className='runningText'>
@@ -273,7 +273,7 @@ storiesOf('AccordionPanelGroup', module)
 		<div className='span--100 padding--all'>
 			<AccordionPanel
 				trigger={{
-					label: 'First Section'
+					label: 'Trigger label'
 				}}
 				panelContent={
 					<div className='runningText'>
