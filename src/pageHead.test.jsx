@@ -81,14 +81,10 @@ describe('PageHead', function() {
 			expect(pageTitle.textContent).toContain(titleLabel);
 		});
 		it(`should have an element with class of '${PAGE_TITLELABEL_CLASS}'`, () => {
-			const pageHeadEl = ReactDOM.findDOMNode(pageHead);
-			const titleLabelEl = pageHeadEl.getElementsByClassName(PAGE_TITLELABEL_CLASS);
-			expect(titleLabelEl.length).toBe(1);
+			expect(() => TestUtils.findRenderedDOMComponentWithClass(pageHead, PAGE_TITLELABEL_CLASS)).not.toThrow();
 		});
 		it('should handle custom classes', () => {
-			const pageHeadEl = ReactDOM.findDOMNode(pageHead);
-			const titleLabelEl = pageHeadEl.getElementsByClassName(titleLabelCustomClass);
-			expect(titleLabelEl.length).toBe(1);
+			expect(() => TestUtils.findRenderedDOMComponentWithClass(pageHead, titleLabelCustomClass)).not.toThrow();
 		});
 	});
 	describe('subtitle', () => {

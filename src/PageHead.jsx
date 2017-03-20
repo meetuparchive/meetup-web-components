@@ -32,15 +32,21 @@ class PageHead extends React.Component {
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			PAGE_HEAD_CLASS,
-			className
-		);
-
-		const titleLabelClassNames = cx(
-			PAGE_TITLELABEL_CLASS,
-			titleLabelClass
-		);
+		const classNames = {
+			pageHead: cx(
+				PAGE_HEAD_CLASS,
+				className
+			),
+			titleLabel: cx(
+				PAGE_TITLELABEL_CLASS,
+				'text--label',
+				titleLabelClass
+			),
+			subtitle: cx(
+				PAGE_SUBTITLE_CLASS,
+				'text--secondary'
+			)
+		};
 
 		const menuRender = menuItems.map((menuItem, i) => (
 			<FlexItem className={PAGE_ACTION_CLASS} key={i} shrink>
@@ -50,7 +56,7 @@ class PageHead extends React.Component {
 
 		return (
 			<Section
-				className={classNames}
+				className={classNames.pageHead}
 				{...other}
 			>
 				<Flex
@@ -61,11 +67,11 @@ class PageHead extends React.Component {
 					<FlexItem>
 						<Chunk className='align--center atMedium_align--left'>
 							{titleLabel &&
-								<p className={`${titleLabelClassNames} text--label`}>{titleLabel}</p>
+								<p className={classNames.titleLabel}>{titleLabel}</p>
 							}
 							<h1 className='text--display1'>{title}</h1>
 							{subtitle &&
-								<p className={`${PAGE_SUBTITLE_CLASS} text--secondary`}>{subtitle}</p>
+								<p className={classNames.subtitle}>{subtitle}</p>
 							}
 						</Chunk>
 					</FlexItem>
