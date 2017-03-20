@@ -40,7 +40,6 @@ class AccordionPanelGroup extends React.Component {
 	clonePanels(accordionPanel, i, isOpen) {
 		const panelProps = {
 			key: i,
-			panelId: i,
 			isAnimated: this.props.isAnimated,
 			className: accordionPanel.props.className,
 			setClickedPanel: this.props.multiSelectable ? false : this.setClickedPanel,
@@ -51,7 +50,13 @@ class AccordionPanelGroup extends React.Component {
 			panelProps['icon'] = this.props.iconOptions;
 		}
 
-		return React.cloneElement(accordionPanel, panelProps);
+		return (
+			<li
+				key={i}
+				className='list-item'>
+				{ React.cloneElement(accordionPanel, panelProps) }
+			</li>
+		);
 	}
 
 	/**

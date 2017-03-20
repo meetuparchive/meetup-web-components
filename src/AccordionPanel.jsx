@@ -18,9 +18,11 @@ class AccordionPanel extends React.Component {
 		super(props);
 
 		props.trigger.icon = props.trigger.icon || {};
-		props.trigger.icon.align = 'right';
-		props.trigger.icon.shape = 'chevron-down';
-		props.trigger.icon.size = 'xs';
+		props.trigger.icon = {
+			align: 'right',
+			shape: 'chevron-down',
+			size: 'xs'
+		};
 
 		this.state = {
 			open: this.props.isOpen
@@ -113,56 +115,51 @@ class AccordionPanel extends React.Component {
 		const iconShape = this.state.open && trigger.icon.shapeActive ? trigger.icon.shapActive : trigger.icon.shape;
 
 		return(
-			<li
-				className='list-item'
-				key={panelId}
+			<Flex
+				className={classNames.accordionPanel}
+				rowReverse={trigger.icon.align === 'left' && 'atAll'}
+				{...other}
 				>
-				<Flex
-					className={classNames.accordionPanel}
-					rowReverse={trigger.icon.align === 'left' && 'atAll'}
-					{...other}
+
+				<FlexItem>
+					<Chunk>
+						<button
+							role='tab'
+							id={`label-${ariaId}`}
+							aria-controls={`panel-${ariaId}`}
+							aria-expanded={this.state.open}
+							aria-selected={this.state.open}
+							className='accordionPanel-label display--block span--100'
+							onClick={this._handleToggle}>
+								{trigger.label}
+						</button>
+					</Chunk>
+
+					<Chunk
+						role='tabpanel'
+						aria-labelledby={`label-${ariaId}`}
+						aria-hidden={!this.state.open}
+						className={classNames.content}
+						style={{height: this.state.height}}>
+						<div
+							className='accordionPanel-content'
+							ref={(div) => { this.content = div; }}>
+							{panelContent}
+						</div>
+					</Chunk>
+				</FlexItem>
+
+				<FlexItem
+					className='accordionPanel-icon'
+					onClick={this._handleToggle}
+					shrink
 					>
+					<Icon
+						shape={iconShape}
+						size={trigger.icon.size} />
+				</FlexItem>
 
-					<FlexItem>
-						<Chunk>
-							<button
-								role='tab'
-								id={`label-${ariaId}`}
-								aria-controls={`panel-${ariaId}`}
-								aria-expanded={this.state.open}
-								aria-selected={this.state.open}
-								className='accordionPanel-label display--block span--100'
-								onClick={this._handleToggle}>
-									{trigger.label}
-							</button>
-						</Chunk>
-
-						<Chunk
-							role='tabpanel'
-							aria-labelledby={`label-${ariaId}`}
-							aria-hidden={!this.state.open}
-							className={classNames.content}
-							style={{height: this.state.height}}>
-							<div
-								className='accordionPanel-content'
-								ref={(div) => { this.content = div; }}>
-								{panelContent}
-							</div>
-						</Chunk>
-					</FlexItem>
-
-					<FlexItem
-						className='accordionPanel-icon'
-						onClick={this._handleToggle}
-						shrink
-						>
-						<Icon
-							shape={iconShape}
-							size={trigger.icon.size} />
-					</FlexItem>
-
-				</Flex>
-			</li>
+			</Flex>
 		);
 	}
 }
