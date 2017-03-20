@@ -2,10 +2,6 @@ sudo: required
 language: node_js
 node_js:
   - "7.7.1"
-cache:
-  yarn: true
-  directories:
-    - node_modules
 
 branches:  # pushes only get built for master
   only:
