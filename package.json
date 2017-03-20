@@ -70,11 +70,9 @@
     "sass-loader": "6.0.2",
     "storybook-addon-i18n-tools": "1.0.0",
     "style-loader": "0.13.2",
+    "swarm-animation": "git+ssh://git@github.com/meetup/swarm-animation.git",
     "swarm-icons": "0.1.0",
     "swarm-sasstools": "1.0.9",
     "webpack": "^2.2"
-  },
-  "dependencies": {
-    "swarm-animation": "git+ssh://git@github.com/meetup/swarm-animation.git"
   }
 }
