@@ -33,14 +33,14 @@ storiesOf('Textarea', module)
 		id='yourBio'
 		name='bio'
 		placeholder='Tell me about your life' />)
-	.add('autoheight', () => <Textarea
-		autoheight
+	.add('auto resizing', () => <Textarea
+		rows='auto'
 		label='Your biography'
 		id='yourBio'
 		name='bio'
 		placeholder='Tell me about your life' />)
-	.add('autoheight with min and max height', () => <Textarea
-		autoheight
+	.add('auto resizing with min and max height', () => <Textarea
+		rows='auto'
 		minHeight={100}
 		maxHeight={300}
 		label='Your biography'
@@ -50,6 +50,12 @@ storiesOf('Textarea', module)
 	.add('min and max height', () => <Textarea
 		minHeight={100}
 		maxHeight={300}
+		label='Your biography'
+		id='yourBio'
+		name='bio'
+		placeholder='Tell me about your life' />)
+	.add('set rows', () => <Textarea
+		rows={3}
 		label='Your biography'
 		id='yourBio'
 		name='bio'

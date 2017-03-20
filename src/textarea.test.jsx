@@ -1,6 +1,10 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
+import * as autosizePlugin from 'autosize';
 import Textarea from './Textarea';
+jest.mock('autosize', () => {
+	return jest.fn();
+});
 
 describe('Textarea', function() {
 	const LABEL_TEXT = 'Super Hero',
@@ -14,8 +18,7 @@ describe('Textarea', function() {
 
 	let textareaComponent,
 		autosizeTextareaComponent,
-		textareaEl,
-		autosizeTextareaEl;
+		textareaEl;
 
 	beforeEach(() => {
 		const formAttrs = {
@@ -38,7 +41,6 @@ describe('Textarea', function() {
 			{...formAttrs} />);
 
 		textareaEl = TestUtils.findRenderedDOMComponentWithTag(textareaComponent, 'textarea');
-		autosizeTextareaEl = TestUtils.findRenderedDOMComponentWithTag(autosizeTextareaComponent, 'textarea');
 	});
 
 	it('exists', function() {
@@ -99,12 +101,10 @@ describe('Textarea', function() {
 		expect(changeSpy).toHaveBeenCalled();
 		expect(stateSpy).toHaveBeenCalledWith({ value: newValue });
 	});
-	it('should grow based on the value', function() {
-		const newValue = `${VALUE} one \n two \n three \n four`;
+	it('should call autosize plugin when this.props.rows=\'auto\'', function() {
+		autosizeTextareaComponent.componentDidMount();
 
-		TestUtils.Simulate.change(textareaEl, { target: { value: newValue } });
-		console.log(autosizeTextareaEl.getAttribute('style'));
-		// setTimeout(console.log(autosizeTextareaEl.getAttribute('style')), 1000);
+		expect(autosizePlugin.default).toHaveBeenCalled();
 	});
 	it('should set be able to min and max height', function() {
 		expect(textareaEl.getAttribute('style')).toEqual(`min-height: ${MIN_HEIGHT}px; max-height: ${MAX_HEIGHT}px;`);
