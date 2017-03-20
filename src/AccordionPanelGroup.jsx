@@ -38,27 +38,20 @@ class AccordionPanelGroup extends React.Component {
 	 * @returns {Array} `AccordionPanel` components with props from `AccordionPanelGroup`
 	 */
 	clonePanels(accordionPanel, i, isOpen) {
-		const toCamelCase = (str) => str.slice(0,20).replace(/-(\w)/g, g => g[1].toUpperCase());
+		const panelProps = {
+			key: i,
+			panelId: i,
+			isAnimated: this.props.isAnimated,
+			className: accordionPanel.props.className,
+			setClickedPanel: this.props.multiSelectable ? false : this.setClickedPanel,
+			isOpen: isOpen
+		};
 
-		return (
+		if (this.props.iconOptions) {
+			panelProps['icon'] = this.props.iconOptions;
+		}
 
-				React.cloneElement(accordionPanel,
-					{
-						key: i,
-						panelId: i,
-						triggerIconAlign: this.props.triggerIconAlign,
-						triggerIconShape: this.props.triggerIconShape,
-						triggerIconShapeActive: this.props.triggerIconShapeActive,
-						triggerIconSize: this.props.triggerIconSize,
-						isAnimated: this.props.isAnimated,
-						name: toCamelCase(accordionPanel.props.triggerLabel),
-						className: accordionPanel.props.className,
-						setClickedPanel: this.props.multiSelectable ? false : this.setClickedPanel,
-						isOpen: isOpen,
-					}
-				)
-
-		);
+		return React.cloneElement(accordionPanel, panelProps);
 	}
 
 	/**
@@ -78,10 +71,7 @@ class AccordionPanelGroup extends React.Component {
 		const {
 			isAnimated, // eslint-disable-line no-unused-vars
 			accordionPanels, // eslint-disable-line no-unused-vars
-			triggerIconAlign, // eslint-disable-line no-unused-vars
-			triggerIconShape, // eslint-disable-line no-unused-vars
-			triggerIconShapeActive, // eslint-disable-line no-unused-vars
-			triggerIconSize, // eslint-disable-line no-unused-vars
+			iconOptions, // eslint-disable-line no-unused-vars
 			multiSelectable,
 			className,
 			...other
@@ -108,19 +98,17 @@ class AccordionPanelGroup extends React.Component {
 
 AccordionPanelGroup.defaultProps = {
 	multiSelectable: true,
-	triggerIconAlign: 'right',
-	triggerIconShape: 'chevron-down',
-	triggerIconSize: 'xs',
 };
-
 
 AccordionPanelGroup.propTypes = {
 	accordionPanels: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
 	multiSelectable: React.PropTypes.bool,
-	triggerIconAlign: React.PropTypes.string,
-	triggerIconShapeActive: React.PropTypes.string,
-	triggerIconShape: React.PropTypes.string,
-	triggerIconSize: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+	iconOptions: React.PropTypes.shape({
+		align: React.PropTypes.string,
+		shape: React.PropTypes.string,
+		shapeActive: React.PropTypes.string,
+		size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+	})
 };
 
 export default AccordionPanelGroup;

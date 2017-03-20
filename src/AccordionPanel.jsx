@@ -9,12 +9,19 @@ import Icon from './Icon';
 export const PANEL_CLASS = 'accordionPanel';
 export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
 
+
 /**
  * @module AccordionPanel
  */
 class AccordionPanel extends React.Component {
 	constructor(props){
 		super(props);
+
+		props.trigger.icon = props.trigger.icon || {};
+		props.trigger.icon.align = 'right';
+		props.trigger.icon.shape = 'chevron-down';
+		props.trigger.icon.size = 'xs';
+
 		this.state = {
 			open: this.props.isOpen
 		};
@@ -70,20 +77,20 @@ class AccordionPanel extends React.Component {
 	render() {
 		const {
 			isOpen, // eslint-disable-line no-unused-vars
-			name,
 			panelContent,
 			panelId, // eslint-disable-line no-unused-vars
 			setClickedPanel, // eslint-disable-line no-unused-vars
-			triggerIconShape,
-			triggerIconShapeActive,
-			triggerIconSize,
-			triggerIconAlign,
-			triggerLabel,
+			trigger,
 			isAnimated,
 			classNamesActive,
 			className,
 			...other
 		} = this.props;
+
+
+		// TODO: create a guaranteed unique id
+		// create valid attribute name from trigger label
+		const ariaId = trigger.label.replace(/\s+/g, '').toLowerCase();
 
 		const classNames = {
 			accordionPanel: cx(
@@ -103,7 +110,7 @@ class AccordionPanel extends React.Component {
 			)
 		};
 
-		const iconShape = this.state.open && triggerIconShapeActive ? triggerIconShapeActive : triggerIconShape;
+		const iconShape = this.state.open && trigger.icon.shapeActive ? trigger.icon.shapActive : trigger.icon.shape;
 
 		return(
 			<li
@@ -112,7 +119,7 @@ class AccordionPanel extends React.Component {
 				>
 				<Flex
 					className={classNames.accordionPanel}
-					rowReverse={triggerIconAlign === 'left' && 'atAll'}
+					rowReverse={trigger.icon.align === 'left' && 'atAll'}
 					{...other}
 					>
 
@@ -120,19 +127,19 @@ class AccordionPanel extends React.Component {
 						<Chunk>
 							<button
 								role='tab'
-								id={`label-${name}`}
-								aria-controls={`panel-${name}`}
+								id={`label-${ariaId}`}
+								aria-controls={`panel-${ariaId}`}
 								aria-expanded={this.state.open}
 								aria-selected={this.state.open}
 								className='accordionPanel-label display--block span--100'
 								onClick={this._handleToggle}>
-									{triggerLabel}
+									{trigger.label}
 							</button>
 						</Chunk>
 
 						<Chunk
 							role='tabpanel'
-							aria-labelledby={`label-${name}`}
+							aria-labelledby={`label-${ariaId}`}
 							aria-hidden={!this.state.open}
 							className={classNames.content}
 							style={{height: this.state.height}}>
@@ -151,7 +158,7 @@ class AccordionPanel extends React.Component {
 						>
 						<Icon
 							shape={iconShape}
-							size={triggerIconSize} />
+							size={trigger.icon.size} />
 					</FlexItem>
 
 				</Flex>
@@ -161,9 +168,6 @@ class AccordionPanel extends React.Component {
 }
 
 AccordionPanel.defaultProps = {
-	triggerIconAlign: 'right',
-	triggerIconShape: 'chevron-down',
-	triggerIconSize: 'xs',
 	isOpen: false
 };
 
@@ -171,14 +175,18 @@ AccordionPanel.propTypes = {
 	classNamesActive: React.PropTypes.string,
 	isOpen: React.PropTypes.bool,
 	isAnimated: React.PropTypes.bool,
-	name: React.PropTypes.string,
 	panelContent: React.PropTypes.element,
 	panelId: React.PropTypes.number,
-	triggerIconAlign: React.PropTypes.string,
-	triggerIconShape: React.PropTypes.string,
-	triggerIconShapeActive: React.PropTypes.string,
-	triggerIconSize: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	triggerLabel: React.PropTypes.string
+	trigger: React.PropTypes.shape({
+		onclick: React.PropTypes.func,
+		label: React.PropTypes.string.isRequired,
+		icon: React.PropTypes.shape({
+			align: React.PropTypes.string,
+			shape: React.PropTypes.string,
+			shapeActive: React.PropTypes.string,
+			size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+		})
+	})
 };
 
 export default AccordionPanel;
