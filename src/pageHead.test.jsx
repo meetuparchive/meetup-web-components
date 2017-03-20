@@ -29,6 +29,7 @@ const menu = [
 	],
 	pageTitle = 'Page title',
 	titleLabel = 'Title label',
+	titleLabelCustomClass = `${PAGE_TITLELABEL_CLASS}--urgent`,
 	subtitle = 'Sub title';
 
 let pageHead;
@@ -72,7 +73,7 @@ describe('PageHead', function() {
 	describe('titleLabel', () => {
 		beforeEach(() => {
 			pageHead = TestUtils.renderIntoDocument(
-				<PageHead title={pageTitle} titleLabel={titleLabel} />
+				<PageHead title={pageTitle} titleLabel={titleLabel} titleLabelClass={titleLabelCustomClass} />
 			);
 		});
 		it('should display a text label area', () => {
@@ -82,6 +83,11 @@ describe('PageHead', function() {
 		it(`should have an element with class of '${PAGE_TITLELABEL_CLASS}'`, () => {
 			const pageHeadEl = ReactDOM.findDOMNode(pageHead);
 			const titleLabelEl = pageHeadEl.getElementsByClassName(PAGE_TITLELABEL_CLASS);
+			expect(titleLabelEl.length).toBe(1);
+		});
+		it('should handle custom classes', () => {
+			const pageHeadEl = ReactDOM.findDOMNode(pageHead);
+			const titleLabelEl = pageHeadEl.getElementsByClassName(titleLabelCustomClass);
 			expect(titleLabelEl.length).toBe(1);
 		});
 	});

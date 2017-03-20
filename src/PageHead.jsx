@@ -27,6 +27,7 @@ class PageHead extends React.Component {
 			subtitle,
 			title,
 			titleLabel,
+			titleLabelClass,
 			menuItems,
 			...other
 		} = this.props;
@@ -34,6 +35,11 @@ class PageHead extends React.Component {
 		const classNames = cx(
 			PAGE_HEAD_CLASS,
 			className
+		);
+
+		const titleLabelClassNames = cx(
+			PAGE_TITLELABEL_CLASS,
+			titleLabelClass
 		);
 
 		const menuRender = menuItems.map((menuItem, i) => (
@@ -55,7 +61,7 @@ class PageHead extends React.Component {
 					<FlexItem>
 						<Chunk className='align--center atMedium_align--left'>
 							{titleLabel &&
-								<p className={`${PAGE_TITLELABEL_CLASS} text--label`}>{titleLabel}</p>
+								<p className={`${titleLabelClassNames} text--label`}>{titleLabel}</p>
 							}
 							<h1 className='text--display1'>{title}</h1>
 							{subtitle &&
@@ -86,6 +92,11 @@ PageHead.propTypes = {
 		React.PropTypes.string,
 		React.PropTypes.element
 	]),
+	titleLabel: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]),
+	titleLabelClass: React.PropTypes.string,
 	menuItems: React.PropTypes.array,
 };
 PageHead.defaultProps = {
