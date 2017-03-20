@@ -78,11 +78,6 @@ describe('TextInput', function() {
 		expect(inputEl.value).toEqual(newValue);
 	});
 
-	it('should return value when `getValue`', function() {
-		TestUtils.Simulate.change(inputEl, { target: { value: `${VALUE}r` } });
-		expect(textInputComponent.getValue()).toEqual(inputEl.value);
-	});
-
 	it('should call onChange and setState with input change', function() {
 		const newValue = `${VALUE}r`;
 		const changeSpy = spyOn(TextInput.prototype, 'onChange').and.callThrough();

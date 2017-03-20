@@ -19,10 +19,6 @@ class TextInput extends React.Component {
 		this.props.onChange(e);
 	}
 
-	getValue() {
-		return this.state.value;
-	}
-
 	render() {
 		const {
 			name,
