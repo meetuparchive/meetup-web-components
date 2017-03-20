@@ -1,7 +1,11 @@
 sudo: required
 language: node_js
 node_js:
-  - "6.10.0"
+  - "7.7.1"
+cache:
+  yarn: true
+  directories:
+    - node_modules
 
 branches:  # pushes only get built for master
   only:
@@ -25,7 +29,7 @@ before_install:
     - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
 before_script:
-  - git diff --exit-code
+  - git diff yarn.lock --exit-code
 
 after_success:
   - npm run coveralls
