@@ -28,8 +28,8 @@ addons:
 before_install:
     - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
-before_install:
-  - git diff --exit-code
+before_script:
+  - git diff --exit-code yarn.lock
 
 after_success:
   - npm run coveralls
