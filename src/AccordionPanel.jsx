@@ -80,7 +80,6 @@ class AccordionPanel extends React.Component {
 		const {
 			isOpen, // eslint-disable-line no-unused-vars
 			panelContent,
-			panelId, // eslint-disable-line no-unused-vars
 			setClickedPanel, // eslint-disable-line no-unused-vars
 			trigger,
 			isAnimated,
@@ -88,11 +87,6 @@ class AccordionPanel extends React.Component {
 			className,
 			...other
 		} = this.props;
-
-
-		// TODO: create a guaranteed unique id
-		// create valid attribute name from trigger label
-		const ariaId = trigger.label.replace(/\s+/g, '').toLowerCase();
 
 		const classNames = {
 			accordionPanel: cx(
@@ -103,6 +97,10 @@ class AccordionPanel extends React.Component {
 				},
 				className
 			),
+			trigger: cx(
+				trigger.className,
+				'accordionPanel-label display--block span--100'
+			),
 			content: cx(
 				{
 					'accordionPanel-animator': isAnimated,
@@ -111,6 +109,9 @@ class AccordionPanel extends React.Component {
 				}
 			)
 		};
+
+		// create valid attribute name from trigger label
+		const ariaId = trigger.label.replace(/\s+/g, '').toLowerCase();
 
 		const iconShape = this.state.open && trigger.icon.shapeActive ? trigger.icon.shapActive : trigger.icon.shape;
 
@@ -129,7 +130,7 @@ class AccordionPanel extends React.Component {
 							aria-controls={`panel-${ariaId}`}
 							aria-expanded={this.state.open}
 							aria-selected={this.state.open}
-							className='accordionPanel-label display--block span--100'
+							className={classNames.trigger}
 							onClick={this._handleToggle}>
 								{trigger.label}
 						</button>
@@ -173,10 +174,10 @@ AccordionPanel.propTypes = {
 	isOpen: React.PropTypes.bool,
 	isAnimated: React.PropTypes.bool,
 	panelContent: React.PropTypes.element,
-	panelId: React.PropTypes.number,
 	trigger: React.PropTypes.shape({
 		onclick: React.PropTypes.func,
 		label: React.PropTypes.string.isRequired,
+		className: React.PropTypes.string,
 		icon: React.PropTypes.shape({
 			align: React.PropTypes.string,
 			shape: React.PropTypes.string,

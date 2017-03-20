@@ -23,11 +23,6 @@ $A_duration: 0.2s;
 	border: inherit;
 	text-align: inherit;
 	padding: 0;
-	outline: 0;
-
-	&:focus {
-		font-weight: bold;
-	}
 }
 
 .accordionPanel-icon .svg--chevron-down .svg-icon {
