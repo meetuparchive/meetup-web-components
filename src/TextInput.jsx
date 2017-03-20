@@ -78,7 +78,7 @@ TextInput.propTypes = {
 	]),
 	labelClassName: React.PropTypes.string,
 	required: React.PropTypes.bool,
-	onChange: React.PropTypes.func.isRequired,
+	onChange: React.PropTypes.func,
 };
 
 export default TextInput;
