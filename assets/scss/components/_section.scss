@@ -9,7 +9,7 @@ around it's children.
 
 $sectionSpaceMultiple: 2;
 
-@include responsiveBase() {
+@include responsiveVarContext--base() {
 	.section {
 		padding: $base*$sectionSpaceMultiple $base 0;
 	}

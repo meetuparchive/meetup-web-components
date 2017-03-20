@@ -1,0 +1,5 @@
+@include responsiveVarContext--base() {
+	.pageHead {
+		padding-bottom: $base;
+	}
+}

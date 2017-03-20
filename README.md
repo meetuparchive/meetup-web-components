@@ -23,7 +23,7 @@ is determined exclusively by the Travis build number for pushes to `master`.
 Major and minor versions are hard-coded into the [Makefile](Makefile#L2).
 
 Manual pushes to `master` and PR merges to master will be built by Travis, and
-will kick off the npm publish routine. The currently-published version of the
+will kick off the yarn publish routine. The currently-published version of the
 package is shown on the repo homepage on GitHub in a badge at the top of the
 README.
 
@@ -52,7 +52,7 @@ If you click the disclosure arrow, the version number will be displayed, e.g.
 You can then install this beta version into your consumer application with
 
 ```sh
-> npm install meetup-web-components@<version tag>
+> yarn install meetup-web-components@<version tag>
 ```
 
 Each time you push a change to your `meetup-web-components` PR, you'll need to
@@ -69,7 +69,7 @@ The overall workflow is:
 ## Getting started
 
 You can generate the boilerplate files for React components using
-`npm run generate`, which invokes `src/utils/generate.js`.
+`yarn run generate`, which invokes `src/utils/generate.js`.
 
 The command will prompt you for a 'type' (select from the list of options),
 and a 'name'. It generates the following files in `src/` :
@@ -87,6 +87,11 @@ Filename casing convenctions:
 - Component files: `CamelCase`, with a leading capital, i.e. `RsvpTag.jsx`
 - Test files: `alllowercase`, i.e. `rsvptag.test.js`
 - Story files: `alllowercase`, i.e. `rsvptag.story.jsx`
+
+### Layout conventions
+
+The `src/` directory contains layout helpers, like `Section` and `Chunk`. These are 
+documented in Storybook, but a [more detailed guide can be found here](https://meetup.atlassian.net/wiki/display/SDS/Guide+to+Layout+Components).
 
 
 ## Testing
@@ -136,7 +141,7 @@ expect(eventNode.getElementsByTagName('h5')[0].textContent).toEqual(testEventNam
 
 To manually lint your code, run:
 
-`$ npm run lint`
+`$ yarn run lint`
 
 Whitespace issues will be fixed automatically - just remember to commit the changes. Other style
 issues will log errors. Our `.eslintrc` configuration is based on the 'recommended' preset, with
@@ -151,7 +156,7 @@ have already been built into our Foundation library. We use
 to display components outside of the app context. To open it, run:
 
 ```sh
-$ npm run storybook
+$ yarn run storybook
 ```
 
 And open the viewer at [http://localhost:9001](http://localhost:9001)
