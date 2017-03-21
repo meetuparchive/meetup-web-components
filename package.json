@@ -34,8 +34,7 @@
     "react-intl": "^2.2.3"
   },
   "dependencies": {
-    "autosize": "3.0.20",
-    "swarm-sasstools": "1.0.6"
+    "autosize": "3.0.20"
   },
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "3.3.0",
@@ -75,7 +74,7 @@
     "storybook-addon-i18n-tools": "1.0.0",
     "style-loader": "0.13.2",
     "swarm-icons": "0.1.0",
-    "swarm-sasstools": "1.0.9",
+    "swarm-sasstools": "1.1.10",
     "webpack": "^2.2"
   }
 }
