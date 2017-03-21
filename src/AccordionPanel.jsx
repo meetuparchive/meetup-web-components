@@ -127,7 +127,7 @@ class AccordionPanel extends React.Component {
 		return(
 			<Flex
 				className={classNames.accordionPanel}
-				rowReverse={iconAlign === 'left' && 'atAll'}
+				rowReverse={iconAlign === 'left' && 'all'}
 				{...other}
 				>
 
@@ -186,7 +186,7 @@ AccordionPanel.propTypes = {
 	isOpen: React.PropTypes.bool,
 	isAnimated: React.PropTypes.bool,
 	panelContent: React.PropTypes.element,
-	onclick: React.PropTypes.func,
+	onClick: React.PropTypes.func,
 	label: React.PropTypes.string.isRequired,
 	className: React.PropTypes.string,
 	iconAlign: React.PropTypes.string,

@@ -28,6 +28,7 @@ class AccordionPanelGroup extends React.Component {
 	 * have one panel open at a time.
 	 */
 	setClickedPanel(clickedPanel) {
+		console.warn(this);
 		this.setState({ clickedPanel });
 	}
 
@@ -49,14 +50,7 @@ class AccordionPanelGroup extends React.Component {
 			setClickedPanel: this.props.multiSelectable ? false : this.setClickedPanel,
 			isOpen: isOpen
 		};
-
-		return (
-			<li
-				key={i}
-				className='list-item'>
-				{ React.cloneElement(accordionPanel, panelProps) }
-			</li>
-		);
+		return React.cloneElement(accordionPanel, panelProps);
 	}
 
 	/**
@@ -64,7 +58,13 @@ class AccordionPanelGroup extends React.Component {
 	 */
 	renderAccordionPanels() {
 		this.accordionPanels = this.accordionPanels.map((accordionPanel, i) => {
-			const isOpen = accordionPanel.props.isOpen && this.state.clickedPanel == null;
+			const isOpen = accordionPanel.props.isOpen;
+
+			/*
+			 *if ( !this.props.multiSelectable && this.state.clickedPanel === accordionPanel ) {
+			 *   isOpen = false;
+			 *}
+			 */
 
 			return this.clonePanels(accordionPanel, i, isOpen);
 		});
@@ -98,7 +98,17 @@ class AccordionPanelGroup extends React.Component {
 				className={classNames}
 				{...other}
 				>
-					{this.renderAccordionPanels()}
+				{
+					this.renderAccordionPanels().map(
+						(panel, i) => (
+						<li
+							key={i}
+							className='list-item'>
+							{panel}
+						</li>
+						)
+					)
+				}
 			</ul>
 		);
 	}
