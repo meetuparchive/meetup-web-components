@@ -9,12 +9,14 @@ export class TabsTab extends React.Component {
 		const {
 			children,
 			isSelected,
+			className,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'tabs-tab align--center',
-			{'tabs-tab--selected': isSelected}
+			{'tabs-tab--selected': isSelected},
+			className
 		);
 
 		return (
@@ -27,7 +29,6 @@ export class TabsTab extends React.Component {
 TabsTab.propTypes = {
 	isSelected: React.PropTypes.bool
 };
-
 
 /**
  * @module Tabs
@@ -52,10 +53,7 @@ export class Tabs extends React.Component {
 
 		return (
 			<nav className={className}>
-				<ul
-					className={ulClasses}
-					{...other}
-				>
+				<ul className={ulClasses} {...other}>
 					{children}
 				</ul>
 			</nav>
