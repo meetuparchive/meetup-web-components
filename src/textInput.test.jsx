@@ -19,13 +19,15 @@ describe('TextInput', function() {
 			maxLength: MAX_LEN,
 			error: ERROR_TEXT,
 			required: true,
-			onChange,
 		};
-		textInputComponent = TestUtils.renderIntoDocument(<TextInput
-			name={NAME_ATTR}
-			label={LABEL_TEXT}
-			value={VALUE}
-			{...formAttrs} />);
+		textInputComponent = TestUtils.renderIntoDocument(
+			<TextInput
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				value={VALUE}
+				{...formAttrs}
+			/>
+		);
 
 		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
 	});
