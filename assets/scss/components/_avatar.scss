@@ -113,9 +113,26 @@ Class                     | Description
 // Type variants
 //
 .avatar--noPhoto {
+	background-color: $C_textSecondary;
 	position: relative;
 	text-indent: initial;
-	border: 3px solid;
+
+	&:before {
+		background: $C_textSecondaryInverted;
+		border-radius: 999px;
+		bottom: 0;
+		content: '';
+		display: block;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+
+	&.avatar--person {
+		background-position-y: 6px;
+	}
+
 }
 
 .avatar--person {
