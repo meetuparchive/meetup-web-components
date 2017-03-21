@@ -6,10 +6,13 @@ describe('Tabs', function() {
 	let componentBasic,
 		componentWithVariants;
 
+	const TEST_TAB_CLASS = 'test-tab-class';
+	const TEST_TABSTAB_CLASS = 'test-tabstab-class';
+
 	beforeEach(() => {
 		componentBasic = TestUtils.renderIntoDocument(
-			<Tabs className='test-class-wrapper-name'>
-				<TabsTab className='test-class-name'>First tab</TabsTab>
+			<Tabs className={TEST_TAB_CLASS}>
+				<TabsTab className={TEST_TABSTAB_CLASS}>First tab</TabsTab>
 				<TabsTab isSelected>Second tab</TabsTab>
 				<TabsTab>Third tab</TabsTab>
 			</Tabs>
@@ -48,7 +51,7 @@ describe('Tabs', function() {
 		expect(tabsUlEl.classList).toContain('tabs--bordered');
 	});
 
-	it('should *not* apply variant classes when set by props', function() {
+	it('should *not* apply variant classes when *not* set by props', function() {
 		const tabsUlEl = TestUtils.scryRenderedDOMComponentsWithTag(
 			componentBasic,
 			'UL'
@@ -59,13 +62,13 @@ describe('Tabs', function() {
 	});
 
 	it('appropriately adds passed prop classname to component `Tabs` component', function() {
-		const tab = TestUtils.findRenderedDOMComponentWithClass(componentBasic, 'test-class-wrapper-name');
+		const tab = TestUtils.findRenderedDOMComponentWithClass(componentBasic, TEST_TAB_CLASS);
 		expect(() => tab).not.toThrow();
 		expect(tab.tagName).toBe('NAV');
 	});
 
 	it('appropriately adds passed prop classname to component `TabsTab` component', function() {
-		const tabsTab = TestUtils.findRenderedDOMComponentWithClass(componentBasic, 'test-class-name');
+		const tabsTab = TestUtils.findRenderedDOMComponentWithClass(componentBasic, TEST_TABSTAB_CLASS);
 		expect(() => tabsTab).not.toThrow();
 		expect(tabsTab.classList).toContain('tabs-tab');
 	});
