@@ -37,12 +37,21 @@ storiesOf('InlineBlockList', module)
 		'Basic usage of InlineBlockList with a middot between items',
 		() => (
 		<InfoWrapper>
-			<Bounds><Section>
-				<InlineBlockList
-					items={basicItems}
-					separator='·'
-				/>
-			</Section></Bounds>
+			<Bounds>
+				<Section>
+					<InlineBlockList
+						items={basicItems}
+						separator='·'
+					/>
+				</Section>
+				<Section>
+					<InlineBlockList
+						items={['any', 'glyph', 'will', 'work']}
+						separator='👏'
+					/>
+				</Section>
+			</Bounds>
+
 		</InfoWrapper>
 	))
 	.addWithInfo(
