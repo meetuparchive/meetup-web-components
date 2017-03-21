@@ -40,7 +40,10 @@ class AccordionPanelGroup extends React.Component {
 	clonePanels(accordionPanel, i, isOpen) {
 		const panelProps = {
 			key: i,
-			icon: this.props.icons,
+			iconAlign: this.props.iconAlign,
+			iconSize: this.props.iconSize,
+			iconShape: this.props.iconShape,
+			iconShapeActive: this.props.iconShapeActive,
 			isAnimated: this.props.isAnimated,
 			className: accordionPanel.props.className,
 			setClickedPanel: this.props.multiSelectable ? false : this.setClickedPanel,
@@ -73,7 +76,10 @@ class AccordionPanelGroup extends React.Component {
 		const {
 			isAnimated, // eslint-disable-line no-unused-vars
 			accordionPanels, // eslint-disable-line no-unused-vars
-			icons, // eslint-disable-line no-unused-vars
+			iconAlign, // eslint-disable-line no-unused-vars
+			iconShape, // eslint-disable-line no-unused-vars
+			iconSize,  // eslint-disable-line no-unused-vars
+			iconShapeActive, // eslint-disable-line no-unused-vars
 			multiSelectable,
 			className,
 			...other
@@ -100,22 +106,18 @@ class AccordionPanelGroup extends React.Component {
 
 AccordionPanelGroup.defaultProps = {
 	multiSelectable: true,
-	icons: {
-		align: 'right',
-		shape: 'chevron-down',
-		size: 'xs'
-	}
+	iconAlign: 'right',
+	iconShape: 'chevron-down',
+	iconSize: 'xs'
 };
 
 AccordionPanelGroup.propTypes = {
 	accordionPanels: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
 	multiSelectable: React.PropTypes.bool,
-	icons: React.PropTypes.shape({
-		align: React.PropTypes.string,
-		shape: React.PropTypes.string,
-		shapeActive: React.PropTypes.string,
-		size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	})
+	iconAlign: React.PropTypes.string,
+	iconShape: React.PropTypes.string,
+	iconShapeActive: React.PropTypes.string,
+	iconSize: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
 };
 
 export default AccordionPanelGroup;

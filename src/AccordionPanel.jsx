@@ -69,13 +69,30 @@ class AccordionPanel extends React.Component {
 		}
 	}
 
+	/**
+	 * @returns {String} icon shape
+	 */
+	getIconShape() {
+		const {
+			iconShape,
+			iconShapeActive
+		} = this.props;
+
+		return this.state.open && iconShapeActive ?
+			iconShapeActive :
+			iconShape;
+	}
+
 	render() {
 		const {
-			isOpen, // eslint-disable-line no-unused-vars
 			panelContent,
+			label,
+			isOpen, // eslint-disable-line no-unused-vars
 			setClickedPanel, // eslint-disable-line no-unused-vars
-			trigger,
-			icon,
+			iconAlign, // eslint-disable-line no-unused-vars
+			iconShape, // eslint-disable-line no-unused-vars
+			iconSize,  // eslint-disable-line no-unused-vars
+			iconShapeActive, // eslint-disable-line no-unused-vars
 			isAnimated,
 			classNamesActive,
 			className,
@@ -92,7 +109,7 @@ class AccordionPanel extends React.Component {
 				className
 			),
 			trigger: cx(
-				trigger.className,
+				className,
 				'accordionPanel-label display--block span--100'
 			),
 			content: cx(
@@ -105,17 +122,12 @@ class AccordionPanel extends React.Component {
 		};
 
 		// create valid attribute name from trigger label
-		const ariaId = trigger.label.replace(/\s+/g, '').toLowerCase();
-
-		let iconShape = icon.shape;
-		if (this.state.open && icon.shapeActive) {
-			iconShape = icon.shapeActive;
-		}
+		const ariaId = label.replace(/\s+/g, '').toLowerCase();
 
 		return(
 			<Flex
 				className={classNames.accordionPanel}
-				rowReverse={icon.align === 'left' && 'atAll'}
+				rowReverse={iconAlign === 'left' && 'atAll'}
 				{...other}
 				>
 
@@ -129,7 +141,7 @@ class AccordionPanel extends React.Component {
 							aria-selected={this.state.open}
 							className={classNames.trigger}
 							onClick={this._handleToggle}>
-								{trigger.label}
+								{label}
 						</button>
 					</Chunk>
 
@@ -153,8 +165,8 @@ class AccordionPanel extends React.Component {
 					shrink
 					>
 					<Icon
-						shape={iconShape}
-						size={icon.size} />
+						shape={this.getIconShape()}
+						size={iconSize} />
 				</FlexItem>
 
 			</Flex>
@@ -164,11 +176,9 @@ class AccordionPanel extends React.Component {
 
 AccordionPanel.defaultProps = {
 	isOpen: false,
-	icon: {
-		align: 'right',
-		shape: 'chevron-down',
-		size: 'xs'
-	}
+	iconAlign: 'right',
+	iconShape: 'chevron-down',
+	iconSize: 'xs'
 };
 
 AccordionPanel.propTypes = {
@@ -176,17 +186,13 @@ AccordionPanel.propTypes = {
 	isOpen: React.PropTypes.bool,
 	isAnimated: React.PropTypes.bool,
 	panelContent: React.PropTypes.element,
-	trigger: React.PropTypes.shape({
-		onclick: React.PropTypes.func,
-		label: React.PropTypes.string.isRequired,
-		className: React.PropTypes.string
-	}),
-	icon: React.PropTypes.shape({
-		align: React.PropTypes.string,
-		shape: React.PropTypes.string,
-		shapeActive: React.PropTypes.string,
-		size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	})
+	onclick: React.PropTypes.func,
+	label: React.PropTypes.string.isRequired,
+	className: React.PropTypes.string,
+	iconAlign: React.PropTypes.string,
+	iconShape: React.PropTypes.string,
+	iconShapeActive: React.PropTypes.string,
+	iconSize: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
 };
 
 export default AccordionPanel;

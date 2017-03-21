@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AccordionPanelGroup from './AccordionPanelGroup';
 import AccordionPanel from './AccordionPanel';
@@ -12,24 +11,20 @@ import { storiesOf } from '@kadira/storybook';
 const iconSpriteStyle = { display: 'none' };
 const iconSprite = require('raw-loader!swarm-icons/dist/sprite/sprite.inc');
 
-storiesOf('AccordionPanelGroup', module)
+storiesOf('Accordion', module)
 	.add('default', () => (
 		<div className='span--100 padding--all'>
 			<AccordionPanelGroup
 				accordionPanels={[
 					<AccordionPanel
-						trigger={{
-							label: 'First in default group'
-						}}
+						label='First in default group'
 						panelContent={
 							<div className='runningText'>
 								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Second in default group'
-						}}
+						label='Second in default group'
 						panelContent={
 							<div>
 								<div className='runningText'>
@@ -42,9 +37,7 @@ storiesOf('AccordionPanelGroup', module)
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Third in default group'
-						}}
+						label='Third in default group'
 						panelContent={
 							<div className='runningText'>
 								<p>Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
@@ -57,24 +50,18 @@ storiesOf('AccordionPanelGroup', module)
 	.add('Custom icons', () => (
 		<div className='span--100 padding--all'>
 			<AccordionPanelGroup
-				icons={{
-					shape: 'plus',
-					shapeActive: 'minus'
-				}}
+				iconShape='plus'
+				iconShapeActive='minus'
 				accordionPanels={[
 					<AccordionPanel
-						trigger={{
-							label: 'First with custom icon'
-						}}
+						label='First with custom icon'
 						panelContent={
 							<div className='runningText'>
 								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Second with custom icon'
-						}}
+						label='Second with custom icon'
 						panelContent={
 							<div>
 								<div className='runningText'>
@@ -87,9 +74,7 @@ storiesOf('AccordionPanelGroup', module)
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Third with custom icon'
-						}}
+						label='Third with custom icon'
 						panelContent={
 							<div className='runningText'>
 								<p>Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
@@ -102,23 +87,17 @@ storiesOf('AccordionPanelGroup', module)
 	.add('Left-aligned icon', () => (
 		<div className='span--100 padding--all'>
 			<AccordionPanelGroup
-				icons={{
-					align: 'left'
-				}}
+				iconAlign='left'
 				accordionPanels={[
 					<AccordionPanel
-						trigger={{
-							label: 'First with left icon'
-						}}
+						label='First with left icon'
 						panelContent={
 							<div className='runningText'>
 								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Second with left icon'
-						}}
+						label='Second with left icon'
 						panelContent={
 							<div>
 								<div className='runningText'>
@@ -131,9 +110,7 @@ storiesOf('AccordionPanelGroup', module)
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Third with left icon'
-						}}
+						label='Third with left icon'
 						panelContent={
 							<div className='runningText'>
 								<p>Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
@@ -149,18 +126,14 @@ storiesOf('AccordionPanelGroup', module)
 				isAnimated
 				accordionPanels={[
 					<AccordionPanel
-						trigger={{
-							label: 'First animated section'
-						}}
+						label='First animated section'
 						panelContent={
 							<div className='runningText'>
 								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Section animated section'
-						}}
+						label='Section animated section'
 						panelContent={
 							<div>
 								<div className='runningText'>
@@ -173,9 +146,7 @@ storiesOf('AccordionPanelGroup', module)
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Third animated section'
-						}}
+						label='Third animated section'
 						panelContent={
 							<div className='runningText'>
 								<p>Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
@@ -191,18 +162,14 @@ storiesOf('AccordionPanelGroup', module)
 				accordionPanels={[
 					<AccordionPanel
 						isOpen
-						trigger={{
-							label: 'First (open by default)'
-						}}
+						label='First (open by default)'
 						panelContent={
 							<div className='runningText'>
 								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Second (not open by default)'
-						}}
+						label='Second (not open by default)'
 						panelContent={
 							<div>
 								<div className='runningText'>
@@ -215,9 +182,7 @@ storiesOf('AccordionPanelGroup', module)
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Third (not open by default)'
-						}}
+						label='Third (not open by default)'
 						panelContent={
 							<div className='runningText'>
 								<p>Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
@@ -233,18 +198,14 @@ storiesOf('AccordionPanelGroup', module)
 				multiSelectable={false}
 				accordionPanels={[
 					<AccordionPanel
-						trigger={{
-							label: 'First'
-						}}
+						label='First'
 						panelContent={
 							<div className='runningText'>
 								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Second'
-						}}
+						label='Second'
 						panelContent={
 							<div>
 								<div className='runningText'>
@@ -257,9 +218,7 @@ storiesOf('AccordionPanelGroup', module)
 							</div>
 						} />,
 					<AccordionPanel
-						trigger={{
-							label: 'Last'
-						}}
+						label='Last'
 						panelContent={
 							<div className='runningText'>
 								<p>Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
@@ -272,9 +231,7 @@ storiesOf('AccordionPanelGroup', module)
 	.add('Standalone AccordionPanel', () => (
 		<div className='span--100 padding--all'>
 			<AccordionPanel
-				trigger={{
-					label: 'Trigger label'
-				}}
+				label='Trigger label'
 				panelContent={
 					<div className='runningText'>
 						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
