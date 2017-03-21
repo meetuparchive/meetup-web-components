@@ -3,7 +3,7 @@ import TestUtils from 'react-addons-test-utils';
 import TextInput from './TextInput';
 
 describe('TextInput', function() {
-
+	const onChange = jest.fn();
 	const LABEL_TEXT = 'Super Hero',
 		VALUE = 'Batman',
 		NAME_ATTR = 'superhero',
@@ -18,7 +18,8 @@ describe('TextInput', function() {
 			id: NAME_ATTR,
 			maxLength: MAX_LEN,
 			error: ERROR_TEXT,
-			required: true
+			required: true,
+			onChange,
 		};
 		textInputComponent = TestUtils.renderIntoDocument(<TextInput
 			name={NAME_ATTR}
@@ -82,15 +83,35 @@ describe('TextInput', function() {
 		const changeSpy = spyOn(TextInput.prototype, 'onChange').and.callThrough();
 		const stateSpy = spyOn(TextInput.prototype, 'setState').and.callThrough();
 
-		const boundComponent = TestUtils.renderIntoDocument(<TextInput
-			name={NAME_ATTR}
-			label={LABEL_TEXT}
-			value={VALUE} />);
+		const boundComponent = TestUtils.renderIntoDocument(
+			<TextInput
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				value={VALUE}
+				onChange={onChange}
+			/>
+		);
 
 		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
 		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
 
 		expect(changeSpy).toHaveBeenCalled();
 		expect(stateSpy).toHaveBeenCalledWith({ value: newValue });
+	});
+
+	it('should call onChange `props` function when input is changed', () => {
+		const newValue = `${VALUE}r`;
+		const boundComponent = TestUtils.renderIntoDocument(
+			<TextInput
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				value={VALUE}
+				onChange={onChange}
+			/>
+		);
+		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
+		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
+
+		expect(onChange).toHaveBeenCalled();
 	});
 });
