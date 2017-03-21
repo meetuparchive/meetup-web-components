@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import { findComponentsWithType } from 'meetup-web-mocks/lib/testUtils';
 
 import Stripe, {
 	STRIPE_CLASS,
@@ -9,6 +8,8 @@ import Stripe, {
 	STRIPE_INVERTED_CLASS,
 	STRIPE_HERO_CLASS,
 } from './Stripe';
+
+import Bounds from './Bounds';
 
 describe('Stripe', function() {
 
@@ -84,7 +85,7 @@ describe('Stripe', function() {
 			expect(stripeNode.classList).toContain(STRIPE_HERO_CLASS);
 		});
 		it('should render a `Bounds` component', () => {
-			const boundComponent = findComponentsWithType(stripeHero, 'Bounds');
+			const boundComponent = TestUtils.scryRenderedComponentsWithType(stripeHero, Bounds);
 			expect(boundComponent.length).toBe(1);
 		});
 	});
