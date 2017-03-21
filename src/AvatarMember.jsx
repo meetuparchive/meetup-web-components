@@ -1,6 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 import Avatar from './Avatar';
+import { getIconAsBase64Uri } from './utils/base64';
+
+const NO_PHOTO_SRC = getIconAsBase64Uri('profile');
 
 /**
  * An avatar for a member - just supply a member
@@ -21,15 +24,16 @@ class AvatarMember extends React.Component {
 			{
 				'avatar--org': org,
 				'avatar--fbFriend': fbFriend,
+				'avatar--noPhoto': (member.photo || {}).photo_link == undefined
 			},
 			className);
 
 		return (
 			<Avatar
 				alt={member.name}
-				src={(member.photo || {}).photo_link}
+				src={(member.photo || {}).photo_link || NO_PHOTO_SRC}
 				className={classNames}
-				{...other} />
+				{...other}/>
 		);
 	}
 }

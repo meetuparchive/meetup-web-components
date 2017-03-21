@@ -1,8 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 
-const NO_PHOTO_SRC = '';  // default 'no photo' src
-
 /**
  * SQ2 Avatar component
  *
@@ -29,13 +27,12 @@ class Avatar extends React.Component {
 			'avatar',
 			{
 				'avatar--small': small,
-				'avatar--big': big,
-				'avatar--noPhoto': !src  // note: `noPhoto` variant is determined by `src`
+				'avatar--big': big
 			},
 			className
 		);
 
-		const backgroundImage = src || NO_PHOTO_SRC;
+		const backgroundImage = src;
 		const allStyles = style || {};
 		allStyles.backgroundImage = `url(${backgroundImage})`;
 

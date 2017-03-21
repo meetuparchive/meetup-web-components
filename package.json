@@ -73,5 +73,8 @@
     "swarm-icons": "0.1.0",
     "swarm-sasstools": "1.1.9",
     "webpack": "^2.2"
+  },
+  "dependencies": {
+    "base64-image-loader": "1.2.0"
   }
 }
