@@ -27,7 +27,8 @@ class InlineBlockList extends React.Component {
 		return (
 			<ul
 				className={classNames}
-				{...other}>
+				{...other}
+				>
 				{items.map((item, key) =>
 					<li key={key} data-separator={separator}>{item}</li>
 				)}

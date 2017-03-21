@@ -18,7 +18,7 @@ const ITEMS = [
 		'日本語',
 		'한국어',
 	],
-	SEPARATOR = '·';
+	SEPARATOR = '☃';
 
 let inlineblockList,
 	inlineblockListSeparated;

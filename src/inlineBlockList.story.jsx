@@ -1,7 +1,9 @@
 import React from 'react';
-import InlineBlockList from './InlineBlockList';
 import { storiesOf } from '@kadira/storybook';
 import { InfoWrapper } from './utils/storyComponents';
+import Bounds from './Bounds';
+import Section from './Section';
+import InlineBlockList from './InlineBlockList';
 
 const basicItems = [
 	'English',
@@ -23,10 +25,11 @@ storiesOf('InlineBlockList', module)
 		'Basic usage of InlineBlockList',
 		() => (
 		<InfoWrapper>
-			<InlineBlockList
-				style={{padding: '20px'}}
-				items={basicItems}
-			/>
+			<Bounds><Section>
+				<InlineBlockList
+					items={basicItems}
+				/>
+			</Section></Bounds>
 		</InfoWrapper>
 	))
 	.addWithInfo(
@@ -34,11 +37,12 @@ storiesOf('InlineBlockList', module)
 		'Basic usage of InlineBlockList with a middot between items',
 		() => (
 		<InfoWrapper>
-			<InlineBlockList
-				style={{padding: '20px'}}
-				items={basicItems}
-				separator='·'
-			/>
+			<Bounds><Section>
+				<InlineBlockList
+					items={basicItems}
+					separator='·'
+				/>
+			</Section></Bounds>
 		</InfoWrapper>
 	))
 	.addWithInfo(
@@ -46,17 +50,18 @@ storiesOf('InlineBlockList', module)
 		'InlineBlockList using elements as items',
 		() => (
 		<InfoWrapper>
-			<InlineBlockList
-				style={{padding: '20px'}}
-				items={[
-					<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-					<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-					<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-					<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-					<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-					<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-					<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-				]}
-			/>
+			<Bounds><Section>
+				<InlineBlockList
+					items={[
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+					]}
+				/>
+			</Section></Bounds>
 		</InfoWrapper>
 	));
