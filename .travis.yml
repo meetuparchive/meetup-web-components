@@ -7,23 +7,10 @@ cache:
   directories:
     - node_modules
 
-branches:  # pushes only get built for master
-  only:
-    - master
-
-env:
-  global:
-    # compiler command for Travis
-    - CXX=g++-4.8
-    # build number used by blt pipeline
-    - CI_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
+# exclude tags
+branches:
+  except:
+    - /^\d+$/
 
 before_install:
     - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
