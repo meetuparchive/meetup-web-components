@@ -8,8 +8,7 @@ export const MEDIA_SIZES = {
 	s: '24',
 	m: '36',
 	l: '48',
-	xl: '72',
-	auto: '100%',
+	xl: '72'
 };
 
 /**

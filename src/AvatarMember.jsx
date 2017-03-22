@@ -40,7 +40,7 @@ class AvatarMember extends React.PureComponent {
 				{...other}
 			>
 				{showNoPhoto &&
-					<Icon shape='profile' size='auto' />
+					<Icon shape='profile' size='l' />
 				}
 			</Avatar>
 		);
