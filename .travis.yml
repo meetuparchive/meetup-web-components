@@ -12,6 +12,11 @@ branches:
   except:
     - /^\d+$/
 
+env:
+  global:
+    # build number used by Makefile and Coveralls
+    - CI_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
+
 before_install:
     - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
@@ -32,6 +37,11 @@ after_success:
     export NPM_TAG=beta
   - echo "GIT_TAG=$GIT_TAG"
   - echo "NPM_TAG=$NPM_TAG"
+  - echo "TRAVIS=$TRAVIS"
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH"
+  - echo "TRAVIS_COMMIT=$TRAVIS_COMMIT"
+  - echo "TRAVIS_JOB_ID=$TRAVIS_JOB_ID"
+  - echo "TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST"
   - >
     [ "${TRAVIS_BRANCH}" = "master" ] &&
     npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" &&
