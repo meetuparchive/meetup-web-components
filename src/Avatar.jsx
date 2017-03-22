@@ -12,7 +12,7 @@ export const AVATAR_CLASS = 'avatar';
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#avatar}
  * @module Avatar
  */
-class Avatar extends React.Component {
+class Avatar extends React.PureComponent {
 	render() {
 		const {
 			small,

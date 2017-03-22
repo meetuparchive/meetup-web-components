@@ -21,7 +21,7 @@ export const MEDIA_SIZES = {
  *
  * @module Icon
  */
-class Icon extends React.Component {
+class Icon extends React.PureComponent {
 
 	render() {
 		const {

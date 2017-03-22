@@ -12,7 +12,7 @@ export const AVATAR_PERSON_NOPHOTO_CLASS = 'avatar--noPhoto';
  * An avatar for a member - just supply a member
  * @module AvatarMember
  */
-class AvatarMember extends React.Component {
+class AvatarMember extends React.PureComponent {
 	render() {
 		const {
 			member,
