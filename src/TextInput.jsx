@@ -16,18 +16,22 @@ class TextInput extends React.Component {
 
 	onChange(e) {
 		this.setState({ value: e.target.value });
+		if (this.props.onChange) {
+			this.props.onChange(e);
+		}
 	}
 
 	render() {
 		const {
 			name,
-			value,	// eslint-disable-line no-unused-vars
+			value, // eslint-disable-line no-unused-vars
 			label,
 			labelClassName,
 			className,
 			children,
 			error,
 			required,
+			onChange, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -75,7 +79,8 @@ TextInput.propTypes = {
 		React.PropTypes.element
 	]),
 	labelClassName: React.PropTypes.string,
-	required: React.PropTypes.bool
+	required: React.PropTypes.bool,
+	onChange: React.PropTypes.func,
 };
 
 export default TextInput;
