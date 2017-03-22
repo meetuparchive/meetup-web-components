@@ -28,7 +28,6 @@ class AccordionPanelGroup extends React.Component {
 	 * have one panel open at a time.
 	 */
 	setClickedPanel(clickedPanel) {
-		console.warn(this);
 		this.setState({ clickedPanel });
 	}
 
