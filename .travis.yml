@@ -7,9 +7,10 @@ cache:
   directories:
     - node_modules
 
-branches:  # pushes only get built for master
-  only:
-    - master
+# exclude tags
+branches:
+  except:
+    - /^\d+$/
 
 env:
   global:
