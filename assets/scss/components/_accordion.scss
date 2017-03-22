@@ -1,0 +1,42 @@
+//
+// Animation values taken from https://github.com/google/material-design-lite/blob/mdl-1.x/src/_variables.scss
+// Maybe we can bring this into `swarm-constants` or `swarm-animation`?
+//
+
+$A_curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1);
+$A_curve-default: $A_curve-fast-out-slow-in;
+$A_duration: 0.2s;
+
+.accordionPanel-animator {
+	overflow: hidden;
+	transition: height $A_duration $A_curve-default;
+	will-change: height;
+}
+
+.accordionPanel-animator--collapse {
+	height: 0;
+	margin-bottom: 0 !important;
+}
+
+.accordionPanel-label {
+	@extend %buttonPersonality;
+	background: inherit;
+	border: inherit;
+	text-align: inherit;
+	padding: 0;
+}
+
+.accordionPanel-icon {
+	@extend %buttonPersonality;
+
+	.svg--chevron-down .svg-icon {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+		transition: transform $A_duration $A_curve-default;
+
+		.accordionPanel--active & {
+			-webkit-transform: rotate(180deg);
+			transform: rotate(180deg);
+		}
+	}
+}
