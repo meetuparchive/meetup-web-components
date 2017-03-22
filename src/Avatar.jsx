@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
+export const AVATAR_CLASS = 'avatar';
 /**
  * SQ2 Avatar component
  *
