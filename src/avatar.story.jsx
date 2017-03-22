@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import { WithNotes } from '@kadira/storybook-addon-notes';
 import { InfoWrapper } from './utils/storyComponents';
 import Avatar from './Avatar.jsx';
@@ -31,9 +30,7 @@ storiesOf('Avatar', module)
 			</Avatar>
 		</WithNotes>
 	))
-	.add('no photo', () => {
-		const MOCK_MEMBER_NO_PHOTO = { ...MOCK_MEMBER };  // treat the mock as immutable
-		MOCK_MEMBER_NO_PHOTO.photo = {};
-		return <Avatar></Avatar>;
-	});
+	.add('no photo', () => (
+		<Avatar></Avatar>
+	));
 

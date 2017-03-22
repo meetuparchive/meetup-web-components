@@ -9,12 +9,14 @@ export class TabsTab extends React.Component {
 		const {
 			children,
 			isSelected,
+			className,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'tabs-tab align--center',
-			{'tabs-tab--selected': isSelected}
+			{'tabs-tab--selected': isSelected},
+			className
 		);
 
 		return (
@@ -27,7 +29,6 @@ export class TabsTab extends React.Component {
 TabsTab.propTypes = {
 	isSelected: React.PropTypes.bool
 };
-
 
 /**
  * @module Tabs
@@ -52,10 +53,7 @@ export class Tabs extends React.Component {
 
 		return (
 			<nav className={className}>
-				<ul
-					className={ulClasses}
-					{...other}
-				>
+				<ul className={ulClasses} {...other}>
 					{children}
 				</ul>
 			</nav>
@@ -63,9 +61,22 @@ export class Tabs extends React.Component {
 	}
 }
 Tabs.propTypes = {
-	children: React.PropTypes.arrayOf(
-		React.PropTypes.instanceOf(TabsTab)
-	).isRequired,
+	children: (props, propName, componentName) => {
+		const children = props[propName];
+
+		if (React.Children.count(children) < 2) {
+			return new Error('At least two children of type TabsTab required');
+		}
+
+		const validChildren = React.Children.map(
+			children,
+			child => child.type === TabsTab
+		).every(child => child);
+
+		if (!validChildren) {
+			return new Error('Children must be React elements of type TabsTab');
+		}
+	},
 	full: React.PropTypes.bool,
-	bordered: React.PropTypes.bool,
+	bordered: React.PropTypes.bool
 };

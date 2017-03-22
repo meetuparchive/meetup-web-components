@@ -17,6 +17,19 @@ describe('AvatarMember', function() {
 		expect(avatarMemberNode.classList.contains('avatar--person')).toBe(true);
 	});
 
+	it('renders the noPhoto variant only when a photo is not present', function() {
+		const MOCK_MEMBER_NO_PHOTO = { ...MOCK_MEMBER };
+		MOCK_MEMBER_NO_PHOTO.photo = {};
+
+		const avatar = TestUtils.renderIntoDocument(<AvatarMember member={MOCK_MEMBER_NO_PHOTO} />);
+		const avatarNode = ReactDOM.findDOMNode(avatar);
+		expect(avatarNode.classList.contains('avatar--noPhoto')).toBe(true);
+
+		const avatarWithSrc = TestUtils.renderIntoDocument(<AvatarMember member={MOCK_MEMBER} />);
+		const avatarWithSrcNode = ReactDOM.findDOMNode(avatarWithSrc);
+		expect(avatarWithSrcNode.classList.contains('avatar--noPhoto')).toBe(false);
+	});
+
 	it('applies variant classes for each variant prop', function() {
 		const variants = [
 			'org',

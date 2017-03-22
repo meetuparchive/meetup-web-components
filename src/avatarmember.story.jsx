@@ -29,5 +29,9 @@ storiesOf('AvatarMember', module)
 			member={MOCK_MEMBER}
 			fbFriend={boolean('Facebook Friend', true)}
 		/>
-	));
+	)).add('no photo', () => {
+		const MOCK_MEMBER_NO_PHOTO = { ...MOCK_MEMBER };  // treat the mock as immutable
+		MOCK_MEMBER_NO_PHOTO.photo = {};
+		return <AvatarMember member={MOCK_MEMBER_NO_PHOTO}/>;
+	});
 
