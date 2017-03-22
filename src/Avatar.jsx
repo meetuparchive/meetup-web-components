@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
+export const AVATAR_CLASS = 'avatar';
 /**
  * SQ2 Avatar component
  *
@@ -11,7 +12,7 @@ import cx from 'classnames';
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#avatar}
  * @module Avatar
  */
-class Avatar extends React.Component {
+class Avatar extends React.PureComponent {
 	render() {
 		const {
 			small,

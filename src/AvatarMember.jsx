@@ -3,11 +3,16 @@ import cx from 'classnames';
 import Avatar from './Avatar';
 import Icon from './Icon';
 
+export const AVATAR_PERSON_CLASS = 'avatar--person';
+export const AVATAR_PERSON_ORG_CLASS = 'avatar--org';
+export const AVATAR_PERSON_FB_CLASS = 'avatar--fbFriend';
+export const AVATAR_PERSON_NOPHOTO_CLASS = 'avatar--noPhoto';
+
 /**
  * An avatar for a member - just supply a member
  * @module AvatarMember
  */
-class AvatarMember extends React.Component {
+class AvatarMember extends React.PureComponent {
 	render() {
 		const {
 			member,
@@ -19,11 +24,11 @@ class AvatarMember extends React.Component {
 
 		const showNoPhoto = (member.photo || {}).photo_link == undefined;
 		const classNames = cx(
-			'avatar--person',
+			AVATAR_PERSON_CLASS,
 			{
-				'avatar--org': org,
-				'avatar--fbFriend': fbFriend,
-				'avatar--noPhoto': showNoPhoto
+				[AVATAR_PERSON_ORG_CLASS]: org,
+				[AVATAR_PERSON_FB_CLASS]: fbFriend,
+				[AVATAR_PERSON_NOPHOTO_CLASS]: showNoPhoto
 			},
 			className);
 
