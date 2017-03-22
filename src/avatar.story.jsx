@@ -29,8 +29,5 @@ storiesOf('Avatar', module)
 				src={MOCK_IMAGE_SRC}>
 			</Avatar>
 		</WithNotes>
-	))
-	.add('no photo', () => (
-		<Avatar></Avatar>
 	));
 
