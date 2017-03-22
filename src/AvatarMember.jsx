@@ -1,15 +1,18 @@
 import React from 'react';
 import cx from 'classnames';
 import Avatar from './Avatar';
-import { getIconAsBase64Uri } from './utils/base64';
+import Icon from './Icon';
 
-const NO_PHOTO_SRC = getIconAsBase64Uri('profile');
+export const AVATAR_PERSON_CLASS = 'avatar--person';
+export const AVATAR_PERSON_ORG_CLASS = 'avatar--org';
+export const AVATAR_PERSON_FB_CLASS = 'avatar--fbFriend';
+export const AVATAR_PERSON_NOPHOTO_CLASS = 'avatar--noPhoto';
 
 /**
  * An avatar for a member - just supply a member
  * @module AvatarMember
  */
-class AvatarMember extends React.Component {
+class AvatarMember extends React.PureComponent {
 	render() {
 		const {
 			member,
@@ -19,21 +22,40 @@ class AvatarMember extends React.Component {
 			...other
 		} = this.props;
 
+		const showNoPhoto = (member.photo || {}).photo_link == undefined;
 		const classNames = cx(
-			'avatar--person',
+			AVATAR_PERSON_CLASS,
 			{
-				'avatar--org': org,
-				'avatar--fbFriend': fbFriend,
-				'avatar--noPhoto': (member.photo || {}).photo_link == undefined
+				[AVATAR_PERSON_ORG_CLASS]: org,
+				[AVATAR_PERSON_FB_CLASS]: fbFriend,
+				[AVATAR_PERSON_NOPHOTO_CLASS]: showNoPhoto
 			},
 			className);
 
 		return (
 			<Avatar
 				alt={member.name}
-				src={(member.photo || {}).photo_link || NO_PHOTO_SRC}
+				src={(member.photo || {}).photo_link || ''}
 				className={classNames}
-				{...other}/>
+				{...other}
+			>
+				{showNoPhoto &&
+					[
+						<Icon shape='profile' size='l' />,
+
+						// will condense into 1 circle once `SDS-215_sync_media_sizes` is done
+						// link to issue: https://meetup.atlassian.net/browse/SDS-215
+						<svg>
+							<clipPath id='clippingLg'>
+								<circle cx='24' cy='20' r='24' fill='black'/>
+							</clipPath>
+							<clipPath id='clippingMed'>
+								<circle cx='18' cy='14' r='18' fill='black'/>
+							</clipPath>
+						</svg>
+					]
+				}
+			</Avatar>
 		);
 	}
 }

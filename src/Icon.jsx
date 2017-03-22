@@ -8,7 +8,7 @@ export const MEDIA_SIZES = {
 	s: '24',
 	m: '36',
 	l: '48',
-	xl: '72',
+	xl: '72'
 };
 
 /**
@@ -20,7 +20,7 @@ export const MEDIA_SIZES = {
  *
  * @module Icon
  */
-class Icon extends React.Component {
+class Icon extends React.PureComponent {
 
 	render() {
 		const {
@@ -36,6 +36,7 @@ class Icon extends React.Component {
 			className
 		);
 
+		const viewBox = size === 'auto' ? MEDIA_SIZES['xl'] : MEDIA_SIZES[size];
 		const dim = MEDIA_SIZES[size];
 
 		return (
@@ -44,7 +45,7 @@ class Icon extends React.Component {
 					preserveAspectRatio='xMinYMin meet'
 					width={dim}
 					height={dim}
-					viewBox={`0 0 ${dim} ${dim}`}
+					viewBox={`0 0 ${viewBox} ${viewBox}`}
 					className='svg-icon valign--middle'
 					role='img'
 					{...other}>
@@ -61,7 +62,7 @@ Icon.defaultProps = {
 
 Icon.propTypes = {
 	shape: React.PropTypes.string.isRequired,
-	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
+	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'auto'])
 };
 
 export default Icon;
