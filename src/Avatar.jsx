@@ -20,6 +20,7 @@ class Avatar extends React.Component {
 			alt,
 			className,
 			style,
+			children,
 			...other,
 		} = this.props;
 
@@ -34,7 +35,9 @@ class Avatar extends React.Component {
 
 		const backgroundImage = src;
 		const allStyles = style || {};
-		allStyles.backgroundImage = `url(${backgroundImage})`;
+		if (backgroundImage) {
+			allStyles.backgroundImage = `url(${backgroundImage})`;
+		}
 
 		const aria = {
 			role: 'img',
@@ -52,10 +55,10 @@ class Avatar extends React.Component {
 		};
 
 		if (this.props.to || this.props.href) {
-			return <a {...allProps}>{alt}</a>;
+			return <a {...allProps}>{alt}{children}</a>;
 		}
 
-		return <span {...allProps}>{alt}</span>;
+		return <span {...allProps}>{alt}{children}</span>;
 	}
 }
 
