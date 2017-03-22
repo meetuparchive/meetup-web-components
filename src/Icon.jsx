@@ -9,6 +9,7 @@ export const MEDIA_SIZES = {
 	m: '36',
 	l: '48',
 	xl: '72',
+	auto: '100%',
 };
 
 /**
@@ -61,7 +62,7 @@ Icon.defaultProps = {
 
 Icon.propTypes = {
 	shape: React.PropTypes.string.isRequired,
-	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
+	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'auto'])
 };
 
 export default Icon;
