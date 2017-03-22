@@ -8,7 +8,7 @@ export const MEDIA_SIZES = {
 	s: '24',
 	m: '36',
 	l: '48',
-	xl: '72',
+	xl: '72'
 };
 
 /**
@@ -20,7 +20,7 @@ export const MEDIA_SIZES = {
  *
  * @module Icon
  */
-class Icon extends React.Component {
+class Icon extends React.PureComponent {
 
 	render() {
 		const {
@@ -61,7 +61,7 @@ Icon.defaultProps = {
 
 Icon.propTypes = {
 	shape: React.PropTypes.string.isRequired,
-	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
+	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'auto'])
 };
 
 export default Icon;
