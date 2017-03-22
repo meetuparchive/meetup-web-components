@@ -129,10 +129,9 @@ Class                     | Description
 		width: 100%;
 	}
 
-	&.avatar--person {
-		background-position-y: 6px;
+	.svg-icon {
+		border-radius: 999px;
 	}
-
 }
 
 .avatar--person {
