@@ -51,5 +51,10 @@ storiesOf('Icon', module)
 		<div className='margin--center'>
 			<Icon shape={ICON_NAME} size='xl' />
 		</div>
+	))
+	.add('Auto', () => (
+		<div className='margin--center'>
+			<Icon shape={ICON_NAME} size='auto' />
+		</div>
 	));
 

@@ -36,6 +36,7 @@ class Icon extends React.PureComponent {
 			className
 		);
 
+		const viewBox = size === 'auto' ? MEDIA_SIZES['xl'] : MEDIA_SIZES[size];
 		const dim = MEDIA_SIZES[size];
 
 		return (
@@ -44,7 +45,7 @@ class Icon extends React.PureComponent {
 					preserveAspectRatio='xMinYMin meet'
 					width={dim}
 					height={dim}
-					viewBox={`0 0 ${dim} ${dim}`}
+					viewBox={`0 0 ${viewBox} ${viewBox}`}
 					className='svg-icon valign--middle'
 					role='img'
 					{...other}>
