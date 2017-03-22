@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 export const variantTest = (FoundationComponent, className, variants) => {
@@ -9,9 +8,7 @@ export const variantTest = (FoundationComponent, className, variants) => {
 		};
 
 		const component = TestUtils.renderIntoDocument(<FoundationComponent {...props} />);
-		const node = ReactDOM.findDOMNode(component);
-
-		expect(node.classList.contains(`${className}--${variant}`)).toBe(true);
+		expect(() => TestUtils.findRenderedDOMComponentWithClass(component, `${className}--${variant}`)).not.toThrow();
 	});
 };
 

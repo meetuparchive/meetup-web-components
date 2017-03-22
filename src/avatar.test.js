@@ -1,16 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import Avatar from './Avatar';
+import Avatar, { AVATAR_CLASS } from './Avatar';
 import { variantTest } from './utils/testUtils';
 
 describe('Avatar', function() {
 
 	it('exists', function() {
 		const avatar = TestUtils.renderIntoDocument(<Avatar />);
-		const avatarNode = ReactDOM.findDOMNode(avatar);
-
-		expect(avatarNode).not.toBeNull();
+		expect(() => TestUtils.findRenderedComponentWithType(avatar, Avatar)).not.toThrow();
 	});
 
 	it('applies variant classes for each variant prop', function() {
@@ -24,8 +21,14 @@ describe('Avatar', function() {
 	it('applies a background image when provided `src`', function() {
 		const src = 'image.jpg';
 		const avatar = TestUtils.renderIntoDocument(<Avatar src={src} />);
-		const avatarNode = ReactDOM.findDOMNode(avatar);
-		expect(avatarNode.style.backgroundImage.indexOf(src)).not.toBe(-1);
+		const avatarNode = TestUtils.findRenderedDOMComponentWithClass(avatar, AVATAR_CLASS);
+		expect(avatarNode.style.backgroundImage).toContain(src);
+	});
+
+	it('should not apply a background image when no `src` provided', function() {
+		const avatar = TestUtils.renderIntoDocument(<Avatar />);
+		const avatarNode = TestUtils.findRenderedDOMComponentWithClass(avatar, AVATAR_CLASS);
+		expect(avatarNode.style.backgroundImage).toBe('');
 	});
 
 	it('renders a link element if `href` passed in', () => {
