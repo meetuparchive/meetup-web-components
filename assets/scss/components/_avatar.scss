@@ -125,7 +125,7 @@ $iconOffset: 4px;
 	}
 
 	.svg-icon {
-		fill: $C_textHint;
+		@include color-svg($C_textHint);
 		clip-path: url('#clippingMed'); // for better browser support
 		clip-path: circle($media-s/2 at $media-s/2 ($media-s/2 - $iconOffset));
 		height: 100%;
