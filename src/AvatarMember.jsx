@@ -41,11 +41,11 @@ class AvatarMember extends React.PureComponent {
 			>
 				{showNoPhoto &&
 					[
-						<Icon shape='profile' size='l' />,
+						<Icon shape='profile' size='l' key='0' />,
 
 						// will condense into 1 circle once `SDS-215_sync_media_sizes` is done
 						// link to issue: https://meetup.atlassian.net/browse/SDS-215
-						<svg>
+						<svg key='1'>
 							<clipPath id='clippingLg'>
 								<circle cx='24' cy='20' r='24' fill='black'/>
 							</clipPath>
