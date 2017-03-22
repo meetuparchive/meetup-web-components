@@ -35,7 +35,7 @@ class AvatarMember extends React.Component {
 				{...other}
 			>
 				{showNoPhoto &&
-					<Icon shape='profile' size='auto' />
+					<Icon shape='profile' size='l' />
 				}
 			</Avatar>
 		);
