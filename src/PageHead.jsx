@@ -64,7 +64,9 @@ class PageHead extends React.Component {
 					direction='column'
 					switchDirection='large'
 				>
-					<FlexItem>
+					<FlexItem
+						growFactor={2}
+					>
 						<Chunk className='align--center atMedium_align--left'>
 							{titleLabel &&
 								<p className={classNames.titleLabel}>{titleLabel}</p>
