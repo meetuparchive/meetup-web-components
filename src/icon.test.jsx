@@ -51,7 +51,11 @@ describe('Icon', () => {
 			const value = MEDIA_SIZES[size];
 			expect(svgEl.getAttribute('width')).toEqual(value);
 			expect(svgEl.getAttribute('height')).toEqual(value);
-			expect(svgEl.getAttribute('viewBox')).toEqual(`0 0 ${value} ${value}`);
+			if (size === 'auto') {
+				expect(svgEl.getAttribute('viewBox')).toEqual(`0 0 ${MEDIA_SIZES['xl']} ${MEDIA_SIZES['xl']}`);
+			} else {
+				expect(svgEl.getAttribute('viewBox')).toEqual(`0 0 ${value} ${value}`);
+			}
 		};
 
 		it('renders each size correctly', () => {
