@@ -2,9 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import Avatar from './Avatar';
 import Icon from './Icon';
-// import { getIconAsBase64Uri } from './utils/base64';
-
-// const NO_PHOTO_SRC = getIconAsBase64Uri('profile');
 
 /**
  * An avatar for a member - just supply a member
@@ -38,7 +35,7 @@ class AvatarMember extends React.Component {
 				{...other}
 			>
 				{showNoPhoto &&
-					<Icon shape='profile' />
+					<Icon shape='profile' size='auto' />
 				}
 			</Avatar>
 		);
