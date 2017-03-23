@@ -25,6 +25,14 @@ class AccordionPanel extends React.Component {
 	}
 
 	/**
+	 * @parm {Boolean} isOpen (is panel open)
+	 * @returns {String} panel height in px
+	 */
+	getHeight(isOpen) {
+		return `${isOpen * this.content.getBoundingClientRect().height}px`;
+	}
+
+	/**
 	 * @returns {undefined}
 	 *
 	 * Updates state to toggle `AccordionPanel` open and closed
@@ -38,7 +46,7 @@ class AccordionPanel extends React.Component {
 		}
 
 		this.setState({
-			height: `${newState * this.content.getBoundingClientRect().height}px`,
+			height: this.getHeight(newState),
 			isOpen: newState
 		});
 
@@ -51,7 +59,7 @@ class AccordionPanel extends React.Component {
 	 */
 	componentDidMount() {
 		this.setState({
-			height: `${this.state.isOpen * this.content.getBoundingClientRect().height}px`
+			height: this.getHeight(this.state.isOpen)
 		});
 	}
 
@@ -64,7 +72,7 @@ class AccordionPanel extends React.Component {
 		if (nextProps.isOpen !== this.state.isOpen) {
 			this.setState({
 				isOpen: nextProps.isOpen,
-				height: `${nextProps.isOpen * this.content.getBoundingClientRect().height}px`
+				height: this.getHeight(nextProps.isOpen)
 			});
 		}
 	}
