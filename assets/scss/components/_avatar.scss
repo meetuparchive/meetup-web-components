@@ -80,19 +80,19 @@ Class                     | Description
 	color: transparent;
 	display: inline-block;
 	font-size: 0;
-	height: $media-s;
+	height: $media-m;
 	text-indent: 100%;
 	white-space: nowrap;
 	vertical-align: top;
-	width: $media-s;
+	width: $media-m;
 
 	.inverted & {
 		background: $C_textHintInverted;
 	}
 
 	@include atMediaUp(small) {
-		height: $media-m;
-		width: $media-m;
+		height: $media-l;
+		width: $media-l;
 	}
 
 }
@@ -101,12 +101,12 @@ Class                     | Description
 // Size variants
 //
 .avatar--small {
-	height: $media-xs;
-	width: $media-xs;
+	height: $media-s;
+	width: $media-s;
 }
 .avatar--big {
-	height: $space-6;
-	width: $space-6;
+	height: $media-xxl;
+	width: $media-xxl;
 }
 
 //
@@ -150,21 +150,21 @@ Class                     | Description
 	background: $C_collectionBG;
 	border-radius: 999px;
 	box-sizing: border-box;
-	height: $media-s;
+	height: $media-m;
 	font-size: $font-size;
-	line-height: $media-s;
+	line-height: $media-m;
 	padding: $space-half;
 	text-align: center;
-	width: $media-s;
+	width: $media-m;
 
 	img {
 		width: 100%;
 	}
 
 	@include atMediaUp(small) {
-		height: $media-m;
-		line-height: $media-m;
+		height: $media-l;
+		line-height: $media-l;
 		padding: 12px;
-		width: $media-m;
+		width: $media-l;
 	}
 }
