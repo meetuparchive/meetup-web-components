@@ -4,6 +4,7 @@ import { changeSizeWithViewport } from './utils/designConstants';
 import MediaListener from './utils/mediaQueryListener';
 
 export const ICON_CLASS = 'svg';
+
 /**
  * Icon component used to insert an svg icon into a component or page
  *
