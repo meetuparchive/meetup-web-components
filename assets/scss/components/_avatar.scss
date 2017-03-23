@@ -112,25 +112,30 @@ Class                     | Description
 //
 // Type variants
 //
+$iconOffset: 4px;
 .avatar--noPhoto {
-	background-color: $C_textSecondary;
 	position: relative;
 	text-indent: initial;
 
-	&:before {
-		background: $C_textSecondaryInverted;
-		border-radius: 999px;
-		bottom: 0;
-		content: '';
-		display: block;
-		left: 0;
+	.svg {
+		bottom: -#{$iconOffset};
 		position: absolute;
-		top: 0;
+		text-align: center;
 		width: 100%;
 	}
 
-	&.avatar--person {
-		background-position-y: 6px;
+	.svg-icon {
+		@include color-svg($C_textHint);
+		clip-path: url('#clippingMed'); // for better browser support
+		clip-path: circle($media-s/2 at $media-s/2 ($media-s/2 - $iconOffset));
+		height: 100%;
+		width: 100%;
+
+		@include atMediaUp(small) {
+			clip-path: url('#clippingLg'); // for better browser support
+			clip-path: circle($media-m/2 at $media-m/2 ($media-m/2 - $iconOffset));
+		}
+
 	}
 
 }
