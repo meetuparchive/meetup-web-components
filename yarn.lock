@@ -5829,9 +5829,9 @@ swarm-icons@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-0.1.0.tgz#86595e99f3a8d9f91ab636b9d0e9545481e00734"
 
-swarm-sasstools@1.1.9:
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.1.9.tgz#bb472253ce1383df8ad353314f97dcccda5ed779"
+"swarm-sasstools@git://github.com/meetup/swarm-sasstools#SDS-215_sync_media_sizes":
+  version "1.1.10"
+  resolved "git://github.com/meetup/swarm-sasstools#bfa203f9902cd6d6446e965bf355580ad3f77ee7"
   dependencies:
     bourbon "4.2.3"
     meetup-swatches "3.1.1"
