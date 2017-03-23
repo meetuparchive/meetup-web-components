@@ -26,10 +26,10 @@ class AccordionPanel extends React.Component {
 
 	/**
 	 * @parm {Boolean} isOpen (is panel open)
-	 * @returns {String} panel height in px
+	 * @returns {Number} panel height
 	 */
 	getHeight(isOpen) {
-		return `${isOpen * this.content.getBoundingClientRect().height}px`;
+		return `${isOpen * this.content.getBoundingClientRect().height}`;
 	}
 
 	/**
@@ -137,7 +137,7 @@ class AccordionPanel extends React.Component {
 				className={classNames.accordionPanel}
 				rowReverse={iconAlign === 'left' && 'all'}
 				{...other}
-				>
+			>
 
 				<FlexItem>
 					<Chunk>
@@ -148,8 +148,9 @@ class AccordionPanel extends React.Component {
 							aria-expanded={this.state.isOpen}
 							aria-selected={this.state.isOpen}
 							className={classNames.trigger}
-							onClick={this._handleToggle}>
-								{label}
+							onClick={this._handleToggle}
+						>
+							{label}
 						</button>
 					</Chunk>
 
@@ -158,7 +159,8 @@ class AccordionPanel extends React.Component {
 						aria-labelledby={`label-${ariaId}`}
 						aria-hidden={!this.state.isOpen}
 						className={classNames.content}
-						style={{height: this.state.height}}>
+						style={{height: this.state.height}}
+					>
 						<div
 							className='accordionPanel-content'
 							ref={(div) => { this.content = div; }}>
