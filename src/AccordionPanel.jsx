@@ -29,7 +29,7 @@ class AccordionPanel extends React.Component {
 	 * @returns {Number} panel height
 	 */
 	getHeight(isOpen) {
-		return `${isOpen * this.content.getBoundingClientRect().height}`;
+		return `${isOpen * this.contentEl.getBoundingClientRect().height}`;
 	}
 
 	/**
@@ -163,7 +163,7 @@ class AccordionPanel extends React.Component {
 					>
 						<div
 							className='accordionPanel-content'
-							ref={(div) => { this.content = div; }}>
+							ref={(div) => { this.contentEl = div; }}>
 							{panelContent}
 						</div>
 					</Chunk>
@@ -173,10 +173,8 @@ class AccordionPanel extends React.Component {
 					className='accordionPanel-icon'
 					onClick={this._handleToggle}
 					shrink
-					>
-					<Icon
-						shape={this.getIconShape()}
-						size={iconSize} />
+				>
+					<Icon shape={this.getIconShape()} size={iconSize} />
 				</FlexItem>
 
 			</Flex>

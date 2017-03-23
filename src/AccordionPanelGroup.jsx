@@ -96,7 +96,7 @@ class AccordionPanelGroup extends React.Component {
 				aria-multiselectable={multiSelectable}
 				className={classNames}
 				{...other}
-				>
+			>
 				{
 					this.renderAccordionPanels().map(
 						(panel, i) => (
