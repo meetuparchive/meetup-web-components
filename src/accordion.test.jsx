@@ -154,9 +154,9 @@ describe('AccordionPanel', function() {
 	it('changes state to be open onClick', function() {
 		const node = TestUtils.findRenderedDOMComponentWithTag(panel, 'button');
 
-		expect(panel.state.open).toBe(false);
+		expect(panel.state.isOpen).toBe(false);
 		TestUtils.Simulate.click(node);
-		expect(panel.state.open).toBe(true);
+		expect(panel.state.isOpen).toBe(true);
 	});
 
 	it('reverses Flex direction when icon is right-aligned', function(){
