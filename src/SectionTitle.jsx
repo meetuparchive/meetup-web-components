@@ -45,7 +45,7 @@ class SectionTitle extends React.Component {
 	}
 }
 SectionTitle.propTypes = {
-	title: React.PropTypes.oneOf([
+	title: React.PropTypes.oneOfType([
 		React.PropTypes.element,
 		React.PropTypes.string
 	]).isRequired,
