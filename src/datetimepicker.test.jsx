@@ -183,7 +183,8 @@ describe('DateTimePicker', function() {
 					forceCalendar
 				/>
 			);
-			dateTimeComponent.dateComponent.flatpickr.setDate(dateStr);
+
+			dateTimeComponent.dateComponent.flatpickr.setDate(dateStr, true);
 			expect(setDateSpy).toHaveBeenCalled();
 		});
 

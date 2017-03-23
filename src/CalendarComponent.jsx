@@ -33,7 +33,7 @@ class CalendarComponent extends React.Component {
 		};
 
 		Object.assign(options, this.props.opts);
-		this.flatpickr = new Flatpickr(this.node, options);
+		this.flatpickr = new Flatpickr(this.inputEl, options);
 	}
 
 	componentWillUnmount() {
@@ -94,7 +94,7 @@ class CalendarComponent extends React.Component {
 				name={name}
 				defaultValue={this.state.value}
 				className={classNames}
-				ref={ node => this.node = node }
+				ref={ input => this.inputEl = input }
 				{...other} />
 		);
 	}

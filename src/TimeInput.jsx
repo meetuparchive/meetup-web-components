@@ -49,6 +49,7 @@ class TimeInput extends React.Component {
 					className={classNames}
 					onChange={this.onChange}
 					required={required}
+					ref={ input => this.inputEl = input }
 					{...other}
 				/>
 				{ error && <p className='text--error'>{error}</p> }

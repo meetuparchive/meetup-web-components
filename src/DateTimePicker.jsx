@@ -78,7 +78,7 @@ class DateTimePicker extends React.Component {
 		const newDate = new Date(value);
 		const datetime = new Date(this.state.datetime);
 
-		datetime.setFullYear(newDate.getFullYear(), newDate.getFullMonth(), newDate.getDate());
+		datetime.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
 		this.setState({ datetime });
 	}
 
@@ -144,8 +144,8 @@ class DateTimePicker extends React.Component {
 	* takes off focus class when neither of them are in focus
 	*/
 	onBlur(e) {
-		const timeInput = (this.timeComponent).querySelector('input[type=time]');
-		const dateInput = (this.dateComponent).querySelector('input');
+		const timeInput = this.timeComponent.inputEl;
+		const dateInput = this.dateComponent.inputEl;
 		if (document.activeElement !== timeInput && document.activeElement !== dateInput) {
 			this.backgroundEl.classList.remove('focused');
 		}
