@@ -171,7 +171,7 @@ describe('AccordionPanel', function() {
 		expect(node.length).toBe(1);
 	});
 
-	fit('should render custom icons', function(){
+	it('should render custom icons', function(){
 		const node = TestUtils.findRenderedDOMComponentWithTag(panelCustomIcon, 'button');
 		const iconNode = TestUtils.scryRenderedDOMComponentsWithClass(panelCustomIcon, `svg--${customIcon}`);
 		let activeIconNode = TestUtils.scryRenderedDOMComponentsWithClass(panelCustomIcon, `svg--${customIconActive}`);

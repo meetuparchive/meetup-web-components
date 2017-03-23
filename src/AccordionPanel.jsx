@@ -18,7 +18,7 @@ class AccordionPanel extends React.Component {
 		super(props);
 
 		this.state = {
-			open: this.props.isOpen
+			isOpen: this.props.isOpen
 		};
 
 		this._handleToggle = this._handleToggle.bind(this);
@@ -30,7 +30,7 @@ class AccordionPanel extends React.Component {
 	 * Updates state to toggle `AccordionPanel` open and closed
 	 */
 	_handleToggle(){
-		const newState = !this.state.open;
+		const newState = !this.state.isOpen;
 		const { setClickedPanel } = this.props;
 
 		if (setClickedPanel) {
@@ -39,7 +39,7 @@ class AccordionPanel extends React.Component {
 
 		this.setState({
 			height: `${newState * this.content.getBoundingClientRect().height}px`,
-			open: newState
+			isOpen: newState
 		});
 
 	}
@@ -51,7 +51,7 @@ class AccordionPanel extends React.Component {
 	 */
 	componentDidMount() {
 		this.setState({
-			height: `${this.state.open * this.content.getBoundingClientRect().height}px`
+			height: `${this.state.isOpen * this.content.getBoundingClientRect().height}px`
 		});
 	}
 
@@ -61,9 +61,9 @@ class AccordionPanel extends React.Component {
 	 * Updates state to toggle `AccordionPanel` open and closed
 	 */
 	componentWillUpdate(nextProps, nextState) {
-		if (nextProps.isOpen !== this.state.open) {
+		if (nextProps.isOpen !== this.state.isOpen) {
 			this.setState({
-				open: nextProps.isOpen,
+				isOpen: nextProps.isOpen,
 				height: `${nextProps.isOpen * this.content.getBoundingClientRect().height}px`
 			});
 		}
@@ -78,7 +78,7 @@ class AccordionPanel extends React.Component {
 			iconShapeActive
 		} = this.props;
 
-		return this.state.open && iconShapeActive ?
+		return this.state.isOpen && iconShapeActive ?
 			iconShapeActive :
 			iconShape;
 	}
@@ -103,8 +103,8 @@ class AccordionPanel extends React.Component {
 			accordionPanel: cx(
 				PANEL_CLASS,
 				{
-					[ACTIVEPANEL_CLASS]: this.state.open,
-					[classNamesActive]: this.state.open && classNamesActive
+					[ACTIVEPANEL_CLASS]: this.state.isOpen,
+					[classNamesActive]: this.state.isOpen && classNamesActive
 				},
 				className
 			),
@@ -115,8 +115,8 @@ class AccordionPanel extends React.Component {
 			content: cx(
 				{
 					'accordionPanel-animator': isAnimated,
-					'accordionPanel-animator--collapse': !this.state.open,
-					'visibility--a11yHide': !isAnimated && !this.state.open
+					'accordionPanel-animator--collapse': !this.state.isOpen,
+					'visibility--a11yHide': !isAnimated && !this.state.isOpen
 				}
 			)
 		};
@@ -137,8 +137,8 @@ class AccordionPanel extends React.Component {
 							role='tab'
 							id={`label-${ariaId}`}
 							aria-controls={`panel-${ariaId}`}
-							aria-expanded={this.state.open}
-							aria-selected={this.state.open}
+							aria-expanded={this.state.isOpen}
+							aria-selected={this.state.isOpen}
 							className={classNames.trigger}
 							onClick={this._handleToggle}>
 								{label}
@@ -148,7 +148,7 @@ class AccordionPanel extends React.Component {
 					<Chunk
 						role='tabpanel'
 						aria-labelledby={`label-${ariaId}`}
-						aria-hidden={!this.state.open}
+						aria-hidden={!this.state.isOpen}
 						className={classNames.content}
 						style={{height: this.state.height}}>
 						<div
