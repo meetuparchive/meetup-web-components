@@ -193,7 +193,7 @@ class DateTimePicker extends React.Component {
 		const onBlur = (dateOnly) ? null : this.onBlur;
 
 		return (
-			<span>
+			<div>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>
 				<div className={classNames}>
 
@@ -223,7 +223,7 @@ class DateTimePicker extends React.Component {
 						}
 					</div>
 				</div>
-			</span>
+			</div>
 		);
 	}
 }

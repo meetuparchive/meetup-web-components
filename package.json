@@ -34,7 +34,8 @@
     "react-intl": "^2.2.3"
   },
   "dependencies": {
-    "flatpickr": "2.4.4"
+    "base64-image-loader": "1.2.0",
+    "flatpickr": "2.4.7"
   },
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "3.3.0",
@@ -76,8 +77,5 @@
     "swarm-icons": "0.1.0",
     "swarm-sasstools": "1.1.9",
     "webpack": "^2.2"
-  },
-  "dependencies": {
-    "base64-image-loader": "1.2.0"
   }
 }

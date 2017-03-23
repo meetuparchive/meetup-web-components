@@ -158,6 +158,7 @@ describe('DateTimePicker', function() {
 			TestUtils.Simulate.blur(dateInputEl);
 			expect(blurSpy).toHaveBeenCalled();
 		});
+
 	});
 
 	describe('onChangeCallback\'s get called when child components change', function() {
