@@ -3,6 +3,7 @@ import TestUtils from 'react-addons-test-utils';
 
 import AccordionPanelGroup from './AccordionPanelGroup';
 import AccordionPanel, { ACTIVEPANEL_CLASS, PANEL_CLASS } from './AccordionPanel';
+import Icon from './Icon';
 
 describe('AccordionPanelGroup', function(){
 	let accordionPanelGroup,
@@ -164,7 +165,7 @@ describe('AccordionPanel', function() {
 	});
 
 	it('should render an icon component', function(){
-		const node = TestUtils.scryRenderedDOMComponentsWithClass(panel, 'svg');
+		const node = TestUtils.scryRenderedComponentsWithType(panel, Icon);
 
 		expect(node.length).toBe(1);
 	});
