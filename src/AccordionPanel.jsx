@@ -100,7 +100,6 @@ class AccordionPanel extends React.Component {
 			iconShape, // eslint-disable-line no-unused-vars
 			iconSize,  // eslint-disable-line no-unused-vars
 			iconShapeActive, // eslint-disable-line no-unused-vars
-			isAnimated,
 			classNamesActive,
 			className,
 			...other
@@ -120,10 +119,9 @@ class AccordionPanel extends React.Component {
 				'accordionPanel-label display--block span--100'
 			),
 			content: cx(
+				'accordionPanel-animator',
 				{
-					'accordionPanel-animator': isAnimated,
-					'accordionPanel-animator--collapse': !this.state.isOpen,
-					'visibility--a11yHide': !isAnimated && !this.state.isOpen
+					'accordionPanel-animator--collapse': !this.state.isOpen
 				}
 			)
 		};
@@ -192,7 +190,6 @@ AccordionPanel.defaultProps = {
 AccordionPanel.propTypes = {
 	classNamesActive: React.PropTypes.string,
 	isOpen: React.PropTypes.bool,
-	isAnimated: React.PropTypes.bool,
 	panelContent: React.PropTypes.element,
 	onClick: React.PropTypes.func,
 	label: React.PropTypes.string.isRequired,

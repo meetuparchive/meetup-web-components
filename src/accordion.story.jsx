@@ -140,48 +140,6 @@ storiesOf('Accordion', module)
 		)
 	)
 	.addWithInfo(
-		'isAnimated',
-		'Animates opening and closing of panels using AccordionPanelGroup props',
-		() => (
-			<InfoWrapper>
-				<div className='span--100 padding--all'>
-					<AccordionPanelGroup
-						isAnimated
-						accordionPanels={[
-							<AccordionPanel
-								label='First animated section'
-								panelContent={
-									<div className='runningText'>
-										<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-									</div>
-								} />,
-							<AccordionPanel
-								label='Section animated section'
-								panelContent={
-									<div>
-										<div className='runningText'>
-											<p>Any kind of content can go in here, even inputs.</p>
-										</div>
-										<div className='chunk'>
-											<label htmlFor='test-textinput'>I'm a label</label>
-											<input id='test-textinput' type='text' placeholder='Input placeholder' />
-										</div>
-									</div>
-								} />,
-							<AccordionPanel
-								label='Third animated section'
-								panelContent={
-									<div className='runningText'>
-										<p>Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-									</div>
-								} />,
-						]}/>
-					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
-				</div>
-			</InfoWrapper>
-		)
-	)
-	.addWithInfo(
 		'Panel open by default',
 		'Sets first panel to be open by default via the AccordionPanel props',
 		() => (

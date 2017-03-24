@@ -27,7 +27,9 @@ class AccordionPanelGroup extends React.Component {
 	 * have one panel open at a time.
 	 */
 	setClickedPanel(clickedPanel) {
-		this.setState({ clickedPanel });
+		if (!this.props.multiSelectable) {
+			this.setState({ clickedPanel });
+		}
 	}
 
 	/**
@@ -43,9 +45,8 @@ class AccordionPanelGroup extends React.Component {
 			iconSize: this.props.iconSize,
 			iconShape: this.props.iconShape,
 			iconShapeActive: this.props.iconShapeActive,
-			isAnimated: this.props.isAnimated,
 			className: accordionPanel.props.className,
-			setClickedPanel: this.props.multiSelectable ? false : this.setClickedPanel,
+			setClickedPanel: this.setClickedPanel,
 			isOpen: this.props.isOpen
 		};
 		return React.cloneElement(accordionPanel, panelProps);
@@ -61,7 +62,6 @@ class AccordionPanelGroup extends React.Component {
 
 	render() {
 		const {
-			isAnimated, // eslint-disable-line no-unused-vars
 			accordionPanels, // eslint-disable-line no-unused-vars
 			iconAlign, // eslint-disable-line no-unused-vars
 			iconShape, // eslint-disable-line no-unused-vars
