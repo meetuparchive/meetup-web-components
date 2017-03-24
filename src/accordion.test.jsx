@@ -146,10 +146,7 @@ describe('AccordionPanel', function() {
 
 	it(`has the class ${ACTIVEPANEL_CLASS} when state is open`, function() {
 		const node = TestUtils.scryRenderedDOMComponentsWithClass(openPanel, ACTIVEPANEL_CLASS);
-		const panelHeight = TestUtils.scryRenderedDOMComponentsWithClass(openPanel, 'accordionPanel-animator')[0].offsetHeight;
-
 		expect(node.length).toBe(1);
-		expect(panelHeight).not.toBe(0);
 	});
 
 	it('changes state to be open onClick', function() {
