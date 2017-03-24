@@ -9,7 +9,6 @@ import Icon from './Icon';
 export const PANEL_CLASS = 'accordionPanel';
 export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
 
-
 /**
  * @module AccordionPanel
  */
@@ -29,7 +28,7 @@ class AccordionPanel extends React.Component {
 	 * @returns {Number} panel height
 	 */
 	getHeight(isOpen) {
-		return `${isOpen * this.contentEl.getBoundingClientRect().height}`;
+		return `${isOpen * this.contentEl.getBoundingClientRect().height}px`;
 	}
 
 	/**
@@ -163,7 +162,8 @@ class AccordionPanel extends React.Component {
 					>
 						<div
 							className='accordionPanel-content'
-							ref={(div) => { this.contentEl = div; }}>
+							ref={(div) => { this.contentEl = div; }}
+						>
 							{panelContent}
 						</div>
 					</Chunk>

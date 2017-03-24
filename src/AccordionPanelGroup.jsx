@@ -8,16 +8,15 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
 class AccordionPanelGroup extends React.Component {
 	constructor(props) {
 		super(props);
-		this.accordionPanels = this.props.accordionPanels.map((accordionPanel, i) => {
-			return this.clonePanels(accordionPanel, i, accordionPanel.props.isOpen);
-		});
 
 		this.state = {
 			clickedPanel: null
 		};
 
-		this.clonePanels = this.clonePanels.bind(this);
+		this.clonePanel = this.clonePanel.bind(this);
 		this.setClickedPanel = this.setClickedPanel.bind(this);
+
+		this.accordionPanels = this.props.accordionPanels.map(this.clonePanel);
 	}
 
 	/**
@@ -37,7 +36,7 @@ class AccordionPanelGroup extends React.Component {
 	 * @param {boolean} isOpen - whether the `AccordionPanel` is open or not
 	 * @returns {Array} `AccordionPanel` components with props from `AccordionPanelGroup`
 	 */
-	clonePanels(accordionPanel, i, isOpen) {
+	clonePanel(accordionPanel, i, isOpen) {
 		const panelProps = {
 			key: i,
 			iconAlign: this.props.iconAlign,
@@ -47,7 +46,7 @@ class AccordionPanelGroup extends React.Component {
 			isAnimated: this.props.isAnimated,
 			className: accordionPanel.props.className,
 			setClickedPanel: this.props.multiSelectable ? false : this.setClickedPanel,
-			isOpen: isOpen
+			isOpen: this.props.isOpen
 		};
 		return React.cloneElement(accordionPanel, panelProps);
 	}
@@ -56,18 +55,7 @@ class AccordionPanelGroup extends React.Component {
 	 * @returns {Array} `AccordionPanel` components with the correct value for `isOpen` prop
 	 */
 	renderAccordionPanels() {
-		this.accordionPanels = this.accordionPanels.map((accordionPanel, i) => {
-			const isOpen = accordionPanel.props.isOpen;
-
-			/*
-			 *if ( !this.props.multiSelectable && this.state.clickedPanel === accordionPanel ) {
-			 *   isOpen = false;
-			 *}
-			 */
-
-			return this.clonePanels(accordionPanel, i, isOpen);
-		});
-
+		this.accordionPanels = this.accordionPanels.map(this.clonePanel);
 		return this.accordionPanels;
 	}
 
@@ -98,13 +86,8 @@ class AccordionPanelGroup extends React.Component {
 				{...other}
 			>
 				{
-					this.renderAccordionPanels().map(
-						(panel, i) => (
-						<li
-							key={i}
-							className='list-item'>
-							{panel}
-						</li>
+					this.renderAccordionPanels().map((panel, i) => (
+							<li key={i} className='list-item'> {panel} </li>
 						)
 					)
 				}
