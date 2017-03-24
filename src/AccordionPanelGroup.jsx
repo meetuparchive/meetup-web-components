@@ -47,7 +47,7 @@ class AccordionPanelGroup extends React.Component {
 			iconShapeActive: this.props.iconShapeActive,
 			className: accordionPanel.props.className,
 			setClickedPanel: this.setClickedPanel,
-			isOpen: this.props.isOpen
+			isOpen: accordionPanel.props.isOpen
 		};
 		return React.cloneElement(accordionPanel, panelProps);
 	}

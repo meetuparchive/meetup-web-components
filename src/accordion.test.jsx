@@ -59,8 +59,7 @@ describe('AccordionPanelGroup', function(){
 	});
 
 	it('should store clicked panel in state', function(){
-		const openPanels = TestUtils.scryRenderedComponentsWithType(accordionPanelGroupToggle, AccordionPanel);
-		const firstPanel = openPanels[0];
+		const firstPanel = TestUtils.scryRenderedComponentsWithType(accordionPanelGroupToggle, AccordionPanel)[0];
 
 		accordionPanelGroupToggle.setClickedPanel(firstPanel);
 
@@ -68,16 +67,16 @@ describe('AccordionPanelGroup', function(){
 	});
 
 	it('should support opening panels one-at-a-time', function(){
-		const components = TestUtils.scryRenderedComponentsWithType(accordionPanelGroupToggle, AccordionPanel);
-		const firstPanel = components[0];
-		const secondPanel = components[1];
+		const buttons = TestUtils.scryRenderedDOMComponentsWithTag(accordionPanelGroupToggle, 'button');
 		let openPanels = TestUtils.scryRenderedDOMComponentsWithClass(accordionPanelGroupToggle, ACTIVEPANEL_CLASS);
 
 		expect(openPanels.length).toBe(0);
-		TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithTag(firstPanel, 'button'));
+
+		TestUtils.Simulate.click(buttons[0]);
 		openPanels = TestUtils.scryRenderedDOMComponentsWithClass(accordionPanelGroupToggle, ACTIVEPANEL_CLASS);
 		expect(openPanels.length).toBe(1);
-		TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithTag(secondPanel, 'button'));
+
+		TestUtils.Simulate.click(buttons[1]);
 		openPanels = TestUtils.scryRenderedDOMComponentsWithClass(accordionPanelGroupToggle, ACTIVEPANEL_CLASS);
 		expect(openPanels.length).toBe(1);
 	});
@@ -147,8 +146,10 @@ describe('AccordionPanel', function() {
 
 	it(`has the class ${ACTIVEPANEL_CLASS} when state is open`, function() {
 		const node = TestUtils.scryRenderedDOMComponentsWithClass(openPanel, ACTIVEPANEL_CLASS);
+		const panelHeight = TestUtils.scryRenderedDOMComponentsWithClass(openPanel, 'accordionPanel-animator')[0].offsetHeight;
 
 		expect(node.length).toBe(1);
+		expect(panelHeight).not.toBe(0);
 	});
 
 	it('changes state to be open onClick', function() {
