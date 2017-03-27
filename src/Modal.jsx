@@ -15,6 +15,10 @@ class Modal extends React.Component {
 		super(props);
 		this.onDismiss = this.onDismiss.bind(this);
 		this.onKeyDown = this.onKeyDown.bind(this);
+
+		this.state = {
+			topPosition: '10vh' // matches default margin-top in CSS
+		};
 	}
 
 	onDismiss(e) {
@@ -29,6 +33,28 @@ class Modal extends React.Component {
 		if (e.key === 'Escape') {
 			this.onDismiss(e);
 		}
+	}
+
+	/**
+	 * @param {String} scrollPosition window scroll position
+	 * @returns {String} CSS value for setting modal margin-top
+	 */
+	getModalPosition(scrollPosition) {
+		const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+		if (scrollPosition < viewportHeight) {
+			return this.state.topPosition;
+		} else {
+			return this.props.fullscreen ?
+				'0px' :
+				scrollPosition + 20;
+		}
+	}
+
+	componentDidMount() {
+		this.setState({
+			topPosition: this.getModalPosition(window.pageYOffset)
+		});
 	}
 
 	render() {
@@ -60,19 +86,27 @@ class Modal extends React.Component {
 			'border--none'
 		);
 
+		const overlayShim = (
+			<div className='overlayShim' onClick={this.onDismiss}>
+				<div className='inverted'></div>
+			</div>
+		);
+
 		return (
 			<div
 				role='dialog'
 				tabIndex='0'
 				onKeyDown={this.onKeyDown}
 				className={classNames}
-				{...other}>
+				{...other}
+			>
 
-				<div className='overlayShim' onClick={this.onDismiss}>
-					<div className='inverted'></div>
-				</div>
+				{!fullscreen && overlayShim}
 
-				<div className={modalClasses} >
+				<div
+					className={modalClasses}
+					style={{marginTop: this.state.topPosition}}
+				>
 					<div className='align--right'>
 						<Button onClick={this.onDismiss} className={dismissButtonClasses}>
 							<Icon shape='cross' size='s' />
