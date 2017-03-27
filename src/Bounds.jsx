@@ -12,11 +12,13 @@ class Bounds extends React.Component {
 		const {
 			children,
 			className,
+			narrow,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			BOUNDS_CLASS,
+			{'bounds--wide': !narrow },
 			className
 		);
 
@@ -30,5 +32,8 @@ class Bounds extends React.Component {
 		);
 	}
 }
+Bounds.propTypes = {
+	narrow: React.PropTypes.bool
+};
 
 export default Bounds;

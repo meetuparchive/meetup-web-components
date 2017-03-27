@@ -112,10 +112,32 @@ Class                     | Description
 //
 // Type variants
 //
+$iconOffset: 4px;
 .avatar--noPhoto {
 	position: relative;
 	text-indent: initial;
-	border: 3px solid;
+
+	.svg {
+		bottom: -#{$iconOffset};
+		position: absolute;
+		text-align: center;
+		width: 100%;
+	}
+
+	.svg-icon {
+		@include color-svg($C_textHint);
+		clip-path: url('#clippingMed'); // for better browser support
+		clip-path: circle($media-s/2 at $media-s/2 ($media-s/2 - $iconOffset));
+		height: 100%;
+		width: 100%;
+
+		@include atMediaUp(small) {
+			clip-path: url('#clippingLg'); // for better browser support
+			clip-path: circle($media-m/2 at $media-m/2 ($media-m/2 - $iconOffset));
+		}
+
+	}
+
 }
 
 .avatar--person {
