@@ -16,12 +16,13 @@ class Textarea extends React.Component {
 
 	onChange(e) {
 		const { onChange } = this.props;
-		if (onChange) {
-			onChange(e);
-		}
 		this.setState({
 			value: e.target.value,
 		});
+
+		if (onChange) {
+			onChange(e);
+		}
 	}
 
 	componentDidMount() {
