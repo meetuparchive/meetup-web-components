@@ -33,6 +33,9 @@
     "react-dom": "^15.4.2",
     "react-intl": "^2.2.3"
   },
+  "dependencies": {
+    "autosize": "3.0.20"
+  },
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "3.4.0",
     "@kadira/storybook": "2.35.3",
