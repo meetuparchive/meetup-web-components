@@ -84,7 +84,9 @@ class Textarea extends React.Component {
 					{...other}
 				/>
 
-				{ this.props.maxLength && <p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p> }
+				{ this.props.maxLength &&
+					<p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p>
+				}
 
 				{ error && <p className='text--error'>{error}</p> }
 			</div>
