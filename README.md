@@ -75,18 +75,18 @@ The command will prompt you for a 'type' (select from the list of options),
 and a 'name'. It generates the following files in `src/` :
 
 - `<ComponentName>.jsx` Component JSX module
-- `<componentname>.test.jsx` Component test script
-- `<componentname>.story.jsx` Storybook script
+- `<componentName>.test.jsx` Component test script
+- `<componentName>.story.jsx` Storybook script
 
 ### Components
 
 Located in the `src/` directory, component files live alongside
 their corresponding `.test` and `.story` files.
 
-Filename casing convenctions:
+Filename casing conventions:
 - Component files: `CamelCase`, with a leading capital, i.e. `RsvpTag.jsx`
-- Test files: `alllowercase`, i.e. `rsvptag.test.js`
-- Story files: `alllowercase`, i.e. `rsvptag.story.jsx`
+- Test files: `camelCase`, i.e. `rsvpTag.test.js`
+- Story files: `camelCase`, i.e. `rsvpTag.story.jsx`
 
 ### Layout conventions
 
