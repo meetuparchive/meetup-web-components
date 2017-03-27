@@ -1,13 +1,14 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import { WithNotes } from '@kadira/storybook-addon-notes';
 import { InfoWrapper } from './utils/storyComponents';
+import { decorateWithLocale } from './utils/decorators';
 import Avatar from './Avatar.jsx';
 
 const MOCK_IMAGE_SRC = 'http://placekitten.com/g/400/400';
 
 storiesOf('Avatar', module)
+	.addDecorator(decorateWithLocale)
 	.addWithInfo(
 		'default',
 		'This is the basic usage with the component.',
@@ -31,9 +32,7 @@ storiesOf('Avatar', module)
 			</Avatar>
 		</WithNotes>
 	))
-	.add('no photo', () => {
-		const MOCK_MEMBER_NO_PHOTO = { ...MOCK_MEMBER };  // treat the mock as immutable
-		MOCK_MEMBER_NO_PHOTO.photo = {};
-		return <Avatar></Avatar>;
-	});
+	.add('no photo', () => (
+		<Avatar></Avatar>
+	));
 

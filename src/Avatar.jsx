@@ -1,8 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-const NO_PHOTO_SRC = '';  // default 'no photo' src
-
+export const AVATAR_CLASS = 'avatar';
 /**
  * SQ2 Avatar component
  *
@@ -13,7 +12,7 @@ const NO_PHOTO_SRC = '';  // default 'no photo' src
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#avatar}
  * @module Avatar
  */
-class Avatar extends React.Component {
+class Avatar extends React.PureComponent {
 	render() {
 		const {
 			small,
@@ -22,6 +21,7 @@ class Avatar extends React.Component {
 			alt,
 			className,
 			style,
+			children,
 			...other,
 		} = this.props;
 
@@ -29,15 +29,16 @@ class Avatar extends React.Component {
 			'avatar',
 			{
 				'avatar--small': small,
-				'avatar--big': big,
-				'avatar--noPhoto': !src  // note: `noPhoto` variant is determined by `src`
+				'avatar--big': big
 			},
 			className
 		);
 
-		const backgroundImage = src || NO_PHOTO_SRC;
+		const backgroundImage = src;
 		const allStyles = style || {};
-		allStyles.backgroundImage = `url(${backgroundImage})`;
+		if (backgroundImage) {
+			allStyles.backgroundImage = `url(${backgroundImage})`;
+		}
 
 		const aria = {
 			role: 'img',
@@ -55,10 +56,10 @@ class Avatar extends React.Component {
 		};
 
 		if (this.props.to || this.props.href) {
-			return <a {...allProps}>{alt}</a>;
+			return <a {...allProps}>{alt}{children}</a>;
 		}
 
-		return <span {...allProps}>{alt}</span>;
+		return <span {...allProps}>{alt}{children}</span>;
 	}
 }
 

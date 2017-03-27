@@ -2,30 +2,26 @@ sudo: required
 language: node_js
 node_js:
   - "7.7.1"
+cache:
+  yarn: true
+  directories:
+    - node_modules
 
-branches:  # pushes only get built for master
-  only:
-    - master
+# exclude tags
+branches:
+  except:
+    - /^\d+$/
 
 env:
   global:
-    # compiler command for Travis
-    - CXX=g++-4.8
-    # build number used by blt pipeline
+    # build number used by Makefile and Coveralls
     - CI_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
 
 before_install:
     - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
-before_install:
-  - git diff --exit-code
+before_script:
+  - git diff --exit-code yarn.lock
 
 after_success:
   - npm run coveralls
@@ -43,7 +39,6 @@ after_success:
   - echo "NPM_TAG=$NPM_TAG"
   - >
     [ "${TRAVIS_BRANCH}" = "master" ] &&
-    git commit -am "Commit .npmrc in tag pushed to npm" &&
     npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" &&
     git push -q https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG --tags &&
     npm publish --tag $NPM_TAG ||
