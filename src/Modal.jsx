@@ -4,6 +4,7 @@ import Icon from './Icon';
 import Button from './Button';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
+const DEFAULT_MARGIN_TOP = '10vh';
 
 /**
  * SQ2 Modal component
@@ -17,7 +18,7 @@ class Modal extends React.Component {
 		this.onKeyDown = this.onKeyDown.bind(this);
 
 		this.state = {
-			topPosition: '10vh' // matches default margin-top in CSS
+			topPosition: DEFAULT_MARGIN_TOP // matches default margin-top in CSS
 		};
 	}
 
@@ -43,7 +44,7 @@ class Modal extends React.Component {
 		const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
 		if (scrollPosition < viewportHeight) {
-			return this.state.topPosition;
+			return DEFAULT_MARGIN_TOP;
 		} else {
 			return this.props.fullscreen ?
 				'0px' :
