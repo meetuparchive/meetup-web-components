@@ -29,7 +29,7 @@ class GridList extends React.Component {
 				{...other}
 			>
 				{items.map((item, key) =>
-					<div key={key} className='gridList-item'>{item}</div>
+					<li key={key} className='gridList-item'>{item}</li>
 				)}
 			</ul>
 		);
