@@ -5075,6 +5075,10 @@ react-komposer@^2.0.0:
     react-stubber "^1.0.0"
     shallowequal "^0.2.2"
 
+react-media-queryable@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-media-queryable/-/react-media-queryable-2.1.0.tgz#3ef0b129f67f9c19f10fb7075c83952ea885deec"
+
 react-modal@^1.2.0, react-modal@^1.2.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-1.7.1.tgz#ad6cacd41ce7a7f779a431781e6df53337a6edc1"
