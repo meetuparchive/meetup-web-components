@@ -108,6 +108,7 @@ Textarea.propTypes = {
 	autoHeight: React.PropTypes.bool,
 	minHeight: React.PropTypes.number,
 	maxHeight: React.PropTypes.number,
+	onChange: React.PropTypes.func,
 	rows: React.PropTypes.oneOfType([
 		React.PropTypes.number,
 		React.PropTypes.string
