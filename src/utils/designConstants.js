@@ -5,6 +5,13 @@ export const BREAKPOINTS = {
 	xl: '1024px'
 };
 
+export const MEDIA_QUERIES = {
+	small: `screen and (min-width: ${BREAKPOINTS['s']})`,
+	medium: `screen and (min-width: ${BREAKPOINTS['m']})`,
+	large: `screen and (min-width: ${BREAKPOINTS['l']})`,
+	huge: `screen and (min-width: ${BREAKPOINTS['xl']})`
+};
+
 export const MEDIA_SIZES = {
 	xs: 16,
 	s: 24,
