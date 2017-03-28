@@ -13,10 +13,10 @@ export const MEDIA_QUERIES = {
 };
 
 export const MEDIA_SIZES = {
-	xs: 16,
-	s: 24,
-	m: 36,
-	l: 48,
-	xl: 72,
-	xxl: 120
+	xs: '16',
+	s: '24',
+	m: '36',
+	l: '48',
+	xl: '72',
+	xxl: '120'
 };
