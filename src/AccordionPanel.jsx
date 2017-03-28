@@ -37,24 +37,21 @@ class AccordionPanel extends React.Component {
 	 * Updates state to toggle `AccordionPanel` open and closed
 	 */
 	_handleToggle(){
-		const newState = !this.state.isOpen;
-		const { setClickedPanel } = this.props;
-
-		if (setClickedPanel) {
-			setClickedPanel(this);
+		if (this.props.setClickedPanel) {
+			this.props.setClickedPanel(this);
 		}
 
 		this.setState({
-			height: this.getHeight(newState),
-			isOpen: newState
+			height: this.getHeight(!this.state.isOpen),
+			isOpen: !this.state.isOpen
 		});
 
 	}
 
 	/**
-	 * @returns {undefined}
-	 *
 	 * Sets height of `AccordionPanel` to be appear open or closed when mounting
+	 *
+	 * @returns {undefined}
 	 */
 	componentDidMount() {
 		this.setState({

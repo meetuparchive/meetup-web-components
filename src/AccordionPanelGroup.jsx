@@ -38,9 +38,9 @@ class AccordionPanelGroup extends React.Component {
 	 * @param {boolean} isOpen - whether the `AccordionPanel` is open or not
 	 * @returns {Array} `AccordionPanel` components with props from `AccordionPanelGroup`
 	 */
-	clonePanel(accordionPanel, i, isOpen) {
+	clonePanel(accordionPanel, key, isOpen) {
 		const panelProps = {
-			key: i,
+			key,
 			iconAlign: this.props.iconAlign,
 			iconSize: this.props.iconSize,
 			iconShape: this.props.iconShape,
@@ -87,9 +87,8 @@ class AccordionPanelGroup extends React.Component {
 			>
 				{
 					this.renderAccordionPanels().map((panel, i) => (
-							<li key={i} className='list-item'> {panel} </li>
-						)
-					)
+						<li key={i} className='list-item'> {panel} </li>
+					))
 				}
 			</ul>
 		);
