@@ -6,6 +6,9 @@
 @import "flex";
 @import "stripe";
 @import "section";
+@import "hscroll";
+@import "gridList";
+@import "inlineblockList";
 
 //
 // UI Components
@@ -13,9 +16,7 @@
 @import "avatar";
 @import "button";
 @import "dateDisplay";
-@import "gridList";
 @import "groupCard";
-@import "inlineblockList";
 @import "modal";
 @import "popover";
 @import "tabs";
