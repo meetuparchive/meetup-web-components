@@ -22,25 +22,39 @@ const content = (
 	</div>
 );
 
+const wrapperStyle = {
+	height: '100vh',
+	position: 'relative'
+};
+
 storiesOf('Modal', module)
 	.addWithInfo(
 		'default',
 		'This is the basic usage with the component.',
 		() => (
-			<InfoWrapper>
-				<Modal
-					onDismiss={onDismiss}>
-					{content}
-				</Modal>
-			</InfoWrapper>
+			<div style={wrapperStyle}>
+				<InfoWrapper>
+					<Modal
+						onDismiss={onDismiss}
+					>
+						{content}
+					</Modal>
+				</InfoWrapper>
+			</div>
 		)
 	)
-	.add('fullscreen', () => (
-		<Modal
-			onDismiss={onDismiss}
-			fullscreen >
-			{content}
-		</Modal>
+	.addWithInfo(
+		'fullscreen',
+		'Full screen modals are set with the `fullscreen` boolean prop',
+		() => (
+		<div style={wrapperStyle}>
+			<Modal
+				onDismiss={onDismiss}
+				fullscreen
+			>
+				{content}
+			</Modal>
+		</div>
 	));
 
 
