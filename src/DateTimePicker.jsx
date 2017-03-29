@@ -29,7 +29,12 @@ class DateTimePicker extends React.Component {
 		this.onBlur = this.onBlur.bind(this);
 	}
 
-	componentWillMount() {
+	// call `hasBrowserSupport` after mounting so server
+	// and client-side renders match, then immediately
+	// force a re-render. otherwise, client-side render
+	// will default to the server render, which never has
+	// browser support.
+	componentDidMount() {
 		this.setState({ isDateTimeLocalSupported: this.hasBrowserSupport() });
 	}
 
@@ -41,6 +46,10 @@ class DateTimePicker extends React.Component {
 	hasBrowserSupport() {
 		if (this.props.forceCalendar) {
 			return;
+		}
+
+		if (typeof document === 'undefined') {
+			return false;
 		}
 
 		const input = document.createElement('input'),
@@ -160,6 +169,7 @@ class DateTimePicker extends React.Component {
 			label,
 			value,	// eslint-disable-line no-unused-vars
 			required,
+			name,
 			...other
 		} = this.props;
 

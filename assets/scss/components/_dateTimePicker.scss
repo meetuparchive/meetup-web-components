@@ -1,4 +1,4 @@
-@import "~flatpickr/dist/flatpickr.css"; // calendar component
+@import "~flatpickr/dist/flatpickr"; // calendar component
 
 .dateTimePicker {
 	position:relative;
@@ -6,7 +6,7 @@
 
 .calendarTimeComponent {	
 	.input--dateTimePicker {
-		position:absolute;
+		position: relative;
 		top:0;
 		left:0;
 		display:inline-block;	
@@ -20,7 +20,7 @@
 	}
 
 	.input--time {
-		position:absolute;
+		position: absolute;
 		right:0;
 		top:0;
 		display:inline-block;	
