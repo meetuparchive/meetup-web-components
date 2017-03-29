@@ -20,13 +20,11 @@ class Modal extends React.Component {
 		this.onKeyDown = this.onKeyDown.bind(this);
 		this.getModalPosition = this.getModalPosition.bind(this);
 
-		this.supportsMatchMedia = typeof window.matchMedia != 'undefined';
-
 		this.state = {
 			topPosition: DEFAULT_MARGIN_TOP // matches default margin-top in CSS
 		};
 
-		if (!this.props.fullscreen && this.supportsMatchMedia) {
+		if (!this.props.fullscreen && typeof window.matchMedia != 'undefined') {
 			this.mediaQuery = window.matchMedia(MEDIA_QUERIES.medium);
 
 			this.handleMediaChange = mq => {
@@ -75,9 +73,7 @@ class Modal extends React.Component {
 	}
 
 	componentWillUnmount() {
-		if (!this.props.fullscreen && this.supportsMatchMedia) {
-			this.mediaQuery.removeListener(this.handleMediaChange);
-		}
+		this.mediaQuery && this.mediaQuery.removeListener(this.handleMediaChange);
 	}
 
 	render() {
