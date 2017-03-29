@@ -11,10 +11,6 @@ export const VALID_BREAKPOINTS = {
  * @module Hscroll
  */
 class Hscroll extends React.Component {
-	constructor(props){
-		super(props);
-	}
-
 	render() {
 		const {
 			gradient,
