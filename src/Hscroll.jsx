@@ -13,7 +13,7 @@ export const VALID_BREAKPOINTS = {
 class Hscroll extends React.Component {
 	render() {
 		const {
-			gradient,
+			hasGradient,
 			unclipAt,
 			className,
 			children,
@@ -22,7 +22,7 @@ class Hscroll extends React.Component {
 
 
 		const wrapClassNames = cx(
-			{ hscrollGradientWrap: gradient && !unclipAt },
+			{ hscrollGradientWrap: hasGradient && !unclipAt },
 			className
 		);
 
@@ -44,7 +44,7 @@ class Hscroll extends React.Component {
 }
 
 Hscroll.propTypes = {
-	gradient: React.PropTypes.bool,
+	hasGradient: React.PropTypes.bool,
 	unclipAt: React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 };
 

@@ -19,15 +19,15 @@ const hscrollInlineStyle = {
 };
 
 const listItems = [
-	(<div style={itemStyle}>inline-block item</div>),
-	(<div style={itemStyle}>inline-block item</div>),
-	(<div style={itemStyle}>inline-block item</div>),
-	(<div style={itemStyle}>inline-block item</div>),
-	(<div style={itemStyle}>inline-block item</div>),
-	(<div style={itemStyle}>inline-block item</div>),
-	(<div style={itemStyle}>inline-block item</div>),
-	(<div style={itemStyle}>inline-block item</div>),
-	(<div style={itemStyle}>inline-block item</div>)
+	<div style={itemStyle}>inline-block item</div>,
+	<div style={itemStyle}>inline-block item</div>,
+	<div style={itemStyle}>inline-block item</div>,
+	<div style={itemStyle}>inline-block item</div>,
+	<div style={itemStyle}>inline-block item</div>,
+	<div style={itemStyle}>inline-block item</div>,
+	<div style={itemStyle}>inline-block item</div>,
+	<div style={itemStyle}>inline-block item</div>,
+	<div style={itemStyle}>inline-block item</div>,
 ];
 
 storiesOf('Hscroll', module)

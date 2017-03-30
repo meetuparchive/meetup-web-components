@@ -34,7 +34,7 @@ describe('Default Hscroll', () => {
 			component,
 			'hscrollGradientWrap'
 		);
-		expect(gradientEls.length).toBe(0);
+		expect(gradientEls).toHaveLength;
 	});
 });
 
