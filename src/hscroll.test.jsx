@@ -4,15 +4,15 @@ import TestUtils from 'react-addons-test-utils';
 import Hscroll from './Hscroll';
 
 const listItems = [
-	(<div>item</div>),
-	(<div>item</div>),
-	(<div>item</div>),
-	(<div>item</div>),
-	(<div>item</div>),
-	(<div>item</div>),
-	(<div>item</div>),
-	(<div>item</div>),
-	(<div>item</div>)
+	<div>item</div>,
+	<div>item</div>,
+	<div>item</div>,
+	<div>item</div>,
+	<div>item</div>,
+	<div>item</div>,
+	<div>item</div>,
+	<div>item</div>,
+	<div>item</div>
 ];
 
 describe('Default Hscroll', () => {
@@ -41,7 +41,7 @@ describe('Default Hscroll', () => {
 describe('Gradient Hscroll', () => {
 	const component = TestUtils.renderIntoDocument(
 		<Hscroll
-			gradient
+			hasGradient
 		>
 			{listItems}
 		</Hscroll>

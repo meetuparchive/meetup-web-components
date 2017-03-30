@@ -52,7 +52,7 @@ storiesOf('Hscroll', module)
 			<InfoWrapper>
 				<Hscroll
 					style={hscrollInlineStyle}
-					gradient
+					hasGradient
 				>
 					{listItems}
 				</Hscroll>
