@@ -5,6 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import PageHead, {
 	PAGE_HEAD_CLASS,
 	PAGE_TITLE_CLASS,
+	PAGE_TITLELABEL_CLASS,
 	PAGE_SUBTITLE_CLASS,
 	PAGE_ACTIONS_CLASS,
 } from './PageHead';
@@ -27,6 +28,8 @@ const menu = [
 		/>
 	],
 	pageTitle = 'Page title',
+	titleLabel = 'Title label',
+	titleLabelCustomClass = `${PAGE_TITLELABEL_CLASS}--urgent`,
 	subtitle = 'Sub title';
 
 let pageHead;
@@ -60,6 +63,28 @@ describe('PageHead', function() {
 			const pageHeadEl = ReactDOM.findDOMNode(pageHead);
 			const subtitleEl = pageHeadEl.getElementsByClassName(PAGE_SUBTITLE_CLASS);
 			expect(subtitleEl.length).toBe(0);
+		});
+		it(`should NOT have a '${PAGE_TITLELABEL_CLASS}' tag`, () => {
+			const pageHeadEl = ReactDOM.findDOMNode(pageHead);
+			const titleLabelEl = pageHeadEl.getElementsByClassName(PAGE_TITLELABEL_CLASS);
+			expect(titleLabelEl.length).toBe(0);
+		});
+	});
+	describe('titleLabel', () => {
+		beforeEach(() => {
+			pageHead = TestUtils.renderIntoDocument(
+				<PageHead title={pageTitle} titleLabel={titleLabel} titleLabelClass={titleLabelCustomClass} />
+			);
+		});
+		it('should display a text label area', () => {
+			const pageTitle = TestUtils.scryRenderedDOMComponentsWithClass(pageHead, PAGE_TITLE_CLASS)[0];
+			expect(pageTitle.textContent).toContain(titleLabel);
+		});
+		it(`should have an element with class of '${PAGE_TITLELABEL_CLASS}'`, () => {
+			expect(() => TestUtils.findRenderedDOMComponentWithClass(pageHead, PAGE_TITLELABEL_CLASS)).not.toThrow();
+		});
+		it('should handle custom classes', () => {
+			expect(() => TestUtils.findRenderedDOMComponentWithClass(pageHead, titleLabelCustomClass)).not.toThrow();
 		});
 	});
 	describe('subtitle', () => {
