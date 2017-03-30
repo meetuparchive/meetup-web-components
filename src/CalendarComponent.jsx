@@ -26,20 +26,18 @@ class CalendarComponent extends React.Component {
 		// lazy-loading flatpickr ensures it is
 		// imported only in clientside envs.
 		const Flatpickr = require('flatpickr');
-		if (Flatpickr) {
-			const options = {
-				onChange: this.onChange,
-				onOpen: this.onOpen,
-				onClose: this.onClose,
-				altInput: true,
-				allowInput: true,
-				altFormat: 'D M d, Y', // TODO localize
-				defaultDate: this.props.value
-			};
+		const options = {
+			onChange: this.onChange,
+			onOpen: this.onOpen,
+			onClose: this.onClose,
+			altInput: true,
+			allowInput: true,
+			altFormat: 'D M d, Y', // TODO localize
+			defaultDate: this.props.value
+		};
 
-			Object.assign(options, this.props.opts);
-			this.flatpickr = new Flatpickr(this.inputEl, options);
-		}
+		Object.assign(options, this.props.opts);
+		this.flatpickr = new Flatpickr(this.inputEl, options);
 	}
 
 	componentWillUnmount() {
