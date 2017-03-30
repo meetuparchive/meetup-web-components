@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { changeSizeWithViewport } from './utils/designConstants';
-import MediaListener from './utils/mediaQueryListener';
+import { MEDIA_SIZES } from './utils/designConstants';
 
 export const ICON_CLASS = 'svg';
 
@@ -14,39 +13,7 @@ export const ICON_CLASS = 'svg';
  *
  * @module Icon
  */
-class Icon extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this._onMediaQueryChange = this._onMediaQueryChange.bind(this);
-
-		this.state = {
-			currentBP: undefined
-		};
-	}
-
-	_onMediaQueryChange(name) {
-		this.setState({
-			currentBP: name
-		});
-	}
-
-	componentDidMount() {
-		this.mediaListener = new MediaListener(this._onMediaQueryChange);
-
-		// console.log(`getTheBP: ${this.mediaListener.getTheBP()}`);
-		// console.log(`getCurrentBP: ${this.mediaListener.getCurrentBP()}`);
-
-		this.setState({
-			currentBP: this.mediaListener.getCurrentBP()
-		});
-	}
-
-	componentWillUnmount() {
-		if (this.mediaListener) {
-			this.mediaListener.stopListening();
-		}
-	}
+class Icon extends React.PureComponent {
 
 	render() {
 		const {
@@ -62,7 +29,8 @@ class Icon extends React.Component {
 			className
 		);
 
-		const dim = changeSizeWithViewport(size, this.state.currentBP);
+		const viewBox = size === 'auto' ? MEDIA_SIZES['xl'] : MEDIA_SIZES[size];
+		const dim = MEDIA_SIZES[size];
 
 		return (
 			<span className={classNames}>
@@ -70,7 +38,7 @@ class Icon extends React.Component {
 					preserveAspectRatio='xMinYMin meet'
 					width={dim}
 					height={dim}
-					viewBox={`0 0 ${dim} ${dim}`}
+					viewBox={`0 0 ${viewBox} ${viewBox}`}
 					className='svg-icon valign--middle'
 					role='img'
 					{...other}>
@@ -82,7 +50,7 @@ class Icon extends React.Component {
 }
 
 Icon.defaultProps = {
-	size: 's'
+	size: 'm'
 };
 
 Icon.propTypes = {
