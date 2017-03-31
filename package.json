@@ -76,7 +76,7 @@
     "storybook-addon-i18n-tools": "1.0.0",
     "style-loader": "0.13.2",
     "swarm-icons": "0.2.0",
-    "swarm-sasstools": "1.2.11",
+    "swarm-sasstools": "1.2.10",
     "webpack": "2.3.2"
   }
 }
