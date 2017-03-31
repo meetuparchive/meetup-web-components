@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import Flatpickr from 'flatpickr';
 
 /**
  * @module CalendarComponent
@@ -22,6 +21,11 @@ class CalendarComponent extends React.Component {
 	* @description init the js date flatpickr component
 	*/
 	componentDidMount() {
+		// flatpickr uses `window` on import,
+		// which breaks on server-sider render.
+		// lazy-loading flatpickr ensures it is
+		// imported only in clientside envs.
+		const Flatpickr = require('flatpickr');
 		const options = {
 			onChange: this.onChange,
 			onOpen: this.onOpen,
