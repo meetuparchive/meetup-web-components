@@ -33,5 +33,9 @@ storiesOf('AvatarMember', module)
 		const MOCK_MEMBER_NO_PHOTO = { ...MOCK_MEMBER };  // treat the mock as immutable
 		MOCK_MEMBER_NO_PHOTO.photo = {};
 		return <AvatarMember member={MOCK_MEMBER_NO_PHOTO}/>;
+	}).add('big no photo', () => {
+		const MOCK_MEMBER_NO_PHOTO = { ...MOCK_MEMBER };  // treat the mock as immutable
+		MOCK_MEMBER_NO_PHOTO.photo = {};
+		return <AvatarMember className='avatar--big' member={MOCK_MEMBER_NO_PHOTO}/>;
 	});
 
