@@ -24,16 +24,6 @@ class Modal extends React.Component {
 			topPosition: DEFAULT_MARGIN_TOP // matches default margin-top in CSS
 		};
 
-		if (!this.props.fullscreen && typeof window.matchMedia != 'undefined') {
-			this.mediaQuery = window.matchMedia(MEDIA_QUERIES.medium);
-
-			this.handleMediaChange = mq => {
-				this.setState({
-					topPosition: this.getModalPosition(window.pageYOffset),
-				});
-			};
-			this.mqListener = this.mediaQuery.addListener(this.handleMediaChange);
-		}
 	}
 
 	onDismiss(e) {
@@ -67,9 +57,16 @@ class Modal extends React.Component {
 	}
 
 	componentDidMount() {
-		this.setState({
-			topPosition: this.getModalPosition(window.pageYOffset)
-		});
+		if (!this.props.fullscreen && typeof window.matchMedia != 'undefined') {
+			this.mediaQuery = window.matchMedia(MEDIA_QUERIES.medium);
+
+			this.handleMediaChange = mq => {
+				this.setState({
+					topPosition: this.getModalPosition(window.pageYOffset),
+				});
+			};
+			this.mqListener = this.mediaQuery.addListener(this.handleMediaChange);
+		}
 	}
 
 	componentWillUnmount() {
