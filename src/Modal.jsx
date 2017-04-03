@@ -2,8 +2,31 @@ import React from 'react';
 import cx from 'classnames';
 import Icon from './Icon';
 import Button from './Button';
+import { MEDIA_QUERIES } from './utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
+export const DEFAULT_MARGIN_TOP = '10vh';
+export const MARGIN_TOP_OFFSET = 20;
+
+
+/**
+ * Gets `margin-top` value for vertically positioning the modal
+ *
+ * @param {String} scrollPosition window scroll position
+ * @param {String} viewportHeight client height
+ * @param {Boolean} isFullScreen true if the modal full screen
+ *
+ * @returns {String} CSS value for setting modal margin-top
+ */
+export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen) => {
+
+	// check if user is scrolled below fold before setting a custom offset
+	const newTopOffset = scrollPosition > viewportHeight ?
+		scrollPosition + MARGIN_TOP_OFFSET :
+		DEFAULT_MARGIN_TOP;
+
+	return isFullScreen ? '0px' : newTopOffset;
+};
 
 /**
  * SQ2 Modal component
@@ -15,6 +38,11 @@ class Modal extends React.Component {
 		super(props);
 		this.onDismiss = this.onDismiss.bind(this);
 		this.onKeyDown = this.onKeyDown.bind(this);
+
+		this.state = {
+			topPosition: DEFAULT_MARGIN_TOP // matches default margin-top in CSS
+		};
+
 	}
 
 	onDismiss(e) {
@@ -29,6 +57,27 @@ class Modal extends React.Component {
 		if (e.key === 'Escape') {
 			this.onDismiss(e);
 		}
+	}
+
+	componentDidMount() {
+		if (!this.props.fullscreen && typeof window.matchMedia != 'undefined') {
+			this.mediaQuery = window.matchMedia(MEDIA_QUERIES.medium);
+
+			this.handleMediaChange = mq => {
+				this.setState({
+					topPosition: getModalPosition(
+						window.pageYOffset,
+						Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+						this.props.fullscreen || this.mediaQuery && !this.mediaQuery.matches
+					),
+				});
+			};
+			this.mqListener = this.mediaQuery.addListener(this.handleMediaChange);
+		}
+	}
+
+	componentWillUnmount() {
+		this.mediaQuery && this.mediaQuery.removeListener(this.handleMediaChange);
 	}
 
 	render() {
@@ -60,19 +109,27 @@ class Modal extends React.Component {
 			'border--none'
 		);
 
+		const overlayShim = (
+			<div className='overlayShim' onClick={this.onDismiss}>
+				<div className='inverted'></div>
+			</div>
+		);
+
 		return (
 			<div
 				role='dialog'
 				tabIndex='0'
 				onKeyDown={this.onKeyDown}
 				className={classNames}
-				{...other}>
+				{...other}
+			>
 
-				<div className='overlayShim' onClick={this.onDismiss}>
-					<div className='inverted'></div>
-				</div>
+				{!fullscreen && overlayShim}
 
-				<div className={modalClasses} >
+				<div
+					className={modalClasses}
+					style={{marginTop: this.state.topPosition}}
+				>
 					<div className='align--right'>
 						<Button onClick={this.onDismiss} className={dismissButtonClasses}>
 							<Icon shape='cross' size='s' />
