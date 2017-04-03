@@ -21,7 +21,6 @@ describe('AvatarMember', function() {
 
 		const avatarMember = TestUtils.renderIntoDocument(<AvatarMember member={MOCK_MEMBER_NO_PHOTO} />);
 		expect(() => TestUtils.findRenderedDOMComponentWithClass(avatarMember, AVATAR_PERSON_NOPHOTO_CLASS)).not.toThrow();
-		expect(() => TestUtils.findRenderedComponentWithType(avatarMember, Icon)).not.toThrow();
 	});
 
 	it('should *not* render the noPhoto variant only when a photo is present', function() {
