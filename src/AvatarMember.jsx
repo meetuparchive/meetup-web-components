@@ -21,20 +21,24 @@ class AvatarMember extends React.PureComponent {
 			...other
 		} = this.props;
 
+		const showNoPhoto = (member.photo || {}).photo_link == undefined;
+
 		const classNames = cx(
 			AVATAR_PERSON_CLASS,
 			{
 				[AVATAR_PERSON_ORG_CLASS]: org,
 				[AVATAR_PERSON_FB_CLASS]: fbFriend,
-				[AVATAR_PERSON_NOPHOTO_CLASS]: (member.photo || {}).photo_link == undefined
+				[AVATAR_PERSON_NOPHOTO_CLASS]: showNoPhoto
 			},
 			className
 		);
 
+		const noPhotoImage = require('base64-image-loader!swarm-icons/dist/optimized/profile.svg');
+
 		return (
 			<Avatar
 				alt={member.name}
-				src={(member.photo || {}).photo_link || require('base64-image-loader!swarm-icons/dist/optimized/profile.svg')}
+				src={showNoPhoto ? noPhotoImage : member.photo.photo_link}
 				className={classNames}
 				{...other}
 			>
