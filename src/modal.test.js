@@ -4,7 +4,10 @@ import TestUtils from 'react-addons-test-utils';
 
 import Button from './Button';
 import Modal, {
-	MODAL_CLOSE_BUTTON
+	MODAL_CLOSE_BUTTON,
+	DEFAULT_MARGIN_TOP,
+	MARGIN_TOP_OFFSET,
+	getModalPosition,
 } from './Modal';
 
 describe('Modal', () => {
@@ -66,5 +69,27 @@ describe('Modal', () => {
 		TestUtils.Simulate.keyDown(modalEl, {key: 'Escape', keyCode: 27});
 
 		expect(spyable.onDismiss).toHaveBeenCalled();
+	});
+});
+
+describe('Modal positioning', () => {
+
+	it('returns the default margin top if the user is not below the fold', () => {
+		const calculatedPosition = getModalPosition(0, 400, false);
+		expect(calculatedPosition).toBe(DEFAULT_MARGIN_TOP);
+	});
+
+	it('always returns 0px when full screen', () => {
+		const calculatedPositionAtTop = getModalPosition(0, 400, true);
+		const calculatedPositionBelowFold = getModalPosition(800, 400, true);
+
+		expect(calculatedPositionAtTop).toBe('0px');
+		expect(calculatedPositionBelowFold).toBe('0px');
+	});
+
+	it('returns scroll position + MARGIN_TOP_OFFSET when modal is not full screen and user is below fold', () => {
+		const scrollPosition = 800;
+		const calculatedPosition = getModalPosition(scrollPosition, 400, false);
+		expect(calculatedPosition).toBe(scrollPosition + MARGIN_TOP_OFFSET);
 	});
 });

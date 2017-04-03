@@ -5,8 +5,28 @@ import Button from './Button';
 import { MEDIA_QUERIES } from './utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
-const DEFAULT_MARGIN_TOP = '10vh';
+export const DEFAULT_MARGIN_TOP = '10vh';
+export const MARGIN_TOP_OFFSET = 20;
 
+
+/**
+ * Gets `margin-top` value for vertically positioning the modal
+ *
+ * @param {String} scrollPosition window scroll position
+ * @param {String} viewportHeight client height
+ * @param {Boolean} isFullScreen true if the modal full screen
+ *
+ * @returns {String} CSS value for setting modal margin-top
+ */
+export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen) => {
+
+	// check if user is scrolled below fold before setting a custom offset
+	const newTopOffset = scrollPosition > viewportHeight ?
+		scrollPosition + MARGIN_TOP_OFFSET :
+		DEFAULT_MARGIN_TOP;
+
+	return isFullScreen ? '0px' : newTopOffset;
+};
 
 /**
  * SQ2 Modal component
@@ -18,7 +38,6 @@ class Modal extends React.Component {
 		super(props);
 		this.onDismiss = this.onDismiss.bind(this);
 		this.onKeyDown = this.onKeyDown.bind(this);
-		this.getModalPosition = this.getModalPosition.bind(this);
 
 		this.state = {
 			topPosition: DEFAULT_MARGIN_TOP // matches default margin-top in CSS
@@ -40,29 +59,17 @@ class Modal extends React.Component {
 		}
 	}
 
-	/**
-	 * @param {String} scrollPosition window scroll position
-	 * @returns {String} CSS value for setting modal margin-top
-	 */
-	getModalPosition(scrollPosition) {
-		const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-		const isFullScreen = this.props.fullscreen || this.mediaQuery && !this.mediaQuery.matches;
-
-		// check if user is scrolled below fold before setting a custom offset
-		const newTopOffset = scrollPosition > viewportHeight ?
-			DEFAULT_MARGIN_TOP :
-			scrollPosition + 20;
-
-		return isFullScreen ? '0px' : newTopOffset;
-	}
-
 	componentDidMount() {
 		if (!this.props.fullscreen && typeof window.matchMedia != 'undefined') {
 			this.mediaQuery = window.matchMedia(MEDIA_QUERIES.medium);
 
 			this.handleMediaChange = mq => {
 				this.setState({
-					topPosition: this.getModalPosition(window.pageYOffset),
+					topPosition: getModalPosition(
+						window.pageYOffset,
+						Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+						this.props.fullscreen || this.mediaQuery && !this.mediaQuery.matches
+					),
 				});
 			};
 			this.mqListener = this.mediaQuery.addListener(this.handleMediaChange);
