@@ -34,7 +34,6 @@
     "react-intl": "^2.2.3"
   },
   "dependencies": {
-    "base64-image-loader": "1.2.0",
     "flatpickr": "2.4.7"
   },
   "devDependencies": {
@@ -53,6 +52,7 @@
     "babel-preset-react": "6.23.0",
     "babel-preset-stage-2": "6.22.0",
     "babel-register": "6.24.0",
+    "base64-image-loader": "1.2.0",
     "classnames": "2.2.5",
     "coveralls": "2.12.0",
     "css-loader": "0.27.3",
@@ -76,7 +76,7 @@
     "storybook-addon-i18n-tools": "1.0.0",
     "style-loader": "0.13.2",
     "swarm-icons": "0.2.0",
-    "swarm-sasstools": "1.2.10",
+    "swarm-sasstools": "1.2.11",
     "webpack": "2.3.2"
   }
 }
