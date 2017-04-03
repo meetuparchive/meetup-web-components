@@ -5,8 +5,7 @@ $modal-width: 440px;
 	@include transition(transform .2s ease);
 	@include centerAbsolute($modal-width);
 	min-height: 0;
-	width: $modal-width;
-	margin-top: 10vh;
+	width: $modal-width !important;
 
 	&.off{
 	  @include transform( translateY(100vh) );
