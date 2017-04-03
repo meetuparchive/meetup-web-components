@@ -34,7 +34,7 @@ class AvatarMember extends React.PureComponent {
 		return (
 			<Avatar
 				alt={member.name}
-				src={(member.photo || {}).photo_link || require('base64-image!swarm-icons/dist/optimized/profile.svg')}
+				src={(member.photo || {}).photo_link || require('base64-image-loader!swarm-icons/dist/optimized/profile.svg')}
 				className={classNames}
 				{...other}
 			>
