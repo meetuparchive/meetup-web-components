@@ -13,7 +13,7 @@
     "jsx"
   ],
   "moduleNameMapper": {
-    "^(base64-image-loader[!?].+)": "<rootDir>/src/utils/jestMocks/base64Image.js"
+    "^(base64-image-loader[!?].+)": "<rootDir>/__mocks__/base64Image.js"
   },
   "testRegex": "src/.*\\.test\\.jsx?$",
   "transformIgnorePatterns": [
