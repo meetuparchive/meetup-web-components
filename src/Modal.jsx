@@ -6,7 +6,7 @@ import { MEDIA_QUERIES } from './utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
 export const DEFAULT_MARGIN_TOP = '10vh';
-export const MARGIN_TOP_OFFSET = 20;
+export const MARGIN_TOP_OFFSET = 36;
 
 
 /**
@@ -63,7 +63,7 @@ class Modal extends React.Component {
 		if (!this.props.fullscreen && typeof window.matchMedia != 'undefined') {
 			this.mediaQuery = window.matchMedia(MEDIA_QUERIES.medium);
 
-			this.handleMediaChange = mq => {
+			this.handleMediaChange = () => {
 				this.setState({
 					topPosition: getModalPosition(
 						window.pageYOffset,
@@ -72,6 +72,9 @@ class Modal extends React.Component {
 					),
 				});
 			};
+
+			// fire on mount, _then_ listen for matchMedia changes
+			this.handleMediaChange();
 			this.mqListener = this.mediaQuery.addListener(this.handleMediaChange);
 		}
 	}
