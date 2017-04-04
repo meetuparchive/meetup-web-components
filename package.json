@@ -34,7 +34,8 @@
     "react-intl": "^2.2.3"
   },
   "dependencies": {
-    "autosize": "3.0.20"
+    "autosize": "3.0.20",
+    "base64-image-loader": "1.2.0",
     "flatpickr": "2.4.7"
   },
   "devDependencies": {
