@@ -7,6 +7,7 @@ import Section from './Section';
 
 export const PAGE_HEAD_CLASS = 'pageHead';
 export const PAGE_TITLE_CLASS = 'pageTitle';
+export const PAGE_TITLELABEL_CLASS = 'pageTitleLabel';
 export const PAGE_SUBTITLE_CLASS = 'pageSubtitle';
 export const PAGE_ACTIONS_CLASS = 'pageActions';
 export const PAGE_ACTION_CLASS = 'pageAction';
@@ -25,14 +26,27 @@ class PageHead extends React.Component {
 			className,
 			subtitle,
 			title,
+			titleLabel,
+			titleLabelClass,
 			menuItems,
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			PAGE_HEAD_CLASS,
-			className
-		);
+		const classNames = {
+			pageHead: cx(
+				PAGE_HEAD_CLASS,
+				className
+			),
+			titleLabel: cx(
+				PAGE_TITLELABEL_CLASS,
+				'text--label',
+				titleLabelClass
+			),
+			subtitle: cx(
+				PAGE_SUBTITLE_CLASS,
+				'text--secondary'
+			)
+		};
 
 		const menuRender = menuItems.map((menuItem, i) => (
 			<FlexItem className={PAGE_ACTION_CLASS} key={i} shrink>
@@ -42,7 +56,7 @@ class PageHead extends React.Component {
 
 		return (
 			<Section
-				className={classNames}
+				className={classNames.pageHead}
 				{...other}
 			>
 				<Flex
@@ -50,11 +64,16 @@ class PageHead extends React.Component {
 					direction='column'
 					switchDirection='large'
 				>
-					<FlexItem>
+					<FlexItem
+						growFactor={2}
+					>
 						<Chunk className='align--center atMedium_align--left'>
+							{titleLabel &&
+								<p className={classNames.titleLabel}>{titleLabel}</p>
+							}
 							<h1 className='text--display1'>{title}</h1>
 							{subtitle &&
-								<p className={`${PAGE_SUBTITLE_CLASS} text--secondary`}>{subtitle}</p>
+								<p className={classNames.subtitle}>{subtitle}</p>
 							}
 						</Chunk>
 					</FlexItem>
@@ -81,6 +100,11 @@ PageHead.propTypes = {
 		React.PropTypes.string,
 		React.PropTypes.element
 	]),
+	titleLabel: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]),
+	titleLabelClass: React.PropTypes.string,
 	menuItems: React.PropTypes.array,
 };
 PageHead.defaultProps = {

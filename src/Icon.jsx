@@ -1,15 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
+import { MEDIA_SIZES } from './utils/designConstants';
 
 export const ICON_CLASS = 'svg';
-
-export const MEDIA_SIZES = {
-	xs: '16',
-	s: '24',
-	m: '36',
-	l: '48',
-	xl: '72'
-};
 
 /**
  * Icon component used to insert an svg icon into a component or page
