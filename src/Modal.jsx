@@ -6,7 +6,7 @@ import { MEDIA_QUERIES } from './utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
 export const DEFAULT_MARGIN_TOP = '10vh';
-export const MARGIN_TOP_OFFSET = 20;
+export const MARGIN_TOP_OFFSET = 36;
 
 
 /**
