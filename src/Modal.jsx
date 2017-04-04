@@ -63,7 +63,7 @@ class Modal extends React.Component {
 		if (!this.props.fullscreen && typeof window.matchMedia != 'undefined') {
 			this.mediaQuery = window.matchMedia(MEDIA_QUERIES.medium);
 
-			this.handleMediaChange = mq => {
+			this.handleMediaChange = () => {
 				this.setState({
 					topPosition: getModalPosition(
 						window.pageYOffset,
@@ -72,6 +72,9 @@ class Modal extends React.Component {
 					),
 				});
 			};
+
+			// fire on mount, _then_ listen for matchMedia changes
+			this.handleMediaChange();
 			this.mqListener = this.mediaQuery.addListener(this.handleMediaChange);
 		}
 	}
