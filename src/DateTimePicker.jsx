@@ -86,7 +86,7 @@ class DateTimePicker extends React.Component {
 		const datetime = new Date(this.state.datetime);
 
 		datetime.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
-		this.setState({ datetime });
+		this.setDateTime(datetime);
 	}
 
 	/**
@@ -122,7 +122,7 @@ class DateTimePicker extends React.Component {
 		const datetime = new Date(this.state.datetime);
 
 		datetime.setTime(newTime.getTime());
-		this.setState({ datetime });
+		this.setDateTime(datetime);
 	}
 
 	/**
@@ -132,6 +132,7 @@ class DateTimePicker extends React.Component {
 	*/
 	setDateTime(value) {
 		this.setState({ datetime: new Date(value) });
+		this.props.onChangeCallback(this.state.datetime, this.props.name);
 	}
 
 	/**
@@ -250,7 +251,8 @@ DateTimePicker.propTypes = {
 		React.PropTypes.string
 	]),
 	dateOnly: React.PropTypes.bool,
-	forceCalendar: React.PropTypes.bool
+	forceCalendar: React.PropTypes.bool,
+	onChangeCallback: React.PropTypes.func
 };
 
 export default DateTimePicker;

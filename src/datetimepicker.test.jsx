@@ -202,4 +202,31 @@ describe('DateTimePicker', function() {
 		});
 
 	});
+
+	describe('onChangeCallback in props', () => {
+		let changeCallbackSpy;
+
+		beforeEach(() => {
+			changeCallbackSpy = spyOn(DateTimePicker.propTypes, 'onChangeCallback');
+			dateTimeComponent = TestUtils.renderIntoDocument(
+				<DateTimePicker name='start_time'
+					value={dateStr}
+					onChangeCallback={function(){}}
+					forceCalendar
+				/>
+			);
+		});
+
+		it('is called when time input changes', () => {
+			const dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent.timeComponent, 'input');
+			TestUtils.Simulate.change(dateTimeInputEl);
+			expect(changeCallbackSpy).toHaveBeenCalled();
+		});
+
+		it('is called when date input changes', () => {
+			const dateInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent.dateComponent, 'input');
+			TestUtils.Simulate.change(dateInputEl);
+			expect(changeCallbackSpy).toHaveBeenCalled();
+		});
+	});
 });
