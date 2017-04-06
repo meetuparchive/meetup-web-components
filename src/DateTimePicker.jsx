@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import moment from 'moment';
 import CalendarComponent from './CalendarComponent';
 import TimeInput from './TimeInput';
 import DateTimeLocalInput from './DateTimeLocalInput';
@@ -84,11 +85,12 @@ class DateTimePicker extends React.Component {
 	setDate(value) {
 		const newDate = new Date(value);
 		const datetime = new Date(this.state.datetime);
+
 		datetime.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
 		this.setDateTime(datetime);
 
 		if (this.props.onChangeCallback) {
-			this.props.onChangeCallback(this.state.datetime);
+			this.props.onChangeCallback(datetime);
 		}
 	}
 
@@ -99,6 +101,14 @@ class DateTimePicker extends React.Component {
 	*/
 	parseTimeFromDateTime(datetime) {
 		return (datetime.toTimeString().split(' ')[0]).split(':', 2).join(':'); // TODO localize toLocaleTimeString ?
+	}
+
+	parseNewTimeAsDate(time) {
+		const datetime = this.state.datetime;
+		const momentDatetime = moment(datetime).format('YYYY-MM-DD');
+		const offset = moment(datetime).format('Z');
+
+		return new Date(`${momentDatetime} ${time} ${offset}`);
 	}
 
 	/**
@@ -121,14 +131,13 @@ class DateTimePicker extends React.Component {
 	* @param value String valid time string
 	*/
 	setTime(value) {
-		const newTime = new Date(value);
+		const newTime = this.parseNewTimeAsDate(value);
 		const datetime = new Date(this.state.datetime);
 
 		datetime.setTime(newTime.getTime());
 		this.setDateTime(datetime);
-
 		if (this.props.onChangeCallback) {
-			this.props.onChangeCallback(this.state.datetime);
+			this.props.onChangeCallback(datetime);
 		}
 	}
 
