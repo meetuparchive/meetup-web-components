@@ -75,13 +75,13 @@ describe('Modal', () => {
 describe('Modal positioning', () => {
 
 	it('returns the default margin top if the user is not below the fold', () => {
-		const calculatedPosition = getModalPosition(0, 400, false);
+		const calculatedPosition = getModalPosition(0, 400, false, false);
 		expect(calculatedPosition).toBe(DEFAULT_MARGIN_TOP);
 	});
 
-	it('always returns 0px when full screen', () => {
-		const calculatedPositionAtTop = getModalPosition(0, 400, true);
-		const calculatedPositionBelowFold = getModalPosition(800, 400, true);
+	it('always returns 0px when full screen prop is set', () => {
+		const calculatedPositionAtTop = getModalPosition(0, 400, true, false);
+		const calculatedPositionBelowFold = getModalPosition(800, 400, true, false);
 
 		expect(calculatedPositionAtTop).toBe('0px');
 		expect(calculatedPositionBelowFold).toBe('0px');
@@ -89,7 +89,14 @@ describe('Modal positioning', () => {
 
 	it('returns scroll position + MARGIN_TOP_OFFSET when modal is not full screen and user is below fold', () => {
 		const scrollPosition = 800;
-		const calculatedPosition = getModalPosition(scrollPosition, 400, false);
+		const calculatedPosition = getModalPosition(scrollPosition, 400, false, false);
 		expect(calculatedPosition).toBe(scrollPosition + MARGIN_TOP_OFFSET);
 	});
+
+	it('returns scroll position *without gutter* when modal is below fold and viewport is mobile size', () => {
+		const scrollPosition = 800;
+		const calculatedPosition = getModalPosition(scrollPosition, 400, false, true);
+		expect(calculatedPosition).toBe(scrollPosition);
+	});
+
 });

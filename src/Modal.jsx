@@ -6,7 +6,7 @@ import { MEDIA_QUERIES } from './utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
 export const DEFAULT_MARGIN_TOP = '10vh';
-export const MARGIN_TOP_OFFSET = 20;
+export const MARGIN_TOP_OFFSET = 36;
 
 
 /**
@@ -15,17 +15,26 @@ export const MARGIN_TOP_OFFSET = 20;
  * @param {String} scrollPosition window scroll position
  * @param {String} viewportHeight client height
  * @param {Boolean} isFullScreen true if the modal full screen
+ * @param {Boolean} isMobileSize true if the viewport is below `medium` breakpoint
  *
  * @returns {String} CSS value for setting modal margin-top
  */
-export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen) => {
+export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen, isMobileSize) => {
 
-	// check if user is scrolled below fold before setting a custom offset
-	const newTopOffset = scrollPosition > viewportHeight ?
+	// full screen dialogs should be flush with top of the viewport
+	if (isFullScreen) {
+		return '0px';
+	}
+
+	// for mobile-sized viewports, return the scroll position without a gutter
+	if (isMobileSize) {
+		return scrollPosition;
+	}
+
+	// set the margin-top based on scroll position unless user is above fold
+	return scrollPosition > viewportHeight ?
 		scrollPosition + MARGIN_TOP_OFFSET :
 		DEFAULT_MARGIN_TOP;
-
-	return isFullScreen ? '0px' : newTopOffset;
 };
 
 /**
@@ -63,15 +72,19 @@ class Modal extends React.Component {
 		if (!this.props.fullscreen && typeof window.matchMedia != 'undefined') {
 			this.mediaQuery = window.matchMedia(MEDIA_QUERIES.medium);
 
-			this.handleMediaChange = mq => {
+			this.handleMediaChange = () => {
 				this.setState({
 					topPosition: getModalPosition(
 						window.pageYOffset,
 						Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
-						this.props.fullscreen || this.mediaQuery && !this.mediaQuery.matches
+						this.props.fullscreen,
+						this.mediaQuery && !this.mediaQuery.matches
 					),
 				});
 			};
+
+			// fire on mount, _then_ listen for matchMedia changes
+			this.handleMediaChange();
 			this.mqListener = this.mediaQuery.addListener(this.handleMediaChange);
 		}
 	}
