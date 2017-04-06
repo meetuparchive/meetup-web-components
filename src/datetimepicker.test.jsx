@@ -202,4 +202,31 @@ describe('DateTimePicker', function() {
 		});
 
 	});
+
+	describe('onChangeCallback in props', () => {
+		let changeCallbackSpy;
+
+		beforeEach(() => {
+			changeCallbackSpy = jest.fn();
+			dateTimeComponent = TestUtils.renderIntoDocument(
+				<DateTimePicker name='start_time'
+					value={dateStr}
+					onChangeCallback={changeCallbackSpy}
+					forceCalendar
+				/>
+			);
+		});
+
+		it('is called when time input changes', () => {
+			const dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent.timeComponent, 'input');
+			TestUtils.Simulate.change(dateTimeInputEl);
+			expect(changeCallbackSpy).toHaveBeenCalled();
+		});
+
+		it('is called when date input changes', () => {
+			dateTimeComponent.dateComponent.flatpickr.setDate(dateStr, true);
+			expect(changeCallbackSpy).toHaveBeenCalled();
+			expect(changeCallbackSpy).toHaveBeenCalledWith(expect.any(Date));
+		});
+	});
 });
