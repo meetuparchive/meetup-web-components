@@ -13,6 +13,8 @@
     "lint": "yarn run lint:base -- --fix",
     "lint:base": "eslint . --ext .js,.jsx",
     "modules:clean": "rm -rf node_modules",
+    "postcheckout": "yarn install",
+    "postmerge": "yarn install",
     "precommit": "git status --porcelain | awk 'match($1, \"[ACM]\"){print $2}' | grep '[js|jsx]$' | xargs eslint",
     "prepublish": "yarn run build",
     "storybook": "start-storybook -p 9001 -c .storybook",
