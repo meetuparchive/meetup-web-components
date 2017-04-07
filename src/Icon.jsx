@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { MEDIA_SIZES } from './utils/designConstants';
+import { MEDIA_SIZES, MEDIA_QUERIES } from './utils/designConstants';
 
 export const ICON_CLASS = 'svg';
 
@@ -14,6 +14,78 @@ export const ICON_CLASS = 'svg';
  * @module Icon
  */
 class Icon extends React.PureComponent {
+	constructor(props){
+		super(props);
+
+		this.state = {
+			iconScaleFactor: undefined
+		};
+	}
+
+	componentDidMount() {
+
+		this.setupListeners = (name, mediaQuery) => {
+			if (!window.matchMedia) return;
+
+			const mql = window.matchMedia(mediaQuery);
+			mql._fn = function (e) {
+				return this.handleMediaChange(e.matches, name);
+			}.bind(this);
+			mql.addListener(mql._fn);
+
+			return mql;
+		};
+
+		this.handleMediaChange = (matches, name) => {
+			if (matches) {
+				this.changeHandler(name);
+			}
+		};
+
+		this.changeHandler = (name) => {
+			let scaleFactor;
+
+			switch (name) {
+
+			case 'small':
+				scaleFactor = 1;
+				// console.log('do a small thing');
+				break;
+
+			case 'medium':
+				scaleFactor = 1.125;
+				// console.log('do a medium thing');
+				break;
+
+			case 'large':
+				scaleFactor = 1.25;
+				// console.log('do a large thing');
+				break;
+
+			case 'huge':
+				scaleFactor = 1.25;
+				// console.log('do a huge thing');
+				break;
+
+			default:
+				break;
+			}
+
+			this.setState({
+				iconScaleFactor: scaleFactor
+			});
+		};
+
+		// where the stuff gets called
+		for(const mq in MEDIA_QUERIES) {
+			this.setupListeners(mq, MEDIA_QUERIES[mq]);
+
+			if (window.matchMedia(MEDIA_QUERIES[mq]).matches) {
+				this.changeHandler(mq);
+			}
+		}
+
+	}
 
 	render() {
 		const {
@@ -30,7 +102,7 @@ class Icon extends React.PureComponent {
 		);
 
 		const viewBox = size === 'auto' ? MEDIA_SIZES['xl'] : MEDIA_SIZES[size];
-		const dim = MEDIA_SIZES[size];
+		const dim = MEDIA_SIZES[size] * this.state.iconScaleFactor;
 
 		return (
 			<span className={classNames}>
