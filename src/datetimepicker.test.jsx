@@ -32,13 +32,9 @@ describe('DateTimePicker', function() {
 	});
 
 	it('exists', function() {
-		dateTimeComponent = TestUtils.renderIntoDocument(<DateTimePicker name='start_time' forceCalendar />);
+		dateTimeComponent = TestUtils.renderIntoDocument(<DateTimePicker name='start_time' value={datetime} forceCalendar />);
 		expect(() => TestUtils.findRenderedComponentWithType(dateTimeComponent, CalendarComponent)).not.toThrow();
 		expect(() => TestUtils.findRenderedComponentWithType(dateTimeComponent, TimeInput)).not.toThrow();
-	});
-
-	it('values for date and time are set in state', function() {
-		expect(dateTimeComponent.state.datetime).toEqual(datetime);
 	});
 
 	it('values for date and time are set in child components', function() {
@@ -53,6 +49,7 @@ describe('DateTimePicker', function() {
 	it('renders a date component only if specified', function() {
 		dateTimeComponent = TestUtils.renderIntoDocument(
 			<DateTimePicker name='start_time'
+				value={datetime}
 				forceCalendar
 				dateOnly
 			/>
@@ -67,6 +64,7 @@ describe('DateTimePicker', function() {
 		max.setDate(max.getDate() + 5);
 		dateTimeComponent = TestUtils.renderIntoDocument(
 			<DateTimePicker name='start_time'
+				value={datetime}
 				forceCalendar
 				datepickerOptions={{ minDate: min, maxDate: max }}
 			/>
@@ -84,7 +82,7 @@ describe('DateTimePicker', function() {
 					forceCalendar
 				/>
 			);
-			expect(dateTimeComponent.state.datetime).toEqual(new Date(dateStr));
+			expect(dateTimeComponent.getDateTime()).toEqual(new Date(dateStr));
 		});
 
 		it('accepts a datetime object as value', function() {
@@ -94,7 +92,7 @@ describe('DateTimePicker', function() {
 					forceCalendar
 				/>
 			);
-			expect(dateTimeComponent.state.datetime).toEqual(datetime);
+			expect(dateTimeComponent.getDateTime()).toEqual(datetime);
 		});
 
 		it('accepts a date string value', function() {
@@ -104,7 +102,7 @@ describe('DateTimePicker', function() {
 					forceCalendar
 				/>
 			);
-			expect(dateTimeComponent.state.datetime).toEqual(new Date(Date.UTC(year, month, day)));
+			expect(dateTimeComponent.getDateTime()).toEqual(new Date(Date.UTC(year, month, day)));
 		});
 	});
 
@@ -225,7 +223,6 @@ describe('DateTimePicker', function() {
 
 		it('is called when date input changes', () => {
 			dateTimeComponent.dateComponent.flatpickr.setDate(dateStr, true);
-			expect(changeCallbackSpy).toHaveBeenCalled();
 			expect(changeCallbackSpy).toHaveBeenCalledWith(expect.any(Date));
 		});
 	});

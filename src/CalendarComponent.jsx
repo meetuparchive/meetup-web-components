@@ -9,9 +9,6 @@ class CalendarComponent extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			value: this.props.value || ''
-		};
 		this.onChange = this.onChange.bind(this);
 		this.onOpen = this.onOpen.bind(this);
 		this.onClose = this.onClose.bind(this);
@@ -53,7 +50,6 @@ class CalendarComponent extends React.Component {
 	* calls the callback with the selectedDates value (callback used in wrapping components)
 	*/
 	onChange(selectedDates, dateStr, instance) {
-		this.setState({ value: selectedDates[0] });
 		this.props.onChangeCallback && this.props.onChangeCallback(selectedDates[0]);
 	}
 
@@ -74,6 +70,18 @@ class CalendarComponent extends React.Component {
 	onClose() {
 		this.props.onBlur && this.props.onBlur();
 	}
+
+	/**
+	* @function updateDate
+	* @description update flatpickr on props date value update and return current date value
+	*/
+	updateDate() {
+		if (this.props.value && this.flatpickr) {
+			this.flatpickr.setDate(this.props.value);
+			return this.props.value;
+		}
+	}
+
 
 	render() {
 		const {
@@ -96,7 +104,7 @@ class CalendarComponent extends React.Component {
 				id={id}
 				type='text'
 				name={name}
-				defaultValue={this.state.value}
+				defaultValue={this.updateDate()}
 				className={classNames}
 				ref={ input => this.inputEl = input }
 				{...other} />
