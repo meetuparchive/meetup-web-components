@@ -132,6 +132,8 @@ Class                            | Description
 -------------------------------- | -------------------------------
 `.flex--noGutters`               | removes padding from all `.flex-item` children
 `.flex--wrap`                    | allows row wrapping (useful for collapsing rows in smaller viewports)
+`.atMedium_flex--wrap`           | allows row wrapping at medium breakpoint (useful for collapsing rows in smaller viewports)
+`.atLarge_flex--wrap`            |allows row wrapping at large breakpoint (useful for collapsing rows in smaller viewports)
 `.flex--rowReverse`              | reverses row order
 `.atMedium_flex--rowReverse`     | reverses row order for medium breakpoint and up
 `.atLarge_flex--rowReverse`      | reverses row order for large breakpoint and up
@@ -151,6 +153,11 @@ Class                            | Description
 
 .flex--wrap {
 	@include flex-wrap(wrap);
+}
+
+@include _bpModifier(flex, wrap, true) {
+	@include flex-wrap(wrap);
+	align-items: flex-start;
 }
 
 @include _bpModifier(flex, columnReverse, true) {

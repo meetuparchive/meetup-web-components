@@ -55,6 +55,7 @@ class Flex extends React.Component {
 
 		const columnReverseBreakpoint = VALID_BREAKPOINTS[columnReverse] || VALID_BREAKPOINTS['all'];
 		const rowReverseBreakpoint = VALID_BREAKPOINTS[rowReverse] || VALID_BREAKPOINTS['all'];
+		const wrapBreakpoint = VALID_BREAKPOINTS[wrap] || VALID_BREAKPOINTS['all'];
 
 		const isColumn = direction === DIRECTION_COLUMN;
 		const classNames = cx(
@@ -73,7 +74,7 @@ class Flex extends React.Component {
 				[`${columnReverseBreakpoint}_flex--columnReverse`]: columnReverse,
 
 				// other
-				[FLEX_WRAP_CLASS]: wrap,
+				[`${wrapBreakpoint}_${FLEX_WRAP_CLASS}`]: wrap,
 				[FLEX_NOGUTTER_CLASS]: noGutters,
 				[`${FLEX_CLASS}--${VALID_SPACE[justify]}`]: justify,
 				[`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`]: align,
@@ -93,9 +94,12 @@ class Flex extends React.Component {
 Flex.propTypes = {
 	align: React.PropTypes.oneOf(Object.keys(VALID_ALIGNMENTS)),
 	justify: React.PropTypes.oneOf(Object.keys(VALID_SPACE)),
-	wrap: React.PropTypes.bool,
 	noGutters: React.PropTypes.bool,
 
+	wrap: React.PropTypes.oneOfType([
+		React.PropTypes.bool,
+		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+	]),
 	direction: React.PropTypes.oneOf([
 		DIRECTION_ROW,
 		DIRECTION_COLUMN,

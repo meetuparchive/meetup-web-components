@@ -24,7 +24,7 @@ describe('Button', () => {
 
 		it('has SQ2 button styles', () => {
 			const btn = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_CLASS);
-			expect(btn.length).toBe(1);
+			expect(btn).toHaveLength(1);
 		});
 
 		it('has a `button` role attribute', () => {
