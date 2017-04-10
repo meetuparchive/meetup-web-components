@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { Link } from 'react-router';
 import Popover from './Popover';
-import Button from './Button';
+import Button from '../forms/Button';
 
 let popover,
 	popoverEl,

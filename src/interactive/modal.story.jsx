@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import { InfoWrapper } from '../utils/storyComponents';
-import Button from './Button';
+import Button from '../forms/Button';
 import Modal from './Modal';
 
 const onDismiss = e => {

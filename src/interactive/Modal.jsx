@@ -1,7 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
-import Icon from './Icon';
-import Button from './Button';
+
+import Icon from '../media/Icon';
+import Button from '../forms/Button';
 import { MEDIA_QUERIES } from '../utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';

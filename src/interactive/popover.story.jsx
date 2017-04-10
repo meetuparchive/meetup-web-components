@@ -4,7 +4,7 @@ import { storiesOf, action } from '@kadira/storybook';
 import { InfoWrapper } from '../utils/storyComponents';
 import { decorateWithLocale } from '../utils/decorators';
 import Popover from './Popover';
-import Button from './Button';
+import Button from '../forms/Button';
 
 const logSelection = e => {
 	action(`Selected option ${e.target}`);

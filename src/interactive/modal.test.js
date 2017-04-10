@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-import Button from './Button';
+import Button from '../forms/Button';
 import Modal, {
 	MODAL_CLOSE_BUTTON,
 	DEFAULT_MARGIN_TOP,
