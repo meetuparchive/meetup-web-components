@@ -179,6 +179,9 @@ class DateTimePicker extends React.Component {
 			{ 'field--error': error },
 			className
 		);
+		const childClasses = cx(
+			{ 'field--error': error }
+		);
 		const labelClassNames = cx({required});
 		const timeInputName = `${name}-time`;
 
@@ -194,7 +197,6 @@ class DateTimePicker extends React.Component {
 						required={required}
 						className={classNames}
 						onChangeCallback={this.setDateTime}
-						error={error}
 
 						{...other} />
 					{ error && <p className='text--error'>{error}</p> }
@@ -218,7 +220,7 @@ class DateTimePicker extends React.Component {
 							onFocus={onFocus}
 							onBlur={onBlur}
 							opts={datepickerOptions}
-							error={error}
+							className={childClasses}
 							ref={ comp => this.dateComponent = comp }
 						/>
 						{ !dateOnly &&
@@ -228,7 +230,7 @@ class DateTimePicker extends React.Component {
 									onBlur={onBlur}
 									value={this.getTime()}
 									ref={ comp => this.timeComponent = comp }
-									error={error}
+									className={childClasses}
 								/>
 						}
 						{ !dateOnly &&

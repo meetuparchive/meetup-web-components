@@ -37,13 +37,11 @@ class DateTimeLocalInput extends React.Component {
 			className,
 			required,
 			value,		// eslint-disable-line no-unused-vars
-			error,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'input--dateTimeLocal',
-			{ 'field--error': error },
 			className
 		);
 

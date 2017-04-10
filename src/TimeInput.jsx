@@ -26,7 +26,6 @@ class TimeInput extends React.Component {
 			label,
 			name,
 			className,
-			error,
 			required,
 			value,		// eslint-disable-line no-unused-vars
 			...other
@@ -34,7 +33,6 @@ class TimeInput extends React.Component {
 
 		const classNames = cx(
 			'input--time',
-			{ 'field--error': error },
 			className
 		);
 

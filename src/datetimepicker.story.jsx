@@ -126,14 +126,16 @@ storiesOf('DateTimePicker', module)
 				minDate: Date.now()
 			},
 			date = new Date(3000,1,1,15,0,0);
-		return (<div className='span--50'>
-			<DateTimePicker
-				name='event_time'
-				label='Start at'
-				value={date}
-				error={'Whoops, something went wrong.'}
-				datepickerOptions={opts}
-				forceCalendar
-			/>
-		</div>);
+		return (
+			<div className='span--50'>
+				<DateTimePicker
+					name='event_time'
+					label='Start at'
+					value={date}
+					error={'Whoops, something went wrong.'}
+					datepickerOptions={opts}
+					forceCalendar
+				/>
+			</div>
+		);
 	});
