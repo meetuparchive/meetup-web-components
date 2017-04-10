@@ -106,6 +106,22 @@ describe('DateTimePicker', function() {
 		});
 	});
 
+	it('should show an error state if error is present', function() {
+		const ERROR_TEXT = 'y u no';
+
+		dateTimeComponent = TestUtils.renderIntoDocument(
+			<DateTimePicker name='start_time'
+				value={dateStr}
+				error={ERROR_TEXT}
+			/>
+		);
+
+		expect(() => TestUtils.findRenderedDOMComponentWithClass(dateTimeComponent, 'text--error')).not.toThrow();
+		const errorEl = TestUtils.findRenderedDOMComponentWithClass(dateTimeComponent, 'text--error');
+		expect(errorEl.textContent).toEqual(ERROR_TEXT);
+	});
+
+
 	describe('callbacks passed to child components are working', function() {
 		let focusSpy,
 			blurSpy,
