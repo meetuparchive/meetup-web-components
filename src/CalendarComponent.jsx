@@ -83,11 +83,13 @@ class CalendarComponent extends React.Component {
 			name,
 			value,		// eslint-disable-line no-unused-vars
 			opts,		// eslint-disable-line no-unused-vars
+			error,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'input--dateTimePicker',
+			{ 'field--error': error },
 			className
 		);
 

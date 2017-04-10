@@ -34,6 +34,7 @@ class TimeInput extends React.Component {
 
 		const classNames = cx(
 			'input--time',
+			{ 'field--error': error },
 			className
 		);
 
@@ -52,7 +53,6 @@ class TimeInput extends React.Component {
 					ref={ input => this.inputEl = input }
 					{...other}
 				/>
-				{ error && <p className='text--error'>{error}</p> }
 			</span>
 		);
 
