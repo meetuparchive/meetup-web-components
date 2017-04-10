@@ -6,6 +6,10 @@ jest.mock('autosize', () => {
 	return jest.fn();
 });
 
+// const externalOnChange = (e) => {
+// 	console.log(e.target.value);
+// 	React.Component.setState({value: e.target.value });
+// };
 describe('Textarea', function() {
 	const LABEL_TEXT = 'Super Hero',
 		VALUE = 'Batman',
@@ -93,6 +97,25 @@ describe('Textarea', function() {
 		const boundComponent = TestUtils.renderIntoDocument(<Textarea
 			name={NAME_ATTR}
 			label={LABEL_TEXT}
+			id={ID}
+			value={VALUE} />);
+
+		textareaEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'textarea');
+		TestUtils.Simulate.change(textareaEl, { target: { value: newValue } });
+
+		expect(changeSpy).toHaveBeenCalled();
+		expect(stateSpy).toHaveBeenCalledWith({ value: newValue });
+	});
+	it('should handle onChange as a prop', function() {
+		const newValue = `${VALUE}r`;
+		const changeSpy = spyOn(Textarea.prototype, 'onChange').and.callThrough();
+		const stateSpy = spyOn(Textarea.prototype, 'setState').and.callThrough();
+
+		const boundComponent = TestUtils.renderIntoDocument(<Textarea
+			onChange={(e) => boundComponent.setState({value: e.target.value })}
+			name={NAME_ATTR}
+			label={LABEL_TEXT}
+			id={ID}
 			value={VALUE} />);
 
 		textareaEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'textarea');
