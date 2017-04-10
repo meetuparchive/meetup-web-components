@@ -1,8 +1,12 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { decorateWithLocale } from './utils/decorators';
-import { InfoWrapper } from './utils/storyComponents';
-import { Inverted } from './utils/storyComponents';
+
+import { decorateWithLocale } from '../utils/decorators';
+import {
+	InfoWrapper,
+	Inverted,
+} from '../utils/storyComponents';
+
 import Button from './Button';
 import Icon from './Icon';
 

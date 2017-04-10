@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import bindAll from './utils/bindAll';
+import bindAll from '../utils/bindAll';
 
 const POPOVER_MENU_CLASS = 'popover-menu-option';
 /**

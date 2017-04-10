@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { MEDIA_SIZES } from './utils/designConstants';
+import { MEDIA_SIZES } from '../utils/designConstants';
 
 export const ICON_CLASS = 'svg';
 

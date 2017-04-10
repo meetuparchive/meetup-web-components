@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import { WithNotes } from '@kadira/storybook-addon-notes';
-import { InfoWrapper } from './utils/storyComponents';
-import { decorateWithLocale } from './utils/decorators';
+import { InfoWrapper } from '../utils/storyComponents';
+import { decorateWithLocale } from '../utils/decorators';
 import Avatar from './Avatar.jsx';
 
 const MOCK_IMAGE_SRC = 'http://placekitten.com/g/400/400';

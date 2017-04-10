@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { storiesOf, action } from '@kadira/storybook';
-import { InfoWrapper } from './utils/storyComponents';
-import { decorateWithLocale } from './utils/decorators';
+import { InfoWrapper } from '../utils/storyComponents';
+import { decorateWithLocale } from '../utils/decorators';
 import Popover from './Popover';
 import Button from './Button';
 

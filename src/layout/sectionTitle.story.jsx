@@ -3,7 +3,7 @@ import Bounds from './Bounds';
 import Section from './Section';
 import SectionTitle from './SectionTitle';
 import { storiesOf } from '@kadira/storybook';
-import { InfoWrapper } from './utils/storyComponents';
+import { InfoWrapper } from '../utils/storyComponents';
 
 storiesOf('SectionTitle', module)
 	.addWithInfo(

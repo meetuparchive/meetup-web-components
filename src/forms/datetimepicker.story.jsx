@@ -1,7 +1,7 @@
 import React from 'react';
 import DateTimePicker from './DateTimePicker';
 import { storiesOf } from '@kadira/storybook';
-import { InfoWrapper } from './utils/storyComponents';
+import { InfoWrapper } from '../utils/storyComponents';
 
 storiesOf('DateTimePicker', module)
 	.addWithInfo(

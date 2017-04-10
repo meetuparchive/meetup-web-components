@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import Icon from './Icon';
 import Button from './Button';
-import { MEDIA_QUERIES } from './utils/designConstants';
+import { MEDIA_QUERIES } from '../utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
 export const DEFAULT_MARGIN_TOP = '10vh';

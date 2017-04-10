@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
-import { InfoWrapper } from './utils/storyComponents';
-import { decorateWithLocale } from './utils/decorators';
+import { InfoWrapper } from '../utils/storyComponents';
+import { decorateWithLocale } from '../utils/decorators';
 import AvatarMember from './AvatarMember.jsx';
 
 storiesOf('AvatarMember', module)

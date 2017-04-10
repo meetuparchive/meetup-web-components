@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { decorateWithLocale } from './utils/decorators';
-import { InfoWrapper } from './utils/storyComponents';
+import { decorateWithLocale } from '../utils/decorators';
+import { InfoWrapper } from '../utils/storyComponents';
 import TogglePill from './TogglePill';
 
 const onChange = e => {
