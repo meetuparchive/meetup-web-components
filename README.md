@@ -90,7 +90,7 @@ Filename casing conventions:
 
 ### Layout conventions
 
-The `src/` directory contains layout helpers, like `Section` and `Chunk`. These are 
+The `src/` directory contains layout helpers, like `Section` and `Chunk`. These are
 documented in Storybook, but a [more detailed guide can be found here](https://meetup.atlassian.net/wiki/display/SDS/Guide+to+Layout+Components).
 
 
@@ -156,6 +156,7 @@ have already been built into our Foundation library. We use
 to display components outside of the app context. To open it, run:
 
 ```sh
+$ yarn install
 $ yarn run storybook
 ```
 
@@ -164,4 +165,3 @@ And open the viewer at [http://localhost:9001](http://localhost:9001)
 All of the available components are listed on the left, and clicking on
 one will open it in the preview pane. Variants are also listed in the left
 column to show how different states affect the rendered component.
-
