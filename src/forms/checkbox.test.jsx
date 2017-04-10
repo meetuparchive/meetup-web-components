@@ -3,7 +3,6 @@ import TestUtils from 'react-addons-test-utils';
 
 import Checkbox from './Checkbox';
 
-
 describe('Checkbox', function() {
 
 	let checkboxComponent,

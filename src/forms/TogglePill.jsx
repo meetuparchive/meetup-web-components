@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import Icon from './Icon';
+import Icon from '../media/Icon';
 
 export const TOGGLE_PILL_CLASS = 'toggleButton';
 

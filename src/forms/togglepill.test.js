@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import TogglePill, { TOGGLE_PILL_CLASS } from './TogglePill';
-import Icon from './Icon';
+import Icon from '../media/Icon';
 
 describe('TogglePill', () => {
 	const id = 'togglePillId',

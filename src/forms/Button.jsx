@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import Flex from './Flex';
-import FlexItem from './FlexItem';
+import Flex from '../layout/Flex';
+import FlexItem from '../layout/FlexItem';
 
 export const BUTTON_CLASS = 'button';
 

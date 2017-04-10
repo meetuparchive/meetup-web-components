@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { hasRoleAttribute, variantTest } from '../utils/testUtils';
 import Button, { BUTTON_CLASS } from './Button';
-import Flex from './Flex';
-import Icon from './Icon';
+import Flex from '../layout/Flex';
+import Icon from '../media/Icon';
 
 describe('Button', () => {
 	describe('is a HTML button element', () => {

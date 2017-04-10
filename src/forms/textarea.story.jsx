@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { decorateWithLocale } from '../utils/decorators';
 import { InfoWrapper } from '../utils/storyComponents';
-import Bounds from './Bounds';
-import Section from './Section';
+import Bounds from '../layout/Bounds';
+import Section from '../layout/Section';
 import Textarea from './Textarea';
 
 storiesOf('Textarea', module)

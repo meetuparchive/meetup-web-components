@@ -8,7 +8,7 @@ import {
 } from '../utils/storyComponents';
 
 import Button from './Button';
-import Icon from './Icon';
+import Icon from '../media/Icon';
 
 storiesOf('Button', module)
 	.addDecorator(decorateWithLocale)

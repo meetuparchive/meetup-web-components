@@ -2,6 +2,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import * as autosizePlugin from 'autosize';
 import Textarea from './Textarea';
+
 jest.mock('autosize', () => {
 	return jest.fn();
 });

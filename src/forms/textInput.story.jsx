@@ -2,9 +2,11 @@ import React from 'react';
 import TextInput from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@kadira/storybook';
-import { IntlProvider,
+import {
+	IntlProvider,
 	FormattedMessage,
-	defineMessages } from 'react-intl';
+	defineMessages,
+} from 'react-intl';
 
 storiesOf('TextInput', module)
 	.add('default', () => <TextInput
