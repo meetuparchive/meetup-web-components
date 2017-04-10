@@ -3,7 +3,7 @@ import TestUtils from 'react-addons-test-utils';
 
 import AccordionPanelGroup from './AccordionPanelGroup';
 import AccordionPanel, { ACTIVEPANEL_CLASS, PANEL_CLASS } from './AccordionPanel';
-import Icon from './Icon';
+import Icon from '../media/Icon';
 
 describe('AccordionPanelGroup', function(){
 	let accordionPanelGroup,

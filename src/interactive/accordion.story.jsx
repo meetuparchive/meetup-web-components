@@ -2,7 +2,7 @@ import React from 'react';
 import AccordionPanelGroup from './AccordionPanelGroup';
 import AccordionPanel from './AccordionPanel';
 import { storiesOf } from '@kadira/storybook';
-import { InfoWrapper } from './utils/storyComponents';
+import { InfoWrapper } from '../utils/storyComponents';
 
 /*
  * -- Inline SVG icon sprite --

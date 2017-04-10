@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Icon, { ICON_CLASS } from './Icon';
-import { MEDIA_SIZES } from './utils/designConstants';
+import { MEDIA_SIZES } from '../utils/designConstants';
 
 describe('Icon', () => {
 	const label = 'Icon Label',
