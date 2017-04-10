@@ -16,8 +16,6 @@ describe('DateTimePicker', function() {
 		minutes = 11,
 		datetime = new Date(Date.UTC(year, month, day, hours, minutes));
 
-	// datetime.setHours(hours, minutes);
-
 	beforeEach(() => {
 		dateTimeComponent = TestUtils.renderIntoDocument(
 			<DateTimePicker name='start_time'
@@ -82,7 +80,7 @@ describe('DateTimePicker', function() {
 					forceCalendar
 				/>
 			);
-			expect(dateTimeComponent.getDateTime()).toEqual(new Date(dateStr));
+			expect(dateTimeComponent.state.datetime).toEqual(new Date(dateStr));
 		});
 
 		it('accepts a datetime object as value', function() {
@@ -92,7 +90,7 @@ describe('DateTimePicker', function() {
 					forceCalendar
 				/>
 			);
-			expect(dateTimeComponent.getDateTime()).toEqual(datetime);
+			expect(dateTimeComponent.state.datetime).toEqual(datetime);
 		});
 
 		it('accepts a date string value', function() {
@@ -102,7 +100,7 @@ describe('DateTimePicker', function() {
 					forceCalendar
 				/>
 			);
-			expect(dateTimeComponent.getDateTime()).toEqual(new Date(Date.UTC(year, month, day)));
+			expect(dateTimeComponent.state.datetime).toEqual(new Date(Date.UTC(year, month, day)));
 		});
 	});
 
