@@ -245,6 +245,7 @@ Class                   | Description
 ----------------------- | ----------------------------------------
 `.button--primary`      | rounded button with dark background; for primary actions
 `.button--contrast`     | bold, dark text; use on dark or colorful backgrounds or on photos
+`.button--reset`        | resets default button styles; bold text on transparent background
 `.button--small`        | decreases size of button
 `.button--fullWidth`    | makes button fill width
 `.button--icon`         | button with icon (see example for markup pattern)
@@ -255,6 +256,16 @@ Class                   | Description
 	@include buttonHover();
 	@include color-all($C_textPrimary);
 	background: $C_contentBG;
+}
+
+.button--reset {
+	@include buttonHover(transparent);
+	background: transparent;
+	border-width: 0 !important;
+
+	.inverted & {
+		@include color-all($C_textPrimaryInverted);
+	}
 }
 
 %button--primary,
@@ -301,6 +312,10 @@ Class                   | Description
 	outline: none;
 	background: transparentize($C_mediumGray, .88) !important;
 	cursor: default;
+
+	.inverted & {
+		@include color-all($C_textSecondaryInverted, true);
+	}
 
 	&,
 	&:hover,
