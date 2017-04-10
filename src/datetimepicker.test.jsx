@@ -16,8 +16,6 @@ describe('DateTimePicker', function() {
 		minutes = 11,
 		datetime = new Date(Date.UTC(year, month, day, hours, minutes));
 
-	// datetime.setHours(hours, minutes);
-
 	beforeEach(() => {
 		dateTimeComponent = TestUtils.renderIntoDocument(
 			<DateTimePicker name='start_time'
@@ -37,7 +35,7 @@ describe('DateTimePicker', function() {
 		expect(() => TestUtils.findRenderedComponentWithType(dateTimeComponent, TimeInput)).not.toThrow();
 	});
 
-	it('values for date and time are set in state', function() {
+	it('sets datetime in state', function() {
 		expect(dateTimeComponent.state.datetime).toEqual(datetime);
 	});
 
@@ -217,5 +215,31 @@ describe('DateTimePicker', function() {
 			expect(setDateTimeSpy).toHaveBeenCalled();
 		});
 
+	});
+
+	describe('onChangeCallback in props', () => {
+		let changeCallbackSpy;
+
+		beforeEach(() => {
+			changeCallbackSpy = jest.fn();
+			dateTimeComponent = TestUtils.renderIntoDocument(
+				<DateTimePicker name='start_time'
+					value={dateStr}
+					onChangeCallback={changeCallbackSpy}
+					forceCalendar
+				/>
+			);
+		});
+
+		it('is called when time input changes', () => {
+			const dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent.timeComponent, 'input');
+			TestUtils.Simulate.change(dateTimeInputEl);
+			expect(changeCallbackSpy).toHaveBeenCalledWith(expect.any(Date));
+		});
+
+		it('is called when date input changes', () => {
+			dateTimeComponent.dateComponent.flatpickr.setDate(dateStr, true);
+			expect(changeCallbackSpy).toHaveBeenCalledWith(expect.any(Date));
+		});
 	});
 });
