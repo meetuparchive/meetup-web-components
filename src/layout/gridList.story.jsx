@@ -1,5 +1,5 @@
 import React from 'react';
-import { InfoWrapper } from './utils/storyComponents';
+import { InfoWrapper } from '../utils/storyComponents';
 import { storiesOf } from '@kadira/storybook';
 import GridList from './GridList';
 

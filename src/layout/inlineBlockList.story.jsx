@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { InfoWrapper } from './utils/storyComponents';
-import Bounds from './Bounds';
-import Section from './Section';
+import { InfoWrapper } from '../utils/storyComponents';
+import Bounds from '../layout/Bounds';
+import Section from '../layout/Section';
 import InlineBlockList from './InlineBlockList';
 
 const basicItems = [
