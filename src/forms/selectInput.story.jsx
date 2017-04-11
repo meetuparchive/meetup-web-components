@@ -33,7 +33,7 @@ storiesOf('SelectInput', module)
 			]}
 		/>
 	)
-	.add('error state', () =>
+	.add('required', () =>
 		<SelectInput
 			label='Select a name for your horse'
 			id='horsename'
@@ -72,7 +72,7 @@ storiesOf('SelectInput', module)
 			</IntlProvider>
 		);
 	})
-	.add('required', () =>
+	.add('multiple errors', () =>
 		<SelectInput
 			label='Select a name for your horse'
 			id='horsename'
@@ -83,6 +83,9 @@ storiesOf('SelectInput', module)
 				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
 				{ label: 'Mister Chompy', value: 'chompyhorse' }
 			]}
-			errors={['You forgot to name your horse!']}
+			errors={[
+				'This is a bad name for a horse',
+				'You do not have a horse to name'
+			]}
 		/>
 	);
