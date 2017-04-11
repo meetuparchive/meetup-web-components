@@ -119,4 +119,23 @@ storiesOf('DateTimePicker', module)
 				datepickerOptions={opts}
 			/>
 		</div>);
+	})
+	.add('error state', () => {
+		const opts = {
+				allowInput: true,
+				minDate: Date.now()
+			},
+			date = new Date(3000,1,1,15,0,0);
+		return (
+			<div className='span--50'>
+				<DateTimePicker
+					name='event_time'
+					label='Start at'
+					value={date}
+					error={'Whoops, something went wrong.'}
+					datepickerOptions={opts}
+					forceCalendar
+				/>
+			</div>
+		);
 	});
