@@ -262,6 +262,7 @@ Class                   | Description
 	@include buttonHover(transparent);
 	background: transparent;
 	border-width: 0 !important;
+	font-weight: normal;
 
 	.inverted & {
 		@include color-all($C_textPrimaryInverted);
