@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import { InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
-import Icon from './Icon';
+import Icon from './media/Icon';
 import PageActionButton from './PageActionButton';
 
 storiesOf('PageActionButton', module)
