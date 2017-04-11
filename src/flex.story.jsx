@@ -2,7 +2,7 @@ import React from 'react';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
 import { storiesOf } from '@kadira/storybook';
-import { Annotate } from './utils/storyComponents';
+// import { Annotate } from './utils/storyComponents';
 
 const flexParentStyles = {
 	minHeight: '200px',
@@ -47,25 +47,61 @@ storiesOf('Flex', module)
 		</Flex>
 	))
 	.add('Wrap', () => (
-		<Annotate notes='Wrapping will not occur if no `FlexItem` children have a `shrink` prop to give them a flex shrink factor'>
-			<Flex wrap style={flexParentStyles}>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 6</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 7</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 8</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 9</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 10</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 11</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 12</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 13</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 14</div></FlexItem>
-				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 15</div></FlexItem>
-			</Flex>
-		</Annotate>
+		<Flex wrap style={flexParentStyles}>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 6</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 7</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 8</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 9</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 10</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 11</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 12</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 13</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 14</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 15</div></FlexItem>
+		</Flex>
+	))
+	.add('Wrap (at medium Breakpoint)', () => (
+		<Flex wrap='medium' style={flexParentStyles}>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 6</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 7</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 8</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 9</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 10</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 11</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 12</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 13</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 14</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 15</div></FlexItem>
+		</Flex>
+	))
+	.add('Wrap (at large Breakpoint)', () => (
+		<Flex wrap='large' style={flexParentStyles}>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 6</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 7</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 8</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 9</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 10</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 11</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 12</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 13</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 14</div></FlexItem>
+			<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 15</div></FlexItem>
+		</Flex>
 	))
 	.add('No gutters', () => (
 		<Flex noGutters style={flexParentStyles}>
