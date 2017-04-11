@@ -15,6 +15,9 @@ class SelectInput extends React.Component {
 
 	onChange(e) {
 		this.setState({ value: e.target.value });
+		if (this.props.onChange) {
+			this.props.onChange(e);
+		}
 	}
 
 	render() {
@@ -27,6 +30,8 @@ class SelectInput extends React.Component {
 			name,
 			errors,
 			required,
+			onChange, // eslint-disable-line no-unused-vars
+			value, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
