@@ -3,11 +3,11 @@ import { Link } from 'react-router';
 import { storiesOf, action } from '@kadira/storybook';
 import { InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
-import Icon from './Icon';
+import Icon from './media/Icon';
 import PageHead from './PageHead';
 import PageActionButton from './PageActionButton';
-import Popover from './Popover';
-import Tabs from './Tabs';
+import Popover from './interactive/Popover';
+import Tabs from './interactive/Tabs';
 
 const logSelection = e => {
 	action(`Selected option ${e.target}`);
