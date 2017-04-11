@@ -218,28 +218,31 @@ describe('DateTimePicker', function() {
 	});
 
 	describe('onChangeCallback in props', () => {
-		let changeCallbackSpy;
+		const mockFn = jest.fn();
 
 		beforeEach(() => {
-			changeCallbackSpy = jest.fn();
 			dateTimeComponent = TestUtils.renderIntoDocument(
 				<DateTimePicker name='start_time'
 					value={dateStr}
-					onChangeCallback={changeCallbackSpy}
+					onChangeCallback={mockFn}
 					forceCalendar
 				/>
 			);
 		});
 
+		afterEach(() => {
+			mockFn.mockClear();
+		});
+
 		it('is called when time input changes', () => {
 			const dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent.timeComponent, 'input');
 			TestUtils.Simulate.change(dateTimeInputEl);
-			expect(changeCallbackSpy).toHaveBeenCalledWith(expect.any(Date));
+			expect(mockFn).toHaveBeenCalledWith(expect.any(Date));
 		});
 
 		it('is called when date input changes', () => {
 			dateTimeComponent.dateComponent.flatpickr.setDate(dateStr, true);
-			expect(changeCallbackSpy).toHaveBeenCalledWith(expect.any(Date));
+			expect(mockFn).toHaveBeenCalledWith(expect.any(Date));
 		});
 	});
 });

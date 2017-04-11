@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import moment from 'moment';
 import CalendarComponent from './CalendarComponent';
 import TimeInput from './TimeInput';
 import DateTimeLocalInput from './DateTimeLocalInput';
@@ -107,18 +106,38 @@ class DateTimePicker extends React.Component {
 	/**
 	* @function parseTimeFromDateTime
 	* @description gets the time string part of our datetime state
+	* @param Date datetime - datetime object to be parsed
 	* @return String
 	*/
 	parseTimeFromDateTime(datetime) {
 		return (datetime.toTimeString().split(' ')[0]).split(':', 2).join(':'); // TODO localize toLocaleTimeString ?
 	}
 
+	/**
+	* @function parseHoursAndMinutesFromTimeString
+	* @description takes a time string and returns an array of hours and minutes
+	* @param String timeString a 24-hour time string, eg `18:45`
+	* @return Array [0] - the hours, [1] - the minutes
+	*/
+	parseHoursAndMinutesFromTimeString(timeString) {
+		return timeString.split(':'); // TODO localization?
+	}
+
+
+	/**
+	* @function parseNewTimeAsDate
+	* @description takes a time string in 24hr time (e.g. `18:35`)
+	* and converts it to a Date object with the current state's date and timezone
+	* @return Date new date with current date and the given time
+	*/
 	parseNewTimeAsDate(timeStr) {
 		const datetime = this.state.datetime;
-		const momentDatetime = moment(datetime).format('YYYY-MM-DD');
-		const offset = moment(datetime).format('Z');
+		const parsedTime = this.parseHoursAndMinutesFromTimeString(timeStr);
 
-		return new Date(`${momentDatetime} ${timeStr} ${offset}`);
+		datetime.setHours(parsedTime[0]);
+		datetime.setMinutes(parsedTime[1]);
+
+		return datetime;
 	}
 
 	/**
@@ -139,12 +158,7 @@ class DateTimePicker extends React.Component {
 	*/
 	setTime(value) {
 		const datetime = this.parseNewTimeAsDate(value);
-
-		this.setState({ datetime });
-
-		if (this.props.onChangeCallback) {
-			this.props.onChangeCallback(datetime);
-		}
+		this.setDateTime(datetime);
 	}
 
 	/**
