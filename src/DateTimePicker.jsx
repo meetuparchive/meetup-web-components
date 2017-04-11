@@ -168,6 +168,7 @@ class DateTimePicker extends React.Component {
 			value,	// eslint-disable-line no-unused-vars
 			required,
 			name,
+			error,
 			...other
 		} = this.props;
 
@@ -175,7 +176,11 @@ class DateTimePicker extends React.Component {
 			'dateTimePicker',
 			{calendarTimeComponent : !dateOnly },
 			{required},
+			{ 'field--error': error },
 			className
+		);
+		const childClasses = cx(
+			{ 'field--error': error }
 		);
 		const labelClassNames = cx({required});
 		const timeInputName = `${name}-time`;
@@ -184,15 +189,18 @@ class DateTimePicker extends React.Component {
 			// TODO datetime-local opts ?
 
 			return (
-				<DateTimeLocalInput
-					id={id}
-					label={label}
-					value={this.state.datetime}
-					required={required}
-					className={classNames}
-					onChangeCallback={this.setDateTime}
+				<div>
+					<DateTimeLocalInput
+						id={id}
+						label={label}
+						value={this.state.datetime}
+						required={required}
+						className={classNames}
+						onChangeCallback={this.setDateTime}
 
-					{...other} />
+						{...other} />
+					{ error && <p className='text--error'>{error}</p> }
+				</div>
 			);
 		}
 
@@ -212,6 +220,7 @@ class DateTimePicker extends React.Component {
 							onFocus={onFocus}
 							onBlur={onBlur}
 							opts={datepickerOptions}
+							className={childClasses}
 							ref={ comp => this.dateComponent = comp }
 						/>
 						{ !dateOnly &&
@@ -221,6 +230,7 @@ class DateTimePicker extends React.Component {
 									onBlur={onBlur}
 									value={this.getTime()}
 									ref={ comp => this.timeComponent = comp }
+									className={childClasses}
 								/>
 						}
 						{ !dateOnly &&
@@ -229,6 +239,7 @@ class DateTimePicker extends React.Component {
 									ref={ el => this.backgroundEl = el }
 							/>
 						}
+						{ error && <p className='text--error'>{error}</p> }
 					</div>
 				</div>
 			</div>
@@ -248,6 +259,10 @@ DateTimePicker.propTypes = {
 		React.PropTypes.number,
 		React.PropTypes.object,
 		React.PropTypes.string
+	]),
+	error: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
 	]),
 	dateOnly: React.PropTypes.bool,
 	forceCalendar: React.PropTypes.bool
