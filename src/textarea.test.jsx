@@ -117,6 +117,8 @@ describe('Textarea', function() {
 			/>
 		);
 
+		expect(onChange).not.toHaveBeenCalled();
+
 		textareaEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'textarea');
 		TestUtils.Simulate.change(textareaEl, { target: { value: newValue } });
 
