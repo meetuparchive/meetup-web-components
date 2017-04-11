@@ -26,7 +26,6 @@ class TimeInput extends React.Component {
 			label,
 			name,
 			className,
-			error,
 			required,
 			value,		// eslint-disable-line no-unused-vars
 			...other
@@ -52,7 +51,6 @@ class TimeInput extends React.Component {
 					ref={ input => this.inputEl = input }
 					{...other}
 				/>
-				{ error && <p className='text--error'>{error}</p> }
 			</span>
 		);
 
