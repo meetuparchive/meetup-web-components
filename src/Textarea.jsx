@@ -45,6 +45,7 @@ class Textarea extends React.Component {
 			maxHeight,
 			minHeight,
 			id,
+			onChange, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 

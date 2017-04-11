@@ -10,7 +10,7 @@ cache:
 # exclude tags
 branches:
   except:
-    - /^\d+$/
+    - /^\d+\.\d+.\d+/
 
 env:
   global:
