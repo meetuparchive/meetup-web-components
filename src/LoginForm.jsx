@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import Button from './Button';
+import Button from './forms/Button';
 
 /**
  * A simple email+password login form that consumes a loginAction for onClick

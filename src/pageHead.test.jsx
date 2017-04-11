@@ -10,7 +10,7 @@ import PageHead, {
 	PAGE_ACTIONS_CLASS,
 } from './PageHead';
 import PageActionButton from './PageActionButton';
-import Popover from './Popover';
+import Popover from './interactive/Popover';
 
 const menu = [
 		<PageActionButton icon='search' label='Search' />,
