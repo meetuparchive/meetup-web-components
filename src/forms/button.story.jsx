@@ -27,9 +27,14 @@ storiesOf('Button', module)
 	.add('Disabled', () => (
 		<Button onClick={action('clicked')} disabled>Button Label</Button>
 	))
-	.add('Simple - inverted', () => (
+	.add('Default - inverted', () => (
 		<Inverted>
 			<Button onClick={action('clicked')}>Button Label</Button>
+		</Inverted>
+	))
+	.add('Primary - inverted', () => (
+		<Inverted>
+			<Button onClick={action('clicked')} primary>Button Label</Button>
 		</Inverted>
 	))
 	.add('Contrast - inverted', () => (

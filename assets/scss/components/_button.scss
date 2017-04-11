@@ -255,6 +255,10 @@ Class                   | Description
 	@include buttonHover();
 	@include color-all($C_textPrimary);
 	background: $C_contentBG;
+
+	.inverted &:hover {
+		background: $C_textSecondaryInverted;
+	}
 }
 
 %button--primary,
