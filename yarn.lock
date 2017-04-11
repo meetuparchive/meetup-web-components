@@ -3926,9 +3926,9 @@ meetup-swatches@3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/meetup-swatches/-/meetup-swatches-3.1.1.tgz#71d150983deab5f353c77367c6935e126614919e"
 
-meetup-web-mocks@1.0.117:
-  version "1.0.117"
-  resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-1.0.117.tgz#a05a2e104e4d44cb8575113d96794d7abbf22a82"
+meetup-web-mocks@1.0.122:
+  version "1.0.122"
+  resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-1.0.122.tgz#2300da88a528be030dc773259772aabb193f1911"
   dependencies:
     rxjs "5.3.0"
 
