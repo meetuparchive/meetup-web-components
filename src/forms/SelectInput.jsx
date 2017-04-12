@@ -57,12 +57,13 @@ class SelectInput extends React.Component {
 					className={classNames}
 					onChange={this.onChange}
 					value={this.state.value}
-					{...other}>
-				{
-					options.map((option, key) =>
-						<option key={key} value={option.value}>{option.label}</option>
-					)
-				}
+					{...other}
+				>
+					{
+						options.map((option, key) =>
+							<option key={key} value={option.value}>{option.label}</option>
+						)
+					}
 				</select>
 
 				{

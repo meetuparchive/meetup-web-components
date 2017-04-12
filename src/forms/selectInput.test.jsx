@@ -7,6 +7,7 @@ const testOptions = [
 	{ label: 'Two', value: '2' },
 	{ label: 'Three', value: '3' }
 ];
+const nameAttribute = 'testSelect';
 
 describe('SelectInput basic', () => {
 	let component;
@@ -15,7 +16,7 @@ describe('SelectInput basic', () => {
 		component = TestUtils.renderIntoDocument(
 			<SelectInput
 				label='Test select'
-				name='testSelect'
+				name={nameAttribute}
 				options={testOptions}
 			/>
 		);
@@ -30,11 +31,7 @@ describe('SelectInput basic', () => {
 
 	it('should have a NAME attribute', () => {
 		const selectEl = TestUtils.findRenderedDOMComponentWithTag(component, 'select');
-		expect(selectEl.name).toEqual('testSelect');
-	});
-
-	it('should have default value in state', () => {
-		expect(!!component.state.value).toBe(true);
+		expect(selectEl.name).toEqual(nameAttribute);
 	});
 
 	it('default value should fall back on first option value', () => {
@@ -52,16 +49,17 @@ describe('SelectInput advanced', () => {
 		const component = TestUtils.renderIntoDocument(
 			<SelectInput
 				label='Test select'
-				name='testSelect'
+				name={nameAttribute}
 				options={testOptions}
 				onChange={onChange}
 			/>
 		);
 		const selectEl = TestUtils.findRenderedDOMComponentWithTag(component, 'select');
 
+		expect(changeSpy).not.toHaveBeenCalled();
 		TestUtils.Simulate.change(selectEl, { target: { value: newValue } });
-
 		expect(changeSpy).toHaveBeenCalled();
+
 		expect(selectEl.value).toEqual(newValue);
 	});
 
@@ -70,7 +68,7 @@ describe('SelectInput advanced', () => {
 		const component = TestUtils.renderIntoDocument(
 			<SelectInput
 				label='Test select'
-				name='testSelect'
+				name={nameAttribute}
 				options={testOptions}
 				value={CUSTOM_VALUE}
 			/>
@@ -82,7 +80,7 @@ describe('SelectInput advanced', () => {
 		expect(TestUtils.renderIntoDocument(
 			<SelectInput
 				label='Test select'
-				name='testSelect'
+				name={nameAttribute}
 				options={testOptions}
 				value='this is invalid'
 			/>
