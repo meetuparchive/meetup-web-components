@@ -1,9 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
-import Chunk from './Chunk';
-import Flex from './Flex';
-import FlexItem from './FlexItem';
-import Section from './Section';
+import Chunk from './layout/Chunk';
+import Flex from './layout/Flex';
+import FlexItem from './layout/FlexItem';
+import Section from './layout/Section';
 
 export const PAGE_HEAD_CLASS = 'pageHead';
 export const PAGE_TITLE_CLASS = 'pageTitle';

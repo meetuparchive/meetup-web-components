@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from './Button';
-import Flex from './Flex';
-import FlexItem from './FlexItem';
+import Button from './forms/Button';
+import Flex from './layout/Flex';
+import FlexItem from './layout/FlexItem';
 
 export const PAGE_ACTION_BUTTON_CLASS = 'pageActionButton';
 
