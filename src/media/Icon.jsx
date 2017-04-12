@@ -33,18 +33,13 @@ class Icon extends React.PureComponent {
 				large: window.matchMedia(MEDIA_QUERIES.large),
 			};
 
-			const {
-				medium,
-				large
-			} = this.mediaQueries;
-
 			this.handleMediaChange = () => {
 				let scaleFactor = 1;
 
-				if (medium.matches) {
+				if (this.mediaQueries.medium.matches) {
 					scaleFactor = BREAKPOINT_MEDIA_SCALE_RATIOS.medium;
 				}
-				if (large.matches) {
+				if (this.mediaQueries.large.matches) {
 					scaleFactor = BREAKPOINT_MEDIA_SCALE_RATIOS.large;
 				}
 
