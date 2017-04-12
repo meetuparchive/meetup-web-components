@@ -18,73 +18,40 @@ class Icon extends React.PureComponent {
 		super(props);
 
 		this.state = {
-			iconScaleFactor: undefined
+			iconScaleFactor: 1
 		};
 	}
 
 	componentDidMount() {
+		if (typeof window.matchMedia != 'undefined') {
+			this.mediaQueries = {medium: window.matchMedia(MEDIA_QUERIES.medium), large: window.matchMedia(MEDIA_QUERIES.large)};
+			const { medium, large } = this.mediaQueries;
 
-		this.setupListeners = (name, mediaQuery) => {
-			if (!window.matchMedia) return;
+			this.handleMediaChange = () => {
+				let scaleFactor = 1;
 
-			const mql = window.matchMedia(mediaQuery);
-			mql._fn = function (e) {
-				return this.handleMediaChange(e.matches, name);
-			}.bind(this);
-			mql.addListener(mql._fn);
+				if (medium.matches) {
+					scaleFactor = 1.125;
+				}
+				if (large.matches) {
+					scaleFactor = 1.25;
+				}
 
-			return mql;
-		};
+				this.setState({
+					iconScaleFactor: scaleFactor
+				});
+			};
 
-		this.handleMediaChange = (matches, name) => {
-			if (matches) {
-				this.changeHandler(name);
-			}
-		};
-
-		this.changeHandler = (name) => {
-			let scaleFactor;
-
-			switch (name) {
-
-			case 'small':
-				scaleFactor = 1;
-				// console.log('do a small thing');
-				break;
-
-			case 'medium':
-				scaleFactor = 1.125;
-				// console.log('do a medium thing');
-				break;
-
-			case 'large':
-				scaleFactor = 1.25;
-				// console.log('do a large thing');
-				break;
-
-			case 'huge':
-				scaleFactor = 1.25;
-				// console.log('do a huge thing');
-				break;
-
-			default:
-				break;
-			}
-
-			this.setState({
-				iconScaleFactor: scaleFactor
-			});
-		};
-
-		// where the stuff gets called
-		for(const mq in MEDIA_QUERIES) {
-			this.setupListeners(mq, MEDIA_QUERIES[mq]);
-
-			if (window.matchMedia(MEDIA_QUERIES[mq]).matches) {
-				this.changeHandler(mq);
-			}
+			this.handleMediaChange();
+			this.listenMedium = medium.addListener(this.handleMediaChange);
+			this.listenLarge = large.addListener(this.handleMediaChange);
 		}
+	}
 
+	componentWillUnmount() {
+		for (const mq in this.mediaQueries) {
+			this.mediaQueries[mq] && this.mediaQueries[mq].removeListener(this.handleMediaChange);
+		}
 	}
 
 	render() {
@@ -102,7 +69,7 @@ class Icon extends React.PureComponent {
 		);
 
 		const viewBox = size === 'auto' ? MEDIA_SIZES['xl'] : MEDIA_SIZES[size];
-		const dim = MEDIA_SIZES[size] * this.state.iconScaleFactor;
+		const dim = Math.floor(MEDIA_SIZES[size] * this.state.iconScaleFactor);
 
 		return (
 			<span className={classNames}>
@@ -122,7 +89,7 @@ class Icon extends React.PureComponent {
 }
 
 Icon.defaultProps = {
-	size: 'm'
+	size: 's'
 };
 
 Icon.propTypes = {
