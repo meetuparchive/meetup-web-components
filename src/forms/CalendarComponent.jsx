@@ -15,6 +15,7 @@ class CalendarComponent extends React.Component {
 		this.onChange = this.onChange.bind(this);
 		this.onOpen = this.onOpen.bind(this);
 		this.onClose = this.onClose.bind(this);
+		this.updateFlatpickr = this.updateFlatpickr.bind(this);
 	}
 
 	/**
@@ -74,6 +75,18 @@ class CalendarComponent extends React.Component {
 	onClose() {
 		this.props.onBlur && this.props.onBlur();
 	}
+
+	/**
+	* @function updateFlatpickr
+	* @description event hook for flatpickr, used to update Flatpickr
+	* input when state changes
+	*/
+	updateFlatpickr() {
+		if (this.flatpickr) {
+			this.flatpickr.setDate(this.state.value);
+		}
+	}
+
 
 	render() {
 		const {
