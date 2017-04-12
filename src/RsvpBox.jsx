@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { FormattedDate, FormattedTime } from 'react-intl';
-import Button from './Button';
+import Button from './forms/Button';
 
 /**
  * The RSVP box contains 3 main elements related to RSVPing for an event.
