@@ -3926,9 +3926,9 @@ meetup-swatches@3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/meetup-swatches/-/meetup-swatches-3.1.1.tgz#71d150983deab5f353c77367c6935e126614919e"
 
-meetup-web-mocks@1.0.122:
-  version "1.0.122"
-  resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-1.0.122.tgz#2300da88a528be030dc773259772aabb193f1911"
+meetup-web-mocks@1.0.161:
+  version "1.0.161"
+  resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-1.0.161.tgz#8e73c66b76bdc6d6b6b8aaf98e1a5525191c7e9c"
   dependencies:
     rxjs "5.3.0"
 
@@ -4889,8 +4889,8 @@ promise@^7.1.1:
     asap "~2.0.3"
 
 prop-types@^15.5.2, prop-types@~15.5.0:
-  version "15.5.6"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.6.tgz#797a915b1714b645ebb7c5d6cc690346205bd2aa"
+  version "15.5.7"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.7.tgz#231c4f29cdd82e355011d4889386ca9059544dd1"
   dependencies:
     fbjs "^0.8.9"
 
