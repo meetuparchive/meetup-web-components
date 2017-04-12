@@ -1,6 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
-import { MEDIA_SIZES, MEDIA_QUERIES } from '../utils/designConstants';
+import {
+	MEDIA_SIZES,
+	MEDIA_QUERIES,
+	BREAKPOINT_MEDIA_SCALE_RATIOS
+} from '../utils/designConstants';
 
 export const ICON_CLASS = 'svg';
 
@@ -24,17 +28,24 @@ class Icon extends React.PureComponent {
 
 	componentDidMount() {
 		if (typeof window.matchMedia != 'undefined') {
-			this.mediaQueries = {medium: window.matchMedia(MEDIA_QUERIES.medium), large: window.matchMedia(MEDIA_QUERIES.large)};
-			const { medium, large } = this.mediaQueries;
+			this.mediaQueries = {
+				medium: window.matchMedia(MEDIA_QUERIES.medium),
+				large: window.matchMedia(MEDIA_QUERIES.large),
+			};
+
+			const {
+				medium,
+				large
+			} = this.mediaQueries;
 
 			this.handleMediaChange = () => {
 				let scaleFactor = 1;
 
 				if (medium.matches) {
-					scaleFactor = 1.125;
+					scaleFactor = BREAKPOINT_MEDIA_SCALE_RATIOS.medium;
 				}
 				if (large.matches) {
-					scaleFactor = 1.25;
+					scaleFactor = BREAKPOINT_MEDIA_SCALE_RATIOS.large;
 				}
 
 				this.setState({
@@ -43,15 +54,16 @@ class Icon extends React.PureComponent {
 			};
 
 			this.handleMediaChange();
-			this.listenMedium = medium.addListener(this.handleMediaChange);
-			this.listenLarge = large.addListener(this.handleMediaChange);
+			Object.keys(this.mediaQueries).forEach(mq => {
+				this[`listen_${mq}`] = this.mediaQueries[mq].addListener(this.handleMediaChange);
+			});
 		}
 	}
 
 	componentWillUnmount() {
-		for (const mq in this.mediaQueries) {
+		Object.keys(this.mediaQueries).forEach(mq => {
 			this.mediaQueries[mq] && this.mediaQueries[mq].removeListener(this.handleMediaChange);
-		}
+		});
 	}
 
 	render() {

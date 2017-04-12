@@ -20,3 +20,10 @@ export const MEDIA_SIZES = {
 	xl: '72',
 	xxl: '120'
 };
+
+export const BREAKPOINT_MEDIA_SCALE_RATIOS = {
+	small: 1,
+	medium: 1.125,
+	large: 1.25,
+	huge: 1.25,
+};
