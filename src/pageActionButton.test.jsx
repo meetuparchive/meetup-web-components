@@ -1,7 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import Flex from './Flex';
-import Icon from './Icon';
+import Flex from './layout/Flex';
+import Icon from './media/Icon';
 import PageActionButton, { PAGE_ACTION_BUTTON_CLASS } from './PageActionButton';
 
 const label = 'hello world';
