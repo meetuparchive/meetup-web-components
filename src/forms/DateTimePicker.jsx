@@ -110,7 +110,7 @@ class DateTimePicker extends React.Component {
 	* @return String
 	*/
 	parseTimeFromDateTime(datetime) {
-		return (datetime.toTimeString().split(' ')[0]).split(':', 2).join(':'); // TODO localize toLocaleTimeString ?
+		return (datetime.toTimeString().split(' ')[0]).split(':', 2).join(':'); // TODO: localization/i18n SDS-247
 	}
 
 	/**
@@ -120,7 +120,7 @@ class DateTimePicker extends React.Component {
 	* @return Array [0] - the hours, [1] - the minutes
 	*/
 	parseHoursAndMinutesFromTimeString(timeString) {
-		return timeString.split(':'); // TODO localization?
+		return timeString.split(':'); // TODO: localization/i18n SDS-247
 	}
 
 
@@ -131,11 +131,10 @@ class DateTimePicker extends React.Component {
 	* @return Date new date with current date and the given time
 	*/
 	parseNewTimeAsDate(timeStr) {
-		const datetime = this.state.datetime;
+		const { datetime } = this.state;
 		const parsedTime = this.parseHoursAndMinutesFromTimeString(timeStr);
 
-		datetime.setHours(parsedTime[0]);
-		datetime.setMinutes(parsedTime[1]);
+		datetime.setHours(parsedTime[0], parsedTime[1]);
 
 		return datetime;
 	}
