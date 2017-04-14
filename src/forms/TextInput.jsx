@@ -14,10 +14,6 @@ class TextInput extends React.Component {
 		this.onChange = this.onChange.bind(this);
 	}
 
-	getInputType() {
-		return this.props.isSearch ? 'search' : 'text';
-	}
-
 	onChange(e) {
 		this.setState({ value: e.target.value });
 		if (this.props.onChange) {
@@ -36,7 +32,8 @@ class TextInput extends React.Component {
 			error,
 			required,
 			id,
-			onChange, // eslint-disable-line no-unused-vars,
+			onChange, // eslint-disable-line no-unused-vars
+			isSearch,
 			maxLength,
 			pattern
 		} = this.props;
@@ -57,7 +54,7 @@ class TextInput extends React.Component {
 					{label}
 				</label>
 
-				<input type={this.getInputType()}
+				<input type={isSearch ? 'search' : 'text'}
 					name={name}
 					value={this.state.value}
 					required={required}
