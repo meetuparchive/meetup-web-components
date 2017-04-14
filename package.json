@@ -18,7 +18,9 @@
     "precommit": "git status --porcelain | awk 'match($1, \"[ACM]\"){print $2}' | grep '[js|jsx]$' | xargs eslint",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "npm-run-all --parallel lint:base coverage",
-    "test:unit": "jest --silent --config jest.config.json"
+    "test:base": "jest --config jest.config.json",
+    "test:unit": "yarn run test:base -- --silent",
+    "test:watch": "yarn run test:base -- --watch --verbose"
   },
   "repository": {
     "type": "git",
