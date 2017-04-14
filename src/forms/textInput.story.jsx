@@ -59,6 +59,21 @@ storiesOf('TextInput', module)
 			</Button>
 		</form>);
 	})
+	.add('search', () => {
+		return (<form>
+			<TextInput
+				label='Search the world wide web'
+				id='search'
+				name='search'
+				placeholder='What will it be?'
+				isSearch />
+			<Button
+				contrast
+				fullWidth>
+				Submit
+			</Button>
+		</form>);
+	})
 	.add('with char counter (maxLength)', () => {
 		const rules = {
 			maxLength: 10,
