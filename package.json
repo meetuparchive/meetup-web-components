@@ -19,7 +19,7 @@
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "npm-run-all --parallel lint:base coverage",
     "test:base": "jest --config jest.config.json",
-    "test:unit": "yarn run test:base --silent",
+    "test:unit": "yarn run test:base -- --silent",
     "test:watch": "yarn run test:base -- --watch --verbose"
   },
   "repository": {
