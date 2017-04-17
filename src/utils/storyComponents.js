@@ -4,7 +4,7 @@ export const InfoWrapper = (props) => {
 	const {
 		children,
 		style={},
-		...other,
+		...other
 	} = props;
 	const styles = {
 		display:'flex',
