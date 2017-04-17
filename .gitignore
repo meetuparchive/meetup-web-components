@@ -13,10 +13,10 @@ node_modules
 .DS_Store
 coverage
 lib
-npm-debug.log
 .swo
 .swp
 .*.swp
+*.log
 
 # Generated icon library file
 /src/media/iconLibrary.story.jsx
