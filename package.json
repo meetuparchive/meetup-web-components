@@ -16,7 +16,6 @@
     "postcheckout": "yarn install",
     "postmerge": "yarn install",
     "precommit": "git status --porcelain | awk 'match($1, \"[ACM]\"){print $2}' | grep '[js|jsx]$' | xargs eslint",
-    "install": "yarn run build",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "npm-run-all --parallel lint:base coverage",
     "test:unit": "jest --silent --config jest.config.json"
@@ -66,7 +65,7 @@
     "husky": "0.13.3",
     "inquirer": "3.0.6",
     "jest-cli": "19.0.2",
-    "meetup-web-mocks": "1.0.122",
+    "meetup-web-mocks": "1.0.161",
     "node-sass": "4.5.2",
     "npm-run-all": "4.0.2",
     "raw-loader": "0.5.1",

@@ -18,6 +18,7 @@ class Button extends React.Component {
 			children,
 			className,
 			onClick,
+			reset,
 			contrast,
 			fullWidth,
 			icon,
@@ -34,6 +35,7 @@ class Button extends React.Component {
 				'button--fullWidth': fullWidth,
 				'button--primary': primary,
 				'button--small': small,
+				'button--reset': reset,
 			},
 			className
 		);
@@ -72,6 +74,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+	reset: React.PropTypes.bool,
 	contrast: React.PropTypes.bool,
 	fullWidth: React.PropTypes.bool,
 	primary: React.PropTypes.bool,

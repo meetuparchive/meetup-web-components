@@ -7,6 +7,8 @@ jest.mock('autosize', () => {
 	return jest.fn();
 });
 
+const onChange = jest.fn();
+
 describe('Textarea', function() {
 	const LABEL_TEXT = 'Super Hero',
 		VALUE = 'Batman',
@@ -94,6 +96,7 @@ describe('Textarea', function() {
 		const boundComponent = TestUtils.renderIntoDocument(<Textarea
 			name={NAME_ATTR}
 			label={LABEL_TEXT}
+			id={ID}
 			value={VALUE} />);
 
 		textareaEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'textarea');
@@ -101,6 +104,26 @@ describe('Textarea', function() {
 
 		expect(changeSpy).toHaveBeenCalled();
 		expect(stateSpy).toHaveBeenCalledWith({ value: newValue });
+	});
+	it('should call onChange `props` function when input is changed', function() {
+		const newValue = `${VALUE}r`;
+
+		const boundComponent = TestUtils.renderIntoDocument(
+			<Textarea
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				value={VALUE}
+				id={ID}
+				onChange={onChange}
+			/>
+		);
+
+		expect(onChange).not.toHaveBeenCalled();
+
+		textareaEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'textarea');
+		TestUtils.Simulate.change(textareaEl, { target: { value: newValue } });
+
+		expect(onChange).toHaveBeenCalled();
 	});
 	it('should call autosize plugin when this.props.rows=\'auto\'', function() {
 		autosizeTextareaComponent.componentDidMount();
