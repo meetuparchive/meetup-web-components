@@ -22,7 +22,7 @@ class Avatar extends React.PureComponent {
 			className,
 			style,
 			children,
-			...other,
+			...other
 		} = this.props;
 
 		const classNames = cx(
