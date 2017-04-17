@@ -9,8 +9,8 @@ cache:
 
 # exclude tags
 branches:
-  except:
-    - /^v\d+\.\d+.\d+(-\S*)?$/
+  only:
+    - master
 
 env:
   global:
