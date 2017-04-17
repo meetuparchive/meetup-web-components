@@ -21,7 +21,7 @@ class RsvpTag extends React.Component {
 		const {
 			status,
 			className,
-			...other,
+			...other
 		} = this.props;
 
 		const content = statusToContent[status];
