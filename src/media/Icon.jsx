@@ -9,6 +9,25 @@ import {
 export const ICON_CLASS = 'svg';
 
 /**
+ * Returns a multiplier to use for scaling an Icon based on viewport size
+ *
+ * @param {Object} mediaMatches - `matches` boolean values by `is${breakpoint}` key
+ * @returns {Number} - scale factor
+ */
+export const getScaleFactor = mediaMatches => {
+	let scaleFactor = 1;
+
+	if (mediaMatches.isMedium && mediaMatches.isMedium) {
+		scaleFactor = BREAKPOINT_MEDIA_SCALE_RATIOS.medium;
+	}
+	if (mediaMatches.isLarge && mediaMatches.isLarge) {
+		scaleFactor = BREAKPOINT_MEDIA_SCALE_RATIOS.large;
+	}
+
+	return scaleFactor;
+};
+
+/**
  * Icon component used to insert an svg icon into a component or page
  *
  * **Accessibility** If an Icon is used on its own without supporting
@@ -34,17 +53,11 @@ class Icon extends React.PureComponent {
 			};
 
 			this.handleMediaChange = () => {
-				let scaleFactor = 1;
-
-				if (this.mediaQueries.medium.matches) {
-					scaleFactor = BREAKPOINT_MEDIA_SCALE_RATIOS.medium;
-				}
-				if (this.mediaQueries.large.matches) {
-					scaleFactor = BREAKPOINT_MEDIA_SCALE_RATIOS.large;
-				}
-
 				this.setState({
-					iconScaleFactor: scaleFactor
+					iconScaleFactor: getScaleFactor({
+						isMedium: this.mediaQueries.medium.matches,
+						isLarge: this.mediaQueries.large.matches
+					})
 				});
 			};
 
