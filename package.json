@@ -18,7 +18,9 @@
     "precommit": "git status --porcelain | awk 'match($1, \"[ACM]\"){print $2}' | grep '[js|jsx]$' | xargs eslint",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "npm-run-all --parallel lint:base coverage",
-    "test:unit": "jest --silent --config jest.config.json"
+    "test:base": "jest --config jest.config.json",
+    "test:unit": "yarn run test:base -- --silent",
+    "test:watch": "yarn run test:base -- --watch --verbose"
   },
   "repository": {
     "type": "git",
@@ -37,7 +39,7 @@
   "dependencies": {
     "autosize": "3.0.20",
     "base64-image-loader": "1.2.0",
-    "flatpickr": "2.4.8"
+    "flatpickr": "2.5.6"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
@@ -65,20 +67,20 @@
     "husky": "0.13.3",
     "inquirer": "3.0.6",
     "jest-cli": "19.0.2",
-    "meetup-web-mocks": "1.0.161",
+    "meetup-web-mocks": "1.0.182",
     "node-sass": "4.5.2",
     "npm-run-all": "4.0.2",
     "raw-loader": "0.5.1",
-    "react": "15.5.3",
+    "react": "15.5.4",
     "react-addons-test-utils": "15.5.1",
-    "react-dom": "15.5.3",
+    "react-dom": "15.5.4",
     "react-intl": "2.2.3",
     "react-router": "3.0.2",
     "sass-loader": "6.0.3",
     "storybook-addon-i18n-tools": "1.0.0",
-    "style-loader": "0.13.2",
+    "style-loader": "0.16.1",
     "swarm-icons": "0.2.2",
     "swarm-sasstools": "1.2.11",
-    "webpack": "2.3.3"
+    "webpack": "2.4.1"
   }
 }
