@@ -1,4 +1,4 @@
-sudo: required
+sudo: false
 language: node_js
 node_js:
   - "7.7.1"
@@ -9,8 +9,8 @@ cache:
 
 # exclude tags
 branches:
-  except:
-    - /^v\d+\.\d+.\d+(-\S*)?$/
+  only:
+    - master
 
 env:
   global:

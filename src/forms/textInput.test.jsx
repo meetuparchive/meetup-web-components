@@ -55,6 +55,21 @@ describe('TextInput', function() {
 		expect(labelEl.textContent).toEqual(LABEL_TEXT);
 	});
 
+	it('should have input type search if `isSearch` is set to true', () => {
+		textInputComponent = TestUtils.renderIntoDocument(
+			<TextInput
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				value={VALUE}
+				isSearch
+			/>
+		);
+
+		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
+		expect(inputEl.getAttribute('type')).toEqual('search');
+
+	});
+
 	it('should have a required attribute when specified', () => {
 		expect(inputEl.attributes.required).not.toBeNull();
 	});
