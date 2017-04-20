@@ -36,7 +36,7 @@ class SelectInput extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			{ 'field--error': errors && errors.length },
+			{ 'field--error': errors && errors.length > 0 },
 			className
 		);
 
@@ -67,7 +67,7 @@ class SelectInput extends React.Component {
 				</select>
 
 				{
-					errors &&
+					errors && errors.length > 0 &&
 						errors.map((error, key) =>
 							<p key={key} className='text--error'>{error}</p>
 						)
