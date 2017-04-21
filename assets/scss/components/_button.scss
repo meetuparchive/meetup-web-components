@@ -266,6 +266,7 @@ Class                   | Description
 	@include buttonHover(transparent);
 	background: transparent;
 	border-width: 0 !important;
+	padding: 0;
 	font-weight: normal;
 
 	.inverted & {
