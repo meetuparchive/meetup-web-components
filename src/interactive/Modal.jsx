@@ -103,7 +103,7 @@ class Modal extends React.Component {
 			heroBgColor,
 			heroBgImage,
 			heroContent,
-			heroInverted,
+			inverted,
 			...other
 		} = this.props;
 
@@ -143,7 +143,7 @@ class Modal extends React.Component {
 
 		const heroStyles = {
 			backgroundColor: heroBgColor || 'transparent',
-			backgroundImage: `url(${heroBgImage})`
+			backgroundImage: heroBgImage && `url(${heroBgImage})`,
 		};
 
 		return (
@@ -164,7 +164,7 @@ class Modal extends React.Component {
 					{ heroContent ?
 						<Stripe
 							hero
-							inverted={heroInverted}
+							inverted={inverted}
 							style={heroStyles}
 						>
 							{closeArea}
