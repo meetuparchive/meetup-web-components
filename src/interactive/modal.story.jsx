@@ -62,7 +62,7 @@ storiesOf('Modal', module)
 				<InfoWrapper>
 					<Modal
 						onDismiss={onDismiss}
-						heroInverted
+						inverted
 						heroBgColor='rgb(55,30,172)'
 						heroContent={
 							<Section>
@@ -95,7 +95,7 @@ storiesOf('Modal', module)
 				<InfoWrapper>
 					<Modal
 						onDismiss={onDismiss}
-						heroInverted
+						inverted
 						heroBgImage='http://www.cheatsheet.com/wp-content/uploads/2016/09/Homemade-Meat-Gyro-with-French-Fries.jpg'
 						heroContent={
 							<Section>

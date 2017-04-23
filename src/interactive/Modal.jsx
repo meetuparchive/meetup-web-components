@@ -182,8 +182,12 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
+	fullscreen: React.PropTypes.bool,
+	heroBgColor: React.PropTypes.string,
+	heroBgImage: React.PropTypes.string,
+	heroContent: React.PropTypes.element,
+	inverted: React.PropTypes.bool,
 	onDismiss: React.PropTypes.func.isRequired,
-	fullscreen: React.PropTypes.bool
 };
 
 Modal.defaultProps = {
