@@ -28,9 +28,10 @@ Class                | Description
 	@include standardBorder();
 	background-color: $C_contentBG;
 	margin-bottom: 0;
-	// @include responsiveVarContext--base() {
-	// 	padding-bottom: $base*2;
-	// }
+
+	&:first-child {
+		border-top: none;
+	}
 }
 
 .stripe--collection {
