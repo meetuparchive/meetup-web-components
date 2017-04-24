@@ -4,7 +4,7 @@ import TestUtils from 'react-addons-test-utils';
 
 import Section, {
 	SECTION_CLASS,
-	SECTION_PADDED_CLASS,
+	SECTION_NOBORDER_CLASS,
 } from './Section';
 
 describe('Section', function() {
@@ -26,13 +26,13 @@ describe('Section', function() {
 		expect(sectionNode.classList).toContain(SECTION_CLASS);
 	});
 
-	describe('padded', () => {
+	describe('Section noBorder', () => {
 		beforeEach(() => {
-			section = TestUtils.renderIntoDocument(<Section padded/>);
+			section = TestUtils.renderIntoDocument(<Section noBorder />);
 			sectionNode = ReactDOM.findDOMNode(section);
 		});
-		it(`check that default component has '${SECTION_PADDED_CLASS}' class`, function() {
-			expect(sectionNode.classList).toContain(SECTION_PADDED_CLASS);
+		it(`check that default component has '${SECTION_NOBORDER_CLASS}' class`, function() {
+			expect(sectionNode.classList).toContain(SECTION_NOBORDER_CLASS);
 		});
 	});
 });
