@@ -31,6 +31,10 @@ Class                | Description
 	@include responsiveVarContext--base() {
 		padding-bottom: $base*2;
 	}
+
+	&:first-child {
+		border-top: none;
+	}
 }
 
 .stripe--collection {

@@ -3,13 +3,23 @@ import { storiesOf, action } from '@kadira/storybook';
 import { InfoWrapper } from '../utils/storyComponents';
 import Button from '../forms/Button';
 import Modal from './Modal';
+import Section from '../layout/Section';
+import Stripe from '../layout/Stripe';
+
+/*
+ * -- Inline SVG icon sprite --
+ *
+ * raw SVG sprite from `swarm-icons`
+ */
+const iconSpriteStyle = { display: 'none' };
+const iconSprite = require('raw-loader!swarm-icons/dist/sprite/sprite.inc');
 
 const onDismiss = e => {
 	action('Dismissing modal')(e);
 };
 
 const content = (
-	<div>
+	<Stripe><Section>
 		<h2 className='align--center'>This is a modal!</h2>
 		<div className='row align--center margin--top'>
 			<div className='row-item'>
@@ -19,7 +29,7 @@ const content = (
 				<Button onClick={action('Confirmed!')} primary fullWidth>Confirm</Button>
 			</div>
 		</div>
-	</div>
+	</Section></Stripe>
 );
 
 const wrapperStyle = {
@@ -39,6 +49,73 @@ storiesOf('Modal', module)
 					>
 						{content}
 					</Modal>
+					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+				</InfoWrapper>
+			</div>
+		)
+	)
+	.addWithInfo(
+		'has hero - color',
+		'This is the component with an extended header.',
+		() => (
+			<div style={wrapperStyle}>
+				<InfoWrapper>
+					<Modal
+						onDismiss={onDismiss}
+						inverted
+						heroBgColor='rgb(55,30,172)'
+						heroContent={
+							<Section>
+								<h1 className='text--display align--center'>I can be your hero</h1>
+							</Section>
+						}
+					>
+						<Stripe><Section>
+							<h2 className='align--center'>This is a modal!</h2>
+							<div className='row align--center margin--top'>
+								<div className='row-item'>
+									<Button onClick={onDismiss} fullWidth>Cancel</Button>
+								</div>
+								<div className='row-item'>
+									<Button onClick={action('Confirmed!')} primary fullWidth>Confirm</Button>
+								</div>
+							</div>
+						</Section></Stripe>
+					</Modal>
+					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+				</InfoWrapper>
+			</div>
+		)
+	)
+	.addWithInfo(
+		'has hero - image',
+		'This is the component with an extended header.',
+		() => (
+			<div style={wrapperStyle}>
+				<InfoWrapper>
+					<Modal
+						onDismiss={onDismiss}
+						inverted
+						heroBgImage='http://www.cheatsheet.com/wp-content/uploads/2016/09/Homemade-Meat-Gyro-with-French-Fries.jpg'
+						heroContent={
+							<Section>
+								<h1 className='text--display align--center'>I can be your hero</h1>
+							</Section>
+						}
+					>
+						<Stripe><Section>
+							<h2 className='align--center'>This is a modal!</h2>
+							<div className='row align--center margin--top'>
+								<div className='row-item'>
+									<Button onClick={onDismiss} fullWidth>Cancel</Button>
+								</div>
+								<div className='row-item'>
+									<Button onClick={action('Confirmed!')} primary fullWidth>Confirm</Button>
+								</div>
+							</div>
+						</Section></Stripe>
+					</Modal>
+					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 				</InfoWrapper>
 			</div>
 		)
@@ -54,6 +131,7 @@ storiesOf('Modal', module)
 			>
 				{content}
 			</Modal>
+			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 		</div>
 	));
 
