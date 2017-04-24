@@ -3,6 +3,7 @@ import cx from 'classnames';
 
 import Icon from '../media/Icon';
 import Button from '../forms/Button';
+import Stripe from '../layout/Stripe';
 import { MEDIA_QUERIES } from '../utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
@@ -99,6 +100,10 @@ class Modal extends React.Component {
 			className,
 			children,
 			fullscreen,
+			heroBgColor,
+			heroBgImage,
+			heroContent,
+			inverted,
 			...other
 		} = this.props;
 
@@ -110,8 +115,7 @@ class Modal extends React.Component {
 		);
 
 		const modalClasses = cx(
-			'view',
-			'padding--all',
+			'view view--modal',
 			{
 				'view--modalFull': fullscreen,
 				'view--modalSnap': !fullscreen
@@ -120,7 +124,7 @@ class Modal extends React.Component {
 
 		const dismissButtonClasses = cx(
 			MODAL_CLOSE_BUTTON,
-			'border--none'
+			'button--reset'
 		);
 
 		const overlayShim = (
@@ -128,6 +132,19 @@ class Modal extends React.Component {
 				<div className='inverted'></div>
 			</div>
 		);
+
+		const closeArea = (
+			<div className='padding--all'>
+				<Button onClick={this.onDismiss} className={dismissButtonClasses}>
+					<Icon shape='cross' size='s' />
+				</Button>
+			</div>
+		);
+
+		const heroStyles = {
+			backgroundColor: heroBgColor || 'transparent',
+			backgroundImage: heroBgImage && `url(${heroBgImage})`,
+		};
 
 		return (
 			<div
@@ -144,11 +161,18 @@ class Modal extends React.Component {
 					className={modalClasses}
 					style={{marginTop: this.state.topPosition}}
 				>
-					<div className='align--right'>
-						<Button onClick={this.onDismiss} className={dismissButtonClasses}>
-							<Icon shape='cross' size='s' />
-						</Button>
-					</div>
+					{ heroContent ?
+						<Stripe
+							hero
+							inverted={inverted}
+							style={heroStyles}
+						>
+							{closeArea}
+							{heroContent}
+						</Stripe>
+					:
+						closeArea
+					}
 
 					{children}
 				</div>
@@ -158,8 +182,12 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
+	fullscreen: React.PropTypes.bool,
+	heroBgColor: React.PropTypes.string,
+	heroBgImage: React.PropTypes.string,
+	heroContent: React.PropTypes.element,
+	inverted: React.PropTypes.bool,
 	onDismiss: React.PropTypes.func.isRequired,
-	fullscreen: React.PropTypes.bool
 };
 
 Modal.defaultProps = {

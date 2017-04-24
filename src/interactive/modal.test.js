@@ -9,6 +9,10 @@ import Modal, {
 	MARGIN_TOP_OFFSET,
 	getModalPosition,
 } from './Modal';
+import {
+	STRIPE_INVERTED_CLASS,
+	STRIPE_HERO_CLASS,
+} from '../layout/Stripe';
 
 describe('Modal', () => {
 
@@ -70,6 +74,55 @@ describe('Modal', () => {
 
 		expect(spyable.onDismiss).toHaveBeenCalled();
 	});
+});
+
+describe('Modal hero header', () => {
+	let modal, heroEl;
+	const content = 'Test model content';
+	const bgColor = 'rgb(55, 30, 172)';
+	const bgImage = 'http://www.cheatsheet.com/wp-content/uploads/2016/09/Homemade-Meat-Gyro-with-French-Fries.jpg';
+	const HERO_CONTENT_CLASS = 'heroContent';
+	const heroContentHtml = <h1 className={HERO_CONTENT_CLASS}>I can be your hero</h1>;
+
+	beforeEach(() => {
+		modal = TestUtils.renderIntoDocument(
+			<Modal
+				inverted
+				heroBgColor={bgColor}
+				heroBgImage={bgImage}
+				heroContent={heroContentHtml}
+				onDismiss={(e) => {}}
+			>
+				{content}
+			</Modal>
+		);
+		heroEl = TestUtils.findRenderedDOMComponentWithClass(modal, STRIPE_HERO_CLASS);
+	});
+
+	afterEach(() => {
+		heroEl = null;
+	});
+
+	it('gets hero stripe styling', () => {
+		expect(() => TestUtils.findRenderedDOMComponentWithClass(modal, STRIPE_HERO_CLASS)).not.toThrow();
+	});
+
+	it('sets a background color when supplied', () => {
+		expect(heroEl.style.backgroundColor).toContain(bgColor);
+	});
+
+	it('sets a background image when supplied', () => {
+		expect(heroEl.style.backgroundImage).toContain(bgImage);
+	});
+
+	it('sets the hero Stripe to inverted', () => {
+		expect(() => TestUtils.findRenderedDOMComponentWithClass(modal, STRIPE_INVERTED_CLASS)).not.toThrow();
+	});
+
+	it('displays the hero content', () => {
+		expect(() => TestUtils.findRenderedDOMComponentWithClass(modal, HERO_CONTENT_CLASS)).not.toThrow();
+	});
+
 });
 
 describe('Modal positioning', () => {
