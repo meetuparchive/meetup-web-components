@@ -50,6 +50,17 @@ describe('Textarea', function() {
 		expect(() => textareaEl.not.toThrow());
 	});
 
+	it('should set state to value on `componentwillmount`', function() {
+		textareaComponent.componentWillMount();
+		expect(textareaComponent.state.value).toEqual(VALUE);
+	});
+
+	it('should set state to value on `componentWillReceiveProps`', function() {
+		const newValue = 'hello world';
+		textareaComponent.componentWillReceiveProps({ value: newValue });
+		expect(textareaComponent.state.value).toEqual(newValue);
+	});
+
 	it('should have a name attribute', () => {
 		expect(textareaEl.name).toEqual(NAME_ATTR);
 	});
@@ -86,12 +97,12 @@ describe('Textarea', function() {
 		const newValue = `${VALUE}r`;
 		expect(textareaEl.value).toEqual(VALUE);
 		TestUtils.Simulate.change(textareaEl, { target: { value: newValue } });
+		textareaComponent.forceUpdate();
 		expect(textareaEl.value).toEqual(newValue);
 	});
-	it('should call onChange and setState with input change', function() {
+	it('should call onChange with input change', function() {
 		const newValue = `${VALUE}r`;
 		const changeSpy = spyOn(Textarea.prototype, 'onChange').and.callThrough();
-		const stateSpy = spyOn(Textarea.prototype, 'setState').and.callThrough();
 
 		const boundComponent = TestUtils.renderIntoDocument(<Textarea
 			name={NAME_ATTR}
@@ -101,9 +112,9 @@ describe('Textarea', function() {
 
 		textareaEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'textarea');
 		TestUtils.Simulate.change(textareaEl, { target: { value: newValue } });
+		textareaComponent.forceUpdate();
 
 		expect(changeSpy).toHaveBeenCalled();
-		expect(stateSpy).toHaveBeenCalledWith({ value: newValue });
 	});
 	it('should call onChange `props` function when input is changed', function() {
 		const newValue = `${VALUE}r`;
@@ -122,6 +133,7 @@ describe('Textarea', function() {
 
 		textareaEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'textarea');
 		TestUtils.Simulate.change(textareaEl, { target: { value: newValue } });
+		textareaComponent.forceUpdate();
 
 		expect(onChange).toHaveBeenCalled();
 	});
