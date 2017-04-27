@@ -55,6 +55,12 @@ describe('Textarea', function() {
 		expect(textareaComponent.state.value).toEqual(VALUE);
 	});
 
+	it('should set state to value on `componentWillReceiveProps`', function() {
+		const newValue = 'hello world';
+		textareaComponent.componentWillReceiveProps({ value: newValue });
+		expect(textareaComponent.state.value).toEqual(newValue);
+	});
+
 	it('should have a name attribute', () => {
 		expect(textareaEl.name).toEqual(NAME_ATTR);
 	});
