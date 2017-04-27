@@ -50,6 +50,12 @@ describe('Textarea', function() {
 		expect(() => textareaEl.not.toThrow());
 	});
 
+	it('should set state to value on `overrideValue`', function() {
+		const newValue = 'someValue';
+		textareaComponent.overrideValue({ value: newValue });
+		expect(textareaComponent.state.value).toEqual(newValue);
+	});
+
 	it('should set state to value on `componentwillmount`', function() {
 		textareaComponent.componentWillMount();
 		expect(textareaComponent.state.value).toEqual(VALUE);

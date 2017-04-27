@@ -26,13 +26,21 @@ class Textarea extends React.Component {
 	}
 
 	/**
+	 * Should override value with info from state
+	 * @return {[type]} [description]
+	 */
+	overrideValue (nextProps) {
+		this.setState(() => ({
+			value: nextProps.value || ''
+		}));
+	}
+
+	/**
 	 * @param {Object} props the incoming props
 	 * @return {undefined} side effect only
 	 */
 	componentWillMount() {
-		this.setState((state, props) => ({
-			value: props.value || ''
-		}));
+		this.overrideValue(this.props);
 	}
 
 	/**
@@ -40,9 +48,7 @@ class Textarea extends React.Component {
 	 * @return {undefined} side effect only
 	 */
 	componentWillReceiveProps(nextProps) {
-		this.setState((state, props) => ({
-			value: nextProps.value || ''
-		}));
+		this.overrideValue(nextProps);
 	}
 
 	/**
