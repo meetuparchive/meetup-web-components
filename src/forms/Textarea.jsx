@@ -8,26 +8,57 @@ import autosize from 'autosize';
 class Textarea extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			value: props.value || '',
-		};
 		this.onChange = this.onChange.bind(this);
+
+		this.state = {
+			value: '',
+		};
 	}
 
-	onChange(e) {
-		const { onChange } = this.props;
-		this.setState({
-			value: e.target.value,
-		});
-
-		if (onChange) {
-			onChange(e);
-		}
-	}
-
+	/**
+	 * Turns on autosize if requested
+	 * @return {undefined} side effect only
+	 */
 	componentDidMount() {
 		if (this.props.rows === 'auto'){
 			autosize(this.textarea);
+		}
+	}
+
+	/**
+	 * @param {Object} props the incoming props
+	 * @return {undefined} side effect only
+	 */
+	componentWillMount() {
+		this.setState((state, props) => ({
+			value: props.value || ''
+		}));
+	}
+
+	/**
+	 * @param {Object} nextProps the incoming props
+	 * @return {undefined} side effect only
+	 */
+	componentWillReceiveProps(nextProps) {
+		this.setState((state, props) => ({
+			value: nextProps.value || ''
+		}));
+	}
+
+	/**
+	 * called as user changes value, updates state with new value
+	 * @param  {Object} e Event object
+	 * @return {undefined}
+	 */
+	onChange(e) {
+		const { onChange } = this.props;
+
+		this.setState(() => ({
+			value: e.target.value,
+		}));
+
+		if (onChange) {
+			onChange(e);
 		}
 	}
 
@@ -73,7 +104,8 @@ class Textarea extends React.Component {
 				<label className={classNames.label} htmlFor={id}>
 					{label}
 				</label>
-				<textarea type='text'
+				<textarea
+					type='text'
 					name={name}
 					required={required}
 					className={classNames.textarea}
@@ -81,8 +113,8 @@ class Textarea extends React.Component {
 					rows={rows == 'auto' ? 1 : rows}
 					ref={(textarea) => {this.textarea = textarea;}}
 					style={{ ...style, ...heightConstraints }}
-					value={this.state.value}
 					id={id}
+					value={this.state.value}
 					{...other}
 				/>
 
@@ -113,7 +145,8 @@ Textarea.propTypes = {
 	rows: React.PropTypes.oneOfType([
 		React.PropTypes.number,
 		React.PropTypes.string
-	])
+	]),
+	value: React.PropTypes.string,
 };
 
 export default Textarea;
