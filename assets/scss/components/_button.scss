@@ -269,6 +269,10 @@ Class                   | Description
 	padding: 0;
 	font-weight: normal;
 
+	&[disabled] {
+		background: transparent !important;
+	}
+
 	.inverted & {
 		@include color-all($C_textPrimaryInverted);
 	}
