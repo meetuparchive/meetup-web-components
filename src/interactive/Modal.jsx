@@ -104,10 +104,21 @@ class Modal extends React.Component {
 			heroBgImage,
 			heroContent,
 			inverted,
+			zIndex,
+			narrow,
 			...other
 		} = this.props;
 
 		delete other.onDismiss; // onDismiss is consumed in this.onDismiss - do not pass it along to children
+
+		let shimStyleOverride;
+		const modalStyleOverride = {
+			marginTop: this.state.topPosition
+		};
+		if (zIndex) {
+			modalStyleOverride.zIndex = zIndex + 1;
+			shimStyleOverride = { zIndex };
+		}
 
 		const classNames = cx(
 			className,
@@ -118,7 +129,8 @@ class Modal extends React.Component {
 			'view view--modal',
 			{
 				'view--modalFull': fullscreen,
-				'view--modalSnap': !fullscreen
+				'view--modalSnap': !fullscreen,
+				'view--modalSnap--narrow': !!narrow,
 			}
 		);
 
@@ -128,7 +140,11 @@ class Modal extends React.Component {
 		);
 
 		const overlayShim = (
-			<div className='overlayShim' onClick={this.onDismiss}>
+			<div
+				className='overlayShim'
+				onClick={this.onDismiss}
+				style={shimStyleOverride}
+			>
 				<div className='inverted'></div>
 			</div>
 		);
@@ -159,7 +175,7 @@ class Modal extends React.Component {
 
 				<div
 					className={modalClasses}
-					style={{marginTop: this.state.topPosition}}
+					style={modalStyleOverride}
 				>
 					{ heroContent ?
 						<Stripe
@@ -188,6 +204,8 @@ Modal.propTypes = {
 	heroContent: React.PropTypes.element,
 	inverted: React.PropTypes.bool,
 	onDismiss: React.PropTypes.func.isRequired,
+	zIndex: React.PropTypes.number,
+	narrow: React.PropTypes.bool
 };
 
 Modal.defaultProps = {

@@ -125,6 +125,54 @@ describe('Modal hero header', () => {
 
 });
 
+describe('Narrow modal with custom zIndex', () => {
+	let component, modal;
+	const content = 'Test model content';
+	const customZIndex = 50;
+
+	beforeEach(() => {
+		component = TestUtils.renderIntoDocument(
+			<Modal
+				narrow
+				zIndex={customZIndex}
+				onDismiss={(e) => {}}
+			>
+				{content}
+			</Modal>
+		);
+		modal = TestUtils.findRenderedDOMComponentWithClass(
+			component,
+			'view--modalSnap'
+		);
+	});
+
+	afterEach(() => {
+		component = null;
+		modal = null;
+	});
+
+	it('contains the narrow modal class', () => {
+		expect(() => TestUtils.findRenderedDOMComponentWithClass(
+			component,
+			'view--modalSnap--narrow'
+		)).not.toThrow();
+	});
+
+	it('modal shim element has provided zIndex', () => {
+		const shim = TestUtils.findRenderedDOMComponentWithClass(
+			component,
+			'overlayShim'
+		);
+		expect(shim.style.zIndex).toBe(customZIndex.toString());
+	});
+
+	it('modal dialog appears above the shim', () => {
+		const expected = (customZIndex + 1).toString();
+		expect(modal.style.zIndex).toBe(expected);
+	});
+
+});
+
 describe('Modal positioning', () => {
 
 	it('returns the default margin top if the user is not below the fold', () => {

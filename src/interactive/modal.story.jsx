@@ -1,35 +1,35 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import { InfoWrapper } from '../utils/storyComponents';
+import { iconSpriteJSX } from '../utils/storyIcons';
+import { Z_INDICIES } from '../utils/designConstants';
 import Button from '../forms/Button';
 import Modal from './Modal';
+import Flex from '../layout/Flex';
+import FlexItem from '../layout/FlexItem';
 import Section from '../layout/Section';
-import Stripe from '../layout/Stripe';
-
-/*
- * -- Inline SVG icon sprite --
- *
- * raw SVG sprite from `swarm-icons`
- */
-const iconSpriteStyle = { display: 'none' };
-const iconSprite = require('raw-loader!swarm-icons/dist/sprite/sprite.inc');
+import Chunk from '../layout/Chunk';
 
 const onDismiss = e => {
 	action('Dismissing modal')(e);
 };
 
 const content = (
-	<Stripe><Section>
-		<h2 className='align--center'>This is a modal!</h2>
-		<div className='row align--center margin--top'>
-			<div className='row-item'>
-				<Button onClick={onDismiss} fullWidth>Cancel</Button>
-			</div>
-			<div className='row-item'>
-				<Button onClick={action('Confirmed!')} primary fullWidth>Confirm</Button>
-			</div>
-		</div>
-	</Section></Stripe>
+	<Section>
+		<Chunk>
+			<h2>This is a modal!</h2>
+		</Chunk>
+		<Chunk>
+			<Flex justify='spaceAround'>
+				<FlexItem>
+					<Button onClick={onDismiss} fullWidth>Cancel</Button>
+				</FlexItem>
+				<FlexItem>
+					<Button onClick={action('Confirmed!')} primary fullWidth>Confirm</Button>
+				</FlexItem>
+			</Flex>
+		</Chunk>
+	</Section>
 );
 
 const wrapperStyle = {
@@ -49,7 +49,7 @@ storiesOf('Modal', module)
 					>
 						{content}
 					</Modal>
-					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+					{iconSpriteJSX}
 				</InfoWrapper>
 			</div>
 		)
@@ -70,19 +70,9 @@ storiesOf('Modal', module)
 							</Section>
 						}
 					>
-						<Stripe><Section>
-							<h2 className='align--center'>This is a modal!</h2>
-							<div className='row align--center margin--top'>
-								<div className='row-item'>
-									<Button onClick={onDismiss} fullWidth>Cancel</Button>
-								</div>
-								<div className='row-item'>
-									<Button onClick={action('Confirmed!')} primary fullWidth>Confirm</Button>
-								</div>
-							</div>
-						</Section></Stripe>
+						{content}
 					</Modal>
-					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+					{iconSpriteJSX}
 				</InfoWrapper>
 			</div>
 		)
@@ -103,19 +93,9 @@ storiesOf('Modal', module)
 							</Section>
 						}
 					>
-						<Stripe><Section>
-							<h2 className='align--center'>This is a modal!</h2>
-							<div className='row align--center margin--top'>
-								<div className='row-item'>
-									<Button onClick={onDismiss} fullWidth>Cancel</Button>
-								</div>
-								<div className='row-item'>
-									<Button onClick={action('Confirmed!')} primary fullWidth>Confirm</Button>
-								</div>
-							</div>
-						</Section></Stripe>
+						{content}
 					</Modal>
-					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+					{iconSpriteJSX}
 				</InfoWrapper>
 			</div>
 		)
@@ -131,7 +111,45 @@ storiesOf('Modal', module)
 			>
 				{content}
 			</Modal>
-			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+			{iconSpriteJSX}
+		</div>
+	))
+	.addWithInfo(
+		'Narrow modal',
+		'For a narrow modal in large viewports, use the `narrow` prop',
+		() => (
+		<div style={wrapperStyle}>
+			<Modal
+				narrow
+				onDismiss={onDismiss}
+			>
+				{content}
+			</Modal>
+			{iconSpriteJSX}
+		</div>
+	))
+	.addWithInfo(
+		'Custom z-index modals',
+		'This is an example of a narrow modal with a custom z-index on top of a normal modal',
+		() => (
+		<div style={wrapperStyle}>
+			<Modal
+				onDismiss={onDismiss}
+			>
+				{content}
+			</Modal>
+			<Modal
+				narrow
+				zIndex={Z_INDICIES.popup}
+				onDismiss={onDismiss}
+			>
+				<Section className='flush--top'>
+					<Chunk>
+						<p>Yo dawg, I heard you like modals, so I put a modal on your modal so you can modal while you modal</p>
+					</Chunk>
+				</Section>
+			</Modal>
+			{iconSpriteJSX}
 		</div>
 	));
 

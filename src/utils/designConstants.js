@@ -20,3 +20,12 @@ export const MEDIA_SIZES = {
 	xl: '72',
 	xxl: '120'
 };
+
+export const Z_INDICIES = {
+	main: 0,
+	floatingContent: 10,
+	shade: 20,
+	shadeContent: 25,
+	modal: 30,
+	popup: 50
+};

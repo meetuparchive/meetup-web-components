@@ -1,31 +1,4 @@
-$modal-width: 440px;
-
-@mixin modal-dialog {
-	@include transform(translate3d(0, 0, 0));
-	@include transition(transform .2s ease);
-	@include centerAbsolute($modal-width);
-	border-radius: $defaultRadius;
-	min-height: 0;
-	width: $modal-width !important;
-
-	&.off{
-	  @include transform( translateY(100vh) );
-	}
-}
-@mixin modal-full {
-	@include transform( translate3d(0, 0, 0) );
-	@include transition(transform .3s);
-	left: 0;
-	margin: 0;
-	min-height: 100vh;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	&.off{
-		@include transform( translateY(100vh) );
-	}
-}
-
+@import "./helpers/modal";
 
 .view {
 	@include flexParent('column', false);
@@ -94,14 +67,17 @@ lays out as a dialog on background content on larger screens.
 // full at narrow widths, dialog at wide widths
 
 .view--modalSnap {
-	@include modal-full;
+	@include snapModal;
 	@include atMediaUp(medium){
-		@include modal-dialog;
 		.view-head {
 			background-color: $C_collectionBG;
 		}
 	}
 	z-index: map-get($zindex-map, "modal");
+}
+
+.view--modalSnap--narrow {
+	@include snapModal($block-5);
 }
 
 .view--modal {
