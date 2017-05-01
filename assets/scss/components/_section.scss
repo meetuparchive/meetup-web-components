@@ -16,12 +16,12 @@ $sectionSpaceMultiple: 2;
 		padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0;
 		&:last-child:not(.section--notAlwaysLast) {
 			border-bottom-width: 0;
-			padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0; //$base 0;
+			padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0;
 		}
 	}
 	.section--noBorder {
 		border-bottom-width: 0;
-		padding: $base*$sectionSpaceMultiple - $base 0 0 0;
+		padding: $base*$sectionSpaceMultiple 0 0 0;
 	}
 }
 

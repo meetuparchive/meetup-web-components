@@ -9,9 +9,8 @@ or a group of elements.
 %chunk,
 .chunk {
 	@extend %clearfix;
-	border-bottom: 1px solid transparent; // to prevent margins from collapsing
 	display: block;
 	@include responsiveVarContext--base() {
-		margin-bottom: $base - 1px !important;
+		padding-bottom: $base !important;
 	}
 }
