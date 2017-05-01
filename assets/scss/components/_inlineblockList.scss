@@ -64,6 +64,7 @@ Class                        | Description
 
 	&:after {
 		content: attr(data-separator);
+		speak: none;
 		@include responsiveVarContext--base() {
 			padding-left: $base/2;
 		}

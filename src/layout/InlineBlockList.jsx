@@ -38,10 +38,12 @@ class InlineBlockList extends React.Component {
 }
 
 InlineBlockList.propTypes = {
-	items: React.PropTypes.oneOf([
-		React.PropTypes.arrayOf(React.PropTypes.element),
-		React.PropTypes.arrayOf(React.PropTypes.string)
-	]).isRequired,
+	items: React.PropTypes.arrayOf(
+		React.PropTypes.oneOfType([
+			React.PropTypes.element,
+			React.PropTypes.string
+		])
+	).isRequired,
 	separator: React.PropTypes.string
 };
 
