@@ -80,19 +80,17 @@ Class                     | Description
 	color: transparent;
 	display: inline-block;
 	font-size: 0;
-	height: $media-m;
 	text-indent: 100%;
 	white-space: nowrap;
 	vertical-align: top;
-	width: $media-m;
+
+	@include responsiveVarContext--media() {
+		height: $scalingMedia-m;
+		width: $scalingMedia-m;
+	}
 
 	.inverted & {
 		background: $C_textHintInverted;
-	}
-
-	@include atMediaUp(small) {
-		height: $media-l;
-		width: $media-l;
 	}
 
 }
@@ -100,13 +98,15 @@ Class                     | Description
 //
 // Size variants
 //
-.avatar--small {
-	height: $media-s;
-	width: $media-s;
-}
-.avatar--big {
-	height: $media-xxl;
-	width: $media-xxl;
+@include responsiveVarContext--media() {
+	.avatar--small {
+		height: $scalingMedia-s;
+		width: $scalingMedia-s;
+	}
+	.avatar--big {
+		height: $scalingMedia-xxl;
+		width: $scalingMedia-xxl;
+	}
 }
 
 //
@@ -154,21 +154,20 @@ Class                     | Description
 	background: $C_collectionBG;
 	border-radius: 999px;
 	box-sizing: border-box;
-	height: $media-m;
-	font-size: $font-size;
-	line-height: $media-m;
-	padding: $space-half;
 	text-align: center;
-	width: $media-m;
+
+	@include responsiveVarContext--media() {
+		height: $scalingMedia-m;
+		line-height: $scalingMedia-m;
+		width: $scalingMedia-m;
+	}
+
+	@include responsiveVarContext--base() {
+		font-size: $base;
+		padding: $base/2;
+	}
 
 	img {
 		width: 100%;
-	}
-
-	@include atMediaUp(small) {
-		height: $media-l;
-		line-height: $media-l;
-		padding: 12px;
-		width: $media-l;
 	}
 }
