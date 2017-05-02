@@ -84,7 +84,7 @@ Class                     | Description
 	white-space: nowrap;
 	vertical-align: top;
 
-	@include responsiveVarContext--media() {
+	@include responsiveVarContext--scalingMedia() {
 		height: $scalingMedia-m;
 		width: $scalingMedia-m;
 	}
@@ -98,7 +98,7 @@ Class                     | Description
 //
 // Size variants
 //
-@include responsiveVarContext--media() {
+@include responsiveVarContext--scalingMedia() {
 	.avatar--small {
 		height: $scalingMedia-s;
 		width: $scalingMedia-s;
@@ -156,7 +156,7 @@ Class                     | Description
 	box-sizing: border-box;
 	text-align: center;
 
-	@include responsiveVarContext--media() {
+	@include responsiveVarContext--scalingMedia() {
 		height: $scalingMedia-m;
 		line-height: $scalingMedia-m;
 		width: $scalingMedia-m;
