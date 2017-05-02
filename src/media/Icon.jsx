@@ -1,8 +1,31 @@
 import React from 'react';
 import cx from 'classnames';
-import { MEDIA_SIZES } from '../utils/designConstants';
+import {
+	MEDIA_SIZES,
+	MEDIA_QUERIES,
+	BREAKPOINT_MEDIA_SCALE_RATIOS
+} from '../utils/designConstants';
 
 export const ICON_CLASS = 'svg';
+
+/**
+ * Returns a multiplier to use for scaling an Icon based on viewport size
+ *
+ * @param {Object} mediaMatches - `matches` boolean values by `is${breakpoint}` key
+ * @returns {Number} - scale factor
+ */
+export const getScaleFactor = mediaMatches => {
+	let scaleFactor = 1;
+
+	if (mediaMatches.isMedium && mediaMatches.isMedium) {
+		scaleFactor = BREAKPOINT_MEDIA_SCALE_RATIOS.medium;
+	}
+	if (mediaMatches.isLarge && mediaMatches.isLarge) {
+		scaleFactor = BREAKPOINT_MEDIA_SCALE_RATIOS.large;
+	}
+
+	return scaleFactor;
+};
 
 /**
  * Icon component used to insert an svg icon into a component or page
@@ -14,6 +37,42 @@ export const ICON_CLASS = 'svg';
  * @module Icon
  */
 class Icon extends React.PureComponent {
+	constructor(props){
+		super(props);
+
+		this.state = {
+			iconScaleFactor: 1
+		};
+	}
+
+	componentDidMount() {
+		if (typeof window.matchMedia != 'undefined') {
+			this.mediaQueries = {
+				medium: window.matchMedia(MEDIA_QUERIES.medium),
+				large: window.matchMedia(MEDIA_QUERIES.large),
+			};
+
+			this.handleMediaChange = () => {
+				this.setState({
+					iconScaleFactor: getScaleFactor({
+						isMedium: this.mediaQueries.medium.matches,
+						isLarge: this.mediaQueries.large.matches
+					})
+				});
+			};
+
+			this.handleMediaChange();
+			Object.keys(this.mediaQueries).forEach(mq => {
+				this[`listen_${mq}`] = this.mediaQueries[mq].addListener(this.handleMediaChange);
+			});
+		}
+	}
+
+	componentWillUnmount() {
+		Object.keys(this.mediaQueries).forEach(mq => {
+			this.mediaQueries[mq] && this.mediaQueries[mq].removeListener(this.handleMediaChange);
+		});
+	}
 
 	render() {
 		const {
@@ -30,7 +89,7 @@ class Icon extends React.PureComponent {
 		);
 
 		const viewBox = size === 'auto' ? MEDIA_SIZES['xl'] : MEDIA_SIZES[size];
-		const dim = MEDIA_SIZES[size];
+		const dim = Math.floor(MEDIA_SIZES[size] * this.state.iconScaleFactor);
 
 		return (
 			<span className={classNames}>
@@ -50,7 +109,7 @@ class Icon extends React.PureComponent {
 }
 
 Icon.defaultProps = {
-	size: 'm'
+	size: 's'
 };
 
 Icon.propTypes = {
