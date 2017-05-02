@@ -55,7 +55,7 @@ storiesOf('Section', module)
 			<div style={{maxWidth: '850px', margin: 'auto'}}>
 				<Section noBorder style={shadingStyles}>
 					<div className='chunk'>
-						<h2 className='text--display2'>These sections are padded on all sides</h2>
+						<h2 className='text--display2'>These sections are never get border styling</h2>
 					</div>
 				</Section>
 				<Section noBorder style={shadingStyles}>
@@ -74,25 +74,25 @@ storiesOf('Section', module)
 			</div>
 		</div>
 	))
-	.add('canBeLastChild', () => (
+	.add('Conditional noBorder (at large breakpoint)', () => (
 		<div style={{width: '100%'}}>
 			<Flex direction='column' switchDirection='large'>
 				<FlexItem>
 					<div style={{maxWidth: '850px', margin: 'auto'}}>
-						<Section>
+						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<h2 className='text--display666'>These sections are padded on all sides</h2>
+								<p className='text--bold'>These sections stack at medium breakpoint</p>
 							</div>
 						</Section>
-						<Section>
-							<div className='chunk'>
-								<h2 className='text--display666'>These sections are padded on all sides</h2>
-							</div>
-						</Section>
-						<Section> {/* canBeLastChild='large' className='section--notAlwaysLast'*/}
+						<Section style={shadingStyles}>
 							<div className='chunk'>
 								<p className='text--bold'>123 attending</p>
 								<p>Hosted by Amy, Rick, Mike, Natalie</p>
+							</div>
+						</Section>
+						<Section noBorder='large' style={shadingStyles}>
+							<div className='chunk'>
+								<p className='text--bold'>This section needs border styling when stacked</p>
 							</div>
 						</Section>
 					</div>
@@ -100,17 +100,17 @@ storiesOf('Section', module)
 
 				<FlexItem>
 					<div style={{maxWidth: '850px', margin: 'auto'}}>
-						<Section>
+						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<h2 className='text--display666'>These sections are padded on all sides</h2>
+								<p className='text--bold'>These sections stack at medium breakpoint</p>
 							</div>
 						</Section>
-						<Section>
+						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<h2 className='text--display666'>These sections are padded on all sides</h2>
+								<p className='text--bold'>These sections stack at medium breakpoint</p>
 							</div>
 						</Section>
-						<Section> {/* canBeLastChild='large'*/}
+						<Section style={shadingStyles}>
 							<div className='chunk'>
 								<p className='text--bold'>123 attending</p>
 								<p>Hosted by Amy, Rick, Mike, Natalie</p>

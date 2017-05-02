@@ -14,22 +14,23 @@ $sectionSpaceMultiple: 2;
 		border-bottom: 1px solid $C_border;
 		margin: 0 $base;
 		padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0;
-		&:last-child:not(.section--notAlwaysLast) {
+
+		&:last-child:not(.atLarge_section--noBorder):not(.atMedium_section--noBorder) {
 			border-bottom-width: 0;
-			padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0;
+			@include responsiveVarContext--base() {
+				padding: $base*$sectionSpaceMultiple 0 0 0;
+			}
 		}
 	}
-	.section--noBorder {
+	.atAll_section--noBorder {
 		border-bottom-width: 0;
 		padding: $base*$sectionSpaceMultiple 0 0 0;
 	}
 }
 
-@include _bpModifier(section, canBeLastChild) {
-	&:last-child {
-		border-bottom-width: 0;
-		@include responsiveVarContext--base() {
-			padding: $base*$sectionSpaceMultiple 0 0 0;
-		}
+@include _bpModifier(section, noBorder) {
+	border-bottom-width: 0;
+	@include responsiveVarContext--base() {
+		padding: $base*$sectionSpaceMultiple 0 0 0;
 	}
 }
