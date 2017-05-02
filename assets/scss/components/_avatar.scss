@@ -85,8 +85,8 @@ Class                     | Description
 	vertical-align: top;
 
 	@include responsiveVarContext--media() {
-		height: $dynamicMedia-m;
-		width: $dynamicMedia-m;
+		height: $scalingMedia-m;
+		width: $scalingMedia-m;
 	}
 
 	.inverted & {
@@ -100,12 +100,12 @@ Class                     | Description
 //
 @include responsiveVarContext--media() {
 	.avatar--small {
-		height: $dynamicMedia-s;
-		width: $dynamicMedia-s;
+		height: $scalingMedia-s;
+		width: $scalingMedia-s;
 	}
 	.avatar--big {
-		height: $dynamicMedia-xxl;
-		width: $dynamicMedia-xxl;
+		height: $scalingMedia-xxl;
+		width: $scalingMedia-xxl;
 	}
 }
 
@@ -157,9 +157,9 @@ Class                     | Description
 	text-align: center;
 
 	@include responsiveVarContext--media() {
-		height: $dynamicMedia-m;
-		line-height: $dynamicMedia-m;
-		width: $dynamicMedia-m;
+		height: $scalingMedia-m;
+		line-height: $scalingMedia-m;
+		width: $scalingMedia-m;
 	}
 
 	@include responsiveVarContext--base() {
