@@ -130,14 +130,9 @@ storiesOf('Modal', module)
 	))
 	.addWithInfo(
 		'Custom z-index modals',
-		'This is an example of a narrow modal with a custom z-index on top of a normal modal',
+		'This is an example of a narrow modal with a custom z-index',
 		() => (
 		<div style={wrapperStyle}>
-			<Modal
-				onDismiss={onDismiss}
-			>
-				{content}
-			</Modal>
 			<Modal
 				narrow
 				zIndex={Z_INDICIES.popup}
@@ -145,7 +140,7 @@ storiesOf('Modal', module)
 			>
 				<Section className='flush--top'>
 					<Chunk>
-						<p>Yo dawg, I heard you like modals, so I put a modal on your modal so you can modal while you modal</p>
+						<p>This is a narrow modal with a higher z-index</p>
 					</Chunk>
 				</Section>
 			</Modal>
