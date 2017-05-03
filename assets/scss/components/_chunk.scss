@@ -11,6 +11,6 @@ or a group of elements.
 	@extend %clearfix;
 	display: block;
 	@include responsiveVarContext--base() {
-		margin-bottom: $base !important;
+		padding-bottom: $base !important;
 	}
 }
