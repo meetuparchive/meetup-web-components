@@ -15,12 +15,6 @@ $sectionSpaceMultiple: 2;
 		margin: 0 $base;
 		padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0;
 
-		&:last-child:not(.atLarge_section--noBorder):not(.atMedium_section--noBorder) {
-			border-bottom-width: 0;
-			@include responsiveVarContext--base() {
-				padding: $base*$sectionSpaceMultiple 0 0 0;
-			}
-		}
 	}
 	.atAll_section--noBorder {
 		border-bottom-width: 0;
