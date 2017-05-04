@@ -4,7 +4,8 @@ import TestUtils from 'react-addons-test-utils';
 
 import Section, {
 	SECTION_CLASS,
-	SECTION_PADDED_CLASS,
+	SECTION_NOBORDER_CLASS,
+	VALID_BREAKPOINTS,
 } from './Section';
 
 describe('Section', function() {
@@ -26,13 +27,14 @@ describe('Section', function() {
 		expect(sectionNode.classList).toContain(SECTION_CLASS);
 	});
 
-	describe('padded', () => {
-		beforeEach(() => {
-			section = TestUtils.renderIntoDocument(<Section padded/>);
-			sectionNode = ReactDOM.findDOMNode(section);
-		});
-		it(`check that default component has '${SECTION_PADDED_CLASS}' class`, function() {
-			expect(sectionNode.classList).toContain(SECTION_PADDED_CLASS);
+	describe('Section noBorder', () => {
+		it(`check that default component has '${SECTION_NOBORDER_CLASS}' class`, function() {
+			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
+				section = TestUtils.renderIntoDocument(<Section noBorder={breakpoint} />);
+				sectionNode = ReactDOM.findDOMNode(section);
+				expect(sectionNode.classList).toContain(SECTION_CLASS);
+				expect(sectionNode.classList).toContain(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_NOBORDER_CLASS}`);
+			});
 		});
 	});
 });
