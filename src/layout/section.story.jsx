@@ -110,7 +110,7 @@ storiesOf('Section', module)
 								<p className='text--bold'>These sections stack at medium breakpoint</p>
 							</div>
 						</Section>
-						<Section style={shadingStyles}>
+						<Section noBorder='all' style={shadingStyles}>
 							<div className='chunk'>
 								<p className='text--bold'>123 attending</p>
 								<p>Hosted by Amy, Rick, Mike, Natalie</p>
