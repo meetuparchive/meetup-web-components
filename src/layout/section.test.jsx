@@ -28,11 +28,13 @@ describe('Section', function() {
 	});
 
 	describe('Section noBorder', () => {
-		Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-			section = TestUtils.renderIntoDocument(<Section noBorder={breakpoint} />);
-			sectionNode = ReactDOM.findDOMNode(section);
-			expect(sectionNode.classList).toContain(SECTION_CLASS);
-			expect(sectionNode.classList).toContain(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_NOBORDER_CLASS}`);
+		it(`check that default component has '${SECTION_NOBORDER_CLASS}' class`, function() {
+			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
+				section = TestUtils.renderIntoDocument(<Section noBorder={breakpoint} />);
+				sectionNode = ReactDOM.findDOMNode(section);
+				expect(sectionNode.classList).toContain(SECTION_CLASS);
+				expect(sectionNode.classList).toContain(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_NOBORDER_CLASS}`);
+			});
 		});
 	});
 });

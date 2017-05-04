@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 
 export const SECTION_CLASS = 'section';
-export const SECTION_NOBORDER_CLASS = 'section';
+export const SECTION_NOBORDER_CLASS = 'section--noBorder';
 export const VALID_BREAKPOINTS = {
 	all: 'atAll',
 	medium: 'atMedium',
