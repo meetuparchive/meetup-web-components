@@ -4,6 +4,9 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
 
+export const DECREMENT_BTN_CLASS = 'decrementButton';
+export const INCREMENT_BTN_CLASS = 'incrementButton';
+
 /**
  * @module NumberInput
  */
@@ -75,22 +78,32 @@ class NumberInput extends React.Component {
 			required,
 			step,
 			value, // eslint-disable-line no-unused-vars
+			...other
 		} = this.props;
 
-		const classNames = cx(
-			'field--reset',
-			{ 'field--error': error },
-			className
-		);
-
-		const labelClassNames = cx(
-			{ required },
-			labelClassName
-		);
+		const classNames = {
+			field: cx(
+				'field--reset',
+				{ 'field--error': error },
+				className
+			),
+			label: cx(
+				{ required },
+				labelClassName
+			),
+			incrementBtn: cx(
+				'button--reset',
+				INCREMENT_BTN_CLASS
+			),
+			decrementBtn: cx(
+				'button--reset',
+				DECREMENT_BTN_CLASS
+			)
+		};
 
 		return (
 			<div>
-				<label className={labelClassNames} htmlFor={id}>
+				<label className={classNames.label} htmlFor={id}>
 					{label}
 				</label>
 
@@ -106,15 +119,16 @@ class NumberInput extends React.Component {
 								step={step}
 								value={this.state.value}
 								required={required}
-								className={classNames}
+								className={classNames.field}
 								onBlur={this.onBlur}
 								onFocus={this.onFocus}
-								onChange={this.onChange} />
+								onChange={this.onChange}
+								{...other} />
 						</FlexItem>
 
 						<FlexItem shrink>
 							<button
-								className='button--reset'
+								className={classNames.decrementBtn}
 								onBlur={this.onBlur}
 								onClick={this.decrement}
 								onFocus={this.onFocus}
@@ -125,7 +139,7 @@ class NumberInput extends React.Component {
 
 						<FlexItem shrink>
 							<button
-								className='button--reset'
+								className={classNames.incrementBtn}
 								onBlur={this.onBlur}
 								onClick={this.increment}
 								onFocus={this.onFocus}
@@ -134,10 +148,10 @@ class NumberInput extends React.Component {
 							</button>
 						</FlexItem>
 
-						{ error && <p className='text--error'>{error}</p> }
 						{children}
 					</Flex>
 				</div>
+				{ error && <p className='text--error'>{error}</p> }
 			</div>
 		);
 	}
