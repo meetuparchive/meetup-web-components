@@ -50,49 +50,50 @@ storiesOf('Section', module)
 			</InfoWrapper>
 		)
 	)
-	.add('No border', () => (
+	.add('No separator', () => (
 		<div style={{width: '100%'}}>
 			<div style={{maxWidth: '850px', margin: 'auto'}}>
-				<Section noBorder style={shadingStyles}>
+				<Section noSeparator style={shadingStyles}>
 					<div className='chunk'>
-						<h2 className='text--display2'>These sections are never get border styling</h2>
+						<h2 className='text--display2'>These sections never get separators</h2>
+						<p className='text--bold text--secondary'>Separators contain bottom padding and a bottom border</p>
+						<p>Lorem Ipsum was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 					</div>
 				</Section>
-				<Section noBorder style={shadingStyles}>
+				<Section noSeparator style={shadingStyles}>
 					<div className='chunk'>
 						<p className='text--bold'>123 attending</p>
 						<p>Hosted by Amy, Rick, Mike, Natalie</p>
 					</div>
 				</Section>
-				<Section noBorder style={shadingStyles}>
+				<Section noSeparator style={shadingStyles}>
 					<div className='chunk'>
 						<div className='runningText'>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
 						</div>
 					</div>
 				</Section>
 			</div>
 		</div>
 	))
-	.add('Conditional noBorder (at large breakpoint)', () => (
+	.add('Conditional noSeparator (at large breakpoint)', () => (
 		<div style={{width: '100%'}}>
 			<Flex direction='column' switchDirection='large'>
 				<FlexItem>
 					<div style={{maxWidth: '850px', margin: 'auto'}}>
 						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>These sections stack at medium breakpoint</p>
+								<p className='text--bold'>These sections stack at large breakpoint</p>
 							</div>
 						</Section>
 						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>123 attending</p>
-								<p>Hosted by Amy, Rick, Mike, Natalie</p>
+								<p className='text--bold'>These sections stack at large breakpoint</p>
 							</div>
 						</Section>
-						<Section noBorder='large' style={shadingStyles}>
+						<Section noSeparator='large' style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>This section needs border styling when stacked</p>
+								<p className='text--bold'>This section needs separator styling when stacked</p>
 							</div>
 						</Section>
 					</div>
@@ -102,18 +103,17 @@ storiesOf('Section', module)
 					<div style={{maxWidth: '850px', margin: 'auto'}}>
 						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>These sections stack at medium breakpoint</p>
+								<p className='text--bold'>These sections stack at large breakpoint</p>
 							</div>
 						</Section>
 						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>These sections stack at medium breakpoint</p>
+								<p className='text--bold'>These sections stack at large breakpoint</p>
 							</div>
 						</Section>
-						<Section noBorder='all' style={shadingStyles}>
+						<Section noSeparator='all' style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>123 attending</p>
-								<p>Hosted by Amy, Rick, Mike, Natalie</p>
+								<p className='text--bold'>This section never gets separator styling</p>
 							</div>
 						</Section>
 					</div>
