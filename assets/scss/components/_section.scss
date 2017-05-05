@@ -16,13 +16,13 @@ $sectionSpaceMultiple: 2;
 		padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0;
 
 	}
-	.atAll_section--noBorder {
+	.atAll_section--noSeparator {
 		border-bottom-width: 0;
 		padding: $base*$sectionSpaceMultiple 0 0 0;
 	}
 }
 
-@include _bpModifier(section, noBorder) {
+@include _bpModifier(section, noSeparator) {
 	border-bottom-width: 0;
 	@include responsiveVarContext--base() {
 		padding: $base*$sectionSpaceMultiple 0 0 0;
