@@ -39,39 +39,50 @@ export const getScaleFactor = mediaMatches => {
 class Icon extends React.PureComponent {
 	constructor(props){
 		super(props);
+		this.handleMediaChange = this.handleMediaChange.bind(this);
 
 		this.state = {
 			iconScaleFactor: 1
 		};
 	}
 
+	handleMediaChange() {
+		if (!this.state.mediaQueries) {
+			return;
+		}
+
+		this.setState((state) => ({
+			iconScaleFactor: getScaleFactor({
+				isMedium: state.mediaQueries.medium.matches,
+				isLarge: state.mediaQueries.large.matches
+			})
+		}));
+	}
+
 	componentDidMount() {
 		if (window.matchMedia) {
-			this.mediaQueries = {
-				medium: window.matchMedia(MEDIA_QUERIES.medium),
-				large: window.matchMedia(MEDIA_QUERIES.large),
-			};
+			this.setState(() => {
+				const mediaQueries = {
+					medium: window.matchMedia(MEDIA_QUERIES.medium),
+					large: window.matchMedia(MEDIA_QUERIES.large),
+				};
 
-			this.handleMediaChange = () => {
-				this.setState({
-					iconScaleFactor: getScaleFactor({
-						isMedium: this.mediaQueries.medium.matches,
-						isLarge: this.mediaQueries.large.matches
-					})
-				});
-			};
+				Object.keys(mediaQueries).forEach(mq =>
+					mediaQueries[mq].addListener(this.handleMediaChange)
+				);
 
-			this.handleMediaChange();
-			Object.keys(this.mediaQueries).forEach(mq => {
-				this[`listen_${mq}`] = this.mediaQueries[mq].addListener(this.handleMediaChange);
+				return {
+					mediaQueries
+				};
 			});
+			this.handleMediaChange();
 		}
 	}
 
 	componentWillUnmount() {
-		Object.keys(this.mediaQueries).forEach(mq => {
-			this.mediaQueries[mq] && this.mediaQueries[mq].removeListener(this.handleMediaChange);
-		});
+		Object.keys(this.state.mediaQueries).forEach(mq =>
+			this.state.mediaQueries[mq].removeListener(this.handleMediaChange)
+		);
 	}
 
 	render() {
