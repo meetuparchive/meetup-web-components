@@ -46,7 +46,7 @@ class Icon extends React.PureComponent {
 	}
 
 	componentDidMount() {
-		if (typeof window.matchMedia != 'undefined') {
+		if (window.matchMedia) {
 			this.mediaQueries = {
 				medium: window.matchMedia(MEDIA_QUERIES.medium),
 				large: window.matchMedia(MEDIA_QUERIES.large),
