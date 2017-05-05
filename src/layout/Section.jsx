@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 
 export const SECTION_CLASS = 'section';
-export const SECTION_NOBORDER_CLASS = 'section--noBorder';
+export const SECTION_NOSEPARATOR_CLASS = 'section--noSeparator';
 export const VALID_BREAKPOINTS = {
 	all: 'atAll',
 	medium: 'atMedium',
@@ -18,16 +18,16 @@ class Section extends React.Component {
 		const {
 			children,
 			className,
-			noBorder,
+			noSeparator,
 			...other
 		} = this.props;
 
-		const noBorderBreakpoint = VALID_BREAKPOINTS[noBorder] || VALID_BREAKPOINTS['all'];
+		const noSeparatorBreakpoint = VALID_BREAKPOINTS[noSeparator] || VALID_BREAKPOINTS['all'];
 
 		const classNames = cx(
 			SECTION_CLASS,
 			{
-				[`${noBorderBreakpoint}_${SECTION_NOBORDER_CLASS}`]: noBorder,
+				[`${noSeparatorBreakpoint}_${SECTION_NOSEPARATOR_CLASS}`]: noSeparator,
 			},
 			className
 		);
@@ -43,7 +43,7 @@ class Section extends React.Component {
 	}
 }
 Section.propTypes = {
-	noBorder: React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+	noSeparator: React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 };
 
 export default Section;
