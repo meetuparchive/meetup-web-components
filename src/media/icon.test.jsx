@@ -1,54 +1,49 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import Icon, { ICON_CLASS } from './Icon';
+import Icon, { ICON_CLASS, getScaleFactor } from './Icon';
 import { MEDIA_SIZES } from '../utils/designConstants';
+import { BREAKPOINT_MEDIA_SCALE_RATIOS } from '../utils/designConstants';
+
+const renderComponent = (props) =>
+	TestUtils.renderIntoDocument(<Icon {...props} />);
 
 describe('Icon', () => {
 	const label = 'Icon Label',
 		shape = 'chevron-down';
 
 	describe('is a Icon element', () => {
-		let iconEl;
+		let icon;
 
 		beforeEach(() => {
-			const icon = TestUtils.renderIntoDocument(
-				<Icon
-					aria-label={label}
-					shape={shape} />
-			);
-
-			iconEl = ReactDOM.findDOMNode(icon);
+			icon = renderComponent({
+				'aria-label': label,
+				shape: shape
+			});
 		});
 
-		afterEach(() => {
-			iconEl = null;
-		});
+		afterEach(() => icon = null);
 
 		it('exists', () => {
-			expect(iconEl).not.toBeNull();
+			expect(() => TestUtils.findRenderedComponentWithType(icon, Icon)).not.toThrow();
 		});
 
-		it('has SQ2 icon styles', () => {
-			expect(iconEl.classList.contains(ICON_CLASS)).toBe(true);
+		it(`should have ${ICON_CLASS} icon styles`, () => {
+			expect(() => TestUtils.findRenderedDOMComponentWithClass(icon, ICON_CLASS)).not.toThrow();
 		});
 
-		it('creates a first-child svg element', () => {
-			const svgEl = iconEl.firstChild;
-			expect(svgEl.nodeName).toBe('svg');
+		it('creates SVG element', () => {
+			expect(() => TestUtils.findRenderedDOMComponentWithTag(icon, 'SVG')).not.toThrow();
 		});
 	});
 
 	describe('renders icon sizes correctly', () => {
 		const sizeChecker = (size) => {
-			const icon = TestUtils.renderIntoDocument(
-				<Icon
-					aria-label={label}
-					shape={shape}
-					size={size} />
-			);
-			const iconEl = ReactDOM.findDOMNode(icon);
-			const svgEl = iconEl.querySelector('svg');
+			const icon = renderComponent({
+				'aria-label': label,
+				shape: shape,
+				size: size
+			});
+			const svgEl = TestUtils.findRenderedDOMComponentWithTag(icon, 'SVG');
 			const value = MEDIA_SIZES[size];
 			expect(svgEl.getAttribute('width')).toEqual(value);
 			expect(svgEl.getAttribute('height')).toEqual(value);
@@ -61,6 +56,30 @@ describe('Icon', () => {
 
 		it('renders each size correctly', () => {
 			Object.keys(MEDIA_SIZES).forEach(sizeChecker);
+		});
+	});
+
+	describe('icons scale correctly based on viewport size', () => {
+		it('does not scale icons below the medium breakpoint', () => {
+			const scaleFactor = getScaleFactor({
+				isMedium: false,
+				isLarge: false,
+			});
+			expect(scaleFactor).toBe(1);
+		});
+		it('scales using the medium ratio at the medium breakpoint', () => {
+			const scaleFactor = getScaleFactor({
+				isMedium: true,
+				isLarge: false,
+			});
+			expect(scaleFactor).toBe(BREAKPOINT_MEDIA_SCALE_RATIOS.medium);
+		});
+		it('scales using the large ratio at the large breakpoint', () => {
+			const scaleFactor = getScaleFactor({
+				isMedium: true, // "larger than medium" is also true for large viewports
+				isLarge: true,
+			});
+			expect(scaleFactor).toBe(BREAKPOINT_MEDIA_SCALE_RATIOS.large);
 		});
 	});
 });
