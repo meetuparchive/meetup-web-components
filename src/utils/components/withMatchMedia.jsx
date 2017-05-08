@@ -1,11 +1,11 @@
 import React from 'react';
-import { MEDIA_QUERIES } from '../utils/designConstants';
+import { MEDIA_QUERIES } from '../designConstants';
 
 /**
- * @param {String} breakpoint - name of breakpoint
- * @returns {String} - prop name (for example, isAtMediumUp)
+ * @param {String} breakpoint - name of breakpoint (for example, 'medium')
+ * @returns {String} - state property name (for example, isAtMediumUp)
  */
-export const createPropNameFromBreakpoint = (breakpoint) => {
+export const getStateNameByBreakpoint = (breakpoint) => {
 	const capitalizedBp = breakpoint[0].toUpperCase() + breakpoint.slice(1);
 	return `isAt${capitalizedBp}Up`;
 };
@@ -17,6 +17,10 @@ export const createPropNameFromBreakpoint = (breakpoint) => {
  */
 export const validateBreakpoints = (breakpoints) => {
 	const validBreakpoints = Object.keys(MEDIA_QUERIES);
+
+	if (!breakpoints) {
+		throw new Error('withMatchMedia: breakpoints array required');
+	}
 
 	breakpoints.forEach(bp => {
 		if (!validBreakpoints.includes(bp)) {
@@ -34,9 +38,7 @@ export const validateBreakpoints = (breakpoints) => {
  */
 export const withMatchMedia = (
 	InnerComponent,
-	breakpoints = () => {
-		throw new Error('withMatchMedia: breakpoints array required');
-	}
+	breakpoints
 ) => class extends React.Component {
 	/**
 	 * @constructor
@@ -44,44 +46,83 @@ export const withMatchMedia = (
 	 */
 	constructor(props) {
 		super(props);
-		validateBreakpoints(...breakpoints);
+		validateBreakpoints(breakpoints);
+
+		this.handleMediaChange = this.handleMediaChange.bind(this);
+
+		this.state = {
+			media: {}
+		};
 
 		breakpoints.forEach(bp => {
-			this.state[createPropNameFromBreakpoint(bp)] = false;
+			this.state.media[getStateNameByBreakpoint(bp)] = false;
+		});
+	}
+
+	/**
+	 * handles media change for _all_ breakpoints configured
+	 * updates state.media with matched media
+	 * @returns {undefined}
+	 */
+	handleMediaChange() {
+		const updatedMedia = {};
+		this.mediaQueries.forEach((mq, i) => {
+			updatedMedia[getStateNameByBreakpoint(breakpoints[i])] = mq.matches;
+		});
+		this.setState({
+			media: {...this.state.media, ...updatedMedia}
 		});
 	}
 
 	/**
 	 * react lifecycle method
+	 * sets up media queries and listeners
 	 * @returns {undefined}
 	 */
 	componentDidMount() {
-		// TODO: add media change callbacks for custom hanlders
-		// TODO: figure out if shit should be in state
-
 		if (typeof window.matchMedia != undefined) {
-			// let mediaQueries = [];
 
-			/*
-			 *breakpoints.forEach(bp => {
-			 *    mediaQueries.push(
-			 *        window.matchMedia(MEDIA_QUERIES[bp]);
-			 *    );
-			 *});
-			 */
+			this.mediaQueries = breakpoints
+				.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
+
+			this.mediaListeners = this.mediaQueries
+				.map(mq => mq.addListener(this.handleMediaChange));
+
+			// fire media handler on mount to populate `this.state.media`
+			this.handleMediaChange();
 		}
 	}
 
 	/**
 	 * react lifecycle method
+	 * clean up media query listeners on unmount
 	 * @returns {undefined}
 	 */
 	componentWillUnmount() {
+		this.mediaQueries.forEach(mq => {
+			mq.removeListener(this.handleMediaChange);
+		});
 	}
 
+	/**
+	 * `isAt[Breakpoint]Up` props are provided to the wrapped component in render().
+	 *
+	 * When `this.mediaListeners` detect a media change, `this.state.media` is updated
+	 * and the component will re-render with correct media-conditional prop values.
+	 *
+	 * @returns {React.element}
+	 */
 	render() {
+		const mediaProps = {};
+
+		breakpoints.forEach(bp => {
+			const propName = getStateNameByBreakpoint(bp);
+			mediaProps[propName] = this.state.media[propName];
+		});
+
 		return (
 			<InnerComponent
+				{...mediaProps}
 				{...this.props}
 			/>
 		);
