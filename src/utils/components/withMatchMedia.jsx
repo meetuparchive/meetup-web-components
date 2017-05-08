@@ -82,13 +82,16 @@ export const withMatchMedia = (
 	componentDidMount() {
 		if (typeof window.matchMedia != undefined) {
 
+			// map breakpoints to MediaQueryList objects...
 			this.mediaQueries = breakpoints
 				.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
 
-			this.mediaListeners = this.mediaQueries
-				.map(mq => mq.addListener(this.handleMediaChange));
+			// and add a listener for each
+			this.mediaQueries.forEach(mq => {
+				mq.addListener(this.handleMediaChange);
+			});
 
-			// fire media handler on mount to populate `this.state.media`
+			// fire media handler immediately on mount to populate `this.state.media`
 			this.handleMediaChange();
 		}
 	}
@@ -99,8 +102,9 @@ export const withMatchMedia = (
 	 * @returns {undefined}
 	 */
 	componentWillUnmount() {
-		this.mediaQueries.forEach(mq => {
+		this.mediaQueries.forEach((mq, i) => {
 			mq.removeListener(this.handleMediaChange);
+			this.mediaQueries.splice(i, 1);
 		});
 	}
 

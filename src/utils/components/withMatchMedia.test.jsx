@@ -3,52 +3,39 @@ import TestUtils from 'react-addons-test-utils';
 
 import {MEDIA_QUERIES} from '../designConstants';
 import {
-	createPropNameFromBreakpoint,
-	validateBreakpoints,
+	getStateNameByBreakpoint,
 	withMatchMedia
 } from './withMatchMedia';
 
-const TestComponent = ({props}) => (
-	<h1>Hello world</h1>
-);
+const allBreakpoints = Object.keys(MEDIA_QUERIES);
 
-function renderWrappedComponent(...mediaQueries) {
+function renderWrappedComponent(breakpoints) {
 	const renderer = TestUtils.createRenderer();
-	return renderer.render(
-		withMatchMedia(TestComponent, ...mediaQueries)
-	);
+	const TestComponentWithMatchMedia = withMatchMedia(<h1>Hello world</h1>, breakpoints);
+
+	renderer.render(<TestComponentWithMatchMedia />);
+	return renderer.getRenderOutput();
 }
 
 describe('withMatchMedia', () => {
 
-	describe('breakpoint validation', () => {
-		it('should throw an error if no breakpoint is provided', () => {
-			expect(renderWrappedComponent()).toThrow();
-		});
-		it('should throw an error if an invalid breakpoint is passed', () => {
-			expect(validateBreakpoints(['this is not valid'])).toThrow();
-		});
-	});
-
 	describe('prop name generator', () => {
 		it('should generate correct prop name from a given breakpoint', () => {
-			const actual = createPropNameFromBreakpoint('foo');
+			const actual = getStateNameByBreakpoint('foo');
 			const expected = 'isAtFooUp';
 			expect(actual).toEqual(expected);
 		});
 	});
 
 	describe('media query prop provision', () => {
-		const allBreakpoints = Object.keys(MEDIA_QUERIES);
 
 		it('provides breakpoint props to wrapped component', () => {
-			const wrappedComponent = renderWrappedComponent(MEDIA_QUERIES);
-			const propNames = Object.keys(wrappedComponent.props);
-
-			expect(wrappedComponent).not.toThrow();
+			const wrappedComponent = renderWrappedComponent(allBreakpoints);
+			const actualPropNames = Object.keys(wrappedComponent.props);
 
 			allBreakpoints.forEach(bp => {
-				expect(propNames).toContain(bp);
+				const expectedPropName = getStateNameByBreakpoint(bp);
+				expect(actualPropNames).toContain(expectedPropName);
 			});
 		});
 
@@ -62,6 +49,29 @@ describe('withMatchMedia', () => {
 				.forEach(bp => {
 					expect(propNames).not.toContain(bp);
 				});
+		});
+	});
+
+	describe('matchMedia listener handling', () => {
+		const wrappedComponent = renderWrappedComponent(allBreakpoints);
+
+		it('should fire media change handler on mount', () => {
+			const handleMediaChangeSpy = spyOn(
+				wrappedComponent,
+				'handleMediaChange'
+			).and.callThrough();
+
+			expect(handleMediaChangeSpy).not.toHaveBeenCalled();
+			wrappedComponent.componentDidMount();
+			expect(handleMediaChangeSpy).toHaveBeenCalled();
+		});
+
+		it('should clean up all listeners on unmount', () => {
+			const mqLength = wrappedComponent.mediaQueries.length;
+
+			expect(mqLength).toEqual(allBreakpoints.length);
+			wrappedComponent.componentWillUnmount();
+			expect(mqLength).toEqual(0);
 		});
 	});
 });

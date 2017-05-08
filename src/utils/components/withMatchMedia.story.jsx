@@ -25,7 +25,7 @@ class TestComponent extends React.Component {
 
 		return (
 			<Stripe inverted style={stripeStyle}>
-				<Bounds className='margin--left'>
+				<Bounds className='padding--left padding--right'>
 					<Section className='runningText'>
 						<h1 className='text--display1'>Viewport-aware props</h1>
 						<p>
@@ -36,7 +36,7 @@ class TestComponent extends React.Component {
 					</Section>
 					<Section className='runningText border--none'>
 						<h1 className='text--display3 text--secondary'><code>True</code> props:</h1>
-						<ul className='text--big'>
+						<ul className='text--big text--mono'>
 							{isAtSmallUp && <li className='text--teal'>isAtSmallUp</li>}
 							{isAtMediumUp && <li className='text--yellow'>isAtMediumUp</li>}
 							{isAtLargeUp && <li className='text--pink'>isAtLargeUp</li>}
