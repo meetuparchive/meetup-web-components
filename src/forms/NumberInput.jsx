@@ -5,6 +5,8 @@ import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
 
 export const DECREMENT_BTN_CLASS = 'decrementButton';
+export const FAUX_INPUT_CLASS = 'fauxInput';
+export const FOCUSED_INPUT_CLASS = 'focused';
 export const INCREMENT_BTN_CLASS = 'incrementButton';
 
 /**
@@ -17,48 +19,54 @@ class NumberInput extends React.Component {
 			value: props.value || '',
 		};
 
-		this.decrement = this.decrement.bind(this);
-		this.increment = this.increment.bind(this);
+		this.decrementAction = this.decrementAction.bind(this);
+		this.incrementAction = this.incrementAction.bind(this);
 		this.onBlur = this.onBlur.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.onFocus = this.onFocus.bind(this);
 	}
 
 	onBlur(e) {
-		if (document.activeElement !== this.fauxInputEl && document.activeElement !== this.decrementBtnEl && document.activeElement !== this.incrementBtnEl) {
-			this.fauxInputEl.classList.remove('focused');
+		const formControls = [
+			this.fauxInputEl,
+			this.decrementBtnEl,
+			this.incrementBtnEl
+		];
+		if (formControls.every(c => c !== document.activeElement)) {
+			this.fauxInputEl.classList.remove(FOCUSED_INPUT_CLASS);
 		}
 	}
 
 	onChange(e) {
-		this.setState({ value: e.target.value });
+		const { value } = e.target;
+		this.setState(() => ({ value: value }));
 		if (this.props.onChange) {
 			this.props.onChange(e);
 		}
 	}
 
 	onFocus(e) {
-		this.fauxInputEl.classList.add('focused');
+		this.fauxInputEl.classList.add(FOCUSED_INPUT_CLASS);
 	}
 
-	increment() {
+	incrementAction() {
 		const currentVal = new Number(this.state.value);
 		const increment = new Number(this.props.step);
 		const newValue = currentVal + increment;
 
 		if (newValue > this.props.max) return;
 
-		this.setState({value: newValue});
+		this.setState(() => ({ value: newValue }));
 	}
 
-	decrement() {
+	decrementAction() {
 		const currentVal = new Number(this.state.value);
 		const decrement = new Number(this.props.step);
 		const newValue = currentVal - decrement;
 
 		if (newValue < this.props.min) return;
 
-		this.setState({value: newValue});
+		this.setState(() => ({ value: newValue }));
 	}
 
 	render() {
@@ -108,7 +116,7 @@ class NumberInput extends React.Component {
 				</label>
 
 				<div
-					className='fauxInput'
+					className={FAUX_INPUT_CLASS}
 					ref={ el => this.fauxInputEl = el }>
 					<Flex align='center'>
 						<FlexItem>
@@ -130,7 +138,7 @@ class NumberInput extends React.Component {
 							<button
 								className={classNames.decrementBtn}
 								onBlur={this.onBlur}
-								onClick={this.decrement}
+								onClick={this.decrementAction}
 								onFocus={this.onFocus}
 								ref={ el => this.decrementBtnEl = el }>
 								<Icon shape='minus' size='xs' />
@@ -141,7 +149,7 @@ class NumberInput extends React.Component {
 							<button
 								className={classNames.incrementBtn}
 								onBlur={this.onBlur}
-								onClick={this.increment}
+								onClick={this.incrementAction}
 								onFocus={this.onFocus}
 								ref={ el => this.incrementBtnEl = el }>
 								<Icon shape='plus' size='xs' />

@@ -1,6 +1,6 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import NumberInput, {DECREMENT_BTN_CLASS, INCREMENT_BTN_CLASS} from './NumberInput';
+import NumberInput, {DECREMENT_BTN_CLASS, INCREMENT_BTN_CLASS, FAUX_INPUT_CLASS, FOCUSED_INPUT_CLASS} from './NumberInput';
 
 describe('NumberInput', function() {
 	const onChange = jest.fn();
@@ -29,6 +29,7 @@ describe('NumberInput', function() {
 				name={NAME_ATTR}
 				label={LABEL_TEXT}
 				value={VALUE}
+				onChange={onChange}
 				{...formAttrs}
 			/>
 		);
@@ -40,140 +41,223 @@ describe('NumberInput', function() {
 		numberInputComponent = null;
 		inputEl = null;
 	});
+	describe('basic', function() {
+		it('exists', () => {
+			expect(() => TestUtils.findRenderedComponentWithType(numberInputComponent, NumberInput)).not.toThrow();
+		});
 
-	it('exists', () => {
-		expect(() => TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'input')).not.toThrow();
+		it('should have a name attribute', () => {
+			expect(inputEl.name).toEqual(NAME_ATTR);
+		});
+
+		it('should have a value when one is specified', () => {
+			expect(parseFloat(inputEl.value)).toEqual(VALUE);
+		});
+
+		it('should have a label when label is given', () => {
+			expect(() => TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'label')).not.toThrow();
+			const labelEl = TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'label');
+			expect(labelEl.textContent).toEqual(LABEL_TEXT);
+		});
+
+		it('should have a required attribute when specified', () => {
+			expect(inputEl.attributes.required).not.toBeNull();
+		});
+
+		it('should have a max attribute', () => {
+			expect(parseFloat(inputEl.max)).toEqual(MAX_ATTR);
+		});
+
+		it('should have a min attribute', () => {
+			expect(parseFloat(inputEl.min)).toEqual(MIN_ATTR);
+		});
+
+		it('should have a step attribute', () => {
+			expect(parseFloat(inputEl.step)).toEqual(STEP_ATTR);
+		});
+
+		it('should specify attributes that are passed in', function() {
+			const numberInputComponent = TestUtils.renderIntoDocument(
+				<NumberInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+					placeholder={PLACEHOLDER}
+				/>
+			);
+			inputEl = TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'input');
+
+			expect(inputEl.getAttribute('placeholder')).toEqual(PLACEHOLDER);
+		});
+
+		it('should have an error when one is specified', function() {
+			expect(() => TestUtils.findRenderedDOMComponentWithClass(numberInputComponent, 'text--error')).not.toThrow();
+			const errorEl = TestUtils.findRenderedDOMComponentWithClass(numberInputComponent, 'text--error');
+			expect(errorEl.textContent).toEqual(ERROR_TEXT);
+		});
+
+		it(`should add class ${FOCUSED_INPUT_CLASS} when the faux input is focused`, () => {
+			const inputEl = TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'input');
+			const fauxInputEl = TestUtils.findRenderedDOMComponentWithClass(numberInputComponent, FAUX_INPUT_CLASS);
+			expect(fauxInputEl.classList).not.toContain(FOCUSED_INPUT_CLASS);
+			TestUtils.Simulate.focus(inputEl);
+			expect(fauxInputEl.classList).toContain(FOCUSED_INPUT_CLASS);
+		});
+
+		it(`should remove class ${FOCUSED_INPUT_CLASS} when the faux input loses focused`, () => {
+			const inputEl = TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'input');
+			const fauxInputEl = TestUtils.findRenderedDOMComponentWithClass(numberInputComponent, FAUX_INPUT_CLASS);
+			TestUtils.Simulate.focus(inputEl);
+			expect(fauxInputEl.classList).toContain(FOCUSED_INPUT_CLASS);
+			TestUtils.Simulate.blur(inputEl);
+			expect(fauxInputEl.classList).not.toContain(FOCUSED_INPUT_CLASS);
+		});
 	});
 
-	it('should have a name attribute', () => {
-		expect(inputEl.name).toEqual(NAME_ATTR);
+	describe('onChange', function() {
+		it('should set its value on input change', function() {
+			const newValue = new Number(VALUE) + new Number(STEP_ATTR);
+			expect(parseFloat(inputEl.value)).toEqual(VALUE);
+			TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
+			expect(parseFloat(inputEl.value)).toEqual(newValue);
+		});
+
+		it('should call onChange and setState with input change', function() {
+			const newValue = new Number(VALUE) + new Number(STEP_ATTR);
+			const changeSpy = spyOn(NumberInput.prototype, 'onChange').and.callThrough();
+
+			numberInputComponent = TestUtils.renderIntoDocument(
+				<NumberInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+				/>
+			);
+
+			inputEl = TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'input');
+			TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
+
+			expect(changeSpy).toHaveBeenCalled();
+			expect(numberInputComponent.state.value).toEqual(newValue);
+		});
+
+		it('should set correct value in state on change', () => {
+			const newValue = '2';
+			const onChange = jest.fn();
+			const changeSpy = spyOn(NumberInput.prototype, 'onChange').and.callThrough();
+
+			numberInputComponent = TestUtils.renderIntoDocument(
+				<NumberInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+				/>
+			);
+			inputEl = TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'input');
+
+			expect(changeSpy).not.toHaveBeenCalled();
+			TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
+			expect(changeSpy).toHaveBeenCalled();
+
+			expect(numberInputComponent.state.value).toEqual(newValue);
+		});
+
+		it('should call onChange `props` function when input is changed', () => {
+			const newValue = new Number(VALUE) + new Number(STEP_ATTR);
+			numberInputComponent = TestUtils.renderIntoDocument(
+				<NumberInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+				/>
+			);
+			inputEl = TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'input');
+			TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
+
+			expect(onChange).toHaveBeenCalled();
+		});
 	});
 
-	it('should have a value when one is specified', () => {
-		expect(parseFloat(inputEl.value)).toEqual(VALUE);
-	});
+	describe('Increment and decrement', function() {
+		it('should call incrementAction when increment button is clicked', () => {
+			const newValue = new Number(VALUE) + new Number(STEP_ATTR);
+			const incrementSpy = spyOn(NumberInput.prototype, 'incrementAction').and.callThrough();
 
-	it('should have a label when label is given', () => {
-		expect(() => TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'label')).not.toThrow();
-		const labelEl = TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'label');
-		expect(labelEl.textContent).toEqual(LABEL_TEXT);
-	});
+			numberInputComponent = TestUtils.renderIntoDocument(
+				<NumberInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+				/>
+			);
+			inputEl = TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'input');
 
-	it('should have a required attribute when specified', () => {
-		expect(inputEl.attributes.required).not.toBeNull();
-	});
+			const incrementBtn = TestUtils.findRenderedDOMComponentWithClass(numberInputComponent, INCREMENT_BTN_CLASS);
 
-	it('should have a max attribute', () => {
-		expect(parseFloat(inputEl.max)).toEqual(MAX_ATTR);
-	});
+			expect(incrementSpy).not.toHaveBeenCalled();
+			TestUtils.Simulate.click(incrementBtn);
+			expect(incrementSpy).toHaveBeenCalled();
+			expect(numberInputComponent.state.value).toEqual(newValue);
+		});
 
-	it('should have a min attribute', () => {
-		expect(parseFloat(inputEl.min)).toEqual(MIN_ATTR);
-	});
+		it('should call decrementAction when increment button is clicked', () => {
+			const newValue = new Number(VALUE) - new Number(STEP_ATTR);
+			const decrementSpy = spyOn(NumberInput.prototype, 'decrementAction').and.callThrough();
 
-	it('should have a step attribute', () => {
-		expect(parseFloat(inputEl.step)).toEqual(STEP_ATTR);
-	});
+			numberInputComponent = TestUtils.renderIntoDocument(
+				<NumberInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+				/>
+			);
+			inputEl = TestUtils.findRenderedDOMComponentWithTag(numberInputComponent, 'input');
 
-	it('should specify attributes that are passed in', function() {
-		const boundComponent = TestUtils.renderIntoDocument(
-			<NumberInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				onChange={onChange}
-				placeholder={PLACEHOLDER}
-			/>
-		);
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
+			const decrementBtn = TestUtils.findRenderedDOMComponentWithClass(numberInputComponent, DECREMENT_BTN_CLASS);
 
-		expect(inputEl.getAttribute('placeholder')).toEqual(PLACEHOLDER);
-	});
+			expect(decrementSpy).not.toHaveBeenCalled();
+			TestUtils.Simulate.click(decrementBtn);
+			expect(decrementSpy).toHaveBeenCalled();
+			expect(numberInputComponent.state.value).toEqual(newValue);
+		});
 
-	it('should have an error when one is specified', function() {
-		expect(() => TestUtils.findRenderedDOMComponentWithClass(numberInputComponent, 'text--error')).not.toThrow();
-		const errorEl = TestUtils.findRenderedDOMComponentWithClass(numberInputComponent, 'text--error');
-		expect(errorEl.textContent).toEqual(ERROR_TEXT);
-	});
+		it('should increment state.value when incrementAction is called', () => {
+			const newValue = new Number(VALUE) + new Number(STEP_ATTR);
+			numberInputComponent = TestUtils.renderIntoDocument(
+				<NumberInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+				/>
+			);
 
-	it('should set its value on input change', function() {
-		const newValue = new Number(VALUE) + new Number(STEP_ATTR);
-		expect(parseFloat(inputEl.value)).toEqual(VALUE);
-		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
-		expect(parseFloat(inputEl.value)).toEqual(newValue);
-	});
+			expect(numberInputComponent.state.value).toEqual(VALUE);
+			numberInputComponent.incrementAction();
+			expect(numberInputComponent.state.value).toEqual(newValue);
+		});
 
-	it('should call onChange and setState with input change', function() {
-		const newValue = new Number(VALUE) + new Number(STEP_ATTR);
-		const changeSpy = spyOn(NumberInput.prototype, 'onChange').and.callThrough();
-		const stateSpy = spyOn(NumberInput.prototype, 'setState').and.callThrough();
+		it('should decrement state.value when decrementAction is called', () => {
+			const newValue = new Number(VALUE) - new Number(STEP_ATTR);
+			numberInputComponent = TestUtils.renderIntoDocument(
+				<NumberInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+				/>
+			);
 
-		const boundComponent = TestUtils.renderIntoDocument(
-			<NumberInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				onChange={onChange}
-			/>
-		);
-
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
-		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
-
-		expect(changeSpy).toHaveBeenCalled();
-		expect(stateSpy).toHaveBeenCalledWith({ value: newValue });
-	});
-
-	it('should call onChange `props` function when input is changed', () => {
-		const newValue = new Number(VALUE) + new Number(STEP_ATTR);
-		const boundComponent = TestUtils.renderIntoDocument(
-			<NumberInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				onChange={onChange}
-			/>
-		);
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
-		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
-
-		expect(onChange).toHaveBeenCalled();
-	});
-
-	it('should increment when increment button is clicked', () => {
-		const newValue = new Number(VALUE) + new Number(STEP_ATTR);
-		const boundComponent = TestUtils.renderIntoDocument(
-			<NumberInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				onChange={onChange}
-			/>
-		);
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
-		const incrementBtn = TestUtils.findRenderedDOMComponentWithClass(boundComponent, INCREMENT_BTN_CLASS);
-
-		expect(parseFloat(inputEl.value)).toBe(VALUE);
-		TestUtils.Simulate.click(incrementBtn);
-		expect(parseFloat(inputEl.value)).toBe(newValue);
-	});
-
-	it('should decrement when decrement button is clicked', () => {
-		const newValue = new Number(VALUE) - new Number(STEP_ATTR);
-		const boundComponent = TestUtils.renderIntoDocument(
-			<NumberInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				onChange={onChange}
-			/>
-		);
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
-		const decrementBtn = TestUtils.findRenderedDOMComponentWithClass(boundComponent, DECREMENT_BTN_CLASS);
-
-		expect(parseFloat(inputEl.value)).toBe(VALUE);
-		TestUtils.Simulate.click(decrementBtn);
-		expect(parseFloat(inputEl.value)).toBe(newValue);
+			expect(numberInputComponent.state.value).toEqual(VALUE);
+			numberInputComponent.decrementAction();
+			expect(numberInputComponent.state.value).toEqual(newValue);
+		});
 	});
 
 });
