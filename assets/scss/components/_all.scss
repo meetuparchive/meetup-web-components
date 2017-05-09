@@ -23,3 +23,50 @@
 @import "tabs";
 @import "togglePill";
 @import "dateTimePicker";
+
+// MOVE THIS TO SWARM-SASSTOOLS BEFORE PR
+@mixin resetFieldStyles {
+	background-color: transparent;
+	border-width: 0;
+	height: auto;
+	margin: 0;
+	padding: 0;
+
+	&::-webkit-inner-spin-button,
+	&::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		margin: 0;
+	}
+}
+
+input.field--reset,
+input.field--reset:hover,
+input.field--reset:focus,
+input.field--reset:active {
+	@include resetFieldStyles;
+}
+
+.fauxInput {
+	// default form styling
+	background-color: $C_lightGray;
+	border-radius: $defaultRadius;
+	border: 1px solid $C_border;
+	box-shadow: none;
+	box-sizing: border-box;
+	margin: 0 0 $space-quarter 0;
+	max-width: 100%;
+	padding: $space-half;
+	width: 100%;
+
+	// manually changing height to match other inputs
+	height: ($font-size * $line-height) + $space;
+	&.focused {
+		// default :focus styling, just applied to a class
+		background-color: $C_contentBG;
+		border-color: $C_lightPurple;
+		box-shadow: none;
+		outline: none;
+	}
+}
