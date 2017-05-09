@@ -19,11 +19,27 @@ class NumberInput extends React.Component {
 			value: props.value || '',
 		};
 
+		this._updateValueByStep = this._updateValueByStep.bind(this);
 		this.decrementAction = this.decrementAction.bind(this);
 		this.incrementAction = this.incrementAction.bind(this);
 		this.onBlur = this.onBlur.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.onFocus = this.onFocus.bind(this);
+	}
+
+	_updateValueByStep(isIncreasing) {
+		const currentVal = new Number(this.state.value);
+		const step = new Number(this.props.step);
+		let newValue = isIncreasing ? currentVal + step : currentVal - step;
+
+		if (newValue > this.props.max){
+			newValue = this.props.max;
+		}
+		else if (newValue < this.props.min){
+			newValue = this.props.min;
+		}
+
+		return newValue;
 	}
 
 	onBlur(e) {
@@ -39,7 +55,8 @@ class NumberInput extends React.Component {
 
 	onChange(e) {
 		const { value } = e.target;
-		this.setState(() => ({ value: value }));
+
+		this.setState(() => ({ value }));
 		if (this.props.onChange) {
 			this.props.onChange(e);
 		}
@@ -50,23 +67,11 @@ class NumberInput extends React.Component {
 	}
 
 	incrementAction() {
-		const currentVal = new Number(this.state.value);
-		const increment = new Number(this.props.step);
-		const newValue = currentVal + increment;
-
-		if (newValue > this.props.max) return;
-
-		this.setState(() => ({ value: newValue }));
+		this.setState(() => ({ value: this._updateValueByStep(true) }));
 	}
 
 	decrementAction() {
-		const currentVal = new Number(this.state.value);
-		const decrement = new Number(this.props.step);
-		const newValue = currentVal - decrement;
-
-		if (newValue < this.props.min) return;
-
-		this.setState(() => ({ value: newValue }));
+		this.setState(() => ({ value: this._updateValueByStep(false) }));
 	}
 
 	render() {

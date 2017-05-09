@@ -183,6 +183,38 @@ describe('NumberInput', function() {
 	});
 
 	describe('Increment and decrement', function() {
+		it('should return a value > min from _updateValueByStep()', () => {
+			const lowValue = new Number(MIN_ATTR);
+
+			numberInputComponent = TestUtils.renderIntoDocument(
+				<NumberInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					min={MIN_ATTR}
+					max={MAX_ATTR}
+					value={MIN_ATTR}
+					onChange={onChange}
+				/>
+			);
+
+			expect(numberInputComponent._updateValueByStep(false)).toEqual(lowValue);
+		});
+		it('should return a value < max from _updateValueByStep()', () => {
+			const highValue = new Number(MAX_ATTR);
+
+			numberInputComponent = TestUtils.renderIntoDocument(
+				<NumberInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					min={MIN_ATTR}
+					max={MAX_ATTR}
+					value={MAX_ATTR}
+					onChange={onChange}
+				/>
+			);
+
+			expect(numberInputComponent._updateValueByStep(true)).toEqual(highValue);
+		});
 		it('should call incrementAction when increment button is clicked', () => {
 			const newValue = new Number(VALUE) + new Number(STEP_ATTR);
 			const incrementSpy = spyOn(NumberInput.prototype, 'incrementAction').and.callThrough();
