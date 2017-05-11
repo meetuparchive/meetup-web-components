@@ -78,5 +78,12 @@ describe('Icon', () => {
 			const expected = shape;
 			expect(actual).toBe(expected);
 		});
+
+		it('does NOT render a --small shape variant for third party icons', () => {
+			const xsIconShape = 'external-friendster';
+			const actual = getIconShape(xsIconShape, 'xs');
+			const expected = xsIconShape;
+			expect(actual).toBe(expected);
+		});
 	});
 });

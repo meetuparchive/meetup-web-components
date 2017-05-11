@@ -10,6 +10,12 @@ export const ICON_CLASS = 'svg';
  * @returns {String} icon name (with or without suffix)
  */
 export const getIconShape = (shape, size) => {
+
+	// third party icons (yahoo, facebook, etc) do not have small variants
+	if (shape.includes('external')) {
+		return shape;
+	}
+
 	const suffix = size == 'xs' ? '--small' : '';
 	return `${shape}${suffix}`;
 };
