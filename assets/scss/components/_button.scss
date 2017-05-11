@@ -370,6 +370,10 @@ $_iconGutter: $space;
 	@include flex-wrap(nowrap);
 	@include flex-direction(row);
 	@include justify-content(space-between);
+
+	.atAll_flex--rowReverse.button--icon-wrapper & {
+		padding-left: $space/4;
+	}
 }
 
 .button-label,
@@ -383,6 +387,10 @@ $_iconGutter: $space;
 	// this full shorthand property for `flex`
 	// is required to prevent IE11 from "shrinkwrapping" text nodes
 	@include flex(1 1 auto);
+
+	.button--icon-wrapper & {
+		padding-left: $space/4;
+	}
 }
 
 .button-icon {
