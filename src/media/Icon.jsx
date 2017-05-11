@@ -5,6 +5,16 @@ import { MEDIA_SIZES } from '../utils/designConstants';
 export const ICON_CLASS = 'svg';
 
 /**
+ * @param {String} shape - icon shape
+ * @param {String} size - icon size
+ * @returns {String} icon name (with or without suffix)
+ */
+export const getIconShape = (shape, size) => {
+	const suffix = size == 'xs' ? '--small' : '';
+	return `${shape}${suffix}`;
+};
+
+/**
  * Icon component used to insert an svg icon into a component or page
  *
  * **Accessibility** If an Icon is used on its own without supporting
@@ -22,6 +32,8 @@ class Icon extends React.PureComponent {
 			size,
 			...other
 		} = this.props;
+
+		const generatedShape = getIconShape(shape, size);
 
 		const classNames = cx(
 			ICON_CLASS,
@@ -42,7 +54,7 @@ class Icon extends React.PureComponent {
 					className='svg-icon valign--middle'
 					role='img'
 					{...other}>
-					<use xlinkHref={`#icon-${shape}`}></use>
+					<use xlinkHref={`#icon-${generatedShape}`}></use>
 				</svg>
 			</span>
 		);

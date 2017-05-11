@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import Icon, { ICON_CLASS } from './Icon';
+import Icon, {
+	ICON_CLASS,
+	getIconShape
+} from './Icon';
 import { MEDIA_SIZES } from '../utils/designConstants';
 
 describe('Icon', () => {
@@ -61,6 +64,19 @@ describe('Icon', () => {
 
 		it('renders each size correctly', () => {
 			Object.keys(MEDIA_SIZES).forEach(sizeChecker);
+		});
+
+		it('renders small shape variant for "xs" icons', () => {
+			const xsIconShape = 'test';
+			const actual = getIconShape(xsIconShape, 'xs');
+			const expected = `${xsIconShape}--small`;
+			expect(actual).toBe(expected);
+		});
+
+		it('renders normal shape variant for icons larger than "xs"', () => {
+			const actual = getIconShape(shape, 'm');
+			const expected = shape;
+			expect(actual).toBe(expected);
 		});
 	});
 });
