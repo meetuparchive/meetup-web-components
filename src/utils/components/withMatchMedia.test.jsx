@@ -6,11 +6,22 @@ import * as MM from './withMatchMedia';
 
 const allBreakpoints = Object.keys(MEDIA_QUERIES);
 
+/**
+ * @class TestComponent
+ */
+class TestComponent extends React.Component {
+	render() {
+		return <h1>Hello world</h1>;
+	}
+}
 
+/**
+ * @param {Array} breakpoints - breakpoint names to pass to withMatchMedia
+ */
 function renderWrappedComponent(breakpoints) {
 	const renderer = TestUtils.createRenderer();
 	const TestComponentWithMatchMedia = MM.withMatchMedia(
-		<h1>Hello world</h1>,
+		TestComponent,
 		breakpoints
 	);
 	renderer.render(<TestComponentWithMatchMedia />);
@@ -49,27 +60,6 @@ describe('withMatchMedia', () => {
 				.forEach(bp => {
 					expect(propNames).not.toContain(bp);
 				});
-		});
-	});
-
-	describe('matchMedia listener handling', () => {
-		const wrappedComponent = renderWrappedComponent(allBreakpoints);
-
-		it('should fire media change handler on mount', () => {
-			const mediaChangeSpy = spyOn(MM, 'getUpdatedMediaState')
-				.and.callThrough();
-
-			expect(mediaChangeSpy).not.toHaveBeenCalled();
-			wrappedComponent.componentDidMount();
-			expect(mediaChangeSpy).toHaveBeenCalled();
-		});
-
-		it('should clean up all listeners on unmount', () => {
-			const mqLength = wrappedComponent.mediaQueries.length;
-
-			expect(mqLength).toEqual(allBreakpoints.length);
-			wrappedComponent.componentWillUnmount();
-			expect(mqLength).toEqual(0);
 		});
 	});
 });
