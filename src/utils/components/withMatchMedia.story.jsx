@@ -7,6 +7,8 @@ import Stripe from '../../layout/Stripe';
 import Bounds from '../../layout/Bounds';
 import Section from '../../layout/Section';
 
+import { MEDIA_QUERIES } from '../designConstants';
+
 /**
  * @class TestComponent
  */
@@ -50,7 +52,7 @@ class TestComponent extends React.Component {
 }
 const TestComponentWithMatchMedia = withMatchMedia(
 	TestComponent,
-	['small', 'medium', 'large', 'huge']
+	Object.keys(MEDIA_QUERIES) // ['small', 'medium', 'large', 'huge']
 );
 
 storiesOf('withMatchMedia', module)

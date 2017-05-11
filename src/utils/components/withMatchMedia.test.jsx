@@ -2,17 +2,17 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
 import {MEDIA_QUERIES} from '../designConstants';
-import {
-	getStateNameByBreakpoint,
-	withMatchMedia
-} from './withMatchMedia';
+import * as MM from './withMatchMedia';
 
 const allBreakpoints = Object.keys(MEDIA_QUERIES);
 
+
 function renderWrappedComponent(breakpoints) {
 	const renderer = TestUtils.createRenderer();
-	const TestComponentWithMatchMedia = withMatchMedia(<h1>Hello world</h1>, breakpoints);
-
+	const TestComponentWithMatchMedia = MM.withMatchMedia(
+		<h1>Hello world</h1>,
+		breakpoints
+	);
 	renderer.render(<TestComponentWithMatchMedia />);
 	return renderer.getRenderOutput();
 }
@@ -21,7 +21,7 @@ describe('withMatchMedia', () => {
 
 	describe('prop name generator', () => {
 		it('should generate correct prop name from a given breakpoint', () => {
-			const actual = getStateNameByBreakpoint('foo');
+			const actual = MM.getStateNameByBreakpoint('foo');
 			const expected = 'isAtFooUp';
 			expect(actual).toEqual(expected);
 		});
@@ -34,7 +34,7 @@ describe('withMatchMedia', () => {
 			const actualPropNames = Object.keys(wrappedComponent.props);
 
 			allBreakpoints.forEach(bp => {
-				const expectedPropName = getStateNameByBreakpoint(bp);
+				const expectedPropName = MM.getStateNameByBreakpoint(bp);
 				expect(actualPropNames).toContain(expectedPropName);
 			});
 		});
@@ -56,14 +56,12 @@ describe('withMatchMedia', () => {
 		const wrappedComponent = renderWrappedComponent(allBreakpoints);
 
 		it('should fire media change handler on mount', () => {
-			const handleMediaChangeSpy = spyOn(
-				wrappedComponent,
-				'handleMediaChange'
-			).and.callThrough();
+			const mediaChangeSpy = spyOn(MM, 'getUpdatedMediaState')
+				.and.callThrough();
 
-			expect(handleMediaChangeSpy).not.toHaveBeenCalled();
+			expect(mediaChangeSpy).not.toHaveBeenCalled();
 			wrappedComponent.componentDidMount();
-			expect(handleMediaChangeSpy).toHaveBeenCalled();
+			expect(mediaChangeSpy).toHaveBeenCalled();
 		});
 
 		it('should clean up all listeners on unmount', () => {

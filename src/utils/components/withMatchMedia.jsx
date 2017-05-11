@@ -5,13 +5,25 @@ import { MEDIA_QUERIES } from '../designConstants';
  * @param {String} breakpoint - name of breakpoint (for example, 'medium')
  * @returns {String} - state property name (for example, isAtMediumUp)
  */
-export const getStateNameByBreakpoint = (breakpoint) => {
+export const getStateNameByBreakpoint = breakpoint => {
 	const capitalizedBp = breakpoint[0].toUpperCase() + breakpoint.slice(1);
 	return `isAt${capitalizedBp}Up`;
 };
 
 /**
- * @param {Array} ...breakpoints
+ * @param {Array} mediaQueries - list of matchMedia-created MediaQueryList objects
+ * @param {Array} breakpoints - array of breakpoint names that were passed to HOC
+ */
+export const getUpdatedMediaState = (mediaQueries, breakpoints) => {
+	const updatedMedia = {};
+	mediaQueries.forEach((mq, i) => {
+		updatedMedia[getStateNameByBreakpoint(breakpoints[i])] = mq.matches;
+	});
+	return updatedMedia;
+};
+
+/**
+ * @param {Array} breakpoints
  * @throws {Error}
  * @return {undefined}
  */
@@ -34,7 +46,7 @@ export const validateBreakpoints = (breakpoints) => {
  * Provides viewport-aware props to wrapped component.
  *
  * @param {React.element} InnerComponent - the component to wrap
- * @param {Array} ...breakpoints - array of breakpoint names to watch
+ * @param {Array} breakpoints - array of breakpoint names to watch
  */
 export const withMatchMedia = (
 	InnerComponent,
@@ -65,12 +77,9 @@ export const withMatchMedia = (
 	 * @returns {undefined}
 	 */
 	handleMediaChange() {
-		const updatedMedia = {};
-		this.mediaQueries.forEach((mq, i) => {
-			updatedMedia[getStateNameByBreakpoint(breakpoints[i])] = mq.matches;
-		});
+		const updated = getUpdatedMediaState(this.mediaQueries, breakpoints);
 		this.setState({
-			media: {...this.state.media, ...updatedMedia}
+			media: {...this.state.media, ...updated}
 		});
 	}
 
@@ -132,27 +141,3 @@ export const withMatchMedia = (
 		);
 	}
 };
-
-// TODO: remove this; just using it to sketch out the interface
-/*
- *class SketchWithMedia extends React.Component {
- *    render() {
- *        const {
- *            isAtSmallUp,
- *            isAtMediumUp,
- *            isAtLargeUp
- *        } = this.state;
- *
- *        return (
- *            <div>
- *                <h1>Your viewport is bigger than:</h1>
- *                <ul>
- *                    {isAtSmallUp && <li>Small</li>}
- *                    {isAtMediumUp && <li>Medium</li>}
- *                    {isAtLargeUp && <li>Large</li>}
- *                </ul>
- *            </div>
- *        );
- *    }
- *}
- */
