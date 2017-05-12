@@ -133,7 +133,7 @@ class Modal extends React.Component {
 			</div>
 		);
 
-		const closeArea = (
+		const closeArea = this.props.closeArea && (
 			<div className='padding--all'>
 				<Button onClick={this.onDismiss} className={dismissButtonClasses}>
 					<Icon shape='cross' size='s' />
@@ -188,10 +188,12 @@ Modal.propTypes = {
 	heroContent: React.PropTypes.element,
 	inverted: React.PropTypes.bool,
 	onDismiss: React.PropTypes.func.isRequired,
+	closeArea: React.PropTypes.bool,
 };
 
 Modal.defaultProps = {
-	fullscreen: false
+	fullscreen: false,
+	closeArea: true,
 };
 
 export default Modal;
