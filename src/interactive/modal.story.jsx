@@ -133,6 +133,17 @@ storiesOf('Modal', module)
 			</Modal>
 			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 		</div>
+	))
+	.addWithInfo(
+		'No close area',
+		'Modals with no close area are set with the `closeArea` boolean prop',
+		() => (
+		<div style={wrapperStyle}>
+			<Modal
+				closeArea={false}
+			>
+				{content}
+			</Modal>
+			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+		</div>
 	));
-
-
