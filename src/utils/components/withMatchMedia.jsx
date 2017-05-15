@@ -111,9 +111,8 @@ export const withMatchMedia = (
 	 * @returns {undefined}
 	 */
 	componentWillUnmount() {
-		this.mediaQueries.forEach((mq, i) => {
+		this.mediaQueries.forEach(mq => {
 			mq.removeListener(this.handleMediaChange);
-			this.mediaQueries.splice(i, 1);
 		});
 	}
 
