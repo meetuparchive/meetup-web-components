@@ -28,6 +28,12 @@ function renderWrappedComponent(breakpoints) {
 	return renderer.getRenderOutput();
 }
 
+const MATCH_MEDIA_FN_MOCK = (mq) => ({
+	matches: false,
+	addListener: jest.fn(),
+	removeListener: jest.fn(),
+});
+
 describe('withMatchMedia', () => {
 
 	describe('prop name generator', () => {
@@ -60,6 +66,22 @@ describe('withMatchMedia', () => {
 				.forEach(bp => {
 					expect(propNames).not.toContain(bp);
 				});
+		});
+	});
+
+	describe('lifecycle', () => {
+		window.matchMedia = MATCH_MEDIA_FN_MOCK;
+
+		it('updates breakpoint props on mount', () => {
+			const wrappedComponent = renderWrappedComponent(allBreakpoints);
+			const wrapperInstance = wrappedComponent.props.withMatchMediaInstance;
+
+			const mountSpy = spyOn(wrapperInstance, 'handleMediaChange');
+
+			expect(mountSpy).not.toHaveBeenCalled();
+			wrapperInstance.componentDidMount();
+			expect(mountSpy).toHaveBeenCalled();
+
 		});
 	});
 });
