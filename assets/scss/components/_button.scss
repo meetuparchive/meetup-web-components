@@ -10,6 +10,9 @@ Disables user-select, sets cursor, and resets text-decoration.
 @extend %buttonPersonality;
 ```
 */
+$C_accent: rgba(241,58,89,1);
+$C_fieldBG: rgba(0,0,0,.09);
+$C_fieldBG--disabled: rgba(0,0,0,.02);
 %buttonPersonality {
 	@include user-select(none);
 	cursor: pointer;
@@ -37,17 +40,19 @@ _(The `extend` directive can cause ugly cascade problems)_
 	@include justify-content(center);
 	@include align-items(center);
 	@include transition(background .15s);
-	@include standardBorder(all);
+	@include standardBorder(none);
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	border-radius: $defaultRadius;
 	background: transparent;
 	font-size: $font-size;
-	font-weight: $W_bold;
+	font-weight: $W_medium;
 	line-height: $line-height;
-	min-height: $space-3;
+	// min-height: $space-3;
 	outline: 0;
-	padding: 0 $space;
+	@include responsiveVarContext--base() {
+		padding: $base $base*2;
+	}
 	vertical-align: middle;
 
 	@include browser-ie11() {
@@ -115,7 +120,7 @@ Applies default button `:hover`,
 @mixin buttonHover($bgColor: $C_textPrimary) {
 	&:hover,
 	&:focus {
-		background: transparentize($bgColor, .8);
+		background: opacify($bgColor, .08);
 		border-color: transparent;
 	}
 
@@ -143,11 +148,11 @@ Sets color properties for a button
 @mixin buttonColor($bgColor: $C_button) {
 	@include color-all(getPrimaryTextColor($bgColor), true);
 	background: $bgColor;
-	border-color: $bgColor;
+	// border-color: $bgColor;
 
 	&:hover,
 	&:focus {
-			background: darken($bgColor, 8%);
+		background: darken($bgColor, 8%);
 	}
 
 	&:active {
@@ -250,15 +255,20 @@ Class                   | Description
 `.button--fullWidth`    | makes button fill width
 `.button--icon`         | button with icon (see example for markup pattern)
 */
-
 .button {
 	@include buttonBase();
-	@include buttonHover();
-	@include color-all($C_textPrimary);
-	background: $C_contentBG;
+	@include buttonHover($C_fieldBG);
+	@include color-all($C_textSecondary);
+	background: $C_fieldBG;
+
+	.inverted & {
+		background: $C_borderInverted;
+		@include color-all($C_textSecondaryInverted);
+	}
 
 	.inverted &:hover {
-		background: $C_textSecondaryInverted;
+		background: $C_textPrimaryInverted;
+		@include color-all($C_textSecondary);
 	}
 }
 
@@ -282,10 +292,14 @@ Class                   | Description
 
 %button--primary,
 .button--primary {
-	@include buttonColor($C_button);
-	.inverted & {
-		@include standardBorder(none);
+	@include buttonColor($C_accent);
+	&:hover {
+		background: darken($C_accent, 12%);
 	}
+	// .inverted & {
+	// 	@include standardBorder(none);
+	// }
+
 	&.button--contrast {
 		@include buttonColor($C_contentBG);
 		&:hover,
@@ -319,20 +333,20 @@ Class                   | Description
 //
 .button[disabled],
 .button--disabled {
-	@include color-all($C_textSecondary, true);
-	@include standardBorder(all);
+	@include color-all($C_textHint, true);
+	// @include standardBorder(all);
 	outline: none;
-	background: transparentize($C_mediumGray, .88) !important;
+	background: $C_fieldBG--disabled !important;
 	cursor: default;
 
 	.inverted & {
-		@include color-all($C_textSecondaryInverted, true);
+		@include color-all($C_textHintInverted, true);
 	}
 
 	&,
 	&:hover,
 	&:active {
-		@include standardBorder(all);
+		// @include standardBorder(all);
 	}
 
 }
@@ -342,9 +356,9 @@ Class                   | Description
 //
 %button--small,
 .button--small {
-	font-size: $font-size-small;
-	min-height: $space-2;
-	padding: 0 $space-half;
+	font-size: $font-size;
+	// min-height: $space-2;
+	padding: $space-half $space;
 }
 
 //
@@ -381,7 +395,7 @@ $_iconGutter: $space;
 	@include align-self(center);
 }
 
-.button-label {
+.button--label {
 	text-align: center;
 
 	// this full shorthand property for `flex`
