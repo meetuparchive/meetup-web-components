@@ -1,3 +1,9 @@
+$C_accent: rgba(241,58,89,1);
+$C_fieldBG: rgba(0,0,0,.09);
+$C_fieldBGInverted: $C_borderInverted;
+$C_fieldBGInverted--primary: $C_borderDarkInverted;
+$C_fieldBGDisabled: rgba(0,0,0,.02);
+$C_fieldBGinverted--disabled: rgba(255,255,255,.05);
 /*doc
 ---
 title: Button personality placeholder
@@ -10,9 +16,6 @@ Disables user-select, sets cursor, and resets text-decoration.
 @extend %buttonPersonality;
 ```
 */
-$C_accent: rgba(241,58,89,1);
-$C_fieldBG: rgba(0,0,0,.09);
-$C_fieldBG--disabled: rgba(0,0,0,.02);
 %buttonPersonality {
 	@include user-select(none);
 	cursor: pointer;
@@ -48,7 +51,6 @@ _(The `extend` directive can cause ugly cascade problems)_
 	font-size: $font-size;
 	font-weight: $W_medium;
 	line-height: $line-height;
-	// min-height: $space-3;
 	outline: 0;
 	@include responsiveVarContext--base() {
 		padding: $base $base*2;
@@ -120,7 +122,7 @@ Applies default button `:hover`,
 @mixin buttonHover($bgColor: $C_textPrimary) {
 	&:hover,
 	&:focus {
-		background: opacify($bgColor, .08);
+		background: transparentize($bgColor, .8);
 		border-color: transparent;
 	}
 
@@ -148,7 +150,7 @@ Sets color properties for a button
 @mixin buttonColor($bgColor: $C_button) {
 	@include color-all(getPrimaryTextColor($bgColor), true);
 	background: $bgColor;
-	// border-color: $bgColor;
+	border-color: $bgColor;
 
 	&:hover,
 	&:focus {
@@ -255,58 +257,61 @@ Class                   | Description
 `.button--fullWidth`    | makes button fill width
 `.button--icon`         | button with icon (see example for markup pattern)
 */
+
 .button {
 	@include buttonBase();
-	@include buttonHover($C_fieldBG);
-	@include color-all($C_textSecondary);
+	@include buttonHover();
+	@include color-all($C_textPrimary);
 	background: $C_fieldBG;
 
-	.inverted & {
-		background: $C_borderInverted;
-		@include color-all($C_textSecondaryInverted);
-	}
-
 	.inverted &:hover {
-		background: $C_textPrimaryInverted;
-		@include color-all($C_textSecondary);
+		background: opacify($C_fieldBGInverted, .05);
 	}
 }
 
 %button--primary,
 .button--primary {
 	@include buttonColor($C_accent);
-	&:hover {
-		background: darken($C_accent, 12%);
-	}
-	// .inverted & {
-	// 	@include standardBorder(none);
-	// }
 
-	&.button--contrast {
-		@include buttonColor($C_contentBG);
-		&:hover,
-		&:active,
-		&:focus {
-			background: $C_borderDarkInverted;
+	.inverted & {
+		@include standardBorder(none);
+
+		&.button--contrast {
+			@include buttonColor($C_contentBG);
+			&:hover,
+			&:focus {
+				background: $C_borderDarkInverted;
+			}
+
+			&:active {
+				background: transparentize($C_borderDarkInverted, .1);
+			}
+
 		}
+
 	}
+
 }
 
 %button--contrast,
 .button--contrast {
-	@include color-all( $C_textPrimary );
+	@include color-all( $C_textPrimary ); // should remove this style if nobody is using outside of .inverted context
+	background: $C_fieldBGInverted;
+
 	.inverted & {
 		@include color-all( $C_textPrimaryInverted );
-	}
-	background: $C_textHint;
-	border-color: $C_borderInverted;
 
-	&:hover,
-	&:active,
-	&:focus {
-		background: $C_textHint;
-		border-color: $C_borderDarkInverted;
+		&:hover,
+		&:focus {
+			background: opacify($C_fieldBGInverted, .05);
+		}
+
+		&:active {
+			background: opacify($C_fieldBGInverted, .1);
+		}
+
 	}
+
 }
 
 
@@ -315,21 +320,21 @@ Class                   | Description
 //
 .button[disabled],
 .button--disabled {
-	@include color-all($C_textHint, true);
-	// @include standardBorder(all);
+	@include color-all($C_textSecondary, true);
 	outline: none;
-	background: $C_fieldBG--disabled !important;
+	background: $C_fieldBGDisabled;
 	cursor: default;
 
 	.inverted & {
 		@include color-all($C_textHintInverted, true);
+		background: $C_fieldBGinverted--disabled;
 	}
 
-	&,
-	&:hover,
-	&:active {
-		// @include standardBorder(all);
-	}
+	// &,
+	// &:hover,
+	// &:active {
+	// 	@include standardBorder(all);
+	// }
 
 }
 
@@ -361,8 +366,6 @@ Class                   | Description
 //
 %button--small,
 .button--small {
-	font-size: $font-size;
-	// min-height: $space-2;
 	padding: $space-half $space;
 }
 
@@ -375,16 +378,14 @@ Class                   | Description
 	display: block;
 	width: 100%;
 	text-align: center;
-	padding: 0.5em;
 }
 
 //
 // Icon buttons
 //
-$_iconGutter: $space;
-%button--icon,
-.button--icon,
-.button--icon.button--fullWidth {
+%button-icon,
+.button-icon,
+.button-icon.button--fullWidth {
 	@include display(inline-flex);
 	@include flex-wrap(nowrap);
 	@include flex-direction(row);
@@ -400,7 +401,7 @@ $_iconGutter: $space;
 	@include align-self(center);
 }
 
-.button--label {
+.button-label {
 	text-align: center;
 
 	// this full shorthand property for `flex`
@@ -409,25 +410,6 @@ $_iconGutter: $space;
 
 	.button--icon-wrapper & {
 		padding-left: $space/4;
-	}
-}
-
-.button-icon {
-	@include flex-grow(0);
-	@include flex-shrink(0);
-	@include flex-basis(auto);
-	width: initial;
-	line-height: 0;
-
-	&:first-child {
-		margin-right: $_iconGutter;
-	}
-	&:last-child {
-		margin-left: $_iconGutter;
-	}
-
-	.button--fullWidth & {
-		margin: 0;
 	}
 }
 

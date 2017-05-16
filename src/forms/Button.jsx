@@ -44,12 +44,12 @@ class Button extends React.Component {
 		const iconChildren = (
 			<Flex className='button--icon-wrapper' {...opts}>
 				{icon &&
-					<FlexItem shrink className='button--icon valign--middle'>
+					<FlexItem shrink className='button-icon valign--middle'>
 						{icon}
 					</FlexItem>
 				}
 				{children &&
-					<FlexItem className='button--label valign--middle align--center atMedium_align--left'>
+					<FlexItem className='button-label valign--middle align--center atMedium_align--left'>
 						{children}
 					</FlexItem>
 				}
