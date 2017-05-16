@@ -55,6 +55,9 @@ storiesOf('Button', module)
 			<Button onClick={action('clicked')} reset>Button Label</Button>
 		</Inverted>
 	))
+	.add('Reset - Disabled', () => (
+		<Button onClick={action('clicked')} reset disabled>Button Label</Button>
+	))
 	.add('Full Width', () => (
 		<Button onClick={action('clicked')} fullWidth>Button Label</Button>
 	))
