@@ -2,7 +2,7 @@ $C_accent: rgba(241,58,89,1);
 $C_fieldBG: rgba(0,0,0,.09);
 $C_fieldBGInverted: $C_borderInverted;
 $C_fieldBGInverted--primary: $C_borderDarkInverted;
-$C_fieldBGDisabled: rgba(0,0,0,.02);
+$C_fieldBG--disabled: rgba(0,0,0,.02);
 $C_fieldBGinverted--disabled: rgba(255,255,255,.05);
 /*doc
 ---
@@ -47,7 +47,6 @@ _(The `extend` directive can cause ugly cascade problems)_
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	border-radius: $defaultRadius;
-	background: transparent;
 	font-size: $font-size;
 	font-weight: $W_medium;
 	line-height: $line-height;
@@ -61,6 +60,36 @@ _(The `extend` directive can cause ugly cascade problems)_
 		min-height: 0;
 		padding-top: 0.33em;
 		padding-bottom: 0.5em;
+	}
+}
+
+/*doc
+---
+title: Button base mixin
+name: buttonBaseMixin
+parent: buttons
+---
+Applies button color-related styles using a mixin.
+
+```
+@include buttonColor();
+```
+*/
+@mixin buttonColor(
+	$bgColor: $C_fieldBG,
+	$hoverColor: opacify($bgColor, .05),
+	$activeColor: opacify($hoverColor, .1)
+) {
+	@include color-all(getPrimaryTextColor($bgColor));
+	background: $bgColor;
+
+	&:hover,
+	&:focus {
+		background: $hoverColor;
+	}
+
+	&:active {
+		background: $activeColor;
 	}
 }
 
@@ -104,64 +133,6 @@ _(The `extend` directive can cause ugly cascade problems)_
 		background: $C_selection;
 	}
 }
-
-/*doc
----
-title: Button hover placeholder
-name: buttonHoverPlaceholder
-parent: buttons
----
-Applies default button `:hover`,
-`:active`, and `:focus` styles
-
-```
-// lightens "bgColor" on hover
-@mixin buttonHover($bgColor: $C_textPrimary);
-```
-*/
-@mixin buttonHover($bgColor: $C_textPrimary) {
-	&:hover,
-	&:focus {
-		background: transparentize($bgColor, .8);
-		border-color: transparent;
-	}
-
-	&:active {
-		background: transparentize($bgColor, .75);
-		border-color: transparent;
-	}
-}
-
-
-/*doc
----
-title: Button color mixin
-name: buttonColorMixin
-parent: button
----
-Sets color properties for a button
-
-```
-.button--myOrangeButton {
-	@include buttonColor(orange);
-}
-```
-*/
-@mixin buttonColor($bgColor: $C_button) {
-	@include color-all(getPrimaryTextColor($bgColor), true);
-	background: $bgColor;
-	border-color: $bgColor;
-
-	&:hover,
-	&:focus {
-		background: darken($bgColor, 8%);
-	}
-
-	&:active {
-		background: darken($bgColor, 12%);
-	}
-}
-
 
 /*doc
 ---
@@ -260,81 +231,57 @@ Class                   | Description
 
 .button {
 	@include buttonBase();
-	@include buttonHover();
-	@include color-all($C_textPrimary);
-	background: $C_fieldBG;
+	@include buttonColor();
+	@include color-all($C_textSecondary);
 
-	.inverted &:hover {
-		background: opacify($C_fieldBGInverted, .05);
+	.inverted & {
+		@include buttonColor(
+			$bgColor: $C_fieldBGInverted,
+			$hoverColor: opacify($C_fieldBGInverted, .05),
+			$activeColor: opacify($C_fieldBGInverted, .1)
+		);
 	}
 }
 
 %button--primary,
 .button--primary {
-	@include buttonColor($C_accent);
-
+	@include buttonColor(
+		$bgColor: $C_accent,
+		$hoverColor: transparentize($C_accent, .2),
+		$activeColor: transparentize($C_accent, .4)
+	);
 	.inverted & {
-		@include standardBorder(none);
-
-		&.button--contrast {
-			@include buttonColor($C_contentBG);
-			&:hover,
-			&:focus {
-				background: $C_borderDarkInverted;
-			}
-
-			&:active {
-				background: transparentize($C_borderDarkInverted, .1);
-			}
-
-		}
-
+		@include buttonColor(
+			$bgColor: $C_contentBG,
+			$hoverColor: transparentize($C_contentBG, .2),
+			$activeColor: transparentize($C_contentBG, .4)
+		);
 	}
-
 }
-
-%button--contrast,
-.button--contrast {
-	@include color-all( $C_textPrimary ); // should remove this style if nobody is using outside of .inverted context
-	background: $C_fieldBGInverted;
-
-	.inverted & {
-		@include color-all( $C_textPrimaryInverted );
-
-		&:hover,
-		&:focus {
-			background: opacify($C_fieldBGInverted, .05);
-		}
-
-		&:active {
-			background: opacify($C_fieldBGInverted, .1);
-		}
-
-	}
-
-}
-
 
 //
 // Disabled buttons
 //
 .button[disabled],
 .button--disabled {
-	@include color-all($C_textSecondary, true);
+	@include buttonColor(
+		$bgColor: $C_fieldBG--disabled,
+		$hoverColor: $C_fieldBG--disabled,
+		$activeColor: $C_fieldBG--disabled
+	);
+
+	@include color-all($C_textHint);
 	outline: none;
-	background: $C_fieldBGDisabled;
 	cursor: default;
 
 	.inverted & {
-		@include color-all($C_textHintInverted, true);
-		background: $C_fieldBGinverted--disabled;
+		@include buttonColor(
+			$bgColor: $C_fieldBGinverted--disabled,
+			$hoverColor: $C_fieldBGinverted--disabled,
+			$activeColor: $C_fieldBGinverted--disabled
+		);
+		@include color-all($C_textHintInverted);
 	}
-
-	// &,
-	// &:hover,
-	// &:active {
-	// 	@include standardBorder(all);
-	// }
 
 }
 
@@ -342,21 +289,33 @@ Class                   | Description
 // Reset buttons
 //
 .button--reset {
+	@include buttonColor(
+		$bgColor: transparent,
+		$hoverColor: transparent,
+		$activeColor: transparent
+	);
 	@include color-all($C_textPrimary);
-	@include buttonHover(transparent);
-	@include standardBorder(none);
 	border-radius: 0;
 	font-weight: normal;
-	min-height: 0;
 	padding: 0;
 
 	&,
 	&.button--disabled,
 	&.button[disabled] {
-		background: transparent;
+		@include buttonColor(
+			$bgColor: transparent,
+			$hoverColor: transparent,
+			$activeColor: transparent
+		);
+		@include color-all($C_textPrimary);
 	}
 
 	.inverted & {
+		@include buttonColor(
+			$bgColor: transparent,
+			$hoverColor: transparent,
+			$activeColor: transparent
+		);
 		@include color-all($C_textPrimaryInverted);
 	}
 }
@@ -376,26 +335,13 @@ Class                   | Description
 .button--fullWidth,
 .button.span-100 {
 	display: block;
-	width: 100%;
 	text-align: center;
+	width: 100%;
 }
 
 //
 // Icon buttons
 //
-%button-icon,
-.button-icon,
-.button-icon.button--fullWidth {
-	@include display(inline-flex);
-	@include flex-wrap(nowrap);
-	@include flex-direction(row);
-	@include justify-content(space-between);
-
-	.atAll_flex--rowReverse.button--icon-wrapper & {
-		padding-left: $space/4;
-	}
-}
-
 .button-label,
 .button-icon {
 	@include align-self(center);
@@ -411,16 +357,4 @@ Class                   | Description
 	.button--icon-wrapper & {
 		padding-left: $space/4;
 	}
-}
-
-.button--small .button-icon {
-	min-height: $font-size;
-}
-
-//
-// DEPRECATED
-// .button--borderless => .button--contrast
-//
-.button--borderless {
-	@extend %button--contrast;
 }
