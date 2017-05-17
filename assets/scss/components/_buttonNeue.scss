@@ -51,7 +51,9 @@ _(The `extend` directive can cause ugly cascade problems)_
 	font-weight: $W_medium;
 	line-height: $line-height;
 	outline: 0;
-	padding: $space $space-double;
+	@include responsiveVarContext--base() {
+		padding: $base $base*2;
+	}
 	vertical-align: middle;
 
 	@include browser-ie11() {
@@ -88,47 +90,6 @@ Applies button color-related styles using a mixin.
 
 	&:active {
 		background: $activeColor;
-	}
-}
-
-/*doc
----
-title: Pill base mixin
-name: pillBaseMixin
-parent: buttons
----
-Applies base pill styles using a mixin (for tokens and toggle pills)
-
-_(The `extend` directive can cause ugly cascade problems)_
-
-```
-@include pillBase();
-```
-*/
-@mixin pillBase() {
-	@extend %buttonPersonality;
-	@extend %text--small;
-	@include display(inline-flex);
-	@include flex-direction(row);
-	@include justify-content(center);
-	@include align-items(center);
-	@include transition(background .15s);
-	@include standardBorder(all);
-	vertical-align: middle;
-	box-sizing: border-box;
-	-webkit-appearance: none;
-	border-radius: $defaultRadius;
-	background: transparent;
-	min-height: $space-2;
-	outline: 0;
-	padding: 0 $space/2;
-	margin: 0;
-	font-weight: normal;
-
-	&:hover,
-	&:active,
-	&:focus {
-		background: $C_selection;
 	}
 }
 
@@ -238,7 +199,6 @@ Class                   | Description
 			$hoverColor: opacify($C_fieldBGInverted, .05),
 			$activeColor: opacify($C_fieldBGInverted, .1)
 		);
-		@include color-all($C_textSecondaryInverted);
 	}
 }
 
@@ -357,3 +317,7 @@ Class                   | Description
 		padding-left: $space/4;
 	}
 }
+
+
+
+
