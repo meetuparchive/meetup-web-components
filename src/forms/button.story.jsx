@@ -21,30 +21,30 @@ storiesOf('Button', module)
 			</InfoWrapper>
 		)
 	)
-	.add('Contrast', () => (
-		<Button onClick={action('clicked')} contrast>Button Label</Button>
-	))
+	// .add('Contrast', () => (
+	// 	<Button onClick={action('clicked')} contrast>Button Label</Button>
+	// ))
 	.add('Disabled', () => (
 		<Button onClick={action('clicked')} disabled>Button Label</Button>
 	))
 	.add('Default - inverted', () => (
 		<Inverted>
-			<Button onClick={action('clicked')}>Button Label</Button>
+			<Button onClick={action('clicked')} contrast>Button Label</Button>
 		</Inverted>
 	))
 	.add('Primary - inverted', () => (
 		<Inverted>
-			<Button onClick={action('clicked')} primary>Button Label</Button>
+			<Button onClick={action('clicked')}primary contrast>Button Label</Button>
 		</Inverted>
 	))
-	.add('Contrast - inverted', () => (
-		<Inverted>
-			<Button onClick={action('clicked')} contrast>Button Label</Button>
-		</Inverted>
-	))
+	// .add('Contrast - inverted', () => (
+	// 	<Inverted>
+	// 		<Button onClick={action('clicked')} contrast>Button Label</Button>
+	// 	</Inverted>
+	// ))
 	.add('Disabled - inverted', () => (
 		<Inverted>
-			<Button onClick={action('clicked')} disabled>Button Label</Button>
+			<Button onClick={action('clicked')} disabled contrast>Button Label</Button>
 		</Inverted>
 	))
 	.add('Reset', () => (
@@ -54,6 +54,9 @@ storiesOf('Button', module)
 		<Inverted>
 			<Button onClick={action('clicked')} reset>Button Label</Button>
 		</Inverted>
+	))
+	.add('Reset - Disabled', () => (
+		<Button onClick={action('clicked')} reset disabled>Button Label</Button>
 	))
 	.add('Full Width', () => (
 		<Button onClick={action('clicked')} fullWidth>Button Label</Button>
@@ -69,7 +72,7 @@ storiesOf('Button', module)
 	))
 	.add('Icon - inverted', () => (
 		<Inverted>
-			<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />}>Button Label</Button>
+			<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />} contrast>Button Label</Button>
 		</Inverted>
 	))
 	.add('Icon Right', () => (
