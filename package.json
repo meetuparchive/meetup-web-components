@@ -42,8 +42,7 @@
   "dependencies": {
     "autosize": "3.0.20",
     "base64-image-loader": "1.2.0",
-    "flatpickr": "2.5.8",
-    "gh-pages": "1.0.0"
+    "flatpickr": "2.5.8"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
@@ -68,6 +67,7 @@
     "eslint": "3.19.0",
     "eslint-loader": "1.7.1",
     "eslint-plugin-react": "6.10.3",
+    "gh-pages": "1.0.0",
     "husky": "0.13.3",
     "inquirer": "3.0.6",
     "jest-cli": "19.0.2",
