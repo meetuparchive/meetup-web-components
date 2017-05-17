@@ -17,6 +17,9 @@
     "postmerge": "yarn install",
     "precommit": "git status --porcelain | awk 'match($1, \"[ACM]\"){print $2}' | grep '[js|jsx]$' | xargs eslint",
     "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook-static": "build-storybook -c .storybook -o .out",
+    "gh-pages": "gh-pages -d .out -b gh-pages",
+    "deploy": "yarn run storybook-static && yarn run gh-pages",
     "test": "npm-run-all --parallel lint:base coverage",
     "test:base": "jest --config jest.config.json",
     "test:unit": "yarn run test:base -- --silent",
@@ -39,7 +42,8 @@
   "dependencies": {
     "autosize": "3.0.20",
     "base64-image-loader": "1.2.0",
-    "flatpickr": "2.5.8"
+    "flatpickr": "2.5.8",
+    "gh-pages": "1.0.0"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
