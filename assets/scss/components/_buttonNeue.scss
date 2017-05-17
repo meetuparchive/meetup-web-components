@@ -1,0 +1,323 @@
+$C_accent: rgba(241,58,89,1);
+$C_fieldBG: rgba(0,0,0,.09);
+$C_fieldBGInverted: $C_borderInverted;
+$C_fieldBGInverted--primary: $C_borderDarkInverted;
+$C_fieldBG--disabled: rgba(0,0,0,.02);
+$C_fieldBGinverted--disabled: rgba(255,255,255,.05);
+/*doc
+---
+title: Button personality placeholder
+name: buttonPersonality
+parent: button
+---
+Disables user-select, sets cursor, and resets text-decoration.
+
+```
+@extend %buttonPersonality;
+```
+*/
+%buttonPersonality {
+	@include user-select(none);
+	cursor: pointer;
+	text-decoration: none !important;
+}
+
+/*doc
+---
+title: Button base mixin
+name: buttonBaseMixin
+parent: buttons
+---
+Applies base button styles using a mixin.
+
+_(The `extend` directive can cause ugly cascade problems)_
+
+```
+@include buttonBase();
+```
+*/
+@mixin buttonBase() {
+	@extend %buttonPersonality;
+	@include display(inline-flex);
+	@include flex-direction(row);
+	@include justify-content(center);
+	@include align-items(center);
+	@include transition(background .15s);
+	@include standardBorder(none);
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	border-radius: $defaultRadius;
+	font-size: $font-size;
+	font-weight: $W_medium;
+	line-height: $line-height;
+	outline: 0;
+	@include responsiveVarContext--base() {
+		padding: $base $base*2;
+	}
+	vertical-align: middle;
+
+	@include browser-ie11() {
+		min-height: 0;
+		padding-top: 0.33em;
+		padding-bottom: 0.5em;
+	}
+}
+
+/*doc
+---
+title: Button base mixin
+name: buttonBaseMixin
+parent: buttons
+---
+Applies button color-related styles using a mixin.
+
+```
+@include buttonColor();
+```
+*/
+@mixin buttonColor(
+	$bgColor: $C_fieldBG,
+	$hoverColor: opacify($bgColor, .05),
+	$activeColor: opacify($hoverColor, .1)
+) {
+	@include color-all(getPrimaryTextColor($bgColor));
+	background: $bgColor;
+
+	&:hover,
+	&:focus {
+		background: $hoverColor;
+	}
+
+	&:active {
+		background: $activeColor;
+	}
+}
+
+/*doc
+---
+title: Buttons
+name: buttons
+category: UI Components
+---
+
+#### Example
+
+```html_example
+<ul class="list">
+	<li class="list-item chunk">
+		<h3>Standard Buttons</h3>
+		<button class="button" href="#">Button</button>
+		<button class="button button--primary" href="#">Primary Button</button>
+	</li>
+	<li class="list-item chunk stripe--inverted inverted padding--all">
+		<h3>Contrast Buttons</h3>
+		<button class="button button--contrast" href="#">Contrast Button</button>
+		<button class="button button--contrast button--primary" href="#">Primary Contrast Button</button>
+	</li>
+	<li class="list-item chunk">
+		<h3>Small buttons</h3>
+		<div class="chunk">
+			<button class="button button--small" href="#">Small Button</button>
+			<button class="button button--primary button--small" href="#">Small Button</button>
+		</div>
+		<div class="chunk">
+			<span class="text--small">Inline text with button</span><button class="button button--primary button--small margin--left" href="#">Inline button with text</button>
+		</div>
+	</li>
+	<li class="list-item chunk">
+		<h3>Full width button</h3>
+		<div class="chunk">
+			<button class="button button--fullWidth" href="#">Wide load</button>
+		</div>
+		<div class="chunk">
+			<button class="button button--primary button--fullWidth" href="#">Wide load</button>
+		</div>
+	</li>
+	<li class="list-item chunk">
+		<h3>Icon buttons</h3>
+		<div class="chunk">
+			<button class="button button--icon" href="#">
+				<span class="button-label">Button with right Icon</span>
+				<span class="button-icon">X</span>
+			</button>
+		</div>
+		<div class="chunk">
+			<button class="button button--icon button--primary" href="#">
+				<span class="button-icon">X</span>
+				<span class="button-label">Primary button with left Icon</span>
+			</button>
+		</div>
+		<div class="chunk">
+			<button class="button button--primary button--icon button--fullWidth" href="#">
+				<span class="button-icon">ヘ(◕。◕ヘ)</span>
+				<span class="button-label">Full width primary button with left Icon</span>
+			</button>
+		</div>
+	</li>
+	<li class="list-item chunk">
+		<h3>Disabled buttons</h3>
+		<button class="button button--disabled" href="#">Stop</button>
+		<button class="button button--primary" disabled>Can't touch this</button>
+		<input type="submit" class="button" value="Disabled" disabled />
+	</li>
+	<li class="list-item chunk">
+		<h3>Buttons with form fields</h3>
+		<div class="row">
+			<div class="row-item">
+				<input type="text" placeholder="Field by a button" />
+			</div>
+			<div class="row-item row-item--shrink">
+				<button class="button button--primary">Button by a field</button>
+			</div>
+		</div>
+	</li>
+</ul>
+```
+
+#### Button variants
+A class of `.button` is __required__ for buttons. The following
+classes are optional variants:
+
+Class                   | Description
+----------------------- | ----------------------------------------
+`.button--primary`      | rounded button with dark background; for primary actions
+`.button--contrast`     | bold, dark text; use on dark or colorful backgrounds or on photos
+`.button--reset`        | resets default button styles; bold text on transparent background
+`.button--small`        | decreases size of button
+`.button--fullWidth`    | makes button fill width
+`.button--icon`         | button with icon (see example for markup pattern)
+*/
+
+.button {
+	@include buttonBase();
+	@include buttonColor();
+	@include color-all($C_textSecondary);
+
+	.inverted & {
+		@include buttonColor(
+			$bgColor: $C_fieldBGInverted,
+			$hoverColor: opacify($C_fieldBGInverted, .05),
+			$activeColor: opacify($C_fieldBGInverted, .1)
+		);
+	}
+}
+
+%button--primary,
+.button--primary {
+	@include buttonColor(
+		$bgColor: $C_accent,
+		$hoverColor: transparentize($C_accent, .2),
+		$activeColor: transparentize($C_accent, .4)
+	);
+	.inverted & {
+		@include buttonColor(
+			$bgColor: $C_contentBG,
+			$hoverColor: transparentize($C_contentBG, .2),
+			$activeColor: transparentize($C_contentBG, .4)
+		);
+	}
+}
+
+//
+// Disabled buttons
+//
+.button[disabled],
+.button--disabled {
+	@include buttonColor(
+		$bgColor: $C_fieldBG--disabled,
+		$hoverColor: $C_fieldBG--disabled,
+		$activeColor: $C_fieldBG--disabled
+	);
+
+	@include color-all($C_textHint);
+	outline: none;
+	cursor: default;
+
+	.inverted & {
+		@include buttonColor(
+			$bgColor: $C_fieldBGinverted--disabled,
+			$hoverColor: $C_fieldBGinverted--disabled,
+			$activeColor: $C_fieldBGinverted--disabled
+		);
+		@include color-all($C_textHintInverted);
+	}
+
+}
+
+//
+// Reset buttons
+//
+.button--reset {
+	@include buttonColor(
+		$bgColor: transparent,
+		$hoverColor: transparent,
+		$activeColor: transparent
+	);
+	@include color-all($C_textPrimary);
+	border-radius: 0;
+	font-weight: normal;
+	padding: 0;
+
+	&,
+	&.button--disabled,
+	&.button[disabled] {
+		@include buttonColor(
+			$bgColor: transparent,
+			$hoverColor: transparent,
+			$activeColor: transparent
+		);
+		@include color-all($C_textPrimary);
+	}
+
+	.inverted & {
+		@include buttonColor(
+			$bgColor: transparent,
+			$hoverColor: transparent,
+			$activeColor: transparent
+		);
+		@include color-all($C_textPrimaryInverted);
+	}
+}
+
+//
+// Button size modifiers
+//
+%button--small,
+.button--small {
+	padding: $space-half $space;
+}
+
+//
+// Full width button
+//
+%button--fullWidth,
+.button--fullWidth,
+.button.span-100 {
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+
+//
+// Icon buttons
+//
+.button-label,
+.button-icon {
+	@include align-self(center);
+}
+
+.button-label {
+	text-align: center;
+
+	// this full shorthand property for `flex`
+	// is required to prevent IE11 from "shrinkwrapping" text nodes
+	@include flex(1 1 auto);
+
+	.button--icon-wrapper & {
+		padding-left: $space/4;
+	}
+}
+
+
+
+
