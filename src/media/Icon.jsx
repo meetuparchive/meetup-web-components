@@ -47,16 +47,15 @@ class Icon extends React.PureComponent {
 			className
 		);
 
-		const viewBox = size === 'auto' ? MEDIA_SIZES['xl'] : MEDIA_SIZES[size];
-		const dim = MEDIA_SIZES[size];
+		const sizeVal = MEDIA_SIZES[size];
 
 		return (
 			<span className={classNames}>
 				<svg
 					preserveAspectRatio='xMinYMin meet'
-					width={dim}
-					height={dim}
-					viewBox={`0 0 ${viewBox} ${viewBox}`}
+					width={sizeVal}
+					height={sizeVal}
+					viewBox={`0 0 ${sizeVal} ${sizeVal}`}
 					className='svg-icon valign--middle'
 					role='img'
 					{...other}>
@@ -68,12 +67,12 @@ class Icon extends React.PureComponent {
 }
 
 Icon.defaultProps = {
-	size: 'm'
+	size: 's'
 };
 
 Icon.propTypes = {
 	shape: React.PropTypes.string.isRequired,
-	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'auto'])
+	size: React.PropTypes.oneOf(Object.keys(MEDIA_SIZES))
 };
 
 export default Icon;

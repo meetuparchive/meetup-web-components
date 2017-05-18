@@ -79,7 +79,7 @@
     "sass-loader": "6.0.3",
     "storybook-addon-i18n-tools": "1.0.0",
     "style-loader": "0.16.1",
-    "swarm-icons": "0.2.2",
+    "swarm-icons": "1.0.0",
     "swarm-sasstools": "1.3.14",
     "webpack": "2.4.1"
   }

@@ -52,9 +52,13 @@ storiesOf('Icon', module)
 			<Icon shape={ICON_NAME} size='xl' />
 		</div>
 	))
-	.add('Auto', () => (
-		<div className='margin--center'>
-			<Icon shape={ICON_NAME} size='auto' />
-		</div>
-	));
+	.addWithInfo(
+		'Loading indicator',
+		'The `updates` icon is animated by default.',
+		() => (
+			<div className='margin--center padding--all'>
+				<Icon shape='updates' size='l' />
+			</div>
+		)
+	);
 
