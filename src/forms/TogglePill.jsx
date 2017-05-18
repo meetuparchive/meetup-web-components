@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import Toggle from './Toggle';
 import Icon from '../media/Icon';
 
 export const TOGGLE_PILL_CLASS = 'toggleButton';
@@ -14,7 +15,7 @@ export default class TogglePill extends React.Component {
 	constructor (props) {
 		super(props);
 
-		this.state = {isChecked: props.checked || false};
+		this.state = {isChecked: props.isChecked || false};
 
 		this.onChange = this.onChange.bind(this);
 	}
@@ -35,10 +36,15 @@ export default class TogglePill extends React.Component {
 			children,
 			className,
 			topic,
+			isChecked,
+			onChange,
 			...other
 		} = this.props;
 
-		delete other.onChange; // onChange is consumed in this.onChange - do not pass it along to children
+		let {
+			activeIconShape,
+			inactiveIconShape
+		} = this.props;
 
 		const classNames = cx(
 			TOGGLE_PILL_CLASS,
@@ -48,45 +54,43 @@ export default class TogglePill extends React.Component {
 			className
 		);
 
+		activeIconShape = topic ? 'plus' : activeIconShape;
+		inactiveIconShape = topic ? 'minus' : inactiveIconShape;
+
 		// ---
-		// Topic variant
-		const topicClassName = cx(
-			'toggleButton-icon',
+		// Icon variant
+		const iconClassName = cx(
+			'toggle-icon',
 			{
-				'toggleButton-icon--active' : this.state.isChecked,
-				'toggleButton-icon--inactive' : (!this.state.isChecked)
+				'toggle-icon--active' : this.state.isChecked,
+				'toggle-icon--inactive' : (!this.state.isChecked)
 			}
 		);
 
-		const topicShape = (this.state.isChecked) ? 'heart' : 'heart-outline';
+		const iconShape = (this.state.isChecked) ? activeIconShape : inactiveIconShape;
 
-		const topicChildren = (
+		const iconComponent = (
 			<Icon
-				className={topicClassName}
-				shape={topicShape}
+				className={iconClassName}
+				shape={iconShape}
 				size='xs'
 				label='Active Topic Pill Icon'/>
 		);
 		// ---
 
 		return (
-			<div className={classNames}>
-				<input
-					className='toggleButton-input'
-					type='checkbox'
-					id={id}
-					name={name}
-					value={value}
-					checked={this.state.isChecked}
-					onChange={this.onChange}
-					{...other} />
-				<label
-					className='toggleButton-label'
-					htmlFor={id}>
-						{children}
-						{(topic) ? topicChildren : null}
-				</label>
-			</div>
+			<Toggle
+				className={classNames}
+				id={id}
+				name={name}
+				value={value}
+				isChecked={isChecked}
+				onChange={onChange}
+				{...other}
+				>
+				{(inactiveIconShape) ? iconComponent : null}
+				{children}
+			</Toggle>
 		);
 	}
 }
@@ -96,10 +100,12 @@ TogglePill.protoTypes = {
 	name: React.PropTypes.string.isRequired,
 	value: React.PropTypes.string.isRequired,
 	children: React.PropTypes.node.isRequired,
-	checked: React.PropTypes.bool,
-	topic: React.PropTypes.bool
+	isChecked: React.PropTypes.bool,
+	onChange: React.PropTypes.func,
+	topic: React.PropTypes.bool,
+	activeIconShape: React.PropTypes.string,
+	inactiveIconShape: React.PropTypes.string
 };
 TogglePill.defaultProps = {
-	checked: false
 };
 
