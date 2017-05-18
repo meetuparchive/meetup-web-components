@@ -74,6 +74,15 @@ describe('Modal', () => {
 
 		expect(spyable.onDismiss).toHaveBeenCalled();
 	});
+
+	it('should not render a close button', () => {
+		const modal = TestUtils.renderIntoDocument(
+			<Modal closeArea={false}>{content}</Modal>
+		);
+		const closeButtons = TestUtils
+			.scryRenderedDOMComponentsWithClass(modal, MODAL_CLOSE_BUTTON);
+		expect(closeButtons).toHaveLength(0);
+	});
 });
 
 describe('Modal hero header', () => {

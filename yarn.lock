@@ -3955,9 +3955,9 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
 
-meetup-swatches@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/meetup-swatches/-/meetup-swatches-3.1.1.tgz#71d150983deab5f353c77367c6935e126614919e"
+meetup-swatches@3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/meetup-swatches/-/meetup-swatches-3.1.4.tgz#20bd45347adfe6595b9a164940cb5572df49905b"
 
 meetup-web-mocks@1.0.183:
   version "1.0.183"
@@ -5914,12 +5914,12 @@ swarm-icons@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.0.0.tgz#eb855da66baa91559ee58497dcd3dd85b7bd2f9a"
 
-swarm-sasstools@1.3.14:
-  version "1.3.14"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.3.14.tgz#443b3a14947369de507366fd26dce1ed37245b31"
+swarm-sasstools@1.4.15:
+  version "1.4.15"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.4.15.tgz#a4309fecfd1db3be67bce825d6280aeb6cdef5bb"
   dependencies:
     bourbon "4.2.3"
-    meetup-swatches "3.1.1"
+    meetup-swatches "3.1.4"
 
 symbol-observable@^1.0.1, symbol-observable@^1.0.2:
   version "1.0.4"
