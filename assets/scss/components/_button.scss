@@ -1,8 +1,3 @@
-$C_accent: rgba(241,58,89,1);
-$C_fieldBG: rgba(0,0,0,.09);
-$C_fieldBGInverted: $C_borderInverted;
-$C_fieldBG--disabled: rgba(0,0,0,.02);
-$C_fieldBGinverted--disabled: rgba(255,255,255,.05);
 /*doc
 ---
 title: Button personality placeholder
@@ -75,9 +70,10 @@ Applies button color-related styles using a mixin.
 @mixin buttonColor(
 	$bgColor: $C_fieldBG,
 	$hoverColor: opacify($bgColor, .05),
-	$activeColor: opacify($hoverColor, .1)
+	$activeColor: opacify($hoverColor, .1),
+	$textColor: getPrimaryTextColor($bgColor)
 ) {
-	@include color-all(getPrimaryTextColor($bgColor));
+	@include color-all($textColor);
 	background: $bgColor;
 
 	&:hover,
@@ -228,14 +224,16 @@ Class                   | Description
 
 .button {
 	@include buttonBase();
-	@include buttonColor();
-	@include color-all($C_textSecondary);
+	@include buttonColor(
+		$textColor: $C_textSecondary
+	);
 
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_fieldBGInverted,
 			$hoverColor: opacify($C_fieldBGInverted, .05),
-			$activeColor: opacify($C_fieldBGInverted, .1)
+			$activeColor: opacify($C_fieldBGInverted, .1),
+			$textColor: $C_textSecondary
 		);
 		@include color-all($C_textSecondaryInverted);
 	}
@@ -265,10 +263,9 @@ Class                   | Description
 	@include buttonColor(
 		$bgColor: $C_fieldBG--disabled,
 		$hoverColor: $C_fieldBG--disabled,
-		$activeColor: $C_fieldBG--disabled
+		$activeColor: $C_fieldBG--disabled,
+		$textColor: $C_textHint
 	);
-
-	@include color-all($C_textHint);
 	outline: none;
 	cursor: default;
 
@@ -290,9 +287,9 @@ Class                   | Description
 	@include buttonColor(
 		$bgColor: transparent,
 		$hoverColor: transparent,
-		$activeColor: transparent
+		$activeColor: transparent,
+		$textColor: $C_textPrimary
 	);
-	@include color-all($C_textPrimary);
 	border-radius: 0;
 	font-weight: normal;
 	padding: 0;
@@ -303,18 +300,18 @@ Class                   | Description
 		@include buttonColor(
 			$bgColor: transparent,
 			$hoverColor: transparent,
-			$activeColor: transparent
+			$activeColor: transparent,
+			$textColor: $C_textPrimary
 		);
-		@include color-all($C_textPrimary);
 	}
 
 	.inverted & {
 		@include buttonColor(
 			$bgColor: transparent,
 			$hoverColor: transparent,
-			$activeColor: transparent
+			$activeColor: transparent,
+			$textColor: $C_textPrimaryInverted
 		);
-		@include color-all($C_textPrimaryInverted);
 	}
 }
 

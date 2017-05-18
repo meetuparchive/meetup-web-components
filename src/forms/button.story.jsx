@@ -26,17 +26,17 @@ storiesOf('Button', module)
 	))
 	.add('Default - inverted', () => (
 		<Inverted>
-			<Button onClick={action('clicked')} contrast>Button Label</Button>
+			<Button onClick={action('clicked')}>Button Label</Button>
 		</Inverted>
 	))
 	.add('Primary - inverted', () => (
 		<Inverted>
-			<Button onClick={action('clicked')}primary contrast>Button Label</Button>
+			<Button onClick={action('clicked')}primary>Button Label</Button>
 		</Inverted>
 	))
 	.add('Disabled - inverted', () => (
 		<Inverted>
-			<Button onClick={action('clicked')} disabled contrast>Button Label</Button>
+			<Button onClick={action('clicked')} disabled>Button Label</Button>
 		</Inverted>
 	))
 	.add('Reset', () => (
@@ -64,7 +64,7 @@ storiesOf('Button', module)
 	))
 	.add('Icon - inverted', () => (
 		<Inverted>
-			<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />} contrast>Button Label</Button>
+			<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />}>Button Label</Button>
 		</Inverted>
 	))
 	.add('Icon Right', () => (
