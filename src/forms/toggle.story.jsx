@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import { decorateWithLocale } from '../utils/decorators';
 import { InfoWrapper } from '../utils/storyComponents';
+import Icon from '../media/Icon';
 import Toggle from './Toggle';
 
 const onChange = e => {
@@ -25,7 +26,17 @@ storiesOf('Toggle', module)
 				</Toggle>
 			</InfoWrapper>
 		)
-	).add('custom classes', () => (
+	).add('Default Selected', () => (
+		<Toggle
+			onChange={onChange}
+			id='toggleId'
+			name='toggleName'
+			value='toggle'
+			isChecked
+		>
+			Toggle Pill Label
+		</Toggle>
+	)).add('custom classes', () => (
 		<Toggle
 			onChange={onChange}
 			id='toggleId'
@@ -40,6 +51,7 @@ storiesOf('Toggle', module)
 		<div>
 			{/* Like button */}
 			<Toggle
+				reset
 				onChange={onChange}
 				id='toggleId'
 				name='toggleName'
@@ -47,7 +59,10 @@ storiesOf('Toggle', module)
 				activeClass='custom--active'
 				inactiveClass='custom--inactive'
 			>
-				Toggle Label
+				<span className='display--block align--center'>
+					<Icon shape='heart' size='s' />
+					<p className='text--small'>Heart</p>
+				</span>
 			</Toggle>
 
 			{/* "Interested" button */}
@@ -62,4 +77,14 @@ storiesOf('Toggle', module)
 				Toggle Label
 			</Toggle>
 		</div>
+	)).add('Topic Pill', () => (
+		<Toggle
+			topic
+			onChange={onChange}
+			id='togglePillId'
+			name='togglePillName'
+			value='toggle-pill'
+		>
+			Toggle Pill Label
+		</Toggle>
 	));

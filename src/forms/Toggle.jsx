@@ -1,7 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
+import Icon from '../media/Icon';
 
 export const TOGGLE_CLASS = 'toggle';
+export const TOGGLE_PILL_CLASS = 'toggleButton';
 
 /**
  * SQ2 Toggle Pill component
@@ -35,6 +37,8 @@ export default class Toggle extends React.Component {
 			className,
 			isChecked, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
+			topic,
+			reset,
 			activeClass,
 			inactiveClass,
 			...other
@@ -42,14 +46,44 @@ export default class Toggle extends React.Component {
 
 		delete other.onChange; // onChange is consumed in this.onChange - do not pass it along to children
 
+		let {
+			activeIconShape,
+			inactiveIconShape
+		} = this.props;
+
 		const classNames = cx(
 			TOGGLE_CLASS,
 			{
+				[TOGGLE_PILL_CLASS] : !reset,
 				[activeClass] : activeClass && this.state.isChecked,
 				[inactiveClass] : inactiveClass && (!this.state.isChecked),
 			},
 			className
 		);
+
+		activeIconShape = topic ? 'plus' : activeIconShape;
+		inactiveIconShape = topic ? 'minus' : inactiveIconShape;
+
+		// ---
+		// Icon variant
+		const iconClassName = cx(
+			'toggle-icon',
+			{
+				'toggle-icon--active' : this.state.isChecked,
+				'toggle-icon--inactive' : (!this.state.isChecked)
+			}
+		);
+
+		const iconShape = (this.state.isChecked) ? activeIconShape : inactiveIconShape;
+
+		const iconComponent = (
+			<Icon
+				className={iconClassName}
+				shape={iconShape}
+				size='xs'
+				label='Active Topic Pill Icon'/>
+		);
+		// ---
 
 		return (
 			<div className={classNames}>
@@ -65,6 +99,7 @@ export default class Toggle extends React.Component {
 				<label
 					className='toggle-label'
 					htmlFor={id}>
+						{(inactiveIconShape && !reset) ? iconComponent : null}
 						{children}
 				</label>
 			</div>
@@ -78,8 +113,12 @@ Toggle.protoTypes = {
 	value: React.PropTypes.string.isRequired,
 	children: React.PropTypes.node.isRequired,
 	onChange: React.PropTypes.func,
+	reset: React.PropTypes.bool,
 	activeClass: React.PropTypes.string,
 	inactiveClass: React.PropTypes.string,
+	activeIconShape: React.PropTypes.string,
+	inactiveIconShape: React.PropTypes.string,
+	topic: React.PropTypes.bool
 };
 Toggle.defaultProps = {
 	activeClass: 'toggle--active',

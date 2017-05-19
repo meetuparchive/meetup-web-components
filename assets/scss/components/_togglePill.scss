@@ -116,14 +116,14 @@ Checkbox form elements styled as toggle buttons.
 	}
 
 	.toggle-icon {
-		@include color-all($C_textHint);
+		// @include color-all($C_textHint);
 		margin-left: 0.5em; // relative sizing because icon could be 's' or 'xs'
 	}
 
 	.toggle-input {
 		&:checked + .toggle-label {
 			@include animate--bounceInSubtle();
-			@include color-all($C_textPrimary);
+			// @include color-all($C_textPrimary);
 			background: $C_lightGray;
 			border-color: $C_border;
 			font-weight: $W_bold;
