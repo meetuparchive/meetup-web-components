@@ -39,8 +39,6 @@ class Icon extends React.PureComponent {
 			...other
 		} = this.props;
 
-		const generatedShape = getIconShape(shape, size);
-
 		const classNames = cx(
 			ICON_CLASS,
 			`svg--${shape}`,
@@ -59,7 +57,7 @@ class Icon extends React.PureComponent {
 					className='svg-icon valign--middle'
 					role='img'
 					{...other}>
-					<use xlinkHref={`#icon-${generatedShape}`}></use>
+					<use xlinkHref={`#icon-${getIconShape(shape,size)}`}></use>
 				</svg>
 			</span>
 		);
