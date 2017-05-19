@@ -96,6 +96,7 @@ class Textarea extends React.Component {
 				className
 			),
 			label: cx(
+				'label--field',
 				{ required },
 				labelClassName
 			)
