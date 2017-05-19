@@ -15,6 +15,7 @@ Table of Contents
     * [Verifying child elements](#verifying-child-elements)
   * [Linting](#linting)
   * [Storybook](#storybook)
+  * [Release notes](#release-notes)
 
 ## Releases
 
@@ -165,3 +166,16 @@ And open the viewer at [http://localhost:9001](http://localhost:9001)
 All of the available components are listed on the left, and clicking on
 one will open it in the preview pane. Variants are also listed in the left
 column to show how different states affect the rendered component.
+
+## Release notes
+
+### `v1.1.X`
+Icons update
+
+- Updated `swarm-icons` to `1.0.0`
+- Updated `Icon` component to support rendering of separate SVG symbols for `xs` sizes
+- Added `_icon.scss` component sass partial
+	- allows `meetup-web-components` to provide icon styling to consumer apps
+	- changes default icon color to `secondary` from `inherit`
+- Removes unused and confusing `auto` prop from `Icon`
+- Fixed issue where `Icon` would not accept the `xxl` media size
