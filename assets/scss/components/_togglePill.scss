@@ -106,53 +106,75 @@ Checkbox form elements styled as toggle buttons.
 ```
 */
 
-.toggleButton {
+.toggleButton-icon {
+	margin-left: $space-half; // relative sizing because icon could be 's' or 'xs'
+}
+
+.withToggleInput-label {
 	display: inline-block;
-	margin: $space-quarter 0;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
 
-	.toggle-label {
+	.toggleButton {
 		@include pillBase();
-	}
+		margin: $space-quarter 0;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
 
-	.toggle-icon {
-		// @include color-all($C_textHint);
-		margin-left: 0.5em; // relative sizing because icon could be 's' or 'xs'
-	}
+		&:hover,
+		&:focus {
+			background: opacify(rgba(0,0,0,.09), .05);
+		}
 
-	.toggle-input {
-		&:checked + .toggle-label {
-			@include animate--bounceInSubtle();
-			// @include color-all($C_textPrimary);
-			background: $C_lightGray;
-			border-color: $C_border;
-			font-weight: $W_bold;
+		&:active {
+			background: opacify(rgba(0,0,0,.09), .15);
+		}
+
+		.inverted & {
+			@include color-all($C_textSecondaryInverted);
+			background: $C_borderInverted;
+
 
 			&:hover,
-			&:active,
 			&:focus {
-				background: darken($C_lightGray, 5%);
+				background: opacify($C_borderInverted, .05);
 			}
 
-			// .toggleButton .toggle-icon {
-			// 	@include color-all($C_red);
-			// }
+			&:active {
+				background: opacify($C_borderInverted, .1);
+			}
 
-			// .toggleButton .toggle-icon--active {
-			// 	@include display(inline-flex);
-			// }
+		}
 
-			// .toggleButton .toggle-icon--inactive {
-			// 	display: none;
-			// }
+	}
+
+	.toggleButton--active {
+		@include animate--bounceInSubtle();
+		@include color-all($C_textPrimaryInverted);
+		background: $C_red;
+		border-color: $C_border;
+		font-weight: $W_bold;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background: darken($C_red, 5%);
 		}
 	}
 }
 
-// .toggleButton-icon--inactive {
-// 	@include display(inline-flex);
-// }
+// .withToggleInput-input {
 
-// .toggleButton-icon--active {
-// 	display: none;
+// 	&:checked + .withToggleInput-label .toggleButton {
+// 		@include animate--bounceInSubtle();
+// 		// @include color-all($C_textPrimary);
+// 		background: $C_lightGray;
+// 		border-color: $C_border;
+// 		font-weight: $W_bold;
+
+// 		&:hover,
+// 		&:active,
+// 		&:focus {
+// 			background: darken($C_lightGray, 5%);
+// 		}
+
+// 	}
+
 // }

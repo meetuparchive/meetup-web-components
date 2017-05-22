@@ -11,7 +11,8 @@ import Icon from '../media/Icon';
 class TestComponent extends React.Component {
 	render() {
 		const {
-			isChecked
+			isChecked,
+			children
 		} = this.props;
 
 		const iconShape = isChecked ? 'check' : 'cross';
@@ -24,6 +25,7 @@ class TestComponent extends React.Component {
 					shape={iconShape}
 					size='m' />
 				<p className={toggleClassnames}>{toggleText}</p>
+				{children}
 			</div>
 		);
 	}
@@ -34,6 +36,7 @@ storiesOf('withToggleControl', module)
 	.addDecorator(decorateWithLocale)
 	.addWithInfo('Test component using provided media props', () =>
 		<TestComponentWithToggleControl
+			isChecked
 			id='testControl'
 			name='testControl' />
 	);

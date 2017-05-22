@@ -28,9 +28,16 @@ export const withToggleControl = (
 	}
 
 	onChange(e) {
+		// console.log(`e.target.checked: ${e.target.checked}`);
+		// console.log(`this.state.isChecked: ${this.state.isChecked}`);
+		// console.log(`!this.state.isChecked: ${!this.state.isChecked}`);
+		// console.log(`this.props.isChecked: ${this.props.isChecked}`);
+
 		this.setState({
 			isChecked: e.target.checked
 		});
+
+		console.log(this.state.isChecked);
 	}
 
 	/**
@@ -46,25 +53,32 @@ export const withToggleControl = (
 
 		const {
 			id,
-			name
+			name,
+			value,
+			children,
+			...other
 		} = this.props;
 
 		return (
 			<div>
+				<input
+					type='checkbox'
+					className='withToggleInput-input visibility--a11yHide'
+					onChange={this.onChange}
+					id={id}
+					name={name}
+					value={value}
+					checked={this.state.isChecked} />
 				<label
 					className='withToggleInput-label'
 					htmlFor={id}
 				>
 					<ToggleComponent
 						isChecked={this.state.isChecked}
+						children={children}
+						{...other}
 					/>
 				</label>
-				<input
-					type='checkbox'
-					className='visibility--a11yHide'
-					onChange={this.onChange}
-					id={id}
-					name={name} />
 			</div>
 		);
 
