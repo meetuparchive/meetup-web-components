@@ -85,17 +85,18 @@ export const withMatchMedia = (
 
 	/**
 	 * react lifecycle method
-	 * sets up media queries and listeners
+	 * sets up MediaQueryList listeners
 	 * @returns {undefined}
 	 */
 	componentDidMount() {
-		if (typeof window.matchMedia != undefined) {
-
-			// and add a listener for each
-			this.mediaQueries.forEach(mq => {
-				mq.addListener(this.handleMediaChange);
-			});
+		if (!window.matchMedia) {
+			return;
 		}
+
+		// add listners for every MediaQueryList object
+		this.mediaQueries.forEach(mq => {
+			mq.addListener(this.handleMediaChange);
+		});
 	}
 
 	/**
