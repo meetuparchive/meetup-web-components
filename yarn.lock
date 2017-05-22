@@ -5543,6 +5543,10 @@ sass-loader@6.0.3:
     lodash.tail "^4.1.1"
     pify "^2.3.0"
 
+sass-rem@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/sass-rem/-/sass-rem-1.2.4.tgz#59194e82a58c6d62e551a774f9bf4367ae6b2370"
+
 sax@^1.2.1, sax@~1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.2.tgz#fd8631a23bc7826bef5d871bdb87378c95647828"
@@ -5914,12 +5918,13 @@ swarm-icons@0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-0.2.2.tgz#fd2d8617c7a1de75e1c21cf70611bca1692835f1"
 
-swarm-sasstools@1.4.15:
-  version "1.4.15"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.4.15.tgz#a4309fecfd1db3be67bce825d6280aeb6cdef5bb"
+swarm-sasstools@2.0.14-beta:
+  version "2.0.14-beta"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-2.0.14-beta.tgz#7a10c6100e33e915f96a9a05a6f1662c75275e0a"
   dependencies:
     bourbon "4.2.3"
     meetup-swatches "3.1.4"
+    sass-rem "^1.2.4"
 
 symbol-observable@^1.0.1, symbol-observable@^1.0.2:
   version "1.0.4"
