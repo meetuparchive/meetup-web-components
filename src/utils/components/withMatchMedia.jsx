@@ -60,15 +60,15 @@ export const withMatchMedia = (
 		super(props);
 		validateBreakpoints(breakpoints);
 
-		this.handleMediaChange = this.handleMediaChange.bind(this);
+		// map breakpoint names to MediaQueryList objects...
+		this.mediaQueries = breakpoints
+			.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
 
 		this.state = {
-			media: {}
+			media: getUpdatedMediaState(this.mediaQueries, breakpoints)
 		};
 
-		breakpoints.forEach(bp => {
-			this.state.media[getStateNameByBreakpoint(bp)] = false;
-		});
+		this.handleMediaChange = this.handleMediaChange.bind(this);
 	}
 
 	/**
@@ -91,17 +91,10 @@ export const withMatchMedia = (
 	componentDidMount() {
 		if (typeof window.matchMedia != undefined) {
 
-			// map breakpoints to MediaQueryList objects...
-			this.mediaQueries = breakpoints
-				.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
-
 			// and add a listener for each
 			this.mediaQueries.forEach(mq => {
 				mq.addListener(this.handleMediaChange);
 			});
-
-			// fire media handler immediately on mount to populate `this.state.media`
-			this.handleMediaChange();
 		}
 	}
 

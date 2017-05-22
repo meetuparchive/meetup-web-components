@@ -19,13 +19,11 @@ class TestComponent extends React.Component {
  * @param {Array} breakpoints - breakpoint names to pass to withMatchMedia
  */
 function renderWrappedComponent(breakpoints) {
-	const renderer = TestUtils.createRenderer();
 	const TestComponentWithMatchMedia = MM.withMatchMedia(
 		TestComponent,
 		breakpoints
 	);
-	renderer.render(<TestComponentWithMatchMedia />);
-	return renderer.getRenderOutput();
+	return TestUtils.renderIntoDocument(<TestComponentWithMatchMedia />);
 }
 
 const MATCH_MEDIA_FN_MOCK = (mq) => ({
@@ -35,6 +33,7 @@ const MATCH_MEDIA_FN_MOCK = (mq) => ({
 });
 
 describe('withMatchMedia', () => {
+	window.matchMedia = MATCH_MEDIA_FN_MOCK;
 
 	describe('prop name generator', () => {
 		it('should generate correct prop name from a given breakpoint', () => {
@@ -44,11 +43,30 @@ describe('withMatchMedia', () => {
 		});
 	});
 
+	describe('state management', () => {
+		const actual = MM.getUpdatedMediaState(
+			allBreakpoints
+				.map(bp => window.matchMedia(MEDIA_QUERIES[bp])),
+			allBreakpoints
+		);
+		const expected = {
+			isAtSmallUp: false,
+			isAtMediumUp: false,
+			isAtLargeUp: false,
+			isAtHugeUp: false,
+		};
+		expect(actual).toEqual(expected);
+	});
+
 	describe('media query prop provision', () => {
 
 		it('provides breakpoint props to wrapped component', () => {
 			const wrappedComponent = renderWrappedComponent(allBreakpoints);
-			const actualPropNames = Object.keys(wrappedComponent.props);
+			const innerComponent = TestUtils.findRenderedComponentWithType(
+				wrappedComponent,
+				TestComponent
+			);
+			const actualPropNames = Object.keys(innerComponent.props);
 
 			allBreakpoints.forEach(bp => {
 				const expectedPropName = MM.getStateNameByBreakpoint(bp);
@@ -59,29 +77,17 @@ describe('withMatchMedia', () => {
 		it('does NOT provide breakpoint props for unspecified media queries', () => {
 			const onlyQuery = 'medium';
 			const wrappedComponent = renderWrappedComponent([onlyQuery]);
-			const propNames = Object.keys(wrappedComponent.props);
+			const innerComponent = TestUtils.findRenderedComponentWithType(
+				wrappedComponent,
+				TestComponent
+			);
+			const propNames = Object.keys(innerComponent.props);
 
 			Object.keys(MEDIA_QUERIES)
 				.filter(bp => bp !== onlyQuery)
 				.forEach(bp => {
 					expect(propNames).not.toContain(bp);
 				});
-		});
-	});
-
-	describe('lifecycle', () => {
-		window.matchMedia = MATCH_MEDIA_FN_MOCK;
-
-		it('updates breakpoint props on mount', () => {
-			const wrappedComponent = renderWrappedComponent(allBreakpoints);
-			const wrapperInstance = wrappedComponent.props.withMatchMediaInstance;
-
-			const mountSpy = spyOn(wrapperInstance, 'handleMediaChange');
-
-			expect(mountSpy).not.toHaveBeenCalled();
-			wrapperInstance.componentDidMount();
-			expect(mountSpy).toHaveBeenCalled();
-
 		});
 	});
 });
