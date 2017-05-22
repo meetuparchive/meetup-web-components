@@ -43,7 +43,10 @@ class Section extends React.Component {
 	}
 }
 Section.propTypes = {
-	noSeparator: React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+	noSeparator: React.PropTypes.oneOfType([
+		React.PropTypes.bool,
+		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+	])
 };
 
 export default Section;
