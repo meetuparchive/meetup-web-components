@@ -22,6 +22,6 @@ lib
 /src/media/iconLibrary.story.jsx
 
 # static build of storybook
-.out
+.storybook-out
 
 github_deploy_key
