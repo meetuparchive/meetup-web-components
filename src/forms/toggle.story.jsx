@@ -61,7 +61,7 @@ storiesOf('Toggle', module)
 			>
 				<span className='display--block align--center'>
 					<Icon shape='heart' size='s' />
-					<p className='text--small'>Heart</p>
+					<p className='text--small'>I enjoy this</p>
 				</span>
 			</Toggle>
 
