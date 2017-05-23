@@ -37,52 +37,23 @@ _(The `extend` directive can cause ugly cascade problems)_
 	@include justify-content(center);
 	@include align-items(center);
 	@include transition(background .15s);
-	@include standardBorder(none);
+	@include standardBorder(all);
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	border-radius: $defaultRadius;
+	background: transparent;
 	font-size: $font-size;
-	font-weight: $W_medium;
+	font-weight: $W_bold;
 	line-height: $line-height;
+	min-height: $space-3;
 	outline: 0;
-	padding: $space $space-double;
+	padding: 0 $space;
 	vertical-align: middle;
 
 	@include browser-ie11() {
 		min-height: 0;
 		padding-top: 0.33em;
 		padding-bottom: 0.5em;
-	}
-}
-
-/*doc
----
-title: Button base mixin
-name: buttonBaseMixin
-parent: buttons
----
-Applies button color-related styles using a mixin.
-
-```
-@include buttonColor();
-```
-*/
-@mixin buttonColor(
-	$bgColor: $C_buttonBG,
-	$hoverColor: opacify($bgColor, .05),
-	$activeColor: opacify($hoverColor, .1),
-	$textColor: getPrimaryTextColor($bgColor)
-) {
-	@include color-all($textColor);
-	background: $bgColor;
-
-	&:hover,
-	&:focus {
-		background: $hoverColor;
-	}
-
-	&:active {
-		background: $activeColor;
 	}
 }
 
@@ -126,6 +97,64 @@ _(The `extend` directive can cause ugly cascade problems)_
 		background: $C_selection;
 	}
 }
+
+/*doc
+---
+title: Button hover placeholder
+name: buttonHoverPlaceholder
+parent: buttons
+---
+Applies default button `:hover`,
+`:active`, and `:focus` styles
+
+```
+// lightens "bgColor" on hover
+@mixin buttonHover($bgColor: $C_textPrimary);
+```
+*/
+@mixin buttonHover($bgColor: $C_textPrimary) {
+	&:hover,
+	&:focus {
+		background: transparentize($bgColor, .8);
+		border-color: transparent;
+	}
+
+	&:active {
+		background: transparentize($bgColor, .75);
+		border-color: transparent;
+	}
+}
+
+
+/*doc
+---
+title: Button color mixin
+name: buttonColorMixin
+parent: button
+---
+Sets color properties for a button
+
+```
+.button--myOrangeButton {
+	@include buttonColor(orange);
+}
+```
+*/
+@mixin buttonColor($bgColor: $C_button) {
+	@include color-all(getPrimaryTextColor($bgColor), true);
+	background: $bgColor;
+	border-color: $bgColor;
+
+	&:hover,
+	&:focus {
+			background: darken($bgColor, 8%);
+	}
+
+	&:active {
+		background: darken($bgColor, 12%);
+	}
+}
+
 
 /*doc
 ---
@@ -224,95 +253,88 @@ Class                   | Description
 
 .button {
 	@include buttonBase();
-	@include buttonColor(
-		$textColor: $C_textSecondary
-	);
+	@include buttonHover();
+	@include color-all($C_textPrimary);
+	background: $C_contentBG;
+
+	.inverted &:hover {
+		background: $C_textSecondaryInverted;
+	}
+}
+
+.button--reset {
+	@include buttonHover(transparent);
+	background: transparent;
+	border-width: 0 !important;
+	border-radius: 0;
+	font-weight: normal;
+	min-height: 0;
+	padding: 0;
+
+	&[disabled] {
+		background: transparent !important;
+	}
 
 	.inverted & {
-		@include buttonColor(
-			$bgColor: $C_fieldBGInverted,
-			$hoverColor: opacify($C_fieldBGInverted, .05),
-			$activeColor: opacify($C_fieldBGInverted, .1),
-			$textColor: $C_textSecondary
-		);
-		@include color-all($C_textSecondaryInverted);
+		@include color-all($C_textPrimaryInverted);
 	}
 }
 
 %button--primary,
 .button--primary {
-	@include buttonColor(
-		$bgColor: $C_accent,
-		$hoverColor: transparentize($C_accent, .2),
-		$activeColor: transparentize($C_accent, .4)
-	);
+	@include buttonColor($C_button);
 	.inverted & {
-		@include buttonColor(
-			$bgColor: $C_contentBG,
-			$hoverColor: transparentize($C_contentBG, .2),
-			$activeColor: transparentize($C_contentBG, .4)
-		);
+		@include standardBorder(none);
+	}
+	&.button--contrast {
+		@include buttonColor($C_contentBG);
+		&:hover,
+		&:active,
+		&:focus {
+			background: $C_borderDarkInverted;
+		}
 	}
 }
+
+%button--contrast,
+.button--contrast {
+	@include color-all( $C_textPrimary );
+	.inverted & {
+		@include color-all( $C_textPrimaryInverted );
+	}
+	background: $C_textHint;
+	border-color: $C_borderInverted;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: $C_textHint;
+		border-color: $C_borderDarkInverted;
+	}
+}
+
 
 //
 // Disabled buttons
 //
 .button[disabled],
 .button--disabled {
-	@include buttonColor(
-		$bgColor: $C_fieldBG--disabled,
-		$hoverColor: $C_fieldBG--disabled,
-		$activeColor: $C_fieldBG--disabled,
-		$textColor: $C_textHint
-	);
+	@include color-all($C_textSecondary, true);
+	@include standardBorder(all);
 	outline: none;
+	background: transparentize($C_mediumGray, .88) !important;
 	cursor: default;
 
 	.inverted & {
-		@include buttonColor(
-			$bgColor: $C_fieldBGinverted--disabled,
-			$hoverColor: $C_fieldBGinverted--disabled,
-			$activeColor: $C_fieldBGinverted--disabled
-		);
-		@include color-all($C_textHintInverted);
+		@include color-all($C_textSecondaryInverted, true);
 	}
-
-}
-
-//
-// Reset buttons
-//
-.button--reset {
-	@include buttonColor(
-		$bgColor: transparent,
-		$hoverColor: transparent,
-		$activeColor: transparent,
-		$textColor: $C_textPrimary
-	);
-	border-radius: 0;
-	font-weight: normal;
-	padding: 0;
 
 	&,
-	&.button--disabled,
-	&.button[disabled] {
-		@include buttonColor(
-			$bgColor: transparent,
-			$hoverColor: transparent,
-			$activeColor: transparent,
-			$textColor: $C_textPrimary
-		);
+	&:hover,
+	&:active {
+		@include standardBorder(all);
 	}
 
-	.inverted & {
-		@include buttonColor(
-			$bgColor: transparent,
-			$hoverColor: transparent,
-			$activeColor: transparent,
-			$textColor: $C_textPrimaryInverted
-		);
-	}
 }
 
 //
@@ -320,7 +342,9 @@ Class                   | Description
 //
 %button--small,
 .button--small {
-	padding: $space-half $space;
+	font-size: $font-size-small;
+	min-height: $space-2;
+	padding: 0 $space-half;
 }
 
 //
@@ -330,13 +354,28 @@ Class                   | Description
 .button--fullWidth,
 .button.span-100 {
 	display: block;
-	text-align: center;
 	width: 100%;
+	text-align: center;
+	padding: 0.5em;
 }
 
 //
 // Icon buttons
 //
+$_iconGutter: $space;
+%button--icon,
+.button--icon,
+.button--icon.button--fullWidth {
+	@include display(inline-flex);
+	@include flex-wrap(nowrap);
+	@include flex-direction(row);
+	@include justify-content(space-between);
+
+	.atAll_flex--rowReverse.button--icon-wrapper & {
+		padding-left: $space/4;
+	}
+}
+
 .button-label,
 .button-icon {
 	@include align-self(center);
@@ -349,12 +388,38 @@ Class                   | Description
 	// is required to prevent IE11 from "shrinkwrapping" text nodes
 	@include flex(1 1 auto);
 
-	.button-icon-wrapper & {
+	.button--icon-wrapper & {
 		padding-left: $space/4;
 	}
+}
 
-	.button-icon-wrapper--right & {
-		padding-right: $space/4;
+.button-icon {
+	@include flex-grow(0);
+	@include flex-shrink(0);
+	@include flex-basis(auto);
+	width: initial;
+	line-height: 0;
+
+	&:first-child {
+		margin-right: $_iconGutter;
+	}
+	&:last-child {
+		margin-left: $_iconGutter;
 	}
 
+	.button--fullWidth & {
+		margin: 0;
+	}
+}
+
+.button--small .button-icon {
+	min-height: $font-size;
+}
+
+//
+// DEPRECATED
+// .button--borderless => .button--contrast
+//
+.button--borderless {
+	@extend %button--contrast;
 }
