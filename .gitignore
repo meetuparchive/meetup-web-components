@@ -21,4 +21,7 @@ lib
 # Generated icon library file
 /src/media/iconLibrary.story.jsx
 
+# static build of storybook
+.storybook-out
+
 github_deploy_key
