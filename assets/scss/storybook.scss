@@ -27,6 +27,9 @@ div[data-reactroot] {
 // sasstools CSS reset
 @import "~swarm-sasstools/scss/reset/all";
 
+// color vars
+@import "./util/color-mappings";
+
 // all meetup-web-components component partials
 @import "./components/all";
 
