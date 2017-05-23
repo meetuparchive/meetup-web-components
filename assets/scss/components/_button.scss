@@ -68,7 +68,7 @@ Applies button color-related styles using a mixin.
 ```
 */
 @mixin buttonColor(
-	$bgColor: $C_fieldBG,
+	$bgColor: $C_buttonBG,
 	$hoverColor: opacify($bgColor, .05),
 	$activeColor: opacify($hoverColor, .1),
 	$textColor: getPrimaryTextColor($bgColor)
@@ -349,7 +349,12 @@ Class                   | Description
 	// is required to prevent IE11 from "shrinkwrapping" text nodes
 	@include flex(1 1 auto);
 
-	.button--icon-wrapper & {
+	.button-icon-wrapper & {
 		padding-left: $space/4;
 	}
+
+	.button-icon-wrapper--right & {
+		padding-right: $space/4;
+	}
+
 }

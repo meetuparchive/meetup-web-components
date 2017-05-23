@@ -30,22 +30,30 @@ class Button extends React.Component {
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			BUTTON_CLASS,
-			{
-				'button--fullWidth': fullWidth,
-				'button--primary': primary,
-				'button--small': small,
-				'button--reset': reset,
-			},
-			className
-		);
+		const classNames = {
+			button: cx(
+				BUTTON_CLASS,
+				{
+					'button--fullWidth': fullWidth,
+					'button--primary': primary,
+					'button--small': small,
+					'button--reset': reset,
+				},
+				className
+			),
+			iconWrap: cx(
+				BUTTON_ICON_WRAPPER_CLASS,
+				{
+					[`${BUTTON_ICON_WRAPPER_CLASS}--right`]: right
+				}
+			)
+		};
 		const opts = right ? { rowReverse: 'all' } : {};
 
 		const iconChildren = (
-			<Flex className={BUTTON_ICON_WRAPPER_CLASS} {...opts}>
+			<Flex className={classNames.iconWrap} {...opts}>
 				{icon &&
-					<FlexItem shrink className={`${BUTTON_ICON_CLASS} valign--middle`}>
+					<FlexItem shrink className={`${BUTTON_ICON_CLASS} valign--middle flush--left`}>
 						{icon}
 					</FlexItem>
 				}
@@ -59,7 +67,7 @@ class Button extends React.Component {
 
 		return (
 			<button
-				className={classNames}
+				className={classNames.button}
 				onClick={onClick}
 				role='button'
 				{...other}
