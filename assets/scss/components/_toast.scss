@@ -1,0 +1,10 @@
+.toast {
+	border: 1px solid $C_border;
+	border-radius: $defaultRadius;
+	display: block;
+	left: $space;
+	position: absolute;
+	right: $space;
+	top: $space;
+	width: auto;
+}
