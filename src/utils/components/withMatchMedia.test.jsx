@@ -44,18 +44,20 @@ describe('withMatchMedia', () => {
 	});
 
 	describe('state management', () => {
-		const actual = MM.getUpdatedMediaState(
-			allBreakpoints
-				.map(bp => window.matchMedia(MEDIA_QUERIES[bp])),
-			allBreakpoints
-		);
-		const expected = {
-			isAtSmallUp: false,
-			isAtMediumUp: false,
-			isAtLargeUp: false,
-			isAtHugeUp: false,
-		};
-		expect(actual).toEqual(expected);
+		it('build state object with boolean values (mocked to false)', () => {
+			const actual = MM.getUpdatedMediaState(
+				allBreakpoints
+					.map(bp => window.matchMedia(MEDIA_QUERIES[bp])),
+				allBreakpoints
+			);
+			const expected = {
+				isAtSmallUp: false,
+				isAtMediumUp: false,
+				isAtLargeUp: false,
+				isAtHugeUp: false,
+			};
+			expect(actual).toEqual(expected);
+		});
 	});
 
 	describe('media query prop provision', () => {

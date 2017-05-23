@@ -6,21 +6,20 @@ import { MEDIA_QUERIES } from '../designConstants';
  * @returns {String} - state property name (for example, isAtMediumUp)
  */
 export const getStateNameByBreakpoint = breakpoint => {
-	const capitalizedBp = breakpoint[0].toUpperCase() + breakpoint.slice(1);
+	const capitalizedBp = `${breakpoint.substr(0,1).toUpperCase()}${breakpoint.substr(1)}`;
 	return `isAt${capitalizedBp}Up`;
 };
 
 /**
  * @param {Array} mediaQueries - list of matchMedia-created MediaQueryList objects
  * @param {Array} breakpoints - array of breakpoint names that were passed to HOC
+ * @returns {Object} - updated `state` object for `withMatchMedia`
  */
-export const getUpdatedMediaState = (mediaQueries, breakpoints) => {
-	const updatedMedia = {};
-	mediaQueries.forEach((mq, i) => {
-		updatedMedia[getStateNameByBreakpoint(breakpoints[i])] = mq.matches;
-	});
-	return updatedMedia;
-};
+export const getUpdatedMediaState = (mediaQueries, breakpoints) => mediaQueries
+	.reduce((state, mq, i) => {
+		state[getStateNameByBreakpoint(breakpoints[i])] = mq.matches;
+		return state;
+	}, {});
 
 /**
  * @param {Array} validBreakpointNames list of VALID media query names ('large')
