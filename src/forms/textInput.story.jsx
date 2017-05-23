@@ -20,6 +20,13 @@ storiesOf('TextInput', module)
 		name='name'
 		value='Phife Dawg'
 		placeholder='Not your email' />)
+	.add('disabled', () => <TextInput
+		label='Your name'
+		id='fullname'
+		name='name'
+		value='Phife Dawg'
+		placeholder='Not your email'
+		disabled />)
 	.add('error state', () => <TextInput
 		label='Your name'
 		id='fullname'
