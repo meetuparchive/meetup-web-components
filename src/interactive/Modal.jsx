@@ -143,7 +143,6 @@ class Modal extends React.Component {
 
 		const heroStyles = {
 			backgroundColor: heroBgColor || 'transparent'
-			// backgroundImage: heroBgImage && `url(${heroBgImage})`,
 		};
 
 		return (
