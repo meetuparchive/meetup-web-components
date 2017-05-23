@@ -23,19 +23,14 @@ export const getUpdatedMediaState = (mediaQueries, breakpoints) => {
 };
 
 /**
- * @param {Array} breakpoints
+ * @param {Array} validBreakpointNames list of VALID media query names ('large')
+ * @param {Array} breakpointNames list of media query names to check for validity
  * @throws {Error}
  * @return {undefined}
  */
-export const validateBreakpoints = (breakpoints) => {
-	const validBreakpoints = Object.keys(MEDIA_QUERIES);
-
-	if (!breakpoints) {
-		throw new Error('withMatchMedia: breakpoints array required');
-	}
-
-	breakpoints.forEach(bp => {
-		if (!validBreakpoints.includes(bp)) {
+const validateBreakpoints = (validBreakpointNames, breakpointNames) => {
+	breakpointNames.forEach(bp => {
+		if (!validBreakpointNames.includes(bp)) {
 			throw new Error(`withMatchMedia: ${bp} is not a valid breakpoint name`);
 		}
 	});
@@ -58,7 +53,11 @@ export const withMatchMedia = (
 	 */
 	constructor(props) {
 		super(props);
-		validateBreakpoints(breakpoints);
+
+		validateBreakpoints(
+			Object.keys(MEDIA_QUERIES),
+			breakpoints
+		);
 
 		// map breakpoint names to MediaQueryList objects...
 		this.mediaQueries = breakpoints
