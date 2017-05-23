@@ -41,6 +41,7 @@ class SelectInput extends React.Component {
 		);
 
 		const labelClassNames = cx(
+			'label--field',
 			{ required },
 			labelClassName
 		);

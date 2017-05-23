@@ -142,8 +142,7 @@ class Modal extends React.Component {
 		);
 
 		const heroStyles = {
-			backgroundColor: heroBgColor || 'transparent',
-			backgroundImage: heroBgImage && `url(${heroBgImage})`,
+			backgroundColor: heroBgColor || 'transparent'
 		};
 
 		return (
@@ -163,7 +162,7 @@ class Modal extends React.Component {
 				>
 					{ heroContent ?
 						<Stripe
-							hero
+							backgroundImage={heroBgImage}
 							inverted={inverted}
 							style={heroStyles}
 						>
