@@ -1,12 +1,11 @@
 import React from 'react';
 
 /**
- * @function withToggleControl
- */
-/**
  * Provides boolean isChecked prop to wrapped component.
+ * Prop name can also be customized if need be
  *
  * @param {React.element} ToggleComponent - the component to wrap
+ * @returns {React.element}
  */
 export default function withToggleControl(WrappedComponent, propName = 'isChecked') {
 	/**
@@ -20,8 +19,6 @@ export default function withToggleControl(WrappedComponent, propName = 'isChecke
 			this.onToggleBool = this.toggleBool.bind(this);
 		}
 		toggleBool() {
-			// console.warn('TOGGLE THE BOOL');
-			// console.log(!this.state.bool);
 			this.setState({ bool: !this.state.bool });
 		}
 		render() {
