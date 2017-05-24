@@ -26,7 +26,7 @@ describe('SectionTitle without action', function() {
 	});
 
 	it('renders title element', function() {
-		const renderedTitle = TestUtils.scryRenderedDOMComponentsWithClass(component, 'text--display2');
+		const renderedTitle = TestUtils.scryRenderedDOMComponentsWithClass(component, 'text--sectionTitle');
 
 		expect(renderedTitle.length).toBe(1);
 	});

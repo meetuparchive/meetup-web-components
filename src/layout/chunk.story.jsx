@@ -11,15 +11,15 @@ storiesOf('Chunk', module)
 			<InfoWrapper>
 				<div style={{maxWidth: '850px', magin:'auto'}}>
 					<Chunk>
-						<h4 className='text--heavy'>Chunks</h4>
+						<h4 className='text--bold'>Chunks</h4>
 						<p>Chunks are used to sub-divide content within a Section by adding space to the bottom of an element.</p>
 					</Chunk>
 					<Chunk>
-						<h4 className='text--heavy'>Tuesday, December 20</h4>
+						<h4 className='text--bold'>Tuesday, December 20</h4>
 						<p>6:00pm</p>
 					</Chunk>
 					<Chunk>
-						<h4 className='text--heavy'>Galvanize NYC - West SoHo</h4>
+						<h4 className='text--bold'>Galvanize NYC - West SoHo</h4>
 						<p>315 Hudson Street · New York, NY</p>
 					</Chunk>
 					<Chunk>

@@ -30,7 +30,7 @@ class SectionTitle extends React.Component {
 				>
 				<FlexItem>
 					<Chunk>
-						<h2 className='text--display2'>{title}</h2>
+						<h2 className='text--sectionTitle'>{title}</h2>
 					</Chunk>
 				</FlexItem>
 				{action &&

@@ -21,9 +21,6 @@ storiesOf('Button', module)
 			</InfoWrapper>
 		)
 	)
-	.add('Contrast', () => (
-		<Button onClick={action('clicked')} contrast>Button Label</Button>
-	))
 	.add('Disabled', () => (
 		<Button onClick={action('clicked')} disabled>Button Label</Button>
 	))
@@ -34,12 +31,7 @@ storiesOf('Button', module)
 	))
 	.add('Primary - inverted', () => (
 		<Inverted>
-			<Button onClick={action('clicked')} primary>Button Label</Button>
-		</Inverted>
-	))
-	.add('Contrast - inverted', () => (
-		<Inverted>
-			<Button onClick={action('clicked')} contrast>Button Label</Button>
+			<Button onClick={action('clicked')}primary>Button Label</Button>
 		</Inverted>
 	))
 	.add('Disabled - inverted', () => (
@@ -54,6 +46,9 @@ storiesOf('Button', module)
 		<Inverted>
 			<Button onClick={action('clicked')} reset>Button Label</Button>
 		</Inverted>
+	))
+	.add('Reset - Disabled', () => (
+		<Button onClick={action('clicked')} reset disabled>Button Label</Button>
 	))
 	.add('Full Width', () => (
 		<Button onClick={action('clicked')} fullWidth>Button Label</Button>
