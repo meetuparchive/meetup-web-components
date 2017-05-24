@@ -126,7 +126,6 @@ export const withMatchMedia = (
 
 		return (
 			<InnerComponent
-				withMatchMediaInstance={this}
 				{...mediaProps}
 				{...this.props}
 			/>
