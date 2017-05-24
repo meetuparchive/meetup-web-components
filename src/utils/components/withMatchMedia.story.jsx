@@ -7,18 +7,13 @@ import Stripe from '../../layout/Stripe';
 import Bounds from '../../layout/Bounds';
 import Section from '../../layout/Section';
 
-import { MEDIA_QUERIES } from '../designConstants';
-
 /**
  * @class TestComponent
  */
 class TestComponent extends React.Component {
 	render() {
 		const {
-			isAtSmallUp,
-			isAtMediumUp,
-			isAtLargeUp,
-			isAtHugeUp,
+			media
 		} = this.props;
 
 		const stripeStyle = {
@@ -39,10 +34,10 @@ class TestComponent extends React.Component {
 					<Section className='runningText border--none'>
 						<h1 className='text--display3 text--secondary'><code>True</code> props:</h1>
 						<ul className='text--big text--mono'>
-							{isAtSmallUp && <li className='text--teal'>isAtSmallUp</li>}
-							{isAtMediumUp && <li className='text--yellow'>isAtMediumUp</li>}
-							{isAtLargeUp && <li className='text--pink'>isAtLargeUp</li>}
-							{isAtHugeUp && <li className='text--red'>isAtHugeUp</li>}
+							{media.isAtSmallUp && <li className='text--teal'>media.isAtSmallUp</li>}
+							{media.isAtMediumUp && <li className='text--yellow'>media.isAtMediumUp</li>}
+							{media.isAtLargeUp && <li className='text--pink'>media.isAtLargeUp</li>}
+							{media.isAtHugeUp && <li className='text--red'>media.isAtHugeUp</li>}
 						</ul>
 					</Section>
 				</Bounds>
@@ -50,10 +45,7 @@ class TestComponent extends React.Component {
 		);
 	}
 }
-const TestComponentWithMatchMedia = withMatchMedia(
-	TestComponent,
-	Object.keys(MEDIA_QUERIES) // ['small', 'medium', 'large', 'huge']
-);
+const TestComponentWithMatchMedia = withMatchMedia(TestComponent);
 
 storiesOf('withMatchMedia', module)
 	.add('Test component using provided media props', () =>

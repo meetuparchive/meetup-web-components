@@ -1,6 +1,8 @@
 import React from 'react';
 import { MEDIA_QUERIES } from '../designConstants';
 
+const breakpointNames = Object.keys(MEDIA_QUERIES);
+
 /**
  * @param {String} breakpoint - name of breakpoint (for example, 'medium')
  * @returns {String} - state property name (for example, isAtMediumUp)
@@ -21,30 +23,15 @@ export const getUpdatedMediaState = (mediaQueries, breakpoints) => mediaQueries
 		return state;
 	}, {});
 
-/**
- * @param {Array} validBreakpointNames list of VALID media query names ('large')
- * @param {Array} breakpointNames list of media query names to check for validity
- * @throws {Error}
- * @return {undefined}
- */
-const validateBreakpoints = (validBreakpointNames, breakpointNames) => {
-	breakpointNames.forEach(bp => {
-		if (!validBreakpointNames.includes(bp)) {
-			throw new Error(`withMatchMedia: ${bp} is not a valid breakpoint name`);
-		}
-	});
-};
-
 
 /**
  * Provides viewport-aware props to wrapped component.
  *
- * @param {React.element} InnerComponent - the component to wrap
+ * @param {React.element} WrappedComponent - the component to wrap
  * @param {Array} breakpoints - array of breakpoint names to watch
  */
 export const withMatchMedia = (
-	InnerComponent,
-	breakpoints
+	WrappedComponent
 ) => class extends React.Component {
 	/**
 	 * @constructor
@@ -53,17 +40,12 @@ export const withMatchMedia = (
 	constructor(props) {
 		super(props);
 
-		validateBreakpoints(
-			Object.keys(MEDIA_QUERIES),
-			breakpoints
-		);
-
 		// map breakpoint names to MediaQueryList objects...
-		this.mediaQueries = breakpoints
+		this.mediaQueries = breakpointNames
 			.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
 
 		this.state = {
-			media: getUpdatedMediaState(this.mediaQueries, breakpoints)
+			media: getUpdatedMediaState(this.mediaQueries, breakpointNames)
 		};
 
 		this.handleMediaChange = this.handleMediaChange.bind(this);
@@ -75,7 +57,7 @@ export const withMatchMedia = (
 	 * @returns {undefined}
 	 */
 	handleMediaChange() {
-		const updated = getUpdatedMediaState(this.mediaQueries, breakpoints);
+		const updated = getUpdatedMediaState(this.mediaQueries, breakpointNames);
 		this.setState({
 			media: {...this.state.media, ...updated}
 		});
@@ -109,7 +91,7 @@ export const withMatchMedia = (
 	}
 
 	/**
-	 * `isAt[Breakpoint]Up` props are provided to the wrapped component in render().
+	 * `media` prop is provided to the wrapped component in render().
 	 *
 	 * When `this.mediaListeners` detect a media change, `this.state.media` is updated
 	 * and the component will re-render with correct media-conditional prop values.
@@ -117,17 +99,10 @@ export const withMatchMedia = (
 	 * @returns {React.element}
 	 */
 	render() {
-		const mediaProps = {};
-
-		breakpoints.forEach(bp => {
-			const propName = getStateNameByBreakpoint(bp);
-			mediaProps[propName] = this.state.media[propName];
-		});
-
 		return (
-			<InnerComponent
-				{...mediaProps}
+			<WrappedComponent
 				{...this.props}
+				media={this.state.media}
 			/>
 		);
 	}

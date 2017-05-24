@@ -19,10 +19,7 @@ class TestComponent extends React.Component {
  * @param {Array} breakpoints - breakpoint names to pass to withMatchMedia
  */
 function renderWrappedComponent(breakpoints) {
-	const TestComponentWithMatchMedia = MM.withMatchMedia(
-		TestComponent,
-		breakpoints
-	);
+	const TestComponentWithMatchMedia = MM.withMatchMedia(TestComponent);
 	return TestUtils.renderIntoDocument(<TestComponentWithMatchMedia />);
 }
 
@@ -68,28 +65,12 @@ describe('withMatchMedia', () => {
 				wrappedComponent,
 				TestComponent
 			);
-			const actualPropNames = Object.keys(innerComponent.props);
+			const actualPropNames = Object.keys(innerComponent.props.media);
 
 			allBreakpoints.forEach(bp => {
 				const expectedPropName = MM.getStateNameByBreakpoint(bp);
 				expect(actualPropNames).toContain(expectedPropName);
 			});
-		});
-
-		it('does NOT provide breakpoint props for unspecified media queries', () => {
-			const onlyQuery = 'medium';
-			const wrappedComponent = renderWrappedComponent([onlyQuery]);
-			const innerComponent = TestUtils.findRenderedComponentWithType(
-				wrappedComponent,
-				TestComponent
-			);
-			const propNames = Object.keys(innerComponent.props);
-
-			Object.keys(MEDIA_QUERIES)
-				.filter(bp => bp !== onlyQuery)
-				.forEach(bp => {
-					expect(propNames).not.toContain(bp);
-				});
 		});
 	});
 });
