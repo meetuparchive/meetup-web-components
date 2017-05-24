@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { WithNotes } from '@kadira/storybook-addon-notes';
-import { InfoWrapper, Inverted } from '../utils/storyComponents';
+import { InfoWrapper } from '../utils/storyComponents';
 import { decorateWithLocale } from '../utils/decorators';
 import Icon from './Icon';
 
@@ -23,13 +23,6 @@ storiesOf('Icon', module)
 			<WithNotes notes='This Icon has an `aria-label` attribute to improve accesibility'>
 				<Icon shape={ICON_NAME} aria-label='Go west and seek your fortune' />
 			</WithNotes>
-		</div>
-	))
-	.add('Inverted', () => (
-		<div className='margin--center'>
-			<Inverted>
-				<Icon shape={ICON_NAME} inverted />
-			</Inverted>
 		</div>
 	))
 	.add('x-Small', () => (
