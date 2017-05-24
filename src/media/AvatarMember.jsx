@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Avatar from './Avatar';
@@ -48,9 +49,9 @@ class AvatarMember extends React.PureComponent {
 }
 
 AvatarMember.propTypes = {
-	member: React.PropTypes.object.isRequired,
-	org: React.PropTypes.bool,
-	fbFriend: React.PropTypes.bool,
+	member: PropTypes.object.isRequired,
+	org: PropTypes.bool,
+	fbFriend: PropTypes.bool,
 };
 
 export default AvatarMember;

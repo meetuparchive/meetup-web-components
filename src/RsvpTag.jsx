@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -41,7 +42,7 @@ class RsvpTag extends React.Component {
 }
 
 RsvpTag.propTypes = {
-	status: React.PropTypes.oneOf(['yes', 'no', 'waiting']).isRequired
+	status: PropTypes.oneOf(['yes', 'no', 'waiting']).isRequired
 };
 
 export default RsvpTag;

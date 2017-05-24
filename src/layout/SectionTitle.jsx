@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Chunk from './Chunk';
@@ -45,11 +46,11 @@ class SectionTitle extends React.Component {
 	}
 }
 SectionTitle.propTypes = {
-	title: React.PropTypes.oneOfType([
-		React.PropTypes.element,
-		React.PropTypes.string
+	title: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.string
 	]).isRequired,
-	action: React.PropTypes.element
+	action: PropTypes.element
 };
 
 export default SectionTitle;

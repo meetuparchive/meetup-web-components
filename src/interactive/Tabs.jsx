@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -27,7 +28,7 @@ export class TabsTab extends React.Component {
 	}
 }
 TabsTab.propTypes = {
-	isSelected: React.PropTypes.bool
+	isSelected: PropTypes.bool
 };
 
 /**
@@ -77,6 +78,6 @@ Tabs.propTypes = {
 			return new Error('Children must be React elements of type TabsTab');
 		}
 	},
-	full: React.PropTypes.bool,
-	bordered: React.PropTypes.bool
+	full: PropTypes.bool,
+	bordered: PropTypes.bool
 };

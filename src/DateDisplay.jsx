@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedDate } from 'react-intl';
 import cx from 'classnames';
@@ -39,10 +40,10 @@ class DateDisplay extends React.Component {
 }
 
 DateDisplay.propTypes = {
-	datetime: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.number,
-		React.PropTypes.instanceOf(Date),
+	datetime: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+		PropTypes.instanceOf(Date),
 	]).isRequired,
 };
 

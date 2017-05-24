@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import { MEDIA_SIZES } from '../utils/designConstants';
@@ -54,8 +55,8 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
-	shape: React.PropTypes.string.isRequired,
-	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'auto'])
+	shape: PropTypes.string.isRequired,
+	size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'auto'])
 };
 
 export default Icon;
