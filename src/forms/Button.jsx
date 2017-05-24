@@ -4,9 +4,6 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 
 export const BUTTON_CLASS = 'button';
-export const BUTTON_ICON_WRAPPER_CLASS = 'button-icon-wrapper';
-export const BUTTON_LABEL_CLASS = 'button-label';
-export const BUTTON_ICON_CLASS = 'button-icon';
 
 /**
  * SQ2 Button component
@@ -22,6 +19,7 @@ class Button extends React.Component {
 			className,
 			onClick,
 			reset,
+			contrast,
 			fullWidth,
 			icon,
 			primary,
@@ -30,35 +28,28 @@ class Button extends React.Component {
 			...other
 		} = this.props;
 
-		const classNames = {
-			button: cx(
-				BUTTON_CLASS,
-				{
-					'button--fullWidth': fullWidth,
-					'button--primary': primary,
-					'button--small': small,
-					'button--reset': reset,
-				},
-				className
-			),
-			iconWrap: cx(
-				BUTTON_ICON_WRAPPER_CLASS,
-				{
-					[`${BUTTON_ICON_WRAPPER_CLASS}--right`]: right
-				}
-			)
-		};
+		const classNames = cx(
+			BUTTON_CLASS,
+			{
+				'button--contrast': contrast,
+				'button--fullWidth': fullWidth,
+				'button--primary': primary,
+				'button--small': small,
+				'button--reset': reset,
+			},
+			className
+		);
 		const opts = right ? { rowReverse: 'all' } : {};
 
 		const iconChildren = (
-			<Flex className={classNames.iconWrap} {...opts}>
+			<Flex className='button--icon-wrapper' {...opts}>
 				{icon &&
-					<FlexItem shrink className={`${BUTTON_ICON_CLASS} valign--middle flush--left`}>
+					<FlexItem shrink className='button--icon valign--middle'>
 						{icon}
 					</FlexItem>
 				}
 				{children &&
-					<FlexItem className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}>
+					<FlexItem className='button--label valign--middle align--center atMedium_align--left'>
 						{children}
 					</FlexItem>
 				}
@@ -67,7 +58,7 @@ class Button extends React.Component {
 
 		return (
 			<button
-				className={classNames.button}
+				className={classNames}
 				onClick={onClick}
 				role='button'
 				{...other}
@@ -84,6 +75,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
 	reset: React.PropTypes.bool,
+	contrast: React.PropTypes.bool,
 	fullWidth: React.PropTypes.bool,
 	primary: React.PropTypes.bool,
 	small: React.PropTypes.bool,

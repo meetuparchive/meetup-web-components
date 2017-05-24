@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { hasRoleAttribute, variantTest } from '../utils/testUtils';
-import Button, { BUTTON_CLASS, BUTTON_ICON_WRAPPER_CLASS, BUTTON_ICON_CLASS, BUTTON_LABEL_CLASS } from './Button';
+import Button, { BUTTON_CLASS } from './Button';
 import Flex from '../layout/Flex';
 import Icon from '../media/Icon';
 
@@ -36,6 +36,7 @@ describe('Button', () => {
 	it('applies variant classes for each variant prop', () => {
 		const variants = [
 			'primary',
+			'contrast',
 			'fullWidth',
 			'small',
 		];
@@ -58,7 +59,10 @@ describe('Button', () => {
 
 	describe('Button with icon', () => {
 		const icon = <Icon shape='chevron-right' />,
-			label = 'Icon Button';
+			label = 'Icon Button',
+			BUTTON_ICON_WRAPPER = 'button--icon-wrapper',
+			BUTTON_LABEL = 'button--label',
+			BUTTON_ICON = 'button--icon';
 		let button;
 
 		beforeEach(() => {
@@ -74,17 +78,17 @@ describe('Button', () => {
 		});
 
 		it('should render wrapper for icons and label', () => {
-			const iconItem = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_ICON_WRAPPER_CLASS);
+			const iconItem = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_ICON_WRAPPER);
 			expect(iconItem.length).toBe(1);
 		});
 
 		it('should render an element with icon class', () => {
-			const iconItem = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_ICON_CLASS);
+			const iconItem = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_ICON);
 			expect(iconItem.length).toBe(1);
 		});
 
 		it('should render an element with label class', () => {
-			const labelItem = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_LABEL_CLASS);
+			const labelItem = TestUtils.scryRenderedDOMComponentsWithClass(button, BUTTON_LABEL);
 			expect(labelItem.length).toBe(1);
 		});
 
