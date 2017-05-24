@@ -110,42 +110,40 @@ Checkbox form elements styled as toggle buttons.
 	margin-left: $space-half; // relative sizing because icon could be 's' or 'xs'
 }
 
-.withToggleInput-label {
-	display: inline-block;
+.toggleButton-label {
+	@include pillBase();
+	margin: $space-quarter 0;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 
-	.toggleButton {
-		@include pillBase();
-		margin: $space-quarter 0;
-		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	&:hover,
+	&:focus {
+		background: opacify(rgba(0,0,0,.09), .05);
+	}
+
+	&:active {
+		background: opacify(rgba(0,0,0,.09), .15);
+	}
+
+	.inverted & {
+		@include color-all($C_textSecondaryInverted);
+		background: $C_borderInverted;
+
 
 		&:hover,
 		&:focus {
-			background: opacify(rgba(0,0,0,.09), .05);
+			background: opacify($C_borderInverted, .05);
 		}
 
 		&:active {
-			background: opacify(rgba(0,0,0,.09), .15);
-		}
-
-		.inverted & {
-			@include color-all($C_textSecondaryInverted);
-			background: $C_borderInverted;
-
-
-			&:hover,
-			&:focus {
-				background: opacify($C_borderInverted, .05);
-			}
-
-			&:active {
-				background: opacify($C_borderInverted, .1);
-			}
-
+			background: opacify($C_borderInverted, .1);
 		}
 
 	}
 
-	.toggleButton--active {
+}
+
+.toggleButton-input{
+	&:checked + .toggleButton-label {
 		@include animate--bounceInSubtle();
 		@include color-all($C_textPrimaryInverted);
 		background: $C_red;
@@ -159,22 +157,3 @@ Checkbox form elements styled as toggle buttons.
 		}
 	}
 }
-
-// .withToggleInput-input {
-
-// 	&:checked + .withToggleInput-label .toggleButton {
-// 		@include animate--bounceInSubtle();
-// 		// @include color-all($C_textPrimary);
-// 		background: $C_lightGray;
-// 		border-color: $C_border;
-// 		font-weight: $W_bold;
-
-// 		&:hover,
-// 		&:active,
-// 		&:focus {
-// 			background: darken($C_lightGray, 5%);
-// 		}
-
-// 	}
-
-// }
