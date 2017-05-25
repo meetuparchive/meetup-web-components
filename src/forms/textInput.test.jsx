@@ -70,6 +70,20 @@ describe('TextInput', function() {
 
 	});
 
+	it('should have a disabled attribute when specified', () => {
+		textInputComponent = TestUtils.renderIntoDocument(
+			<TextInput
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				value={VALUE}
+				disabled
+			/>
+		);
+
+		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
+		expect(inputEl.attributes.disabled).not.toBeNull();
+	});
+
 	it('should have a required attribute when specified', () => {
 		expect(inputEl.attributes.required).not.toBeNull();
 	});

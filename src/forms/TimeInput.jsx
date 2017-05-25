@@ -36,7 +36,10 @@ class TimeInput extends React.Component {
 			className
 		);
 
-		const labelClassNames = cx({ required });
+		const labelClassNames = cx(
+			'label--field',
+			{ required }
+		);
 		return (
 			<span>
 				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
