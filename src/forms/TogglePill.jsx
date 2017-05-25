@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import Icon from '../media/Icon';
+import withToggleControl from '../utils/WithToggleControl';
 
 export const TOGGLE_PILL_CLASS = 'toggleButton';
 
@@ -8,19 +9,17 @@ export const TOGGLE_PILL_CLASS = 'toggleButton';
  * SQ2 Toggle Pill component
  * @see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_toggle-pill.scss}
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#togglePills}
- * @module TogglePill
+ * @module TogglePillBase
  */
-export default class TogglePill extends React.Component {
+class TogglePillBase extends React.Component {
 	constructor (props) {
 		super(props);
-
-		this.state = {isChecked: props.checked || false};
 
 		this.onChange = this.onChange.bind(this);
 	}
 
 	onChange(e) {
-		this.setState({isChecked: !this.state.isChecked});
+		this.props.toggle();
 
 		if (this.props.onChange) {
 			this.props.onChange(e);
@@ -29,12 +28,14 @@ export default class TogglePill extends React.Component {
 
 	render() {
 		const {
-			id,
-			name,
-			value,
+			checked,
 			children,
 			className,
 			topic,
+			id,
+			name,
+			value,
+			toggle, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -53,17 +54,17 @@ export default class TogglePill extends React.Component {
 		const topicClassName = cx(
 			'toggleButton-icon',
 			{
-				'toggleButton-icon--active' : this.state.isChecked,
-				'toggleButton-icon--inactive' : (!this.state.isChecked)
+				'toggleButton-icon--active' : checked,
+				'toggleButton-icon--inactive' : (!checked)
 			}
 		);
 
-		const topicShape = (this.state.isChecked) ? 'heart' : 'heart-outline';
+		const iconShape = checked ? 'heart' : 'heart-outline';
 
 		const topicChildren = (
 			<Icon
 				className={topicClassName}
-				shape={topicShape}
+				shape={iconShape}
 				size='xs'
 				label='Active Topic Pill Icon'/>
 		);
@@ -72,12 +73,12 @@ export default class TogglePill extends React.Component {
 		return (
 			<div className={classNames}>
 				<input
-					className='toggleButton-input'
+					className='toggleButton-input visibility--a11yHide'
 					type='checkbox'
 					id={id}
 					name={name}
 					value={value}
-					checked={this.state.isChecked}
+					checked={checked}
 					onChange={this.onChange}
 					{...other} />
 				<label
@@ -91,7 +92,7 @@ export default class TogglePill extends React.Component {
 	}
 }
 
-TogglePill.protoTypes = {
+TogglePillBase.protoTypes = {
 	id: React.PropTypes.string.isRequired,
 	name: React.PropTypes.string.isRequired,
 	value: React.PropTypes.string.isRequired,
@@ -99,7 +100,10 @@ TogglePill.protoTypes = {
 	checked: React.PropTypes.bool,
 	topic: React.PropTypes.bool
 };
-TogglePill.defaultProps = {
+TogglePillBase.defaultProps = {
 	checked: false
 };
+
+const TogglePill = withToggleControl(TogglePillBase, 'checked');
+export default TogglePill;
 
