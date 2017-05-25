@@ -114,46 +114,15 @@ Checkbox form elements styled as toggle buttons.
 	@include pillBase();
 	margin: $space-quarter 0;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
-
-	&:hover,
-	&:focus {
-		background: opacify(rgba(0,0,0,.09), .05);
-	}
-
-	&:active {
-		background: opacify(rgba(0,0,0,.09), .15);
-	}
-
-	.inverted & {
-		@include color-all($C_textSecondaryInverted);
-		background: $C_borderInverted;
-
-
-		&:hover,
-		&:focus {
-			background: opacify($C_borderInverted, .05);
-		}
-
-		&:active {
-			background: opacify($C_borderInverted, .1);
-		}
-
-	}
-
 }
 
 .toggleButton-input{
 	&:checked + .toggleButton-label {
 		@include animate--bounceInSubtle();
-		@include color-all($C_textPrimaryInverted);
-		background: $C_red;
-		border-color: $C_border;
-		font-weight: $W_bold;
-
-		&:hover,
-		&:active,
-		&:focus {
-			background: darken($C_red, 5%);
-		}
+		@include buttonColor(
+			$bgColor: $C_accent,
+			$hoverColor: transparentize($C_accent, .2),
+			$activeColor: transparentize($C_accent, .4)
+		);
 	}
 }

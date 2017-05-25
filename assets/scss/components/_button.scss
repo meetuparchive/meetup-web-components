@@ -104,29 +104,29 @@ _(The `extend` directive can cause ugly cascade problems)_
 	@extend %buttonPersonality;
 	@extend %text--small;
 	@include align-items(center);
-	@include color-all($C_textSecondary);
 	@include display(inline-flex);
 	@include flex-direction(row);
 	@include justify-content(center);
 	@include standardBorder(none);
 	@include transition(background .15s);
-	background: rgba(0,0,0,.09);
+	@include buttonColor(
+		$textColor: $C_textSecondary
+	);
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	border-radius: $defaultRadius;
-	font-weight: $W_medium;
 	margin: 0;
 	outline: 0;
 	padding: $space-half $space;
 	vertical-align: middle;
 
-	&:hover,
-	&:focus {
-		background: opacify(rgba(0,0,0,.09), .05);
-	}
-
-	&:active {
-		background: opacify(rgba(0,0,0,.09), .15);
+	.inverted & {
+		@include buttonColor(
+			$bgColor: $C_fieldBGInverted,
+			$hoverColor: opacify($C_fieldBGInverted, .05),
+			$activeColor: opacify($C_fieldBGInverted, .1),
+			$textColor: $C_textSecondaryInverted
+		);
 	}
 }
 
