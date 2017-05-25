@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Flex from '../layout/Flex';
@@ -176,22 +177,22 @@ NumberInput.defaultProps = {
 };
 
 NumberInput.propTypes = {
-	id: React.PropTypes.string,
-	error: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	id: PropTypes.string,
+	error: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	labelClassName: React.PropTypes.string,
-	max: React.PropTypes.number,
-	min: React.PropTypes.number,
-	name: React.PropTypes.string.isRequired,
-	onChange: React.PropTypes.func,
-	required: React.PropTypes.bool,
-	step: React.PropTypes.number
+	labelClassName: PropTypes.string,
+	max: PropTypes.number,
+	min: PropTypes.number,
+	name: PropTypes.string.isRequired,
+	onChange: PropTypes.func,
+	required: PropTypes.bool,
+	step: PropTypes.number
 };
 
 export default NumberInput;
