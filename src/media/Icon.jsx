@@ -5,6 +5,22 @@ import { MEDIA_SIZES } from '../utils/designConstants';
 export const ICON_CLASS = 'svg';
 
 /**
+ * @param {String} shape - icon shape
+ * @param {String} size - icon size
+ * @returns {String} icon name (with or without suffix)
+ */
+export const getIconShape = (shape, size) => {
+
+	// third party icons (yahoo, facebook, etc) do not have small variants
+	if (shape.includes('external')) {
+		return shape;
+	}
+
+	const suffix = size == 'xs' ? '--small' : '';
+	return `${shape}${suffix}`;
+};
+
+/**
  * Icon component used to insert an svg icon into a component or page
  *
  * **Accessibility** If an Icon is used on its own without supporting
@@ -29,20 +45,19 @@ class Icon extends React.PureComponent {
 			className
 		);
 
-		const viewBox = size === 'auto' ? MEDIA_SIZES['xl'] : MEDIA_SIZES[size];
-		const dim = MEDIA_SIZES[size];
+		const sizeVal = MEDIA_SIZES[size];
 
 		return (
 			<span className={classNames}>
 				<svg
 					preserveAspectRatio='xMinYMin meet'
-					width={dim}
-					height={dim}
-					viewBox={`0 0 ${viewBox} ${viewBox}`}
+					width={sizeVal}
+					height={sizeVal}
+					viewBox={`0 0 ${sizeVal} ${sizeVal}`}
 					className='svg-icon valign--middle'
 					role='img'
 					{...other}>
-					<use xlinkHref={`#icon-${shape}`}></use>
+					<use xlinkHref={`#icon-${getIconShape(shape,size)}`}></use>
 				</svg>
 			</span>
 		);
@@ -50,12 +65,12 @@ class Icon extends React.PureComponent {
 }
 
 Icon.defaultProps = {
-	size: 'm'
+	size: 's'
 };
 
 Icon.propTypes = {
 	shape: React.PropTypes.string.isRequired,
-	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'auto'])
+	size: React.PropTypes.oneOf(Object.keys(MEDIA_SIZES))
 };
 
 export default Icon;

@@ -5960,9 +5960,9 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
-swarm-icons@0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-0.2.2.tgz#fd2d8617c7a1de75e1c21cf70611bca1692835f1"
+swarm-icons@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.0.0.tgz#eb855da66baa91559ee58497dcd3dd85b7bd2f9a"
 
 swarm-sasstools@1.7.29:
   version "1.7.29"
