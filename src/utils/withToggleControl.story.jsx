@@ -35,6 +35,6 @@ const TestComponentWithToggleControl = withToggleControl(TestComponent);
 
 storiesOf('withToggleControl', module)
 	.addDecorator(decorateWithLocale)
-	.addWithInfo('Test component using provided media props', () =>
+	.addWithInfo('Test component using default `isChecked` prop', () =>
 		<TestComponentWithToggleControl />
 	);
