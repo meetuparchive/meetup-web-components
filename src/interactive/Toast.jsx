@@ -12,11 +12,22 @@ class Toast extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showToast: false
+			showToast: true
 		};
 
-		this.show = this.show.bind(this);
+		// this.show = this.show.bind(this);
 		this.dismiss = this.dismiss.bind(this);
+		this._handleDismiss = this._handleDismiss.bind(this);
+	}
+
+	_handleDismiss() {
+		if (this.props.setDismissedToast) {
+			this.props.setDismissedToast(this);
+		}
+
+		this.setState({
+			showToast: false
+		});
 	}
 
 	dismiss() {
@@ -26,25 +37,8 @@ class Toast extends React.Component {
 		});
 	}
 
-	show() {
-		console.log('show yourself!');
-		this.setState({
-			showToast: true
-		}, () => {
-			setTimeout(() =>
-				this.setState({ showToast: false }), 3000);
-		});
-	}
-
-	// componentWillReceiveProps (nextProps) {
-	// 	if (this.props.showToast !== nextProps.showToast) {
-	// 		this.setState({
-	// 			showToast: nextProps.showToast
-	// 		});
-	// 	}
-	// }
-
-	// showToast() {
+	// show() {
+	// 	console.log('show yourself!');
 	// 	this.setState({
 	// 		showToast: true
 	// 	}, () => {
@@ -53,6 +47,13 @@ class Toast extends React.Component {
 	// 	});
 	// }
 
+	// componentWillReceiveProps (nextProps) {
+	// 	if (this.props.showToast !== nextProps.showToast) {
+	// 		this.setState({
+	// 			showToast: nextProps.showToast
+	// 		});
+	// 	}
+	// }
 	render() {
 		const {
 			children,
@@ -61,6 +62,8 @@ class Toast extends React.Component {
 			action,
 			actionLabel,
 			dismissable,
+			setDismissedToast, // eslint-disable-line no-unused-vars
+			autodismiss, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -85,7 +88,7 @@ class Toast extends React.Component {
 						{dismissable && (
 							<FlexItem
 								shrink
-								onClick={this.dismiss}
+								onClick={this._handleDismiss}
 							>
 								<Icon shape='cross' size='s' />
 							</FlexItem>
@@ -109,7 +112,7 @@ Toast.propTypes = {
 		React.PropTypes.string
 	]),
 	dismissable: React.PropTypes.bool,
-	autoDismiss: React.PropTypes.boolean
+	autodismiss: React.PropTypes.boolean
 };
 
 export default Toast;

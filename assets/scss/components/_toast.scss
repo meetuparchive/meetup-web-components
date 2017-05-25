@@ -1,10 +1,16 @@
+.toaster {
+	box-sizing: border-box;
+	// left: $space;
+	position: absolute;
+	// right: $space;
+	top: $space;
+	padding: $space;
+	width: 100%;
+}
 .toast {
 	border: 1px solid $C_border;
 	border-radius: $defaultRadius;
+	box-sizing: border-box;
+	margin-bottom: $space;
 	display: block;
-	left: $space;
-	position: absolute;
-	right: $space;
-	top: $space;
-	width: auto;
 }

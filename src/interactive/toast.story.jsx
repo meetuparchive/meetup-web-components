@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Toaster from './Toaster';
 import Toast from './Toast';
 import { storiesOf } from '@kadira/storybook';
 import { decorateWithLocale } from '../utils/decorators';
@@ -7,9 +8,18 @@ import { decorateWithLocale } from '../utils/decorators';
 storiesOf('Toast', module)
 	.addDecorator(decorateWithLocale)
 	.add('default', () =>
-		<Toast
-			dismissable
-			message='lol nothing matters'
+		<Toaster
+			toasts={[
+				<Toast
+					autodismiss={false}
+					dismissable
+					message='lol nothing matters'
+				/>,
+				<Toast
+					autodismiss={false}
+					dismissable
+					message='jk, everything matters'
+				/>]}
 		/>
 	)
 	.add('withAction', () =>
