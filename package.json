@@ -42,7 +42,8 @@
   "dependencies": {
     "autosize": "3.0.20",
     "base64-image-loader": "1.2.0",
-    "flatpickr": "2.5.8"
+    "flatpickr": "2.5.8",
+    "prop-types": "15.5.10"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",

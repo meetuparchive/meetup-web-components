@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import { MEDIA_SIZES } from '../utils/designConstants';
@@ -10,7 +11,6 @@ export const ICON_CLASS = 'svg';
  * @returns {String} icon name (with or without suffix)
  */
 export const getIconShape = (shape, size) => {
-
 	// third party icons (yahoo, facebook, etc) do not have small variants
 	if (shape.includes('external')) {
 		return shape;
@@ -30,34 +30,25 @@ export const getIconShape = (shape, size) => {
  * @module Icon
  */
 class Icon extends React.PureComponent {
-
 	render() {
-		const {
-			className,
-			shape,
-			size,
-			...other
-		} = this.props;
+		const { className, shape, size, ...other } = this.props;
 
-		const classNames = cx(
-			ICON_CLASS,
-			`svg--${shape}`,
-			className
-		);
+		const classNames = cx(ICON_CLASS, `svg--${shape}`, className);
 
 		const sizeVal = MEDIA_SIZES[size];
 
 		return (
 			<span className={classNames}>
 				<svg
-					preserveAspectRatio='xMinYMin meet'
+					preserveAspectRatio="xMinYMin meet"
 					width={sizeVal}
 					height={sizeVal}
 					viewBox={`0 0 ${sizeVal} ${sizeVal}`}
-					className='svg-icon valign--middle'
-					role='img'
-					{...other}>
-					<use xlinkHref={`#icon-${getIconShape(shape,size)}`}></use>
+					className="svg-icon valign--middle"
+					role="img"
+					{...other}
+				>
+					<use xlinkHref={`#icon-${getIconShape(shape, size)}`} />
 				</svg>
 			</span>
 		);
@@ -65,12 +56,12 @@ class Icon extends React.PureComponent {
 }
 
 Icon.defaultProps = {
-	size: 's'
+	size: 's',
 };
 
 Icon.propTypes = {
-	shape: React.PropTypes.string.isRequired,
-	size: React.PropTypes.oneOf(Object.keys(MEDIA_SIZES))
+	shape: PropTypes.string.isRequired,
+	size: PropTypes.oneOf(Object.keys(MEDIA_SIZES)),
 };
 
 export default Icon;
