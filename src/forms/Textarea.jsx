@@ -97,6 +97,7 @@ class Textarea extends React.Component {
 				className
 			),
 			label: cx(
+				'label--field',
 				{ required },
 				labelClassName
 			)
@@ -109,9 +110,12 @@ class Textarea extends React.Component {
 
 		return (
 			<div>
-				<label className={classNames.label} htmlFor={id}>
-					{label}
-				</label>
+				{label &&
+					<label className={classNames.label} htmlFor={id}>
+						{label}
+					</label>
+				}
+
 				<textarea
 					type='text'
 					name={name}

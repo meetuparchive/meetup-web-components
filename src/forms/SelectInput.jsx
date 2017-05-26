@@ -42,15 +42,18 @@ class SelectInput extends React.Component {
 		);
 
 		const labelClassNames = cx(
+			'label--field',
 			{ required },
 			labelClassName
 		);
 
 		return (
 			<div>
-				<label className={labelClassNames} htmlFor={other.id}>
-					{label}
-				</label>
+				{label &&
+					<label className={labelClassNames} htmlFor={other.id}>
+						{label}
+					</label>
+				}
 
 				<select
 					name={name}

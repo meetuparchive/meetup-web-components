@@ -36,7 +36,8 @@ class TextInput extends React.Component {
 			onChange, // eslint-disable-line no-unused-vars
 			isSearch,
 			maxLength,
-			pattern
+			pattern,
+			disabled
 		} = this.props;
 
 		const classNames = cx(
@@ -45,15 +46,18 @@ class TextInput extends React.Component {
 		);
 
 		const labelClassNames = cx(
-			{ required },
+			'label--field',
+			{ required, disabled },
 			labelClassName
 		);
 
 		return (
 			<div>
-				<label className={labelClassNames} htmlFor={id}>
-					{label}
-				</label>
+				{label &&
+					<label className={labelClassNames} htmlFor={id}>
+						{label}
+					</label>
+				}
 
 				<input type={isSearch ? 'search' : 'text'}
 					name={name}
@@ -62,7 +66,9 @@ class TextInput extends React.Component {
 					className={classNames}
 					onChange={this.onChange}
 					maxLength={maxLength}
-					pattern={pattern} />
+					pattern={pattern}
+					disabled={disabled}
+					id={id} />
 
 				{ this.props.maxLength && <p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p> }
 
@@ -90,6 +96,7 @@ TextInput.propTypes = {
 	required: PropTypes.bool,
 	isSearch: PropTypes.bool,
 	onChange: PropTypes.func,
+	disabled: PropTypes.bool
 };
 
 export default TextInput;
