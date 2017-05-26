@@ -125,9 +125,11 @@ class NumberInput extends React.Component {
 
 		return (
 			<div>
-				<label className={classNames.label} htmlFor={id}>
-					{label}
-				</label>
+				{label &&
+					<label className={classNames.label} htmlFor={id}>
+						{label}
+					</label>
+				}
 
 				<div
 					className={classNames.fauxInput}

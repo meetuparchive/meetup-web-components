@@ -52,9 +52,11 @@ class TextInput extends React.Component {
 
 		return (
 			<div>
-				<label className={labelClassNames} htmlFor={id}>
-					{label}
-				</label>
+				{label &&
+					<label className={labelClassNames} htmlFor={id}>
+						{label}
+					</label>
+				}
 
 				<input type={isSearch ? 'search' : 'text'}
 					name={name}

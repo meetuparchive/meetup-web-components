@@ -48,9 +48,11 @@ class SelectInput extends React.Component {
 
 		return (
 			<div>
-				<label className={labelClassNames} htmlFor={other.id}>
-					{label}
-				</label>
+				{label &&
+					<label className={labelClassNames} htmlFor={other.id}>
+						{label}
+					</label>
+				}
 
 				<select
 					name={name}
