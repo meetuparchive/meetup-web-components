@@ -91,6 +91,7 @@ class NumberInput extends React.Component {
 			onChange, // eslint-disable-line no-unused-vars
 			required,
 			step,
+			disabled,
 			value, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
@@ -101,8 +102,16 @@ class NumberInput extends React.Component {
 				{ 'field--error': error },
 				className
 			),
+			fauxInput: cx(
+				FAUX_INPUT_CLASS,
+				{
+					disabled,
+					error
+				}
+			),
 			label: cx(
-				{ required },
+				'label--field',
+				{ required, disabled },
 				labelClassName
 			),
 			incrementBtn: cx(
@@ -112,17 +121,19 @@ class NumberInput extends React.Component {
 			decrementBtn: cx(
 				'button--reset',
 				DECREMENT_BTN_CLASS
-			)
+			),
 		};
 
 		return (
 			<div>
-				<label className={classNames.label} htmlFor={id}>
-					{label}
-				</label>
+				{label &&
+					<label className={classNames.label} htmlFor={id}>
+						{label}
+					</label>
+				}
 
 				<div
-					className={FAUX_INPUT_CLASS}
+					className={classNames.fauxInput}
 					ref={ el => this.fauxInputEl = el }>
 					<Flex align='center'>
 						<FlexItem>
@@ -137,6 +148,7 @@ class NumberInput extends React.Component {
 								onBlur={this.onBlur}
 								onFocus={this.onFocus}
 								onChange={this.onChange}
+								disabled={disabled}
 								{...other} />
 						</FlexItem>
 
@@ -192,7 +204,8 @@ NumberInput.propTypes = {
 	name: PropTypes.string.isRequired,
 	onChange: PropTypes.func,
 	required: PropTypes.bool,
-	step: PropTypes.number
+	step: PropTypes.number,
+	disabled: PropTypes.bool
 };
 
 export default NumberInput;
