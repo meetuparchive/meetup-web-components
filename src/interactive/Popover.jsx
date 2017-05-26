@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
@@ -198,10 +199,10 @@ class Popover extends React.Component {
 }
 
 Popover.propTypes = {
-	trigger: React.PropTypes.element.isRequired,
-	menuItems: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
-	align: React.PropTypes.oneOf(['right', 'left']),
-	className: React.PropTypes.string,
+	trigger: PropTypes.element.isRequired,
+	menuItems: PropTypes.arrayOf(PropTypes.element).isRequired,
+	align: PropTypes.oneOf(['right', 'left']),
+	className: PropTypes.string,
 };
 
 export default Popover;

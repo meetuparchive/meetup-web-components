@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -79,23 +80,23 @@ class TextInput extends React.Component {
 }
 
 TextInput.propTypes = {
-	name: React.PropTypes.string.isRequired,
-	error: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	name: PropTypes.string.isRequired,
+	error: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	id: React.PropTypes.string,
-	maxLength: React.PropTypes.number,
-	pattern: React.PropTypes.string,
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	id: PropTypes.string,
+	maxLength: PropTypes.number,
+	pattern: PropTypes.string,
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	labelClassName: React.PropTypes.string,
-	required: React.PropTypes.bool,
-	isSearch: React.PropTypes.bool,
-	onChange: React.PropTypes.func,
-	disabled: React.PropTypes.bool
+	labelClassName: PropTypes.string,
+	required: PropTypes.bool,
+	isSearch: PropTypes.bool,
+	onChange: PropTypes.func,
+	disabled: PropTypes.bool
 };
 
 export default TextInput;

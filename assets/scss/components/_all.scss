@@ -1,3 +1,6 @@
+// color vars
+@import "../util/color-mappings";
+
 //
 // Layout
 //
@@ -19,6 +22,7 @@
 @import "dateDisplay";
 @import "forms";
 @import "groupCard";
+@import "icon";
 @import "modal";
 @import "popover";
 @import "tabs";
