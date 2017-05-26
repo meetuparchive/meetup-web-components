@@ -1,0 +1,53 @@
+/**
+* Icon styles
+* -----------------
+* supports `swarm-icons` SVG icon lib
+*
+* See also:
+* [Icon list](https://meetup.github.io/swarm-icons/)
+*/
+
+@mixin _iconColor( $color, $invertedColor ) {
+	@include color-svg($color);
+	.inverted & {
+		@include color-svg($invertedColor);
+	}
+}
+@include keyframes(spin) {
+	0% {
+		@include transform(rotate(0deg));
+	}
+	100% {
+		@include transform(rotate(360deg));
+	}
+}
+
+//
+// Base icon styles
+//
+.svg { // SVG wrapping span
+	display: inline-block;
+}
+
+.svg-icon { // SVG element
+	@include _iconColor( $C_textSecondary, $C_textSecondaryInverted );
+	@include display(inline-flex);
+	vertical-align: bottom;
+	font-size: 0;
+
+	// click handling on svg elements
+	// (ensures the entire element is clickable, not just the drawn bits
+	position: relative;
+
+	use { pointer-events: none; }
+}
+
+
+//
+// Specific icon styles
+//
+.svg--updates {
+	@include transform-origin(center center);
+	@include animation(spin 0.4s linear);
+	@include animation-iteration-count(infinite);
+}
