@@ -10,25 +10,11 @@ const WRAPPED_COMPONENT_CLASS = 'wrappedComponent';
 class TestComponent extends React.Component {
 	render() {
 		const {
-			isChecked,
-			toggle
+			isActive,
+			toggleActive
 		} = this.props;
 
-		return <h1 className={WRAPPED_COMPONENT_CLASS} onClick={toggle} aria-pressed={isChecked}>Is this component checked?</h1>;
-	}
-}
-
-/**
- * @class TestComponent
- */
-class TestComponentCustomProp extends React.Component {
-	render() {
-		const {
-			on,
-			toggle
-		} = this.props;
-
-		return <h1 onClick={toggle} aria-pressed={on}>Is this component checked?</h1>;
+		return <h1 className={WRAPPED_COMPONENT_CLASS} onClick={toggleActive} aria-pressed={isActive}>Is this component checked?</h1>;
 	}
 }
 
@@ -48,25 +34,14 @@ describe('WithToggleControl', function() {
 		expect(spanEl.getAttribute('aria-pressed')).toBe('false');
 	});
 
-	it('provides `isChecked` props to wrapped component', () => {
+	it('provides `isActive` props to wrapped component', () => {
 		const actualPropNames = Object.keys(wrappedComponent.props);
-		const expectedPropName = 'isChecked';
+		const expectedPropName = 'isActive';
 
 		expect(actualPropNames).toContain(expectedPropName);
 	});
 
-	it('provides custom prop name for bool to wrapped component when one is specified', () => {
-		const TestComponentWithToggleControl = withToggleControl(TestComponentCustomProp, 'on');
-		const wrappedComponentCustomProp = TestUtils.renderIntoDocument(
-			<TestComponentWithToggleControl />
-		);
-		const actualPropNames = Object.keys(wrappedComponentCustomProp.props);
-		const expectedPropName = 'on';
-
-		expect(actualPropNames).toContain(expectedPropName);
-	});
-
-	it('updates wrapped component `isChecked` value', () => {
+	it('updates wrapped component `isActive` value', () => {
 		const wrappedComponentNode = TestUtils.findRenderedDOMComponentWithClass(wrappedComponent, WRAPPED_COMPONENT_CLASS);
 
 		expect(() => wrappedComponentNode).not.toThrow();

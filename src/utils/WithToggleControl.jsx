@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 /**
@@ -41,7 +42,7 @@ export default function withToggleControl(WrappedComponent, propName = 'isChecke
 		isActive: false
 	};
 	WithToggle.propTypes = {
-		isActive: React.PropTypes.bool
+		isActive: PropTypes.bool
 	};
 
 	return WithToggle;
