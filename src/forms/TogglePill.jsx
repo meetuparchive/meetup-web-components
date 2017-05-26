@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Icon from '../media/Icon';
@@ -93,12 +94,12 @@ class TogglePillBase extends React.Component {
 }
 
 TogglePillBase.protoTypes = {
-	id: React.PropTypes.string.isRequired,
-	name: React.PropTypes.string.isRequired,
-	value: React.PropTypes.string.isRequired,
-	children: React.PropTypes.node.isRequired,
-	isActive: React.PropTypes.bool,
-	topic: React.PropTypes.bool
+	id: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+	children: PropTypes.node.isRequired,
+	isActive: PropTypes.bool,
+	topic: PropTypes.bool
 };
 TogglePillBase.defaultProps = {
 	isActive: false
