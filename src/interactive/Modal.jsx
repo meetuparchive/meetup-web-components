@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -181,13 +182,13 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-	fullscreen: React.PropTypes.bool,
-	heroBgColor: React.PropTypes.string,
-	heroBgImage: React.PropTypes.string,
-	heroContent: React.PropTypes.element,
-	inverted: React.PropTypes.bool,
-	onDismiss: React.PropTypes.func.isRequired,
-	closeArea: React.PropTypes.bool,
+	fullscreen: PropTypes.bool,
+	heroBgColor: PropTypes.string,
+	heroBgImage: PropTypes.string,
+	heroContent: PropTypes.element,
+	inverted: PropTypes.bool,
+	onDismiss: PropTypes.func.isRequired,
+	closeArea: PropTypes.bool,
 };
 
 Modal.defaultProps = {

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -48,9 +49,11 @@ class SelectInput extends React.Component {
 
 		return (
 			<div>
-				<label className={labelClassNames} htmlFor={other.id}>
-					{label}
-				</label>
+				{label &&
+					<label className={labelClassNames} htmlFor={other.id}>
+						{label}
+					</label>
+				}
 
 				<select
 					name={name}
@@ -80,18 +83,18 @@ class SelectInput extends React.Component {
 }
 
 SelectInput.propTypes = {
-	name: React.PropTypes.string.isRequired,
-	required: React.PropTypes.bool,
-	options: React.PropTypes.arrayOf(React.PropTypes.shape({
-		label: React.PropTypes.string.isRequired,
-		value: React.PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	required: PropTypes.bool,
+	options: PropTypes.arrayOf(PropTypes.shape({
+		label: PropTypes.string.isRequired,
+		value: PropTypes.string.isRequired,
 	})).isRequired,
-	errors: React.PropTypes.array,
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	errors: PropTypes.array,
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	labelClassName: React.PropTypes.string,
+	labelClassName: PropTypes.string,
 	value: (props, propName, componentName) => {
 		const validValues = props.options.map(opt => opt.value);
 

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -65,12 +66,12 @@ class DateTimeLocalInput extends React.Component {
 }
 
 DateTimeLocalInput.propTypes = {
-	id: React.PropTypes.string,
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element,
+	id: PropTypes.string,
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element,
 	]),
-	onChangeCallback: React.PropTypes.func
+	onChangeCallback: PropTypes.func
 };
 
 export default DateTimeLocalInput;

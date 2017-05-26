@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Icon from '../media/Icon';
@@ -92,12 +93,12 @@ export default class TogglePill extends React.Component {
 }
 
 TogglePill.protoTypes = {
-	id: React.PropTypes.string.isRequired,
-	name: React.PropTypes.string.isRequired,
-	value: React.PropTypes.string.isRequired,
-	children: React.PropTypes.node.isRequired,
-	checked: React.PropTypes.bool,
-	topic: React.PropTypes.bool
+	id: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+	children: PropTypes.node.isRequired,
+	checked: PropTypes.bool,
+	topic: PropTypes.bool
 };
 TogglePill.defaultProps = {
 	checked: false

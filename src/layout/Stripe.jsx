@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 // import Bounds from './Bounds';
@@ -58,10 +59,10 @@ class Stripe extends React.Component {
 }
 
 Stripe.propTypes = {
-	backgroundImage: React.PropTypes.string,
-	collection: React.PropTypes.bool,
-	inverted: React.PropTypes.bool,
-	hero: React.PropTypes.bool
+	backgroundImage: PropTypes.string,
+	collection: PropTypes.bool,
+	inverted: PropTypes.bool,
+	hero: PropTypes.bool
 };
 
 export default Stripe;

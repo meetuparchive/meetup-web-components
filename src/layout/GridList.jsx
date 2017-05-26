@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -37,12 +38,12 @@ class GridList extends React.Component {
 }
 
 GridList.propTypes = {
-	columns: React.PropTypes.shape({
-		default: React.PropTypes.number.isRequired,
-		medium: React.PropTypes.number,
-		large: React.PropTypes.number
+	columns: PropTypes.shape({
+		default: PropTypes.number.isRequired,
+		medium: PropTypes.number,
+		large: PropTypes.number
 	}),
-	items: React.PropTypes.arrayOf(React.PropTypes.element).isRequired
+	items: PropTypes.arrayOf(PropTypes.element).isRequired
 };
 
 export default GridList;
