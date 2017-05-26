@@ -11,17 +11,17 @@ import Icon from '../media/Icon';
 class TestComponent extends React.Component {
 	render() {
 		const {
-			isChecked,
-			toggle
+			isActive,
+			toggleActive
 		} = this.props;
 
-		const iconShape = isChecked ? 'check' : 'cross';
-		const toggleText = isChecked ? 'The toggle is on' : 'The toggle is off';
+		const iconShape = isActive ? 'check' : 'cross';
+		const toggleText = isActive ? 'The toggle is on' : 'The toggle is off';
 
 		return (
 			<div
 				className='display--block align--center'
-				onClick={toggle}
+				onClick={toggleActive}
 			>
 				<Icon
 					shape={iconShape}
@@ -35,6 +35,6 @@ const TestComponentWithToggleControl = withToggleControl(TestComponent);
 
 storiesOf('withToggleControl', module)
 	.addDecorator(decorateWithLocale)
-	.addWithInfo('Test component using default `isChecked` prop', () =>
+	.addWithInfo('default', () =>
 		<TestComponentWithToggleControl />
 	);

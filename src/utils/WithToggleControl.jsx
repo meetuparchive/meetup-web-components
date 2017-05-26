@@ -15,21 +15,22 @@ export default function withToggleControl(WrappedComponent, propName = 'isChecke
 		constructor(props) {
 			super(props);
 
-			this.state = { bool: props[propName] };
+			this.state = { isActive: props['isActive'] };
 			this.onToggleBool = this.toggleBool.bind(this);
 		}
 		toggleBool() {
-			this.setState({ bool: !this.state.bool });
+			this.setState({ isActive: !this.state.isActive });
 		}
 		render() {
 
-			const newProps = Object.assign({}, this.props, {
-				[`${propName}`]: this.state.bool,
-				toggle: this.onToggleBool
-			});
+			const newProps = {
+				...this.props,
+				isActive: this.state.isActive,
+				toggleActive: this.onToggleBool
+			};
 
 			return (
-				<span role='button' aria-pressed={this.state.bool}>
+				<span role='button' aria-pressed={this.state.isActive}>
 					<WrappedComponent {...newProps} />
 				</span>
 			);
@@ -37,10 +38,10 @@ export default function withToggleControl(WrappedComponent, propName = 'isChecke
 	}
 
 	WithToggle.defaultProps = {
-		[`${propName}`]: false
+		isActive: false
 	};
 	WithToggle.propTypes = {
-		[`${propName}`]: React.PropTypes.bool
+		isActive: React.PropTypes.bool
 	};
 
 	return WithToggle;

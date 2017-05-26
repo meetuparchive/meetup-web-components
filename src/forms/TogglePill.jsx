@@ -6,7 +6,7 @@ import withToggleControl from '../utils/WithToggleControl';
 export const TOGGLE_PILL_CLASS = 'toggleButton';
 
 /**
- * SQ2 Toggle Pill component
+ * Toggle Pill component
  * @see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_toggle-pill.scss}
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#togglePills}
  * @module TogglePillBase
@@ -19,7 +19,7 @@ class TogglePillBase extends React.Component {
 	}
 
 	onChange(e) {
-		this.props.toggle();
+		this.props.toggleActive();
 
 		if (this.props.onChange) {
 			this.props.onChange(e);
@@ -28,14 +28,14 @@ class TogglePillBase extends React.Component {
 
 	render() {
 		const {
-			checked,
+			isActive,
 			children,
 			className,
 			topic,
 			id,
 			name,
 			value,
-			toggle, // eslint-disable-line no-unused-vars
+			toggleActive, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -54,12 +54,12 @@ class TogglePillBase extends React.Component {
 		const topicClassName = cx(
 			'toggleButton-icon',
 			{
-				'toggleButton-icon--active' : checked,
-				'toggleButton-icon--inactive' : (!checked)
+				'toggleButton-icon--active' : isActive,
+				'toggleButton-icon--inactive' : (!isActive)
 			}
 		);
 
-		const iconShape = checked ? 'heart' : 'heart-outline';
+		const iconShape = isActive ? 'heart' : 'heart-outline';
 
 		const topicChildren = (
 			<Icon
@@ -78,7 +78,7 @@ class TogglePillBase extends React.Component {
 					id={id}
 					name={name}
 					value={value}
-					checked={checked}
+					checked={isActive}
 					onChange={this.onChange}
 					{...other} />
 				<label
@@ -97,13 +97,13 @@ TogglePillBase.protoTypes = {
 	name: React.PropTypes.string.isRequired,
 	value: React.PropTypes.string.isRequired,
 	children: React.PropTypes.node.isRequired,
-	checked: React.PropTypes.bool,
+	isActive: React.PropTypes.bool,
 	topic: React.PropTypes.bool
 };
 TogglePillBase.defaultProps = {
-	checked: false
+	isActive: false
 };
 
-const TogglePill = withToggleControl(TogglePillBase, 'checked');
+const TogglePill = withToggleControl(TogglePillBase);
 export default TogglePill;
 
