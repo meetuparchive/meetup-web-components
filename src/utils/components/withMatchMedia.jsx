@@ -17,9 +17,9 @@ export const getStateNameByBreakpoint = breakpoint => {
  * @param {Array} breakpoints - array of breakpoint names that were passed to HOC
  * @returns {Object} - updated `state` object for `withMatchMedia`
  */
-export const getUpdatedMediaState = (mediaQueries, breakpoints) => mediaQueries
+export const getUpdatedMediaState = (mediaQueries) => mediaQueries
 	.reduce((state, mq, i) => {
-		state[getStateNameByBreakpoint(breakpoints[i])] = mq.matches;
+		state[getStateNameByBreakpoint(breakpointNames[i])] = mq.matches;
 		return state;
 	}, {});
 
@@ -41,12 +41,14 @@ export const withMatchMedia = (
 		super(props);
 
 		// map breakpoint names to MediaQueryList objects...
-		this.mediaQueries = breakpointNames
-			.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
+		if (window && window.matchMedia) {
+			this.mediaQueries = breakpointNames
+				.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
 
-		this.state = {
-			media: getUpdatedMediaState(this.mediaQueries, breakpointNames)
-		};
+			this.state = {
+				media: getUpdatedMediaState(this.mediaQueries)
+			};
+		}
 
 		this.handleMediaChange = this.handleMediaChange.bind(this);
 	}
@@ -57,7 +59,7 @@ export const withMatchMedia = (
 	 * @returns {undefined}
 	 */
 	handleMediaChange() {
-		const updated = getUpdatedMediaState(this.mediaQueries, breakpointNames);
+		const updated = getUpdatedMediaState(this.mediaQueries);
 		this.setState({
 			media: {...this.state.media, ...updated}
 		});
