@@ -105,6 +105,7 @@ class Modal extends React.Component {
 			heroBgImage,
 			heroContent,
 			inverted,
+			closeArea,
 			...other
 		} = this.props;
 
@@ -134,7 +135,7 @@ class Modal extends React.Component {
 			</div>
 		);
 
-		const closeArea = this.props.closeArea && (
+		const closeElement = closeArea && (
 			<div className='padding--all'>
 				<Button onClick={this.onDismiss} className={dismissButtonClasses}>
 					<Icon shape='cross' size='s' />
@@ -168,11 +169,11 @@ class Modal extends React.Component {
 							inverted={inverted}
 							style={heroStyles}
 						>
-							{closeArea}
+							{closeElement}
 							{heroContent}
 						</Stripe>
 					:
-						closeArea
+						closeElement
 					}
 
 					{children}
