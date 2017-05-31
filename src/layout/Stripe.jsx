@@ -21,7 +21,6 @@ class Stripe extends React.Component {
 			backgroundImage,
 			collection,
 			inverted,
-			// hero,
 			...other
 		} = this.props;
 
