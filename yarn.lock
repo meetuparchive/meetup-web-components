@@ -6018,9 +6018,9 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
-swarm-icons@1.1.45:
-  version "1.1.45"
-  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.1.45.tgz#7cb5f7acdb6e52249d1cf2b502fa748a307b53cb"
+swarm-icons@1.1.48:
+  version "1.1.48"
+  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.1.48.tgz#c4e470fc44eb5e755515e2b702355b800c5816b3"
   dependencies:
     grunt-exec "^2.0.0"
 
