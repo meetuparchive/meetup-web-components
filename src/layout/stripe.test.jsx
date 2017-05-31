@@ -9,8 +9,6 @@ import Stripe, {
 	STRIPE_HERO_CLASS,
 } from './Stripe';
 
-import Bounds from './Bounds';
-
 describe('Stripe', function() {
 
 	it('exists', function() {
@@ -64,29 +62,6 @@ describe('Stripe', function() {
 			const stripeNode = ReactDOM.findDOMNode(stripeInverted);
 
 			expect(stripeNode.classList).toContain(STRIPE_INVERTED_CLASS);
-		});
-	});
-
-	describe('hero', () => {
-		let stripeHero,
-			stripeNode;
-		beforeEach(() => {
-			stripeHero = TestUtils.renderIntoDocument(<Stripe hero/>);
-			stripeNode = ReactDOM.findDOMNode(stripeHero);
-		});
-		afterEach(() => {
-			stripeHero = null;
-			stripeNode = null;
-		});
-		it(`check that the component has '${STRIPE_CLASS}' class`, function() {
-			expect(stripeNode.classList).toContain(STRIPE_CLASS);
-		});
-		it(`check that component has '${STRIPE_HERO_CLASS}' class`, function() {
-			expect(stripeNode.classList).toContain(STRIPE_HERO_CLASS);
-		});
-		it('should render a `Bounds` component', () => {
-			const boundComponent = TestUtils.scryRenderedComponentsWithType(stripeHero, Bounds);
-			expect(boundComponent.length).toBe(1);
 		});
 	});
 
