@@ -37,13 +37,15 @@
     "classnames": "^2.2.5",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-intl": "^2.2.3"
+    "react-intl": "^2.2.3",
+    "swarm-icons": "1.1.45"
   },
   "dependencies": {
     "autosize": "3.0.20",
     "base64-image-loader": "1.2.0",
     "flatpickr": "2.5.8",
-    "prop-types": "15.5.10"
+    "prop-types": "15.5.10",
+    "swarm-icons": "1.1.45"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
@@ -84,7 +86,6 @@
     "sass-loader": "6.0.3",
     "storybook-addon-i18n-tools": "1.0.0",
     "style-loader": "0.16.1",
-    "swarm-icons": "1.0.0",
     "swarm-sasstools": "1.7.29",
     "webpack": "2.4.1"
   }
