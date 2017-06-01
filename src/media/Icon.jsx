@@ -6,17 +6,22 @@ import { VALID_SHAPES } from 'swarm-icons/dist/js/shapeConstants';
 
 export const ICON_CLASS = 'svg';
 
+const SMALL_ICON_VARIANT_WHITELIST = VALID_SHAPES
+	.filter(s =>
+		!s.startsWith('external') // no third party icons
+		&& !s === 'meetup-m'      // logo uses same path for `xs`
+	);
+
+
 /**
  * @param {String} shape - icon shape
  * @param {String} size - icon size
  * @returns {String} icon name (with or without suffix)
  */
 export const getIconShape = (shape, size) => {
-	// third party icons (yahoo, facebook, etc) do not have small variants
-	if (shape.includes('external')) {
+	if (!SMALL_ICON_VARIANT_WHITELIST.includes(shape)) {
 		return shape;
 	}
-
 	const suffix = size == 'xs' ? '--small' : '';
 	return `${shape}${suffix}`;
 };
