@@ -67,7 +67,7 @@ describe('Icon', () => {
 		});
 
 		it('renders small shape variant for "xs" icons', () => {
-			const xsIconShape = 'test';
+			const xsIconShape = 'location';
 			const actual = getIconShape(xsIconShape, 'xs');
 			const expected = `${xsIconShape}--small`;
 			expect(actual).toBe(expected);
@@ -81,6 +81,13 @@ describe('Icon', () => {
 
 		it('does NOT render a --small shape variant for third party icons', () => {
 			const xsIconShape = 'external-friendster';
+			const actual = getIconShape(xsIconShape, 'xs');
+			const expected = xsIconShape;
+			expect(actual).toBe(expected);
+		});
+
+		it('does NOT render a --small shape variant meetup m logo', () => {
+			const xsIconShape = 'meetup-m';
 			const actual = getIconShape(xsIconShape, 'xs');
 			const expected = xsIconShape;
 			expect(actual).toBe(expected);
