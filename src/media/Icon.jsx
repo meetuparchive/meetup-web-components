@@ -40,12 +40,12 @@ class Icon extends React.PureComponent {
 		return (
 			<span className={classNames}>
 				<svg
-					preserveAspectRatio="xMinYMin meet"
+					preserveAspectRatio='xMinYMin meet'
 					width={sizeVal}
 					height={sizeVal}
 					viewBox={`0 0 ${sizeVal} ${sizeVal}`}
-					className="svg-icon valign--middle"
-					role="img"
+					className='svg-icon valign--middle'
+					role='img'
 					{...other}
 				>
 					<use xlinkHref={`#icon-${getIconShape(shape, size)}`} />
