@@ -80,7 +80,7 @@ describe('Icon', () => {
 		});
 
 		it('does NOT render a --small shape variant for third party icons', () => {
-			const xsIconShape = 'external-friendster';
+			const xsIconShape = 'external-yahoo';
 			const actual = getIconShape(xsIconShape, 'xs');
 			const expected = xsIconShape;
 			expect(actual).toBe(expected);

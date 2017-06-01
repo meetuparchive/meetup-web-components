@@ -8,10 +8,9 @@ export const ICON_CLASS = 'svg';
 
 const SMALL_ICON_VARIANT_WHITELIST = VALID_SHAPES
 	.filter(s =>
-		!s.startsWith('external') // no third party icons
-		&& !s === 'meetup-m'      // logo uses same path for `xs`
+		!s.startsWith('external')  // no third party icons
+		&& !s.startsWith('meetup') // logos use same path for `xs`
 	);
-
 
 /**
  * @param {String} shape - icon shape
