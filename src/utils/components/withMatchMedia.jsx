@@ -40,15 +40,9 @@ export const withMatchMedia = (
 	constructor(props) {
 		super(props);
 
-		// map breakpoint names to MediaQueryList objects...
-		if (window && window.matchMedia) {
-			this.mediaQueries = breakpointNames
-				.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
-
-			this.state = {
-				media: getUpdatedMediaState(this.mediaQueries)
-			};
-		}
+		this.state = {
+			media: {}
+		};
 
 		this.handleMediaChange = this.handleMediaChange.bind(this);
 	}
@@ -75,10 +69,15 @@ export const withMatchMedia = (
 			return;
 		}
 
+		this.mediaQueries = breakpointNames
+			.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
+
 		// add listners for every MediaQueryList object
 		this.mediaQueries.forEach(mq => {
 			mq.addListener(this.handleMediaChange);
 		});
+
+		this.setState({ media: getUpdatedMediaState(this.mediaQueries) });
 	}
 
 	/**
