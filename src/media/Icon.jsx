@@ -2,8 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import { MEDIA_SIZES } from '../utils/designConstants';
+import { VALID_SHAPES } from 'swarm-icons/dist/js/shapeConstants';
 
 export const ICON_CLASS = 'svg';
+
+const SMALL_ICON_VARIANT_WHITELIST = VALID_SHAPES
+	.filter(s =>
+		!s.startsWith('external') // no third party icons
+		&& !s === 'meetup-m'      // logo uses same path for `xs`
+	);
+
 
 /**
  * @param {String} shape - icon shape
@@ -11,11 +19,9 @@ export const ICON_CLASS = 'svg';
  * @returns {String} icon name (with or without suffix)
  */
 export const getIconShape = (shape, size) => {
-	// third party icons (yahoo, facebook, etc) do not have small variants
-	if (shape.includes('external')) {
+	if (!SMALL_ICON_VARIANT_WHITELIST.includes(shape)) {
 		return shape;
 	}
-
 	const suffix = size == 'xs' ? '--small' : '';
 	return `${shape}${suffix}`;
 };
@@ -40,12 +46,12 @@ class Icon extends React.PureComponent {
 		return (
 			<span className={classNames}>
 				<svg
-					preserveAspectRatio="xMinYMin meet"
+					preserveAspectRatio='xMinYMin meet'
 					width={sizeVal}
 					height={sizeVal}
 					viewBox={`0 0 ${sizeVal} ${sizeVal}`}
-					className="svg-icon valign--middle"
-					role="img"
+					className='svg-icon valign--middle'
+					role='img'
 					{...other}
 				>
 					<use xlinkHref={`#icon-${getIconShape(shape, size)}`} />
@@ -60,8 +66,8 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
-	shape: PropTypes.string.isRequired,
-	size: PropTypes.oneOf(Object.keys(MEDIA_SIZES)),
+	shape: PropTypes.oneOf(VALID_SHAPES).isRequired,
+	size: PropTypes.oneOf(Object.keys(MEDIA_SIZES)).isRequired,
 };
 
 export default Icon;
