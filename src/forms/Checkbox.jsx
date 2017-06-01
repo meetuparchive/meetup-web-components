@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Flex from '../layout/Flex';
@@ -67,14 +68,14 @@ class Checkbox extends React.Component {
 }
 
 Checkbox.propTypes = {
-	checked: React.PropTypes.bool,
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	checked: PropTypes.bool,
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	labelClassName: React.PropTypes.string,
-	name: React.PropTypes.string.isRequired,
-	value: React.PropTypes.string.isRequired
+	labelClassName: PropTypes.string,
+	name: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired
 };
 
 export default Checkbox;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -103,9 +104,9 @@ class LoginForm extends React.Component {
 	}
 }
 LoginForm.propTypes = {
-	loginAction: React.PropTypes.func,
-	error: React.PropTypes.instanceOf(Error),
-	email: React.PropTypes.string,
+	loginAction: PropTypes.func,
+	error: PropTypes.instanceOf(Error),
+	email: PropTypes.string,
 };
 
 export default LoginForm;

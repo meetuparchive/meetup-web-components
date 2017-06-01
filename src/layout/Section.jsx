@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -43,9 +44,9 @@ class Section extends React.Component {
 	}
 }
 Section.propTypes = {
-	noSeparator: React.PropTypes.oneOfType([
-		React.PropTypes.bool,
-		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+	noSeparator: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	])
 };
 

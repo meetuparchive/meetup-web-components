@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Flex from '../layout/Flex';
@@ -83,11 +84,11 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-	reset: React.PropTypes.bool,
-	fullWidth: React.PropTypes.bool,
-	primary: React.PropTypes.bool,
-	small: React.PropTypes.bool,
-	icon: React.PropTypes.any,
-	right: React.PropTypes.bool,
+	reset: PropTypes.bool,
+	fullWidth: PropTypes.bool,
+	primary: PropTypes.bool,
+	small: PropTypes.bool,
+	icon: PropTypes.any,
+	right: PropTypes.bool,
 };
 export default Button;

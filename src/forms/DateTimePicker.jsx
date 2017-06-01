@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import CalendarComponent from './CalendarComponent';
@@ -289,25 +290,25 @@ class DateTimePicker extends React.Component {
 }
 
 DateTimePicker.propTypes = {
-	datepickerOptions: React.PropTypes.object,
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.element,
-		React.PropTypes.string
+	datepickerOptions: PropTypes.object,
+	label: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.string
 	]),
-	name: React.PropTypes.string.isRequired,
-	required: React.PropTypes.bool,
-	value: React.PropTypes.oneOfType([
-		React.PropTypes.number,
-		React.PropTypes.object,
-		React.PropTypes.string
+	name: PropTypes.string.isRequired,
+	required: PropTypes.bool,
+	value: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.object,
+		PropTypes.string
 	]),
-	error: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	error: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	dateOnly: React.PropTypes.bool,
-	forceCalendar: React.PropTypes.bool,
-	onChangeCallback: React.PropTypes.func
+	dateOnly: PropTypes.bool,
+	forceCalendar: PropTypes.bool,
+	onChangeCallback: PropTypes.func
 };
 
 export default DateTimePicker;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -36,7 +37,10 @@ class TimeInput extends React.Component {
 			className
 		);
 
-		const labelClassNames = cx({ required });
+		const labelClassNames = cx(
+			'label--field',
+			{ required }
+		);
 		return (
 			<span>
 				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
@@ -58,14 +62,14 @@ class TimeInput extends React.Component {
 }
 
 TimeInput.propTypes = {
-	onChangeCallback: React.PropTypes.func,
-	name: React.PropTypes.string.isRequired,
-	error: React.PropTypes.string,
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	onChangeCallback: PropTypes.func,
+	name: PropTypes.string.isRequired,
+	error: PropTypes.string,
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	required: React.PropTypes.bool
+	required: PropTypes.bool
 };
 
 export default TimeInput;
