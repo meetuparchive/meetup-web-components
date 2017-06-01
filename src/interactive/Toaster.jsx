@@ -8,50 +8,69 @@ class Toaster extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.timeouts = [];
 		this.dismissedToasts = [];
+
 		this.cloneToast = this.cloneToast.bind(this);
 		this.setDismissedToast = this.setDismissedToast.bind(this);
+		this.clearTimeouts = this.clearTimeouts.bind(this);
 
-		this.toasts = this.props.toasts.map(this.cloneToast);
+		this.state = {
+			toasts: this.props.toasts.map(this.cloneToast)
+		};
 	}
 
 	setDismissedToast(dismissedToast) {
-		if (this.dismissedToasts.includes(dismissedToast)) return;
-		this.dismissedToasts.push(dismissedToast);
+		this.setState({
+			toasts: this.state.toasts.filter(toast => dismissedToast.props.id !== toast.props.id)
+		});
+	}
 
-		console.log(this.toasts);
-		console.log(dismissedToast.props.id);
+	clearTimeouts() {
+		this.timeouts.forEach(clearTimeout);
+	}
 
-		// console.log(this.dismissedToasts);
-		// this.setState({ dismissedToast });
+	componentWillUnmount() {
+		this.clearTimeouts();
+	}
+
+	componentDidMount() {
+		const toastsToDismiss = this.state.toasts.filter((toast) => toast.props.autodismiss);
+
+		toastsToDismiss.forEach((toast, i) => {
+			this.timeouts.push(setTimeout(() => {
+				this.setDismissedToast(toast);
+			}, 1000*(i+1)));
+		});
 	}
 
 	/**
-	 * @param {Object} accordionPanel - `AccordionPanel` components to clone
-	 * @param {number} i - index of the `AccordionPanel`
-	 * @param {boolean} isOpen - whether the `AccordionPanel` is open or not
-	 * @returns {Array} `AccordionPanel` components with props from `AccordionPanelGroup`
+	 * @param {Object} Toast - `Toast` components to clone
+	 * @param {number} i - index of the `toast`
+	 * @returns {Array} `Toast` components with props from `Toaster`
 	 */
-	cloneToast(toast, key, isOpen) {
+	cloneToast(toast, i) {
+		// console.log()
 		const toastProps = {
-			key,
-			id: key,
+			key: i,
+			id: toast.props.id || i,
 			className: toast.props.className,
 			message: toast.props.message,
 			action: toast.props.action,
 			actionLabel: toast.props.actionLabel,
 			dismissable: toast.props.dismissable,
+			autodismiss: toast.props.autodismiss,
 			setDismissedToast: this.setDismissedToast
 		};
 		return React.cloneElement(toast, toastProps);
 	}
 
 	/**
-	 * @returns {Array} `AccordionPanel` components with the correct value for `isOpen` prop
+	 * @returns {Array} `Toast` components
 	 */
 	renderToasts() {
-		this.toasts = this.toasts.map(this.cloneToast);
-		return this.toasts;
+		this.state.toasts = this.state.toasts.map(this.cloneToast);
+		return this.state.toasts;
 	}
 
 	render() {
@@ -81,7 +100,7 @@ class Toaster extends React.Component {
 }
 
 Toaster.propTypes = {
-
+	toasts: React.PropTypes.arrayOf(React.PropTypes.element).isRequired
 };
 
 export default Toaster;

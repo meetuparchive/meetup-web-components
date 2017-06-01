@@ -11,21 +11,31 @@ storiesOf('Toast', module)
 		<Toaster
 			toasts={[
 				<Toast
-					autodismiss={false}
+					// autodismiss={false}
 					dismissable
 					message='lol nothing matters'
 				/>,
 				<Toast
-					autodismiss={false}
+					// autodismiss={false}
 					dismissable
 					message='jk, everything matters'
-				/>]}
+				/>,
+				<Toast
+					// autodismiss={false}
+					dismissable
+					message='Your toast is ready'
+				/>
+			]}
 		/>
 	)
 	.add('withAction', () =>
-		<Toast
-			action={()=>{console.log('withAction');}}
-			actionLabel='Do it'
-			message='lol nothing matters'
+		<Toaster
+			toasts={[
+				<Toast
+					action={()=>{console.log('withAction');}}
+					actionLabel='Do it'
+					message='lol nothing matters'
+				/>
+			]}
 		/>
 	);

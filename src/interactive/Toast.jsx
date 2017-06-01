@@ -15,8 +15,6 @@ class Toast extends React.Component {
 			showToast: true
 		};
 
-		// this.show = this.show.bind(this);
-		this.dismiss = this.dismiss.bind(this);
 		this._handleDismiss = this._handleDismiss.bind(this);
 	}
 
@@ -30,30 +28,6 @@ class Toast extends React.Component {
 		});
 	}
 
-	dismiss() {
-		console.log('dismissed');
-		this.setState({
-			showToast: false
-		});
-	}
-
-	// show() {
-	// 	console.log('show yourself!');
-	// 	this.setState({
-	// 		showToast: true
-	// 	}, () => {
-	// 		setTimeout(() =>
-	// 			this.setState({ showToast: false }), 3000);
-	// 	});
-	// }
-
-	// componentWillReceiveProps (nextProps) {
-	// 	if (this.props.showToast !== nextProps.showToast) {
-	// 		this.setState({
-	// 			showToast: nextProps.showToast
-	// 		});
-	// 	}
-	// }
 	render() {
 		const {
 			children,
@@ -69,6 +43,9 @@ class Toast extends React.Component {
 
 		const classNames = cx(
 			'toast padding--all',
+			{
+				'toast--hide': !this.state.showToast
+			},
 			className
 		);
 
@@ -112,7 +89,11 @@ Toast.propTypes = {
 		React.PropTypes.string
 	]),
 	dismissable: React.PropTypes.bool,
-	autodismiss: React.PropTypes.boolean
+	autodismiss: React.PropTypes.bool
+};
+
+Toast.defaultProps = {
+	autodismiss: true
 };
 
 export default Toast;
