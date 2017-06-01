@@ -23,9 +23,7 @@ class TestComponent extends React.Component {
 				className='display--block align--center'
 				onClick={toggleActive}
 			>
-				<Icon
-					shape={iconShape}
-					size='m' />
+				<Icon shape={iconShape} size='m' />
 				<p>{toggleText}</p>
 			</div>
 		);

@@ -8,7 +8,7 @@ import React from 'react';
  * @param {React.element} ToggleComponent - the component to wrap
  * @returns {React.element}
  */
-export default function withToggleControl(WrappedComponent, propName = 'isChecked') {
+export default function withToggleControl(WrappedComponent) {
 	/**
 	 * @module WithToggle
 	 */
@@ -16,23 +16,21 @@ export default function withToggleControl(WrappedComponent, propName = 'isChecke
 		constructor(props) {
 			super(props);
 
-			this.state = { isActive: props['isActive'] };
-			this.onToggleBool = this.toggleBool.bind(this);
+			this.state = { isActive: props.isActive };
+			this.toggleActive = this.toggleBool.bind(this);
 		}
 		toggleBool() {
 			this.setState({ isActive: !this.state.isActive });
 		}
 		render() {
 
-			const newProps = {
-				...this.props,
-				isActive: this.state.isActive,
-				toggleActive: this.onToggleBool
-			};
-
 			return (
 				<span role='button' aria-pressed={this.state.isActive}>
-					<WrappedComponent {...newProps} />
+					<WrappedComponent
+						{...this.props}
+						isActive={this.state.isActive}
+						toggleActive={this.toggleActive}
+					/>
 				</span>
 			);
 		}
