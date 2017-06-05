@@ -4043,11 +4043,11 @@ meetup-swatches@3.2.5:
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/meetup-swatches/-/meetup-swatches-3.2.5.tgz#46ff0ffbe22fdf56267bbd05016e00466560efdd"
 
-meetup-web-mocks@1.0.187:
-  version "1.0.187"
-  resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-1.0.187.tgz#0b80d215cb2be56c011822cb34e4b340856bd43f"
+meetup-web-mocks@1.0.190:
+  version "1.0.190"
+  resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-1.0.190.tgz#67d38576345dce764aff79d02358efe9db1b10f5"
   dependencies:
-    rxjs "5.3.0"
+    rxjs "5.4.0"
 
 memory-fs@^0.2.0:
   version "0.2.0"
@@ -5612,9 +5612,9 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxjs@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.3.0.tgz#d88ccbdd46af290cbdb97d5d8055e52453fabe2d"
+rxjs@5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.0.tgz#a7db14ab157f9d7aac6a56e655e7a3860d39bf26"
   dependencies:
     symbol-observable "^1.0.1"
 
