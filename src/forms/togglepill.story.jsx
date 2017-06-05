@@ -32,7 +32,7 @@ storiesOf('TogglePill', module)
 			id='togglePillId'
 			name='togglePillName'
 			value='toggle-pill'
-			checked
+			isActive
 		>
 			Toggle Pill Label
 		</TogglePill>
@@ -55,7 +55,7 @@ storiesOf('TogglePill', module)
 			id='togglePillId'
 			name='togglePillName'
 			value='toggle-pill'
-			checked
+			isActive
 		>
 			Toggle Pill Label
 		</TogglePill>

@@ -103,27 +103,30 @@ _(The `extend` directive can cause ugly cascade problems)_
 @mixin pillBase() {
 	@extend %buttonPersonality;
 	@extend %text--small;
+	@include align-items(center);
 	@include display(inline-flex);
 	@include flex-direction(row);
 	@include justify-content(center);
-	@include align-items(center);
+	@include standardBorder(none);
 	@include transition(background .15s);
-	@include standardBorder(all);
-	vertical-align: middle;
+	@include buttonColor(
+		$textColor: $C_textSecondary
+	);
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	border-radius: $defaultRadius;
-	background: transparent;
-	min-height: $space-2;
-	outline: 0;
-	padding: 0 $space/2;
 	margin: 0;
-	font-weight: normal;
+	outline: 0;
+	padding: $space-half $space;
+	vertical-align: middle;
 
-	&:hover,
-	&:active,
-	&:focus {
-		background: $C_selection;
+	.inverted & {
+		@include buttonColor(
+			$bgColor: $C_fieldBGInverted,
+			$hoverColor: opacify($C_fieldBGInverted, .05),
+			$activeColor: opacify($C_fieldBGInverted, .1),
+			$textColor: $C_textSecondaryInverted
+		);
 	}
 }
 
