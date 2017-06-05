@@ -9,30 +9,30 @@ import {
 } from 'react-intl';
 
 storiesOf('TextInput', module)
-	.add('default', () => <TextInput
+	.add('default', () => (<TextInput
 		label='Your name'
 		id='fullname'
 		name='name'
-		placeholder='Not your email' />)
-	.add('with value', () => <TextInput
+		placeholder='Not your email' />))
+	.add('with value', () => (<TextInput
 		label='Your name'
 		id='fullname'
 		name='name'
 		value='Phife Dawg'
-		placeholder='Not your email' />)
-	.add('disabled', () => <TextInput
+		placeholder='Not your email' />))
+	.add('disabled', () => (<TextInput
 		label='Your name'
 		id='fullname'
 		name='name'
 		value='Phife Dawg'
 		placeholder='Not your email'
-		disabled />)
-	.add('error state', () => <TextInput
+		disabled />))
+	.add('error state', () => (<TextInput
 		label='Your name'
 		id='fullname'
 		name='name'
 		error='Not so fast. You have an error.'
-		placeholder='Not your email' />)
+		placeholder='Not your email' />))
 	.add('error state formatted', () => {
 		const trn = defineMessages({
 			error: {
