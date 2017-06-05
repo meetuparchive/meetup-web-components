@@ -11,34 +11,34 @@ import {
 
 storiesOf('NumberInput', module)
 	.addDecorator(decorateWithLocale)
-	.add('default', () => <div>
+	.add('default', () => (<div>
 		<NumberInput
 			label='How many?'
 			id='amount'
 			name='amount' />
-	</div>)
-	.add('with value', () => <div>
+	</div>))
+	.add('with value', () => (<div>
 		<NumberInput
 			label='Are you bringing any guests?'
 			id='guestCount'
 			name='guests'
 			value='0' />
-	</div>)
-	.add('with min and max', () => <div>
+	</div>))
+	.add('with min and max', () => (<div>
 		<NumberInput
 			label='How many? min 2, max 10'
 			id='guestCount'
 			name='guests'
 			min='2'
 			max='10' />
-	</div>)
-	.add('with error', () => <div>
+	</div>))
+	.add('with error', () => (<div>
 		<NumberInput
 			label='How many?'
 			id='amount'
 			name='amount'
 			error='Not so fast. You have an error.' />
-	</div>)
+	</div>))
 	.add('error state formatted', () => {
 		const trn = defineMessages({
 			error: {
@@ -58,10 +58,10 @@ storiesOf('NumberInput', module)
 		);
 	})
 	.add('required', () =>
-		<NumberInput
+		(<NumberInput
 			label='How many?'
 			id='amount'
 			name='amount'
-			required />
+			required />)
 	);
 
