@@ -5,6 +5,7 @@ import { MEDIA_SIZES } from '../utils/designConstants';
 import { VALID_SHAPES } from 'swarm-icons/dist/js/shapeConstants';
 
 export const ICON_CLASS = 'svg';
+export const SVG_THIN_STYLE = '--small';
 
 /**
  * @param {String} shape - icon shape
@@ -17,7 +18,7 @@ export const getIconShape = (shape, size) => {
 		return shape;
 	}
 
-	const suffix = size == 'xs' ? '--small' : '';
+	const suffix = (size === 'xs' || size === 's') ? SVG_THIN_STYLE : '';
 	return `${shape}${suffix}`;
 };
 
