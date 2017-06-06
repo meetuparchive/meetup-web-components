@@ -30,7 +30,7 @@ export const getUpdatedMediaState = (mediaQueries) => mediaQueries
  * @param {React.element} WrappedComponent - the component to wrap
  * @param {Array} breakpoints - array of breakpoint names to watch
  */
-export const withMatchMedia = (
+const withMatchMedia = (
 	WrappedComponent
 ) => class extends React.Component {
 	/**
@@ -108,3 +108,5 @@ export const withMatchMedia = (
 		);
 	}
 };
+
+export default withMatchMedia;
