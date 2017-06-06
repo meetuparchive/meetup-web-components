@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
-import { withMatchMedia } from './withMatchMedia';
+import withMatchMedia from './withMatchMedia';
 
 import Stripe from '../../layout/Stripe';
 import Bounds from '../../layout/Bounds';

@@ -2,6 +2,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
 import {MEDIA_QUERIES} from '../designConstants';
+import withMatchMedia from './withMatchMedia';
 import * as MM from './withMatchMedia';
 
 const allBreakpoints = Object.keys(MEDIA_QUERIES);
@@ -19,7 +20,7 @@ class TestComponent extends React.Component {
  * @param {Array} breakpoints - breakpoint names to pass to withMatchMedia
  */
 function renderWrappedComponent(breakpoints) {
-	const TestComponentWithMatchMedia = MM.withMatchMedia(TestComponent);
+	const TestComponentWithMatchMedia = withMatchMedia(TestComponent);
 	return TestUtils.renderIntoDocument(<TestComponentWithMatchMedia />);
 }
 
