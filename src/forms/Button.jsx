@@ -15,7 +15,7 @@ export const BUTTON_ICON_CLASS = 'button-icon';
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#buttons}
  * @module Button
  */
-class Button extends React.Component {
+class Button extends React.PureComponent {
 
 	render() {
 		const {
@@ -78,10 +78,6 @@ class Button extends React.Component {
 		);
 	}
 }
-
-Button.defaultProps = {
-	right: false
-};
 
 Button.propTypes = {
 	reset: PropTypes.bool,
