@@ -4,7 +4,8 @@
 $dropdownShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C_border;
 $content-minWidth: $block-6;
 $content-maxWidth: 512px; // match chapstick
-$spaceFromTrigger: $space-4;
+$triangleSize: 10px;
+$spaceFromTrigger: $space-3 + $triangleSize;
 
 .dropdown {
 	position: relative;
@@ -37,20 +38,20 @@ $spaceFromTrigger: $space-4;
 	&:before {
 		width: 0;
 		height: 0;
-		border-bottom: ($space + 1) solid $C_border;
-		border-right: ($space + 1) solid transparent;
-		border-left: ($space + 1) solid transparent;
-		top: -$space - 0.5;
+		border-bottom: ($triangleSize + 1) solid $C_border;
+		border-right: ($triangleSize + 1) solid transparent;
+		border-left: ($triangleSize + 1) solid transparent;
+		top: -$triangleSize - 0.5;
 	}
 
 	// inner triangle to match content color
 	&:after {
 		width: 0;
 		height: 0;
-		border-bottom: $space solid $C_white;
-		border-right: $space solid transparent;
-		border-left: $space solid transparent;
-		top: -$space + 1;
+		border-bottom: $triangleSize solid $C_white;
+		border-right: $triangleSize solid transparent;
+		border-left: $triangleSize solid transparent;
+		top: -$triangleSize + 1;
 	}
 
 	&:before,
@@ -66,10 +67,10 @@ $spaceFromTrigger: $space-4;
 @mixin alignDropdown($direction) {
 	#{$direction}: 0;
 	&:before {
-		#{$direction}: $space;
+		#{$direction}: $space-2;
 	}
 	&:after {
-		#{$direction}: $space + 1;
+		#{$direction}: $space-2 + 1;
 	}
 }
 
