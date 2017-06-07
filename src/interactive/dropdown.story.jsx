@@ -1,0 +1,40 @@
+import React from 'react';
+import { storiesOf } from '@kadira/storybook';
+import { InfoWrapper } from '../utils/storyComponents';
+import { decorateWithLocale } from '../utils/decorators';
+import Dropdown from './Dropdown';
+import Section from '../layout/Section';
+import Chunk from '../layout/Chunk';
+import Button from '../forms/Button';
+
+const dropdownContent = (
+	<Section>
+		<Chunk>
+			<h2 className='text--big text--bold'>Dropdown content</h2>
+		</Chunk>
+		<Chunk>
+			<p>
+				This is a basic dropdown component.
+				It accepts a `content` prop with which you
+				can pass arbitrary JSX content.
+			</p>
+		</Chunk>
+	</Section>
+);
+
+storiesOf('Dropdown', module)
+	.addDecorator(decorateWithLocale)
+	.addWithInfo(
+		'Basic Dropdown component',
+		'Closed by default',
+		() => (
+			<InfoWrapper>
+				<Dropdown
+					trigger={
+						<Button small>Open</Button>
+					}
+					content={dropdownContent}
+				/>
+			</InfoWrapper>
+		)
+	);
