@@ -4,47 +4,44 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import bindAll from '../utils/bindAll';
 
-const POPOVER_MENU_CLASS = 'popover-menu-option';
 /**
- * @module Popover
+ * @module Dropdown
  */
-class Popover extends React.Component {
+class Dropdown extends React.Component {
 	constructor(props) {
 		super(props);
 
 		bindAll(this,
-			'open',
-			'close',
+			'openContent',
+			'closeContent',
 			'onClick',
 			'onKeyDown',
 			'onClick',
 			'onBlur'
 		);
 
-		this.state = {
-			isActive: false,
-			selectedIndex: 0
-		};
-
-		this._menuItems = new Map();
+		this.state = { isActive: false };
 	}
 
-	open() {
-		this.setState({ isActive: true });
+	openContent() {
+		this.setState(() => ({ isActive: true }));
 	}
 
-	close() {
-		this.setState({ isActive: false });
+	closeContent() {
+		this.setState(() => ({ isActive: false }));
 	}
 
 	focusCheck() {
-		const focusedOptionClass = document.activeElement.parentNode.classList;
-		// don't close the popover if we're moving focus to an menu item
-		if (focusedOptionClass && focusedOptionClass.contains(POPOVER_MENU_CLASS)) {
-			return;
-		}
+		// const focusedOptionClass = document.activeElement.parentNode.classList;
 
-		this.closeMenu();
+		// TODO: bail out if active element is the content el
+		/*
+		 *if (focusedOptionClass && focusedOptionClass.contains(POPOVER_MENU_CLASS)) {
+		 *    return;
+		 *}
+		 */
+
+		this.closeContent();
 	}
 
 	onBlur() {
@@ -57,18 +54,18 @@ class Popover extends React.Component {
 	}
 
 	onClick(e) {
-		this.openMenu();
+		this.openContent();
 	}
 
 	onKeyDown(e) {
 		switch(e.key) {
 		case 'Enter':
 			if (!this.state.isActive) {
-				this.openMenu();
+				this.openContent();
 			}
 			break;
 		case 'Escape':
-			this.closeMenu();
+			this.closeContent();
 			break;
 		}
 	}
@@ -80,71 +77,32 @@ class Popover extends React.Component {
 		}
 	}
 
-	renderMenuItems() {
-		this.menuItems = this.props.menuItems.map((menuItem, i) => {
-			return (
-				<li
-					key={i}
-					className={POPOVER_MENU_CLASS}
-					role='menuitem'
-					onKeyDown={this.onKeyDownMenuItem}
-				>
-					{
-						/*
-						* treat each user-provided menu item element as the
-						* keyboard-navigable, focusable 'menuitem' role
-						*/
-						React.cloneElement(menuItem,
-							{
-								tabIndex: '-1',
-								onKeyDown: this.onKeyDownMenuItem,
-								className: cx('popover-menu-option-target', menuItem.props.className),
-								ref: (el) => this._menuItems.set(i, el),
-							}
-						)
-					}
-				</li>
-			);
-		});
-
-		return this.menuItems;
-	}
-
 	render() {
 		const isActive = this.state.isActive;
 		const {
 				className,
 				trigger,
-				menuItems, // eslint-disable-line no-unused-vars
-				align,
+				content,
 				...other
 			} = this.props;
 
 		const classNames = {
-			popover: cx(
+			dropdown: cx(
 				className,
-				'popover'
+				'dropdown'
 			),
 			trigger: cx(
-				'popover-trigger',
+				'dropdown-trigger',
 				{
-					'popover-trigger--active': isActive
+					'dropdown-trigger--active': isActive
 				}
 			),
-			menu: cx(
-				'popover-container',
-				'popover-container--menu',
-				{
-					'display--none': !isActive,
-					'popover-container--horizontal-left': (align === 'left'),
-					'popover-container--horizontal-right': (align === 'right')
-				}
-			)
+			menu: 'dropdown-conent'
 		};
 
 		return (
 			<div
-				className={classNames.popover}
+				className={classNames.dropdown}
 				aria-haspopup='true'
 				onKeyDown={this.onKeyDown}
 				onBlur={this.onBlur}
@@ -159,25 +117,23 @@ class Popover extends React.Component {
 					{trigger}
 				</div>
 
-				<nav>
-					<ul
-						className={classNames.menu}
-						role='menu'
-						aria-hidden={!isActive}
-					>
-						{this.renderMenuItems()}
-					</ul>
-				</nav>
+				{/* TODO: fix aria attributes */}
+				<div
+					className={className.conent}
+					role='menu'
+					aria-hidden={!isActive}
+				>
+					{content}
+				</div>
 			</div>
 		);
 	}
 }
 
-Popover.propTypes = {
+Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
-	menuItems: PropTypes.arrayOf(PropTypes.element).isRequired,
-	align: PropTypes.oneOf(['right', 'left']),
+	content: PropTypes.element.isRequired,
 	className: PropTypes.string,
 };
 
-export default Popover;
+export default Dropdown;
