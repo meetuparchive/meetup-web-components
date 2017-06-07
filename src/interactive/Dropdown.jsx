@@ -11,8 +11,7 @@ class Dropdown extends React.Component {
 		super(props);
 
 		bindAll(this,
-			'openContent',
-			'closeContent',
+			'toggleContent',
 			'onClick',
 			'onKeyDown',
 			'onClick',
@@ -22,12 +21,8 @@ class Dropdown extends React.Component {
 		this.state = { isActive: false };
 	}
 
-	openContent() {
-		this.setState(() => ({ isActive: true }));
-	}
-
-	closeContent() {
-		this.setState(() => ({ isActive: false }));
+	toggleContent() {
+		this.setState(() => ({ isActive: !this.state.isActive}));
 	}
 
 	focusCheck() {
@@ -40,7 +35,7 @@ class Dropdown extends React.Component {
 		 *}
 		 */
 
-		this.closeContent();
+		this.toggleContent();
 	}
 
 	onBlur() {
@@ -53,18 +48,16 @@ class Dropdown extends React.Component {
 	}
 
 	onClick(e) {
-		this.openContent();
+		this.toggleContent();
 	}
 
 	onKeyDown(e) {
 		switch(e.key) {
 		case 'Enter':
-			if (!this.state.isActive) {
-				this.openContent();
-			}
+			this.toggleContent();
 			break;
 		case 'Escape':
-			this.closeContent();
+			this.toggleContent();
 			break;
 		}
 	}
@@ -89,7 +82,13 @@ class Dropdown extends React.Component {
 					'dropdown-trigger--active': isActive
 				}
 			),
-			menu: 'dropdown-content'
+			content: cx(
+				'dropdown-content',
+				{
+					'display--none': !isActive,
+					'display--block': isActive
+				}
+			)
 		};
 
 		return (
@@ -112,7 +111,6 @@ class Dropdown extends React.Component {
 				{/* TODO: fix aria attributes */}
 				<div
 					className={classNames.content}
-					role='menu'
 					aria-hidden={!isActive}
 				>
 					{content}

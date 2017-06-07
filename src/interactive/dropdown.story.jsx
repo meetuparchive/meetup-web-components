@@ -8,7 +8,7 @@ import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
 
 const dropdownContent = (
-	<Section>
+	<Section noSeparator>
 		<Chunk>
 			<h2 className='text--big text--bold'>Dropdown content</h2>
 		</Chunk>
