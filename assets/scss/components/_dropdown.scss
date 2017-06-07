@@ -2,7 +2,8 @@
 // Dropdown
 //
 $dropdownShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C_border;
-$view-minWidth: 512px; // match chapstick
+$content-minWidth: $block-6;
+$content-maxWidth: 512px; // match chapstick
 $spaceFromTrigger: $space-4;
 
 .dropdown {
@@ -28,7 +29,8 @@ $spaceFromTrigger: $space-4;
 	box-sizing: border-box;
 	position: absolute;
 	top: $spaceFromTrigger;
-	max-width: $view-minWidth;
+	min-width: $content-minWidth;
+	max-width: $content-minWidth;
 	z-index: map-get($zindex-map, 'popup');
 
 	// outer triangle for border
@@ -39,7 +41,6 @@ $spaceFromTrigger: $space-4;
 		border-right: ($space + 1) solid transparent;
 		border-left: ($space + 1) solid transparent;
 		top: -$space - 0.5;
-		left: $space;
 	}
 
 	// inner triangle to match content color
@@ -50,7 +51,6 @@ $spaceFromTrigger: $space-4;
 		border-right: $space solid transparent;
 		border-left: $space solid transparent;
 		top: -$space + 1;
-		left: $space + 1;
 	}
 
 	&:before,
@@ -62,4 +62,23 @@ $spaceFromTrigger: $space-4;
 		z-index: map-get($zindex-map, 'popup') + 1;
 	}
 
+}
+
+.dropdown-content--right {
+	right: 0;
+	&:before {
+		right: $space;
+	}
+	&:after {
+		right: $space + 1;
+	}
+}
+.dropdown-content--left {
+	left: 0;
+	&:before {
+		left: $space;
+	}
+	&:after {
+		left: $space + 1;
+	}
 }

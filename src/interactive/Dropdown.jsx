@@ -14,37 +14,18 @@ class Dropdown extends React.Component {
 			'toggleContent',
 			'onClick',
 			'onKeyDown',
-			'onClick',
-			'onBlur'
+			'onClick'
 		);
 
 		this.state = { isActive: false };
 	}
 
+	closeContent() {
+		this.setState(() => ({ isActive: false }));
+	}
+
 	toggleContent() {
-		this.setState(() => ({ isActive: !this.state.isActive}));
-	}
-
-	focusCheck() {
-		// const focusedOptionClass = document.activeElement.parentNode.classList;
-
-		// TODO: bail out if active element is the content el
-		/*
-		 *if (focusedOptionClass && focusedOptionClass.contains(POPOVER_MENU_CLASS)) {
-		 *    return;
-		 *}
-		 */
-
-		this.toggleContent();
-	}
-
-	onBlur() {
-		// On blur, browsers always focus `<body>` before moving focus
-		// to the next actual focused element.
-		//
-		// This zero-length timeout ensures the browser will return the
-		// actual focused element instead of `<body>`
-		window.setTimeout(() => this.focusCheck(), 0);
+		this.setState(() => ({ isActive: !this.state.isActive }));
 	}
 
 	onClick(e) {
@@ -57,7 +38,7 @@ class Dropdown extends React.Component {
 			this.toggleContent();
 			break;
 		case 'Escape':
-			this.toggleContent();
+			this.closeContent();
 			break;
 		}
 	}
@@ -68,6 +49,7 @@ class Dropdown extends React.Component {
 				className,
 				trigger,
 				content,
+				align, // eslint-disable-line no-unused-vars
 				...other
 			} = this.props;
 
@@ -85,6 +67,8 @@ class Dropdown extends React.Component {
 			content: cx(
 				'dropdown-content',
 				{
+					'dropdown-content--right': (align == 'right'),
+					'dropdown-content--left': (align == 'left'),
 					'display--none': !isActive,
 					'display--block': isActive
 				}
@@ -96,7 +80,6 @@ class Dropdown extends React.Component {
 				className={classNames.dropdown}
 				aria-haspopup='true'
 				onKeyDown={this.onKeyDown}
-				onBlur={this.onBlur}
 				{...other}
 			>
 
@@ -112,6 +95,7 @@ class Dropdown extends React.Component {
 				<div
 					className={classNames.content}
 					aria-hidden={!isActive}
+					ref={(el) => this.contentEl}
 				>
 					{content}
 				</div>
@@ -120,9 +104,14 @@ class Dropdown extends React.Component {
 	}
 }
 
+Dropdown.defaultProps = {
+	align: 'right'
+};
+
 Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element.isRequired,
+	align: PropTypes.oneOf(['left', 'right']),
 	className: PropTypes.string,
 };
 
