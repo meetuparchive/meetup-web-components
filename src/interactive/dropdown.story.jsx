@@ -34,6 +34,7 @@ storiesOf('Dropdown', module)
 				<Flex justify='flexEnd'>
 					<FlexItem shrink>
 						<Dropdown
+							align='right'
 							trigger={
 								<Button small>Open</Button>
 							}
