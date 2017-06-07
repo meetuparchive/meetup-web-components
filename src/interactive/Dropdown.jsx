@@ -104,14 +104,10 @@ class Dropdown extends React.Component {
 	}
 }
 
-Dropdown.defaultProps = {
-	align: 'right'
-};
-
 Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element.isRequired,
-	align: PropTypes.oneOf(['left', 'right']),
+	align: PropTypes.oneOf(['left', 'right']).isRequired,
 	className: PropTypes.string,
 };
 
