@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import bindAll from '../utils/bindAll';
 
@@ -70,13 +69,6 @@ class Dropdown extends React.Component {
 		}
 	}
 
-	componentDidUpdate() {
-		const selectedItemEl = this._menuItems.get(this.state.selectedIndex);
-		if (selectedItemEl) {
-			ReactDOM.findDOMNode(selectedItemEl).focus();
-		}
-	}
-
 	render() {
 		const isActive = this.state.isActive;
 		const {
@@ -97,7 +89,7 @@ class Dropdown extends React.Component {
 					'dropdown-trigger--active': isActive
 				}
 			),
-			menu: 'dropdown-conent'
+			menu: 'dropdown-content'
 		};
 
 		return (
@@ -119,7 +111,7 @@ class Dropdown extends React.Component {
 
 				{/* TODO: fix aria attributes */}
 				<div
-					className={className.conent}
+					className={classNames.content}
 					role='menu'
 					aria-hidden={!isActive}
 				>
