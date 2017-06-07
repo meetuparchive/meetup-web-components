@@ -52,14 +52,14 @@ class Button extends React.Component {
 		const opts = right ? { rowReverse: 'all' } : {};
 
 		const iconChildren = (
-			<Flex className={classNames.iconWrap} {...opts}>
+			<Flex className={classNames.iconWrap} justify='center' {...opts}>
 				{icon &&
 					<FlexItem shrink className={`${BUTTON_ICON_CLASS} valign--middle flush--left`}>
 						{icon}
 					</FlexItem>
 				}
 				{children &&
-					<FlexItem className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}>
+					<FlexItem shrink className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}>
 						{children}
 					</FlexItem>
 				}

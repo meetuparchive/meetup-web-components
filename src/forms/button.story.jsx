@@ -62,6 +62,9 @@ storiesOf('Button', module)
 	.add('Icon', () => (
 		<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />}>Button Label</Button>
 	))
+	.add('Icon - fullWidth', () => (
+		<Button onClick={action('clicked')} fullWidth icon={<Icon shape='search' size='s' />}>Button Label</Button>
+	))
 	.add('Icon - inverted', () => (
 		<Inverted>
 			<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />}>Button Label</Button>
