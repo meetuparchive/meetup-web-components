@@ -1,0 +1,81 @@
+//
+// Dropdown
+//
+$dropdownShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C_border;
+$content-minWidth: $block-6;
+$content-maxWidth: 512px; // match chapstick
+$spaceFromTrigger: $space-4;
+
+.dropdown {
+	position: relative;
+}
+
+.dropdown-trigger {
+	display: inline;
+	cursor: pointer;
+
+	&--active {
+		&:focus {
+			outline: 0;
+		}
+	}
+}
+
+.dropdown-content {
+	border: 1px solid $C_border;
+	border-radius: $defaultRadius;
+	background-color: $C_contentBG;
+	box-shadow: $dropdownShadow;
+	box-sizing: border-box;
+	position: absolute;
+	top: $spaceFromTrigger;
+	min-width: $content-minWidth;
+	max-width: $content-minWidth;
+	z-index: map-get($zindex-map, 'popup');
+
+	// outer triangle for border
+	&:before {
+		width: 0;
+		height: 0;
+		border-bottom: ($space + 1) solid $C_border;
+		border-right: ($space + 1) solid transparent;
+		border-left: ($space + 1) solid transparent;
+		top: -$space - 0.5;
+	}
+
+	// inner triangle to match content color
+	&:after {
+		width: 0;
+		height: 0;
+		border-bottom: $space solid $C_white;
+		border-right: $space solid transparent;
+		border-left: $space solid transparent;
+		top: -$space + 1;
+	}
+
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+
+		// overlap content container
+		z-index: map-get($zindex-map, 'popup') + 1;
+	}
+}
+
+@mixin alignDropdown($direction) {
+	#{$direction}: 0;
+	&:before {
+		#{$direction}: $space;
+	}
+	&:after {
+		#{$direction}: $space + 1;
+	}
+}
+
+.dropdown-content--right {
+	@include alignDropdown('right');
+}
+.dropdown-content--left {
+	@include alignDropdown('left');
+}
