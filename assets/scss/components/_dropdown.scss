@@ -61,24 +61,21 @@ $spaceFromTrigger: $space-4;
 		// overlap content container
 		z-index: map-get($zindex-map, 'popup') + 1;
 	}
+}
 
+@mixin alignDropdown($direction) {
+	#{$direction}: 0;
+	&:before {
+		#{$direction}: $space;
+	}
+	&:after {
+		#{$direction}: $space + 1;
+	}
 }
 
 .dropdown-content--right {
-	right: 0;
-	&:before {
-		right: $space;
-	}
-	&:after {
-		right: $space + 1;
-	}
+	@include alignDropdown('right');
 }
 .dropdown-content--left {
-	left: 0;
-	&:before {
-		left: $space;
-	}
-	&:after {
-		left: $space + 1;
-	}
+	@include alignDropdown('left');
 }
