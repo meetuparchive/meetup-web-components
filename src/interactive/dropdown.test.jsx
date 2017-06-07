@@ -35,7 +35,7 @@ const getContent = (component) =>
 describe('Dropdown', () => {
 	const component = TestUtils.renderIntoDocument(
 		<Dropdown
-			align="right"
+			align='right'
 			trigger={dropdownTrigger}
 			content={dropdownContent}
 		/>
@@ -76,7 +76,7 @@ describe('Dropdown', () => {
 	describe('right aligned dropdown', () => {
 		const rightDropdown = TestUtils.renderIntoDocument(
 			<Dropdown
-				align="right"
+				align='right'
 				trigger={dropdownTrigger}
 				content={dropdownContent}
 			/>
