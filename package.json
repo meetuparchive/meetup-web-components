@@ -38,14 +38,14 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-intl": "^2.2.3",
-    "swarm-icons": "^1.2.76"
+    "swarm-icons": "1.2.76"
   },
   "dependencies": {
     "autosize": "3.0.21",
     "base64-image-loader": "1.2.0",
     "flatpickr": "2.6.3",
     "prop-types": "15.5.10",
-    "swarm-icons": "^1.2.76"
+    "swarm-icons": "1.2.76"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
