@@ -10,7 +10,7 @@ import FlexItem from '../layout/FlexItem';
 import Button from '../forms/Button';
 
 const dropdownContent = (
-	<Section noSeparator>
+	<Section className='border--none'>
 		<Chunk>
 			<h2 className='text--big text--bold'>Dropdown content</h2>
 		</Chunk>
