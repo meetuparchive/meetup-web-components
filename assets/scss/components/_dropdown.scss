@@ -1,7 +1,7 @@
 //
 // Dropdown
 //
-$dropdownShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C_border;
+$dropdownShadow: $interactiveShadow;
 $content-minWidth: $block-6;
 $content-maxWidth: 512px; // match chapstick
 $triangleSize: 10px;
