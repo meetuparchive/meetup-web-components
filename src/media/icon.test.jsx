@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Icon, {
 	ICON_CLASS,
+	SVG_THIN_STYLE,
 	getIconShape
 } from './Icon';
 import { MEDIA_SIZES } from '../utils/designConstants';
@@ -69,7 +70,14 @@ describe('Icon', () => {
 		it('renders small shape variant for "xs" icons', () => {
 			const xsIconShape = 'location';
 			const actual = getIconShape(xsIconShape, 'xs');
-			const expected = `${xsIconShape}--small`;
+			const expected = `${xsIconShape}${SVG_THIN_STYLE}`;
+			expect(actual).toBe(expected);
+		});
+
+		it('renders small shape variant for "s" icons', () => {
+			const xsIconShape = 'test';
+			const actual = getIconShape(xsIconShape, 's');
+			const expected = `${xsIconShape}${SVG_THIN_STYLE}`;
 			expect(actual).toBe(expected);
 		});
 

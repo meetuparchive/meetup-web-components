@@ -9,7 +9,7 @@ import {
 
 storiesOf('SelectInput', module)
 	.add('default', () =>
-		<SelectInput
+		(<SelectInput
 			label='Select a name for your horse'
 			id='horsename'
 			name='horsename'
@@ -18,10 +18,10 @@ storiesOf('SelectInput', module)
 				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
 				{ label: 'Mister Chompy', value: 'chompyhorse' }
 			]}
-		/>
+		/>)
 	)
 	.add('with default selection', () =>
-		<SelectInput
+		(<SelectInput
 			label='Select a name for your horse'
 			id='horsename'
 			name='horsename'
@@ -31,10 +31,10 @@ storiesOf('SelectInput', module)
 				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
 				{ label: 'Mister Chompy', value: 'chompyhorse' }
 			]}
-		/>
+		/>)
 	)
 	.add('required', () =>
-		<SelectInput
+		(<SelectInput
 			label='Select a name for your horse'
 			id='horsename'
 			name='horsename'
@@ -45,7 +45,7 @@ storiesOf('SelectInput', module)
 				{ label: 'Mister Chompy', value: 'chompyhorse' }
 			]}
 			error='You forgot to name your horse!'
-		/>
+		/>)
 	)
 	.add('error state formatted', () => {
 		const trn = defineMessages({
@@ -73,7 +73,7 @@ storiesOf('SelectInput', module)
 		);
 	})
 	.add('multiple errors', () =>
-		<SelectInput
+		(<SelectInput
 			label='Select a name for your horse'
 			id='horsename'
 			name='horsename'
@@ -87,5 +87,5 @@ storiesOf('SelectInput', module)
 				'This is a bad name for a horse',
 				'You do not have a horse to name'
 			]}
-		/>
+		/>)
 	);

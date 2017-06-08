@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
-import Bounds from './Bounds';
+// import Bounds from './Bounds';
 
 export const STRIPE_CLASS = 'stripe';
 export const STRIPE_COLLECTION_CLASS = 'stripe--collection';
 export const STRIPE_INVERTED_CLASS = 'stripe--inverted';
-export const STRIPE_HERO_CLASS = 'stripe--hero';
+export const STRIPE_HERO_CLASS = 'stripe--withBGImg';
 
 /**
  * Design System Component: Provides `stripe` styled container for components
@@ -21,7 +21,6 @@ class Stripe extends React.Component {
 			backgroundImage,
 			collection,
 			inverted,
-			hero,
 			...other
 		} = this.props;
 
@@ -30,7 +29,7 @@ class Stripe extends React.Component {
 			{
 				[STRIPE_COLLECTION_CLASS]: collection,
 				[`${STRIPE_INVERTED_CLASS} inverted`]: inverted,
-				[`${STRIPE_HERO_CLASS} inverted`]: backgroundImage || hero
+				[`${STRIPE_HERO_CLASS} inverted`]: backgroundImage
 			},
 			className
 		);
@@ -45,11 +44,11 @@ class Stripe extends React.Component {
 				className={classNames}
 				style={styles}
 				{...other}>
-				{ hero ?
+				{ backgroundImage ?
 					(
-						<Bounds className='stripe-heroContent'>
+						<div className='stripe-aboveScrim'>
 							{children}
-						</Bounds>
+						</div>
 					) :
 					children
 				}
