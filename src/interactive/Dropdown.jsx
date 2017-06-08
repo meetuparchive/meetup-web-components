@@ -43,6 +43,12 @@ class Dropdown extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+	}
+
+	componentWillUnmount() {
+	}
+
 	render() {
 		const isActive = this.state.isActive;
 		const {
