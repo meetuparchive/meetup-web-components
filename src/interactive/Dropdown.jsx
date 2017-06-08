@@ -14,7 +14,9 @@ class Dropdown extends React.Component {
 			'toggleContent',
 			'onClick',
 			'onKeyDown',
-			'onClick'
+			'onClick',
+			'onBodyClick',
+			'onBodyKeyDown'
 		);
 
 		this.state = { isActive: false };
@@ -33,20 +35,31 @@ class Dropdown extends React.Component {
 	}
 
 	onKeyDown(e) {
-		switch(e.key) {
-		case 'Enter':
+		if (e.key === 'Enter') {
 			this.toggleContent();
-			break;
-		case 'Escape':
+		}
+	}
+
+	onBodyClick(e) {
+		if (!this.contentRef.contains(e.target)) {
 			this.closeContent();
-			break;
+		}
+	}
+
+	onBodyKeyDown(e) {
+		if (e.key === 'Escape') {
+			this.closeContent();
 		}
 	}
 
 	componentDidMount() {
+		document.body.addEventListener('click', this.onBodyClick);
+		document.body.addEventListener('keydown', this.onBodyKeyDown);
 	}
 
 	componentWillUnmount() {
+		document.body.removeEventListener('click', this.onBodyClick);
+		document.body.removeEventListener('keydown', this.onBodyKeyDown);
 	}
 
 	render() {
@@ -97,11 +110,10 @@ class Dropdown extends React.Component {
 					{trigger}
 				</div>
 
-				{/* TODO: fix aria attributes */}
 				<div
+					ref={(el) => this.contentRef = el}
 					className={classNames.content}
 					aria-hidden={!isActive}
-					ref={(el) => this.contentEl}
 				>
 					{content}
 				</div>

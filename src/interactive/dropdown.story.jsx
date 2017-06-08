@@ -14,11 +14,15 @@ const dropdownContent = (
 		<Chunk>
 			<h2 className='text--big text--bold'>Dropdown content</h2>
 		</Chunk>
-		<Chunk>
+		<Chunk className='runningText'>
 			<p>
 				This is a basic dropdown component.
 				It accepts a `content` prop with which you
 				can pass arbitrary JSX content.
+			</p>
+			<p>
+				<a href='#'>Tab-focusable links</a> should
+				work as if they're in normal document flow
 			</p>
 		</Chunk>
 	</Section>

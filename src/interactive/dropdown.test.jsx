@@ -32,14 +32,20 @@ const getContent = (component) =>
 		'dropdown-content'
 	);
 
+const getIsOpen = (content) =>
+	content.classList.contains('display--block')
+	&& !content.classList.contains('display--none');
+
+
 describe('Dropdown', () => {
-	const component = TestUtils.renderIntoDocument(
+	const dropdownJSX = (
 		<Dropdown
 			align='right'
 			trigger={dropdownTrigger}
 			content={dropdownContent}
 		/>
 	);
+	const component = TestUtils.renderIntoDocument(dropdownJSX);
 
 	it('renders into DOM', () => {
 		expect(getDropdownFn(component)).not.toThrow();
@@ -48,29 +54,6 @@ describe('Dropdown', () => {
 	it('should hide dropdown content by default', () => {
 		const content = getContent(component);
 		expect(content.classList).toContain('display--none');
-	});
-
-	it('shold show dropdown when trigger is clicked', () => {
-		const content = getContent(component);
-		const trigger = getTrigger(component);
-
-		expect(content.classList).toContain('display--none');
-
-		TestUtils.Simulate.click(trigger);
-		expect(content.classList).toContain('display--block');
-		expect(content.classList).not.toContain('display--none');
-	});
-
-	it('should close the dropdown on ESC key', () => {
-		const content = getContent(component);
-		const trigger = getTrigger(component);
-
-		// content will be open from last test
-		expect(content.classList).toContain('display--block');
-
-		TestUtils.Simulate.keyDown(trigger, {key: 'Escape'});
-		expect(content.classList).toContain('display--none');
-		expect(content.classList).not.toContain('display--block');
 	});
 
 	describe('right aligned dropdown', () => {
@@ -90,5 +73,49 @@ describe('Dropdown', () => {
 			const content = getContent(rightDropdown);
 			expect(content.classList).toContain('dropdown-content--right');
 		});
+	});
+
+	describe('open and close', () => {
+		let closedComponent,
+			content,
+			trigger;
+
+		beforeEach(() => {
+			closedComponent = TestUtils.renderIntoDocument(dropdownJSX);
+			content = getContent(closedComponent);
+			trigger = getTrigger(closedComponent);
+		});
+		afterEach(() => {
+			closedComponent = null;
+			content = null;
+			trigger = null;
+		});
+
+		it('shold show dropdown when trigger is clicked', () => {
+			expect(getIsOpen(content)).toBeFalsy();
+			TestUtils.Simulate.click(trigger);
+			expect(getIsOpen(content)).toBeTruthy();
+		});
+
+		it('should close the dropdown on ESC key', () => {
+			// open it first
+			// dropdowns do not support default open by design
+			TestUtils.Simulate.click(trigger);
+			expect(getIsOpen(content)).toBeTruthy();
+
+			closedComponent.onBodyKeyDown({ key: 'Escape'});
+			expect(getIsOpen(content)).toBeFalsy();
+		});
+
+		it('should close when clicking outside of the dropdown content', () => {
+			// open it first
+			// dropdowns do not support default open by design
+			TestUtils.Simulate.click(trigger);
+			expect(getIsOpen(content)).toBeTruthy();
+
+			closedComponent.onBodyClick({ target: '<div />'});
+			expect(getIsOpen(content)).toBeFalsy();
+		});
+
 	});
 });
