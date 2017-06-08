@@ -41,7 +41,12 @@ class Dropdown extends React.Component {
 	}
 
 	onBodyClick(e) {
-		if (!this.contentRef.contains(e.target)) {
+		const isNotDropdownClick = [
+			this.contentRef,
+			this.triggerRef
+		].every(ref => !ref.contains(e.target));
+
+		if (isNotDropdownClick) {
 			this.closeContent();
 		}
 	}
@@ -103,6 +108,7 @@ class Dropdown extends React.Component {
 			>
 
 				<div
+					ref={(el) => this.triggerRef = el}
 					className={classNames.trigger}
 					tabIndex='0'
 					onClick={this.onClick}
