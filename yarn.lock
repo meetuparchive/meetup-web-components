@@ -2868,10 +2868,6 @@ growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
 
-grunt-exec@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/grunt-exec/-/grunt-exec-2.0.0.tgz#a575a620b1da4416c292c01df564c9296b80ab23"
-
 handlebars@^4.0.3:
   version "4.0.10"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.10.tgz#3d30c718b09a3d96f23ea4cc1f403c4d3ba9ff4f"
@@ -6009,11 +6005,9 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
-swarm-icons@1.1.56:
-  version "1.1.56"
-  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.1.56.tgz#23db8d86afba4a6da8f341c9ca78bac583f9f046"
-  dependencies:
-    grunt-exec "^2.0.0"
+swarm-icons@1.2.76:
+  version "1.2.76"
+  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.2.76.tgz#368ddf7bdf7114fe065221f5b0c87f4ba35a0020"
 
 swarm-sasstools@1.7.29:
   version "1.7.29"
