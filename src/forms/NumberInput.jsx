@@ -16,9 +16,7 @@ export const INCREMENT_BTN_CLASS = 'incrementButton';
 class NumberInput extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			value: props.value || '',
-		};
+		this.state = { value: props.value };
 
 		this._updateValueByStep = this._updateValueByStep.bind(this);
 		this.decrementAction = this.decrementAction.bind(this);
@@ -67,11 +65,13 @@ class NumberInput extends React.Component {
 		this.fauxInputEl.classList.add(FOCUSED_INPUT_CLASS);
 	}
 
-	incrementAction() {
+	incrementAction(e) {
+		e.preventDefault();
 		this.setState(() => ({ value: this._updateValueByStep(true) }));
 	}
 
-	decrementAction() {
+	decrementAction(e) {
+		e.preventDefault();
 		this.setState(() => ({ value: this._updateValueByStep(false) }));
 	}
 
@@ -205,7 +205,8 @@ NumberInput.propTypes = {
 	onChange: PropTypes.func,
 	required: PropTypes.bool,
 	step: PropTypes.number,
-	disabled: PropTypes.bool
+	disabled: PropTypes.bool,
+	value: PropTypes.number,
 };
 
 export default NumberInput;
