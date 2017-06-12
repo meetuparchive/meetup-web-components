@@ -68,14 +68,14 @@ describe('Icon', () => {
 		});
 
 		it('renders small shape variant for "xs" icons', () => {
-			const xsIconShape = 'location';
+			const xsIconShape = 'plus';
 			const actual = getIconShape(xsIconShape, 'xs');
 			const expected = `${xsIconShape}${SVG_THIN_STYLE}`;
 			expect(actual).toBe(expected);
 		});
 
 		it('renders small shape variant for "s" icons', () => {
-			const xsIconShape = 'test';
+			const xsIconShape = 'plus';
 			const actual = getIconShape(xsIconShape, 's');
 			const expected = `${xsIconShape}${SVG_THIN_STYLE}`;
 			expect(actual).toBe(expected);
