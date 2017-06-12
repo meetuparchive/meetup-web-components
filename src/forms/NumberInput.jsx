@@ -24,6 +24,7 @@ class NumberInput extends React.Component {
 		this.onBlur = this.onBlur.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.onFocus = this.onFocus.bind(this);
+		this.onKeyDown = this.onKeyDown.bind(this);
 	}
 
 	_updateValueByStep(isIncreasing) {
@@ -68,6 +69,14 @@ class NumberInput extends React.Component {
 	incrementAction(e) {
 		e.preventDefault();
 		this.setState(() => ({ value: this._updateValueByStep(true) }));
+	}
+
+	onKeyDown(e) {
+		// Disable the 'e' or 'E' values because we don't
+		// support scientific notation at the moment
+		if (e.key.toLowerCase() === 'e') {
+			e.preventDefault();
+		}
 	}
 
 	decrementAction(e) {
@@ -148,6 +157,7 @@ class NumberInput extends React.Component {
 								onBlur={this.onBlur}
 								onFocus={this.onFocus}
 								onChange={this.onChange}
+								onKeyDown={this.onKeyDown}
 								disabled={disabled}
 								{...other} />
 						</FlexItem>
