@@ -42,6 +42,12 @@ class NumberInput extends React.Component {
 		return newValue;
 	}
 
+	componentWillUpdate(nextProps, nextState) {
+		if (this.props.onChange && nextState.value !== this.state.value) {
+			this.props.onChange({ target: { name: nextProps.name, value: nextState.value }});
+		}
+	}
+
 	onBlur(e) {
 		const formControls = [
 			this.fauxInputEl,
@@ -57,18 +63,10 @@ class NumberInput extends React.Component {
 		const { value } = e.target;
 
 		this.setState(() => ({ value }));
-		if (this.props.onChange) {
-			this.props.onChange(e);
-		}
 	}
 
 	onFocus(e) {
 		this.fauxInputEl.classList.add(FOCUSED_INPUT_CLASS);
-	}
-
-	incrementAction(e) {
-		e.preventDefault();
-		this.setState(() => ({ value: this._updateValueByStep(true) }));
 	}
 
 	onKeyDown(e) {
@@ -77,6 +75,11 @@ class NumberInput extends React.Component {
 		if (e.key.toLowerCase() === 'e') {
 			e.preventDefault();
 		}
+	}
+
+	incrementAction(e) {
+		e.preventDefault();
+		this.setState(() => ({ value: this._updateValueByStep(true) }));
 	}
 
 	decrementAction(e) {
@@ -216,7 +219,10 @@ NumberInput.propTypes = {
 	required: PropTypes.bool,
 	step: PropTypes.number,
 	disabled: PropTypes.bool,
-	value: PropTypes.number,
+	value: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+	]),
 };
 
 export default NumberInput;
