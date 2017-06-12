@@ -81,7 +81,7 @@ describe('Icon', () => {
 			expect(actual).toBe(expected);
 		});
 
-		it('renders normal shape variant for icons larger than "xs"', () => {
+		it('renders normal shape variant for icons larger than "s"', () => {
 			const actual = getIconShape(shape, 'm');
 			const expected = shape;
 			expect(actual).toBe(expected);
