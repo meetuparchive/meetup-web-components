@@ -271,7 +271,7 @@ describe('NumberInput', function() {
 			);
 
 			expect(numberInputComponent.state.value).toEqual(VALUE);
-			numberInputComponent.incrementAction();
+			numberInputComponent.incrementAction({ preventDefault: () => {} });
 			expect(numberInputComponent.state.value).toEqual(newValue);
 		});
 
@@ -287,7 +287,7 @@ describe('NumberInput', function() {
 			);
 
 			expect(numberInputComponent.state.value).toEqual(VALUE);
-			numberInputComponent.decrementAction();
+			numberInputComponent.decrementAction({ preventDefault: () => {} });
 			expect(numberInputComponent.state.value).toEqual(newValue);
 		});
 	});
