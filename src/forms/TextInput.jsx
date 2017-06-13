@@ -37,7 +37,8 @@ class TextInput extends React.Component {
 			isSearch,
 			maxLength,
 			pattern,
-			disabled
+			disabled,
+			placeholder,
 		} = this.props;
 
 		const classNames = cx(
@@ -68,6 +69,7 @@ class TextInput extends React.Component {
 					maxLength={maxLength}
 					pattern={pattern}
 					disabled={disabled}
+					placeholder={placeholder}
 					id={id} />
 
 				{ this.props.maxLength && <p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p> }
@@ -89,6 +91,10 @@ TextInput.propTypes = {
 	maxLength: PropTypes.number,
 	pattern: PropTypes.string,
 	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	]),
+	placeholder: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
 	]),
