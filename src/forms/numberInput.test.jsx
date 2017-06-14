@@ -123,6 +123,14 @@ describe('NumberInput', function() {
 			expect(parseFloat(inputEl.value)).toEqual(newValue);
 		});
 
+		it('should not update its value when new value is `e` or `E`', function() {
+			expect(parseFloat(inputEl.value)).toEqual(VALUE);
+			TestUtils.Simulate.keyDown(inputEl, { key: 'e' });
+			expect(parseFloat(inputEl.value)).toEqual(VALUE);
+			TestUtils.Simulate.keyDown(inputEl, { key: 'E' });
+			expect(parseFloat(inputEl.value)).toEqual(VALUE);
+		});
+
 		it('should call onChange and setState with input change', function() {
 			const newValue = new Number(VALUE) + new Number(STEP_ATTR);
 			const changeSpy = spyOn(NumberInput.prototype, 'onChange').and.callThrough();
@@ -271,7 +279,7 @@ describe('NumberInput', function() {
 			);
 
 			expect(numberInputComponent.state.value).toEqual(VALUE);
-			numberInputComponent.incrementAction();
+			numberInputComponent.incrementAction({ preventDefault: () => {} });
 			expect(numberInputComponent.state.value).toEqual(newValue);
 		});
 
@@ -287,7 +295,7 @@ describe('NumberInput', function() {
 			);
 
 			expect(numberInputComponent.state.value).toEqual(VALUE);
-			numberInputComponent.decrementAction();
+			numberInputComponent.decrementAction({ preventDefault: () => {} });
 			expect(numberInputComponent.state.value).toEqual(newValue);
 		});
 	});
