@@ -72,7 +72,7 @@ const withMatchMedia = (
 		this.mediaQueries = breakpointNames
 			.map(bp => window.matchMedia(MEDIA_QUERIES[bp]));
 
-		// add listners for every MediaQueryList object
+		// add listeners for every MediaQueryList object
 		this.mediaQueries.forEach(mq => {
 			mq.addListener(this.handleMediaChange);
 		});
