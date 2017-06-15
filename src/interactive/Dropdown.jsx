@@ -19,7 +19,7 @@ class Dropdown extends React.PureComponent {
 			'onBodyKeyDown'
 		);
 
-		this.state = { isActive: false };
+		this.state = { isActive: props.isActive || false };
 	}
 
 	closeContent() {
@@ -133,6 +133,7 @@ Dropdown.propTypes = {
 	content: PropTypes.element.isRequired,
 	align: PropTypes.oneOf(['left', 'right']).isRequired,
 	className: PropTypes.string,
+	isActive: PropTypes.bool,
 };
 
 export default Dropdown;
