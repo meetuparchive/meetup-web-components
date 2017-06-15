@@ -94,10 +94,7 @@ TextInput.propTypes = {
 		PropTypes.string,
 		PropTypes.element
 	]),
-	placeholder: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	placeholder: PropTypes.string,
 	labelClassName: PropTypes.string,
 	required: PropTypes.bool,
 	isSearch: PropTypes.bool,
