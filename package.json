@@ -38,7 +38,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-intl": "^2.2.3",
-    "swarm-icons": "1.2.76"
+    "swarm-icons": "1.2.110"
   },
   "dependencies": {
     "autosize": "3.0.21",
