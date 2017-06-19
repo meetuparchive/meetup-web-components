@@ -50,6 +50,7 @@ class Textarea extends React.Component {
 	 */
 	componentWillReceiveProps(nextProps) {
 		this.overrideValue(nextProps);
+		autosize.update(this.textarea);
 	}
 
 	/**
@@ -150,7 +151,6 @@ Textarea.propTypes = {
 	]),
 	labelClassName: PropTypes.string,
 	required: PropTypes.bool,
-	autoHeight: PropTypes.bool,
 	minHeight: PropTypes.number,
 	maxHeight: PropTypes.number,
 	onChange: PropTypes.func,
