@@ -7,6 +7,10 @@ jest.mock('autosize', () => {
 	return jest.fn();
 });
 
+// Mock out the autosize update function
+const mockAutosize = require('autosize');
+mockAutosize.update = jest.fn();
+
 const onChange = jest.fn();
 
 describe('Textarea', function() {
