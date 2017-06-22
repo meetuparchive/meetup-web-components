@@ -20,7 +20,7 @@ class Popover extends React.Component {
 			'onKeyDown',
 			'onKeyDownMenuItem',
 			'onClick',
-			'onBlur'
+			'onBodyClick'
 		);
 
 		this.state = {
@@ -54,15 +54,6 @@ class Popover extends React.Component {
 		}
 
 		this.closeMenu();
-	}
-
-	onBlur() {
-		// On blur, browsers always focus `<body>` before moving focus
-		// to the next actual focused element.
-		//
-		// This zero-length timeout ensures the browser will return the
-		// actual focused element instead of `<body>`
-		window.setTimeout(() => this.focusCheck(), 0);
 	}
 
 	onClick(e) {
@@ -135,6 +126,25 @@ class Popover extends React.Component {
 		return this.menuItems;
 	}
 
+	onBodyClick(e) {
+		const isNotPopoverClick = [
+			this.contentRef,
+			this.triggerRef
+		].every(ref => !ref.contains(e.target));
+
+		if (isNotPopoverClick) {
+			this.closeMenu();
+		}
+	}
+
+	componentDidMount() {
+		document.body.addEventListener('click', this.onBodyClick);
+	}
+
+	componentWillUnmount() {
+		document.body.removeEventListener('click', this.onBodyClick);
+	}
+
 	render() {
 		const isActive = this.state.isActive;
 		const {
@@ -172,11 +182,11 @@ class Popover extends React.Component {
 				className={classNames.popover}
 				aria-haspopup='true'
 				onKeyDown={this.onKeyDown}
-				onBlur={this.onBlur}
 				{...other}
 			>
 
 				<div
+					ref={(el) => this.triggerRef = el}
 					className={classNames.trigger}
 					tabIndex='0'
 					onClick={this.onClick}
@@ -186,6 +196,7 @@ class Popover extends React.Component {
 
 				<nav>
 					<ul
+						ref={(el) => this.contentRef = el}
 						className={classNames.menu}
 						role='menu'
 						aria-hidden={!isActive}
