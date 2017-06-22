@@ -65,14 +65,6 @@ describe('Popover', function() {
 		expect(getIsActive(menuEl)).toBe(true);
 	});
 
-	describe('onBlur', () => {
-		it('should add timeout when `blur`ed', () => {
-			spyOn(window, 'setTimeout');
-			popover.onBlur();
-			expect(window.setTimeout).toHaveBeenCalled();
-		});
-	});
-
 	describe('onKeyDown', () => {
 		it('menu is keyboard navigable with `escape` key', () => {
 			const firstOption = optionEls[0];
