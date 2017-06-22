@@ -118,7 +118,7 @@ class Popover extends React.Component {
 
 	onBodyClick(e) {
 		const isNotPopoverClick = [
-			this.contentRef,
+			this.menuRef,
 			this.triggerRef
 		].every(ref => !ref.contains(e.target));
 
@@ -186,7 +186,7 @@ class Popover extends React.Component {
 
 				<nav>
 					<ul
-						ref={(el) => this.contentRef = el}
+						ref={(el) => this.menuRef = el}
 						className={classNames.menu}
 						role='menu'
 						aria-hidden={!isActive}
