@@ -59,32 +59,10 @@ describe('Popover', function() {
 		expect(getIsActive(menuEl)).toBe(false);
 	});
 
-	describe('focusCheck', () => {
-		it('should be active if focus is on menu items', () => {
-			popover.openMenu();
-			popover.focusCheck();
-			expect(popover.state.isActive).toBe(true);
-		});
-		it('should close menu if focus not on items', () => {
-			popover.openMenu();
-			document.activeElement.blur();
-			popover.focusCheck();
-			expect(popover.state.isActive).toBe(false);
-		});
-	});
-
 	it('menu appears on trigger click', () => {
 		expect(getIsActive(menuEl)).toBe(false);
 		TestUtils.Simulate.click(triggerEl);
 		expect(getIsActive(menuEl)).toBe(true);
-	});
-
-	describe('onBlur', () => {
-		it('should add timeout when `blur`ed', () => {
-			spyOn(window, 'setTimeout');
-			popover.onBlur();
-			expect(window.setTimeout).toHaveBeenCalled();
-		});
 	});
 
 	describe('onKeyDown', () => {
