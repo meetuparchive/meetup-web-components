@@ -46,16 +46,6 @@ class Popover extends React.Component {
 		this.setState({ isActive: false });
 	}
 
-	focusCheck() {
-		const focusedOptionClass = document.activeElement.parentNode.classList;
-		// don't close the popover if we're moving focus to an menu item
-		if (focusedOptionClass && focusedOptionClass.contains(POPOVER_MENU_CLASS)) {
-			return;
-		}
-
-		this.closeMenu();
-	}
-
 	onClick(e) {
 		this.openMenu();
 	}
