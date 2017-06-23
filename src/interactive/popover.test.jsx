@@ -140,6 +140,22 @@ describe('Popover', function() {
 		});
 	});
 
+	describe('keyboard navigation', () => {
+
+		it('should open the popover on Enter', () => {
+			popover.onKeyDown({ key: 'Enter' });
+			expect(popover.state.isActive).toBe(true);
+		});
+
+		it('should close the popover on ESC', () => {
+			popover.openMenu();
+			expect(popover.state.isActive).toBe(true);
+
+			popover.onKeyDown({ key: 'Escape' });
+			expect(popover.state.isActive).toBe(false);
+		});
+	});
+
 	describe('Alignment Style', () => {
 		describe('align right', () => {
 			const popoverItem = (

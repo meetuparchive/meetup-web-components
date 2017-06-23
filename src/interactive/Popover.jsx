@@ -117,12 +117,12 @@ class Popover extends React.Component {
 	}
 
 	onBodyClick(e) {
-		const isNotPopoverClick = [
+		const isPopoverClick = [
 			this.menuRef,
 			this.triggerRef
-		].every(ref => !ref.contains(e.target));
+		].includes(e.target);
 
-		if (isNotPopoverClick) {
+		if (!isPopoverClick) {
 			this.closeMenu();
 		}
 	}
