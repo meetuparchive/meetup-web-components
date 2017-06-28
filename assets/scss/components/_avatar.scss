@@ -80,19 +80,17 @@ Class                     | Description
 	color: transparent;
 	display: inline-block;
 	font-size: 0;
-	height: $media-s;
 	text-indent: 100%;
 	white-space: nowrap;
 	vertical-align: top;
-	width: $media-s;
+
+	@include responsiveVarContext--scalingMedia() {
+		height: $scalingMedia-m;
+		width: $scalingMedia-m;
+	}
 
 	.inverted & {
 		background: $C_textHintInverted;
-	}
-
-	@include atMediaUp(small) {
-		height: $media-m;
-		width: $media-m;
 	}
 
 }
@@ -100,29 +98,35 @@ Class                     | Description
 //
 // Size variants
 //
-.avatar--small {
-	height: $media-xs;
-	width: $media-xs;
-}
-.avatar--big {
-	height: $space-6;
-	width: $space-6;
+@include responsiveVarContext--scalingMedia() {
+	.avatar--small {
+		height: $scalingMedia-s;
+		width: $scalingMedia-s;
+	}
+	.avatar--big {
+		height: $scalingMedia-xxl;
+		width: $scalingMedia-xxl;
+	}
 }
 
 //
 // Type variants
 //
-.avatar--noPhoto {
-	position: relative;
-	text-indent: initial;
-	border: 3px solid;
-}
-
 .avatar--person {
 	@extend %avatar;
 	vertical-align: middle;
 	border-radius: 999px;
 	box-sizing: border-box;
+}
+
+.avatar--noPhoto {
+	position: relative;
+	text-indent: initial;
+	opacity: 0.54; // match text--secondary alpha
+	background-position-y: 4px !important;
+	&.avatar--big {
+		background-position-y: 12px !important;
+	}
 }
 
 .avatar--fbFriend {
@@ -150,21 +154,20 @@ Class                     | Description
 	background: $C_collectionBG;
 	border-radius: 999px;
 	box-sizing: border-box;
-	height: $media-s;
-	font-size: $font-size;
-	line-height: $media-s;
-	padding: $space-half;
 	text-align: center;
-	width: $media-s;
+
+	@include responsiveVarContext--scalingMedia() {
+		height: $scalingMedia-m;
+		line-height: $scalingMedia-m;
+		width: $scalingMedia-m;
+	}
+
+	@include responsiveVarContext--base() {
+		font-size: $base;
+		padding: $base/2;
+	}
 
 	img {
 		width: 100%;
-	}
-
-	@include atMediaUp(small) {
-		height: $media-m;
-		line-height: $media-m;
-		padding: 12px;
-		width: $media-m;
 	}
 }

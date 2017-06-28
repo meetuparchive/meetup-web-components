@@ -4,9 +4,9 @@ $modal-width: 440px;
 	@include transform(translate3d(0, 0, 0));
 	@include transition(transform .2s ease);
 	@include centerAbsolute($modal-width);
+	border-radius: $defaultRadius;
 	min-height: 0;
-	width: $modal-width;
-	margin-top: 10vh;
+	width: $modal-width !important;
 
 	&.off{
 	  @include transform( translateY(100vh) );
@@ -104,6 +104,16 @@ lays out as a dialog on background content on larger screens.
 	z-index: map-get($zindex-map, "modal");
 }
 
+.view--modal {
+	.stripe-heroContent {
+		min-height: 0;
+		text-align: inherit;
+
+		@include atMediaUp(medium) {
+			min-height: 0;
+		}
+	}
+}
 
 /*doc
 ---

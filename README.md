@@ -15,6 +15,7 @@ Table of Contents
     * [Verifying child elements](#verifying-child-elements)
   * [Linting](#linting)
   * [Storybook](#storybook)
+  * [Release notes](#release-notes)
 
 ## Releases
 
@@ -75,22 +76,22 @@ The command will prompt you for a 'type' (select from the list of options),
 and a 'name'. It generates the following files in `src/` :
 
 - `<ComponentName>.jsx` Component JSX module
-- `<componentname>.test.jsx` Component test script
-- `<componentname>.story.jsx` Storybook script
+- `<componentName>.test.jsx` Component test script
+- `<componentName>.story.jsx` Storybook script
 
 ### Components
 
 Located in the `src/` directory, component files live alongside
 their corresponding `.test` and `.story` files.
 
-Filename casing convenctions:
+Filename casing conventions:
 - Component files: `CamelCase`, with a leading capital, i.e. `RsvpTag.jsx`
-- Test files: `alllowercase`, i.e. `rsvptag.test.js`
-- Story files: `alllowercase`, i.e. `rsvptag.story.jsx`
+- Test files: `camelCase`, i.e. `rsvpTag.test.js`
+- Story files: `camelCase`, i.e. `rsvpTag.story.jsx`
 
 ### Layout conventions
 
-The `src/` directory contains layout helpers, like `Section` and `Chunk`. These are 
+The `src/` directory contains layout helpers, like `Section` and `Chunk`. These are
 documented in Storybook, but a [more detailed guide can be found here](https://meetup.atlassian.net/wiki/display/SDS/Guide+to+Layout+Components).
 
 
@@ -156,6 +157,7 @@ have already been built into our Foundation library. We use
 to display components outside of the app context. To open it, run:
 
 ```sh
+$ yarn install
 $ yarn run storybook
 ```
 
@@ -165,3 +167,15 @@ All of the available components are listed on the left, and clicking on
 one will open it in the preview pane. Variants are also listed in the left
 column to show how different states affect the rendered component.
 
+## Release notes
+
+### `v1.1.X`
+Icons update
+
+- Updated `swarm-icons` to `1.0.0`
+- Updated `Icon` component to support rendering of separate SVG symbols for `xs` sizes
+- Added `_icon.scss` component sass partial
+	- allows `meetup-web-components` to provide icon styling to consumer apps
+	- changes default icon color to `secondary` from `inherit`
+- Removes unused and confusing `auto` prop from `Icon`
+- Fixed issue where `Icon` would not accept the `xxl` media size

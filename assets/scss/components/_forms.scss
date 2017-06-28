@@ -1,0 +1,151 @@
+.label--field {
+	padding-bottom: $space-half;
+	display: inline-block;
+}
+
+.label--minor {
+	font-weight: normal;
+}
+
+/*doc
+---
+title: Radios
+name: radio
+category: Forms
+---
+A label variant class of `label--minor` is
+used for side-by-side inputs and labels.
+
+For radios and checkboxes, we put the `input`
+element inside the `label` element.
+
+A class of `radio` is __required__ on radio input
+elements.
+
+```html_example
+<label for="radio1" class="label--minor chunk">
+	<input id="radio1" class="radio" name="radioExample" value="green" type="radio" />
+	Green
+</label>
+<label for="radio2" class="label--minor chunk">
+	<input id="radio2" class="radio" name="radioExample" value="red" type="radio" />
+	Red
+</label>
+```
+*/
+.radio {
+	cursor: pointer;
+	display: inline-block;
+	font-size: $font-size;
+	height: $font-size;
+	line-height: 1;
+	line-height: $line-height;
+	margin: 0 $space-half 0 0;
+
+	@include browser-lessThanIE(10) {
+		top: $space/2;
+	}
+}
+
+/*doc
+---
+title: Validation errors
+name: formValidation
+category: Forms
+---
+Field errors set explicitly with `field--error`.
+
+Error text is set explicitly with `text--error`.
+
+```html_example
+<div class="chunk">
+	<label for="test-textinput">First name</label>
+	<input class="field--error" id="test-textinput" type="text" value="" />
+	<p class="text--error">First name can't be empty</p>
+</div>
+```
+
+*/
+.field--error {
+	border-color: $C_attention !important;
+	&:focus {
+		border-color: $C_attention !important;
+	}
+}
+
+/*doc
+---
+title: Field reset
+name: fieldReset
+category: Forms
+---
+Reset default form styles with `.field--reset`.
+
+```html_example
+<div class="chunk">
+	<input class="field--reset" type="text" value="Reset text field" />
+</div>
+<div class="chunk">
+	<input class="field--reset" type="number" value="42" />
+</div>
+```
+*/
+input.field--reset,
+input.field--reset:hover,
+input.field--reset:focus,
+input.field--reset:active {
+	@include resetFieldStyles;
+}
+
+/*doc
+---
+title: Faux Input
+name: fauxInput
+category: Forms
+---
+Faux inputs visually mimic actual input elements.
+
+```html_example
+<div class="chunk">
+	<div class="fauxInput">I'm a faux input</div>
+</div>
+```
+*/
+.fauxInput {
+	// default form styling
+	background-color: $C_fieldBG;
+	border-radius: $defaultRadius;
+	border: 1px solid transparent;
+	box-shadow: none;
+	box-sizing: border-box;
+	margin: 0 0 $space-quarter 0;
+	max-width: 100%;
+	padding: $space-half;
+	width: 100%;
+
+	// manually changing height to match other inputs
+	height: ($font-size * $line-height) + $space;
+
+	&:hover {
+		border-color: $C_textHint;
+	}
+
+	&.focused {
+		border-color: $C_lightPurple;
+		box-shadow: none;
+		outline: none;
+	}
+
+	&.error {
+		border-color: $C_attention !important;
+	}
+
+	&.disabled {
+		background-color: $C_fieldBG--disabled;
+		color: $C_textSecondary;
+		&:hover {
+			background-color: $C_fieldBG--disabled;
+			border: 1px solid transparent;
+		}
+	}
+}

@@ -1,3 +1,26 @@
+/// PRIVATE
+/// legacy text protection mixin from SQ2
+@mixin textProtectionScrimDark($placement: 'bottom') {
+	&:before {
+		content: '';
+		display: block;
+		height: 100%;
+		position: absolute;
+		width: 100%;
+		z-index: 0;
+		left: 0;
+		mix-blend-mode: hard-light;
+
+		@if $placement == 'bottom' {
+			@include linear-gradient(180deg, transparentize($C_black, .9) 25%, transparentize($C_black, .7) 100%);
+			bottom: 0;
+		} @else {
+			@include linear-gradient(0deg, transparentize($C_black, .9) 25%, transparentize($C_black, .7) 100%);
+			top: 0;
+		}
+	}
+}
+
 /*doc
 ---
 title: Cards
@@ -85,8 +108,7 @@ $_eventStripes: (
 }
 
 .card--group {
-	@include textProtectionScrim(top);
-	@include filter(grayscale(20%) contrast(110%));
+	@include textProtectionScrimDark(top);
 	border-radius: 0;
 	padding: $space;
 	height: $block-4;

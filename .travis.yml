@@ -1,36 +1,34 @@
-sudo: required
+sudo: false
 language: node_js
 node_js:
   - "7.7.1"
+cache:
+  yarn: true
+  directories:
+    - node_modules
 
-branches:  # pushes only get built for master
+# exclude tags
+branches:
   only:
     - master
 
 env:
   global:
-    # compiler command for Travis
-    - CXX=g++-4.8
-    # build number used by blt pipeline
+    # build number used by Makefile and Coveralls
     - CI_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
+    - secure: "DTA/wJ8Z0AMMnCtzokJoAeFWC45FrJNZJIx+2V7esCqdNMTg3vNbbcCdthm2qw/Lgu8SbstzBqGiaaHwvTUoy3y4Kk38T+Fx8uGbfbl7NMN/f/TaxiSJuEHaBgz0ot29EfjIljnxaTLBZY9ADOr8j+jLnJMwBybKzmZcRuRXFE02+Zqvj/UhIBW46KurjMWzcySvIre4wZAIpsff7X9tHpK4y0/1dyo6QEpn/WAuDBB5ueBypZvQvsKRM+PwWR9YuByxHfPtVdAE2sUUFnVFJofWwFrOOtz1fQ8Vp259gEBEXEAVzSifMcItXudXNCcM8Hy4H9IrrNd8gkztSm8pssvjkLhsinTbb+UeGxVEHOQUojAcFHFAThiNGEV1GV7sY1fEBoujgRtlUQJaCBsW4boAwNElsJq3tKJ5Vj/FSaiE58uKjS2FItrvAKiNTe9TUPGTxEiFfbKDH6wmEiYXB33Ra3aoYv68ZEBpLdLHKMIBXoC+QgGsQEEPj8PC8gkBQ7josTJD8UkPQA8L29WUkyPw/TcWb4F6myiUqms2wKfwtuGobDV867dUQy2WxT3h4N5uNRNeirR8mXJdbGdzTg0KgJm1FNKjmewae/n97B+604eQgz4NLqI2pOaaZm5nqqqG3ItzuURuNNBZmL8xGH4VIGH6xJu+6frdDxhssNk="
 
 before_install:
-    - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+  - openssl aes-256-cbc -K $encrypted_9064aff2eda1_key -iv $encrypted_9064aff2eda1_iv -in '.travis/github_deploy_key.enc' -out github_deploy_key -d
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
-before_install:
-  - git diff --exit-code
+before_script:
+  - git diff --exit-code yarn.lock
 
-after_success:
-  - npm run coveralls
+after_script:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
+  - $(yarn bin)/set-up-ssh --key "$encrypted_9064aff2eda1_key" --iv "$encrypted_9064aff2eda1_iv" --path-encrypted-key ".travis/github_deploy_key.enc"
   - >
     [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
     export GIT_TAG=$(make version) ||
@@ -42,22 +40,19 @@ after_success:
   - echo "GIT_TAG=$GIT_TAG"
   - echo "NPM_TAG=$NPM_TAG"
   - >
-    [ "${TRAVIS_BRANCH}" = "master" ] &&
-    git commit -am "Commit .npmrc in tag pushed to npm" &&
+    [ "${TRAVIS_BRANCH}" != "master" ] &&
+    echo "skipping versioning" ||
+    yarn run build &&
     npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" &&
-    git push -q https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG --tags &&
-    npm publish --tag $NPM_TAG ||
-    echo "skipping versioning"
+    git push --tags git@github.com:$TRAVIS_REPO_SLUG.git &&
+    npm publish --tag $NPM_TAG
+  - >
+    [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
+    yarn run publish-storybook
+
+after_success:
+  - npm run coveralls
 
 notifications:
-  # slack integration
   slack:
-    # encrypted token for the meetuphq slack channel
-    secure: J7M6eSgKWcbMqFs9Z2wSiHemn/IGOj8D/iB6AB2WXPYxr8+HQnzE6L96lmdwwSHNscB0tbg7y7xsMJHh+qeiiFgrMTAP7SbbT0kV9JdFWEJs4mwZtMBeQXbyfIJ/6HSFAsAjOxBgyhNnmx6PYKWKc+HGVcRui4dWJQRO24Nmfup93gJon63U/KsdXyvTpVN/dZ2EneQzhh/Evg0fXRxo9ETeqfeJ7KNTc0FvklVYdMe0d9cPKZ7/22qoYM7KKELE5ER/pDEeU42ttz4axm1l7WQAddDTQElH1oZP46Eq62Adu244bSuQUBIRwSBJOjUMnIzxn+2s3u4BfeSSGm9d8X8PD46fcaIKbIQaYOnlL9IK4s8jUhv1j0/qEHm3X5OJ7nrHM1FEmlY8R/lgCPyFI6Rr1z722n2iCxKrsasqFaF4bNQjp1L1hHmuFS1bAsGYouc6IRYVLntl0KHI5RpLWxCf6s3kaYHRb8sKcrZTXK+lf/Hlk0iWfXK+SU5vdKtjSrIJusWBU5AmcDKJbjTBbi85/zxJ86jYJy0WN2HsyR6K2mm+iGwTcBD52Ut/7J3PcHgJyp9kq+NQIxyuyk1PmGFWwy6N+xpirlFo7ztgSSEa2teD0gb9Feh1XaLiuAXtmMyaO8esAbXqygweLJGSXoTQgvjJ1Bvgb5GJSej0LME=
-
-    # dont notify successful builds
-    on_success: never
-
-    # always notify build failures
-    on_failure: always
-
+    secure: Z4udKdsw7BDrFym0ACUzIUh25btM2Uw72feE7dj9S28SZd7QUQkIuy8paa7SABhJTRPmbmzpSchLpX4bzplQi8GqTnbHkhbzx3WABzl4ZGozTYGLrgiYsKY689P27Q9cnuYP5zsQXj+PXeNfpLuxAr5oEQfvcu3wobmyhUODJK+3PW1H1AoDkW3I/WJQy18IbKZKxJqyJiFUg9om3ByDL0hJdSyK0ml1etBMogJ0WMUqM4SyHhPaTxoAwJSrORyHe7OPfJdnlKDD1dr+hKgaj5yaXrg0tkZLNTI1pzoDjqgBA7RTYaXjcjzu2qL25XOQJpSRrC9in2Cb5nihvH4wlbvozmu8zRcmk8zrjhXRHvRMvgKrm/MlTAuw4hNjB0z0hYPx/IMHF0N+p9IxQmfsu3RDgJILBFl4aH/NA4zDFgzabVXVkIlDXz+W15Hsx/93MNUIwVtxccGEwxrwM559P/WvTxEr/1ptJiwAghG+J3n7AyULqXw4x6wJkM2PUN/Ub6BSSAK8YT/3tyM6VdH3U2wnsLKQLsSxYjr+jjrL75NSehzKENy9JlPbm2SYN6H+lqbOtZXEnHYHArTbO4CpkB6OIhB1gqrmsmKpeFTMD5lodc3zYezSz9FPDMMy6VVtx2+RcJwEGT9Q3J5N5ky++to/kfRbqmOWfQtDFVWH2iE=
