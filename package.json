@@ -21,7 +21,7 @@
     "gh-pages": "gh-pages -d .storybook-out -b gh-pages",
     "publish-storybook": "yarn run storybook-static && yarn run gh-pages",
     "test": "npm-run-all --parallel lint:base coverage",
-    "test:base": "jest --config jest.config.json",
+    "test:base": "jest --color --config jest.config.json",
     "test:unit": "yarn run test:base -- --silent",
     "test:watch": "yarn run test:base -- --watch --verbose"
   },
