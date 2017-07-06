@@ -52,7 +52,7 @@ storiesOf('TextInput', module)
 				<TextInput label='Your name'
 					id='fullname'
 					name='name'
-					error={'<span>This error is an element</span>'}
+					error={<span>This error is an element</span>}
 					placeholder='not your email' />
 			</div>
 		);
