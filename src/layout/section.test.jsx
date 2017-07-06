@@ -6,6 +6,7 @@ import Section, {
 	SECTION_CLASS,
 	SECTION_NOSEPARATOR_CLASS,
 	VALID_BREAKPOINTS,
+	SECTION_FLUSH_CLASS
 } from './Section';
 
 describe('Section', function() {
@@ -37,4 +38,16 @@ describe('Section', function() {
 			});
 		});
 	});
+
+	describe('Section flushUntil', () => {
+		it(`check that component has '${SECTION_FLUSH_CLASS}' class`, function() {
+			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
+				section = TestUtils.renderIntoDocument(<Section flushUntil={breakpoint} />);
+				sectionNode = ReactDOM.findDOMNode(section);
+				expect(sectionNode.classList).toContain(SECTION_CLASS);
+				expect(sectionNode.classList).toContain(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_FLUSH_CLASS}`);
+			});
+		});
+	});
+
 });

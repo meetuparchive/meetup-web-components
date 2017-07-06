@@ -76,6 +76,20 @@ storiesOf('Section', module)
 			</div>
 		</div>
 	))
+	.add('Conditionally flush left and right (at medium breakpoint)', () => (
+		<div style={{width: '100%', border: '1px dotted orange'}}>
+			<Section flushUntil='medium' style={shadingStyles}>
+				<div className='chunk'>
+					<p className='text--bold'>This section flushes to the left and right of the viewport until the `medium` breakpoint</p>
+				</div>
+			</Section>
+			<Section flushUntil='medium' style={shadingStyles}>
+				<div className='chunk'>
+					<p className='text--bold'>This section has the same flushing behavior</p>
+				</div>
+			</Section>
+		</div>
+	))
 	.add('Conditional noSeparator (at large breakpoint)', () => (
 		<div style={{width: '100%'}}>
 			<Flex direction='column' switchDirection='large'>
