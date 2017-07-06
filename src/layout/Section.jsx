@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 export const SECTION_CLASS = 'section';
 export const SECTION_NOSEPARATOR_CLASS = 'section--noSeparator';
-export const SECTION_FLUSHUNTIL_CLASS = 'section--flush';
+export const SECTION_FLUSH_CLASS = 'section--flush';
 export const VALID_BREAKPOINTS = {
 	all: 'atAll',
 	medium: 'atMedium',
@@ -26,13 +26,13 @@ class Section extends React.Component {
 		} = this.props;
 
 		const noSeparatorBreakpoint = VALID_BREAKPOINTS[noSeparator] || VALID_BREAKPOINTS['all'];
-		const flushUntilBreakpoint = VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
+		const flushBreakpoint = VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
 
 		const classNames = cx(
 			SECTION_CLASS,
 			{
 				[`${noSeparatorBreakpoint}_${SECTION_NOSEPARATOR_CLASS}`]: noSeparator,
-				[`${flushUntilBreakpoint}_${SECTION_FLUSHUNTIL_CLASS} ${SECTION_FLUSHUNTIL_CLASS}`]: flushUntil
+				[`${flushBreakpoint}_${SECTION_FLUSH_CLASS} ${SECTION_FLUSH_CLASS}`]: flushUntil
 			},
 			className
 		);
