@@ -7,6 +7,7 @@ import Stripe, {
 	STRIPE_COLLECTION_CLASS,
 	STRIPE_INVERTED_CLASS,
 	STRIPE_HERO_CLASS,
+	STRIPE_NOSCRIM_CLASS
 } from './Stripe';
 
 describe('Stripe', function() {
@@ -70,7 +71,7 @@ describe('Stripe', function() {
 		let stripeImg,
 			stripeNode;
 		beforeEach(() => {
-			stripeImg = TestUtils.renderIntoDocument(<Stripe backgroundImage={src} />);
+			stripeImg = TestUtils.renderIntoDocument(<Stripe hideScrim backgroundImage={src} />);
 			stripeNode = ReactDOM.findDOMNode(stripeImg);
 		});
 		afterEach(() => {
@@ -85,6 +86,9 @@ describe('Stripe', function() {
 		});
 		it('should set backgroundImage style', () => {
 			expect(stripeNode.style.backgroundImage).toEqual(`url(${src})`);
+		});
+		it('should hide text protection scrim when specified', () => {
+			expect(stripeNode.classList).toContain(STRIPE_NOSCRIM_CLASS);
 		});
 	});
 });

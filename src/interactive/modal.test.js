@@ -12,6 +12,7 @@ import Modal, {
 import {
 	STRIPE_INVERTED_CLASS,
 	STRIPE_HERO_CLASS,
+	STRIPE_NOSCRIM_CLASS
 } from '../layout/Stripe';
 
 describe('Modal', () => {
@@ -130,6 +131,19 @@ describe('Modal hero header', () => {
 
 	it('displays the hero content', () => {
 		expect(() => TestUtils.findRenderedDOMComponentWithClass(modal, HERO_CONTENT_CLASS)).not.toThrow();
+	});
+
+	it('should hide text protection scrim when specified', () => {
+		const modalNoScrim = TestUtils.renderIntoDocument(
+			<Modal
+				hideHeroScrim
+				heroBgImage={bgImage}
+				heroContent={heroContentHtml}
+				onDismiss={(e) => {}}
+			>
+				{content}
+			</Modal>);
+		expect(() => TestUtils.findRenderedDOMComponentWithClass(modalNoScrim, STRIPE_NOSCRIM_CLASS)).not.toThrow();
 	});
 
 });
