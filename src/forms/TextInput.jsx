@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import { injectIntl, intlShape } from 'react-intl';
 
 /**
  * @module TextInput
@@ -31,6 +32,7 @@ class TextInput extends React.Component {
 			className,
 			children,
 			error,
+			placeholder,
 			required,
 			id,
 			onChange, // eslint-disable-line no-unused-vars
@@ -51,6 +53,13 @@ class TextInput extends React.Component {
 			labelClassName
 		);
 
+		console.log(this.props);
+
+		const placeholderIntl = (placeholder) ? this.props.intl.formatMessage({
+			id: 'is_this_important',
+			defaultMessage: placeholder
+		}) : null;
+
 		return (
 			<div>
 				{label &&
@@ -58,11 +67,11 @@ class TextInput extends React.Component {
 						{label}
 					</label>
 				}
-
 				<input type={isSearch ? 'search' : 'text'}
 					name={name}
 					value={this.state.value}
 					required={required}
+					placeholder={placeholderIntl} // TODO use injectIntl for message
 					className={classNames}
 					onChange={this.onChange}
 					maxLength={maxLength}
@@ -93,10 +102,12 @@ TextInput.propTypes = {
 		PropTypes.element
 	]),
 	labelClassName: PropTypes.string,
+	placeholder: PropTypes.string,
 	required: PropTypes.bool,
 	isSearch: PropTypes.bool,
 	onChange: PropTypes.func,
-	disabled: PropTypes.bool
+	disabled: PropTypes.bool,
+	intl: intlShape.isRequired,
 };
 
-export default TextInput;
+export default injectIntl(TextInput);
