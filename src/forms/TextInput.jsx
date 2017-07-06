@@ -31,6 +31,7 @@ class TextInput extends React.Component {
 			className,
 			children,
 			error,
+			placeholder,
 			required,
 			id,
 			onChange, // eslint-disable-line no-unused-vars
@@ -58,11 +59,11 @@ class TextInput extends React.Component {
 						{label}
 					</label>
 				}
-
 				<input type={isSearch ? 'search' : 'text'}
 					name={name}
 					value={this.state.value}
 					required={required}
+					placeholder={placeholder}
 					className={classNames}
 					onChange={this.onChange}
 					maxLength={maxLength}
@@ -93,10 +94,11 @@ TextInput.propTypes = {
 		PropTypes.element
 	]),
 	labelClassName: PropTypes.string,
+	placeholder: PropTypes.string,
 	required: PropTypes.bool,
 	isSearch: PropTypes.bool,
 	onChange: PropTypes.func,
-	disabled: PropTypes.bool
+	disabled: PropTypes.bool,
 };
 
 export default TextInput;
