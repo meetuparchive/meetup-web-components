@@ -22,4 +22,5 @@ $sectionSpaceMultiple: 2;
 
 @include _bpModifier(section, hasSeparator) {
 	border-bottom-width: 0;
+	padding-bottom: 0;
 }
