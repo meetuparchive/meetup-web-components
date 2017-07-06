@@ -31,7 +31,7 @@ class Stripe extends React.Component {
 			{
 				[STRIPE_COLLECTION_CLASS]: collection,
 				[`${STRIPE_INVERTED_CLASS} inverted`]: inverted,
-				[`${STRIPE_HERO_CLASS}`]: backgroundImage, // [`${STRIPE_HERO_CLASS} inverted`]
+				[`${STRIPE_HERO_CLASS}`]: backgroundImage,
 				[STRIPE_NOSCRIM_CLASS]: hideScrim
 
 			},
