@@ -104,6 +104,7 @@ class Modal extends React.Component {
 			heroBgColor,
 			heroBgImage,
 			heroContent,
+			hideHeroScrim,
 			inverted,
 			closeArea,
 			...other
@@ -166,6 +167,7 @@ class Modal extends React.Component {
 						<Stripe
 							backgroundImage={heroBgImage}
 							inverted={inverted}
+							hideScrim={hideHeroScrim}
 							style={heroStyles}
 						>
 							{closeElement}
@@ -187,6 +189,7 @@ Modal.propTypes = {
 	heroBgColor: PropTypes.string,
 	heroBgImage: PropTypes.string,
 	heroContent: PropTypes.element,
+	hideHeroScrim: PropTypes.bool,
 	inverted: PropTypes.bool,
 	onDismiss: PropTypes.func.isRequired,
 	closeArea: PropTypes.bool,

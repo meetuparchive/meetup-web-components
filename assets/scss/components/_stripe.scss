@@ -115,6 +115,12 @@ and sets a background image using a URL passed into the
 
 }
 
+.stripe--noScrim {
+	&:before {
+		display: none;
+	}
+}
+
 .stripe-aboveScrim {
 	position: relative;
 }
