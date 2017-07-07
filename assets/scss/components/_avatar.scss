@@ -43,24 +43,6 @@ Class                     | Description
 `avatar--icon`            | For icons in avatars (might move this in a later version)
 `avatar--noPhoto`         | Resets `text-indent` for avatars without photos, allowing display of fallback content
 */
-
-//
-// rgba-to-hex fn
-// move to swarm-sasstools after prelim PR gets checked out
-//
-@function rgba-to-hex($rgba, $bgColor: $C_contentBG){
-	@if $bgColor != $C_contentBG {
-		$bgColor: $bgColor;
-	}
-
-	$alphaPercent: alpha($rgba) * 100;
-	$bgColorAsHex: opacify($rgba, 1);
-	$hex: mix($bgColorAsHex, $bgColor, $alphaPercent);
-
-	@return $hex;
-}
-// end rgba-to-hex fn
-
 $noPhotoIconOpacity: alpha($C_textSecondary);
 $avatarBg: $C_textHint;
 $avatarBgAsHex: rgba-to-hex($avatarBg);
@@ -96,7 +78,7 @@ $avatarBgAsHex: rgba-to-hex($avatarBg);
 .avatar {
 	@extend %imgFill;
 	position: relative;
-	background-color: $avatarBg; // $C_textHint opaque, #888 with white scrim
+	background-color: $avatarBg;
 	background-position: center 42%;
 	color: transparent;
 	display: inline-block;
@@ -146,7 +128,7 @@ $avatarBgAsHex: rgba-to-hex($avatarBg);
 	background-color: darken($avatarBgAsHex, ((1 - $noPhotoIconOpacity - alpha($avatarBg))*100)*1%);
 	background-position-y: 4px !important;
 	&:before {
-		background-color: transparentize($C_contentBG, 1-$noPhotoIconOpacity);
+		background-color: transparentize($C_white, 1-$noPhotoIconOpacity);
 		content: '';
 		display: block;
 		height: 100%;
