@@ -23,6 +23,7 @@ class Hscroll extends React.Component {
 
 
 		const wrapClassNames = cx(
+			'hscrollContainer',
 			{ hscrollGradientWrap: hasGradient && !unclipAt },
 			className
 		);
