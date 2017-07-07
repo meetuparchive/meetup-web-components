@@ -5,18 +5,14 @@ import cx from 'classnames';
 /**
  * @module TextInput
  */
-class TextInput extends React.Component {
+class TextInput extends React.PureComponent {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			value: props.value || '',
-		};
 		this.onChange = this.onChange.bind(this);
 	}
 
 	onChange(e) {
-		this.setState({ value: e.target.value });
 		if (this.props.onChange) {
 			this.props.onChange(e);
 		}
@@ -25,7 +21,7 @@ class TextInput extends React.Component {
 	render() {
 		const {
 			name,
-			value, // eslint-disable-line no-unused-vars
+			value,
 			label,
 			labelClassName,
 			className,
@@ -61,7 +57,7 @@ class TextInput extends React.Component {
 				}
 				<input type={isSearch ? 'search' : 'text'}
 					name={name}
-					value={this.state.value}
+					value={value}
 					required={required}
 					placeholder={placeholder}
 					className={classNames}
@@ -71,7 +67,7 @@ class TextInput extends React.Component {
 					disabled={disabled}
 					id={id} />
 
-				{ this.props.maxLength && <p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p> }
+				{ maxLength && <p className='text--caption align--right'>{value.length} / {maxLength}</p> }
 
 				{ error && <p className='text--error'>{error}</p> }
 				{children}
