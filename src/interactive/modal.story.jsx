@@ -121,6 +121,39 @@ storiesOf('Modal', module)
 		)
 	)
 	.addWithInfo(
+		'has hero - image (no scrim)',
+		'This is the component with an extended header and no text-protection scrim.',
+		() => (
+			<div style={wrapperStyle}>
+				<InfoWrapper>
+					<Modal
+						hideHeroScrim
+						onDismiss={onDismiss}
+						heroBgImage='http://cds.arbys.com/images/menu/1024x557_RoastBeefGyro_silo_tan.jpg'
+						heroContent={
+							<Section>
+								<h1 className='text--display align--center'>I can be your hero</h1>
+							</Section>
+						}
+					>
+						<Stripe><Section>
+							<h2 className='align--center'>This is a modal!</h2>
+							<div className='row align--center margin--top'>
+								<div className='row-item'>
+									<Button onClick={onDismiss} fullWidth>Cancel</Button>
+								</div>
+								<div className='row-item'>
+									<Button onClick={action('Confirmed!')} primary fullWidth>Confirm</Button>
+								</div>
+							</div>
+						</Section></Stripe>
+					</Modal>
+					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+				</InfoWrapper>
+			</div>
+		)
+	)
+	.addWithInfo(
 		'fullscreen',
 		'Full screen modals are set with the `fullscreen` boolean prop',
 		() => (
