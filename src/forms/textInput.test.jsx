@@ -1,6 +1,6 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import TestUtils from 'react-addons-test-utils';
+import { TestWrapper } from '../utils/testUtils';
 import TextInput from './TextInput';
 
 describe('TextInput', function() {
@@ -10,16 +10,6 @@ describe('TextInput', function() {
 		NAME_ATTR = 'superhero',
 		MAX_LEN = '20',
 		ERROR_TEXT = 'Too wimpy.';
-
-	// Note: since TextInput is a functional component
-	// we need to wrap it in a stateful component to use TestUtils effectively
-	const TestWrapper = createReactClass({
-		render: function() {
-			return (
-				<div>{this.props.children}</div>
-			);
-		}
-	});
 
 	let textInputComponent,
 		inputEl;
