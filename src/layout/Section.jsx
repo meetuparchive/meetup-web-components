@@ -53,7 +53,6 @@ Section.propTypes = {
 		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	]),
 	flushUntil: PropTypes.oneOfType([
-		PropTypes.bool,
 		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	])
 };
