@@ -11,16 +11,18 @@ describe('TextInput', function() {
 		MAX_LEN = '20',
 		ERROR_TEXT = 'Too wimpy.';
 
-	let textInputComponent,
-		inputEl;
-
-	const Wrapper = createReactClass({
+	// Note: since TextInput is a functional component
+	// we need to wrap it in a stateful component to use TestUtils effectively
+	const TestWrapper = createReactClass({
 		render: function() {
 			return (
 				<div>{this.props.children}</div>
 			);
 		}
 	});
+
+	let textInputComponent,
+		inputEl;
 
 	beforeEach(() => {
 		const formAttrs = {
@@ -30,14 +32,14 @@ describe('TextInput', function() {
 			required: true,
 		};
 		textInputComponent = TestUtils.renderIntoDocument(
-			<Wrapper>
+			<TestWrapper>
 				<TextInput
 					name={NAME_ATTR}
 					label={LABEL_TEXT}
 					value={VALUE}
 					{...formAttrs}
 				/>
-			</Wrapper>
+			</TestWrapper>
 		);
 
 		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
@@ -68,14 +70,14 @@ describe('TextInput', function() {
 
 	it('should have input type search if `isSearch` is set to true', () => {
 		textInputComponent = TestUtils.renderIntoDocument(
-			<Wrapper>
+			<TestWrapper>
 				<TextInput
 					name={NAME_ATTR}
 					label={LABEL_TEXT}
 					value={VALUE}
 					isSearch
 				/>
-			</Wrapper>
+			</TestWrapper>
 		);
 
 		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
@@ -85,14 +87,14 @@ describe('TextInput', function() {
 
 	it('should have a disabled attribute when specified', () => {
 		textInputComponent = TestUtils.renderIntoDocument(
-			<Wrapper>
+			<TestWrapper>
 				<TextInput
 					name={NAME_ATTR}
 					label={LABEL_TEXT}
 					value={VALUE}
 					disabled
 				/>
-			</Wrapper>
+			</TestWrapper>
 		);
 
 		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
@@ -120,14 +122,14 @@ describe('TextInput', function() {
 	it('should call onChange `props` function when input is changed', () => {
 		const newValue = `${VALUE}r`;
 		const boundComponent = TestUtils.renderIntoDocument(
-			<Wrapper>
+			<TestWrapper>
 				<TextInput
 					name={NAME_ATTR}
 					label={LABEL_TEXT}
 					value={VALUE}
 					onChange={onChange}
 				/>
-			</Wrapper>
+			</TestWrapper>
 		);
 		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
 		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
