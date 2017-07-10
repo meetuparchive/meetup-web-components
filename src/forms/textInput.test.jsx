@@ -102,34 +102,6 @@ describe('TextInput', function() {
 		expect(inputEl.getAttribute('maxLength')).toEqual(MAX_LEN);
 	});
 
-	it('should set its value on input change', function() {
-		const newValue = `${VALUE}r`;
-		expect(inputEl.value).toEqual(VALUE);
-		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
-		expect(inputEl.value).toEqual(newValue);
-	});
-
-	it('should call onChange and setState with input change', function() {
-		const newValue = `${VALUE}r`;
-		const changeSpy = spyOn(TextInput.prototype, 'onChange').and.callThrough();
-		const stateSpy = spyOn(TextInput.prototype, 'setState').and.callThrough();
-
-		const boundComponent = TestUtils.renderIntoDocument(
-			<TextInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				onChange={onChange}
-			/>
-		);
-
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
-		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
-
-		expect(changeSpy).toHaveBeenCalled();
-		expect(stateSpy).toHaveBeenCalledWith({ value: newValue });
-	});
-
 	it('should call onChange `props` function when input is changed', () => {
 		const newValue = `${VALUE}r`;
 		const boundComponent = TestUtils.renderIntoDocument(
