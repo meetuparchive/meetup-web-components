@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import TestUtils from 'react-addons-test-utils';
 
 export const variantTest = (FoundationComponent, className, variants) => {
@@ -32,3 +33,13 @@ export const hasRoleAttribute = (el, roleName) => {
 export const componentHasProperty = (component, prop, value) => {
 	expect(component && component.props && component.props[prop] === value).toBe(true);
 };
+
+// Note: functional components need to be
+// wrapped it in a stateful component to use TestUtils effectively
+export const TestWrapper = createReactClass({
+	render: function() {
+		return (
+			<div>{this.props.children}</div>
+		);
+	}
+});
