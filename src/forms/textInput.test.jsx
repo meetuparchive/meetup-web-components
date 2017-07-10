@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import TestUtils from 'react-addons-test-utils';
 import TextInput from './TextInput';
 
@@ -9,6 +10,16 @@ describe('TextInput', function() {
 		NAME_ATTR = 'superhero',
 		MAX_LEN = '20',
 		ERROR_TEXT = 'Too wimpy.';
+
+	// Note: since TextInput is a functional component
+	// we need to wrap it in a stateful component to use TestUtils effectively
+	const TestWrapper = createReactClass({
+		render: function() {
+			return (
+				<div>{this.props.children}</div>
+			);
+		}
+	});
 
 	let textInputComponent,
 		inputEl;
@@ -21,12 +32,14 @@ describe('TextInput', function() {
 			required: true,
 		};
 		textInputComponent = TestUtils.renderIntoDocument(
-			<TextInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				{...formAttrs}
-			/>
+			<TestWrapper>
+				<TextInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					{...formAttrs}
+				/>
+			</TestWrapper>
 		);
 
 		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
@@ -57,12 +70,14 @@ describe('TextInput', function() {
 
 	it('should have input type search if `isSearch` is set to true', () => {
 		textInputComponent = TestUtils.renderIntoDocument(
-			<TextInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				isSearch
-			/>
+			<TestWrapper>
+				<TextInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					isSearch
+				/>
+			</TestWrapper>
 		);
 
 		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
@@ -72,12 +87,14 @@ describe('TextInput', function() {
 
 	it('should have a disabled attribute when specified', () => {
 		textInputComponent = TestUtils.renderIntoDocument(
-			<TextInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				disabled
-			/>
+			<TestWrapper>
+				<TextInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					disabled
+				/>
+			</TestWrapper>
 		);
 
 		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
@@ -102,43 +119,17 @@ describe('TextInput', function() {
 		expect(inputEl.getAttribute('maxLength')).toEqual(MAX_LEN);
 	});
 
-	it('should set its value on input change', function() {
-		const newValue = `${VALUE}r`;
-		expect(inputEl.value).toEqual(VALUE);
-		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
-		expect(inputEl.value).toEqual(newValue);
-	});
-
-	it('should call onChange and setState with input change', function() {
-		const newValue = `${VALUE}r`;
-		const changeSpy = spyOn(TextInput.prototype, 'onChange').and.callThrough();
-		const stateSpy = spyOn(TextInput.prototype, 'setState').and.callThrough();
-
-		const boundComponent = TestUtils.renderIntoDocument(
-			<TextInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				onChange={onChange}
-			/>
-		);
-
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
-		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
-
-		expect(changeSpy).toHaveBeenCalled();
-		expect(stateSpy).toHaveBeenCalledWith({ value: newValue });
-	});
-
 	it('should call onChange `props` function when input is changed', () => {
 		const newValue = `${VALUE}r`;
 		const boundComponent = TestUtils.renderIntoDocument(
-			<TextInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				onChange={onChange}
-			/>
+			<TestWrapper>
+				<TextInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+				/>
+			</TestWrapper>
 		);
 		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
 		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
