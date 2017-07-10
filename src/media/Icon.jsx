@@ -9,7 +9,7 @@ export const SVG_THIN_STYLE = '--small';
 
 const SMALL_ICON_VARIANT_WHITELIST = VALID_SHAPES
 	.filter(s =>
-		!s.startsWith('external')  // no third party icons
+		!s.startsWith('external') // no third party icons
 		&& !s.startsWith('meetup') // logos use same path for `xs`
 	);
 

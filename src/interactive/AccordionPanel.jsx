@@ -96,7 +96,7 @@ class AccordionPanel extends React.Component {
 			setClickedPanel, // eslint-disable-line no-unused-vars
 			iconAlign, // eslint-disable-line no-unused-vars
 			iconShape, // eslint-disable-line no-unused-vars
-			iconSize,  // eslint-disable-line no-unused-vars
+			iconSize, // eslint-disable-line no-unused-vars
 			iconShapeActive, // eslint-disable-line no-unused-vars
 			classNamesActive,
 			className,
