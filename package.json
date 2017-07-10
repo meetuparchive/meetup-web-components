@@ -43,7 +43,9 @@
   "dependencies": {
     "autosize": "3.0.21",
     "base64-image-loader": "1.2.0",
+    "enzyme": "2.9.1",
     "flatpickr": "2.6.3",
+    "jest-enzyme": "3.4.0",
     "prop-types": "15.5.10"
   },
   "devDependencies": {
