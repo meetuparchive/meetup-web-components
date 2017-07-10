@@ -138,12 +138,12 @@ class Popover extends React.Component {
 	render() {
 		const isActive = this.state.isActive;
 		const {
-				className,
-				trigger,
-				menuItems, // eslint-disable-line no-unused-vars
-				align,
-				...other
-			} = this.props;
+			className,
+			trigger,
+			menuItems, // eslint-disable-line no-unused-vars
+			align,
+			...other
+		} = this.props;
 
 		const classNames = {
 			popover: cx(

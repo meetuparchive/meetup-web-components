@@ -85,8 +85,8 @@ class TogglePillBase extends React.Component {
 				<label
 					className='toggleButton-label'
 					htmlFor={id}>
-						{children}
-						{(topic) ? topicChildren : null}
+					{children}
+					{(topic) ? topicChildren : null}
 				</label>
 			</div>
 		);
