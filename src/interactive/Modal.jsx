@@ -173,7 +173,7 @@ class Modal extends React.Component {
 							{closeElement}
 							{heroContent}
 						</Stripe>
-					:
+						:
 						closeElement
 					}
 

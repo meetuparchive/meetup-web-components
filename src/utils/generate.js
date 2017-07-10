@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
 
-require('babel-register');  // process all further imports through babel
+require('babel-register'); // process all further imports through babel
 
 function validateName(name) {
 	return /^\b([A-Z][a-z]*)/.test(name) ? true : 'Name must be TitleCase';

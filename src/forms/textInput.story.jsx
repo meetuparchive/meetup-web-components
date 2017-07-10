@@ -5,46 +5,46 @@ import { storiesOf } from '@kadira/storybook';
 
 storiesOf('TextInput', module)
 	.add('default', () => (
-			<div className='span--50'>
-				<TextInput
-					label='Your name'
-					id='fullname'
-					name='name'
-					placeholder='Not your email' />
-			</div>
-		)
+		<div className='span--50'>
+			<TextInput
+				label='Your name'
+				id='fullname'
+				name='name'
+				placeholder='Not your email' />
+		</div>
+	)
 	)
 	.add('with value', () => (
-			<div className='span--50'>
-				<TextInput
-					label='Your name'
-					id='fullname'
-					name='name'
-					value='Phife Dawg'
-					placeholder='Not your email' />
-			</div>
-		)
+		<div className='span--50'>
+			<TextInput
+				label='Your name'
+				id='fullname'
+				name='name'
+				value='Phife Dawg'
+				placeholder='Not your email' />
+		</div>
+	)
 	)
 	.add('disabled', () => (
-			<div className='span--50'>
-				<TextInput
-					label='Your name'
-					id='fullname'
-					name='name'
-					value='Cannot focus'
-					disabled />
-			</div>
-		)
+		<div className='span--50'>
+			<TextInput
+				label='Your name'
+				id='fullname'
+				name='name'
+				value='Cannot focus'
+				disabled />
+		</div>
+	)
 	)
 	.add('error state', () => (
-			<div className='span--50'>
-				<TextInput
-					label='Your name'
-					id='fullname'
-					name='name'
-					error='Not so fast. You have an error.' />
-			</div>
-		)
+		<div className='span--50'>
+			<TextInput
+				label='Your name'
+				id='fullname'
+				name='name'
+				error='Not so fast. You have an error.' />
+		</div>
+	)
 	)
 	.add('error state as element', () => {
 		return (

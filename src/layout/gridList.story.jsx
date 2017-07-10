@@ -20,49 +20,49 @@ storiesOf('GridList', module)
 		'Static grid',
 		'Basic usage of GridList with columns fixed at 3 for all breakpoints',
 		() => (
-		<InfoWrapper>
-			<GridList
-				columns={{
-					default: 3
-				}}
-				style={{padding: '20px'}}
-				items={[
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>
-				]}
-			/>
-		</InfoWrapper>
-	))
+			<InfoWrapper>
+				<GridList
+					columns={{
+						default: 3
+					}}
+					style={{padding: '20px'}}
+					items={[
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>
+					]}
+				/>
+			</InfoWrapper>
+		))
 	.addWithInfo(
 		'Responsive grid',
 		'Responsive GridList that increases number of columns for larger breakpoints',
 		() => (
-		<InfoWrapper>
-			<GridList
-				columns={{
-					default: 2,
-					medium: 4,
-					large: 6
-				}}
-				style={{padding: '20px'}}
-				items={[
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>,
-					<div style={boxStyles}>GridItem</div>
-				]}
-			/>
-		</InfoWrapper>
-	));
+			<InfoWrapper>
+				<GridList
+					columns={{
+						default: 2,
+						medium: 4,
+						large: 6
+					}}
+					style={{padding: '20px'}}
+					items={[
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>
+					]}
+				/>
+			</InfoWrapper>
+		));

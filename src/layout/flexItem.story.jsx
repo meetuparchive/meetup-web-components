@@ -39,7 +39,7 @@ storiesOf('FlexItem', module)
 					<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 				</Flex>
 			</InfoWrapper>
-	))
+		))
 	.addWithInfo(
 		'Flex Item shrink',
 		'Adding the `shrink` prop to a `FlexItem` will cause the flex item to shrink to content width (or height, in a column-oriented `Flex`).',
@@ -49,9 +49,9 @@ storiesOf('FlexItem', module)
 					<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
 					<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
 					<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-			</Flex>
+				</Flex>
 			</InfoWrapper>
-	))
+		))
 	.addWithInfo(
 		'Flex Item growFactors',
 		`The \`growFactor\` prop accepts a number, which is used as a flexbox \`grow\` value.
@@ -91,4 +91,4 @@ storiesOf('FlexItem', module)
 					</Flex>
 				</div>
 			</InfoWrapper>
-	));
+		));
