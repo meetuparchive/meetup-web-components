@@ -22,7 +22,8 @@ const TextInput = (props) => {
 		isSearch,
 		maxLength,
 		pattern,
-		disabled
+		disabled,
+		...other
 	} = props;
 
 	const classNames = cx(
@@ -53,7 +54,9 @@ const TextInput = (props) => {
 				maxLength={maxLength}
 				pattern={pattern}
 				disabled={disabled}
-				id={id} />
+				id={id}
+				{...other}
+			/>
 
 			{ maxLength && <p className='text--caption align--right'>{value.length} / {maxLength}</p> }
 
