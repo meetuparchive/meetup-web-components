@@ -5,7 +5,7 @@ import cx from 'classnames';
 /**
  * @module TextInput
  */
-function TextInput(props) {
+const TextInput = (props) => {
 
 	const {
 		name,
@@ -61,7 +61,7 @@ function TextInput(props) {
 			{children}
 		</div>
 	);
-}
+};
 
 TextInput.propTypes = {
 	name: PropTypes.string.isRequired,
