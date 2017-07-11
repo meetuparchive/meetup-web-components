@@ -4,7 +4,6 @@ import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 describe('TextInput', function() {
-	const onChange = jest.fn();
 
 	const LABEL_TEXT = 'Super Hero',
 		VALUE = 'Batman',
@@ -19,23 +18,24 @@ describe('TextInput', function() {
 		error: ERROR_TEXT,
 	};
 
-	describe('snapshot check', () => {
-		it('matches snapshot', () => {
-			const component = shallow(
-				<TextInput
-					name={NAME_ATTR}
-					label={LABEL_TEXT}
-					value={VALUE}
-					onChange={onChange}
-					{...formAttrs}
-				/>
-			);
 
-			expect(toJson(component)).toMatchSnapshot();
-		});
+	it('creates a required input with given label, name, id and value ', () => {
+		const component = shallow(
+			<TextInput
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				value={VALUE}
+				id={NAME_ATTR}
+				required
+			/>
+		);
+
+		expect(toJson(component)).toMatchSnapshot();
 	});
 
 	describe('input prop checks, shallow rendering', () => {
+		const onChange = jest.fn();
+
 		let inputEl;
 
 		beforeEach(() => {
@@ -77,11 +77,9 @@ describe('TextInput', function() {
 		});
 
 		it('should call onChange `props` function when input is changed', () => {
-			const newValue = `${VALUE}r`;
-			inputEl.simulate('change', { target: { value: newValue }});
-
-			// expect(onChange).toHaveBeenCalled();
-			expect(onChange).toHaveBeenCalledWith({ target: { value: newValue }});
+			const eventData = { target: { value: `${VALUE}r` }};
+			inputEl.simulate('change', eventData);
+			expect(onChange).toHaveBeenCalledWith(eventData);
 		});
 
 	});
@@ -95,7 +93,6 @@ describe('TextInput', function() {
 					name={NAME_ATTR}
 					label={LABEL_TEXT}
 					value={VALUE}
-					onChange={onChange}
 					isSearch
 					disabled
 					{...formAttrs}
