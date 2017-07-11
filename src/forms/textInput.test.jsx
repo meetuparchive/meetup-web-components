@@ -1,38 +1,38 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
-import { TestWrapper } from '../utils/testUtils';
 import TextInput from './TextInput';
+import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 describe('TextInput', function() {
 	const onChange = jest.fn();
 	const LABEL_TEXT = 'Super Hero',
 		VALUE = 'Batman',
 		NAME_ATTR = 'superhero',
-		MAX_LEN = '20',
+		MAX_LEN = 20,
 		ERROR_TEXT = 'Too wimpy.';
 
 	let textInputComponent,
 		inputEl;
 
+	const formAttrs = {
+		id: NAME_ATTR,
+		maxLength: MAX_LEN,
+		required: true,
+		error: ERROR_TEXT,
+	};
+
 	beforeEach(() => {
-		const formAttrs = {
-			id: NAME_ATTR,
-			maxLength: MAX_LEN,
-			error: ERROR_TEXT,
-			required: true,
-		};
-		textInputComponent = TestUtils.renderIntoDocument(
-			<TestWrapper>
-				<TextInput
-					name={NAME_ATTR}
-					label={LABEL_TEXT}
-					value={VALUE}
-					{...formAttrs}
-				/>
-			</TestWrapper>
+		textInputComponent = mount(
+			<TextInput
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				value={VALUE}
+				onChange={onChange}
+				{...formAttrs}
+			/>
 		);
 
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
+		inputEl = textInputComponent.find('input');
 	});
 
 	afterEach(() => {
@@ -40,89 +40,78 @@ describe('TextInput', function() {
 		inputEl = null;
 	});
 
-	it('exists', () => {
-		expect(() => TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input')).not.toThrow();
+	it('matches snapshot', () => {
+		expect(toJson(textInputComponent)).toMatchSnapshot();
 	});
 
-	it('should have a name attribute', () => {
-		expect(inputEl.name).toEqual(NAME_ATTR);
+	it('should have a name prop', () => {
+		expect(inputEl.prop('name')).toEqual(NAME_ATTR);
 	});
 
-	it('should have a value when one is specified', () => {
-		expect(inputEl.value).toEqual(VALUE);
+	it('should have a value prop when one is specified', () => {
+		expect(inputEl.prop('value')).toEqual(VALUE);
 	});
 
 	it('should have a label when label is given', () => {
-		expect(() => TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'label')).not.toThrow();
-		const labelEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'label');
+		expect(() => textInputComponent.find('label')).not.toBeNull();
+		const labelEl = textInputComponent.find('label').getDOMNode();
 		expect(labelEl.textContent).toEqual(LABEL_TEXT);
 	});
 
-	it('should have input type search if `isSearch` is set to true', () => {
-		textInputComponent = TestUtils.renderIntoDocument(
-			<TestWrapper>
-				<TextInput
-					name={NAME_ATTR}
-					label={LABEL_TEXT}
-					value={VALUE}
-					isSearch
-				/>
-			</TestWrapper>
+	it('should have prop type search if `isSearch` is set to true', () => {
+		textInputComponent = mount(
+			<TextInput
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				defaultValue={VALUE}
+				isSearch
+			/>
 		);
 
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
-		expect(inputEl.getAttribute('type')).toEqual('search');
+		inputEl = textInputComponent.find('input');
+		expect(inputEl.prop('type')).toEqual('search');
 
 	});
 
-	it('should have a disabled attribute when specified', () => {
-		textInputComponent = TestUtils.renderIntoDocument(
-			<TestWrapper>
-				<TextInput
-					name={NAME_ATTR}
-					label={LABEL_TEXT}
-					value={VALUE}
-					disabled
-				/>
-			</TestWrapper>
+	it('should have a disabled prop when specified', () => {
+		textInputComponent = mount(
+			<TextInput
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				defaultValue={VALUE}
+				disabled
+			/>
 		);
 
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(textInputComponent, 'input');
-		expect(inputEl.attributes.disabled).not.toBeNull();
+		inputEl = textInputComponent.find('input');
+		expect(inputEl.prop('disabled')).not.toBeNull();
 	});
 
-	it('should have a required attribute when specified', () => {
-		expect(inputEl.attributes.required).not.toBeNull();
+	it('should have a required prop when specified', () => {
+		expect(inputEl.prop('required')).not.toBeNull();
 	});
 
-	it('should specify attributes that are passed in', function() {
-		expect(inputEl.getAttribute('maxLength')).toEqual(MAX_LEN);
+	it('should specify attribute props that are passed in', function() {
+		expect(inputEl.prop('maxLength')).toEqual(MAX_LEN);
 	});
 
 	it('should have an error when one is specified', function() {
-		expect(() => TestUtils.findRenderedDOMComponentWithClass(textInputComponent, 'text--error')).not.toThrow();
-		const errorEl = TestUtils.findRenderedDOMComponentWithClass(textInputComponent, 'text--error');
+		const errorEl = textInputComponent.find('.text--error').getDOMNode();
 		expect(errorEl.textContent).toEqual(ERROR_TEXT);
-	});
-
-	it('should specify attributes that are passed in', function() {
-		expect(inputEl.getAttribute('maxLength')).toEqual(MAX_LEN);
 	});
 
 	it('should call onChange `props` function when input is changed', () => {
 		const newValue = `${VALUE}r`;
-		const boundComponent = TestUtils.renderIntoDocument(
-			<TestWrapper>
-				<TextInput
-					name={NAME_ATTR}
-					label={LABEL_TEXT}
-					value={VALUE}
-					onChange={onChange}
-				/>
-			</TestWrapper>
+		const boundComponent = mount(
+			<TextInput
+				name={NAME_ATTR}
+				label={LABEL_TEXT}
+				value={VALUE}
+				onChange={onChange}
+			/>
 		);
-		inputEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'input');
-		TestUtils.Simulate.change(inputEl, { target: { value: newValue } });
+		inputEl = boundComponent.find('input');
+		inputEl.simulate('change', { target: { value: newValue }});
 
 		expect(onChange).toHaveBeenCalled();
 	});
