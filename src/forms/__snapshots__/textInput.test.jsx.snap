@@ -43,3 +43,5 @@ exports[`TextInput matches snapshot 1`] = `
   </div>
 </TextInput>
 `;
+
+exports[`TextInput snapshot check matches snapshot 1`] = `undefined`;

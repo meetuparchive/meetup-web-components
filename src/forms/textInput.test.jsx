@@ -1,18 +1,16 @@
 import React from 'react';
 import TextInput from './TextInput';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 describe('TextInput', function() {
 	const onChange = jest.fn();
+
 	const LABEL_TEXT = 'Super Hero',
 		VALUE = 'Batman',
 		NAME_ATTR = 'superhero',
 		MAX_LEN = 20,
 		ERROR_TEXT = 'Too wimpy.';
-
-	let textInputComponent,
-		inputEl;
 
 	const formAttrs = {
 		id: NAME_ATTR,
@@ -21,8 +19,8 @@ describe('TextInput', function() {
 		error: ERROR_TEXT,
 	};
 
-	beforeEach(() => {
-		textInputComponent = mount(
+	describe('snapshot check', () => {
+		let component = mount(
 			<TextInput
 				name={NAME_ATTR}
 				label={LABEL_TEXT}
@@ -32,87 +30,94 @@ describe('TextInput', function() {
 			/>
 		);
 
-		inputEl = textInputComponent.find('input');
+		it('matches snapshot', () => {
+			expect(toJson(component)).toMatchSnapshot();
+		});
+
+		component = null;
 	});
 
-	afterEach(() => {
-		textInputComponent = null;
+	describe('input prop checks, shallow rendering', () => {
+		let inputEl;
+
+		beforeEach(() => {
+			inputEl = shallow(
+				<TextInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+					isSearch
+					disabled
+					{...formAttrs}
+				/>
+			).find('input');
+		});
+
+		afterEach(() => {
+			inputEl = null;
+		});
+
+		it('should have a name prop', () => {
+			expect(inputEl.prop('name')).toEqual(NAME_ATTR);
+		});
+
+		it('should have a value prop equal to the one specified', () => {
+			expect(inputEl.prop('value')).toEqual(VALUE);
+		});
+
+		it('should have prop type search if `isSearch` is set to true', () => {
+			expect(inputEl.prop('type')).toEqual('search');
+		});
+
+		it('should have a disabled prop when specified', () => {
+			expect(inputEl.prop('disabled')).not.toBeNull();
+		});
+
+		it('should have a required prop when specified', () => {
+			expect(inputEl.prop('required')).not.toBeNull();
+		});
+
+		it('should call onChange `props` function when input is changed', () => {
+			const newValue = `${VALUE}r`;
+			inputEl.simulate('change', { target: { value: newValue }});
+
+			expect(onChange).toHaveBeenCalled();
+			// expect(onChange).toHaveBeenCalledWith({ target: { value: newValue }});
+		});
+
 		inputEl = null;
 	});
 
-	it('matches snapshot', () => {
-		expect(toJson(textInputComponent)).toMatchSnapshot();
-	});
+	describe('dom checks, full rendering', () => {
+		let component;
 
-	it('should have a name prop', () => {
-		expect(inputEl.prop('name')).toEqual(NAME_ATTR);
-	});
+		beforeEach(() => {
+			component = mount(
+				<TextInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+					isSearch
+					disabled
+					{...formAttrs}
+				/>
+			);
+		});
 
-	it('should have a value prop when one is specified', () => {
-		expect(inputEl.prop('value')).toEqual(VALUE);
-	});
+		afterEach(() => {
+			component = null;
+		});
 
-	it('should have a label when label is given', () => {
-		expect(() => textInputComponent.find('label')).not.toBeNull();
-		const labelEl = textInputComponent.find('label').getDOMNode();
-		expect(labelEl.textContent).toEqual(LABEL_TEXT);
-	});
+		it('should have a label when label is given', () => {
+			const labelEl = component.find('label').getDOMNode();
+			expect(labelEl.textContent).toEqual(LABEL_TEXT);
+		});
 
-	it('should have prop type search if `isSearch` is set to true', () => {
-		textInputComponent = mount(
-			<TextInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				defaultValue={VALUE}
-				isSearch
-			/>
-		);
-
-		inputEl = textInputComponent.find('input');
-		expect(inputEl.prop('type')).toEqual('search');
-
-	});
-
-	it('should have a disabled prop when specified', () => {
-		textInputComponent = mount(
-			<TextInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				defaultValue={VALUE}
-				disabled
-			/>
-		);
-
-		inputEl = textInputComponent.find('input');
-		expect(inputEl.prop('disabled')).not.toBeNull();
-	});
-
-	it('should have a required prop when specified', () => {
-		expect(inputEl.prop('required')).not.toBeNull();
-	});
-
-	it('should specify attribute props that are passed in', function() {
-		expect(inputEl.prop('maxLength')).toEqual(MAX_LEN);
-	});
-
-	it('should have an error when one is specified', function() {
-		const errorEl = textInputComponent.find('.text--error').getDOMNode();
-		expect(errorEl.textContent).toEqual(ERROR_TEXT);
-	});
-
-	it('should call onChange `props` function when input is changed', () => {
-		const newValue = `${VALUE}r`;
-		const boundComponent = mount(
-			<TextInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				onChange={onChange}
-			/>
-		);
-		inputEl = boundComponent.find('input');
-		inputEl.simulate('change', { target: { value: newValue }});
-
-		expect(onChange).toHaveBeenCalled();
+		it('should have an error when one is specified', function() {
+			const errorEl = component.find('.text--error').getDOMNode();
+			expect(errorEl.textContent).toEqual(ERROR_TEXT);
+		});
 	});
 });
