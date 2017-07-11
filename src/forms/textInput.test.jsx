@@ -20,21 +20,19 @@ describe('TextInput', function() {
 	};
 
 	describe('snapshot check', () => {
-		let component = mount(
-			<TextInput
-				name={NAME_ATTR}
-				label={LABEL_TEXT}
-				value={VALUE}
-				onChange={onChange}
-				{...formAttrs}
-			/>
-		);
-
 		it('matches snapshot', () => {
+			const component = shallow(
+				<TextInput
+					name={NAME_ATTR}
+					label={LABEL_TEXT}
+					value={VALUE}
+					onChange={onChange}
+					{...formAttrs}
+				/>
+			);
+
 			expect(toJson(component)).toMatchSnapshot();
 		});
-
-		component = null;
 	});
 
 	describe('input prop checks, shallow rendering', () => {
@@ -82,11 +80,10 @@ describe('TextInput', function() {
 			const newValue = `${VALUE}r`;
 			inputEl.simulate('change', { target: { value: newValue }});
 
-			expect(onChange).toHaveBeenCalled();
-			// expect(onChange).toHaveBeenCalledWith({ target: { value: newValue }});
+			// expect(onChange).toHaveBeenCalled();
+			expect(onChange).toHaveBeenCalledWith({ target: { value: newValue }});
 		});
 
-		inputEl = null;
 	});
 
 	describe('dom checks, full rendering', () => {
