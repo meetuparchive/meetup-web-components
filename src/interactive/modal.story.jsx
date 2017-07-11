@@ -157,26 +157,26 @@ storiesOf('Modal', module)
 		'fullscreen',
 		'Full screen modals are set with the `fullscreen` boolean prop',
 		() => (
-		<div style={wrapperStyle}>
-			<Modal
-				onDismiss={onDismiss}
-				fullscreen
-			>
-				{content}
-			</Modal>
-			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
-		</div>
-	))
+			<div style={wrapperStyle}>
+				<Modal
+					onDismiss={onDismiss}
+					fullscreen
+				>
+					{content}
+				</Modal>
+				<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+			</div>
+		))
 	.addWithInfo(
 		'No close area',
 		'Modals with no close area are set with the `closeArea` boolean prop',
 		() => (
-		<div style={wrapperStyle}>
-			<Modal
-				closeArea={false}
-			>
-				{content}
-			</Modal>
-			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
-		</div>
-	));
+			<div style={wrapperStyle}>
+				<Modal
+					closeArea={false}
+				>
+					{content}
+				</Modal>
+				<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+			</div>
+		));

@@ -28,7 +28,7 @@ class Bounds extends React.Component {
 				className={classNames}
 				{...other}
 			>
-					{children}
+				{children}
 			</div>
 		);
 	}
