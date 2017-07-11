@@ -1,6 +1,7 @@
 import React from 'react';
 import TextInput from './TextInput';
 import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 describe('TextInput', function() {
 	const onChange = jest.fn();
@@ -13,13 +14,14 @@ describe('TextInput', function() {
 	let textInputComponent,
 		inputEl;
 
+	const formAttrs = {
+		id: NAME_ATTR,
+		maxLength: MAX_LEN,
+		required: true,
+		error: ERROR_TEXT,
+	};
+
 	beforeEach(() => {
-		const formAttrs = {
-			id: NAME_ATTR,
-			maxLength: MAX_LEN,
-			error: ERROR_TEXT,
-			required: true,
-		};
 		textInputComponent = mount(
 			<TextInput
 				name={NAME_ATTR}
@@ -38,15 +40,15 @@ describe('TextInput', function() {
 		inputEl = null;
 	});
 
-	it('exists', () => {
-		expect(() => textInputComponent.find('input')).not.toBeNull();
+	it('matches snapshot', () => {
+		expect(toJson(textInputComponent)).toMatchSnapshot();
 	});
 
-	it('should have a name attribute', () => {
+	it('should have a name prop', () => {
 		expect(inputEl.prop('name')).toEqual(NAME_ATTR);
 	});
 
-	it('should have a value when one is specified', () => {
+	it('should have a value prop when one is specified', () => {
 		expect(inputEl.prop('value')).toEqual(VALUE);
 	});
 
@@ -56,7 +58,7 @@ describe('TextInput', function() {
 		expect(labelEl.textContent).toEqual(LABEL_TEXT);
 	});
 
-	it('should have input type search if `isSearch` is set to true', () => {
+	it('should have prop type search if `isSearch` is set to true', () => {
 		textInputComponent = mount(
 			<TextInput
 				name={NAME_ATTR}
@@ -71,7 +73,7 @@ describe('TextInput', function() {
 
 	});
 
-	it('should have a disabled attribute when specified', () => {
+	it('should have a disabled prop when specified', () => {
 		textInputComponent = mount(
 			<TextInput
 				name={NAME_ATTR}
@@ -85,11 +87,11 @@ describe('TextInput', function() {
 		expect(inputEl.prop('disabled')).not.toBeNull();
 	});
 
-	it('should have a required attribute when specified', () => {
+	it('should have a required prop when specified', () => {
 		expect(inputEl.prop('required')).not.toBeNull();
 	});
 
-	it('should specify attributes that are passed in', function() {
+	it('should specify attribute props that are passed in', function() {
 		expect(inputEl.prop('maxLength')).toEqual(MAX_LEN);
 	});
 
