@@ -20,7 +20,7 @@ class Header extends React.Component {
 				role='banner'
 				aria-label='Site header'
 				{...other}>
-					{children}
+				{children}
 			</header>
 		);
 	}

@@ -11,22 +11,18 @@ $sectionSpaceMultiple: 2;
 
 @include responsiveVarContext--base() {
 	.section {
-		border-bottom: 1px solid $C_border;
 		margin: 0 $base;
-		padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0;
-
-	}
-	.atAll_section--noSeparator {
-		border-bottom-width: 0;
 		padding: $base*$sectionSpaceMultiple 0 0 0;
+	}
+	.section--hasSeparator {
+		border-bottom: 1px solid $C_border;
+		padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0;
 	}
 }
 
-@include _bpModifier(section, noSeparator) {
+@include _bpModifier(section, hasSeparator) {
 	border-bottom-width: 0;
-	@include responsiveVarContext--base() {
-		padding: $base*$sectionSpaceMultiple 0 0 0;
-	}
+	padding-bottom: 0;
 }
 
 .section--flush {

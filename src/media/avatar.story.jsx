@@ -14,7 +14,7 @@ storiesOf('Avatar', module)
 		'This is the basic usage with the component.',
 		() => (
 			<InfoWrapper>
-        <Avatar src={MOCK_IMAGE_SRC}></Avatar>
+				<Avatar src={MOCK_IMAGE_SRC}></Avatar>
 			</InfoWrapper>
 		)
 	)
