@@ -90,7 +90,6 @@ storiesOf('Section', module)
 			</Section>
 		</div>
 	))
-	.add('Conditional noSeparator (at large breakpoint)', () => (
 	.add('hasSeparatorUntil (large breakpoint)', () => (
 		<div style={{width: '100%'}}>
 			<Flex direction='column' switchDirection='large'>
