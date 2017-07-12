@@ -4,7 +4,7 @@ import TestUtils from 'react-addons-test-utils';
 
 import Section, {
 	SECTION_CLASS,
-	SECTION_NOSEPARATOR_CLASS,
+	SECTION_HASSEPARATOR_CLASS,
 	VALID_BREAKPOINTS,
 } from './Section';
 
@@ -27,13 +27,21 @@ describe('Section', function() {
 		expect(sectionNode.classList).toContain(SECTION_CLASS);
 	});
 
-	describe('Section noSeparator', () => {
-		it(`check that component has '${SECTION_NOSEPARATOR_CLASS}' class`, function() {
+	describe('Section hasSeparator', () => {
+		it(`check that component has '${SECTION_HASSEPARATOR_CLASS}' class`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = TestUtils.renderIntoDocument(<Section noSeparator={breakpoint} />);
+				section = TestUtils.renderIntoDocument(<Section hasSeparator />);
 				sectionNode = ReactDOM.findDOMNode(section);
 				expect(sectionNode.classList).toContain(SECTION_CLASS);
-				expect(sectionNode.classList).toContain(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_NOSEPARATOR_CLASS}`);
+				expect(sectionNode.classList).toContain(SECTION_HASSEPARATOR_CLASS);
+			});
+		});
+		it(`check that component has '${SECTION_HASSEPARATOR_CLASS}' class with breakpoint`, function() {
+			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
+				section = TestUtils.renderIntoDocument(<Section hasSeparatorUntil={breakpoint} />);
+				sectionNode = ReactDOM.findDOMNode(section);
+				expect(sectionNode.classList).toContain(SECTION_CLASS);
+				expect(sectionNode.classList).toContain(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_HASSEPARATOR_CLASS}`);
 			});
 		});
 	});
