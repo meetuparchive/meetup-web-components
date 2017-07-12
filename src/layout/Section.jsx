@@ -24,10 +24,12 @@ class Section extends React.Component {
 			noSeparator, // eslint-disable-line no-unused-vars
 			hasSeparatorUntil,
 			hasSeparator,
+			flushUntil,
 			...other
 		} = this.props;
 
 		const hasSeparatorUntilBreakpoint = VALID_BREAKPOINTS[hasSeparatorUntil] || VALID_BREAKPOINTS['all'];
+		const flushBreakpoint = VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
 
 		const classNames = cx(
 			SECTION_CLASS,
