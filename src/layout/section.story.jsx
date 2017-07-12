@@ -50,23 +50,23 @@ storiesOf('Section', module)
 			</InfoWrapper>
 		)
 	)
-	.add('No separator', () => (
+	.add('hasSeparator', () => (
 		<div style={{width: '100%'}}>
 			<div style={{maxWidth: '850px', margin: 'auto'}}>
-				<Section noSeparator style={shadingStyles}>
+				<Section hasSeparator style={shadingStyles}>
 					<div className='chunk'>
-						<h2 className='text--sectionTitle'>These sections never get separators</h2>
-						<p className='text--bold text--secondary'>Separators contain bottom padding and a bottom border</p>
+						<h2 className='text--sectionTitle'>These sections always get separators</h2>
+						<p className='text--bold text--secondary'>Separators can contain bottom padding and a bottom border</p>
 						<p>Lorem Ipsum was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 					</div>
 				</Section>
-				<Section noSeparator style={shadingStyles}>
+				<Section hasSeparator style={shadingStyles}>
 					<div className='chunk'>
 						<p className='text--bold'>123 attending</p>
 						<p>Hosted by Amy, Rick, Mike, Natalie</p>
 					</div>
 				</Section>
-				<Section noSeparator style={shadingStyles}>
+				<Section hasSeparator style={shadingStyles}>
 					<div className='chunk'>
 						<div className='runningText'>
 							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
@@ -76,24 +76,24 @@ storiesOf('Section', module)
 			</div>
 		</div>
 	))
-	.add('Conditional noSeparator (at large breakpoint)', () => (
+	.add('hasSeparatorUntil (large breakpoint)', () => (
 		<div style={{width: '100%'}}>
 			<Flex direction='column' switchDirection='large'>
 				<FlexItem>
 					<div style={{maxWidth: '850px', margin: 'auto'}}>
 						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>These sections stack at large breakpoint</p>
+								<p>NEVER gets separator</p>
 							</div>
 						</Section>
 						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>These sections stack at large breakpoint</p>
+								<p>NEVER gets separator</p>
 							</div>
 						</Section>
-						<Section noSeparator='large' style={shadingStyles}>
+						<Section hasSeparatorUntil='large' style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>This section needs separator styling when stacked</p>
+								<p className='text--bold'>Gets separator, removes at "large" breakpoint</p>
 							</div>
 						</Section>
 					</div>
@@ -103,17 +103,17 @@ storiesOf('Section', module)
 					<div style={{maxWidth: '850px', margin: 'auto'}}>
 						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>These sections stack at large breakpoint</p>
+								<p>NEVER gets separator</p>
 							</div>
 						</Section>
 						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>These sections stack at large breakpoint</p>
+								<p>NEVER gets separator</p>
 							</div>
 						</Section>
-						<Section noSeparator='all' style={shadingStyles}>
+						<Section style={shadingStyles}>
 							<div className='chunk'>
-								<p className='text--bold'>This section never gets separator styling</p>
+								<p>NEVER gets separator</p>
 							</div>
 						</Section>
 					</div>
