@@ -70,12 +70,12 @@ class Dropdown extends React.PureComponent {
 	render() {
 		const isActive = this.state.isActive;
 		const {
-				className,
-				trigger,
-				content,
-				align, // eslint-disable-line no-unused-vars
-				...other
-			} = this.props;
+			className,
+			trigger,
+			content,
+			align, // eslint-disable-line no-unused-vars
+			...other
+		} = this.props;
 
 		const classNames = {
 			dropdown: cx(

@@ -5,79 +5,66 @@ import cx from 'classnames';
 /**
  * @module TextInput
  */
-class TextInput extends React.Component {
+const TextInput = (props) => {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			value: props.value || '',
-		};
-		this.onChange = this.onChange.bind(this);
-	}
+	const {
+		name,
+		value,
+		label,
+		labelClassName,
+		className,
+		children,
+		error,
+		placeholder,
+		required,
+		id,
+		onChange,
+		isSearch,
+		maxLength,
+		pattern,
+		disabled,
+		...other
+	} = props;
 
-	onChange(e) {
-		this.setState({ value: e.target.value });
-		if (this.props.onChange) {
-			this.props.onChange(e);
-		}
-	}
+	const classNames = cx(
+		{ 'field--error': error },
+		className
+	);
 
-	render() {
-		const {
-			name,
-			value, // eslint-disable-line no-unused-vars
-			label,
-			labelClassName,
-			className,
-			children,
-			error,
-			required,
-			id,
-			onChange, // eslint-disable-line no-unused-vars
-			isSearch,
-			maxLength,
-			pattern,
-			disabled
-		} = this.props;
+	const labelClassNames = cx(
+		'label--field',
+		{ required, disabled },
+		labelClassName
+	);
 
-		const classNames = cx(
-			{ 'field--error': error },
-			className
-		);
+	return (
+		<div>
+			{label &&
+				<label className={labelClassNames} htmlFor={id}>
+					{label}
+				</label>
+			}
+			<input type={isSearch ? 'search' : 'text'}
+				name={name}
+				value={value}
+				required={required}
+				placeholder={placeholder}
+				className={classNames}
+				onChange={onChange}
+				maxLength={maxLength}
+				pattern={pattern}
+				disabled={disabled}
+				id={id}
+				{...other}
+			/>
 
-		const labelClassNames = cx(
-			'label--field',
-			{ required, disabled },
-			labelClassName
-		);
+			{ maxLength && <p className='text--caption align--right'>{value.length} / {maxLength}</p> }
 
-		return (
-			<div>
-				{label &&
-					<label className={labelClassNames} htmlFor={id}>
-						{label}
-					</label>
-				}
-
-				<input type={isSearch ? 'search' : 'text'}
-					name={name}
-					value={this.state.value}
-					required={required}
-					className={classNames}
-					onChange={this.onChange}
-					maxLength={maxLength}
-					pattern={pattern}
-					disabled={disabled}
-					id={id} />
-
-				{ this.props.maxLength && <p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p> }
-
-				{ error && <p className='text--error'>{error}</p> }
-				{children}
-			</div>
-		);
-	}
-}
+			{ error && <p className='text--error'>{error}</p> }
+			{children}
+		</div>
+	);
+};
 
 TextInput.propTypes = {
 	name: PropTypes.string.isRequired,
@@ -93,10 +80,11 @@ TextInput.propTypes = {
 		PropTypes.element
 	]),
 	labelClassName: PropTypes.string,
+	placeholder: PropTypes.string,
 	required: PropTypes.bool,
 	isSearch: PropTypes.bool,
 	onChange: PropTypes.func,
-	disabled: PropTypes.bool
+	disabled: PropTypes.bool,
 };
 
 export default TextInput;

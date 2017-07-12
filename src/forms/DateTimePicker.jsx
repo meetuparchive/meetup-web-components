@@ -277,8 +277,8 @@ class DateTimePicker extends React.Component {
 						}
 						{ !dateOnly &&
 							<input type='text'
-									id='datetime-background'
-									ref={ el => this.backgroundEl = el }
+								id='datetime-background'
+								ref={ el => this.backgroundEl = el }
 							/>
 						}
 						{ error && <p className='text--error'>{error}</p> }

@@ -70,7 +70,7 @@ Avatar.propTypes = {
 	src: PropTypes.string, /** The image source URL for the Avatar */
 	href: PropTypes.string, /** Link to arbitrary URL outside app */
 	alt: PropTypes.string, /** the image label, mainly for accessibility */
-	to: PropTypes.string,  /** For linking to app routes */
+	to: PropTypes.string, /** For linking to app routes */
 };
 
 export default Avatar;

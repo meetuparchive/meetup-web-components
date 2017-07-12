@@ -17,7 +17,7 @@ storiesOf('Button', module)
 		'This is the basic usage with the component.',
 		() => (
 			<InfoWrapper>
-        <Button onClick={action('clicked')}>Button Label</Button>
+				<Button onClick={action('clicked')}>Button Label</Button>
 			</InfoWrapper>
 		)
 	)
