@@ -1,7 +1,6 @@
 import React from 'react';
 import TextInput from './TextInput';
 import { shallow, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 
 describe('TextInput', function() {
 
@@ -19,7 +18,7 @@ describe('TextInput', function() {
 	};
 
 
-	it('creates a required input with given label, name, id and value ', () => {
+	it('renders a required HTML <input> with expected attributes for mock data', () => {
 		const component = shallow(
 			<TextInput
 				name={NAME_ATTR}
@@ -30,7 +29,7 @@ describe('TextInput', function() {
 			/>
 		);
 
-		expect(toJson(component)).toMatchSnapshot();
+		expect(component).toMatchSnapshot();
 	});
 
 	describe('input prop checks, shallow rendering', () => {
