@@ -38,11 +38,11 @@ storiesOf('Textarea', module)
 	.add('with character limit', () =>
 		(<Bounds><Section>
 			<Textarea
-			maxLength={140}
-			label='Your biography'
-			id='yourBio'
-			name='bio'
-			placeholder='Tell me about your life' />
+				maxLength={140}
+				label='Your biography'
+				id='yourBio'
+				name='bio'
+				placeholder='Tell me about your life' />
 		</Section></Bounds>))
 	.addWithInfo(
 		'auto resizing',
@@ -96,11 +96,11 @@ storiesOf('Textarea', module)
 			<InfoWrapper>
 				<Bounds><Section>
 					<Textarea
-					rows={3}
-					label='Your biography'
-					id='yourBio'
-					name='bio'
-					placeholder='Tell me about your life' />
+						rows={3}
+						label='Your biography'
+						id='yourBio'
+						name='bio'
+						placeholder='Tell me about your life' />
 				</Section></Bounds>
 			</InfoWrapper>
 		)
