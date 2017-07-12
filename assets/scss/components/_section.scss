@@ -24,3 +24,13 @@ $sectionSpaceMultiple: 2;
 	border-bottom-width: 0;
 	padding-bottom: 0;
 }
+
+.section--flush {
+	margin: 0;
+}
+
+@include _bpModifier(section, flush) {
+	@include responsiveVarContext--base() {
+		margin: 0 $base;
+	}
+}
