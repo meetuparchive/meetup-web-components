@@ -18,36 +18,3 @@ exports[`TextInput creates a required input with given label, name, id and value
   />
 </div>
 `;
-
-exports[`TextInput snapshot check matches snapshot 1`] = `
-<div>
-  <label
-    className="label--field required"
-    htmlFor="superhero"
-  >
-    Super Hero
-  </label>
-  <input
-    className="field--error"
-    id="superhero"
-    maxLength={20}
-    name="superhero"
-    onChange={[Function]}
-    required={true}
-    type="text"
-    value="Batman"
-  />
-  <p
-    className="text--caption align--right"
-  >
-    6
-     / 
-    20
-  </p>
-  <p
-    className="text--error"
-  >
-    Too wimpy.
-  </p>
-</div>
-`;
