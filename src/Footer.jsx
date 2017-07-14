@@ -26,9 +26,9 @@ class Footer extends React.Component {
 				role='contentinfo'
 				aria-label='Site footer'
 				{...other}>
-					<div className='padding--all'>
-						{children}
-					</div>
+				<div className='padding--all'>
+					{children}
+				</div>
 			</footer>
 		);
 	}
