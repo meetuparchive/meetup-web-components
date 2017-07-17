@@ -61,13 +61,13 @@ The following classes are optional variants:
 Class                                     | Description
 ----------------------------------------- | ------------------------------
 `.gridList--photoGrid`                    | Optimizes list item spacing for a grid of photos
-`.gridList--autoheight`                   | Makes the height of each list item consistent
+`.gridList--autoHeight`                   | Makes the height of each list item consistent
 `.gridList--has[n]`                       | Adjusts number of columns (ie. `.gridList--has4` creates a 4 column grid for all screen sizes)
 `.atMedium_gridList--has[n]`              | Sets number of columns for medium breakpoint and up (ie. `.atMedium_gridList--has6`)
 `.atLarge_gridList--has[n]`               | Sets number of columns for large breakpoint and up (ie. `.atLarge_gridList--has10`)
-`.gridList--autoheight--has[n]`           | Adjusts number of columns (ie. `.gridList--autoheight--has4` creates a 4 column grid for all screen sizes)
-`.atMedium_gridList--autoheight--has[n]`  | Sets number of columns for medium breakpoint and up (ie. `.atMedium_gridList--autoheight--has6`)
-`.atLarge_gridList--autoheight--has[n]`   | Sets number of columns for large breakpoint and up (ie. `.atLarge_gridList--autoheight--has10`)
+`.gridList--autoHeight--has[n]`           | Adjusts number of columns (ie. `.gridList--autoHeight--has4` creates a 4 column grid for all screen sizes)
+`.atMedium_gridList--autoHeight--has[n]`  | Sets number of columns for medium breakpoint and up (ie. `.atMedium_gridList--autoHeight--has6`)
+`.atLarge_gridList--autoHeight--has[n]`   | Sets number of columns for large breakpoint and up (ie. `.atLarge_gridList--autoHeight--has10`)
 
 
 */
@@ -95,7 +95,7 @@ Class                                     | Description
 	}
 }
 
-.gridList--autoheight {
+.gridList--autoHeight {
 	@include responsiveVarContext--base() {
 		margin-left: -#{$base};
 
@@ -108,16 +108,16 @@ Class                                     | Description
 	}
 }
 
-// Autoheight - small/default
+// autoHeight - small/default
 @each $col in $glColumns {
-	.gridList--autoheight--has#{$col} > .gridList-item {
+	.gridList--autoHeight--has#{$col} > .gridList-item {
 		flex: 0 0 percentage(1 / $col);
 	}
 }
 
-// Autoheight - larger breakpoints
+// autoHeight - larger breakpoints
 @each $col in $glColumns {
-	@include _bpModifier(gridList--autoheight, has#{$col}) {
+	@include _bpModifier(gridList--autoHeight, has#{$col}) {
 		> .gridList-item {
 			flex: 0 0 percentage(1 / $col);
 		}

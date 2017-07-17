@@ -24,7 +24,7 @@ const JSX_GridListStatic = (
 
 const JSX_AutoheightGridListStatic = (
 	<GridList
-		autoheight
+		autoHeight
 		columns={{
 			default: 3
 		}}
@@ -69,7 +69,7 @@ const JSX_GridListResponsive = (
 
 const JSX_AutoheightGridListResponsive = (
 	<GridList
-		autoheight
+		autoHeight
 		columns={{
 			default: responsiveColsDefault,
 			medium: responsiveColsMedium,
@@ -106,12 +106,12 @@ describe('Static GridList', function() {
 		expect(glItems.length).not.toBe(0);
 	});
 
-	it('sets correct autoheight grid class', function() {
+	it('sets correct autoHeight grid class', function() {
 		const glClassList = TestUtils.scryRenderedDOMComponentsWithTag(autoheightGridList, 'UL')[0].className;
 		expect(glClassList).toContain(GRID_AUTOHEIGHT_CLASS);
 	});
 
-	it('wraps autoheight gridList items with element containing className "flex-item"', function() {
+	it('wraps autoHeight gridList items with element containing className "flex-item"', function() {
 		const glItems = TestUtils.scryRenderedDOMComponentsWithClass(autoheightGridList, 'flex-item');
 		expect(glItems.length).not.toBe(0);
 	});
@@ -149,17 +149,17 @@ describe('Responsive GridList', function() {
 		expect(glClassList).toContain(largeClass);
 	});
 
-	it('sets correct autoheight default columns class', function() {
+	it('sets correct autoHeight default columns class', function() {
 		const defaultClass = `${GRID_AUTOHEIGHT_CLASS}--has${responsiveColsDefault}`;
 		expect(autoheightGLClassList).toContain(defaultClass);
 	});
 
-	it('sets correct autoheight medium breakpoint columns class', function() {
+	it('sets correct autoHeight medium breakpoint columns class', function() {
 		const mediumClass = `atMedium_${GRID_AUTOHEIGHT_CLASS}--has${responsiveColsMedium}`;
 		expect(autoheightGLClassList).toContain(mediumClass);
 	});
 
-	it('sets correct autoheight large breakpoint columns class', function() {
+	it('sets correct autoHeight large breakpoint columns class', function() {
 		const largeClass = `atLarge_${GRID_AUTOHEIGHT_CLASS}--has${responsiveColsLarge}`;
 		expect(autoheightGLClassList).toContain(largeClass);
 	});

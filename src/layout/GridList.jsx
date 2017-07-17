@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-export const GRID_AUTOHEIGHT_CLASS = 'gridList--autoheight';
+export const GRID_AUTOHEIGHT_CLASS = 'gridList--autoHeight';
 
 /**
  * @module GridList
@@ -13,7 +13,7 @@ class GridList extends React.Component {
 			className,
 			columns,
 			items,
-			autoheight,
+			autoHeight,
 			...other
 		} = this.props;
 
@@ -27,7 +27,7 @@ class GridList extends React.Component {
 			className
 		);
 
-		const autoheightClassNames = cx(
+		const autoHeightClassNames = cx(
 			'flex flex--wrap gridList',
 			GRID_AUTOHEIGHT_CLASS,
 			{
@@ -41,13 +41,13 @@ class GridList extends React.Component {
 		const listItemClassNames = cx(
 			'gridList-item',
 			{
-				['flex-item']: autoheight
+				['flex-item']: autoHeight
 			}
 		);
 
 		return (
 			<ul
-				className={autoheight ? autoheightClassNames : classNames}
+				className={autoHeight ? autoHeightClassNames : classNames}
 				{...other}
 			>
 				{items.map((item, key) =>
@@ -59,7 +59,7 @@ class GridList extends React.Component {
 }
 
 GridList.propTypes = {
-	autoheight: PropTypes.bool,
+	autoHeight: PropTypes.bool,
 	columns: PropTypes.shape({
 		default: PropTypes.number.isRequired,
 		medium: PropTypes.number,

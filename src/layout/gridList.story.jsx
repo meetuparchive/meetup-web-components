@@ -64,12 +64,12 @@ storiesOf('GridList', module)
 			</InfoWrapper>
 		))
 	.addWithInfo(
-		'Static autoheight grid',
+		'Static autoHeight grid',
 		'GridList where items are the same height with columns fixed at 3 for all breakpoints',
 		() => (
 			<InfoWrapper>
 				<GridList
-					autoheight
+					autoHeight
 					columns={{
 						default: 3
 					}}
@@ -112,12 +112,12 @@ storiesOf('GridList', module)
 			</InfoWrapper>
 		))
 	.addWithInfo(
-		'Responsive autoheight grid',
+		'Responsive autoHeight grid',
 		'Responsive GridList where items are the same height, and that increases number of columns for larger breakpoints',
 		() => (
 			<InfoWrapper>
 				<GridList
-					autoheight
+					autoHeight
 					columns={{
 						default: 2,
 						medium: 4,
