@@ -103,9 +103,10 @@ class Checkbox extends React.Component {
 						</span>
 					</FlexItem>
 					<FlexItem className='toggleLabel-container'>
-						<span className={cx(
-							{ ['text--hint'] : disabled }
-						)}>
+						<span className={cx({
+							['text--hint'] : disabled,
+							['text--bold'] : this.state.checked
+						})}>
 							{label}
 						</span>
 						{children}
