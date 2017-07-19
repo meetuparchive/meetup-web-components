@@ -193,31 +193,30 @@ $C_toggleHighlight: $C_lightPurple; // replace $C_lightPurple with $C_blue once 
 	&.checked {
 		background-color: $C_toggleHighlight;
 		border-color: transparent;
-
-		&.disabled {
-			background-color: $C_white;
-			border-color: $C_textHint;
-		}
-
-		&.focused {
-			box-shadow: 0 0 4px 1px $C_toggleHighlight;
-		}
-
 	}
 
 	&.disabled {
 		@include color-all($C_textHint);
 		border-color: $C_textHint;
+
+		&.checked {
+			background-color: $C_white;
+			border-color: $C_textHint;
+		}
 	}
 
 	&.focused {
 		border-color: $C_toggleHighlight;
+
+		&.checked {
+			box-shadow: 0 0 4px 1px $C_toggleHighlight;
+		}
 	}
 
 }
 
 .fauxToggle--checkbox {
-	border-radius: 2px; // replace with $smallRadius once https://github.com/meetup/swarm-sasstools/pull/32 merges
+	border-radius: $smallRadius;
 }
 
 .fauxToggle--radio {
