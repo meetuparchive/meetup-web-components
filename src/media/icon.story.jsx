@@ -19,46 +19,38 @@ storiesOf('Icon', module)
 		)
 	)
 	.add('Accessible', () => (
-		<div className='margin--center'>
-			<WithNotes notes='This Icon has an `aria-label` attribute to improve accesibility'>
-				<Icon shape={ICON_NAME} aria-label='Go west and seek your fortune' />
-			</WithNotes>
-		</div>
+		<WithNotes notes='This Icon has an `aria-label` attribute to improve accesibility'>
+			<Icon shape={ICON_NAME} aria-label='Go west and seek your fortune' />
+		</WithNotes>
 	))
 	.add('Inverted', () => (
-		<div className='margin--center'>
-			<Inverted>
-				<Icon shape={ICON_NAME} inverted />
-			</Inverted>
-		</div>
+		<Inverted>
+			<Icon shape={ICON_NAME} inverted />
+		</Inverted>
+	))
+	.add('xx-Small', () => (
+		<Icon shape={ICON_NAME} size='xxs' />
 	))
 	.add('x-Small', () => (
-		<div className='margin--center'>
-			<Icon shape={ICON_NAME} size='xs' />
-		</div>
+		<Icon shape={ICON_NAME} size='xs' />
 	))
 	.add('Small', () => (
-		<div className='margin--center'>
-			<Icon shape={ICON_NAME} size='s' />
-		</div>
+		<Icon shape={ICON_NAME} size='s' />
 	))
 	.add('Large', () => (
-		<div className='margin--center'>
-			<Icon shape={ICON_NAME} size='l' />
-		</div>
+		<Icon shape={ICON_NAME} size='l' />
 	))
 	.add('X-Large', () => (
-		<div className='margin--center'>
-			<Icon shape={ICON_NAME} size='xl' />
-		</div>
+		<Icon shape={ICON_NAME} size='xl' />
+	))
+	.add('XX-Large', () => (
+		<Icon shape={ICON_NAME} size='xxl' />
 	))
 	.addWithInfo(
 		'Loading indicator',
 		'The `updates` icon is animated by default.',
 		() => (
-			<div className='margin--center padding--all'>
-				<Icon shape='updates' size='l' />
-			</div>
+			<Icon shape='updates' size='l' />
 		)
 	);
 
