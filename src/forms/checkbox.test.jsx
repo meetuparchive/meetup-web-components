@@ -85,9 +85,6 @@ describe('Checkbox', function() {
 			const fauxInput = component.find(`.${FAUX_TOGGLE_CLASS}`);
 			const input = component.find('input');
 
-			// console.log(`-----------------------------------------\n\n${component.find('.fauxToggle')}\n\n-----------------------------------------`);
-			console.log(fauxInput.hasClass(FOCUSED_CHECKBOX_CLASS));
-
 			expect(fauxInput.hasClass(FOCUSED_CHECKBOX_CLASS)).toBe(false);
 			input.simulate('focus');
 			expect(fauxInput.hasClass(FOCUSED_CHECKBOX_CLASS)).toBe(true);
