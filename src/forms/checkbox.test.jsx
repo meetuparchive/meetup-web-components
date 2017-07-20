@@ -1,8 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, render, mount } from 'enzyme';
 
 // import Icon from '../media/Icon';
 // import Checkbox, { FAUX_TOGGLE_CLASS, FOCUSED_CHECKBOX_CLASS, DISABLED_CHECKBOX_CLASS, CHECKED_CHECKBOX_CLASS } from './Checkbox';
+import Checkbox from './Checkbox';
 
 const JSXcheckboxUnchecked = (
 	<Checkbox
@@ -32,8 +33,15 @@ describe('Checkbox', function() {
 		it('renders unchecked checkbox', function() {
 			expect(uncheckedComponent).toMatchSnapshot();
 		});
+
 		it('renders checked checkbox', function() {
 			expect(checkedComponent).toMatchSnapshot();
+		});
+
+		it('has a label with correct for attribute', () => {
+			const component = render(JSXcheckboxUnchecked);
+			const label = component.find('label');
+			expect(label.attr('for')).toEqual('hello');
 		});
 
 		/*
@@ -69,19 +77,16 @@ describe('Checkbox', function() {
 		 *            const checkbox = TestUtils.findRenderedDOMComponentWithTag(checkboxComponent, 'input');
 		 *            expect(checkbox.checked).toEqual(false);
 		 *        });
-		 *
-		 *        it('calls onChange and sets state when clicked', function() {
-		 *            const changeSpy	= spyOn(Checkbox.prototype, 'onChange').and.callThrough();
-		 *            const stateSpy	= spyOn(Checkbox.prototype, 'setState');
-		 *
-		 *            checkboxComponent = TestUtils.renderIntoDocument(<Checkbox name='greeting' id='hello' value='hello' />);
-		 *            checkbox = TestUtils.findRenderedDOMComponentWithTag(checkboxComponent, 'input');
-		 *
-		 *            TestUtils.Simulate.change(checkbox, { target: { checked : true }});
-		 *            expect(changeSpy).toHaveBeenCalled();
-		 *            expect(stateSpy).toHaveBeenCalledWith({ checked: true });
-		 *        });
 		 */
+		it('calls onChange and sets state when clicked', function() {
+			const component = mount(JSXcheckboxUnchecked);
+			const input = component.find('input');
+
+			expect(input.props().checked).toBe(false);
+			input.simulate('change', { target: { checked: true } });
+			expect(input.props().checked).toBe(true);
+		});
+
 	});
 
 	/*
