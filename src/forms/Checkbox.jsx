@@ -8,7 +8,6 @@ import Icon from '../media/Icon';
 export const FAUX_TOGGLE_CLASS = 'fauxToggle';
 export const FOCUSED_CHECKBOX_CLASS = 'focused';
 export const DISABLED_CHECKBOX_CLASS = 'disabled';
-export const CHECKED_CHECKBOX_CLASS = 'checked';
 
 /**
  * @module Checkbox
