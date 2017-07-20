@@ -19,7 +19,7 @@ class Dropdown extends React.PureComponent {
 			'onBodyKeyDown'
 		);
 
-		this.state = { isActive: false };
+		this.state = { isActive: props.isActive || false };
 	}
 
 	closeContent() {
@@ -70,12 +70,12 @@ class Dropdown extends React.PureComponent {
 	render() {
 		const isActive = this.state.isActive;
 		const {
-				className,
-				trigger,
-				content,
-				align, // eslint-disable-line no-unused-vars
-				...other
-			} = this.props;
+			className,
+			trigger,
+			content,
+			align, // eslint-disable-line no-unused-vars
+			...other
+		} = this.props;
 
 		const classNames = {
 			dropdown: cx(
@@ -133,6 +133,7 @@ Dropdown.propTypes = {
 	content: PropTypes.element.isRequired,
 	align: PropTypes.oneOf(['left', 'right']).isRequired,
 	className: PropTypes.string,
+	isActive: PropTypes.bool,
 };
 
 export default Dropdown;

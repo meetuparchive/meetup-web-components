@@ -1,23 +1,22 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import DateTimeLocalInput from './DateTimeLocalInput';
 
-
 describe('DateTimeLocal', function() {
+	let dateTimeComponent, dateTimeInputEl;
 
-	let dateTimeComponent,
-		dateTimeInputEl;
-
-	const value = '1999-12-31T23:59:59',
-		newValue = '3000-12-31T23:59:59',
-		min = '1999-12-30T00:00:00',
-		max = '3001-12-31T23:59:59',
+	// use `toISOString()` in order to get correct environment-local date string
+	const value = new Date('1999-12-31T23:59:59').toISOString(),
+		newValue = new Date('3000-12-31T23:59:59').toISOString(),
+		min = new Date('1999-12-30T00:00:00').toISOString(),
+		max = new Date('3001-12-31T23:59:59').toISOString(),
 		callbackSpy = jasmine.createSpy('foo');
+	const expectedValue = value.split('.')[0];
 
 	beforeEach(() => {
 		dateTimeComponent = TestUtils.renderIntoDocument(
 			<DateTimeLocalInput
-				name='datetime'
+				name="datetime"
 				value={value}
 				onChangeCallback={callbackSpy}
 				min={min}
@@ -25,7 +24,10 @@ describe('DateTimeLocal', function() {
 				required
 			/>
 		);
-		dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent, 'input');
+		dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(
+			dateTimeComponent,
+			'input'
+		);
 	});
 
 	afterEach(() => {
@@ -34,11 +36,13 @@ describe('DateTimeLocal', function() {
 	});
 
 	it('should exist', function() {
-		expect(() => TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent, 'input')).not.toThrow();
+		expect(() =>
+			TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent, 'input')
+		).not.toThrow();
 	});
 
 	it('should take an initial value and set its state', function() {
-		expect(dateTimeComponent.state).toEqual({ value });
+		expect(dateTimeComponent.state).toEqual({ value: expectedValue });
 	});
 
 	it('should set a min value', function() {
@@ -54,10 +58,18 @@ describe('DateTimeLocal', function() {
 	});
 
 	it('calls onChange and sets state when value is changed', function() {
-		const onChangeSpy = spyOn(DateTimeLocalInput.prototype, 'onChange').and.callThrough();
+		const onChangeSpy = spyOn(
+			DateTimeLocalInput.prototype,
+			'onChange'
+		).and.callThrough();
 		const setStateSpy = spyOn(DateTimeLocalInput.prototype, 'setState');
-		dateTimeComponent = TestUtils.renderIntoDocument(<DateTimeLocalInput name='time' value={value} />);
-		dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(dateTimeComponent, 'input');
+		dateTimeComponent = TestUtils.renderIntoDocument(
+			<DateTimeLocalInput name="time" value={value} />
+		);
+		dateTimeInputEl = TestUtils.findRenderedDOMComponentWithTag(
+			dateTimeComponent,
+			'input'
+		);
 
 		TestUtils.Simulate.change(dateTimeInputEl, { target: { value: newValue } });
 		expect(onChangeSpy).toHaveBeenCalled();
@@ -68,5 +80,4 @@ describe('DateTimeLocal', function() {
 		TestUtils.Simulate.change(dateTimeInputEl, { target: { value: newValue } });
 		expect(callbackSpy).toHaveBeenCalledWith(newValue);
 	});
-
 });

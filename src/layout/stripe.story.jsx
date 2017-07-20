@@ -28,9 +28,19 @@ storiesOf('Stripe', module)
 							<p>Stripes go full-width and are used to separate distinct regions of a view</p>
 						</Stripe>
 
-						<Stripe backgroundImage='https://placekitten.com/g/600/600'>
+						<Stripe
+							inverted
+							backgroundImage='https://placekitten.com/g/600/600'>
 							<div style={{zIndex: '1'}}>
 								<h3 className='text--sectionTitle'>Stripe with bg photo</h3>
+								<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+							</div>
+						</Stripe>
+						<Stripe
+							hideScrim
+							backgroundImage='https://s-media-cache-ak0.pinimg.com/originals/10/55/e7/1055e79a0519191212035a61ed530800.jpg'>
+							<div style={{zIndex: '1'}}>
+								<h3 className='text--sectionTitle'>Stripe with bg photo, no scrim</h3>
 								<p>Stripes go full-width and are used to separate distinct regions of a view</p>
 							</div>
 						</Stripe>
