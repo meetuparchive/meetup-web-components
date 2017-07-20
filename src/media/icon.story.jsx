@@ -28,8 +28,11 @@ storiesOf('Icon', module)
 			<Icon shape={ICON_NAME} inverted />
 		</Inverted>
 	))
-	.add('x-Small', () => (
+	.add('xx-Small', () => (
 		<Icon shape={ICON_NAME} size='xxs' />
+	))
+	.add('x-Small', () => (
+		<Icon shape={ICON_NAME} size='xs' />
 	))
 	.add('Small', () => (
 		<Icon shape={ICON_NAME} size='s' />
@@ -39,6 +42,9 @@ storiesOf('Icon', module)
 	))
 	.add('X-Large', () => (
 		<Icon shape={ICON_NAME} size='xl' />
+	))
+	.add('XX-Large', () => (
+		<Icon shape={ICON_NAME} size='xxl' />
 	))
 	.addWithInfo(
 		'Loading indicator',
