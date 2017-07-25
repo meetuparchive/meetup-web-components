@@ -19,7 +19,7 @@
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook-static": "build-storybook -c .storybook -o .storybook-out",
     "gh-pages": "gh-pages -d .storybook-out -b gh-pages",
-    "publish-storybook": "yarn run storybook-static && yarn run gh-pages",
+    "publish-docs": "yarn run storybook-static && yarn run gh-pages",
     "test": "npm-run-all --parallel lint:base coverage",
     "test:base": "jest --color --config jest.config.json",
     "test:unit": "yarn run test:base -- --silent",
