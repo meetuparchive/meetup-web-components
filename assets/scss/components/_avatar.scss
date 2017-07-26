@@ -134,9 +134,6 @@ $avatarBgAsHex: rgba-to-hex($avatarBg);
 		height: 100%;
 		width: 100%;
 	}
-	&.avatar--big {
-		background-position-y: 12px !important;
-	}
 }
 
 .avatar--fbFriend {
