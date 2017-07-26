@@ -43,7 +43,7 @@ Class                     | Description
 `avatar--icon`            | For icons in avatars (might move this in a later version)
 `avatar--noPhoto`         | Resets `text-indent` for avatars without photos, allowing display of fallback content
 */
-$noPhotoIconOpacity: alpha($C_textSecondary);
+$noPhotoIconOpacity: alpha($C_textHint);
 $avatarBg: #E4E9ED; // change to $C_borderCard once that merges
 $avatarBgAsHex: rgba-to-hex($avatarBg);
 
