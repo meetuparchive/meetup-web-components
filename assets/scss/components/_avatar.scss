@@ -44,7 +44,7 @@ Class                     | Description
 `avatar--noPhoto`         | Resets `text-indent` for avatars without photos, allowing display of fallback content
 */
 $noPhotoIconOpacity: alpha($C_textSecondary);
-$avatarBg: $C_textHint;
+$avatarBg: #E4E9ED; // change to $C_borderCard once that merges
 $avatarBgAsHex: rgba-to-hex($avatarBg);
 
 %backgroundImg--orgBadge {
@@ -125,8 +125,8 @@ $avatarBgAsHex: rgba-to-hex($avatarBg);
 .avatar--noPhoto {
 	position: relative;
 	text-indent: initial;
-	background-color: darken($avatarBgAsHex, ((1 - $noPhotoIconOpacity - alpha($avatarBg))*100)*1%);
-	background-position-y: 4px !important;
+	background-color: darken($avatarBgAsHex, ((1 - $noPhotoIconOpacity)*1%));
+	background-size: 40% !important;
 	&:before {
 		background-color: transparentize($C_white, 1-$noPhotoIconOpacity);
 		content: '';
