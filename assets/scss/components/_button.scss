@@ -249,6 +249,8 @@ Class                   | Description
 		$hoverColor: transparentize($C_accent, .2),
 		$activeColor: transparentize($C_accent, .4)
 	);
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_contentBG,
