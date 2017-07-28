@@ -89,6 +89,28 @@ const JSX_AutoheightGridListResponsive = (
 	/>
 );
 
+const JSX_AutoheightWithWrapGridListResponsive = (
+	<GridList
+		autoHeightWithWrap
+		columns={{
+			default: responsiveColsDefault,
+			medium: responsiveColsMedium,
+			large: responsiveColsLarge
+		}}
+		items={[
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>
+		]}
+	/>
+);
+
 let gridList, autoheightGridList;
 
 describe('Static GridList', function() {
@@ -109,6 +131,12 @@ describe('Static GridList', function() {
 	it('sets correct autoHeight grid class', function() {
 		const glClassList = TestUtils.scryRenderedDOMComponentsWithTag(autoheightGridList, 'UL')[0].className;
 		expect(glClassList).toContain(GRID_AUTOHEIGHT_CLASS);
+	});
+
+	it('sets correct autoHeight with wrap grid class', function() {
+		const autoheightWithWrapGridList = TestUtils.renderIntoDocument(JSX_AutoheightWithWrapGridListResponsive);
+		const glClassList = TestUtils.scryRenderedDOMComponentsWithTag(autoheightWithWrapGridList, 'UL')[0].className;
+		expect(glClassList).toContain('flex--wrap');
 	});
 
 	it('wraps autoHeight gridList items with element containing className "flex-item"', function() {
