@@ -23,7 +23,7 @@ export const getIconShape = (shape, size) => {
 		return shape;
 	}
 
-	const suffix = (size === 'xs' || size === 's') ? SVG_THIN_STYLE : '';
+	const suffix = (size === 'xxs' || size === 'xs' || size === 's') ? SVG_THIN_STYLE : '';
 	return `${shape}${suffix}`;
 };
 

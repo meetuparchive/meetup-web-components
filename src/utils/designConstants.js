@@ -13,6 +13,7 @@ export const MEDIA_QUERIES = {
 };
 
 export const MEDIA_SIZES = {
+	xxs: '12',
 	xs: '16',
 	s: '24',
 	m: '36',
