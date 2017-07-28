@@ -14,6 +14,7 @@ class GridList extends React.Component {
 			columns,
 			items,
 			autoHeight,
+			autoHeightWithWrap,
 			...other
 		} = this.props;
 
@@ -28,9 +29,10 @@ class GridList extends React.Component {
 		);
 
 		const autoHeightClassNames = cx(
-			'flex flex--wrap gridList',
+			'flex gridList',
 			GRID_AUTOHEIGHT_CLASS,
 			{
+				'flex--wrap' : autoHeightWithWrap,
 				[`${GRID_AUTOHEIGHT_CLASS}--has${columns.default}`]: !!columns.default,
 				[`atMedium_${GRID_AUTOHEIGHT_CLASS}--has${columns.medium}`]: !!columns.medium,
 				[`atLarge_${GRID_AUTOHEIGHT_CLASS}--has${columns.large}`]: !!columns.large
@@ -47,7 +49,7 @@ class GridList extends React.Component {
 
 		return (
 			<ul
-				className={autoHeight ? autoHeightClassNames : classNames}
+				className={autoHeight || autoHeightWithWrap ? autoHeightClassNames : classNames}
 				{...other}
 			>
 				{items.map((item, key) =>
@@ -60,6 +62,7 @@ class GridList extends React.Component {
 
 GridList.propTypes = {
 	autoHeight: PropTypes.bool,
+	autoHeightWithWrap: PropTypes.bool,
 	columns: PropTypes.shape({
 		default: PropTypes.number.isRequired,
 		medium: PropTypes.number,
