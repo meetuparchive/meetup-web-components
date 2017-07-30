@@ -37,7 +37,6 @@ _(The `extend` directive can cause ugly cascade problems)_
 	@include justify-content(center);
 	@include align-items(center);
 	@include transition(background .15s);
-	@include standardBorder(none);
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	border-radius: $defaultRadius;
@@ -255,6 +254,33 @@ Class                   | Description
 			$hoverColor: transparentize($C_contentBG, .2),
 			$activeColor: transparentize($C_contentBG, .4)
 		);
+	}
+}
+
+.button--bordered {
+	@include buttonColor(
+		$bgColor: $C_contentBG,
+		$hoverColor: #F6F7F8, //TODO: change to $C_collectionBG once `swarm-constants` is available
+		$activeColor: darken(#F6F7F8, 3%)
+	);
+	border: 1px solid $C_border;
+
+	&:hover, &:focus {
+		border-color: $C_textHint;
+	}
+
+	.inverted & {
+		@include buttonColor(
+			$bgColor: $C_textSecondary,
+			$hoverColor: lighten(transparentize($C_textSecondary, .2), 12%),
+			$activeColor: lighten(transparentize($C_textSecondary, .2), 23%)
+		);
+		border: 1px solid $C_borderInverted;
+
+		&:hover, &:focus {
+			border-color: $C_borderDarkInverted, .1;
+		}
+
 	}
 }
 
