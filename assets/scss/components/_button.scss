@@ -271,9 +271,9 @@ Class                   | Description
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_textSecondary,
-			$hoverColor: lighten(transparentize($C_textSecondary, .2), 12%),
-			$activeColor: lighten(transparentize($C_textSecondary, .2), 23%)
+			$bgColor: rgba(46, 62, 72, .6),
+			$hoverColor: lighten(transparentize(rgba(46, 62, 72, .6), .2), 12%),
+			$activeColor: lighten(transparentize(rgba(46, 62, 72, .6), .2), 23%)
 		);
 		border: 1px solid $C_borderInverted;
 
