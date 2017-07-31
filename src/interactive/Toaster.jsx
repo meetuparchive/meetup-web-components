@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -100,7 +101,7 @@ class Toaster extends React.Component {
 }
 
 Toaster.propTypes = {
-	toasts: React.PropTypes.arrayOf(React.PropTypes.element).isRequired
+	toasts: PropTypes.arrayOf(PropTypes.element).isRequired
 };
 
 export default Toaster;

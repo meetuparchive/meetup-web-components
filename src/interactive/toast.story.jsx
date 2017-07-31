@@ -8,34 +8,70 @@ import { decorateWithLocale } from '../utils/decorators';
 storiesOf('Toast', module)
 	.addDecorator(decorateWithLocale)
 	.add('default', () =>
-		<Toaster
+		(<Toaster
 			toasts={[
 				<Toast
-					// autodismiss={false}
-					dismissable
-					message='lol nothing matters'
-				/>,
-				<Toast
-					// autodismiss={false}
-					dismissable
-					message='jk, everything matters'
-				/>,
-				<Toast
-					// autodismiss={false}
+					autodismiss={false}
 					dismissable
 					message='Your toast is ready'
 				/>
 			]}
-		/>
+		/>)
+	)
+	.add('success', () =>
+		(<Toaster
+			toasts={[
+				<Toast
+					success
+					autodismiss={false}
+					dismissable
+					message='Your toast is ready'
+				/>
+			]}
+		/>)
+	)
+	.add('error', () =>
+		(<Toaster
+			toasts={[
+				<Toast
+					error
+					autodismiss={false}
+					dismissable
+					message='Your toast is ready'
+				/>
+			]}
+		/>)
+	)
+	.add('multiple', () =>
+		(<Toaster
+			toasts={[
+				<Toast
+					autodismiss={false}
+					dismissable
+					message='lol nothing matters'
+				/>,
+				<Toast
+					autodismiss={false}
+					dismissable
+					message='jk, everything matters'
+				/>,
+				<Toast
+					autodismiss={false}
+					dismissable
+					message='Your toast is ready'
+				/>
+			]}
+		/>)
 	)
 	.add('withAction', () =>
-		<Toaster
+		(<Toaster
 			toasts={[
 				<Toast
 					action={()=>{console.log('withAction');}}
 					actionLabel='Do it'
+					autodismiss={false}
 					message='lol nothing matters'
 				/>
 			]}
-		/>
+		/>)
 	);

@@ -1,16 +1,27 @@
 .toaster {
 	box-sizing: border-box;
-	// left: $space;
 	position: absolute;
-	// right: $space;
-	top: $space;
-	padding: $space;
+	top: 0;
 	width: 100%;
 }
+
 .toast {
-	border: 1px solid $C_border;
-	border-radius: $defaultRadius;
+	background-color: #538eed; // replace with `$C_blue` when `swarm-constants` replaces `meetup-swatches`
 	box-sizing: border-box;
-	margin-bottom: $space;
 	display: block;
+	margin-bottom: $space-half;
+	padding-bottom: $space-3;
+	padding-top: $space-3;
+}
+
+.toast--error {
+	background-color: #ff5b0f; // replace with `$C_orange` when `swarm-constants` replaces `meetup-swatches`
+}
+
+.toast--success {
+	background-color: #00d480; // replace with `$C_teal` when `swarm-constants` replaces `meetup-swatches`
+}
+
+.toast-action {
+	text-decoration: underline;
 }
