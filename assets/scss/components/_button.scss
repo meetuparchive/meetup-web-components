@@ -75,6 +75,14 @@ Applies button color-related styles using a mixin.
 	@include color-all($textColor);
 	background: $bgColor;
 
+	&:hover {
+		transition: all 0.4s $animate_easeOutQuad;
+		svg {
+			transition: fill 0.4s $animate_easeOutQuad;
+		}
+	}
+
+
 	&:hover,
 	&:focus {
 		background: $hoverColor;
