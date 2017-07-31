@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -43,8 +44,8 @@ class FlexItem extends React.Component {
 }
 
 FlexItem.propTypes = {
-	shrink: React.PropTypes.bool,
-	growFactor: React.PropTypes.oneOf(FLEX_GROW_FACTORS),
+	shrink: PropTypes.bool,
+	growFactor: PropTypes.oneOf(FLEX_GROW_FACTORS),
 };
 
 export default FlexItem;

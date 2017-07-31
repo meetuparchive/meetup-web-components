@@ -1,8 +1,31 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import { MEDIA_SIZES } from '../utils/designConstants';
+import { VALID_SHAPES } from 'swarm-icons/dist/js/shapeConstants';
 
 export const ICON_CLASS = 'svg';
+export const SVG_THIN_STYLE = '--small';
+
+const SMALL_ICON_VARIANT_WHITELIST = VALID_SHAPES
+	.filter(s =>
+		!s.startsWith('external') // no third party icons
+		&& !s.startsWith('meetup') // logos use same path for `xs`
+	);
+
+/**
+ * @param {String} shape - icon shape
+ * @param {String} size - icon size
+ * @returns {String} icon name (with or without suffix)
+ */
+export const getIconShape = (shape, size) => {
+	if (!SMALL_ICON_VARIANT_WHITELIST.includes(shape)) {
+		return shape;
+	}
+
+	const suffix = (size === 'xxs' || size === 'xs' || size === 's') ? SVG_THIN_STYLE : '';
+	return `${shape}${suffix}`;
+};
 
 /**
  * Icon component used to insert an svg icon into a component or page
@@ -14,35 +37,25 @@ export const ICON_CLASS = 'svg';
  * @module Icon
  */
 class Icon extends React.PureComponent {
-
 	render() {
-		const {
-			className,
-			shape,
-			size,
-			...other
-		} = this.props;
+		const { className, shape, size, ...other } = this.props;
 
-		const classNames = cx(
-			ICON_CLASS,
-			`svg--${shape}`,
-			className
-		);
+		const classNames = cx(ICON_CLASS, `svg--${shape}`, className);
 
-		const viewBox = size === 'auto' ? MEDIA_SIZES['xl'] : MEDIA_SIZES[size];
-		const dim = MEDIA_SIZES[size];
+		const sizeVal = MEDIA_SIZES[size];
 
 		return (
 			<span className={classNames}>
 				<svg
 					preserveAspectRatio='xMinYMin meet'
-					width={dim}
-					height={dim}
-					viewBox={`0 0 ${viewBox} ${viewBox}`}
+					width={sizeVal}
+					height={sizeVal}
+					viewBox={`0 0 ${sizeVal} ${sizeVal}`}
 					className='svg-icon valign--middle'
 					role='img'
-					{...other}>
-					<use xlinkHref={`#icon-${shape}`}></use>
+					{...other}
+				>
+					<use xlinkHref={`#icon-${getIconShape(shape, size)}`} />
 				</svg>
 			</span>
 		);
@@ -50,12 +63,12 @@ class Icon extends React.PureComponent {
 }
 
 Icon.defaultProps = {
-	size: 'm'
+	size: 's',
 };
 
 Icon.propTypes = {
-	shape: React.PropTypes.string.isRequired,
-	size: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'auto'])
+	shape: PropTypes.oneOf(VALID_SHAPES).isRequired,
+	size: PropTypes.oneOf(Object.keys(MEDIA_SIZES)).isRequired,
 };
 
 export default Icon;

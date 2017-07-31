@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -91,24 +92,24 @@ class Flex extends React.Component {
 }
 
 Flex.propTypes = {
-	align: React.PropTypes.oneOf(Object.keys(VALID_ALIGNMENTS)),
-	justify: React.PropTypes.oneOf(Object.keys(VALID_SPACE)),
-	wrap: React.PropTypes.bool,
-	noGutters: React.PropTypes.bool,
+	align: PropTypes.oneOf(Object.keys(VALID_ALIGNMENTS)),
+	justify: PropTypes.oneOf(Object.keys(VALID_SPACE)),
+	wrap: PropTypes.bool,
+	noGutters: PropTypes.bool,
 
-	direction: React.PropTypes.oneOf([
+	direction: PropTypes.oneOf([
 		DIRECTION_ROW,
 		DIRECTION_COLUMN,
 	]),
-	switchDirection: React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
+	switchDirection: PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 
-	rowReverse: React.PropTypes.oneOfType([
-		React.PropTypes.bool,
-		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+	rowReverse: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	]),
-	columnReverse: React.PropTypes.oneOfType([
-		React.PropTypes.bool,
-		React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+	columnReverse: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	]),
 };
 

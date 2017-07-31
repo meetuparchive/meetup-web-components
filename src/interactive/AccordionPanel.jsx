@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -95,7 +96,7 @@ class AccordionPanel extends React.Component {
 			setClickedPanel, // eslint-disable-line no-unused-vars
 			iconAlign, // eslint-disable-line no-unused-vars
 			iconShape, // eslint-disable-line no-unused-vars
-			iconSize,  // eslint-disable-line no-unused-vars
+			iconSize, // eslint-disable-line no-unused-vars
 			iconShapeActive, // eslint-disable-line no-unused-vars
 			classNamesActive,
 			className,
@@ -185,16 +186,16 @@ AccordionPanel.defaultProps = {
 };
 
 AccordionPanel.propTypes = {
-	classNamesActive: React.PropTypes.string,
-	isOpen: React.PropTypes.bool,
-	panelContent: React.PropTypes.element,
-	onClick: React.PropTypes.func,
-	label: React.PropTypes.string.isRequired,
-	className: React.PropTypes.string,
-	iconAlign: React.PropTypes.string,
-	iconShape: React.PropTypes.string,
-	iconShapeActive: React.PropTypes.string,
-	iconSize: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
+	classNamesActive: PropTypes.string,
+	isOpen: PropTypes.bool,
+	panelContent: PropTypes.element,
+	onClick: PropTypes.func,
+	label: PropTypes.string.isRequired,
+	className: PropTypes.string,
+	iconAlign: PropTypes.string,
+	iconShape: PropTypes.string,
+	iconShapeActive: PropTypes.string,
+	iconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
 };
 
 export default AccordionPanel;

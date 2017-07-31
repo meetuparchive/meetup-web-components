@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
@@ -19,7 +20,7 @@ class Popover extends React.Component {
 			'onKeyDown',
 			'onKeyDownMenuItem',
 			'onClick',
-			'onBlur'
+			'onBodyClick'
 		);
 
 		this.state = {
@@ -43,25 +44,6 @@ class Popover extends React.Component {
 
 	closeMenu() {
 		this.setState({ isActive: false });
-	}
-
-	focusCheck() {
-		const focusedOptionClass = document.activeElement.parentNode.classList;
-		// don't close the popover if we're moving focus to an menu item
-		if (focusedOptionClass && focusedOptionClass.contains(POPOVER_MENU_CLASS)) {
-			return;
-		}
-
-		this.closeMenu();
-	}
-
-	onBlur() {
-		// On blur, browsers always focus `<body>` before moving focus
-		// to the next actual focused element.
-		//
-		// This zero-length timeout ensures the browser will return the
-		// actual focused element instead of `<body>`
-		window.setTimeout(() => this.focusCheck(), 0);
 	}
 
 	onClick(e) {
@@ -134,15 +116,34 @@ class Popover extends React.Component {
 		return this.menuItems;
 	}
 
+	onBodyClick(e) {
+		const isPopoverClick = [
+			this.menuRef,
+			this.triggerRef
+		].includes(e.target);
+
+		if (!isPopoverClick) {
+			this.closeMenu();
+		}
+	}
+
+	componentDidMount() {
+		document.body.addEventListener('click', this.onBodyClick);
+	}
+
+	componentWillUnmount() {
+		document.body.removeEventListener('click', this.onBodyClick);
+	}
+
 	render() {
 		const isActive = this.state.isActive;
 		const {
-				className,
-				trigger,
-				menuItems, // eslint-disable-line no-unused-vars
-				align,
-				...other
-			} = this.props;
+			className,
+			trigger,
+			menuItems, // eslint-disable-line no-unused-vars
+			align,
+			...other
+		} = this.props;
 
 		const classNames = {
 			popover: cx(
@@ -171,11 +172,11 @@ class Popover extends React.Component {
 				className={classNames.popover}
 				aria-haspopup='true'
 				onKeyDown={this.onKeyDown}
-				onBlur={this.onBlur}
 				{...other}
 			>
 
 				<div
+					ref={(el) => this.triggerRef = el}
 					className={classNames.trigger}
 					tabIndex='0'
 					onClick={this.onClick}
@@ -185,6 +186,7 @@ class Popover extends React.Component {
 
 				<nav>
 					<ul
+						ref={(el) => this.menuRef = el}
 						className={classNames.menu}
 						role='menu'
 						aria-hidden={!isActive}
@@ -198,10 +200,10 @@ class Popover extends React.Component {
 }
 
 Popover.propTypes = {
-	trigger: React.PropTypes.element.isRequired,
-	menuItems: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
-	align: React.PropTypes.oneOf(['right', 'left']),
-	className: React.PropTypes.string,
+	trigger: PropTypes.element.isRequired,
+	menuItems: PropTypes.arrayOf(PropTypes.element).isRequired,
+	align: PropTypes.oneOf(['right', 'left']),
+	className: PropTypes.string,
 };
 
 export default Popover;

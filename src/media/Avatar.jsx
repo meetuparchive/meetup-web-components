@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -64,12 +65,12 @@ class Avatar extends React.PureComponent {
 }
 
 Avatar.propTypes = {
-	small: React.PropTypes.bool,
-	big: React.PropTypes.bool,
-	src: React.PropTypes.string, /** The image source URL for the Avatar */
-	href: React.PropTypes.string, /** Link to arbitrary URL outside app */
-	alt: React.PropTypes.string, /** the image label, mainly for accessibility */
-	to: React.PropTypes.string,  /** For linking to app routes */
+	small: PropTypes.bool,
+	big: PropTypes.bool,
+	src: PropTypes.string, /** The image source URL for the Avatar */
+	href: PropTypes.string, /** Link to arbitrary URL outside app */
+	alt: PropTypes.string, /** the image label, mainly for accessibility */
+	to: PropTypes.string, /** For linking to app routes */
 };
 
 export default Avatar;

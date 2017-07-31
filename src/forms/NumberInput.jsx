@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Flex from '../layout/Flex';
@@ -15,9 +16,7 @@ export const INCREMENT_BTN_CLASS = 'incrementButton';
 class NumberInput extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			value: props.value || '',
-		};
+		this.state = { value: props.value };
 
 		this._updateValueByStep = this._updateValueByStep.bind(this);
 		this.decrementAction = this.decrementAction.bind(this);
@@ -25,6 +24,7 @@ class NumberInput extends React.Component {
 		this.onBlur = this.onBlur.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.onFocus = this.onFocus.bind(this);
+		this.onKeyDown = this.onKeyDown.bind(this);
 	}
 
 	_updateValueByStep(isIncreasing) {
@@ -42,6 +42,12 @@ class NumberInput extends React.Component {
 		return newValue;
 	}
 
+	componentWillUpdate(nextProps, nextState) {
+		if (this.props.onChange && nextState.value !== this.state.value) {
+			this.props.onChange({ target: { name: nextProps.name, value: nextState.value }});
+		}
+	}
+
 	onBlur(e) {
 		const formControls = [
 			this.fauxInputEl,
@@ -57,20 +63,27 @@ class NumberInput extends React.Component {
 		const { value } = e.target;
 
 		this.setState(() => ({ value }));
-		if (this.props.onChange) {
-			this.props.onChange(e);
-		}
 	}
 
 	onFocus(e) {
 		this.fauxInputEl.classList.add(FOCUSED_INPUT_CLASS);
 	}
 
-	incrementAction() {
+	onKeyDown(e) {
+		// Disable the 'e' or 'E' values because we don't
+		// support scientific notation at the moment
+		if (e.key.toLowerCase() === 'e') {
+			e.preventDefault();
+		}
+	}
+
+	incrementAction(e) {
+		e.preventDefault();
 		this.setState(() => ({ value: this._updateValueByStep(true) }));
 	}
 
-	decrementAction() {
+	decrementAction(e) {
+		e.preventDefault();
 		this.setState(() => ({ value: this._updateValueByStep(false) }));
 	}
 
@@ -90,6 +103,7 @@ class NumberInput extends React.Component {
 			onChange, // eslint-disable-line no-unused-vars
 			required,
 			step,
+			disabled,
 			value, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
@@ -100,8 +114,16 @@ class NumberInput extends React.Component {
 				{ 'field--error': error },
 				className
 			),
+			fauxInput: cx(
+				FAUX_INPUT_CLASS,
+				{
+					disabled,
+					error
+				}
+			),
 			label: cx(
-				{ required },
+				'label--field',
+				{ required, disabled },
 				labelClassName
 			),
 			incrementBtn: cx(
@@ -111,17 +133,19 @@ class NumberInput extends React.Component {
 			decrementBtn: cx(
 				'button--reset',
 				DECREMENT_BTN_CLASS
-			)
+			),
 		};
 
 		return (
 			<div>
-				<label className={classNames.label} htmlFor={id}>
-					{label}
-				</label>
+				{label &&
+					<label className={classNames.label} htmlFor={id}>
+						{label}
+					</label>
+				}
 
 				<div
-					className={FAUX_INPUT_CLASS}
+					className={classNames.fauxInput}
 					ref={ el => this.fauxInputEl = el }>
 					<Flex align='center'>
 						<FlexItem>
@@ -136,6 +160,8 @@ class NumberInput extends React.Component {
 								onBlur={this.onBlur}
 								onFocus={this.onFocus}
 								onChange={this.onChange}
+								onKeyDown={this.onKeyDown}
+								disabled={disabled}
 								{...other} />
 						</FlexItem>
 
@@ -176,22 +202,27 @@ NumberInput.defaultProps = {
 };
 
 NumberInput.propTypes = {
-	id: React.PropTypes.string,
-	error: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	id: PropTypes.string,
+	error: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	labelClassName: React.PropTypes.string,
-	max: React.PropTypes.number,
-	min: React.PropTypes.number,
-	name: React.PropTypes.string.isRequired,
-	onChange: React.PropTypes.func,
-	required: React.PropTypes.bool,
-	step: React.PropTypes.number
+	labelClassName: PropTypes.string,
+	max: PropTypes.number,
+	min: PropTypes.number,
+	name: PropTypes.string.isRequired,
+	onChange: PropTypes.func,
+	required: PropTypes.bool,
+	step: PropTypes.number,
+	disabled: PropTypes.bool,
+	value: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+	]),
 };
 
 export default NumberInput;

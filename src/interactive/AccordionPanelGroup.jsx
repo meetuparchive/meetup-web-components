@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -65,7 +66,7 @@ class AccordionPanelGroup extends React.Component {
 			accordionPanels, // eslint-disable-line no-unused-vars
 			iconAlign, // eslint-disable-line no-unused-vars
 			iconShape, // eslint-disable-line no-unused-vars
-			iconSize,  // eslint-disable-line no-unused-vars
+			iconSize, // eslint-disable-line no-unused-vars
 			iconShapeActive, // eslint-disable-line no-unused-vars
 			multiSelectable,
 			className,
@@ -103,12 +104,12 @@ AccordionPanelGroup.defaultProps = {
 };
 
 AccordionPanelGroup.propTypes = {
-	accordionPanels: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
-	multiSelectable: React.PropTypes.bool,
-	iconAlign: React.PropTypes.string,
-	iconShape: React.PropTypes.string,
-	iconShapeActive: React.PropTypes.string,
-	iconSize: React.PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
+	accordionPanels: PropTypes.arrayOf(PropTypes.element).isRequired,
+	multiSelectable: PropTypes.bool,
+	iconAlign: PropTypes.string,
+	iconShape: PropTypes.string,
+	iconShapeActive: PropTypes.string,
+	iconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
 };
 
 export default AccordionPanelGroup;

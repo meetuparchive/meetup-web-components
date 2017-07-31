@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Flex from '../layout/Flex';
@@ -14,7 +15,7 @@ export const BUTTON_ICON_CLASS = 'button-icon';
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#buttons}
  * @module Button
  */
-class Button extends React.Component {
+class Button extends React.PureComponent {
 
 	render() {
 		const {
@@ -51,14 +52,14 @@ class Button extends React.Component {
 		const opts = right ? { rowReverse: 'all' } : {};
 
 		const iconChildren = (
-			<Flex className={classNames.iconWrap} {...opts}>
+			<Flex className={classNames.iconWrap} justify='center' {...opts}>
 				{icon &&
 					<FlexItem shrink className={`${BUTTON_ICON_CLASS} valign--middle flush--left`}>
 						{icon}
 					</FlexItem>
 				}
 				{children &&
-					<FlexItem className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}>
+					<FlexItem shrink className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}>
 						{children}
 					</FlexItem>
 				}
@@ -78,16 +79,12 @@ class Button extends React.Component {
 	}
 }
 
-Button.defaultProps = {
-	right: false
-};
-
 Button.propTypes = {
-	reset: React.PropTypes.bool,
-	fullWidth: React.PropTypes.bool,
-	primary: React.PropTypes.bool,
-	small: React.PropTypes.bool,
-	icon: React.PropTypes.any,
-	right: React.PropTypes.bool,
+	reset: PropTypes.bool,
+	fullWidth: PropTypes.bool,
+	primary: PropTypes.bool,
+	small: PropTypes.bool,
+	icon: PropTypes.any,
+	right: PropTypes.bool,
 };
 export default Button;

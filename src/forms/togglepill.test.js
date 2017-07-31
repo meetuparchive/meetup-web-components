@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import TogglePill, { TOGGLE_PILL_CLASS } from './TogglePill';
 import Icon from '../media/Icon';
@@ -10,10 +9,11 @@ describe('TogglePill', () => {
 		label = 'Toggle Pill Label',
 		value = 'Toggle Pill Value';
 
-	let togglePillEl;
+	let togglePillComponent,
+		togglePillEl;
 
 	beforeEach(() => {
-		const togglePill = TestUtils.renderIntoDocument(
+		togglePillComponent = TestUtils.renderIntoDocument(
 			<TogglePill
 				id={id}
 				name={name}
@@ -22,7 +22,7 @@ describe('TogglePill', () => {
 			</TogglePill>
 		);
 
-		togglePillEl = ReactDOM.findDOMNode(togglePill);
+		togglePillEl = TestUtils.findRenderedDOMComponentWithClass(togglePillComponent, TOGGLE_PILL_CLASS);
 	});
 
 	afterEach(() => {
@@ -30,11 +30,7 @@ describe('TogglePill', () => {
 	});
 
 	it('exists', () => {
-		expect(togglePillEl).not.toBeNull();
-	});
-
-	it('has SQ2 toggle-pill styles', () => {
-		expect(togglePillEl.classList.contains(TOGGLE_PILL_CLASS)).toBe(true);
+		expect(() => TestUtils.findRenderedDOMComponentWithClass(togglePillComponent, TOGGLE_PILL_CLASS)).not.toThrow();
 	});
 
 	it('creates an input element', () => {
@@ -61,7 +57,7 @@ describe('TogglePill', () => {
 				value={value}>
 				{label}
 			</TogglePill>);
-		const togglePillEl = ReactDOM.findDOMNode(togglePill);
+		const togglePillEl = TestUtils.findRenderedDOMComponentWithClass(togglePill, TOGGLE_PILL_CLASS);
 
 		expect(togglePillEl.getElementsByTagName('input').length).toEqual(1);
 		const input = togglePillEl.getElementsByTagName('input')[0];

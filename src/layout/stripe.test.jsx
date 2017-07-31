@@ -7,9 +7,8 @@ import Stripe, {
 	STRIPE_COLLECTION_CLASS,
 	STRIPE_INVERTED_CLASS,
 	STRIPE_HERO_CLASS,
+	STRIPE_NOSCRIM_CLASS
 } from './Stripe';
-
-import Bounds from './Bounds';
 
 describe('Stripe', function() {
 
@@ -67,35 +66,12 @@ describe('Stripe', function() {
 		});
 	});
 
-	describe('hero', () => {
-		let stripeHero,
-			stripeNode;
-		beforeEach(() => {
-			stripeHero = TestUtils.renderIntoDocument(<Stripe hero/>);
-			stripeNode = ReactDOM.findDOMNode(stripeHero);
-		});
-		afterEach(() => {
-			stripeHero = null;
-			stripeNode = null;
-		});
-		it(`check that the component has '${STRIPE_CLASS}' class`, function() {
-			expect(stripeNode.classList).toContain(STRIPE_CLASS);
-		});
-		it(`check that component has '${STRIPE_HERO_CLASS}' class`, function() {
-			expect(stripeNode.classList).toContain(STRIPE_HERO_CLASS);
-		});
-		it('should render a `Bounds` component', () => {
-			const boundComponent = TestUtils.scryRenderedComponentsWithType(stripeHero, Bounds);
-			expect(boundComponent.length).toBe(1);
-		});
-	});
-
 	describe('backgroundImage', () => {
 		const src = 'https://placekitten.com/g/200/300';
 		let stripeImg,
 			stripeNode;
 		beforeEach(() => {
-			stripeImg = TestUtils.renderIntoDocument(<Stripe backgroundImage={src} />);
+			stripeImg = TestUtils.renderIntoDocument(<Stripe hideScrim backgroundImage={src} />);
 			stripeNode = ReactDOM.findDOMNode(stripeImg);
 		});
 		afterEach(() => {
@@ -110,6 +86,9 @@ describe('Stripe', function() {
 		});
 		it('should set backgroundImage style', () => {
 			expect(stripeNode.style.backgroundImage).toEqual(`url(${src})`);
+		});
+		it('should hide text protection scrim when specified', () => {
+			expect(stripeNode.classList).toContain(STRIPE_NOSCRIM_CLASS);
 		});
 	});
 });

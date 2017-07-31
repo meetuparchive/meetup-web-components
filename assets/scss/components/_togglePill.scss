@@ -106,54 +106,23 @@ Checkbox form elements styled as toggle buttons.
 ```
 */
 
-.toggleButton {
-	display: inline-block;
-	margin: $space-quarter 0;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
+.toggleButton-icon {
+	margin-left: $space-half; // relative sizing because icon could be 's' or 'xs'
 }
 
 .toggleButton-label {
 	@include pillBase();
+	margin: $space-quarter 0;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.toggleButton-icon {
-	@include color-all($C_textHint);
-	margin-left: 0.5em; // relative sizing because icon could be 's' or 'xs'
-}
-
-.toggleButton-icon--inactive {
-	@include display(inline-flex);
-}
-
-.toggleButton-icon--active {
-	display: none;
-}
-
-.toggleButton-input {
-	display: none;
+.toggleButton-input{
 	&:checked + .toggleButton-label {
 		@include animate--bounceInSubtle();
-		@include color-all($C_textPrimary);
-		background: $C_lightGray;
-		border-color: $C_border;
-		font-weight: $W_bold;
-
-		&:hover,
-		&:active,
-		&:focus {
-			background: darken($C_lightGray, 5%);
-		}
-
-		.toggleButton-icon {
-			@include color-all($C_red);
-		}
-
-		.toggleButton-icon--active {
-			@include display(inline-flex);
-		}
-
-		.toggleButton-icon--inactive {
-			display: none;
-		}
+		@include buttonColor(
+			$bgColor: $C_accent,
+			$hoverColor: transparentize($C_accent, .2),
+			$activeColor: transparentize($C_accent, .4)
+		);
 	}
 }

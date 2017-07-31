@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -22,6 +23,7 @@ class Hscroll extends React.Component {
 
 
 		const wrapClassNames = cx(
+			'hscrollContainer',
 			{ hscrollGradientWrap: hasGradient && !unclipAt },
 			className
 		);
@@ -44,8 +46,8 @@ class Hscroll extends React.Component {
 }
 
 Hscroll.propTypes = {
-	hasGradient: React.PropTypes.bool,
-	unclipAt: React.PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+	hasGradient: PropTypes.bool,
+	unclipAt: PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 };
 
 export default Hscroll;

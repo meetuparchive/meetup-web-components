@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -28,7 +29,7 @@ class InlineBlockList extends React.Component {
 			<ul
 				className={classNames}
 				{...other}
-				>
+			>
 				{items.map((item, key) =>
 					<li key={key} data-separator={separator}>{item}</li>
 				)}
@@ -38,13 +39,13 @@ class InlineBlockList extends React.Component {
 }
 
 InlineBlockList.propTypes = {
-	items: React.PropTypes.arrayOf(
-		React.PropTypes.oneOfType([
-			React.PropTypes.element,
-			React.PropTypes.string
+	items: PropTypes.arrayOf(
+		PropTypes.oneOfType([
+			PropTypes.element,
+			PropTypes.string
 		])
 	).isRequired,
-	separator: React.PropTypes.string
+	separator: PropTypes.string
 };
 
 export default InlineBlockList;

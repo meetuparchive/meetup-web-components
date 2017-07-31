@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import Icon, { ICON_CLASS } from './Icon';
+import Icon, {
+	ICON_CLASS,
+	SVG_THIN_STYLE,
+	getIconShape
+} from './Icon';
 import { MEDIA_SIZES } from '../utils/designConstants';
 
 describe('Icon', () => {
@@ -61,6 +65,40 @@ describe('Icon', () => {
 
 		it('renders each size correctly', () => {
 			Object.keys(MEDIA_SIZES).forEach(sizeChecker);
+		});
+
+		it('renders small shape variant for "xs" icons', () => {
+			const xsIconShape = 'plus';
+			const actual = getIconShape(xsIconShape, 'xs');
+			const expected = `${xsIconShape}${SVG_THIN_STYLE}`;
+			expect(actual).toBe(expected);
+		});
+
+		it('renders small shape variant for "s" icons', () => {
+			const xsIconShape = 'plus';
+			const actual = getIconShape(xsIconShape, 's');
+			const expected = `${xsIconShape}${SVG_THIN_STYLE}`;
+			expect(actual).toBe(expected);
+		});
+
+		it('renders normal shape variant for icons larger than "s"', () => {
+			const actual = getIconShape(shape, 'm');
+			const expected = shape;
+			expect(actual).toBe(expected);
+		});
+
+		it('does NOT render a --small shape variant for third party icons', () => {
+			const xsIconShape = 'external-yahoo';
+			const actual = getIconShape(xsIconShape, 'xs');
+			const expected = xsIconShape;
+			expect(actual).toBe(expected);
+		});
+
+		it('does NOT render a --small shape variant meetup m logo', () => {
+			const xsIconShape = 'meetup-m';
+			const actual = getIconShape(xsIconShape, 'xs');
+			const expected = xsIconShape;
+			expect(actual).toBe(expected);
 		});
 	});
 });

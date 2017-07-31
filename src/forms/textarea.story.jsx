@@ -25,7 +25,7 @@ storiesOf('Textarea', module)
 		)
 	)
 	.add('error state', () =>
-		<Bounds><Section>
+		(<Bounds><Section>
 			<Textarea
 				required
 				label='Your biography'
@@ -33,17 +33,17 @@ storiesOf('Textarea', module)
 				name='bio'
 				error='Not so fast. You have an error.'
 				placeholder='Tell me about your life' />
-		</Section></Bounds>
+		</Section></Bounds>)
 	)
 	.add('with character limit', () =>
-		<Bounds><Section>
+		(<Bounds><Section>
 			<Textarea
-			maxLength={140}
-			label='Your biography'
-			id='yourBio'
-			name='bio'
-			placeholder='Tell me about your life' />
-		</Section></Bounds>)
+				maxLength={140}
+				label='Your biography'
+				id='yourBio'
+				name='bio'
+				placeholder='Tell me about your life' />
+		</Section></Bounds>))
 	.addWithInfo(
 		'auto resizing',
 		'Usage example where the textarea expands depending on the inner content',
@@ -61,7 +61,7 @@ storiesOf('Textarea', module)
 		)
 	)
 	.add('auto resizing with min and max height', () =>
-		<Bounds><Section>
+		(<Bounds><Section>
 			<Textarea
 				rows='auto'
 				minHeight={100}
@@ -70,7 +70,7 @@ storiesOf('Textarea', module)
 				id='yourBio'
 				name='bio'
 				placeholder='Tell me about your life' />
-		</Section></Bounds>
+		</Section></Bounds>)
 	)
 	.addWithInfo(
 		'min and max height',
@@ -96,11 +96,11 @@ storiesOf('Textarea', module)
 			<InfoWrapper>
 				<Bounds><Section>
 					<Textarea
-					rows={3}
-					label='Your biography'
-					id='yourBio'
-					name='bio'
-					placeholder='Tell me about your life' />
+						rows={3}
+						label='Your biography'
+						id='yourBio'
+						name='bio'
+						placeholder='Tell me about your life' />
 				</Section></Bounds>
 			</InfoWrapper>
 		)

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -27,13 +28,13 @@ class Bounds extends React.Component {
 				className={classNames}
 				{...other}
 			>
-					{children}
+				{children}
 			</div>
 		);
 	}
 }
 Bounds.propTypes = {
-	narrow: React.PropTypes.bool
+	narrow: PropTypes.bool
 };
 
 export default Bounds;

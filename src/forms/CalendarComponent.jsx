@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -118,8 +119,8 @@ class CalendarComponent extends React.Component {
 }
 
 CalendarComponent.propTypes = {
-	name: React.PropTypes.string.isRequired,
-	onChangeCallback: React.PropTypes.func
+	name: PropTypes.string.isRequired,
+	onChangeCallback: PropTypes.func
 };
 
 export default CalendarComponent;

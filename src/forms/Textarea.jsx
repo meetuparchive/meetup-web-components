@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import autosize from 'autosize';
@@ -49,6 +50,7 @@ class Textarea extends React.Component {
 	 */
 	componentWillReceiveProps(nextProps) {
 		this.overrideValue(nextProps);
+		autosize.update(this.textarea);
 	}
 
 	/**
@@ -96,6 +98,7 @@ class Textarea extends React.Component {
 				className
 			),
 			label: cx(
+				'label--field',
 				{ required },
 				labelClassName
 			)
@@ -108,9 +111,12 @@ class Textarea extends React.Component {
 
 		return (
 			<div>
-				<label className={classNames.label} htmlFor={id}>
-					{label}
-				</label>
+				{label &&
+					<label className={classNames.label} htmlFor={id}>
+						{label}
+					</label>
+				}
+
 				<textarea
 					type='text'
 					name={name}
@@ -136,24 +142,23 @@ class Textarea extends React.Component {
 }
 
 Textarea.propTypes = {
-	id: React.PropTypes.string.isRequired,
-	name: React.PropTypes.string.isRequired,
-	error: React.PropTypes.string,
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	id: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	error: PropTypes.string,
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
-	labelClassName: React.PropTypes.string,
-	required: React.PropTypes.bool,
-	autoHeight: React.PropTypes.bool,
-	minHeight: React.PropTypes.number,
-	maxHeight: React.PropTypes.number,
-	onChange: React.PropTypes.func,
-	rows: React.PropTypes.oneOfType([
-		React.PropTypes.number,
-		React.PropTypes.string
+	labelClassName: PropTypes.string,
+	required: PropTypes.bool,
+	minHeight: PropTypes.number,
+	maxHeight: PropTypes.number,
+	onChange: PropTypes.func,
+	rows: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string
 	]),
-	value: React.PropTypes.string,
+	value: PropTypes.string,
 };
 
 export default Textarea;

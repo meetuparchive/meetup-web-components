@@ -1,5 +1,6 @@
 // color vars
 @import "../util/color-mappings";
+@import "../util/vars";
 
 //
 // Layout
@@ -19,8 +20,12 @@
 @import "accordion";
 @import "avatar";
 @import "button";
+@import "checkbox";
 @import "dateDisplay";
+@import "dropdown";
+@import "forms";
 @import "groupCard";
+@import "icon";
 @import "modal";
 @import "popover";
 @import "tabs";

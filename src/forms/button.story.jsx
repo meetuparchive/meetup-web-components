@@ -17,7 +17,7 @@ storiesOf('Button', module)
 		'This is the basic usage with the component.',
 		() => (
 			<InfoWrapper>
-        <Button onClick={action('clicked')}>Button Label</Button>
+				<Button onClick={action('clicked')}>Button Label</Button>
 			</InfoWrapper>
 		)
 	)
@@ -61,6 +61,9 @@ storiesOf('Button', module)
 	))
 	.add('Icon', () => (
 		<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />}>Button Label</Button>
+	))
+	.add('Icon - fullWidth', () => (
+		<Button onClick={action('clicked')} fullWidth icon={<Icon shape='search' size='s' />}>Button Label</Button>
 	))
 	.add('Icon - inverted', () => (
 		<Inverted>

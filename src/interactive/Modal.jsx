@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -103,7 +104,9 @@ class Modal extends React.Component {
 			heroBgColor,
 			heroBgImage,
 			heroContent,
+			hideHeroScrim,
 			inverted,
+			closeArea,
 			...other
 		} = this.props;
 
@@ -133,7 +136,7 @@ class Modal extends React.Component {
 			</div>
 		);
 
-		const closeArea = this.props.closeArea && (
+		const closeElement = closeArea && (
 			<div className='padding--all'>
 				<Button onClick={this.onDismiss} className={dismissButtonClasses}>
 					<Icon shape='cross' size='s' />
@@ -142,8 +145,7 @@ class Modal extends React.Component {
 		);
 
 		const heroStyles = {
-			backgroundColor: heroBgColor || 'transparent',
-			backgroundImage: heroBgImage && `url(${heroBgImage})`,
+			backgroundColor: heroBgColor || 'transparent'
 		};
 
 		return (
@@ -163,15 +165,16 @@ class Modal extends React.Component {
 				>
 					{ heroContent ?
 						<Stripe
-							hero
+							backgroundImage={heroBgImage}
 							inverted={inverted}
+							hideScrim={hideHeroScrim}
 							style={heroStyles}
 						>
-							{closeArea}
+							{closeElement}
 							{heroContent}
 						</Stripe>
-					:
-						closeArea
+						:
+						closeElement
 					}
 
 					{children}
@@ -182,13 +185,14 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-	fullscreen: React.PropTypes.bool,
-	heroBgColor: React.PropTypes.string,
-	heroBgImage: React.PropTypes.string,
-	heroContent: React.PropTypes.element,
-	inverted: React.PropTypes.bool,
-	onDismiss: React.PropTypes.func.isRequired,
-	closeArea: React.PropTypes.bool,
+	fullscreen: PropTypes.bool,
+	heroBgColor: PropTypes.string,
+	heroBgImage: PropTypes.string,
+	heroContent: PropTypes.element,
+	hideHeroScrim: PropTypes.bool,
+	inverted: PropTypes.bool,
+	onDismiss: PropTypes.func.isRequired,
+	closeArea: PropTypes.bool,
 };
 
 Modal.defaultProps = {
