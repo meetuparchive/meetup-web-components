@@ -39,6 +39,24 @@ storiesOf('Button', module)
 			<Button onClick={action('clicked')} disabled>Button Label</Button>
 		</Inverted>
 	))
+	.add('Bordered', () => (
+		<div
+			className='stripe stripe--collection'
+			style={{
+				height: '100%',
+				width: '100%',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}>
+			<Button onClick={action('clicked')} bordered>Button Label</Button>
+		</div>
+	))
+	.add('Bordered - inverted', () => (
+		<Inverted>
+			<Button onClick={action('clicked')} bordered>Button Label</Button>
+		</Inverted>
+	))
 	.add('Reset', () => (
 		<Button onClick={action('clicked')} reset>Button Label</Button>
 	))
