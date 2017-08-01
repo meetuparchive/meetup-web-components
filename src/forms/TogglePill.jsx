@@ -66,7 +66,7 @@ class TogglePillBase extends React.Component {
 			<Icon
 				className={topicClassName}
 				shape={iconShape}
-				size='xs'
+				size='xxs'
 				label='Active Topic Pill Icon'/>
 		);
 		// ---

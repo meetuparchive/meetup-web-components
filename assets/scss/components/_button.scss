@@ -30,6 +30,14 @@ _(The `extend` directive can cause ugly cascade problems)_
 @include buttonBase();
 ```
 */
+
+//
+// Get these vars updated in sasstools before merging
+//
+$defaultRadius: 4px;
+$largeRadius: 8px;
+// end custom vars
+
 @mixin buttonBase() {
 	@extend %buttonPersonality;
 	@include display(inline-flex);
@@ -40,10 +48,9 @@ _(The `extend` directive can cause ugly cascade problems)_
 	@include standardBorder(none);
 	box-sizing: border-box;
 	-webkit-appearance: none;
-	border-radius: $defaultRadius;
-	font-size: $font-size;
-	font-weight: $W_medium;
-	line-height: $line-height;
+	border-radius: $largeRadius;
+	font-size: $font-size-small;
+	line-height: $line-height-smallText;
 	outline: 0;
 	padding: $space $space-double;
 	vertical-align: middle;
@@ -294,7 +301,6 @@ Class                   | Description
 		$textColor: $C_textPrimary
 	);
 	border-radius: 0;
-	font-weight: normal;
 	padding: 0;
 
 	&,
@@ -323,6 +329,7 @@ Class                   | Description
 //
 %button--small,
 .button--small {
+	border-radius: $defaultRadius;
 	padding: $space-half $space;
 }
 
