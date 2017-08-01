@@ -114,7 +114,8 @@ class Toaster extends React.Component {
 				<CSSTransitionGroup
 					transitionAppear
 					transitionAppearTimeout={0}
-					transitionLeaveTimeout={100}
+					transitionEnterTimeout={250}
+					transitionLeaveTimeout={250}
 					transitionName='slide'>
 					{
 						this.renderToasts().map((toast, i) => (
