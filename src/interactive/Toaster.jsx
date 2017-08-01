@@ -1,3 +1,4 @@
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
@@ -19,8 +20,7 @@ class Toaster extends React.Component {
 		this.mouseLeave = this.mouseLeave.bind(this);
 
 		this.state = {
-			toasts: this.props.toasts.map(this.cloneToast),
-			isHovered: false
+			toasts: this.props.toasts.map(this.cloneToast)
 		};
 	}
 
@@ -98,11 +98,12 @@ class Toaster extends React.Component {
 
 		const classNames = cx(
 			'toaster',
-			{
-				['hoveringggggg']: this.state.isHovered
-			},
 			className
 		);
+
+		console.log(CSSTransitionGroup);
+		// console.log(TransitionGroup);
+
 
 		return (
 			<div
@@ -110,11 +111,17 @@ class Toaster extends React.Component {
 				onMouseEnter={this.mouseEnter}
 				onMouseLeave={this.mouseLeave}
 				{...other}>
-				{
-					this.renderToasts().map((toast, i) => (
-						toast
-					))
-				}
+				<CSSTransitionGroup
+					transitionAppear
+					transitionAppearTimeout={0}
+					transitionLeaveTimeout={100}
+					transitionName='slide'>
+					{
+						this.renderToasts().map((toast, i) => (
+							toast
+						))
+					}
+				</CSSTransitionGroup>
 			</div>
 		);
 	}
