@@ -11,7 +11,7 @@ storiesOf('Toast', module)
 		(<Toaster
 			toasts={[
 				<Toast
-					autodismiss={false}
+					// autodismiss={false}
 					dismissable
 					message='Your toast is ready'
 				/>

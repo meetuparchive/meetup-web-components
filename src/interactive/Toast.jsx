@@ -21,17 +21,15 @@ class Toast extends React.Component {
 			showToast: true
 		};
 
-		this._handleDismiss = this._handleDismiss.bind(this);
+		this.handleDismiss = this.handleDismiss.bind(this);
 	}
 
-	_handleDismiss() {
+	handleDismiss() {
 		if (this.props.setDismissedToast) {
 			this.props.setDismissedToast(this);
 		}
 
-		this.setState({
-			showToast: false
-		});
+		// this.setState(() => ({ showToast: false }));
 	}
 
 	render() {
@@ -63,6 +61,8 @@ class Toast extends React.Component {
 		return (
 			<span
 				className={classNames}
+				onMouseEnter={this._mouseEnter}
+				onMouseLeave={this._mouseLeave}
 				{...other}>
 				<Flex align='center'>
 					<FlexItem>{message}</FlexItem>
@@ -76,7 +76,8 @@ class Toast extends React.Component {
 					{dismissable && (
 						<FlexItem
 							shrink
-							onClick={this._handleDismiss}
+							className='toast-dismissBtn'
+							onClick={this.handleDismiss}
 						>
 							<Icon shape='cross' size='s' />
 						</FlexItem>

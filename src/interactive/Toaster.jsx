@@ -15,9 +15,12 @@ class Toaster extends React.Component {
 		this.cloneToast = this.cloneToast.bind(this);
 		this.setDismissedToast = this.setDismissedToast.bind(this);
 		this.clearTimeouts = this.clearTimeouts.bind(this);
+		this.mouseEnter = this.mouseEnter.bind(this);
+		this.mouseLeave = this.mouseLeave.bind(this);
 
 		this.state = {
-			toasts: this.props.toasts.map(this.cloneToast)
+			toasts: this.props.toasts.map(this.cloneToast),
+			isHovered: false
 		};
 	}
 
@@ -26,6 +29,25 @@ class Toaster extends React.Component {
 			toasts: this.state.toasts.filter(toast => dismissedToast.props.id !== toast.props.id)
 		});
 	}
+
+	mouseEnter() {
+		this.timeouts.forEach(clearTimeout);
+	}
+
+	mouseLeave() {
+		this.setTimer();
+	}
+
+	setTimer() {
+		const toastsToDismiss = this.state.toasts.filter((toast) => toast.props.autodismiss);
+
+		toastsToDismiss.forEach((toast, i) => {
+			this.timeouts.push(setTimeout(() => {
+				this.setDismissedToast(toast);
+			}, 1000*(i+1)));
+		});
+	}
+	// end
 
 	clearTimeouts() {
 		this.timeouts.forEach(clearTimeout);
@@ -36,13 +58,7 @@ class Toaster extends React.Component {
 	}
 
 	componentDidMount() {
-		const toastsToDismiss = this.state.toasts.filter((toast) => toast.props.autodismiss);
-
-		toastsToDismiss.forEach((toast, i) => {
-			this.timeouts.push(setTimeout(() => {
-				this.setDismissedToast(toast);
-			}, 1000*(i+1)));
-		});
+		this.setTimer();
 	}
 
 	/**
@@ -51,7 +67,6 @@ class Toaster extends React.Component {
 	 * @returns {Array} `Toast` components with props from `Toaster`
 	 */
 	cloneToast(toast, i) {
-		// console.log()
 		const toastProps = {
 			key: i,
 			id: toast.props.id || i,
@@ -83,12 +98,17 @@ class Toaster extends React.Component {
 
 		const classNames = cx(
 			'toaster',
+			{
+				['hoveringggggg']: this.state.isHovered
+			},
 			className
 		);
 
 		return (
 			<div
 				className={classNames}
+				onMouseEnter={this.mouseEnter}
+				onMouseLeave={this.mouseLeave}
 				{...other}>
 				{
 					this.renderToasts().map((toast, i) => (
