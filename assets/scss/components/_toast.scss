@@ -10,8 +10,11 @@
 	box-sizing: border-box;
 	display: block;
 	margin-bottom: $space-half;
-	padding-bottom: $space-3;
-	padding-top: $space-3;
+	padding: $space-3 $space;
+
+	@include atMediaUp(large) {
+		padding: $space-3;
+	}
 }
 
 .toast--error {

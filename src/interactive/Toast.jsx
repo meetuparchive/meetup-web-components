@@ -49,7 +49,7 @@ class Toast extends React.Component {
 
 		const classNames = cx(
 			TOAST_CLASS,
-			'inverted padding--left padding--right',
+			'inverted',
 			{
 				[HIDDEN_TOAST_CLASS]: !this.state.showToast,
 				[SUCCESS_TOAST_CLASS]: success,
