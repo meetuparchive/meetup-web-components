@@ -31,13 +31,6 @@ _(The `extend` directive can cause ugly cascade problems)_
 ```
 */
 
-//
-// Get these vars updated in sasstools before merging
-//
-$defaultRadius: 4px;
-$largeRadius: 8px;
-// end custom vars
-
 @mixin buttonBase() {
 	@extend %buttonPersonality;
 	@include display(inline-flex);
