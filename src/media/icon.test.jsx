@@ -101,4 +101,18 @@ describe('Icon', () => {
 			expect(actual).toBe(expected);
 		});
 	});
+
+	describe('renders color override', () => {
+		it('does NOT render a --small shape variant meetup m logo', () => {
+			const fillColor = '#ff0000';
+			const icon = TestUtils.renderIntoDocument(
+				<Icon
+					shape='chevron-down'
+					color={fillColor} />
+			);
+			const svgEl = ReactDOM.findDOMNode(icon).querySelector('svg');
+
+			expect(svgEl.style.fill).toContain(fillColor);
+		});
+	});
 });
