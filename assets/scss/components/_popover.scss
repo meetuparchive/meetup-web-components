@@ -26,13 +26,13 @@ $view-minWidth: 320px;
 	box-shadow: $popoverShadow;
 	max-height: $block-6;
 	position: absolute;
-	width: $view-minWidth;
+	max-width: $view-minWidth;
 	z-index: 1;
 	text-align: left !important;
 }
 
 .popover-container--menu {
-	width: $block-4;
+	min-width: $block-4;
 }
 
 .popover-menu-option {
