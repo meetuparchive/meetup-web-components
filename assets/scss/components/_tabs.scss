@@ -32,13 +32,13 @@ Class                 | Description
 --------------------- | -----------------------------
 `tabs-tab--selected`  | Applies styles for tab selected state
 */
-$_tabBorder: 1px;
 
 .tabs {
+	box-shadow: 0 1px $C_border;
+	display: block;
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	display: block;
 }
 .tabs--full {
 	display: table;
@@ -52,16 +52,17 @@ $_tabBorder: 1px;
 	}
 }
 
-.tabs--bordered {
-	border-top: 1px solid $C_border;
+.tabs--noBorder {
+	box-shadow: none;
 }
 
 .tabs-tab {
-	border-top: $_tabBorder solid transparent;
-	color: $C_textSecondary;
+	color: $C_textPrimary;
 	cursor: pointer;
 	display: inline-block;
 	margin: 0 0 0 $space;
+	padding-left: $space/4;
+	padding-right: $space/4;
 	@include responsiveVarContext--base {
 		padding: $base/2 0;
 	}
@@ -81,7 +82,8 @@ $_tabBorder: 1px;
 	}
 }
 .tabs-tab--selected {
-	box-shadow: 0 -#{$_tabBorder} 0 $C_textPrimary;
+	box-shadow: none;
+	border-bottom: 3px solid $C_red;
 	color: $C_textPrimary;
 	font-weight: $W_medium;
 }
