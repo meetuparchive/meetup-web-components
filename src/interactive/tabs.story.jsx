@@ -20,10 +20,10 @@ storiesOf('Tabs', module)
 			</InfoWrapper>
 		)
 	)
-	.addWithInfo('Bordered tabs', () => {
+	.addWithInfo('Tabs without btm border', () => {
 		return (
 			<InfoWrapper>
-				<Tabs bordered>
+				<Tabs noBorder>
 					<TabsTab isSelected><Link>First tab</Link></TabsTab>
 					<TabsTab><Link>Second tab</Link></TabsTab>
 					<TabsTab><Link>Third tab</Link></TabsTab>
