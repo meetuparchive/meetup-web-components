@@ -18,7 +18,7 @@ describe('Tabs', function() {
 			</Tabs>
 		);
 		componentWithVariants = TestUtils.renderIntoDocument(
-			<Tabs full bordered>
+			<Tabs full noBorder>
 				<TabsTab>First tab</TabsTab>
 				<TabsTab isSelected>Second tab</TabsTab>
 				<TabsTab>Third tab</TabsTab>
@@ -48,7 +48,7 @@ describe('Tabs', function() {
 		)[0];
 
 		expect(tabsUlEl.classList).toContain('tabs--full');
-		expect(tabsUlEl.classList).toContain('tabs--bordered');
+		expect(tabsUlEl.classList).toContain('tabs--noBorder');
 	});
 
 	it('should *not* apply variant classes when *not* set by props', function() {
@@ -58,7 +58,7 @@ describe('Tabs', function() {
 		)[0];
 
 		expect(tabsUlEl.classList).not.toContain('tabs--full');
-		expect(tabsUlEl.classList).not.toContain('tabs--bordered');
+		expect(tabsUlEl.classList).not.toContain('tabs--noBorder');
 	});
 
 	it('appropriately adds passed prop classname to component `Tabs` component', function() {
