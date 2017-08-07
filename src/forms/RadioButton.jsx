@@ -10,7 +10,7 @@ const RadioButton = ({ label, className, ...inputProps }) => {
 	return (
 		<Flex align="center" className={className} noGutters>
 			<FlexItem shrink>
-				<input type="radio" id={id} {...inputProps} />
+				<input readOnly type="radio" id={id} {...inputProps} />
 			</FlexItem>
 			<FlexItem shrink>
 				<label htmlFor={id}>

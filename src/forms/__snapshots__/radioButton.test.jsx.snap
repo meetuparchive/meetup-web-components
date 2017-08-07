@@ -15,6 +15,7 @@ exports[`RadioButton should match the snapshot 1`] = `
       id="RadioButton-name-value"
       name="name"
       otherProp="other"
+      readOnly={true}
       type="radio"
       value="value"
     />
