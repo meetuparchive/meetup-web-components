@@ -36,7 +36,13 @@ $view-minWidth: 320px;
 }
 
 .popover-menu-option {
+	border-top: 1px solid $C_border;
 	cursor: pointer;
+
+	&:first-child {
+		border-top: none;
+	}
+
 	& > a,
 	& > span,
 	& > div,
