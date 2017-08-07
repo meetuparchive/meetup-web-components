@@ -28,8 +28,4 @@ RadioButton.propTypes = {
 	className: PropTypes.string,
 };
 
-RadioButton.defaultProps = {
-	className: '',
-};
-
 export default RadioButton;

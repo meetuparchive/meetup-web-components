@@ -27,6 +27,8 @@ storiesOf('RadioButtonGroup', module)
 				<RadioButtonGroup
 					name="option"
 					onChange={action('radio button change')}
+					onBlur={action('radio button blur')}
+					onFocus={action('radio button focus')}
 					className={classNameKnob}
 					direction={directionKnob}
 					selectedValue={selectedValueKnob}

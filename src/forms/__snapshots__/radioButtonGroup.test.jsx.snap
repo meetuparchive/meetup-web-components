@@ -10,7 +10,6 @@ exports[`RadioButtonGroup should match the snapshot 1`] = `
   >
     <RadioButton
       checked={true}
-      className=""
       label="label 1"
       name="name"
       onChange={[Function]}
@@ -22,7 +21,6 @@ exports[`RadioButtonGroup should match the snapshot 1`] = `
   >
     <RadioButton
       checked={false}
-      className=""
       label="label 2"
       name="name"
       onChange={[Function]}
