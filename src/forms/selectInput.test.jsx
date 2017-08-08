@@ -1,5 +1,5 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow, mount } from 'enzyme';
 import SelectInput from './SelectInput';
 
 const testOptions = [
@@ -8,82 +8,69 @@ const testOptions = [
 	{ label: 'Three', value: '3' }
 ];
 const nameAttribute = 'testSelect';
+const BasicSelect = (
+	<SelectInput
+		label="Test select"
+		name={nameAttribute}
+		options={testOptions}
+	/>
+);
+const AdvancedSelect = ({ onChange, value }) => (
+	<SelectInput
+		label="Test select"
+		name={nameAttribute}
+		options={testOptions}
+		onChange={onChange}
+		value={value}
+	/>);
 
 describe('SelectInput basic', () => {
-	let component;
+	const component = shallow(BasicSelect);
 
-	beforeEach(() => {
-		component = TestUtils.renderIntoDocument(
-			<SelectInput
-				label='Test select'
-				name={nameAttribute}
-				options={testOptions}
-			/>
-		);
+	it('renders into the DOM', () => {
+		expect(component).toMatchSnapshot();
 	});
-	afterEach(() => {
-		component = null;
-	});
-
-	it('exists', () => {
-		expect(() => TestUtils.findRenderedDOMComponentWithTag(component, 'select')).not.toThrow();
-	});
-
 	it('should have a NAME attribute', () => {
-		const selectEl = TestUtils.findRenderedDOMComponentWithTag(component, 'select');
-		expect(selectEl.name).toEqual(nameAttribute);
+		expect(component.find('select').prop('name')).toBe(nameAttribute);
 	});
-
 	it('default value should fall back on first option value', () => {
-		expect(component.state.value).toBe(testOptions[0].value);
+		expect(component.instance().state.value).toBe(testOptions[0].value);
 	});
-
 });
 
 describe('SelectInput advanced', () => {
 	it('should set correct value in state on change', () => {
 		const newValue = '2';
 		const onChange = jest.fn();
-		const changeSpy = spyOn(SelectInput.prototype, 'onChange').and.callThrough();
+		const component = mount(<AdvancedSelect onChange={onChange} />);
+		const selectWrapper = component.find('select');
+		const changeEvent = { target: { value: newValue } };
 
-		const component = TestUtils.renderIntoDocument(
-			<SelectInput
-				label='Test select'
-				name={nameAttribute}
-				options={testOptions}
-				onChange={onChange}
-			/>
-		);
-		const selectEl = TestUtils.findRenderedDOMComponentWithTag(component, 'select');
+		expect(onChange).not.toHaveBeenCalled();
+		selectWrapper.simulate('change', changeEvent);
+		expect(onChange).toHaveBeenCalled();
 
-		expect(changeSpy).not.toHaveBeenCalled();
-		TestUtils.Simulate.change(selectEl, { target: { value: newValue } });
-		expect(changeSpy).toHaveBeenCalled();
-
-		expect(selectEl.value).toEqual(newValue);
+		expect(selectWrapper.prop('value')).toEqual(newValue);
 	});
 
 	it('should set correct value specified in props', () => {
 		const CUSTOM_VALUE = '2';
-		const component = TestUtils.renderIntoDocument(
-			<SelectInput
-				label='Test select'
-				name={nameAttribute}
-				options={testOptions}
-				value={CUSTOM_VALUE}
-			/>
-		);
-		expect(component.state.value).toBe(CUSTOM_VALUE);
+		const component = mount(<AdvancedSelect value={CUSTOM_VALUE} />);
+		expect(component.prop('value')).toBe(CUSTOM_VALUE);
 	});
 
 	it('should throw error for invalid default value', () => {
-		expect(TestUtils.renderIntoDocument(
-			<SelectInput
-				label='Test select'
-				name={nameAttribute}
-				options={testOptions}
-				value='this is invalid'
-			/>
-		)).toThrow();
+		global.console = { error: jest.fn() };
+
+		expect(console.error).not.toBeCalled();
+		shallow(<AdvancedSelect value="this is invalid" />);
+		expect(console.error).toBeCalled();
+	});
+	it('should not throw error for undefined value', () => {
+		global.console = { error: jest.fn() };
+
+		expect(console.error).not.toBeCalled();
+		shallow(<AdvancedSelect value={undefined} />);
+		expect(console.error).not.toBeCalled();
 	});
 });
