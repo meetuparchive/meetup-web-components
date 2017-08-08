@@ -156,7 +156,8 @@ $C_toggleHighlight: $C_lightPurple; // replace $C_lightPurple with $C_blue once 
 .toggleLabel {
 	padding-bottom: $space-half;
 
-	.toggleLabel-container {
+	.toggleLabel-container,
+	.toggleLabel-container:last-child {
 		padding-left: $space-half;
 	}
 
@@ -215,11 +216,28 @@ $C_toggleHighlight: $C_lightPurple; // replace $C_lightPurple with $C_blue once 
 
 }
 
+.radio:focus {
+	+ .fauxToggle {
+		border-color: $C_toggleHighlight;
+
+		&.checked {
+			box-shadow: 0 0 4px 1px $C_toggleHighlight;
+		}
+	}
+}
+
 .fauxToggle--checkbox {
 	border-radius: $smallRadius;
 }
 
-.fauxToggle--radio {
+.fauxToggle--radio,
+.radio-indicator {
 	border-radius: 50%;
 }
 
+.radio-indicator {
+	background-color: white;
+	display: block;
+	height: 8px;
+	width: 8px;
+}
