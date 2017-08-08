@@ -34,7 +34,7 @@ storiesOf('Popover', module)
 				trigger={<div>Open</div>}
 				menuItems={[
 					<span className='first-option' onClick={logSelection}>First option</span>,
-					<span className='second-option' onClick={logSelection}>Second option</span>,
+					<span className='second-option' onClick={logSelection}>Second option is super duper long</span>,
 					<span className='third-option' onClick={logSelection}>Third option</span>,
 				]}
 			/>

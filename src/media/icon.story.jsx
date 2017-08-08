@@ -46,6 +46,9 @@ storiesOf('Icon', module)
 	.add('XX-Large', () => (
 		<Icon shape={ICON_NAME} size='xxl' />
 	))
+	.add('Passed color', () => (
+		<Icon shape={ICON_NAME} color='#F13959' />
+	))
 	.addWithInfo(
 		'Loading indicator',
 		'The `updates` icon is animated by default.',

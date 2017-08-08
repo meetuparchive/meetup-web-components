@@ -39,7 +39,8 @@ export class Tabs extends React.Component {
 		const {
 			children,
 			className,
-			bordered,
+			bordered, // eslint-disable-line no-unused-vars
+			noBorder,
 			full,
 			...other
 		} = this.props;
@@ -47,7 +48,7 @@ export class Tabs extends React.Component {
 		const ulClasses = cx(
 			'tabs',
 			{
-				'tabs--bordered': bordered,
+				'tabs--noBorder': noBorder,
 				'tabs--full': full,
 			}
 		);
@@ -79,5 +80,6 @@ Tabs.propTypes = {
 		}
 	},
 	full: PropTypes.bool,
-	bordered: PropTypes.bool
+	bordered: PropTypes.bool, // deprecating in favor of bordered being default
+	noBorder: PropTypes.bool
 };
