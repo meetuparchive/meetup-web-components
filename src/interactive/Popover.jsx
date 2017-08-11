@@ -159,7 +159,6 @@ class Popover extends React.Component {
 			menu: cx(
 				'popover-container',
 				'popover-container--menu',
-				// 'trans-fadeIn--short',
 				{
 					'trans-fadeIn--short': !isActive,
 					'opacity--0': !isActive,
