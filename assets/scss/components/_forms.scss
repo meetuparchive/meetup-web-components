@@ -149,3 +149,77 @@ Faux inputs visually mimic actual input elements.
 		}
 	}
 }
+
+$toggleSize: 20px;
+$C_toggleHighlight: $C_lightPurple; // replace $C_lightPurple with $C_blue once we start to use `swarm-constants`
+
+.toggleLabel {
+	padding-bottom: $space-half;
+
+	.toggleLabel-container {
+		padding-left: $space-half;
+	}
+
+	&:hover {
+
+		.fauxToggle {
+			border-color: $C_toggleHighlight;
+
+			&.checked {
+				background-color: darken($C_toggleHighlight, 15%);
+			}
+
+			&.disabled {
+				background-color: $C_white;
+				border-color: $C_textHint;
+			}
+
+		}
+
+	}
+
+}
+
+.fauxToggle {
+	background: $C_white;
+	border: 1px solid $C_textSecondary;
+	height: $toggleSize;
+	width: $toggleSize;
+
+	.svg-icon {
+		@include color-all($C_textPrimaryInverted);
+	}
+
+	&.checked {
+		background-color: $C_toggleHighlight;
+		border-color: transparent;
+	}
+
+	&.disabled {
+		@include color-all($C_textHint);
+		border-color: $C_textHint;
+
+		&.checked {
+			background-color: $C_white;
+			border-color: $C_textHint;
+		}
+	}
+
+	&.focused {
+		border-color: $C_toggleHighlight;
+
+		&.checked {
+			box-shadow: 0 0 4px 1px $C_toggleHighlight;
+		}
+	}
+
+}
+
+.fauxToggle--checkbox {
+	border-radius: $smallRadius;
+}
+
+.fauxToggle--radio {
+	border-radius: 50%;
+}
+

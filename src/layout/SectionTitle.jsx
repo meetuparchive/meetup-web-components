@@ -28,7 +28,7 @@ class SectionTitle extends React.Component {
 				align='center'
 				className={classNames}
 				{...other}
-				>
+			>
 				<FlexItem>
 					<Chunk>
 						<h2 className='text--sectionTitle'>{title}</h2>

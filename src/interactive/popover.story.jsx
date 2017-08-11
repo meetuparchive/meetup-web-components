@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 import { storiesOf, action } from '@kadira/storybook';
 import { InfoWrapper } from '../utils/storyComponents';
-import { decorateWithLocale } from '../utils/decorators';
 import Popover from './Popover';
 import Button from '../forms/Button';
 
@@ -11,7 +10,6 @@ const logSelection = e => {
 };
 
 storiesOf('Popover', module)
-	.addDecorator(decorateWithLocale)
 	.addWithInfo(
 		'default - Button trigger with Link menu items',
 		'This is the basic usage with the component. ',
@@ -36,7 +34,7 @@ storiesOf('Popover', module)
 				trigger={<div>Open</div>}
 				menuItems={[
 					<span className='first-option' onClick={logSelection}>First option</span>,
-					<span className='second-option' onClick={logSelection}>Second option</span>,
+					<span className='second-option' onClick={logSelection}>Second option is super duper long</span>,
 					<span className='third-option' onClick={logSelection}>Third option</span>,
 				]}
 			/>

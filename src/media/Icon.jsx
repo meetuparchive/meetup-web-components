@@ -9,7 +9,7 @@ export const SVG_THIN_STYLE = '--small';
 
 const SMALL_ICON_VARIANT_WHITELIST = VALID_SHAPES
 	.filter(s =>
-		!s.startsWith('external')  // no third party icons
+		!s.startsWith('external') // no third party icons
 		&& !s.startsWith('meetup') // logos use same path for `xs`
 	);
 
@@ -23,7 +23,7 @@ export const getIconShape = (shape, size) => {
 		return shape;
 	}
 
-	const suffix = (size === 'xs' || size === 's') ? SVG_THIN_STYLE : '';
+	const suffix = (size === 'xxs' || size === 'xs' || size === 's') ? SVG_THIN_STYLE : '';
 	return `${shape}${suffix}`;
 };
 
@@ -38,11 +38,16 @@ export const getIconShape = (shape, size) => {
  */
 class Icon extends React.PureComponent {
 	render() {
-		const { className, shape, size, ...other } = this.props;
+		const { className, shape, size, color, style, ...other } = this.props;
 
 		const classNames = cx(ICON_CLASS, `svg--${shape}`, className);
 
 		const sizeVal = MEDIA_SIZES[size];
+
+		const allStyles = style || {};
+		if (color) {
+			allStyles.fill = color;
+		}
 
 		return (
 			<span className={classNames}>
@@ -53,6 +58,7 @@ class Icon extends React.PureComponent {
 					viewBox={`0 0 ${sizeVal} ${sizeVal}`}
 					className='svg-icon valign--middle'
 					role='img'
+					style={allStyles}
 					{...other}
 				>
 					<use xlinkHref={`#icon-${getIconShape(shape, size)}`} />
