@@ -159,8 +159,12 @@ class Popover extends React.Component {
 			menu: cx(
 				'popover-container',
 				'popover-container--menu',
+				// 'trans-fadeIn--short',
 				{
-					'display--none': !isActive,
+					'trans-fadeIn--short': !isActive,
+					'opacity--0': !isActive,
+					'opacity--1': isActive,
+					'trans-fadeOut--short': isActive,
 					'popover-container--horizontal-left': (align === 'left'),
 					'popover-container--horizontal-right': (align === 'right')
 				}
