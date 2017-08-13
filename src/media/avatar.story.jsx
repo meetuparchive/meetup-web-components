@@ -19,7 +19,8 @@ storiesOf('Avatar', module)
 		)
 	)
 	.add('small', () => <Avatar src={MOCK_IMAGE_SRC} small></Avatar>)
-	.add('big', () => <Avatar src={MOCK_IMAGE_SRC} big></Avatar>)
+	.add('large', () => <Avatar src={MOCK_IMAGE_SRC} large></Avatar>)
+	.add('xxlarge', () => <Avatar src={MOCK_IMAGE_SRC} xxlarge></Avatar>)
 	.add('link to external URL', () => (
 		<WithNotes notes='To link within the app, supply a `to` prop instead of `href`'>
 			<Avatar
