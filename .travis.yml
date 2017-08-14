@@ -23,7 +23,7 @@ before_install:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
 before_script:
-  - storybook-static
+  - yarn run storybook-static
   - git diff --exit-code yarn.lock
 
 after_script:
