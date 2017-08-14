@@ -10,56 +10,60 @@ storiesOf('Toast', module)
 	.add('default', () =>
 		(<Toaster
 			toasts={[
-				<Toast
-					// autodismiss={false}
-					dismissable
-					message='Your toast is ready'
-				/>
+				<Toast>
+					Your toast is ready
+				</Toast>
+			]}
+		/>)
+	)
+	.add('don\'t automatically dismiss', () =>
+		(<Toaster
+			toasts={[
+				<Toast autodismiss={false}>
+					Your toast is ready
+				</Toast>
+			]}
+		/>)
+	)
+	.add('don\'t allow dismissal', () =>
+		(<Toaster
+			toasts={[
+				<Toast autodismiss={false} dismissable={false}>
+					Your toast is ready
+				</Toast>
 			]}
 		/>)
 	)
 	.add('success', () =>
 		(<Toaster
 			toasts={[
-				<Toast
-					success
-					autodismiss={false}
-					dismissable
-					message='Your toast is ready'
-				/>
+				<Toast success>
+					Your toast is ready
+				</Toast>
 			]}
 		/>)
 	)
 	.add('error', () =>
 		(<Toaster
 			toasts={[
-				<Toast
-					error
-					autodismiss={false}
-					dismissable
-					message='Your toast is ready'
-				/>
+				<Toast error>
+					Your toast is ready
+				</Toast>
 			]}
 		/>)
 	)
 	.add('multiple', () =>
 		(<Toaster
 			toasts={[
-				<Toast
-					autodismiss={false}
-					dismissable
-					message='lol nothing matters'
-				/>,
-				<Toast
-					autodismiss={false}
-					dismissable
-					message='jk, everything matters'
-				/>,
-				<Toast
-					autodismiss={false}
-					dismissable
-					message='Your toast is ready'
-				/>
+				<Toast>
+					Your toast is ready
+				</Toast>,
+				<Toast>
+					Read this important message
+				</Toast>,
+				<Toast>
+					Skim this nice-to-know message
+				</Toast>
 			]}
 		/>)
 	)
@@ -70,8 +74,9 @@ storiesOf('Toast', module)
 					action={()=>{console.log('withAction');}}
 					actionLabel='Do it'
 					autodismiss={false}
-					message='lol nothing matters'
-				/>
+				>
+					Your toast is ready
+				</Toast>
 			]}
 		/>)
 	);

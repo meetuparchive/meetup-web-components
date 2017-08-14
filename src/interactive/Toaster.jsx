@@ -47,7 +47,6 @@ class Toaster extends React.Component {
 			}, 1000*(i+1)));
 		});
 	}
-	// end
 
 	clearTimeouts() {
 		this.timeouts.forEach(clearTimeout);
@@ -100,10 +99,6 @@ class Toaster extends React.Component {
 			'toaster',
 			className
 		);
-
-		console.log(CSSTransitionGroup);
-		// console.log(TransitionGroup);
-
 
 		return (
 			<div

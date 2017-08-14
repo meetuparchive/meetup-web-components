@@ -28,15 +28,12 @@ class Toast extends React.Component {
 		if (this.props.setDismissedToast) {
 			this.props.setDismissedToast(this);
 		}
-
-		// this.setState(() => ({ showToast: false }));
 	}
 
 	render() {
 		const {
 			children,
 			className,
-			message,
 			action,
 			actionLabel,
 			dismissable,
@@ -65,7 +62,7 @@ class Toast extends React.Component {
 				onMouseLeave={this._mouseLeave}
 				{...other}>
 				<Flex align='center'>
-					<FlexItem>{message}</FlexItem>
+					<FlexItem>{children}</FlexItem>
 					{action && (
 						<FlexItem shrink>
 							<a href='#' onClick={action} className='toast-action'>
@@ -84,7 +81,6 @@ class Toast extends React.Component {
 					)}
 
 				</Flex>
-				{children}
 			</span>
 		);
 	}
@@ -105,7 +101,8 @@ Toast.propTypes = {
 };
 
 Toast.defaultProps = {
-	autodismiss: true
+	autodismiss: true,
+	dismissable: true
 };
 
 export default Toast;
