@@ -1,6 +1,6 @@
 import { mapProps } from 'recompose';
 
-import RadioButtonGroup from '../forms/RadioButtonGroup';
+import RadioButtonGroup from '../RadioButtonGroup';
 
 export const propMapper = ({ input, meta, ...other }) => ({
 	selectedValue: input.value,
