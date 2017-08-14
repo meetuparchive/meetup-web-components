@@ -51,7 +51,7 @@ storiesOf('Textarea', module)
 			<InfoWrapper>
 				<Bounds><Section>
 					<Textarea
-						rows='auto'
+						autosize
 						label='Your biography'
 						id='yourBio'
 						name='bio'
@@ -63,9 +63,20 @@ storiesOf('Textarea', module)
 	.add('auto resizing with min and max height', () =>
 		(<Bounds><Section>
 			<Textarea
-				rows='auto'
+				autosize
 				minHeight={100}
 				maxHeight={300}
+				label='Your biography'
+				id='yourBio'
+				name='bio'
+				placeholder='Tell me about your life' />
+		</Section></Bounds>)
+	)
+	.add('auto resizing with rows set', () =>
+		(<Bounds><Section>
+			<Textarea
+				autosize
+				rows={4}
 				label='Your biography'
 				id='yourBio'
 				name='bio'
