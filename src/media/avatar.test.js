@@ -13,7 +13,8 @@ describe('Avatar', function() {
 	it('applies variant classes for each variant prop', function() {
 		const variants = [
 			'small',
-			'big',
+			'large',
+			'xxlarge',
 		];
 		variantTest(Avatar, 'avatar', variants);
 	});
