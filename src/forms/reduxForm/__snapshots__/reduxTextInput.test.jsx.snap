@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReduxTextInput renders a required HTML <input> with expected attributes for mock data 1`] = `
+<Connect(Form(FormComponent))
+  destroyOnUnmount={true}
+  enableReinitialize={false}
+  forceUnregisterOnUnmount={false}
+  form="testForm"
+  getFormState={[Function]}
+  keepDirtyOnReinitialize={false}
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldValidate={[Function]}
+  touchOnBlur={true}
+  touchOnChange={false}
+>
+  <Field
+    component={[Function]}
+    error="Did you mean Batman and Robin?"
+    label="Super Hero"
+    maxLength={20}
+    name="superhero"
+    required={true}
+    value="Wonder Woman and Robin"
+  />
+</Connect(Form(FormComponent))>
+`;
