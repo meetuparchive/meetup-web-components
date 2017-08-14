@@ -42,7 +42,7 @@ describe('Textarea', function() {
 			maxHeight={MAX_HEIGHT}
 			{...formAttrs} />);
 		autosizeTextareaComponent = TestUtils.renderIntoDocument(<Textarea
-			rows='auto'
+			autosize
 			label={LABEL_TEXT}
 			value={VALUE}
 			{...formAttrs} />);
@@ -147,7 +147,7 @@ describe('Textarea', function() {
 
 		expect(onChange).toHaveBeenCalled();
 	});
-	it('should call autosize plugin when this.props.rows=\'auto\'', function() {
+	it('should call autosize plugin when this.props.autosize is true', function() {
 		autosizeTextareaComponent.componentDidMount();
 
 		expect(autosizePlugin.default).toHaveBeenCalled();
