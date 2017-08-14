@@ -30,6 +30,7 @@ _(The `extend` directive can cause ugly cascade problems)_
 @include buttonBase();
 ```
 */
+
 @mixin buttonBase() {
 	@extend %buttonPersonality;
 	@include display(inline-flex);
@@ -37,13 +38,11 @@ _(The `extend` directive can cause ugly cascade problems)_
 	@include justify-content(center);
 	@include align-items(center);
 	@include transition(background .15s);
-	@include standardBorder(none);
 	box-sizing: border-box;
 	-webkit-appearance: none;
-	border-radius: $defaultRadius;
-	font-size: $font-size;
-	font-weight: $W_medium;
-	line-height: $line-height;
+	border-radius: $largeRadius;
+	font-size: $font-size-small;
+	line-height: $line-height-smallText;
 	outline: 0;
 	padding: $space $space-double;
 	vertical-align: middle;
@@ -75,6 +74,14 @@ Applies button color-related styles using a mixin.
 ) {
 	@include color-all($textColor);
 	background: $bgColor;
+
+	&:hover {
+		transition: all 0.4s $animate_easeOutQuad;
+		svg {
+			transition: fill 0.4s $animate_easeOutQuad;
+		}
+	}
+
 
 	&:hover,
 	&:focus {
@@ -258,6 +265,33 @@ Class                   | Description
 	}
 }
 
+.button--bordered {
+	@include buttonColor(
+		$bgColor: $C_contentBG,
+		$hoverColor: #F6F7F8, //TODO: change to $C_collectionBG once `swarm-constants` is available
+		$activeColor: darken(#F6F7F8, 3%)
+	);
+	border: 1px solid $C_border;
+
+	&:hover, &:focus {
+		border-color: $C_textHint;
+	}
+
+	.inverted & {
+		@include buttonColor(
+			$bgColor: rgba(46, 62, 72, .6),
+			$hoverColor: lighten(transparentize(rgba(46, 62, 72, .6), .2), 12%),
+			$activeColor: lighten(transparentize(rgba(46, 62, 72, .6), .2), 23%)
+		);
+		border: 1px solid $C_borderInverted;
+
+		&:hover, &:focus {
+			border-color: $C_borderDarkInverted, .1;
+		}
+
+	}
+}
+
 //
 // Disabled buttons
 //
@@ -294,7 +328,6 @@ Class                   | Description
 		$textColor: $C_textPrimary
 	);
 	border-radius: 0;
-	font-weight: normal;
 	padding: 0;
 
 	&,
@@ -323,6 +356,7 @@ Class                   | Description
 //
 %button--small,
 .button--small {
+	border-radius: $defaultRadius;
 	padding: $space-half $space;
 }
 

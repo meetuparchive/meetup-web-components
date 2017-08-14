@@ -39,6 +39,24 @@ storiesOf('Button', module)
 			<Button onClick={action('clicked')} disabled>Button Label</Button>
 		</Inverted>
 	))
+	.add('Bordered', () => (
+		<div
+			className='stripe stripe--collection'
+			style={{
+				height: '100%',
+				width: '100%',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}>
+			<Button onClick={action('clicked')} bordered>Button Label</Button>
+		</div>
+	))
+	.add('Bordered - inverted', () => (
+		<Inverted>
+			<Button onClick={action('clicked')} bordered>Button Label</Button>
+		</Inverted>
+	))
 	.add('Reset', () => (
 		<Button onClick={action('clicked')} reset>Button Label</Button>
 	))
@@ -60,18 +78,18 @@ storiesOf('Button', module)
 		<Button onClick={action('clicked')} small>Button Label</Button>
 	))
 	.add('Icon', () => (
-		<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />}>Button Label</Button>
+		<Button onClick={action('clicked')} icon={<Icon shape='search' size='xxs' />}>Button Label</Button>
 	))
 	.add('Icon - fullWidth', () => (
-		<Button onClick={action('clicked')} fullWidth icon={<Icon shape='search' size='s' />}>Button Label</Button>
+		<Button onClick={action('clicked')} fullWidth icon={<Icon shape='search' size='xxs' />}>Button Label</Button>
 	))
 	.add('Icon - inverted', () => (
 		<Inverted>
-			<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />}>Button Label</Button>
+			<Button onClick={action('clicked')} icon={<Icon shape='search' size='xxs' />}>Button Label</Button>
 		</Inverted>
 	))
 	.add('Icon Right', () => (
-		<Button onClick={action('clicked')} icon={<Icon shape='search' size='s' />} right>Button Label</Button>
+		<Button onClick={action('clicked')} icon={<Icon shape='search' size='xxs' />} right>Button Label</Button>
 	))
 	.add('No Label', () => (
 		<Button></Button>
