@@ -1,8 +1,6 @@
 import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import ReduxTextInput from './ReduxTextInput';
 
 describe('ReduxTextInput', function() {
@@ -17,8 +15,6 @@ describe('ReduxTextInput', function() {
 			error: 'Did you mean Batman and Robin?'
 		};
 
-	const store = createStore(() => ({}));
-
 	// eslint-disable-next-line require-jsdoc
 	class FormComponent extends React.Component {
 		render() {
@@ -31,12 +27,10 @@ describe('ReduxTextInput', function() {
 	})(FormComponent);
 
 	it('renders a required HTML <input> with expected attributes for mock data', () => {
-		const component = mount(
-			<Provider store={store}>
-				<DecoratedFormComponent>
-					<Field component={ReduxTextInput} {...formAttrs} />
-				</DecoratedFormComponent>
-			</Provider>
+		const component = shallow(
+			<DecoratedFormComponent>
+				<Field component={ReduxTextInput} {...formAttrs} />
+			</DecoratedFormComponent>
 		);
 
 		expect(component).toMatchSnapshot();
