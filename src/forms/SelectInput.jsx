@@ -98,7 +98,7 @@ SelectInput.propTypes = {
 	value: (props, propName, componentName) => {
 		const validValues = props.options.map(opt => opt.value);
 
-		if (!validValues.includes(props[propName])) {
+		if (props[propName] && !validValues.includes(props[propName])) {
 			return new Error(`${propName} prop supplied to ${componentName} does not match any supplied options values`);
 		}
 	},

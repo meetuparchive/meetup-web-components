@@ -105,9 +105,19 @@ $avatarBg: #E4E9ED; // change to $C_coolGrayLight once we start using `swarm-con
 		height: $scalingMedia-s;
 		width: $scalingMedia-s;
 	}
-	.avatar--big {
+	.avatar--xxlarge {
 		height: $scalingMedia-xxl;
 		width: $scalingMedia-xxl;
+	}
+}
+
+.avatar--large {
+	height: $space-4;
+	width: $space-4;
+
+	@include atMediaUp(medium) {
+		height: $block-2;
+		width: $block-2;
 	}
 }
 

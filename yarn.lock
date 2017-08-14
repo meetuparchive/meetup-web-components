@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@alrra/travis-scripts@3.0.1":
+"@alrra/travis-scripts@3.0.1", "@alrra/travis-scripts@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@alrra/travis-scripts/-/travis-scripts-3.0.1.tgz#45d5b9357317b6cc5553dfd99931843ae0b0e53a"
 
@@ -2857,7 +2857,7 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gh-pages@1.0.0:
+gh-pages@1.0.0, gh-pages@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gh-pages/-/gh-pages-1.0.0.tgz#4a46f4c25439f7a2b7e6835504d4a49e949f04ca"
   dependencies:
@@ -4166,10 +4166,6 @@ math-expression-evaluator@^1.2.14:
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
-
-meetup-swatches@3.2.5:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/meetup-swatches/-/meetup-swatches-3.2.5.tgz#46ff0ffbe22fdf56267bbd05016e00466560efdd"
 
 meetup-web-mocks@1.0.194:
   version "1.0.194"
@@ -6204,17 +6200,24 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
+swarm-constants@0.1.15:
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-0.1.15.tgz#0bb7f11af93c447336274532305a9669b63325ad"
+  dependencies:
+    "@alrra/travis-scripts" "^3.0.1"
+    gh-pages "^1.0.0"
+
 swarm-icons@1.3.129:
   version "1.3.129"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.3.129.tgz#55344c71dcbcb8cabe5bfec6384dd6758ab0a81e"
 
-swarm-sasstools@1.7.62:
-  version "1.7.62"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.7.62.tgz#08f064b2fc84e0dc3d2b44ac3aaf0f6ab2e02f64"
+swarm-sasstools@1.7.84:
+  version "1.7.84"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.7.84.tgz#6dfa3090caaa395cce2ed51a3632635b681170e9"
   dependencies:
     bourbon "4.2.3"
-    meetup-swatches "3.2.5"
     sass-rem "^1.2.4"
+    swarm-constants "0.1.15"
 
 symbol-observable@^1.0.1, symbol-observable@^1.0.3, symbol-observable@^1.0.4:
   version "1.0.4"
