@@ -70,7 +70,6 @@ class Toaster extends React.Component {
 			key: i,
 			id: toast.props.id || i,
 			className: toast.props.className,
-			message: toast.props.message,
 			action: toast.props.action,
 			actionLabel: toast.props.actionLabel,
 			dismissable: toast.props.dismissable,

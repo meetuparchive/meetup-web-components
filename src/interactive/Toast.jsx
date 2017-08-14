@@ -7,6 +7,8 @@ import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
 
 export const TOAST_CLASS = 'toast';
+export const TOAST_ACTION_CLASS = `${TOAST_CLASS}-action`;
+export const TOAST_DISMISS_BTN_CLASS = `${TOAST_CLASS}-dismissBtn`;
 export const SUCCESS_TOAST_CLASS = `${TOAST_CLASS}--success`;
 export const ERROR_TOAST_CLASS = `${TOAST_CLASS}--error`;
 export const HIDDEN_TOAST_CLASS = `${TOAST_CLASS}--hide`;
@@ -17,9 +19,6 @@ export const HIDDEN_TOAST_CLASS = `${TOAST_CLASS}--hide`;
 class Toast extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			showToast: true
-		};
 
 		this.handleDismiss = this.handleDismiss.bind(this);
 	}
@@ -48,7 +47,6 @@ class Toast extends React.Component {
 			TOAST_CLASS,
 			'inverted',
 			{
-				[HIDDEN_TOAST_CLASS]: !this.state.showToast,
 				[SUCCESS_TOAST_CLASS]: success,
 				[ERROR_TOAST_CLASS]: error
 			},
@@ -58,14 +56,12 @@ class Toast extends React.Component {
 		return (
 			<span
 				className={classNames}
-				onMouseEnter={this._mouseEnter}
-				onMouseLeave={this._mouseLeave}
 				{...other}>
 				<Flex align='center'>
 					<FlexItem>{children}</FlexItem>
 					{action && (
 						<FlexItem shrink>
-							<a href='#' onClick={action} className='toast-action'>
+							<a href='#' onClick={action} className={TOAST_ACTION_CLASS}>
 								{actionLabel}
 							</a>
 						</FlexItem>
@@ -73,7 +69,7 @@ class Toast extends React.Component {
 					{dismissable && (
 						<FlexItem
 							shrink
-							className='toast-dismissBtn'
+							className={TOAST_DISMISS_BTN_CLASS}
 							onClick={this.handleDismiss}
 						>
 							<Icon shape='cross' size='s' />
