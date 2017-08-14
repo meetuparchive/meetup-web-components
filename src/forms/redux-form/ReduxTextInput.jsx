@@ -13,4 +13,6 @@ const ReduxTextInput = props => {
 	return <TextInput error={meta.error} {...input} {...other} />;
 };
 
+ReduxTextInput.displayName = 'ReduxTextInput';
+
 export default ReduxTextInput;
