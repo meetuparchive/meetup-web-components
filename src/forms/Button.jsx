@@ -28,6 +28,7 @@ class Button extends React.PureComponent {
 			primary,
 			right,
 			small,
+			bordered,
 			...other
 		} = this.props;
 
@@ -39,6 +40,7 @@ class Button extends React.PureComponent {
 					'button--primary': primary,
 					'button--small': small,
 					'button--reset': reset,
+					'button--bordered': bordered,
 				},
 				className
 			),
