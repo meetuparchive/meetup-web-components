@@ -15,6 +15,12 @@
 @import "inlineblockList";
 
 //
+// Animation
+//
+@import "~swarm-animation/src/constants";
+@import "~swarm-animation/src/fade";
+
+//
 // UI Components
 //
 @import "accordion";
@@ -31,3 +37,4 @@
 @import "tabs";
 @import "togglePill";
 @import "dateTimePicker";
+
