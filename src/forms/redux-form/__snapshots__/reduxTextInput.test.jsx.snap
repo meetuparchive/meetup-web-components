@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReduxTextInput renders a TextInput component with expected attributes from mock data 1`] = `
+<TextInput
+  error="Did you mean Batman and Robin?"
+  label="Super Hero"
+  maxLength={20}
+  name="superhero"
+  required={true}
+  value="Wonder Woman and Robin"
+/>
+`;
