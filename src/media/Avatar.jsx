@@ -17,7 +17,9 @@ class Avatar extends React.PureComponent {
 	render() {
 		const {
 			small,
-			big,
+			large,
+			big, // would like to deprecate this
+			xxlarge,
 			src,
 			alt,
 			className,
@@ -30,7 +32,8 @@ class Avatar extends React.PureComponent {
 			'avatar',
 			{
 				'avatar--small': small,
-				'avatar--big': big
+				'avatar--large': large,
+				'avatar--xxlarge': big || xxlarge
 			},
 			className
 		);
@@ -66,7 +69,9 @@ class Avatar extends React.PureComponent {
 
 Avatar.propTypes = {
 	small: PropTypes.bool,
-	big: PropTypes.bool,
+	large: PropTypes.bool,
+	big: PropTypes.bool, /** Would like to deprecate this in favor of xxlarge */
+	xxlarge: PropTypes.bool,
 	src: PropTypes.string, /** The image source URL for the Avatar */
 	href: PropTypes.string, /** Link to arbitrary URL outside app */
 	alt: PropTypes.string, /** the image label, mainly for accessibility */

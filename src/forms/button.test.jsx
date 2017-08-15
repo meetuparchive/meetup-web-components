@@ -38,6 +38,7 @@ describe('Button', () => {
 			'primary',
 			'fullWidth',
 			'small',
+			'bordered'
 		];
 
 		variantTest(Button, BUTTON_CLASS, variants);

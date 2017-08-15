@@ -23,6 +23,7 @@ before_install:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
 before_script:
+  - yarn run storybook-static
   - git diff --exit-code yarn.lock
 
 after_script:
@@ -56,3 +57,12 @@ after_success:
 notifications:
   slack:
     secure: Z4udKdsw7BDrFym0ACUzIUh25btM2Uw72feE7dj9S28SZd7QUQkIuy8paa7SABhJTRPmbmzpSchLpX4bzplQi8GqTnbHkhbzx3WABzl4ZGozTYGLrgiYsKY689P27Q9cnuYP5zsQXj+PXeNfpLuxAr5oEQfvcu3wobmyhUODJK+3PW1H1AoDkW3I/WJQy18IbKZKxJqyJiFUg9om3ByDL0hJdSyK0ml1etBMogJ0WMUqM4SyHhPaTxoAwJSrORyHe7OPfJdnlKDD1dr+hKgaj5yaXrg0tkZLNTI1pzoDjqgBA7RTYaXjcjzu2qL25XOQJpSRrC9in2Cb5nihvH4wlbvozmu8zRcmk8zrjhXRHvRMvgKrm/MlTAuw4hNjB0z0hYPx/IMHF0N+p9IxQmfsu3RDgJILBFl4aH/NA4zDFgzabVXVkIlDXz+W15Hsx/93MNUIwVtxccGEwxrwM559P/WvTxEr/1ptJiwAghG+J3n7AyULqXw4x6wJkM2PUN/Ub6BSSAK8YT/3tyM6VdH3U2wnsLKQLsSxYjr+jjrL75NSehzKENy9JlPbm2SYN6H+lqbOtZXEnHYHArTbO4CpkB6OIhB1gqrmsmKpeFTMD5lodc3zYezSz9FPDMMy6VVtx2+RcJwEGT9Q3J5N5ky++to/kfRbqmOWfQtDFVWH2iE=
+
+deploy:
+   provider: pages
+   skip_cleanup: true
+   github_token: $GITHUB_TOKEN
+   local_dir: $TRAVIS_BUILD_DIR/.storybook-out
+   on:
+      branch: master
+
