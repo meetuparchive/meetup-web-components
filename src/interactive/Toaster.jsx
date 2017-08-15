@@ -6,7 +6,7 @@ import cx from 'classnames';
 /**
  * @module Toaster
  */
-class Toaster extends React.Component {
+class Toaster extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
@@ -31,7 +31,7 @@ class Toaster extends React.Component {
 	}
 
 	mouseEnter() {
-		this.timeouts.forEach(clearTimeout);
+		this.clearTimeouts();
 	}
 
 	mouseLeave() {
@@ -44,7 +44,7 @@ class Toaster extends React.Component {
 		toastsToDismiss.forEach((toast, i) => {
 			this.timeouts.push(setTimeout(() => {
 				this.setDismissedToast(toast);
-			}, 1000*(i+1)));
+			}, 3000*(i+1)));
 		});
 	}
 
@@ -75,6 +75,7 @@ class Toaster extends React.Component {
 			dismissable: toast.props.dismissable,
 			autodismiss: toast.props.autodismiss,
 			setDismissedToast: this.setDismissedToast
+			// killMe: this.jumpedOffCliff
 		};
 		return React.cloneElement(toast, toastProps);
 	}
@@ -86,6 +87,10 @@ class Toaster extends React.Component {
 		this.state.toasts = this.state.toasts.map(this.cloneToast);
 		return this.state.toasts;
 	}
+
+	// jumpedOffCliff() {
+	// 	... removes from state
+	// }
 
 	render() {
 		const {

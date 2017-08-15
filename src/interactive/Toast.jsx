@@ -16,7 +16,7 @@ export const HIDDEN_TOAST_CLASS = `${TOAST_CLASS}--hide`;
 /**
  * @module Toast
  */
-class Toast extends React.Component {
+class Toast extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
