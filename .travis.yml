@@ -26,6 +26,9 @@ before_script:
   - yarn run storybook-static
   - git diff --exit-code yarn.lock
 
+script:
+  - yarn test:ci
+
 after_script:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
