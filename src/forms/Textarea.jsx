@@ -21,7 +21,7 @@ class Textarea extends React.Component {
 	 * @return {undefined} side effect only
 	 */
 	componentDidMount() {
-		if (this.props.rows === 'auto'){
+		if (this.props.autosize){
 			autosize(this.textarea);
 		}
 	}
@@ -86,6 +86,7 @@ class Textarea extends React.Component {
 			minHeight,
 			id,
 			onChange, // eslint-disable-line no-unused-vars
+			autosize,
 			...other
 		} = this.props;
 
@@ -93,7 +94,7 @@ class Textarea extends React.Component {
 			textarea: cx(
 				{
 					'field--error': error,
-					'textarea--autoheight': rows === 'auto'
+					'textarea--autoheight': autosize
 				},
 				className
 			),
@@ -123,7 +124,7 @@ class Textarea extends React.Component {
 					required={required}
 					className={classNames.textarea}
 					onChange={this.onChange}
-					rows={rows == 'auto' ? 1 : rows}
+					rows={rows}
 					ref={(textarea) => {this.textarea = textarea;}}
 					style={{ ...style, ...heightConstraints }}
 					id={id}
@@ -154,11 +155,9 @@ Textarea.propTypes = {
 	minHeight: PropTypes.number,
 	maxHeight: PropTypes.number,
 	onChange: PropTypes.func,
-	rows: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string
-	]),
+	rows: PropTypes.number,
 	value: PropTypes.string,
+	autosize: PropTypes.bool
 };
 
 export default Textarea;

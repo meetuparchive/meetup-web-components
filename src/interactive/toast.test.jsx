@@ -151,14 +151,9 @@ describe('Toast', function() {
 	it('should remove the Toast from the Toaster `toasts` state when the dismiss button is clicked', () => {
 		// gotta figure this one out
 
-		// const mountedComponent = mount(<ToastWithProps />);
-		// const dismissBtn = mountedComponent.find(`.${TOAST_DISMISS_BTN_CLASS}`);
-
-		// console.log(component.state('toasts').length);
-
-		// expect(component.instance().state.toasts.length).toBe(1);
-		// dismissBtn.simulate('click');
-		// expect(component.instance().state.toasts.length).toBe(0);
+		expect(component.instance().state.toasts.length).toBe(1);
+		// click the dismiss button
+		expect(component.instance().state.toasts.length).toBe(0);
 	});
 
 	it('should not render a dismiss button if dismissable prop is false', () => {
