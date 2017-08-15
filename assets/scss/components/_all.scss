@@ -1,3 +1,5 @@
+@import "~swarm-animation/src/animation.scss";
+
 // color vars
 @import "../util/color-mappings";
 @import "../util/vars";
@@ -31,3 +33,9 @@
 @import "tabs";
 @import "togglePill";
 @import "dateTimePicker";
+
+//
+// Animation
+//
+@import "~swarm-animation/src/constants";
+@import "~swarm-animation/src/fade";
