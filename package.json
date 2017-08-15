@@ -46,7 +46,8 @@
     "base64-image-loader": "1.2.0",
     "flatpickr": "3.0.6",
     "prop-types": "15.5.10",
-    "recompose": "0.24.0"
+    "recompose": "0.24.0",
+    "swarm-animation": "https://github.com/meetup/swarm-animation.git"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",

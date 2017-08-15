@@ -11,7 +11,7 @@ let popover,
 	menuEl,
 	optionEls;
 
-const class_hidden = 'display--none';
+const class_hidden = 'opacity--0';
 const MOCK_HANDLER = jest.genMockFunction();
 
 const popoverComponent = (
