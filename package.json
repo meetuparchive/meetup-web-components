@@ -44,7 +44,9 @@
     "autosize": "3.0.21",
     "base64-image-loader": "1.2.0",
     "flatpickr": "3.0.6",
-    "prop-types": "15.5.10"
+    "prop-types": "15.5.10",
+    "react-addons-css-transition-group": "15.6.0",
+    "react-transition-group": "2.2.0"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
