@@ -7,12 +7,12 @@ import TextInput from '../TextInput';
  * deconstructs props that redux-forms sets and sets them on TextInput
  * @return {Component} TextInput
  */
-const ReduxTextInput = props => {
+const ReduxFormTextInput = props => {
 	const { meta, input, ...other } = props;
 
 	return <TextInput error={meta.error} {...input} {...other} />;
 };
 
-ReduxTextInput.displayName = 'ReduxTextInput';
+ReduxFormTextInput.displayName = 'ReduxFormTextInput';
 
-export default ReduxTextInput;
+export default ReduxFormTextInput;

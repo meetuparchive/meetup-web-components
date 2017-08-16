@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ReduxTextInput from './TextInput';
+import ReduxFormTextInput from './TextInput';
 
 describe('redux-form TextInput', function() {
 
@@ -18,7 +18,7 @@ describe('redux-form TextInput', function() {
 	};
 
 	it('renders a TextInput component with expected attributes from mock data', () => {
-		const component = shallow(<ReduxTextInput {...formAttrs} />);
+		const component = shallow(<ReduxFormTextInput {...formAttrs} />);
 
 		expect(component).toMatchSnapshot();
 
