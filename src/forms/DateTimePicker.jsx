@@ -5,6 +5,9 @@ import CalendarComponent from './CalendarComponent';
 import TimeInput from './TimeInput';
 import DateTimeLocalInput from './DateTimeLocalInput';
 
+import Flex from '../layout/Flex';
+import FlexItem from '../layout/FlexItem';
+
 /**
  * @module DateTimePicker
  * @description a component that renders a calendar ui and time input
@@ -250,22 +253,27 @@ class DateTimePicker extends React.Component {
 		const onFocus = (dateOnly) ? null : this.onFocus;
 		const onBlur = (dateOnly) ? null : this.onBlur;
 
+		const calendar = (<CalendarComponent name={name}
+			onChangeCallback={this.setDate}
+			value={this.getDate()}
+			onFocus={onFocus}
+			onBlur={onBlur}
+			opts={datepickerOptions}
+			className={childClasses}
+			ref={ comp => this.dateComponent = comp }
+		/>);
+
 		return (
 			<div>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>
-				<div className={classNames}>
-
-					<div>
-						<CalendarComponent name={name}
-							onChangeCallback={this.setDate}
-							value={this.getDate()}
-							onFocus={onFocus}
-							onBlur={onBlur}
-							opts={datepickerOptions}
-							className={childClasses}
-							ref={ comp => this.dateComponent = comp }
-						/>
-						{ !dateOnly &&
+				<div>
+					{dateOnly && calendar}
+					{!dateOnly &&
+						<Flex>
+							<FlexItem>
+								{calendar}
+							</FlexItem>
+							<FlexItem>
 								<TimeInput name={timeInputName}
 									onChangeCallback={this.setTime}
 									onFocus={onFocus}
@@ -274,15 +282,10 @@ class DateTimePicker extends React.Component {
 									ref={ comp => this.timeComponent = comp }
 									className={childClasses}
 								/>
-						}
-						{ !dateOnly &&
-							<input type='text'
-								id='datetime-background'
-								ref={ el => this.backgroundEl = el }
-							/>
-						}
-						{ error && <p className='text--error'>{error}</p> }
-					</div>
+							</FlexItem>
+						</Flex>
+					}
+					{ error && <p className='text--error'>{error}</p> }
 				</div>
 			</div>
 		);
