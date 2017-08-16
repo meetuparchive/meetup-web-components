@@ -5,15 +5,23 @@
 .flatpickr-calendar {
 	padding: 8px;   
 	width: auto;  
+
+	.svg--chevron-right svg {
+		fill: $C_textPrimary;
+	}
+
+	.svg--chevron-left svg {
+		fill: $C_separator;
+	}
 }
 
 span.flatpickr-weekday {
 	color: inherit;
-	font-weight: normal;
+	font-weight: $W_normal;
   }
 
 .flatpickr-current-month span.cur-month {
-	font-weight: normal;
+	font-weight: $W_normal;
 }
 
 .flatpickr-day.selected,
@@ -34,8 +42,8 @@ span.flatpickr-weekday {
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: #538eed; /* $blue */
-  border-color: #538eed;
+  background: $C_blue; 
+  border-color: $C_blue; 
 }
 
 // datepicker form styles
