@@ -253,25 +253,27 @@ class DateTimePicker extends React.Component {
 		const onFocus = (dateOnly) ? null : this.onFocus;
 		const onBlur = (dateOnly) ? null : this.onBlur;
 
-		const calendar = (<CalendarComponent name={name}
-			onChangeCallback={this.setDate}
-			value={this.getDate()}
-			onFocus={onFocus}
-			onBlur={onBlur}
-			opts={datepickerOptions}
-			className={childClasses}
-			ref={ comp => this.dateComponent = comp }
-		/>);
+		const calendarComponent = (
+			<CalendarComponent name={name}
+				onChangeCallback={this.setDate}
+				value={this.getDate()}
+				onFocus={onFocus}
+				onBlur={onBlur}
+				opts={datepickerOptions}
+				className={childClasses}
+				ref={ comp => this.dateComponent = comp }
+			/>
+		);
 
 		return (
 			<div>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>
 				<div>
-					{dateOnly && calendar}
+					{dateOnly && calendarComponent}
 					{!dateOnly &&
 						<Flex>
 							<FlexItem>
-								{calendar}
+								{calendarComponent}
 							</FlexItem>
 							<FlexItem>
 								<TimeInput name={timeInputName}
