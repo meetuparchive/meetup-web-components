@@ -214,6 +214,9 @@ class DateTimePicker extends React.Component {
 			required,
 			name,
 			error,
+			timeProps,
+			legend,
+			showLegend,
 			...other
 		} = this.props;
 
@@ -227,7 +230,14 @@ class DateTimePicker extends React.Component {
 		const childClasses = cx(
 			{ 'field--error': error }
 		);
+
 		const labelClassNames = cx({required});
+
+		const legendClassNames = cx(
+			{required},
+			{ 'visibility--a11yHide' : !showLegend }
+		);
+
 		const timeInputName = `${name}-time`;
 
 		if (this.state.isDateTimeLocalSupported) {
@@ -253,42 +263,58 @@ class DateTimePicker extends React.Component {
 		const onFocus = (dateOnly) ? null : this.onFocus;
 		const onBlur = (dateOnly) ? null : this.onBlur;
 
+		const calendarErrorId = `calendar-error-${new Date()}`;
+
+		if (error) {
+			other['aria-invalid'] = true;
+			other['aria-describedby'] = calendarErrorId;
+		}
+
 		const calendarComponent = (
-			<CalendarComponent name={name}
+			<CalendarComponent
+				id={id}
+				name={name}
+				required={required}
 				onChangeCallback={this.setDate}
 				value={this.getDate()}
 				onFocus={onFocus}
 				onBlur={onBlur}
 				opts={datepickerOptions}
 				className={childClasses}
+				{...other}
 				ref={ comp => this.dateComponent = comp }
 			/>
 		);
 
 		return (
 			<div>
-				<label htmlFor={id} className={labelClassNames}>{label}</label>
-				<div>
-					{dateOnly && calendarComponent}
-					{!dateOnly &&
+				{dateOnly && calendarComponent}
+				{!dateOnly &&
+					<fieldset>
+						{legend && <legend className={legendClassNames}>{legend}</legend>}
+						{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
 						<Flex>
 							<FlexItem>
 								{calendarComponent}
 							</FlexItem>
 							<FlexItem>
-								<TimeInput name={timeInputName}
+								<TimeInput
+									name={timeInputName}
+									id={(timeProps && timeProps.id) || `${id}-time`}
 									onChangeCallback={this.setTime}
 									onFocus={onFocus}
 									onBlur={onBlur}
 									value={this.getTime()}
 									ref={ comp => this.timeComponent = comp }
 									className={childClasses}
+									{...timeProps}
 								/>
 							</FlexItem>
 						</Flex>
-					}
-					{ error && <p className='text--error'>{error}</p> }
-				</div>
+					</fieldset>
+				}
+				{ error && <p id={calendarErrorId} className='text--error'>{error}</p> }
+
 			</div>
 		);
 	}

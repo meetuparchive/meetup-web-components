@@ -29,6 +29,8 @@ class TimeInput extends React.Component {
 			className,
 			required,
 			value,		// eslint-disable-line no-unused-vars
+			error,
+			hideLabel,
 			...other
 		} = this.props;
 
@@ -39,6 +41,7 @@ class TimeInput extends React.Component {
 
 		const labelClassNames = cx(
 			'label--field',
+			{ 'visibility--a11yHide' : hideLabel },
 			{ required }
 		);
 		return (
@@ -55,6 +58,7 @@ class TimeInput extends React.Component {
 					ref={ input => this.inputEl = input }
 					{...other}
 				/>
+				{ error && <p className='text--error'>{error}</p> }
 			</span>
 		);
 

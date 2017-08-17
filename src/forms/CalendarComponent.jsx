@@ -105,25 +105,42 @@ class CalendarComponent extends React.Component {
 			className,
 			id,
 			name,
+			label,
+			required,
 			value,		// eslint-disable-line no-unused-vars
+			error,
 			opts,		// eslint-disable-line no-unused-vars
+			hideLabel,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			'input--dateTimePicker',
+			{ 'visibility--a11yHide' : hideLabel },
+			className
+		);
+
+
+		const labelClassNames = cx(
+			{required},
+			{ 'visibility--a11yHide' : hideLabel },
 			className
 		);
 
 		return (
-			<input
-				id={id}
-				type='text'
-				name={name}
-				defaultValue={this.state.value}
-				className={classNames}
-				ref={ input => this.inputEl = input }
-				{...other} />
+			<span>
+				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
+				<input
+					id={id}
+					type='text'
+					name={name}
+					defaultValue={this.state.value}
+					className={classNames}
+					ref={ input => this.inputEl = input }
+					{...other} />
+
+				{ error && <p className='text--error'>{error}</p> }
+			</span>
 		);
 	}
 }
