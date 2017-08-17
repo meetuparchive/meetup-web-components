@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+export const DELAY_TIME = 3000;
+
 /**
  * @module Toaster
  */
@@ -16,8 +18,7 @@ class Toaster extends React.PureComponent {
 		this.cloneToast = this.cloneToast.bind(this);
 		this.setDismissedToast = this.setDismissedToast.bind(this);
 		this.clearTimeouts = this.clearTimeouts.bind(this);
-		this.mouseEnter = this.mouseEnter.bind(this);
-		this.mouseLeave = this.mouseLeave.bind(this);
+		this.setTimer = this.setTimer.bind(this);
 
 		this.state = {
 			toasts: this.props.toasts.map(this.cloneToast)
@@ -30,21 +31,13 @@ class Toaster extends React.PureComponent {
 		});
 	}
 
-	mouseEnter() {
-		this.clearTimeouts();
-	}
-
-	mouseLeave() {
-		this.setTimer();
-	}
-
 	setTimer() {
 		const toastsToDismiss = this.state.toasts.filter((toast) => toast.props.autodismiss);
 
 		toastsToDismiss.forEach((toast, i) => {
 			this.timeouts.push(setTimeout(() => {
 				this.setDismissedToast(toast);
-			}, 3000*(i+1)));
+			}, DELAY_TIME*(i+1)));
 		});
 	}
 
@@ -107,8 +100,8 @@ class Toaster extends React.PureComponent {
 		return (
 			<div
 				className={classNames}
-				onMouseEnter={this.mouseEnter}
-				onMouseLeave={this.mouseLeave}
+				onMouseEnter={this.clearTimeouts}
+				onMouseLeave={this.setTimer}
 				{...other}>
 				<CSSTransitionGroup
 					transitionAppear

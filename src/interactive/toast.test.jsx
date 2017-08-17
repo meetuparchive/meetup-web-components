@@ -5,7 +5,8 @@ import Toast, {
 	TOAST_ACTION_CLASS,
 	TOAST_DISMISS_BTN_CLASS,
 	SUCCESS_TOAST_CLASS,
-	ERROR_TOAST_CLASS
+	ERROR_TOAST_CLASS,
+	DELAY_TIME
 } from './Toast';
 import Toaster from './Toaster';
 
@@ -53,8 +54,8 @@ describe('Toaster', function() {
 	});
 
 	it('should handle mouseEnter and mouseLeave', function(){
-		const mouseEnterSpy = spyOn(Toaster.prototype, 'mouseEnter');
-		const mouseLeaveSpy = spyOn(Toaster.prototype, 'mouseLeave');
+		const clearTimeoutsSpy = spyOn(Toaster.prototype, 'clearTimeouts');
+		const setTimerSpy = spyOn(Toaster.prototype, 'setTimer');
 		const toasterComponent = shallow(
 			<Toaster
 				toasts={[
@@ -66,9 +67,9 @@ describe('Toaster', function() {
 		);
 
 		toasterComponent.simulate('mouseEnter');
-		expect(mouseEnterSpy).toHaveBeenCalled();
+		expect(clearTimeoutsSpy).toHaveBeenCalled();
 		toasterComponent.simulate('mouseLeave');
-		expect(mouseLeaveSpy).toHaveBeenCalled();
+		expect(setTimerSpy).toHaveBeenCalled();
 	});
 
 	it('should set dismiss toasts', function(){
@@ -81,18 +82,34 @@ describe('Toaster', function() {
 		expect(component.state().toasts.length).toBe(1);
 		setTimeout(() => {
 			expect(component.state().toasts.length).toBe(0);
-		}, 3000);
+		}, parseInt(DELAY_TIME + 1));
 	});
 
 	it('should set a timeout when the component mounts', function(){
-		// mount component
-		// check that length of `this.timeouts` is > 0
+		const component = mount(<ToastWithProps />);
+		const toasterComponent = component.find(Toaster).getNode();
+
+		expect(toasterComponent.timeouts.length).toBe(1);
+	});
+
+	it('should clear timeouts when the component unmounts', function(){
+		const clearTimeoutsSpy = spyOn(Toaster.prototype, 'clearTimeouts');
+		const component = mount(<ToastWithProps />);
+
+		component.unmount();
+		expect(clearTimeoutsSpy).toHaveBeenCalled();
 	});
 
 	it('should clear the timeouts when specified', function(){
-		// mount component
-		// call `this.clearTimeouts()`
-		// check that length of `this.timeouts` is 0
+		const setDismissedToastSpy = spyOn(Toaster.prototype, 'setDismissedToast');
+		const component = mount(<ToastWithProps />);
+		const toasterComponent = component.find(Toaster).getNode();
+
+		toasterComponent.clearTimeouts();
+
+		setTimeout(() => {
+			expect(setDismissedToastSpy).not.toHaveBeenCalled();
+		}, parseInt(DELAY_TIME + 1));
 	});
 
 });
@@ -148,12 +165,34 @@ describe('Toast', function() {
 		expect(action).toHaveBeenCalled();
 	});
 
-	it('should remove the Toast from the Toaster `toasts` state when the dismiss button is clicked', () => {
-		// gotta figure this one out
+	it('should call setDismissedToast when the dismiss button is clicked', () => {
+		const setDismissedToastSpy = spyOn(Toaster.prototype, 'setDismissedToast');
+		const component = mount(<ToastWithProps />);
+		const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`);
 
-		expect(component.instance().state.toasts.length).toBe(1);
-		// click the dismiss button
-		expect(component.instance().state.toasts.length).toBe(0);
+		expect(setDismissedToastSpy).not.toHaveBeenCalled();
+		dismissBtn.simulate('click');
+		expect(setDismissedToastSpy).toHaveBeenCalled();
+	});
+
+	// it('should call clearTimeouts when the dismiss button is clicked', () => {
+	// 	const clearTimeoutsSpy = spyOn(Toaster.prototype, 'clearTimeouts');
+	// 	const component = mount(<ToastWithProps />);
+	// 	const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`);
+
+	// 	expect(clearTimeoutsSpy).not.toHaveBeenCalled();
+	// 	dismissBtn.simulate('click');
+	// 	expect(clearTimeoutsSpy).toHaveBeenCalled();
+	// });
+
+	it('should remove the Toast from the Toaster `toasts` state when the dismiss button is clicked', () => {
+		const component = mount(<ToastWithProps />);
+		const toasterComponent = component.find(Toaster).getNode();
+		const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`);
+
+		expect(toasterComponent.state.toasts.length).toBe(1);
+		dismissBtn.simulate('click');
+		expect(toasterComponent.state.toasts.length).toBe(0);
 	});
 
 	it('should not render a dismiss button if dismissable prop is false', () => {
