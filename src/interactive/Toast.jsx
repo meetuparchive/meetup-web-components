@@ -23,6 +23,11 @@ class Toast extends React.PureComponent {
 		this.handleDismiss = this.handleDismiss.bind(this);
 	}
 
+	/**
+	 * @returns undefined
+	 *
+	 * tells `Toaster` component which toast was clicked to be dismissed
+	 */
 	handleDismiss() {
 		if (this.props.setDismissedToast) {
 			this.props.setDismissedToast(this);

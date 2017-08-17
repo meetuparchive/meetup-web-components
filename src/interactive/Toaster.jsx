@@ -25,12 +25,21 @@ class Toaster extends React.PureComponent {
 		};
 	}
 
+	/**
+	 * @param {Object} dismissedToast - `Toast` components to remove from state
+	 * @returns undefined
+	 */
 	setDismissedToast(dismissedToast) {
 		this.setState({
 			toasts: this.state.toasts.filter(toast => dismissedToast.props.id !== toast.props.id)
 		});
 	}
 
+	/**
+	 * @returns undefined
+	 *
+	 * sets timers to delay each toast's dismissal
+	 */
 	setTimer() {
 		const toastsToDismiss = this.state.toasts.filter((toast) => toast.props.autodismiss);
 
@@ -41,6 +50,11 @@ class Toaster extends React.PureComponent {
 		});
 	}
 
+	/**
+	 * @returns undefined
+	 *
+	 * removes timers in order to prevent toasts from being dismissed
+	 */
 	clearTimeouts() {
 		this.timeouts.forEach(clearTimeout);
 	}
@@ -68,7 +82,6 @@ class Toaster extends React.PureComponent {
 			dismissable: toast.props.dismissable,
 			autodismiss: toast.props.autodismiss,
 			setDismissedToast: this.setDismissedToast
-			// killMe: this.jumpedOffCliff
 		};
 		return React.cloneElement(toast, toastProps);
 	}
@@ -80,10 +93,6 @@ class Toaster extends React.PureComponent {
 		this.state.toasts = this.state.toasts.map(this.cloneToast);
 		return this.state.toasts;
 	}
-
-	// jumpedOffCliff() {
-	// 	... removes from state
-	// }
 
 	render() {
 		const {

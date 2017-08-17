@@ -175,16 +175,6 @@ describe('Toast', function() {
 		expect(setDismissedToastSpy).toHaveBeenCalled();
 	});
 
-	// it('should call clearTimeouts when the dismiss button is clicked', () => {
-	// 	const clearTimeoutsSpy = spyOn(Toaster.prototype, 'clearTimeouts');
-	// 	const component = mount(<ToastWithProps />);
-	// 	const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`);
-
-	// 	expect(clearTimeoutsSpy).not.toHaveBeenCalled();
-	// 	dismissBtn.simulate('click');
-	// 	expect(clearTimeoutsSpy).toHaveBeenCalled();
-	// });
-
 	it('should remove the Toast from the Toaster `toasts` state when the dismiss button is clicked', () => {
 		const component = mount(<ToastWithProps />);
 		const toasterComponent = component.find(Toaster).getNode();
