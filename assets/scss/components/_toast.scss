@@ -1,0 +1,69 @@
+.toaster {
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.toast {
+	background-color: #538eed; // replace with `$C_blue` when `swarm-constants` replaces `meetup-swatches`
+	box-sizing: border-box;
+	display: block;
+	margin-bottom: $space-half;
+	padding: $space-3 $space;
+
+	@include atMediaUp(large) {
+		padding: $space-3;
+	}
+}
+
+.toast--error {
+	background-color: #ff5b0f; // replace with `$C_orange` when `swarm-constants` replaces `meetup-swatches`
+}
+
+.toast--success {
+	background-color: #00d480; // replace with `$C_teal` when `swarm-constants` replaces `meetup-swatches`
+}
+
+.toast-action {
+	text-decoration: underline;
+}
+
+.toast-dismissBtn {
+	cursor: pointer;
+}
+
+//
+// Toast transitions
+//
+
+// durations - should come from `swarm-animations` once we add it here
+$duration--short: .1s;
+$duration--medium: .25s;
+$duration--long: .5s;
+
+//easing - should come from `swarm-animations` once we add it here
+$easing--standard: cubic-bezier(.4, 0, .2, 1); // stays on screen from start to finish
+$easing--enter: cubic-bezier(0, 0, .2, 1); // entering the screen
+$easing--exit: cubic-bezier(.4, 0, 0, 1); // exiting the screen
+.slide-appear {
+  opacity: 0.01;
+  transform: translateY(-100px);
+}
+
+.slide-appear.slide-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: opacity $duration--medium $easing--enter, transform $duration--medium $easing--enter;
+}
+
+.slide-leave {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.slide-leave.slide-leave-active {
+  opacity: 0.01;
+  transform: translateY(-100px);
+  transition: opacity $duration--medium $easing--exit, transform $duration--medium $easing--exit;
+}
