@@ -10,13 +10,10 @@ class CalendarComponent extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			value: this.props.value || ''
-		};
-		this.onChange = this.onChange.bind(this);
+
+		this.flatpickrChange = this.flatpickrChange.bind(this);
 		this.onOpen = this.onOpen.bind(this);
 		this.onClose = this.onClose.bind(this);
-		this.updateFlatpickr = this.updateFlatpickr.bind(this);
 	}
 
 	/**
@@ -29,7 +26,7 @@ class CalendarComponent extends React.Component {
 		// imported only in clientside envs.
 		const Flatpickr = require('flatpickr');
 		const options = {
-			onChange: this.onChange,
+			onChange: this.flatpickrChange,
 			onOpen: this.onOpen,
 			onClose: this.onClose,
 			altInput: true,
@@ -56,6 +53,11 @@ class CalendarComponent extends React.Component {
 		this.flatpickr && this.flatpickr.destroy();
 	}
 
+	componentWillReceiveProps(newProps) {
+		console.log('its the new props', newProps);
+		this.flatpickr.setDate(newProps.value);
+	}
+
 	/**
 	* @function onChange
 	* @param Array selectedDates
@@ -64,8 +66,13 @@ class CalendarComponent extends React.Component {
 	* @description signature conforms to the onChange handler flatpickr expects
 	* calls the callback with the selectedDates value (callback used in wrapping components)
 	*/
-	onChange(selectedDates, dateStr, instance) {
-		this.setState({ value: selectedDates[0] });
+	flatpickrChange(selectedDates, dateStr, instance) {
+		console.log('in calendar component on change calling this props', this.props.onChange);
+		// TODO maybe just provide flatpicker with onChange from redux-form,
+		// instead of this fn	
+		this.props.onChange(selectedDates[0]);
+
+		// necessary??
 		this.props.onChangeCallback && this.props.onChangeCallback(selectedDates[0]);
 	}
 
@@ -86,18 +93,6 @@ class CalendarComponent extends React.Component {
 	onClose() {
 		this.props.onBlur && this.props.onBlur();
 	}
-
-	/**
-	* @function updateFlatpickr
-	* @description event hook for flatpickr, used to update Flatpickr
-	* input when state changes
-	*/
-	updateFlatpickr() {
-		if (this.flatpickr) {
-			this.flatpickr.setDate(this.state.value);
-		}
-	}
-
 
 	render() {
 		const {
@@ -120,7 +115,6 @@ class CalendarComponent extends React.Component {
 			className
 		);
 
-
 		const labelClassNames = cx(
 			{required},
 			{ 'visibility--a11yHide' : hideLabel },
@@ -131,10 +125,10 @@ class CalendarComponent extends React.Component {
 			<span>
 				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
 				<input
-					id={id}
 					type='text'
+					id={id}
 					name={name}
-					defaultValue={this.state.value}
+					defaultValue={value}
 					className={classNames}
 					ref={ input => this.inputEl = input }
 					{...other} />

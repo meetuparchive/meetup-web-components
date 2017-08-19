@@ -93,18 +93,14 @@ class DateTimePicker extends React.Component {
 		const datetime = new Date(this.state.datetime);
 
 		datetime.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
-		this.setState({ datetime });
+		this.setDateTime(datetime);
 
-		this.dateComponent.setState({
-			value: datetime
-		});
+		// this.dateComponent.setState({
+		// 	value: datetime
+		// });
 
 		// update flatpickr on update
-		this.dateComponent.updateFlatpickr();
-
-		if (this.props.onChangeCallback) {
-			this.props.onChangeCallback(datetime);
-		}
+		// this.dateComponent.updateFlatpickr();
 	}
 
 	/**
@@ -171,12 +167,10 @@ class DateTimePicker extends React.Component {
 	*/
 	setDateTime(value) {
 		const datetime = new Date(value);
-
 		this.setState({ datetime });
 
-		if (this.props.onChangeCallback) {
-			this.props.onChangeCallback(datetime);
-		}
+		// for redux form
+		this.props.onChange && this.props.onChange(datetime);
 	}
 
 	/**
