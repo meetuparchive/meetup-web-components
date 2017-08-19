@@ -9,14 +9,11 @@ class TimeInput extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			value: this.props.value || ''
-		};
 		this.onChange = this.onChange.bind(this);
 	}
 
 	onChange(e) {
-		this.setState({ value: e.target.value });
+		this.props.onChange && this.props.onChange(e.target.value);
 		this.props.onChangeCallback && this.props.onChangeCallback(e.target.value);
 	}
 
@@ -51,7 +48,7 @@ class TimeInput extends React.Component {
 					id={id}
 					type='time'
 					name={name}
-					value={this.state.value}
+					value={value}
 					className={classNames}
 					onChange={this.onChange}
 					required={required}
