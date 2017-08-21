@@ -29,9 +29,7 @@ class Toast extends React.PureComponent {
 	 * tells `Toaster` component which toast was clicked to be dismissed
 	 */
 	handleDismiss() {
-		if (this.props.setDismissedToast) {
-			this.props.setDismissedToast(this);
-		}
+		this.props.setDismissedToast && this.props.setDismissedToast(this);
 	}
 
 	render() {
