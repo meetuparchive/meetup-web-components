@@ -14,20 +14,21 @@ class TimeInput extends React.Component {
 
 	onChange(e) {
 		this.props.onChange && this.props.onChange(e.target.value);
-		this.props.onChangeCallback && this.props.onChangeCallback(e.target.value);
+		console.log('do I have a clabback???', this.props.datetimePickerCallback);
+		this.props.datetimePickerCallback && this.props.datetimePickerCallback(e.target.value);
 	}
 
 	render() {
 		const {
-			onChangeCallback,	// eslint-disable-line no-unused-vars
 			id,
 			label,
 			name,
 			className,
 			required,
-			value,		// eslint-disable-line no-unused-vars
+			value,
 			error,
 			hideLabel,
+			datetimePickerCallback,	// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -63,14 +64,14 @@ class TimeInput extends React.Component {
 }
 
 TimeInput.propTypes = {
-	onChangeCallback: PropTypes.func,
 	name: PropTypes.string.isRequired,
 	error: PropTypes.string,
 	label: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
 	]),
-	required: PropTypes.bool
+	required: PropTypes.bool,
+	datetimePickerCallback: PropTypes.func,
 };
 
 export default TimeInput;
