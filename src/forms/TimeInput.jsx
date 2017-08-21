@@ -14,7 +14,6 @@ class TimeInput extends React.Component {
 
 	onChange(e) {
 		this.props.onChange && this.props.onChange(e.target.value);
-		console.log('do I have a clabback???', this.props.datetimePickerCallback);
 		this.props.datetimePickerCallback && this.props.datetimePickerCallback(e.target.value);
 	}
 
@@ -28,6 +27,7 @@ class TimeInput extends React.Component {
 			value,
 			error,
 			hideLabel,
+			onChange, // eslint-disable-line no-unused-vars
 			datetimePickerCallback,	// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;

@@ -269,7 +269,7 @@ class DateTimePicker extends React.Component {
 				id={id}
 				name={name}
 				required={required}
-				onChangeCallback={this.setDate}
+				datetimePickerCallback={this.setDate}
 				value={this.getDate()}
 				onFocus={onFocus}
 				onBlur={onBlur}
@@ -295,7 +295,7 @@ class DateTimePicker extends React.Component {
 								<TimeInput
 									name={timeInputName}
 									id={(timeProps && timeProps.id) || `${id}-time`}
-									onChangeCallback={this.setTime}
+									datetimePickerCallback={this.setTime}
 									onFocus={onFocus}
 									onBlur={onBlur}
 									value={this.getTime()}
@@ -333,7 +333,6 @@ DateTimePicker.propTypes = {
 	]),
 	dateOnly: PropTypes.bool,
 	forceCalendar: PropTypes.bool,
-	onChangeCallback: PropTypes.func
 };
 
 export default DateTimePicker;

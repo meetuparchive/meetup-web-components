@@ -68,12 +68,9 @@ class CalendarComponent extends React.Component {
 	*/
 	flatpickrChange(selectedDates, dateStr, instance) {
 		console.log('in calendar component on change calling this props', this.props.onChange);
-		// TODO maybe just provide flatpicker with onChange from redux-form,
-		// instead of this fn	
-		this.props.onChange(selectedDates[0]);
-
-		// necessary??
-		this.props.onChangeCallback && this.props.onChangeCallback(selectedDates[0]);
+		// TODO maybe just provide flatpicker with onChange from redux-form,	
+		this.props.onChange && this.props.onChange(selectedDates[0]);
+		this.props.datetimePickerCallback && this.props.datetimePickerCallback(selectedDates[0]);
 	}
 
 	/**
@@ -141,7 +138,7 @@ class CalendarComponent extends React.Component {
 
 CalendarComponent.propTypes = {
 	name: PropTypes.string.isRequired,
-	onChangeCallback: PropTypes.func
+	datetimePickerCallback: PropTypes.func
 };
 
 export default CalendarComponent;
