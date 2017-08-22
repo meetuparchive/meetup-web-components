@@ -2,8 +2,11 @@ import React from 'react';
 import DateTimePicker from './DateTimePicker';
 import { storiesOf } from '@kadira/storybook';
 import { InfoWrapper } from '../utils/storyComponents';
+import { decorateWithLocale } from '../utils/decorators';
+/* eslint-disable */
 
 storiesOf('DateTimePicker', module)
+	.addDecorator(decorateWithLocale)
 	.addWithInfo(
 		'default',
 		'renders date and time inputs, using datetime-local where supported. Use `forceCalendar` option to not use datetime-local if supported',
@@ -11,7 +14,8 @@ storiesOf('DateTimePicker', module)
 			<InfoWrapper>
 				<div className='span--50'>
 					<DateTimePicker
-						name='event_time'
+						id='startTime'
+						name='start_time'
 						label='Start at'
 						value={new Date()}
 						forceCalendar
@@ -24,6 +28,7 @@ storiesOf('DateTimePicker', module)
 	.add('required', () => {
 		return (<div className='span--50'>
 			<DateTimePicker
+				id='startTime'
 				name='event_time'
 				label='Start at'
 				value={new Date()}
@@ -37,7 +42,7 @@ storiesOf('DateTimePicker', module)
 			max = new Date(),
 			now = Date.now();
 		min.setDate(min.getDate() - 2);
-		max.setDate(max.getDate() + 12);
+		max.setDate(max.getDate() + 7);
 		const opts = {
 			allowInput: true,
 			minDate: min,
@@ -45,8 +50,9 @@ storiesOf('DateTimePicker', module)
 		};
 		return (<div className='span--50'>
 			<DateTimePicker
+				id='startTime'
 				name='event_time'
-				label='Start date between Jan Feb 2018'
+				label='From 2 days ago to 1 week from now'
 				value={now}
 				forceCalendar
 				datepickerOptions={opts}
@@ -61,6 +67,7 @@ storiesOf('DateTimePicker', module)
 			date = new Date(3000,1,1,15,0,0);
 		return (<div className='span--50'>
 			<DateTimePicker
+				id='startTime'
 				name='event_time'
 				label='In the year 3000'
 				value={date}
@@ -70,19 +77,18 @@ storiesOf('DateTimePicker', module)
 		</div>);
 	})
 	.add('can render date only', () => {
-		const opts = {
+		const minDate = new Date(),
+			opts = {
 				allowInput: true,
-				minDate: Date.now()
-			},
-			date = '2017-02-18';
+				minDate: minDate
+			};
 
 		return (<div className='span--50'>
 			<DateTimePicker
+				id='startTime'
 				name='event_time'
-				label='Start at'
-				value={date}
+				label='Tomorrow'
 				dateOnly
-				datepickerOptions={opts}
 				forceCalendar
 			/>
 		</div>);
@@ -92,10 +98,11 @@ storiesOf('DateTimePicker', module)
 				allowInput: true,
 				minDate: Date.now()
 			},
-			date = '2017-02-18';
+			date = (new Date()).getTime();
 
 		return (<div className='span--50'>
 			<DateTimePicker
+				id='startTime'
 				name='event_time'
 				label='Start at'
 				value={date}
@@ -112,6 +119,7 @@ storiesOf('DateTimePicker', module)
 
 		return (<div className='span--50'>
 			<DateTimePicker
+				id='startTime'
 				name='event_time'
 				label='Start at'
 				value={date}
@@ -129,6 +137,7 @@ storiesOf('DateTimePicker', module)
 		return (
 			<div className='span--50'>
 				<DateTimePicker
+					id='startTime'
 					name='event_time'
 					label='Start at'
 					value={date}

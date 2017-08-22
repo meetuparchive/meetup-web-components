@@ -10,12 +10,6 @@ class DateTimeLocalInput extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			value: this.props.value ? (new Date(this.props.value).toISOString()).split('.')[0] : ''
-			// example: 2017-02-18T00:00:00
-			// leaving off milliseconds
-			// datetime local wont set value with milliseconds
-		};
 		this.onChange = this.onChange.bind(this);
 	}
 
@@ -26,18 +20,19 @@ class DateTimeLocalInput extends React.Component {
 	* @param e Event the change event
 	*/
 	onChange(e) {
-		this.setState({ value: e.target.value });
-		this.props.onChangeCallback && this.props.onChangeCallback(e.target.value);
+		this.props.onChange && this.props.onChange(e.target.value);
+		this.props.datetimePickerCallback && this.props.datetimePickerCallback(e.target.value);
 	}
 
 	render() {
 		const {
 			id,
 			label,
-			onChangeCallback,	// eslint-disable-line no-unused-vars
 			className,
 			required,
-			value,		// eslint-disable-line no-unused-vars
+			value,
+			datetimePickerCallback,	// eslint-disable-line no-unused-vars
+			onChange, 	// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -46,6 +41,11 @@ class DateTimeLocalInput extends React.Component {
 			className
 		);
 
+		const datetimeStr = (value) ? (new Date(this.props.value).toISOString()).split('.')[0] : '';
+		// example: 2017-02-18T00:00:00		
+		// leaving off milliseconds		
+		// datetime local wont set value with milliseconds		
+
 		const labelClassNames = cx({required});
 		return (
 			<div>
@@ -53,7 +53,7 @@ class DateTimeLocalInput extends React.Component {
 				<input
 					id={id}
 					type='datetime-local'
-					value={this.state.value}
+					value={datetimeStr}
 					className={classNames}
 					onChange={this.onChange}
 					required={required}
@@ -71,7 +71,7 @@ DateTimeLocalInput.propTypes = {
 		PropTypes.string,
 		PropTypes.element,
 	]),
-	onChangeCallback: PropTypes.func
+	datetimePickerCallback: PropTypes.func
 };
 
 export default DateTimeLocalInput;

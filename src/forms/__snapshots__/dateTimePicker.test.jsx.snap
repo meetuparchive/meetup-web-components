@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateTimePicker renders child components as expected accessibility concerns provides aria-invalid and aria-describedby attrs on calendar when there is an error 1`] = `
+<div>
+  <fieldset>
+    <legend
+      className="visibility--a11yHide"
+    >
+      Event start date and time
+    </legend>
+    <Flex
+      direction="row"
+    >
+      <FlexItem>
+        <CalendarComponent
+          aria-describedby="event_start-datetime-error"
+          aria-invalid={true}
+          className="field--error"
+          datetimePickerCallback={[Function]}
+          id="event_start"
+          name="start_time"
+          opts={
+            Object {
+              "maxDate": 2018-01-06T00:00:00.000Z,
+              "minDate": 2018-01-01T00:00:00.000Z,
+            }
+          }
+          value={2018-01-01T05:00:00.000Z}
+        />
+      </FlexItem>
+      <FlexItem>
+        <TimeInput
+          className="field--error"
+          datetimePickerCallback={[Function]}
+          id="event_start-time"
+          name="start_time-time"
+          value="18:11"
+        />
+      </FlexItem>
+    </Flex>
+  </fieldset>
+  <p
+    className="text--error"
+    id="event_start-datetime-error"
+  >
+    Too late
+  </p>
+</div>
+`;
+
+exports[`DateTimePicker renders child components as expected accessibility concerns renders a fieldset for date and time, with optional offscreen legend for a11y 1`] = `
+<div>
+  <fieldset>
+    <legend
+      className="visibility--a11yHide"
+    >
+      Event start date and time
+    </legend>
+    <Flex
+      direction="row"
+    >
+      <FlexItem>
+        <CalendarComponent
+          aria-describedby="event_start-datetime-error"
+          aria-invalid={true}
+          className="field--error"
+          datetimePickerCallback={[Function]}
+          id="event_start"
+          name="start_time"
+          opts={
+            Object {
+              "maxDate": 2018-01-06T00:00:00.000Z,
+              "minDate": 2018-01-01T00:00:00.000Z,
+            }
+          }
+          value={2018-01-01T05:00:00.000Z}
+        />
+      </FlexItem>
+      <FlexItem>
+        <TimeInput
+          className="field--error"
+          datetimePickerCallback={[Function]}
+          id="event_start-time"
+          name="start_time-time"
+          value="18:11"
+        />
+      </FlexItem>
+    </Flex>
+  </fieldset>
+  <p
+    className="text--error"
+    id="event_start-datetime-error"
+  >
+    Too late
+  </p>
+</div>
+`;
+
+exports[`DateTimePicker renders child components as expected passes expected props and value to calendar and time 1`] = `
+<div>
+  <fieldset>
+    <Flex
+      direction="row"
+    >
+      <FlexItem>
+        <CalendarComponent
+          aria-describedby="event_start-datetime-error"
+          aria-invalid={true}
+          className="field--error"
+          datetimePickerCallback={[Function]}
+          id="event_start"
+          name="start_time"
+          opts={
+            Object {
+              "maxDate": 2018-01-06T00:00:00.000Z,
+              "minDate": 2018-01-01T00:00:00.000Z,
+            }
+          }
+          value={2018-01-01T05:00:00.000Z}
+        />
+      </FlexItem>
+      <FlexItem>
+        <TimeInput
+          className="field--error"
+          datetimePickerCallback={[Function]}
+          id="event_start-time"
+          name="start_time-time"
+          value="18:11"
+        />
+      </FlexItem>
+    </Flex>
+  </fieldset>
+  <p
+    className="text--error"
+    id="event_start-datetime-error"
+  >
+    Too late
+  </p>
+</div>
+`;
+
+exports[`DateTimePicker renders child components as expected renders a date component only if dateOnly specified 1`] = `
+<div>
+  <CalendarComponent
+    className=""
+    datetimePickerCallback={[Function]}
+    name="start_time"
+    opts={
+      Object {
+        "maxDate": 2018-01-06T00:00:00.000Z,
+        "minDate": 2018-01-01T00:00:00.000Z,
+      }
+    }
+    value={2017-08-22T04:00:00.000Z}
+  />
+</div>
+`;

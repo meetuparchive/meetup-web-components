@@ -1,5 +1,53 @@
 @import "~flatpickr/dist/flatpickr"; // calendar component
 
+/* overrides */
+
+.flatpickr-calendar {
+	padding: 8px;   
+	width: auto;  
+
+	.svg--chevron-right svg {
+		fill: $C_textPrimary;
+	}
+
+	.svg--chevron-left svg {
+		fill: $C_separator;
+	}
+}
+
+span.flatpickr-weekday {
+	color: inherit;
+	font-weight: $W_normal;
+  }
+
+.flatpickr-current-month span.cur-month {
+	font-weight: $W_normal;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.startRange.prevMonthDay,
+.flatpickr-day.endRange.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay,
+.flatpickr-day.startRange.nextMonthDay,
+.flatpickr-day.endRange.nextMonthDay {
+  background: $C_blue; 
+  border-color: $C_blue; 
+}
+
+// datepicker form styles
+
 .dateTimePicker {
 	position:relative;
 }
@@ -7,46 +55,15 @@
 .calendarTimeComponent {	
 	.input--dateTimePicker {
 		position: relative;
-		top:0;
-		left:0;
 		display:inline-block;
-		background:transparent;
-		z-index:1;
-		
-		&:focus {
-			background:transparent;
-		}
 	}
 
 	.input--time {
-		position: absolute;
-		right:0;
-		top:0;
-		display:inline-block;	
-		border:none;
+		position: relative;
+		display:inline-block;
 		width:50%;
 		text-align:right;
-		z-index:1;
-		background:transparent;
-
-		&:focus {
-			background:transparent;
-		}
 	}
 
-	#datetime-background {
-		z-index:0;
-		position:absolute;
-		width:100%;
-		top:0;
-		left:0;
-		
-		&.focused {
-			background-color: white;
-			border-color: #1f24cc;
-			box-shadow: none;
-		    outline: none;
-		}
-	}
 }
 
