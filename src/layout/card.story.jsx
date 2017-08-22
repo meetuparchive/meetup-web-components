@@ -20,9 +20,9 @@ storiesOf('Card', module)
 			</div>
 		)
 	)
-	.add('autoHeight', () => (
+	.add('initialHeight', () => (
 		<div style={wrapperStyle}>
-			<Card autoHeight>
+			<Card initialHeight>
 				<h2 className="text--sectionTitle margin--bottom">This card contains content</h2>
 				<p className="margin--bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 			</Card>
