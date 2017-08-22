@@ -13,7 +13,7 @@ exports[`DateTimePicker renders child components as expected accessibility conce
     >
       <FlexItem>
         <CalendarComponent
-          aria-describedby="event_start-calendar-error"
+          aria-describedby="event_start-datetime-error"
           aria-invalid={true}
           className="field--error"
           datetimePickerCallback={[Function]}
@@ -41,7 +41,7 @@ exports[`DateTimePicker renders child components as expected accessibility conce
   </fieldset>
   <p
     className="text--error"
-    id="event_start-calendar-error"
+    id="event_start-datetime-error"
   >
     Too late
   </p>
@@ -61,7 +61,7 @@ exports[`DateTimePicker renders child components as expected accessibility conce
     >
       <FlexItem>
         <CalendarComponent
-          aria-describedby="event_start-calendar-error"
+          aria-describedby="event_start-datetime-error"
           aria-invalid={true}
           className="field--error"
           datetimePickerCallback={[Function]}
@@ -89,7 +89,7 @@ exports[`DateTimePicker renders child components as expected accessibility conce
   </fieldset>
   <p
     className="text--error"
-    id="event_start-calendar-error"
+    id="event_start-datetime-error"
   >
     Too late
   </p>
@@ -104,7 +104,7 @@ exports[`DateTimePicker renders child components as expected passes expected pro
     >
       <FlexItem>
         <CalendarComponent
-          aria-describedby="event_start-calendar-error"
+          aria-describedby="event_start-datetime-error"
           aria-invalid={true}
           className="field--error"
           datetimePickerCallback={[Function]}
@@ -132,7 +132,7 @@ exports[`DateTimePicker renders child components as expected passes expected pro
   </fieldset>
   <p
     className="text--error"
-    id="event_start-calendar-error"
+    id="event_start-datetime-error"
   >
     Too late
   </p>
