@@ -11,9 +11,8 @@ describe('TimeInput', function() {
 		inputEl;
 
 	const timeValue = '22:00',
-		newTime = '23:00';
-
-	const onChangeMock = jest.fn();
+		newTime = '23:00',
+		onChangeMock = jest.fn();
 
 	beforeEach(() => {
 		component = shallow(
@@ -39,36 +38,41 @@ describe('TimeInput', function() {
 		expect(inputEl.prop('value')).toEqual(timeValue);
 	});
 
-	it('calls internal onChange when value is changed', function() {
-		const onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
-		let input = shallow(<TimeInput
-			name='time'
-			value={timeValue}
-			onChange={onChangeMock}
-			required />
-		).find('input');
-		input.simulate('change', { target: { value: newTime } });
-		expect(onChangeSpy).toHaveBeenCalled();
-	});
+	describe('onChange', () => {
+		const callbackSpy = jest.fn();	
+		let onChangeSpy;	
 
-	it('calls onChange prop when value is changed', function() {
-		inputEl.simulate('change', { target: { value: newTime } });
-		expect(onChangeMock).toHaveBeenCalled();
-	});
-
-	it('calls datepicker callback with value if one is provided', function() {
-		const callbackSpy = jest.fn();
-
-		component = shallow(
-			<TimeInput
+		beforeEach(() => {
+			onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
+			
+			inputEl = shallow(<TimeInput
 				name='time'
 				value={timeValue}
+				onChange={onChangeMock}
 				datetimePickerCallback={callbackSpy}
 				required />
-		);
-		inputEl = component.find('input');
-		inputEl.simulate('change', { target: { value: newTime } });
-		expect(callbackSpy).toHaveBeenCalledWith(newTime);
+			).find('input');
+		});
+
+		afterEach(() => {
+			inputEl = null;
+			onChangeSpy.mockClear();
+		});
+
+		it('calls internal onChange when value is changed', function() {
+			inputEl.simulate('change', { target: { value: newTime } });
+			expect(onChangeSpy).toHaveBeenCalled();
+		});
+
+		it('calls onChange prop when value is changed', function() {
+			inputEl.simulate('change', { target: { value: newTime } });
+			expect(onChangeMock).toHaveBeenCalled();
+		});
+
+		it('calls datepicker callback with value if one is provided', function() {
+			inputEl.simulate('change', { target: { value: newTime } });
+			expect(callbackSpy).toHaveBeenCalledWith(newTime);
+		});
 	});
 });
 
