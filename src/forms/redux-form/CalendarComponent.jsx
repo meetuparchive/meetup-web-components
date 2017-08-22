@@ -9,7 +9,6 @@ import CalendarComponent from '../CalendarComponent';
  */
 const ReduxFormCalendarComponent = props => {
 	const { meta, input, ...other } = props;
-	console.log('calendar component wrapper', props);
 	return <CalendarComponent error={meta.error} {...input} {...other} />;
 };
 
