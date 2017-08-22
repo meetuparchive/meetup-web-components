@@ -1,6 +1,5 @@
-/* eslint-disable */
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import DateTimePicker from './DateTimePicker';
 import DateTimeLocalInput from './DateTimeLocalInput';
 import CalendarComponent from './CalendarComponent';
@@ -11,16 +10,16 @@ describe('DateTimePicker', function() {
 	let dateTimeComponent;
 
 	const 	year = 2018,
-			month = 0,
-			day = 1,
-			hours = 23,
-			minutes = 11;
+		month = 0,
+		day = 1,
+		hours = 23,
+		minutes = 11;
 
 	const datetime = new Date(Date.UTC(year, month, day, hours, minutes)),
-			dateStr = `${year}-0${month+1}-0${day}`,
-			minDate = new Date(dateStr),
-			maxDate = new Date(dateStr); // use set dates so snapshot not always changing
-	
+		dateStr = `${year}-0${month+1}-0${day}`,
+		minDate = new Date(dateStr),
+		maxDate = new Date(dateStr); // use set dates so snapshot not always changing
+
 	maxDate.setDate(maxDate.getDate() + 5);
 
 	const datepickerOptions = { minDate, maxDate };
@@ -50,7 +49,7 @@ describe('DateTimePicker', function() {
 			// name, id, required etc attrs areas expected
 			// datepickerOpts in snapshot, with date range
 			// datepickerCallback is passed down to each
-			
+
 			expect(dateTimeComponent).toMatchSnapshot();
 		});
 
@@ -67,7 +66,7 @@ describe('DateTimePicker', function() {
 
 		it('has child CalendarComponent with expected value and datetimePickerCallback props', () => {
 			const calendarComponent = dateTimeComponent.find(CalendarComponent);
-		const instance = dateTimeComponent.instance();
+			const instance = dateTimeComponent.instance();
 			expect(calendarComponent.prop('value')).toEqual(instance.getDate());
 			expect(calendarComponent.prop('datetimePickerCallback')).toEqual(instance.setDate);
 		});
@@ -76,8 +75,8 @@ describe('DateTimePicker', function() {
 		it('renders a dateTimeLocalInput if browser supports, with expected value and datetimePickerCallback props', () => {
 			const instance = dateTimeComponent.instance();
 			instance.setState({ isDateTimeLocalSupported: true });
-		
-			const dateTimeLocalInput = dateTimeComponent.find(DateTimeLocalInput)
+
+			const dateTimeLocalInput = dateTimeComponent.find(DateTimeLocalInput);
 			expect(dateTimeLocalInput).not.toBeNull();
 			expect(dateTimeLocalInput.prop('value')).toEqual(instance.state.datetime);
 			expect(dateTimeLocalInput.prop('datetimePickerCallback')).toEqual(instance.setDateTime);
@@ -110,7 +109,7 @@ describe('DateTimePicker', function() {
 					/>
 				);
 			});
-	
+
 			afterEach(() => {
 				dateTimeComponent = null;
 			});
@@ -122,11 +121,11 @@ describe('DateTimePicker', function() {
 			it('provides aria-invalid and aria-describedby attrs on calendar when there is an error', () => {
 				expect(dateTimeComponent).toMatchSnapshot();
 			});
-		})
+		});
 	});
 
 });
-	
+
 
 
 

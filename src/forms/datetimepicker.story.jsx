@@ -3,7 +3,6 @@ import DateTimePicker from './DateTimePicker';
 import { storiesOf } from '@kadira/storybook';
 import { InfoWrapper } from '../utils/storyComponents';
 import { decorateWithLocale } from '../utils/decorators';
-/* eslint-disable */
 
 storiesOf('DateTimePicker', module)
 	.addDecorator(decorateWithLocale)
@@ -88,6 +87,7 @@ storiesOf('DateTimePicker', module)
 				id='startTime'
 				name='event_time'
 				label='Tomorrow'
+				datepickerOptions={opts}
 				dateOnly
 				forceCalendar
 			/>

@@ -3,8 +3,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import TimeInput from './TimeInput';
 
-/* eslint-disable */
-
 describe('TimeInput', function() {
 
 	let component,
@@ -39,12 +37,12 @@ describe('TimeInput', function() {
 	});
 
 	describe('onChange', () => {
-		const callbackSpy = jest.fn();	
-		let onChangeSpy;	
+		const callbackSpy = jest.fn();
+		let onChangeSpy;
 
 		beforeEach(() => {
 			onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
-			
+
 			inputEl = shallow(<TimeInput
 				name='time'
 				value={timeValue}
