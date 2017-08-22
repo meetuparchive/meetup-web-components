@@ -46,7 +46,7 @@ describe('DateTimePicker', function() {
 
 		it('passes expected props and value to calendar and time', function() {
 			// visually check:
-			//  Calendar and TimeInput are in snapshot
+			// Calendar and TimeInput are in snapshot
 			// name, id, required etc attrs areas expected
 			// datepickerOpts in snapshot, with date range
 			// datepickerCallback is passed down to each

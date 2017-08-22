@@ -234,7 +234,7 @@ class DateTimePicker extends React.Component {
 		}
 
 		// const calendarErrorId = `calendar-error-${new Date().getTime()}`;
-		const calendarErrorId = 'calendar-error';
+		const calendarErrorId = `${id}-calendar-error`;
 
 		if (error) {
 			other['aria-invalid'] = true;
@@ -260,7 +260,7 @@ class DateTimePicker extends React.Component {
 				{dateOnly && calendarComponent}
 				{!dateOnly &&
 					<fieldset>
-						{legend && <legend className={legendClassNames}>{legend}</legend>}
+						{ legend && <legend className={legendClassNames}>{legend}</legend> }
 						{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
 						<Flex>
 							<FlexItem>
@@ -293,6 +293,7 @@ DateTimePicker.propTypes = {
 		PropTypes.element,
 		PropTypes.string
 	]),
+	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	required: PropTypes.bool,
 	value: PropTypes.oneOfType([
