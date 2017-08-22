@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CalendarComponent renders the component with appropriate attributes 1`] = `
+<span>
+  <input
+    className="input--dateTimePicker beyonce-halo"
+    defaultValue={2012-10-12T00:00:00.000Z}
+    id="beyonce"
+    name="halo"
+    type="text"
+  />
+</span>
+`;

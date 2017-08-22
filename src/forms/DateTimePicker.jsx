@@ -5,6 +5,9 @@ import CalendarComponent from './CalendarComponent';
 import TimeInput from './TimeInput';
 import DateTimeLocalInput from './DateTimeLocalInput';
 
+import Flex from '../layout/Flex';
+import FlexItem from '../layout/FlexItem';
+
 /**
  * @module DateTimePicker
  * @description a component that renders a calendar ui and time input
@@ -14,7 +17,6 @@ class DateTimePicker extends React.Component {
 
 	constructor(props) {
 		super(props);
-
 		const datetime = props.value ? new Date(props.value) : new Date();
 
 		this.state = {
@@ -29,8 +31,6 @@ class DateTimePicker extends React.Component {
 		this.setTime = this.setTime.bind(this);
 
 		this.setDateTime = this.setDateTime.bind(this);
-		this.onFocus = this.onFocus.bind(this);
-		this.onBlur = this.onBlur.bind(this);
 	}
 	/**
 	/* call `hasBrowserSupport` after mounting so server
@@ -42,6 +42,14 @@ class DateTimePicker extends React.Component {
 	*/
 	componentDidMount() {
 		this.setState({ isDateTimeLocalSupported: this.hasBrowserSupport() });
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if ('reduxInputValue' in nextProps) {
+			this.setState({
+				datetime: nextProps.reduxInputValue,
+			});
+		}
 	}
 
 	/**
@@ -90,18 +98,7 @@ class DateTimePicker extends React.Component {
 		const datetime = new Date(this.state.datetime);
 
 		datetime.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
-		this.setState({ datetime });
-
-		this.dateComponent.setState({
-			value: datetime
-		});
-
-		// update flatpickr on update
-		this.dateComponent.updateFlatpickr();
-
-		if (this.props.onChangeCallback) {
-			this.props.onChangeCallback(datetime);
-		}
+		this.setDateTime(datetime);
 	}
 
 	/**
@@ -123,7 +120,6 @@ class DateTimePicker extends React.Component {
 	parseHoursAndMinutesFromTimeString(timeString) {
 		return timeString.split(':'); // TODO: localization/i18n SDS-247
 	}
-
 
 	/**
 	* @function parseNewTimeAsDate
@@ -168,36 +164,10 @@ class DateTimePicker extends React.Component {
 	*/
 	setDateTime(value) {
 		const datetime = new Date(value);
-
 		this.setState({ datetime });
 
-		if (this.props.onChangeCallback) {
-			this.props.onChangeCallback(datetime);
-		}
-	}
-
-	/**
-	* @function onFocus
-	* @param Event e
-	* @description called if datetime compound component and used to set focused
-	* class on combo component
-	*/
-	onFocus(e) {
-		this.backgroundEl.classList.add('focused');
-	}
-
-	/**
-	* @function onBlur
-	* @param Event e
-	* @description called when either of the date or time inputs is blurred
-	* takes off focus class when neither of them are in focus
-	*/
-	onBlur(e) {
-		const timeInput = this.timeComponent.inputEl;
-		const dateInput = this.dateComponent.inputEl;
-		if (document.activeElement !== timeInput && document.activeElement !== dateInput) {
-			this.backgroundEl.classList.remove('focused');
-		}
+		// for redux form
+		this.props.onChange && this.props.onChange(datetime);
 	}
 
 	render() {
@@ -211,6 +181,10 @@ class DateTimePicker extends React.Component {
 			required,
 			name,
 			error,
+			timeProps,
+			legend,
+			showLegend,
+			forceCalendar, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -224,12 +198,24 @@ class DateTimePicker extends React.Component {
 		const childClasses = cx(
 			{ 'field--error': error }
 		);
+
 		const labelClassNames = cx({required});
+
+		const legendClassNames = cx(
+			{required},
+			{ 'visibility--a11yHide' : !showLegend }
+		);
+
 		const timeInputName = `${name}-time`;
 
-		if (this.state.isDateTimeLocalSupported) {
-			// TODO datetime-local opts ?
+		const errorId = `${id}-datetime-error`;
 
+		if (error) {
+			other['aria-invalid'] = true;
+			other['aria-describedby'] = errorId;
+		}
+
+		if (this.state.isDateTimeLocalSupported) {
 			return (
 				<div>
 					<DateTimeLocalInput
@@ -238,52 +224,54 @@ class DateTimePicker extends React.Component {
 						value={this.state.datetime}
 						required={required}
 						className={classNames}
-						onChangeCallback={this.setDateTime}
-
+						datetimePickerCallback={this.setDateTime}
 						{...other} />
 					{ error && <p className='text--error'>{error}</p> }
 				</div>
 			);
 		}
 
-		// only set callbacks if this is a combo datetime component
-		const onFocus = (dateOnly) ? null : this.onFocus;
-		const onBlur = (dateOnly) ? null : this.onBlur;
+		const calendarComponent = (
+			<CalendarComponent
+				id={id}
+				name={name}
+				required={required}
+				value={this.getDate()}
+				opts={datepickerOptions}
+				className={childClasses}
+				datetimePickerCallback={this.setDate}
+				{...other}
+				ref={ comp => this.dateComponent = comp }
+			/>
+		);
 
 		return (
 			<div>
-				<label htmlFor={id} className={labelClassNames}>{label}</label>
-				<div className={classNames}>
-
-					<div>
-						<CalendarComponent name={name}
-							onChangeCallback={this.setDate}
-							value={this.getDate()}
-							onFocus={onFocus}
-							onBlur={onBlur}
-							opts={datepickerOptions}
-							className={childClasses}
-							ref={ comp => this.dateComponent = comp }
-						/>
-						{ !dateOnly &&
-								<TimeInput name={timeInputName}
-									onChangeCallback={this.setTime}
-									onFocus={onFocus}
-									onBlur={onBlur}
+				{dateOnly && calendarComponent}
+				{!dateOnly &&
+					<fieldset>
+						{ legend && <legend className={legendClassNames}>{legend}</legend> }
+						{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
+						<Flex>
+							<FlexItem>
+								{calendarComponent}
+							</FlexItem>
+							<FlexItem>
+								<TimeInput
+									name={timeInputName}
+									id={(timeProps && timeProps.id) || `${id}-time`}
 									value={this.getTime()}
 									ref={ comp => this.timeComponent = comp }
 									className={childClasses}
+									datetimePickerCallback={this.setTime}
+									{...timeProps}
 								/>
-						}
-						{ !dateOnly &&
-							<input type='text'
-								id='datetime-background'
-								ref={ el => this.backgroundEl = el }
-							/>
-						}
-						{ error && <p className='text--error'>{error}</p> }
-					</div>
-				</div>
+							</FlexItem>
+						</Flex>
+					</fieldset>
+				}
+				{ error && <p id={errorId} className='text--error'>{error}</p> }
+
 			</div>
 		);
 	}
@@ -295,6 +283,7 @@ DateTimePicker.propTypes = {
 		PropTypes.element,
 		PropTypes.string
 	]),
+	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	required: PropTypes.bool,
 	value: PropTypes.oneOfType([
@@ -308,7 +297,6 @@ DateTimePicker.propTypes = {
 	]),
 	dateOnly: PropTypes.bool,
 	forceCalendar: PropTypes.bool,
-	onChangeCallback: PropTypes.func
 };
 
 export default DateTimePicker;
