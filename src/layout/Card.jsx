@@ -3,9 +3,6 @@ import React from 'react';
 import cx from 'classnames';
 
 export const CARD_CLASS = 'card';
-export const INITIALHEIGHT_CARD_CLASS = `${CARD_CLASS}--initialHeight`;
-export const HASSHADOW_CARD_CLASS = `${CARD_CLASS}--hasShadow`;
-export const HASHOVERSHADOW_CARD_CLASS = `${CARD_CLASS}--hasHoverShadow`;
 
 /**
  * @module Card
@@ -24,9 +21,9 @@ class Card extends React.PureComponent {
 		const classNames = cx(
 			CARD_CLASS,
 			{
-				[INITIALHEIGHT_CARD_CLASS]: initialHeight,
-				[HASSHADOW_CARD_CLASS]: hasShadow,
-				[HASHOVERSHADOW_CARD_CLASS]: hasHoverShadow
+				[`${CARD_CLASS}--initialHeight`]: initialHeight,
+				[`${CARD_CLASS}--hasShadow`]: hasShadow,
+				[`${CARD_CLASS}--hasHoverShadow`]: hasHoverShadow
 			},
 			className
 		);
