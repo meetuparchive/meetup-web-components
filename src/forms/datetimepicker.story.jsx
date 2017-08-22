@@ -2,8 +2,10 @@ import React from 'react';
 import DateTimePicker from './DateTimePicker';
 import { storiesOf } from '@kadira/storybook';
 import { InfoWrapper } from '../utils/storyComponents';
+import { decorateWithLocale } from '../utils/decorators';
 
 storiesOf('DateTimePicker', module)
+	.addDecorator(decorateWithLocale)
 	.addWithInfo(
 		'default',
 		'renders date and time inputs, using datetime-local where supported. Use `forceCalendar` option to not use datetime-local if supported',
