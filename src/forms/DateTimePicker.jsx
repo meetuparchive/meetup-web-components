@@ -32,8 +32,6 @@ class DateTimePicker extends React.Component {
 		this.setTime = this.setTime.bind(this);
 
 		this.setDateTime = this.setDateTime.bind(this);
-		this.onFocus = this.onFocus.bind(this);
-		this.onBlur = this.onBlur.bind(this);
 	}
 	/**
 	/* call `hasBrowserSupport` after mounting so server
@@ -181,30 +179,6 @@ class DateTimePicker extends React.Component {
 		this.props.onChange && this.props.onChange(datetime);
 	}
 
-	/**
-	* @function onFocus
-	* @param Event e
-	* @description called if datetime compound component and used to set focused
-	* class on combo component
-	*/
-	onFocus(e) {
-		this.backgroundEl.classList.add('focused');
-	}
-
-	/**
-	* @function onBlur
-	* @param Event e
-	* @description called when either of the date or time inputs is blurred
-	* takes off focus class when neither of them are in focus
-	*/
-	onBlur(e) {
-		const timeInput = this.timeComponent.inputEl;
-		const dateInput = this.dateComponent.inputEl;
-		if (document.activeElement !== timeInput && document.activeElement !== dateInput) {
-			this.backgroundEl.classList.remove('focused');
-		}
-	}
-
 	render() {
 		const {
 			className,
@@ -252,18 +226,15 @@ class DateTimePicker extends React.Component {
 						value={this.state.datetime}
 						required={required}
 						className={classNames}
-						onChangeCallback={this.setDateTime}
+						datetimePickerCallback={this.setDateTime}
 						{...other} />
 					{ error && <p className='text--error'>{error}</p> }
 				</div>
 			);
 		}
 
-		// only set callbacks if this is a combo datetime component
-		const onFocus = (dateOnly) ? null : this.onFocus;
-		const onBlur = (dateOnly) ? null : this.onBlur;
-
-		const calendarErrorId = `calendar-error-${new Date().getTime()}`;
+		// const calendarErrorId = `calendar-error-${new Date().getTime()}`;
+		const calendarErrorId = 'calendar-error';
 
 		if (error) {
 			other['aria-invalid'] = true;
@@ -276,8 +247,6 @@ class DateTimePicker extends React.Component {
 				name={name}
 				required={required}
 				value={this.getDate()}
-				onFocus={onFocus}
-				onBlur={onBlur}
 				opts={datepickerOptions}
 				className={childClasses}
 				datetimePickerCallback={this.setDate}
@@ -301,8 +270,6 @@ class DateTimePicker extends React.Component {
 								<TimeInput
 									name={timeInputName}
 									id={(timeProps && timeProps.id) || `${id}-time`}
-									onFocus={onFocus}
-									onBlur={onBlur}
 									value={this.getTime()}
 									ref={ comp => this.timeComponent = comp }
 									className={childClasses}

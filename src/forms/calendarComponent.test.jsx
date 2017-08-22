@@ -13,9 +13,7 @@ describe('CalendarComponent', function() {
 		newValue = new Date('2020-10-12'),
 		opts = { blue: 'ivy' };
 
-	const onChangeCallbackMock = jest.fn(),
-		onFocusMock = jest.fn(),
-		onBlurMock = jest.fn();
+	const onChangeCallbackMock = jest.fn();
 
 	beforeEach(() => {
 		calendarComponent = shallow(
@@ -25,8 +23,6 @@ describe('CalendarComponent', function() {
 				className={className}
 				value={value}
 				datetimePickerCallback={onChangeCallbackMock}
-				onFocus={onFocusMock}
-				onBlur={onBlurMock}
 				opts={opts}
 				ref={ node => this.node = node }
 			/>
@@ -40,20 +36,6 @@ describe('CalendarComponent', function() {
 
 	it('renders the component with appropriate attributes', function() {
 		expect(calendarComponent).toMatchSnapshot();
-	});
-
-	describe('onOpen', () => {
-		it('calls the props onFocus method when one is provided', () => {
-			calendarComponent.instance().onOpen();
-			expect(onFocusMock).toHaveBeenCalled();
-		});
-	});
-
-	describe('onClose', () => {
-		it('calls the props onBlur method when one is provided', () => {
-			calendarComponent.instance().onClose();
-			expect(onBlurMock).toHaveBeenCalled();
-		});
 	});
 
 	describe('onChange', () => {

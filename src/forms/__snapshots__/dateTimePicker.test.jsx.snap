@@ -3,37 +3,45 @@
 exports[`DateTimePicker renders child components as expected accessibility concerns provides aria-invalid and aria-describedby attrs on calendar when there is an error 1`] = `
 <div>
   <fieldset>
+    <legend
+      className="visibility--a11yHide"
+    >
+      Event start date and time
+    </legend>
     <Flex
       direction="row"
     >
       <FlexItem>
         <CalendarComponent
-          aria-describedby="calendar-error-1503418845095"
+          aria-describedby="calendar-error"
           aria-invalid={true}
           className="field--error"
           datetimePickerCallback={[Function]}
+          id="event_start"
           name="start_time"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          value={2017-08-22T04:00:00.000Z}
+          opts={
+            Object {
+              "maxDate": 2017-08-27T17:45:44.112Z,
+              "minDate": 2017-08-22T17:45:44.112Z,
+            }
+          }
+          value={2018-01-01T05:00:00.000Z}
         />
       </FlexItem>
       <FlexItem>
         <TimeInput
           className="field--error"
           datetimePickerCallback={[Function]}
-          id="undefined-time"
+          id="event_start-time"
           name="start_time-time"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          value="12:20"
+          value="18:11"
         />
       </FlexItem>
     </Flex>
   </fieldset>
   <p
     className="text--error"
-    id="calendar-error-1503418845095"
+    id="calendar-error"
   >
     Too late
   </p>
@@ -42,15 +50,49 @@ exports[`DateTimePicker renders child components as expected accessibility conce
 
 exports[`DateTimePicker renders child components as expected accessibility concerns renders a fieldset for date and time, with optional offscreen legend for a11y 1`] = `
 <div>
-  <CalendarComponent
-    className=""
-    datetimePickerCallback={[Function]}
-    name="start_time"
-    onBlur={null}
-    onFocus={null}
-    opts={true}
-    value={2017-08-22T04:00:00.000Z}
-  />
+  <fieldset>
+    <legend
+      className="visibility--a11yHide"
+    >
+      Event start date and time
+    </legend>
+    <Flex
+      direction="row"
+    >
+      <FlexItem>
+        <CalendarComponent
+          aria-describedby="calendar-error"
+          aria-invalid={true}
+          className="field--error"
+          datetimePickerCallback={[Function]}
+          id="event_start"
+          name="start_time"
+          opts={
+            Object {
+              "maxDate": 2017-08-27T17:45:44.112Z,
+              "minDate": 2017-08-22T17:45:44.112Z,
+            }
+          }
+          value={2018-01-01T05:00:00.000Z}
+        />
+      </FlexItem>
+      <FlexItem>
+        <TimeInput
+          className="field--error"
+          datetimePickerCallback={[Function]}
+          id="event_start-time"
+          name="start_time-time"
+          value="18:11"
+        />
+      </FlexItem>
+    </Flex>
+  </fieldset>
+  <p
+    className="text--error"
+    id="calendar-error"
+  >
+    Too late
+  </p>
 </div>
 `;
 
@@ -62,15 +104,18 @@ exports[`DateTimePicker renders child components as expected passes expected pro
     >
       <FlexItem>
         <CalendarComponent
-          aria-describedby="calendar-error-1503418844941"
+          aria-describedby="calendar-error"
           aria-invalid={true}
           className="field--error"
           datetimePickerCallback={[Function]}
           id="event_start"
           name="start_time"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          opts={true}
+          opts={
+            Object {
+              "maxDate": 2017-08-27T17:45:44.112Z,
+              "minDate": 2017-08-22T17:45:44.112Z,
+            }
+          }
           value={2018-01-01T05:00:00.000Z}
         />
       </FlexItem>
@@ -80,8 +125,6 @@ exports[`DateTimePicker renders child components as expected passes expected pro
           datetimePickerCallback={[Function]}
           id="event_start-time"
           name="start_time-time"
-          onBlur={[Function]}
-          onFocus={[Function]}
           value="18:11"
         />
       </FlexItem>
@@ -89,7 +132,7 @@ exports[`DateTimePicker renders child components as expected passes expected pro
   </fieldset>
   <p
     className="text--error"
-    id="calendar-error-1503418844941"
+    id="calendar-error"
   >
     Too late
   </p>
@@ -102,9 +145,12 @@ exports[`DateTimePicker renders child components as expected renders a date comp
     className=""
     datetimePickerCallback={[Function]}
     name="start_time"
-    onBlur={null}
-    onFocus={null}
-    opts={true}
+    opts={
+      Object {
+        "maxDate": 2017-08-27T17:45:44.112Z,
+        "minDate": 2017-08-22T17:45:44.112Z,
+      }
+    }
     value={2017-08-22T04:00:00.000Z}
   />
 </div>

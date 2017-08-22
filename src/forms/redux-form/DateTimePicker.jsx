@@ -3,6 +3,7 @@ import DateTimePicker from '../DateTimePicker';
 
 export const propMapper = ({ input, meta, ...other }) => ({
 	error: meta.error,
+	reduxInputValue: input.value,
 	...input,
 	...other,
 });

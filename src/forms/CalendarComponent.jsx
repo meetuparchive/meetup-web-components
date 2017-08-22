@@ -12,8 +12,6 @@ class CalendarComponent extends React.Component {
 		super(props);
 
 		this.flatpickrChange = this.flatpickrChange.bind(this);
-		this.onOpen = this.onOpen.bind(this);
-		this.onClose = this.onClose.bind(this);
 	}
 
 	/**
@@ -27,8 +25,6 @@ class CalendarComponent extends React.Component {
 		const Flatpickr = require('flatpickr');
 		const options = {
 			onChange: this.flatpickrChange,
-			onOpen: this.onOpen,
-			onClose: this.onClose,
 			altInput: true,
 			allowInput: true,
 			altFormat: 'D M d, Y', // TODO localize
@@ -54,7 +50,6 @@ class CalendarComponent extends React.Component {
 	}
 
 	componentWillReceiveProps(newProps) {
-		console.log('its the new props', newProps);
 		this.flatpickr.setDate(newProps.value);
 	}
 
@@ -71,24 +66,6 @@ class CalendarComponent extends React.Component {
 		this.props.datetimePickerCallback && this.props.datetimePickerCallback(selectedDates[0]);
 	}
 
-	/**
-	* @function onOpen
-	* @description event hook for flatpickr, used to call onFocus
-	* and apply focus highlight if this is a DateTimePicker
-	*/
-	onOpen() {
-		this.props.onFocus && this.props.onFocus();
-	}
-
-	/**
-	* @function onClose
-	* @description event hook for flatpickr, used to call onBlur
-	* and remove focus highlight if this is a DateTimePicker
-	*/
-	onClose() {
-		this.props.onBlur && this.props.onBlur();
-	}
-
 	render() {
 		const {
 			className,
@@ -100,8 +77,6 @@ class CalendarComponent extends React.Component {
 			error,
 			hideLabel,
 			opts,					// eslint-disable-line no-unused-vars
-			onBlur,					// eslint-disable-line no-unused-vars
-			onFocus,				// eslint-disable-line no-unused-vars
 			onChange,				// eslint-disable-line no-unused-vars
 			datetimePickerCallback,	// eslint-disable-line no-unused-vars
 			...other
