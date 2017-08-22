@@ -17,5 +17,3 @@ exports[`DateTimeLocal input should render an input with type time and expected 
   />
 </div>
 `;
-
-exports[`DateTimeLocalinput should render an input with type time and expected attrs 1`] = `undefined`;

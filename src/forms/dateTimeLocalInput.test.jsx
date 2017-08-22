@@ -42,51 +42,46 @@ describe('DateTimeLocal input', function() {
 		expect(inputEl.prop('max')).toEqual(max);
 	});
 
-	it('calls internal onChange when value changed', function() {
-		const onChangeSpy = jest.spyOn(DateTimeLocalInput.prototype, 'onChange');
-		const input = shallow(
-			<DateTimeLocalInput
-				name="datetime"
-				value={value}
-				min={min}
-				max={max}
-				required
-			/>
-		).find('input');
-		input.simulate('change', { target: { value: newValue } });
-		expect(onChangeSpy).toHaveBeenCalled();
-	});
+	describe('onChange', () => {
+		let onChangeSpy,
+			input;
 
-	it('calls onChange prop if one is provided, as with redux-form', function() {
-		const onChangePropSpy = jest.fn();
-		const input = shallow(
-			<DateTimeLocalInput
-				name="datetime"
-				value={value}
-				onChange={onChangePropSpy}
-				min={min}
-				max={max}
-				required
-			/>
-		).find('input');
-		input.simulate('change', { target: { value: newValue } });
-		expect(onChangePropSpy).toHaveBeenCalledWith(newValue);
-	});
+		const onChangePropSpy = jest.fn(),
+			callbackSpy = jest.fn();
 
-	it('calls a callback with value if one is provided', function() {
-		jest.spyOn(DateTimeLocalInput.prototype, 'onChange');
-		const callbackSpy = jest.fn();
-		const input = shallow(
-			<DateTimeLocalInput
-				name="datetime"
-				value={value}
-				datetimePickerCallback={callbackSpy}
-				min={min}
-				max={max}
-				required
-			/>
-		).find('input');
-		input.simulate('change', { target: { value: newValue } });
-		expect(callbackSpy).toHaveBeenCalledWith(newValue);
+		beforeEach(() => {
+			onChangeSpy = jest.spyOn(DateTimeLocalInput.prototype, 'onChange');
+			input = shallow(
+				<DateTimeLocalInput
+					name="datetime"
+					value={value}
+					min={min}
+					max={max}
+					onChange={onChangePropSpy}
+					datetimePickerCallback={callbackSpy}
+					required
+				/>
+			).find('input');
+		});
+
+		afterEach(() => {
+			inputEl = null;
+			onChangeSpy.mockClear();
+		});
+
+		it('calls internal onChange when value changed', function() {
+			input.simulate('change', { target: { value: newValue } });
+			expect(onChangeSpy).toHaveBeenCalled();
+		});
+
+		it('calls onChange prop if one is provided, as with redux-form', function() {
+			input.simulate('change', { target: { value: newValue } });
+			expect(onChangePropSpy).toHaveBeenCalledWith(newValue);
+		});
+
+		it('calls a callback with value if one is provided', function() {
+			input.simulate('change', { target: { value: newValue } });
+			expect(callbackSpy).toHaveBeenCalledWith(newValue);
+		});
 	});
 });
