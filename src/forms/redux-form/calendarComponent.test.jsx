@@ -24,3 +24,4 @@ describe('redux-form Calendar Component', function() {
 	});
 
 });
+
