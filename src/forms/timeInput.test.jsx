@@ -1,58 +1,76 @@
+
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 import TimeInput from './TimeInput';
 
 describe('TimeInput', function() {
 
-	let timeInputComponent,
-		timeInputEl;
+	let component,
+		inputEl;
 
 	const timeValue = '22:00',
 		newTime = '23:00',
-		callbackSpy = jest.fn();
+		onChangeMock = jest.fn();
 
 	beforeEach(() => {
-		timeInputComponent = TestUtils.renderIntoDocument(
-			<TimeInput name='time' value={timeValue} onChangeCallback={callbackSpy} required />);
-		timeInputEl = TestUtils.findRenderedDOMComponentWithTag(timeInputComponent, 'input');
+		component = shallow(
+			<TimeInput
+				name='time'
+				value={timeValue}
+				onChange={onChangeMock}
+				required />
+		);
+		inputEl = component.find('input');
 	});
 
 	afterEach(() => {
-		timeInputComponent = null;
-		timeInputEl = null;
+		component = null;
+		inputEl = null;
 	});
 
-	it('exists', function() {
-		expect(timeInputEl).not.toBeNull();
+	it('renders a time html input with expected props', function() {
+		expect(component).toMatchSnapshot();
 	});
 
 	it('takes a value in HH:mm format', function() {
-		expect(timeInputEl.value).toEqual(timeValue);
+		expect(inputEl.prop('value')).toEqual(timeValue);
 	});
 
-	it('sets state with its value', function() {
-		expect(timeInputComponent.state).toEqual({ value: timeValue });
-	});
+	describe('onChange', () => {
+		const callbackSpy = jest.fn();
+		let onChangeSpy;
 
-	it('should have a required attribute when specified', () => {
-		expect(timeInputEl.attributes.required).not.toBeNull();
-	});
+		beforeEach(() => {
+			onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
 
-	it('calls onChange and sets state when value is changed', function() {
-		const onChangeSpy = spyOn(TimeInput.prototype, 'onChange').and.callThrough();
-		const setStateSpy = spyOn(TimeInput.prototype, 'setState');
-		timeInputComponent = TestUtils.renderIntoDocument(
-			<TimeInput name='time' value={timeValue} onChangeCallback={callbackSpy} />);
-		timeInputEl = TestUtils.findRenderedDOMComponentWithTag(timeInputComponent, 'input');
+			inputEl = shallow(<TimeInput
+				name='time'
+				value={timeValue}
+				onChange={onChangeMock}
+				datetimePickerCallback={callbackSpy}
+				required />
+			).find('input');
+		});
 
-		TestUtils.Simulate.change(timeInputEl, { target: { value: newTime } });
-		expect(onChangeSpy).toHaveBeenCalled();
-		expect(setStateSpy).toHaveBeenCalledWith({ value: newTime });
-	});
+		afterEach(() => {
+			inputEl = null;
+			onChangeSpy.mockClear();
+		});
 
-	it('calls a callback with value if one is provided', function() {
-		TestUtils.Simulate.change(timeInputEl, { target: { value: newTime } });
-		expect(callbackSpy).toHaveBeenCalledWith(newTime);
+		it('calls internal onChange when value is changed', function() {
+			inputEl.simulate('change', { target: { value: newTime } });
+			expect(onChangeSpy).toHaveBeenCalled();
+		});
+
+		it('calls onChange prop when value is changed', function() {
+			inputEl.simulate('change', { target: { value: newTime } });
+			expect(onChangeMock).toHaveBeenCalled();
+		});
+
+		it('calls datepicker callback with value if one is provided', function() {
+			inputEl.simulate('change', { target: { value: newTime } });
+			expect(callbackSpy).toHaveBeenCalledWith(newTime);
+		});
 	});
 });
 
