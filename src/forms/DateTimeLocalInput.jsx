@@ -41,6 +41,11 @@ class DateTimeLocalInput extends React.Component {
 			className
 		);
 
+		const datetimeStr = (value) ? (new Date(this.props.value).toISOString()).split('.')[0] : '';
+		// example: 2017-02-18T00:00:00		
+		// leaving off milliseconds		
+		// datetime local wont set value with milliseconds		
+
 		const labelClassNames = cx({required});
 		return (
 			<div>
@@ -48,7 +53,7 @@ class DateTimeLocalInput extends React.Component {
 				<input
 					id={id}
 					type='datetime-local'
-					value={value}
+					value={datetimeStr}
 					className={classNames}
 					onChange={this.onChange}
 					required={required}

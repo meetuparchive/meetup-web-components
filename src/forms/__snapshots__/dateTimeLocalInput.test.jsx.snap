@@ -13,7 +13,7 @@ exports[`DateTimeLocal input should render an input with type time and expected 
     onChange={[Function]}
     required={true}
     type="datetime-local"
-    value="2000-01-01T04:59:59.000Z"
+    value="2000-01-01T04:59:59"
   />
 </div>
 `;
