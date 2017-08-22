@@ -59,7 +59,7 @@ class CalendarComponent extends React.Component {
 	}
 
 	/**
-	* @function onChange
+	* @function flatpickrChange
 	* @param Array selectedDates
 	* @param dateStr
 	* @param Object instance the calendar instance
@@ -67,8 +67,6 @@ class CalendarComponent extends React.Component {
 	* calls the callback with the selectedDates value (callback used in wrapping components)
 	*/
 	flatpickrChange(selectedDates, dateStr, instance) {
-		console.log('in calendar component on change calling this props', this.props.onChange);
-		// TODO maybe just provide flatpicker with onChange from redux-form,	
 		this.props.onChange && this.props.onChange(selectedDates[0]);
 		this.props.datetimePickerCallback && this.props.datetimePickerCallback(selectedDates[0]);
 	}
@@ -93,16 +91,19 @@ class CalendarComponent extends React.Component {
 
 	render() {
 		const {
-			onChangeCallback,	// eslint-disable-line no-unused-vars
 			className,
 			id,
 			name,
 			label,
 			required,
-			value,		// eslint-disable-line no-unused-vars
+			value,
 			error,
-			opts,		// eslint-disable-line no-unused-vars
 			hideLabel,
+			opts,					// eslint-disable-line no-unused-vars
+			onBlur,					// eslint-disable-line no-unused-vars
+			onFocus,				// eslint-disable-line no-unused-vars
+			onChange,				// eslint-disable-line no-unused-vars
+			datetimePickerCallback,	// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
