@@ -17,7 +17,6 @@ class DateTimePicker extends React.Component {
 
 	constructor(props) {
 		super(props);
-
 		const datetime = props.value ? new Date(props.value) : new Date();
 
 		this.state = {
@@ -100,13 +99,6 @@ class DateTimePicker extends React.Component {
 
 		datetime.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
 		this.setDateTime(datetime);
-
-		// this.dateComponent.setState({
-		// 	value: datetime
-		// });
-
-		// update flatpickr on update
-		// this.dateComponent.updateFlatpickr();
 	}
 
 	/**
@@ -128,7 +120,6 @@ class DateTimePicker extends React.Component {
 	parseHoursAndMinutesFromTimeString(timeString) {
 		return timeString.split(':'); // TODO: localization/i18n SDS-247
 	}
-
 
 	/**
 	* @function parseNewTimeAsDate
@@ -217,6 +208,13 @@ class DateTimePicker extends React.Component {
 
 		const timeInputName = `${name}-time`;
 
+		const errorId = `${id}-datetime-error`;
+
+		if (error) {
+			other['aria-invalid'] = true;
+			other['aria-describedby'] = errorId;
+		}
+
 		if (this.state.isDateTimeLocalSupported) {
 			return (
 				<div>
@@ -231,14 +229,6 @@ class DateTimePicker extends React.Component {
 					{ error && <p className='text--error'>{error}</p> }
 				</div>
 			);
-		}
-
-		// const calendarErrorId = `calendar-error-${new Date().getTime()}`;
-		const calendarErrorId = `${id}-calendar-error`;
-
-		if (error) {
-			other['aria-invalid'] = true;
-			other['aria-describedby'] = calendarErrorId;
 		}
 
 		const calendarComponent = (
@@ -280,7 +270,7 @@ class DateTimePicker extends React.Component {
 						</Flex>
 					</fieldset>
 				}
-				{ error && <p id={calendarErrorId} className='text--error'>{error}</p> }
+				{ error && <p id={errorId} className='text--error'>{error}</p> }
 
 			</div>
 		);
