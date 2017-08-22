@@ -162,8 +162,10 @@ class Popover extends React.Component {
 				{
 					'trans-fadeIn': !isActive,
 					'opacity--0': !isActive,
+					'visibility--a11yHide': !isActive,
 					'trans-fadeOut': isActive,
 					'opacity--1': isActive,
+					'visibility--a11yShow': isActive,
 					'popover-container--horizontal-left': (align === 'left'),
 					'popover-container--horizontal-right': (align === 'right')
 				}
@@ -193,7 +195,7 @@ class Popover extends React.Component {
 						role='menu'
 						aria-hidden={!isActive}
 					>
-						{isActive && this.renderMenuItems()}
+						{this.renderMenuItems()}
 					</ul>
 				</nav>
 			</div>
