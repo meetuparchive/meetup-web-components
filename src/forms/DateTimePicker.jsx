@@ -47,6 +47,14 @@ class DateTimePicker extends React.Component {
 		this.setState({ isDateTimeLocalSupported: this.hasBrowserSupport() });
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if ('reduxInputValue' in nextProps) {
+			this.setState({
+				datetime: nextProps.reduxInputValue,
+			});
+		}
+	}
+
 	/**
 	* @function hasBrowserSupport
 	* @description test if this browser supports datetime local
@@ -211,6 +219,7 @@ class DateTimePicker extends React.Component {
 			timeProps,
 			legend,
 			showLegend,
+			forceCalendar, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -235,8 +244,6 @@ class DateTimePicker extends React.Component {
 		const timeInputName = `${name}-time`;
 
 		if (this.state.isDateTimeLocalSupported) {
-			// TODO datetime-local opts ?
-
 			return (
 				<div>
 					<DateTimeLocalInput
@@ -246,7 +253,6 @@ class DateTimePicker extends React.Component {
 						required={required}
 						className={classNames}
 						onChangeCallback={this.setDateTime}
-
 						{...other} />
 					{ error && <p className='text--error'>{error}</p> }
 				</div>
@@ -257,7 +263,7 @@ class DateTimePicker extends React.Component {
 		const onFocus = (dateOnly) ? null : this.onFocus;
 		const onBlur = (dateOnly) ? null : this.onBlur;
 
-		const calendarErrorId = `calendar-error-${new Date()}`;
+		const calendarErrorId = `calendar-error-${new Date().getTime()}`;
 
 		if (error) {
 			other['aria-invalid'] = true;
@@ -269,12 +275,12 @@ class DateTimePicker extends React.Component {
 				id={id}
 				name={name}
 				required={required}
-				datetimePickerCallback={this.setDate}
 				value={this.getDate()}
 				onFocus={onFocus}
 				onBlur={onBlur}
 				opts={datepickerOptions}
 				className={childClasses}
+				datetimePickerCallback={this.setDate}
 				{...other}
 				ref={ comp => this.dateComponent = comp }
 			/>
@@ -295,12 +301,12 @@ class DateTimePicker extends React.Component {
 								<TimeInput
 									name={timeInputName}
 									id={(timeProps && timeProps.id) || `${id}-time`}
-									datetimePickerCallback={this.setTime}
 									onFocus={onFocus}
 									onBlur={onBlur}
 									value={this.getTime()}
 									ref={ comp => this.timeComponent = comp }
 									className={childClasses}
+									datetimePickerCallback={this.setTime}
 									{...timeProps}
 								/>
 							</FlexItem>
