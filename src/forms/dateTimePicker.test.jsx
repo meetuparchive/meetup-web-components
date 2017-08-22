@@ -115,11 +115,11 @@ describe('DateTimePicker', function() {
 				dateTimeComponent = null;
 			});
 
-			it('renders a fieldset for date and time, with optional offscreen legend for a11y', function() {
+			it('renders a fieldset for date and time, with optional offscreen legend for a11y', () => {
 				expect(dateTimeComponent).toMatchSnapshot();
 			});
 
-			it('provides aria-invalid and aria-describedby attrs on calendar when there is an error', function() {
+			it('provides aria-invalid and aria-describedby attrs on calendar when there is an error', () => {
 				expect(dateTimeComponent).toMatchSnapshot();
 			});
 		})
