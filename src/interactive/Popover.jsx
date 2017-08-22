@@ -160,10 +160,12 @@ class Popover extends React.Component {
 				'popover-container',
 				'popover-container--menu',
 				{
-					'trans-fadeIn--short': !isActive,
+					'trans-fadeIn': !isActive,
 					'opacity--0': !isActive,
+					'visibility--a11yHide': !isActive,
+					'trans-fadeOut': isActive,
 					'opacity--1': isActive,
-					'trans-fadeOut--short': isActive,
+					'visibility--a11yShow': isActive,
 					'popover-container--horizontal-left': (align === 'left'),
 					'popover-container--horizontal-right': (align === 'right')
 				}
@@ -186,7 +188,6 @@ class Popover extends React.Component {
 				>
 					{trigger}
 				</div>
-
 				<nav>
 					<ul
 						ref={(el) => this.menuRef = el}
