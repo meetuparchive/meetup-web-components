@@ -15,12 +15,10 @@ describe('DateTimePicker', function() {
 		hours = 23,
 		minutes = 11;
 
-	const datetime = new Date(Date.UTC(year, month, day, hours, minutes)),
-		dateStr = `${year}-0${month+1}-0${day}`,
-		minDate = new Date(dateStr),
-		maxDate = new Date(dateStr); // use set dates so snapshot not always changing
-
-	maxDate.setDate(maxDate.getDate() + 5);
+	// using Date.UTC in test since server snapshots never match due to diff server time
+	const datetime = Date.UTC(year, month, day, hours, minutes),
+		minDate = Date.UTC(year, month+1, day),
+		maxDate = Date.UTC(year, month+1, day+5); // use set dates so snapshot not always changing
 
 	const datepickerOptions = { minDate, maxDate };
 	// timeProps
@@ -54,13 +52,15 @@ describe('DateTimePicker', function() {
 		});
 
 		it('sets datetime in state', function() {
-			expect(dateTimeComponent.state('datetime')).toEqual(datetime);
+			const datetimeDate = new Date(datetime); // create a date object from UTC date
+			expect(dateTimeComponent.state('datetime')).toEqual(datetimeDate);
 		});
 
 		it('has TimeInput child component with expected value and datetimePickerCallback props', () => {
 			const timeComponent = dateTimeComponent.find(TimeInput);
 			const instance = dateTimeComponent.instance();
-			expect(timeComponent.prop('value')).toEqual(instance.parseTimeFromDateTime(datetime));
+			const datetimeDate = new Date(datetime); // create a date object from UTC date
+			expect(timeComponent.prop('value')).toEqual(instance.parseTimeFromDateTime(datetimeDate));
 			expect(timeComponent.prop('datetimePickerCallback')).toEqual(instance.setTime);
 		});
 

@@ -21,8 +21,8 @@ exports[`DateTimePicker renders child components as expected accessibility conce
           name="start_time"
           opts={
             Object {
-              "maxDate": 2018-01-06T00:00:00.000Z,
-              "minDate": 2018-01-01T00:00:00.000Z,
+              "maxDate": 1517875200000,
+              "minDate": 1517443200000,
             }
           }
           value={2018-01-01T05:00:00.000Z}
@@ -69,8 +69,8 @@ exports[`DateTimePicker renders child components as expected accessibility conce
           name="start_time"
           opts={
             Object {
-              "maxDate": 2018-01-06T00:00:00.000Z,
-              "minDate": 2018-01-01T00:00:00.000Z,
+              "maxDate": 1517875200000,
+              "minDate": 1517443200000,
             }
           }
           value={2018-01-01T05:00:00.000Z}
@@ -112,8 +112,8 @@ exports[`DateTimePicker renders child components as expected passes expected pro
           name="start_time"
           opts={
             Object {
-              "maxDate": 2018-01-06T00:00:00.000Z,
-              "minDate": 2018-01-01T00:00:00.000Z,
+              "maxDate": 1517875200000,
+              "minDate": 1517443200000,
             }
           }
           value={2018-01-01T05:00:00.000Z}
@@ -147,8 +147,8 @@ exports[`DateTimePicker renders child components as expected renders a date comp
     name="start_time"
     opts={
       Object {
-        "maxDate": 2018-01-06T00:00:00.000Z,
-        "minDate": 2018-01-01T00:00:00.000Z,
+        "maxDate": 1517875200000,
+        "minDate": 1517443200000,
       }
     }
     value={2017-08-22T04:00:00.000Z}
