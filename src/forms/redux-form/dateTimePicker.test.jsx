@@ -24,8 +24,19 @@ describe('redux-form DateTimePicker', () => {
 		}
 	};
 
+	let component;
+
+	beforeEach(() => {
+		component = shallow(<DateTimePicker {...attrs} />);
+	});
+
+	afterEach(() => {
+		component = null;
+	});
+
 	it('should render a DateTimePicker with expected props from mock attributes', () => {
-		const component = shallow(<DateTimePicker {...attrs} />);
 		expect(component).toMatchSnapshot();
 	});
+
 });
+

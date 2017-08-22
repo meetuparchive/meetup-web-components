@@ -13,6 +13,7 @@ exports[`redux-form DateTimePicker should render a DateTimePicker with expected 
   id="eventStart"
   label="Start time"
   name="starttime"
+  reduxInputValue={2000-01-01T04:59:00.000Z}
   required={true}
   value={2000-01-01T04:59:00.000Z}
 />
