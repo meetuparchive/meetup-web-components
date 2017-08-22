@@ -18,8 +18,8 @@ describe('DateTimePicker', function() {
 
 	const datetime = new Date(Date.UTC(year, month, day, hours, minutes)),
 			dateStr = `${year}-0${month+1}-0${day}`,
-			minDate = new Date(),
-			maxDate = new Date();
+			minDate = new Date(dateStr),
+			maxDate = new Date(dateStr); // use set dates so snapshot not always changing
 	
 	maxDate.setDate(maxDate.getDate() + 5);
 
@@ -84,7 +84,7 @@ describe('DateTimePicker', function() {
 
 		});
 
-		it('renders a date component only if dateOnly specified, with no focus and blur props', function() {
+		it('renders a date component only if dateOnly specified', function() {
 			let dateComponentOnly = shallow(
 				<DateTimePicker name='start_time'
 					forceCalendar

@@ -21,8 +21,8 @@ exports[`DateTimePicker renders child components as expected accessibility conce
           name="start_time"
           opts={
             Object {
-              "maxDate": 2017-08-27T17:45:44.112Z,
-              "minDate": 2017-08-22T17:45:44.112Z,
+              "maxDate": 2018-01-06T00:00:00.000Z,
+              "minDate": 2018-01-01T00:00:00.000Z,
             }
           }
           value={2018-01-01T05:00:00.000Z}
@@ -69,8 +69,8 @@ exports[`DateTimePicker renders child components as expected accessibility conce
           name="start_time"
           opts={
             Object {
-              "maxDate": 2017-08-27T17:45:44.112Z,
-              "minDate": 2017-08-22T17:45:44.112Z,
+              "maxDate": 2018-01-06T00:00:00.000Z,
+              "minDate": 2018-01-01T00:00:00.000Z,
             }
           }
           value={2018-01-01T05:00:00.000Z}
@@ -112,8 +112,8 @@ exports[`DateTimePicker renders child components as expected passes expected pro
           name="start_time"
           opts={
             Object {
-              "maxDate": 2017-08-27T17:45:44.112Z,
-              "minDate": 2017-08-22T17:45:44.112Z,
+              "maxDate": 2018-01-06T00:00:00.000Z,
+              "minDate": 2018-01-01T00:00:00.000Z,
             }
           }
           value={2018-01-01T05:00:00.000Z}
@@ -139,7 +139,7 @@ exports[`DateTimePicker renders child components as expected passes expected pro
 </div>
 `;
 
-exports[`DateTimePicker renders child components as expected renders a date component only if dateOnly specified, with no focus and blur props 1`] = `
+exports[`DateTimePicker renders child components as expected renders a date component only if dateOnly specified 1`] = `
 <div>
   <CalendarComponent
     className=""
@@ -147,8 +147,8 @@ exports[`DateTimePicker renders child components as expected renders a date comp
     name="start_time"
     opts={
       Object {
-        "maxDate": 2017-08-27T17:45:44.112Z,
-        "minDate": 2017-08-22T17:45:44.112Z,
+        "maxDate": 2018-01-06T00:00:00.000Z,
+        "minDate": 2018-01-01T00:00:00.000Z,
       }
     }
     value={2017-08-22T04:00:00.000Z}
