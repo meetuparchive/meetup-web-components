@@ -17,14 +17,10 @@ class TimeInput extends React.Component {
 	* @function onChange
 	* @param e Event Object
 	* @description called when the input changes, in turn calls the onChange
-	* 	handler prop, if there is one (eg supplied by redux-form) and an onChangeCallback
-	*	which may be provided by a parent component such as DateTimePicker
+	* 	handler prop, if there is one provided (eg supplied by redux-form or DateTimePicker)
 	*/
 	onChange(e) {
-		this.props.onChange && this.props.onChange(e.target.value); // redux-form provides an onChange prop
-
-		// onChangeCallback currently provided by a parent component eg DateTimePicker
-		this.props.onChangeCallback && this.props.onChangeCallback(e.target.value);
+		this.props.onChange && this.props.onChange(e.target.value);
 	}
 
 	render() {
@@ -87,8 +83,7 @@ TimeInput.propTypes = {
 		PropTypes.element
 	]),
 	required: PropTypes.bool,
-	onChange: PropTypes.func,			// redux-form provides an onChange prop
-	onChangeCallback: PropTypes.func, 	// currently provided by a parent component eg DateTimePicker
+	onChange: PropTypes.func,			// redux-form or DateTimePicker provides an onChange prop
 };
 
 export default TimeInput;

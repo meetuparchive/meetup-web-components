@@ -10,14 +10,12 @@ describe('TimeInput', function() {
 		onChangeSpy;
 
 	const onChangePropMock = jest.fn(),
-		callbackMock = jest.fn(),
 		newTime = '23:00';
 
 	const props = {
 		name: 'time',
 		value: '22:00',
 		onChange: onChangePropMock,
-		onChangeCallback: callbackMock,
 		required: true
 	};
 
@@ -45,11 +43,6 @@ describe('TimeInput', function() {
 	it('calls onChange prop when value is changed', function() {
 		component.instance().onChange({ target: { value: newTime } });
 		expect(onChangePropMock).toHaveBeenCalled();
-	});
-
-	it('calls datepicker callback, if one is provided, when value is changed', function() {
-		component.instance().onChange({ target: { value: newTime } });
-		expect(callbackMock).toHaveBeenCalledWith(newTime);
 	});
 
 });

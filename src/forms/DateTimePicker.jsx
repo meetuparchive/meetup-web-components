@@ -267,7 +267,7 @@ class DateTimePicker extends React.Component {
 						/>
 						{ !dateOnly &&
 								<TimeInput name={timeInputName}
-									onChangeCallback={this.setTime}
+									onChange={this.setTime}
 									onFocus={onFocus}
 									onBlur={onBlur}
 									value={this.getTime()}
