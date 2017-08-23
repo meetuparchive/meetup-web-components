@@ -36,7 +36,7 @@ storiesOf('CalendarComponent', module)
 			max = new Date(),
 			now = Date.now();
 		min.setDate(min.getDate() - 2);
-		max.setDate(max.getDate() + 12);
+		max.setDate(max.getDate() + 7);
 
 		const opts = {
 			allowInput: true,
@@ -46,7 +46,7 @@ storiesOf('CalendarComponent', module)
 		return (<div className='span--50'>
 			<CalendarComponent
 				name='event_time'
-				label='Start date between Jan Feb 2018'
+				label='From 2 days ago to 1 week from now'
 				value={now}
 				forceCalendar
 				opts={opts}
