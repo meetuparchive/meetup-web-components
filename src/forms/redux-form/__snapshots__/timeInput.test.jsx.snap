@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`redux-form TimeInput renders a TextInput component with expected attributes from mock data 1`] = `
+exports[`redux-form TimeInput renders a TimeInput component with expected attributes from mock data 1`] = `
 <TimeInput
   error="Now approaching midnight!!?"
   label="What time is it?"
