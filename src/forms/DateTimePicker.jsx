@@ -92,12 +92,7 @@ class DateTimePicker extends React.Component {
 		datetime.setFullYear(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
 		this.setState({ datetime });
 
-		this.dateComponent.setState({
-			value: datetime
-		});
-
-		// update flatpickr on update
-		this.dateComponent.updateFlatpickr();
+		this.setDateTime(datetime);
 
 		if (this.props.onChangeCallback) {
 			this.props.onChangeCallback(datetime);
