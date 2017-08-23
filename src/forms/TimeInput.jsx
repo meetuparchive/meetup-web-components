@@ -56,6 +56,7 @@ class TimeInput extends React.Component {
 					value={value}
 					className={classNames}
 					required={required}
+					onChange={this.onChange}
 					ref={ input => this.inputEl = input }
 					{...other}
 				/>
