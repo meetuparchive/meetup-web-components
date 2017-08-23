@@ -27,7 +27,7 @@ class DateTimeLocalInput extends React.Component {
 	*/
 	onChange(e) {
 		this.props.onChange && this.props.onChange(e.target.value);
-		this.props.datetimePickerCallback && this.props.datetimePickerCallback(e.target.value);
+		this.props.onChangeCallback && this.props.onChangeCallback(e.target.value);
 	}
 
 	render() {
