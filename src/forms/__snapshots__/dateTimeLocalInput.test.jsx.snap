@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateTimeLocal input should render an input with type time and expected attrs 1`] = `
+<div>
+  <label
+    className="required"
+  />
+  <input
+    className="input--dateTimeLocal"
+    max="2017-06-30T16:30"
+    min="1999-12-31T23:55"
+    name="datetime"
+    onChange={[Function]}
+    onChangeCallback={[Function]}
+    required={true}
+    type="datetime-local"
+    value="2000-01-01T00:01"
+  />
+</div>
+`;
