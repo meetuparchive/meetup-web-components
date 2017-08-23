@@ -50,9 +50,4 @@ describe('DateTimeLocal input', function() {
 		component.instance().onChange({ target: { value: newValue } });
 		expect(onChangePropMock).toHaveBeenCalledWith(newValue);
 	});
-
-	it('calls the onChange callback with value if one is provided', function() {
-		component.instance().onChange({ target: { value: newValue } });
-		expect(callbackMock).toHaveBeenCalledWith(newValue);
-	});
 });

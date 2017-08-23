@@ -18,14 +18,11 @@ class DateTimeLocalInput extends React.Component {
 	/**
 	* @function onChange
 	* @param e Event the change event
-	* @description called when value changes and in turn calls onChange from props (redux-form provides this)
-	* and an onChangeCallback if provided (callback used in wrapping components like datetimepicker)
+	* @description called when value changes and in turn calls onChange from props 
+	* (redux-form or wrapping components like datetimepicker provides this)
 	*/
 	onChange(e) {
-		this.props.onChange && this.props.onChange(e.target.value); // onChange prop provided by redux-form
-
-		// callback can come from a parent component, eg DateTimePicker
-		this.props.onChangeCallback && this.props.onChangeCallback(e.target.value);
+		this.props.onChange && this.props.onChange(e.target.value);
 	}
 
 	render() {
@@ -36,7 +33,6 @@ class DateTimeLocalInput extends React.Component {
 			required,
 			value,
 			error,
-			onChangeCallback,	// eslint-disable-line no-unused-vars
 			onChange, 			// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
@@ -79,8 +75,7 @@ DateTimeLocalInput.propTypes = {
 		PropTypes.string,
 		PropTypes.element,
 	]),
-	onChange: PropTypes.func, // provided by redux-form
-	onChangeCallback: PropTypes.func // provided by a wrapping component eg DateTimePicker
+	onChange: PropTypes.func, // provided by redux-form or by a wrapping component eg DateTimePicker
 };
 
 export default DateTimeLocalInput;
