@@ -33,7 +33,6 @@ class TimeInput extends React.Component {
 			value,
 			error,
 			onChange,			// eslint-disable-line no-unused-vars
-			onChangeCallback, 	// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
