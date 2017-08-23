@@ -58,9 +58,8 @@ const TextInput = (props) => {
 				{...other}
 			/>
 
-			{ maxLength && <p className='text--caption align--right'>{value.length} / {maxLength}</p> }
-
 			{ error && <p className='text--error'>{error}</p> }
+
 			{children}
 		</div>
 	);
