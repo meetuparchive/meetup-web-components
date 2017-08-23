@@ -72,11 +72,6 @@ describe('CalendarComponent', function() {
 			expect(onChangePropMock).toHaveBeenCalledWith(newValue);
 		});
 
-		it('calls a callback with value if one is provided', function() {
-			calendarComponent.instance().onFlatpickrChange([newValue]);
-			expect(callbackMock).toHaveBeenCalledWith(newValue);
-		});
-
 	});
 
 	describe('onBlur onFocus callback tests', () => {

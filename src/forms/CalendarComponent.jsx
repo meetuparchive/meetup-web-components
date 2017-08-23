@@ -14,7 +14,6 @@ class CalendarComponent extends React.Component {
 		this.onOpen = this.onOpen.bind(this);
 		this.onClose = this.onClose.bind(this);
 
-		// this.updateFlatpickr = this.updateFlatpickr.bind(this);
 		this.onFlatpickrChange = this.onFlatpickrChange.bind(this);
 	}
 
@@ -57,12 +56,10 @@ class CalendarComponent extends React.Component {
 	* @param dateStr
 	* @param Object instance the calendar instance
 	* @description signature conforms to the onChange handler flatpickr expects
-	* calls onChange if prop provided (eg from redux-form) and callback with the selectedDates value 
-	* (callback used in wrapping components)
+	* calls onChange if prop provided (eg from redux-form or wrapping components like DateTimePicker)
 	*/
 	onFlatpickrChange(selectedDates, dateStr, instance) {
 		this.props.onChange && this.props.onChange(selectedDates[0]);
-		this.props.onChangeCallback && this.props.onChangeCallback(selectedDates[0]);
 	}
 
 	/**
@@ -94,7 +91,6 @@ class CalendarComponent extends React.Component {
 			error,
 			opts,				// eslint-disable-line no-unused-vars
 			onChange,			// eslint-disable-line no-unused-vars
-			onChangeCallback,	// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -128,7 +124,7 @@ class CalendarComponent extends React.Component {
 
 CalendarComponent.propTypes = {
 	name: PropTypes.string.isRequired,
-	onChangeCallback: PropTypes.func
+	onChange: PropTypes.func // provided by DateTimePicker or redux-form
 };
 
 export default CalendarComponent;

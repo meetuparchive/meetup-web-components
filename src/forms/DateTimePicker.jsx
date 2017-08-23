@@ -252,7 +252,7 @@ class DateTimePicker extends React.Component {
 
 					<div>
 						<CalendarComponent name={name}
-							onChangeCallback={this.setDate}
+							onChange={this.setDate}
 							value={this.getDate()}
 							onFocus={onFocus}
 							onBlur={onBlur}
