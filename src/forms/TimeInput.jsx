@@ -9,14 +9,16 @@ class TimeInput extends React.Component {
 
 	constructor(props) {
 		super(props);
-		// onChange comment
+
 		this.onChange = this.onChange.bind(this);
 	}
 
 	/**
 	* @function onChange
 	* @param e Event Object
-	* @description ...
+	* @description called when the input changes, in turn calls the onChange
+	* 	handler prop, if there is one (eg supplied by redux-form) and an onChangeCallback
+	*	which may be provided by a parent component such as DateTimePicker
 	*/
 	onChange(e) {
 		this.props.onChange && this.props.onChange(e.target.value);
@@ -46,6 +48,14 @@ class TimeInput extends React.Component {
 			'label--field',
 			{ required }
 		);
+
+		const errorId = `${id}-error`;
+
+		if (error) {
+			other['aria-invalid'] = true;
+			other['aria-describedby'] = errorId;
+		}
+
 		return (
 			<span>
 				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
@@ -60,7 +70,7 @@ class TimeInput extends React.Component {
 					ref={ input => this.inputEl = input }
 					{...other}
 				/>
-				{ error && <p className='text--error'>{error}</p> }
+				{ error && <p id={errorId} className='text--error'>{error}</p> }
 			</span>
 		);
 

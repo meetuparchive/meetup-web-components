@@ -4,7 +4,9 @@ import ReduxFormTimeInput from './TimeInput';
 
 describe('redux-form TimeInput', function() {
 
-	const formAttrs = {
+	// props given in the structure that
+	// redux form would
+	const reduxFormProps = {
 		input: {
 			label: 'What time is it?',
 			name: 'partytime',
@@ -17,7 +19,7 @@ describe('redux-form TimeInput', function() {
 	};
 
 	it('renders a TimeInput component with expected attributes from mock data', () => {
-		const component = shallow(<ReduxFormTimeInput {...formAttrs} />);
+		const component = shallow(<ReduxFormTimeInput {...reduxFormProps} />);
 
 		expect(component).toMatchSnapshot();
 	});
