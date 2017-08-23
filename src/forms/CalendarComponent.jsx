@@ -11,8 +11,6 @@ class CalendarComponent extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.onChange = this.onChange.bind(this);
-
 		this.onOpen = this.onOpen.bind(this);
 		this.onClose = this.onClose.bind(this);
 
@@ -30,7 +28,7 @@ class CalendarComponent extends React.Component {
 		// imported only in clientside envs.
 		const Flatpickr = require('flatpickr');
 		const options = {
-			onChange: this.onChange,
+			onChange: this.onFlatpickrChange,
 			onOpen: this.onOpen,
 			onClose: this.onClose,
 			altInput: true,
@@ -47,6 +45,12 @@ class CalendarComponent extends React.Component {
 		this.flatpickr && this.flatpickr.destroy();
 	}
 
+	// replaces updateFlatpickr
+	// if we receive a new value from parent, update Flatpickr
+	componentWillReceiveProps(newProps) {
+		this.flatpickr.setDate(newProps.value);
+	}
+
 	/**
 	* @function onFlatpickrChange
 	* @param Array selectedDates
@@ -56,7 +60,7 @@ class CalendarComponent extends React.Component {
 	* calls onChange if prop provided (eg from redux-form) and callback with the selectedDates value 
 	* (callback used in wrapping components)
 	*/
-	onChange(selectedDates, dateStr, instance) {
+	onFlatpickrChange(selectedDates, dateStr, instance) {
 		this.props.onChange && this.props.onChange(selectedDates[0]);
 		this.props.onChangeCallback && this.props.onChangeCallback(selectedDates[0]);
 	}
@@ -77,11 +81,6 @@ class CalendarComponent extends React.Component {
 	*/
 	onClose() {
 		this.props.onBlur && this.props.onBlur();
-	}
-
-	// replaces updateFlatpickr
-	componentWillReceiveProps(newProps) {
-		this.flatpickr.setDate(newProps.value);
 	}
 
 	render() {
