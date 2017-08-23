@@ -47,8 +47,8 @@ describe('TimeInput', function() {
 		expect(onChangePropMock).toHaveBeenCalled();
 	});
 
-	it('calls datepicker callback with value if one is provided', function() {
-		inputEl.simulate('change', { target: { value: newTime } });
+	it('calls datepicker callback, if one is provided, when value is changed', function() {
+		component.instance().onChange({ target: { value: newTime } });
 		expect(callbackMock).toHaveBeenCalledWith(newTime);
 	});
 
