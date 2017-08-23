@@ -20,7 +20,7 @@ storiesOf('TextInput', module)
 				label='Your name'
 				id='fullname'
 				name='name'
-				value='Phife Dawg'
+				defaultValue='Phife Dawg'
 				placeholder='Not your email' />
 		</div>
 	)
@@ -31,7 +31,7 @@ storiesOf('TextInput', module)
 				label='Your name'
 				id='fullname'
 				name='name'
-				value='Cannot focus'
+				defaultValue='Cannot focus'
 				disabled />
 		</div>
 	)
@@ -42,6 +42,7 @@ storiesOf('TextInput', module)
 				label='Your name'
 				id='fullname'
 				name='name'
+				defaultValue='#$%!$%!'
 				error='Not so fast. You have an error.' />
 		</div>
 	)
@@ -91,22 +92,6 @@ storiesOf('TextInput', module)
 			</form>
 		);
 	})
-	.add('with char counter (maxLength)', () => {
-		const rules = {
-			maxLength: 10,
-			pattern:'.{5,10}'
-		};
-		return (
-			<div className='span--50'>
-				<TextInput
-					label='Your name'
-					id='fullname'
-					name='name'
-					value=''
-					{...rules} />
-			</div>
-		);
-	})
 	.add('has a pattern for min length', () => {
 		const rules = {
 			pattern:'.{5,10}'
@@ -117,7 +102,7 @@ storiesOf('TextInput', module)
 					label='Your name'
 					id='fullname'
 					name='name'
-					value='>5'
+					defaultValue='>5'
 					{...rules} />
 				<Button
 					contrast
