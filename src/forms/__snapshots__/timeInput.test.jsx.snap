@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimeInput renders a time html input with expected props 1`] = `
+<span>
+  <input
+    className="input--time"
+    name="time"
+    onChange={[Function]}
+    required={true}
+    type="time"
+    value="22:00"
+  />
+</span>
+`;
