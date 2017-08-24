@@ -13,7 +13,8 @@ const fieldProps = {
 storiesOf('DateTimeLocalInput', module)
 	.addWithInfo(
 		'default',
-		'renders a datetime-local input. this component is intended to be used as a fallback for mobile.',
+		`renders a datetime-local input. 
+			this component is intended to be used in lieue of Calendar + Time on mobile browsers.`,
 		() => (
 			<InfoWrapper>
 				<div className='span--25'>
@@ -24,7 +25,7 @@ storiesOf('DateTimeLocalInput', module)
 	)
 	.add('initial value', () => {
 		return (<div className='span--25'>
-			<DateTimeLocalInput {...fieldProps} value={'2000-01-01T00:01'} />
+			<DateTimeLocalInput {...fieldProps} defaultValue={'2000-01-01T00:01'} />
 		</div>);
 	})
 	.add('required', () => {
@@ -34,7 +35,7 @@ storiesOf('DateTimeLocalInput', module)
 	})
 	.add('with error', () => {
 		return (<div className='span--25'>
-			<DateTimeLocalInput {...fieldProps} value={fieldProps.min} required error='Sorry outta time!'/>
+			<DateTimeLocalInput {...fieldProps} defaultValue={fieldProps.min} required error='Sorry outta time!'/>
 		</div>);
 	});
 

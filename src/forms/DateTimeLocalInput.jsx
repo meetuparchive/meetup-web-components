@@ -62,7 +62,7 @@ class DateTimeLocalInput extends React.Component {
 					required={required}
 					{...other}
 				/>
-				{ error && <p className='text--error'>{error}</p> }
+				{ error && <p className='text--error' id={errorId}>{error}</p> }
 			</div>
 		);
 
