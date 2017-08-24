@@ -24,7 +24,7 @@ storiesOf('DateTimeLocalInput', module)
 	)
 	.add('initial value', () => {
 		return (<div className='span--25'>
-			<DateTimeLocalInput {...fieldProps} defaultValue={'2000-01-01T00:01'} />
+			<DateTimeLocalInput {...fieldProps} value={'2000-01-01T00:01'} />
 		</div>);
 	})
 	.add('required', () => {
@@ -34,7 +34,7 @@ storiesOf('DateTimeLocalInput', module)
 	})
 	.add('with error', () => {
 		return (<div className='span--25'>
-			<DateTimeLocalInput {...fieldProps} defaultValue={fieldProps.min} required error='Sorry outta time!'/>
+			<DateTimeLocalInput {...fieldProps} value={fieldProps.min} required error='Sorry outta time!'/>
 		</div>);
 	});
 

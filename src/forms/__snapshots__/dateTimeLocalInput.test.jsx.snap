@@ -11,6 +11,7 @@ exports[`DateTimeLocal input should render an input with type time and expected 
     min="1999-12-31T23:55"
     name="datetime"
     onChange={[Function]}
+    onChangeCallback={[Function]}
     required={true}
     type="datetime-local"
     value="2000-01-01T00:01"

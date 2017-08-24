@@ -12,28 +12,16 @@ class DateTimeLocalInput extends React.Component {
 
 	constructor(props) {
 		super(props);
-
-		const value = this.props.defaultValue || this.props.value;
-
-		this.state = {
-			value: value ? (new Date(value).toISOString()).split('.')[0] : ''
-			// example: 2017-02-18T00:00:00
-			// leaving off milliseconds
-			// datetime local wont set value with milliseconds
-		};
-		this.handleChange = this.handleChange.bind(this);
+		this.onChange = this.onChange.bind(this);
 	}
 
 	/**
-	* @function handleChange
+	* @function onChange
 	* @param e Event the change event
-	* @description called when value changes and updates its own state in case it is controlled, 
-	* but also calls onChange in case it has a parent that provides onChange 
+	* @description called when value changes and in turn calls onChange from props 
 	* (redux-form or wrapping components like datetimepicker provides this)
 	*/
-	handleChange(e) {
-		this.setState({ value: e.target.value });
-
+	onChange(e) {
 		this.props.onChange && this.props.onChange(e.target.value);
 	}
 
@@ -43,10 +31,9 @@ class DateTimeLocalInput extends React.Component {
 			label,
 			className,
 			required,
-			defaultValue,	// eslint-disable-line no-unused-vars
 			value,
 			error,
-			onChange,		// eslint-disable-line no-unused-vars
+			onChange, 			// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -63,17 +50,15 @@ class DateTimeLocalInput extends React.Component {
 			other['aria-describedby'] = errorId;
 		}
 
-		// prefer the value if it is set from a parent, then state or self controlled in state
-		const v = value || this.state.value;
 		return (
 			<div>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>
 				<input
 					id={id}
 					type='datetime-local'
-					value={v}
+					value={value}
 					className={classNames}
-					onChange={this.handleChange}
+					onChange={this.onChange}
 					required={required}
 					{...other}
 				/>
