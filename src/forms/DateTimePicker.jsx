@@ -256,7 +256,7 @@ class DateTimePicker extends React.Component {
 							value={this.getDate()}
 							onFocus={onFocus}
 							onBlur={onBlur}
-							opts={datepickerOptions}
+							datepickerOptions={datepickerOptions}
 							className={childClasses}
 							ref={ comp => this.dateComponent = comp }
 						/>

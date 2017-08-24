@@ -11,7 +11,7 @@ describe('CalendarComponent', function() {
 		className = 'beyonce-halo',
 		value = new Date('2012-10-12'),
 		newValue = new Date('2020-10-12'),
-		opts = { blue: 'ivy' };
+		opts = { dateFormat: 'm-d-Y' };
 
 	const onChangeCallback = jest.fn();
 
@@ -22,7 +22,7 @@ describe('CalendarComponent', function() {
 				name={name}
 				className={className}
 				value={value}
-				opts={opts}
+				datepickerOptions={opts}
 				onChangeCallback={onChangeCallback}
 				ref={ node => this.node = node }
 			/>

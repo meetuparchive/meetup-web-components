@@ -14,7 +14,7 @@ storiesOf('CalendarComponent', module)
 						name='event_time'
 						label='Start at'
 						value={new Date()}
-						opts={{ allowInput: true }}
+						datepickerOptions={{ allowInput: true }}
 					/>
 				</div>
 			</InfoWrapper>
@@ -49,7 +49,7 @@ storiesOf('CalendarComponent', module)
 				label='From 2 days ago to 1 week from now'
 				value={now}
 				forceCalendar
-				opts={opts}
+				datepickerOptions={opts}
 			/>
 		</div>);
 	})

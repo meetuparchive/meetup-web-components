@@ -36,7 +36,7 @@ class CalendarComponent extends React.Component {
 			defaultDate: this.props.value
 		};
 
-		Object.assign(options, this.props.opts);
+		Object.assign(options, this.props.datepickerOptions);
 		this.flatpickr = new Flatpickr(this.inputEl, options);
 	}
 
@@ -89,7 +89,7 @@ class CalendarComponent extends React.Component {
 			required,
 			value,
 			error,
-			opts,				// eslint-disable-line no-unused-vars
+			datepickerOptions,	// eslint-disable-line no-unused-vars
 			onChange,			// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
