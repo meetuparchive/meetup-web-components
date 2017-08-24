@@ -43,4 +43,12 @@ storiesOf('Card', module)
 				<p className="margin--bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 			</Card>
 		</div>
+	))
+	.add('hasShadow and hasHoverShadow', () => (
+		<div style={wrapperStyle}>
+			<Card hasShadow hasHoverShadow>
+				<h2 className="text--sectionTitle margin--bottom">This card contains content</h2>
+				<p className="margin--bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+			</Card>
+		</div>
 	));

@@ -23,7 +23,8 @@ class Card extends React.PureComponent {
 			{
 				[`${CARD_CLASS}--initialHeight`]: initialHeight,
 				[`${CARD_CLASS}--hasShadow`]: hasShadow,
-				[`${CARD_CLASS}--hasHoverShadow`]: hasHoverShadow
+				[`${CARD_CLASS}--hasHoverShadow`]: hasHoverShadow && !hasShadow,
+				[`${CARD_CLASS}--hasShadowPlusHover`]: hasHoverShadow && hasShadow
 			},
 			className
 		);

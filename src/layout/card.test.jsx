@@ -21,7 +21,8 @@ describe('Card', function() {
 		const variants = [
 			'initialHeight',
 			'hasShadow',
-			'hasHoverShadow'
+			'hasHoverShadow',
+			'hasShadowPlusHover'
 		];
 
 		variantTest(Card, CARD_CLASS, variants);

@@ -60,24 +60,13 @@ Card-like boxes.
 
 .card--hasShadow {
 	@extend %shadow;
-
-	&.card--hasHoverShadow{
-
-		&:hover,
-		&:focus {
-			box-shadow: 0 0 4px 0 $C_border, 0 4px 12px 0 $C_border;
-		}
-
-	}
-
 }
 
 .card--hasHoverShadow {
+	@include shadowOnHover();
+}
 
-	&:hover,
-	&:focus {
-		@extend %shadow;
-	}
-
+.card--hasShadowPlusHover {
+	@include shadowOnHover(true);
 }
 
