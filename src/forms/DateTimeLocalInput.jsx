@@ -75,7 +75,7 @@ DateTimeLocalInput.propTypes = {
 		PropTypes.string,
 		PropTypes.element,
 	]),
-	onChange: PropTypes.func, // provided by redux-form or by a wrapping component eg DateTimePicker
+	onChange: PropTypes.func.isRequired, // provided by redux-form or by a wrapping component eg DateTimePicker
 };
 
 export default DateTimeLocalInput;

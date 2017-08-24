@@ -7,7 +7,8 @@ const fieldProps = {
 	name: 'datetime',
 	label:'When is Y2K?',
 	min: '1999-12-31T23:55',
-	max: '2017-06-30T16:30'
+	max: '2017-06-30T16:30',
+	onChange: () => {}
 };
 
 storiesOf('DateTimeLocalInput', module)
