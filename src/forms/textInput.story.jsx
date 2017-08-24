@@ -1,4 +1,5 @@
 import React from 'react';
+import { InfoWrapper } from '../utils/storyComponents';
 import TextInput from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@kadira/storybook';
@@ -92,6 +93,29 @@ storiesOf('TextInput', module)
 			</form>
 		);
 	})
+	.addWithInfo(
+		'with char counter if you provide maxLength',
+		`Note: updating field with charcounter relies on parent to give value, 
+			thats why you cant interact with the field in this story`,
+		() => {
+			const rules = {
+				maxLength: 20,
+				pattern:'.{5,10}'
+			};
+			return (
+				<InfoWrapper>
+					<div className='span--25'>
+						<TextInput
+							label='Your name'
+							id='fullname'
+							name='name'
+							value='how long is this'
+							{...rules} />
+					</div>
+				</InfoWrapper>
+			);
+		}
+	)
 	.add('has a pattern for min length', () => {
 		const rules = {
 			pattern:'.{5,10}'
