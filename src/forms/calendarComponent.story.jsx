@@ -27,7 +27,6 @@ storiesOf('CalendarComponent', module)
 				label='Start at'
 				value={new Date()}
 				required
-				forceCalendar
 			/>
 		</div>);
 	})
@@ -48,7 +47,6 @@ storiesOf('CalendarComponent', module)
 				name='event_time'
 				label='From 2 days ago to 1 week from now'
 				value={now}
-				forceCalendar
 				datepickerOptions={opts}
 			/>
 		</div>);
@@ -65,7 +63,6 @@ storiesOf('CalendarComponent', module)
 				label='In the year 3000'
 				value={date}
 				datepickerOptions={opts}
-				forceCalendar
 			/>
 		</div>);
 	})
@@ -83,7 +80,6 @@ storiesOf('CalendarComponent', module)
 					value={date}
 					error={'Woops, something went wrong.'}
 					datepickerOptions={opts}
-					forceCalendar
 				/>
 			</div>
 		);
