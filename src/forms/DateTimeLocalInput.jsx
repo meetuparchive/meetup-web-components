@@ -12,16 +12,16 @@ class DateTimeLocalInput extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.onChange = this.onChange.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	/**
-	* @function onChange
+	* @function handleChange
 	* @param e Event the change event
 	* @description called when value changes and in turn calls onChange from props 
 	* (redux-form or wrapping components like datetimepicker provides this)
 	*/
-	onChange(e) {
+	handleChange(e) {
 		this.props.onChange && this.props.onChange(e.target.value);
 	}
 
@@ -58,7 +58,7 @@ class DateTimeLocalInput extends React.Component {
 					type='datetime-local'
 					value={value}
 					className={classNames}
-					onChange={this.onChange}
+					onChange={this.handleChange}
 					required={required}
 					{...other}
 				/>
