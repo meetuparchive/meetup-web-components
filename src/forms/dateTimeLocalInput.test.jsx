@@ -5,14 +5,15 @@ import DateTimeLocalInput from './DateTimeLocalInput';
 describe('DateTimeLocal input', function() {
 	let component,
 		inputEl,
-		handleChangeSpy;
+		onChangeSpy;
 
 	const value = '2000-01-01T00:01',
 		newValue = '2017-06-01T08:30',
 		min = '1999-12-31T23:55',
 		max = '2017-06-30T16:30';
 
-	const onChangePropMock = jest.fn();
+	const onChangePropMock = jest.fn(),
+		callbackMock = jest.fn();
 
 	const props = {
 		name: 'datetime',
@@ -20,33 +21,33 @@ describe('DateTimeLocal input', function() {
 		min,
 		max,
 		required: true,
-		onChange:onChangePropMock
+		onChange:onChangePropMock,
+		onChangeCallback: callbackMock,
 	};
 
 	beforeEach(() => {
-		handleChangeSpy = jest.spyOn(DateTimeLocalInput.prototype, 'handleChange');
-		component = shallow(<DateTimeLocalInput {...props} />);
+		onChangeSpy = jest.spyOn(DateTimeLocalInput.prototype, 'onChange');
+		component = shallow(<DateTimeLocalInput {...props}/>);
 		inputEl = component.find('input');
 	});
 
 	afterEach(() => {
 		component = null;
 		inputEl = null;
-		handleChangeSpy.mockClear();
+		onChangeSpy.mockClear();
 	});
 
 	it('should render an input with type time and expected attrs', function() {
 		expect(component).toMatchSnapshot();
 	});
 
-	it('calls internal handleChange when value changed', function() {
-		const eventObj = { target: { value: newValue } };
-		inputEl.simulate('change', eventObj);
-		expect(handleChangeSpy).toHaveBeenCalled();
+	it('calls internal onChange when value changed', function() {
+		inputEl.simulate('change', { target: { value: newValue } });
+		expect(onChangeSpy).toHaveBeenCalled();
 	});
 
 	it('calls onChange prop if one is provided, as with redux-form', function() {
-		component.instance().handleChange({ target: { value: newValue } });
+		component.instance().onChange({ target: { value: newValue } });
 		expect(onChangePropMock).toHaveBeenCalledWith(newValue);
 	});
 });
