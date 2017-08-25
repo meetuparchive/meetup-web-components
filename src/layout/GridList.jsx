@@ -15,6 +15,7 @@ class GridList extends React.Component {
 			items,
 			autoHeight,
 			autoHeightWithWrap,
+			itemClassNames,
 			...other
 		} = this.props;
 
@@ -43,7 +44,8 @@ class GridList extends React.Component {
 		const listItemClassNames = cx(
 			'gridList-item',
 			{
-				['flex-item']: autoHeight
+				['flex-item']: autoHeight,
+				[itemClassNames]: itemClassNames
 			}
 		);
 
@@ -68,7 +70,8 @@ GridList.propTypes = {
 		medium: PropTypes.number,
 		large: PropTypes.number
 	}),
-	items: PropTypes.arrayOf(PropTypes.element).isRequired
+	items: PropTypes.arrayOf(PropTypes.element).isRequired,
+	itemClassNames: PropTypes.string
 };
 
 export default GridList;
