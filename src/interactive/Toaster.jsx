@@ -1,9 +1,12 @@
-import CSSTransitionGroup from 'react-addons-css-transition-group';
 import PropTypes from 'prop-types';
 import React from 'react';
+import CSSTransition from 'react-transition-group/CSSTransition';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
 import cx from 'classnames';
+import Toast from './Toast';
 
 export const DELAY_TIME = 3000;
+const MARGINAL_DELAY = 1000; // each additional toast will wait this much longer than the previous one
 
 /**
  * @module Toaster
@@ -13,10 +16,9 @@ class Toaster extends React.PureComponent {
 		super(props);
 
 		this.timeouts = [];
-		this.dismissedToasts = [];
 
 		this.cloneToast = this.cloneToast.bind(this);
-		this.setDismissedToast = this.setDismissedToast.bind(this);
+		this.dismissToast = this.dismissToast.bind(this);
 		this.clearTimeouts = this.clearTimeouts.bind(this);
 		this.setTimer = this.setTimer.bind(this);
 
@@ -29,7 +31,7 @@ class Toaster extends React.PureComponent {
 	 * @param {Object} dismissedToast - `Toast` components to remove from state
 	 * @returns undefined
 	 */
-	setDismissedToast(dismissedToast) {
+	dismissToast(dismissedToast) {
 		this.setState({
 			toasts: this.state.toasts.filter(toast => dismissedToast.props.id !== toast.props.id)
 		});
@@ -38,22 +40,19 @@ class Toaster extends React.PureComponent {
 	/**
 	 * @returns undefined
 	 *
-	 * sets timers to delay each toast's dismissal
+	 * sets timers to delay a toast's dismissal
 	 */
-	setTimer() {
-		const toastsToDismiss = this.state.toasts.filter((toast) => toast.props.autodismiss);
+	setTimer(toast) {
 
-		toastsToDismiss.forEach((toast, i) => {
-			this.timeouts.push(setTimeout(() => {
-				this.setDismissedToast(toast);
-			}, DELAY_TIME*(i+1)));
-		});
+		this.timeouts.push(setTimeout(() => {
+			this.dismissToast(toast);
+		}, DELAY_TIME + (MARGINAL_DELAY * toast.key)));
 	}
 
 	/**
 	 * @returns undefined
 	 *
-	 * removes timers in order to prevent toasts from being dismissed
+	 * removes timers in order to prevent toasts from being automatically dismissed
 	 */
 	clearTimeouts() {
 		this.timeouts.forEach(clearTimeout);
@@ -64,7 +63,11 @@ class Toaster extends React.PureComponent {
 	}
 
 	componentDidMount() {
-		this.setTimer();
+		this.state.toasts && this.state.toasts.filter(t => t.props.autodismiss).map(this.setTimer);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		console.log(nextProps);
 	}
 
 	/**
@@ -75,13 +78,8 @@ class Toaster extends React.PureComponent {
 	cloneToast(toast, i) {
 		const toastProps = {
 			key: i,
-			id: toast.props.id || i,
-			className: toast.props.className,
-			action: toast.props.action,
-			actionLabel: toast.props.actionLabel,
-			dismissable: toast.props.dismissable,
-			autodismiss: toast.props.autodismiss,
-			setDismissedToast: this.setDismissedToast
+			id: toast.props.id || `toast-${i}`,
+			dismissToast: this.dismissToast
 		};
 		return React.cloneElement(toast, toastProps);
 	}
@@ -112,25 +110,26 @@ class Toaster extends React.PureComponent {
 				onMouseEnter={this.clearTimeouts}
 				onMouseLeave={this.setTimer}
 				{...other}>
-				<CSSTransitionGroup
-					transitionAppear
-					transitionAppearTimeout={0}
-					transitionEnterTimeout={250}
-					transitionLeaveTimeout={250}
-					transitionName='slide'>
+				<TransitionGroup>
 					{
 						this.renderToasts().map((toast, i) => (
-							toast
+							<CSSTransition
+								key={i}
+								appear
+								timeout={250}
+								classNames="slide">
+								{toast}
+							</CSSTransition>
 						))
 					}
-				</CSSTransitionGroup>
+				</TransitionGroup>
 			</div>
 		);
 	}
 }
 
 Toaster.propTypes = {
-	toasts: PropTypes.arrayOf(PropTypes.element).isRequired
+	toasts: PropTypes.arrayOf(Toast).isRequired
 };
 
 export default Toaster;

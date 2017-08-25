@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+import Button from '../forms/Button';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
@@ -29,7 +30,7 @@ class Toast extends React.PureComponent {
 	 * tells `Toaster` component which toast was clicked to be dismissed
 	 */
 	handleDismiss() {
-		this.props.setDismissedToast && this.props.setDismissedToast(this);
+		this.props.dismissToast && this.props.dismissToast(this);
 	}
 
 	render() {
@@ -39,7 +40,7 @@ class Toast extends React.PureComponent {
 			action,
 			actionLabel,
 			dismissable,
-			setDismissedToast, // eslint-disable-line no-unused-vars
+			dismissToast, // eslint-disable-line no-unused-vars
 			autodismiss, // eslint-disable-line no-unused-vars
 			success,
 			error,
@@ -64,9 +65,9 @@ class Toast extends React.PureComponent {
 					<FlexItem>{children}</FlexItem>
 					{action && (
 						<FlexItem shrink>
-							<a href='#' onClick={action} className={TOAST_ACTION_CLASS}>
+							<Button reset onClick={action} className={TOAST_ACTION_CLASS}>
 								{actionLabel}
-							</a>
+							</Button>
 						</FlexItem>
 					)}
 					{dismissable && (
@@ -75,7 +76,9 @@ class Toast extends React.PureComponent {
 							className={TOAST_DISMISS_BTN_CLASS}
 							onClick={this.handleDismiss}
 						>
-							<Icon shape='cross' size='s' />
+							<Button reset>
+								<Icon shape='cross' size='s' />
+							</Button>
 						</FlexItem>
 					)}
 
@@ -86,15 +89,8 @@ class Toast extends React.PureComponent {
 }
 
 Toast.propTypes = {
-	message: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.string
-	]).isRequired,
 	action: PropTypes.func,
-	actionLabel: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.string
-	]),
+	actionLabel: PropTypes.node,
 	dismissable: PropTypes.bool,
 	autodismiss: PropTypes.bool
 };

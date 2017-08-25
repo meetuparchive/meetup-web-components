@@ -57,12 +57,12 @@ $easing--exit: cubic-bezier(.4, 0, 0, 1); // exiting the screen
   transition: opacity $duration--medium $easing--enter, transform $duration--medium $easing--enter;
 }
 
-.slide-leave {
+.slide-exit {
   opacity: 1;
   transform: translateY(0px);
 }
 
-.slide-leave.slide-leave-active {
+.slide-exit.slide-exit-active {
   opacity: 0.01;
   transform: translateY(-100px);
   transition: opacity $duration--medium $easing--exit, transform $duration--medium $easing--exit;

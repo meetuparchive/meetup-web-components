@@ -2,19 +2,33 @@
 import React from 'react';
 import Toaster from './Toaster';
 import Toast from './Toast';
+import Button from '../forms/Button';
 import { storiesOf } from '@kadira/storybook';
 import { decorateWithLocale } from '../utils/decorators';
+
+const toastArray = [<Toast>Yr toast is ready</Toast>];
+const giveToast = () => {
+	// console.log('toastArray before push');
+	// console.log(toastArray);
+	toastArray.push(
+		<Toast>
+			A NEW toast is ready
+		</Toast>
+	);
+	// console.log('toastArray after push');
+	// console.log(toastArray);
+};
+
 
 storiesOf('Toast', module)
 	.addDecorator(decorateWithLocale)
 	.add('default', () =>
-		(<Toaster
-			toasts={[
-				<Toast>
-					Your toast is ready
-				</Toast>
-			]}
-		/>)
+		(<div>
+			<Button onClick={giveToast}>Give me toast</Button>
+			<Toaster
+				toasts={toastArray}
+			/>
+		</div>)
 	)
 	.add('don\'t automatically dismiss', () =>
 		(<Toaster
