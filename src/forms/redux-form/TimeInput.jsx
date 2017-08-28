@@ -9,8 +9,8 @@ import TimeInput from '../TimeInput';
  */
 const ReduxFormTimeInput = props => {
 	const { input, meta, ...other } = props;
-
-	return <TimeInput {...input} error={meta.error} {...other} />;
+	console.log('HELLO HELLO HELLO');
+	return <TimeInput {...input} error={meta.touched && meta.error} {...other} />;
 };
 
 ReduxFormTimeInput.displayName = 'ReduxFormTimeInput';

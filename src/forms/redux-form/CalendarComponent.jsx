@@ -9,7 +9,7 @@ import CalendarComponent from '../CalendarComponent';
  */
 const ReduxFormCalendarComponent = props => {
 	const { meta, input, ...other } = props;
-	return <CalendarComponent error={meta.error} {...input} {...other} />;
+	return <CalendarComponent error={meta.touched && meta.error} {...input} {...other} />;
 };
 
 ReduxFormCalendarComponent.displayName = 'ReduxFormCalendarComponent';
