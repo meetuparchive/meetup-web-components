@@ -33,10 +33,10 @@ class CalendarComponent extends React.Component {
 			altInput: true,
 			allowInput: true,
 			altFormat: 'D M d, Y', // TODO localize
-			defaultDate: this.props.value
+			defaultDate: this.props.value,
+			...this.props.datepickerOptions
 		};
 
-		Object.assign(options, this.props.datepickerOptions);
 		this.flatpickr = new Flatpickr(this.inputEl, options);
 	}
 
@@ -47,7 +47,7 @@ class CalendarComponent extends React.Component {
 	// replaces updateFlatpickr
 	// if we receive a new value from parent, update Flatpickr
 	componentWillReceiveProps(newProps) {
-		this.flatpickr.setDate(newProps.value);
+		this.flatpickr && this.flatpickr.setDate(newProps.value);
 	}
 
 	/**

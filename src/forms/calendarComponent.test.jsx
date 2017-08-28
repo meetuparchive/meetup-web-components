@@ -15,7 +15,7 @@ describe('CalendarComponent', function() {
 
 	const onChangeCallback = jest.fn();
 
-	beforeEach(() => {
+	it('renders the calendarComponent with appropriate attributes', function() {
 		calendarComponent = shallow(
 			<CalendarComponent
 				id={id}
@@ -28,14 +28,8 @@ describe('CalendarComponent', function() {
 			/>
 		);
 		calendarComponent.instance().componentDidMount();
-	});
-
-	afterEach(() => {
-		calendarComponent = null;
-	});
-
-	it('renders the calendarComponent with appropriate attributes', function() {
 		expect(calendarComponent).toMatchSnapshot();
+		calendarComponent = null;
 	});
 
 	describe('onChange callback tests', () => {
@@ -44,7 +38,11 @@ describe('CalendarComponent', function() {
 			onChangePropMock,
 			callbackMock;
 
-		beforeEach(() => {
+		// because we are rendering shallow here, flatpickr isnt
+		// instantiated (because componentDidMount not called)
+		// just using direct calls to flatpickr change to test
+
+		it('calls onChange prop if one is provided, as with redux-form', function() {
 			onChangePropMock = jest.fn();
 			callbackMock = jest.fn();
 
@@ -57,19 +55,10 @@ describe('CalendarComponent', function() {
 					onChangeCallback={callbackMock}
 				/>
 			);
-		});
-
-		afterEach(() => {
-			calendarComponent = null;
-		});
-
-		// because we are rendering shallow here, flatpickr isnt
-		// instantiated (because componentDidMount not called)
-		// just using direct calls to flatpickr change to test
-
-		it('calls onChange prop if one is provided, as with redux-form', function() {
+			expect(onChangePropMock).not.toHaveBeenCalled();
 			calendarComponent.instance().onFlatpickrChange([newValue]);
 			expect(onChangePropMock).toHaveBeenCalledWith(newValue);
+			calendarComponent = null;
 		});
 
 	});
@@ -102,11 +91,13 @@ describe('CalendarComponent', function() {
 		});
 
 		it('onOpen calls the props onFocus method when it exists', () => {
+			expect(onFocusMock).not.toHaveBeenCalled();
 			cal.instance().onOpen();
 			expect(onFocusMock).toHaveBeenCalled();
 		});
 
 		it('onClose calls the props onBlur method when it exists', () => {
+			expect(onBlurMock).not.toHaveBeenCalled();
 			cal.instance().onClose();
 			expect(onBlurMock).toHaveBeenCalled();
 		});
