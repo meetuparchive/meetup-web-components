@@ -8,14 +8,13 @@ around it's children.
 */
 
 $sectionSpaceMultiple: 2;
-
 @include responsiveVarContext--base() {
 	.section {
 		margin: 0 $base;
 		padding: $base*$sectionSpaceMultiple 0 0 0;
 	}
+
 	.section--hasSeparator {
-		border-bottom: 1px solid $C_border;
 		padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0;
 	}
 }
@@ -23,6 +22,14 @@ $sectionSpaceMultiple: 2;
 @include _bpModifier(section, hasSeparator) {
 	border-bottom-width: 0;
 	padding-bottom: 0;
+}
+
+.section--hasSeparator {
+	border-bottom: 1px solid $C_border;
+
+	.inverted & {
+		border-bottom: 1px solid $C_borderInverted;
+	}
 }
 
 .section--flush {
