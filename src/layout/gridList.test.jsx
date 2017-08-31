@@ -133,7 +133,9 @@ const JSX_AutoheightWithWrapGridListResponsive = (
 	/>
 );
 
-let gridList, gridListCustomClassNames, autoheightGridList;
+let gridList,
+	gridListCustomClassNames,
+	autoheightGridList;
 
 describe('Static GridList', function() {
 	beforeEach(() => {
