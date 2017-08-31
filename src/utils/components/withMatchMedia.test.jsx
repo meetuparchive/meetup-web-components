@@ -1,7 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-import {MEDIA_QUERIES} from '../designConstants';
+import { MEDIA_QUERIES } from '../designConstants';
 import withMatchMedia from './withMatchMedia';
 import * as MM from './withMatchMedia';
 
@@ -15,16 +15,16 @@ class TestComponent extends React.Component {
 		return <h1>Hello world</h1>;
 	}
 }
+const TestComponentWithMatchMedia = withMatchMedia(TestComponent);
 
 /**
  * @param {Array} breakpoints - breakpoint names to pass to withMatchMedia
  */
 function renderWrappedComponent(breakpoints) {
-	const TestComponentWithMatchMedia = withMatchMedia(TestComponent);
 	return TestUtils.renderIntoDocument(<TestComponentWithMatchMedia />);
 }
 
-const MATCH_MEDIA_FN_MOCK = (mq) => ({
+const MATCH_MEDIA_FN_MOCK = mq => ({
 	matches: false,
 	addListener: jest.fn(),
 	removeListener: jest.fn(),
@@ -33,45 +33,43 @@ const MATCH_MEDIA_FN_MOCK = (mq) => ({
 describe('withMatchMedia', () => {
 	window.matchMedia = MATCH_MEDIA_FN_MOCK;
 
-	describe('prop name generator', () => {
-		it('should generate correct prop name from a given breakpoint', () => {
-			const actual = MM.getStateNameByBreakpoint('foo');
-			const expected = 'isAtFooUp';
-			expect(actual).toEqual(expected);
+	it('should generate correct prop name from a given breakpoint', () => {
+		const actual = MM.getStateNameByBreakpoint('foo');
+		const expected = 'isAtFooUp';
+		expect(actual).toEqual(expected);
+	});
+
+	it('build state object with boolean values (mocked to false)', () => {
+		const actual = MM.getUpdatedMediaState(
+			allBreakpoints.map(bp => window.matchMedia(MEDIA_QUERIES[bp])),
+			allBreakpoints
+		);
+		const expected = {
+			isAtSmallUp: false,
+			isAtMediumUp: false,
+			isAtLargeUp: false,
+			isAtHugeUp: false,
+		};
+		expect(actual).toEqual(expected);
+	});
+
+	it('provides breakpoint props to wrapped component', () => {
+		const wrappedComponent = renderWrappedComponent(allBreakpoints);
+		const innerComponent = TestUtils.findRenderedComponentWithType(
+			wrappedComponent,
+			TestComponent
+		);
+		const actualPropNames = Object.keys(innerComponent.props.media);
+
+		allBreakpoints.forEach(bp => {
+			const expectedPropName = MM.getStateNameByBreakpoint(bp);
+			expect(actualPropNames).toContain(expectedPropName);
 		});
 	});
 
-	describe('state management', () => {
-		it('build state object with boolean values (mocked to false)', () => {
-			const actual = MM.getUpdatedMediaState(
-				allBreakpoints
-					.map(bp => window.matchMedia(MEDIA_QUERIES[bp])),
-				allBreakpoints
-			);
-			const expected = {
-				isAtSmallUp: false,
-				isAtMediumUp: false,
-				isAtLargeUp: false,
-				isAtHugeUp: false,
-			};
-			expect(actual).toEqual(expected);
-		});
-	});
-
-	describe('media query prop provision', () => {
-
-		it('provides breakpoint props to wrapped component', () => {
-			const wrappedComponent = renderWrappedComponent(allBreakpoints);
-			const innerComponent = TestUtils.findRenderedComponentWithType(
-				wrappedComponent,
-				TestComponent
-			);
-			const actualPropNames = Object.keys(innerComponent.props.media);
-
-			allBreakpoints.forEach(bp => {
-				const expectedPropName = MM.getStateNameByBreakpoint(bp);
-				expect(actualPropNames).toContain(expectedPropName);
-			});
-		});
+	it('provides a wrapped displayname', () => {
+		expect(TestComponentWithMatchMedia.displayName).toBe(
+			'WithMatchMedia(TestComponent)'
+		);
 	});
 });
