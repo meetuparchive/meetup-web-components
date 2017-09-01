@@ -20,6 +20,7 @@ class Toaster extends React.PureComponent {
 		this.cloneToast = this.cloneToast.bind(this);
 		this.dismissToast = this.dismissToast.bind(this);
 		this.clearTimeouts = this.clearTimeouts.bind(this);
+		this.restartTimeouts = this.restartTimeouts.bind(this);
 		this.setTimer = this.setTimer.bind(this);
 
 		this.state = {
@@ -28,7 +29,7 @@ class Toaster extends React.PureComponent {
 	}
 
 	/**
-	 * @param {Object} dismissedToast - `Toast` components to remove from state
+	 * @param {Object} dismissedToast - `Toast` component to remove from state
 	 * @returns undefined
 	 */
 	dismissToast(dismissedToast) {
@@ -38,6 +39,7 @@ class Toaster extends React.PureComponent {
 	}
 
 	/**
+	 * @param {Object} toast - `Toast` component to set a timeout on before passing to `dismissToast`
 	 * @returns undefined
 	 *
 	 * sets timers to delay a toast's dismissal
@@ -47,6 +49,19 @@ class Toaster extends React.PureComponent {
 		this.timeouts.push(setTimeout(() => {
 			this.dismissToast(toast);
 		}, DELAY_TIME + (MARGINAL_DELAY * toast.key)));
+	}
+
+	/**
+	 * @returns undefined
+	 *
+	 * removes timers in order to prevent toasts from being automatically dismissed
+	 */
+	restartTimeouts() {
+		const toasts = this.state.toasts;
+
+		toasts.forEach((toast, i) => {
+			this.setTimer(toast);
+		});
 	}
 
 	/**
@@ -67,7 +82,14 @@ class Toaster extends React.PureComponent {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log(nextProps);
+		const currentToasts = this.state.toasts;
+		const allToasts = currentToasts.concat(nextProps.toasts);
+
+		if (nextProps.toasts !== this.state.toasts) {
+			this.setState(() => ({ toasts: allToasts.map(this.cloneToast) }), () => {
+				this.state.toasts && this.state.toasts.filter(t => t.props.autodismiss).map(this.setTimer);
+			});
+		}
 	}
 
 	/**
@@ -82,14 +104,6 @@ class Toaster extends React.PureComponent {
 			dismissToast: this.dismissToast
 		};
 		return React.cloneElement(toast, toastProps);
-	}
-
-	/**
-	 * @returns {Array} `Toast` components
-	 */
-	renderToasts() {
-		this.state.toasts = this.state.toasts.map(this.cloneToast);
-		return this.state.toasts;
 	}
 
 	render() {
@@ -108,13 +122,13 @@ class Toaster extends React.PureComponent {
 			<div
 				className={classNames}
 				onMouseEnter={this.clearTimeouts}
-				onMouseLeave={this.setTimer}
+				onMouseLeave={this.restartTimeouts}
 				{...other}>
 				<TransitionGroup>
 					{
-						this.renderToasts().map((toast, i) => (
+						this.state.toasts.map((toast, i) => (
 							<CSSTransition
-								key={i}
+								key={`csstrns-${i}`}
 								appear
 								timeout={250}
 								classNames="slide">

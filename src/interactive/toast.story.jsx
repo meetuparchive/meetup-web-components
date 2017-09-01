@@ -6,37 +6,55 @@ import Button from '../forms/Button';
 import { storiesOf } from '@kadira/storybook';
 import { decorateWithLocale } from '../utils/decorators';
 
-const toastArray = [<Toast>Yr toast is ready</Toast>];
-const giveToast = () => {
-	// console.log('toastArray before push');
-	// console.log(toastArray);
-	toastArray.push(
-		<Toast>
-			A NEW toast is ready
-		</Toast>
-	);
-	// console.log('toastArray after push');
-	// console.log(toastArray);
-};
+const toastArray = [<Toast>Your toast is ready</Toast>];
 
+/**
+ * @module ToasterContainer
+ */
+class ToasterContainer extends React.PureComponent {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			addedToasts: this.props.addedToasts
+		};
+
+		this.addToast = this.addToast.bind(this);
+	}
+
+	addToast(toast) {
+		this.setState({
+			addedToasts: toast
+		});
+	}
+
+	render() {
+		const {
+			addedToasts // eslint-disable-line no-unused-vars
+		} = this.props;
+		const newToast = <Toast>This toast is new</Toast>;
+
+		return (
+			<div>
+				<Toaster
+					toasts={this.state.addedToasts}
+				/>
+				<Button onClick={() => this.addToast(newToast)}>Give me toast</Button>
+			</div>
+		);
+	}
+}
 
 storiesOf('Toast', module)
 	.addDecorator(decorateWithLocale)
 	.add('default', () =>
-		(<div>
-			<Button onClick={giveToast}>Give me toast</Button>
-			<Toaster
-				toasts={toastArray}
-			/>
-		</div>)
+		(<ToasterContainer
+			addedToasts={toastArray}
+		/>)
 	)
 	.add('don\'t automatically dismiss', () =>
 		(<Toaster
-			toasts={[
-				<Toast autodismiss={false}>
-					Your toast is ready
-				</Toast>
-			]}
+			toasts={toastArray}
 		/>)
 	)
 	.add('don\'t allow dismissal', () =>

@@ -46,12 +46,14 @@ $duration--long: .5s;
 $easing--standard: cubic-bezier(.4, 0, .2, 1); // stays on screen from start to finish
 $easing--enter: cubic-bezier(0, 0, .2, 1); // entering the screen
 $easing--exit: cubic-bezier(.4, 0, 0, 1); // exiting the screen
-.slide-appear {
+.slide-appear,
+.slide-enter {
   opacity: 0.01;
   transform: translateY(-100px);
 }
 
-.slide-appear.slide-appear-active {
+.slide-appear.slide-appear-active,
+.slide-enter.slide-enter-active {
   opacity: 1;
   transform: translateY(0px);
   transition: opacity $duration--medium $easing--enter, transform $duration--medium $easing--enter;
