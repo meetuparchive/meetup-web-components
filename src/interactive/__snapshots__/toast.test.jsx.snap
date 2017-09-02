@@ -6,23 +6,24 @@ exports[`Toast renders into the DOM 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  <CSSTransitionGroup
-    transitionAppear={true}
-    transitionAppearTimeout={0}
-    transitionEnter={true}
-    transitionEnterTimeout={250}
-    transitionLeave={true}
-    transitionLeaveTimeout={250}
-    transitionName="slide"
+  <TransitionGroup
+    childFactory={[Function]}
+    component="div"
   >
-    <Toast
-      autodismiss={true}
-      dismissable={true}
-      id={0}
-      setDismissedToast={[Function]}
+    <CSSTransition
+      appear={true}
+      classNames="slide"
+      timeout={250}
     >
-      Your toast is ready
-    </Toast>
-  </CSSTransitionGroup>
+      <Toast
+        autodismiss={true}
+        dismissToast={[Function]}
+        dismissable={true}
+        id="toast-0"
+      >
+        Your toast is ready
+      </Toast>
+    </CSSTransition>
+  </TransitionGroup>
 </div>
 `;

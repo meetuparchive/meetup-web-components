@@ -36,16 +36,6 @@
 //
 // Toast transitions
 //
-
-// durations - should come from `swarm-animations` once we add it here
-$duration--short: .1s;
-$duration--medium: .25s;
-$duration--long: .5s;
-
-//easing - should come from `swarm-animations` once we add it here
-$easing--standard: cubic-bezier(.4, 0, .2, 1); // stays on screen from start to finish
-$easing--enter: cubic-bezier(0, 0, .2, 1); // entering the screen
-$easing--exit: cubic-bezier(.4, 0, 0, 1); // exiting the screen
 .slide-appear,
 .slide-enter {
   opacity: 0.01;

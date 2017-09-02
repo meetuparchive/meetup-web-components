@@ -73,7 +73,7 @@ describe('Toaster', function() {
 	});
 
 	it('should set dismiss toasts', function(){
-		component.instance().setDismissedToast(testToast);
+		component.instance().dismissToast(testToast);
 
 		expect(component.state().toasts).not.toContain(testToast);
 	});
@@ -101,15 +101,27 @@ describe('Toaster', function() {
 	});
 
 	it('should clear the timeouts when specified', function(){
-		const setDismissedToastSpy = spyOn(Toaster.prototype, 'setDismissedToast');
+		const dismissToastSpy = spyOn(Toaster.prototype, 'dismissToast');
 		const component = mount(<ToastWithProps />);
 		const toasterComponent = component.find(Toaster).getNode();
 
 		toasterComponent.clearTimeouts();
 
 		setTimeout(() => {
-			expect(setDismissedToastSpy).not.toHaveBeenCalled();
+			expect(dismissToastSpy).not.toHaveBeenCalled();
 		}, parseInt(DELAY_TIME + 1));
+	});
+
+	it('should add new `toast` with new toast received via props', () => {
+		const newProps = {
+			toasts: [<Toast>This toast is new</Toast>]
+		};
+		const component = mount(<ToastWithProps />);
+		const toasterComponent = component.find(Toaster).getNode();
+
+		expect(toasterComponent.state.toasts.length).toEqual(1);
+		toasterComponent.componentWillReceiveProps(newProps);
+		expect(toasterComponent.state.toasts.length).toEqual(2);
 	});
 
 });
@@ -165,14 +177,14 @@ describe('Toast', function() {
 		expect(action).toHaveBeenCalled();
 	});
 
-	it('should call setDismissedToast when the dismiss button is clicked', () => {
-		const setDismissedToastSpy = spyOn(Toaster.prototype, 'setDismissedToast');
+	it('should call dismissToast when the dismiss button is clicked', () => {
+		const dismissToastSpy = spyOn(Toaster.prototype, 'dismissToast');
 		const component = mount(<ToastWithProps />);
 		const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`);
 
-		expect(setDismissedToastSpy).not.toHaveBeenCalled();
+		expect(dismissToastSpy).not.toHaveBeenCalled();
 		dismissBtn.simulate('click');
-		expect(setDismissedToastSpy).toHaveBeenCalled();
+		expect(dismissToastSpy).toHaveBeenCalled();
 	});
 
 	it('should remove the Toast from the Toaster `toasts` state when the dismiss button is clicked', () => {

@@ -45,7 +45,6 @@ class Toaster extends React.PureComponent {
 	 * sets timers to delay a toast's dismissal
 	 */
 	setTimer(toast) {
-
 		this.timeouts.push(setTimeout(() => {
 			this.dismissToast(toast);
 		}, DELAY_TIME + (MARGINAL_DELAY * toast.key)));
@@ -84,6 +83,8 @@ class Toaster extends React.PureComponent {
 	componentWillReceiveProps(nextProps) {
 		const currentToasts = this.state.toasts;
 		const allToasts = currentToasts.concat(nextProps.toasts);
+
+		console.log('--------------------componentWillReceiveProps fired--------------------');
 
 		if (nextProps.toasts !== this.state.toasts) {
 			this.setState(() => ({ toasts: allToasts.map(this.cloneToast) }), () => {
