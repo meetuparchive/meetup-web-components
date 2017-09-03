@@ -18,7 +18,8 @@ export const VALID_SPACE = {
 	center: 'center',
 	spaceAround: 'spaceAround',
 	spaceBetween: 'spaceBetween',
-	flexEnd: 'flexEnd'
+	flexEnd: 'flexEnd',
+	flexStart: 'flexStart'
 };
 
 export const DIRECTION_ROW = 'row';
