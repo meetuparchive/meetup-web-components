@@ -61,8 +61,10 @@ Card-like boxes.
 .card--flush {
 	border-radius: 0;
 	border-width: 0;
-	margin-left: -#{$space};
-	margin-right: -#{$space};
+	@include responsiveVarContext--base() {
+		margin-left: -#{$base};
+		margin-right: -#{$base};
+	}
 }
 
 @include _bpModifier('card', 'flush') {
