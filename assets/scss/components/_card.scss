@@ -59,19 +59,14 @@ Card-like boxes.
 }
 
 .card--flush {
-	background: $C_white;
-	border: 1px solid $C_border;
 	border-radius: 0;
 	border-width: 0;
 	margin-left: -#{$space};
 	margin-right: -#{$space};
-
-	@include atMediaUp(medium) {
-		border-radius: $largeRadius;
-	}
 }
 
-@include _bpModifier('card', 'unflush') {
+@include _bpModifier('card', 'flush') {
+	border-radius: $largeRadius;
 	border-width: 1px;
 	margin-left: 0;
 	margin-right: 0;
