@@ -39,7 +39,7 @@ Card-like boxes.
 */
 
 .card {
-	border: .5px solid $C_border; // change to $C_borderCard when constants branch merges
+	border: .5px solid $C_border; // :SDS: change to $C_borderCard when constants branch merges
 	box-sizing: border-box;
 	display: block;
 	background: $C_contentBG;

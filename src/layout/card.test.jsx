@@ -21,11 +21,6 @@ const CardJSX_doubleShadow = (
 	</Card>
 );
 
-// const CardJSX_flush = props =>
-// 	<Card flushUntil={props.flushUntil}>
-// 		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-// 	</Card>;
-
 describe('Card and variants', function() {
 	const cardComponent = shallow(CardJSX);
 
