@@ -1,0 +1,90 @@
+/*doc
+---
+title: Cards
+name: uiCard
+category: UI Components
+---
+Card-like boxes.
+
+## Standard, Group, and Event cards
+(This example uses `gridList`, but cards may placed anywhere)
+
+```html_example
+<section class="stripe--collection">
+	<div class="bounds">
+		<ul class="gridList gridList--has1 atMedium_gridList--has3">
+			<!-- Base card styles -->
+			<li class="gridList-item">
+				<div class="card">
+					<h4>Look at this card</h4>
+					<p>Just <em>look at it</em></p>
+				</div>
+			</li>
+			<li class="gridList-item">
+				<div class="card">
+					<h4>Look at this card</h4>
+					<p>Just <em>look at it</em></p>
+				</div>
+			</li>
+			<li class="gridList-item">
+				<div class="card">
+					<h4>Look at this card</h4>
+					<p>Just <em>look at it</em></p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>
+```
+*/
+
+.card {
+	border: .5px solid $C_border; // change to $C_borderCard when constants branch merges
+	box-sizing: border-box;
+	display: block;
+	background: $C_contentBG;
+	border-radius: $largeRadius;
+	position: relative;
+	background-size: cover;
+	background-clip: padding-box;
+	min-height: $block-4;
+
+	@include responsiveVarContext--base() {
+		padding: $base $base 0;
+	}
+}
+
+.card--initialHeight {
+	min-height: initial;
+}
+
+.card--flush {
+	background: $C_white;
+	border: 1px solid $C_border;
+	border-radius: 0;
+	border-width: 0;
+	margin-left: -#{$space};
+	margin-right: -#{$space};
+
+	@include atMediaUp(medium) {
+		border-radius: $largeRadius;
+	}
+}
+
+@include _bpModifier('card', 'unflush') {
+	border-width: 1px;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.card--hasShadow {
+	@extend %shadow;
+}
+
+.card--hasHoverShadow {
+	@include shadowOnHover();
+}
+
+.card--hasShadowPlusHover {
+	@include shadowOnHover(true);
+}
