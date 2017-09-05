@@ -268,8 +268,8 @@ Class                   | Description
 .button--bordered {
 	@include buttonColor(
 		$bgColor: $C_contentBG,
-		$hoverColor: #F6F7F8, //TODO: change to $C_collectionBG once `swarm-constants` is available
-		$activeColor: darken(#F6F7F8, 3%)
+		$hoverColor: $C_lightGray,
+		$activeColor: darken($C_lightGray, 3%)
 	);
 	border: 1px solid $C_border;
 
@@ -279,9 +279,9 @@ Class                   | Description
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: rgba(46, 62, 72, .6),
-			$hoverColor: lighten(transparentize(rgba(46, 62, 72, .6), .2), 12%),
-			$activeColor: lighten(transparentize(rgba(46, 62, 72, .6), .2), 23%)
+			$bgColor: $C_textSecondary,
+			$hoverColor: lighten(transparentize($C_textSecondary, .2), 12%),
+			$activeColor: lighten(transparentize($C_textSecondary, .2), 23%)
 		);
 		border: 1px solid $C_borderInverted;
 
