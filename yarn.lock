@@ -6274,6 +6274,15 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
+"swarm-animation@git+https://github.com/meetup/swarm-animation.git":
+  version "0.0.1"
+  uid "1136ac30dcb730ea95bda91769e559e1ce6506d7"
+  resolved "git+https://github.com/meetup/swarm-animation.git#1136ac30dcb730ea95bda91769e559e1ce6506d7"
+  dependencies:
+    autoprefixer "^7.1.1"
+    jasmine-jquery "^2.1.1"
+    jquery "^3.2.1"
+
 "swarm-animation@https://github.com/meetup/swarm-animation.git":
   version "0.0.1"
   resolved "https://github.com/meetup/swarm-animation.git#1136ac30dcb730ea95bda91769e559e1ce6506d7"
@@ -6282,9 +6291,9 @@ svgo@^0.7.0:
     jasmine-jquery "^2.1.1"
     jquery "^3.2.1"
 
-swarm-constants@0.1.15:
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-0.1.15.tgz#0bb7f11af93c447336274532305a9669b63325ad"
+swarm-constants@0.1.16:
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-0.1.16.tgz#af7476970d2cb8a749802bc7d28c04eaa497ff8d"
   dependencies:
     "@alrra/travis-scripts" "^3.0.1"
     gh-pages "^1.0.0"
@@ -6293,13 +6302,14 @@ swarm-icons@1.3.129:
   version "1.3.129"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.3.129.tgz#55344c71dcbcb8cabe5bfec6384dd6758ab0a81e"
 
-swarm-sasstools@1.7.84:
-  version "1.7.84"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.7.84.tgz#6dfa3090caaa395cce2ed51a3632635b681170e9"
+swarm-sasstools@1.7.108-beta:
+  version "1.7.108-beta"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.7.108-beta.tgz#455c10f833623657ad462aa28aa43221ac98287c"
   dependencies:
     bourbon "4.2.3"
     sass-rem "^1.2.4"
-    swarm-constants "0.1.15"
+    swarm-animation "https://github.com/meetup/swarm-animation.git"
+    swarm-constants "0.1.16"
 
 symbol-observable@^1.0.1, symbol-observable@^1.0.3, symbol-observable@^1.0.4:
   version "1.0.4"
