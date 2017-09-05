@@ -58,6 +58,20 @@ Card-like boxes.
 	min-height: initial;
 }
 
+.card--flush {
+	border-radius: 0;
+	border-width: 0;
+	margin-left: -#{$space};
+	margin-right: -#{$space};
+}
+
+@include _bpModifier('card', 'flush') {
+	border-radius: $largeRadius;
+	border-width: 1px;
+	margin-left: 0;
+	margin-right: 0;
+}
+
 .card--hasShadow {
 	@extend %shadow;
 }
@@ -69,4 +83,3 @@ Card-like boxes.
 .card--hasShadowPlusHover {
 	@include shadowOnHover(true);
 }
-

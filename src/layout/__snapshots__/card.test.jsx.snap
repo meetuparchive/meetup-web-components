@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card renders a card 1`] = `
+exports[`Card and variants renders a card 1`] = `
 <div
   className="card"
 >
