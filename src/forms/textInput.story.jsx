@@ -1,4 +1,5 @@
 import React from 'react';
+import { InfoWrapper } from '../utils/storyComponents';
 import TextInput from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@kadira/storybook';
@@ -20,7 +21,7 @@ storiesOf('TextInput', module)
 				label='Your name'
 				id='fullname'
 				name='name'
-				value='Phife Dawg'
+				defaultValue='Phife Dawg'
 				placeholder='Not your email' />
 		</div>
 	)
@@ -31,7 +32,7 @@ storiesOf('TextInput', module)
 				label='Your name'
 				id='fullname'
 				name='name'
-				value='Cannot focus'
+				defaultValue='Cannot focus'
 				disabled />
 		</div>
 	)
@@ -42,6 +43,7 @@ storiesOf('TextInput', module)
 				label='Your name'
 				id='fullname'
 				name='name'
+				defaultValue='#$%!$%!'
 				error='Not so fast. You have an error.' />
 		</div>
 	)
@@ -91,22 +93,29 @@ storiesOf('TextInput', module)
 			</form>
 		);
 	})
-	.add('with char counter (maxLength)', () => {
-		const rules = {
-			maxLength: 10,
-			pattern:'.{5,10}'
-		};
-		return (
-			<div className='span--50'>
-				<TextInput
-					label='Your name'
-					id='fullname'
-					name='name'
-					value=''
-					{...rules} />
-			</div>
-		);
-	})
+	.addWithInfo(
+		'with char counter if you provide maxLength',
+		`Note: updating field with charcounter relies on parent to give value, 
+			thats why you cant interact with the field in this story`,
+		() => {
+			const rules = {
+				maxLength: 20,
+				pattern:'.{5,10}'
+			};
+			return (
+				<InfoWrapper>
+					<div className='span--25'>
+						<TextInput
+							label='Your name'
+							id='fullname'
+							name='name'
+							value='how long is this'
+							{...rules} />
+					</div>
+				</InfoWrapper>
+			);
+		}
+	)
 	.add('has a pattern for min length', () => {
 		const rules = {
 			pattern:'.{5,10}'
@@ -117,7 +126,7 @@ storiesOf('TextInput', module)
 					label='Your name'
 					id='fullname'
 					name='name'
-					value='>5'
+					defaultValue='>5'
 					{...rules} />
 				<Button
 					contrast

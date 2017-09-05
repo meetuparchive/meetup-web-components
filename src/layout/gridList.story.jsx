@@ -64,6 +64,31 @@ storiesOf('GridList', module)
 			</InfoWrapper>
 		))
 	.addWithInfo(
+		'GridList items with custom class names',
+		'GridList where items require a custom class for more flexible styling',
+		() => (
+			<InfoWrapper>
+				<GridList
+					columns={{
+						default: 3
+					}}
+					style={{padding: '20px'}}
+					itemClassNames='flush--all'
+					items={[
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>,
+						<div style={boxStyles}>GridItem</div>
+					]}
+				/>
+			</InfoWrapper>
+		))
+	.addWithInfo(
 		'Static autoHeight grid',
 		'GridList where items are the same height with columns fixed at 3 for all breakpoints',
 		() => (

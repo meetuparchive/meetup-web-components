@@ -21,6 +21,12 @@ class SelectInput extends React.Component {
 		}
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.value !== this.props.value) {
+			this.setState(() => ({ value: nextProps.value }));
+		}
+	}
+
 	render() {
 		const {
 			children,

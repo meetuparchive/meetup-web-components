@@ -9,26 +9,30 @@ class TimeInput extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			value: this.props.value || ''
-		};
+
 		this.onChange = this.onChange.bind(this);
 	}
 
+	/**
+	* @function onChange
+	* @param e Event Object
+	* @description called when the input changes, in turn calls the onChange
+	* 	handler prop, if there is one provided (eg supplied by redux-form or DateTimePicker)
+	*/
 	onChange(e) {
-		this.setState({ value: e.target.value });
-		this.props.onChangeCallback && this.props.onChangeCallback(e.target.value);
+		this.props.onChange && this.props.onChange(e.target.value);
 	}
 
 	render() {
 		const {
-			onChangeCallback,	// eslint-disable-line no-unused-vars
 			id,
 			label,
 			name,
 			className,
 			required,
-			value,		// eslint-disable-line no-unused-vars
+			value,
+			error,
+			onChange,			// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -41,6 +45,14 @@ class TimeInput extends React.Component {
 			'label--field',
 			{ required }
 		);
+
+		const errorId = `${id}-error`;
+
+		if (error) {
+			other['aria-invalid'] = true;
+			other['aria-describedby'] = errorId;
+		}
+
 		return (
 			<span>
 				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
@@ -48,13 +60,14 @@ class TimeInput extends React.Component {
 					id={id}
 					type='time'
 					name={name}
-					value={this.state.value}
+					value={value}
 					className={classNames}
-					onChange={this.onChange}
 					required={required}
+					onChange={this.onChange}
 					ref={ input => this.inputEl = input }
 					{...other}
 				/>
+				{ error && <p id={errorId} className='text--error'>{error}</p> }
 			</span>
 		);
 
@@ -62,14 +75,14 @@ class TimeInput extends React.Component {
 }
 
 TimeInput.propTypes = {
-	onChangeCallback: PropTypes.func,
 	name: PropTypes.string.isRequired,
 	error: PropTypes.string,
 	label: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
 	]),
-	required: PropTypes.bool
+	required: PropTypes.bool,
+	onChange: PropTypes.func,			// redux-form or DateTimePicker provides an onChange prop
 };
 
 export default TimeInput;

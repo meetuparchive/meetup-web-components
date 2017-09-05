@@ -3,11 +3,33 @@ import TestUtils from 'react-addons-test-utils';
 import GridList from './GridList';
 import { GRID_AUTOHEIGHT_CLASS } from './GridList';
 
+const glItemCustomClassName = 'flush--all';
+
 const JSX_GridListStatic = (
 	<GridList
 		columns={{
 			default: 3
 		}}
+		items={[
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>,
+			<div>GridItem</div>
+		]}
+	/>
+);
+
+const JSX_GridListCustomClassNames = (
+	<GridList
+		columns={{
+			default: 3
+		}}
+		itemClassNames={glItemCustomClassName}
 		items={[
 			<div>GridItem</div>,
 			<div>GridItem</div>,
@@ -111,20 +133,29 @@ const JSX_AutoheightWithWrapGridListResponsive = (
 	/>
 );
 
-let gridList, autoheightGridList;
+let gridList,
+	gridListCustomClassNames,
+	autoheightGridList;
 
 describe('Static GridList', function() {
 	beforeEach(() => {
 		gridList = TestUtils.renderIntoDocument(JSX_GridListStatic);
+		gridListCustomClassNames = TestUtils.renderIntoDocument(JSX_GridListCustomClassNames);
 		autoheightGridList = TestUtils.renderIntoDocument(JSX_AutoheightGridListStatic);
 	});
 	afterEach(() => {
 		gridList = null;
+		gridListCustomClassNames = null;
 		autoheightGridList = null;
 	});
 
 	it('wraps gridList items with element containing className "gridList-item"', function() {
 		const glItems = TestUtils.scryRenderedDOMComponentsWithClass(gridList, 'gridList-item');
+		expect(glItems.length).not.toBe(0);
+	});
+
+	it('wraps gridList items with element containing custom className when specified', function() {
+		const glItems = TestUtils.scryRenderedDOMComponentsWithClass(gridListCustomClassNames, glItemCustomClassName);
 		expect(glItems.length).not.toBe(0);
 	});
 
