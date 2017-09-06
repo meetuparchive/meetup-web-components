@@ -46,7 +46,7 @@ describe('Card and variants', function() {
 
 });
 
-describe('Section flushUntil', () => {
+describe('Card flushUntil', () => {
 	it(`check that component has '${CARD_FLUSH_CLASS}' class`, function() {
 		Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
 			const component = shallow(
