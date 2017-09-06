@@ -13,7 +13,7 @@ import Icon from '../media/Icon';
 storiesOf('Button', module)
 	.addDecorator(decorateWithLocale)
 	.addWithInfo(
-		'default',
+		'Default',
 		'This is the basic usage with the component.',
 		() => (
 			<InfoWrapper>
@@ -21,18 +21,16 @@ storiesOf('Button', module)
 			</InfoWrapper>
 		)
 	)
-	.add('Disabled', () => (
-		<Button onClick={action('clicked')} disabled>Button Label</Button>
-	))
 	.add('Default - inverted', () => (
 		<Inverted>
 			<Button onClick={action('clicked')}>Button Label</Button>
 		</Inverted>
 	))
-	.add('Primary - inverted', () => (
-		<Inverted>
-			<Button onClick={action('clicked')}primary>Button Label</Button>
-		</Inverted>
+	.add('Default - with hover shadow', () => (
+		<Button onClick={action('clicked')} hasHoverShadow>Button Label</Button>
+	))
+	.add('Disabled', () => (
+		<Button onClick={action('clicked')} disabled hasHoverShadow>Button Label</Button>
 	))
 	.add('Disabled - inverted', () => (
 		<Inverted>
@@ -73,6 +71,14 @@ storiesOf('Button', module)
 	))
 	.add('Primary', () => (
 		<Button onClick={action('clicked')} primary>Button Label</Button>
+	))
+	.add('Primary - with hover shadow', () => (
+		<Button onClick={action('clicked')} primary hasHoverShadow>Button Label</Button>
+	))
+	.add('Primary - inverted', () => (
+		<Inverted>
+			<Button onClick={action('clicked')}primary>Button Label</Button>
+		</Inverted>
 	))
 	.add('Small', () => (
 		<Button onClick={action('clicked')} small>Button Label</Button>

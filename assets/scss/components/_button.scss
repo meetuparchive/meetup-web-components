@@ -271,12 +271,14 @@ Class                   | Description
 		$hoverColor: $C_lightGray,
 		$activeColor: darken($C_lightGray, 3%)
 	);
+	@include shadowOnHover(true);
 	border: 1px solid $C_border;
 
 	&:hover, &:focus {
 		border-color: $C_textHint;
 	}
 
+	$C_borderedHoverBase: transparentize($C_textPrimary, .4);
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_textSecondary,
@@ -290,6 +292,10 @@ Class                   | Description
 		}
 
 	}
+}
+
+.button--hasHoverShadow {
+	@include shadowOnHover();
 }
 
 //
