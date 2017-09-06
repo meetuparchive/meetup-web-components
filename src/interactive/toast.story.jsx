@@ -54,8 +54,11 @@ storiesOf('Toast', module)
 	)
 	.add('don\'t automatically dismiss', () =>
 		(<Toaster
-			autodismiss={false}
-			toasts={toastArray}
+			toasts={[
+				<Toast autodismiss={false}>
+					Your toast is ready
+				</Toast>
+			]}
 		/>)
 	)
 	.add('don\'t allow dismissal', () =>
