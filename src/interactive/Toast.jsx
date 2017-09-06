@@ -61,7 +61,6 @@ class Toast extends React.PureComponent {
 			<span
 				className={classNames}
 				role={error ? 'alert' : 'log'}
-				aria-live='polite'
 				aria-relevant='all'
 				aria-atomic='true'
 				{...other}>

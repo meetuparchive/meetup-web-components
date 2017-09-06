@@ -123,6 +123,7 @@ class Toaster extends React.PureComponent {
 				className={classNames}
 				onMouseEnter={this.clearTimeouts}
 				onMouseLeave={this.restartTimeouts}
+				aria-live='assertive'
 				{...other}>
 				<TransitionGroup>
 					{
