@@ -151,7 +151,7 @@ Faux inputs visually mimic actual input elements.
 }
 
 $toggleSize: 20px;
-$C_toggleHighlight: $C_lightPurple; // replace $C_lightPurple with $C_blue once we start to use `swarm-constants`
+$C_toggleHighlight: $C_blue;
 
 .toggleLabel {
 	padding-bottom: $space-half;
