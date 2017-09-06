@@ -2,6 +2,7 @@
 
 exports[`Toast renders into the DOM 1`] = `
 <div
+  aria-live="assertive"
   className="toaster"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -19,7 +20,7 @@ exports[`Toast renders into the DOM 1`] = `
         autodismiss={true}
         dismissToast={[Function]}
         dismissable={true}
-        id="toast-0"
+        id="toast-2"
       >
         Your toast is ready
       </Toast>
