@@ -296,6 +296,10 @@ Class                   | Description
 
 .button--hasHoverShadow {
 	@include shadowOnHover();
+	&.button--disabled,
+	&[disabled] {
+		box-shadow: none;
+	}
 }
 
 //

@@ -30,7 +30,7 @@ storiesOf('Button', module)
 		<Button onClick={action('clicked')} hasHoverShadow>Button Label</Button>
 	))
 	.add('Disabled', () => (
-		<Button onClick={action('clicked')} disabled hasHoverShadow>Button Label</Button>
+		<Button onClick={action('clicked')} disabled>Button Label</Button>
 	))
 	.add('Disabled - inverted', () => (
 		<Inverted>
