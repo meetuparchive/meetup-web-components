@@ -60,6 +60,10 @@ class Toast extends React.PureComponent {
 		return (
 			<span
 				className={classNames}
+				role={error ? 'alert' : 'log'}
+				aria-live='polite'
+				aria-relevant='all'
+				aria-atomic='true'
 				{...other}>
 				<Flex align='center'>
 					<FlexItem>{children}</FlexItem>

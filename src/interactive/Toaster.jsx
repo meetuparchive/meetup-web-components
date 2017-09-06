@@ -7,6 +7,7 @@ import Toast from './Toast';
 
 export const DELAY_TIME = 3000;
 const MARGINAL_DELAY = 1000; // each additional toast will wait this much longer than the previous one
+let currentId = 0;
 
 /**
  * @module Toaster
@@ -33,9 +34,9 @@ class Toaster extends React.PureComponent {
 	 * @returns undefined
 	 */
 	dismissToast(dismissedToast) {
-		this.setState({
+		this.setState(() => ({
 			toasts: this.state.toasts.filter(toast => dismissedToast.props.id !== toast.props.id)
-		});
+		}));
 	}
 
 	/**
@@ -58,9 +59,7 @@ class Toaster extends React.PureComponent {
 	restartTimeouts() {
 		const toasts = this.state.toasts;
 
-		toasts.forEach((toast, i) => {
-			this.setTimer(toast);
-		});
+		toasts.forEach(this.setTimer);
 	}
 
 	/**
@@ -84,8 +83,6 @@ class Toaster extends React.PureComponent {
 		const currentToasts = this.state.toasts;
 		const allToasts = currentToasts.concat(nextProps.toasts);
 
-		console.log('--------------------componentWillReceiveProps fired--------------------');
-
 		if (nextProps.toasts !== this.state.toasts) {
 			this.setState(() => ({ toasts: allToasts.map(this.cloneToast) }), () => {
 				this.state.toasts && this.state.toasts.filter(t => t.props.autodismiss).map(this.setTimer);
@@ -99,9 +96,11 @@ class Toaster extends React.PureComponent {
 	 * @returns {Array} `Toast` components with props from `Toaster`
 	 */
 	cloneToast(toast, i) {
+		currentId++;
+
 		const toastProps = {
 			key: i,
-			id: toast.props.id || `toast-${i}`,
+			id: toast.props.id || `toast-${currentId}`,
 			dismissToast: this.dismissToast
 		};
 		return React.cloneElement(toast, toastProps);
@@ -132,7 +131,8 @@ class Toaster extends React.PureComponent {
 								key={`csstrns-${i}`}
 								appear
 								timeout={250}
-								classNames="slide">
+								classNames="slide"
+							>
 								{toast}
 							</CSSTransition>
 						))
