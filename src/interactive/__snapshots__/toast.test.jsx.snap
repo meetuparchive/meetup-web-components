@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast renders into the DOM 1`] = `
+<div
+  className="toaster"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <TransitionGroup
+    childFactory={[Function]}
+    component="div"
+  >
+    <CSSTransition
+      appear={true}
+      classNames="slide"
+      timeout={250}
+    >
+      <Toast
+        autodismiss={true}
+        dismissToast={[Function]}
+        dismissable={true}
+        id="toast-0"
+      >
+        Your toast is ready
+      </Toast>
+    </CSSTransition>
+  </TransitionGroup>
+</div>
+`;
