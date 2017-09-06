@@ -2,7 +2,12 @@ import React from 'react';
 import { variantTest } from '../utils/testUtils';
 import { shallow } from 'enzyme';
 
-import Card, {CARD_CLASS, CARD_HOVER_PLUS_SHADOW_CLASS} from './Card';
+import Card, {
+	CARD_CLASS,
+	CARD_HOVER_PLUS_SHADOW_CLASS,
+	CARD_FLUSH_CLASS,
+	VALID_BREAKPOINTS
+} from './Card';
 
 const CardJSX = (
 	<Card>
@@ -16,8 +21,7 @@ const CardJSX_doubleShadow = (
 	</Card>
 );
 
-
-describe('Card', function() {
+describe('Card and variants', function() {
 	const cardComponent = shallow(CardJSX);
 
 	it('renders a card', function() {
@@ -41,3 +45,19 @@ describe('Card', function() {
 	});
 
 });
+
+describe('Card flushUntil', () => {
+	it(`check that component has '${CARD_FLUSH_CLASS}' class`, function() {
+		Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
+			const component = shallow(
+				<Card flushUntil={breakpoint}>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+				</Card>
+			);
+
+			expect(component.hasClass(CARD_CLASS)).toBe(true);
+			expect(component.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${CARD_FLUSH_CLASS}`)).toBe(true);
+		});
+	});
+});
+
