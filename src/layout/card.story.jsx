@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Card from './Card';
+import Section from './Section';
+import Stripe from './Stripe';
 import { storiesOf } from '@kadira/storybook';
 import { decorateWithLocale } from '../utils/decorators';
 
@@ -27,6 +29,20 @@ storiesOf('Card', module)
 				<p className="margin--bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 			</Card>
 		</div>
+	))
+	.add('Conditionally flush left and right (at medium breakpoint)', () => (
+		<Stripe collection className='display--flex flex--center flex--alignCenter' style={{height: '100vh'}}>
+			<Section>
+				<h2 className="text--sectionTitle margin--bottom">Headline will not flush</h2>
+				<Card
+					flushUntil='medium'
+					style={{width: 'auto'}} /* Used to override a storybook default. Not needed for regular usage */
+				>
+					<h2 className="text--sectionTitle margin--bottom">Card flushes left and right on small viewports</h2>
+					<p className="margin--bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+				</Card>
+			</Section>
+		</Stripe>
 	))
 	.add('hasShadow', () => (
 		<div style={wrapperStyle}>
