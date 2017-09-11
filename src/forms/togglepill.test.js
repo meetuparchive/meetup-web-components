@@ -10,10 +10,12 @@ describe('TogglePill', () => {
 		value = 'hiking';
 
 	let togglePillComponent;
+	const onChangeMock = jest.fn();
 
 	beforeEach(() => {
 		togglePillComponent = mount(
 			<TogglePill
+				onChange={onChangeMock}
 				id={id}
 				name={name}
 				value={value}>
@@ -31,22 +33,13 @@ describe('TogglePill', () => {
 	});
 
 	it('has appropriate toggle pill class', () => {
-		console.log('TPC', TOGGLE_PILL_CLASS);
 		expect(togglePillComponent.find(TOGGLE_PILL_CLASS)).not.toBeNull();
 	});
 
 	it('executes onChange when clicked', () => {
-		const onChangeMock = jest.fn();
-		const toggleInput = mount(
-			<TogglePill
-				onChange={onChangeMock}
-				id={id}
-				name={name}
-				value={value}>
-				{label}
-			</TogglePill>).find('input');
+		const toggleInput = togglePillComponent.find('input');
 
-
+		expect(onChangeMock).not.toHaveBeenCalled();
 		toggleInput.simulate('change');
 		expect(onChangeMock).toHaveBeenCalled();
 	});
@@ -58,10 +51,9 @@ describe('TogglePill', () => {
 			label = 'Moms and Dads',
 			value = 'parenting';
 
-		let togglePill;
 
 		beforeEach(() => {
-			togglePill = mount(
+			togglePillComponent = mount(
 				<TogglePill
 					topic
 					id={id}
@@ -74,11 +66,11 @@ describe('TogglePill', () => {
 
 
 		afterEach(() => {
-			togglePill = null;
+			togglePillComponent = null;
 		});
 
 		it('creates an Icon component', function() {
-			expect(togglePill.find(Icon).length).toBeGreaterThan(0);
+			expect(togglePillComponent.find(Icon).length).toBeGreaterThan(0);
 		});
 
 	});
@@ -89,10 +81,8 @@ describe('TogglePill', () => {
 			label = 'Moms and Dads',
 			value = 'parenting';
 
-		let togglePill;
-
 		beforeEach(() => {
-			togglePill = mount(
+			togglePillComponent = mount(
 				<TogglePill
 					useRadio
 					id={id}
@@ -103,14 +93,12 @@ describe('TogglePill', () => {
 			);
 		});
 
-
 		afterEach(() => {
-			togglePill = null;
+			togglePillComponent = null;
 		});
 
-
 		it('creates a Toggle Pill with a radio input', function() {
-			expect(togglePill.find('input[type="radio"]').length).toBeGreaterThan(0);
+			expect(togglePillComponent.find('input[type="radio"]').length).toBeGreaterThan(0);
 		});
 
 	});

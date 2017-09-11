@@ -5,6 +5,7 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
   id="hikingCategory"
   isActive={false}
   name="meetupCategories"
+  onChange={[Function]}
   value="hiking"
 >
   <span
@@ -15,6 +16,7 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
       id="hikingCategory"
       isActive={false}
       name="meetupCategories"
+      onChange={[Function]}
       toggleActive={[Function]}
       value="hiking"
     >
