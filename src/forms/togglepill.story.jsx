@@ -59,4 +59,28 @@ storiesOf('TogglePill', module)
 		>
 			Toggle Pill Label
 		</TogglePill>
+	))
+	.add('Toggle Pill Radio Button', () => (
+		<div>
+			<TogglePill
+				onChange={onChange}
+				id='togglePill1'
+				name='pills'
+				value='toggle-pill'
+				isActive
+				useRadio
+			>
+				Toggle Pill A
+			</TogglePill>
+			<TogglePill
+				onChange={onChange}
+				id='togglePill2'
+				name='pills'
+				value='toggle-pill'
+				isActive
+				useRadio
+			>
+				Toggle Pill B
+			</TogglePill>
+		</div>
 	));

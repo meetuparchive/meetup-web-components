@@ -10,9 +10,9 @@ export const TOGGLE_PILL_CLASS = 'toggleButton';
  * Toggle Pill component
  * @see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_toggle-pill.scss}
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#togglePills}
- * @module TogglePillBase
+ * @module TogglePill
  */
-class TogglePillBase extends React.Component {
+class TogglePill extends React.Component {
 	constructor (props) {
 		super(props);
 
@@ -35,6 +35,7 @@ class TogglePillBase extends React.Component {
 			topic,
 			id,
 			name,
+			useRadio,
 			value,
 			toggleActive, // eslint-disable-line no-unused-vars
 			...other
@@ -42,12 +43,22 @@ class TogglePillBase extends React.Component {
 
 		delete other.onChange; // onChange is consumed in this.onChange - do not pass it along to children
 
+		const inputType = useRadio ? 'radio' : 'checkbox';
+
 		const classNames = cx(
 			TOGGLE_PILL_CLASS,
 			{
-				'toggleButton--topic': topic
+				'toggleButton--topic': topic,
+				'toggleButton--radio': useRadio
 			},
 			className
+		);
+
+		const labelClassNames = cx(
+			'toggleButton-label',
+			{
+				'toggleButton-label--radio': useRadio
+			}
 		);
 
 		// ---
@@ -67,7 +78,7 @@ class TogglePillBase extends React.Component {
 				className={topicClassName}
 				shape={iconShape}
 				size='xxs'
-				label='Active Topic Pill Icon'/>
+				label='Active Topic Icon'/>
 		);
 		// ---
 
@@ -75,7 +86,7 @@ class TogglePillBase extends React.Component {
 			<div className={classNames}>
 				<input
 					className='toggleButton-input visibility--a11yHide'
-					type='checkbox'
+					type={inputType}
 					id={id}
 					name={name}
 					value={value}
@@ -83,7 +94,7 @@ class TogglePillBase extends React.Component {
 					onChange={this.onChange}
 					{...other} />
 				<label
-					className='toggleButton-label'
+					className={labelClassNames}
 					htmlFor={id}>
 					{children}
 					{(topic) ? topicChildren : null}
@@ -93,7 +104,7 @@ class TogglePillBase extends React.Component {
 	}
 }
 
-TogglePillBase.protoTypes = {
+TogglePill.protoTypes = {
 	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	value: PropTypes.string.isRequired,
@@ -101,10 +112,9 @@ TogglePillBase.protoTypes = {
 	isActive: PropTypes.bool,
 	topic: PropTypes.bool
 };
-TogglePillBase.defaultProps = {
+TogglePill.defaultProps = {
 	isActive: false
 };
 
-const TogglePill = withToggleControl(TogglePillBase);
-export default TogglePill;
+export default withToggleControl(TogglePill);
 
