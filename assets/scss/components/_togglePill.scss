@@ -116,6 +116,10 @@ Checkbox form elements styled as toggle buttons.
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+.toggleButton-label--radio {
+	padding: $space $space*1.5;
+}
+
 .toggleButton-input{
 	&:checked + .toggleButton-label {
 		@include animate--bounceInSubtle();
