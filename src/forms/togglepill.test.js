@@ -1,19 +1,18 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { mount } from 'enzyme';
 import TogglePill, { TOGGLE_PILL_CLASS } from './TogglePill';
 import Icon from '../media/Icon';
 
 describe('TogglePill', () => {
-	const id = 'togglePillId',
-		name = 'togglePillName',
-		label = 'Toggle Pill Label',
-		value = 'Toggle Pill Value';
+	const id = 'hikingCategory',
+		name = 'meetupCategories',
+		label = 'Hiking!',
+		value = 'hiking';
 
-	let togglePillComponent,
-		togglePillEl;
+	let togglePillComponent;
 
 	beforeEach(() => {
-		togglePillComponent = TestUtils.renderIntoDocument(
+		togglePillComponent = mount(
 			<TogglePill
 				id={id}
 				name={name}
@@ -21,63 +20,48 @@ describe('TogglePill', () => {
 				{label}
 			</TogglePill>
 		);
-
-		togglePillEl = TestUtils.findRenderedDOMComponentWithClass(togglePillComponent, TOGGLE_PILL_CLASS);
 	});
 
 	afterEach(() => {
-		togglePillEl = null;
+		togglePillComponent = null;
 	});
 
-	it('exists', () => {
-		expect(() => TestUtils.findRenderedDOMComponentWithClass(togglePillComponent, TOGGLE_PILL_CLASS)).not.toThrow();
+	it('renders a component with expected attributes', () => {
+		expect(togglePillComponent).toMatchSnapshot();
 	});
 
-	it('creates an input element', () => {
-		const len = togglePillEl.getElementsByTagName('INPUT').length;
-		expect(len).toBe(1);
-	});
-
-	it('creates a label element', () => {
-		const len = togglePillEl.getElementsByTagName('LABEL').length;
-		expect(len).toBe(1);
+	it('has appropriate toggle pill class', () => {
+		console.log('TPC', TOGGLE_PILL_CLASS);
+		expect(togglePillComponent.find(TOGGLE_PILL_CLASS)).not.toBeNull();
 	});
 
 	it('executes onChange when clicked', () => {
-		const spyable = {
-			onChange: (e) => {}
-		};
-
-		spyOn(spyable, 'onChange');
-		const togglePill = TestUtils.renderIntoDocument(
+		const onChangeMock = jest.fn();
+		const toggleInput = mount(
 			<TogglePill
-				onChange={spyable.onChange}
+				onChange={onChangeMock}
 				id={id}
 				name={name}
 				value={value}>
 				{label}
-			</TogglePill>);
-		const togglePillEl = TestUtils.findRenderedDOMComponentWithClass(togglePill, TOGGLE_PILL_CLASS);
+			</TogglePill>).find('input');
 
-		expect(togglePillEl.getElementsByTagName('input').length).toEqual(1);
-		const input = togglePillEl.getElementsByTagName('input')[0];
 
-		TestUtils.Simulate.change(input);
-
-		expect(spyable.onChange).toHaveBeenCalled();
+		toggleInput.simulate('change');
+		expect(onChangeMock).toHaveBeenCalled();
 	});
 
 
-	describe('TogglePill with icon', () => {
-		const id = 'togglePillId',
-			name = 'togglePillName',
-			label = 'Toggle Pill Label',
-			value = 'Toggle Pill Value';
+	describe('TogglePill with topic icon', () => {
+		const id = 'parentingTopic',
+			name = 'topics',
+			label = 'Moms and Dads',
+			value = 'parenting';
 
 		let togglePill;
 
 		beforeEach(() => {
-			togglePill = TestUtils.renderIntoDocument(
+			togglePill = mount(
 				<TogglePill
 					topic
 					id={id}
@@ -93,10 +77,40 @@ describe('TogglePill', () => {
 			togglePill = null;
 		});
 
-
 		it('creates an Icon component', function() {
-			const len = TestUtils.scryRenderedComponentsWithType(togglePill, Icon).length;
-			expect(len).toBeGreaterThan(0);
+			expect(togglePill.find(Icon).length).toBeGreaterThan(0);
+		});
+
+	});
+
+	describe('TogglePill with radio input', () => {
+		const id = 'parentingTopic',
+			name = 'topics',
+			label = 'Moms and Dads',
+			value = 'parenting';
+
+		let togglePill;
+
+		beforeEach(() => {
+			togglePill = mount(
+				<TogglePill
+					useRadio
+					id={id}
+					name={name}
+					value={value}>
+					{label}
+				</TogglePill>
+			);
+		});
+
+
+		afterEach(() => {
+			togglePill = null;
+		});
+
+
+		it('creates a Toggle Pill with a radio input', function() {
+			expect(togglePill.find('input[type="radio"]').length).toBeGreaterThan(0);
 		});
 
 	});

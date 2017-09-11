@@ -4,7 +4,7 @@ import cx from 'classnames';
 import Icon from '../media/Icon';
 import withToggleControl from '../utils/WithToggleControl';
 
-export const TOGGLE_BUTTON_CLASS = 'toggleButton';
+export const TOGGLE_PILL_CLASS = 'toggleButton';
 
 /**
  * Toggle Pill component
@@ -46,7 +46,7 @@ class TogglePill extends React.Component {
 		const inputType = useRadio ? 'radio' : 'checkbox';
 
 		const classNames = cx(
-			TOGGLE_BUTTON_CLASS,
+			TOGGLE_PILL_CLASS,
 			{
 				'toggleButton--topic': topic,
 				'toggleButton--radio': useRadio
