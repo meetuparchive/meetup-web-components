@@ -116,6 +116,5 @@ TogglePill.defaultProps = {
 	isActive: false
 };
 
-const TogglePill = withToggleControl(TogglePill);
-export default TogglePill;
+export default withToggleControl(TogglePill);
 
