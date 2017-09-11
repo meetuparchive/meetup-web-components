@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TogglePill renders a component with expected attributes 1`] = `
+<WithToggle
+  id="hikingCategory"
+  isActive={false}
+  name="meetupCategories"
+  value="hiking"
+>
+  <span
+    aria-pressed={false}
+    role="button"
+  >
+    <TogglePill
+      id="hikingCategory"
+      isActive={false}
+      name="meetupCategories"
+      toggleActive={[Function]}
+      value="hiking"
+    >
+      <div
+        className="toggleButton"
+      >
+        <input
+          checked={false}
+          className="toggleButton-input visibility--a11yHide"
+          id="hikingCategory"
+          name="meetupCategories"
+          onChange={[Function]}
+          type="checkbox"
+          value="hiking"
+        />
+        <label
+          className="toggleButton-label"
+          htmlFor="hikingCategory"
+        >
+          Hiking!
+        </label>
+      </div>
+    </TogglePill>
+  </span>
+</WithToggle>
+`;
