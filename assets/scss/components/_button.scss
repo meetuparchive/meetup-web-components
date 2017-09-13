@@ -253,8 +253,8 @@ Class                   | Description
 .button--primary {
 	@include buttonColor(
 		$bgColor: $C_accent,
-		$hoverColor: transparentize($C_accent, .2),
-		$activeColor: transparentize($C_accent, .4)
+		$hoverColor: darken($C_accent, 10%),
+		$activeColor: darken($C_accent, 15%)
 	);
 	.inverted & {
 		@include buttonColor(
@@ -268,15 +268,17 @@ Class                   | Description
 .button--bordered {
 	@include buttonColor(
 		$bgColor: $C_contentBG,
-		$hoverColor: $C_lightGray,
-		$activeColor: darken($C_lightGray, 3%)
+		$hoverColor: $C_contentBG,
+		$activeColor: $C_lightGray
 	);
+	@include shadowOnHover();
 	border: 1px solid $C_border;
 
 	&:hover, &:focus {
-		border-color: $C_textHint;
+		border-color: transparent;
 	}
 
+	$C_borderedHoverBase: transparentize($C_textPrimary, .4);
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_textSecondary,
@@ -287,8 +289,17 @@ Class                   | Description
 
 		&:hover, &:focus {
 			border-color: $C_borderDarkInverted, .1;
+			transform: translateY(0);
 		}
 
+	}
+}
+
+.button--hasHoverShadow {
+	@include shadowOnHover();
+	&.button--disabled,
+	&[disabled] {
+		box-shadow: none;
 	}
 }
 

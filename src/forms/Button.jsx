@@ -10,9 +10,6 @@ export const BUTTON_LABEL_CLASS = 'button-label';
 export const BUTTON_ICON_CLASS = 'button-icon';
 
 /**
- * SQ2 Button component
- * @see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_buttons.scss}
- * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#buttons}
  * @module Button
  */
 class Button extends React.PureComponent {
@@ -29,6 +26,7 @@ class Button extends React.PureComponent {
 			right,
 			small,
 			bordered,
+			hasHoverShadow,
 			...other
 		} = this.props;
 
@@ -41,6 +39,8 @@ class Button extends React.PureComponent {
 					'button--small': small,
 					'button--reset': reset,
 					'button--bordered': bordered,
+					'button--hasHoverShadow': hasHoverShadow
+
 				},
 				className
 			),
