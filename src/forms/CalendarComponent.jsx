@@ -32,8 +32,18 @@ class CalendarComponent extends React.Component {
 			onClose: this.onClose,
 			altInput: true,
 			allowInput: true,
-			altFormat: 'D M d, Y', // TODO localize
+			altFormat: 'D M d, Y',
 			defaultDate: this.props.value,
+			nextArrow: `<span class="svg svg--chevron-right">
+				<svg preserveAspectRatio="xMinYMin meet" width="12" height="12" viewBox="0 0 12 12" className="svg-icon valign--middle" role="img">
+				<use xlink:href="#icon-chevron-right" />
+				</svg>
+			</span>`,
+			prevArrow: `<span class="svg svg--chevron-left">
+				<svg preserveAspectRatio="xMinYMin meet" width="12" height="12" viewBox="0 0 12 12" className="svg-icon valign--middle" role="img">
+				<use xlink:href="#icon-chevron-left" />
+				</svg>
+			</span>`,
 			...this.props.datepickerOptions
 		};
 

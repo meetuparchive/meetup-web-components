@@ -2,8 +2,10 @@ import React from 'react';
 import CalendarComponent from './CalendarComponent';
 import { storiesOf } from '@kadira/storybook';
 import { InfoWrapper } from '../utils/storyComponents';
+import { decorateWithLocale } from '../utils/decorators';
 
 storiesOf('CalendarComponent', module)
+	.addDecorator(decorateWithLocale)
 	.addWithInfo(
 		'default',
 		'renders a calendar component',
