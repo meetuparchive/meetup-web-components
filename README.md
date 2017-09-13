@@ -26,7 +26,7 @@ Major and minor versions are hard-coded into the [Makefile](Makefile#L2).
 Manual pushes to `master` and PR merges to master will be built by Travis, and
 will kick off the yarn publish routine. The currently-published version of the
 package is shown on the repo homepage on GitHub in a badge at the top of the
-README.
+README
 
 ### Development/Beta releases
 
