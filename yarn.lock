@@ -6383,9 +6383,9 @@ swarm-constants@0.1.16:
     "@alrra/travis-scripts" "^3.0.1"
     gh-pages "^1.0.0"
 
-swarm-icons@1.3.129:
-  version "1.3.129"
-  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.3.129.tgz#55344c71dcbcb8cabe5bfec6384dd6758ab0a81e"
+swarm-icons@1.3.179:
+  version "1.3.179"
+  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.3.179.tgz#4c213e35e09084c15e3d8808718738869efe80a3"
 
 swarm-sasstools@1.7.117:
   version "1.7.117"
