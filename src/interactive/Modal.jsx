@@ -18,15 +18,22 @@ export const MARGIN_TOP_OFFSET = 36;
  * @param {String} scrollPosition window scroll position
  * @param {String} viewportHeight client height
  * @param {Boolean} isFullScreen true if the modal full screen
+ * @param {Boolean} isFixedPosition true if the modal is on a fixed position screen
  * @param {Boolean} isMobileSize true if the viewport is below `medium` breakpoint
  *
  * @returns {String} CSS value for setting modal margin-top
  */
-export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen, isMobileSize) => {
+export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen, isFixedPosition, isMobileSize) => {
 
 	// full screen dialogs should be flush with top of the viewport
 	if (isFullScreen) {
 		return '0px';
+	}
+
+	if (isFixedPosition) {
+		return isMobileSize
+			? scrollPosition
+			: DEFAULT_MARGIN_TOP;
 	}
 
 	// for mobile-sized viewports, return the scroll position without a gutter
@@ -52,7 +59,8 @@ class Modal extends React.Component {
 		this.onKeyDown = this.onKeyDown.bind(this);
 
 		this.state = {
-			topPosition: DEFAULT_MARGIN_TOP // matches default margin-top in CSS
+			topPosition: DEFAULT_MARGIN_TOP, // matches default margin-top in CSS
+			isMobileSize: true,
 		};
 
 	}
@@ -81,8 +89,10 @@ class Modal extends React.Component {
 						window.pageYOffset,
 						Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
 						this.props.fullscreen,
+						this.props.fixed,
 						this.mediaQuery && !this.mediaQuery.matches
 					),
+					isMobileSize: this.mediaQuery && !this.mediaQuery.matches
 				});
 			};
 
@@ -101,6 +111,7 @@ class Modal extends React.Component {
 			className,
 			children,
 			fullscreen,
+			fixed,
 			heroBgColor,
 			heroBgImage,
 			heroContent,
@@ -121,7 +132,15 @@ class Modal extends React.Component {
 			'view view--modal',
 			{
 				'view--modalFull': fullscreen,
+				'view--modalFixed': fixed && !this.state.isMobileSize,
 				'view--modalSnap': !fullscreen
+			}
+		);
+
+		const overlayClasses = cx(
+			'overlayShim',
+			{
+				'overlayShim--fixed': fixed && !this.state.isMobileSize,
 			}
 		);
 
@@ -131,7 +150,7 @@ class Modal extends React.Component {
 		);
 
 		const overlayShim = (
-			<div className='overlayShim' onClick={this.onDismiss}>
+			<div className={overlayClasses} onClick={this.onDismiss}>
 				<div className='inverted'></div>
 			</div>
 		);
@@ -186,6 +205,7 @@ class Modal extends React.Component {
 
 Modal.propTypes = {
 	fullscreen: PropTypes.bool,
+	fixed: PropTypes.bool,
 	heroBgColor: PropTypes.string,
 	heroBgImage: PropTypes.string,
 	heroContent: PropTypes.element,
