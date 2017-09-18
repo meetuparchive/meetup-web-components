@@ -185,4 +185,30 @@ describe('Popover', function() {
 			expect(menuEl.classList).toContain('popover-container--horizontal-left');
 		});
 	});
+	describe('Body', () => {
+		it('is clickable in safari', () => {
+			jest.clearAllMocks();
+			const body = window.document.body;
+			expect(body.getAttribute('class')).not.toEqual('clickable'); // include
+
+			// iPhone Safari user agent
+			const userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/603.1.23 (KHTML, like Gecko) Version/10.0 Mobile/14E5239e Safari/602.1';
+			const original_ua = window.navigator.userAgent;
+			Object.defineProperty(window.navigator, 'userAgent', {value: userAgent, configurable: true});
+
+			const popover = TestUtils.renderIntoDocument(popoverComponent);
+			const closedMenuFn = jest.spyOn(popover, 'closeMenu');
+
+			expect(popover.closeMenu).not.toHaveBeenCalled();
+
+			// click on body
+			expect(body.getAttribute('class')).toEqual('clickable');
+			const clickEvent = new Event('click');
+			body.dispatchEvent(clickEvent);
+
+			expect(closedMenuFn).toHaveBeenCalled();
+
+			Object.defineProperty(window.navigator, 'userAgent', {value: original_ua});
+		});
+	});
 });
