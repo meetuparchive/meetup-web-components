@@ -151,13 +151,13 @@ describe('Modal hero header', () => {
 describe('Modal positioning', () => {
 
 	it('returns the default margin top if the user is not below the fold', () => {
-		const calculatedPosition = getModalPosition(0, 400, false, false);
+		const calculatedPosition = getModalPosition(0, 400, false, false, false);
 		expect(calculatedPosition).toBe(DEFAULT_MARGIN_TOP);
 	});
 
 	it('always returns 0px when full screen prop is set', () => {
-		const calculatedPositionAtTop = getModalPosition(0, 400, true, false);
-		const calculatedPositionBelowFold = getModalPosition(800, 400, true, false);
+		const calculatedPositionAtTop = getModalPosition(0, 400, true, false, false);
+		const calculatedPositionBelowFold = getModalPosition(800, 400, true, false, false);
 
 		expect(calculatedPositionAtTop).toBe('0px');
 		expect(calculatedPositionBelowFold).toBe('0px');
@@ -165,14 +165,25 @@ describe('Modal positioning', () => {
 
 	it('returns scroll position + MARGIN_TOP_OFFSET when modal is not full screen and user is below fold', () => {
 		const scrollPosition = 800;
-		const calculatedPosition = getModalPosition(scrollPosition, 400, false, false);
+		const calculatedPosition = getModalPosition(scrollPosition, 400, false, false, false);
 		expect(calculatedPosition).toBe(scrollPosition + MARGIN_TOP_OFFSET);
 	});
 
-	it('returns scroll position *without gutter* when modal is below fold and viewport is mobile size', () => {
+	it('returns scroll position + MARGIN_TOP_OFFSET when modal is not full screen and user is below fold', () => {
 		const scrollPosition = 800;
-		const calculatedPosition = getModalPosition(scrollPosition, 400, false, true);
+		const calculatedPosition = getModalPosition(scrollPosition, 400, false, false, false);
+		expect(calculatedPosition).toBe(scrollPosition + MARGIN_TOP_OFFSET);
+	});
+
+	it('returns scroll position when modal is below fold and viewport is mobile size && is set to be fixed position on desktop', () => {
+		const scrollPosition = 800;
+		const calculatedPosition = getModalPosition(scrollPosition, 400, false, false, true);
 		expect(calculatedPosition).toBe(scrollPosition);
+	});
+
+	it('returns scroll position when modal is below fold and viewport is mobile size && is set to be fixed position on desktop', () => {
+		const calculatedPosition = getModalPosition(4000, 400, false, true, false);
+		expect(calculatedPosition).toBe(DEFAULT_MARGIN_TOP);
 	});
 
 });

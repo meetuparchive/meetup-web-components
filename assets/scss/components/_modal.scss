@@ -115,6 +115,10 @@ lays out as a dialog on background content on larger screens.
 	}
 }
 
+.view--modalFixed {
+	position: fixed;
+}
+
 /*doc
 ---
 title: Overlay Shim
@@ -154,4 +158,8 @@ _See `.view--modalSnap` demo page for example_
 	z-index: map-get($zindex-map, shade-content);
 	margin: auto;
 	width: 100%;
+}
+
+.overlayShim--fixed {
+	position: fixed;
 }
