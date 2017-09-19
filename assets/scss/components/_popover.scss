@@ -8,6 +8,10 @@ $view-minWidth: 320px;
 	position: relative;
 }
 
+.clickable {
+	cursor: pointer;
+}
+
 .popover-trigger {
 	cursor: pointer;
 	&--active {
