@@ -129,9 +129,9 @@ class Popover extends React.Component {
 
 	componentDidMount() {
 		// fix for safari on ios
-		if( navigator.userAgent.match(/(iPad|iPhone|iPod)/i) ) {
+		if(navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
 			document.body.classList.add('clickable');
-		};
+		}
 		document.body.addEventListener('click', this.onBodyClick);
 	}
 
