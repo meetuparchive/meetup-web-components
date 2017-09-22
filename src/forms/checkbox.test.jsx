@@ -78,6 +78,7 @@ describe('Checkbox', function() {
 			const checkbox = component.find('input');
 
 			expect(checkbox.props().checked).toBe(false);
+			expect(fakeOnChange).not.toHaveBeenCalled();
 			checkbox.simulate('change', { target: { checked: true } });
 			expect(checkbox.props().checked).toBe(true);
 			expect(fakeOnChange).toHaveBeenCalledWith(true);
