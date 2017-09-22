@@ -3,6 +3,8 @@ import { shallow, render, mount } from 'enzyme';
 
 import Checkbox, { FAUX_TOGGLE_CLASS, FOCUSED_CHECKBOX_CLASS, DISABLED_CHECKBOX_CLASS } from './Checkbox';
 
+const fakeOnChange = jest.fn();
+
 const JSXcheckboxUnchecked = (
 	<Checkbox
 		label='Hello!'
@@ -29,6 +31,16 @@ const JSXcheckboxDisabled = (
 		disabled
 	/>
 );
+const JSXcheckboxUncheckedWithOnChange = (
+	<Checkbox
+		label='Hello!'
+		name='greeting'
+		id='hello'
+		value='hello'
+		onChange={fakeOnChange}
+	/>
+);
+
 
 describe('Checkbox', function() {
 
@@ -61,14 +73,16 @@ describe('Checkbox', function() {
 		});
 
 		it('calls onChange and sets state when clicked', function() {
-			const component = mount(JSXcheckboxUnchecked);
+			fakeOnChange.mockClear();
+			const component = mount(JSXcheckboxUncheckedWithOnChange);
 			const checkbox = component.find('input');
 
 			expect(checkbox.props().checked).toBe(false);
+			expect(fakeOnChange).not.toHaveBeenCalled();
 			checkbox.simulate('change', { target: { checked: true } });
 			expect(checkbox.props().checked).toBe(true);
+			expect(fakeOnChange).toHaveBeenCalledWith(true);
 		});
-
 	});
 
 

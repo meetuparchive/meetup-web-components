@@ -24,6 +24,7 @@ class Checkbox extends React.Component {
 	}
 
 	onChange(e) {
+		this.props.onChange && this.props.onChange(e.target.checked);
 		this.setState({ checked: e.target.checked });
 	}
 
@@ -125,7 +126,8 @@ Checkbox.propTypes = {
 	disabled: PropTypes.bool,
 	labelClassName: PropTypes.string,
 	name: PropTypes.string.isRequired,
-	value: PropTypes.string.isRequired
+	value: PropTypes.string.isRequired,
+	onChange: PropTypes.func
 };
 
 export default Checkbox;
