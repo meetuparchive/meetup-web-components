@@ -24,11 +24,21 @@ describe('AvatarMember', function() {
 		expect(avatarMember.find(`.${AVATAR_PERSON_NOPHOTO_CLASS}`).exists()).toBe(true);
 	});
 
-	it('should render member photo on regular size', () => {
+	it('should render member photo on large size', () => {
 		const mockPhoto = 'photo image';
 		const mockMember = {
 			...MOCK_MEMBER,
 			photo: { ...MOCK_MEMBER.photo, photo_link: mockPhoto },
+		};
+		const avatarMember = shallow(<AvatarMember member={mockMember} large />);
+		expect(avatarMember.find(Avatar).prop('src')).toBe(mockPhoto);
+	});
+
+	it('should render thumbnail photo on regular size', () => {
+		const mockPhoto = 'photo image';
+		const mockMember = {
+			...MOCK_MEMBER,
+			photo: { ...MOCK_MEMBER.photo, thumb_link: mockPhoto },
 		};
 		const avatarMember = shallow(<AvatarMember member={mockMember} />);
 		expect(avatarMember.find(Avatar).prop('src')).toBe(mockPhoto);
@@ -45,7 +55,11 @@ describe('AvatarMember', function() {
 	});
 
 	it('should *not* render the noPhoto variant only when a photo is present', function() {
-		const avatarMember = shallow(<AvatarMember member={MOCK_MEMBER} />);
+		const mockMember = {
+			...MOCK_MEMBER,
+			photo: { ...MOCK_MEMBER.photo, thumb_link: 'test image' },
+		};
+		const avatarMember = shallow(<AvatarMember member={mockMember} />);
 		expect(avatarMember.find(`.${AVATAR_PERSON_NOPHOTO_CLASS}`).exists()).toBe(false);
 		expect(avatarMember.find(Icon).exists()).toBe(false);
 	});
