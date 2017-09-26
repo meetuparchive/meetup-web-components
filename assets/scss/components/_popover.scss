@@ -37,6 +37,10 @@ $view-minWidth: 320px;
 
 .popover-container--menu {
 	min-width: $block-4;
+
+	&.visibility--a11yShow {
+		position:absolute;
+	}
 }
 
 .popover-menu-option {
