@@ -77,7 +77,7 @@ Breakpoints        | Direction       | Description
 	@include flexParent('column', false);
 	height: 100%;
 	> .flex-item {
-		-ms-flex-preferred-size: auto;
+		@include flex-basis(auto);
 		width: 100%;
 		padding-left: 0;
 	}
@@ -88,6 +88,7 @@ Breakpoints        | Direction       | Description
 	height: auto;
 	> .flex-item {
 		@include responsiveVarContext--base() {
+			@include flex-basis(0);
 			padding-left: $base;
 		}
 		width: auto;
