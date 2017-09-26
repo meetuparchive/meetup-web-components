@@ -14,9 +14,9 @@ export const AVATAR_PERSON_NOPHOTO_CLASS = 'avatar--noPhoto';
  */
 class AvatarMember extends React.PureComponent {
 	render() {
-		const { member, org, fbFriend, className, small, ...other } = this.props;
+		const { member, org, fbFriend, className, big, large, xxlarge, ...other } = this.props;
 
-		const photoLink = small ? 'thumb_link' : 'photo_link';
+		const photoLink = big || large || xxlarge ? 'photo_link' : 'thumb_link';
 		const showNoPhoto = (member.photo || {})[photoLink] == undefined;
 
 		const classNames = cx(
@@ -36,7 +36,9 @@ class AvatarMember extends React.PureComponent {
 				alt={member.name}
 				src={showNoPhoto ? noPhotoImage : member.photo[photoLink]}
 				className={classNames}
-				small={small}
+				big={big}
+				large={large}
+				xxlarge={xxlarge}
 				{...other}
 			/>
 		);
@@ -44,7 +46,9 @@ class AvatarMember extends React.PureComponent {
 }
 
 AvatarMember.propTypes = {
-	small: PropTypes.bool,
+	big: PropTypes.bool,
+	large: PropTypes.bool,
+	xxlarge: PropTypes.bool,
 	member: PropTypes.object.isRequired,
 	org: PropTypes.bool,
 	fbFriend: PropTypes.bool,
