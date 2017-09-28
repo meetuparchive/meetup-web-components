@@ -67,9 +67,9 @@ Applies button color-related styles using a mixin.
 ```
 */
 @mixin buttonColor(
-	$bgColor: $C_buttonBG,
-	$hoverColor: opacify($bgColor, .05),
-	$activeColor: opacify($hoverColor, .1),
+	$bgColor: $C_blue,
+	$hoverColor: darken($bgColor, 5%),
+	$activeColor: darken($bgColor, 12%),
 	$textColor: getPrimaryTextColor($bgColor)
 ) {
 	@include color-all($textColor);
@@ -137,118 +137,29 @@ _(The `extend` directive can cause ugly cascade problems)_
 	}
 }
 
-/*doc
----
-title: Buttons
-name: buttons
-category: UI Components
----
-
-#### Example
-
-```html_example
-<ul class="list">
-	<li class="list-item chunk">
-		<h3>Standard Buttons</h3>
-		<button class="button" href="#">Button</button>
-		<button class="button button--primary" href="#">Primary Button</button>
-	</li>
-	<li class="list-item chunk stripe--inverted inverted padding--all">
-		<h3>Contrast Buttons</h3>
-		<button class="button button--contrast" href="#">Contrast Button</button>
-		<button class="button button--contrast button--primary" href="#">Primary Contrast Button</button>
-	</li>
-	<li class="list-item chunk">
-		<h3>Small buttons</h3>
-		<div class="chunk">
-			<button class="button button--small" href="#">Small Button</button>
-			<button class="button button--primary button--small" href="#">Small Button</button>
-		</div>
-		<div class="chunk">
-			<span class="text--small">Inline text with button</span><button class="button button--primary button--small margin--left" href="#">Inline button with text</button>
-		</div>
-	</li>
-	<li class="list-item chunk">
-		<h3>Full width button</h3>
-		<div class="chunk">
-			<button class="button button--fullWidth" href="#">Wide load</button>
-		</div>
-		<div class="chunk">
-			<button class="button button--primary button--fullWidth" href="#">Wide load</button>
-		</div>
-	</li>
-	<li class="list-item chunk">
-		<h3>Icon buttons</h3>
-		<div class="chunk">
-			<button class="button button--icon" href="#">
-				<span class="button-label">Button with right Icon</span>
-				<span class="button-icon">X</span>
-			</button>
-		</div>
-		<div class="chunk">
-			<button class="button button--icon button--primary" href="#">
-				<span class="button-icon">X</span>
-				<span class="button-label">Primary button with left Icon</span>
-			</button>
-		</div>
-		<div class="chunk">
-			<button class="button button--primary button--icon button--fullWidth" href="#">
-				<span class="button-icon">ヘ(◕。◕ヘ)</span>
-				<span class="button-label">Full width primary button with left Icon</span>
-			</button>
-		</div>
-	</li>
-	<li class="list-item chunk">
-		<h3>Disabled buttons</h3>
-		<button class="button button--disabled" href="#">Stop</button>
-		<button class="button button--primary" disabled>Can't touch this</button>
-		<input type="submit" class="button" value="Disabled" disabled />
-	</li>
-	<li class="list-item chunk">
-		<h3>Buttons with form fields</h3>
-		<div class="row">
-			<div class="row-item">
-				<input type="text" placeholder="Field by a button" />
-			</div>
-			<div class="row-item row-item--shrink">
-				<button class="button button--primary">Button by a field</button>
-			</div>
-		</div>
-	</li>
-</ul>
-```
-
-#### Button variants
-A class of `.button` is __required__ for buttons. The following
-classes are optional variants:
-
-Class                   | Description
------------------------ | ----------------------------------------
-`.button--primary`      | rounded button with dark background; for primary actions
-`.button--contrast`     | bold, dark text; use on dark or colorful backgrounds or on photos
-`.button--reset`        | resets default button styles; bold text on transparent background
-`.button--small`        | decreases size of button
-`.button--fullWidth`    | makes button fill width
-`.button--icon`         | button with icon (see example for markup pattern)
-*/
-
+//
+// Default buttons
+//
 .button {
 	@include buttonBase();
 	@include buttonColor(
-		$textColor: $C_textSecondary
+		$textColor: $C_textPrimaryInverted
 	);
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_fieldBGInverted,
-			$hoverColor: opacify($C_fieldBGInverted, .05),
-			$activeColor: opacify($C_fieldBGInverted, .1),
-			$textColor: $C_textSecondary
+			$bgColor: $C_blue,
+			$hoverColor: opacify($C_blue, .05),
+			$activeColor: opacify($C_blue, .1)
+			// $textColor: $C_textPrimaryInverted
 		);
-		@include color-all($C_textSecondaryInverted);
+		// @include color-all($C_textPrimaryInverted);
 	}
 }
 
+//
+// Primary buttons
+//
 %button--primary,
 .button--primary {
 	@include buttonColor(
@@ -265,6 +176,32 @@ Class                   | Description
 	}
 }
 
+//
+// Subtle/neutral buttons
+//
+$C_buttonBGNeutralInverted: rgba(255,255,255,.2);
+%button--neutral,
+.button--neutral {
+	@include buttonColor(
+		$bgColor: $C_buttonBGNeutral,
+		$hoverColor: opacify($C_buttonBGNeutral, .05),
+		$activeColor: opacify($C_buttonBGNeutral, .1),
+		$textColor: $C_textSecondary
+	);
+	.inverted & {
+		@include buttonColor(
+			$bgColor: $C_buttonBGNeutralInverted,
+			$hoverColor: opacify($C_buttonBGNeutralInverted, .05),
+			$activeColor: opacify($C_buttonBGNeutralInverted, .1),
+			$textColor: $C_textSecondary
+		);
+		@include color-all($C_textSecondaryInverted);
+	}
+}
+
+//
+// Bordered buttons
+//
 .button--bordered {
 	@include buttonColor(
 		$bgColor: $C_contentBG,
