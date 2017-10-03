@@ -20,6 +20,9 @@ storiesOf('ToggleSwitch', module)
 			</InfoWrapper>
 		)
 	)
+	.add('Checked', () => (
+		<ToggleSwitch name="testToggle" isActive />
+	))
 	.add('With label', () => (
 		<ToggleSwitch name="testToggle" label="Turn it on?" />
 	))
