@@ -8,9 +8,10 @@ import TextInput from '../TextInput';
  * @return {Component} TextInput
  */
 const ReduxFormTextInput = props => {
-	const { meta, input, ...other } = props;
+	const { meta, input, validateAfterTouched, ...other } = props;
+	const error = (!validateAfterTouched || meta.touched) ? meta.error : null;
 
-	return <TextInput error={meta.error} {...input} {...other} />;
+	return <TextInput error={error} {...input} {...other} />;
 };
 
 ReduxFormTextInput.displayName = 'ReduxFormTextInput';
