@@ -32,6 +32,10 @@ class Dropdown extends React.PureComponent {
 	onClick(e) {
 		e.preventDefault();
 		this.toggleContent();
+
+		if (this.props.onClick) {
+			this.props.onClick(e);
+		}
 	}
 
 	onKeyDown(e) {
@@ -76,6 +80,10 @@ class Dropdown extends React.PureComponent {
 			align, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
+
+		// this.props.onClick is consumed in this.onClick
+		// Do not pass along to children
+		delete other.onClick;
 
 		const classNames = {
 			dropdown: cx(
