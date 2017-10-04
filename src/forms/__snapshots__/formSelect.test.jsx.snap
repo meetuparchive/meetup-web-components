@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormSelect renders correctly 1`] = `
+<div>
+  <label
+    className="label--field required disabled labelForSonnet"
+    htmlFor="sonnet"
+  >
+    Shakespearean Sonnet
+  </label>
+  <select
+    className="classForSonnet"
+    disabled={true}
+    id="sonnet"
+    name="sonnets"
+    onChange={[Function]}
+    required={true}
+  >
+    <option
+      selected={false}
+      value="Love is my sin and thy dear virtue hate"
+    >
+      Love is my sin and thy dear virtue hate
+    </option>
+    <option
+      selected={false}
+      value="Hate of my sin, grounded on sinful loving:"
+    >
+      Hate of my sin, grounded on sinful loving:
+    </option>
+    <option
+      selected={false}
+      value="O, but with mine compare thou thine own state,"
+    >
+      O, but with mine compare thou thine own state,
+    </option>
+    <option
+      selected={false}
+      value="And thou shalt find it merits not reproving;"
+    >
+      And thou shalt find it merits not reproving;
+    </option>
+    <option
+      selected={false}
+      value="Or, if it do, not from those lips of thine,"
+    >
+      Or, if it do, not from those lips of thine,
+    </option>
+    <option
+      selected={false}
+      value="That have profaned their scarlet ornaments"
+    >
+      That have profaned their scarlet ornaments
+    </option>
+    <option
+      selected={false}
+      value="And seal'd false bonds of love as oft as mine,"
+    >
+      And seal'd false bonds of love as oft as mine,
+    </option>
+    <option
+      selected={false}
+      value="Robb'd others' beds' revenues of their rents."
+    >
+      Robb'd others' beds' revenues of their rents.
+    </option>
+    <option
+      selected={false}
+      value="Be it lawful I love thee, as thou lovest those"
+    >
+      Be it lawful I love thee, as thou lovest those
+    </option>
+    <option
+      selected={false}
+      value="Whom thine eyes woo as mine importune thee:"
+    >
+      Whom thine eyes woo as mine importune thee:
+    </option>
+    <option
+      selected={false}
+      value="Root pity in thy heart, that when it grows"
+    >
+      Root pity in thy heart, that when it grows
+    </option>
+    <option
+      selected={false}
+      value="Thy pity may deserve to pitied be."
+    >
+      Thy pity may deserve to pitied be.
+    </option>
+    <option
+      selected={true}
+      value="If thou dost seek to have what thou dost hide,"
+    >
+      If thou dost seek to have what thou dost hide,
+    </option>
+    <option
+      selected={false}
+      value="By self-example mayst thou be denied!"
+    >
+      By self-example mayst thou be denied!
+    </option>
+  </select>
+</div>
+`;
