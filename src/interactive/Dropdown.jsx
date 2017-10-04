@@ -14,7 +14,6 @@ class Dropdown extends React.PureComponent {
 			'toggleContent',
 			'onClick',
 			'onKeyDown',
-			'onClick',
 			'onBodyClick',
 			'onBodyKeyDown'
 		);
@@ -31,6 +30,7 @@ class Dropdown extends React.PureComponent {
 	}
 
 	onClick(e) {
+		e.preventDefault();
 		this.toggleContent();
 	}
 
