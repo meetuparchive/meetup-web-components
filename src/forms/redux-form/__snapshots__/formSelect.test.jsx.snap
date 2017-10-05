@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`redux-form FormSelect renders a FormSelect component with expected attributes from mock data 1`] = `
+<FormSelect
+  error="Did you mean Batman and Robin?"
+  id="countriesSelect"
+  label="Countries"
+  name="formSelectCountries"
+  options={
+    Array [
+      "Serbia",
+      "S. Korea",
+      "Johto",
+    ]
+  }
+  required={true}
+/>
+`;

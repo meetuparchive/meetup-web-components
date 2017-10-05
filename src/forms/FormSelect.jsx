@@ -31,7 +31,6 @@ const FormSelect = props => {
 	const renderedOptions = options && options.length ? options.map((option, index) => {
 		const attrs = {
 			key: index,
-			selected: option === selectedOption,
 			value: option
 		};
 		return (<option {...attrs}>{option}</option>);
@@ -51,6 +50,7 @@ const FormSelect = props => {
 				onChange={onChange}
 				disabled={disabled}
 				id={id}
+				defaultValue={selectedOption}
 				{...other}
 			>
 				{renderedOptions}
