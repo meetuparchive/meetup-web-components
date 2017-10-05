@@ -3,6 +3,7 @@ import React from 'react';
 import cx from 'classnames';
 
 export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
+
 /**
  * @module AccordionPanelGroup
  */
@@ -42,10 +43,10 @@ class AccordionPanelGroup extends React.Component {
 	clonePanel(accordionPanel, key, isOpen) {
 		const panelProps = {
 			key,
-			iconAlign: this.props.iconAlign,
-			iconSize: this.props.iconSize,
-			iconShape: this.props.iconShape,
-			iconShapeActive: this.props.iconShapeActive,
+			indicatorAlign: this.props.indicatorAlign,
+			indicatorIcon: this.props.indicatorIcon,
+			indicatorIconActive: this.props.indicatorIconActive,
+			indicatorSwitch: this.props.indicatorSwitch,
 			className: accordionPanel.props.className,
 			setClickedPanel: this.setClickedPanel,
 			isOpen: accordionPanel.props.isOpen
@@ -64,10 +65,10 @@ class AccordionPanelGroup extends React.Component {
 	render() {
 		const {
 			accordionPanels, // eslint-disable-line no-unused-vars
-			iconAlign, // eslint-disable-line no-unused-vars
-			iconShape, // eslint-disable-line no-unused-vars
-			iconSize, // eslint-disable-line no-unused-vars
-			iconShapeActive, // eslint-disable-line no-unused-vars
+			indicatorAlign, // eslint-disable-line no-unused-vars
+			indicatorIcon, // eslint-disable-line no-unused-vars
+			indicatorIconActive, // eslint-disable-line no-unused-vars
+			indicatorSwitch, // eslint-disable-line no-unused-vars
 			multiSelectable,
 			className,
 			...other
@@ -97,19 +98,20 @@ class AccordionPanelGroup extends React.Component {
 }
 
 AccordionPanelGroup.defaultProps = {
+	indicatorAlign: 'right',
+	indicatorIcon: 'chevron-down',
 	multiSelectable: true,
-	iconAlign: 'right',
-	iconShape: 'chevron-down',
-	iconSize: 'xs'
+	indicatorIconSize: 'xs'
 };
 
 AccordionPanelGroup.propTypes = {
 	accordionPanels: PropTypes.arrayOf(PropTypes.element).isRequired,
 	multiSelectable: PropTypes.bool,
-	iconAlign: PropTypes.string,
-	iconShape: PropTypes.string,
-	iconShapeActive: PropTypes.string,
-	iconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
+	indicatorAlign: PropTypes.string,
+	indicatorIcon: PropTypes.element,
+	indicatorIconActive: PropTypes.element,
+	indicatorIconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+	indicatorSwitch: PropTypes.bool
 };
 
 export default AccordionPanelGroup;
