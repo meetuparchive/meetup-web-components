@@ -10,6 +10,7 @@ Table of Contents
     * [Development/Beta release](#developmentbeta-releases)
   * [Getting started](#getting-started)
     * [Components](#components)
+	* [Redux Form Compnents](#redux-form)
   * [Testing](#testing)
     * [Simulating interactions](#simulating-interactions)
     * [Verifying child elements](#verifying-child-elements)
@@ -88,6 +89,13 @@ Filename casing conventions:
 - Component files: `CamelCase`, with a leading capital, i.e. `RsvpTag.jsx`
 - Test files: `camelCase`, i.e. `rsvpTag.test.js`
 - Story files: `camelCase`, i.e. `rsvpTag.story.jsx`
+
+### Redux Form Components
+
+- why are they here
+- what is redux form
+- conventions (file names etc)
+- gotchas
 
 ### Layout conventions
 
