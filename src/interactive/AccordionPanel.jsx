@@ -209,8 +209,8 @@ AccordionPanel.propTypes = {
 	label: PropTypes.string.isRequired,
 	className: PropTypes.string,
 	indicatorAlign: PropTypes.string,
-	indicatorIcon: PropTypes.element,
-	indicatorIconActive: PropTypes.element,
+	indicatorIcon: PropTypes.string,
+	indicatorIconActive: PropTypes.string,
 	indicatorIconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
 	indicatorSwitch: PropTypes.bool
 };
