@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
+const mockOnCallback = jest.fn();
+const mockOffCallback = jest.fn();
+
 import ToggleSwitch, {
 	TOGGLE_SWITCH_ACTIVE_CLASS,
 	TOGGLE_SWITCH_DISABLED_CLASS,
@@ -55,6 +58,19 @@ describe('ToggleSwitch', function() {
 			expect(btnNode.props()['aria-checked']).toBe(false);
 			btnNode.simulate('click');
 			expect(btnNode.props()['aria-checked']).toBe(true);
+		});
+
+		it('calls `onCallback()` and `offCallback`', function() {
+			const component = mountWrapper({onCallback: mockOnCallback, offCallback: mockOffCallback });
+			const btnNode = component.find(`.${TOGGLE_SWITCH_CLASS}`);
+
+			expect(mockOnCallback).not.toHaveBeenCalled();
+			btnNode.simulate('click');
+			expect(mockOnCallback).toHaveBeenCalled();
+
+			expect(mockOffCallback).not.toHaveBeenCalled();
+			btnNode.simulate('click');
+			expect(mockOffCallback).toHaveBeenCalled();
 		});
 	});
 

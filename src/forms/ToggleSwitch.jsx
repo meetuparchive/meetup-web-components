@@ -29,12 +29,18 @@ class ToggleSwitch extends React.Component {
 	}
 
 	toggle() {
-		!this.props.disabled && this.props.toggleActive();
+		if (this.props.disabled) {
+			return;
+		} else {
+			this.props.toggleActive();
+			this.props.isActive
+				? this.props.offCallback && this.props.offCallback()
+				: this.props.onCallback && this.props.onCallback();
+		}
 	}
 
 	render() {
 		const {
-			children,
 			className,
 			disabled,
 			isActive,
@@ -43,6 +49,8 @@ class ToggleSwitch extends React.Component {
 			labelledBy,
 			name,
 			toggleActive, // eslint-disable-line no-unused-vars
+			onCallback, // eslint-disable-line no-unused-vars
+			offCallback, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -99,7 +107,6 @@ class ToggleSwitch extends React.Component {
 							label='Toggle switch label'/>
 					</span>
 				</Button>
-				{children}
 			</div>
 		);
 	}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf, action } from '@kadira/storybook';
 
 import { decorateWithLocale } from '../utils/decorators';
 import { InfoWrapper } from '../utils/storyComponents';
@@ -25,6 +25,13 @@ storiesOf('ToggleSwitch', module)
 	))
 	.add('With label', () => (
 		<ToggleSwitch name="testToggle" label="Turn it on?" />
+	))
+	.add('With onCallback and offCallback', () => (
+		<ToggleSwitch
+			name="testToggle"
+			label="Turn it on?"
+			onCallback={action('its on!')}
+			offCallback={action('its off.')} />
 	))
 	.add('With label outside of component', () => (
 		<ul className="list">
