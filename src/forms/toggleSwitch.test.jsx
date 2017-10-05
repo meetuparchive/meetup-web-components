@@ -8,10 +8,8 @@ import ToggleSwitch, {
 	TOGGLE_SWITCH_ACTIVE_CLASS,
 	TOGGLE_SWITCH_DISABLED_CLASS,
 	TOGGLE_SWITCH_CLASS,
-	// KNOB_CLASS,
 	KNOB_ACTIVE_CLASS,
 	KNOB_DISABLED_CLASS,
-	LABEL_CLASS,
 } from './ToggleSwitch';
 
 describe('ToggleSwitch', function() {
@@ -35,7 +33,7 @@ describe('ToggleSwitch', function() {
 
 		it('has a label only if one is given', () => {
 			const component = mountWrapper({label: 'Turn it on?'});
-			expect(component.find(`.${LABEL_CLASS}`)).not.toBe(null);
+			expect(component.find('label')).not.toBe(null);
 		});
 
 		it('sets `aria-labelledby` attribute if one is given', () => {

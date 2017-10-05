@@ -33,7 +33,7 @@ class ToggleSwitch extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		if (prevProps !== this.props) {
+		if (prevProps.isActive !== this.props.isActive) {
 			this.props.isActive
 				? this.props.onCallback && this.props.onCallback()
 				: this.props.offCallback && this.props.offCallback();
@@ -80,12 +80,12 @@ class ToggleSwitch extends React.Component {
 		return (
 			<div {...other}>
 				{ label &&
-					<span
+					<label
 						className={`${LABEL_CLASS} ${labelClassName} margin--right`}
 						id={labelId}
 					>
 						{label}
-					</span>
+					</label>
 				}
 				<Button
 					reset
