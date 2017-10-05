@@ -21,8 +21,6 @@ const ReduxFormTogglePill = props => {
 		...other
 	} = props;
 
-	console.log(other, input);
-
 	return <TogglePill {...input} isActive={input.value == 'true' && !other.useRadio} {...other} />;
 };
 
