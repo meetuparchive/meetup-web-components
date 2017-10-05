@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 /**
- * Provides boolean isChecked prop to wrapped component.
+ * Provides boolean isActive prop to wrapped component.
  * Prop name can also be customized if need be
  *
  * @param {React.element} ToggleComponent - the component to wrap
@@ -19,6 +19,13 @@ export default function withToggleControl(WrappedComponent) {
 			this.state = { isActive: props.isActive };
 			this.toggleActive = this.toggleBool.bind(this);
 		}
+
+		componentWillReceiveProps(nextProps) {
+			if (nextProps.isActive !== this.props.isActive) {
+				this.toggleActive();
+			}
+		}
+
 		toggleBool() {
 			this.setState({ isActive: !this.state.isActive });
 		}
