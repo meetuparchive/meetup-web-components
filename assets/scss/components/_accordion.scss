@@ -7,6 +7,10 @@ $A_curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1);
 $A_curve-default: $A_curve-fast-out-slow-in;
 $A_duration: 0.2s;
 
+.accordion--hideFocus .accordionPanel-label:focus {
+	outline: 0;
+}
+
 .accordionPanel-animator {
 	overflow: hidden;
 	transition: height $A_duration $A_curve-default;
@@ -15,7 +19,8 @@ $A_duration: 0.2s;
 
 .accordionPanel-animator--collapse {
 	height: 0;
-	margin-bottom: 0 !important;
+	padding-bottom: 0 !important;
+	visibility: hidden;
 }
 
 .accordionPanel-label {
