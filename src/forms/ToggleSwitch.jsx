@@ -29,18 +29,18 @@ class ToggleSwitch extends React.Component {
 	}
 
 	toggle() {
-		if (this.props.disabled) {
-			return;
-		} else {
-			this.props.toggleActive();
-			this.props.isActive
-				? this.props.offCallback && this.props.offCallback()
-				: this.props.onCallback && this.props.onCallback();
-		}
+		!this.props.disabled && this.props.toggleActive();
+	}
+
+	componentWillReceiveProps(nextProps) {
+		nextProps.isActive
+			? this.props.onCallback && this.props.onCallback()
+			: this.props.offCallback && this.props.offCallback();
 	}
 
 	render() {
 		const {
+			children,
 			className,
 			disabled,
 			isActive,
@@ -107,6 +107,7 @@ class ToggleSwitch extends React.Component {
 							label='Toggle switch label'/>
 					</span>
 				</Button>
+				{children}
 			</div>
 		);
 	}
