@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleSwitch basic renders checked toggle switch 1`] = `
+<span
+  aria-pressed={false}
+  role="button"
+>
+  <ToggleSwitch
+    checked={true}
+    isActive={false}
+    name="testToggle"
+    toggleActive={[Function]}
+  />
+</span>
+`;
+
+exports[`ToggleSwitch basic renders inactive toggle switch 1`] = `
+<span
+  aria-pressed={false}
+  role="button"
+>
+  <ToggleSwitch
+    isActive={false}
+    name="testToggle"
+    toggleActive={[Function]}
+  />
+</span>
+`;
