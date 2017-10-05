@@ -13,14 +13,17 @@ import TogglePill from '../TogglePill';
  * @return {Component} TogglePill
  */
 const ReduxFormTogglePill = props => {
+	// not adding meta error to TogglePill prop for now
+	// since TogglePills should function in a group with one error
 	const {
 		meta, // eslint-disable-line no-unused-vars
-		// not adding meta error to TogglePill prop for now
 		input,
 		...other
 	} = props;
 
-	return <TogglePill {...input} isActive={input.value == 'true'} {...other} />;
+	console.log(other, input);
+
+	return <TogglePill {...input} isActive={input.value == 'true' && !other.useRadio} {...other} />;
 };
 
 ReduxFormTogglePill.displayName = 'ReduxFormTogglePill';
