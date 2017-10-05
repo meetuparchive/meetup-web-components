@@ -2,7 +2,7 @@
 
 exports[`redux-form SelectInput renders a SelectInput component with expected attributes from mock data 1`] = `
 <SelectInput
-  error="Did you mean Batman and Robin?"
+  error={null}
   label="Countries"
   name="formSelectCountries"
   options={

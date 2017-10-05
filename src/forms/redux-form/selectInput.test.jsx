@@ -14,6 +14,7 @@ describe('redux-form SelectInput', () => {
 		options: testOptions,
 		required: true,
 		meta: {
+			touched: false,
 			error: 'Did you mean Batman and Robin?'
 		}
 	};
@@ -23,10 +24,10 @@ describe('redux-form SelectInput', () => {
 		expect(component).toMatchSnapshot();
 	});
 
-	it('does not render error if field is not touched and validateAfterTouched is true', () => {
+	it('does not render error if field is not touched and validateBeforeTouched is true', () => {
 		const props = {
 			...formAttrs,
-			validateAfterTouched: true,
+			validateBeforeTouched: true,
 			meta: {
 				...formAttrs.meta,
 				touched: false
