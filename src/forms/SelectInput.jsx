@@ -9,7 +9,7 @@ class SelectInput extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: props.value || props.options[0].value
+			value: props.value || (props.options[0] || {}).value
 		};
 		this.onChange = this.onChange.bind(this);
 	}
