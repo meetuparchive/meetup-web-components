@@ -9,9 +9,7 @@ import SelectInput from '../SelectInput';
  */
 const ReduxFormSelectInput = props => {
 	const { meta, validateBeforeTouched, ...other } = props;
-
 	const error = (validateBeforeTouched || meta.touched) ? meta.error : null;
-
 	return <SelectInput error={error} {...other} />;
 };
 

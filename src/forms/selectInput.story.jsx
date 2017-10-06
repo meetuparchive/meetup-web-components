@@ -72,6 +72,20 @@ storiesOf('SelectInput', module)
 			</IntlProvider>
 		);
 	})
+	.add('single error', () =>
+		(<SelectInput
+			label='Select a name for your horse'
+			id='horsename'
+			name='horsename'
+			required
+			options={[
+				{ label: 'Geoffrey', value: 'geoffrey' },
+				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
+				{ label: 'Mister Chompy', value: 'chompyhorse' }
+			]}
+			error={'I\'m a single lady, I\'m a single lady'}
+		/>)
+	)
 	.add('multiple errors', () =>
 		(<SelectInput
 			label='Select a name for your horse'

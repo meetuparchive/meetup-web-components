@@ -24,10 +24,10 @@ describe('redux-form SelectInput', () => {
 		expect(component).toMatchSnapshot();
 	});
 
-	it('does not render error if field is not touched and validateBeforeTouched is true', () => {
+	it('does not render error if field is not touched and validateBeforeTouched is false', () => {
 		const props = {
 			...formAttrs,
-			validateBeforeTouched: true,
+			validateBeforeTouched: false,
 			meta: {
 				...formAttrs.meta,
 				touched: false
