@@ -198,6 +198,36 @@ $C_toggleHighlight: $C_blue;
 }
 
 //
+// Select input
+//
+.select--reset {
+	-webkit-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	user-select: none;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	&::-ms-expand {
+		display: none;
+	}
+
+	&:focus::-ms-value {
+		background: transparent;
+		color: $C_textPrimary;
+	}
+}
+
+.select-customArrow {
+	bottom: $space; // 4px is for margin between forms
+	position: absolute;
+	pointer-events: none;
+	right: $space;
+}
+
+//
 // Character counter
 //
 .charCount {

@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+import Icon from '../media/Icon';
+
 /**
  * @module SelectInput
  */
@@ -43,6 +45,7 @@ class SelectInput extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
+			'select--reset span--100',
 			{ 'field--error': errors && errors.length > 0 },
 			className
 		);
@@ -55,27 +58,33 @@ class SelectInput extends React.Component {
 
 		return (
 			<div>
-				{label &&
-					<label className={labelClassNames} htmlFor={other.id}>
-						{label}
-					</label>
-				}
-
-				<select
-					name={name}
-					required={required}
-					className={classNames}
-					onChange={this.onChange}
-					value={this.state.value}
-					{...other}
-				>
-					{
-						options.map((option, key) =>
-							<option key={key} value={option.value}>{option.label}</option>
-						)
+				<div className="inputContainer">
+					{label &&
+						<label className={labelClassNames} htmlFor={other.id}>
+							{label}
+						</label>
 					}
-				</select>
 
+					<select
+						name={name}
+						required={required}
+						className={classNames}
+						onChange={this.onChange}
+						value={this.state.value}
+						{...other}
+					>
+						{
+							options.map((option, key) =>
+								<option key={key} value={option.value}>{option.label}</option>
+							)
+						}
+					</select>
+					<Icon
+						className="select-customArrow"
+						shape="chevron-down"
+						size="xs"
+					/>
+				</div>
 				{
 					errors && errors.length > 0 &&
 						errors.map((error, key) =>
