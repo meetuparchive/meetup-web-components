@@ -37,6 +37,7 @@ class SelectInput extends React.Component {
 			label,
 			options,
 			name,
+			error,
 			errors,
 			required,
 			onChange, // eslint-disable-line no-unused-vars
@@ -46,7 +47,7 @@ class SelectInput extends React.Component {
 
 		const classNames = cx(
 			'select--reset span--100',
-			{ 'field--error': errors && errors.length > 0 },
+			{ 'field--error': errors && errors.length > 0 || error },
 			className
 		);
 
@@ -64,7 +65,6 @@ class SelectInput extends React.Component {
 							{label}
 						</label>
 					}
-
 					<select
 						name={name}
 						required={required}
@@ -85,6 +85,7 @@ class SelectInput extends React.Component {
 						size="xs"
 					/>
 				</div>
+				{error && <p className='text--error'>{error}</p>}
 				{
 					errors && errors.length > 0 &&
 						errors.map((error, key) =>
@@ -104,6 +105,7 @@ SelectInput.propTypes = {
 		label: PropTypes.string.isRequired,
 		value: PropTypes.string.isRequired,
 	})).isRequired,
+	error: PropTypes.string,
 	errors: PropTypes.array,
 	label: PropTypes.oneOfType([
 		PropTypes.string,
