@@ -8,9 +8,9 @@ import SelectInput from '../SelectInput';
  * @return {React.Component} SelectInput
  */
 const ReduxFormSelectInput = props => {
-	const { meta, validateBeforeTouched, ...other } = props;
+	const { meta, validateBeforeTouched, input, ...other } = props;
 	const error = (validateBeforeTouched || meta.touched) ? meta.error : null;
-	return <SelectInput error={error} {...other} />;
+	return <SelectInput error={error} {...input} {...other} />;
 };
 
 ReduxFormSelectInput.displayName = 'ReduxFormSelectInput';
