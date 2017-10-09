@@ -84,6 +84,7 @@ class Textarea extends React.Component {
 			style={},
 			maxHeight,
 			minHeight,
+			maxLength,
 			id,
 			onChange, // eslint-disable-line no-unused-vars
 			autosize,
@@ -92,6 +93,7 @@ class Textarea extends React.Component {
 
 		const classNames = {
 			textarea: cx(
+				'span--100',
 				{
 					'field--error': error,
 					'textarea--autoheight': autosize
@@ -111,7 +113,7 @@ class Textarea extends React.Component {
 		};
 
 		return (
-			<div>
+			<div className="inputContainer">
 				{label &&
 					<label className={classNames.label} htmlFor={id}>
 						{label}
@@ -132,9 +134,7 @@ class Textarea extends React.Component {
 					{...other}
 				/>
 
-				{ this.props.maxLength &&
-					<p className='text--caption align--right'>{this.state.value.length} / {this.props.maxLength}</p>
-				}
+				{ maxLength && <p className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - this.state.value.length)}</p> }
 
 				{ error && <p className='text--error'>{error}</p> }
 			</div>

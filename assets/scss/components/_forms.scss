@@ -1,3 +1,10 @@
+.inputContainer {
+	position: relative;
+}
+
+//
+// Labels
+//
 .label--field {
 	padding-bottom: $space-half;
 	display: inline-block;
@@ -7,32 +14,6 @@
 	font-weight: normal;
 }
 
-/*doc
----
-title: Radios
-name: radio
-category: Forms
----
-A label variant class of `label--minor` is
-used for side-by-side inputs and labels.
-
-For radios and checkboxes, we put the `input`
-element inside the `label` element.
-
-A class of `radio` is __required__ on radio input
-elements.
-
-```html_example
-<label for="radio1" class="label--minor chunk">
-	<input id="radio1" class="radio" name="radioExample" value="green" type="radio" />
-	Green
-</label>
-<label for="radio2" class="label--minor chunk">
-	<input id="radio2" class="radio" name="radioExample" value="red" type="radio" />
-	Red
-</label>
-```
-*/
 .radio {
 	cursor: pointer;
 	display: inline-block;
@@ -47,25 +28,9 @@ elements.
 	}
 }
 
-/*doc
----
-title: Validation errors
-name: formValidation
-category: Forms
----
-Field errors set explicitly with `field--error`.
-
-Error text is set explicitly with `text--error`.
-
-```html_example
-<div class="chunk">
-	<label for="test-textinput">First name</label>
-	<input class="field--error" id="test-textinput" type="text" value="" />
-	<p class="text--error">First name can't be empty</p>
-</div>
-```
-
-*/
+//
+// Validation styles
+//
 .field--error {
 	border-color: $C_attention !important;
 	&:focus {
@@ -73,83 +38,73 @@ Error text is set explicitly with `text--error`.
 	}
 }
 
-/*doc
----
-title: Field reset
-name: fieldReset
-category: Forms
----
-Reset default form styles with `.field--reset`.
-
-```html_example
-<div class="chunk">
-	<input class="field--reset" type="text" value="Reset text field" />
-</div>
-<div class="chunk">
-	<input class="field--reset" type="number" value="42" />
-</div>
-```
-*/
+//
+// Reset field styles
+//
 input.field--reset,
 input.field--reset:hover,
 input.field--reset:focus,
 input.field--reset:active {
 	@include resetFieldStyles;
+
+	.inverted & {
+		@include resetFieldStyles;
+	}
+
 }
 
-/*doc
----
-title: Faux Input
-name: fauxInput
-category: Forms
----
-Faux inputs visually mimic actual input elements.
-
-```html_example
-<div class="chunk">
-	<div class="fauxInput">I'm a faux input</div>
-</div>
-```
-*/
+//
+// Styles to visually mimic inputs
+//
 .fauxInput {
-	// default form styling
-	background-color: $C_fieldBG;
-	border-radius: $defaultRadius;
-	border: 1px solid transparent;
-	box-shadow: none;
-	box-sizing: border-box;
-	margin: 0 0 $space-quarter 0;
-	max-width: 100%;
-	padding: $space-half;
-	width: 100%;
+	@include formInput();
 
 	// manually changing height to match other inputs
-	height: ($font-size * $line-height) + $space;
+	height: ($font-size * $line-height) + $space*2;
+
+	&.disabled {
+		@include formInput--disabled();
+	}
 
 	&:hover {
-		border-color: $C_textHint;
+		@include formInput--hovered();
 	}
 
 	&.focused {
-		border-color: $C_lightPurple;
-		box-shadow: none;
-		outline: none;
+		@include formInput--focused();
 	}
 
 	&.error {
 		border-color: $C_attention !important;
 	}
 
-	&.disabled {
-		background-color: $C_fieldBG--disabled;
-		color: $C_textSecondary;
+	.inverted & {
+		background-color: $C_contentBGInverted;
+		border-color: $C_borderInverted;
+		color: $C_textPrimaryInverted;
+
 		&:hover {
-			background-color: $C_fieldBG--disabled;
-			border: 1px solid transparent;
+			border-color: $C_borderDarkInverted;
 		}
+
+		&[disabled] {
+			background-color: $C_borderInverted;
+			border-color: transparent;
+			color: $C_textSecondaryInverted;
+
+			&:hover {
+				background-color: $C_borderInverted;
+			}
+
+		}
+
 	}
+
 }
 
+//
+// Radio and Checkbox styles
+//
 $toggleSize: 20px;
 $C_toggleHighlight: $C_blue;
 
@@ -240,4 +195,43 @@ $C_toggleHighlight: $C_blue;
 	display: block;
 	height: 8px;
 	width: 8px;
+}
+
+//
+// Select input
+//
+.select--reset {
+	-webkit-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	user-select: none;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	&::-ms-expand {
+		display: none;
+	}
+
+	&:focus::-ms-value {
+		background: transparent;
+		color: $C_textPrimary;
+	}
+}
+
+.select-customArrow {
+	bottom: $space; // 4px is for margin between forms
+	position: absolute;
+	pointer-events: none;
+	right: $space;
+}
+
+//
+// Character counter
+//
+.charCount {
+	bottom: 0;
+	position: absolute;
+	right: $space-quarter;
 }

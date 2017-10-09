@@ -27,6 +27,7 @@ const TextInput = (props) => {
 	} = props;
 
 	const classNames = cx(
+		'span--100',
 		{ 'field--error': error },
 		className
 	);
@@ -38,7 +39,7 @@ const TextInput = (props) => {
 	);
 
 	return (
-		<div>
+		<div className="inputContainer">
 			{label &&
 				<label className={labelClassNames} htmlFor={id}>
 					{label}
@@ -58,7 +59,7 @@ const TextInput = (props) => {
 				{...other}
 			/>
 
-			{ maxLength && <p className='text--caption align--right'>{value.length} / {maxLength}</p> }
+			{ maxLength && <p className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
 
 			{ error && <p className='text--error'>{error}</p> }
 			{children}
