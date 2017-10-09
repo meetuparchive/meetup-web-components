@@ -27,7 +27,7 @@ describe('redux-form TogglePill', function() {
 	it('renders a TogglePill with isActive prop as true when value is true', () => {
 		togglePillProps.input.value = true;
 		const component = mount(<ReduxFormTogglePill {...togglePillProps} />);
-		expect(component.find('TogglePill').prop('isActive')).toBe(false);
+		expect(component.find('TogglePill').prop('isActive')).toBe(true);
 	});
 
 });
