@@ -190,7 +190,7 @@ class NumberInput extends React.Component {
 						{children}
 					</Flex>
 				</div>
-				{ error && <p className='text--error'>{error}</p> }
+				{ error && <p className='text--error text--small'>{error}</p> }
 			</div>
 		);
 	}

@@ -67,7 +67,7 @@ class TimeInput extends React.Component {
 					ref={ input => this.inputEl = input }
 					{...other}
 				/>
-				{ error && <p id={errorId} className='text--error'>{error}</p> }
+				{ error && <p id={errorId} className='text--error text--small'>{error}</p> }
 			</span>
 		);
 
