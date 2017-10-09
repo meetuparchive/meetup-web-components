@@ -6,6 +6,7 @@ import Chunk from '../layout/Chunk';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
+import TogglePill from '../forms/TogglePill';
 
 export const PANEL_CLASS = 'accordionPanel';
 export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
@@ -79,13 +80,13 @@ class AccordionPanel extends React.Component {
 	 */
 	getIconShape() {
 		const {
-			iconShape,
-			iconShapeActive
+			indicatorIcon,
+			indicatorIconActive
 		} = this.props;
 
-		return this.state.isOpen && iconShapeActive ?
-			iconShapeActive :
-			iconShape;
+		return this.state.isOpen && indicatorIconActive ?
+			indicatorIconActive :
+			indicatorIcon;
 	}
 
 	render() {
@@ -94,12 +95,14 @@ class AccordionPanel extends React.Component {
 			label,
 			isOpen, // eslint-disable-line no-unused-vars
 			setClickedPanel, // eslint-disable-line no-unused-vars
-			iconAlign, // eslint-disable-line no-unused-vars
-			iconShape, // eslint-disable-line no-unused-vars
-			iconSize, // eslint-disable-line no-unused-vars
-			iconShapeActive, // eslint-disable-line no-unused-vars
+			indicatorAlign, // eslint-disable-line no-unused-vars
+			indicatorIcon, // eslint-disable-line no-unused-vars
+			indicatorIconActive, // eslint-disable-line no-unused-vars
+			indicatorIconSize,
+			indicatorSwitch,
 			classNamesActive,
 			className,
+			// isActive,
 			...other
 		} = this.props;
 
@@ -114,7 +117,7 @@ class AccordionPanel extends React.Component {
 			),
 			trigger: cx(
 				className,
-				'accordionPanel-label display--block span--100'
+				'accordionPanel-label display--block span--100 padding--bottom'
 			),
 			content: cx(
 				'accordionPanel-animator',
@@ -127,27 +130,27 @@ class AccordionPanel extends React.Component {
 		// create valid attribute name from trigger label
 		const ariaId = label.replace(/\s+/g, '').toLowerCase();
 
+		// console.log(this.props);
+
 		return(
 			<Flex
 				className={classNames.accordionPanel}
-				rowReverse={iconAlign === 'left' && 'all'}
+				rowReverse={indicatorAlign === 'left' && 'all'}
 				{...other}
 			>
 
 				<FlexItem>
-					<Chunk>
-						<button
-							role='tab'
-							id={`label-${ariaId}`}
-							aria-controls={`panel-${ariaId}`}
-							aria-expanded={this.state.isOpen}
-							aria-selected={this.state.isOpen}
-							className={classNames.trigger}
-							onClick={this._handleToggle}
-						>
-							{label}
-						</button>
-					</Chunk>
+					<button
+						role='tab'
+						id={`label-${ariaId}`}
+						aria-controls={`panel-${ariaId}`}
+						aria-expanded={this.state.isOpen}
+						aria-selected={this.state.isOpen}
+						className={classNames.trigger}
+						onClick={this._handleToggle}
+					>
+						{label}
+					</button>
 
 					<Chunk
 						role='tabpanel'
@@ -167,10 +170,23 @@ class AccordionPanel extends React.Component {
 
 				<FlexItem
 					className='accordionPanel-icon'
-					onClick={this._handleToggle}
+					onClick={!indicatorSwitch && this._handleToggle}
 					shrink
 				>
-					<Icon shape={this.getIconShape()} size={iconSize} />
+					{
+						!indicatorSwitch && indicatorIcon
+							? <Icon shape={this.getIconShape()} size={indicatorIconSize} />
+							: // TogglePill to be replaced by ToggleSwitch once https://github.com/meetup/meetup-web-components/pull/305 merges
+							<TogglePill
+								isActive={this.state.isOpen}
+								id={`${ariaId}-switch`}
+								name={ariaId}
+								value='toggle-pill'
+								onClick={this._handleToggle}
+							>
+								<span>{this.state.isOpen ? 'on' : 'off'}</span>
+							</TogglePill>
+					}
 				</FlexItem>
 
 			</Flex>
@@ -180,9 +196,9 @@ class AccordionPanel extends React.Component {
 
 AccordionPanel.defaultProps = {
 	isOpen: false,
-	iconAlign: 'right',
-	iconShape: 'chevron-down',
-	iconSize: 'xs'
+	indicatorAlign: 'right',
+	indicatorIcon: 'chevron-down',
+	indicatorIconSize: 'xs'
 };
 
 AccordionPanel.propTypes = {
@@ -192,10 +208,11 @@ AccordionPanel.propTypes = {
 	onClick: PropTypes.func,
 	label: PropTypes.string.isRequired,
 	className: PropTypes.string,
-	iconAlign: PropTypes.string,
-	iconShape: PropTypes.string,
-	iconShapeActive: PropTypes.string,
-	iconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
+	indicatorAlign: PropTypes.string,
+	indicatorIcon: PropTypes.string,
+	indicatorIconActive: PropTypes.string,
+	indicatorIconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+	indicatorSwitch: PropTypes.bool
 };
 
 export default AccordionPanel;
