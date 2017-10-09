@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`redux-form Textarea renders a Checkbox component with expected attributes from mock data, should be checked 1`] = `
+<Checkbox
+  checked={true}
+  label="Do you want more?"
+  name="want_more"
+  value={true}
+/>
+`;
