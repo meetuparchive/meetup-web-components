@@ -61,7 +61,7 @@ const TextInput = (props) => {
 
 			{ maxLength && <p className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
 
-			{ error && <p className='text--error'>{error}</p> }
+			{ error && <p className='text--error text--small'>{error}</p> }
 			{children}
 		</div>
 	);

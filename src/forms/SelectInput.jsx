@@ -85,11 +85,11 @@ class SelectInput extends React.Component {
 						size="xs"
 					/>
 				</div>
-				{error && <p className='text--error'>{error}</p>}
+				{error && <p className='text--error text--small'>{error}</p>}
 				{
 					errors && errors.length > 0 &&
 						errors.map((error, key) =>
-							<p key={key} className='text--error'>{error}</p>
+							<p key={key} className='text--error text--small'>{error}</p>
 						)
 				}
 				{children}
