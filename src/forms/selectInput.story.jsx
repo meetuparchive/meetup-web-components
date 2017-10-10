@@ -1,6 +1,7 @@
 import React from 'react';
 import SelectInput from './SelectInput';
 import { storiesOf } from '@kadira/storybook';
+import { decorateWithLocale } from '../utils/decorators';
 import {
 	IntlProvider,
 	FormattedMessage,
@@ -8,6 +9,7 @@ import {
 } from 'react-intl';
 
 storiesOf('SelectInput', module)
+	.addDecorator(decorateWithLocale)
 	.add('default', () =>
 		(<SelectInput
 			label='Select a name for your horse'
