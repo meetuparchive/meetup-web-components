@@ -4,7 +4,6 @@ import cx from 'classnames';
 import { MEDIA_SIZES } from '../utils/designConstants';
 
 export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
-export const DEFAULT_ICON_SIZE = 'xs';
 
 /**
  * @module TextInput
