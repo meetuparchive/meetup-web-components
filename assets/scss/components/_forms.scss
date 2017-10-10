@@ -50,6 +50,7 @@ input.field--reset:active {
 	.inverted & {
 		@include resetFieldStyles;
 	}
+  
 }
 
 //
@@ -58,11 +59,6 @@ input.field--reset:active {
 .field--withIcon {
 	background-repeat: no-repeat;
 	background-position: $space center;
-
-	&:before {
-		content: "lololol";
-		display: block;
-	}
 }
 
 //

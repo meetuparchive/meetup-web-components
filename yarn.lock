@@ -6521,9 +6521,9 @@ swarm-icons@1.3.183:
   version "1.3.183"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.3.183.tgz#89b2033334f53003c1401499452eee1addecce4b"
 
-swarm-sasstools@1.7.131-beta:
-  version "1.7.131-beta"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-1.7.131-beta.tgz#25bd47b6f7cf18b020e89ecc60afce46e6e18114"
+swarm-sasstools@2.0.135:
+  version "2.0.135"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-2.0.135.tgz#f4b4db0db8f1b5a01347d4e749b6271614606c37"
   dependencies:
     bourbon "4.2.3"
     sass-rem "^1.2.4"
