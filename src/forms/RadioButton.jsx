@@ -15,8 +15,8 @@ const RadioButton = ({ label, className, ...inputProps }) => {
 		fauxCheckboxClassNames: cx(
 			'display--flex flex--alignCenter flex--center align--center fauxToggle fauxToggle--radio',
 			{
-				['checked'] : inputProps.checked,
-				['disabled'] : inputProps.disabled
+				['checked']: inputProps.checked,
+				['disabled']: inputProps.disabled
 			}
 		)
 	};
@@ -25,18 +25,24 @@ const RadioButton = ({ label, className, ...inputProps }) => {
 		<label className={classNames.labelClassNames} htmlFor={id}>
 			<Flex align="center" className={className} noGutters>
 				<FlexItem shrink>
-					<input readOnly type="radio" className="radio visibility--a11yHide" id={id} {...inputProps} />
+					<input
+						readOnly
+						type="radio"
+						className="radio visibility--a11yHide"
+						id={id}
+						{...inputProps}
+					/>
 					<span className={classNames.fauxCheckboxClassNames}>
-						{inputProps.checked &&
-							<span className="radio-indicator"></span>
-						}
+						{inputProps.checked && <span className="radio-indicator" />}
 					</span>
 				</FlexItem>
-				<FlexItem className='toggleLabel-container'>
-					<span className={cx({
-						['text--hint'] : inputProps.disabled,
-						['text--bold'] : inputProps.checked
-					})}>
+				<FlexItem className="toggleLabel-container" shrink>
+					<span
+						className={cx({
+							['text--hint']: inputProps.disabled,
+							['text--bold']: inputProps.checked
+						})}
+					>
 						{label}
 					</span>
 				</FlexItem>
@@ -49,7 +55,7 @@ RadioButton.displayName = 'RadioButton';
 
 RadioButton.propTypes = {
 	label: PropTypes.string.isRequired,
-	className: PropTypes.string,
+	className: PropTypes.string
 };
 
 export default RadioButton;

@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+import Icon from '../media/Icon';
+
 /**
  * @module SelectInput
  */
@@ -9,7 +11,7 @@ class SelectInput extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: props.value || props.options[0].value
+			value: props.value || (props.options[0] || {}).value
 		};
 		this.onChange = this.onChange.bind(this);
 	}
@@ -35,6 +37,7 @@ class SelectInput extends React.Component {
 			label,
 			options,
 			name,
+			error,
 			errors,
 			required,
 			onChange, // eslint-disable-line no-unused-vars
@@ -43,7 +46,8 @@ class SelectInput extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			{ 'field--error': errors && errors.length > 0 },
+			'select--reset span--100',
+			{ 'field--error': errors && errors.length > 0 || error },
 			className
 		);
 
@@ -55,31 +59,37 @@ class SelectInput extends React.Component {
 
 		return (
 			<div>
-				{label &&
-					<label className={labelClassNames} htmlFor={other.id}>
-						{label}
-					</label>
-				}
-
-				<select
-					name={name}
-					required={required}
-					className={classNames}
-					onChange={this.onChange}
-					value={this.state.value}
-					{...other}
-				>
-					{
-						options.map((option, key) =>
-							<option key={key} value={option.value}>{option.label}</option>
-						)
+				<div className="inputContainer">
+					{label &&
+						<label className={labelClassNames} htmlFor={other.id}>
+							{label}
+						</label>
 					}
-				</select>
-
+					<select
+						name={name}
+						required={required}
+						className={classNames}
+						onChange={this.onChange}
+						value={this.state.value}
+						{...other}
+					>
+						{
+							options.map((option, key) =>
+								<option key={key} value={option.value}>{option.label}</option>
+							)
+						}
+					</select>
+					<Icon
+						className="select-customArrow"
+						shape="chevron-down"
+						size="xs"
+					/>
+				</div>
+				{error && <p className='text--error text--small'>{error}</p>}
 				{
 					errors && errors.length > 0 &&
 						errors.map((error, key) =>
-							<p key={key} className='text--error'>{error}</p>
+							<p key={key} className='text--error text--small'>{error}</p>
 						)
 				}
 				{children}
@@ -95,6 +105,7 @@ SelectInput.propTypes = {
 		label: PropTypes.string.isRequired,
 		value: PropTypes.string.isRequired,
 	})).isRequired,
+	error: PropTypes.string,
 	errors: PropTypes.array,
 	label: PropTypes.oneOfType([
 		PropTypes.string,

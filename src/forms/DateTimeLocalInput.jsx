@@ -4,9 +4,9 @@ import cx from 'classnames';
 
 /**
  * @module DateTimeLocalInput
- * @description renders html5 datetime-local input, 
+ * @description renders html5 datetime-local input,
  * this component is supported on mobile browsers mostly, and should be used when supported
- * 
+ *
 */
 class DateTimeLocalInput extends React.Component {
 
@@ -18,7 +18,7 @@ class DateTimeLocalInput extends React.Component {
 	/**
 	* @function onChange
 	* @param e Event the change event
-	* @description called when value changes and in turn calls onChange from props 
+	* @description called when value changes and in turn calls onChange from props
 	* (redux-form or wrapping components like datetimepicker provides this)
 	*/
 	onChange(e) {
@@ -62,7 +62,7 @@ class DateTimeLocalInput extends React.Component {
 					required={required}
 					{...other}
 				/>
-				{ error && <p className='text--error' id={errorId}>{error}</p> }
+				{ error && <p className='text--error text--small' id={errorId}>{error}</p> }
 			</div>
 		);
 

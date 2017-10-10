@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`redux-form TogglePill renders a TogglePill component with expected attributes from mock data 1`] = `
+<WithToggle
+  isActive={false}
+  label="Parenting"
+  name="parenting"
+  value={false}
+/>
+`;

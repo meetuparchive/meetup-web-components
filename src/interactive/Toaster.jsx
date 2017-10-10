@@ -25,7 +25,7 @@ class Toaster extends React.PureComponent {
 		this.setTimer = this.setTimer.bind(this);
 
 		this.state = {
-			toasts: this.props.toasts.map(this.cloneToast)
+			toasts: this.props.toasts.map(this.cloneToast),
 		};
 	}
 
@@ -35,7 +35,9 @@ class Toaster extends React.PureComponent {
 	 */
 	dismissToast(dismissedToast) {
 		this.setState(() => ({
-			toasts: this.state.toasts.filter(toast => dismissedToast.props.id !== toast.props.id)
+			toasts: this.state.toasts.filter(
+				toast => dismissedToast.props.id !== toast.props.id
+			),
 		}));
 	}
 
@@ -46,9 +48,11 @@ class Toaster extends React.PureComponent {
 	 * sets timers to delay a toast's dismissal
 	 */
 	setTimer(toast) {
-		this.timeouts.push(setTimeout(() => {
-			this.dismissToast(toast);
-		}, DELAY_TIME + (MARGINAL_DELAY * toast.key)));
+		this.timeouts.push(
+			setTimeout(() => {
+				this.dismissToast(toast);
+			}, DELAY_TIME + MARGINAL_DELAY * toast.key)
+		);
 	}
 
 	/**
@@ -76,7 +80,8 @@ class Toaster extends React.PureComponent {
 	}
 
 	componentDidMount() {
-		this.state.toasts && this.state.toasts.filter(t => t.props.autodismiss).map(this.setTimer);
+		this.state.toasts &&
+			this.state.toasts.filter(t => t.props.autodismiss).map(this.setTimer);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -84,9 +89,15 @@ class Toaster extends React.PureComponent {
 		const allToasts = currentToasts.concat(nextProps.toasts);
 
 		if (nextProps.toasts !== this.state.toasts) {
-			this.setState(() => ({ toasts: allToasts.map(this.cloneToast) }), () => {
-				this.state.toasts && this.state.toasts.filter(t => t.props.autodismiss).map(this.setTimer);
-			});
+			this.setState(
+				() => ({ toasts: allToasts.map(this.cloneToast) }),
+				() => {
+					this.state.toasts &&
+						this.state.toasts
+							.filter(t => t.props.autodismiss)
+							.map(this.setTimer);
+				}
+			);
 		}
 	}
 
@@ -101,7 +112,7 @@ class Toaster extends React.PureComponent {
 		const toastProps = {
 			key: i,
 			id: toast.props.id || `toast-${currentId}`,
-			dismissToast: this.dismissToast
+			dismissToast: this.dismissToast,
 		};
 		return React.cloneElement(toast, toastProps);
 	}
@@ -113,31 +124,27 @@ class Toaster extends React.PureComponent {
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			'toaster',
-			className
-		);
+		const classNames = cx('toaster', className);
 
 		return (
 			<div
 				className={classNames}
 				onMouseEnter={this.clearTimeouts}
 				onMouseLeave={this.restartTimeouts}
-				aria-live='assertive'
-				{...other}>
+				aria-live="assertive"
+				{...other}
+			>
 				<TransitionGroup>
-					{
-						this.state.toasts.map((toast, i) => (
-							<CSSTransition
-								key={`csstrns-${i}`}
-								appear
-								timeout={250}
-								classNames="slide"
-							>
-								{toast}
-							</CSSTransition>
-						))
-					}
+					{this.state.toasts.map((toast, i) => (
+						<CSSTransition
+							key={`csstrns-${i}`}
+							appear
+							timeout={250}
+							classNames="slide"
+						>
+							{toast}
+						</CSSTransition>
+					))}
 				</TransitionGroup>
 			</div>
 		);
@@ -145,7 +152,7 @@ class Toaster extends React.PureComponent {
 }
 
 Toaster.propTypes = {
-	toasts: PropTypes.arrayOf(Toast).isRequired
+	toasts: PropTypes.arrayOf(PropTypes.instanceOf(Toast)).isRequired,
 };
 
 export default Toaster;

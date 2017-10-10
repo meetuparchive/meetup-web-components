@@ -10,6 +10,7 @@ Table of Contents
     * [Development/Beta release](#developmentbeta-releases)
   * [Getting started](#getting-started)
     * [Components](#components)
+	* [Redux Form Components](#redux-form-components)
   * [Testing](#testing)
     * [Simulating interactions](#simulating-interactions)
     * [Verifying child elements](#verifying-child-elements)
@@ -88,6 +89,36 @@ Filename casing conventions:
 - Component files: `CamelCase`, with a leading capital, i.e. `RsvpTag.jsx`
 - Test files: `camelCase`, i.e. `rsvpTag.test.js`
 - Story files: `camelCase`, i.e. `rsvpTag.story.jsx`
+
+### Redux Form Components
+
+We use [`redux-form`](https://redux-form.com/) in our `mup-web` app to help with validation flow.  
+
+`redux-form` can use our form components (just pass our MWC component to `Field` as the [`component` prop](https://redux-form.com/7.0.4/docs/api/field.md/#-code-component-component-function-string-code-required-)), but we need to write wrappers to pass down the props from `redux-form` `Field` to our form components in `meetup-web-components`.
+
+The job of the wrapper for each component is mostly just parsing out the `meta`, `input` and `other` props from `redux-form` and passing them on.
+
+#### Conventions
+You can find the wrapper classes in `src/forms/redux-form`.  
+
+The files are named after the classes they wrap to avoid verbose file names.
+Ex. `forms/TogglePill.jsx` has a `forms/redux-form/TogglePill.jsx`. 
+
+But the actual class name to import and `displayName`, have `ReduxForm` in the name.  
+Ex. `export class ReduxFormTogglePill`
+
+We write wrappers as we need them, so if you don't find one that you need, please write it!
+
+#### Gotchas
+
+We've run into a couple gotchas already:
+`redux-form` validates all fields on load, and its hard to tell when the form is first rendered. To avoid displaying errors right away, we added some logic to read [`meta.touched`](https://redux-form.com/7.0.4/docs/api/field.md/#-code-meta-touched-boolean-code-). https://github.com/meetup/meetup-web-components/pull/307
+
+`redux-form`'s implementation of checkboxes give them values of `true` and `false`. 
+`ReduxFormTogglePill` wrappers handle this now by passing the `input.value` prop down as `isActive` (which sets `checked` on checkboxes)
+https://github.com/meetup/meetup-web-components/pull/310.  
+We may need to do this for other checkbox, radio component wrappers.
+
 
 ### Layout conventions
 

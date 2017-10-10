@@ -51,6 +51,7 @@ $view-minWidth: 320px;
 	& > span,
 	& > div,
 	& > button {
+		color: $C_textPrimary;
 		display: block;
 		padding: $space-half $space;
 
