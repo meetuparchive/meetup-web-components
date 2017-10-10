@@ -50,7 +50,15 @@ input.field--reset:active {
 	.inverted & {
 		@include resetFieldStyles;
 	}
+  
+}
 
+//
+// Styles for a field with an icon
+//
+.field--withIcon {
+	background-repeat: no-repeat;
+	background-position: $space center;
 }
 
 //

@@ -93,6 +93,18 @@ storiesOf('TextInput', module)
 			</form>
 		);
 	})
+	.add('with icon', () => (
+		<div className='span--50'>
+			<TextInput
+				label='Your name'
+				id='fullname'
+				name='name'
+				defaultValue='Phife Dawg'
+				placeholder='Not your email'
+				iconShape='search' />
+		</div>
+	)
+	)
 	.addWithInfo(
 		'with char counter if you provide maxLength',
 		`Note: updating field with charcounter relies on parent to give value,
