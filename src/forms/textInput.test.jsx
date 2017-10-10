@@ -118,10 +118,5 @@ describe('TextInput', function() {
 			expect(errorEl.textContent).toEqual(ERROR_TEXT);
 		});
 
-		// it('should show an icon when iconShape prop is specified', () => {
-		// 	const iconEl = component.find('input').getDOMNode();
-		// 	console.log(iconEl.style);
-		// });
-
 	});
 });
