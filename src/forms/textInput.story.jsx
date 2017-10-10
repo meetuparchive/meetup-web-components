@@ -95,7 +95,7 @@ storiesOf('TextInput', module)
 	})
 	.addWithInfo(
 		'with char counter if you provide maxLength',
-		`Note: updating field with charcounter relies on parent to give value, 
+		`Note: updating field with charcounter relies on parent to give value,
 			thats why you cant interact with the field in this story`,
 		() => {
 			const rules = {
@@ -104,7 +104,7 @@ storiesOf('TextInput', module)
 			};
 			return (
 				<InfoWrapper>
-					<div className='span--25'>
+					<div className='span--50'>
 						<TextInput
 							label='Your name'
 							id='fullname'
