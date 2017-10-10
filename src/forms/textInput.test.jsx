@@ -1,5 +1,5 @@
 import React from 'react';
-import TextInput from './TextInput';
+import TextInput, {FIELD_WITH_ICON_CLASS} from './TextInput';
 import { shallow, mount } from 'enzyme';
 
 describe('TextInput', function() {
@@ -46,6 +46,7 @@ describe('TextInput', function() {
 					onChange={onChange}
 					isSearch
 					disabled
+					iconShape='search'
 					{...formAttrs}
 				/>
 			).find('input');
@@ -81,6 +82,10 @@ describe('TextInput', function() {
 			expect(onChange).toHaveBeenCalledWith(eventData);
 		});
 
+		it('should show an icon when iconShape prop is specified', () => {
+			expect(inputEl.find(`.${FIELD_WITH_ICON_CLASS}`).exists()).toBe(true);
+		});
+
 	});
 
 	describe('dom checks, full rendering', () => {
@@ -112,5 +117,11 @@ describe('TextInput', function() {
 			const errorEl = component.find('.text--error').getDOMNode();
 			expect(errorEl.textContent).toEqual(ERROR_TEXT);
 		});
+
+		// it('should show an icon when iconShape prop is specified', () => {
+		// 	const iconEl = component.find('input').getDOMNode();
+		// 	console.log(iconEl.style);
+		// });
+
 	});
 });
