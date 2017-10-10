@@ -3,16 +3,10 @@ import AccordionPanelGroup from './AccordionPanelGroup';
 import AccordionPanel from './AccordionPanel';
 import { storiesOf } from '@kadira/storybook';
 import { InfoWrapper } from '../utils/storyComponents';
-
-/*
- * -- Inline SVG icon sprite --
- *
- * raw SVG sprite from `swarm-icons`
- */
-const iconSpriteStyle = { display: 'none' };
-const iconSprite = require('raw-loader!swarm-icons/dist/sprite/sprite.inc');
+import { decorateWithLocale } from '../utils/decorators';
 
 storiesOf('Accordion', module)
+	.addDecorator(decorateWithLocale)
 	.addWithInfo(
 		'default',
 		'Basic Accordion group',
@@ -49,20 +43,19 @@ storiesOf('Accordion', module)
 									</div>
 								} />,
 						]}/>
-					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 				</div>
 			</InfoWrapper>
 		)
 	)
 	.addWithInfo(
-		'Custom icons',
+		'Custom icon indicator',
 		'Adds custom icons via AccordionPanelGroup props',
 		() => (
 			<InfoWrapper>
 				<div className='span--100 padding--all'>
 					<AccordionPanelGroup
-						iconShape='plus'
-						iconShapeActive='minus'
+						indicatorIcon='plus'
+						indicatorIconActive='minus'
 						accordionPanels={[
 							<AccordionPanel
 								label='First with custom icon'
@@ -92,7 +85,47 @@ storiesOf('Accordion', module)
 									</div>
 								} />,
 						]}/>
-					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+				</div>
+			</InfoWrapper>
+		)
+	)
+	.addWithInfo(
+		'ToggleSwitch indicator',
+		'Show the indicator as a switch',
+		() => (
+			<InfoWrapper>
+				<div className='span--100 padding--all'>
+					<AccordionPanelGroup
+						indicatorSwitch
+						accordionPanels={[
+							<AccordionPanel
+								label='First with switch'
+								panelContent={
+									<div className='runningText'>
+										<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+									</div>
+								} />,
+							<AccordionPanel
+								label='Second with switch'
+								panelContent={
+									<div>
+										<div className='runningText'>
+											<p>Any kind of content can go in here, even inputs.</p>
+										</div>
+										<div className='chunk'>
+											<label htmlFor='test-textinput'>I'm a label</label>
+											<input id='test-textinput' type='text' placeholder='Input placeholder' />
+										</div>
+									</div>
+								} />,
+							<AccordionPanel
+								label='Third with switch'
+								panelContent={
+									<div className='runningText'>
+										<p>Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+									</div>
+								} />,
+						]}/>
 				</div>
 			</InfoWrapper>
 		)
@@ -104,7 +137,7 @@ storiesOf('Accordion', module)
 			<InfoWrapper>
 				<div className='span--100 padding--all'>
 					<AccordionPanelGroup
-						iconAlign='left'
+						indicatorAlign='left'
 						accordionPanels={[
 							<AccordionPanel
 								label='First with left icon'
@@ -134,7 +167,6 @@ storiesOf('Accordion', module)
 									</div>
 								} />,
 						]}/>
-					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 				</div>
 			</InfoWrapper>
 		)
@@ -176,7 +208,6 @@ storiesOf('Accordion', module)
 									</div>
 								} />,
 						]}/>
-					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 				</div>
 			</InfoWrapper>
 		)
@@ -218,7 +249,6 @@ storiesOf('Accordion', module)
 									</div>
 								} />,
 						]}/>
-					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 				</div>
 			</InfoWrapper>
 		)
@@ -236,7 +266,6 @@ storiesOf('Accordion', module)
 								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
 							</div>
 						} />
-					<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
 				</div>
 			</InfoWrapper>
 		)
