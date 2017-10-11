@@ -37,7 +37,18 @@ storiesOf('TogglePill', module)
 			Toggle Pill Label
 		</TogglePill>
 	))
-	.add('Topic Pill', () => (
+	.add('Large', () => (
+		<TogglePill
+			onChange={onChange}
+			id='togglePillId'
+			name='togglePillName'
+			value='toggle-pill'
+			large
+		>
+			Toggle Pill Label
+		</TogglePill>
+	))
+	.add('Topic pill', () => (
 		<TogglePill
 			topic
 			onChange={onChange}
@@ -48,7 +59,7 @@ storiesOf('TogglePill', module)
 			Toggle Pill Label
 		</TogglePill>
 	))
-	.add('Topic Pill Selected', () => (
+	.add('Topic pill selected', () => (
 		<TogglePill
 			topic
 			onChange={onChange}
@@ -60,7 +71,7 @@ storiesOf('TogglePill', module)
 			Toggle Pill Label
 		</TogglePill>
 	))
-	.add('Toggle Pill Radio Button', () => (
+	.add('Radio button', () => (
 		<div>
 			<TogglePill
 				onChange={onChange}
