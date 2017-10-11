@@ -21,8 +21,9 @@ class Button extends React.PureComponent {
 			onClick,
 			reset,
 			fullWidth,
-			icon,
 			primary,
+			neutral,
+			icon,
 			right,
 			small,
 			bordered,
@@ -39,8 +40,8 @@ class Button extends React.PureComponent {
 					'button--small': small,
 					'button--reset': reset,
 					'button--bordered': bordered,
-					'button--hasHoverShadow': hasHoverShadow
-
+					'button--hasHoverShadow': hasHoverShadow,
+					'button--neutral': neutral
 				},
 				className
 			),

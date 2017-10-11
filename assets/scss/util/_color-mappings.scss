@@ -1,6 +1,7 @@
 $C_accent: $C_red;
-$C_buttonBG: rgba(0,0,0,.09);
-$C_fieldBG: rgba(0,0,0,.05);
-$C_fieldBGInverted: $C_borderInverted;
-$C_fieldBG--disabled: rgba(0,0,0,.02);
-$C_fieldBGinverted--disabled: rgba(255,255,255,.02);
+
+$C_buttonBGNeutral: $C_coolGrayLightTransp;
+$C_buttonBGNeutral--disabled: transparentize($C_coolGrayLightTransp, .04);
+
+$C_buttonBGNeutralInverted: $C_borderInverted;
+$C_buttonBGNeutralInverted--disabled: transparentize($C_borderInverted, 0.17);
