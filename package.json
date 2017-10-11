@@ -47,7 +47,8 @@
     "flatpickr": "3.0.6",
     "prop-types": "15.5.10",
     "recompose": "0.24.0",
-    "swarm-animation": "https://github.com/meetup/swarm-animation.git"
+    "swarm-animation": "https://github.com/meetup/swarm-animation.git",
+    "swarm-sasstools": "2.0.135"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
@@ -92,7 +93,6 @@
     "storybook-addon-i18n-tools": "1.0.0",
     "style-loader": "0.18.2",
     "swarm-icons": "1.3.183",
-    "swarm-sasstools": "2.0.135",
     "webpack": "2.6.1"
   }
 }
