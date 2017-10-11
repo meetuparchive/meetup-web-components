@@ -301,7 +301,7 @@ _(The `extend` directive can cause ugly cascade problems)_
 %button--small,
 .button--small {
 	border-radius: $defaultRadius;
-	padding: $space-half $space;
+	padding: $space-quarter $space;
 }
 
 //
