@@ -44,7 +44,7 @@ _(The `extend` directive can cause ugly cascade problems)_
 	font-size: $font-size-small;
 	line-height: $line-height-smallText;
 	outline: 0;
-	padding: $space $space-double;
+	padding: $space-half $space-double;
 	vertical-align: middle;
 
 	@include browser-ie11() {
@@ -129,9 +129,9 @@ _(The `extend` directive can cause ugly cascade problems)_
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_fieldBGInverted,
-			$hoverColor: opacify($C_fieldBGInverted, .05),
-			$activeColor: opacify($C_fieldBGInverted, .1),
+			$bgColor: $C_buttonBGNeutralInverted,
+			$hoverColor: opacify($C_buttonBGNeutralInverted, .05),
+			$activeColor: opacify($C_buttonBGNeutralInverted, .1),
 			$textColor: $C_textSecondaryInverted
 		);
 	}
@@ -142,18 +142,14 @@ _(The `extend` directive can cause ugly cascade problems)_
 //
 .button {
 	@include buttonBase();
-	@include buttonColor(
-		$textColor: $C_textPrimaryInverted
-	);
+	@include buttonColor();
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_blue,
-			$hoverColor: opacify($C_blue, .05),
-			$activeColor: opacify($C_blue, .1)
-			// $textColor: $C_textPrimaryInverted
+			$bgColor: $C_textSecondaryInverted,
+			$hoverColor: opacify($C_textSecondaryInverted, .1),
+			$activeColor: opacify($C_textSecondaryInverted, .25)
 		);
-		// @include color-all($C_textPrimaryInverted);
 	}
 }
 
@@ -179,7 +175,6 @@ _(The `extend` directive can cause ugly cascade problems)_
 //
 // Subtle/neutral buttons
 //
-$C_buttonBGNeutralInverted: rgba(255,255,255,.2);
 %button--neutral,
 .button--neutral {
 	@include buttonColor(
@@ -246,9 +241,9 @@ $C_buttonBGNeutralInverted: rgba(255,255,255,.2);
 .button[disabled],
 .button--disabled {
 	@include buttonColor(
-		$bgColor: $C_fieldBG--disabled,
-		$hoverColor: $C_fieldBG--disabled,
-		$activeColor: $C_fieldBG--disabled,
+		$bgColor: $C_buttonBGNeutral--disabled,
+		$hoverColor: $C_buttonBGNeutral--disabled,
+		$activeColor: $C_buttonBGNeutral--disabled,
 		$textColor: $C_textHint
 	);
 	outline: none;
@@ -256,9 +251,10 @@ $C_buttonBGNeutralInverted: rgba(255,255,255,.2);
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_fieldBGinverted--disabled,
-			$hoverColor: $C_fieldBGinverted--disabled,
-			$activeColor: $C_fieldBGinverted--disabled
+			$bgColor: $C_buttonBGNeutralInverted--disabled,
+			$hoverColor: $C_buttonBGNeutralInverted--disabled,
+			$activeColor: $C_buttonBGNeutralInverted--disabled,
+			$textColor: $C_textHintInverted
 		);
 		@include color-all($C_textHintInverted);
 	}
