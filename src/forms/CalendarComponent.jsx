@@ -126,7 +126,7 @@ class CalendarComponent extends React.Component {
 					ref={ input => this.inputEl = input }
 					{...other} />
 
-				{ error && <p className='text--error'>{error}</p> }
+				{ error && <p className='text--error text--small'>{error}</p> }
 			</span>
 		);
 	}
