@@ -3,6 +3,7 @@
 exports[`redux-form Calendar Component renders a Calendar component with expected attributes from mock data 1`] = `
 <CalendarComponent
   className="beyonce-halo"
+  datepickerOptions={Object {}}
   error="pick a different album"
   id="beyonce"
   name="halo"
