@@ -58,32 +58,33 @@ const TextInput = (props) => {
 	};
 
 	return (
-		<div className="inputContainer">
-			{label &&
-				<label className={labelClassNames} htmlFor={id}>
-					{label}
-				</label>
-			}
+		<div>
+			<div className="inputContainer">
+				{label &&
+					<label className={labelClassNames} htmlFor={id}>
+						{label}
+					</label>
+				}
 
-			<input type={isSearch ? 'search' : 'text'}
-				name={name}
-				value={value}
-				required={required}
-				placeholder={placeholder}
-				className={classNames}
-				onChange={onChange}
-				maxLength={maxLength}
-				pattern={pattern}
-				disabled={disabled}
-				id={id}
-				style={inputStyles}
-				{...other}
-			/>
+				<input type={isSearch ? 'search' : 'text'}
+					name={name}
+					value={value}
+					required={required}
+					placeholder={placeholder}
+					className={classNames}
+					onChange={onChange}
+					maxLength={maxLength}
+					pattern={pattern}
+					disabled={disabled}
+					id={id}
+					style={inputStyles}
+					{...other}
+				/>
 
-			{ maxLength && <p className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
-
+				{ maxLength && <p className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
+				{children}
+			</div>
 			{ error && <p className='text--error text--small'>{error}</p> }
-			{children}
 		</div>
 	);
 };
