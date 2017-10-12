@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 import CalendarComponent from './CalendarComponent';
 
 describe('CalendarComponent', function() {
-
 	let calendarComponent;
 
 	const id = 'beyonce',
@@ -24,7 +23,7 @@ describe('CalendarComponent', function() {
 				value={value}
 				datepickerOptions={opts}
 				onChangeCallback={onChangeCallback}
-				ref={ node => this.node = node }
+				ref={node => (this.node = node)}
 			/>
 		);
 		calendarComponent.instance().componentDidMount();
@@ -33,10 +32,7 @@ describe('CalendarComponent', function() {
 	});
 
 	describe('onChange callback tests', () => {
-
-		let calendarComponent,
-			onChangePropMock,
-			callbackMock;
+		let calendarComponent, onChangePropMock, callbackMock;
 
 		// because we are rendering shallow here, flatpickr isnt
 		// instantiated (because componentDidMount not called)
@@ -60,14 +56,10 @@ describe('CalendarComponent', function() {
 			expect(onChangePropMock).toHaveBeenCalledWith(newValue);
 			calendarComponent = null;
 		});
-
 	});
 
 	describe('onBlur onFocus callback tests', () => {
-
-		let cal,
-			onFocusMock,
-			onBlurMock;
+		let cal, onFocusMock, onBlurMock;
 
 		beforeEach(() => {
 			onFocusMock = jest.fn();
@@ -100,6 +92,63 @@ describe('CalendarComponent', function() {
 			expect(onBlurMock).not.toHaveBeenCalled();
 			cal.instance().onClose();
 			expect(onBlurMock).toHaveBeenCalled();
+		});
+	});
+
+	describe('componentWillReceiveProps', () => {
+		it('should updateFlatpickrOptions when receiving datepickerOptions prop', () => {
+			const instance = shallow(<CalendarComponent name="test" />).instance();
+			const datepickerOptions = { option1: true };
+
+			instance.flatpickr = { setDate: jest.fn() };
+
+			jest
+				.spyOn(instance, 'updateFlatpickrOptions')
+				.mockImplementation(() => {});
+
+			instance.componentWillReceiveProps({ datepickerOptions });
+
+			expect(instance.updateFlatpickrOptions).toHaveBeenCalledWith(
+				datepickerOptions
+			);
+		});
+	});
+
+	describe('updateFlatpickrOptions', () => {
+		it('should update flatpickr with updated options', () => {
+			const optionThatDoesntChange = 'will not change';
+
+			const wrapper = shallow(
+				<CalendarComponent
+					name="test"
+					datepickerOptions={{
+						optionThatDoesntChange,
+						maxDate: 1507751589972,
+					}}
+				/>
+			);
+
+			const instance = wrapper.instance();
+
+			instance.flatpickr = {
+				set: jest.fn(),
+			};
+
+			const minDate = 12345;
+			const maxDate = 67890;
+
+			instance.updateFlatpickrOptions({
+				minDate,
+				maxDate,
+				optionThatDoesntChange,
+			});
+
+			expect(instance.flatpickr.set).toHaveBeenCalledWith('maxDate', maxDate);
+			expect(instance.flatpickr.set).toHaveBeenCalledWith('minDate', minDate);
+			expect(instance.flatpickr.set).not.toHaveBeenCalledWith(
+				'optionThatDoesntChange',
+				optionThatDoesntChange
+			);
 		});
 	});
 });
