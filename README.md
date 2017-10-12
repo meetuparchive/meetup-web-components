@@ -210,3 +210,4 @@ Icons update
 	- changes default icon color to `secondary` from `inherit`
 - Removes unused and confusing `auto` prop from `Icon`
 - Fixed issue where `Icon` would not accept the `xxl` media size
+
