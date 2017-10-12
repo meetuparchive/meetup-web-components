@@ -81,7 +81,7 @@ describe('Checkbox', function() {
 			expect(fakeOnChange).not.toHaveBeenCalled();
 			checkbox.simulate('change', { target: { checked: true } });
 			expect(checkbox.props().checked).toBe(true);
-			expect(fakeOnChange).toHaveBeenCalledWith(true);
+			expect(fakeOnChange).toHaveBeenCalled();
 		});
 	});
 
