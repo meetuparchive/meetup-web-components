@@ -38,15 +38,15 @@ class AccordionPanel extends React.Component {
 	 *
 	 * Updates state to toggle `AccordionPanel` open and closed
 	 */
-	_handleToggle(){
-		if (this.props.setClickedPanel) {
-			this.props.setClickedPanel(this);
-		}
+	_handleToggle(e){
+		e.preventDefault();
+		e.stopPropagation();
 
+		const willOpen = !this.state.isOpen;
 		this.setState({
-			height: this.getHeight(!this.state.isOpen),
-			isOpen: !this.state.isOpen
-		});
+			isOpen: willOpen,
+			height: this.getHeight(willOpen)
+		}, () => this.props.setClickedPanel && this.props.setClickedPanel(this, willOpen));
 
 	}
 
@@ -66,14 +66,33 @@ class AccordionPanel extends React.Component {
 	 *
 	 * Updates state to toggle `AccordionPanel` open and closed
 	 */
-	componentWillUpdate(nextProps, nextState) {
+	componentWillReceiveProps(nextProps) {
+		console.log('using componentWillReceiveProps which should be better');
 		if (nextProps.isOpen !== this.state.isOpen) {
+			const isOpen = nextProps.isOpen;
 			this.setState({
-				isOpen: nextProps.isOpen,
-				height: this.getHeight(nextProps.isOpen)
+				isOpen: isOpen,
+				height: this.getHeight(isOpen)
 			});
 		}
 	}
+
+
+	/**
+	 * @returns {undefined}
+	 *
+	 * Updates state to toggle `AccordionPanel` open and closed
+	 */
+
+	// componentWillUpdate(nextProps, nextState) {
+	// 	console.log('using componentWill UPDATE');
+	// 	if (nextProps.isOpen !== this.state.isOpen) {
+	// 		this.setState({
+	// 			isOpen: nextProps.isOpen,
+	// 			height: this.getHeight(nextProps.isOpen)
+	// 		});
+	// 	}
+	// }
 
 	/**
 	 * @returns {String} icon shape
@@ -92,12 +111,13 @@ class AccordionPanel extends React.Component {
 	render() {
 		const {
 			panelContent,
+			clickId, 				// eslint-disable-line no-unused-vars
 			label,
-			isOpen, // eslint-disable-line no-unused-vars
-			setClickedPanel, // eslint-disable-line no-unused-vars
-			indicatorAlign, // eslint-disable-line no-unused-vars
-			indicatorIcon, // eslint-disable-line no-unused-vars
-			indicatorIconActive, // eslint-disable-line no-unused-vars
+			isOpen, 				// eslint-disable-line no-unused-vars
+			setClickedPanel, 		// eslint-disable-line no-unused-vars
+			indicatorAlign, 		// eslint-disable-line no-unused-vars
+			indicatorIcon, 			// eslint-disable-line no-unused-vars
+			indicatorIconActive,	// eslint-disable-line no-unused-vars
 			indicatorIconSize,
 			indicatorSwitch,
 			classNamesActive,
@@ -199,6 +219,7 @@ AccordionPanel.defaultProps = {
 };
 
 AccordionPanel.propTypes = {
+	clickId: PropTypes.number,
 	classNamesActive: PropTypes.string,
 	isOpen: PropTypes.bool,
 	panelContent: PropTypes.element,
