@@ -36,11 +36,10 @@ class AccordionPanelGroup extends React.Component {
 
 	/**
 	 * @param {Object} accordionPanel - `AccordionPanel` components to clone
-	 * @param {number} i - index of the `AccordionPanel`
-	 * @param {boolean} isOpen - whether the `AccordionPanel` is open or not
+	 * @param {number} key - index of the `AccordionPanel` used as the key
 	 * @returns {Array} `AccordionPanel` components with props from `AccordionPanelGroup`
 	 */
-	clonePanel(accordionPanel, key, isOpen) {
+	clonePanel(accordionPanel, key) {
 		const panelProps = {
 			key,
 			indicatorAlign: this.props.indicatorAlign,
