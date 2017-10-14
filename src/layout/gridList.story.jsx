@@ -111,6 +111,28 @@ storiesOf('GridList', module)
 			</InfoWrapper>
 		))
 	.addWithInfo(
+		'Static wrapping autoHeight grid',
+		'GridList where items are the same height with columns fixed at 3 for all breakpoints',
+		() => (
+			<InfoWrapper>
+				<GridList
+					autoHeightWithWrap
+					columns={{
+						default: 3
+					}}
+					style={{maxWidth: '1100px', margin: '0 auto', width: '100%' }}
+					items={[
+						<TestMember member={MOCK_MEMBER} />,
+						<TestMember member={MOCK_MEMBER} secondLine='This is a second line' />,
+						<TestMember member={MOCK_MEMBER} />,
+						<TestMember member={MOCK_MEMBER} secondLine='This is a second line' />,
+						<TestMember member={MOCK_MEMBER} />,
+						<TestMember member={MOCK_MEMBER} />
+					]}
+				/>
+			</InfoWrapper>
+		))
+	.addWithInfo(
 		'Responsive grid',
 		'Responsive GridList that increases number of columns for larger breakpoints',
 		() => (
