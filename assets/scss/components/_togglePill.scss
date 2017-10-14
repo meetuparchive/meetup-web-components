@@ -16,11 +16,8 @@
 
 .toggleButton-input{
 	&:checked + .toggleButton-label {
-		@include animate--bounceInSubtle();
 		@include buttonColor(
 			$bgColor: $C_blue,
-			$hoverColor: transparentize($C_blue, .2),
-			$activeColor: transparentize($C_blue, .4),
 			$textTrainsition: false
 		);
 		@include standardBorder(none);
