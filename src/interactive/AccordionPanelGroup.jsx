@@ -10,17 +10,22 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
 class AccordionPanelGroup extends React.Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			openPanels: []
-		};
+		this.state = { panelStates: {} };
 
 		this.clonePanel = this.clonePanel.bind(this);
-		this.setOpenPanels = this.setOpenPanels.bind(this);
-		this.isPanelInState = this.isPanelInState.bind(this);
+		this.setPanelStates = this.setPanelStates.bind(this);
+		this.accordionPanels = this.props.accordionPanels.map(this.clonePanel);
+	}
 
-		this.accordionPanels = this.props.accordionPanels.map((panel, i, arr) => this.clonePanel(panel, i, arr, true));
+	componentWillMount() {
+		const panelStates = this.accordionPanels.reduce(function(stateObj, panel) {
+			stateObj[panel.props.clickId] = panel.props.isOpen;
+			return stateObj;
+		}, {});
 
+		this.setState({ panelStates }, () => {
+			console.log(this.state.panelStates);
+		});
 	}
 
 	/**
@@ -30,31 +35,19 @@ class AccordionPanelGroup extends React.Component {
 	 * Keeps track of the clicked panel in order to support AccordionPanelGroups that only
 	 * have one panel open at a time.
 	 */
-	setOpenPanels(clickedPanel, isOpen) {
-
-		const isSaved = this.isPanelInState(clickedPanel);
-
-		// tell parent to store it
-		let panelsToSave;
-
-		if (isOpen && !isSaved) {
-			if (this.props.multiSelectable) {
-				const openPanels = [...this.state.openPanels];
-				openPanels.push(clickedPanel);
-				panelsToSave = openPanels;
-			} else {
-				panelsToSave = [clickedPanel];
-			}
-		} else if (!isOpen && isSaved) {
-			const openPanels = [...this.state.openPanels];
-			const filteredPanels = openPanels.filter((panel) => panel.props.clickId !== clickedPanel.props.clickId);
-			panelsToSave = filteredPanels;
-		}
-		this.setState({ openPanels: panelsToSave });
-	}
-
-	isPanelInState(panel) {
-		return this.state.openPanels.filter((openPanel) => openPanel.props.clickId === panel.props.clickId).length > 0;
+	setPanelStates(clickedPanelId, isOpen) {
+		const panelStates = (!this.props.multiSelectable && isOpen) ?
+			Object.keys(this.state.panelStates).reduce(
+				(stateObj, clickId) => {
+					stateObj[clickId] = (parseInt(clickId) === clickedPanelId);
+					return stateObj;
+				}, {}
+			) :
+			{
+				...this.state.panelStates,
+				[clickedPanelId]: isOpen
+			};
+		this.setState({ panelStates });
 	}
 
 	/**
@@ -62,30 +55,25 @@ class AccordionPanelGroup extends React.Component {
 	 * @param {number} i - index of the `AccordionPanel` used as the key
 	 * @returns {Array} `AccordionPanel` components with props from `AccordionPanelGroup`
 	 */
-	clonePanel(accordionPanel, i, arr, initialize) {
-		const isOpen = (initialize) ? accordionPanel.props.isOpen : this.isPanelInState(accordionPanel);
+	clonePanel(panel, index, arr) {
+		// if we've already initialized state for the accordion, use the open state
+		const panelState = this.state.panelStates && this.state.panelStates[panel.props.clickId];
+		const isOpen = (typeof(panelState) === 'undefined') ?
+			panel.props.isOpen : panelState;
 
-		let panelProps = {
-			key: i,
+		const panelProps = {
+			key: index,
 			indicatorAlign: this.props.indicatorAlign,
 			indicatorIcon: this.props.indicatorIcon,
 			indicatorIconActive: this.props.indicatorIconActive,
 			indicatorSwitch: this.props.indicatorSwitch,
-			className: accordionPanel.props.className,
-			setClickedPanel: this.setOpenPanels,
-			isOpen
+			className: panel.props.className,
+			isOpen,
+			clickId: panel.props.clickId || index,
+			setClickedPanel: this.setPanelStates,
 		};
-		if (initialize) {
-			panelProps = {
-				...panelProps,
-				clickId: i
-			};
-		}
-		const panel = React.cloneElement(accordionPanel, panelProps);
-		if (initialize && panel.props.isOpen) {
-			this.setOpenPanels(panel, panel.props.isOpen);
-		}
-		return panel;
+
+		return React.cloneElement(panel, panelProps);
 	}
 
 	/**
@@ -124,7 +112,9 @@ class AccordionPanelGroup extends React.Component {
 			>
 				{
 					this.renderAccordionPanels().map((panel, i) => (
-						<li key={i} className='list-item'> {panel} </li>
+						<li key={i} className='list-item'>
+							{panel}
+						</li>
 					))
 				}
 			</ul>

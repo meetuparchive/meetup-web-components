@@ -17,11 +17,7 @@ export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
 class AccordionPanel extends React.Component {
 	constructor(props){
 		super(props);
-
-		this.state = {
-			isOpen: this.props.isOpen
-		};
-
+		this.state = {};
 		this._handleToggle = this._handleToggle.bind(this);
 	}
 
@@ -36,18 +32,17 @@ class AccordionPanel extends React.Component {
 	/**
 	 * @returns {undefined}
 	 *
-	 * Updates state to toggle `AccordionPanel` open and closed
+	 * Updates state to toggle `AccordionPanel` open and closeds
 	 */
 	_handleToggle(e){
 		e.preventDefault();
 		e.stopPropagation();
 
-		const willOpen = !this.state.isOpen;
+		const isToggledOpen = !this.props.isOpen;
+		this.props.setClickedPanel && this.props.setClickedPanel(this.props.clickId, isToggledOpen);
 		this.setState({
-			isOpen: willOpen,
-			height: this.getHeight(willOpen)
-		}, () => this.props.setClickedPanel && this.props.setClickedPanel(this, willOpen));
-
+			height: this.getHeight(isToggledOpen)
+		});
 	}
 
 	/**
@@ -57,7 +52,7 @@ class AccordionPanel extends React.Component {
 	 */
 	componentDidMount() {
 		this.setState({
-			height: this.getHeight(this.state.isOpen)
+			height: this.getHeight(this.props.isOpen)
 		});
 	}
 
@@ -67,32 +62,12 @@ class AccordionPanel extends React.Component {
 	 * Updates state to toggle `AccordionPanel` open and closed
 	 */
 	componentWillReceiveProps(nextProps) {
-		console.log('using componentWillReceiveProps which should be better');
-		if (nextProps.isOpen !== this.state.isOpen) {
-			const isOpen = nextProps.isOpen;
+		if (nextProps.isOpen !== this.props.isOpen) {
 			this.setState({
-				isOpen: isOpen,
-				height: this.getHeight(isOpen)
+				height: this.getHeight(nextProps.isOpen)
 			});
 		}
 	}
-
-
-	/**
-	 * @returns {undefined}
-	 *
-	 * Updates state to toggle `AccordionPanel` open and closed
-	 */
-
-	// componentWillUpdate(nextProps, nextState) {
-	// 	console.log('using componentWill UPDATE');
-	// 	if (nextProps.isOpen !== this.state.isOpen) {
-	// 		this.setState({
-	// 			isOpen: nextProps.isOpen,
-	// 			height: this.getHeight(nextProps.isOpen)
-	// 		});
-	// 	}
-	// }
 
 	/**
 	 * @returns {String} icon shape
@@ -103,7 +78,7 @@ class AccordionPanel extends React.Component {
 			indicatorIconActive
 		} = this.props;
 
-		return this.state.isOpen && indicatorIconActive ?
+		return this.props.isOpen && indicatorIconActive ?
 			indicatorIconActive :
 			indicatorIcon;
 	}
@@ -113,7 +88,7 @@ class AccordionPanel extends React.Component {
 			panelContent,
 			clickId, 				// eslint-disable-line no-unused-vars
 			label,
-			isOpen, 				// eslint-disable-line no-unused-vars
+			isOpen,
 			setClickedPanel, 		// eslint-disable-line no-unused-vars
 			indicatorAlign, 		// eslint-disable-line no-unused-vars
 			indicatorIcon, 			// eslint-disable-line no-unused-vars
@@ -130,8 +105,8 @@ class AccordionPanel extends React.Component {
 			accordionPanel: cx(
 				PANEL_CLASS,
 				{
-					[ACTIVEPANEL_CLASS]: this.state.isOpen,
-					[classNamesActive]: this.state.isOpen && classNamesActive
+					[ACTIVEPANEL_CLASS]: isOpen,
+					[classNamesActive]: isOpen && classNamesActive
 				},
 				className
 			),
@@ -142,7 +117,7 @@ class AccordionPanel extends React.Component {
 			content: cx(
 				'accordionPanel-animator',
 				{
-					'accordionPanel-animator--collapse': !this.state.isOpen
+					'accordionPanel-animator--collapse': !isOpen
 				}
 			)
 		};
@@ -164,8 +139,8 @@ class AccordionPanel extends React.Component {
 						role='tab'
 						id={`label-${ariaId}`}
 						aria-controls={`panel-${ariaId}`}
-						aria-expanded={this.state.isOpen}
-						aria-selected={this.state.isOpen}
+						aria-expanded={isOpen}
+						aria-selected={isOpen}
 						className={classNames.trigger}
 						onClick={this._handleToggle}
 					>
@@ -175,7 +150,7 @@ class AccordionPanel extends React.Component {
 					<Chunk
 						role='tabpanel'
 						aria-labelledby={`label-${ariaId}`}
-						aria-hidden={!this.state.isOpen}
+						aria-hidden={!isOpen}
 						className={classNames.content}
 						style={{height: this.state.height}}
 					>
@@ -198,7 +173,7 @@ class AccordionPanel extends React.Component {
 							? <Icon shape={this.getIconShape()} size={indicatorIconSize} />
 							:
 							<ToggleSwitch
-								isActive={this.state.isOpen}
+								isActive={isOpen}
 								id={`${ariaId}-switch`}
 								name={ariaId}
 								onClick={this._handleToggle}
