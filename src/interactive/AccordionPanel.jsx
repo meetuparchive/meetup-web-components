@@ -17,7 +17,9 @@ export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
 class AccordionPanel extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {};
+		this.state = {
+			height: ''
+		};
 		this._handleToggle = this._handleToggle.bind(this);
 	}
 
@@ -30,9 +32,11 @@ class AccordionPanel extends React.Component {
 	}
 
 	/**
+	 * 
+	 * @description calls the AccordionPanelGroups's callback to toggle open state
+	 * and render the `AccordionPanel` open or closed, sets height in state
+	 * @param {Event} e - the event object
 	 * @returns {undefined}
-	 *
-	 * Updates state to toggle `AccordionPanel` open and closeds
 	 */
 	_handleToggle(e){
 		e.preventDefault();
@@ -46,8 +50,7 @@ class AccordionPanel extends React.Component {
 	}
 
 	/**
-	 * Sets height of `AccordionPanel` to be appear open or closed when mounting
-	 *
+	 * @description Sets height of `AccordionPanel` to be appear open or closed when mounting
 	 * @returns {undefined}
 	 */
 	componentDidMount() {
@@ -57,9 +60,8 @@ class AccordionPanel extends React.Component {
 	}
 
 	/**
+	 * @description updates height in state based on `AccordionPanel` open and closed prop
 	 * @returns {undefined}
-	 *
-	 * Updates state to toggle `AccordionPanel` open and closed
 	 */
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.isOpen !== this.props.isOpen) {

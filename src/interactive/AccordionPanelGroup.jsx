@@ -10,30 +10,33 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
 class AccordionPanelGroup extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { panelStates: {} };
+
+		this.state = { panelStates: {} }; // this will be an object in the form [clickId]: isOpen
 
 		this.clonePanel = this.clonePanel.bind(this);
 		this.setPanelStates = this.setPanelStates.bind(this);
 		this.accordionPanels = this.props.accordionPanels.map(this.clonePanel);
 	}
 
+	/**
+	 * @description sets the initial panelStates object based on panel props
+	 */
 	componentWillMount() {
 		const panelStates = this.accordionPanels.reduce(function(stateObj, panel) {
 			stateObj[panel.props.clickId] = panel.props.isOpen;
 			return stateObj;
 		}, {});
 
-		this.setState({ panelStates }, () => {
-			console.log(this.state.panelStates);
-		});
+		this.setState({ panelStates });
 	}
 
 	/**
-	 * @param clickedPanel is the `AccordionPanel` component passed in from `_handleToggle`
-	 * @returns {undefined}
-	 *
-	 * Keeps track of the clicked panel in order to support AccordionPanelGroups that only
+	 * @description callback called when individual panel is clicked
+	 * and keeps track of open states in order to support AccordionPanelGroups that only
 	 * have one panel open at a time.
+	 * @param {Integer} clickedPanelId the clickId prop of the `AccordionPanel` component
+	 * @param {Boolean} isOpen whether to open the panel or not (!props.isOpen of the panel)
+	 * @returns {undefined}
 	 */
 	setPanelStates(clickedPanelId, isOpen) {
 		const panelStates = (!this.props.multiSelectable && isOpen) ?
@@ -51,12 +54,15 @@ class AccordionPanelGroup extends React.Component {
 	}
 
 	/**
+	 * @description inits/clones a panel with props from the group and individual panel,
+	 * whhich is then stored as part of accordionPanels array
 	 * @param {Object} accordionPanel - `AccordionPanel` components to clone
 	 * @param {number} i - index of the `AccordionPanel` used as the key
-	 * @returns {Array} `AccordionPanel` components with props from `AccordionPanelGroup`
+	 * @returns {Component} `AccordionPanel` component with props from `AccordionPanelGroup`
 	 */
-	clonePanel(panel, index, arr) {
-		// if we've already initialized state for the accordion, use the open state
+	clonePanel(panel, index) {
+		// if we've already initialized state for the accordion panels,
+		// use the state we've stored, else use original prop
 		const panelState = this.state.panelStates && this.state.panelStates[panel.props.clickId];
 		const isOpen = (typeof(panelState) === 'undefined') ?
 			panel.props.isOpen : panelState;
