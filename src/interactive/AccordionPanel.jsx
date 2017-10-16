@@ -61,6 +61,7 @@ class AccordionPanel extends React.Component {
 
 	/**
 	 * @description updates height in state based on `AccordionPanel` open and closed prop
+	 * @param {Object} nextProps the props the component will receive
 	 * @returns {undefined}
 	 */
 	componentWillReceiveProps(nextProps) {
@@ -200,7 +201,7 @@ AccordionPanel.propTypes = {
 	classNamesActive: PropTypes.string,
 	isOpen: PropTypes.bool,
 	panelContent: PropTypes.element,
-	onClick: PropTypes.func,
+	setClickedPanel: PropTypes.func,
 	label: PropTypes.string.isRequired,
 	className: PropTypes.string,
 	indicatorAlign: PropTypes.string,
