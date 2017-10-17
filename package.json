@@ -48,7 +48,7 @@
     "prop-types": "15.5.10",
     "recompose": "0.24.0",
     "swarm-animation": "https://github.com/meetup/swarm-animation.git",
-    "swarm-sasstools": "2.0.135"
+    "swarm-sasstools": "2.0.282"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
