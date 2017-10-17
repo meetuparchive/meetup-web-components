@@ -1,0 +1,941 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should give panels a clickId 1`] = `
+<AccordionPanelGroup
+  accordionPanels={
+    Array [
+      <AccordionPanel
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={true}
+        label="First Section"
+        panelContent={
+            <div
+                className="runningText"
+            >
+                <p>
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                </p>
+            </div>
+        }
+    />,
+      <AccordionPanel
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={false}
+        label="Next Section"
+        panelContent={
+            <div>
+                <div
+                    className="runningText"
+                >
+                    <p>
+                        Any kind of content can go in here, even inputs.
+                    </p>
+                </div>
+                <div
+                    className="chunk"
+                >
+                    <label
+                        htmlFor="test-textinput"
+                    >
+                        I'm a label
+                    </label>
+                    <input
+                        id="test-textinput"
+                        placeholder="Input placeholder"
+                        type="text"
+                    />
+                </div>
+            </div>
+        }
+    />,
+      <AccordionPanel
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={false}
+        label="Third Section"
+        panelContent={
+            <div
+                className="runningText"
+            >
+                <p>
+                    Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                </p>
+            </div>
+        }
+    />,
+    ]
+  }
+  indicatorAlign="right"
+  indicatorIcon="chevron-down"
+  indicatorIconSize="xs"
+  multiSelectable={true}
+>
+  <ul
+    aria-multiselectable={true}
+    className="accordionPanelGroup list"
+    role="tabList"
+  >
+    <li
+      className="list-item"
+    >
+      <AccordionPanel
+        clickId={0}
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={true}
+        label="First Section"
+        panelContent={
+          <div
+            className="runningText"
+          >
+            <p>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+            </p>
+          </div>
+        }
+        setClickedPanel={[Function]}
+      >
+        <Flex
+          className="accordionPanel accordionPanel--active"
+          direction="row"
+          rowReverse={false}
+        >
+          <div
+            className="flex flex--row accordionPanel accordionPanel--active"
+          >
+            <FlexItem>
+              <div
+                className="flex-item"
+              >
+                <button
+                  aria-controls="panel-firstsection"
+                  aria-expanded={true}
+                  aria-selected={true}
+                  className="accordionPanel-label display--block span--100 padding--bottom"
+                  id="label-firstsection"
+                  onClick={[Function]}
+                  role="tab"
+                >
+                  First Section
+                </button>
+                <Chunk
+                  aria-hidden={false}
+                  aria-labelledby="label-firstsection"
+                  className="accordionPanel-animator"
+                  role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
+                >
+                  <div
+                    aria-hidden={false}
+                    aria-labelledby="label-firstsection"
+                    className="chunk accordionPanel-animator"
+                    role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
+                  >
+                    <div
+                      className="accordionPanel-content"
+                    >
+                      <div
+                        className="runningText"
+                      >
+                        <p>
+                          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Chunk>
+              </div>
+            </FlexItem>
+            <FlexItem
+              className="accordionPanel-icon"
+              onClick={[Function]}
+              shrink={true}
+            >
+              <div
+                className="flex-item flex-item--shrink accordionPanel-icon"
+                onClick={[Function]}
+              >
+                <Icon
+                  shape="chevron-down"
+                  size="xs"
+                >
+                  <span
+                    className="svg svg--chevron-down"
+                  >
+                    <svg
+                      className="svg-icon valign--middle"
+                      height="16"
+                      preserveAspectRatio="xMinYMin meet"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 16 16"
+                      width="16"
+                    >
+                      <use
+                        xlinkHref="#icon-chevron-down--small"
+                      />
+                    </svg>
+                  </span>
+                </Icon>
+              </div>
+            </FlexItem>
+          </div>
+        </Flex>
+      </AccordionPanel>
+    </li>
+    <li
+      className="list-item"
+    >
+      <AccordionPanel
+        clickId={1}
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={false}
+        label="Next Section"
+        panelContent={
+          <div>
+            <div
+              className="runningText"
+            >
+              <p>
+                Any kind of content can go in here, even inputs.
+              </p>
+            </div>
+            <div
+              className="chunk"
+            >
+              <label
+                htmlFor="test-textinput"
+              >
+                I'm a label
+              </label>
+              <input
+                id="test-textinput"
+                placeholder="Input placeholder"
+                type="text"
+              />
+            </div>
+          </div>
+        }
+        setClickedPanel={[Function]}
+      >
+        <Flex
+          className="accordionPanel"
+          direction="row"
+          rowReverse={false}
+        >
+          <div
+            className="flex flex--row accordionPanel"
+          >
+            <FlexItem>
+              <div
+                className="flex-item"
+              >
+                <button
+                  aria-controls="panel-nextsection"
+                  aria-expanded={false}
+                  aria-selected={false}
+                  className="accordionPanel-label display--block span--100 padding--bottom"
+                  id="label-nextsection"
+                  onClick={[Function]}
+                  role="tab"
+                >
+                  Next Section
+                </button>
+                <Chunk
+                  aria-hidden={true}
+                  aria-labelledby="label-nextsection"
+                  className="accordionPanel-animator accordionPanel-animator--collapse"
+                  role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
+                >
+                  <div
+                    aria-hidden={true}
+                    aria-labelledby="label-nextsection"
+                    className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+                    role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
+                  >
+                    <div
+                      className="accordionPanel-content"
+                    >
+                      <div>
+                        <div
+                          className="runningText"
+                        >
+                          <p>
+                            Any kind of content can go in here, even inputs.
+                          </p>
+                        </div>
+                        <div
+                          className="chunk"
+                        >
+                          <label
+                            htmlFor="test-textinput"
+                          >
+                            I'm a label
+                          </label>
+                          <input
+                            id="test-textinput"
+                            placeholder="Input placeholder"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Chunk>
+              </div>
+            </FlexItem>
+            <FlexItem
+              className="accordionPanel-icon"
+              onClick={[Function]}
+              shrink={true}
+            >
+              <div
+                className="flex-item flex-item--shrink accordionPanel-icon"
+                onClick={[Function]}
+              >
+                <Icon
+                  shape="chevron-down"
+                  size="xs"
+                >
+                  <span
+                    className="svg svg--chevron-down"
+                  >
+                    <svg
+                      className="svg-icon valign--middle"
+                      height="16"
+                      preserveAspectRatio="xMinYMin meet"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 16 16"
+                      width="16"
+                    >
+                      <use
+                        xlinkHref="#icon-chevron-down--small"
+                      />
+                    </svg>
+                  </span>
+                </Icon>
+              </div>
+            </FlexItem>
+          </div>
+        </Flex>
+      </AccordionPanel>
+    </li>
+    <li
+      className="list-item"
+    >
+      <AccordionPanel
+        clickId={2}
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={false}
+        label="Third Section"
+        panelContent={
+          <div
+            className="runningText"
+          >
+            <p>
+              Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+            </p>
+          </div>
+        }
+        setClickedPanel={[Function]}
+      >
+        <Flex
+          className="accordionPanel"
+          direction="row"
+          rowReverse={false}
+        >
+          <div
+            className="flex flex--row accordionPanel"
+          >
+            <FlexItem>
+              <div
+                className="flex-item"
+              >
+                <button
+                  aria-controls="panel-thirdsection"
+                  aria-expanded={false}
+                  aria-selected={false}
+                  className="accordionPanel-label display--block span--100 padding--bottom"
+                  id="label-thirdsection"
+                  onClick={[Function]}
+                  role="tab"
+                >
+                  Third Section
+                </button>
+                <Chunk
+                  aria-hidden={true}
+                  aria-labelledby="label-thirdsection"
+                  className="accordionPanel-animator accordionPanel-animator--collapse"
+                  role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
+                >
+                  <div
+                    aria-hidden={true}
+                    aria-labelledby="label-thirdsection"
+                    className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+                    role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
+                  >
+                    <div
+                      className="accordionPanel-content"
+                    >
+                      <div
+                        className="runningText"
+                      >
+                        <p>
+                          Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Chunk>
+              </div>
+            </FlexItem>
+            <FlexItem
+              className="accordionPanel-icon"
+              onClick={[Function]}
+              shrink={true}
+            >
+              <div
+                className="flex-item flex-item--shrink accordionPanel-icon"
+                onClick={[Function]}
+              >
+                <Icon
+                  shape="chevron-down"
+                  size="xs"
+                >
+                  <span
+                    className="svg svg--chevron-down"
+                  >
+                    <svg
+                      className="svg-icon valign--middle"
+                      height="16"
+                      preserveAspectRatio="xMinYMin meet"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 16 16"
+                      width="16"
+                    >
+                      <use
+                        xlinkHref="#icon-chevron-down--small"
+                      />
+                    </svg>
+                  </span>
+                </Icon>
+              </div>
+            </FlexItem>
+          </div>
+        </Flex>
+      </AccordionPanel>
+    </li>
+  </ul>
+</AccordionPanelGroup>
+`;
+
+exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should render panels from array 1`] = `
+<AccordionPanelGroup
+  accordionPanels={
+    Array [
+      <AccordionPanel
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={true}
+        label="First Section"
+        panelContent={
+            <div
+                className="runningText"
+            >
+                <p>
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                </p>
+            </div>
+        }
+    />,
+      <AccordionPanel
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={false}
+        label="Next Section"
+        panelContent={
+            <div>
+                <div
+                    className="runningText"
+                >
+                    <p>
+                        Any kind of content can go in here, even inputs.
+                    </p>
+                </div>
+                <div
+                    className="chunk"
+                >
+                    <label
+                        htmlFor="test-textinput"
+                    >
+                        I'm a label
+                    </label>
+                    <input
+                        id="test-textinput"
+                        placeholder="Input placeholder"
+                        type="text"
+                    />
+                </div>
+            </div>
+        }
+    />,
+      <AccordionPanel
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={false}
+        label="Third Section"
+        panelContent={
+            <div
+                className="runningText"
+            >
+                <p>
+                    Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                </p>
+            </div>
+        }
+    />,
+    ]
+  }
+  indicatorAlign="right"
+  indicatorIcon="chevron-down"
+  indicatorIconSize="xs"
+  multiSelectable={true}
+>
+  <ul
+    aria-multiselectable={true}
+    className="accordionPanelGroup list"
+    role="tabList"
+  >
+    <li
+      className="list-item"
+    >
+      <AccordionPanel
+        clickId={0}
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={true}
+        label="First Section"
+        panelContent={
+          <div
+            className="runningText"
+          >
+            <p>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+            </p>
+          </div>
+        }
+        setClickedPanel={[Function]}
+      >
+        <Flex
+          className="accordionPanel accordionPanel--active"
+          direction="row"
+          rowReverse={false}
+        >
+          <div
+            className="flex flex--row accordionPanel accordionPanel--active"
+          >
+            <FlexItem>
+              <div
+                className="flex-item"
+              >
+                <button
+                  aria-controls="panel-firstsection"
+                  aria-expanded={true}
+                  aria-selected={true}
+                  className="accordionPanel-label display--block span--100 padding--bottom"
+                  id="label-firstsection"
+                  onClick={[Function]}
+                  role="tab"
+                >
+                  First Section
+                </button>
+                <Chunk
+                  aria-hidden={false}
+                  aria-labelledby="label-firstsection"
+                  className="accordionPanel-animator"
+                  role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
+                >
+                  <div
+                    aria-hidden={false}
+                    aria-labelledby="label-firstsection"
+                    className="chunk accordionPanel-animator"
+                    role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
+                  >
+                    <div
+                      className="accordionPanel-content"
+                    >
+                      <div
+                        className="runningText"
+                      >
+                        <p>
+                          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Chunk>
+              </div>
+            </FlexItem>
+            <FlexItem
+              className="accordionPanel-icon"
+              onClick={[Function]}
+              shrink={true}
+            >
+              <div
+                className="flex-item flex-item--shrink accordionPanel-icon"
+                onClick={[Function]}
+              >
+                <Icon
+                  shape="chevron-down"
+                  size="xs"
+                >
+                  <span
+                    className="svg svg--chevron-down"
+                  >
+                    <svg
+                      className="svg-icon valign--middle"
+                      height="16"
+                      preserveAspectRatio="xMinYMin meet"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 16 16"
+                      width="16"
+                    >
+                      <use
+                        xlinkHref="#icon-chevron-down--small"
+                      />
+                    </svg>
+                  </span>
+                </Icon>
+              </div>
+            </FlexItem>
+          </div>
+        </Flex>
+      </AccordionPanel>
+    </li>
+    <li
+      className="list-item"
+    >
+      <AccordionPanel
+        clickId={1}
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={false}
+        label="Next Section"
+        panelContent={
+          <div>
+            <div
+              className="runningText"
+            >
+              <p>
+                Any kind of content can go in here, even inputs.
+              </p>
+            </div>
+            <div
+              className="chunk"
+            >
+              <label
+                htmlFor="test-textinput"
+              >
+                I'm a label
+              </label>
+              <input
+                id="test-textinput"
+                placeholder="Input placeholder"
+                type="text"
+              />
+            </div>
+          </div>
+        }
+        setClickedPanel={[Function]}
+      >
+        <Flex
+          className="accordionPanel"
+          direction="row"
+          rowReverse={false}
+        >
+          <div
+            className="flex flex--row accordionPanel"
+          >
+            <FlexItem>
+              <div
+                className="flex-item"
+              >
+                <button
+                  aria-controls="panel-nextsection"
+                  aria-expanded={false}
+                  aria-selected={false}
+                  className="accordionPanel-label display--block span--100 padding--bottom"
+                  id="label-nextsection"
+                  onClick={[Function]}
+                  role="tab"
+                >
+                  Next Section
+                </button>
+                <Chunk
+                  aria-hidden={true}
+                  aria-labelledby="label-nextsection"
+                  className="accordionPanel-animator accordionPanel-animator--collapse"
+                  role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
+                >
+                  <div
+                    aria-hidden={true}
+                    aria-labelledby="label-nextsection"
+                    className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+                    role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
+                  >
+                    <div
+                      className="accordionPanel-content"
+                    >
+                      <div>
+                        <div
+                          className="runningText"
+                        >
+                          <p>
+                            Any kind of content can go in here, even inputs.
+                          </p>
+                        </div>
+                        <div
+                          className="chunk"
+                        >
+                          <label
+                            htmlFor="test-textinput"
+                          >
+                            I'm a label
+                          </label>
+                          <input
+                            id="test-textinput"
+                            placeholder="Input placeholder"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Chunk>
+              </div>
+            </FlexItem>
+            <FlexItem
+              className="accordionPanel-icon"
+              onClick={[Function]}
+              shrink={true}
+            >
+              <div
+                className="flex-item flex-item--shrink accordionPanel-icon"
+                onClick={[Function]}
+              >
+                <Icon
+                  shape="chevron-down"
+                  size="xs"
+                >
+                  <span
+                    className="svg svg--chevron-down"
+                  >
+                    <svg
+                      className="svg-icon valign--middle"
+                      height="16"
+                      preserveAspectRatio="xMinYMin meet"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 16 16"
+                      width="16"
+                    >
+                      <use
+                        xlinkHref="#icon-chevron-down--small"
+                      />
+                    </svg>
+                  </span>
+                </Icon>
+              </div>
+            </FlexItem>
+          </div>
+        </Flex>
+      </AccordionPanel>
+    </li>
+    <li
+      className="list-item"
+    >
+      <AccordionPanel
+        clickId={2}
+        indicatorAlign="right"
+        indicatorIcon="chevron-down"
+        indicatorIconSize="xs"
+        isOpen={false}
+        label="Third Section"
+        panelContent={
+          <div
+            className="runningText"
+          >
+            <p>
+              Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+            </p>
+          </div>
+        }
+        setClickedPanel={[Function]}
+      >
+        <Flex
+          className="accordionPanel"
+          direction="row"
+          rowReverse={false}
+        >
+          <div
+            className="flex flex--row accordionPanel"
+          >
+            <FlexItem>
+              <div
+                className="flex-item"
+              >
+                <button
+                  aria-controls="panel-thirdsection"
+                  aria-expanded={false}
+                  aria-selected={false}
+                  className="accordionPanel-label display--block span--100 padding--bottom"
+                  id="label-thirdsection"
+                  onClick={[Function]}
+                  role="tab"
+                >
+                  Third Section
+                </button>
+                <Chunk
+                  aria-hidden={true}
+                  aria-labelledby="label-thirdsection"
+                  className="accordionPanel-animator accordionPanel-animator--collapse"
+                  role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
+                >
+                  <div
+                    aria-hidden={true}
+                    aria-labelledby="label-thirdsection"
+                    className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+                    role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
+                  >
+                    <div
+                      className="accordionPanel-content"
+                    >
+                      <div
+                        className="runningText"
+                      >
+                        <p>
+                          Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Chunk>
+              </div>
+            </FlexItem>
+            <FlexItem
+              className="accordionPanel-icon"
+              onClick={[Function]}
+              shrink={true}
+            >
+              <div
+                className="flex-item flex-item--shrink accordionPanel-icon"
+                onClick={[Function]}
+              >
+                <Icon
+                  shape="chevron-down"
+                  size="xs"
+                >
+                  <span
+                    className="svg svg--chevron-down"
+                  >
+                    <svg
+                      className="svg-icon valign--middle"
+                      height="16"
+                      preserveAspectRatio="xMinYMin meet"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 16 16"
+                      width="16"
+                    >
+                      <use
+                        xlinkHref="#icon-chevron-down--small"
+                      />
+                    </svg>
+                  </span>
+                </Icon>
+              </div>
+            </FlexItem>
+          </div>
+        </Flex>
+      </AccordionPanel>
+    </li>
+  </ul>
+</AccordionPanelGroup>
+`;
