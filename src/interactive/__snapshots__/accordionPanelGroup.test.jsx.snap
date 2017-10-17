@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should give panels a clickId 1`] = `
+exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a clickId 1`] = `
 <AccordionPanelGroup
   accordionPanels={
     Array [
@@ -470,7 +470,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should give pa
 </AccordionPanelGroup>
 `;
 
-exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should render panels from array 1`] = `
+exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels from array 1`] = `
 <AccordionPanelGroup
   accordionPanels={
     Array [

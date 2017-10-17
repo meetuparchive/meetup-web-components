@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AccordionPanel basic panel behavior exists and renders with mock props 1`] = `
+exports[`AccordionPanel Panel basic behavior exists and renders with mock props 1`] = `
 <Flex
   className="accordionPanel"
   direction="row"
@@ -25,7 +25,7 @@ exports[`AccordionPanel basic panel behavior exists and renders with mock props 
       role="tabpanel"
       style={
         Object {
-          "height": "",
+          "height": undefined,
         }
       }
     >
@@ -55,7 +55,7 @@ exports[`AccordionPanel basic panel behavior exists and renders with mock props 
 </Flex>
 `;
 
-exports[`AccordionPanel panel with custom icon should exist and render custom icons 1`] = `
+exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 1`] = `
 <Flex
   className="accordionPanel"
   direction="row"
@@ -80,7 +80,7 @@ exports[`AccordionPanel panel with custom icon should exist and render custom ic
       role="tabpanel"
       style={
         Object {
-          "height": "",
+          "height": undefined,
         }
       }
     >
@@ -110,7 +110,122 @@ exports[`AccordionPanel panel with custom icon should exist and render custom ic
 </Flex>
 `;
 
-exports[`AccordionPanel panel with toggle switch should exist and render a toggle switch 1`] = `
+exports[`AccordionPanel Panel with right aligned icon exists and renders icon left 1`] = `
+<AccordionPanel
+  indicatorAlign="left"
+  indicatorIcon="chevron-down"
+  indicatorIconSize="xs"
+  isOpen={false}
+  label="First Section"
+  panelContent={
+    <div
+      className="runningText"
+    >
+      <p>
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+      </p>
+    </div>
+  }
+>
+  <Flex
+    className="accordionPanel"
+    direction="row"
+    rowReverse="all"
+  >
+    <div
+      className="flex flex--row atAll_flex--rowReverse accordionPanel"
+    >
+      <FlexItem>
+        <div
+          className="flex-item"
+        >
+          <button
+            aria-controls="panel-firstsection"
+            aria-expanded={false}
+            aria-selected={false}
+            className="accordionPanel-label display--block span--100 padding--bottom"
+            id="label-firstsection"
+            onClick={[Function]}
+            role="tab"
+          >
+            First Section
+          </button>
+          <Chunk
+            aria-hidden={true}
+            aria-labelledby="label-firstsection"
+            className="accordionPanel-animator accordionPanel-animator--collapse"
+            role="tabpanel"
+            style={
+              Object {
+                "height": undefined,
+              }
+            }
+          >
+            <div
+              aria-hidden={true}
+              aria-labelledby="label-firstsection"
+              className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+              role="tabpanel"
+              style={
+                Object {
+                  "height": undefined,
+                }
+              }
+            >
+              <div
+                className="accordionPanel-content"
+              >
+                <div
+                  className="runningText"
+                >
+                  <p>
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Chunk>
+        </div>
+      </FlexItem>
+      <FlexItem
+        className="accordionPanel-icon"
+        onClick={[Function]}
+        shrink={true}
+      >
+        <div
+          className="flex-item flex-item--shrink accordionPanel-icon"
+          onClick={[Function]}
+        >
+          <Icon
+            shape="chevron-down"
+            size="xs"
+          >
+            <span
+              className="svg svg--chevron-down"
+            >
+              <svg
+                className="svg-icon valign--middle"
+                height="16"
+                preserveAspectRatio="xMinYMin meet"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 16 16"
+                width="16"
+              >
+                <use
+                  xlinkHref="#icon-chevron-down--small"
+                />
+              </svg>
+            </span>
+          </Icon>
+        </div>
+      </FlexItem>
+    </div>
+  </Flex>
+</AccordionPanel>
+`;
+
+exports[`AccordionPanel Panel with toggle switch exists and renders a toggle switch 1`] = `
 <AccordionPanel
   indicatorAlign="left"
   indicatorIcon="chevron-down"
@@ -272,121 +387,6 @@ exports[`AccordionPanel panel with toggle switch should exist and render a toggl
               </ToggleSwitch>
             </span>
           </WithToggle>
-        </div>
-      </FlexItem>
-    </div>
-  </Flex>
-</AccordionPanel>
-`;
-
-exports[`AccordionPanel right aligned panel icon exists and renders icon left 1`] = `
-<AccordionPanel
-  indicatorAlign="left"
-  indicatorIcon="chevron-down"
-  indicatorIconSize="xs"
-  isOpen={false}
-  label="First Section"
-  panelContent={
-    <div
-      className="runningText"
-    >
-      <p>
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-      </p>
-    </div>
-  }
->
-  <Flex
-    className="accordionPanel"
-    direction="row"
-    rowReverse="all"
-  >
-    <div
-      className="flex flex--row atAll_flex--rowReverse accordionPanel"
-    >
-      <FlexItem>
-        <div
-          className="flex-item"
-        >
-          <button
-            aria-controls="panel-firstsection"
-            aria-expanded={false}
-            aria-selected={false}
-            className="accordionPanel-label display--block span--100 padding--bottom"
-            id="label-firstsection"
-            onClick={[Function]}
-            role="tab"
-          >
-            First Section
-          </button>
-          <Chunk
-            aria-hidden={true}
-            aria-labelledby="label-firstsection"
-            className="accordionPanel-animator accordionPanel-animator--collapse"
-            role="tabpanel"
-            style={
-              Object {
-                "height": undefined,
-              }
-            }
-          >
-            <div
-              aria-hidden={true}
-              aria-labelledby="label-firstsection"
-              className="chunk accordionPanel-animator accordionPanel-animator--collapse"
-              role="tabpanel"
-              style={
-                Object {
-                  "height": undefined,
-                }
-              }
-            >
-              <div
-                className="accordionPanel-content"
-              >
-                <div
-                  className="runningText"
-                >
-                  <p>
-                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Chunk>
-        </div>
-      </FlexItem>
-      <FlexItem
-        className="accordionPanel-icon"
-        onClick={[Function]}
-        shrink={true}
-      >
-        <div
-          className="flex-item flex-item--shrink accordionPanel-icon"
-          onClick={[Function]}
-        >
-          <Icon
-            shape="chevron-down"
-            size="xs"
-          >
-            <span
-              className="svg svg--chevron-down"
-            >
-              <svg
-                className="svg-icon valign--middle"
-                height="16"
-                preserveAspectRatio="xMinYMin meet"
-                role="img"
-                style={Object {}}
-                viewBox="0 0 16 16"
-                width="16"
-              >
-                <use
-                  xlinkHref="#icon-chevron-down--small"
-                />
-              </svg>
-            </span>
-          </Icon>
         </div>
       </FlexItem>
     </div>

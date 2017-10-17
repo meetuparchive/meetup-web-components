@@ -52,25 +52,26 @@ describe('AccordionPanelGroup', () => {
 			accordionPanelGroup = null;
 		});
 
-		it('should render panels from array', function() {
+		it('renders panels from array', function() {
 			expect(accordionPanelGroup).toMatchSnapshot();
 		});
 
-		it('should render all the panels given', function() {
+		it('renders all the panels given', function() {
 			const panels = accordionPanelGroup.find(`.${PANEL_CLASS}`);
 			expect(panels.length).toEqual(3);
 		});
 
-		it('should give panels a clickId', () => {
+		it('gives panels a clickId', () => {
 			expect(accordionPanelGroup).toMatchSnapshot();
+
 			const panels = accordionPanelGroup.find(AccordionPanel);
 			expect(panels.at(0).prop('clickId')).not.toBeUndefined();
 			expect(panels.at(1).prop('clickId')).not.toBeUndefined();
 			expect(panels.at(2).prop('clickId')).not.toBeUndefined();
 		});
 
-		it('should store panel open states in state', () => {
-			// should have one open panel to start based on isOpen prop
+		it('stores panel open states in state', () => {
+			// this test will have one open panel to start based on isOpen prop
 			const isOpenValues = Object.values(accordionPanelGroup.state('panelStates'));
 			const openPanels = isOpenValues.filter((isOpen, i) => isOpen === true);
 			const closedPanels = isOpenValues.filter((isOpen, i) => isOpen === false);
@@ -79,7 +80,7 @@ describe('AccordionPanelGroup', () => {
 			expect(closedPanels.length).toEqual(2);
 		});
 
-		it('should change panel open state with setPanelStates', () => {
+		it('changes panel open state with setPanelStates', () => {
 			const panels = accordionPanelGroup.find(AccordionPanel);
 			const clickId = panels.at(0).prop('clickId');
 			const isOpen = panels.at(0).prop('isOpen');
@@ -108,7 +109,7 @@ describe('AccordionPanelGroup', () => {
 			setPanelStatesMock = null;
 		});
 
-		it('should support opening panels one-at-a-time', function(){
+		it('supports opening panels one-at-a-time', function(){
 			const panelWrappers = accordionPanelGroup.find(AccordionPanel);
 			let openPanels = panelWrappers.filterWhere((panel) => panel.prop('isOpen') === true);
 
@@ -128,7 +129,7 @@ describe('AccordionPanelGroup', () => {
 			expect(openPanels.at(0).prop('clickId')).toEqual(panel2.prop('clickId'));
 		});
 
-		it('should have state reflecting support opening panels one-at-a-time', () => {
+		it('has state where isOpen is true for only one panel at-a-time', () => {
 			const panelWrappers = accordionPanelGroup.find(AccordionPanel);
 			const openPanels = panelWrappers.filterWhere((panel) => panel.prop('isOpen') === true);
 			expect(openPanels.length).toBe(1);
@@ -152,3 +153,4 @@ describe('AccordionPanelGroup', () => {
 		});
 	});
 });
+

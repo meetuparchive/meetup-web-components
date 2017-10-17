@@ -17,9 +17,6 @@ export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
 class AccordionPanel extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {
-			height: ''
-		};
 		this._handleToggle = this._handleToggle.bind(this);
 	}
 
@@ -28,6 +25,9 @@ class AccordionPanel extends React.Component {
 	 * @returns {Number} panel height
 	 */
 	getHeight(isOpen) {
+		if (!this.contentEl) {
+			return 'auto';
+		}
 		return `${isOpen * this.contentEl.getBoundingClientRect().height}px`;
 	}
 
@@ -44,32 +44,14 @@ class AccordionPanel extends React.Component {
 
 		const isToggledOpen = !this.props.isOpen;
 		this.props.setClickedPanel && this.props.setClickedPanel(this.props.clickId, isToggledOpen);
-		this.setState({
-			height: this.getHeight(isToggledOpen)
-		});
 	}
 
 	/**
-	 * @description Sets height of `AccordionPanel` to be appear open or closed when mounting
+	 * @description forceUpdate allows us to calculate height again now that contentEl is set
 	 * @returns {undefined}
 	 */
 	componentDidMount() {
-		this.setState({
-			height: this.getHeight(this.props.isOpen)
-		});
-	}
-
-	/**
-	 * @description updates height in state based on `AccordionPanel` open and closed prop
-	 * @param {Object} nextProps the props the component will receive
-	 * @returns {undefined}
-	 */
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.isOpen !== this.props.isOpen) {
-			this.setState({
-				height: this.getHeight(nextProps.isOpen)
-			});
-		}
+		this.forceUpdate();
 	}
 
 	/**
@@ -155,7 +137,7 @@ class AccordionPanel extends React.Component {
 						aria-labelledby={`label-${ariaId}`}
 						aria-hidden={!isOpen}
 						className={classNames.content}
-						style={{height: this.state.height}}
+						style={{ height: this.getHeight(isOpen) }}
 					>
 						<div
 							className='accordionPanel-content'

@@ -67,7 +67,6 @@ class AccordionPanelGroup extends React.Component {
 			indicatorIcon: this.props.indicatorIcon,
 			indicatorIconActive: this.props.indicatorIconActive,
 			indicatorSwitch: this.props.indicatorSwitch,
-			className: panel.props.className,
 			isOpen,
 			clickId,
 			setClickedPanel: this.setPanelStates.bind(this),
