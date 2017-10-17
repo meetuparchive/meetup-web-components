@@ -41,6 +41,8 @@ describe('AccordionPanelGroup', () => {
 		let accordionPanelGroup;
 
 		beforeEach(() => {
+			jest.spyOn(AccordionPanel.prototype, 'getHeight').mockImplementation(() => {});
+
 			accordionPanelGroup = mount(
 				<AccordionPanelGroup accordionPanels={accordionPanelsArr} />
 			);
