@@ -26,7 +26,7 @@ class AccordionPanel extends React.Component {
 	 */
 	getHeight(isOpen) {
 		if (!this.contentEl) {
-			return 'auto';
+			return '0px';
 		}
 		return `${isOpen * this.contentEl.getBoundingClientRect().height}px`;
 	}
@@ -40,7 +40,6 @@ class AccordionPanel extends React.Component {
 	 */
 	_handleToggle(e){
 		e.preventDefault();
-		e.stopPropagation();
 
 		const isToggledOpen = !this.props.isOpen;
 		this.props.setClickedPanel && this.props.setClickedPanel(this.props.clickId, isToggledOpen);
