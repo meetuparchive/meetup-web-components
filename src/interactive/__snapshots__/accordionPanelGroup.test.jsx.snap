@@ -129,12 +129,22 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should give pa
                   aria-labelledby="label-firstsection"
                   className="accordionPanel-animator"
                   role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
                 >
                   <div
                     aria-hidden={false}
                     aria-labelledby="label-firstsection"
                     className="chunk accordionPanel-animator"
                     role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
@@ -253,12 +263,22 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should give pa
                   aria-labelledby="label-nextsection"
                   className="accordionPanel-animator accordionPanel-animator--collapse"
                   role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
                 >
                   <div
                     aria-hidden={true}
                     aria-labelledby="label-nextsection"
                     className="chunk accordionPanel-animator accordionPanel-animator--collapse"
                     role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
@@ -377,12 +397,22 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should give pa
                   aria-labelledby="label-thirdsection"
                   className="accordionPanel-animator accordionPanel-animator--collapse"
                   role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
                 >
                   <div
                     aria-hidden={true}
                     aria-labelledby="label-thirdsection"
                     className="chunk accordionPanel-animator accordionPanel-animator--collapse"
                     role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
@@ -569,12 +599,22 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should render 
                   aria-labelledby="label-firstsection"
                   className="accordionPanel-animator"
                   role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
                 >
                   <div
                     aria-hidden={false}
                     aria-labelledby="label-firstsection"
                     className="chunk accordionPanel-animator"
                     role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
@@ -693,12 +733,22 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should render 
                   aria-labelledby="label-nextsection"
                   className="accordionPanel-animator accordionPanel-animator--collapse"
                   role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
                 >
                   <div
                     aria-hidden={true}
                     aria-labelledby="label-nextsection"
                     className="chunk accordionPanel-animator accordionPanel-animator--collapse"
                     role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
@@ -817,12 +867,22 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable should render 
                   aria-labelledby="label-thirdsection"
                   className="accordionPanel-animator accordionPanel-animator--collapse"
                   role="tabpanel"
+                  style={
+                    Object {
+                      "height": undefined,
+                    }
+                  }
                 >
                   <div
                     aria-hidden={true}
                     aria-labelledby="label-thirdsection"
                     className="chunk accordionPanel-animator accordionPanel-animator--collapse"
                     role="tabpanel"
+                    style={
+                      Object {
+                        "height": undefined,
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
