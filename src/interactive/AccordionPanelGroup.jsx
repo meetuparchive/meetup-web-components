@@ -11,55 +11,77 @@ class AccordionPanelGroup extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			clickedPanel: null
-		};
-
-		this.clonePanel = this.clonePanel.bind(this);
-		this.setClickedPanel = this.setClickedPanel.bind(this);
-
-		this.accordionPanels = this.props.accordionPanels.map(this.clonePanel);
+		this.accordionPanels = this.props.accordionPanels.map(this.initPanel, this);
+		this.cloneAccordionPanels = this.cloneAccordionPanels.bind(this);
 	}
 
 	/**
-	 * @param clickedPanel is the `AccordionPanel` component passed in from `_handleToggle`
-	 * @returns {undefined}
-	 *
-	 * Keeps track of the clicked panel in order to support AccordionPanelGroups that only
+	 * @description sets the initial panelStates object based on panel props
+	 */
+	componentWillMount() {
+		// this will be an object in the form [clickId]: isOpen
+		const panelStates = this.accordionPanels.reduce(function(stateObj, panel) {
+			stateObj[panel.props.clickId] = panel.props.isOpen;
+			return stateObj;
+		}, {});
+
+		this.setState({ panelStates });
+	}
+
+	/**
+	 * @description callback called when individual panel is clicked
+	 * and keeps track of open states in order to support AccordionPanelGroups that only
 	 * have one panel open at a time.
+	 * @param {Integer} clickedPanelId the clickId prop of the `AccordionPanel` component
+	 * @param {Boolean} isOpen whether to open the panel or not (!props.isOpen of the panel)
+	 * @returns {undefined}
 	 */
-	setClickedPanel(clickedPanel) {
-		if (!this.props.multiSelectable) {
-			this.setState({ clickedPanel });
-		}
+	setPanelStates(clickedPanelId, isOpen) {
+		const panelStates = (!this.props.multiSelectable && isOpen) ?
+			Object.keys(this.state.panelStates).reduce(
+				(stateObj, clickId) => {
+					stateObj[clickId] = (parseInt(clickId) === clickedPanelId);
+					return stateObj;
+				}, {}
+			) :
+			{
+				...this.state.panelStates,
+				[clickedPanelId]: isOpen
+			};
+		this.setState({ panelStates });
 	}
 
 	/**
+	 * @description inits a panel with props from the group and individual panel,
+	 * which is then stored as part of accordionPanels array
 	 * @param {Object} accordionPanel - `AccordionPanel` components to clone
-	 * @param {number} i - index of the `AccordionPanel`
-	 * @param {boolean} isOpen - whether the `AccordionPanel` is open or not
-	 * @returns {Array} `AccordionPanel` components with props from `AccordionPanelGroup`
+	 * @param {number} i - index of the `AccordionPanel` used as the key
+	 * @returns {Component} `AccordionPanel` component with props from `AccordionPanelGroup`
 	 */
-	clonePanel(accordionPanel, key, isOpen) {
+	initPanel(panel, index) {
+		const isOpen = panel.props.isOpen || false,
+			clickId = index;
+
 		const panelProps = {
-			key,
 			indicatorAlign: this.props.indicatorAlign,
 			indicatorIcon: this.props.indicatorIcon,
 			indicatorIconActive: this.props.indicatorIconActive,
 			indicatorSwitch: this.props.indicatorSwitch,
-			className: accordionPanel.props.className,
-			setClickedPanel: this.setClickedPanel,
-			isOpen: accordionPanel.props.isOpen
+			isOpen,
+			clickId,
+			setClickedPanel: this.setPanelStates.bind(this),
 		};
-		return React.cloneElement(accordionPanel, panelProps);
+
+		return React.cloneElement(panel, panelProps);
 	}
 
 	/**
 	 * @returns {Array} `AccordionPanel` components with the correct value for `isOpen` prop
 	 */
-	renderAccordionPanels() {
-		this.accordionPanels = this.accordionPanels.map(this.clonePanel);
-		return this.accordionPanels;
+	cloneAccordionPanels() {
+		this.accordionPanels = this.accordionPanels.map((panel, i) =>
+			React.cloneElement(panel, { isOpen: this.state.panelStates[panel.props.clickId] })
+		);
 	}
 
 	render() {
@@ -75,6 +97,9 @@ class AccordionPanelGroup extends React.Component {
 			...other
 		} = this.props;
 
+		// gives us the correct isOpen prop from state
+		this.cloneAccordionPanels();
+
 		const classNames = cx(
 			ACCORDIONPANELGROUP_CLASS,
 			'list',
@@ -89,8 +114,10 @@ class AccordionPanelGroup extends React.Component {
 				{...other}
 			>
 				{
-					this.renderAccordionPanels().map((panel, i) => (
-						<li key={i} className='list-item'> {panel} </li>
+					this.accordionPanels.map((panel, i) => (
+						<li key={i} className='list-item'>
+							{panel}
+						</li>
 					))
 				}
 			</ul>
