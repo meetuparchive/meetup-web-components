@@ -48,11 +48,12 @@ class Toaster extends React.PureComponent {
 	 * sets timers to delay a toast's dismissal
 	 */
 	setTimer(toast) {
-		this.timeouts.push(
-			setTimeout(() => {
-				this.dismissToast(toast);
-			}, DELAY_TIME + MARGINAL_DELAY * toast.key)
-		);
+		toast.props.autodismiss &&
+			this.timeouts.push(
+				setTimeout(() => {
+					this.dismissToast(toast);
+				}, DELAY_TIME + MARGINAL_DELAY * toast.key)
+			);
 	}
 
 	/**
@@ -62,7 +63,7 @@ class Toaster extends React.PureComponent {
 	 */
 	restartTimeouts() {
 		this.state.toasts &&
-			this.state.toasts.filter(t => t.props.autodismiss).map(this.setTimer);
+			this.state.toasts.map(this.setTimer);
 	}
 
 	/**
