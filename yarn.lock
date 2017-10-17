@@ -6509,9 +6509,9 @@ svgo@^0.7.0:
     jasmine-jquery "^2.1.1"
     jquery "^3.2.1"
 
-swarm-constants@0.2.31:
-  version "0.2.31"
-  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-0.2.31.tgz#be86eb4076784ec2709ebbb404213639a84aef23"
+swarm-constants@1.2.44:
+  version "1.2.44"
+  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-1.2.44.tgz#4c2e0801705163a6678d8cbded75c9e3c793e03f"
   dependencies:
     "@alrra/travis-scripts" "^3.0.1"
     gh-pages "^1.0.0"
@@ -6521,13 +6521,13 @@ swarm-icons@1.3.183:
   version "1.3.183"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.3.183.tgz#89b2033334f53003c1401499452eee1addecce4b"
 
-swarm-sasstools@2.0.135:
-  version "2.0.135"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-2.0.135.tgz#f4b4db0db8f1b5a01347d4e749b6271614606c37"
+swarm-sasstools@2.0.282:
+  version "2.0.282"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-2.0.282.tgz#f17247cdad026f51342d9788bb17972c16db2345"
   dependencies:
     bourbon "4.2.3"
     sass-rem "^1.2.4"
-    swarm-constants "0.2.31"
+    swarm-constants "1.2.44"
 
 symbol-observable@^1.0.1, symbol-observable@^1.0.3, symbol-observable@^1.0.4:
   version "1.0.4"

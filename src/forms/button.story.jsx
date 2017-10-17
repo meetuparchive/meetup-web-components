@@ -29,6 +29,28 @@ storiesOf('Button', module)
 	.add('Default - with hover shadow', () => (
 		<Button onClick={action('clicked')} hasHoverShadow>Button Label</Button>
 	))
+	.add('Neutral', () => (
+		<Button onClick={action('clicked')} neutral>Button Label</Button>
+	))
+	.add('Neutral - with hover shadow', () => (
+		<Button onClick={action('clicked')} neutral hasHoverShadow>Button Label</Button>
+	))
+	.add('Neutral - inverted', () => (
+		<Inverted>
+			<Button onClick={action('clicked')}neutral>Button Label</Button>
+		</Inverted>
+	))
+	.add('Primary', () => (
+		<Button onClick={action('clicked')} primary>Button Label</Button>
+	))
+	.add('Primary - with hover shadow', () => (
+		<Button onClick={action('clicked')} primary hasHoverShadow>Button Label</Button>
+	))
+	.add('Primary - inverted', () => (
+		<Inverted>
+			<Button onClick={action('clicked')}primary>Button Label</Button>
+		</Inverted>
+	))
 	.add('Disabled', () => (
 		<Button onClick={action('clicked')} disabled>Button Label</Button>
 	))
@@ -68,17 +90,6 @@ storiesOf('Button', module)
 	))
 	.add('Full Width', () => (
 		<Button onClick={action('clicked')} fullWidth>Button Label</Button>
-	))
-	.add('Primary', () => (
-		<Button onClick={action('clicked')} primary>Button Label</Button>
-	))
-	.add('Primary - with hover shadow', () => (
-		<Button onClick={action('clicked')} primary hasHoverShadow>Button Label</Button>
-	))
-	.add('Primary - inverted', () => (
-		<Inverted>
-			<Button onClick={action('clicked')}primary>Button Label</Button>
-		</Inverted>
 	))
 	.add('Small', () => (
 		<Button onClick={action('clicked')} small>Button Label</Button>
