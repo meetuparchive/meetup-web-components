@@ -11,17 +11,15 @@ class AccordionPanelGroup extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { panelStates: {} }; // this will be an object in the form [clickId]: isOpen
-
-		this.clonePanel = this.clonePanel.bind(this);
-		this.setPanelStates = this.setPanelStates.bind(this);
-		this.accordionPanels = this.props.accordionPanels.map(this.clonePanel);
+		this.accordionPanels = this.props.accordionPanels.map(this.initPanel, this);
+		this.cloneAccordionPanels = this.cloneAccordionPanels.bind(this);
 	}
 
 	/**
 	 * @description sets the initial panelStates object based on panel props
 	 */
 	componentWillMount() {
+		// this will be an object in the form [clickId]: isOpen
 		const panelStates = this.accordionPanels.reduce(function(stateObj, panel) {
 			stateObj[panel.props.clickId] = panel.props.isOpen;
 			return stateObj;
@@ -54,29 +52,25 @@ class AccordionPanelGroup extends React.Component {
 	}
 
 	/**
-	 * @description inits/clones a panel with props from the group and individual panel,
-	 * whhich is then stored as part of accordionPanels array
+	 * @description inits a panel with props from the group and individual panel,
+	 * which is then stored as part of accordionPanels array
 	 * @param {Object} accordionPanel - `AccordionPanel` components to clone
 	 * @param {number} i - index of the `AccordionPanel` used as the key
 	 * @returns {Component} `AccordionPanel` component with props from `AccordionPanelGroup`
 	 */
-	clonePanel(panel, index) {
-		// if we've already initialized state for the accordion panels,
-		// use the state we've stored, else use original prop
-		const panelState = this.state.panelStates && this.state.panelStates[panel.props.clickId];
-		const isOpen = (typeof(panelState) === 'undefined') ?
-			panel.props.isOpen : panelState;
+	initPanel(panel, index) {
+		const isOpen = panel.props.isOpen || false,
+			clickId = index;
 
 		const panelProps = {
-			key: index,
 			indicatorAlign: this.props.indicatorAlign,
 			indicatorIcon: this.props.indicatorIcon,
 			indicatorIconActive: this.props.indicatorIconActive,
 			indicatorSwitch: this.props.indicatorSwitch,
 			className: panel.props.className,
 			isOpen,
-			clickId: panel.props.clickId || index,
-			setClickedPanel: this.setPanelStates,
+			clickId,
+			setClickedPanel: this.setPanelStates.bind(this),
 		};
 
 		return React.cloneElement(panel, panelProps);
@@ -85,9 +79,10 @@ class AccordionPanelGroup extends React.Component {
 	/**
 	 * @returns {Array} `AccordionPanel` components with the correct value for `isOpen` prop
 	 */
-	renderAccordionPanels() {
-		this.accordionPanels = this.accordionPanels.map(this.clonePanel);
-		return this.accordionPanels;
+	cloneAccordionPanels() {
+		this.accordionPanels = this.accordionPanels.map((panel, i) =>
+			React.cloneElement(panel, { isOpen: this.state.panelStates[panel.props.clickId] })
+		);
 	}
 
 	render() {
@@ -103,6 +98,9 @@ class AccordionPanelGroup extends React.Component {
 			...other
 		} = this.props;
 
+		// gives us the correct isOpen prop from state
+		this.cloneAccordionPanels();
+
 		const classNames = cx(
 			ACCORDIONPANELGROUP_CLASS,
 			'list',
@@ -117,7 +115,7 @@ class AccordionPanelGroup extends React.Component {
 				{...other}
 			>
 				{
-					this.renderAccordionPanels().map((panel, i) => (
+					this.accordionPanels.map((panel, i) => (
 						<li key={i} className='list-item'>
 							{panel}
 						</li>
