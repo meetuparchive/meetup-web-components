@@ -61,9 +61,8 @@ class Toaster extends React.PureComponent {
 	 * removes timers in order to prevent toasts from being automatically dismissed
 	 */
 	restartTimeouts() {
-		const toasts = this.state.toasts;
-
-		toasts.forEach(this.setTimer);
+		this.state.toasts &&
+			this.state.toasts.filter(t => t.props.autodismiss).map(this.setTimer);
 	}
 
 	/**
@@ -80,8 +79,7 @@ class Toaster extends React.PureComponent {
 	}
 
 	componentDidMount() {
-		this.state.toasts &&
-			this.state.toasts.filter(t => t.props.autodismiss).map(this.setTimer);
+		this.restartTimeouts();
 	}
 
 	componentWillReceiveProps(nextProps) {
