@@ -7,7 +7,6 @@ import cx from 'classnames';
  * inits flatpickr js date picker over a text input
 */
 class CalendarComponent extends React.Component {
-
 	constructor(props) {
 		super(props);
 
@@ -44,7 +43,7 @@ class CalendarComponent extends React.Component {
 				<use xlink:href="#icon-chevron-left" />
 				</svg>
 			</span>`,
-			...this.props.datepickerOptions
+			...this.props.datepickerOptions,
 		};
 
 		this.flatpickr = new Flatpickr(this.inputEl, options);
@@ -57,7 +56,27 @@ class CalendarComponent extends React.Component {
 	// replaces updateFlatpickr
 	// if we receive a new value from parent, update Flatpickr
 	componentWillReceiveProps(newProps) {
-		this.flatpickr && this.flatpickr.setDate(newProps.value);
+		if (this.flatpickr) {
+			if (newProps.datepickerOptions) {
+				this.updateFlatpickrOptions(newProps.datepickerOptions);
+			}
+			this.flatpickr.setDate(newProps.value);
+		}
+	}
+
+	/**
+	 * Updates config options on the flatpickr instance
+	 * @param {Object} newOptions new configaration options for flatpickr
+	 * @return {undefined}
+	 */
+	updateFlatpickrOptions(newOptions) {
+		Object.keys(newOptions)
+			.filter(
+				option => this.props.datepickerOptions[option] !== newOptions[option]
+			)
+			.forEach(option => {
+				this.flatpickr.set(option, newOptions[option]);
+			});
 	}
 
 	/**
@@ -99,34 +118,33 @@ class CalendarComponent extends React.Component {
 			required,
 			value,
 			error,
-			datepickerOptions,	// eslint-disable-line no-unused-vars
-			onChange,			// eslint-disable-line no-unused-vars
+			datepickerOptions, // eslint-disable-line no-unused-vars
+			onChange, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			'input--dateTimePicker',
-			className
-		);
+		const classNames = cx('input--dateTimePicker', className);
 
-		const labelClassNames = cx(
-			{required},
-			className
-		);
+		const labelClassNames = cx({ required }, className);
 
 		return (
 			<span>
-				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
+				{label && (
+					<label htmlFor={id} className={labelClassNames}>
+						{label}
+					</label>
+				)}
 				<input
-					type='text'
+					type="text"
 					id={id}
 					name={name}
 					defaultValue={value}
 					className={classNames}
-					ref={ input => this.inputEl = input }
-					{...other} />
+					ref={input => (this.inputEl = input)}
+					{...other}
+				/>
 
-				{ error && <p className='text--error text--small'>{error}</p> }
+				{error && <p className="text--error text--small">{error}</p>}
 			</span>
 		);
 	}
@@ -134,7 +152,12 @@ class CalendarComponent extends React.Component {
 
 CalendarComponent.propTypes = {
 	name: PropTypes.string.isRequired,
-	onChange: PropTypes.func // provided by DateTimePicker or redux-form
+	onChange: PropTypes.func, // provided by DateTimePicker or redux-form
+	datepickerOptions: PropTypes.object,
+};
+
+CalendarComponent.defaultProps = {
+	datepickerOptions: {},
 };
 
 export default CalendarComponent;
