@@ -70,15 +70,21 @@ Applies button color-related styles using a mixin.
 	$bgColor: $C_blue,
 	$hoverColor: darken($bgColor, 5%),
 	$activeColor: darken($bgColor, 12%),
-	$textColor: getPrimaryTextColor($bgColor)
+	$textColor: getPrimaryTextColor($bgColor),
+	$textTrainsition: true
 ) {
 	@include color-all($textColor);
 	background: $bgColor;
 
 	&:hover {
-		transition: all 0.4s $animate_easeOutQuad;
-		svg {
-			transition: fill 0.4s $animate_easeOutQuad;
+		@if $textTrainsition {
+			transition: all 0.4s $animate_easeOutQuad;
+			svg {
+				transition: fill 0.4s $animate_easeOutQuad;
+			}
+		}
+		@else {
+			transition: background 0.4s $animate_easeOutQuad;
 		}
 	}
 
@@ -109,19 +115,22 @@ _(The `extend` directive can cause ugly cascade problems)_
 */
 @mixin pillBase() {
 	@extend %buttonPersonality;
-	@extend %text--small;
 	@include align-items(center);
 	@include display(inline-flex);
 	@include flex-direction(row);
 	@include justify-content(center);
-	@include standardBorder(none);
-	@include transition(background .15s);
+	@include standardBorder(all);
 	@include buttonColor(
-		$textColor: $C_textSecondary
+		$bgColor: $C_white,
+		$hoverColor: $C_white,
+		$activeColor: $C_white,
+		$textTrainsition: false
 	);
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	border-radius: $defaultRadius;
+	font-weight: $W_normal;
+	font-size: $font-size-small;
 	margin: 0;
 	outline: 0;
 	padding: $space-half $space;
@@ -129,11 +138,12 @@ _(The `extend` directive can cause ugly cascade problems)_
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_buttonBGNeutralInverted,
-			$hoverColor: opacify($C_buttonBGNeutralInverted, .05),
-			$activeColor: opacify($C_buttonBGNeutralInverted, .1),
-			$textColor: $C_textSecondaryInverted
+			$bgColor: $C_border,
+			$hoverColor: opacify($C_border, .05),
+			$activeColor: opacify($C_border, .1),
+			$textTrainsition: false
 		);
+		border-color: $C_borderInverted;
 	}
 }
 
@@ -300,6 +310,7 @@ _(The `extend` directive can cause ugly cascade problems)_
 //
 %button--small,
 .button--small {
+	@extend %text--small;
 	border-radius: $defaultRadius;
 	padding: $space-quarter $space;
 }

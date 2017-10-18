@@ -34,6 +34,7 @@ class TogglePill extends React.Component {
 			className,
 			topic,
 			id,
+			large,
 			name,
 			useRadio,
 			value,
@@ -57,7 +58,7 @@ class TogglePill extends React.Component {
 		const labelClassNames = cx(
 			'toggleButton-label',
 			{
-				'toggleButton-label--radio': useRadio
+				'toggleButton-label--large': large
 			}
 		);
 

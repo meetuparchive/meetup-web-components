@@ -1,132 +1,25 @@
-/*doc
----
-title: Toggle Pills
-name: togglePills
-category: UI Components
----
-Checkbox form elements styled as toggle buttons.
-
-## Token toggle "unchecked" state
-```html_example
-<div class="toggleButton">
-	<input class="toggleButton-input" type="checkbox" name="pick-me" id="pick-me" value="ToggleBtn" />
-	<label class="toggleButton-label" for="pick-me">Pick me</label>
-</div>
-```
-
-## Token toggle "checked" state
-```html_example
-<div class="toggleButton">
-	<input checked class="toggleButton-input" type="checkbox" name="no-pick-me" id="no-pick-me" value="ToggleBtn" />
-	<label class="toggleButton-label" for="no-pick-me">No pick me</label>
-</div>
-```
-
-## Topic token toggle "unchecked" state
-```html_example
-<div class="toggleButton toggleButton--topic">
-	<input class="toggleButton-input" type="checkbox" name="topic-dining2" id="topic-dining2" value="ToggleBtn" />
-	<label class="toggleButton-label" for="topic-dining2">
-		Dining Out
-		<span class="toggleButton-icon toggleButton-icon--inactive">
-			<?xml version="1.0" encoding="utf-8"?>
-			<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-			<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
-			<path d="M7.999,13.834c-0.368,0-0.719-0.137-0.987-0.385l-3.241-2.791c-0.349-0.344-1.973-1.969-2.302-2.523
-				C1.185,7.715,0.986,7.228,0.894,6.708C0.867,6.591,0.817,6.071,0.84,5.913c0.033-2.038,1.822-3.746,3.982-3.746
-				c1.074,0,2.134,0.478,3.067,1.382l0.11,0.106L8.11,3.548c0.933-0.904,1.993-1.382,3.066-1.382c2.16,0,3.949,1.708,3.988,3.807
-				c0.019,0.103-0.035,0.624-0.062,0.752c-0.089,0.498-0.287,0.985-0.585,1.432c-0.315,0.533-1.94,2.157-2.263,2.477l-3.28,2.827
-				C8.719,13.697,8.368,13.834,7.999,13.834z M4.822,3.167c-1.619,0-2.958,1.267-2.987,2.825c-0.003,0.104,0.023,0.438,0.04,0.522
-				c0.072,0.4,0.218,0.759,0.439,1.086c0.22,0.37,1.424,1.619,2.136,2.325l3.227,2.778c0.127,0.117,0.445,0.188,0.634,0.012L11.576,9.9
-				c0.686-0.683,1.891-1.931,2.096-2.276c0.235-0.354,0.382-0.714,0.449-1.092c0.019-0.092,0.047-0.434,0.046-0.516
-				c-0.031-1.583-1.371-2.851-2.99-2.851c-1.021,0-1.853,0.598-2.371,1.1L8.53,4.532C8.407,4.656,8.226,4.733,8.027,4.744
-				c-0.25-0.011-0.428-0.085-0.558-0.21L7.193,4.268C6.675,3.765,5.843,3.167,4.822,3.167z"/>
-			</svg>
-		</span>
-		<span class="toggleButton-icon toggleButton-icon--active">
-			<?xml version="1.0" encoding="utf-8"?>
-			<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-			<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve" style="vertical-align: middle;">
-			<path d="M14.665,5.982c-0.034-1.833-1.585-3.316-3.488-3.316c-1.051,0-1.977,0.522-2.719,1.241L8.183,4.173
-				C8.138,4.218,8.069,4.241,7.999,4.245C7.93,4.241,7.862,4.218,7.815,4.173L7.541,3.908C6.799,3.189,5.873,2.667,4.822,2.667
-				c-1.903,0-3.454,1.482-3.487,3.316c-0.01,0.069,0.025,0.52,0.051,0.638c0.082,0.458,0.26,0.884,0.513,1.259
-				c0.313,0.528,2.198,2.399,2.198,2.399l3.252,2.803h0.002c0.169,0.156,0.396,0.252,0.648,0.252l0,0l0,0l0,0l0,0l0,0
-				c0.252,0,0.48-0.096,0.65-0.252l0,0l3.254-2.803c0,0,1.885-1.871,2.198-2.399c0.251-0.375,0.43-0.801,0.512-1.259
-				C14.638,6.502,14.675,6.051,14.665,5.982z"/>
-			</svg>
-		</span>
-	</label>
-</div>
-```
-
-## Topic token toggle "checked" state
-```html_example
-<div class="toggleButton toggleButton--topic">
-	<input checked class="toggleButton-input" type="checkbox" name="topic-hiking2" id="topic-hiking2" value="ToggleBtn" />
-
-	<label class="toggleButton-label" for="topic-hiking2">
-		Hiking
-		<span class="toggleButton-icon toggleButton-icon--inactive">
-			<?xml version="1.0" encoding="utf-8"?>
-			<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-			<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
-			<path d="M7.999,13.834c-0.368,0-0.719-0.137-0.987-0.385l-3.241-2.791c-0.349-0.344-1.973-1.969-2.302-2.523
-				C1.185,7.715,0.986,7.228,0.894,6.708C0.867,6.591,0.817,6.071,0.84,5.913c0.033-2.038,1.822-3.746,3.982-3.746
-				c1.074,0,2.134,0.478,3.067,1.382l0.11,0.106L8.11,3.548c0.933-0.904,1.993-1.382,3.066-1.382c2.16,0,3.949,1.708,3.988,3.807
-				c0.019,0.103-0.035,0.624-0.062,0.752c-0.089,0.498-0.287,0.985-0.585,1.432c-0.315,0.533-1.94,2.157-2.263,2.477l-3.28,2.827
-				C8.719,13.697,8.368,13.834,7.999,13.834z M4.822,3.167c-1.619,0-2.958,1.267-2.987,2.825c-0.003,0.104,0.023,0.438,0.04,0.522
-				c0.072,0.4,0.218,0.759,0.439,1.086c0.22,0.37,1.424,1.619,2.136,2.325l3.227,2.778c0.127,0.117,0.445,0.188,0.634,0.012L11.576,9.9
-				c0.686-0.683,1.891-1.931,2.096-2.276c0.235-0.354,0.382-0.714,0.449-1.092c0.019-0.092,0.047-0.434,0.046-0.516
-				c-0.031-1.583-1.371-2.851-2.99-2.851c-1.021,0-1.853,0.598-2.371,1.1L8.53,4.532C8.407,4.656,8.226,4.733,8.027,4.744
-				c-0.25-0.011-0.428-0.085-0.558-0.21L7.193,4.268C6.675,3.765,5.843,3.167,4.822,3.167z"/>
-			</svg>
-		</span>
-		<span class="toggleButton-icon toggleButton-icon--active">
-			<?xml version="1.0" encoding="utf-8"?>
-			<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-			<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve" style="vertical-align: middle;">
-			<path d="M14.665,5.982c-0.034-1.833-1.585-3.316-3.488-3.316c-1.051,0-1.977,0.522-2.719,1.241L8.183,4.173
-				C8.138,4.218,8.069,4.241,7.999,4.245C7.93,4.241,7.862,4.218,7.815,4.173L7.541,3.908C6.799,3.189,5.873,2.667,4.822,2.667
-				c-1.903,0-3.454,1.482-3.487,3.316c-0.01,0.069,0.025,0.52,0.051,0.638c0.082,0.458,0.26,0.884,0.513,1.259
-				c0.313,0.528,2.198,2.399,2.198,2.399l3.252,2.803h0.002c0.169,0.156,0.396,0.252,0.648,0.252l0,0l0,0l0,0l0,0l0,0
-				c0.252,0,0.48-0.096,0.65-0.252l0,0l3.254-2.803c0,0,1.885-1.871,2.198-2.399c0.251-0.375,0.43-0.801,0.512-1.259
-				C14.638,6.502,14.675,6.051,14.665,5.982z"/>
-			</svg>
-		</span>
-	</label>
-</div>
-```
-*/
-
 .toggleButton-icon {
 	margin-left: $space-half; // relative sizing because icon could be 's' or 'xs'
 }
 
 .toggleButton-label {
 	@include pillBase();
+	@include shadowOnHover();
 	margin: $space-quarter 0;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.toggleButton-label--radio {
-	padding: $space $space*1.5;
+.toggleButton-label--large {
+	font-size: $font-size;
+	padding: $space*1.5 $space;
 }
 
 .toggleButton-input{
 	&:checked + .toggleButton-label {
-		@include animate--bounceInSubtle();
 		@include buttonColor(
-			$bgColor: $C_accent,
-			$hoverColor: transparentize($C_accent, .2),
-			$activeColor: transparentize($C_accent, .4)
+			$bgColor: $C_blue,
+			$textTrainsition: false
 		);
+		@include standardBorder(none);
 	}
 }
