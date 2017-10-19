@@ -47,7 +47,12 @@ class Popover extends React.Component {
 	}
 
 	onClick(e) {
+		e.preventDefault();
 		this.openMenu();
+
+		if (this.props.onClick) {
+			this.props.onClick(e);
+		}
 	}
 
 	onKeyDown(e) {
