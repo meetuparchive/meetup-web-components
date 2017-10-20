@@ -243,9 +243,8 @@ Class                   | Description
 			$bgColor: $C_fieldBGInverted,
 			$hoverColor: opacify($C_fieldBGInverted, .05),
 			$activeColor: opacify($C_fieldBGInverted, .1),
-			$textColor: $C_textSecondary
+			$textColor: $C_textSecondaryInverted
 		);
-		@include color-all($C_textSecondaryInverted);
 	}
 }
 
