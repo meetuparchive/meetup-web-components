@@ -41,7 +41,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                     <label
                         htmlFor="test-textinput"
                     >
-                        I'm a label
+                        Im a label
                     </label>
                     <input
                         id="test-textinput"
@@ -82,12 +82,15 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
   >
     <li
       className="list-item"
+      key="0"
     >
       <AccordionPanel
         clickId={0}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
+        indicatorIconActive={undefined}
         indicatorIconSize="xs"
+        indicatorSwitch={undefined}
         isOpen={true}
         label="First Section"
         panelContent={
@@ -200,12 +203,15 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
     </li>
     <li
       className="list-item"
+      key="1"
     >
       <AccordionPanel
         clickId={1}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
+        indicatorIconActive={undefined}
         indicatorIconSize="xs"
+        indicatorSwitch={undefined}
         isOpen={false}
         label="Next Section"
         panelContent={
@@ -223,7 +229,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               <label
                 htmlFor="test-textinput"
               >
-                I'm a label
+                Im a label
               </label>
               <input
                 id="test-textinput"
@@ -297,7 +303,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                           <label
                             htmlFor="test-textinput"
                           >
-                            I'm a label
+                            Im a label
                           </label>
                           <input
                             id="test-textinput"
@@ -350,12 +356,15 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
     </li>
     <li
       className="list-item"
+      key="2"
     >
       <AccordionPanel
         clickId={2}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
+        indicatorIconActive={undefined}
         indicatorIconSize="xs"
+        indicatorSwitch={undefined}
         isOpen={false}
         label="Third Section"
         panelContent={
@@ -511,7 +520,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                     <label
                         htmlFor="test-textinput"
                     >
-                        I'm a label
+                        Im a label
                     </label>
                     <input
                         id="test-textinput"
@@ -552,12 +561,15 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
   >
     <li
       className="list-item"
+      key="0"
     >
       <AccordionPanel
         clickId={0}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
+        indicatorIconActive={undefined}
         indicatorIconSize="xs"
+        indicatorSwitch={undefined}
         isOpen={true}
         label="First Section"
         panelContent={
@@ -670,12 +682,15 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
     </li>
     <li
       className="list-item"
+      key="1"
     >
       <AccordionPanel
         clickId={1}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
+        indicatorIconActive={undefined}
         indicatorIconSize="xs"
+        indicatorSwitch={undefined}
         isOpen={false}
         label="Next Section"
         panelContent={
@@ -693,7 +708,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               <label
                 htmlFor="test-textinput"
               >
-                I'm a label
+                Im a label
               </label>
               <input
                 id="test-textinput"
@@ -767,7 +782,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                           <label
                             htmlFor="test-textinput"
                           >
-                            I'm a label
+                            Im a label
                           </label>
                           <input
                             id="test-textinput"
@@ -820,12 +835,15 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
     </li>
     <li
       className="list-item"
+      key="2"
     >
       <AccordionPanel
         clickId={2}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
+        indicatorIconActive={undefined}
         indicatorIconSize="xs"
+        indicatorSwitch={undefined}
         isOpen={false}
         label="Third Section"
         panelContent={

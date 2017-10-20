@@ -6,64 +6,38 @@ import Toast, {
 	TOAST_DISMISS_BTN_CLASS,
 	SUCCESS_TOAST_CLASS,
 	ERROR_TOAST_CLASS,
-	DELAY_TIME
+	DELAY_TIME,
 } from './Toast';
 import Toaster from './Toaster';
 
-const ToastWithProps = (passedProps) => (
-	<Toaster
-		toasts={[
-			<Toast {...passedProps}>
-				Your toast is ready
-			</Toast>
-		]}
-	/>
+const ToastWithProps = passedProps => (
+	<Toaster toasts={[<Toast {...passedProps}>Your toast is ready</Toast>]} />
 );
 
-const ToastWithAction = ({action, actionLabel}) => (
+const ToastWithAction = ({ action, actionLabel }) => (
 	<Toaster
 		toasts={[
-			<Toast
-				action={action}
-				actionLabel={actionLabel}
-				autodismiss={false}
-			>
+			<Toast action={action} actionLabel={actionLabel} autodismiss={false}>
 				Your toast is ready
-			</Toast>
+			</Toast>,
 		]}
 	/>
 );
 
 describe('Toaster', function() {
-	const testToast = (
-		<Toast>
-			Your toast is ready
-		</Toast>
-	);
+	const testToast = <Toast>Your toast is ready</Toast>;
 
-	const component = shallow(
-		<Toaster
-			toasts={[
-				testToast
-			]}
-		/>
-	);
+	const component = shallow(<Toaster toasts={[testToast]} />);
 
-	it('should store toasts in state', function(){
+	it('should store toasts in state', function() {
 		expect(component.state().toasts.length).toBe(1);
 	});
 
-	it('should handle mouseEnter and mouseLeave', function(){
+	it('should handle mouseEnter and mouseLeave', function() {
 		const clearTimeoutsSpy = spyOn(Toaster.prototype, 'clearTimeouts');
 		const setTimerSpy = spyOn(Toaster.prototype, 'setTimer');
 		const toasterComponent = shallow(
-			<Toaster
-				toasts={[
-					<Toast>
-						Your toast is ready
-					</Toast>
-				]}
-			/>
+			<Toaster toasts={[<Toast>Your toast is ready</Toast>]} />
 		);
 
 		toasterComponent.simulate('mouseEnter');
@@ -72,27 +46,27 @@ describe('Toaster', function() {
 		expect(setTimerSpy).toHaveBeenCalled();
 	});
 
-	it('should set dismiss toasts', function(){
+	it('should set dismiss toasts', function() {
 		component.instance().dismissToast(testToast);
 
 		expect(component.state().toasts).not.toContain(testToast);
 	});
 
-	it('should dismiss toasts after specified time', function(){
+	it('should dismiss toasts after specified time', function() {
 		expect(component.state().toasts.length).toBe(1);
 		setTimeout(() => {
 			expect(component.state().toasts.length).toBe(0);
 		}, parseInt(DELAY_TIME + 1));
 	});
 
-	it('should set a timeout when the component mounts', function(){
+	it('should set a timeout when the component mounts', function() {
 		const component = mount(<ToastWithProps />);
-		const toasterComponent = component.find(Toaster).getNode();
+		const toasterComponent = component.find(Toaster).instance();
 
 		expect(toasterComponent.timeouts.length).toBe(1);
 	});
 
-	it('should clear timeouts when the component unmounts', function(){
+	it('should clear timeouts when the component unmounts', function() {
 		const clearTimeoutsSpy = spyOn(Toaster.prototype, 'clearTimeouts');
 		const component = mount(<ToastWithProps />);
 
@@ -100,10 +74,10 @@ describe('Toaster', function() {
 		expect(clearTimeoutsSpy).toHaveBeenCalled();
 	});
 
-	it('should clear the timeouts when specified', function(){
+	it('should clear the timeouts when specified', function() {
 		const dismissToastSpy = spyOn(Toaster.prototype, 'dismissToast');
 		const component = mount(<ToastWithProps />);
-		const toasterComponent = component.find(Toaster).getNode();
+		const toasterComponent = component.find(Toaster).instance();
 
 		toasterComponent.clearTimeouts();
 
@@ -114,32 +88,21 @@ describe('Toaster', function() {
 
 	it('should add new `toast` with new toast received via props', () => {
 		const newProps = {
-			toasts: [<Toast>This toast is new</Toast>]
+			toasts: [<Toast>This toast is new</Toast>],
 		};
 		const component = mount(<ToastWithProps />);
-		const toasterComponent = component.find(Toaster).getNode();
+		const toasterComponent = component.find(Toaster).instance();
 
 		expect(toasterComponent.state.toasts.length).toEqual(1);
 		toasterComponent.componentWillReceiveProps(newProps);
 		expect(toasterComponent.state.toasts.length).toEqual(2);
 	});
-
 });
 
 describe('Toast', function() {
-	const testToast = (
-		<Toast>
-			Your toast is ready
-		</Toast>
-	);
+	const testToast = <Toast>Your toast is ready</Toast>;
 
-	const component = shallow(
-		<Toaster
-			toasts={[
-				testToast
-			]}
-		/>
-	);
+	const component = shallow(<Toaster toasts={[testToast]} />);
 
 	it('renders into the DOM', () => {
 		expect(component).toMatchSnapshot();
@@ -161,16 +124,20 @@ describe('Toast', function() {
 
 	it('should render an action if one is passed in', () => {
 		const action = jest.fn();
-		const component = mount(<ToastWithAction action={action} actionLabel='Action' />);
-		const actionBtn = component.find(`.${TOAST_ACTION_CLASS}`);
+		const component = mount(
+			<ToastWithAction action={action} actionLabel="Action" />
+		);
+		const actionBtn = component.find(`.${TOAST_ACTION_CLASS}`).first();
 
-		expect(actionBtn.length).toBe(1);
+		expect(actionBtn.exists()).toBe(true);
 	});
 
 	it('should call the function in the action when clicked', () => {
 		const action = jest.fn();
-		const component = mount(<ToastWithAction action={action} actionLabel='Action' />);
-		const actionBtn = component.find(`.${TOAST_ACTION_CLASS}`);
+		const component = mount(
+			<ToastWithAction action={action} actionLabel="Action" />
+		);
+		const actionBtn = component.find(`.${TOAST_ACTION_CLASS}`).first();
 
 		expect(action).not.toHaveBeenCalled();
 		actionBtn.simulate('click');
@@ -180,7 +147,7 @@ describe('Toast', function() {
 	it('should call dismissToast when the dismiss button is clicked', () => {
 		const dismissToastSpy = spyOn(Toaster.prototype, 'dismissToast');
 		const component = mount(<ToastWithProps />);
-		const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`);
+		const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`).first();
 
 		expect(dismissToastSpy).not.toHaveBeenCalled();
 		dismissBtn.simulate('click');
@@ -189,8 +156,8 @@ describe('Toast', function() {
 
 	it('should remove the Toast from the Toaster `toasts` state when the dismiss button is clicked', () => {
 		const component = mount(<ToastWithProps />);
-		const toasterComponent = component.find(Toaster).getNode();
-		const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`);
+		const toasterComponent = component.find(Toaster).instance();
+		const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`).first();
 
 		expect(toasterComponent.state.toasts.length).toBe(1);
 		dismissBtn.simulate('click');
@@ -203,5 +170,4 @@ describe('Toast', function() {
 
 		expect(dismissBtn.length).toBe(0);
 	});
-
 });

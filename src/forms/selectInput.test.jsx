@@ -5,15 +5,11 @@ import SelectInput from './SelectInput';
 const testOptions = [
 	{ label: 'One', value: '1' },
 	{ label: 'Two', value: '2' },
-	{ label: 'Three', value: '3' }
+	{ label: 'Three', value: '3' },
 ];
 const nameAttribute = 'testSelect';
 const BasicSelect = (
-	<SelectInput
-		label="Test select"
-		name={nameAttribute}
-		options={testOptions}
-	/>
+	<SelectInput label="Test select" name={nameAttribute} options={testOptions} />
 );
 const AdvancedSelect = ({ onChange, value }) => (
 	<SelectInput
@@ -22,7 +18,8 @@ const AdvancedSelect = ({ onChange, value }) => (
 		options={testOptions}
 		onChange={onChange}
 		value={value}
-	/>);
+	/>
+);
 
 describe('SelectInput basic', () => {
 	const component = shallow(BasicSelect);
@@ -45,7 +42,7 @@ describe('Errors', () => {
 			label: 'Bday',
 			name: 'Deluxe Edition',
 			options: testOptions,
-			error: importantError
+			error: importantError,
 		};
 		const component = shallow(<SelectInput {...props} />);
 		expect(component.find('.text--error').text()).toEqual(importantError);
@@ -64,7 +61,8 @@ describe('SelectInput advanced', () => {
 		selectWrapper.simulate('change', changeEvent);
 		expect(onChange).toHaveBeenCalled();
 
-		expect(selectWrapper.prop('value')).toEqual(newValue);
+		// find the updated select to check value
+		expect(component.find('select').prop('value')).toEqual(newValue);
 	});
 
 	it('should set correct value specified in props', () => {
