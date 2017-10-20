@@ -146,9 +146,10 @@ _(The `extend` directive can cause ugly cascade problems)_
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_textSecondaryInverted,
-			$hoverColor: opacify($C_textSecondaryInverted, .1),
-			$activeColor: opacify($C_textSecondaryInverted, .25)
+			$bgColor: $C_fieldBGInverted,
+			$hoverColor: opacify($C_fieldBGInverted, .05),
+			$activeColor: opacify($C_fieldBGInverted, .1),
+			$textColor: $C_textSecondaryInverted
 		);
 	}
 }

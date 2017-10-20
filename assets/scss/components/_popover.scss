@@ -47,10 +47,7 @@ $view-minWidth: 320px;
 		border-top: none;
 	}
 
-	& > a,
-	& > span,
-	& > div,
-	& > button {
+	.popover-menu-option-target {
 		color: $C_textPrimary;
 		display: block;
 		padding: $space-half $space;
