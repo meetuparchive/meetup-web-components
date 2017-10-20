@@ -53,7 +53,7 @@ after_script:
     npm publish --tag $NPM_TAG
   - >
     [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
-    yarn run publish-storybook
+    yarn run publish-docs
 
 after_success:
   - npm run coveralls
