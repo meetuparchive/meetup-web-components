@@ -37,7 +37,6 @@ const config = {
 		'no-whitespace-before-property': 2,
 		'prefer-const': 2,
 		'prefer-template': 2,
-		quotes: [2, 'single'],
 		'quote-props': [2, 'as-needed'],
 		'require-jsdoc': [
 			2,
