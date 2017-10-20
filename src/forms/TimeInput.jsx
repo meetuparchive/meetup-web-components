@@ -20,7 +20,7 @@ class TimeInput extends React.Component {
 	* 	handler prop, if there is one provided (eg supplied by redux-form or DateTimePicker)
 	*/
 	onChange(e) {
-		this.props.onChange && this.props.onChange(e.target.value);
+		this.props.onChange && this.props.onChange(e);
 	}
 
 	render() {
