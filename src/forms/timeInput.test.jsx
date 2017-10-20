@@ -41,8 +41,9 @@ describe('TimeInput', function() {
 	});
 
 	it('calls onChange prop when value is changed', function() {
-		component.instance().onChange({ target: { value: newTime } });
-		expect(onChangePropMock).toHaveBeenCalled();
+		const e = { target: { value: newTime } };
+		component.instance().onChange(e);
+		expect(onChangePropMock).toHaveBeenCalledWith(e);
 	});
 
 });
