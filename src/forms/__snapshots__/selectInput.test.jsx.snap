@@ -17,16 +17,19 @@ exports[`SelectInput basic renders into the DOM 1`] = `
       value="1"
     >
       <option
+        key="0"
         value="1"
       >
         One
       </option>
       <option
+        key="1"
         value="2"
       >
         Two
       </option>
       <option
+        key="2"
         value="3"
       >
         Three

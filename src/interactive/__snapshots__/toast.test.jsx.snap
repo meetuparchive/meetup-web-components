@@ -14,6 +14,7 @@ exports[`Toast renders into the DOM 1`] = `
     <CSSTransition
       appear={true}
       classNames="slide"
+      key="csstrns-0"
       timeout={250}
     >
       <Toast
@@ -21,6 +22,7 @@ exports[`Toast renders into the DOM 1`] = `
         dismissToast={[Function]}
         dismissable={true}
         id="toast-2"
+        key="0"
       >
         Your toast is ready
       </Toast>

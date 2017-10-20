@@ -6,7 +6,7 @@
   ],
   "coverageDirectory": "<rootDir>/coverage",
   "setupFiles": [
-    "<rootDir>/src/utils/jestSystemShim.js"
+    "<rootDir>/util/setupTest.js"
   ],
   "moduleFileExtensions": [
     "js",
