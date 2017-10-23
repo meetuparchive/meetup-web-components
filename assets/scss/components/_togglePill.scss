@@ -18,7 +18,7 @@
 	&:checked + .toggleButton-label {
 		@include buttonColor(
 			$bgColor: $C_blue,
-			$textTrainsition: false
+			$textTransition: false
 		);
 		@include standardBorder(none);
 	}

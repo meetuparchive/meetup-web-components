@@ -71,13 +71,13 @@ Applies button color-related styles using a mixin.
 	$hoverColor: darken($bgColor, 5%),
 	$activeColor: darken($bgColor, 12%),
 	$textColor: getPrimaryTextColor($bgColor),
-	$textTrainsition: true
+	$textTransition: true
 ) {
 	@include color-all($textColor);
 	background: $bgColor;
 
 	&:hover {
-		@if $textTrainsition {
+		@if $textTransition {
 			transition: all 0.4s $animate_easeOutQuad;
 			svg {
 				transition: fill 0.4s $animate_easeOutQuad;
@@ -124,7 +124,7 @@ _(The `extend` directive can cause ugly cascade problems)_
 		$bgColor: $C_white,
 		$hoverColor: $C_white,
 		$activeColor: $C_white,
-		$textTrainsition: false
+		$textTransition: false
 	);
 	box-sizing: border-box;
 	-webkit-appearance: none;
@@ -141,7 +141,7 @@ _(The `extend` directive can cause ugly cascade problems)_
 			$bgColor: $C_border,
 			$hoverColor: opacify($C_border, .05),
 			$activeColor: opacify($C_border, .1),
-			$textTrainsition: false
+			$textTransition: false
 		);
 		border-color: $C_borderInverted;
 	}
