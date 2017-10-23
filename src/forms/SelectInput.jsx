@@ -75,7 +75,11 @@ class SelectInput extends React.Component {
 					>
 						{
 							options.map((option, key) =>
-								<option key={key} value={option.value}>{option.label}</option>
+								(<option key={key}
+									value={option.value}
+									disabled={option.disabled}>
+									{option.label}
+								</option>)
 							)
 						}
 					</select>

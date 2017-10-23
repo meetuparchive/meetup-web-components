@@ -49,6 +49,19 @@ storiesOf('SelectInput', module)
 			error='You forgot to name your horse!'
 		/>)
 	)
+	.add('with disabled options', () =>
+		(<SelectInput
+			label='Select a name for your horse'
+			id='horsename'
+			name='horsename'
+			required
+			options={[
+				{ label: 'Geoffrey', value: 'geoffrey', disabled: true },
+				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
+				{ label: 'Mister Chompy', value: 'chompyhorse' }
+			]}
+		/>)
+	)
 	.add('error state formatted', () => {
 		const trn = defineMessages({
 			error: {
