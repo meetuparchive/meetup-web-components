@@ -6,6 +6,7 @@ const testOptions = [
 	{ label: 'One', value: '1' },
 	{ label: 'Two', value: '2' },
 	{ label: 'Three', value: '3' },
+	{ label: 'Four', value: '4', disabled: true },
 ];
 const nameAttribute = 'testSelect';
 const BasicSelect = (
