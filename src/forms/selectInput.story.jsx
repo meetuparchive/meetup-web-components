@@ -57,7 +57,7 @@ storiesOf('SelectInput', module)
 			required
 			options={[
 				{ label: 'Geoffrey', value: 'geoffrey', disabled: true },
-				{ label: 'Doctor Horse, MD Junior', value: 'drhorse', disabled: false },
+				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
 				{ label: 'Mister Chompy', value: 'chompyhorse' }
 			]}
 		/>)
