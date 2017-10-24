@@ -31,6 +31,7 @@ class Toast extends React.PureComponent {
 	 */
 	handleDismiss() {
 		this.props.dismissToast && this.props.dismissToast(this);
+		this.props.onDismiss && this.props.onDismiss(this);
 	}
 
 	render() {
@@ -95,7 +96,8 @@ Toast.propTypes = {
 	action: PropTypes.func,
 	actionLabel: PropTypes.node,
 	dismissable: PropTypes.bool,
-	autodismiss: PropTypes.bool
+	autodismiss: PropTypes.bool,
+	onDismiss: PropTypes.func,
 };
 
 Toast.defaultProps = {
