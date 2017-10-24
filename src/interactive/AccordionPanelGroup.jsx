@@ -72,33 +72,43 @@ class AccordionPanelGroup extends React.Component {
 			setClickedPanel: this.setPanelStates.bind(this),
 		};
 
-		return React.cloneElement(panel, panelProps);
+		return React.cloneElement(panel, panelProps, panel.props.children);
 	}
 
 	/**
+	 * @description clones the panels with the appropriate isOpen state, panel props (clickId etc), and 
+	 * the props of the updatedPanel that have come in from parent
+	 * @param {Array} updatedPanels - the accordionPanels prop received
 	 * @returns {Array} `AccordionPanel` components with the correct value for `isOpen` prop
 	 */
-	cloneAccordionPanels() {
-		this.accordionPanels = this.accordionPanels.map((panel, i) =>
-			React.cloneElement(panel, { isOpen: this.state.panelStates[panel.props.clickId] })
-		);
+	cloneAccordionPanels(updatedPanels) {
+		this.accordionPanels = this.accordionPanels.map((panel, i) => {
+			// do not overwrite new panelContent
+			const {
+				panelContent, // eslint-disable-line no-unused-vars
+				...other
+			} = panel.props;
+			return React.cloneElement(updatedPanels[i], { ...other, isOpen: this.state.panelStates[panel.props.clickId] });
+		});
 	}
 
 	render() {
 		const {
-			accordionPanels, // eslint-disable-line no-unused-vars
-			indicatorAlign, // eslint-disable-line no-unused-vars
-			indicatorIcon, // eslint-disable-line no-unused-vars
-			indicatorIconActive, // eslint-disable-line no-unused-vars
-			indicatorIconSize, // eslint-disable-line no-unused-vars
-			indicatorSwitch, // eslint-disable-line no-unused-vars
+			accordionPanels,
+			panelContent,			// eslint-disable-line no-unused-vars
+			indicatorAlign,			// eslint-disable-line no-unused-vars
+			indicatorIcon,			// eslint-disable-line no-unused-vars
+			indicatorIconActive,	// eslint-disable-line no-unused-vars
+			indicatorIconSize,		// eslint-disable-line no-unused-vars
+			indicatorSwitch,		// eslint-disable-line no-unused-vars
 			multiSelectable,
 			className,
 			...other
 		} = this.props;
 
 		// gives us the correct isOpen prop from state
-		this.cloneAccordionPanels();
+		// passing accordionPanels to pass on any updated props
+		this.cloneAccordionPanels(accordionPanels);
 
 		const classNames = cx(
 			ACCORDIONPANELGROUP_CLASS,
