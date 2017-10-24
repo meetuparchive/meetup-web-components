@@ -47,7 +47,6 @@
     "base64-image-loader": "1.2.0",
     "flatpickr": "3.0.6",
     "prop-types": "15.6.0",
-    "react-router-dom": "4.2.2",
     "recompose": "0.24.0",
     "swarm-animation": "https://github.com/meetup/swarm-animation.git",
     "swarm-sasstools": "2.0.282"
@@ -90,7 +89,6 @@
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "react-intl": "2.4.0",
-    "react-router": "4.2.0",
     "react-transition-group": "2.2.0",
     "sass-loader": "6.0.6",
     "storybook-addon-i18n-tools": "1.0.0",
