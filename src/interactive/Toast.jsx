@@ -43,6 +43,7 @@ class Toast extends React.PureComponent {
 			dismissable,
 			dismissToast, // eslint-disable-line no-unused-vars
 			autodismiss, // eslint-disable-line no-unused-vars
+			onDismiss, // eslint-disable-line no-unused-vars
 			success,
 			error,
 			...other
