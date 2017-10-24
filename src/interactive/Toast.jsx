@@ -31,6 +31,7 @@ class Toast extends React.PureComponent {
 	 */
 	handleDismiss() {
 		this.props.dismissToast && this.props.dismissToast(this);
+		this.props.onDismiss && this.props.onDismiss(this);
 	}
 
 	render() {
@@ -42,6 +43,7 @@ class Toast extends React.PureComponent {
 			dismissable,
 			dismissToast, // eslint-disable-line no-unused-vars
 			autodismiss, // eslint-disable-line no-unused-vars
+			onDismiss, // eslint-disable-line no-unused-vars
 			success,
 			error,
 			...other
@@ -95,7 +97,8 @@ Toast.propTypes = {
 	action: PropTypes.func,
 	actionLabel: PropTypes.node,
 	dismissable: PropTypes.bool,
-	autodismiss: PropTypes.bool
+	autodismiss: PropTypes.bool,
+	onDismiss: PropTypes.func,
 };
 
 Toast.defaultProps = {
