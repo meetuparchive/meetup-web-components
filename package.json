@@ -36,17 +36,17 @@
   "homepage": "https://github.com/meetup/meetup-web-components#readme",
   "peerDependencies": {
     "classnames": "^2.2.5",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-intl": "^2.2.3",
-    "swarm-icons": "1.x"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-intl": "^2.4.0",
+    "react-transition-group": "2.2.0",
+    "swarm-icons": "^1.0"
   },
   "dependencies": {
     "autosize": "3.0.21",
     "base64-image-loader": "1.2.0",
-    "enzyme-adapter-react-16": "1.0.2",
     "flatpickr": "3.0.6",
-    "prop-types": "15.5.10",
+    "prop-types": "15.6.0",
     "react-router-dom": "4.2.2",
     "recompose": "0.24.0",
     "swarm-animation": "https://github.com/meetup/swarm-animation.git",
@@ -73,6 +73,7 @@
     "coveralls": "2.13.1",
     "css-loader": "0.28.4",
     "enzyme": "3.1.0",
+    "enzyme-adapter-react-16": "1.0.2",
     "enzyme-to-json": "3.1.4",
     "eslint": "4.2.0",
     "eslint-loader": "1.9.0",
