@@ -146,11 +146,14 @@ describe('Toast', function() {
 
 	it('should call dismissToast when the dismiss button is clicked', () => {
 		const dismissToastSpy = spyOn(Toaster.prototype, 'dismissToast');
-		const component = mount(<ToastWithProps />);
+		const onDismiss = jest.fn();
+		const component = mount(<ToastWithProps onDismiss={onDismiss} />);
 		const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`).first();
 
+		expect(onDismiss).not.toHaveBeenCalled();
 		expect(dismissToastSpy).not.toHaveBeenCalled();
 		dismissBtn.simulate('click');
+		expect(onDismiss).toHaveBeenCalled();
 		expect(dismissToastSpy).toHaveBeenCalled();
 	});
 

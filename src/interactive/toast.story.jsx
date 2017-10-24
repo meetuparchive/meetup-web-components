@@ -88,6 +88,11 @@ storiesOf('Toast', module)
 			]}
 		/>)
 	)
+	.add('action on dismiss', () =>
+		(<Toaster
+			toasts={[<Toast autodismiss={false} onDismiss={() => alert('you\'re dismissed!')}>Alert on dismiss</Toast>]}
+		/>)
+	)
 	.add('multiple', () =>
 		(<Toaster
 			toasts={[
