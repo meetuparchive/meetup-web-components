@@ -43,6 +43,7 @@ class AccordionPanel extends React.Component {
 
 		const isToggledOpen = !this.props.isOpen;
 		this.props.setClickedPanel && this.props.setClickedPanel(this.props.clickId, isToggledOpen);
+		this.props.onClickCallback && this.props.onClickCallback(e, isToggledOpen);
 	}
 
 	/**
@@ -74,6 +75,7 @@ class AccordionPanel extends React.Component {
 			label,
 			isOpen,
 			setClickedPanel, 		// eslint-disable-line no-unused-vars
+			onClickCallback, 		// eslint-disable-line no-unused-vars
 			indicatorAlign, 		// eslint-disable-line no-unused-vars
 			indicatorIcon, 			// eslint-disable-line no-unused-vars
 			indicatorIconActive,	// eslint-disable-line no-unused-vars
@@ -183,6 +185,7 @@ AccordionPanel.propTypes = {
 	isOpen: PropTypes.bool,
 	panelContent: PropTypes.element,
 	setClickedPanel: PropTypes.func,
+	onClickCallback: PropTypes.func,
 	label: PropTypes.string.isRequired,
 	className: PropTypes.string,
 	indicatorAlign: PropTypes.string,
