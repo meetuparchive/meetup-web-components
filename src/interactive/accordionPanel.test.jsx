@@ -12,16 +12,20 @@ describe('AccordionPanel', function() {
 	const customIcon = 'plus';
 	const customIconActive = 'minus';
 
-	let panelStateCallback;
+	let panelStateCallback,
+		onClickCallback;
 
 	beforeEach(() => {
 		panelStateCallback = jest.fn();
+		onClickCallback = jest.fn();
+
 		jest.spyOn(AccordionPanel.prototype, 'getHeight').mockImplementation(() => {});
 
 		panel = shallow(
 			<AccordionPanel
 				label='First Section'
 				setClickedPanel={panelStateCallback}
+				onClickCallback={onClickCallback}
 				panelContent={
 					<div className='runningText'>
 						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
@@ -44,6 +48,7 @@ describe('AccordionPanel', function() {
 	afterEach(() => {
 		panel = null;
 		openPanel = null;
+		onClickCallback = null;
 		panelStateCallback = null;
 	});
 
@@ -66,6 +71,17 @@ describe('AccordionPanel', function() {
 			btn.simulate('click', { target: panel, preventDefault: jest.fn(), stopPropagation: jest.fn() });
 			expect(panelStateCallback).toHaveBeenCalledWith(panel.prop('clickId'), !isOpen);
 		});
+
+		it('calls onClickCallback onClick', function() {
+			const btn = panel.find('button');
+			const isOpen = panel.prop('isOpen');
+			const fakeEvent = { target: panel, preventDefault: jest.fn(), stopPropagation: jest.fn() };
+
+			expect(onClickCallback).not.toHaveBeenCalled();
+			btn.simulate('click', fakeEvent);
+			expect(onClickCallback).toHaveBeenCalledWith(fakeEvent, !isOpen);
+		});
+
 
 		it('renders an icon component', function(){
 			const node = panel.find(Icon);
