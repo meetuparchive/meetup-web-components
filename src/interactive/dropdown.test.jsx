@@ -1,5 +1,5 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
@@ -9,38 +9,29 @@ import Dropdown from './Dropdown';
 const dropdownContent = (
 	<Section noSeparator>
 		<Chunk>
-			<h2 className='text--big text--bold'>Dropdown content</h2>
+			<h2 className="text--big text--bold">Dropdown content</h2>
 		</Chunk>
 	</Section>
 );
-const dropdownTrigger = (
-	<Button small>Open</Button>
-);
+const dropdownTrigger = <Button small>Open</Button>;
 
-const getDropdownFn = (component) => () =>
+const getDropdownFn = component => () =>
 	TestUtils.findRenderedComponentWithType(component, Dropdown);
 
-const getTrigger = (component) =>
-	TestUtils.findRenderedDOMComponentWithClass(
-		component,
-		'dropdown-trigger'
-	);
+const getTrigger = component =>
+	TestUtils.findRenderedDOMComponentWithClass(component, 'dropdown-trigger');
 
-const getContent = (component) =>
-	TestUtils.findRenderedDOMComponentWithClass(
-		component,
-		'dropdown-content'
-	);
+const getContent = component =>
+	TestUtils.findRenderedDOMComponentWithClass(component, 'dropdown-content');
 
-const getIsOpen = (content) =>
-	content.classList.contains('display--block')
-	&& !content.classList.contains('display--none');
-
+const getIsOpen = content =>
+	content.classList.contains('display--block') &&
+	!content.classList.contains('display--none');
 
 describe('Dropdown', () => {
 	const dropdownJSX = (
 		<Dropdown
-			align='right'
+			align="right"
 			trigger={dropdownTrigger}
 			content={dropdownContent}
 		/>
@@ -59,7 +50,7 @@ describe('Dropdown', () => {
 	describe('right aligned dropdown', () => {
 		const rightDropdown = TestUtils.renderIntoDocument(
 			<Dropdown
-				align='right'
+				align="right"
 				trigger={dropdownTrigger}
 				content={dropdownContent}
 			/>
@@ -76,9 +67,7 @@ describe('Dropdown', () => {
 	});
 
 	describe('open and close', () => {
-		let closedComponent,
-			content,
-			trigger;
+		let closedComponent, content, trigger;
 
 		beforeEach(() => {
 			closedComponent = TestUtils.renderIntoDocument(dropdownJSX);
@@ -103,7 +92,7 @@ describe('Dropdown', () => {
 			TestUtils.Simulate.click(trigger);
 			expect(getIsOpen(content)).toBeTruthy();
 
-			closedComponent.onBodyKeyDown({ key: 'Escape'});
+			closedComponent.onBodyKeyDown({ key: 'Escape' });
 			expect(getIsOpen(content)).toBeFalsy();
 		});
 
@@ -113,9 +102,8 @@ describe('Dropdown', () => {
 			TestUtils.Simulate.click(trigger);
 			expect(getIsOpen(content)).toBeTruthy();
 
-			closedComponent.onBodyClick({ target: '<div />'});
+			closedComponent.onBodyClick({ target: '<div />' });
 			expect(getIsOpen(content)).toBeFalsy();
 		});
-
 	});
 });

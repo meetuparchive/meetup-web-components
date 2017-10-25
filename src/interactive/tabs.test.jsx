@@ -1,10 +1,9 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import { Tabs, TabsTab } from './Tabs';
 
 describe('Tabs', function() {
-	let componentBasic,
-		componentWithVariants;
+	let componentBasic, componentWithVariants;
 
 	const TEST_TAB_CLASS = 'test-tab-class';
 	const TEST_TABSTAB_CLASS = 'test-tabstab-class';
@@ -62,13 +61,19 @@ describe('Tabs', function() {
 	});
 
 	it('appropriately adds passed prop classname to component `Tabs` component', function() {
-		const tab = TestUtils.findRenderedDOMComponentWithClass(componentBasic, TEST_TAB_CLASS);
+		const tab = TestUtils.findRenderedDOMComponentWithClass(
+			componentBasic,
+			TEST_TAB_CLASS
+		);
 		expect(() => tab).not.toThrow();
 		expect(tab.tagName).toBe('NAV');
 	});
 
 	it('appropriately adds passed prop classname to component `TabsTab` component', function() {
-		const tabsTab = TestUtils.findRenderedDOMComponentWithClass(componentBasic, TEST_TABSTAB_CLASS);
+		const tabsTab = TestUtils.findRenderedDOMComponentWithClass(
+			componentBasic,
+			TEST_TABSTAB_CLASS
+		);
 		expect(() => tabsTab).not.toThrow();
 		expect(tabsTab.classList).toContain('tabs-tab');
 	});
