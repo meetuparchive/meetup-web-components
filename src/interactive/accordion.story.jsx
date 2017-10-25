@@ -2,8 +2,14 @@ import React from 'react';
 import AccordionPanelGroup from './AccordionPanelGroup';
 import AccordionPanel from './AccordionPanel';
 import { storiesOf } from '@kadira/storybook';
+import { decorateAction } from '@kadira/storybook-addon-actions';
 import { InfoWrapper } from '../utils/storyComponents';
 import { decorateWithLocale } from '../utils/decorators';
+
+
+const callbackAction = decorateAction([
+	args => ['Am I open?', args[1]]
+]);
 
 storiesOf('Accordion', module)
 	.addDecorator(decorateWithLocale)
@@ -47,6 +53,51 @@ storiesOf('Accordion', module)
 			</InfoWrapper>
 		)
 	)
+	.addWithInfo(
+		'with onClick callback',
+		'add an onClickCallback prop to a panel',
+		() => (
+			<InfoWrapper>
+				<div className='span--100 padding--all'>
+					<AccordionPanelGroup
+						accordionPanels={[
+							<AccordionPanel
+								label='First in default group'
+								onClickCallback={callbackAction('first panel click')}
+								panelContent={
+									<div className='runningText'>
+										<p>Hello</p>
+									</div>
+								}
+							/>,
+							<AccordionPanel
+								label='Second in default group'
+								onClickCallback={callbackAction('second panel click')}
+								panelContent={
+									<div>
+										<div className='runningText'>
+											<p>Any kind of content can go in here, even inputs.</p>
+										</div>
+										<div className='chunk'>
+											<label htmlFor='test-textinput'>I'm a label</label>
+											<input id='test-textinput' type='text' placeholder='Input placeholder' />
+										</div>
+									</div>
+								} />,
+							<AccordionPanel
+								label='Third in default group'
+								onClickCallback={callbackAction('third panel click')}
+								panelContent={
+									<div className='runningText'>
+										<p>Goodbye</p>
+									</div>
+								} />,
+						]}/>
+				</div>
+			</InfoWrapper>
+		)
+	)
+
 	.addWithInfo(
 		'Custom icon indicator',
 		'Adds custom icons via AccordionPanelGroup props',
