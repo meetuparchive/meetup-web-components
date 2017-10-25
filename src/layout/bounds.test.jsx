@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
 import Bounds from './Bounds';
 
@@ -18,8 +18,7 @@ describe('Bounds', function() {
 	it(`check that default component has '${WIDE_CLASS}' class`, function() {
 		expect(boundsNode.classList).toContain(WIDE_CLASS);
 	});
-	it('check that narrow component does not have the \'bounds--wide\' class', function() {
+	it("check that narrow component does not have the 'bounds--wide' class", function() {
 		expect(boundsNarrowNode.classList).not.toContain(WIDE_CLASS);
 	});
-
 });
