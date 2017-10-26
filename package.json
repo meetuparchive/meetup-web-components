@@ -39,7 +39,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-intl": "^2.4.0",
-    "react-transition-group": "2.2.0",
+    "react-transition-group": "^2.2.1",
     "swarm-icons": "^1.0"
   },
   "dependencies": {
@@ -90,7 +90,7 @@
     "react-dom": "16.0.0",
     "react-intl": "2.4.0",
     "react-router-dom": "4.2.2",
-    "react-transition-group": "2.2.0",
+    "react-transition-group": "2.2.1",
     "sass-loader": "6.0.6",
     "storybook-addon-i18n-tools": "1.0.0",
     "style-loader": "0.18.2",
