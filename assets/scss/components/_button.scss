@@ -169,9 +169,9 @@ _(The `extend` directive can cause ugly cascade problems)_
 %button--primary,
 .button--primary {
 	@include buttonColor(
-		$bgColor: $C_actuallyRed,
-		$hoverColor: darken($C_actuallyRed, 10%),
-		$activeColor: darken($C_actuallyRed, 15%)
+		$bgColor: $C_red,
+		$hoverColor: darken($C_red, 10%),
+		$activeColor: darken($C_red, 15%)
 	);
 	.inverted & {
 		@include buttonColor(

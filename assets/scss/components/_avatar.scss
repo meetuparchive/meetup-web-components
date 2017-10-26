@@ -158,7 +158,7 @@ $avatarBg: $C_coolGrayLight;
 	@extend %avatarCharm;
 	&:after {
 		@extend %backgroundImg--orgBadge;
-		background-color: $C_accent;
+		background-color: $C_red;
 		color: $C_textPrimaryInverted;
 	}
 }
