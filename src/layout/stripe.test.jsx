@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
+import TestUtils from 'react-addons-test-utils';
 
 import Stripe, {
 	STRIPE_CLASS,
 	STRIPE_COLLECTION_CLASS,
 	STRIPE_INVERTED_CLASS,
 	STRIPE_HERO_CLASS,
-	STRIPE_NOSCRIM_CLASS,
+	STRIPE_NOSCRIM_CLASS
 } from './Stripe';
 
 describe('Stripe', function() {
+
 	it('exists', function() {
 		const stripe = TestUtils.renderIntoDocument(<Stripe />);
 		const stripeNode = ReactDOM.findDOMNode(stripe);
@@ -26,9 +27,10 @@ describe('Stripe', function() {
 	});
 
 	describe('collection', () => {
-		let stripeCollection, stripeNode;
+		let stripeCollection,
+			stripeNode;
 		beforeEach(() => {
-			stripeCollection = TestUtils.renderIntoDocument(<Stripe collection />);
+			stripeCollection = TestUtils.renderIntoDocument(<Stripe collection/>);
 			stripeNode = ReactDOM.findDOMNode(stripeCollection);
 		});
 		afterEach(() => {
@@ -44,9 +46,10 @@ describe('Stripe', function() {
 	});
 
 	describe('inverted', () => {
-		let stripeInverted, stripeNode;
+		let stripeInverted,
+			stripeNode;
 		beforeEach(() => {
-			stripeInverted = TestUtils.renderIntoDocument(<Stripe inverted />);
+			stripeInverted = TestUtils.renderIntoDocument(<Stripe inverted/>);
 			stripeNode = ReactDOM.findDOMNode(stripeInverted);
 		});
 		afterEach(() => {
@@ -65,11 +68,10 @@ describe('Stripe', function() {
 
 	describe('backgroundImage', () => {
 		const src = 'https://placekitten.com/g/200/300';
-		let stripeImg, stripeNode;
+		let stripeImg,
+			stripeNode;
 		beforeEach(() => {
-			stripeImg = TestUtils.renderIntoDocument(
-				<Stripe hideScrim backgroundImage={src} />
-			);
+			stripeImg = TestUtils.renderIntoDocument(<Stripe hideScrim backgroundImage={src} />);
 			stripeNode = ReactDOM.findDOMNode(stripeImg);
 		});
 		afterEach(() => {

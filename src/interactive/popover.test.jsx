@@ -1,30 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
+import TestUtils from 'react-addons-test-utils';
+import { Link } from 'react-router';
 import Popover from './Popover';
 import Button from '../forms/Button';
 
-let popover, popoverEl, triggerEl, menuEl, optionEls;
+let popover,
+	popoverEl,
+	triggerEl,
+	menuEl,
+	optionEls;
 
 const class_hidden = 'opacity--0';
 const MOCK_HANDLER = jest.genMockFunction();
 
 const popoverComponent = (
 	<Popover
-		trigger={<Button>Open</Button>}
+		trigger={
+			<Button>Open</Button>
+		}
 		menuItems={[
-			<Button onClick={MOCK_HANDLER}>First option</Button>,
-			<Button onClick={MOCK_HANDLER}>Second option</Button>,
-			<Button onClick={MOCK_HANDLER}>Third option</Button>,
+			<Link to='somepath1/' onClick={MOCK_HANDLER}>First option</Link>,
+			<Link to='somepath2/' onClick={MOCK_HANDLER}>Second option</Link>,
+			<Link to='somepath3/' onClick={MOCK_HANDLER}>Third option</Link>,
 		]}
 	/>
 );
 
-const getIsActive = menuEl => {
+const getIsActive = (menuEl) => {
 	return !menuEl.classList.contains(class_hidden);
 };
 
 describe('Popover', function() {
+
 	beforeEach(() => {
 		popover = TestUtils.renderIntoDocument(popoverComponent);
 		popoverEl = ReactDOM.findDOMNode(popover);
@@ -32,15 +40,10 @@ describe('Popover', function() {
 			TestUtils.findRenderedDOMComponentWithClass(popover, 'popover-trigger')
 		);
 		menuEl = ReactDOM.findDOMNode(
-			TestUtils.findRenderedDOMComponentWithClass(
-				popover,
-				'popover-container--menu'
-			)
+			TestUtils.findRenderedDOMComponentWithClass(popover, 'popover-container--menu')
 		);
-		optionEls = TestUtils.scryRenderedDOMComponentsWithClass(
-			popover,
-			'popover-menu-option-target'
-		).map(option => ReactDOM.findDOMNode(option));
+		optionEls = TestUtils.scryRenderedDOMComponentsWithClass(popover, 'popover-menu-option-target')
+			.map((option) => ReactDOM.findDOMNode(option));
 	});
 
 	afterEach(() => {
@@ -68,17 +71,18 @@ describe('Popover', function() {
 
 			popover.openMenu();
 
-			TestUtils.Simulate.keyDown(firstOption, { key: 'Escape' });
+			TestUtils.Simulate.keyDown(firstOption, {key: 'Escape'});
 			expect(getIsActive(menuEl)).toBe(false);
 		});
 		it('menu is keyboard navigable with `enter` key', () => {
-			TestUtils.Simulate.keyDown(triggerEl, { key: 'Enter' });
+			TestUtils.Simulate.keyDown(triggerEl, {key: 'Enter'});
 			expect(getIsActive(menuEl)).toBe(true);
 		});
 	});
 
 	describe('onKeyDownMenuItem', () => {
-		let firstOption, secondOption;
+		let firstOption,
+			secondOption;
 
 		beforeEach(() => {
 			firstOption = optionEls[0];
@@ -87,15 +91,15 @@ describe('Popover', function() {
 		});
 
 		it('menu is keyboard navigable with arrows `Down`', () => {
-			TestUtils.Simulate.keyDown(firstOption, { key: 'ArrowDown' });
+			TestUtils.Simulate.keyDown(firstOption, {key: 'ArrowDown'});
 			expect(document.activeElement).toBe(secondOption);
 		});
 		it('menu is keyboard navigable with arrows `Up`', () => {
-			TestUtils.Simulate.keyDown(firstOption, { key: 'ArrowUp' });
+			TestUtils.Simulate.keyDown(firstOption, {key: 'ArrowUp'});
 			expect(document.activeElement).toBe(firstOption);
 		});
 		it('menu is keyboard navigable with arrows `Enter`', () => {
-			TestUtils.Simulate.keyDown(firstOption, { key: 'Enter' });
+			TestUtils.Simulate.keyDown(firstOption, {key: 'Enter'});
 			expect(MOCK_HANDLER).toHaveBeenCalled();
 		});
 	});
@@ -137,6 +141,7 @@ describe('Popover', function() {
 	});
 
 	describe('keyboard navigation', () => {
+
 		it('should open the popover on Enter', () => {
 			popover.onKeyDown({ key: 'Enter' });
 			expect(popover.state.isActive).toBe(true);
@@ -154,27 +159,29 @@ describe('Popover', function() {
 	describe('Alignment Style', () => {
 		describe('align right', () => {
 			const popoverItem = (
-				<Popover trigger={<Button>Open</Button>} align="right" menuItems={[]} />
+				<Popover
+					trigger={<Button>Open</Button>}
+					align='right'
+					menuItems={[]}
+				/>
 			);
 
 			popover = TestUtils.renderIntoDocument(popoverItem);
-			menuEl = TestUtils.findRenderedDOMComponentWithClass(
-				popover,
-				'popover-container--menu'
-			);
+			menuEl = TestUtils.findRenderedDOMComponentWithClass(popover, 'popover-container--menu');
 			expect(menuEl.classList).toContain('popover-container--horizontal-right');
 		});
 
 		describe('align left', () => {
 			const popoverItem = (
-				<Popover trigger={<Button>Open</Button>} align="left" menuItems={[]} />
+				<Popover
+					trigger={<Button>Open</Button>}
+					align='left'
+					menuItems={[]}
+				/>
 			);
 
 			popover = TestUtils.renderIntoDocument(popoverItem);
-			menuEl = TestUtils.findRenderedDOMComponentWithClass(
-				popover,
-				'popover-container--menu'
-			);
+			menuEl = TestUtils.findRenderedDOMComponentWithClass(popover, 'popover-container--menu');
 			expect(menuEl.classList).toContain('popover-container--horizontal-left');
 		});
 	});
@@ -185,13 +192,9 @@ describe('Popover', function() {
 			expect(body.getAttribute('class')).not.toEqual('clickable'); // include
 
 			// iPhone Safari user agent
-			const userAgent =
-				'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/603.1.23 (KHTML, like Gecko) Version/10.0 Mobile/14E5239e Safari/602.1';
+			const userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/603.1.23 (KHTML, like Gecko) Version/10.0 Mobile/14E5239e Safari/602.1';
 			const original_ua = window.navigator.userAgent;
-			Object.defineProperty(window.navigator, 'userAgent', {
-				value: userAgent,
-				configurable: true,
-			});
+			Object.defineProperty(window.navigator, 'userAgent', {value: userAgent, configurable: true});
 
 			const popover = TestUtils.renderIntoDocument(popoverComponent);
 			const closedMenuFn = jest.spyOn(popover, 'closeMenu');
@@ -205,9 +208,7 @@ describe('Popover', function() {
 
 			expect(closedMenuFn).toHaveBeenCalled();
 
-			Object.defineProperty(window.navigator, 'userAgent', {
-				value: original_ua,
-			});
+			Object.defineProperty(window.navigator, 'userAgent', {value: original_ua});
 		});
 	});
 });

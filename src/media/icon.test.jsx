@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
-import Icon, { ICON_CLASS, SVG_THIN_STYLE, getIconShape } from './Icon';
+import TestUtils from 'react-addons-test-utils';
+import Icon, {
+	ICON_CLASS,
+	SVG_THIN_STYLE,
+	getIconShape
+} from './Icon';
 import { MEDIA_SIZES } from '../utils/designConstants';
 
 describe('Icon', () => {
@@ -13,7 +17,9 @@ describe('Icon', () => {
 
 		beforeEach(() => {
 			const icon = TestUtils.renderIntoDocument(
-				<Icon aria-label={label} shape={shape} />
+				<Icon
+					aria-label={label}
+					shape={shape} />
 			);
 
 			iconEl = ReactDOM.findDOMNode(icon);
@@ -38,9 +44,12 @@ describe('Icon', () => {
 	});
 
 	describe('renders icon sizes correctly', () => {
-		const sizeChecker = size => {
+		const sizeChecker = (size) => {
 			const icon = TestUtils.renderIntoDocument(
-				<Icon aria-label={label} shape={shape} size={size} />
+				<Icon
+					aria-label={label}
+					shape={shape}
+					size={size} />
 			);
 			const iconEl = ReactDOM.findDOMNode(icon);
 			const svgEl = iconEl.querySelector('svg');
@@ -48,9 +57,7 @@ describe('Icon', () => {
 			expect(svgEl.getAttribute('width')).toEqual(value);
 			expect(svgEl.getAttribute('height')).toEqual(value);
 			if (size === 'auto') {
-				expect(svgEl.getAttribute('viewBox')).toEqual(
-					`0 0 ${MEDIA_SIZES['xl']} ${MEDIA_SIZES['xl']}`
-				);
+				expect(svgEl.getAttribute('viewBox')).toEqual(`0 0 ${MEDIA_SIZES['xl']} ${MEDIA_SIZES['xl']}`);
 			} else {
 				expect(svgEl.getAttribute('viewBox')).toEqual(`0 0 ${value} ${value}`);
 			}
@@ -99,7 +106,9 @@ describe('Icon', () => {
 		it('does NOT render a --small shape variant meetup m logo', () => {
 			const fillColor = '#ff0000';
 			const icon = TestUtils.renderIntoDocument(
-				<Icon shape="chevron-down" color={fillColor} />
+				<Icon
+					shape='chevron-down'
+					color={fillColor} />
 			);
 			const svgEl = ReactDOM.findDOMNode(icon).querySelector('svg');
 

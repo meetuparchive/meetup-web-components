@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
+import TestUtils from 'react-addons-test-utils';
 
 import FlexItem, {
 	FLEX_ITEM_CLASS,
@@ -31,16 +31,12 @@ describe('FlexItem', function() {
 		});
 	});
 	describe('growFactor', () => {
-		it("check that component has correct 'growFactor' class", function() {
+		it('check that component has correct \'growFactor\' class', function() {
 			FLEX_GROW_FACTORS.forEach(growFactor => {
-				const flexItem = TestUtils.renderIntoDocument(
-					<FlexItem growFactor={growFactor} />
-				);
+				const flexItem = TestUtils.renderIntoDocument(<FlexItem growFactor={growFactor} />);
 				const flexItemNode = ReactDOM.findDOMNode(flexItem);
 				expect(flexItemNode.classList).toContain(FLEX_ITEM_CLASS);
-				expect(flexItemNode.classList).toContain(
-					`${FLEX_ITEM_GROW_CLASS}${growFactor}`
-				);
+				expect(flexItemNode.classList).toContain(`${FLEX_ITEM_GROW_CLASS}${growFactor}`);
 			});
 		});
 	});

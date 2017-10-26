@@ -1,5 +1,5 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
+import TestUtils from 'react-addons-test-utils';
 import * as autosizePlugin from 'autosize';
 import Textarea from './Textarea';
 
@@ -23,33 +23,31 @@ describe('Textarea', function() {
 		MAX_HEIGHT = 300,
 		ERROR_TEXT = 'Too wimpy.';
 
-	let textareaComponent, autosizeTextareaComponent, textareaEl;
+	let textareaComponent,
+		autosizeTextareaComponent,
+		textareaEl;
 
 	beforeEach(() => {
 		const formAttrs = {
 			id: ID,
 			name: NAME_ATTR,
 			error: ERROR_TEXT,
-			required: true,
+			required: true
 		};
-		textareaComponent = TestUtils.renderIntoDocument(
-			<Textarea
-				rows={ROWS}
-				label={LABEL_TEXT}
-				value={VALUE}
-				minHeight={MIN_HEIGHT}
-				maxHeight={MAX_HEIGHT}
-				{...formAttrs}
-			/>
-		);
-		autosizeTextareaComponent = TestUtils.renderIntoDocument(
-			<Textarea autosize label={LABEL_TEXT} value={VALUE} {...formAttrs} />
-		);
+		textareaComponent = TestUtils.renderIntoDocument(<Textarea
+			rows={ROWS}
+			label={LABEL_TEXT}
+			value={VALUE}
+			minHeight={MIN_HEIGHT}
+			maxHeight={MAX_HEIGHT}
+			{...formAttrs} />);
+		autosizeTextareaComponent = TestUtils.renderIntoDocument(<Textarea
+			autosize
+			label={LABEL_TEXT}
+			value={VALUE}
+			{...formAttrs} />);
 
-		textareaEl = TestUtils.findRenderedDOMComponentWithTag(
-			textareaComponent,
-			'textarea'
-		);
+		textareaEl = TestUtils.findRenderedDOMComponentWithTag(textareaComponent, 'textarea');
 	});
 
 	it('exists', function() {
@@ -86,13 +84,8 @@ describe('Textarea', function() {
 	});
 
 	it('should have a label when label is given', () => {
-		expect(() =>
-			TestUtils.findRenderedDOMComponentWithTag(textareaComponent, 'label')
-		).not.toThrow();
-		const labelEl = TestUtils.findRenderedDOMComponentWithTag(
-			textareaComponent,
-			'label'
-		);
+		expect(() => TestUtils.findRenderedDOMComponentWithTag(textareaComponent, 'label')).not.toThrow();
+		const labelEl = TestUtils.findRenderedDOMComponentWithTag(textareaComponent, 'label');
 		expect(labelEl.textContent).toEqual(LABEL_TEXT);
 	});
 
@@ -105,16 +98,8 @@ describe('Textarea', function() {
 	});
 
 	it('should have an error when one is specified', function() {
-		expect(() =>
-			TestUtils.findRenderedDOMComponentWithClass(
-				textareaComponent,
-				'text--error'
-			)
-		).not.toThrow();
-		const errorEl = TestUtils.findRenderedDOMComponentWithClass(
-			textareaComponent,
-			'text--error'
-		);
+		expect(() => TestUtils.findRenderedDOMComponentWithClass(textareaComponent, 'text--error')).not.toThrow();
+		const errorEl = TestUtils.findRenderedDOMComponentWithClass(textareaComponent, 'text--error');
 		expect(errorEl.textContent).toEqual(ERROR_TEXT);
 	});
 
@@ -129,14 +114,13 @@ describe('Textarea', function() {
 		const newValue = `${VALUE}r`;
 		const changeSpy = spyOn(Textarea.prototype, 'onChange').and.callThrough();
 
-		const boundComponent = TestUtils.renderIntoDocument(
-			<Textarea name={NAME_ATTR} label={LABEL_TEXT} id={ID} value={VALUE} />
-		);
+		const boundComponent = TestUtils.renderIntoDocument(<Textarea
+			name={NAME_ATTR}
+			label={LABEL_TEXT}
+			id={ID}
+			value={VALUE} />);
 
-		textareaEl = TestUtils.findRenderedDOMComponentWithTag(
-			boundComponent,
-			'textarea'
-		);
+		textareaEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'textarea');
 		TestUtils.Simulate.change(textareaEl, { target: { value: newValue } });
 		textareaComponent.forceUpdate();
 
@@ -157,10 +141,7 @@ describe('Textarea', function() {
 
 		expect(onChange).not.toHaveBeenCalled();
 
-		textareaEl = TestUtils.findRenderedDOMComponentWithTag(
-			boundComponent,
-			'textarea'
-		);
+		textareaEl = TestUtils.findRenderedDOMComponentWithTag(boundComponent, 'textarea');
 		TestUtils.Simulate.change(textareaEl, { target: { value: newValue } });
 		textareaComponent.forceUpdate();
 
@@ -172,8 +153,7 @@ describe('Textarea', function() {
 		expect(autosizePlugin.default).toHaveBeenCalled();
 	});
 	it('should set be able to min and max height', function() {
-		expect(textareaEl.getAttribute('style')).toEqual(
-			`min-height: ${MIN_HEIGHT}px; max-height: ${MAX_HEIGHT}px;`
-		);
+		expect(textareaEl.getAttribute('style')).toEqual(`min-height: ${MIN_HEIGHT}px; max-height: ${MAX_HEIGHT}px;`);
 	});
+
 });

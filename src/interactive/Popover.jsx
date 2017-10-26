@@ -12,8 +12,7 @@ class Popover extends React.Component {
 	constructor(props) {
 		super(props);
 
-		bindAll(
-			this,
+		bindAll(this,
 			'updateFocusBy',
 			'openMenu',
 			'closeMenu',
@@ -26,7 +25,7 @@ class Popover extends React.Component {
 
 		this.state = {
 			isActive: false,
-			selectedIndex: 0,
+			selectedIndex: 0
 		};
 
 		this._menuItems = new Map();
@@ -57,34 +56,31 @@ class Popover extends React.Component {
 	}
 
 	onKeyDown(e) {
-		switch (e.key) {
-			case 'Enter':
-				if (!this.state.isActive) {
-					this.openMenu();
-				}
-				break;
-			case 'Escape':
-				this.closeMenu();
-				break;
+		switch(e.key) {
+		case 'Enter':
+			if (!this.state.isActive) {
+				this.openMenu();
+			}
+			break;
+		case 'Escape':
+			this.closeMenu();
+			break;
 		}
 	}
 
 	onKeyDownMenuItem(e) {
-		switch (e.key) {
-			case 'ArrowDown':
-				this.updateFocusBy(1);
-				break;
-			case 'ArrowUp':
-				this.updateFocusBy(-1);
-				break;
-			case 'Enter':
-				if (
-					this._menuItems.get(this.state.selectedIndex) &&
-					this._menuItems.get(this.state.selectedIndex).props.onClick
-				) {
-					this._menuItems.get(this.state.selectedIndex).props.onClick(e);
-				}
-				break;
+		switch(e.key) {
+		case 'ArrowDown':
+			this.updateFocusBy(1);
+			break;
+		case 'ArrowUp':
+			this.updateFocusBy(-1);
+			break;
+		case 'Enter':
+			if (this._menuItems.get(this.state.selectedIndex) && this._menuItems.get(this.state.selectedIndex).props.onClick) {
+				this._menuItems.get(this.state.selectedIndex).props.onClick(e);
+			}
+			break;
 		}
 	}
 
@@ -101,22 +97,23 @@ class Popover extends React.Component {
 				<li
 					key={i}
 					className={POPOVER_MENU_CLASS}
-					role="menuitem"
+					role='menuitem'
 					onKeyDown={this.onKeyDownMenuItem}
 				>
-					{/*
+					{
+						/*
 						* treat each user-provided menu item element as the
 						* keyboard-navigable, focusable 'menuitem' role
 						*/
-					React.cloneElement(menuItem, {
-						tabIndex: '-1',
-						onKeyDown: this.onKeyDownMenuItem,
-						className: cx(
-							'popover-menu-option-target',
-							menuItem.props.className
-						),
-						ref: el => this._menuItems.set(i, el),
-					})}
+						React.cloneElement(menuItem,
+							{
+								tabIndex: '-1',
+								onKeyDown: this.onKeyDownMenuItem,
+								className: cx('popover-menu-option-target', menuItem.props.className),
+								ref: (el) => this._menuItems.set(i, el),
+							}
+						)
+					}
 				</li>
 			);
 		});
@@ -125,7 +122,10 @@ class Popover extends React.Component {
 	}
 
 	onBodyClick(e) {
-		const isPopoverClick = [this.menuRef, this.triggerRef].includes(e.target);
+		const isPopoverClick = [
+			this.menuRef,
+			this.triggerRef
+		].includes(e.target);
 
 		if (!isPopoverClick) {
 			this.closeMenu();
@@ -134,7 +134,7 @@ class Popover extends React.Component {
 
 	componentDidMount() {
 		// fix for safari on ios
-		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
+		if(navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
 			document.body.classList.add('clickable');
 		}
 		document.body.addEventListener('click', this.onBodyClick);
@@ -155,31 +155,42 @@ class Popover extends React.Component {
 		} = this.props;
 
 		const classNames = {
-			popover: cx(className, 'popover'),
-			trigger: cx('popover-trigger', {
-				'popover-trigger--active': isActive,
-			}),
-			menu: cx('popover-container', 'popover-container--menu', {
-				'trans-fadeIn--short': !isActive,
-				'opacity--0': !isActive,
-				'opacity--1': isActive,
-				'trans-fadeOut--short': isActive,
-				'popover-container--horizontal-left': align === 'left',
-				'popover-container--horizontal-right': align === 'right',
-			}),
+			popover: cx(
+				className,
+				'popover'
+			),
+			trigger: cx(
+				'popover-trigger',
+				{
+					'popover-trigger--active': isActive
+				}
+			),
+			menu: cx(
+				'popover-container',
+				'popover-container--menu',
+				{
+					'trans-fadeIn--short': !isActive,
+					'opacity--0': !isActive,
+					'opacity--1': isActive,
+					'trans-fadeOut--short': isActive,
+					'popover-container--horizontal-left': (align === 'left'),
+					'popover-container--horizontal-right': (align === 'right')
+				}
+			)
 		};
 
 		return (
 			<div
 				className={classNames.popover}
-				aria-haspopup="true"
+				aria-haspopup='true'
 				onKeyDown={this.onKeyDown}
 				{...other}
 			>
+
 				<div
-					ref={el => (this.triggerRef = el)}
+					ref={(el) => this.triggerRef = el}
 					className={classNames.trigger}
-					tabIndex="0"
+					tabIndex='0'
 					onClick={this.onClick}
 				>
 					{trigger}
@@ -187,9 +198,9 @@ class Popover extends React.Component {
 
 				<nav>
 					<ul
-						ref={el => (this.menuRef = el)}
+						ref={(el) => this.menuRef = el}
 						className={classNames.menu}
-						role="menu"
+						role='menu'
 						aria-hidden={!isActive}
 					>
 						{this.renderMenuItems()}
