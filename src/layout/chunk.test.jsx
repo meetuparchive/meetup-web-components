@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
+import TestUtils from 'react-addons-test-utils';
 
-import Chunk, { CHUNK_CLASS } from './Chunk';
+import Chunk, {
+	CHUNK_CLASS
+} from './Chunk';
+
 
 describe('Chunk', function() {
 	const chunk = TestUtils.renderIntoDocument(<Chunk />);

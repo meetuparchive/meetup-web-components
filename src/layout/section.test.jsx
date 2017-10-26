@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
+import TestUtils from 'react-addons-test-utils';
 
 import Section, {
 	SECTION_CLASS,
 	SECTION_HASSEPARATOR_CLASS,
 	VALID_BREAKPOINTS,
-	SECTION_FLUSH_CLASS,
+	SECTION_FLUSH_CLASS
 } from './Section';
 
 describe('Section', function() {
-	let section, sectionNode;
+	let section,
+		sectionNode;
 
 	beforeEach(() => {
 		section = TestUtils.renderIntoDocument(<Section />);
@@ -38,14 +39,10 @@ describe('Section', function() {
 		});
 		it(`check that component has '${SECTION_HASSEPARATOR_CLASS}' class with breakpoint`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = TestUtils.renderIntoDocument(
-					<Section hasSeparatorUntil={breakpoint} />
-				);
+				section = TestUtils.renderIntoDocument(<Section hasSeparatorUntil={breakpoint} />);
 				sectionNode = ReactDOM.findDOMNode(section);
 				expect(sectionNode.classList).toContain(SECTION_CLASS);
-				expect(sectionNode.classList).toContain(
-					`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_HASSEPARATOR_CLASS}`
-				);
+				expect(sectionNode.classList).toContain(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_HASSEPARATOR_CLASS}`);
 			});
 		});
 	});
@@ -53,15 +50,12 @@ describe('Section', function() {
 	describe('Section flushUntil', () => {
 		it(`check that component has '${SECTION_FLUSH_CLASS}' class`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = TestUtils.renderIntoDocument(
-					<Section flushUntil={breakpoint} />
-				);
+				section = TestUtils.renderIntoDocument(<Section flushUntil={breakpoint} />);
 				sectionNode = ReactDOM.findDOMNode(section);
 				expect(sectionNode.classList).toContain(SECTION_CLASS);
-				expect(sectionNode.classList).toContain(
-					`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_FLUSH_CLASS}`
-				);
+				expect(sectionNode.classList).toContain(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_FLUSH_CLASS}`);
 			});
 		});
 	});
+
 });

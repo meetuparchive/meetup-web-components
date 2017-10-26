@@ -20,7 +20,7 @@ const config = {
 		'array-callback-return': 2,
 		'comma-dangle': 0,
 		'eol-last': 2,
-		indent: [0, 'tab'],
+		indent: [2, 'tab'],
 		'no-console': 0,
 		'no-empty-pattern': 2,
 		'no-lone-blocks': 2,
