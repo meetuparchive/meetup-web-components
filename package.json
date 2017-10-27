@@ -36,7 +36,7 @@
   "homepage": "https://github.com/meetup/meetup-web-components#readme",
   "peerDependencies": {
     "classnames": "^2.2.5",
-    "react": "^16.0.0",
+    "react": "^16.0.0 || ^15.0.0",
     "react-dom": "^16.0.0",
     "react-intl": "^2.4.0",
     "react-transition-group": "^2.2.1",
