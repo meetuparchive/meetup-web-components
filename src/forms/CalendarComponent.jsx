@@ -123,7 +123,7 @@ class CalendarComponent extends React.Component {
 			...other
 		} = this.props;
 
-		const classNames = cx('input--dateTimePicker', className);
+		const classNames = cx('input--dateTimePicker select--reset', className);
 
 		const labelClassNames = cx({ required }, className);
 
