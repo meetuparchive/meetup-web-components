@@ -3,7 +3,7 @@ import React from 'react';
 import Toaster from './Toaster';
 import Toast from './Toast';
 import Button from '../forms/Button';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { decorateWithLocale } from '../utils/decorators';
 
 const toastArray = [<Toast>Your toast is ready</Toast>];

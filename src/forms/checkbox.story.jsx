@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Checkbox from './Checkbox';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { decorateWithLocale } from '../utils/decorators';
 
 storiesOf('Checkbox', module)

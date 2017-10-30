@@ -2,7 +2,7 @@ import React from 'react';
 import Bounds from './Bounds';
 import Section from './Section';
 import SectionTitle from './SectionTitle';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { InfoWrapper } from '../utils/storyComponents';
 
 storiesOf('SectionTitle', module)

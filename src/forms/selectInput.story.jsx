@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectInput from './SelectInput';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { decorateWithLocale } from '../utils/decorators';
 import {
 	IntlProvider,

@@ -3,7 +3,7 @@ import React from 'react';
 import Card from './Card';
 import Section from './Section';
 import Stripe from './Stripe';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { decorateWithLocale } from '../utils/decorators';
 
 const wrapperStyle = {margin: '0 auto', maxWidth: '500px'};

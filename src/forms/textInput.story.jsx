@@ -2,7 +2,7 @@ import React from 'react';
 import { InfoWrapper } from '../utils/storyComponents';
 import TextInput from './TextInput';
 import Button from './Button';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 
 storiesOf('TextInput', module)
 	.add('default', () => (

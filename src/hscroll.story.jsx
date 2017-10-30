@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
 import { MEDIA_SIZES } from './utils/designConstants';
