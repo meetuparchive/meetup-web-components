@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 import { InfoWrapper } from '../utils/storyComponents';
 import Popover from './Popover';
 import Button from '../forms/Button';

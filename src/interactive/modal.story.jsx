@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 import { InfoWrapper } from '../utils/storyComponents';
 import Button from '../forms/Button';
 import Modal from './Modal';

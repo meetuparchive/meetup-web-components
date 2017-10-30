@@ -7,22 +7,21 @@ const PLATFORM_PATH = /node_modules\/meetup-web-platform/;
 
 module.exports = {
 	module: {
-		preLoaders: [
+		rules: [
 			{
+				enforce: 'pre',
 				test: /\.jsx?$/,
 				loader: 'eslint-loader?{fix:true}',
 				include: SRC_PATH
-			}
-		],
-		loaders: [
+			},
 			{
 				test: /\.css$/,
-				loaders: ['style', 'css'],
+				loaders: ['style-loader', 'css-loader'],
 				include: CSS_PATH
 			},
 			{
 				test: /\.scss$/,
-				loaders: ['style', 'css', 'sass'],
+				loaders: ['style-loader', 'css-loader', 'sass-loader'],
 				include: SCSS_PATH
 			},
 			{
@@ -37,7 +36,7 @@ module.exports = {
 	},
 
 	resolve: {
-		extensions: ['', '.js', '.jsx']
+		extensions: ['.js', '.jsx']
 	},
 
 };

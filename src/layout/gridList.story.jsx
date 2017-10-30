@@ -1,6 +1,6 @@
 import React from 'react';
 import { InfoWrapper } from '../utils/storyComponents';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import GridList from './GridList';
 

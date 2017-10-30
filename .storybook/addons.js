@@ -1,4 +1,3 @@
-import '@kadira/storybook-addon-actions/register';
-import '@kadira/storybook-addon-knobs/register';
-import '@kadira/storybook-addon-notes/register';
-import 'storybook-addon-i18n-tools/register';
+import '@storybook/addon-actions/register';
+import '@storybook/addon-knobs/register';
+import '@storybook/addon-notes/register';

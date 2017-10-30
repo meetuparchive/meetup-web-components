@@ -1,7 +1,7 @@
 import React from 'react';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { InfoWrapper } from '../utils/storyComponents';
 
 const flexParentStyles = {

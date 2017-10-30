@@ -1,9 +1,9 @@
 import React from 'react';
 import CalendarComponent from './CalendarComponent';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { InfoWrapper } from '../utils/storyComponents';
 import { decorateWithLocale } from '../utils/decorators';
-import { withKnobs, boolean } from '@kadira/storybook-addon-knobs';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 
 storiesOf('CalendarComponent', module)
 	.addDecorator(decorateWithLocale)

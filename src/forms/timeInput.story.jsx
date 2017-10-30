@@ -1,7 +1,7 @@
 import React from 'react';
 import TimeInput from './TimeInput';
 import { InfoWrapper } from '../utils/storyComponents';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 
 storiesOf('TimeInput', module)
 	.addWithInfo(

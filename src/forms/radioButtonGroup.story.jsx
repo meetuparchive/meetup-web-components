@@ -1,7 +1,7 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
-import { withKnobs, select, text } from '@kadira/storybook-addon-knobs';
-import { action } from '@kadira/storybook-addon-actions';
+import { storiesOf } from '@storybook/react';
+import { withKnobs, select, text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import RadioButton from './RadioButton';
 import TogglePill from './TogglePill';
