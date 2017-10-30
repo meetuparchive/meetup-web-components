@@ -1,6 +1,6 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
-import { WithNotes } from '@kadira/storybook-addon-notes';
+import { storiesOf } from '@storybook/react';
+import { WithNotes } from '@storybook/addon-notes';
 import { InfoWrapper, Inverted } from '../utils/storyComponents';
 import { decorateWithLocale } from '../utils/decorators';
 import Icon from './Icon';
