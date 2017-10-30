@@ -1,8 +1,8 @@
-import { configure, setAddon } from '@kadira/storybook';
+import { configure, setAddon } from '@storybook/react';
 import '../assets/scss/storybook.scss';
-import infoAddon from '@kadira/react-storybook-addon-info';
+import infoAddon from '@storybook/addon-info';
 
-const componentStories = require.context('../src', true, /\.story\.jsx$/)
+const componentStories = require.context('../src', true, /\.story\.jsx$/);
 
 function loadStories() {
 	componentStories.keys().forEach(componentStories);

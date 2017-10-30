@@ -1,7 +1,7 @@
 import React from 'react';
 import { InfoWrapper } from '../utils/storyComponents';
 import DateTimeLocalInput from './DateTimeLocalInput';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 
 const fieldProps = {
 	name: 'datetime',

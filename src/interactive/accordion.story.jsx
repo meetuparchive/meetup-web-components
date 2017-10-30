@@ -1,8 +1,8 @@
 import React from 'react';
 import AccordionPanelGroup from './AccordionPanelGroup';
 import AccordionPanel from './AccordionPanel';
-import { storiesOf } from '@kadira/storybook';
-import { decorateAction } from '@kadira/storybook-addon-actions';
+import { storiesOf } from '@storybook/react';
+import { decorateAction } from '@storybook/addon-actions';
 import { InfoWrapper } from '../utils/storyComponents';
 import { decorateWithLocale } from '../utils/decorators';
 
