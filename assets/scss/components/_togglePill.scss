@@ -7,6 +7,10 @@
 	@include shadowOnHover();
 	margin: $space-quarter 0;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
+
+	.radioButtonGroup & {
+		@include display(flex);
+	}
 }
 
 .toggleButton-label--large {
@@ -14,7 +18,7 @@
 	padding: $space*1.5 $space;
 }
 
-.toggleButton-input{
+.toggleButton-input {
 	&:checked + .toggleButton-label {
 		@include buttonColor(
 			$bgColor: $C_blue,
