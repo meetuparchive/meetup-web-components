@@ -7,7 +7,8 @@ describe('TogglePill', () => {
 	const id = 'hikingCategory',
 		name = 'meetupCategories',
 		label = 'Hiking!',
-		value = 'hiking';
+		value = 'hiking',
+		labelClass = 'someClass';
 
 	let togglePillComponent;
 	const onChangeMock = jest.fn();
@@ -18,6 +19,8 @@ describe('TogglePill', () => {
 				onChange={onChangeMock}
 				id={id}
 				name={name}
+				large
+				labelClassName={labelClass}
 				value={value}>
 				{label}
 			</TogglePill>
