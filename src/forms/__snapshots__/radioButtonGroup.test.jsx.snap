@@ -2,7 +2,7 @@
 
 exports[`RadioButtonGroup should match the snapshot 1`] = `
 <Flex
-  className="some-class"
+  className="radioButtonGroup some-class"
   direction="row"
 >
   <FlexItem
