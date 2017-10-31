@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
@@ -46,15 +45,10 @@ export default class RadioButtonGroup extends PureComponent {
 			className
 		} = this.props;
 
-		const classNames = cx(
-			'radioButtonGroup',
-			className
-		);
-
 		const switchDirectionAttr = (switchDirection) ? { switchDirection } : '';
 
 		return (
-			<Flex direction={direction} {...switchDirectionAttr} className={classNames}>
+			<Flex direction={direction} {...switchDirectionAttr} className={className}>
 				{React.Children.map(children, option =>
 					(<FlexItem shrink>
 						{React.cloneElement(option, {
