@@ -38,7 +38,7 @@ class DateTimeLocalInput extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'input--dateTimeLocal',
+			'input--dateTimeLocal select--reset',
 			className
 		);
 
