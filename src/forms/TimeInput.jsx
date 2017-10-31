@@ -37,7 +37,7 @@ class TimeInput extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'input--time',
+			'input--time select--reset',
 			className
 		);
 
