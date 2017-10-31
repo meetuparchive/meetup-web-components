@@ -48,6 +48,17 @@ storiesOf('TogglePill', module)
 			Toggle Pill Label
 		</TogglePill>
 	))
+	.add('with labelClassName', () => (
+		<TogglePill
+			onChange={onChange}
+			id='togglePillId'
+			name='togglePillName'
+			value='toggle-pill'
+			labelClassName='span--100'
+		>
+			I will span--100
+		</TogglePill>
+	))
 	.add('Topic pill', () => (
 		<TogglePill
 			topic
