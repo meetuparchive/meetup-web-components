@@ -4,6 +4,8 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
 <WithToggle
   id="hikingCategory"
   isActive={false}
+  labelClassName="someClass"
+  large={true}
   name="meetupCategories"
   onChange={[Function]}
   value="hiking"
@@ -15,6 +17,8 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
     <TogglePill
       id="hikingCategory"
       isActive={false}
+      labelClassName="someClass"
+      large={true}
       name="meetupCategories"
       onChange={[Function]}
       toggleActive={[Function]}
@@ -33,7 +37,7 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
           value="hiking"
         />
         <label
-          className="toggleButton-label"
+          className="toggleButton-label toggleButton-label--large someClass"
           htmlFor="hikingCategory"
         >
           Hiking!
