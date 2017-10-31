@@ -3,7 +3,7 @@
 exports[`TimeInput renders a time html input with expected props 1`] = `
 <span>
   <input
-    className="input--time"
+    className="input--time select--reset"
     name="time"
     onChange={[Function]}
     required={true}
