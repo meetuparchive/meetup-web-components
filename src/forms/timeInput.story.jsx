@@ -9,7 +9,7 @@ storiesOf('TimeInput', module)
 		'renders a time input, provided values are in 24hr time (ex 13:00)',
 		() => (
 			<InfoWrapper>
-				<TimeInput name='time' required defaultValue='14:30' label='Dentist appt time' />
+				<TimeInput name='time' defaultValue='14:30' label='Dentist appt time' />
 			</InfoWrapper>
 		)
 	)
