@@ -158,7 +158,11 @@ class TimeInput extends React.Component {
 									</FlexItem>
 								}
 							</Flex>
-							<input type="text" value={`${formatHours(this.state.hours, this.state.meridian)}:${this.state.minutes}`} />
+							<input
+								type="text" // will be "hidden" when we're done debugging
+								value={`${formatHours(this.state.hours, this.state.meridian)}:${this.state.minutes}`}
+								onChange={this.onChange}
+								/>
 						</div>
 				}
 
