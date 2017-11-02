@@ -122,6 +122,7 @@ storiesOf('TextInput', module)
 							id='fullname'
 							name='name'
 							value='how long is this'
+							error='this is an error'
 							{...rules} />
 					</div>
 				</InfoWrapper>
