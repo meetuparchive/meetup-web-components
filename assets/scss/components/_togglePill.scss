@@ -14,7 +14,7 @@
 	padding: $space*1.5 $space;
 }
 
-.toggleButton-input{
+.toggleButton-input {
 	&:checked + .toggleButton-label {
 		@include buttonColor(
 			$bgColor: $C_blue,
