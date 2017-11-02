@@ -114,6 +114,7 @@ class CalendarComponent extends React.Component {
 			className,
 			id,
 			name,
+			error,
 			label,
 			required,
 			value,
@@ -144,6 +145,7 @@ class CalendarComponent extends React.Component {
 						{...other}
 					/>
 				</span>
+				{error && <p className="text--error text--small">{error}</p>}
 			</div>
 		);
 	}
