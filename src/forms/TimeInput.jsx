@@ -6,11 +6,22 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import SelectInput from './SelectInput';
 
-export const FAUX_INPUT_CLASS = 'fauxInput';
-export const MERIDIAN_CLASS = 'timeInput-meridian';
+export const HOURS_INPUT_CLASS = 'timeInput-hours';
+export const MINUTES_INPUT_CLASS = 'timeInput-minutes';
+export const MERIDIAN_INPUT_CLASS = 'timeInput-meridian';
+export const HIDDEN_INPUT_CLASS = 'timeInput-hidden';
 
-// let supportsTime = true;
 const formatDigits = (number) => `0${number}`.slice(-2);
+const getTimeParts = (time, part) => {
+	const splitTime = time.split(':');
+	const timeParts = new Object();
+
+	timeParts.hours = splitTime[0];
+	timeParts.minutes = splitTime[1];
+	timeParts.meridian = splitTime[0] > 11 ? 'PM' : 'AM';
+
+	return (timeParts[part]);
+};
 
 /**
 * @module TimeInput
@@ -22,14 +33,13 @@ class TimeInput extends React.Component {
 
 		this.state = {
 			supportsTime: true,
-			hours: props.hours || '12',
-			minutes: props.minutes || '00',
-			meridian: props.meridian || props.is24Hr ? false : 'AM'
+			hours: props.value && formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12',
+			minutes: props.value && formatDigits(getTimeParts(props.value, 'minutes')) || '00',
+			meridian: !props.is24Hr && getTimeParts(props.value, 'meridian')
 		};
 
 		this.onBlur = this.onBlur.bind(this);
-		this.onHoursChange = this.onHoursChange.bind(this);
-		this.onMinutesChange = this.onMinutesChange.bind(this);
+		this.onNumberChange = this.onNumberChange.bind(this);
 		this.onMeridianChange = this.onMeridianChange.bind(this);
 		this.onChange = this.onChange.bind(this);
 	}
@@ -44,26 +54,39 @@ class TimeInput extends React.Component {
 		this.props.onChange && this.props.onChange(e);
 	}
 
-	onHoursChange(e) {
-		const { value } = e.target;
+	/**
+	* @function onNumberChange
+	* @param e Event Object
+	* @description called when either the hour or minute input changes,
+	* 	in turn changes the state and updates the value of the inputs
+	*/
+	onNumberChange(e) {
+		const { value, id } = e.target;
 
-		console.log(formatDigits(value));
+		id === 'hours' &&
+			this.setState(() => ({ hours: value }));
 
-		this.setState(() => ({ hours: formatDigits(value) }));
+		id === 'minutes' &&
+			this.setState(() => ({ minutes: value }));
 	}
-
-	onMinutesChange(e) {
-		const { value } = e.target;
-
-		this.setState(() => ({ minutes: formatDigits(value) }));
-	}
-
+	/**
+	* @function onMeridianChange
+	* @param e Event Object
+	* @description called when the meridian <select> input changes,
+	* 	in turn changes the state and updates the value of the <select>
+	*/
 	onMeridianChange(e) {
 		const { value } = e.target;
 
 		this.setState(() => ({ meridian: value }));
 	}
 
+	/**
+	* @function onBlur
+	* @param e Event Object
+	* @description called when either the hour or minute input loses focus,
+	* 	and ensures the value entered is not out of the min/max range
+	*/
 	onBlur(e) {
 		const { value, min, max, id } = e.target;
 
@@ -76,7 +99,7 @@ class TimeInput extends React.Component {
 			id === 'minutes' &&
 				this.setState(() => ({ minutes: formatDigits(max) }));
 
-		} else if (value < min){
+		} else if (value < parseInt(min)){
 			e.target.value = min;
 
 			id === 'hours' &&
@@ -101,7 +124,7 @@ class TimeInput extends React.Component {
 			value,
 			error,
 			disabled,
-			is24Hr,		// eslint-disable-line no-unused-vars
+			is24Hr,
 			onChange,	// eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
@@ -112,8 +135,7 @@ class TimeInput extends React.Component {
 		);
 
 		const fauxInputClassNames = cx(
-			FAUX_INPUT_CLASS,
-			`${FAUX_INPUT_CLASS}--time`,
+			'fauxInput fauxInput--time',
 			{
 				disabled,
 				error
@@ -121,7 +143,7 @@ class TimeInput extends React.Component {
 		);
 
 		const meridianClassNames = cx(
-			MERIDIAN_CLASS,
+			MERIDIAN_INPUT_CLASS,
 			'flush--all border--none field--reset',
 			{
 				disabled,
@@ -137,7 +159,7 @@ class TimeInput extends React.Component {
 		const errorId = `${id}-error`;
 
 		const formatHours = (hours, meridian) => {
-			const newHours = meridian ? (hours % 12 + 12 * (meridian === 'PM')) : (hours % 24);
+			const newHours = meridian ? (hours % 12 + 12 * (meridian === 'PM')) : hours % 24 ;
 			return(
 				formatDigits(newHours)
 			);
@@ -175,13 +197,14 @@ class TimeInput extends React.Component {
 											pattern="\d*"
 											id="hours"
 											name="hours"
-											min={this.state.meridian ? 1 : 0} // return number from merdian true/false?
-											max={this.state.meridian ? 12 : 24}
+											min={is24Hr ? 0 : 1}
+											max={is24Hr ? 23 : 12}
 											disabled={disabled}
-											className="field--reset align--center"
+											className={`field--reset align--center ${HOURS_INPUT_CLASS}`}
 											onBlur={this.onBlur}
-											onChange={this.onHoursChange}
-											value={formatDigits(this.state.meridian ? this.state.hours : this.state.hours % 24)} />
+											onChange={this.onNumberChange}
+											maxLength={2}
+											value={this.state.hours} /> {/* is24Hr ? this.state.hours % 24 : this.state.hours % 12 */}
 									</FlexItem>
 									<FlexItem className="align--center">
 										{':'}
@@ -194,12 +217,13 @@ class TimeInput extends React.Component {
 											min={0}
 											max={59}
 											disabled={disabled}
-											className="field--reset align--center"
+											className={`field--reset align--center ${MINUTES_INPUT_CLASS}`}
 											onBlur={this.onBlur}
-											onChange={this.onMinutesChange}
+											onChange={this.onNumberChange}
+											maxLength={2}
 											value={this.state.minutes} />
 									</FlexItem>
-									{ this.state.meridian &&
+									{ !is24Hr &&
 										<FlexItem shrink className="timeInput-meridianContainer">
 											<SelectInput
 												id="meridian"
@@ -207,6 +231,7 @@ class TimeInput extends React.Component {
 												className={meridianClassNames}
 												disabled={disabled}
 												onChange={this.onMeridianChange}
+												value={this.state.meridian}
 												options={[
 													{ label: 'AM', value: 'AM' },
 													{ label: 'PM', value: 'PM' }
@@ -217,8 +242,10 @@ class TimeInput extends React.Component {
 								</Flex>
 							</div>
 							<input
-								type="text" // will be "hidden" when we're done debugging
-								className="span--100"
+								type="hidden"
+								className={HIDDEN_INPUT_CLASS}
+								id={id}
+								name={name}
 								value={`${formatHours(this.state.hours, this.state.meridian)}:${this.state.minutes}`}
 								onChange={this.onChange}
 								/>
@@ -239,6 +266,7 @@ TimeInput.defaultProps = {
 TimeInput.propTypes = {
 	name: PropTypes.string.isRequired,
 	error: PropTypes.string,
+	is24Hr: PropTypes.bool,
 	label: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
