@@ -12,15 +12,20 @@ export const MERIDIAN_INPUT_CLASS = 'timeInput-meridian';
 export const HIDDEN_INPUT_CLASS = 'timeInput-hidden';
 
 const formatDigits = (number) => `0${number}`.slice(-2);
+const formatHours = (hours, meridian) => {
+	const newHours = meridian ? (hours % 12 + 12 * (meridian === 'PM')) : hours % 24 ;
+	return(
+		formatDigits(newHours)
+	);
+};
 const getTimeParts = (time, part) => {
-	const splitTime = time.split(':');
-	const timeParts = new Object();
-
-	timeParts.hours = splitTime[0];
-	timeParts.minutes = splitTime[1];
-	timeParts.meridian = splitTime[0] > 11 ? 'PM' : 'AM';
-
-	return (timeParts[part]);
+	const [ hours, minutes ] = time.split(':');
+	const parts = {
+		hours,
+		minutes,
+		meridian: hours < 12 ? 'AM': 'PM',
+	};
+	return parts[part];
 };
 
 /**
@@ -63,11 +68,7 @@ class TimeInput extends React.Component {
 	onNumberChange(e) {
 		const { value, id } = e.target;
 
-		id === 'hours' &&
-			this.setState(() => ({ hours: value }));
-
-		id === 'minutes' &&
-			this.setState(() => ({ minutes: value }));
+		this.setState(() => ({ [id]: value }));
 	}
 	/**
 	* @function onMeridianChange
@@ -90,23 +91,11 @@ class TimeInput extends React.Component {
 	onBlur(e) {
 		const { value, min, max, id } = e.target;
 
-		if (value > max){
-			e.target.value = max;
-
-			id === 'hours' &&
-				this.setState(() => ({ hours: formatDigits(max) }));
-
-			id === 'minutes' &&
-				this.setState(() => ({ minutes: formatDigits(max) }));
-
-		} else if (value < parseInt(min)){
-			e.target.value = min;
-
-			id === 'hours' &&
-				this.setState(() => ({ hours: formatDigits(min) }));
-
-			id === 'minutes' &&
-				this.setState(() => ({ minutes: formatDigits(min) }));
+		if (max || min) {
+			const constrainedVal = Math.max(Math.min(value, max), min);
+			if (constrainedVal !== value) {
+			this.setState(() => ({ [id]: constrainedVal }));
+			}
 		}
 	}
 
@@ -157,13 +146,6 @@ class TimeInput extends React.Component {
 		);
 
 		const errorId = `${id}-error`;
-
-		const formatHours = (hours, meridian) => {
-			const newHours = meridian ? (hours % 12 + 12 * (meridian === 'PM')) : hours % 24 ;
-			return(
-				formatDigits(newHours)
-			);
-		};
 
 		if (error) {
 			other['aria-invalid'] = true;
