@@ -14,9 +14,8 @@ export const HIDDEN_INPUT_CLASS = 'timeInput-hidden';
 const formatDigits = (number) => `0${number}`.slice(-2);
 const formatHours = (hours, meridian) => {
 	const newHours = meridian ? (hours % 12 + 12 * (meridian === 'PM')) : hours % 24 ;
-	return(
-		formatDigits(newHours)
-	);
+	return formatDigits(newHours);
+
 };
 const getTimeParts = (time, part) => {
 	const [ hours, minutes ] = time.split(':');
