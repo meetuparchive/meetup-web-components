@@ -117,8 +117,6 @@ class AccordionPanel extends React.Component {
 		// create valid attribute name from trigger label
 		const ariaId = label.replace(/\s+/g, '').toLowerCase();
 
-		// console.log(this.props);
-
 		return(
 			<Flex
 				className={classNames.accordionPanel}
@@ -134,7 +132,7 @@ class AccordionPanel extends React.Component {
 						aria-expanded={isOpen}
 						aria-selected={isOpen}
 						className={classNames.trigger}
-						onClick={this._handleToggle}
+						onClick={this.onToggleClick}
 					>
 						{label}
 					</button>
