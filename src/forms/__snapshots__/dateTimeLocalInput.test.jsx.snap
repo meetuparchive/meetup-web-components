@@ -6,7 +6,7 @@ exports[`DateTimeLocal input should render an input with type time and expected 
     className="required"
   />
   <input
-    className="input--dateTimeLocal"
+    className="input--dateTimeLocal select--reset"
     max="2017-06-30T16:30"
     min="1999-12-31T23:55"
     name="datetime"
