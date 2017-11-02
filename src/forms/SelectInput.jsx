@@ -46,7 +46,7 @@ class SelectInput extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'select--reset span--100',
+			'select--reset span--100 padding--selectArrow',
 			{ 'field--error': errors && errors.length > 0 || error },
 			className
 		);
