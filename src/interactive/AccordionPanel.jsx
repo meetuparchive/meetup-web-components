@@ -90,7 +90,6 @@ class AccordionPanel extends React.Component {
 			classNamesActive,
 			className,
 			onToggleClick,			// eslint-disable-line no-unused-vars
-			// isActive,
 			...other
 		} = this.props;
 
@@ -167,6 +166,7 @@ class AccordionPanel extends React.Component {
 							:
 							<ToggleSwitch
 								isActive={isOpen}
+								disabled={!!onToggleClick}
 								id={`${ariaId}-switch`}
 								name={ariaId}
 								onClick={this.onToggleClick}
