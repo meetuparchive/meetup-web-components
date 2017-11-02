@@ -7,6 +7,10 @@ html, body, #root {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	> div {
+		width: 100%;
+	}
 }
 div[data-reactroot] {
 	width: 100%;
