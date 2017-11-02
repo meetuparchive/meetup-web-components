@@ -117,7 +117,6 @@ class CalendarComponent extends React.Component {
 			label,
 			required,
 			value,
-			error,
 			datepickerOptions, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
 			...other
@@ -145,7 +144,6 @@ class CalendarComponent extends React.Component {
 						{...other}
 					/>
 				</span>
-				{error && <p className="text--error text--small">{error}</p>}
 			</div>
 		);
 	}
