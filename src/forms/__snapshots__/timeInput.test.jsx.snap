@@ -1,5 +1,4 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`TimeInput TimeInput, with input[time] support renders a time html input with expected props 1`] = `
 <TimeInput
   is24Hr={true}
