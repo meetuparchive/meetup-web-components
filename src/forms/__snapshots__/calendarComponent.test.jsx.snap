@@ -1,14 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CalendarComponent renders the calendarComponent with appropriate attributes 1`] = `
-<span>
-  <input
-    className="input--dateTimePicker select--reset beyonce-halo"
-    defaultValue={2012-10-12T00:00:00.000Z}
-    id="beyonce"
-    name="halo"
-    onChangeCallback={[Function]}
-    type="text"
-  />
-</span>
+<div>
+  <span>
+    <input
+      className="input--dateTimePicker select--reset beyonce-halo"
+      defaultValue={2012-10-12T00:00:00.000Z}
+      id="beyonce"
+      name="halo"
+      onChangeCallback={[Function]}
+      type="text"
+    />
+  </span>
+</div>
 `;
