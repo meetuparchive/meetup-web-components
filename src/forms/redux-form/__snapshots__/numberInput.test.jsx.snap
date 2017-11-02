@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`redux-form NumberInput renders a NumberInput component with expected attributes from mock data 1`] = `
+<NumberInput
+  label="Number of internets"
+  min={0}
+  name="internets"
+  step={1}
+  value={10}
+/>
+`;
