@@ -119,7 +119,7 @@ Checkbox.propTypes = {
 	disabled: PropTypes.bool,
 	labelClassName: PropTypes.string,
 	name: PropTypes.string.isRequired,
-	value: PropTypes.string.isRequired,
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]), // checkboxes don't need values
 	onChange: PropTypes.func,
 };
 
