@@ -32,6 +32,7 @@ class TogglePill extends React.Component {
 			isActive,
 			children,
 			className,
+			labelClassName,
 			topic,
 			id,
 			large,
@@ -59,7 +60,8 @@ class TogglePill extends React.Component {
 			'toggleButton-label',
 			{
 				'toggleButton-label--large': large
-			}
+			},
+			labelClassName
 		);
 
 		// ---
@@ -111,8 +113,11 @@ TogglePill.protoTypes = {
 	value: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired,
 	isActive: PropTypes.bool,
-	topic: PropTypes.bool
+	useRadio: PropTypes.bool,
+	topic: PropTypes.bool,
+	labelClassName: PropTypes.string,
 };
+
 TogglePill.defaultProps = {
 	isActive: false
 };

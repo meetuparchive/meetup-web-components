@@ -23,6 +23,10 @@ describe('RadioButtonGroup', () => {
 		expect(getWrapper()).toMatchSnapshot();
 	});
 
+	it('should apply switchDirection and direction props', () => {
+		expect(getWrapper({ switchDirection: 'medium', direction: 'column' })).toMatchSnapshot();
+	});
+
 	describe('componentWillReceiveProps', () => {
 		it('should update state.selectedValue if the next props contain selectedValue', () => {
 			const wrapper = getWrapper();

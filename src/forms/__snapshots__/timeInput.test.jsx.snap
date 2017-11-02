@@ -10,7 +10,7 @@ exports[`TimeInput TimeInput, with input[time] support renders a time html input
 >
   <div>
     <input
-      className="input--time"
+      className="input--time select--reset"
       disabled={undefined}
       id={undefined}
       name="time"
