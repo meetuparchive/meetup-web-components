@@ -18,6 +18,7 @@ class AccordionPanel extends React.Component {
 	constructor(props){
 		super(props);
 		this._handleToggle = this._handleToggle.bind(this);
+		this.onToggleClick = this.onToggleClick.bind(this);
 	}
 
 	/**
@@ -32,7 +33,7 @@ class AccordionPanel extends React.Component {
 	}
 
 	/**
-	 * 
+	 *
 	 * @description calls the AccordionPanelGroups's callback to toggle open state
 	 * and render the `AccordionPanel` open or closed, sets height in state
 	 * @param {Event} e - the event object
@@ -44,6 +45,11 @@ class AccordionPanel extends React.Component {
 		const isToggledOpen = !this.props.isOpen;
 		this.props.setClickedPanel && this.props.setClickedPanel(this.props.clickId, isToggledOpen);
 		this.props.onClickCallback && this.props.onClickCallback(e, isToggledOpen);
+	}
+
+	onToggleClick(e){
+		e.preventDefault();
+		this.props.onToggleClick ? this.props.onToggleClick(e) : this._handleToggle(e);
 	}
 
 	/**
@@ -83,6 +89,7 @@ class AccordionPanel extends React.Component {
 			indicatorSwitch,
 			classNamesActive,
 			className,
+			onToggleClick,			// eslint-disable-line no-unused-vars
 			// isActive,
 			...other
 		} = this.props;
@@ -162,7 +169,7 @@ class AccordionPanel extends React.Component {
 								isActive={isOpen}
 								id={`${ariaId}-switch`}
 								name={ariaId}
-								onClick={this._handleToggle}
+								onClick={this.onToggleClick}
 							/>
 					}
 				</FlexItem>
