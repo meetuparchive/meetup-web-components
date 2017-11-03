@@ -114,7 +114,6 @@ class CalendarComponent extends React.Component {
 			className,
 			id,
 			name,
-			error,
 			label,
 			required,
 			value,
@@ -128,25 +127,22 @@ class CalendarComponent extends React.Component {
 		const labelClassNames = cx({ required }, className);
 
 		return (
-			<div>
-				<span>
-					{label && (
-						<label htmlFor={id} className={labelClassNames}>
-							{label}
-						</label>
-					)}
-					<input
-						type="text"
-						id={id}
-						name={name}
-						defaultValue={value}
-						className={classNames}
-						ref={input => (this.inputEl = input)}
-						{...other}
-					/>
-				</span>
-				{error && <p className="text--error text--small">{error}</p>}
-			</div>
+			<span>
+				{label && (
+					<label htmlFor={id} className={labelClassNames}>
+						{label}
+					</label>
+				)}
+				<input
+					type="text"
+					id={id}
+					name={name}
+					defaultValue={value}
+					className={classNames}
+					ref={input => (this.inputEl = input)}
+					{...other}
+				/>
+			</span>
 		);
 	}
 }
