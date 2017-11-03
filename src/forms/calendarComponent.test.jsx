@@ -23,6 +23,7 @@ describe('CalendarComponent', function() {
 				value={value}
 				datepickerOptions={opts}
 				onChangeCallback={onChangeCallback}
+				error="this is an error"
 				ref={node => (this.node = node)}
 			/>
 		);
