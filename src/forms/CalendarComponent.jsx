@@ -115,6 +115,7 @@ class CalendarComponent extends React.Component {
 			id,
 			name,
 			error,
+			suppressError,
 			label,
 			required,
 			value,
@@ -145,7 +146,8 @@ class CalendarComponent extends React.Component {
 						{...other}
 					/>
 				</span>
-				{error && <p className="text--error text--small">{error}</p>}
+				{!suppressError &&
+					error && <p className="text--error text--small">{error}</p>}
 			</div>
 		);
 	}
@@ -155,10 +157,12 @@ CalendarComponent.propTypes = {
 	name: PropTypes.string.isRequired,
 	onChange: PropTypes.func, // provided by DateTimePicker or redux-form
 	datepickerOptions: PropTypes.object,
+	suppressError: PropTypes.bool,
 };
 
 CalendarComponent.defaultProps = {
 	datepickerOptions: {},
+	suppressError: false,
 };
 
 export default CalendarComponent;
