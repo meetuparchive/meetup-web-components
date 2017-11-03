@@ -5,7 +5,6 @@ exports[`CalendarComponent renders the calendarComponent with appropriate attrib
   <input
     className="input--dateTimePicker select--reset beyonce-halo"
     defaultValue={2012-10-12T00:00:00.000Z}
-    error="this is an error"
     id="beyonce"
     name="halo"
     onChangeCallback={[Function]}
