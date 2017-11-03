@@ -59,19 +59,10 @@ Class                       | Description
 	}
 }
 
-.hscrollContainer, .hscroll {
-	margin-bottom: -#{$space-and-half};
-}
-
-.hscrollContainer {
-	overflow: hidden;
-}
-
 .hscroll {
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 	overflow-x: scroll;
-	-ms-overflow-style: auto
 }
 
 .hscroll::-webkit-scrollbar {
@@ -81,7 +72,6 @@ Class                       | Description
 .hscroll-content {
 	@extend %inlineblockList;
 	box-sizing: content-box;
-	margin-bottom: $space-and-half !important; // !important to kill styles coming from `sassquatch.css`, being imported by `swarm-sasstools`
 	white-space: nowrap;
 	> li {
 		vertical-align: top;
