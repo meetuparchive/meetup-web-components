@@ -313,6 +313,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
           onClick={false}
         >
           <WithToggle
+            disabled={false}
             id="firstsection-switch"
             isActive={false}
             name="firstsection"
@@ -323,6 +324,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
               role="button"
             >
               <ToggleSwitch
+                disabled={false}
                 id="firstsection-switch"
                 isActive={false}
                 name="firstsection"
@@ -337,7 +339,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                     aria-checked={false}
                     aria-labelledby="firstsection-label"
                     className="toggleSwitch"
-                    disabled={undefined}
+                    disabled={false}
                     onClick={[Function]}
                     reset={true}
                     role="switch"
@@ -346,7 +348,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                       aria-checked={false}
                       aria-labelledby="firstsection-label"
                       className="button button--reset toggleSwitch"
-                      disabled={undefined}
+                      disabled={false}
                       onClick={[Function]}
                       role="switch"
                     >

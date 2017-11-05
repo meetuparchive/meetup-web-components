@@ -36,6 +36,18 @@ storiesOf('CalendarComponent', module)
 			</div>
 		);
 	})
+	.add('with error', () => {
+		return (
+			<div className="span--50">
+				<CalendarComponent
+					name="event_time"
+					label="Start at"
+					value={new Date()}
+					error="this is an error"
+				/>
+			</div>
+		);
+	})
 	.add('sets a valid date range', () => {
 		const min = new Date(),
 			max = new Date(),

@@ -236,6 +236,13 @@ $C_toggleHighlight: $C_blue;
 	right: $space;
 }
 
+.padding--selectArrow {
+	padding-right: $media-xs + $space + $space-half;
+	// $media-xs:   enough padding for the arrow
+	// $space:      preserve right padding in forms
+	// $space-half: give a little space between the arrow and the text
+}
+
 //
 // Time input
 //
