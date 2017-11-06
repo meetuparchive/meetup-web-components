@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import bindAll from '../utils/bindAll';
 
@@ -89,10 +89,10 @@ class Popover extends React.Component {
 	}
 
 	componentDidUpdate() {
-		const selectedItemEl = this._menuItems.get(this.state.selectedIndex);
-		if (selectedItemEl) {
-			ReactDOM.findDOMNode(selectedItemEl).focus();
-		}
+		// const selectedItemEl = this._menuItems.get(this.state.selectedIndex);
+		// if (selectedItemEl) {
+		// 	ReactDOM.findDOMNode(selectedItemEl).focus();
+		// }
 	}
 
 	renderMenuItems() {

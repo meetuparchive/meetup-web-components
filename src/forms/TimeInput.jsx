@@ -31,7 +31,7 @@ const getTimeParts = (time, part) => {
 	return parts[part];
 };
 
-const parseStringValue = (value, is24Hr) => {
+const parseValue = (value, is24Hr) => {
 	return {
 		hours: (formatDigits(getTimeParts(value, HOURS_KEY) % (is24Hr ? 24 : 12)) || '12').toString(),
 		minutes: (formatDigits(getTimeParts(value, MINUTES_KEY)) || '00').toString(),
@@ -48,14 +48,14 @@ class TimeInput extends React.Component {
 		super(props);
 
 		this.state = {
-			supportsTime: true,
-			...parseStringValue(props.value, props.is24Hr)
+			supportsTime: true
 		};
 
 		this.onBlur = this.onBlur.bind(this);
 		this.onNumberChange = this.onNumberChange.bind(this);
 		this.onMeridianChange = this.onMeridianChange.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.onTimeInputChange = this.onTimeInputChange.bind(this);
 	}
 
 	/**
@@ -64,17 +64,35 @@ class TimeInput extends React.Component {
 	* @description called when the input changes, in turn calls the onChange
 	* 	handler prop, if there is one provided (eg supplied by redux-form or DateTimePicker)
 	*/
-	onChange(partialState) {
-		console.log("ON CHANGE");
+	onChange(constrainedValue) {
+
 		if (this.props.onChange) {
-			const stateValues = {
-				...this.state,
-				...partialState
+
+			const timeValues = {
+				[HOURS_KEY]: parseInt(this.hoursInputEl.value),
+				[MINUTES_KEY]: parseInt(this.minutesInputEl.value),
+				...constrainedValue
 			};
 
-			const v = `${formatDigits(stateValues.hours) % (this.props.is24Hr ? 24 : 12)}:${formatDigits(stateValues.minutes)}`;
-			this.props.onChange(v);
+			const meridian = this.meridianInputEl ? this.meridianInputEl.value : '';
+
+			if (!this.props.is24Hr && meridian) {
+				const hours = timeValues[HOURS_KEY];
+				if (meridian === 'PM') {
+					timeValues[HOURS_KEY] = hours + 12;
+				} else {
+					timeValues[HOURS_KEY] = (hours === 12) ? 0 : hours;
+				}
+			}
+
+			const value = `${formatDigits(timeValues[HOURS_KEY])}:${formatDigits(timeValues[MINUTES_KEY])}`;
+			console.log('this on change value ', value);
+			this.props.onChange(value);
 		}
+	}
+
+	onTimeInputChange(e) {
+		this.props.onChange && this.props.onChange(e);
 	}
 
 	/**
@@ -108,11 +126,11 @@ class TimeInput extends React.Component {
 	*/
 	onBlur(e) {
 		const { value, min, max, id } = e.target;
-
+		console.log('onBlur');
 		if (max || min) {
 			const constrainedVal = Math.max(Math.min(value, max), min);
 			if (constrainedVal !== value) {
-				this.setState(() => ({ [id]: constrainedVal }));
+				// this.setState(() => ({ [id]: constrainedVal }));
 				this.onChange({ [id]: constrainedVal });
 			}
 		} else {
@@ -126,16 +144,18 @@ class TimeInput extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		// if we get new values from redux form, parse them
-		if (this.props.value !== nextProps.value) {
-			const props = nextProps;
-			const newTimeValues = parseStringValue(props.value, props.is24Hr);
-			this.setState(newTimeValues);
-		}
+		// if (this.props.value !== nextProps.value && !this.state.supportsTime) {
+		// 	const props = nextProps;
+		// 	const newTimeValues = parseValue(props.value, props.is24Hr);
+		// 	this.setState(newTimeValues);
+		// }
+		console.log('component will receive props');
 	}
 
-	shouldComponentUpdate(nextProps, nextState) {
-		return (nextState !== this.state);
-	}
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	console.log('component should!!!!', nextState !== this.state);
+	// 	return (!this.state.supportsTime && nextState !== this.state);
+	// }
 
 	render() {
 		const {
@@ -186,6 +206,12 @@ class TimeInput extends React.Component {
 			other['aria-describedby'] = errorId;
 		}
 
+		let parsedValues = {};
+		if (!this.state.supportsTime) {
+			parsedValues = parseValue(value, is24Hr);
+			console.log('parsedValues = ', parsedValues);
+		}
+
 		return (
 			<div>
 				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
@@ -211,16 +237,17 @@ class TimeInput extends React.Component {
 									<FlexItem>
 										<input type="text"
 											pattern="\d*"
-											id="hours"
-											name="hours"
+											id={HOURS_KEY}
+											name={HOURS_KEY}
 											min={is24Hr ? 0 : 1}
 											max={is24Hr ? 23 : 12}
 											disabled={disabled}
 											className={`field--reset align--center ${HOURS_INPUT_CLASS}`}
 											onBlur={this.onBlur}
-											onChange={this.onNumberChange}
 											maxLength={2}
-											value={this.state.hours} /> {/* is24Hr ? this.state.hours % 24 : this.state.hours % 12 */}
+											value={parsedValues[HOURS_KEY]}
+											ref={ input => this.hoursInputEl = input }
+										/> {/* is24Hr ? this.state.hours % 24 : this.state.hours % 12 */}
 									</FlexItem>
 									<FlexItem className="align--center">
 										{':'}
@@ -228,26 +255,27 @@ class TimeInput extends React.Component {
 									<FlexItem>
 										<input type="text"
 											pattern="\d*"
-											id="minutes"
-											name="minutes"
+											id={MINUTES_KEY}
+											name={MINUTES_KEY}
 											min={0}
 											max={59}
 											disabled={disabled}
 											className={`field--reset align--center ${MINUTES_INPUT_CLASS}`}
 											onBlur={this.onBlur}
-											onChange={this.onNumberChange}
 											maxLength={2}
-											value={this.state.minutes} />
+											ref={ input => this.minutesInputEl = input }
+											value={parsedValues[MINUTES_KEY]} />
 									</FlexItem>
 									{ !is24Hr &&
 										<FlexItem shrink className="timeInput-meridianContainer">
 											<SelectInput
-												id="meridian"
-												name="meridian"
+												id={MERIDIAN_KEY}
+												name={MERIDIAN_KEY}
 												className={meridianClassNames}
 												disabled={disabled}
-												onChange={this.onMeridianChange}
-												value={this.state.meridian}
+												onChange={this.onChange}
+												value={parsedValues[MERIDIAN_KEY]}
+												ref={ input => this.meridianInputEl = input }
 												options={[
 													{ label: 'AM', value: 'AM' },
 													{ label: 'PM', value: 'PM' }
@@ -258,13 +286,12 @@ class TimeInput extends React.Component {
 								</Flex>
 							</div>
 							<input
-								type="text"
-								className='display--none'
+								type="hidden"
 								id={id}
 								name={name}
 								value={`${formatHours(this.state.hours, this.state.meridian)}:${this.state.minutes}`}
 								onChange={this.onChange}
-								/>
+							/>
 						</div>
 				}
 
