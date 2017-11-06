@@ -41,6 +41,7 @@
 //
 // Reset field styles
 //
+select.field--reset,
 input.field--reset,
 input.field--reset:hover,
 input.field--reset:focus,
@@ -240,6 +241,21 @@ $C_toggleHighlight: $C_blue;
 	// $media-xs:   enough padding for the arrow
 	// $space:      preserve right padding in forms
 	// $space-half: give a little space between the arrow and the text
+}
+
+//
+// Time input
+//
+.timeInput-meridianContainer {
+	margin-left: auto;
+}
+
+.timeInput-meridian:focus {
+	font-weight: $W_medium;
+}
+
+.fauxInput--time input {
+	height: 100%; // IE fix
 }
 
 //
