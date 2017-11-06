@@ -20,6 +20,10 @@ const getTimeParts = (time, part) => {
 	};
 	return parts[part];
 };
+const formatHours = (hours, meridian) => {
+	const newHours = meridian ? ((hours % 12) + (12 * (meridian === 'PM'))) : hours % 24 ;
+	return formatDigits(newHours);
+};
 
 /**
 * @module TimeInput
@@ -57,7 +61,7 @@ class TimeInput extends React.Component {
 				...partialState
 			};
 
-			const v = `${formatDigits(stateValues.hours) % (this.props.is24Hr ? 24 : 12)}:${formatDigits(stateValues.minutes)}`;
+			const v = `${formatHours(stateValues.hours, stateValues.meridian)}:${formatDigits(stateValues.minutes)}`;
 			this.props.onChange(v);
 		}
 	}
