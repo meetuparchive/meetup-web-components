@@ -11,6 +11,10 @@ export const MINUTES_INPUT_CLASS = 'timeInput-minutes';
 export const MERIDIAN_INPUT_CLASS = 'timeInput-meridian';
 export const HIDDEN_INPUT_CLASS = 'timeInput-hidden';
 
+const HOURS_KEY = 'hours';
+const MINUTES_KEY = 'minutes';
+const MERIDIAN_KEY = 'meridian';
+
 const formatDigits = (number) => `0${number}`.slice(-2);
 const formatHours = (hours, meridian) => {
 	const newHours = meridian ? (hours % 12 + 12 * (meridian === 'PM')) : hours % 24 ;
@@ -20,11 +24,19 @@ const formatHours = (hours, meridian) => {
 const getTimeParts = (time, part) => {
 	const [ hours, minutes ] = time.split(':');
 	const parts = {
-		hours,
-		minutes,
-		meridian: hours < 12 ? 'AM': 'PM',
+		[HOURS_KEY]: hours,
+		[MINUTES_KEY]: minutes,
+		[MERIDIAN_KEY]: hours < 12 ? 'AM': 'PM',
 	};
 	return parts[part];
+};
+
+const parseStringValue = (value, is24Hr) => {
+	return {
+		hours: (formatDigits(getTimeParts(value, HOURS_KEY) % (is24Hr ? 24 : 12)) || '12').toString(),
+		minutes: (formatDigits(getTimeParts(value, MINUTES_KEY)) || '00').toString(),
+		meridian: is24Hr && getTimeParts(value, MERIDIAN_KEY)
+	};
 };
 
 /**
@@ -37,9 +49,7 @@ class TimeInput extends React.Component {
 
 		this.state = {
 			supportsTime: true,
-			hours: props.value && (formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12').toString(),
-			minutes: props.value && (formatDigits(getTimeParts(props.value, 'minutes')) || '00').toString(),
-			meridian: !props.is24Hr && getTimeParts(props.value, 'meridian')
+			...parseStringValue(props.value, props.is24Hr)
 		};
 
 		this.onBlur = this.onBlur.bind(this);
@@ -115,13 +125,11 @@ class TimeInput extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		// if we get new values from redux form, parse them
 		if (this.props.value !== nextProps.value) {
 			const props = nextProps;
-			this.setState({
-				hours: props.value && (formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12').toString(),
-				minutes: props.value && (formatDigits(getTimeParts(props.value, 'minutes')) || '00').toString(),
-			});
-			// need to issue a change ??
+			const newTimeValues = parseStringValue(props.value, props.is24Hr);
+			this.setState(newTimeValues);
 		}
 	}
 
