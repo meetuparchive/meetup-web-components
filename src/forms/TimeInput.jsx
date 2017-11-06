@@ -37,15 +37,17 @@ class TimeInput extends React.Component {
 
 		this.state = {
 			supportsTime: true,
-			hours: props.value && formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12',
-			minutes: props.value && formatDigits(getTimeParts(props.value, 'minutes')) || '00',
-			meridian: !props.is24Hr && getTimeParts(props.value, 'meridian')
+			hours: props.value && (formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12').toString(),
+			minutes: props.value && (formatDigits(getTimeParts(props.value, 'minutes')) || '00').toString(),
+			meridian: !props.is24Hr && getTimeParts(props.value, 'meridian'),
+			value: props.value
 		};
 
 		this.onBlur = this.onBlur.bind(this);
 		this.onNumberChange = this.onNumberChange.bind(this);
 		this.onMeridianChange = this.onMeridianChange.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.onTimeInputChange = this.onTimeInputChange.bind(this);
 	}
 
 	/**
@@ -54,8 +56,31 @@ class TimeInput extends React.Component {
 	* @description called when the input changes, in turn calls the onChange
 	* 	handler prop, if there is one provided (eg supplied by redux-form or DateTimePicker)
 	*/
-	onChange(e) {
-		this.props.onChange && this.props.onChange(e);
+	onChange(partialState) {
+		console.log("ON CHANGE");
+
+		if (this.props.onChange) {
+			const stateValues = {
+				...this.state,
+				...partialState
+			};
+
+			const v = `${formatDigits(stateValues.hours) % (this.props.is24Hr ? 24 : 12)}:${formatDigits(stateValues.minutes)}`;
+			this.props.onChange(v);
+		}
+	}
+
+	/**
+	* @function onTimeInputChange
+	* @param e Event Object
+	* @description called when the browser-native time input changes, in turn calls the onChange
+	* 	handler prop, if there is one provided (eg supplied by redux-form or DateTimePicker)
+	*/
+	onTimeInputChange(e) {
+		const { value } = e.target;
+		this.setState(() => ({ value: value }));
+
+		this.props.onChange && this.props.onChange(value);
 	}
 
 	/**
@@ -92,14 +117,32 @@ class TimeInput extends React.Component {
 
 		if (max || min) {
 			const constrainedVal = Math.max(Math.min(value, max), min);
-			if (constrainedVal !== value) {
-			this.setState(() => ({ [id]: constrainedVal }));
+			if (constrainedVal == value) {
+				this.setState(() => ({ [id]: formatDigits(value) }));
+				this.onChange();
+			} else {
+				this.setState(() => ({ [id]: formatDigits(constrainedVal) })); // try doing onChange stuff in this setstate callback
+				this.onChange({ [id]: formatDigits(constrainedVal) });
 			}
 		}
 	}
 
 	componentDidMount() {
-		this.setState(() => ({ supportsTime: this.inputEl.type === 'time' }));
+		this.setState(() => ({ supportsTime: !this.props.forceTextInput && this.inputEl.type === 'time' }));
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (this.props.value !== nextProps.value) {
+			const props = nextProps;
+			this.setState({
+				hours: props.value && (formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12').toString(),
+				minutes: props.value && (formatDigits(getTimeParts(props.value, 'minutes')) || '00').toString(),
+			});
+		}
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		return (nextState !== this.state);
 	}
 
 	render() {
@@ -109,7 +152,7 @@ class TimeInput extends React.Component {
 			name,
 			className,
 			required,
-			value,
+			value,	// eslint-disable-line no-unused-vars
 			error,
 			disabled,
 			is24Hr,
@@ -161,11 +204,11 @@ class TimeInput extends React.Component {
 							id={id}
 							type='time'
 							name={name}
-							value={value}
+							value={this.state.value}
 							className={classNames}
 							required={required}
 							disabled={disabled}
-							onChange={this.onChange}
+							onChange={this.onTimeInputChange}
 							ref={ input => this.inputEl = input }
 							{...other}
 						/>
@@ -222,14 +265,16 @@ class TimeInput extends React.Component {
 									}
 								</Flex>
 							</div>
-							<input
-								type="hidden"
-								className={HIDDEN_INPUT_CLASS}
-								id={id}
-								name={name}
-								value={`${formatHours(this.state.hours, this.state.meridian)}:${this.state.minutes}`}
-								onChange={this.onChange}
-								/>
+							{
+								<input
+									type="text"
+									className={HIDDEN_INPUT_CLASS}
+									id={id}
+									name={name}
+									value={`${formatHours(this.state.hours, this.state.meridian)}:${this.state.minutes}`}
+									onChange={this.onChange}
+									/>
+								}
 						</div>
 				}
 
