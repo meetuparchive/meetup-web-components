@@ -65,8 +65,8 @@ class TimeInput extends React.Component {
 				...partialState
 			};
 
-			const v = `${formatDigits(stateValues.hours) % (this.props.is24Hr ? 24 : 12)}:${formatDigits(stateValues.minutes)}`;
-			this.props.onChange(v);
+			const value = `${formatHours(stateValues.hours) % (this.props.is24Hr ? 24 : 12)}:${formatDigits(stateValues.minutes)}`;
+			this.props.onChange(value);
 		}
 	}
 
@@ -79,7 +79,6 @@ class TimeInput extends React.Component {
 	onTimeInputChange(e) {
 		const { value } = e.target;
 		this.setState(() => ({ value: value }));
-
 		this.props.onChange && this.props.onChange(value);
 	}
 
@@ -91,7 +90,6 @@ class TimeInput extends React.Component {
 	*/
 	onNumberChange(e) {
 		const { value, id } = e.target;
-
 		this.setState(() => ({ [id]: value }));
 	}
 	/**
@@ -102,7 +100,6 @@ class TimeInput extends React.Component {
 	*/
 	onMeridianChange(e) {
 		const { value } = e.target;
-
 		this.setState(() => ({ meridian: value }));
 	}
 
@@ -114,17 +111,15 @@ class TimeInput extends React.Component {
 	*/
 	onBlur(e) {
 		const { value, min, max, id } = e.target;
+		const constrainedVal = this.constrainValue(value,min, max);
+		this.onChange({ [id]: formatDigits(constrainedVal) });
+	}
 
+	constrainValue(value, min, max) {
 		if (max || min) {
-			const constrainedVal = Math.max(Math.min(value, max), min);
-			if (constrainedVal == value) {
-				this.setState(() => ({ [id]: formatDigits(value) }));
-				this.onChange();
-			} else {
-				this.setState(() => ({ [id]: formatDigits(constrainedVal) })); // try doing onChange stuff in this setstate callback
-				this.onChange({ [id]: formatDigits(constrainedVal) });
-			}
+			value = Math.max(Math.min(value, max), min);
 		}
+		return value;
 	}
 
 	componentDidMount() {
@@ -265,16 +260,6 @@ class TimeInput extends React.Component {
 									}
 								</Flex>
 							</div>
-							{
-								<input
-									type="text"
-									className={HIDDEN_INPUT_CLASS}
-									id={id}
-									name={name}
-									value={`${formatHours(this.state.hours, this.state.meridian)}:${this.state.minutes}`}
-									onChange={this.onChange}
-									/>
-								}
 						</div>
 				}
 
