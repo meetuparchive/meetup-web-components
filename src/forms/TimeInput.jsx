@@ -12,11 +12,6 @@ export const MERIDIAN_INPUT_CLASS = 'timeInput-meridian';
 export const HIDDEN_INPUT_CLASS = 'timeInput-hidden';
 
 const formatDigits = (number) => `0${number}`.slice(-2);
-const formatHours = (hours, meridian) => {
-	const newHours = meridian ? (hours % 12 + 12 * (meridian === 'PM')) : hours % 24 ;
-	return formatDigits(newHours);
-
-};
 const getTimeParts = (time, part) => {
 	const [ hours, minutes ] = time.split(':');
 	const parts = {
@@ -175,7 +170,7 @@ class TimeInput extends React.Component {
 
 		const meridianClassNames = cx(
 			MERIDIAN_INPUT_CLASS,
-			'flush--all border--none field--reset',
+			'flush--all border--none field--reset padding--left',
 			{
 				disabled,
 				error
@@ -216,7 +211,7 @@ class TimeInput extends React.Component {
 						<div>
 							<div className={fauxInputClassNames}>
 								<Flex>
-									<FlexItem>
+									<FlexItem shrink>
 										<input type="text"
 											pattern="\d*"
 											id="hours"
@@ -230,10 +225,10 @@ class TimeInput extends React.Component {
 											maxLength={2}
 											value={this.state.hours} /> {/* is24Hr ? this.state.hours % 24 : this.state.hours % 12 */}
 									</FlexItem>
-									<FlexItem className="align--center">
+									<FlexItem shrink className="align--center">
 										{':'}
 									</FlexItem>
-									<FlexItem>
+									<FlexItem shrink>
 										<input type="text"
 											pattern="\d*"
 											id="minutes"
@@ -248,7 +243,7 @@ class TimeInput extends React.Component {
 											value={this.state.minutes} />
 									</FlexItem>
 									{ !is24Hr &&
-										<FlexItem shrink className="timeInput-meridianContainer">
+										<FlexItem shrink>
 											<SelectInput
 												id="meridian"
 												name="meridian"
@@ -265,16 +260,6 @@ class TimeInput extends React.Component {
 									}
 								</Flex>
 							</div>
-							{
-								<input
-									type="text"
-									className={HIDDEN_INPUT_CLASS}
-									id={id}
-									name={name}
-									value={`${formatHours(this.state.hours, this.state.meridian)}:${this.state.minutes}`}
-									onChange={this.onChange}
-									/>
-								}
 						</div>
 				}
 
