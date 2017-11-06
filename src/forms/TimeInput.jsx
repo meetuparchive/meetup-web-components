@@ -10,15 +10,26 @@ export const HOURS_INPUT_CLASS = 'timeInput-hours';
 export const MINUTES_INPUT_CLASS = 'timeInput-minutes';
 export const MERIDIAN_INPUT_CLASS = 'timeInput-meridian';
 
+export const HOURS = 'hours';
+export const MINUTES = 'minutes';
+export const MERIDIAN = 'meridian';
+
 const formatDigits = (number) => `0${number}`.slice(-2);
-const getTimeParts = (time, part) => {
+
+/**
+ * @description takes a time value and returns individual parts
+ * @param {String} time - time value in the format 'hh:mm'
+ * @param {String} part - a string corersponding to a part, optional
+ * @returns {String|Object} the only parsed value or all the parsed parts if no part defined
+ */
+export const getTimeParts = (time, part) => {
 	const [ hours, minutes ] = time.split(':');
 	const parts = {
 		hours,
 		minutes,
 		meridian: hours < 12 ? 'AM': 'PM',
 	};
-	return parts[part];
+	return (part) ? parts[part] : parts;
 };
 const formatHours = (hours, meridian) => {
 	const newHours = meridian ? ((hours % 12) + (12 * (meridian === 'PM'))) : hours % 24 ;
@@ -35,17 +46,29 @@ class TimeInput extends React.Component {
 
 		this.state = {
 			supportsTime: true,
-			hours: props.value && (formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12').toString(),
-			minutes: props.value && (formatDigits(getTimeParts(props.value, 'minutes')) || '00').toString(),
-			meridian: !props.is24Hr && getTimeParts(props.value, 'meridian'),
-			value: props.value
+			...this.parseValueIntoState(props.value, props.is24Hr)
 		};
 
 		this.onBlur = this.onBlur.bind(this);
 		this.onNumberChange = this.onNumberChange.bind(this);
 		this.onMeridianChange = this.onMeridianChange.bind(this);
-		this.onChange = this.onChange.bind(this);
 		this.onTimeInputChange = this.onTimeInputChange.bind(this);
+		this.onChange = this.onChange.bind(this);
+	}
+
+	/**
+	 * @description takes a time value and parses it out to be saved in state
+	 * @param {String} value - the new time value to be parsed for state
+	 * @param {Boolean} is24Hr - whether or not we are 24Hr time format
+	 */
+	parseValueIntoState(value, is24Hr) {
+		const timeParts = getTimeParts(value);
+		return {
+			[HOURS]: value && (formatDigits(timeParts[HOURS] % (is24Hr ? 24 : 12)) || '12').toString(),
+			[MINUTES]: value && (formatDigits(timeParts[MINUTES]) || '00').toString(),
+			[MERIDIAN]: !is24Hr && timeParts[MERIDIAN],
+			value
+		};
 	}
 
 	/**
@@ -61,8 +84,8 @@ class TimeInput extends React.Component {
 				...partialState
 			};
 
-			const v = `${formatHours(stateValues.hours, stateValues.meridian)}:${formatDigits(stateValues.minutes)}`;
-			this.props.onChange(v);
+			const value = `${formatHours(stateValues.hours, stateValues.meridian)}:${formatDigits(stateValues.minutes)}`;
+			this.props.onChange(value);
 		}
 	}
 
@@ -87,7 +110,7 @@ class TimeInput extends React.Component {
 	*/
 	onNumberChange(e) {
 		const { value, id } = e.target;
-
+		// formatHours if hours? 
 		this.setState(() => ({ [id]: value }));
 	}
 	/**
@@ -111,29 +134,37 @@ class TimeInput extends React.Component {
 	onBlur(e) {
 		const { value, min, max, id } = e.target;
 
-		if (max || min) {
-			const constrainedVal = Math.max(Math.min(value, max), min);
-			if (constrainedVal == value) {
-				this.setState(() => ({ [id]: formatDigits(value) }));
-				this.onChange();
-			} else {
-				this.setState(() => ({ [id]: formatDigits(constrainedVal) })); // try doing onChange stuff in this setstate callback
-				this.onChange({ [id]: formatDigits(constrainedVal) });
-			}
+		const constrainedVal = this.constrainValue(min, max, value);
+		this.setState(() => ({ [id]: formatDigits(constrainedVal) }));
+		if (constrainedVal == value) {
+			this.onChange();
+		} else {
+			this.onChange({ [id]: formatDigits(constrainedVal) });
 		}
 	}
 
+	/**
+	 * @description takes a value and makes sure its within min and max, text inputs
+	 * dont have these attributes so we have to constrainn here
+	 * @param {Object} minmax min and max 
+	 * @param {Number} value the value to constrain
+	 */
+	constrainValue(min=-Infinity, max=Infinity, value) {
+		return Math.max(Math.min(value, max), min);
+	}
+
+	/**
+	 * @description testing for time input support
+	 */
 	componentDidMount() {
 		this.setState(() => ({ supportsTime: !this.props.forceTextInput && this.inputEl.type === 'time' }));
 	}
 
 	componentWillReceiveProps(nextProps) {
+		// if we receive new value from a parent,
+		// like redux-form, we need to update state
 		if (this.props.value !== nextProps.value) {
-			const props = nextProps;
-			this.setState({
-				hours: props.value && (formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12').toString(),
-				minutes: props.value && (formatDigits(getTimeParts(props.value, 'minutes')) || '00').toString(),
-			});
+			this.setState({...this.parseValueIntoState(nextProps.value, nextProps.is24Hr)});
 		}
 	}
 

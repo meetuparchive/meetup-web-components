@@ -4,7 +4,11 @@ import { mount } from 'enzyme';
 import TimeInput, {
 	HOURS_INPUT_CLASS,
 	MINUTES_INPUT_CLASS,
-	MERIDIAN_INPUT_CLASS
+	MERIDIAN_INPUT_CLASS,
+	HOURS,
+	MINUTES,
+	MERIDIAN,
+	getTimeParts
 } from './TimeInput';
 
 
@@ -32,6 +36,72 @@ describe('TimeInput', function() {
 		onChange: onChangePropMock,
 		required: true
 	};
+
+	describe('TimeInput, basic functionality', () => {
+
+		describe('getTimeParts', () => {
+			it('returns an object if no parts specified', () => {
+				const result = getTimeParts('13:00');
+				const expected = {
+					[HOURS]: '13',
+					[MINUTES]: '00',
+					[MERIDIAN]: 'PM'
+				};
+				expect(result).toEqual(expected);
+			});
+			it('returns a part if part specified', () => {
+				const result = getTimeParts('13:00', HOURS);
+				expect(result).toEqual('13');
+			});
+		});
+
+		describe('parseValueForState', () => {
+			it('takes a value string for 24Hr time and returns an object with hours, min, meridian, value', () => {
+				const value = '13:00',
+				is24Hr = true;
+				const result = TimeInput.prototype.parseValueIntoState(value, is24Hr);
+				const expected = {
+					[HOURS]: '13',
+					[MINUTES]: '00',
+					[MERIDIAN]: false,
+					value
+				};
+				expect(result).toEqual(expected);
+			});
+			it('takes a value string, is24hr as false, and returns an object with hours, min, meridian, value', () => {
+				const value = '13:15',
+					is24Hr = false;
+				const result = TimeInput.prototype.parseValueIntoState(value, is24Hr);
+				const expected = {
+					[HOURS]: '01',
+					[MINUTES]: '15',
+					[MERIDIAN]: 'PM',
+					value
+				};
+				expect(result).toEqual(expected);
+			});
+		});
+
+		describe('constrainValue', () => {
+			it('returns the same value if no min and max', () => {
+				const value = '10';
+				const result = TimeInput.prototype.constrainValue(undefined, undefined, value);
+				expect(result).toEqual(parseInt(value));
+			});
+			it('returns the constrained value if min', () => {
+				const value = '10';
+				const min = 20;
+				const result = TimeInput.prototype.constrainValue(min, undefined, value);
+				expect(result).toEqual(min);
+			});
+			it('returns the constrained value if max', () => {
+				const value = '10';
+				const max = 5;
+				const result = TimeInput.prototype.constrainValue(undefined, max, value);
+				expect(result).toEqual(max);
+			});
+		});
+	});
 
 	describe('TimeInput, with input[time] support', () => {
 		beforeEach(() => {
@@ -99,6 +169,18 @@ describe('TimeInput', function() {
 			expect(onChangePropMock).toHaveBeenCalledWith(newTime);
 		});
 
+		it('calls onChange prop with appropriately formatted time', function() {
+			component.setState(component.instance().parseValueIntoState('15:15'));
+			component.update();
+			onChangePropMock.mockClear();
+
+			hoursInputEl.instance().value = '1';
+			hoursInputEl.simulate('change');
+			hoursInputEl.simulate('blur');
+
+			expect(onChangePropMock).toHaveBeenCalledWith('13:15');
+		});
+
 		it('renders the meridian input for 12hr time', function() {
 			const meridianInput = component12Hr.find(`select.${MERIDIAN_INPUT_CLASS}`);
 
@@ -141,11 +223,11 @@ describe('TimeInput', function() {
 
 		it('should update time value when receiving hours or minutes prop', () => {
 			const instance = component.instance();
-			const newDigits = { value: '23:00', is24Hr: true };
-
+			const newProps = { value: '23:00', is24Hr: true };
+			const expected = TimeInput.prototype.parseValueIntoState(newProps.value, newProps.is24Hr);
 			jest.spyOn(instance, 'setState');
-			instance.componentWillReceiveProps(newDigits);
-			expect(instance.setState).toHaveBeenCalledWith({hours: '23', minutes: '00'});
+			instance.componentWillReceiveProps(newProps);
+			expect(instance.setState).toHaveBeenCalledWith(expected);
 		});
 
 	});
