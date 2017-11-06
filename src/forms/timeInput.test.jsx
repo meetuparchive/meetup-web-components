@@ -2,7 +2,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import TimeInput, {
-	HIDDEN_INPUT_CLASS,
 	HOURS_INPUT_CLASS,
 	MINUTES_INPUT_CLASS,
 	MERIDIAN_INPUT_CLASS
@@ -13,18 +12,19 @@ describe('TimeInput', function() {
 
 	let component,
 		component12Hr,
-		hiddenInputEl,
 		hoursInputEl,
 		minutesInputEl,
 		inputEl,
 		onChangeSpy,
 		onNumberChangeSpy,
-		onMeridianChangeSpy;
+		onMeridianChangeSpy,
+		onTimeInputChangeSpy;
 
 	const onChangePropMock = jest.fn(),
 		newTime = '23:00',
-		overMax = 666,
-		underMax = -666;
+		newHour = '23',
+		overMax = '666',
+		underMax = '-666';
 
 	const props = {
 		name: 'time',
@@ -36,6 +36,7 @@ describe('TimeInput', function() {
 	describe('TimeInput, with input[time] support', () => {
 		beforeEach(() => {
 			onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
+			onTimeInputChangeSpy = jest.spyOn(TimeInput.prototype, 'onTimeInputChange');
 			component = mount(<TimeInput {...props} />);
 			inputEl = component.find('input');
 		});
@@ -44,22 +45,23 @@ describe('TimeInput', function() {
 			component = null;
 			inputEl = null;
 			onChangeSpy.mockClear();
+			onTimeInputChangeSpy.mockClear();
 		});
 
 		it('renders a time html input with expected props', function() {
 			expect(component).toMatchSnapshot();
 		});
 
-		it('calls internal onChange when value is changed', function() {
+		it('calls onTimeInputChange when value is changed', function() {
 			inputEl.simulate('change', { target: { value: newTime } });
-			expect(onChangeSpy).toHaveBeenCalled();
+			expect(onTimeInputChangeSpy).toHaveBeenCalled();
 		});
 
 		it('calls onChange prop when value is changed', function() {
-			const e = { target: { value: newTime } };
-			component.instance().onChange(e);
-			expect(onChangePropMock).toHaveBeenCalledWith(e);
+			component.instance().onChange(newTime);
+			expect(onChangePropMock).toHaveBeenCalledWith(newTime);
 		});
+
 	});
 
 	describe('TimeInput, without input[time] support', () => {
@@ -71,39 +73,34 @@ describe('TimeInput', function() {
 			component12Hr = mount(<TimeInput is24Hr={false} {...props} />);
 			component.setState({supportsTime: false});
 			component12Hr.setState({supportsTime: false});
-			hiddenInputEl = component.find(`.${HIDDEN_INPUT_CLASS}`);
 			hoursInputEl = component.find(`.${HOURS_INPUT_CLASS}`);
 			minutesInputEl = component.find(`.${MINUTES_INPUT_CLASS}`);
 		});
 
 		afterEach(() => {
 			component = null;
-			hiddenInputEl = null;
 			hoursInputEl = null;
 			minutesInputEl = null;
 			onChangeSpy.mockClear();
 			onNumberChangeSpy.mockClear();
 		});
 
-		it('renders fallback html inputs', function() {
-			expect(hiddenInputEl.length).toBe(1);
-		});
-
 		it('calls internal onChange when value is changed', function() {
-			hiddenInputEl.simulate('change', { target: { value: newTime } });
+			hoursInputEl.simulate('change', { target: { value: newHour } });
+			hoursInputEl.simulate('blur');
+
 			expect(onChangeSpy).toHaveBeenCalled();
 		});
 
 		it('calls onChange prop when value is changed', function() {
-			const e = { target: { value: newTime } };
-			component.instance().onChange(e);
-			expect(onChangePropMock).toHaveBeenCalledWith(e);
+			component.instance().onChange(newHour);
+			hoursInputEl.simulate('blur');
+
+			expect(onChangePropMock).toHaveBeenCalledWith(newTime);
 		});
 
 		it('renders the meridian input for 12hr time', function() {
 			const meridianInput = component12Hr.find(`select.${MERIDIAN_INPUT_CLASS}`);
-
-			console.log(meridianInput);
 
 			meridianInput.simulate('change', { target: { value: 'PM' } });
 
@@ -112,14 +109,6 @@ describe('TimeInput', function() {
 
 		it('does not render meridian input for 24hr time', function() {
 			expect(component.find(`.${MERIDIAN_INPUT_CLASS}`).length).toBe(0);
-		});
-
-		it('reflects the correct time, in 24hr format, in the hidden input', function() {
-			const hoursVal = hoursInputEl.prop('value');
-			const minutesVal = minutesInputEl.prop('value');
-			const hiddenVal = hiddenInputEl.prop('value');
-
-			expect(`${hoursVal}:${minutesVal}`).toEqual(hiddenVal);
 		});
 
 		it('does not accept hour values outside the minimum or maximum', function() {
@@ -150,6 +139,14 @@ describe('TimeInput', function() {
 			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(minutesInputEl.prop('min'));
 		});
 
+		it('should update time value when receiving hours or minutes prop', () => {
+			const instance = component.instance();
+			const newDigits = { value: '23:00', is24Hr: true };
+
+			jest.spyOn(instance, 'setState');
+			instance.componentWillReceiveProps(newDigits);
+			expect(instance.setState).toHaveBeenCalledWith({hours: '23', minutes: '00'});
+		});
 
 	});
 

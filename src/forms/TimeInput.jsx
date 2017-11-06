@@ -9,7 +9,6 @@ import SelectInput from './SelectInput';
 export const HOURS_INPUT_CLASS = 'timeInput-hours';
 export const MINUTES_INPUT_CLASS = 'timeInput-minutes';
 export const MERIDIAN_INPUT_CLASS = 'timeInput-meridian';
-export const HIDDEN_INPUT_CLASS = 'timeInput-hidden';
 
 const formatDigits = (number) => `0${number}`.slice(-2);
 const getTimeParts = (time, part) => {
@@ -52,8 +51,6 @@ class TimeInput extends React.Component {
 	* 	handler prop, if there is one provided (eg supplied by redux-form or DateTimePicker)
 	*/
 	onChange(partialState) {
-		console.log("ON CHANGE");
-
 		if (this.props.onChange) {
 			const stateValues = {
 				...this.state,
