@@ -169,7 +169,7 @@ describe('AccordionPanel', function() {
 
 		afterEach(() => {
 			panelSwitch = null;
-			handleToggleSpy = null;
+			handleToggleSpy.mockRestore();
 		});
 
 		it('exists and renders a toggle switch', function(){
@@ -182,5 +182,28 @@ describe('AccordionPanel', function() {
 			switchNode.find('button').simulate('click');
 			expect(handleToggleSpy).toHaveBeenCalled();
 		});
+
+		it('calls custom function and does not call handleToggle when toggle switch is clicked and onToggleClick is specified', function() {
+			const onToggleClickCallback = jest.fn();
+			const onToggleClickSpy = jest.spyOn(AccordionPanel.prototype, 'onToggleClick');
+			const panelOnToggleClick = mount(
+				<AccordionPanel
+					indicatorSwitch
+					onToggleClick={onToggleClickCallback}
+					label='First Section'
+					indicatorAlign='left'
+					panelContent={
+						<div className='runningText'>
+							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+						</div>
+					} />
+			);
+			const switchNode = panelOnToggleClick.find(ToggleSwitch);
+			expect(onToggleClickSpy).not.toHaveBeenCalled();
+			switchNode.find('button').simulate('click');
+			expect(handleToggleSpy).not.toHaveBeenCalled();
+			expect(onToggleClickSpy).toHaveBeenCalled();
+		});
+
 	});
 });

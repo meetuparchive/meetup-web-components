@@ -342,11 +342,11 @@ _(The `extend` directive can cause ugly cascade problems)_
 	@include flex(1 1 auto);
 
 	.button-icon-wrapper & {
-		padding-left: $space/4;
+		padding-left: $space-half;
 	}
 
 	.button-icon-wrapper--right & {
-		padding-right: $space/4;
+		padding-right: $space-half;
 	}
 
 }
