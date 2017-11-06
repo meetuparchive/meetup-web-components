@@ -50,9 +50,10 @@ class TimeInput extends React.Component {
 
 	/**
 	* @function onChange
-	* @param e Event Object
-	* @description called when the input changes, in turn calls the onChange
-	* 	handler prop, if there is one provided (eg supplied by redux-form or DateTimePicker)
+	* @param partialState the information to update state with
+	* @description called when the hour or minute input loses focus, or when the browser-native
+	* 	time input chages. In turn calls the onChange handler prop, if there is one provided
+	* 	(eg supplied by redux-form or DateTimePicker) with the updated values
 	*/
 	onChange(partialState) {
 		if (this.props.onChange) {
@@ -127,6 +128,11 @@ class TimeInput extends React.Component {
 		this.setState(() => ({ supportsTime: !this.props.forceTextInput && this.inputEl.type === 'time' }));
 	}
 
+	/**
+	* @function componentWillReceiveProps
+	* @param nextProps props the component is receiving
+	* @description updates state to stay in sync with new props from the parent
+	*/
 	componentWillReceiveProps(nextProps) {
 		if (this.props.value !== nextProps.value) {
 			const props = nextProps;
