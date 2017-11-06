@@ -37,8 +37,8 @@ class TimeInput extends React.Component {
 
 		this.state = {
 			supportsTime: true,
-			hours: props.value && formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12',
-			minutes: props.value && formatDigits(getTimeParts(props.value, 'minutes')) || '00',
+			hours: props.value && (formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12').toString(),
+			minutes: props.value && (formatDigits(getTimeParts(props.value, 'minutes')) || '00').toString(),
 			meridian: !props.is24Hr && getTimeParts(props.value, 'meridian')
 		};
 
@@ -54,8 +54,17 @@ class TimeInput extends React.Component {
 	* @description called when the input changes, in turn calls the onChange
 	* 	handler prop, if there is one provided (eg supplied by redux-form or DateTimePicker)
 	*/
-	onChange(e) {
-		this.props.onChange && this.props.onChange(e);
+	onChange(partialState) {
+		console.log("ON CHANGE");
+		if (this.props.onChange) {
+			const stateValues = {
+				...this.state,
+				...partialState
+			};
+
+			const v = `${formatDigits(stateValues.hours) % (this.props.is24Hr ? 24 : 12)}:${formatDigits(stateValues.minutes)}`;
+			this.props.onChange(v);
+		}
 	}
 
 	/**
@@ -93,13 +102,31 @@ class TimeInput extends React.Component {
 		if (max || min) {
 			const constrainedVal = Math.max(Math.min(value, max), min);
 			if (constrainedVal !== value) {
-			this.setState(() => ({ [id]: constrainedVal }));
+				this.setState(() => ({ [id]: constrainedVal }));
+				this.onChange({ [id]: constrainedVal });
 			}
+		} else {
+			this.onChange();
 		}
 	}
 
 	componentDidMount() {
-		this.setState(() => ({ supportsTime: this.inputEl.type === 'time' }));
+		this.setState(() => ({ supportsTime: !this.props.forceTextInput && this.inputEl.type === 'time' }));
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (this.props.value !== nextProps.value) {
+			const props = nextProps;
+			this.setState({
+				hours: props.value && (formatDigits(getTimeParts(props.value, 'hours') % (props.is24Hr ? 24 : 12)) || '12').toString(),
+				minutes: props.value && (formatDigits(getTimeParts(props.value, 'minutes')) || '00').toString(),
+			});
+			// need to issue a change ??
+		}
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		return (nextState !== this.state);
 	}
 
 	render() {
@@ -223,8 +250,8 @@ class TimeInput extends React.Component {
 								</Flex>
 							</div>
 							<input
-								type="hidden"
-								className={HIDDEN_INPUT_CLASS}
+								type="text"
+								className='display--none'
 								id={id}
 								name={name}
 								value={`${formatHours(this.state.hours, this.state.meridian)}:${this.state.minutes}`}
