@@ -117,7 +117,10 @@ class TimeInput extends React.Component {
 	*/
 	onMeridianChange(e) {
 		const { value } = e.target;
-		this.setState(() => ({ meridian: value }));
+		const meridianState = { meridian: value };
+
+		this.setState(() => (meridianState));
+		this.onChange(meridianState);
 	}
 
 	/**
@@ -242,7 +245,7 @@ class TimeInput extends React.Component {
 									<FlexItem shrink>
 										<input type="text"
 											pattern="\d*"
-											id="`${id}-hours`"
+											id={`${id}-hours`}
 											name="hours"
 											min={is24Hr ? 0 : 1}
 											max={is24Hr ? 23 : 12}
@@ -259,7 +262,7 @@ class TimeInput extends React.Component {
 									<FlexItem shrink>
 										<input type="text"
 											pattern="\d*"
-											id="`${id}-minutes`"
+											id={`${id}-minutes`}
 											name="minutes"
 											min={0}
 											max={59}
@@ -273,7 +276,7 @@ class TimeInput extends React.Component {
 									{ !is24Hr &&
 										<FlexItem shrink>
 											<SelectInput
-												id="`${id}-meridian`"
+												id={`${id}-meridian`}
 												name="meridian"
 												className={meridianClassNames}
 												disabled={disabled}
