@@ -5,9 +5,6 @@ import TimeInput, {
 	HOURS_INPUT_CLASS,
 	MINUTES_INPUT_CLASS,
 	MERIDIAN_INPUT_CLASS,
-	HOURS,
-	MINUTES,
-	MERIDIAN,
 	getTimeParts
 } from './TimeInput';
 
@@ -40,18 +37,14 @@ describe('TimeInput', function() {
 	describe('TimeInput, basic functionality', () => {
 
 		describe('getTimeParts', () => {
-			it('returns an object if no parts specified', () => {
+			it('returns an object of hours, min, meridian from a time string', () => {
 				const result = getTimeParts('13:00');
 				const expected = {
-					[HOURS]: '13',
-					[MINUTES]: '00',
-					[MERIDIAN]: 'PM'
+					hours: '13',
+					minutes: '00',
+					meridian: 'PM'
 				};
 				expect(result).toEqual(expected);
-			});
-			it('returns a part if part specified', () => {
-				const result = getTimeParts('13:00', HOURS);
-				expect(result).toEqual('13');
 			});
 		});
 
@@ -61,9 +54,9 @@ describe('TimeInput', function() {
 				is24Hr = true;
 				const result = TimeInput.prototype.parseValueIntoState(value, is24Hr);
 				const expected = {
-					[HOURS]: '13',
-					[MINUTES]: '00',
-					[MERIDIAN]: false,
+					hours: '13',
+					minutes: '00',
+					meridian: false,
 					value
 				};
 				expect(result).toEqual(expected);
@@ -73,9 +66,9 @@ describe('TimeInput', function() {
 					is24Hr = false;
 				const result = TimeInput.prototype.parseValueIntoState(value, is24Hr);
 				const expected = {
-					[HOURS]: '01',
-					[MINUTES]: '15',
-					[MERIDIAN]: 'PM',
+					hours: '01',
+					minutes: '15',
+					meridian: 'PM',
 					value
 				};
 				expect(result).toEqual(expected);
