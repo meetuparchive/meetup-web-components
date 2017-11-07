@@ -250,7 +250,7 @@ class TimeInput extends React.Component {
 									<FlexItem shrink>
 										<input type="text"
 											pattern="\d*"
-											id={HOURS}
+											id="`${id}-{HOURS}`"
 											name={HOURS}
 											min={is24Hr ? 0 : 1}
 											max={is24Hr ? 23 : 12}
@@ -267,7 +267,7 @@ class TimeInput extends React.Component {
 									<FlexItem shrink>
 										<input type="text"
 											pattern="\d*"
-											id={MINUTES}
+											id="`${id}-{MINUTES}`"
 											name={MINUTES}
 											min={0}
 											max={59}
@@ -281,7 +281,7 @@ class TimeInput extends React.Component {
 									{ !is24Hr &&
 										<FlexItem shrink>
 											<SelectInput
-												id={MERIDIAN}
+												id="`${id}-{MERIDIAN}`"
 												name={MERIDIAN}
 												className={meridianClassNames}
 												disabled={disabled}
