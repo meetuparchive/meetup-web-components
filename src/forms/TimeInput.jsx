@@ -64,8 +64,8 @@ class TimeInput extends React.Component {
 	parseValueIntoState(value, is24Hr) {
 		const timeParts = getTimeParts(value);
 		return {
-			[HOURS]: value && (formatDigits(timeParts[HOURS] % (is24Hr ? 24 : 12)) || '12').toString(),
-			[MINUTES]: value && (formatDigits(timeParts[MINUTES]) || '00').toString(),
+			[HOURS]: value && (formatDigits(timeParts[HOURS] % (is24Hr ? 24 : 12)) || '12'),
+			[MINUTES]: value && (formatDigits(timeParts[MINUTES]) || '00'),
 			[MERIDIAN]: !is24Hr && timeParts[MERIDIAN],
 			value
 		};

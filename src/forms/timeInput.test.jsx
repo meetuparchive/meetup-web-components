@@ -155,42 +155,60 @@ describe('TimeInput', function() {
 			onNumberChangeSpy.mockClear();
 		});
 
-		it('calls internal onChange when value is changed', function() {
+		it('calls internal onChange when value is changed', () => {
 			hoursInputEl.simulate('change', { target: { value: newHour } });
 			hoursInputEl.simulate('blur');
 
 			expect(onChangeSpy).toHaveBeenCalled();
 		});
 
-		it('calls onChange prop when value is changed', function() {
+		it('calls onChange prop when value is changed', () => {
 			component.instance().onChange(newHour);
 			hoursInputEl.simulate('blur');
 
 			expect(onChangePropMock).toHaveBeenCalledWith(newTime);
 		});
 
-		it('calls onChange prop with appropriately formatted time', function() {
-			component.setState(component.instance().parseValueIntoState('15:15'));
-			component.update();
+		it('calls onChange prop with appropriately formatted time', () => {
+			component.setState(component.instance().parseValueIntoState('15:15', true));
+			// component.update();
 			onChangePropMock.mockClear();
+			console.log(component.state());
+
 
 			hoursInputEl.instance().value = '1';
 			hoursInputEl.simulate('change');
 			hoursInputEl.simulate('blur');
 
+			expect(onChangePropMock).toHaveBeenCalledWith('01:15');
+		});
+
+		it('calls onChange prop with appropriately formatted time, hours from 12 into 24Hr', () => {
+			const hoursInputEl_12Hr = component12Hr.find(`.${HOURS_INPUT_CLASS}`);
+			const meridianInputEl = component12Hr.find(`select.${MERIDIAN_INPUT_CLASS}`);
+
+			component12Hr.setState(component.instance().parseValueIntoState('15:15', false));
+			onChangePropMock.mockClear();
+
+			meridianInputEl.instance().value = 'PM';
+			meridianInputEl.simulate('change');
+
+			hoursInputEl_12Hr.instance().value = '1';
+			hoursInputEl_12Hr.simulate('change');
+			hoursInputEl_12Hr.simulate('blur');
+
 			expect(onChangePropMock).toHaveBeenCalledWith('13:15');
 		});
 
 		it('renders the meridian input for 12hr time', function() {
-			const meridianInput = component12Hr.find(`select.${MERIDIAN_INPUT_CLASS}`);
-
-			meridianInput.simulate('change', { target: { value: 'PM' } });
+			const meridianInputEl = component12Hr.find(`select.${MERIDIAN_INPUT_CLASS}`);
+			meridianInputEl.simulate('change', { target: { value: 'PM' } });
 
 			expect(onMeridianChangeSpy).toHaveBeenCalled();
 		});
 
 		it('does not render meridian input for 24hr time', function() {
-			expect(component.find(`.${MERIDIAN_INPUT_CLASS}`).length).toBe(0);
+			expect(component.find(`select.${MERIDIAN_INPUT_CLASS}`).length).toBe(0);
 		});
 
 		it('does not accept hour values outside the minimum or maximum', function() {
