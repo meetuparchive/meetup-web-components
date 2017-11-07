@@ -168,10 +168,6 @@ class TimeInput extends React.Component {
 		}
 	}
 
-	shouldComponentUpdate(nextProps, nextState) {
-		return (nextState !== this.state);
-	}
-
 	render() {
 		const {
 			id,
