@@ -9,13 +9,22 @@ storiesOf('TimeInput', module)
 		'renders a time input, provided values are in 24hr time (ex 13:00)',
 		() => (
 			<InfoWrapper>
-				<TimeInput name='time' required defaultValue='14:30' label='Dentist appt time' />
+				<TimeInput name='time' value='14:30' label='Dentist appt time' forceTextInput />
+			</InfoWrapper>
+		)
+	)
+	.addWithInfo(
+		'12hr time',
+		'this example only makes sense in a browser that does not support input[type=time]. renders a time input, provided values are in 24hr time (ex 13:00), but are displayed in the input as 12 hour time',
+		() => (
+			<InfoWrapper>
+				<TimeInput is24Hr={false} name='time' value='14:30' label='Dentist appt time' forceTextInput />
 			</InfoWrapper>
 		)
 	)
 	.add('initial value', () => {
 		return (<div className='span--25'>
-			<TimeInput name='time' defaultValue='13:00' label='End time' />
+			<TimeInput name='time' value='13:00' label='End time' />
 		</div>);
 	})
 	.add('required', () => {
@@ -25,7 +34,7 @@ storiesOf('TimeInput', module)
 	})
 	.add('with error', () => {
 		return (<div className='span--25'>
-			<TimeInput name='time' defaultValue='13:00' label='End time' error='Sorry, out of time!' />
+			<TimeInput name='time' value='13:00' label='End time' error='Sorry, out of time!' />
 		</div>);
 	});
 
