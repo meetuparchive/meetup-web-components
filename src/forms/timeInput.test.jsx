@@ -171,10 +171,7 @@ describe('TimeInput', function() {
 
 		it('calls onChange prop with appropriately formatted time', () => {
 			component.setState(component.instance().parseValueIntoState('15:15', true));
-			// component.update();
 			onChangePropMock.mockClear();
-			console.log(component.state());
-
 
 			hoursInputEl.instance().value = '1';
 			hoursInputEl.simulate('change');
