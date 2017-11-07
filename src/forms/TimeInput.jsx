@@ -27,7 +27,7 @@ export const getTimeParts = (time) => {
 	};
 };
 const formatHours = (hours, meridian) => {
-	const newHours = meridian ? ((hours % 12) + (12 * (meridian === 'PM'))) : hours % 24 ;
+	const newHours = meridian ? (parseInt(hours) + (12 * (meridian === 'PM'))) : hours % 24 ;
 	return formatDigits(newHours);
 };
 

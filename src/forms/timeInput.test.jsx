@@ -81,6 +81,11 @@ describe('TimeInput', function() {
 				const result = TimeInput.prototype.constrainValue(undefined, undefined, value);
 				expect(result).toEqual(parseInt(value));
 			});
+			it('returns the same value if within min and max', () => {
+				const value = '10';
+				const result = TimeInput.prototype.constrainValue(2, 22, value);
+				expect(result).toEqual(parseInt(value));
+			});
 			it('returns the constrained value if min', () => {
 				const value = '10';
 				const min = 20;
@@ -132,10 +137,13 @@ describe('TimeInput', function() {
 			onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
 			onNumberChangeSpy = jest.spyOn(TimeInput.prototype, 'onNumberChange');
 			onMeridianChangeSpy = jest.spyOn(TimeInput.prototype, 'onMeridianChange');
+
 			component = mount(<TimeInput {...props} />);
-			component12Hr = mount(<TimeInput is24Hr={false} {...props} />);
 			component.setState({supportsTime: false});
+
+			component12Hr = mount(<TimeInput is24Hr={false} {...props} />);
 			component12Hr.setState({supportsTime: false});
+
 			hoursInputEl = component.find(`.${HOURS_INPUT_CLASS}`);
 			minutesInputEl = component.find(`.${MINUTES_INPUT_CLASS}`);
 		});
