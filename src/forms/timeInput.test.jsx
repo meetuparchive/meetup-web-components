@@ -130,9 +130,6 @@ describe('TimeInput', function() {
 		});
 
 		it('renders a time html input with expected props', function() {
-			const component = shallow(<TimeInput {...props} />, {
-				disableLifecycleMethods: true,
-			});
 			component.setState({ supportsTime: true });
 			expect(component).toMatchSnapshot();
 		});
