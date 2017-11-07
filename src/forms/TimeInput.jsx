@@ -110,8 +110,8 @@ class TimeInput extends React.Component {
 	* 	in turn changes the state and updates the value of the inputs
 	*/
 	onNumberChange(e) {
-		const { value, id } = e.target;
-		this.setState(() => ({ [id]: value }));
+		const { value, name } = e.target;
+		this.setState(() => ({ [name]: value }));
 	}
 	/**
 	* @function onMeridianChange
@@ -131,14 +131,14 @@ class TimeInput extends React.Component {
 	* 	and ensures the value entered is not out of the min/max range
 	*/
 	onBlur(e) {
-		const { value, min, max, id } = e.target;
+		const { value, min, max, name } = e.target;
 
 		const constrainedVal = this.constrainValue(min, max, value);
-		this.setState(() => ({ [id]: formatDigits(constrainedVal) }));
+		this.setState(() => ({ [name]: formatDigits(constrainedVal) }));
 		if (constrainedVal == value) {
 			this.onChange();
 		} else {
-			this.onChange({ [id]: formatDigits(constrainedVal) });
+			this.onChange({ [name]: formatDigits(constrainedVal) });
 		}
 	}
 
