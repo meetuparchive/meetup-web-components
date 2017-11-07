@@ -25,9 +25,9 @@ const formatDigits = (number) => `0${number}`.slice(-2);
 export const getTimeParts = (time, part) => {
 	const [ hours, minutes ] = time.split(':');
 	const parts = {
-		hours,
-		minutes,
-		meridian: hours < 12 ? 'AM': 'PM',
+		[HOURS]: hours,
+		[MINUTES]: minutes,
+		[MERIDIAN]: hours < 12 ? 'AM': 'PM',
 	};
 	return (part) ? parts[part] : parts;
 };
@@ -85,7 +85,7 @@ class TimeInput extends React.Component {
 				...partialState
 			};
 
-			const value = `${formatHours(stateValues.hours, stateValues.meridian)}:${formatDigits(stateValues.minutes)}`;
+			const value = `${formatHours(stateValues[HOURS], stateValues[MERIDIAN])}:${formatDigits(stateValues[MINUTES])}`;
 			this.props.onChange(value);
 		}
 	}
@@ -111,7 +111,6 @@ class TimeInput extends React.Component {
 	*/
 	onNumberChange(e) {
 		const { value, id } = e.target;
-		// formatHours if hours? 
 		this.setState(() => ({ [id]: value }));
 	}
 	/**
@@ -122,8 +121,7 @@ class TimeInput extends React.Component {
 	*/
 	onMeridianChange(e) {
 		const { value } = e.target;
-
-		this.setState(() => ({ meridian: value }));
+		this.setState(() => ({ [MERIDIAN]: value }));
 	}
 
 	/**
@@ -252,8 +250,8 @@ class TimeInput extends React.Component {
 									<FlexItem shrink>
 										<input type="text"
 											pattern="\d*"
-											id="hours"
-											name="hours"
+											id={HOURS}
+											name={HOURS}
 											min={is24Hr ? 0 : 1}
 											max={is24Hr ? 23 : 12}
 											disabled={disabled}
@@ -261,7 +259,7 @@ class TimeInput extends React.Component {
 											onBlur={this.onBlur}
 											onChange={this.onNumberChange}
 											maxLength={2}
-											value={this.state.hours} /> {/* is24Hr ? this.state.hours % 24 : this.state.hours % 12 */}
+											value={this.state[HOURS]} /> {/* is24Hr ? this.state.hours % 24 : this.state.hours % 12 */}
 									</FlexItem>
 									<FlexItem shrink className="align--center">
 										{':'}
@@ -269,8 +267,8 @@ class TimeInput extends React.Component {
 									<FlexItem shrink>
 										<input type="text"
 											pattern="\d*"
-											id="minutes"
-											name="minutes"
+											id={MINUTES}
+											name={MINUTES}
 											min={0}
 											max={59}
 											disabled={disabled}
@@ -278,13 +276,13 @@ class TimeInput extends React.Component {
 											onBlur={this.onBlur}
 											onChange={this.onNumberChange}
 											maxLength={2}
-											value={this.state.minutes} />
+											value={this.state[MINUTES]} />
 									</FlexItem>
 									{ !is24Hr &&
 										<FlexItem shrink>
 											<SelectInput
-												id="meridian"
-												name="meridian"
+												id={MERIDIAN}
+												name={MERIDIAN}
 												className={meridianClassNames}
 												disabled={disabled}
 												onChange={this.onMeridianChange}
