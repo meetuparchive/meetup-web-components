@@ -188,6 +188,7 @@ class TimeInput extends React.Component {
 			disabled,
 			is24Hr,
 			onChange,	// eslint-disable-line no-unused-vars
+			suppressError, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
