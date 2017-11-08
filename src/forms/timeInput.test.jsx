@@ -18,18 +18,21 @@ describe('TimeInput', function() {
 		inputEl,
 		onChangeSpy,
 		onNumberChangeSpy,
+		onNumberMouseupSpy,
 		onMeridianChangeSpy,
 		onTimeInputChangeSpy;
 
 	const onChangePropMock = jest.fn(),
 		newTime = '23:00',
 		newHour = '23',
+		hourValue = '22',
+		minuteValue = '12',
 		overMax = '666',
 		underMax = '-666';
 
 	const props = {
 		name: 'time',
-		value: '22:12',
+		value: `${hourValue}:${minuteValue}`,
 		onChange: onChangePropMock,
 		required: true
 	};
@@ -136,6 +139,7 @@ describe('TimeInput', function() {
 		beforeEach(() => {
 			onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
 			onNumberChangeSpy = jest.spyOn(TimeInput.prototype, 'onNumberChange');
+			onNumberMouseupSpy = jest.spyOn(TimeInput.prototype, 'onNumberMouseup');
 			onMeridianChangeSpy = jest.spyOn(TimeInput.prototype, 'onMeridianChange');
 
 			component = mount(<TimeInput {...props} />);
@@ -154,6 +158,7 @@ describe('TimeInput', function() {
 			minutesInputEl = null;
 			onChangeSpy.mockClear();
 			onNumberChangeSpy.mockClear();
+			onNumberMouseupSpy.mockClear();
 		});
 
 		it('calls internal onChange when value is changed', () => {
@@ -244,6 +249,24 @@ describe('TimeInput', function() {
 			jest.spyOn(instance, 'setState');
 			instance.componentWillReceiveProps(newProps);
 			expect(instance.setState).toHaveBeenCalledWith(expected);
+		});
+
+		it('should increase hours or minutes value when pressing up key', () => {
+			const newHourValue = (parseInt(hourValue, 10) + 1);
+			const newMinuteValue = (parseInt(minuteValue, 10) + 1);
+
+			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(parseInt(hourValue));
+			hoursInputEl.simulate('keyDown', {keyCode: 38});
+			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(parseInt(newHourValue));
+
+			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(parseInt(minuteValue));
+			minutesInputEl.simulate('keyDown', {keyCode: 38});
+			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(parseInt(newMinuteValue));
+		});
+
+		it('should select hours or minutes input text when clicking', () => {
+			hoursInputEl.simulate('mouseUp');
+			expect(onNumberMouseupSpy).toHaveBeenCalled();
 		});
 
 	});
