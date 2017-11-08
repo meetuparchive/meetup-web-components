@@ -29,9 +29,7 @@ export const getTimeParts = (time) => {
 	};
 };
 const formatHours = (hours, meridian) => {
-	// const shouldPadValue = parseInt(hours, 10) < 12 && meridian === 'PM';
-	// const newHours = meridian ? (parseInt(hours) + (12 * shouldPadValue)) : hours % 24 ;
-	const newHours = meridian ? (parseInt(hours) % 12) + (12 * (meridian === 'PM')) : hours % 24 ;
+	const newHours = meridian ? (parseInt(hours % 12) + (12 * (meridian === 'PM'))) : hours % 24 ;
 	return formatDigits(newHours);
 };
 
@@ -64,8 +62,9 @@ class TimeInput extends React.Component {
 	 */
 	parseValueIntoState(value, is24Hr) {
 		const timeParts = getTimeParts(value);
+
 		return {
-			hours: value && (formatDigits(timeParts.hours % (is24Hr ? 24 : 12)) || '12'),
+			hours: value && (formatDigits(timeParts.hours % (is24Hr ? 24 : 12) || (is24Hr ? '00' : '12'))), // TODO test midnight at is24
 			minutes: value && (formatDigits(timeParts.minutes) || '00'),
 			meridian: !is24Hr && timeParts.meridian,
 			value
@@ -87,7 +86,7 @@ class TimeInput extends React.Component {
 			...this.state,
 			...partialState
 		};
-
+		// value in state needs to be updated
 		const value = `${formatHours(stateValues.hours, stateValues.meridian)}:${formatDigits(stateValues.minutes)}`;
 		this.props.onChange(value);
 		// testVal = value;
@@ -228,6 +227,7 @@ class TimeInput extends React.Component {
 	componentWillReceiveProps(nextProps) {
 		// if we receive new value from a parent,
 		// like redux-form, we need to update state
+		// check if state is already up to date with nextProps.value
 		if (this.props.value !== nextProps.value) {
 			this.setState({...this.parseValueIntoState(nextProps.value, nextProps.is24Hr)});
 		}
