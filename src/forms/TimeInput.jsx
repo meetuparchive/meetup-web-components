@@ -10,8 +10,6 @@ export const HOURS_INPUT_CLASS = 'timeInput-hours';
 export const MINUTES_INPUT_CLASS = 'timeInput-minutes';
 export const MERIDIAN_INPUT_CLASS = 'timeInput-meridian';
 
-// let testVal;
-
 const formatDigits = (number) => `0${number}`.slice(-2);
 
 /**
@@ -46,13 +44,14 @@ class TimeInput extends React.Component {
 			...this.parseValueIntoState(props.value, props.is24Hr)
 		};
 
+		this.highlightInputText = this.highlightInputText.bind(this);
 		this.onBlur = this.onBlur.bind(this);
 		this.onNumberChange = this.onNumberChange.bind(this);
 		this.onNumberKeyDown = this.onNumberKeyDown.bind(this);
 		this.onMeridianChange = this.onMeridianChange.bind(this);
 		this.onTimeInputChange = this.onTimeInputChange.bind(this);
 		this.onChange = this.onChange.bind(this);
-		this._updateValueByStep = this._updateValueByStep.bind(this);
+		this.updateValueByStep = this.updateValueByStep.bind(this);
 	}
 
 	/**
@@ -89,7 +88,6 @@ class TimeInput extends React.Component {
 		// value in state needs to be updated
 		const value = `${formatHours(stateValues.hours, stateValues.meridian)}:${formatDigits(stateValues.minutes)}`;
 		this.props.onChange(value);
-		// testVal = value;
 	}
 
 	/**
@@ -103,7 +101,6 @@ class TimeInput extends React.Component {
 		this.setState(() => ({ value }));
 
 		this.props.onChange && this.props.onChange(value);
-		// testVal = value;
 	}
 
 	/**
@@ -118,13 +115,12 @@ class TimeInput extends React.Component {
 	}
 
 	/**
-	* @function onNumberFocus
+	* @function highlightInputText
 	* @param e Event Object
 	* @description selects text when the hour or minute input gets focus
 	*/
-	onNumberFocus(e) {
-		const { target } = e;
-		target.select();
+	highlightInputText(e) {
+		e.target.select();
 	}
 
 	/**
@@ -169,36 +165,22 @@ class TimeInput extends React.Component {
 		return Math.max(Math.min(value, max), min);
 	}
 
-	_updateValueByStep(target, isIncreasing, bigStep) {
+	/**
+	 * @description increases or decreases a value
+	 * @param {Object} target target from event object
+	 * @param {Boolean} isIncreasing if the value is increasing
+	 * @param {Boolean} bigStep if the number should increase or decrease in a higher interval
+	 */
+	updateValueByStep(target, isIncreasing, bigStep) {
 		const { min, max, value } = target;
-		const currentVal = new Number(value);
+		const currentVal = parseInt(value, 10);
 		const step = bigStep ? 10 : 1;
-		let newValue = isIncreasing ? currentVal + step : currentVal - step;
+		const newValue = isIncreasing ? currentVal + step : currentVal - step;
 
-		if (newValue > max){
-			newValue = max;
+		if (newValue <= max && newValue >= min) {
+			return formatDigits(newValue);
 		}
-		else if (newValue < min){
-			newValue = min;
-		}
-
-		return formatDigits(newValue);
-		// console.log(target);
-		// console.log(`min: ${min}`);
-		// console.log(`max: ${max}`);
-		// console.log(`value: ${value}`);
-		// return 5;
 	}
-
-	// incrementAction(e) {
-	// 	const { name } = e.target;
-	// 	this.setState(() => ({ [name]: this._updateValueByStep(true) }));
-	// }
-
-	// decrementAction(e) {
-	// 	const { name } = e.target;
-	// 	this.setState(() => ({ [name]: this._updateValueByStep(false) }));
-	// }
 
 	onNumberKeyDown(e) {
 		const { name } = e.target;
@@ -206,7 +188,7 @@ class TimeInput extends React.Component {
 			e.preventDefault();
 			e.persist();
 			this.setState(() =>
-				({[name]: this._updateValueByStep(e.target, e.keyCode == 38, e.shiftKey) }),
+				({[name]: this.updateValueByStep(e.target, e.keyCode == 38, e.shiftKey) }),
 				() => { e.target.select(); }
 			);
 		}
@@ -313,7 +295,7 @@ class TimeInput extends React.Component {
 											max={is24Hr ? 23 : 12}
 											disabled={disabled}
 											className={`field--reset align--center ${HOURS_INPUT_CLASS}`}
-											onMouseUp={this.onNumberFocus}
+											onMouseUp={this.highlightInputText}
 											onKeyDown={this.onNumberKeyDown}
 											onBlur={this.onBlur}
 											onChange={this.onNumberChange}
@@ -333,7 +315,7 @@ class TimeInput extends React.Component {
 											max={59}
 											disabled={disabled}
 											className={`field--reset align--center ${MINUTES_INPUT_CLASS}`}
-											onMouseUp={this.onNumberFocus}
+											onMouseUp={this.highlightInputText}
 											onBlur={this.onBlur}
 											onChange={this.onNumberChange}
 											onKeyDown={this.onNumberKeyDown}
@@ -342,7 +324,7 @@ class TimeInput extends React.Component {
 											value={this.state.minutes} />
 									</FlexItem>
 									{ !is24Hr &&
-										<FlexItem shrink className="timeInput-meridianContainer">
+										<FlexItem shrink className="timeInput-meridianContainer display--flex flex--column flex--center">
 											<SelectInput
 												id={`${id}-meridian`}
 												name="meridian"
@@ -363,7 +345,6 @@ class TimeInput extends React.Component {
 				}
 
 				{ error && <p id={errorId} className='text--error text--small'>{error}</p> }
-				{ /* <p className="padding--top text--big">{testVal}</p> */ }
 			</div>
 		);
 
