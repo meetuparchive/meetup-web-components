@@ -69,7 +69,7 @@ class TimeInput extends React.Component {
 
 	/**
 	* @function onChange
-	* @param partialState the information to update state with
+	* @param {Object} partialState the information to update state with
 	* @description called when the hour or minute input loses focus, or when the browser-native
 	* 	time input chages. In turn calls the onChange handler prop, if there is one provided
 	* 	(eg supplied by redux-form or DateTimePicker) with the updated values
@@ -85,6 +85,7 @@ class TimeInput extends React.Component {
 		// value in state needs to be updated
 		const value = `${formatHours(stateValues.hours, stateValues.meridian)}:${formatDigits(stateValues.minutes)}`;
 		this.props.onChange(value);
+		this.props.onChangeCallback && this.props.onChangeCallback();
 	}
 
 	/**
@@ -98,6 +99,7 @@ class TimeInput extends React.Component {
 		this.setState(() => ({ value }));
 
 		this.props.onChange && this.props.onChange(value);
+		this.props.onChangeCallback && this.props.onChangeCallback();
 	}
 
 	/**
@@ -185,6 +187,8 @@ class TimeInput extends React.Component {
 			disabled,
 			is24Hr,
 			onChange,	// eslint-disable-line no-unused-vars
+			onChangeCallback, // eslint-disable-line no-unused-vars
+			suppressError, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -316,7 +320,8 @@ TimeInput.propTypes = {
 		PropTypes.element
 	]),
 	required: PropTypes.bool,
-	onChange: PropTypes.func,			// redux-form or DateTimePicker provides an onChange prop
+	onChange: PropTypes.func, // redux-form or DateTimePicker provides an onChange prop
+	onChangeCallback: PropTypes.func
 };
 
 
