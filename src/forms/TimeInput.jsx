@@ -10,6 +10,8 @@ export const HOURS_INPUT_CLASS = 'timeInput-hours';
 export const MINUTES_INPUT_CLASS = 'timeInput-minutes';
 export const MERIDIAN_INPUT_CLASS = 'timeInput-meridian';
 
+// let testVal;
+
 const formatDigits = (number) => `0${number}`.slice(-2);
 
 /**
@@ -27,7 +29,9 @@ export const getTimeParts = (time) => {
 	};
 };
 const formatHours = (hours, meridian) => {
-	const newHours = meridian ? (parseInt(hours) + (12 * (meridian === 'PM'))) : hours % 24 ;
+	// const shouldPadValue = parseInt(hours, 10) < 12 && meridian === 'PM';
+	// const newHours = meridian ? (parseInt(hours) + (12 * shouldPadValue)) : hours % 24 ;
+	const newHours = meridian ? (parseInt(hours) % 12) + (12 * (meridian === 'PM')) : hours % 24 ;
 	return formatDigits(newHours);
 };
 
@@ -46,9 +50,11 @@ class TimeInput extends React.Component {
 
 		this.onBlur = this.onBlur.bind(this);
 		this.onNumberChange = this.onNumberChange.bind(this);
+		this.onNumberKeyDown = this.onNumberKeyDown.bind(this);
 		this.onMeridianChange = this.onMeridianChange.bind(this);
 		this.onTimeInputChange = this.onTimeInputChange.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this._updateValueByStep = this._updateValueByStep.bind(this);
 	}
 
 	/**
@@ -84,6 +90,7 @@ class TimeInput extends React.Component {
 
 		const value = `${formatHours(stateValues.hours, stateValues.meridian)}:${formatDigits(stateValues.minutes)}`;
 		this.props.onChange(value);
+		// testVal = value;
 	}
 
 	/**
@@ -97,6 +104,7 @@ class TimeInput extends React.Component {
 		this.setState(() => ({ value }));
 
 		this.props.onChange && this.props.onChange(value);
+		// testVal = value;
 	}
 
 	/**
@@ -109,6 +117,17 @@ class TimeInput extends React.Component {
 		const { value, name } = e.target;
 		this.setState(() => ({ [name]: value }));
 	}
+
+	/**
+	* @function onNumberFocus
+	* @param e Event Object
+	* @description selects text when the hour or minute input gets focus
+	*/
+	onNumberFocus(e) {
+		const { target } = e;
+		target.select();
+	}
+
 	/**
 	* @function onMeridianChange
 	* @param e Event Object
@@ -144,11 +163,54 @@ class TimeInput extends React.Component {
 	/**
 	 * @description takes a value and makes sure its within min and max, text inputs
 	 * dont have these attributes so we have to constrainn here
-	 * @param {Object} minmax min and max 
+	 * @param {Object} minmax min and max
 	 * @param {Number} value the value to constrain
 	 */
 	constrainValue(min=-Infinity, max=Infinity, value) {
 		return Math.max(Math.min(value, max), min);
+	}
+
+	_updateValueByStep(target, isIncreasing, bigStep) {
+		const { min, max, value } = target;
+		const currentVal = new Number(value);
+		const step = bigStep ? 10 : 1;
+		let newValue = isIncreasing ? currentVal + step : currentVal - step;
+
+		if (newValue > max){
+			newValue = max;
+		}
+		else if (newValue < min){
+			newValue = min;
+		}
+
+		return formatDigits(newValue);
+		// console.log(target);
+		// console.log(`min: ${min}`);
+		// console.log(`max: ${max}`);
+		// console.log(`value: ${value}`);
+		// return 5;
+	}
+
+	// incrementAction(e) {
+	// 	const { name } = e.target;
+	// 	this.setState(() => ({ [name]: this._updateValueByStep(true) }));
+	// }
+
+	// decrementAction(e) {
+	// 	const { name } = e.target;
+	// 	this.setState(() => ({ [name]: this._updateValueByStep(false) }));
+	// }
+
+	onNumberKeyDown(e) {
+		const { name } = e.target;
+		if(e.keyCode == 38 || e.keyCode == 40) {
+			e.preventDefault();
+			e.persist();
+			this.setState(() =>
+				({[name]: this._updateValueByStep(e.target, e.keyCode == 38, e.shiftKey) }),
+				() => { e.target.select(); }
+			);
+		}
 	}
 
 	/**
@@ -201,7 +263,7 @@ class TimeInput extends React.Component {
 
 		const meridianClassNames = cx(
 			MERIDIAN_INPUT_CLASS,
-			'flush--all border--none field--reset padding--left',
+			'flush--all border--none field--reset',
 			{
 				disabled,
 				error
@@ -241,7 +303,7 @@ class TimeInput extends React.Component {
 					:
 						<div>
 							<div className={fauxInputClassNames}>
-								<Flex>
+								<Flex noGutters>
 									<FlexItem shrink>
 										<input type="text"
 											pattern="\d*"
@@ -251,8 +313,11 @@ class TimeInput extends React.Component {
 											max={is24Hr ? 23 : 12}
 											disabled={disabled}
 											className={`field--reset align--center ${HOURS_INPUT_CLASS}`}
+											onMouseUp={this.onNumberFocus}
+											onKeyDown={this.onNumberKeyDown}
 											onBlur={this.onBlur}
 											onChange={this.onNumberChange}
+											size={2}
 											maxLength={2}
 											value={this.state.hours} /> {/* is24Hr ? this.state.hours % 24 : this.state.hours % 12 */}
 									</FlexItem>
@@ -268,13 +333,16 @@ class TimeInput extends React.Component {
 											max={59}
 											disabled={disabled}
 											className={`field--reset align--center ${MINUTES_INPUT_CLASS}`}
+											onMouseUp={this.onNumberFocus}
 											onBlur={this.onBlur}
 											onChange={this.onNumberChange}
+											onKeyDown={this.onNumberKeyDown}
+											size={2}
 											maxLength={2}
 											value={this.state.minutes} />
 									</FlexItem>
 									{ !is24Hr &&
-										<FlexItem shrink>
+										<FlexItem shrink className="timeInput-meridianContainer">
 											<SelectInput
 												id={`${id}-meridian`}
 												name="meridian"
@@ -295,6 +363,7 @@ class TimeInput extends React.Component {
 				}
 
 				{ error && <p id={errorId} className='text--error text--small'>{error}</p> }
+				{ /* <p className="padding--top text--big">{testVal}</p> */ }
 			</div>
 		);
 

@@ -18,7 +18,8 @@ storiesOf('TimeInput', module)
 		'this example only makes sense in a browser that does not support input[type=time]. renders a time input, provided values are in 24hr time (ex 13:00), but are displayed in the input as 12 hour time',
 		() => (
 			<InfoWrapper>
-				<TimeInput is24Hr={false} name='time' value='14:30' label='Dentist appt time' forceTextInput />
+				<div className="padding--right"><TimeInput onChange={()=>{console.log('[text] onChange fired');}} is24Hr={false} name='time' value='14:30' label='Dentist appt time' forceTextInput /></div>
+				<div className="padding--left"><TimeInput onChange={()=>{console.log('[time] onChange fired');}} is24Hr={false} name='time' value='14:30' label='Dentist appt time' /></div>
 			</InfoWrapper>
 		)
 	)
