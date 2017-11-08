@@ -69,13 +69,12 @@ class TimeInput extends React.Component {
 
 	/**
 	* @function onChange
-	* @param {Object} e the information to update state with
 	* @param {Object} partialState the information to update state with
 	* @description called when the hour or minute input loses focus, or when the browser-native
 	* 	time input chages. In turn calls the onChange handler prop, if there is one provided
 	* 	(eg supplied by redux-form or DateTimePicker) with the updated values
 	*/
-	onChange(e, partialState) {
+	onChange(partialState) {
 		if (!this.props.onChange) {
 			return;
 		}
@@ -86,7 +85,7 @@ class TimeInput extends React.Component {
 		// value in state needs to be updated
 		const value = `${formatHours(stateValues.hours, stateValues.meridian)}:${formatDigits(stateValues.minutes)}`;
 		this.props.onChange(value);
-		this.props.onChangeCallback && this.props.onChangeCallback(e);
+		this.props.onChangeCallback && this.props.onChangeCallback();
 	}
 
 	/**
@@ -100,7 +99,7 @@ class TimeInput extends React.Component {
 		this.setState(() => ({ value }));
 
 		this.props.onChange && this.props.onChange(value);
-		this.props.onChangeCallback && this.props.onChangeCallback(e);
+		this.props.onChangeCallback && this.props.onChangeCallback();
 	}
 
 	/**
@@ -124,7 +123,7 @@ class TimeInput extends React.Component {
 		const meridianState = { meridian: value };
 
 		this.setState(() => (meridianState));
-		this.onChange(e, meridianState);
+		this.onChange(meridianState);
 	}
 
 	/**
@@ -139,9 +138,9 @@ class TimeInput extends React.Component {
 		const constrainedVal = this.constrainValue(min, max, value);
 		this.setState(() => ({ [name]: formatDigits(constrainedVal) }));
 		if (constrainedVal == value) {
-			this.onChange(e);
+			this.onChange();
 		} else {
-			this.onChange(e, { [name]: formatDigits(constrainedVal) });
+			this.onChange({ [name]: formatDigits(constrainedVal) });
 		}
 	}
 
