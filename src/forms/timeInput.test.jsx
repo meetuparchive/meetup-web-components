@@ -17,8 +17,8 @@ describe('TimeInput', function() {
 		minutesInputEl,
 		inputEl,
 		onChangeSpy,
+		highlightInputTextSpy,
 		onNumberChangeSpy,
-		onNumberMouseupSpy,
 		onMeridianChangeSpy,
 		onTimeInputChangeSpy;
 
@@ -139,8 +139,8 @@ describe('TimeInput', function() {
 		beforeEach(() => {
 			onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
 			onNumberChangeSpy = jest.spyOn(TimeInput.prototype, 'onNumberChange');
-			onNumberMouseupSpy = jest.spyOn(TimeInput.prototype, 'onNumberMouseup');
 			onMeridianChangeSpy = jest.spyOn(TimeInput.prototype, 'onMeridianChange');
+			highlightInputTextSpy = jest.spyOn(TimeInput.prototype, 'highlightInputText');
 
 			component = mount(<TimeInput {...props} />);
 			component.setState({supportsTime: false});
@@ -158,7 +158,7 @@ describe('TimeInput', function() {
 			minutesInputEl = null;
 			onChangeSpy.mockClear();
 			onNumberChangeSpy.mockClear();
-			onNumberMouseupSpy.mockClear();
+			highlightInputTextSpy.mockClear();
 		});
 
 		it('calls internal onChange when value is changed', () => {
@@ -264,9 +264,9 @@ describe('TimeInput', function() {
 			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(parseInt(newMinuteValue));
 		});
 
-		it('should select hours or minutes input text when clicking', () => {
+		it('should highlight hours or minutes input text when clicking', () => {
 			hoursInputEl.simulate('mouseUp');
-			expect(onNumberMouseupSpy).toHaveBeenCalled();
+			expect(highlightInputTextSpy).toHaveBeenCalled();
 		});
 
 	});
