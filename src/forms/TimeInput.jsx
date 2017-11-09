@@ -44,11 +44,14 @@ class TimeInput extends React.Component {
 			...this.parseValueIntoState(props.value, props.is24Hr)
 		};
 
+		this.highlightInputText = this.highlightInputText.bind(this);
 		this.onBlur = this.onBlur.bind(this);
 		this.onNumberChange = this.onNumberChange.bind(this);
+		this.onNumberKeyDown = this.onNumberKeyDown.bind(this);
 		this.onMeridianChange = this.onMeridianChange.bind(this);
 		this.onTimeInputChange = this.onTimeInputChange.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.updateValueByStep = this.updateValueByStep.bind(this);
 	}
 
 	/**
@@ -112,6 +115,16 @@ class TimeInput extends React.Component {
 		const { value, name } = e.target;
 		this.setState(() => ({ [name]: value }));
 	}
+
+	/**
+	* @function highlightInputText
+	* @param e Event Object
+	* @description selects text when the hour or minute input gets focus
+	*/
+	highlightInputText(e) {
+		e.target.select();
+	}
+
 	/**
 	* @function onMeridianChange
 	* @param e Event Object
@@ -147,11 +160,40 @@ class TimeInput extends React.Component {
 	/**
 	 * @description takes a value and makes sure its within min and max, text inputs
 	 * dont have these attributes so we have to constrainn here
-	 * @param {Object} minmax min and max 
+	 * @param {Object} minmax min and max
 	 * @param {Number} value the value to constrain
 	 */
 	constrainValue(min=-Infinity, max=Infinity, value) {
 		return Math.max(Math.min(value, max), min);
+	}
+
+	/**
+	 * @description increases or decreases a value
+	 * @param {Object} target target from event object
+	 * @param {Boolean} isIncreasing if the value is increasing
+	 * @param {Boolean} bigStep if the number should increase or decrease in a higher interval
+	 */
+	updateValueByStep(target, isIncreasing, bigStep) {
+		const { min, max, value } = target;
+		const currentVal = parseInt(value, 10);
+		const step = bigStep ? 10 : 1;
+		const newValue = isIncreasing ? currentVal + step : currentVal - step;
+
+		if (newValue <= max && newValue >= min) {
+			return formatDigits(newValue);
+		}
+	}
+
+	onNumberKeyDown(e) {
+		const { name } = e.target;
+		if(e.keyCode == 38 || e.keyCode == 40) {
+			e.preventDefault();
+			e.persist();
+			this.setState(() =>
+				({[name]: this.updateValueByStep(e.target, e.keyCode == 38, e.shiftKey) }),
+				() => { e.target.select(); }
+			);
+		}
 	}
 
 	/**
@@ -207,7 +249,7 @@ class TimeInput extends React.Component {
 
 		const meridianClassNames = cx(
 			MERIDIAN_INPUT_CLASS,
-			'flush--all border--none field--reset padding--left',
+			'flush--all border--none field--reset',
 			{
 				disabled,
 				error
@@ -247,7 +289,7 @@ class TimeInput extends React.Component {
 					:
 						<div>
 							<div className={fauxInputClassNames}>
-								<Flex>
+								<Flex noGutters>
 									<FlexItem shrink>
 										<input type="text"
 											pattern="\d*"
@@ -257,8 +299,11 @@ class TimeInput extends React.Component {
 											max={is24Hr ? 23 : 12}
 											disabled={disabled}
 											className={`field--reset align--center ${HOURS_INPUT_CLASS}`}
+											onMouseUp={this.highlightInputText}
+											onKeyDown={this.onNumberKeyDown}
 											onBlur={this.onBlur}
 											onChange={this.onNumberChange}
+											size={2}
 											maxLength={2}
 											value={this.state.hours} /> {/* is24Hr ? this.state.hours % 24 : this.state.hours % 12 */}
 									</FlexItem>
@@ -274,13 +319,16 @@ class TimeInput extends React.Component {
 											max={59}
 											disabled={disabled}
 											className={`field--reset align--center ${MINUTES_INPUT_CLASS}`}
+											onMouseUp={this.highlightInputText}
 											onBlur={this.onBlur}
 											onChange={this.onNumberChange}
+											onKeyDown={this.onNumberKeyDown}
+											size={2}
 											maxLength={2}
 											value={this.state.minutes} />
 									</FlexItem>
 									{ !is24Hr &&
-										<FlexItem shrink>
+										<FlexItem shrink className="timeInput-meridianContainer display--flex flex--column flex--center">
 											<SelectInput
 												id={`${id}-meridian`}
 												name="meridian"
