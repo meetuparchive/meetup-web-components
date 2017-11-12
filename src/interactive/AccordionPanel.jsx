@@ -42,6 +42,7 @@ class AccordionPanel extends React.Component {
 	_handleToggle(e){
 		e.preventDefault();
 
+		// console.log(!this.props.indicatorSwitch);
 		const isToggledOpen = !this.props.isOpen;
 		this.props.setClickedPanel && this.props.setClickedPanel(this.props.clickId, isToggledOpen);
 		this.props.onClickCallback && this.props.onClickCallback(e, isToggledOpen);
@@ -155,7 +156,7 @@ class AccordionPanel extends React.Component {
 
 				<FlexItem
 					className='accordionPanel-icon'
-					onClick={!indicatorSwitch && this._handleToggle}
+					onClick={this._handleToggle}
 					shrink
 				>
 					{
