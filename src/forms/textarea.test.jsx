@@ -73,6 +73,13 @@ describe('Textarea', function() {
 		expect(textareaComponent.state.value).toEqual(newValue);
 	});
 
+	it('should call autosize plugin `update` method on `componentDidUpdate`', function() {
+		const newValue = 'hello world';
+		autosizeTextareaComponent.componentDidUpdate({ value: newValue });
+
+		expect(mockAutosize.update).toHaveBeenCalled();
+	});
+
 	it('should have a name attribute', () => {
 		expect(textareaEl.name).toEqual(NAME_ATTR);
 	});
