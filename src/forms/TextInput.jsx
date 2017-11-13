@@ -124,7 +124,10 @@ TextInput.propTypes = {
 	disabled: PropTypes.bool,
 	iconShape: PropTypes.string,
 	iconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	helperText: PropTypes.string
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 export default TextInput;
