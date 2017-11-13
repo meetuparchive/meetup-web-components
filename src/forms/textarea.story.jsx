@@ -35,6 +35,16 @@ storiesOf('Textarea', module)
 				placeholder='Tell me about your life' />
 		</Section></Bounds>)
 	)
+	.add('with helper text', () =>
+		(<Bounds><Section>
+			<Textarea
+				label='Your biography'
+				helperText='Lorem Ipsum is simply dummy text'
+				id='yourBio'
+				name='bio'
+				placeholder='Tell me about your life' />
+		</Section></Bounds>)
+	)
 	.add('with character limit', () =>
 		(<Bounds><Section>
 			<Textarea

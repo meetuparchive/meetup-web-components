@@ -6,7 +6,7 @@
 // Labels
 //
 .label--field {
-	padding-bottom: $space-half;
+	padding-bottom: $space-quarter;
 	display: inline-block;
 }
 
@@ -26,6 +26,13 @@
 	@include browser-lessThanIE(10) {
 		top: $space/2;
 	}
+}
+
+//
+// Helper text
+//
+.helperTextContainer {
+	padding-bottom: $space-quarter;
 }
 
 //
