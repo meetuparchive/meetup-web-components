@@ -21,13 +21,6 @@ const config = {
 	rules: {
 		'no-tabs': 0,
 	},
-	settings: {
-		'import/resolver': {
-			webpack: {
-				config: 'webpack.resolve.js',
-			},
-		},
-	},
 };
 
 module.exports = config;
