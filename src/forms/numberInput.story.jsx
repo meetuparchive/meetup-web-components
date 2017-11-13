@@ -57,6 +57,13 @@ storiesOf('NumberInput', module)
 			</IntlProvider>
 		);
 	})
+	.add('with helper text', () => (<div>
+		<NumberInput
+			label='Are you bringing any guests?'
+			helperText='Lorem ipsum is simply dummy test'
+			id='guestCount'
+			name='guests' />
+	</div>))
 	.add('required', () =>
 		(<NumberInput
 			label='How many?'

@@ -88,6 +88,7 @@ class Textarea extends React.Component {
 			id,
 			onChange, // eslint-disable-line no-unused-vars
 			autosize,
+			helperText,
 			...other
 		} = this.props;
 
@@ -102,8 +103,15 @@ class Textarea extends React.Component {
 			),
 			label: cx(
 				'label--field',
-				{ required },
+				{
+					required,
+					'flush--bottom': helperText
+				},
 				labelClassName
+			),
+			helperText: cx(
+				'helperTextContainer text--small',
+				{ required }
 			)
 		};
 
@@ -120,7 +128,11 @@ class Textarea extends React.Component {
 							{label}
 						</label>
 					}
-
+					{helperText &&
+						<div className={classNames.helperText}>
+							{helperText}
+						</div>
+					}
 					<textarea
 						type='text'
 						name={name}
@@ -158,7 +170,8 @@ Textarea.propTypes = {
 	onChange: PropTypes.func,
 	rows: PropTypes.number,
 	value: PropTypes.string,
-	autosize: PropTypes.bool
+	autosize: PropTypes.bool,
+	helperText: PropTypes.string
 };
 
 export default Textarea;

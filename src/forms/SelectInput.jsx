@@ -42,33 +42,47 @@ class SelectInput extends React.Component {
 			required,
 			onChange, // eslint-disable-line no-unused-vars
 			value, // eslint-disable-line no-unused-vars
+			helperText,
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			'select--reset span--100 padding--selectArrow',
-			{ 'field--error': errors && errors.length > 0 || error },
-			className
-		);
-
-		const labelClassNames = cx(
-			'label--field',
-			{ required },
-			labelClassName
-		);
+		const classNames = {
+			label: cx(
+				'label--field',
+				{
+					required,
+					'flush--bottom': helperText
+				},
+				labelClassName
+			),
+			field: cx(
+				'select--reset span--100 padding--selectArrow',
+				{ 'field--error': errors && errors.length > 0 || error },
+				className
+			),
+			helperText: cx(
+				'helperTextContainer text--small',
+				{ required }
+			)
+		};
 
 		return (
 			<div>
 				<div className="inputContainer">
 					{label &&
-						<label className={labelClassNames} htmlFor={other.id}>
+						<label className={classNames.label} htmlFor={other.id}>
 							{label}
 						</label>
+					}
+					{helperText &&
+						<div className={classNames.helperText}>
+							{helperText}
+						</div>
 					}
 					<select
 						name={name}
 						required={required}
-						className={classNames}
+						className={classNames.field}
 						onChange={this.onChange}
 						value={this.state.value}
 						{...other}
@@ -123,6 +137,7 @@ SelectInput.propTypes = {
 			return new Error(`${propName} prop supplied to ${componentName} does not match any supplied options values`);
 		}
 	},
+	helperText: PropTypes.string
 };
 
 export default SelectInput;
