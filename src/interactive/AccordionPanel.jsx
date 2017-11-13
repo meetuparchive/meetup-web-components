@@ -39,7 +39,7 @@ class AccordionPanel extends React.Component {
 	 * @param {Event} e - the event object
 	 * @returns {undefined}
 	 */
-	_handleToggle(e){
+	_handleToggle(e, isInidcatorContainer){
 		e.preventDefault();
 
 		const isToggledOpen = !this.props.isOpen;
@@ -155,7 +155,7 @@ class AccordionPanel extends React.Component {
 
 				<FlexItem
 					className='accordionPanel-icon'
-					onClick={!indicatorSwitch && this._handleToggle}
+					onClick={this.onToggleClick}
 					shrink
 				>
 					{
