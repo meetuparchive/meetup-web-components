@@ -76,7 +76,7 @@ class AccordionPanelGroup extends React.Component {
 	}
 
 	/**
-	 * @description clones the panels with the appropriate isOpen state, panel props (clickId etc), and 
+	 * @description clones the panels with the appropriate isOpen state, panel props (clickId etc), and
 	 * the props of the updatedPanel that have come in from parent
 	 * @param {Array} updatedPanels - the accordionPanels prop received
 	 * @returns {Array} `AccordionPanel` components with the correct value for `isOpen` prop
