@@ -147,7 +147,7 @@ class TimeInput extends React.Component {
 	/**
 	 * @description takes a value and makes sure its within min and max, text inputs
 	 * dont have these attributes so we have to constrainn here
-	 * @param {Object} minmax min and max 
+	 * @param {Object} minmax min and max
 	 * @param {Number} value the value to constrain
 	 */
 	constrainValue(min=-Infinity, max=Infinity, value) {
