@@ -137,7 +137,10 @@ SelectInput.propTypes = {
 			return new Error(`${propName} prop supplied to ${componentName} does not match any supplied options values`);
 		}
 	},
-	helperText: PropTypes.string
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 export default SelectInput;

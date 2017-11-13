@@ -335,7 +335,11 @@ TimeInput.propTypes = {
 	]),
 	required: PropTypes.bool,
 	onChange: PropTypes.func, // redux-form or DateTimePicker provides an onChange prop
-	onChangeCallback: PropTypes.func
+	onChangeCallback: PropTypes.func,
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 

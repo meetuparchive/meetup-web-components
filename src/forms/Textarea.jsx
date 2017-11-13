@@ -171,7 +171,10 @@ Textarea.propTypes = {
 	rows: PropTypes.number,
 	value: PropTypes.string,
 	autosize: PropTypes.bool,
-	helperText: PropTypes.string
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 export default Textarea;

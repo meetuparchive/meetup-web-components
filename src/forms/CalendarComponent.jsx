@@ -179,7 +179,10 @@ CalendarComponent.propTypes = {
 	onChange: PropTypes.func, // provided by DateTimePicker or redux-form
 	datepickerOptions: PropTypes.object,
 	suppressError: PropTypes.bool,
-	helperText: PropTypes.string
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 CalendarComponent.defaultProps = {

@@ -236,7 +236,10 @@ NumberInput.propTypes = {
 		PropTypes.string,
 		PropTypes.number,
 	]),
-	helperText: PropTypes.string
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 export default NumberInput;
