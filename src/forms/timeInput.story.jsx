@@ -36,5 +36,9 @@ storiesOf('TimeInput', module)
 		return (<div className='span--25'>
 			<TimeInput name='time' value='13:00' label='End time' error='Sorry, out of time!' />
 		</div>);
+	})
+	.add('with helper text', () => {
+		return (<div className='span--25'>
+			<TimeInput name='time' value='13:00' label='End time' helperText='Lorem ipsum is simply dummy text' />
+		</div>);
 	});
-

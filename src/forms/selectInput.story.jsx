@@ -117,4 +117,17 @@ storiesOf('SelectInput', module)
 				'You do not have a horse to name'
 			]}
 		/>)
+	)
+	.add('with helper text', () =>
+		(<SelectInput
+			label='Select a name for your horse'
+			helperText='Lorem ipsum is simply dummy text'
+			id='horsename'
+			name='horsename'
+			options={[
+				{ label: 'Geoffrey', value: 'geoffrey' },
+				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
+				{ label: 'Mister Chompy', value: 'chompyhorse' }
+			]}
+		/>)
 	);
