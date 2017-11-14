@@ -134,7 +134,7 @@ class CalendarComponent extends React.Component {
 				className
 			),
 			helperText: cx(
-				'helperTextContainer text--small',
+				'helperTextContainer',
 				{ required }
 			),
 			field: cx(

@@ -50,7 +50,7 @@ const TextInput = (props) => {
 			labelClassName
 		),
 		helperText: cx(
-			'helperTextContainer text--small',
+			'helperTextContainer',
 			{ required, disabled }
 		)
 	};

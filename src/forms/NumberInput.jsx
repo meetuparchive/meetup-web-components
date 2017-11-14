@@ -132,7 +132,7 @@ class NumberInput extends React.Component {
 				labelClassName
 			),
 			helperText: cx(
-				'helperTextContainer text--small',
+				'helperTextContainer',
 				{ required, disabled }
 			),
 			incrementBtn: cx(
