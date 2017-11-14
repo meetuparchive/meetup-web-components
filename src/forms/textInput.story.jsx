@@ -59,6 +59,17 @@ storiesOf('TextInput', module)
 			</div>
 		);
 	})
+	.add('with helper text', () => (
+		<div className='span--50'>
+			<TextInput
+				label='Your name'
+				id='fullname'
+				name='name'
+				placeholder='Not your email'
+				helperText='Names cannot contain special characters' />
+		</div>
+	)
+	)
 	.add('required', () => {
 		return (
 			<form className='span--50'>
@@ -128,17 +139,6 @@ storiesOf('TextInput', module)
 				</InfoWrapper>
 			);
 		}
-	)
-	.add('with helper text', () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				placeholder='Not your email'
-				helperText='Names cannot contain special characters' />
-		</div>
-	)
 	)
 	.add('has a pattern for min length', () => {
 		const rules = {
