@@ -213,7 +213,7 @@ class TimeInput extends React.Component {
 				}
 			),
 			helperText: cx(
-				'helperTextContainer text--small',
+				'helperTextContainer',
 				{ required, disabled }
 			),
 			meridian: cx(

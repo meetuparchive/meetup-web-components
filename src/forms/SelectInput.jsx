@@ -61,7 +61,7 @@ class SelectInput extends React.Component {
 				className
 			),
 			helperText: cx(
-				'helperTextContainer text--small',
+				'helperTextContainer',
 				{ required }
 			)
 		};
