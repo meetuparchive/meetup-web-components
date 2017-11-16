@@ -121,27 +121,48 @@ class CalendarComponent extends React.Component {
 			value,
 			datepickerOptions, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
+			helperText,
 			...other
 		} = this.props;
 
-		const classNames = cx('input--dateTimePicker select--reset', className);
+		const classNames = {
+			label: cx(
+				{
+					required,
+					'flush--bottom': helperText
+				},
+				className
+			),
+			helperText: cx(
+				'helperTextContainer',
+				{ required }
+			),
+			field: cx(
+				'input--dateTimePicker select--reset',
+				className
+			)
+		};
 
-		const labelClassNames = cx({ required }, className);
 
 		return (
 			<div>
 				<span>
 					{label && (
-						<label htmlFor={id} className={labelClassNames}>
+						<label htmlFor={id} className={classNames.label}>
 							{label}
 						</label>
 					)}
+					{helperText &&
+						<div className={classNames.helperText}>
+							{helperText}
+						</div>
+					}
 					<input
 						type="text"
 						id={id}
 						name={name}
 						defaultValue={value}
-						className={classNames}
+						className={classNames.field}
 						ref={input => (this.inputEl = input)}
 						{...other}
 					/>
@@ -158,6 +179,10 @@ CalendarComponent.propTypes = {
 	onChange: PropTypes.func, // provided by DateTimePicker or redux-form
 	datepickerOptions: PropTypes.object,
 	suppressError: PropTypes.bool,
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 CalendarComponent.defaultProps = {

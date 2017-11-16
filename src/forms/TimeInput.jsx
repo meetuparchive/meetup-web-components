@@ -189,35 +189,42 @@ class TimeInput extends React.Component {
 			onChange,	// eslint-disable-line no-unused-vars
 			onChangeCallback, // eslint-disable-line no-unused-vars
 			suppressError, // eslint-disable-line no-unused-vars
+			helperText,
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			'input--time select--reset',
-			className
-		);
-
-		const fauxInputClassNames = cx(
-			'fauxInput fauxInput--time',
-			{
-				disabled,
-				error
-			}
-		);
-
-		const meridianClassNames = cx(
-			MERIDIAN_INPUT_CLASS,
-			'flush--all border--none field--reset padding--left',
-			{
-				disabled,
-				error
-			}
-		);
-
-		const labelClassNames = cx(
-			'label--field',
-			{ required }
-		);
+		const classNames = {
+			field: cx(
+				'input--time select--reset',
+				className
+			),
+			fauxInput: cx(
+				'fauxInput fauxInput--time',
+				{
+					disabled,
+					error
+				}
+			),
+			label: cx(
+				'label--field',
+				{
+					required,
+					'flush--bottom': helperText
+				}
+			),
+			helperText: cx(
+				'helperTextContainer',
+				{ required, disabled }
+			),
+			meridian: cx(
+				MERIDIAN_INPUT_CLASS,
+				'flush--all border--none field--reset padding--left',
+				{
+					disabled,
+					error
+				}
+			)
+		};
 
 		const errorId = `${id}-error`;
 
@@ -228,7 +235,14 @@ class TimeInput extends React.Component {
 
 		return (
 			<div>
-				{ label && <label htmlFor={id} className={labelClassNames}>{label}</label> }
+				{label &&
+					<label htmlFor={id} className={classNames.label}>{label}</label>
+				}
+				{helperText &&
+					<div className={classNames.helperText}>
+						{helperText}
+					</div>
+				}
 				{
 					this.state.supportsTime
 					?
@@ -237,7 +251,7 @@ class TimeInput extends React.Component {
 							type='time'
 							name={name}
 							value={this.state.value}
-							className={classNames}
+							className={classNames.field}
 							required={required}
 							disabled={disabled}
 							onChange={this.onTimeInputChange}
@@ -246,7 +260,7 @@ class TimeInput extends React.Component {
 						/>
 					:
 						<div>
-							<div className={fauxInputClassNames}>
+							<div className={classNames.fauxInput}>
 								<Flex>
 									<FlexItem shrink>
 										<input type="text"
@@ -284,7 +298,7 @@ class TimeInput extends React.Component {
 											<SelectInput
 												id={`${id}-meridian`}
 												name="meridian"
-												className={meridianClassNames}
+												className={classNames.meridian}
 												disabled={disabled}
 												onChange={this.onMeridianChange}
 												value={this.state.meridian}
@@ -321,7 +335,11 @@ TimeInput.propTypes = {
 	]),
 	required: PropTypes.bool,
 	onChange: PropTypes.func, // redux-form or DateTimePicker provides an onChange prop
-	onChangeCallback: PropTypes.func
+	onChangeCallback: PropTypes.func,
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 
