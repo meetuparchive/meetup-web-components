@@ -39,7 +39,7 @@ class AccordionPanel extends React.Component {
 	 * @param {Event} e - the event object
 	 * @returns {undefined}
 	 */
-	_handleToggle(e, isInidcatorContainer){
+	_handleToggle(e){
 		e.preventDefault();
 
 		const isToggledOpen = !this.props.isOpen;
