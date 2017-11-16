@@ -50,7 +50,16 @@ class Textarea extends React.Component {
 	 */
 	componentWillReceiveProps(nextProps) {
 		this.overrideValue(nextProps);
-		autosize.update(this.textarea);
+	}
+
+	/**
+	 * @param {Object} prevProps the previous props
+	 * @return {undefined} side effect only
+	 */
+	componentDidUpdate(prevProps) {
+		if (this.props.value !== prevProps.value) {
+			autosize.update(this.textarea);
+		}
 	}
 
 	/**
