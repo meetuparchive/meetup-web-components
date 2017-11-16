@@ -87,7 +87,6 @@ const TextInput = (props) => {
 					placeholder={placeholder}
 					className={classNames.field}
 					onChange={onChange}
-					maxLength={maxLength}
 					pattern={pattern}
 					disabled={disabled}
 					id={id}
