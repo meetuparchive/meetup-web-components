@@ -73,7 +73,6 @@ const TextInput = (props) => {
 					placeholder={placeholder}
 					className={classNames}
 					onChange={onChange}
-					maxLength={maxLength}
 					pattern={pattern}
 					disabled={disabled}
 					id={id}
