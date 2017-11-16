@@ -27,23 +27,33 @@ const TextInput = (props) => {
 		pattern,
 		disabled,
 		iconShape,
+		helperText,
 		...other
 	} = props;
 
-	const classNames = cx(
-		'span--100',
-		{
-			'field--error': error,
-			[FIELD_WITH_ICON_CLASS]: iconShape
-		},
-		className
-	);
-
-	const labelClassNames = cx(
-		'label--field',
-		{ required, disabled },
-		labelClassName
-	);
+	const classNames = {
+		field: cx(
+			'span--100',
+			{
+				'field--error': error,
+				[FIELD_WITH_ICON_CLASS]: iconShape
+			},
+			className
+		),
+		label: cx(
+			'label--field',
+			{
+				required,
+				disabled,
+				'flush--bottom': helperText
+			},
+			labelClassName
+		),
+		helperText: cx(
+			'helperTextContainer',
+			{ required, disabled }
+		)
+	};
 
 	const iconSize = props.iconSize || 'xs';
 	const iconSuffix = (iconSize == 'xs' || iconSize == 's') ? '--small' : '';
@@ -61,17 +71,21 @@ const TextInput = (props) => {
 		<div>
 			<div className="inputContainer">
 				{label &&
-					<label className={labelClassNames} htmlFor={id}>
+					<label className={classNames.label} htmlFor={id}>
 						{label}
 					</label>
 				}
-
+				{helperText &&
+					<div className={classNames.helperText}>
+						{helperText}
+					</div>
+				}
 				<input type={isSearch ? 'search' : 'text'}
 					name={name}
 					value={value}
 					required={required}
 					placeholder={placeholder}
-					className={classNames}
+					className={classNames.field}
 					onChange={onChange}
 					pattern={pattern}
 					disabled={disabled}
@@ -108,7 +122,11 @@ TextInput.propTypes = {
 	onChange: PropTypes.func,
 	disabled: PropTypes.bool,
 	iconShape: PropTypes.string,
-	iconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl'])
+	iconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 export default TextInput;
