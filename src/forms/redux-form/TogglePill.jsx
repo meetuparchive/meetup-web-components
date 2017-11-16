@@ -5,11 +5,11 @@ import TogglePill from '../TogglePill';
  * @param {Object} props - props passed in from parent and redux-form
  * @description wraps standard TogglePill web component for use with redux-form
  * deconstructs props that redux-forms sets and sets them on TogglePill
- * 
+ *
  * NOTE: redux-form expects checkboxes value to be true/false and will set them as so
- * https://github.com/erikras/redux-form/issues/2922, therefore using the value here to 
+ * https://github.com/erikras/redux-form/issues/2922, therefore using the value here to
  * set isActive
- *  
+ *
  * @return {Component} TogglePill
  */
 const ReduxFormTogglePill = props => {
