@@ -61,6 +61,12 @@ class Dropdown extends React.PureComponent {
 		}
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (this.props.isActive !== nextProps.isActive) {
+			this.setState(() => ({ isActive: nextProps.isActive }));
+		}
+	}
+
 	componentDidMount() {
 		document.body.addEventListener('click', this.onBodyClick);
 		document.body.addEventListener('keydown', this.onBodyKeyDown);
