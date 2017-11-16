@@ -44,7 +44,8 @@
     "react-transition-group": "^2.2.1",
     "swarm-animation": "^0.0.95",
     "swarm-icons": "^1.0",
-    "swarm-sasstools": "^2.0.282"
+    "swarm-sasstools": "^2.0.296",
+    "swarm-animation": "^0.0.95"
   },
   "dependencies": {
     "autosize": "3.0.21",
@@ -107,7 +108,7 @@
     "style-loader": "0.18.2",
     "swarm-animation": "0.0.95",
     "swarm-icons": "1.3.183",
-    "swarm-sasstools": "2.0.282",
+    "swarm-sasstools": "2.0.296",
     "webpack": "2.6.1"
   }
 }
