@@ -21,17 +21,25 @@ class Dropdown extends React.PureComponent {
 		this.state = { isActive: props.isActive || false };
 	}
 
-	closeContent() {
-		this.setState(() => ({ isActive: false }));
+	closeContent(e) {
+		if (this.props.manualToggle && this.props.isActive) {
+			this.props.manualToggle(e);
+		} else {
+			this.setState(() => ({ isActive: false }));
+		}
 	}
 
-	toggleContent() {
-		this.setState(() => ({ isActive: !this.state.isActive }));
+	toggleContent(e) {
+		if (this.props.manualToggle) {
+			this.props.manualToggle(e);
+		} else {
+			this.setState(() => ({ isActive: !this.state.isActive }));
+		}
 	}
 
 	onClick(e) {
 		e.preventDefault();
-		this.toggleContent();
+		this.toggleContent(e);
 
 		if (this.props.onClick) {
 			this.props.onClick(e);
@@ -51,19 +59,13 @@ class Dropdown extends React.PureComponent {
 		].every(ref => !ref.contains(e.target));
 
 		if (isNotDropdownClick) {
-			this.closeContent();
+			this.closeContent(e);
 		}
 	}
 
 	onBodyKeyDown(e) {
 		if (e.key === 'Escape') {
 			this.closeContent();
-		}
-	}
-
-	componentWillReceiveProps(nextProps) {
-		if (this.props.isActive !== nextProps.isActive) {
-			this.setState(() => ({ isActive: nextProps.isActive }));
 		}
 	}
 
@@ -78,7 +80,7 @@ class Dropdown extends React.PureComponent {
 	}
 
 	render() {
-		const isActive = this.state.isActive;
+		const isActive = this.props.manualToggle ? this.props.isActive : this.state.isActive;
 		const {
 			className,
 			trigger,
@@ -148,6 +150,7 @@ Dropdown.propTypes = {
 	align: PropTypes.oneOf(['left', 'right']).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
+	manualToggle: PropTypes.func
 };
 
 export default Dropdown;
