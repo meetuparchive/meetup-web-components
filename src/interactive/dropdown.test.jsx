@@ -1,5 +1,6 @@
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
+import { shallow } from 'enzyme';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
@@ -27,6 +28,46 @@ const getContent = component =>
 const getIsOpen = content =>
 	content.classList.contains('display--block') &&
 	!content.classList.contains('display--none');
+
+/**
+ * @module DropdownWithToggle
+ */
+class DropdownWithToggle extends React.PureComponent {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			dropdownToggled: false
+		};
+
+		this.toggleDropdown = this.toggleDropdown.bind(this);
+	}
+
+	toggleDropdown() {
+		this.setState(() => ({ dropdownToggled: !this.state.dropdownToggled }));
+	}
+
+	render() {
+
+		return (
+			<Dropdown
+				align='right'
+				isActive={this.state.dropdownToggled}
+				manualToggle={this.toggleDropdown}
+				trigger={
+					<Button small>Open</Button>
+				}
+				content={
+					<div>
+						{dropdownContent}
+						<Button className="dropdownWithToggle-button" onClick={this.toggleDropdown}>Toggle dropdown</Button>
+					</div>
+				}
+			/>
+		);
+
+	}
+}
 
 describe('Dropdown', () => {
 	const dropdownJSX = (
@@ -104,6 +145,32 @@ describe('Dropdown', () => {
 
 			closedComponent.onBodyClick({ target: '<div />' });
 			expect(getIsOpen(content)).toBeFalsy();
+		});
+	});
+	describe('manually toggle dropdown', () => {
+		let closedComponent, content, trigger;
+
+		beforeEach(() => {
+			closedComponent = shallow(<DropdownWithToggle />);
+			content = getContent(closedComponent);
+			trigger = getTrigger(closedComponent);
+		});
+		afterEach(() => {
+			closedComponent = null;
+			content = null;
+			trigger = null;
+		});
+
+		it('should still open and close when clicking the trigger', () => {
+			trigger.simulate('click');
+			expect(getIsOpen(content)).toBeTruthy();
+
+			closedComponent.onBodyClick({ target: '<div />' });
+			expect(getIsOpen(content)).toBeFalsy();
+		});
+
+		it('should toggle when calling the function passed into manualToggle', () => {
+			// simulate click on internal button (.dropdownWithToggle-button)
 		});
 	});
 });
