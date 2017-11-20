@@ -110,6 +110,11 @@ class TimeInput extends React.Component {
 	*/
 	onNumberChange(e) {
 		const { value, name } = e.target;
+
+		if (/[^\d]/.test(value)) {
+			return;
+		}
+
 		this.setState(() => ({ [name]: value }));
 	}
 	/**
