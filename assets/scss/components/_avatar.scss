@@ -98,6 +98,21 @@ $avatarBg: $C_coolGrayLight;
 }
 
 //
+// Printable avatar image tag
+// (hidden by default)
+//
+.avatar-print {
+	speak: none;
+	display: none;
+}
+@media print {
+	.avatar-print {
+		width: 100%;
+		display: block;
+	}
+}
+
+//
 // Size variants
 //
 @include responsiveVarContext--scalingMedia() {
