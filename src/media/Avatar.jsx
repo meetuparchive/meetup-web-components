@@ -29,7 +29,7 @@ class Avatar extends React.PureComponent {
 		} = this.props;
 
 		const classNames = cx(
-			'avatar HOTDOGS',
+			'avatar',
 			{
 				'avatar--small': small,
 				'avatar--large': large,
