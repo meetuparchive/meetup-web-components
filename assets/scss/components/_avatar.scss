@@ -5,30 +5,6 @@ name: avatar
 category: UI Components
 ---
 
-```html_example
-<ul class="inlineblockList">
-	<li>
-		<a href="#" class="avatar avatar--person" style="background-image: url(http://photos3.meetupstatic.com/photos/member/9/1/8/4/thumb_141217252.jpeg);">Member Name</a>
-	</li>
-	<li>
-		<a href="#" class="avatar avatar--person avatar--small" style="background-image: url(http://photos3.meetupstatic.com/photos/member/9/1/8/4/thumb_141217252.jpeg);">Member Name</a>
-	</li>
-	<li>
-		<a href="#" class="avatar avatar--person avatar--big" style="background-image: url(http://photos4.meetupstatic.com/photos/member/d/0/2/c/member_156833292.jpeg);">Member Name</a>
-	</li>
-	<li>
-		<a href="#" class="avatar avatar--person avatar--fbFriend" style="background-image: url(http://photos4.meetupstatic.com/photos/member/5/a/2/thumb_109681442.jpeg);">Member Name</a>
-	</li>
-	<li>
-		<a href="#" class="avatar avatar--person avatar--noPhoto" style="background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDhweCIgaGVpZ2h0PSI0OHB4IiB2aWV3Qm94PSIwIDAgNDggNDgiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQ4IDQ4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIG9wYWNpdHk9IjAuMjYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjQuMTM3LDI2LjA0MmMtNi4xMjEsMC0xMS4xMDEtNC45OC0xMS4xMDEtMTEuMTAxDQoJUzE4LjAxNiwzLjg0LDI0LjEzNywzLjg0YzYuMTIxLDAsMTEuMTAxLDQuOTgsMTEuMTAxLDExLjEwMVMzMC4yNTgsMjYuMDQyLDI0LjEzNywyNi4wNDIgTTQwLjAwNiw0MC42NzcNCgljLTEuNTg5LTYuNTUyLTguNDUzLTExLjQ5My0xNS45NjUtMTEuNDkzUzkuNjY1LDM0LjEyNSw4LjA3Niw0MC42NzdjLTAuMTkzLDAuNzk3LTAuMDEyLDEuNjQzLDAuNDk3LDIuMjkxDQoJYzAuNTE0LDAuNjUzLDEuMjg0LDEuMDQ1LDIuMTEzLDEuMDQ1aDI2LjcxYzAuODMsMCwxLjYtMC4zOTMsMi4xMTMtMS4wNDVDNDAuMDE5LDQyLjMyLDQwLjIsNDEuNDc0LDQwLjAwNiw0MC42NzciLz4NCjwvc3ZnPg0K);
-    background-position-y: 2px;
-    background-size: 48px;">
-			<p>no photo</p> <!-- our person.hbs handlebars template handles this -->
-		</a>
-	</li>
-</ul>
-```
-
 ## Avatar variants
 A base class of `avatar` is __required__. The following classes are
 optional variants:
@@ -43,7 +19,7 @@ Class                     | Description
 `avatar--icon`            | For icons in avatars (might move this in a later version)
 `avatar--noPhoto`         | Resets `text-indent` for avatars without photos, allowing display of fallback content
 */
-$noPhotoIconOpacity: alpha($C_textHint);
+
 $avatarBg: $C_coolGrayLight;
 
 %backgroundImg--orgBadge {
@@ -75,10 +51,8 @@ $avatarBg: $C_coolGrayLight;
 
 %avatar,
 .avatar {
-	@extend %imgFill;
 	position: relative;
 	background-color: $avatarBg;
-	background-position: center 42%;
 	color: transparent;
 	display: inline-block;
 	font-size: 0;
@@ -93,6 +67,11 @@ $avatarBg: $C_coolGrayLight;
 
 	.inverted & {
 		background: $C_textHintInverted;
+	}
+
+	& > img {
+		width: 100%;
+		border-radius: 50%;
 	}
 
 }
@@ -132,16 +111,16 @@ $avatarBg: $C_coolGrayLight;
 }
 
 .avatar--noPhoto {
-	position: relative;
 	text-indent: initial;
-	background-color: darken($avatarBg, ($noPhotoIconOpacity*100%));
-	background-size: 40% !important;
-	&:before {
-		background-color: transparentize($C_white, $noPhotoIconOpacity);
-		content: '';
-		display: block;
-		height: 100%;
-		width: 100%;
+	background-color: darken($avatarBg, 6%);
+	display: flex;
+	justify-content: space-around;
+
+	img {
+		border-radius: 0;
+		width: 40%;
+		transform: translateX(5%);
+		opacity: 0.25;
 	}
 }
 
