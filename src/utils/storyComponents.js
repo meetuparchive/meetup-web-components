@@ -35,3 +35,19 @@ export const Inverted = (props) => (
 		{props.children}
 	</div>
 );
+
+/**
+ * `Link` component for use in stories
+ * where a router context is not necessary
+ *
+ * Also disables link from being followed on click
+ */
+export const StoryLink = (props) => (
+	<a
+		href="#"
+		style={{pointerEvents: "none"}}
+		onClick={props.onClick}
+	>
+		{props.children}
+	</a>
+);
