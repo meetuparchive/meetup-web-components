@@ -1,6 +1,6 @@
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
-import Avatar, { AVATAR_CLASS } from './Avatar';
+import Avatar from './Avatar';
 import { variantTest } from '../utils/testUtils';
 
 describe('Avatar', function() {
@@ -16,23 +16,26 @@ describe('Avatar', function() {
 		variantTest(Avatar, 'avatar', variants);
 	});
 
-	it('applies a background image when provided `src`', function() {
+	it('renders an img element when provided `src`', function() {
 		const src = 'image.jpg';
 		const avatar = TestUtils.renderIntoDocument(<Avatar src={src} />);
-		const avatarNode = TestUtils.findRenderedDOMComponentWithClass(
-			avatar,
-			AVATAR_CLASS
-		);
-		expect(avatarNode.style.backgroundImage).toContain(src);
+
+		expect(() =>
+			TestUtils.findRenderedDOMComponentWithTag(
+				avatar,
+				'IMG'
+			)
+		).not.toThrow();
 	});
 
-	it('should not apply a background image when no `src` provided', function() {
+	it('should not render an img element when no `src` provided', function() {
 		const avatar = TestUtils.renderIntoDocument(<Avatar />);
-		const avatarNode = TestUtils.findRenderedDOMComponentWithClass(
-			avatar,
-			AVATAR_CLASS
-		);
-		expect(avatarNode.style.backgroundImage).toBe('');
+		expect(() =>
+			TestUtils.findRenderedDOMComponentWithTag(
+				avatar,
+				'IMG'
+			)
+		).toThrow();
 	});
 
 	it('renders a link element if `href` passed in', () => {
