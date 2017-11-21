@@ -38,7 +38,6 @@ class Avatar extends React.PureComponent {
 			className
 		);
 
-		const photoUrl = src;
 		const allStyles = style || {};
 
 		const computedProps = {
@@ -51,7 +50,7 @@ class Avatar extends React.PureComponent {
 			...other
 		};
 
-		const image = photoUrl && <img alt={alt} src={photoUrl} />;
+		const image = src && <img alt={alt} src={src} />;
 
 		if (this.props.to || this.props.href) {
 			return <a {...allProps}>{image}{children}</a>;
