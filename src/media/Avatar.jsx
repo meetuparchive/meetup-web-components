@@ -38,15 +38,8 @@ class Avatar extends React.PureComponent {
 			className
 		);
 
-		const backgroundImage = src;
+		const photoUrl = src;
 		const allStyles = style || {};
-		if (backgroundImage) {
-			allStyles.backgroundImage = `url(${backgroundImage})`;
-		}
-
-		const aria = {
-			role: 'img',
-		};
 
 		const computedProps = {
 			className: classNames,
@@ -55,15 +48,16 @@ class Avatar extends React.PureComponent {
 
 		const allProps = {
 			...computedProps,
-			...aria,
 			...other
 		};
 
+		const image = photoUrl && <img alt={alt} src={photoUrl} />;
+
 		if (this.props.to || this.props.href) {
-			return <a {...allProps}>{alt}{children}</a>;
+			return <a {...allProps}>{image}{children}</a>;
 		}
 
-		return <span {...allProps}>{alt}{children}</span>;
+		return <span {...allProps}>{image}{children}</span>;
 	}
 }
 
