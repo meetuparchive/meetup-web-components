@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { storiesOf, action } from '@storybook/react';
-import { InfoWrapper } from '../utils/storyComponents';
+import { InfoWrapper, StoryLink } from '../utils/storyComponents';
 import Popover from './Popover';
 import Button from '../forms/Button';
 
@@ -18,15 +17,15 @@ storiesOf('Popover', module)
 				<Popover
 					trigger={<Button>Open</Button>}
 					menuItems={[
-						<Link to="somepath/" onClick={logSelection}>
+						<StoryLink to="somepath/" onClick={logSelection}>
 							First option
-						</Link>,
-						<Link to="somepath/" onClick={logSelection}>
+						</StoryLink>,
+						<StoryLink to="somepath/" onClick={logSelection}>
 							Second option
-						</Link>,
-						<Link to="somepath/" onClick={logSelection}>
+						</StoryLink>,
+						<StoryLink to="somepath/" onClick={logSelection}>
 							Third option
-						</Link>,
+						</StoryLink>,
 					]}
 				/>
 			</InfoWrapper>
@@ -56,15 +55,15 @@ storiesOf('Popover', module)
 				trigger={<Button>Open</Button>}
 				align="left"
 				menuItems={[
-					<Link to="somepath/" onClick={logSelection}>
+					<StoryLink to="somepath/" onClick={logSelection}>
 						First option
-					</Link>,
-					<Link to="somepath/" onClick={logSelection}>
+					</StoryLink>,
+					<StoryLink to="somepath/" onClick={logSelection}>
 						Second option
-					</Link>,
-					<Link to="somepath/" onClick={logSelection}>
+					</StoryLink>,
+					<StoryLink to="somepath/" onClick={logSelection}>
 						Third option
-					</Link>,
+					</StoryLink>,
 				]}
 			/>
 		);
@@ -75,15 +74,15 @@ storiesOf('Popover', module)
 				trigger={<Button>Open</Button>}
 				align="right"
 				menuItems={[
-					<Link to="somepath/" onClick={logSelection}>
+					<StoryLink to="somepath/" onClick={logSelection}>
 						First option
-					</Link>,
-					<Link to="somepath/" onClick={logSelection}>
+					</StoryLink>,
+					<StoryLink to="somepath/" onClick={logSelection}>
 						Second option
-					</Link>,
-					<Link to="somepath/" onClick={logSelection}>
+					</StoryLink>,
+					<StoryLink to="somepath/" onClick={logSelection}>
 						Third option
-					</Link>,
+					</StoryLink>,
 				]}
 			/>
 		);
