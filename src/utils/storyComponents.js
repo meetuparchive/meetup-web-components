@@ -44,7 +44,7 @@ export const Inverted = (props) => (
  */
 export const StoryLink = (props) => (
 	<a
-		href={props.to || '#'}
+		href="#"
 		style={{pointerEvents: "none"}}
 		onClick={props.onClick}
 	>

@@ -17,13 +17,13 @@ storiesOf('Popover', module)
 				<Popover
 					trigger={<Button>Open</Button>}
 					menuItems={[
-						<StoryLink to="somepath/" onClick={logSelection}>
+						<StoryLink onClick={logSelection}>
 							First option
 						</StoryLink>,
-						<StoryLink to="somepath/" onClick={logSelection}>
+						<StoryLink onClick={logSelection}>
 							Second option
 						</StoryLink>,
-						<StoryLink to="somepath/" onClick={logSelection}>
+						<StoryLink onClick={logSelection}>
 							Third option
 						</StoryLink>,
 					]}
@@ -55,13 +55,13 @@ storiesOf('Popover', module)
 				trigger={<Button>Open</Button>}
 				align="left"
 				menuItems={[
-					<StoryLink to="somepath/" onClick={logSelection}>
+					<StoryLink onClick={logSelection}>
 						First option
 					</StoryLink>,
-					<StoryLink to="somepath/" onClick={logSelection}>
+					<StoryLink onClick={logSelection}>
 						Second option
 					</StoryLink>,
-					<StoryLink to="somepath/" onClick={logSelection}>
+					<StoryLink onClick={logSelection}>
 						Third option
 					</StoryLink>,
 				]}
@@ -74,13 +74,13 @@ storiesOf('Popover', module)
 				trigger={<Button>Open</Button>}
 				align="right"
 				menuItems={[
-					<StoryLink to="somepath/" onClick={logSelection}>
+					<StoryLink onClick={logSelection}>
 						First option
 					</StoryLink>,
-					<StoryLink to="somepath/" onClick={logSelection}>
+					<StoryLink onClick={logSelection}>
 						Second option
 					</StoryLink>,
-					<StoryLink to="somepath/" onClick={logSelection}>
+					<StoryLink onClick={logSelection}>
 						Third option
 					</StoryLink>,
 				]}
