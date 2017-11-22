@@ -44,8 +44,7 @@
     "react-transition-group": "^2.2.1",
     "swarm-animation": "^0.0.95",
     "swarm-icons": "^1.0",
-    "swarm-sasstools": "^2.0.296",
-    "swarm-animation": "^0.0.95"
+    "swarm-sasstools": "^2.0.296"
   },
   "dependencies": {
     "autosize": "3.0.21",
@@ -56,10 +55,10 @@
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
     "@kadira/react-storybook-addon-info": "3.4.0",
-    "@storybook/addon-info": "3.2.13",
-    "@storybook/addon-knobs": "3.2.13",
-    "@storybook/addon-notes": "3.2.13",
-    "@storybook/addons": "3.2.13",
+    "@storybook/addon-info": "3.2.16",
+    "@storybook/addon-knobs": "3.2.16",
+    "@storybook/addon-notes": "3.2.16",
+    "@storybook/addons": "3.2.16",
     "@storybook/react": "3.2.13",
     "babel-cli": "6.24.1",
     "babel-core": "6.25.0",
