@@ -1,5 +1,6 @@
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
+import { mount } from 'enzyme';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
@@ -27,6 +28,38 @@ const getContent = component =>
 const getIsOpen = content =>
 	content.classList.contains('display--block') &&
 	!content.classList.contains('display--none');
+
+/**
+ * @module DropdownWithToggle
+ */
+class DropdownWithToggle extends React.PureComponent {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			dropdownToggled: false
+		};
+
+		this.toggleDropdown = this.toggleDropdown.bind(this);
+	}
+
+	toggleDropdown() {
+		this.setState(() => ({ dropdownToggled: !this.state.dropdownToggled }));
+	}
+
+	render() {
+
+		return (
+			<Dropdown
+				isActive={this.state.dropdownToggled}
+				manualToggle={this.toggleDropdown}
+				trigger={dropdownTrigger}
+				content={dropdownContent}
+			/>
+		);
+
+	}
+}
 
 describe('Dropdown', () => {
 	const dropdownJSX = (
@@ -104,6 +137,33 @@ describe('Dropdown', () => {
 
 			closedComponent.onBodyClick({ target: '<div />' });
 			expect(getIsOpen(content)).toBeFalsy();
+		});
+	});
+
+	describe('manually toggle dropdown', () => {
+		let closedComponent, closeContentSpy, toggleContentSpy, trigger;
+
+		beforeEach(() => {
+			closedComponent = mount(<DropdownWithToggle />);
+			closeContentSpy = jest.spyOn(Dropdown.prototype, 'closeContent');
+			toggleContentSpy = jest.spyOn(Dropdown.prototype, 'toggleContent');
+			trigger = closedComponent.find('.dropdown-trigger');
+		});
+
+		afterEach(() => {
+			closedComponent = null;
+			trigger = null;
+			closeContentSpy.mockClear();
+			toggleContentSpy.mockClear();
+		});
+
+		it('should still open and close when clicking the trigger', () => {
+			expect(closeContentSpy).not.toHaveBeenCalled();
+			trigger.simulate('click');
+
+			closedComponent.find(Dropdown).instance().onBodyClick({ target: '<div />' });
+			expect(closeContentSpy).toHaveBeenCalled();
+			expect(toggleContentSpy).not.toHaveBeenCalled();
 		});
 	});
 });
