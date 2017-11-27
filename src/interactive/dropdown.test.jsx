@@ -1,6 +1,6 @@
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
@@ -51,18 +51,10 @@ class DropdownWithToggle extends React.PureComponent {
 
 		return (
 			<Dropdown
-				align='right'
 				isActive={this.state.dropdownToggled}
 				manualToggle={this.toggleDropdown}
-				trigger={
-					<Button small>Open</Button>
-				}
-				content={
-					<div>
-						{dropdownContent}
-						<Button className="dropdownWithToggle-button" onClick={this.toggleDropdown}>Toggle dropdown</Button>
-					</div>
-				}
+				trigger={dropdownTrigger}
+				content={dropdownContent}
 			/>
 		);
 
@@ -147,30 +139,31 @@ describe('Dropdown', () => {
 			expect(getIsOpen(content)).toBeFalsy();
 		});
 	});
+
 	describe('manually toggle dropdown', () => {
-		let closedComponent, content, trigger;
+		let closedComponent, closeContentSpy, toggleContentSpy, trigger;
 
 		beforeEach(() => {
-			closedComponent = shallow(<DropdownWithToggle />);
-			content = getContent(closedComponent);
-			trigger = getTrigger(closedComponent);
+			closedComponent = mount(<DropdownWithToggle />);
+			closeContentSpy = jest.spyOn(Dropdown.prototype, 'closeContent');
+			toggleContentSpy = jest.spyOn(Dropdown.prototype, 'toggleContent');
+			trigger = closedComponent.find('.dropdown-trigger');
 		});
+
 		afterEach(() => {
 			closedComponent = null;
-			content = null;
 			trigger = null;
+			closeContentSpy.mockClear();
+			toggleContentSpy.mockClear();
 		});
 
 		it('should still open and close when clicking the trigger', () => {
+			expect(closeContentSpy).not.toHaveBeenCalled();
 			trigger.simulate('click');
-			expect(getIsOpen(content)).toBeTruthy();
 
-			closedComponent.onBodyClick({ target: '<div />' });
-			expect(getIsOpen(content)).toBeFalsy();
-		});
-
-		it('should toggle when calling the function passed into manualToggle', () => {
-			// simulate click on internal button (.dropdownWithToggle-button)
+			closedComponent.find(Dropdown).instance().onBodyClick({ target: '<div />' });
+			expect(closeContentSpy).toHaveBeenCalled();
+			expect(toggleContentSpy).not.toHaveBeenCalled();
 		});
 	});
 });
