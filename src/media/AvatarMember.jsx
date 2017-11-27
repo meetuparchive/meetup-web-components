@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Avatar from './Avatar';
+import Icon from './Icon';
 
 export const AVATAR_PERSON_CLASS = 'avatar--person';
 export const AVATAR_PERSON_ORG_CLASS = 'avatar--org';
@@ -30,16 +31,22 @@ class AvatarMember extends React.PureComponent {
 			className
 		);
 
-		const noPhotoImage = require('base64-image-loader!swarm-icons/dist/optimized/profile.svg');
+		const noPhotoIcon = (<Icon
+			shape="profile"
+			size="m"
+		/>);
 
-		return (
-			<Avatar
-				alt={member.name}
-				src={showNoPhoto ? noPhotoImage : member.photo[photoLink]}
-				className={classNames}
-				{...other}
-			/>
-		);
+		const allProps = {
+			alt: member.name,
+			src: !showNoPhoto && member.photo[photoLink],
+			className: classNames,
+		};
+
+		if (showNoPhoto) {
+			return <Avatar {...allProps} {...other}>{noPhotoIcon}</Avatar>;
+		}
+
+		return <Avatar {...allProps} {...other} />;
 	}
 }
 
