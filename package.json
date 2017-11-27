@@ -1,6 +1,6 @@
 {
   "name": "meetup-web-components",
-  "version": "0.1.0",
+  "version": "3.3.1683-beta",
   "license": "UNLICENSED",
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
@@ -44,8 +44,7 @@
     "react-transition-group": "^2.2.1",
     "swarm-animation": "^0.0.95",
     "swarm-icons": "^1.0",
-    "swarm-sasstools": "^2.0.296",
-    "swarm-animation": "^0.0.95"
+    "swarm-sasstools": "^2.0.296"
   },
   "dependencies": {
     "autosize": "3.0.21",
