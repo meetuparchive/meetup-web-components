@@ -28,6 +28,60 @@ const dropdownContent = (
 	</Section>
 );
 
+/**
+ * @module DropdownWithToggle
+ */
+class DropdownWithToggle extends React.PureComponent {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			dropdownToggled: false
+		};
+
+		this.toggleDropdown = this.toggleDropdown.bind(this);
+	}
+
+	toggleDropdown() {
+		this.setState(() => ({ dropdownToggled: !this.state.dropdownToggled }));
+	}
+
+	render() {
+
+		return (
+			<Dropdown
+				align='right'
+				isActive={this.state.dropdownToggled}
+				manualToggle={this.toggleDropdown}
+				trigger={
+					<Button small>Open</Button>
+				}
+				content={
+					<div>
+						<Section>
+							<Chunk>
+								<h2 className='text--big text--bold'>Dropdown content</h2>
+							</Chunk>
+							<Chunk className="runningText">
+								<p>
+									This dropdown handles its own toggling
+									in a function called toggleDropdown.
+								</p>
+							</Chunk>
+							<Chunk>
+								<Button onClick={this.toggleDropdown}>
+									Toggle dropdown
+								</Button>
+							</Chunk>
+						</Section>
+					</div>
+				}
+			/>
+		);
+
+	}
+}
+
 storiesOf('Dropdown', module)
 	.addDecorator(decorateWithLocale)
 	.addWithInfo(
@@ -61,6 +115,17 @@ storiesOf('Dropdown', module)
 					}
 					content={dropdownContent}
 				/>
+			</InfoWrapper>
+		)
+	).addWithInfo(
+		'with custom toggle functionality',
+		() => (
+			<InfoWrapper>
+				<Flex justify='flexEnd'>
+					<FlexItem shrink>
+						<DropdownWithToggle />
+					</FlexItem>
+				</Flex>
 			</InfoWrapper>
 		)
 	);
