@@ -48,7 +48,6 @@
   },
   "dependencies": {
     "autosize": "3.0.21",
-    "base64-image-loader": "1.2.0",
     "flatpickr": "3.0.6",
     "recompose": "0.26.0"
   },
