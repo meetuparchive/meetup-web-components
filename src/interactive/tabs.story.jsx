@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { decorateWithLocale } from '../utils/decorators';
+import { StoryLink } from '../utils/storyComponents';
 import { Tabs, TabsTab } from './Tabs';
 
 storiesOf('Tabs', module)
