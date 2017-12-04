@@ -50,6 +50,12 @@ storiesOf('Icon', module)
 		<Icon shape={ICON_NAME} color='#F13959' />
 	))
 	.addWithInfo(
+		'Circled',
+		'The boolean prop `circled` adds an enclosing circle around the icon.',
+		() => (
+		<Icon shape="external-twitter" size="l" circled />
+	))
+	.addWithInfo(
 		'Loading indicator',
 		'The `updates` icon is animated by default.',
 		() => (
