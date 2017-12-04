@@ -48,7 +48,7 @@ storiesOf('Section', module)
 			</div>
 		)
 	)
-	.add('hasSeparator', () => (
+	.addWithInfo('hasSeparator', () => (
 		<div style={{width: '100%'}}>
 			<div style={{maxWidth: '850px', margin: 'auto'}}>
 				<Section hasSeparator style={shadingStyles}>
