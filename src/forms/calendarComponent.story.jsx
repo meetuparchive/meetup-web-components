@@ -1,28 +1,26 @@
 import React from 'react';
 import CalendarComponent from './CalendarComponent';
 import { storiesOf } from '@storybook/react';
-import { InfoWrapper } from '../utils/storyComponents';
-import { decorateWithLocale } from '../utils/decorators';
+import { decorateWithLocale, decorateWithInfo } from '../utils/decorators';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 
 storiesOf('CalendarComponent', module)
 	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithInfo)
 	.addDecorator(withKnobs)
-	.addWithInfo('default', 'renders a calendar component', () => (
-		<InfoWrapper>
-			<div className="span--50">
-				<CalendarComponent
-					name="event_time"
-					label="Start at"
-					value={new Date()}
-					datepickerOptions={{
-						allowInput: true,
-						maxDate: boolean('max date today', false) && new Date(),
-						minDate: boolean('min date today', false) && new Date(),
-					}}
-				/>
-			</div>
-		</InfoWrapper>
+	.add('default', () => (
+		<div className="span--50">
+			<CalendarComponent
+				name="event_time"
+				label="Start at"
+				value={new Date()}
+				datepickerOptions={{
+					allowInput: true,
+					maxDate: boolean('max date today', false) && new Date(),
+					minDate: boolean('min date today', false) && new Date(),
+				}}
+			/>
+		</div>
 	))
 	.add('required', () => {
 		return (

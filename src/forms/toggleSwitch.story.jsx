@@ -1,8 +1,10 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 
-import { decorateWithLocale } from '../utils/decorators';
-import { InfoWrapper } from '../utils/storyComponents';
+import {
+	decorateWithLocale,
+	decorateWithInfo,
+} from '../utils/decorators';
 
 import Chunk from '../layout/Chunk';
 import Flex from '../layout/Flex';
@@ -11,13 +13,9 @@ import ToggleSwitch from './ToggleSwitch';
 
 storiesOf('ToggleSwitch', module)
 	.addDecorator(decorateWithLocale)
-	.addWithInfo(
-		'Default',
-		'This is the basic usage with the component.',
-		() => (
-			<InfoWrapper>
-				<ToggleSwitch name="testToggle" />
-			</InfoWrapper>
+	.addDecorator(decorateWithInfo)
+	.add('Default', () => (
+			<ToggleSwitch name="testToggle" />
 		)
 	)
 	.add('Checked', () => (
