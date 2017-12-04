@@ -1,7 +1,10 @@
 import React from 'react';
 import CalendarComponent from './CalendarComponent';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale, decorateWithInfo } from '../utils/decorators';
+import {
+	decorateWithLocale,
+	decorateWithInfo
+} from '../utils/decorators';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 
 storiesOf('CalendarComponent', module)
