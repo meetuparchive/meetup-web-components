@@ -4,16 +4,17 @@ import Card from './Card';
 import Section from './Section';
 import Stripe from './Stripe';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from '../utils/decorators';
+import {
+	decorateWithLocale,
+	decorateWithInfo,
+} from '../utils/decorators';
 
 const wrapperStyle = {margin: '0 auto', maxWidth: '500px'};
 
 storiesOf('Card', module)
 	.addDecorator(decorateWithLocale)
-	.addWithInfo(
-		'default',
-		'This is the basic usage with the component.',
-		() => (
+	.addDecorator(decorateWithInfo)
+	.add('default', () => (
 			<div style={wrapperStyle}>
 				<Card>
 					<h2 className="text--sectionTitle margin--bottom">This card contains content</h2>
