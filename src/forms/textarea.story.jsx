@@ -1,6 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale, decorateWithInfo } from '../utils/decorators';
+import {
+	decorateWithLocale,
+	decorateWithInfo
+} from '../utils/decorators';
 import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
 import Textarea from './Textarea';
