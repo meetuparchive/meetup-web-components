@@ -3,6 +3,22 @@
 }
 
 //
+// Input icons
+//
+.icon--field {
+	display: flex !important;
+	align-content: center;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	padding: $space;
+}
+input:focus + .icon--field {
+	@include color-svg($C_textPrimary);
+}
+
+//
 // Labels
 //
 .label--field {
