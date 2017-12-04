@@ -1,27 +1,22 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from '../utils/decorators';
-import { InfoWrapper } from '../utils/storyComponents';
+import { decorateWithLocale, decorateWithInfo } from '../utils/decorators';
 import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
 import Textarea from './Textarea';
 
 storiesOf('Textarea', module)
 	.addDecorator(decorateWithLocale)
-	.addWithInfo(
-		'default',
-		'This is the basic usage with the component.',
-		() => (
-			<InfoWrapper>
-				<Bounds><Section>
-					<Textarea
-						label='Your biography'
-						id='yourBio'
-						name='bio'
-						placeholder='Tell me about your life'
-					/>
-				</Section></Bounds>
-			</InfoWrapper>
+	.addDecorator(decorateWithInfo)
+	.add('default', () => (
+			<Bounds><Section>
+				<Textarea
+					label='Your biography'
+					id='yourBio'
+					name='bio'
+					placeholder='Tell me about your life'
+				/>
+			</Section></Bounds>
 		)
 	)
 	.add('error state', () =>
