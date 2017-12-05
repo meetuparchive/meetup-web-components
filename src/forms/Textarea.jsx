@@ -153,10 +153,11 @@ class Textarea extends React.Component {
 						style={{ ...style, ...heightConstraints }}
 						id={id}
 						value={this.state.value}
+						maxLength={parseInt(maxLength) || -1}
 						{...other}
 					/>
 
-					{ maxLength && <p className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - this.state.value.length)}</p> }
+					{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - this.state.value.length)}</p> }
 				</div>
 				{ error && <p className='text--error text--small'>{error}</p> }
 			</div>
