@@ -1,27 +1,10 @@
 import React from 'react';
 
-export const InfoWrapper = (props) => {
-	const {
-		children,
-		style={},
-		...other
-	} = props;
-	const styles = {
-		display:'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		...style,
-	};
-	return (
-		<div>
-			<div style={styles} {...other}>
-				{children}
-			</div>
-			<p style={{position:'fixed', bottom:0, left:0}} className='padding--top text--secondary text--small'>Click the "?" mark at top-right to view the info.</p>
-		</div>
-	);
-};
-
+/**
+ * Inverted
+ *
+ * Creates an inverted stripe for use in a story
+ */
 export const Inverted = (props) => (
 	<div
 		className='stripe stripe--inverted inverted'
@@ -37,6 +20,8 @@ export const Inverted = (props) => (
 );
 
 /**
+ * StoryLink
+ *
  * `Link` component for use in stories
  * where a router context is not necessary
  *

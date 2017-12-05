@@ -6,6 +6,7 @@ import { VALID_SHAPES } from 'swarm-icons/dist/js/shapeConstants';
 
 export const ICON_CLASS = 'svg';
 export const SVG_THIN_STYLE = '--small';
+export const ICON_CIRCLED_CLASS = 'svg--circled';
 
 const SMALL_ICON_VARIANT_WHITELIST = VALID_SHAPES
 	.filter(s =>
@@ -38,9 +39,14 @@ export const getIconShape = (shape, size) => {
  */
 class Icon extends React.PureComponent {
 	render() {
-		const { className, shape, size, color, style, ...other } = this.props;
+		const { className, shape, size, color, style, circled, ...other } = this.props;
 
-		const classNames = cx(ICON_CLASS, `svg--${shape}`, className);
+		const classNames = cx(
+			ICON_CLASS,
+			`svg--${shape}`,
+			{ [ICON_CIRCLED_CLASS]: circled },
+			className
+		);
 
 		const sizeVal = MEDIA_SIZES[size];
 
@@ -75,6 +81,7 @@ Icon.defaultProps = {
 Icon.propTypes = {
 	shape: PropTypes.oneOf(VALID_SHAPES).isRequired,
 	size: PropTypes.oneOf(Object.keys(MEDIA_SIZES)).isRequired,
+	circled: PropTypes.bool,
 };
 
 export default Icon;
