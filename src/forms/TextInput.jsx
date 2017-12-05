@@ -91,7 +91,7 @@ const TextInput = (props) => {
 					disabled={disabled}
 					id={id}
 					style={inputStyles}
-					maxLength={maxLength ? parseInt(maxLength) : -1}
+					maxLength={parseInt(maxLength) || -1}
 					{...other}
 				/>
 
