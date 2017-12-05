@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { InfoWrapper } from '../utils/storyComponents';
 import { decorateWithLocale } from '../utils/decorators';
 import Dropdown from './Dropdown';
 import Section from '../layout/Section';
@@ -88,44 +87,38 @@ storiesOf('Dropdown', module)
 		'Basic Dropdown component',
 		'Aligned right by default',
 		() => (
-			<InfoWrapper>
-				<Flex justify='flexEnd'>
-					<FlexItem shrink>
-						<Dropdown
-							align='right'
-							trigger={
-								<Button small>Open</Button>
-							}
-							content={dropdownContent}
-						/>
-					</FlexItem>
-				</Flex>
-			</InfoWrapper>
+			<Flex justify='flexEnd'>
+				<FlexItem shrink>
+					<Dropdown
+						align='right'
+						trigger={
+							<Button small>Open</Button>
+						}
+						content={dropdownContent}
+					/>
+				</FlexItem>
+			</Flex>
 		)
 	)
 	.addWithInfo(
 		'Left aligned dropdown',
 		'Use the `align` prop to change alignment to left',
 		() => (
-			<InfoWrapper>
-				<Dropdown
-					align='left'
-					trigger={
-						<Button small>Open</Button>
-					}
-					content={dropdownContent}
-				/>
-			</InfoWrapper>
+			<Dropdown
+				align='left'
+				trigger={
+					<Button small>Open</Button>
+				}
+				content={dropdownContent}
+			/>
 		)
 	).addWithInfo(
 		'with custom toggle functionality',
 		() => (
-			<InfoWrapper>
-				<Flex justify='flexEnd'>
-					<FlexItem shrink>
-						<DropdownWithToggle />
-					</FlexItem>
-				</Flex>
-			</InfoWrapper>
+			<Flex justify='flexEnd'>
+				<FlexItem shrink>
+					<DropdownWithToggle />
+				</FlexItem>
+			</Flex>
 		)
 	);
