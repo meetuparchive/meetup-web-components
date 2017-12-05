@@ -1,6 +1,6 @@
 import React from 'react';
-import { InfoWrapper } from '../utils/storyComponents';
 import DateTimeLocalInput from './DateTimeLocalInput';
+import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 
 const fieldProps = {
@@ -14,16 +14,15 @@ const fieldProps = {
 storiesOf('DateTimeLocalInput', module)
 	.addWithInfo(
 		'default',
-		`renders a datetime-local input. 
+		`renders a datetime-local input.
 			this component is intended to be used in lieue of Calendar + Time on mobile browsers.`,
 		() => (
-			<InfoWrapper>
-				<div className='span--25'>
-					<DateTimeLocalInput {...fieldProps} />
-				</div>
-			</InfoWrapper>
+			<div className='span--25'>
+				<DateTimeLocalInput {...fieldProps} />
+			</div>
 		)
 	)
+	.addDecorator(decorateWithInfo)
 	.add('initial value', () => {
 		return (<div className='span--25'>
 			<DateTimeLocalInput {...fieldProps} defaultValue={'2000-01-01T00:01'} />

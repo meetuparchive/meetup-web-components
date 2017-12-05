@@ -4,7 +4,10 @@ import Toaster from './Toaster';
 import Toast from './Toast';
 import Button from '../forms/Button';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from '../utils/decorators';
+import {
+	decorateWithLocale,
+	decorateWithInfo,
+} from '../utils/decorators';
 
 const toastArray = [<Toast>Your toast is ready</Toast>];
 
@@ -47,6 +50,7 @@ class ToasterContainer extends React.PureComponent {
 
 storiesOf('Toast', module)
 	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithInfo)
 	.add('default', () =>
 		(<ToasterContainer
 			addedToasts={toastArray}

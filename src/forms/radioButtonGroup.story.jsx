@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import { decorateWithInfo } from '../utils/decorators';
 
 import RadioButton from './RadioButton';
 import TogglePill from './TogglePill';
@@ -40,6 +41,7 @@ storiesOf('RadioButtonGroup', module)
 			);
 		}
 	)
+	.addDecorator(decorateWithInfo)
 	.add('with Toggle Pill Radios', () => (
 		<RadioButtonGroup
 			name="option"
