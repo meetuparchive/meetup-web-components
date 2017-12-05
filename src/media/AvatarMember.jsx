@@ -38,7 +38,6 @@ class AvatarMember extends React.PureComponent {
 
 		const allProps = {
 			alt: member.name,
-			src: !showNoPhoto && member.photo[photoLink],
 			className: classNames,
 			children: showNoPhoto && noPhotoIcon,
 		};
