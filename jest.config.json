@@ -12,9 +12,6 @@
     "js",
     "jsx"
   ],
-  "moduleNameMapper": {
-    "^(base64-image-loader[!?].+)": "<rootDir>/__mocks__/base64-image-loader.js"
-  },
   "testRegex": "src/.*\\.test\\.jsx?$",
   "transformIgnorePatterns": [
     "node_modules(?!\/meetup-web-components)"

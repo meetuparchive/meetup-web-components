@@ -11,14 +11,22 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
     >
       Super Hero
     </label>
-    <input
-      className="span--100"
-      id="superhero"
-      name="superhero"
-      required={true}
-      type="text"
-      value="Batman"
-    />
+    <div
+      style={
+        Object {
+          "position": "relative",
+        }
+      }
+    >
+      <input
+        className="span--100"
+        id="superhero"
+        name="superhero"
+        required={true}
+        type="text"
+        value="Batman"
+      />
+    </div>
   </div>
 </div>
 `;
