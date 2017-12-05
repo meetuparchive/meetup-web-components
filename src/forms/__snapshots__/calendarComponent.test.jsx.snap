@@ -12,10 +12,8 @@ exports[`CalendarComponent renders the calendarComponent with appropriate attrib
       type="text"
     />
   </span>
-  <p
-    className="text--error text--small"
-  >
-    this is an error
-  </p>
+  <ErrorList
+    errors="this is an error"
+  />
 </div>
 `;
