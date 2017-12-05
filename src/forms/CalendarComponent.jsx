@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import ErrorList from './ErrorList';
 
 /**
  * @module CalendarComponent
@@ -167,8 +168,7 @@ class CalendarComponent extends React.Component {
 						{...other}
 					/>
 				</span>
-				{!suppressError &&
-					error && <p className="text--error text--small">{error}</p>}
+				{!suppressError && <ErrorList errors={error} />}
 			</div>
 		);
 	}

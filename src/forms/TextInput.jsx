@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import { MEDIA_SIZES } from '../utils/designConstants';
+import ErrorList from './ErrorList';
 
 export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
 
@@ -91,14 +92,13 @@ const TextInput = (props) => {
 					disabled={disabled}
 					id={id}
 					style={inputStyles}
-					maxLength={parseInt(maxLength) || -1}
 					{...other}
 				/>
 
 				{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
 				{children}
 			</div>
-			{ error && <p className='text--error text--small'>{error}</p> }
+			<ErrorList errors={error} />
 		</div>
 	);
 };

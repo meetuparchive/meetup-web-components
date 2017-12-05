@@ -13,13 +13,12 @@ const ErrorList = (props) => {
 
 	return (
 		<ul
-			aria-role="alert"
 			aria-live="assertive"
 			{...other}
 		>
 			{
-				errorList.map((err) => (
-					<li className={ERROR_CLASSNAMES}>{err}</li>
+				errorList.map((err, key) => (
+					<li key={key} className={ERROR_CLASSNAMES}>{err}</li>
 				))
 			}
 		</ul>
