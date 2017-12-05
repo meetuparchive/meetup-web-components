@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { WithNotes } from '@storybook/addon-notes';
-import { InfoWrapper } from '../utils/storyComponents';
 import Stripe from './Stripe';
 
 storiesOf('Stripe', module)
@@ -9,47 +8,45 @@ storiesOf('Stripe', module)
 		'default',
 		'This is the basic usage with the component.',
 		() => (
-			<InfoWrapper>
-				<WithNotes notes='Stripes are almost never used alone. The <Bounds> and <Section> components provide padding and align content within a <Stripe>.'>
-					<div style={{width: '100%'}}>
-						<Stripe>
-							<h3 className='text--sectionTitle'>Default stripe</h3>
-							<p>Stripes go full-width and are used to separate distinct regions of a view</p>
-						</Stripe>
+			<WithNotes notes='Stripes are almost never used alone. The <Bounds> and <Section> components provide padding and align content within a <Stripe>.'>
+				<div style={{width: '100%'}}>
+					<Stripe>
+						<h3 className='text--sectionTitle'>Default stripe</h3>
+						<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+					</Stripe>
 
-						<Stripe collection>
-							<h3 className='text--sectionTitle'>Collection stripe</h3>
-							<p>Stripes go full-width and are used to separate distinct regions of a view</p>
-							<p>Collection stripes have an off-white background to help make Cards appear like they have depth, but cards aren't required.</p>
-						</Stripe>
+					<Stripe collection>
+						<h3 className='text--sectionTitle'>Collection stripe</h3>
+						<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+						<p>Collection stripes have an off-white background to help make Cards appear like they have depth, but cards aren't required.</p>
+					</Stripe>
 
-						<Stripe inverted>
-							<h3 className='text--sectionTitle'>Stripe</h3>
-							<p>Stripes go full-width and are used to separate distinct regions of a view</p>
-						</Stripe>
+					<Stripe inverted>
+						<h3 className='text--sectionTitle'>Stripe</h3>
+						<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+					</Stripe>
 
-						<Stripe
-							inverted
-							backgroundImage='https://placekitten.com/g/600/600'>
-							<div style={{zIndex: '1'}}>
-								<h3 className='text--sectionTitle'>Stripe with bg photo</h3>
-								<p>Stripes go full-width and are used to separate distinct regions of a view</p>
-							</div>
-						</Stripe>
-						<Stripe
-							hideScrim
-							backgroundImage='https://s-media-cache-ak0.pinimg.com/originals/10/55/e7/1055e79a0519191212035a61ed530800.jpg'>
-							<div style={{zIndex: '1'}}>
-								<h3 className='text--sectionTitle'>Stripe with bg photo, no scrim</h3>
-								<p>Stripes go full-width and are used to separate distinct regions of a view</p>
-							</div>
-						</Stripe>
-					</div>
-				</WithNotes>
-			</InfoWrapper>
+					<Stripe
+						inverted
+						backgroundImage='https://placekitten.com/g/600/600'>
+						<div style={{zIndex: '1'}}>
+							<h3 className='text--sectionTitle'>Stripe with bg photo</h3>
+							<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+						</div>
+					</Stripe>
+					<Stripe
+						hideScrim
+						backgroundImage='https://s-media-cache-ak0.pinimg.com/originals/10/55/e7/1055e79a0519191212035a61ed530800.jpg'>
+						<div style={{zIndex: '1'}}>
+							<h3 className='text--sectionTitle'>Stripe with bg photo, no scrim</h3>
+							<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+						</div>
+					</Stripe>
+				</div>
+			</WithNotes>
 		)
 	)
-	.add('hero stripe', () => (
+	.addWithInfo('hero stripe', () => (
 		<div style={{width: '100%'}}>
 			<Stripe hero backgroundImage='https://placekitten.com/g/600/600'>
 				<h3 className='text--display'>Hero stripe with bg photo</h3>

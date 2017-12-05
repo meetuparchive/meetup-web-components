@@ -1,8 +1,10 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 import { WithNotes } from '@storybook/addon-notes';
-import { InfoWrapper } from '../utils/storyComponents';
-import { decorateWithLocale } from '../utils/decorators';
+import {
+	decorateWithLocale,
+	decorateWithInfo
+} from '../utils/decorators';
 import Avatar from './Avatar.jsx';
 
 const MOCK_IMAGE_SRC = 'http://placekitten.com/g/400/400';
@@ -13,11 +15,10 @@ storiesOf('Avatar', module)
 		'default',
 		'This is the basic usage with the component.',
 		() => (
-			<InfoWrapper>
-				<Avatar src={MOCK_IMAGE_SRC}></Avatar>
-			</InfoWrapper>
+			<Avatar src={MOCK_IMAGE_SRC}></Avatar>
 		)
 	)
+	.addDecorator(decorateWithInfo)
 	.add('small', () => <Avatar src={MOCK_IMAGE_SRC} small></Avatar>)
 	.add('large', () => <Avatar src={MOCK_IMAGE_SRC} large></Avatar>)
 	.add('xxlarge', () => <Avatar src={MOCK_IMAGE_SRC} xxlarge></Avatar>)
