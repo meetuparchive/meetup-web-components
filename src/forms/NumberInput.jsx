@@ -4,6 +4,7 @@ import cx from 'classnames';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
+import ErrorList from './ErrorList';
 
 export const DECREMENT_BTN_CLASS = 'decrementButton';
 export const FAUX_INPUT_CLASS = 'fauxInput';
@@ -205,7 +206,7 @@ class NumberInput extends React.Component {
 						{children}
 					</Flex>
 				</div>
-				{ error && <p className='text--error text--small'>{error}</p> }
+				{ error && <ErrorList errors={error} /> }
 			</div>
 		);
 	}
