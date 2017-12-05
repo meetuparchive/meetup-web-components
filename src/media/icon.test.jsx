@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
-import Icon, { ICON_CLASS, SVG_THIN_STYLE, getIconShape } from './Icon';
+import Icon, {
+	ICON_CLASS,
+	ICON_CIRCLED_CLASS,
+	SVG_THIN_STYLE,
+	getIconShape,
+} from './Icon';
 import { MEDIA_SIZES } from '../utils/designConstants';
 
 describe('Icon', () => {
@@ -104,6 +109,23 @@ describe('Icon', () => {
 			const svgEl = ReactDOM.findDOMNode(icon).querySelector('svg');
 
 			expect(svgEl.style.fill).toContain(fillColor);
+		});
+	});
+
+	describe('circle shape surrounding icon', () => {
+		it('adds circle class to span wrapper when `circled` prop is passed', () => {
+			const icon = TestUtils.renderIntoDocument(
+				<Icon aria-label={label} shape={shape} circled />
+			);
+			const iconEl = ReactDOM.findDOMNode(icon);
+			expect(iconEl.classList.contains(ICON_CIRCLED_CLASS)).toBe(true);
+		});
+		it('does NOT add circle class to span wrapper when `circled` prop is NOT passed', () => {
+			const icon = TestUtils.renderIntoDocument(
+				<Icon aria-label={label} shape={shape} />
+			);
+			const iconEl = ReactDOM.findDOMNode(icon);
+			expect(iconEl.classList.contains(ICON_CIRCLED_CLASS)).toBe(false);
 		});
 	});
 });

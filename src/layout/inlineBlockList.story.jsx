@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { InfoWrapper } from '../utils/storyComponents';
 import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
 import InlineBlockList from './InlineBlockList';
@@ -24,53 +23,46 @@ storiesOf('InlineBlockList', module)
 		'default',
 		'Basic usage of InlineBlockList',
 		() => (
-			<InfoWrapper>
-				<Bounds><Section>
-					<InlineBlockList
-						items={basicItems}
-					/>
-				</Section></Bounds>
-			</InfoWrapper>
+			<Bounds><Section>
+				<InlineBlockList
+					items={basicItems}
+				/>
+			</Section></Bounds>
 		))
 	.addWithInfo(
 		'with separator',
 		'Basic usage of InlineBlockList with a middot between items',
 		() => (
-			<InfoWrapper>
-				<Bounds>
-					<Section>
-						<InlineBlockList
-							items={basicItems}
-							separator='·'
-						/>
-					</Section>
-					<Section>
-						<InlineBlockList
-							items={['any', 'glyph', 'will', 'work']}
-							separator='👏'
-						/>
-					</Section>
-				</Bounds>
-
-			</InfoWrapper>
+			<Bounds>
+				<Section>
+					<InlineBlockList
+						items={basicItems}
+						separator='·'
+					/>
+				</Section>
+				<Section>
+					<InlineBlockList
+						items={['any', 'glyph', 'will', 'work']}
+						separator='👏'
+					/>
+				</Section>
+			</Bounds>
 		))
 	.addWithInfo(
 		'using elements',
 		'InlineBlockList using elements as items',
 		() => (
-			<InfoWrapper>
-				<Bounds><Section>
-					<InlineBlockList
-						items={[
-							<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-							<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-							<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-							<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-							<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-							<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-							<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
-						]}
-					/>
-				</Section></Bounds>
-			</InfoWrapper>
+			<Bounds><Section>
+				<InlineBlockList
+					items={[
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+						<img src='https://placekitten.com/g/72/72' alt='fluffy kitten' />,
+					]}
+				/>
+			</Section></Bounds>
 		));

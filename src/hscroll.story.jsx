@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { InfoWrapper } from './utils/storyComponents';
 import { decorateWithLocale } from './utils/decorators';
 import { MEDIA_SIZES } from './utils/designConstants';
 import Hscroll from './Hscroll';
@@ -36,40 +35,34 @@ storiesOf('Hscroll', module)
 		'Default',
 		'Basic horizontal scroll usage',
 		() => (
-			<InfoWrapper>
-				<Hscroll
-					style={hscrollInlineStyle}
-				>
-					{listItems}
-				</Hscroll>
-			</InfoWrapper>
+			<Hscroll
+				style={hscrollInlineStyle}
+			>
+				{listItems}
+			</Hscroll>
 		)
 	)
 	.addWithInfo(
 		'With gradient',
 		'Basic horizontal scroll with edge gradients',
 		() => (
-			<InfoWrapper>
-				<Hscroll
-					style={hscrollInlineStyle}
-					hasGradient
-				>
-					{listItems}
-				</Hscroll>
-			</InfoWrapper>
+			<Hscroll
+				style={hscrollInlineStyle}
+				hasGradient
+			>
+				{listItems}
+			</Hscroll>
 		)
 	)
 	.addWithInfo(
 		'Media-conditional unclip',
 		'Unclip at a given breakpoint (large)',
 		() => (
-			<InfoWrapper>
-				<Hscroll
-					style={hscrollInlineStyle}
-					unclipAt='large'
-				>
-					{listItems}
-				</Hscroll>
-			</InfoWrapper>
+			<Hscroll
+				style={hscrollInlineStyle}
+				unclipAt='large'
+			>
+				{listItems}
+			</Hscroll>
 		)
 	);
