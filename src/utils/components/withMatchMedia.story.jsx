@@ -48,6 +48,8 @@ class TestComponent extends React.Component {
 const TestComponentWithMatchMedia = withMatchMedia(TestComponent);
 
 storiesOf('withMatchMedia', module)
-	.add('Test component using provided media props', () =>
+	.addWithInfo(
+		'Test component using provided media props',
+		'Basic example of match media component usage.', () =>
 		<TestComponentWithMatchMedia />
 	);

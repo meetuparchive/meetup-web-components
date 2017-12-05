@@ -42,9 +42,32 @@
 	use { pointer-events: none; }
 }
 
+//
+// Icons with enclosing circle
+//
+.svg--circled {
+	position: relative;
+
+	&:before {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		content: "";
+		background-color: $C_lightGray;
+		border: 1px solid $C_border;
+		border-radius: 100%;
+	}
+
+	svg {
+		transform: scale(0.4);
+	}
+
+}
 
 //
-// Specific icon styles
+// Specific icon shape styles
 //
 .svg--updates {
 	@include transform-origin(center center);
