@@ -5,11 +5,16 @@ export const ERROR_CLASSNAMES = 'text--error text--small';
 
 const ErrorList = (props) => {
 	const {
+		errorId,
 		errors,
 		...other
 	} = props;
 
 	const errorList = Array.isArray(errors) ? errors : [errors];
+
+	if (errorId) {
+		other['id'] = errorId;
+	}
 
 	return (
 		<ul
@@ -26,6 +31,7 @@ const ErrorList = (props) => {
 };
 
 ErrorList.propTypes = {
+	errorId: PropTypes.string,
 	errors: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.array

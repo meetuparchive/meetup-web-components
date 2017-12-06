@@ -130,6 +130,10 @@ class Textarea extends React.Component {
 			maxHeight: maxHeight
 		};
 
+		if (error) {
+			other['aria-invalid'] = true;
+		}
+
 		return (
 			<div>
 				<div className="inputContainer">
