@@ -3,6 +3,10 @@ import React from 'react';
 import cx from 'classnames';
 import { MEDIA_SIZES } from '../utils/designConstants';
 import ErrorList from './ErrorList';
+import {
+	getFieldErrorProps,
+	getErrorListProps,
+} from './util/errorProps';
 
 export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
 
@@ -68,13 +72,6 @@ const TextInput = (props) => {
 		paddingLeft: `${paddingSize}px`
 	};
 
-	const errorId = id && `${id}-error`;
-
-	const allErrorListProps = {
-		errors: error,
-		errorId: errorId,
-	};
-
 	return (
 		<div>
 			<div className="inputContainer">
@@ -100,12 +97,13 @@ const TextInput = (props) => {
 					id={id}
 					style={inputStyles}
 					{...other}
+					{...getFieldErrorProps(id, !!error)}
 				/>
 
 				{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
 				{children}
 			</div>
-			<ErrorList {...allErrorListProps} />
+			<ErrorList {...getErrorListProps(id, error)} />
 		</div>
 	);
 };

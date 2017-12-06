@@ -62,7 +62,7 @@ class DateTimeLocalInput extends React.Component {
 					{...other}
 					{...getFieldErrorProps(id, !!error)}
 				/>
-				{ error && <ErrorList {...getErrorListProps(id, error)} /> }
+				<ErrorList {...getErrorListProps(id, error)} />
 			</div>
 		);
 
