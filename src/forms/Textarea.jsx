@@ -2,6 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import autosize from 'autosize';
+import ErrorList from './ErrorList';
+import {
+	getFieldErrorProps,
+	getErrorListProps,
+} from './util/errorProps';
 
 /**
  * @module Textarea
@@ -129,6 +134,10 @@ class Textarea extends React.Component {
 			maxHeight: maxHeight
 		};
 
+		if (error) {
+			other['aria-invalid'] = true;
+		}
+
 		return (
 			<div>
 				<div className="inputContainer">
@@ -155,11 +164,12 @@ class Textarea extends React.Component {
 						value={this.state.value}
 						maxLength={parseInt(maxLength) || -1}
 						{...other}
+						{...getFieldErrorProps(id, !!error)}
 					/>
 
 					{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - this.state.value.length)}</p> }
 				</div>
-				{ error && <p className='text--error text--small'>{error}</p> }
+				<ErrorList {...getErrorListProps(id, error)} />
 			</div>
 		);
 	}

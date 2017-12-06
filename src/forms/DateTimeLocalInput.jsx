@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import ErrorList from './ErrorList';
+import {
+	getFieldErrorProps,
+	getErrorListProps,
+} from './util/errorProps';
 
 /**
  * @module DateTimeLocalInput
@@ -44,12 +49,6 @@ class DateTimeLocalInput extends React.Component {
 
 		const labelClassNames = cx({required});
 
-		const errorId = `${id}-error`;
-		if (error) {
-			other['aria-invalid'] = true;
-			other['aria-describedby'] = errorId;
-		}
-
 		return (
 			<div>
 				<label htmlFor={id} className={labelClassNames}>{label}</label>
@@ -61,8 +60,9 @@ class DateTimeLocalInput extends React.Component {
 					onChange={this.onChange}
 					required={required}
 					{...other}
+					{...getFieldErrorProps(id, !!error)}
 				/>
-				{ error && <p className='text--error text--small' id={errorId}>{error}</p> }
+				<ErrorList {...getErrorListProps(id, error)} />
 			</div>
 		);
 

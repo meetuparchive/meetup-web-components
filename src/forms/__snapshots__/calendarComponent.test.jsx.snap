@@ -4,6 +4,8 @@ exports[`CalendarComponent renders the calendarComponent with appropriate attrib
 <div>
   <span>
     <input
+      aria-describedby="halo-error"
+      aria-invalid={true}
       className="input--dateTimePicker select--reset beyonce-halo"
       defaultValue={2012-10-12T00:00:00.000Z}
       id="beyonce"
@@ -12,10 +14,9 @@ exports[`CalendarComponent renders the calendarComponent with appropriate attrib
       type="text"
     />
   </span>
-  <p
-    className="text--error text--small"
-  >
-    this is an error
-  </p>
+  <ErrorList
+    errorId="halo-error"
+    errors="this is an error"
+  />
 </div>
 `;

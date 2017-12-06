@@ -36,20 +36,6 @@ describe('SelectInput basic', () => {
 	});
 });
 
-describe('Errors', () => {
-	it('shows a single error when a single error is passed in', () => {
-		const importantError = 'if you like it then you better put a ring on it';
-		const props = {
-			label: 'Bday',
-			name: 'Deluxe Edition',
-			options: testOptions,
-			error: importantError,
-		};
-		const component = shallow(<SelectInput {...props} />);
-		expect(component.find('.text--error').text()).toEqual(importantError);
-	});
-});
-
 describe('SelectInput advanced', () => {
 	it('should set correct value in state on change', () => {
 		const newValue = '2';

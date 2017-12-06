@@ -7,11 +7,15 @@ exports[`SelectInput basic renders into the DOM 1`] = `
   >
     <label
       className="label--field"
+      htmlFor="testSelect"
     >
       Test select
     </label>
     <select
+      aria-describedby="testSelect-error"
+      aria-invalid={false}
       className="select--reset span--100 padding--selectArrow"
+      id="testSelect"
       name="testSelect"
       onChange={[Function]}
       value="1"
@@ -48,5 +52,8 @@ exports[`SelectInput basic renders into the DOM 1`] = `
       size="xs"
     />
   </div>
+  <ErrorList
+    errorId="testSelect-error"
+  />
 </div>
 `;

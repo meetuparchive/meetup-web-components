@@ -12,14 +12,18 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
       Super Hero
     </label>
     <input
+      aria-describedby="superhero-error"
+      aria-invalid={false}
       className="span--100"
       id="superhero"
-      maxLength={-1}
       name="superhero"
       required={true}
       type="text"
       value="Batman"
     />
   </div>
+  <ErrorList
+    errorId="superhero-error"
+  />
 </div>
 `;
