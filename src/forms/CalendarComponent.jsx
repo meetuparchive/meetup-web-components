@@ -2,6 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import ErrorList from './ErrorList';
+import {
+	getFieldErrorProps,
+	getErrorListProps,
+} from './util/errorProps';
 
 /**
  * @module CalendarComponent
@@ -113,7 +117,6 @@ class CalendarComponent extends React.Component {
 	render() {
 		const {
 			className,
-			id,
 			name,
 			error,
 			suppressError,
@@ -149,7 +152,7 @@ class CalendarComponent extends React.Component {
 			<div>
 				<span>
 					{label && (
-						<label htmlFor={id} className={classNames.label}>
+						<label htmlFor={name} className={classNames.label}>
 							{label}
 						</label>
 					)}
@@ -160,15 +163,16 @@ class CalendarComponent extends React.Component {
 					}
 					<input
 						type="text"
-						id={id}
+						id={name}
 						name={name}
 						defaultValue={value}
 						className={classNames.field}
 						ref={input => (this.inputEl = input)}
 						{...other}
+						{...getFieldErrorProps(name, !!error)}
 					/>
 				</span>
-				{!suppressError && <ErrorList errors={error} />}
+				{!suppressError && <ErrorList {...getErrorListProps(name, error)} />}
 			</div>
 		);
 	}

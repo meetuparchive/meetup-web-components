@@ -3,6 +3,11 @@ import React from 'react';
 import cx from 'classnames';
 
 import Icon from '../media/Icon';
+import ErrorList from './ErrorList';
+import {
+	getFieldErrorProps,
+	getErrorListProps,
+} from './util/errorProps';
 
 /**
  * @module SelectInput
@@ -70,7 +75,7 @@ class SelectInput extends React.Component {
 			<div>
 				<div className="inputContainer">
 					{label &&
-						<label className={classNames.label} htmlFor={other.id}>
+						<label className={classNames.label} htmlFor={name}>
 							{label}
 						</label>
 					}
@@ -81,11 +86,13 @@ class SelectInput extends React.Component {
 					}
 					<select
 						name={name}
+						id={name}
 						required={required}
 						className={classNames.field}
 						onChange={this.onChange}
 						value={this.state.value}
 						{...other}
+						{...getFieldErrorProps(name, (!!error || !!errors))}
 					>
 						{
 							options.map((option, key) =>
@@ -103,7 +110,7 @@ class SelectInput extends React.Component {
 						size="xs"
 					/>
 				</div>
-				{error || errors && <ErrorList errors={error || errors} /> }
+				<ErrorList {...getErrorListProps(name, (errors || error))} />
 				{children}
 			</div>
 		);

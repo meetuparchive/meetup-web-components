@@ -5,6 +5,10 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
 import ErrorList from './ErrorList';
+import {
+	getFieldErrorProps,
+	getErrorListProps,
+} from './util/errorProps';
 
 export const DECREMENT_BTN_CLASS = 'decrementButton';
 export const FAUX_INPUT_CLASS = 'fauxInput';
@@ -164,6 +168,7 @@ class NumberInput extends React.Component {
 					<Flex align='center'>
 						<FlexItem>
 							<input type='number'
+								id={id}
 								name={name}
 								max={max}
 								min={min}
@@ -176,7 +181,9 @@ class NumberInput extends React.Component {
 								onChange={this.onChange}
 								onKeyDown={this.onKeyDown}
 								disabled={disabled}
-								{...other} />
+								{...other}
+								{...getFieldErrorProps(id, !!error)}
+							/>
 						</FlexItem>
 
 						<FlexItem shrink>
@@ -206,7 +213,7 @@ class NumberInput extends React.Component {
 						{children}
 					</Flex>
 				</div>
-				{ error && <ErrorList errors={error} /> }
+				<ErrorList {...getErrorListProps(id, error)} />
 			</div>
 		);
 	}
