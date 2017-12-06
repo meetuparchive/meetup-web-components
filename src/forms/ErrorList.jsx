@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import cx from 'classnames';
 
-export const ERROR_CLASSNAMES = 'text--error text--small';
+export const ERROR_CLASSNAME = 'text--error text--small';
 
 const ErrorList = (props) => {
 	const {
@@ -23,7 +24,7 @@ const ErrorList = (props) => {
 		>
 			{
 				errorList.map((err, key) => (
-					<li key={key} className={ERROR_CLASSNAMES}>{err}</li>
+					<li key={key} className={cx(ERROR_CLASSNAME, 'text--small')}>{err}</li>
 				))
 			}
 		</ul>
