@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import withErrorList from '../utils/components/withErrorList';
 
 /**
  * @module CalendarComponent
  * inits flatpickr js date picker over a text input
 */
-class CalendarComponent extends React.Component {
+export class CalendarComponent extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -112,10 +113,7 @@ class CalendarComponent extends React.Component {
 	render() {
 		const {
 			className,
-			id,
 			name,
-			error,
-			suppressError,
 			label,
 			required,
 			value,
@@ -145,31 +143,27 @@ class CalendarComponent extends React.Component {
 
 
 		return (
-			<div>
-				<span>
-					{label && (
-						<label htmlFor={id} className={classNames.label}>
-							{label}
-						</label>
-					)}
-					{helperText &&
-						<div className={classNames.helperText}>
-							{helperText}
-						</div>
-					}
-					<input
-						type="text"
-						id={id}
-						name={name}
-						defaultValue={value}
-						className={classNames.field}
-						ref={input => (this.inputEl = input)}
-						{...other}
-					/>
-				</span>
-				{!suppressError &&
-					error && <p className="text--error text--small">{error}</p>}
-			</div>
+			<span>
+				{label && (
+					<label htmlFor={name} className={classNames.label}>
+						{label}
+					</label>
+				)}
+				{helperText &&
+					<div className={classNames.helperText}>
+						{helperText}
+					</div>
+				}
+				<input
+					type="text"
+					id={name}
+					name={name}
+					defaultValue={value}
+					className={classNames.field}
+					ref={input => (this.inputEl = input)}
+					{...other}
+				/>
+			</span>
 		);
 	}
 }
@@ -190,4 +184,4 @@ CalendarComponent.defaultProps = {
 	suppressError: false,
 };
 
-export default CalendarComponent;
+export default withErrorList(CalendarComponent);

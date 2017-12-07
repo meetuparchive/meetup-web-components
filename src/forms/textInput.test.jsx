@@ -1,5 +1,8 @@
 import React from 'react';
-import TextInput, {FIELD_WITH_ICON_CLASS} from './TextInput';
+import {
+	TextInput,
+	FIELD_WITH_ICON_CLASS,
+} from './TextInput';
 import { shallow, mount } from 'enzyme';
 
 describe('TextInput', function() {
@@ -7,14 +10,12 @@ describe('TextInput', function() {
 	const LABEL_TEXT = 'Super Hero',
 		VALUE = 'Batman',
 		NAME_ATTR = 'superhero',
-		MAX_LEN = 20,
-		ERROR_TEXT = 'Too wimpy.';
+		MAX_LEN = 20;
 
 	const formAttrs = {
 		id: NAME_ATTR,
 		maxLength: MAX_LEN,
 		required: true,
-		error: ERROR_TEXT,
 	};
 
 
@@ -111,11 +112,6 @@ describe('TextInput', function() {
 		it('should have a label when label is given', () => {
 			const labelEl = component.find('label').getDOMNode();
 			expect(labelEl.textContent).toEqual(LABEL_TEXT);
-		});
-
-		it('should have an error when one is specified', function() {
-			const errorEl = component.find('.text--error').getDOMNode();
-			expect(errorEl.textContent).toEqual(ERROR_TEXT);
 		});
 
 	});

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import withErrorList from '../utils/components/withErrorList';
 
 /**
  * @module DateTimeLocalInput
@@ -8,7 +9,7 @@ import cx from 'classnames';
  * this component is supported on mobile browsers mostly, and should be used when supported
  *
 */
-class DateTimeLocalInput extends React.Component {
+export class DateTimeLocalInput extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -39,16 +40,11 @@ class DateTimeLocalInput extends React.Component {
 
 		const classNames = cx(
 			'input--dateTimeLocal select--reset',
-			className
+			className,
+			{ 'field--error': error }
 		);
 
 		const labelClassNames = cx({required});
-
-		const errorId = `${id}-error`;
-		if (error) {
-			other['aria-invalid'] = true;
-			other['aria-describedby'] = errorId;
-		}
 
 		return (
 			<div>
@@ -62,7 +58,6 @@ class DateTimeLocalInput extends React.Component {
 					required={required}
 					{...other}
 				/>
-				{ error && <p className='text--error text--small' id={errorId}>{error}</p> }
 			</div>
 		);
 
@@ -78,5 +73,5 @@ DateTimeLocalInput.propTypes = {
 	onChange: PropTypes.func.isRequired, // provided by redux-form or by a wrapping component eg DateTimePicker
 };
 
-export default DateTimeLocalInput;
+export default withErrorList(DateTimeLocalInput);
 
