@@ -180,6 +180,7 @@ class NumberInput extends React.Component {
 
 						<FlexItem shrink>
 							<button
+								tabIndex="-1"
 								className={classNames.decrementBtn}
 								onBlur={this.onBlur}
 								onClick={this.decrementAction}
@@ -191,6 +192,7 @@ class NumberInput extends React.Component {
 
 						<FlexItem shrink>
 							<button
+								tabIndex="-1"
 								className={classNames.incrementBtn}
 								onBlur={this.onBlur}
 								onClick={this.incrementAction}

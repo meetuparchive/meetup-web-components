@@ -93,6 +93,7 @@ const TextInput = (props) => {
 						disabled={disabled}
 						id={id}
 						style={inputStyles}
+						maxLength={parseInt(maxLength) || -1}
 						{...other}
 					/>
 					{iconShape &&
@@ -100,7 +101,7 @@ const TextInput = (props) => {
 					}
 				</div>
 
-				{ maxLength && <p className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
+				{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
 				{children}
 			</div>
 			{ error && <p className='text--error text--small'>{error}</p> }
