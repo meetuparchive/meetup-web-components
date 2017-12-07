@@ -4,6 +4,7 @@ import cx from 'classnames';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
+import withErrorList from '../utils/components/withErrorList';
 
 export const DECREMENT_BTN_CLASS = 'decrementButton';
 export const FAUX_INPUT_CLASS = 'fauxInput';
@@ -13,7 +14,7 @@ export const INCREMENT_BTN_CLASS = 'incrementButton';
 /**
  * @module NumberInput
  */
-class NumberInput extends React.Component {
+export class NumberInput extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { value: props.value };
@@ -163,6 +164,7 @@ class NumberInput extends React.Component {
 					<Flex align='center'>
 						<FlexItem>
 							<input type='number'
+								id={id}
 								name={name}
 								max={max}
 								min={min}
@@ -175,7 +177,8 @@ class NumberInput extends React.Component {
 								onChange={this.onChange}
 								onKeyDown={this.onKeyDown}
 								disabled={disabled}
-								{...other} />
+								{...other}
+							/>
 						</FlexItem>
 
 						<FlexItem shrink>
@@ -205,7 +208,6 @@ class NumberInput extends React.Component {
 						{children}
 					</Flex>
 				</div>
-				{ error && <p className='text--error text--small'>{error}</p> }
 			</div>
 		);
 	}
@@ -244,4 +246,4 @@ NumberInput.propTypes = {
 	])
 };
 
-export default NumberInput;
+export default withErrorList(NumberInput);
