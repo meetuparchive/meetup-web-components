@@ -112,7 +112,21 @@ storiesOf('Dropdown', module)
 				content={dropdownContent}
 			/>
 		)
-	).addWithInfo(
+	)
+	.addWithInfo(
+		'Center aligned dropdown',
+		'Use the `align` prop to change alignment to left',
+		() => (
+			<Dropdown
+				align='center'
+				trigger={
+					<Button small>Open</Button>
+				}
+				content={dropdownContent}
+			/>
+		)
+	)
+	.addWithInfo(
 		'with custom toggle functionality',
 		() => (
 			<Flex justify='flexEnd'>

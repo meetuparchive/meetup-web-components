@@ -109,6 +109,7 @@ class Dropdown extends React.PureComponent {
 				{
 					'dropdown-content--right': (align == 'right'),
 					'dropdown-content--left': (align == 'left'),
+					'dropdown-content--center': (align == 'center'),
 					'display--none': !isActive,
 					'display--block': isActive
 				}
@@ -147,7 +148,7 @@ class Dropdown extends React.PureComponent {
 Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element.isRequired,
-	align: PropTypes.oneOf(['left', 'right']).isRequired,
+	align: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
 	manualToggle: PropTypes.func
