@@ -1,29 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextInput renders a required HTML <input> with expected attributes for mock data 1`] = `
-<div>
-  <div
-    className="inputContainer"
+<div
+  className="inputContainer"
+>
+  <label
+    className="label--field required"
+    htmlFor="superhero"
   >
-    <label
-      className="label--field required"
-      htmlFor="superhero"
-    >
-      Super Hero
-    </label>
-    <input
-      aria-describedby="superhero-error"
-      aria-invalid={false}
-      className="span--100"
-      id="superhero"
-      name="superhero"
-      required={true}
-      type="text"
-      value="Batman"
-    />
-  </div>
-  <ErrorList
-    errorId="superhero-error"
+    Super Hero
+  </label>
+  <input
+    className="span--100"
+    id="superhero"
+    name="superhero"
+    required={true}
+    type="text"
+    value="Batman"
   />
 </div>
 `;

@@ -6,7 +6,6 @@ exports[`DateTimeLocal input should render an input with type time and expected 
     className="required"
   />
   <input
-    aria-invalid={false}
     className="input--dateTimeLocal select--reset"
     max="2017-06-30T16:30"
     min="1999-12-31T23:55"
@@ -17,6 +16,5 @@ exports[`DateTimeLocal input should render an input with type time and expected 
     type="datetime-local"
     value="2000-01-01T00:01"
   />
-  <ErrorList />
 </div>
 `;
