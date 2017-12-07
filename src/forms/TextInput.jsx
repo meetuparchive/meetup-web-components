@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import { MEDIA_SIZES } from '../utils/designConstants';
+import withErrorList from '../utils/components/withErrorList';
 
 export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
 
 /**
  * @module TextInput
  */
-const TextInput = (props) => {
+export const TextInput = (props) => {
 
 	const {
 		name,
@@ -68,37 +69,33 @@ const TextInput = (props) => {
 	};
 
 	return (
-		<div>
-			<div className="inputContainer">
-				{label &&
-					<label className={classNames.label} htmlFor={id}>
-						{label}
-					</label>
-				}
-				{helperText &&
-					<div className={classNames.helperText}>
-						{helperText}
-					</div>
-				}
-				<input type={isSearch ? 'search' : 'text'}
-					name={name}
-					value={value}
-					required={required}
-					placeholder={placeholder}
-					className={classNames.field}
-					onChange={onChange}
-					pattern={pattern}
-					disabled={disabled}
-					id={id}
-					style={inputStyles}
-					maxLength={parseInt(maxLength) || -1}
-					{...other}
-				/>
+		<div className="inputContainer">
+			{label &&
+				<label className={classNames.label} htmlFor={id}>
+					{label}
+				</label>
+			}
+			{helperText &&
+				<div className={classNames.helperText}>
+					{helperText}
+				</div>
+			}
+			<input type={isSearch ? 'search' : 'text'}
+				name={name}
+				value={value}
+				required={required}
+				placeholder={placeholder}
+				className={classNames.field}
+				onChange={onChange}
+				pattern={pattern}
+				disabled={disabled}
+				id={id}
+				style={inputStyles}
+				{...other}
+			/>
 
-				{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
-				{children}
-			</div>
-			{ error && <p className='text--error text--small'>{error}</p> }
+			{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
+			{children}
 		</div>
 	);
 };
@@ -130,4 +127,4 @@ TextInput.propTypes = {
 	])
 };
 
-export default TextInput;
+export default withErrorList(TextInput);

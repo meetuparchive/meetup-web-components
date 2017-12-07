@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import DateTimeLocalInput from './DateTimeLocalInput';
+import { DateTimeLocalInput } from './DateTimeLocalInput';
 
 describe('DateTimeLocal input', function() {
 	let component,

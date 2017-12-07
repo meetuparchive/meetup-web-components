@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CalendarComponent from './CalendarComponent';
+import { CalendarComponent } from './CalendarComponent';
 
 describe('CalendarComponent', function() {
 	let calendarComponent;
