@@ -1,10 +1,22 @@
-import {
+import React from 'react';
+
+import withErrorList, {
 	getFieldErrorProps,
 	getErrorListProps,
 } from './withErrorList';
 
 const MOCK_FIELD_ID = 'name';
 const MOCK_ERROR_MSG = 'You are not Keith Hernandez';
+
+/**
+ * @class TestComponent
+ */
+class TestComponent extends React.Component {
+	render() {
+		return <h1>Hello world</h1>;
+	}
+}
+const TestComponentWithErrorList = withErrorList(TestComponent);
 
 describe('getFieldErrorProps', () => {
 	it('"aria-invalid" attribute should be true if there is an error passed', () => {
@@ -42,5 +54,13 @@ describe('getErrorListProps', () => {
 			errors: MOCK_ERROR_MSG
 		};
 		expect(actual).toMatchObject(expected);
+	});
+});
+
+describe('rendering of withErrorList wrapped component', () => {
+	it('provides a wrapped displayname', () => {
+		expect(TestComponentWithErrorList.displayName).toBe(
+			'WithErrorList(TestComponent)'
+		);
 	});
 });
