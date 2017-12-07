@@ -1,7 +1,7 @@
 import {
 	getFieldErrorProps,
 	getErrorListProps,
-} from './errorProps';
+} from './withErrorList';
 
 const MOCK_FIELD_ID = 'name';
 const MOCK_ERROR_MSG = 'You are not Keith Hernandez';

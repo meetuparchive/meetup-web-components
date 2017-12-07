@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import SelectInput from './SelectInput';
+import { SelectInput } from './SelectInput';
 
 const testOptions = [
 	{ label: 'One', value: '1' },

@@ -12,8 +12,6 @@ exports[`SelectInput basic renders into the DOM 1`] = `
       Test select
     </label>
     <select
-      aria-describedby="testSelect-error"
-      aria-invalid={false}
       className="select--reset span--100 padding--selectArrow"
       id="testSelect"
       name="testSelect"
@@ -52,8 +50,5 @@ exports[`SelectInput basic renders into the DOM 1`] = `
       size="xs"
     />
   </div>
-  <ErrorList
-    errorId="testSelect-error"
-  />
 </div>
 `;
