@@ -5,6 +5,7 @@ import cx from 'classnames';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import SelectInput from './SelectInput';
+import withErrorList from '../utils/components/withErrorList';
 
 export const HOURS_INPUT_CLASS = 'timeInput-hours';
 export const MINUTES_INPUT_CLASS = 'timeInput-minutes';
@@ -34,7 +35,7 @@ const formatHours = (hours, meridian) => {
 /**
 * @module TimeInput
 */
-class TimeInput extends React.Component {
+export class TimeInput extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -349,5 +350,5 @@ TimeInput.propTypes = {
 
 
 
-export default TimeInput;
+export default withErrorList(TimeInput);
 
