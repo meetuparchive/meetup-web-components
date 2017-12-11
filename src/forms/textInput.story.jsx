@@ -2,8 +2,10 @@ import React from 'react';
 import TextInput from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@storybook/react';
+import { decorateWithLocale } from '../utils/decorators';
 
 storiesOf('TextInput', module)
+	.addDecorator(decorateWithLocale)
 	.addWithInfo('default', null, () => (
 		<div className='span--50'>
 			<TextInput
