@@ -1,4 +1,3 @@
-/* eslint-disable no-return-assign */
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
@@ -163,7 +162,7 @@ export class CalendarComponent extends React.Component {
 					name={name}
 					defaultValue={value}
 					className={classNames.field}
-					ref={input => (this.inputEl = input)}
+					ref={input => {this.inputEl = input;}}
 					{...other}
 				/>
 			</span>
