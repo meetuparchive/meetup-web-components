@@ -1,9 +1,7 @@
 import React from 'react';
-
-import withErrorList, {
-	getFieldErrorProps,
-	getErrorListProps,
-} from './withErrorList';
+import withErrorList, { getErrorId } from './withErrorList';
+import ErrorList from '../../forms/ErrorList';
+import { mount } from 'enzyme';
 
 const MOCK_FIELD_ID = 'name';
 const MOCK_ERROR_MSG = 'You are not Keith Hernandez';
@@ -18,49 +16,77 @@ class TestComponent extends React.Component {
 }
 const TestComponentWithErrorList = withErrorList(TestComponent);
 
-describe('getFieldErrorProps', () => {
-	it('"aria-invalid" attribute should be true if there is an error passed', () => {
-		const actual = getFieldErrorProps(MOCK_FIELD_ID, true);
-		expect(actual).toHaveProperty('aria-invalid');
-		expect(actual['aria-invalid']).toBe(true);
-	});
-	it('"aria-invalid" attribute should be false if there is no error passed', () => {
-		const actual = getFieldErrorProps(MOCK_FIELD_ID, undefined);
-		expect(actual).toHaveProperty('aria-invalid');
-		expect(actual['aria-invalid']).toBe(false);
-	});
-	it('adds "aria-describedby" attribute when `id` is defined', () => {
-		const actual = getFieldErrorProps(MOCK_FIELD_ID, true);
-		expect(actual).toHaveProperty('aria-describedby');
-	});
-	it('does NOT add "aria-describedby" attribute when `id` is undefined', () => {
-		const actual = getFieldErrorProps(undefined, true);
-		expect(actual).not.toHaveProperty('aria-describedby');
+describe('error id', () => {
+	it('correctly generates id for `aria-describedby` from field `id` prop', () => {
+		const actual = getErrorId(MOCK_FIELD_ID);
+		const expected = 'name-error';
+		expect(actual).toBe(expected);
 	});
 });
 
-describe('getErrorListProps', () => {
-	it('populates `errorId` when a defined id is passed', () => {
-		const actual = getErrorListProps(MOCK_FIELD_ID, MOCK_ERROR_MSG);
-		const expected = {
-			errors: MOCK_ERROR_MSG,
-			errorId: `${MOCK_FIELD_ID}-error`,
-		};
-		expect(actual).toMatchObject(expected);
-	});
-	it('does NOT populate `errorId` when an undefined id is passed', () => {
-		const actual = getErrorListProps(undefined, MOCK_ERROR_MSG);
-		const expected = {
-			errors: MOCK_ERROR_MSG
-		};
-		expect(actual).toMatchObject(expected);
-	});
-});
+describe('withErrorList wrapped component', () => {
 
-describe('rendering of withErrorList wrapped component', () => {
+	it('passes `error` to the `ErrorList`', () => {
+		const component = mount(
+			<TestComponentWithErrorList
+				id={MOCK_FIELD_ID}
+				error={MOCK_ERROR_MSG}
+			/>
+		);
+		expect(component.find('li').text()).toBe(MOCK_ERROR_MSG);
+	});
+
+	it('provides TRUE `aria-invalid` prop when wrapped component has `error`', () => {
+		const component = mount(
+			<TestComponentWithErrorList
+				id={MOCK_FIELD_ID}
+				error={MOCK_ERROR_MSG}
+			/>
+		);
+		const wrappedComponent = component.find(TestComponent);
+		expect(wrappedComponent.prop('aria-invalid')).toBe(true);
+	});
+
+	it('provides FALSE `aria-invalid` prop when wrapped component does not have `error`', () => {
+		const component = mount(
+			<TestComponentWithErrorList
+				id={MOCK_FIELD_ID}
+			/>
+		);
+		const wrappedComponent = component.find(TestComponent);
+		expect(wrappedComponent.prop('aria-invalid')).toBe(false);
+	});
+
+	it('provides id for `aria-describedby` in both wrapped components when id is provided', () => {
+		const component = mount(
+			<TestComponentWithErrorList
+				id={MOCK_FIELD_ID}
+			/>
+		);
+		const wrappedComponent = component.find(TestComponent);
+		const errorList = component.find(ErrorList);
+
+		expect(wrappedComponent.prop('aria-describedby'))
+			.toEqual(getErrorId(MOCK_FIELD_ID));
+		expect(errorList.prop('errorId'))
+			.toEqual(getErrorId(MOCK_FIELD_ID));
+	});
+
+	it('does NOT provide id for `aria-describedby` in both wrapped components when id is NOT provided', () => {
+		const component = mount(
+			<TestComponentWithErrorList />
+		);
+		const wrappedComponent = component.find(TestComponent);
+		const errorList = component.find(ErrorList);
+
+		expect(wrappedComponent.prop('aria-describedby')).toBe(undefined);
+		expect(errorList.prop('errorId')).toBe(undefined);
+	});
+
 	it('provides a wrapped displayname', () => {
 		expect(TestComponentWithErrorList.displayName).toBe(
 			'WithErrorList(TestComponent)'
 		);
+		expect(true).toBe(true);
 	});
 });
