@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import Icon from '../media/Icon';
 import { MEDIA_SIZES } from '../utils/designConstants';
 
 export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
@@ -52,18 +53,18 @@ const TextInput = (props) => {
 		helperText: cx(
 			'helperTextContainer',
 			{ required, disabled }
-		)
+		),
+		icon: 'icon--field',
 	};
 
-	const iconSize = props.iconSize || 'xs';
-	const iconSuffix = (iconSize == 'xs' || iconSize == 's') ? '--small' : '';
-	const inputIcon = iconShape && require(`base64-image-loader!swarm-icons/dist/optimized/${iconShape}${iconSuffix}.svg`);
+	const iconProps = {
+		shape: iconShape,
+		size: props.iconSize || 'xs',
+		className: classNames.icon,
+	};
 
-	const paddingSize = parseInt(MEDIA_SIZES[iconSize], 10)+24; // #TODO :SDS: replace '32' with something like "$space * 1.5" from `swarm-constants`
-	const inputStyles = iconShape &&
-	{
-		backgroundImage: `url(${inputIcon})`,
-		backgroundSize: `${MEDIA_SIZES[iconSize]}px`,
+	const paddingSize = parseInt(MEDIA_SIZES[iconProps.size], 10) + 24; // #TODO :SDS: replace '32' with something like "$space * 1.5" from `swarm-constants`
+	const inputStyles = iconShape && {
 		paddingLeft: `${paddingSize}px`
 	};
 
@@ -80,20 +81,25 @@ const TextInput = (props) => {
 						{helperText}
 					</div>
 				}
-				<input type={isSearch ? 'search' : 'text'}
-					name={name}
-					value={value}
-					required={required}
-					placeholder={placeholder}
-					className={classNames.field}
-					onChange={onChange}
-					pattern={pattern}
-					disabled={disabled}
-					id={id}
-					style={inputStyles}
-					maxLength={parseInt(maxLength) || -1}
-					{...other}
-				/>
+				<div style={{position: 'relative'}}>
+					<input type={isSearch ? 'search' : 'text'}
+						name={name}
+						value={value}
+						required={required}
+						placeholder={placeholder}
+						className={classNames.field}
+						onChange={onChange}
+						pattern={pattern}
+						disabled={disabled}
+						id={id}
+						style={inputStyles}
+						maxLength={parseInt(maxLength) || -1}
+						{...other}
+					/>
+					{iconShape &&
+						<Icon {...iconProps} />
+					}
+				</div>
 
 				{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
 				{children}
