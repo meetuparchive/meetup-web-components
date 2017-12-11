@@ -118,6 +118,7 @@ export class CalendarComponent extends React.Component {
 			label,
 			required,
 			value,
+			error,
 			datepickerOptions, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
 			helperText,
@@ -138,6 +139,7 @@ export class CalendarComponent extends React.Component {
 			),
 			field: cx(
 				'input--dateTimePicker select--reset',
+				{ 'field--error': Boolean(error) },
 				className
 			)
 		};

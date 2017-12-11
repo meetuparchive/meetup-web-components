@@ -202,6 +202,7 @@ export class TimeInput extends React.Component {
 		const classNames = {
 			field: cx(
 				'input--time select--reset',
+				{ 'field--error': Boolean(error) },
 				className
 			),
 			fauxInput: cx(
@@ -319,8 +320,6 @@ export class TimeInput extends React.Component {
 							</div>
 						</div>
 				}
-
-				{ error && <p id={errorId} className='text--error text--small'>{error}</p> }
 			</div>
 		);
 
