@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { mount } from 'enzyme';
-import TimeInput, {
+import {
+	TimeInput,
 	HOURS_INPUT_CLASS,
 	MINUTES_INPUT_CLASS,
 	MERIDIAN_INPUT_CLASS,

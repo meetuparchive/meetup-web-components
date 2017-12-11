@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import autosize from 'autosize';
+import withErrorList from '../utils/components/withErrorList';
 
 /**
  * @module Textarea
  */
-class Textarea extends React.Component {
+export class Textarea extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onChange = this.onChange.bind(this);
@@ -129,37 +130,38 @@ class Textarea extends React.Component {
 			maxHeight: maxHeight
 		};
 
-		return (
-			<div>
-				<div className="inputContainer">
-					{label &&
-						<label className={classNames.label} htmlFor={id}>
-							{label}
-						</label>
-					}
-					{helperText &&
-						<div className={classNames.helperText}>
-							{helperText}
-						</div>
-					}
-					<textarea
-						type='text'
-						name={name}
-						required={required}
-						className={classNames.textarea}
-						onChange={this.onChange}
-						rows={rows}
-						ref={(textarea) => {this.textarea = textarea;}}
-						style={{ ...style, ...heightConstraints }}
-						id={id}
-						value={this.state.value}
-						maxLength={parseInt(maxLength) || -1}
-						{...other}
-					/>
+		if (error) {
+			other['aria-invalid'] = true;
+		}
 
-					{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - this.state.value.length)}</p> }
-				</div>
-				{ error && <p className='text--error text--small'>{error}</p> }
+		return (
+			<div className="inputContainer">
+				{label &&
+					<label className={classNames.label} htmlFor={id}>
+						{label}
+					</label>
+				}
+				{helperText &&
+					<div className={classNames.helperText}>
+						{helperText}
+					</div>
+				}
+				<textarea
+					type='text'
+					name={name}
+					required={required}
+					className={classNames.textarea}
+					onChange={this.onChange}
+					rows={rows}
+					ref={(textarea) => {this.textarea = textarea;}}
+					style={{ ...style, ...heightConstraints }}
+					id={id}
+					value={this.state.value}
+					maxLength={parseInt(maxLength) || -1}
+					{...other}
+				/>
+
+				{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - this.state.value.length)}</p> }
 			</div>
 		);
 	}
@@ -187,4 +189,4 @@ Textarea.propTypes = {
 	])
 };
 
-export default Textarea;
+export default withErrorList(Textarea);
