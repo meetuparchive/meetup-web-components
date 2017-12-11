@@ -6,35 +6,8 @@ exports[`ErrorList matches snapshot for input without id 1`] = `
 >
   <li
     className="text--error text--small text--small"
-    key="0"
   >
     This is an error message
-  </li>
-</ul>
-`;
-
-exports[`ErrorList matches snapshot for multiple errors 1`] = `
-<ul
-  aria-live="assertive"
-  id="name"
->
-  <li
-    className="text--error text--small text--small"
-    key="0"
-  >
-    First error message
-  </li>
-  <li
-    className="text--error text--small text--small"
-    key="1"
-  >
-    Second error message
-  </li>
-  <li
-    className="text--error text--small text--small"
-    key="2"
-  >
-    Third error message
   </li>
 </ul>
 `;
@@ -46,7 +19,6 @@ exports[`ErrorList matches snapshot for single error 1`] = `
 >
   <li
     className="text--error text--small text--small"
-    key="0"
   >
     This is an error message
   </li>

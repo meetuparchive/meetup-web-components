@@ -3,11 +3,6 @@ import ErrorList from './ErrorList';
 import { shallow } from 'enzyme';
 
 const MOCK_ERROR = "This is an error message";
-const MOCK_ERROR_LIST = [
-	"First error message",
-	"Second error message",
-	"Third error message"
-];
 const MOCK_ERROR_ID = "name";
 
 describe('ErrorList', () => {
@@ -15,24 +10,15 @@ describe('ErrorList', () => {
 	const componentWithId = shallow(
 		<ErrorList
 			errorId={MOCK_ERROR_ID}
-			errors={MOCK_ERROR}
+			error={MOCK_ERROR}
 		/>
 	);
 	const componentWithoutId = shallow(
-		<ErrorList errors={MOCK_ERROR} />
+		<ErrorList error={MOCK_ERROR} />
 	);
 
 	it('matches snapshot for single error', () => {
 		expect(componentWithId).toMatchSnapshot();
-	});
-	it('matches snapshot for multiple errors', () => {
-		const component = shallow(
-			<ErrorList
-				errorId={MOCK_ERROR_ID}
-				errors={MOCK_ERROR_LIST}
-			/>
-		);
-		expect(component).toMatchSnapshot();
 	});
 	it('matches snapshot for input without id', () => {
 		expect(componentWithoutId).toMatchSnapshot();
