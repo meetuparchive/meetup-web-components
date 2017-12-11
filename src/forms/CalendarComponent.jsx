@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';

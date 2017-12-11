@@ -9,11 +9,7 @@ const MOCK_ERROR_MSG = 'You are not Keith Hernandez';
 /**
  * @class TestComponent
  */
-class TestComponent extends React.Component {
-	render() {
-		return <h1>Hello world</h1>;
-	}
-}
+const TestComponent = () => <h1>Hello world</h1>;
 const TestComponentWithErrorList = withErrorList(TestComponent);
 
 describe('error id', () => {
