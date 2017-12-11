@@ -14,7 +14,7 @@ const ErrorList = (props) => {
 	const errorList = Array.isArray(errors) ? errors : [errors];
 
 	if (errorId) {
-		other['id'] = errorId;
+		other.id = errorId;
 	}
 
 	return (
