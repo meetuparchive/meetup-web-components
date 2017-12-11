@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ErrorList from '../../forms/ErrorList';
 
@@ -26,28 +27,34 @@ const withErrorList = WrappedComponent => {
 	 *
 	 * @returns {React.element}
 	 */
-	const WithErrorList = (props) => {
-		const {
-			id,
-			error,
-		} = this.props;
+	class WithErrorList extends React.PureComponent {
+		render() {
+			const {
+				id,
+				error,
+			} = this.props;
 
-		const fieldProps = {
-			id,
-			'aria-invalid': Boolean(error),
-			'aria-describedby': id && getErrorId(id),
-		};
-		const listProps = {
-			errorId: id && getErrorId(id),
-			errors: error,
-		};
+			const fieldProps = {
+				id,
+				'aria-invalid': Boolean(error),
+				'aria-describedby': id && getErrorId(id),
+			};
+			const listProps = {
+				errorId: id && getErrorId(id),
+				error,
+			};
 
-		return this.props.suppressError ? <WrappedComponent /> : (
-			<div>
-				<WrappedComponent {...this.props} {...fieldProps} />
-				<ErrorList {...listProps} />
-			</div>
-		);
+			return this.props.suppressError ? <WrappedComponent /> : (
+				<div>
+					<WrappedComponent {...this.props} {...fieldProps} />
+					<ErrorList {...listProps} />
+				</div>
+			);
+		}
+	}
+	WithErrorList.propTypes = {
+		id: PropTypes.string,
+		error: PropTypes.string,
 	};
 
 	const wrappedComponentName =

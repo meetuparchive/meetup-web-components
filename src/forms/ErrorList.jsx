@@ -2,16 +2,22 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-export const ERROR_CLASSNAME = 'text--error text--small';
+const ERROR_CLASSNAME = 'text--error text--small';
 
+/**
+ * ErrorList
+ *
+ * Accessible list of errors for a form input.
+ *
+ * Currently supports only a single error due to a
+ * limitation with `redux-form`.
+ */
 const ErrorList = (props) => {
 	const {
 		errorId,
-		errors,
+		error,
 		...other
 	} = props;
-
-	const errorList = Array.isArray(errors) ? errors : [errors];
 
 	if (errorId) {
 		other.id = errorId;
@@ -22,21 +28,13 @@ const ErrorList = (props) => {
 			aria-live="assertive"
 			{...other}
 		>
-			{
-				errorList.map((err, key) => (
-					<li key={key} className={cx(ERROR_CLASSNAME, 'text--small')}>{err}</li>
-				))
-			}
+			{error && <li className={cx(ERROR_CLASSNAME, 'text--small')}>{error}</li> }
 		</ul>
 	);
 };
-
 ErrorList.propTypes = {
 	errorId: PropTypes.string,
-	errors: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.array
-	])
+	error: PropTypes.string,
 };
 
 export default ErrorList;

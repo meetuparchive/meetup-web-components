@@ -6,10 +6,7 @@ import { mount } from 'enzyme';
 const MOCK_FIELD_ID = 'name';
 const MOCK_ERROR_MSG = 'You are not Keith Hernandez';
 
-/**
- * @class TestComponent
- */
-const TestComponent = () => <h1>Hello world</h1>;
+const TestComponent = (props) => (<h1 {...props}>Hello world</h1>);
 const TestComponentWithErrorList = withErrorList(TestComponent);
 
 describe('error id', () => {
