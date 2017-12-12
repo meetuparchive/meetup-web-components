@@ -5,6 +5,15 @@ import Portal from 'react-portal';
 
 import bindAll from '../utils/bindAll';
 
+const throttle = (fn, wait) => {
+	let time = Date.now();
+	return () => {
+		if ((time + wait - Date.now()) < 0) {
+			fn();
+			time = Date.now();
+		}
+	};
+};
 /**
  * @module Dropdown
  */
@@ -30,7 +39,8 @@ class Dropdown extends React.PureComponent {
 
 	getContentPosition() {
 		const {left, top, width, height} = this.triggerRef.getBoundingClientRect();
-		const contentWidth = parseInt(this.props.maxWidth, 10);
+		const scrollTop = window.scrollY || window.pageYOffset;
+		const contentWidth = parseInt(this.props.maxWidth);
 		const getCoordX = (alignment) => {
 			switch (alignment) {
 				case 'left':
@@ -44,8 +54,10 @@ class Dropdown extends React.PureComponent {
 
 		const ddPosition = {
 			x: getCoordX(this.props.align),
-			y: window.scrollY || window.pageYOffset + top + height
+			y: scrollTop + top + height
 		};
+
+		console.log(scrollTop);
 
 		this.setState(() => ({
 			posX: ddPosition.x,
@@ -106,8 +118,8 @@ class Dropdown extends React.PureComponent {
 	componentDidMount() {
 		document.body.addEventListener('click', this.onBodyClick);
 		document.body.addEventListener('keydown', this.onBodyKeyDown);
-		window.addEventListener('resize', this.getContentPosition);
-		document.addEventListener('scroll', this.getContentPosition, true);
+		window.addEventListener('resize', throttle(this.getContentPosition, 1000/60)); // 1000/60 because 60fps
+		document.addEventListener('scroll', throttle(this.getContentPosition, 1000/60), true); // 1000/60 because 60fps
 	}
 
 	componentWillUnmount() {

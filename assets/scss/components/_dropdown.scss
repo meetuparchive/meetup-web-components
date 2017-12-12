@@ -30,6 +30,8 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	box-sizing: border-box;
 	margin-top: $triangleSize;
 	position: absolute;
+	transition: left $duration--short $easing--standard, top $duration--short $easing--standard;
+	z-index: map-get($zindex-map, "floating-content");
 
 	// outer triangle for border
 	&:before {
