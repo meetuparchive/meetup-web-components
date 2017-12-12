@@ -30,7 +30,6 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	box-sizing: border-box;
 	margin-top: $triangleSize;
 	position: absolute;
-	top: $spaceFromTrigger;
 
 	// outer triangle for border
 	&:before {
