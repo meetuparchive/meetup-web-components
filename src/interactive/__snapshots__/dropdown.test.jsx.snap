@@ -16,8 +16,8 @@ exports[`Dropdown renders into DOM 1`] = `
       </Chunk>
     </Section>
   }
-  maxWidth={384}
-  minWidth={0}
+  maxWidth="384px"
+  minWidth="0px"
   trigger={
     <Button
       small={true}
@@ -74,8 +74,8 @@ exports[`Dropdown right aligned dropdown renders right-aligned dropdown to DOM 1
       </Chunk>
     </Section>
   }
-  maxWidth={384}
-  minWidth={0}
+  maxWidth="384px"
+  minWidth="0px"
   trigger={
     <Button
       small={true}
