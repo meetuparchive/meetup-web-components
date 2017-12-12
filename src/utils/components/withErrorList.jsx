@@ -55,6 +55,7 @@ const withErrorList = WrappedComponent => {
 	WithErrorList.propTypes = {
 		id: PropTypes.string,
 		error: PropTypes.string,
+		suppressError: PropTypes.bool,
 	};
 
 	const wrappedComponentName =
