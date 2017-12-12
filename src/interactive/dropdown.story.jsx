@@ -50,6 +50,8 @@ class DropdownWithToggle extends React.PureComponent {
 		return (
 			<Dropdown
 				align='right'
+				minWidth='0'
+				maxWidth='384'
 				isActive={this.state.dropdownToggled}
 				manualToggle={this.toggleDropdown}
 				trigger={
@@ -90,6 +92,8 @@ storiesOf('Dropdown', module)
 			<Flex justify='flexEnd'>
 				<FlexItem shrink>
 					<Dropdown
+						minWidth='0'
+						maxWidth='384'
 						align='right'
 						trigger={
 							<Button small>Open</Button>
@@ -106,6 +110,8 @@ storiesOf('Dropdown', module)
 		() => (
 			<Dropdown
 				align='left'
+				minWidth='0'
+				maxWidth='384'
 				trigger={
 					<Button small>Open</Button>
 				}
@@ -119,6 +125,8 @@ storiesOf('Dropdown', module)
 		() => (
 			<Dropdown
 				align='center'
+				minWidth='0'
+				maxWidth='384'
 				trigger={
 					<Button small>Open</Button>
 				}

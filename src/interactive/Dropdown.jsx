@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import Portal from 'react-portal';
+
 import bindAll from '../utils/bindAll';
 
 /**
@@ -11,6 +13,7 @@ class Dropdown extends React.PureComponent {
 		super(props);
 
 		bindAll(this,
+			'getContentPosition',
 			'toggleContent',
 			'onClick',
 			'onKeyDown',
@@ -18,7 +21,36 @@ class Dropdown extends React.PureComponent {
 			'onBodyKeyDown'
 		);
 
-		this.state = { isActive: props.isActive || false };
+		this.state = {
+			isActive: props.isActive || false,
+			posX: 0,
+			posY: 0
+		};
+	}
+
+	getContentPosition() {
+		const {left, top, width, height} = this.triggerRef.getBoundingClientRect();
+		const contentWidth = this.props.maxWidth;
+		const getCoordX = (alignment) => {
+			switch (alignment) {
+				case 'left':
+					return left;
+				case 'center':
+					return left + (width/2);
+				default:
+					return left - (contentWidth - width);
+			}
+		};
+
+		const ddPosition = {
+			x: getCoordX(this.props.align),
+			y: window.scrollY + top + height
+		};
+
+		this.setState(() => ({
+			posX: ddPosition.x,
+			posY: ddPosition.y
+		}));
 	}
 
 	closeContent(e) {
@@ -30,6 +62,8 @@ class Dropdown extends React.PureComponent {
 	}
 
 	toggleContent(e) {
+		this.getContentPosition(e);
+
 		if (this.props.manualToggle) {
 			this.props.manualToggle(e);
 		} else {
@@ -72,11 +106,15 @@ class Dropdown extends React.PureComponent {
 	componentDidMount() {
 		document.body.addEventListener('click', this.onBodyClick);
 		document.body.addEventListener('keydown', this.onBodyKeyDown);
+		window.addEventListener('resize', this.getContentPosition);
+		document.addEventListener('scroll', this.getContentPosition, true);
 	}
 
 	componentWillUnmount() {
 		document.body.removeEventListener('click', this.onBodyClick);
 		document.body.removeEventListener('keydown', this.onBodyKeyDown);
+		window.removeEventListener('resize', this.getContentPosition);
+		document.removeEventListener('scroll', this.getContentPosition);
 	}
 
 	render() {
@@ -86,6 +124,8 @@ class Dropdown extends React.PureComponent {
 			trigger,
 			content,
 			align, // eslint-disable-line no-unused-vars
+			maxWidth,
+			minWidth,
 			...other
 		} = this.props;
 
@@ -107,9 +147,9 @@ class Dropdown extends React.PureComponent {
 			content: cx(
 				'dropdown-content',
 				{
-					'dropdown-content--right': (align == 'right'),
-					'dropdown-content--left': (align == 'left'),
-					'dropdown-content--center': (align == 'center'),
+					'dropdown-content--right': (align === 'right'),
+					'dropdown-content--left': (align === 'left'),
+					'dropdown-content--center': (align === 'center'),
 					'display--none': !isActive,
 					'display--block': isActive
 				}
@@ -133,17 +173,30 @@ class Dropdown extends React.PureComponent {
 					{trigger}
 				</div>
 
-				<div
-					ref={(el) => this.contentRef = el}
-					className={classNames.content}
-					aria-hidden={!isActive}
-				>
-					{content}
-				</div>
+				<Portal isOpened={isActive}>
+					<div
+						ref={(el) => this.contentRef = el}
+						className={classNames.content}
+						aria-hidden={!isActive}
+						style={{
+							left: `${this.state.posX}px`,
+							top: `${this.state.posY}px`,
+							minWidth: `${minWidth}px`,
+							maxWidth: `${maxWidth}px`
+						}}
+					>
+						{content}
+					</div>
+				</Portal>
 			</div>
 		);
 	}
 }
+
+Dropdown.defaultProps = {
+	maxWidth: 384,
+	minWidth: 0
+};
 
 Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
@@ -151,7 +204,9 @@ Dropdown.propTypes = {
 	align: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
-	manualToggle: PropTypes.func
+	manualToggle: PropTypes.func,
+	maxWidth: PropTypes.number,
+	minWidth: PropTypes.number,
 };
 
 export default Dropdown;
