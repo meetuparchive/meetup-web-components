@@ -30,7 +30,7 @@ class Dropdown extends React.PureComponent {
 
 	getContentPosition() {
 		const {left, top, width, height} = this.triggerRef.getBoundingClientRect();
-		const contentWidth = this.props.maxWidth;
+		const contentWidth = parseInt(this.props.maxWidth, 10);
 		const getCoordX = (alignment) => {
 			switch (alignment) {
 				case 'left':
@@ -44,7 +44,7 @@ class Dropdown extends React.PureComponent {
 
 		const ddPosition = {
 			x: getCoordX(this.props.align),
-			y: window.scrollY + top + height
+			y: window.scrollY || window.pageYOffset + top + height
 		};
 
 		this.setState(() => ({
@@ -62,7 +62,7 @@ class Dropdown extends React.PureComponent {
 	}
 
 	toggleContent(e) {
-		this.getContentPosition(e);
+		this.getContentPosition();
 
 		if (this.props.manualToggle) {
 			this.props.manualToggle(e);
@@ -181,8 +181,8 @@ class Dropdown extends React.PureComponent {
 						style={{
 							left: `${this.state.posX}px`,
 							top: `${this.state.posY}px`,
-							minWidth: `${minWidth}px`,
-							maxWidth: `${maxWidth}px`
+							minWidth: `${minWidth}`,
+							maxWidth: `${maxWidth}`
 						}}
 					>
 						{content}
@@ -194,8 +194,8 @@ class Dropdown extends React.PureComponent {
 }
 
 Dropdown.defaultProps = {
-	maxWidth: 384,
-	minWidth: 0
+	maxWidth: '384px',
+	minWidth: '0px'
 };
 
 Dropdown.propTypes = {
@@ -205,8 +205,14 @@ Dropdown.propTypes = {
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
 	manualToggle: PropTypes.func,
-	maxWidth: PropTypes.number,
-	minWidth: PropTypes.number,
+	maxWidth: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number
+	]),
+	minWidth: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number
+	]),
 };
 
 export default Dropdown;
