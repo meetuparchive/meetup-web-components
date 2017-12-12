@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown renders into DOM 1`] = `
+<Dropdown
+  align="right"
+  content={
+    <Section
+      noSeparator={true}
+    >
+      <Chunk>
+        <h2
+          className="text--big text--bold"
+        >
+          Dropdown content
+        </h2>
+      </Chunk>
+    </Section>
+  }
+  maxWidth="384px"
+  minWidth="0px"
+  trigger={
+    <Button
+      small={true}
+    >
+      Open
+    </Button>
+  }
+>
+  <div
+    aria-haspopup="true"
+    className="dropdown"
+    onKeyDown={[Function]}
+  >
+    <div
+      className="dropdown-trigger"
+      onClick={[Function]}
+      tabIndex="0"
+    >
+      <Button
+        small={true}
+      >
+        <button
+          className="button button--small"
+          onClick={undefined}
+          role="button"
+        >
+          Open
+        </button>
+      </Button>
+    </div>
+    <Portal
+      isOpened={false}
+      onClose={[Function]}
+      onOpen={[Function]}
+      onUpdate={[Function]}
+    />
+  </div>
+</Dropdown>
+`;
+
+exports[`Dropdown right aligned dropdown renders right-aligned dropdown to DOM 1`] = `
+<Dropdown
+  align="right"
+  content={
+    <Section
+      noSeparator={true}
+    >
+      <Chunk>
+        <h2
+          className="text--big text--bold"
+        >
+          Dropdown content
+        </h2>
+      </Chunk>
+    </Section>
+  }
+  maxWidth="384px"
+  minWidth="0px"
+  trigger={
+    <Button
+      small={true}
+    >
+      Open
+    </Button>
+  }
+>
+  <div
+    aria-haspopup="true"
+    className="dropdown"
+    onKeyDown={[Function]}
+  >
+    <div
+      className="dropdown-trigger"
+      onClick={[Function]}
+      tabIndex="0"
+    >
+      <Button
+        small={true}
+      >
+        <button
+          className="button button--small"
+          onClick={undefined}
+          role="button"
+        >
+          Open
+        </button>
+      </Button>
+    </div>
+    <Portal
+      isOpened={false}
+      onClose={[Function]}
+      onOpen={[Function]}
+      onUpdate={[Function]}
+    />
+  </div>
+</Dropdown>
+`;
