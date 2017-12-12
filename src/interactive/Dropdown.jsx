@@ -124,7 +124,7 @@ class Dropdown extends React.PureComponent {
 			trigger,
 			content,
 			align, // eslint-disable-line no-unused-vars
-			width, // eslint-disable-line no-unused-vars
+			width,
 			...other
 		} = this.props;
 
@@ -146,9 +146,9 @@ class Dropdown extends React.PureComponent {
 			content: cx(
 				'dropdown-content',
 				{
-					'dropdown-content--right': (align == 'right'),
-					'dropdown-content--left': (align == 'left'),
-					'dropdown-content--center': (align == 'center'),
+					'dropdown-content--right': (align === 'right'),
+					'dropdown-content--left': (align === 'left'),
+					'dropdown-content--center': (align === 'center'),
 					'display--none': !isActive,
 					'display--block': isActive
 				}
@@ -180,8 +180,8 @@ class Dropdown extends React.PureComponent {
 						style={{
 							left: `${this.state.posX}px`,
 							top: `${this.state.posY}px`,
-							minWidth: `${this.props.width}px`,
-							maxWidth: `${this.props.width}px`
+							minWidth: `${width}px`,
+							maxWidth: `${width}px`
 						}}
 					>
 						{content}
@@ -193,7 +193,7 @@ class Dropdown extends React.PureComponent {
 }
 
 Dropdown.defaultProps = {
-	width: 384
+	width: 384,
 };
 
 Dropdown.propTypes = {
