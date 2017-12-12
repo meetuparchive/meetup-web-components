@@ -32,9 +32,6 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	margin-top: $triangleSize;
 	position: absolute;
 	top: $spaceFromTrigger;
-	// min-width: $content-minWidth;
-	// max-width: $content-minWidth;
-	z-index: map-get($zindex-map, 'popup');
 
 	// outer triangle for border
 	&:before {
