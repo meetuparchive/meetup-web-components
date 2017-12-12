@@ -29,22 +29,22 @@ class Dropdown extends React.PureComponent {
 	}
 
 	getContentPosition() {
-		const {x, y, width, height} = this.triggerRef.getBoundingClientRect();
+		const {left, top, width, height} = this.triggerRef.getBoundingClientRect();
 		const contentWidth = this.props.width;
 		const getCoordX = (alignment) => {
 			switch (alignment) {
 				case 'left':
-					return x;
+					return left;
 				case 'center':
-					return x + (width/2);
+					return left + (width/2);
 				default:
-					return x - (contentWidth - width);
+					return left - (contentWidth - width);
 			}
 		};
 
 		const ddPosition = {
 			x: getCoordX(this.props.align),
-			y: y + height
+			y: window.scrollY + top + height
 		};
 
 		this.setState(() => ({
@@ -62,7 +62,7 @@ class Dropdown extends React.PureComponent {
 	}
 
 	toggleContent(e) {
-		this.getContentPosition();
+		this.getContentPosition(e);
 
 		if (this.props.manualToggle) {
 			this.props.manualToggle(e);
@@ -107,12 +107,14 @@ class Dropdown extends React.PureComponent {
 		document.body.addEventListener('click', this.onBodyClick);
 		document.body.addEventListener('keydown', this.onBodyKeyDown);
 		window.addEventListener('resize', this.getContentPosition);
+		document.addEventListener('scroll', this.getContentPosition, true);
 	}
 
 	componentWillUnmount() {
 		document.body.removeEventListener('click', this.onBodyClick);
 		document.body.removeEventListener('keydown', this.onBodyKeyDown);
 		window.removeEventListener('resize', this.getContentPosition);
+		document.removeEventListener('scroll', this.getContentPosition);
 	}
 
 	render() {
