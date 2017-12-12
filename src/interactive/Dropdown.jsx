@@ -30,7 +30,7 @@ class Dropdown extends React.PureComponent {
 
 	getContentPosition() {
 		const {left, top, width, height} = this.triggerRef.getBoundingClientRect();
-		const contentWidth = this.props.width;
+		const contentWidth = this.props.maxWidth;
 		const getCoordX = (alignment) => {
 			switch (alignment) {
 				case 'left':
@@ -124,7 +124,8 @@ class Dropdown extends React.PureComponent {
 			trigger,
 			content,
 			align, // eslint-disable-line no-unused-vars
-			width,
+			maxWidth,
+			minWidth,
 			...other
 		} = this.props;
 
@@ -180,8 +181,8 @@ class Dropdown extends React.PureComponent {
 						style={{
 							left: `${this.state.posX}px`,
 							top: `${this.state.posY}px`,
-							minWidth: `${width}px`,
-							maxWidth: `${width}px`
+							minWidth: `${minWidth}px`,
+							maxWidth: `${maxWidth}px`
 						}}
 					>
 						{content}
@@ -193,7 +194,8 @@ class Dropdown extends React.PureComponent {
 }
 
 Dropdown.defaultProps = {
-	width: 384,
+	maxWidth: 384,
+	minWidth: 0
 };
 
 Dropdown.propTypes = {
@@ -203,7 +205,8 @@ Dropdown.propTypes = {
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
 	manualToggle: PropTypes.func,
-	width: PropTypes.number
+	maxWidth: PropTypes.number,
+	minWidth: PropTypes.number,
 };
 
 export default Dropdown;
