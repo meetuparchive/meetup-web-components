@@ -3,7 +3,7 @@
 //
 $dropdownShadow: $interactiveShadow;
 $content-minWidth: $block-6;
-$content-maxWidth: 512px; // match chapstick
+// $content-maxWidth: 512px; // match chapstick
 $triangleSize: 10px;
 $spaceFromTrigger: $space-3 + $triangleSize;
 
@@ -29,10 +29,11 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	background-color: $C_contentBG;
 	box-shadow: $dropdownShadow;
 	box-sizing: border-box;
+	margin-top: $triangleSize;
 	position: absolute;
 	top: $spaceFromTrigger;
-	min-width: $content-minWidth;
-	max-width: $content-minWidth;
+	// min-width: $content-minWidth;
+	// max-width: $content-minWidth;
 	z-index: map-get($zindex-map, 'popup');
 
 	// outer triangle for border
