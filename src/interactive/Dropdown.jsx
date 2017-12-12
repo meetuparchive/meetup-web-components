@@ -57,8 +57,6 @@ class Dropdown extends React.PureComponent {
 			y: scrollTop + top + height
 		};
 
-		console.log(scrollTop);
-
 		this.setState(() => ({
 			posX: ddPosition.x,
 			posY: ddPosition.y
