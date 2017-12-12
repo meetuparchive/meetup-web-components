@@ -1,5 +1,4 @@
 import React from 'react';
-// import TestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import Portal from 'react-portal';
 
@@ -18,25 +17,8 @@ const dropdownContent = (
 );
 const dropdownTrigger = <Button small>Open</Button>;
 
-// const getDropdownFn = component => () =>
-// 	TestUtils.findRenderedComponentWithType(component, Dropdown);
-
-// const getTrigger = component =>
-// 	TestUtils.findRenderedDOMComponentWithClass(component, 'dropdown-trigger');
-
-// const getContent = component =>
-// 	TestUtils.findRenderedDOMComponentWithClass(component, 'dropdown-content');
-
 const getPortalContent = portal =>
 	new ReactWrapper(portal.prop('children'));
-
-// const getIsOpen = content =>
-// 	content.classList.contains('display--block') &&
-// 	!content.classList.contains('display--none');
-
-// const getIsPortalOpen = portal =>
-// 	portal.prop('className').includes('display--block') &&
-// 	!portal.prop('className').includes('display--none');
 
 /**
  * @module DropdownWithToggle
@@ -79,7 +61,6 @@ describe('Dropdown', () => {
 		/>
 	);
 	const wrapper = mount(dropdownJSX);
-	// const wrapperWithRef = new ReactWrapper( mount(dropdownJSX).instance().triggerRef, true );
 	const portalWrapper = wrapper.find(Portal);
 
 	it('renders into DOM', () => {
