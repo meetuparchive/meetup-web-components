@@ -204,7 +204,7 @@ column to show how different states affect the rendered component.
 Form errors update
 
 - removed error elements and logic from base form components
-- form components are now wrapped by the new `withErrorList` HOC to handle rendering errors
+- form components are now wrapped by the new `withErrorList` HOC to handle error rendering
 
 ### `v1.1.X`
 Icons update
