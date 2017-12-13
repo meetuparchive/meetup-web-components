@@ -30,12 +30,6 @@ class Dropdown extends React.PureComponent {
 			"onBodyClick",
 			"onBodyKeyDown"
 		);
-		// this.getContentPosition = this.getContentPosition.bind(this);
-		// this.toggleContent = this.toggleContent.bind(this);
-		// this.onClick = this.onClick.bind(this);
-		// this.onKeyDown = this.onKeyDown.bind(this);
-		// this.onBodyClick = this.onBodyClick.bind(this);
-		// this.onBodyKeyDown = this.onBodyKeyDown.bind(this);
 
 		this.state = {
 			isActive: props.isActive || false,
