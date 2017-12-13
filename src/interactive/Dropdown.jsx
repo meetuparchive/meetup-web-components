@@ -44,7 +44,13 @@ class Dropdown extends React.PureComponent {
 			return;
 		}
 
-		const {left, right, top, width, height} = this.triggerRef.getBoundingClientRect();
+		const {
+			left,
+			right,
+			top,
+			width,
+			height
+		} = this.triggerRef.getBoundingClientRect();
 		const scrollTop = window.scrollY || window.pageYOffset;
 		const getLeftPos = (alignment) => {
 			switch (alignment) {
