@@ -3,7 +3,6 @@ import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import cx from 'classnames';
-import Toast from './Toast';
 
 export const DELAY_TIME = 3000;
 const MARGINAL_DELAY = 1000; // each additional toast will wait this much longer than the previous one
@@ -62,8 +61,7 @@ class Toaster extends React.PureComponent {
 	 * removes timers in order to prevent toasts from being automatically dismissed
 	 */
 	restartTimeouts() {
-		this.state.toasts &&
-			this.state.toasts.map(this.setTimer);
+		this.state.toasts && this.state.toasts.map(this.setTimer);
 	}
 
 	/**
@@ -151,7 +149,7 @@ class Toaster extends React.PureComponent {
 }
 
 Toaster.propTypes = {
-	toasts: PropTypes.arrayOf(PropTypes.instanceOf(Toast)).isRequired,
+	toasts: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default Toaster;
