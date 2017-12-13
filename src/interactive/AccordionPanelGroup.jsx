@@ -9,7 +9,7 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
  * @param {any} value
  * @return {boolean} True if value is a primitive type
  */
-const isPrimitive = value =>
+export const isPrimitive = value =>
 	['object', 'function'].indexOf(typeof value) === -1;
 
 /**
