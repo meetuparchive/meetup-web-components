@@ -32,34 +32,36 @@ class Dropdown extends React.PureComponent {
 
 		this.state = {
 			isActive: props.isActive || false,
-			posX: 0,
-			posY: 0
+			left: '0px',
+			top: '0px',
+			right: 'auto'
 		};
 	}
 
 	getContentPosition() {
-		const {left, top, width, height} = this.triggerRef.getBoundingClientRect();
+		const {left, right, top, width, height} = this.triggerRef.getBoundingClientRect();
 		const scrollTop = window.scrollY || window.pageYOffset;
-		const contentWidth = parseInt(this.props.maxWidth);
-		const getCoordX = (alignment) => {
+		const getLeftPos = (alignment) => {
 			switch (alignment) {
 				case 'left':
-					return left;
+					return `${left}px`;
 				case 'center':
-					return left + (width/2);
+					return `${left + (width/2)}px`;
 				default:
-					return left - (contentWidth - width);
+					return 'auto';
 			}
 		};
 
 		const ddPosition = {
-			x: getCoordX(this.props.align),
-			y: scrollTop + top + height
+			left: getLeftPos(this.props.align),
+			top: scrollTop + top + height,
+			right: this.props.align === 'right' ? (right - width) : 'auto'
 		};
 
 		this.setState(() => ({
-			posX: ddPosition.x,
-			posY: ddPosition.y
+			left: ddPosition.left,
+			top: ddPosition.top,
+			right: ddPosition.right
 		}));
 	}
 
@@ -100,7 +102,7 @@ class Dropdown extends React.PureComponent {
 		const isNotDropdownClick = [
 			this.contentRef,
 			this.triggerRef
-		].every(ref => !ref.contains(e.target));
+		].every(ref => ref && !ref.contains(e.target));
 
 		if (isNotDropdownClick) {
 			this.closeContent(e);
@@ -166,6 +168,8 @@ class Dropdown extends React.PureComponent {
 			)
 		};
 
+		// const leftVal = align==='left' ? `${this.state.left}px` : 'auto';
+
 		return (
 			<div
 				className={classNames.dropdown}
@@ -189,10 +193,11 @@ class Dropdown extends React.PureComponent {
 						className={classNames.content}
 						aria-hidden={!isActive}
 						style={{
-							left: `${this.state.posX}px`,
-							top: `${this.state.posY}px`,
-							minWidth: `${minWidth}`,
-							maxWidth: `${maxWidth}`
+							left: this.state.left,
+							top: this.state.top,
+							right: this.state.right,
+							minWidth: minWidth,
+							maxWidth: maxWidth
 						}}
 					>
 						{content}
