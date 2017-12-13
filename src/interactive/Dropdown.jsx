@@ -34,8 +34,7 @@ class Dropdown extends React.PureComponent {
 		this.state = {
 			isActive: props.isActive || false,
 			left: '0px',
-			top: '0px',
-			right: 'auto'
+			top: '0px'
 		};
 	}
 
@@ -46,7 +45,6 @@ class Dropdown extends React.PureComponent {
 
 		const {
 			left,
-			right,
 			top,
 			width,
 			height
@@ -59,20 +57,18 @@ class Dropdown extends React.PureComponent {
 				case 'center':
 					return `${left + (width/2)}px`;
 				default:
-					return 'auto';
+					return `${left + width}px`;
 			}
 		};
 
 		const ddPosition = {
 			left: getLeftPos(this.props.align),
-			top: scrollTop + top + height,
-			right: this.props.align === 'right' ? (right - width) : 'auto'
+			top: scrollTop + top + height
 		};
 
 		this.setState(() => ({
 			left: ddPosition.left,
 			top: ddPosition.top,
-			right: ddPosition.right
 		}));
 	}
 
@@ -208,7 +204,6 @@ class Dropdown extends React.PureComponent {
 						style={{
 							left: this.state.left,
 							top: this.state.top,
-							right: this.state.right,
 							minWidth: minWidth,
 							maxWidth: maxWidth
 						}}
