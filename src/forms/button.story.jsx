@@ -1,24 +1,19 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
-
-import { decorateWithLocale } from '../utils/decorators';
+import { Inverted } from '../utils/storyComponents';
 import {
-	InfoWrapper,
-	Inverted,
-} from '../utils/storyComponents';
+	decorateWithLocale,
+	decorateWithInfo,
+} from '../utils/decorators';
 
 import Button from './Button';
 import Icon from '../media/Icon';
 
 storiesOf('Button', module)
 	.addDecorator(decorateWithLocale)
-	.addWithInfo(
-		'Default',
-		'This is the basic usage with the component.',
-		() => (
-			<InfoWrapper>
-				<Button onClick={action('clicked')}>Button Label</Button>
-			</InfoWrapper>
+	.addDecorator(decorateWithInfo)
+	.add('Default', () => (
+			<Button onClick={action('clicked')}>Button Label</Button>
 		)
 	)
 	.add('Default - inverted', () => (

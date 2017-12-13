@@ -1,11 +1,12 @@
 import React from 'react';
-import { InfoWrapper } from '../utils/storyComponents';
 import TextInput from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@storybook/react';
+import { decorateWithLocale } from '../utils/decorators';
 
 storiesOf('TextInput', module)
-	.add('default', () => (
+	.addDecorator(decorateWithLocale)
+	.addWithInfo('default', null, () => (
 		<div className='span--50'>
 			<TextInput
 				label='Your name'
@@ -15,7 +16,7 @@ storiesOf('TextInput', module)
 		</div>
 	)
 	)
-	.add('with value', () => (
+	.addWithInfo('with value', null, () => (
 		<div className='span--50'>
 			<TextInput
 				label='Your name'
@@ -26,7 +27,7 @@ storiesOf('TextInput', module)
 		</div>
 	)
 	)
-	.add('disabled', () => (
+	.addWithInfo('disabled', null, () => (
 		<div className='span--50'>
 			<TextInput
 				label='Your name'
@@ -37,7 +38,7 @@ storiesOf('TextInput', module)
 		</div>
 	)
 	)
-	.add('error state', () => (
+	.addWithInfo('error state', null, () => (
 		<div className='span--50'>
 			<TextInput
 				label='Your name'
@@ -48,7 +49,7 @@ storiesOf('TextInput', module)
 		</div>
 	)
 	)
-	.add('error state as element', () => {
+	.addWithInfo('error state as element', null, () => {
 		return (
 			<div className='span--50'>
 				<TextInput label='Your name'
@@ -59,7 +60,18 @@ storiesOf('TextInput', module)
 			</div>
 		);
 	})
-	.add('required', () => {
+	.addWithInfo('with helper text', null, () => (
+		<div className='span--50'>
+			<TextInput
+				label='Your name'
+				id='fullname'
+				name='name'
+				placeholder='Not your email'
+				helperText='Names cannot contain special characters' />
+		</div>
+	)
+	)
+	.addWithInfo('required', null, () => {
 		return (
 			<form className='span--50'>
 				<TextInput
@@ -76,7 +88,7 @@ storiesOf('TextInput', module)
 			</form>
 		);
 	})
-	.add('search', () => {
+	.addWithInfo('search', null, () => {
 		return (
 			<form>
 				<TextInput
@@ -93,7 +105,7 @@ storiesOf('TextInput', module)
 			</form>
 		);
 	})
-	.add('with icon', () => (
+	.addWithInfo('with icon', null, () => (
 		<div className='span--50'>
 			<TextInput
 				label='Your name'
@@ -115,21 +127,19 @@ storiesOf('TextInput', module)
 				pattern:'.{5,10}'
 			};
 			return (
-				<InfoWrapper>
-					<div className='span--50'>
-						<TextInput
-							label='Your name'
-							id='fullname'
-							name='name'
-							value='how long is this'
-							error='this is an error'
-							{...rules} />
-					</div>
-				</InfoWrapper>
+				<div className='span--50'>
+					<TextInput
+						label='Your name'
+						id='fullname'
+						name='name'
+						value='how long is this'
+						error='this is an error'
+						{...rules} />
+				</div>
 			);
 		}
 	)
-	.add('has a pattern for min length', () => {
+	.addWithInfo('has a pattern for min length', null, () => {
 		const rules = {
 			pattern:'.{5,10}'
 		};

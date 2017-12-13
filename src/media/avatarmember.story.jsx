@@ -1,8 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
-import { InfoWrapper } from '../utils/storyComponents';
-import { decorateWithLocale } from '../utils/decorators';
+import {
+	decorateWithLocale,
+	decorateWithInfo,
+} from '../utils/decorators';
 import AvatarMember from './AvatarMember.jsx';
 
 storiesOf('AvatarMember', module)
@@ -11,13 +13,12 @@ storiesOf('AvatarMember', module)
 		'default',
 		'This is the basic usage with the component.',
 		() => (
-			<InfoWrapper>
-				<AvatarMember
-					member={MOCK_MEMBER}
-				/>
-			</InfoWrapper>
+			<AvatarMember
+				member={MOCK_MEMBER}
+			/>
 		)
 	)
+	.addDecorator(decorateWithInfo)
 	.add('organizer', () => (
 		<AvatarMember
 			member={MOCK_MEMBER}

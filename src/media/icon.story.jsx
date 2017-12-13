@@ -1,21 +1,20 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { WithNotes } from '@storybook/addon-notes';
-import { InfoWrapper, Inverted } from '../utils/storyComponents';
-import { decorateWithLocale } from '../utils/decorators';
+import { Inverted } from '../utils/storyComponents';
+import {
+	decorateWithLocale,
+	decorateWithInfo,
+} from '../utils/decorators';
 import Icon from './Icon';
 
 const ICON_NAME = 'heart-outline';
 
 storiesOf('Icon', module)
 	.addDecorator(decorateWithLocale)
-	.addWithInfo(
-		'default',
-		'This is the basic usage with the component.',
-		() => (
-			<InfoWrapper>
-				<Icon shape={ICON_NAME} />
-			</InfoWrapper>
+	.addDecorator(decorateWithInfo)
+	.add('default', () => (
+			<Icon shape={ICON_NAME} />
 		)
 	)
 	.add('Accessible', () => (
@@ -48,6 +47,12 @@ storiesOf('Icon', module)
 	))
 	.add('Passed color', () => (
 		<Icon shape={ICON_NAME} color='#F13959' />
+	))
+	.addWithInfo(
+		'Circled',
+		'The boolean prop `circled` adds an enclosing circle around the icon.',
+		() => (
+		<Icon shape="external-twitter" size="l" circled />
 	))
 	.addWithInfo(
 		'Loading indicator',
