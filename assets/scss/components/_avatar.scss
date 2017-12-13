@@ -146,7 +146,9 @@ $avatarBg: $C_coolGrayLight;
 }
 
 .avatar--noPhoto {
-	@include valignChildren();
+	@include display(inline-flex);
+	@include align-items(center);
+	@include justify-content(center);
 	position: relative;
 	text-indent: initial;
 	background-color: darken($avatarBg, 6%);
@@ -158,8 +160,9 @@ $avatarBg: $C_coolGrayLight;
 		height: 100%;
 
 		// center the SVG element within the wrapper
-		@include valignChildren();
-		justify-content: center;
+		@include display(inline-flex);
+		@include align-items(center);
+		@include justify-content(center);
 	}
 	svg {
 		// sets SVG size relative to wrapper
@@ -190,7 +193,7 @@ $avatarBg: $C_coolGrayLight;
 }
 
 .avatar--icon {
-	@include display(flex);
+	@include display(inline-flex);
 	@include align-items(center);
 	@include justify-content(center);
 	background: $C_collectionBG;
