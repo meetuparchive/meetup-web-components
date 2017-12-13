@@ -155,7 +155,7 @@ class AccordionPanel extends React.Component {
 
 				<FlexItem
 					className='accordionPanel-icon'
-					onClick={!indicatorSwitch && this._handleToggle}
+					onClick={this.onToggleClick}
 					shrink
 				>
 					{

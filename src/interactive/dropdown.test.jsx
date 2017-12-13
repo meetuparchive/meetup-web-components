@@ -1,5 +1,7 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
+import { mount, ReactWrapper } from 'enzyme';
+import Portal from 'react-portal';
+
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
@@ -15,18 +17,40 @@ const dropdownContent = (
 );
 const dropdownTrigger = <Button small>Open</Button>;
 
-const getDropdownFn = component => () =>
-	TestUtils.findRenderedComponentWithType(component, Dropdown);
+const getPortalContent = portal =>
+	new ReactWrapper(portal.prop('children'));
 
-const getTrigger = component =>
-	TestUtils.findRenderedDOMComponentWithClass(component, 'dropdown-trigger');
+/**
+ * @module DropdownWithToggle
+ */
+class DropdownWithToggle extends React.PureComponent {
+	constructor(props) {
+		super(props);
 
-const getContent = component =>
-	TestUtils.findRenderedDOMComponentWithClass(component, 'dropdown-content');
+		this.state = {
+			dropdownToggled: false
+		};
 
-const getIsOpen = content =>
-	content.classList.contains('display--block') &&
-	!content.classList.contains('display--none');
+		this.toggleDropdown = this.toggleDropdown.bind(this);
+	}
+
+	toggleDropdown() {
+		this.setState(() => ({ dropdownToggled: !this.state.dropdownToggled }));
+	}
+
+	render() {
+
+		return (
+			<Dropdown
+				isActive={this.state.dropdownToggled}
+				manualToggle={this.toggleDropdown}
+				trigger={dropdownTrigger}
+				content={dropdownContent}
+			/>
+		);
+
+	}
+}
 
 describe('Dropdown', () => {
 	const dropdownJSX = (
@@ -36,74 +60,103 @@ describe('Dropdown', () => {
 			content={dropdownContent}
 		/>
 	);
-	const component = TestUtils.renderIntoDocument(dropdownJSX);
+	const wrapper = mount(dropdownJSX);
+	const portalWrapper = wrapper.find(Portal);
 
 	it('renders into DOM', () => {
-		expect(getDropdownFn(component)).not.toThrow();
+		expect(wrapper).toMatchSnapshot();
 	});
 
 	it('should hide dropdown content by default', () => {
-		const content = getContent(component);
-		expect(content.classList).toContain('display--none');
+		const content = getPortalContent(portalWrapper);
+
+		expect(content.prop('className')).toContain('display--none');
 	});
 
 	describe('right aligned dropdown', () => {
-		const rightDropdown = TestUtils.renderIntoDocument(
+		const rightDropdown = (
 			<Dropdown
 				align="right"
 				trigger={dropdownTrigger}
 				content={dropdownContent}
 			/>
 		);
+		const rightDropdownWrapper = mount(rightDropdown);
+		const rightDropdownPortal = rightDropdownWrapper.find(Portal);
 
-		it('renders left-aligned dropdown to DOM', () => {
-			expect(getDropdownFn(rightDropdown)).not.toThrow();
+		it('renders right-aligned dropdown to DOM', () => {
+			expect(rightDropdownWrapper).toMatchSnapshot();
 		});
 
 		it('applies correct alignment className to dropdown content', () => {
-			const content = getContent(rightDropdown);
-			expect(content.classList).toContain('dropdown-content--right');
+			const content = getPortalContent(rightDropdownPortal);
+			expect(content.prop('className')).toContain('dropdown-content--right');
 		});
 	});
 
 	describe('open and close', () => {
-		let closedComponent, content, trigger;
+		let closedComponent, trigger;
 
 		beforeEach(() => {
-			closedComponent = TestUtils.renderIntoDocument(dropdownJSX);
-			content = getContent(closedComponent);
-			trigger = getTrigger(closedComponent);
+			closedComponent = mount(dropdownJSX);
+			trigger = closedComponent.find('.dropdown-trigger').first();
 		});
 		afterEach(() => {
 			closedComponent = null;
-			content = null;
 			trigger = null;
 		});
 
 		it('shold show dropdown when trigger is clicked', () => {
-			expect(getIsOpen(content)).toBeFalsy();
-			TestUtils.Simulate.click(trigger);
-			expect(getIsOpen(content)).toBeTruthy();
+			expect(closedComponent.state('isActive')).toBeFalsy();
+			trigger.simulate('click');
+			expect(closedComponent.state('isActive')).toBeTruthy();
 		});
 
 		it('should close the dropdown on ESC key', () => {
 			// open it first
 			// dropdowns do not support default open by design
-			TestUtils.Simulate.click(trigger);
-			expect(getIsOpen(content)).toBeTruthy();
+			trigger.simulate('click');
+			expect(closedComponent.state('isActive')).toBeTruthy();
 
-			closedComponent.onBodyKeyDown({ key: 'Escape' });
-			expect(getIsOpen(content)).toBeFalsy();
+			closedComponent.instance().onBodyKeyDown({ key: 'Escape' });
+			expect(closedComponent.state('isActive')).toBeFalsy();
 		});
 
 		it('should close when clicking outside of the dropdown content', () => {
 			// open it first
 			// dropdowns do not support default open by design
-			TestUtils.Simulate.click(trigger);
-			expect(getIsOpen(content)).toBeTruthy();
+			trigger.simulate('click');
+			expect(closedComponent.state('isActive')).toBeTruthy();
 
-			closedComponent.onBodyClick({ target: '<div />' });
-			expect(getIsOpen(content)).toBeFalsy();
+			closedComponent.instance().onBodyClick({ target: '<div />' });
+			expect(closedComponent.state('isActive')).toBeFalsy();
+		});
+	});
+
+	describe('manually toggle dropdown', () => {
+		let closedComponent, closeContentSpy, toggleContentSpy, trigger;
+
+		beforeEach(() => {
+			closedComponent = mount(<DropdownWithToggle />);
+			closeContentSpy = jest.spyOn(Dropdown.prototype, 'closeContent');
+			toggleContentSpy = jest.spyOn(Dropdown.prototype, 'toggleContent');
+			trigger = closedComponent.find('.dropdown-trigger');
+		});
+
+		afterEach(() => {
+			closedComponent = null;
+			trigger = null;
+			closeContentSpy.mockClear();
+			toggleContentSpy.mockClear();
+		});
+
+		it('should still open and close when clicking the trigger', () => {
+			expect(closeContentSpy).not.toHaveBeenCalled();
+			trigger.simulate('click');
+
+			closedComponent.find(Dropdown).instance().onBodyClick({ target: '<div />' });
+			expect(closeContentSpy).toHaveBeenCalled();
+			expect(toggleContentSpy).not.toHaveBeenCalled();
 		});
 	});
 });

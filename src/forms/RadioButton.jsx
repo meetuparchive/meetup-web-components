@@ -15,8 +15,8 @@ const RadioButton = ({ label, className, ...inputProps }) => {
 		fauxCheckboxClassNames: cx(
 			'display--flex flex--alignCenter flex--center align--center fauxToggle fauxToggle--radio',
 			{
-				['checked']: inputProps.checked,
-				['disabled']: inputProps.disabled
+				checked: inputProps.checked,
+				disabled: inputProps.disabled
 			}
 		)
 	};
@@ -39,8 +39,8 @@ const RadioButton = ({ label, className, ...inputProps }) => {
 				<FlexItem className="toggleLabel-container" shrink>
 					<span
 						className={cx({
-							['text--hint']: inputProps.disabled,
-							['text--bold']: inputProps.checked
+							'text--hint': inputProps.disabled,
+							'text--bold': inputProps.checked
 						})}
 					>
 						{label}

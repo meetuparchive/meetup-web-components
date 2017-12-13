@@ -2,7 +2,6 @@ import React from 'react';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
 import { storiesOf } from '@storybook/react';
-import { InfoWrapper } from '../utils/storyComponents';
 
 const flexParentStyles = {
 	minHeight: '200px',
@@ -32,25 +31,21 @@ storiesOf('FlexItem', module)
 		'Flex Item grow (default)',
 		'Following CSS flexbox convention, flex items by default will grow equally with each other to fill the space of their parent `Flex`.',
 		() => (
-			<InfoWrapper>
-				<Flex style={flexParentStyles}>
-					<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
-					<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-					<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-				</Flex>
-			</InfoWrapper>
+			<Flex style={flexParentStyles}>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+			</Flex>
 		))
 	.addWithInfo(
 		'Flex Item shrink',
 		'Adding the `shrink` prop to a `FlexItem` will cause the flex item to shrink to content width (or height, in a column-oriented `Flex`).',
 		() => (
-			<InfoWrapper>
-				<Flex style={flexParentStyles}>
-					<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
-					<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-					<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
-				</Flex>
-			</InfoWrapper>
+			<Flex style={flexParentStyles}>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+				<FlexItem shrink style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+			</Flex>
 		))
 	.addWithInfo(
 		'Flex Item growFactors',
@@ -59,36 +54,34 @@ storiesOf('FlexItem', module)
 		For example, if there are flex items with \`growFactor\` values of \`2\` and \`3\`, the first flex item will
 		fill two fifths of its parent. Grow factors can be thought of fractional widths.`,
 		() => (
-			<InfoWrapper>
-				<div style={{height: '100vh', width: '100%'}}>
-					<Flex style={flexParentStyles}>
-						<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-						<FlexItem growFactor={7} style={flexItemStyles}><div style={boxStyles}>7</div></FlexItem>
-					</Flex>
-					<Flex style={flexParentStyles}>
-						<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-						<FlexItem growFactor={6} style={flexItemStyles}><div style={boxStyles}>6</div></FlexItem>
-					</Flex>
-					<Flex style={flexParentStyles}>
-						<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-						<FlexItem growFactor={5} style={flexItemStyles}><div style={boxStyles}>5</div></FlexItem>
-					</Flex>
-					<Flex style={flexParentStyles}>
-						<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-						<FlexItem growFactor={4} style={flexItemStyles}><div style={boxStyles}>4</div></FlexItem>
-					</Flex>
-					<Flex style={flexParentStyles}>
-						<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-						<FlexItem growFactor={3} style={flexItemStyles}><div style={boxStyles}>3</div></FlexItem>
-					</Flex>
-					<Flex style={flexParentStyles}>
-						<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-						<FlexItem growFactor={2} style={flexItemStyles}><div style={boxStyles}>2</div></FlexItem>
-					</Flex>
-					<Flex style={flexParentStyles}>
-						<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-						<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
-					</Flex>
-				</div>
-			</InfoWrapper>
+			<div style={{height: '100vh', width: '100%'}}>
+				<Flex style={flexParentStyles}>
+					<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
+					<FlexItem growFactor={7} style={flexItemStyles}><div style={boxStyles}>7</div></FlexItem>
+				</Flex>
+				<Flex style={flexParentStyles}>
+					<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
+					<FlexItem growFactor={6} style={flexItemStyles}><div style={boxStyles}>6</div></FlexItem>
+				</Flex>
+				<Flex style={flexParentStyles}>
+					<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
+					<FlexItem growFactor={5} style={flexItemStyles}><div style={boxStyles}>5</div></FlexItem>
+				</Flex>
+				<Flex style={flexParentStyles}>
+					<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
+					<FlexItem growFactor={4} style={flexItemStyles}><div style={boxStyles}>4</div></FlexItem>
+				</Flex>
+				<Flex style={flexParentStyles}>
+					<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
+					<FlexItem growFactor={3} style={flexItemStyles}><div style={boxStyles}>3</div></FlexItem>
+				</Flex>
+				<Flex style={flexParentStyles}>
+					<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
+					<FlexItem growFactor={2} style={flexItemStyles}><div style={boxStyles}>2</div></FlexItem>
+				</Flex>
+				<Flex style={flexParentStyles}>
+					<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
+					<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
+				</Flex>
+			</div>
 		));

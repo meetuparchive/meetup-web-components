@@ -50,7 +50,16 @@ class Textarea extends React.Component {
 	 */
 	componentWillReceiveProps(nextProps) {
 		this.overrideValue(nextProps);
-		autosize.update(this.textarea);
+	}
+
+	/**
+	 * @param {Object} prevProps the previous props
+	 * @return {undefined} side effect only
+	 */
+	componentDidUpdate(prevProps) {
+		if (this.props.value !== prevProps.value) {
+			autosize.update(this.textarea);
+		}
 	}
 
 	/**
@@ -88,6 +97,7 @@ class Textarea extends React.Component {
 			id,
 			onChange, // eslint-disable-line no-unused-vars
 			autosize,
+			helperText,
 			...other
 		} = this.props;
 
@@ -102,8 +112,15 @@ class Textarea extends React.Component {
 			),
 			label: cx(
 				'label--field',
-				{ required },
+				{
+					required,
+					'flush--bottom': helperText
+				},
 				labelClassName
+			),
+			helperText: cx(
+				'helperTextContainer',
+				{ required }
 			)
 		};
 
@@ -120,7 +137,11 @@ class Textarea extends React.Component {
 							{label}
 						</label>
 					}
-
+					{helperText &&
+						<div className={classNames.helperText}>
+							{helperText}
+						</div>
+					}
 					<textarea
 						type='text'
 						name={name}
@@ -132,10 +153,11 @@ class Textarea extends React.Component {
 						style={{ ...style, ...heightConstraints }}
 						id={id}
 						value={this.state.value}
+						maxLength={parseInt(maxLength) || -1}
 						{...other}
 					/>
 
-					{ maxLength && <p className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - this.state.value.length)}</p> }
+					{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - this.state.value.length)}</p> }
 				</div>
 				{ error && <p className='text--error text--small'>{error}</p> }
 			</div>
@@ -158,7 +180,11 @@ Textarea.propTypes = {
 	onChange: PropTypes.func,
 	rows: PropTypes.number,
 	value: PropTypes.string,
-	autosize: PropTypes.bool
+	autosize: PropTypes.bool,
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 export default Textarea;

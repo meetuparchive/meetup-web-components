@@ -1,7 +1,10 @@
 import React from 'react';
 import NumberInput from './NumberInput';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from '../utils/decorators';
+import {
+	decorateWithLocale,
+	decorateWithInfo,
+} from '../utils/decorators';
 import {
 	IntlProvider,
 	FormattedMessage,
@@ -11,6 +14,7 @@ import {
 
 storiesOf('NumberInput', module)
 	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithInfo)
 	.add('default', () => (<div>
 		<NumberInput
 			label='How many?'
@@ -57,6 +61,13 @@ storiesOf('NumberInput', module)
 			</IntlProvider>
 		);
 	})
+	.add('with helper text', () => (<div>
+		<NumberInput
+			label='Are you bringing any guests?'
+			helperText='Lorem ipsum is simply dummy test'
+			id='guestCount'
+			name='guests' />
+	</div>))
 	.add('required', () =>
 		(<NumberInput
 			label='How many?'

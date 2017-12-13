@@ -43,7 +43,6 @@ Class                     | Description
 `avatar--icon`            | For icons in avatars (might move this in a later version)
 `avatar--noPhoto`         | Resets `text-indent` for avatars without photos, allowing display of fallback content
 */
-$noPhotoIconOpacity: alpha($C_textHint);
 $avatarBg: $C_coolGrayLight;
 
 %backgroundImg--orgBadge {
@@ -98,6 +97,21 @@ $avatarBg: $C_coolGrayLight;
 }
 
 //
+// Printable avatar image tag
+// (hidden by default)
+//
+.avatar-print {
+	speak: none;
+	display: none;
+}
+@media print {
+	.avatar-print {
+		width: 100%;
+		display: block;
+	}
+}
+
+//
 // Size variants
 //
 @include responsiveVarContext--scalingMedia() {
@@ -132,16 +146,28 @@ $avatarBg: $C_coolGrayLight;
 }
 
 .avatar--noPhoto {
+	@include valignChildren();
 	position: relative;
 	text-indent: initial;
-	background-color: darken($avatarBg, ($noPhotoIconOpacity*100%));
-	background-size: 40% !important;
-	&:before {
-		background-color: transparentize($C_white, $noPhotoIconOpacity);
-		content: '';
-		display: block;
-		height: 100%;
+	background-color: darken($avatarBg, 6%);
+
+	.svg {
+		// matches size of icon wrapper div
+		// to the size of the avatar
 		width: 100%;
+		height: 100%;
+
+		// center the SVG element within the wrapper
+		@include valignChildren();
+		justify-content: center;
+	}
+	svg {
+		// sets SVG size relative to wrapper
+		width: 40%;
+		height: 40%;
+
+		transform: translateX(4%);
+		opacity: alpha($C_textSecondary);
 	}
 }
 
