@@ -33,8 +33,8 @@ class Dropdown extends React.PureComponent {
 
 		this.state = {
 			isActive: props.isActive || false,
-			left: '0px',
-			top: '0px'
+			left: "0px",
+			top: "0px"
 		};
 	}
 
@@ -49,13 +49,14 @@ class Dropdown extends React.PureComponent {
 			width,
 			height
 		} = this.triggerRef.getBoundingClientRect();
+
 		const scrollTop = window.scrollY || window.pageYOffset;
-		const getLeftPos = (alignment) => {
+		const getLeftPos = alignment => {
 			switch (alignment) {
-				case 'left':
+				case "left":
 					return `${left}px`;
-				case 'center':
-					return `${left + (width/2)}px`;
+				case "center":
+					return `${left + width / 2}px`;
 				default:
 					return `${left + width}px`;
 			}
@@ -68,7 +69,7 @@ class Dropdown extends React.PureComponent {
 
 		this.setState(() => ({
 			left: ddPosition.left,
-			top: ddPosition.top,
+			top: ddPosition.top
 		}));
 	}
 

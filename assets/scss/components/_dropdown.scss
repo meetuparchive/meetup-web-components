@@ -30,8 +30,9 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	box-sizing: border-box;
 	margin-top: $triangleSize;
 	position: absolute;
-	transition: left $duration--short $easing--standard, top $duration--short $easing--standard;
-	z-index: map-get($zindex-map, 'shade');
+	transition: left $duration--short $easing--standard,
+		top $duration--short $easing--standard;
+	z-index: map-get($zindex-map, "shade");
 
 	// outer triangle for border
 	&:before {
@@ -55,16 +56,16 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 
 	&:before,
 	&:after {
-		content: '';
+		content: "";
 		position: absolute;
 
 		// overlap content container
-		z-index: map-get($zindex-map, 'shade') + 1;
+		z-index: map-get($zindex-map, "shade") + 1;
 	}
 }
 
 @mixin alignDropdown($direction) {
-	@if $direction != 'center' {
+	@if $direction != "center" {
 		&:before {
 			#{$direction}: $space-2;
 		}
@@ -75,21 +76,21 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 }
 
 .dropdown-content--right {
-	@include alignDropdown('right');
+	@include alignDropdown("right");
 	transform: translateX(-100%);
 	-webkit-transform: translateX(-100%);
 }
 .dropdown-content--left {
-	@include alignDropdown('left');
+	@include alignDropdown("left");
 }
 .dropdown-content--center {
-	@include alignDropdown('center');
+	@include alignDropdown("center");
 	transform: translateX(-50%);
 
 	&:before {
-		transform: translateX(-50%);
+		transform: translateX(50%);
 	}
 	&:after {
-		transform: translateX(-50%);
+		transform: translateX(50%);
 	}
 }
