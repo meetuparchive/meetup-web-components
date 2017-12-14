@@ -9,13 +9,12 @@ const WRAPPED_COMPONENT_CLASS = 'wrappedComponent';
  */
 class TestComponent extends React.Component {
 	render() {
-		const { isActive, toggleActive } = this.props;
+		const { toggleActive } = this.props;
 
 		return (
 			<h1
 				className={WRAPPED_COMPONENT_CLASS}
 				onClick={toggleActive}
-				isActive={isActive}
 			>
 				Is this component checked?
 			</h1>
@@ -56,15 +55,21 @@ describe('WithToggleControl', function() {
 	});
 
 	it('updates `isActive` on click', () => {
+		const wrappedComponentNode = TestUtils.findRenderedDOMComponentWithClass(
+			wrappedComponent,
+			WRAPPED_COMPONENT_CLASS
+		);
 		const buttonRoleNode = TestUtils.findRenderedDOMComponentWithTag(
 			wrappedComponent,
 			'span'
 		);
 
+		expect(() => wrappedComponentNode).not.toThrow();
+
 		expect(buttonRoleNode.getAttribute('aria-pressed') == 'true').toBe(
 			false
 		);
-		TestUtils.Simulate.click(buttonRoleNode);
+		TestUtils.Simulate.click(wrappedComponentNode);
 		expect(buttonRoleNode.getAttribute('aria-pressed') == 'true').toBe(
 			true
 		);
@@ -77,16 +82,16 @@ describe('WithToggleControl', function() {
 		);
 
 		expect(buttonRoleNode.getAttribute('aria-pressed') == 'true').toBe(
-			false
+			true
 		);
 		TestUtils.Simulate.keyUp(buttonRoleNode, {key: 'Enter'});
 		expect(buttonRoleNode.getAttribute('aria-pressed') == 'true').toBe(
-			true
+			false
 		);
 
 		TestUtils.Simulate.keyUp(buttonRoleNode, {key: ' '});
 		expect(buttonRoleNode.getAttribute('aria-pressed') == 'true').toBe(
-			false
+			true
 		);
 	});
 });
