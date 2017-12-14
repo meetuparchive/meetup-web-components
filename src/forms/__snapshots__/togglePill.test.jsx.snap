@@ -12,7 +12,9 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
 >
   <span
     aria-pressed={false}
+    onKeyUp={[Function]}
     role="button"
+    tabIndex="0"
   >
     <TogglePill
       id="hikingCategory"
