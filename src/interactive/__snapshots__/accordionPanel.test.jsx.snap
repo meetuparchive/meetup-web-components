@@ -321,7 +321,9 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
           >
             <span
               aria-pressed={false}
+              onKeyUp={[Function]}
               role="button"
+              tabIndex="0"
             >
               <ToggleSwitch
                 disabled={false}
