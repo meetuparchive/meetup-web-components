@@ -116,7 +116,8 @@ ToggleSwitch.propTypes = {
 		PropTypes.string,
 		PropTypes.element
 	]),
-	labelClass: PropTypes.string,
+	labelClassName: PropTypes.string,
+	labelledBy: PropTypes.string,
 	name: PropTypes.string.isRequired
 };
 

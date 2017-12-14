@@ -7,7 +7,7 @@ describe('SectionTitle without action', function() {
 	let component;
 
 	beforeEach(() => {
-		component = TestUtils.renderIntoDocument(<SectionTitle />);
+		component = TestUtils.renderIntoDocument(<SectionTitle title="Title of section" />);
 	});
 	afterEach(() => {
 		component = null;
