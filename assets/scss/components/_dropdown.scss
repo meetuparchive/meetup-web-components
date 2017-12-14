@@ -64,19 +64,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 }
 
 @mixin alignDropdown($direction) {
-	@if $direction == 'center' {
-		left: 50%;
-		transform: translateX(-50%);
-
-		&:before {
-			left: 50%;
-			transform: translateX(-50%);
-		}
-		&:after {
-			left: 50%;
-			transform: translateX(-50%);
-		}
-	} @else {
+	@if $direction != 'center' {
 		&:before {
 			#{$direction}: $space-2;
 		}
@@ -88,10 +76,20 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 
 .dropdown-content--right {
 	@include alignDropdown('right');
+	transform: translateX(-100%);
+	-webkit-transform: translateX(-100%);
 }
 .dropdown-content--left {
 	@include alignDropdown('left');
 }
 .dropdown-content--center {
 	@include alignDropdown('center');
+	transform: translateX(-50%);
+
+	&:before {
+		transform: translateX(-50%);
+	}
+	&:after {
+		transform: translateX(-50%);
+	}
 }
