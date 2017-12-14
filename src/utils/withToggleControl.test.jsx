@@ -15,7 +15,7 @@ class TestComponent extends React.Component {
 			<h1
 				className={WRAPPED_COMPONENT_CLASS}
 				onClick={toggleActive}
-				aria-pressed={isActive}
+				isActive={isActive}
 			>
 				Is this component checked?
 			</h1>
@@ -23,11 +23,12 @@ class TestComponent extends React.Component {
 	}
 }
 
+const TestComponentWithToggleControl = withToggleControl(TestComponent);
+const wrappedComponent = TestUtils.renderIntoDocument(
+	<TestComponentWithToggleControl />
+);
+
 describe('WithToggleControl', function() {
-	const TestComponentWithToggleControl = withToggleControl(TestComponent);
-	const wrappedComponent = TestUtils.renderIntoDocument(
-		<TestComponentWithToggleControl />
-	);
 
 	it('renders a wrapped component', () => {
 		expect(() =>
@@ -54,20 +55,38 @@ describe('WithToggleControl', function() {
 		expect(actualPropNames).toContain(expectedPropName);
 	});
 
-	it('updates wrapped component `isActive` value', () => {
-		const wrappedComponentNode = TestUtils.findRenderedDOMComponentWithClass(
+	it('updates `isActive` on click', () => {
+		const buttonRoleNode = TestUtils.findRenderedDOMComponentWithTag(
 			wrappedComponent,
-			WRAPPED_COMPONENT_CLASS
+			'span'
 		);
 
-		expect(() => wrappedComponentNode).not.toThrow();
-
-		expect(wrappedComponentNode.getAttribute('aria-pressed') == 'true').toBe(
+		expect(buttonRoleNode.getAttribute('aria-pressed') == 'true').toBe(
 			false
 		);
-		TestUtils.Simulate.click(wrappedComponentNode);
-		expect(wrappedComponentNode.getAttribute('aria-pressed') == 'true').toBe(
+		TestUtils.Simulate.click(buttonRoleNode);
+		expect(buttonRoleNode.getAttribute('aria-pressed') == 'true').toBe(
 			true
+		);
+	});
+
+	it('updates `isActive` on valid key press (Enter or Space bar)', () => {
+		const buttonRoleNode = TestUtils.findRenderedDOMComponentWithTag(
+			wrappedComponent,
+			'span'
+		);
+
+		expect(buttonRoleNode.getAttribute('aria-pressed') == 'true').toBe(
+			false
+		);
+		TestUtils.Simulate.keyUp(buttonRoleNode, {key: 'Enter'});
+		expect(buttonRoleNode.getAttribute('aria-pressed') == 'true').toBe(
+			true
+		);
+
+		TestUtils.Simulate.keyUp(buttonRoleNode, {key: ' '});
+		expect(buttonRoleNode.getAttribute('aria-pressed') == 'true').toBe(
+			false
 		);
 	});
 });
