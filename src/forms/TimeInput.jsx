@@ -331,7 +331,7 @@ TimeInput.defaultProps = {
 };
 
 TimeInput.propTypes = {
-	name: PropTypes.string.isRequired,
+	name: PropTypes.string,
 	error: PropTypes.string,
 	is24Hr: PropTypes.bool,
 	label: PropTypes.oneOfType([
