@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Icon from '../media/Icon';
-import withToggleControl from '../utils/WithToggleControl';
+import withToggleControl from '../utils/components/WithToggleControl';
 
 export const TOGGLE_PILL_CLASS = 'toggleButton';
 

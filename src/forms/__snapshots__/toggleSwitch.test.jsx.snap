@@ -3,7 +3,9 @@
 exports[`ToggleSwitch basic renders checked toggle switch 1`] = `
 <span
   aria-pressed={false}
+  onKeyUp={[Function]}
   role="button"
+  tabIndex="0"
 >
   <ToggleSwitch
     checked={true}
@@ -17,7 +19,9 @@ exports[`ToggleSwitch basic renders checked toggle switch 1`] = `
 exports[`ToggleSwitch basic renders inactive toggle switch 1`] = `
 <span
   aria-pressed={false}
+  onKeyUp={[Function]}
   role="button"
+  tabIndex="0"
 >
   <ToggleSwitch
     isActive={false}

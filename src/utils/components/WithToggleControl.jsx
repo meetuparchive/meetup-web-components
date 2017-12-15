@@ -18,6 +18,7 @@ export default function withToggleControl(WrappedComponent) {
 
 			this.state = { isActive: props.isActive };
 			this.toggleActive = this.toggleBool.bind(this);
+			this.onKeyUp = this.onKeyUp.bind(this);
 		}
 
 		componentWillReceiveProps(nextProps) {
@@ -29,10 +30,27 @@ export default function withToggleControl(WrappedComponent) {
 		toggleBool() {
 			this.setState({ isActive: !this.state.isActive });
 		}
+
+		onKeyUp(e) {
+			const isActivatingButton = [
+				' ', /* space bar */
+				'Enter'
+			].some(key => e.key === key);
+
+			if (isActivatingButton) {
+				this.toggleActive();
+			}
+		}
+
 		render() {
 
 			return (
-				<span role='button' aria-pressed={this.state.isActive}>
+				<span
+					tabIndex="0"
+					role="button"
+					aria-pressed={this.state.isActive}
+					onKeyUp={this.onKeyUp}
+				>
 					<WrappedComponent
 						{...this.props}
 						isActive={this.state.isActive}
