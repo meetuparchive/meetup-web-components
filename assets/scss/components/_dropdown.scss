@@ -75,8 +75,18 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	}
 }
 
+.dropdown--noPortal {
+	.dropdown-content--left {
+		left: 0;
+	}
+	.dropdown-content--center {
+		left: 50%;
+	}
+}
+
 .dropdown-content--right {
 	@include alignDropdown("right");
+	right: 0px;
 	transform: translateX(-100%);
 	-webkit-transform: translateX(-100%);
 }
@@ -88,9 +98,11 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	transform: translateX(-50%);
 
 	&:before {
-		transform: translateX(50%);
+		left: 50%;
+		transform: translateX(-50%);
 	}
 	&:after {
-		transform: translateX(50%);
+		left: 50%;
+		transform: translateX(-50%);
 	}
 }

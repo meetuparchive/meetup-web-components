@@ -14,6 +14,9 @@ const throttle = (fn, wait) => {
 		}
 	};
 };
+
+const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
+
 /**
  * @module Dropdown
  */
@@ -43,19 +46,20 @@ class Dropdown extends React.PureComponent {
 			return;
 		}
 
+		const positionTarget = this.triggerRef.offsetParent ? this.triggerRef.offsetParent : this.triggerRef;
 		const {
 			left,
 			top,
 			width,
 			height
-		} = this.triggerRef.getBoundingClientRect();
+		} = positionTarget.getBoundingClientRect();
 
 		const scrollTop = window.scrollY || window.pageYOffset;
 		const getLeftPos = alignment => {
 			switch (alignment) {
-				case "left":
+				case 'left':
 					return `${left}px`;
-				case "center":
+				case 'center':
 					return `${left + width / 2}px`;
 				default:
 					return `${left + width}px`;
@@ -63,8 +67,8 @@ class Dropdown extends React.PureComponent {
 		};
 
 		const ddPosition = {
-			left: getLeftPos(this.props.align),
-			top: scrollTop + top + height
+			left: this.props.shouldPortal && getLeftPos(this.props.align),
+			top: this.props.shouldPortal && (scrollTop + top + height)
 		};
 
 		this.setState(() => ({
@@ -158,6 +162,7 @@ class Dropdown extends React.PureComponent {
 			align, // eslint-disable-line no-unused-vars
 			maxWidth,
 			minWidth,
+			shouldPortal,
 			...other
 		} = this.props;
 
@@ -166,7 +171,12 @@ class Dropdown extends React.PureComponent {
 		delete other.onClick;
 
 		const classNames = {
-			dropdown: cx(className, "dropdown"),
+			dropdown: cx(
+				className,
+				"dropdown", {
+					"dropdown--noPortal": !shouldPortal
+				}
+			),
 			trigger: cx("dropdown-trigger", {
 				"dropdown-trigger--active": isActive
 			}),
@@ -178,8 +188,6 @@ class Dropdown extends React.PureComponent {
 				"display--block": isActive
 			})
 		};
-
-		// const leftVal = align==='left' ? `${this.state.left}px` : 'auto';
 
 		return (
 			<div
@@ -197,13 +205,17 @@ class Dropdown extends React.PureComponent {
 					{trigger}
 				</div>
 
-				<Portal isOpened={isActive}>
+				<ConditionalWrap
+					condition={shouldPortal}
+					wrap={children => <Portal isOpened={isActive}>{children}</Portal>}
+				>
 					<div
 						ref={el => (this.contentRef = el)}
 						className={classNames.content}
 						aria-hidden={!isActive}
 						style={{
 							left: this.state.left,
+							right: !shouldPortal && `-${maxWidth}`,
 							top: this.state.top,
 							minWidth: minWidth,
 							maxWidth: maxWidth
@@ -211,7 +223,7 @@ class Dropdown extends React.PureComponent {
 					>
 						{content}
 					</div>
-				</Portal>
+				</ConditionalWrap>
 			</div>
 		);
 	}
@@ -219,7 +231,8 @@ class Dropdown extends React.PureComponent {
 
 Dropdown.defaultProps = {
 	maxWidth: "384px",
-	minWidth: "0px"
+	minWidth: "0px",
+	shouldPortal: true
 };
 
 Dropdown.propTypes = {
@@ -230,7 +243,8 @@ Dropdown.propTypes = {
 	isActive: PropTypes.bool,
 	manualToggle: PropTypes.func,
 	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	shouldPortal: PropTypes.bool,
 };
 
 export default Dropdown;
