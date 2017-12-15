@@ -78,24 +78,42 @@ class DropdownWithToggle extends React.PureComponent {
 
 storiesOf("Dropdown", module)
 	.addDecorator(decorateWithLocale)
-	.addWithInfo("Basic Dropdown component", "Aligned right by default", () => (
-		<div
-			style={{
-				marginTop: "800px",
-				width: "500px",
-				height: "1000px",
-				marginLeft: "600px"
-			}}
-		>
+	.addWithInfo(
+		"Basic Dropdown component",
+		"Aligned right by default",
+		() => (
+			<div
+				style={{
+					marginTop: "800px",
+					width: "500px",
+					height: "1000px",
+					marginLeft: "600px"
+				}}
+			>
+				<Dropdown
+					minWidth="0"
+					maxWidth="384px"
+					align="right"
+					trigger={<Button small>Open</Button>}
+					content={dropdownContent}
+				/>
+			</div>
+		)
+	)
+	.addWithInfo(
+		"Dropdown component (no Portal)",
+		"Use the `shouldPortal` prop to decide whether a the content should render in document body",
+		() => (
 			<Dropdown
 				minWidth="0"
 				maxWidth="384px"
 				align="right"
+				shouldPortal={false}
 				trigger={<Button small>Open</Button>}
 				content={dropdownContent}
 			/>
-		</div>
-	))
+		)
+	)
 	.addWithInfo(
 		"Left aligned dropdown",
 		"Use the `align` prop to change alignment to left",
