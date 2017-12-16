@@ -18,7 +18,7 @@ exports[`Dropdown renders into DOM 1`] = `
   }
   maxWidth="384px"
   minWidth="0px"
-  shouldPortal={true}
+  noPortal={false}
   trigger={
     <Button
       small={true}
@@ -82,7 +82,7 @@ exports[`Dropdown right aligned dropdown renders right-aligned dropdown to DOM 1
   }
   maxWidth="384px"
   minWidth="0px"
-  shouldPortal={true}
+  noPortal={false}
   trigger={
     <Button
       small={true}
