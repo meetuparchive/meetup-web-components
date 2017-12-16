@@ -67,8 +67,8 @@ class Dropdown extends React.PureComponent {
 		};
 
 		const ddPosition = {
-			left: this.props.shouldPortal && getLeftPos(this.props.align),
-			top: this.props.shouldPortal && (scrollTop + top + height)
+			left: !this.props.noPortal && getLeftPos(this.props.align),
+			top: !this.props.noPortal && (scrollTop + top + height)
 		};
 
 		this.setState(() => ({
@@ -162,7 +162,7 @@ class Dropdown extends React.PureComponent {
 			align, // eslint-disable-line no-unused-vars
 			maxWidth,
 			minWidth,
-			shouldPortal,
+			noPortal,
 			...other
 		} = this.props;
 
@@ -174,7 +174,7 @@ class Dropdown extends React.PureComponent {
 			dropdown: cx(
 				className,
 				"dropdown", {
-					"dropdown--noPortal": !shouldPortal
+					"dropdown--noPortal": noPortal
 				}
 			),
 			trigger: cx("dropdown-trigger", {
@@ -206,7 +206,7 @@ class Dropdown extends React.PureComponent {
 				</div>
 
 				<ConditionalWrap
-					condition={shouldPortal}
+					condition={!noPortal}
 					wrap={children => <Portal isOpened={isActive}>{children}</Portal>}
 				>
 					<div
@@ -215,7 +215,7 @@ class Dropdown extends React.PureComponent {
 						aria-hidden={!isActive}
 						style={{
 							left: this.state.left,
-							right: !shouldPortal && `-${maxWidth}`,
+							right: noPortal && `-${maxWidth}`,
 							top: this.state.top,
 							minWidth: minWidth,
 							maxWidth: maxWidth
@@ -232,7 +232,7 @@ class Dropdown extends React.PureComponent {
 Dropdown.defaultProps = {
 	maxWidth: "384px",
 	minWidth: "0px",
-	shouldPortal: true
+	noPortal: false
 };
 
 Dropdown.propTypes = {
@@ -244,7 +244,7 @@ Dropdown.propTypes = {
 	manualToggle: PropTypes.func,
 	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	shouldPortal: PropTypes.bool,
+	noPortal: PropTypes.bool,
 };
 
 export default Dropdown;
