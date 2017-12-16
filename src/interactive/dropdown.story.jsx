@@ -102,13 +102,13 @@ storiesOf("Dropdown", module)
 	)
 	.addWithInfo(
 		"Dropdown component (no Portal)",
-		"Use the `shouldPortal` prop to decide whether a the content should render in document body",
+		"Use the `noPortal` prop to decide whether a the content should render in document body",
 		() => (
 			<Dropdown
 				minWidth="0"
 				maxWidth="384px"
-				align="right"
-				shouldPortal={false}
+				align="left"
+				noPortal
 				trigger={<Button small>Open</Button>}
 				content={dropdownContent}
 			/>
