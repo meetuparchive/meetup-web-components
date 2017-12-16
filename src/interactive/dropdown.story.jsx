@@ -107,7 +107,7 @@ storiesOf("Dropdown", module)
 			<Dropdown
 				minWidth="0"
 				maxWidth="384px"
-				align="left"
+				align="right"
 				noPortal
 				trigger={<Button small>Open</Button>}
 				content={dropdownContent}
