@@ -87,10 +87,11 @@ Class                 | Description
 	}
 
 	.tabs--isVertical & {
+		border-right: 3px solid transparent;
 		display: block;
 		margin-bottom: $space;
 		margin-left: 0;
-		padding-right: $space-half;
+		padding: 0 $space-half 0 0;
 		text-align: left;
 	}
 
