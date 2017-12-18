@@ -52,6 +52,10 @@ Class                 | Description
 	}
 }
 
+.tabs--isVertical {
+	box-shadow: inset -1px 0 $C_border;
+}
+
 .tabs--noBorder {
 	box-shadow: none;
 }
@@ -63,6 +67,7 @@ Class                 | Description
 	margin: 0 0 0 $space;
 	padding-left: $space/4;
 	padding-right: $space/4;
+	text-align: center;
 	@include responsiveVarContext--base {
 		padding: $base/2 0;
 	}
@@ -80,10 +85,24 @@ Class                 | Description
 			border-top-color: $C_textPrimaryInverted;
 		}
 	}
+
+	.tabs--isVertical & {
+		display: block;
+		margin-bottom: $space;
+		margin-left: 0;
+		padding-right: $space-half;
+		text-align: left;
+	}
+
 }
 .tabs-tab--selected {
 	box-shadow: none;
 	border-bottom: 3px solid $C_accent;
 	color: $C_accent;
 	font-weight: $W_medium;
+
+	.tabs--isVertical & {
+		border-bottom: 0;
+		border-right: 3px solid;
+	}
 }
