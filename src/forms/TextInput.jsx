@@ -69,6 +69,13 @@ export const TextInput = (props) => {
 		paddingLeft: `${paddingSize}px`
 	};
 
+	// WC-158
+	// Only add a `value` prop if it is defined.
+	// Workaround for IE11 support (see ticket)
+	if (value) {
+		other.value = value;
+	}
+
 	return (
 		<div className="inputContainer">
 			{label &&
@@ -84,7 +91,6 @@ export const TextInput = (props) => {
 			<div style={{position: 'relative'}}>
 				<input type={isSearch ? 'search' : 'text'}
 					name={name}
-					value={value}
 					required={required}
 					placeholder={placeholder}
 					className={classNames.field}
@@ -98,7 +104,6 @@ export const TextInput = (props) => {
 				{iconShape &&
 					<Icon {...iconProps} />
 				}
-
 			</div>
 			{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
 			{children}

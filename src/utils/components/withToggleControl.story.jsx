@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from '../utils/decorators';
+import { decorateWithLocale } from '../decorators';
 
 import withToggleControl from './WithToggleControl';
-import Icon from '../media/Icon';
+import Icon from '../../media/Icon';
 
 /**
  * @class TestComponent
