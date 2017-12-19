@@ -15,7 +15,7 @@ export class TabsTab extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			'tabs-tab align--center',
+			'tabs-tab',
 			{'tabs-tab--selected': isSelected},
 			className
 		);
@@ -42,6 +42,7 @@ export class Tabs extends React.Component {
 			bordered, // eslint-disable-line no-unused-vars
 			noBorder,
 			full,
+			isVertical,
 			...other
 		} = this.props;
 
@@ -50,6 +51,7 @@ export class Tabs extends React.Component {
 			{
 				'tabs--noBorder': noBorder,
 				'tabs--full': full,
+				'tabs--isVertical': isVertical
 			}
 		);
 

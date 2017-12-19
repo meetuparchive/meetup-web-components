@@ -48,4 +48,19 @@ storiesOf('Tabs', module)
 				</TabsTab>
 			</Tabs>
 		);
+	})
+	.addWithInfo('Vertical tabs', () => {
+		return (
+			<Tabs isVertical>
+				<TabsTab isSelected>
+					<StoryLink>First tab</StoryLink>
+				</TabsTab>
+				<TabsTab>
+					<StoryLink>Second tab</StoryLink>
+				</TabsTab>
+				<TabsTab>
+					<StoryLink>Third tab</StoryLink>
+				</TabsTab>
+			</Tabs>
+		);
 	});

@@ -130,8 +130,12 @@ export class Textarea extends React.Component {
 			maxHeight: maxHeight
 		};
 
-		if (error) {
-			other['aria-invalid'] = true;
+		// WC-158
+		// IE11 does not recognize `-1` as a valid value
+		// for the `maxLength` attribute, so we only
+		// add the prop if `maxLength` is passed.
+		if (maxLength) {
+			other.maxLength = parseInt(maxLength, 10);
 		}
 
 		return (
@@ -157,7 +161,6 @@ export class Textarea extends React.Component {
 					style={{ ...style, ...heightConstraints }}
 					id={id}
 					value={this.state.value}
-					maxLength={parseInt(maxLength) || -1}
 					{...other}
 				/>
 
