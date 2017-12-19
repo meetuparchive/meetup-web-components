@@ -7,11 +7,13 @@ exports[`SelectInput basic renders into the DOM 1`] = `
   >
     <label
       className="label--field"
+      htmlFor="testSelect"
     >
       Test select
     </label>
     <select
       className="select--reset span--100 padding--selectArrow"
+      id="testSelect"
       name="testSelect"
       onChange={[Function]}
       value="1"

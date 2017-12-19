@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorList matches snapshot for input without id 1`] = `
+<ul
+  aria-live="assertive"
+>
+  <li
+    className="text--error text--small text--small"
+  >
+    This is an error message
+  </li>
+</ul>
+`;
+
+exports[`ErrorList matches snapshot for single error 1`] = `
+<ul
+  aria-live="assertive"
+  id="name"
+>
+  <li
+    className="text--error text--small text--small"
+  >
+    This is an error message
+  </li>
+</ul>
+`;
