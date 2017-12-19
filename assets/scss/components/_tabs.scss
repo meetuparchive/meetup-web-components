@@ -33,6 +33,8 @@ Class                 | Description
 `tabs-tab--selected`  | Applies styles for tab selected state
 */
 
+$tabBorderWidth: 3px;
+
 .tabs {
 	box-shadow: inset 0 -1px $C_border;
 	display: block;
@@ -87,7 +89,7 @@ Class                 | Description
 	}
 
 	.tabs--isVertical & {
-		border-right: 3px solid transparent;
+		border-right: $tabBorderWidth solid transparent;
 		display: block;
 		margin-bottom: $space;
 		margin-left: 0;
@@ -98,12 +100,12 @@ Class                 | Description
 }
 .tabs-tab--selected {
 	box-shadow: none;
-	border-bottom: 3px solid $C_accent;
+	border-bottom: $tabBorderWidth solid $C_accent;
 	color: $C_accent;
 	font-weight: $W_medium;
 
 	.tabs--isVertical & {
 		border-bottom: 0;
-		border-right: 3px solid;
+		border-right: $tabBorderWidth solid;
 	}
 }
