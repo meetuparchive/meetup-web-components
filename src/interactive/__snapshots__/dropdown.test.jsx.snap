@@ -18,6 +18,7 @@ exports[`Dropdown renders into DOM 1`] = `
   }
   maxWidth="384px"
   minWidth="0px"
+  noPortal={false}
   trigger={
     <Button
       small={true}
@@ -48,12 +49,17 @@ exports[`Dropdown renders into DOM 1`] = `
         </button>
       </Button>
     </div>
-    <Portal
-      isOpened={false}
-      onClose={[Function]}
-      onOpen={[Function]}
-      onUpdate={[Function]}
-    />
+    <ConditionalWrap
+      condition={true}
+      wrap={[Function]}
+    >
+      <Portal
+        isOpened={false}
+        onClose={[Function]}
+        onOpen={[Function]}
+        onUpdate={[Function]}
+      />
+    </ConditionalWrap>
   </div>
 </Dropdown>
 `;
@@ -76,6 +82,7 @@ exports[`Dropdown right aligned dropdown renders right-aligned dropdown to DOM 1
   }
   maxWidth="384px"
   minWidth="0px"
+  noPortal={false}
   trigger={
     <Button
       small={true}
@@ -106,12 +113,17 @@ exports[`Dropdown right aligned dropdown renders right-aligned dropdown to DOM 1
         </button>
       </Button>
     </div>
-    <Portal
-      isOpened={false}
-      onClose={[Function]}
-      onOpen={[Function]}
-      onUpdate={[Function]}
-    />
+    <ConditionalWrap
+      condition={true}
+      wrap={[Function]}
+    >
+      <Portal
+        isOpened={false}
+        onClose={[Function]}
+        onOpen={[Function]}
+        onUpdate={[Function]}
+      />
+    </ConditionalWrap>
   </div>
 </Dropdown>
 `;

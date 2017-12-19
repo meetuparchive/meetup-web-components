@@ -1,19 +1,22 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import cx from 'classnames';
-import Portal from 'react-portal';
+import PropTypes from "prop-types";
+import React from "react";
+import cx from "classnames";
+import Portal from "react-portal";
 
-import bindAll from '../utils/bindAll';
+import bindAll from "../utils/bindAll";
 
 const throttle = (fn, wait) => {
 	let time = Date.now();
 	return () => {
-		if ((time + wait - Date.now()) < 0) {
+		if (time + wait - Date.now() < 0) {
 			fn();
 			time = Date.now();
 		}
 	};
 };
+
+const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
+
 /**
  * @module Dropdown
  */
@@ -21,45 +24,56 @@ class Dropdown extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
-		bindAll(this,
-			'getContentPosition',
-			'toggleContent',
-			'onClick',
-			'onKeyDown',
-			'onBodyClick',
-			'onBodyKeyDown'
+		bindAll(
+			this,
+			"getContentPosition",
+			"toggleContent",
+			"onClick",
+			"onKeyDown",
+			"onBodyClick",
+			"onBodyKeyDown"
 		);
 
 		this.state = {
 			isActive: props.isActive || false,
-			posX: 0,
-			posY: 0
+			left: "0px",
+			top: "0px"
 		};
 	}
 
 	getContentPosition() {
-		const {left, top, width, height} = this.triggerRef.getBoundingClientRect();
+		if (!this.triggerRef) {
+			return;
+		}
+
+		const positionTarget = this.triggerRef.offsetParent ? this.triggerRef.offsetParent : this.triggerRef;
+		const {
+			left,
+			top,
+			width,
+			height
+		} = positionTarget.getBoundingClientRect();
+
 		const scrollTop = window.scrollY || window.pageYOffset;
-		const contentWidth = parseInt(this.props.maxWidth);
-		const getCoordX = (alignment) => {
+		const getLeftPos = alignment => {
 			switch (alignment) {
 				case 'left':
-					return left;
+					return `${left}px`;
 				case 'center':
-					return left + (width/2);
+					return `${left + width / 2}px`;
 				default:
-					return left - (contentWidth - width);
+					return `${left + width}px`;
 			}
 		};
 
 		const ddPosition = {
-			x: getCoordX(this.props.align),
-			y: scrollTop + top + height
+			left: !this.props.noPortal && getLeftPos(this.props.align),
+			top: !this.props.noPortal && (scrollTop + top + height)
 		};
 
 		this.setState(() => ({
-			posX: ddPosition.x,
-			posY: ddPosition.y
+			left: ddPosition.left,
+			top: ddPosition.top
 		}));
 	}
 
@@ -91,16 +105,19 @@ class Dropdown extends React.PureComponent {
 	}
 
 	onKeyDown(e) {
-		if (e.key === 'Enter') {
+		if (e.key === "Enter") {
 			this.toggleContent();
 		}
 	}
 
 	onBodyClick(e) {
-		const isNotDropdownClick = [
-			this.contentRef,
-			this.triggerRef
-		].every(ref => !ref.contains(e.target));
+		if (!this.contentRef || !this.triggerRef) {
+			return;
+		}
+
+		const isNotDropdownClick = [this.contentRef, this.triggerRef].every(
+			ref => !ref.contains(e.target)
+		);
 
 		if (isNotDropdownClick) {
 			this.closeContent(e);
@@ -108,27 +125,36 @@ class Dropdown extends React.PureComponent {
 	}
 
 	onBodyKeyDown(e) {
-		if (e.key === 'Escape') {
+		if (e.key === "Escape") {
 			this.closeContent();
 		}
 	}
 
 	componentDidMount() {
-		document.body.addEventListener('click', this.onBodyClick);
-		document.body.addEventListener('keydown', this.onBodyKeyDown);
-		window.addEventListener('resize', throttle(this.getContentPosition, 1000/60)); // 1000/60 because 60fps
-		document.addEventListener('scroll', throttle(this.getContentPosition, 1000/60), true); // 1000/60 because 60fps
+		document.body.addEventListener("click", this.onBodyClick);
+		document.body.addEventListener("keydown", this.onBodyKeyDown);
+		window.addEventListener(
+			"resize",
+			throttle(this.getContentPosition, 1000 / 60)
+		); // 1000/60 because 60fps
+		document.addEventListener(
+			"scroll",
+			throttle(this.getContentPosition, 1000 / 60),
+			true
+		); // 1000/60 because 60fps
 	}
 
 	componentWillUnmount() {
-		document.body.removeEventListener('click', this.onBodyClick);
-		document.body.removeEventListener('keydown', this.onBodyKeyDown);
-		window.removeEventListener('resize', this.getContentPosition);
-		document.removeEventListener('scroll', this.getContentPosition);
+		document.body.removeEventListener("click", this.onBodyClick);
+		document.body.removeEventListener("keydown", this.onBodyKeyDown);
+		window.removeEventListener("resize", this.getContentPosition);
+		document.removeEventListener("scroll", this.getContentPosition);
 	}
 
 	render() {
-		const isActive = this.props.manualToggle ? this.props.isActive : this.state.isActive;
+		const isActive = this.props.manualToggle
+			? this.props.isActive
+			: this.state.isActive;
 		const {
 			className,
 			trigger,
@@ -136,6 +162,7 @@ class Dropdown extends React.PureComponent {
 			align, // eslint-disable-line no-unused-vars
 			maxWidth,
 			minWidth,
+			noPortal,
 			...other
 		} = this.props;
 
@@ -148,83 +175,78 @@ class Dropdown extends React.PureComponent {
 		const classNames = {
 			dropdown: cx(
 				className,
-				'dropdown'
-			),
-			trigger: cx(
-				'dropdown-trigger',
-				{
-					'dropdown-trigger--active': isActive
+				"dropdown", {
+					"dropdown--noPortal": noPortal
 				}
 			),
-			content: cx(
-				'dropdown-content',
-				{
-					'dropdown-content--right': (align === 'right'),
-					'dropdown-content--left': (align === 'left'),
-					'dropdown-content--center': (align === 'center'),
-					'display--none': !isActive,
-					'display--block': isActive
-				}
-			)
+			trigger: cx("dropdown-trigger", {
+				"dropdown-trigger--active": isActive
+			}),
+			content: cx("dropdown-content", {
+				"dropdown-content--right": align === "right",
+				"dropdown-content--left": align === "left",
+				"dropdown-content--center": align === "center",
+				"display--none": !isActive,
+				"display--block": isActive
+			})
 		};
 
 		return (
 			<div
 				className={classNames.dropdown}
-				aria-haspopup='true'
+				aria-haspopup="true"
 				onKeyDown={this.onKeyDown}
 				{...other}
 			>
-
 				<div
-					ref={(el) => this.triggerRef = el}
+					ref={el => (this.triggerRef = el)}
 					className={classNames.trigger}
-					tabIndex='0'
+					tabIndex="0"
 					onClick={this.onClick}
 				>
 					{trigger}
 				</div>
 
-				<Portal isOpened={isActive}>
+				<ConditionalWrap
+					condition={!noPortal}
+					wrap={children => <Portal isOpened={isActive}>{children}</Portal>}
+				>
 					<div
-						ref={(el) => this.contentRef = el}
+						ref={el => (this.contentRef = el)}
 						className={classNames.content}
 						aria-hidden={!isActive}
 						style={{
-							left: `${this.state.posX}px`,
-							top: `${this.state.posY}px`,
-							minWidth: `${minWidth}`,
-							maxWidth: `${maxWidth}`
+							left: this.state.left,
+							right: align === 'right' && noPortal && `-${maxWidth}`,
+							top: this.state.top,
+							minWidth: minWidth,
+							maxWidth: maxWidth
 						}}
 					>
 						{content}
 					</div>
-				</Portal>
+				</ConditionalWrap>
 			</div>
 		);
 	}
 }
 
 Dropdown.defaultProps = {
-	maxWidth: '384px',
-	minWidth: '0px'
+	maxWidth: "384px",
+	minWidth: "0px",
+	noPortal: false
 };
 
 Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element.isRequired,
-	align: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
+	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
 	manualToggle: PropTypes.func,
-	maxWidth: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number
-	]),
-	minWidth: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number
-	]),
+	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	noPortal: PropTypes.bool,
 };
 
 export default Dropdown;
