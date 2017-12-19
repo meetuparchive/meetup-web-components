@@ -93,7 +93,13 @@ class Checkbox extends React.Component {
 							ref={el => (this.fauxCheckboxEl = el)}
 							className={fauxCheckboxClassNames}
 						>
-							{this.state.checked && <Icon shape="check" size="xs" />}
+							{this.state.checked &&
+								<Icon
+									className="display--flex flex--center checkbox-indicator"
+									shape="check"
+									size="xs"
+								/>
+							}
 						</span>
 					</FlexItem>
 					<FlexItem className="toggleLabel-container">
