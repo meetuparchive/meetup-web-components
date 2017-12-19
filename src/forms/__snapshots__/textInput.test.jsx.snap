@@ -21,7 +21,6 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
       <input
         className="span--100"
         id="superhero"
-        maxLength={-1}
         name="superhero"
         required={true}
         type="text"

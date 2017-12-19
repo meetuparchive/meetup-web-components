@@ -5,6 +5,14 @@ import cx from 'classnames';
 export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
 
 /**
+ * Determines if the passed in value is a primitive type
+ * @param {any} value
+ * @return {boolean} True if value is a primitive type
+ */
+export const isPrimitive = value =>
+	['object', 'function'].indexOf(typeof value) === -1;
+
+/**
  * @module AccordionPanelGroup
  */
 class AccordionPanelGroup extends React.Component {
@@ -20,12 +28,54 @@ class AccordionPanelGroup extends React.Component {
 	 */
 	componentWillMount() {
 		// this will be an object in the form [clickId]: isOpen
-		const panelStates = this.accordionPanels.reduce(function(stateObj, panel) {
+		const panelStates = this.getPanelStates();
+		this.setState({ panelStates });
+	}
+
+	/**
+	 * React lifecyle method which provides an opportunity to compare current props
+	 * with incoming props.
+	 * @param {Object} nextProps the next form values the ui will receive
+	 * @return {undefined}
+	 */
+	componentWillReceiveProps(nextProps) {
+		const { accordionPanels: currentPanels } = this.props;
+		const { accordionPanels: nextPanels } = nextProps;
+		let panelPropsHaveChanged = false;
+
+		nextPanels.forEach((panel, index) => {
+			const nextPanelProps = panel.props;
+			const currentPanelProps = currentPanels[index].props;
+
+			Object.keys(nextPanelProps).forEach(key => {
+				// Don't waste time if we already know at least one prop
+				// on any panel has changed
+				if (panelPropsHaveChanged) {
+					return;
+				}
+
+				if (isPrimitive(nextPanelProps[key]) && nextPanelProps[key] !== currentPanelProps[key]) {
+					panelPropsHaveChanged = true;
+				}
+			});
+		});
+
+		if (panelPropsHaveChanged) {
+			this.accordionPanels = nextProps.accordionPanels.map(this.initPanel, this);
+			const panelStates = this.getPanelStates();
+			this.setState({ panelStates });
+		}
+	}
+
+	/**
+	 * Get a mapping of panels and their open/closed state
+	 * @return {object} Panel open state keyed by panel id
+	 */
+	getPanelStates() {
+		return this.accordionPanels.reduce(function(stateObj, panel) {
 			stateObj[panel.props.clickId] = panel.props.isOpen;
 			return stateObj;
 		}, {});
-
-		this.setState({ panelStates });
 	}
 
 	/**
