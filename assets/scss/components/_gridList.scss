@@ -96,15 +96,14 @@ Class                                     | Description
 }
 
 .gridList--autoHeight {
-	@include responsiveVarContext--base() {
-		margin-left: -#{$base};
+	@include customPropertyValue(margin-left, var(--responsiveSpace), $space);
 
-		> .gridList-item {
-			width: auto;
-		}
-			&:first-child {
-				padding-left: $base;
-			}
+	> .gridList-item {
+		width: auto;
+	}
+
+	&:first-child {
+		@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
 	}
 }
 
