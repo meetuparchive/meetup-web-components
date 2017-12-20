@@ -43,7 +43,7 @@ describe('Textarea', function() {
 			/>
 		);
 		autosizeTextareaComponent = TestUtils.renderIntoDocument(
-			<Textarea autosize label={LABEL_TEXT} value={VALUE} {...formAttrs} />
+			<Textarea id={ID} autosize label={LABEL_TEXT} value={VALUE} {...formAttrs} />
 		);
 
 		textareaEl = TestUtils.findRenderedDOMComponentWithTag(
