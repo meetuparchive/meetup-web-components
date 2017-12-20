@@ -169,6 +169,8 @@ class Dropdown extends React.PureComponent {
 		// this.props.onClick is consumed in this.onClick
 		// Do not pass along to children
 		delete other.onClick;
+		delete other.manualToggle;
+		delete other.isActive;
 
 		const classNames = {
 			dropdown: cx(

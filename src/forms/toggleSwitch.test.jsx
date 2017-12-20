@@ -50,7 +50,7 @@ describe('ToggleSwitch', function() {
 
 		it('adds a class name to a the label element if one is given', () => {
 			const CUSTOM_LABEL_CLASS = 'test-label';
-			const component = mountWrapper({ labelClass: CUSTOM_LABEL_CLASS });
+			const component = mountWrapper({ labelClassName: CUSTOM_LABEL_CLASS });
 			expect(component.find(`.${CUSTOM_LABEL_CLASS}`)).not.toBe(null);
 		});
 

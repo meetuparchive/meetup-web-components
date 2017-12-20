@@ -42,6 +42,7 @@ class DropdownWithToggle extends React.PureComponent {
 
 		return (
 			<Dropdown
+				align="center"
 				isActive={this.state.dropdownToggled}
 				manualToggle={this.toggleDropdown}
 				trigger={dropdownTrigger}
