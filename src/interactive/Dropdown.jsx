@@ -1,7 +1,21 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import cx from 'classnames';
-import bindAll from '../utils/bindAll';
+import PropTypes from "prop-types";
+import React from "react";
+import cx from "classnames";
+import Portal from "react-portal";
+
+import bindAll from "../utils/bindAll";
+
+const throttle = (fn, wait) => {
+	let time = Date.now();
+	return () => {
+		if (time + wait - Date.now() < 0) {
+			fn();
+			time = Date.now();
+		}
+	};
+};
+
+const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
 
 /**
  * @module Dropdown
@@ -10,28 +24,80 @@ class Dropdown extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
-		bindAll(this,
-			'toggleContent',
-			'onClick',
-			'onKeyDown',
-			'onBodyClick',
-			'onBodyKeyDown'
+		bindAll(
+			this,
+			"getContentPosition",
+			"toggleContent",
+			"onClick",
+			"onKeyDown",
+			"onBodyClick",
+			"onBodyKeyDown"
 		);
 
-		this.state = { isActive: props.isActive || false };
+		this.state = {
+			isActive: props.isActive || false,
+			left: "0px",
+			top: "0px"
+		};
 	}
 
-	closeContent() {
-		this.setState(() => ({ isActive: false }));
+	getContentPosition() {
+		if (!this.triggerRef) {
+			return;
+		}
+
+		const positionTarget = this.triggerRef.offsetParent ? this.triggerRef.offsetParent : this.triggerRef;
+		const {
+			left,
+			top,
+			width,
+			height
+		} = positionTarget.getBoundingClientRect();
+
+		const scrollTop = window.scrollY || window.pageYOffset;
+		const getLeftPos = alignment => {
+			switch (alignment) {
+				case 'left':
+					return `${left}px`;
+				case 'center':
+					return `${left + width / 2}px`;
+				default:
+					return `${left + width}px`;
+			}
+		};
+
+		const ddPosition = {
+			left: !this.props.noPortal && getLeftPos(this.props.align),
+			top: !this.props.noPortal && (scrollTop + top + height)
+		};
+
+		this.setState(() => ({
+			left: ddPosition.left,
+			top: ddPosition.top
+		}));
 	}
 
-	toggleContent() {
-		this.setState(() => ({ isActive: !this.state.isActive }));
+	closeContent(e) {
+		if (this.props.manualToggle && this.props.isActive) {
+			this.props.manualToggle(e);
+		} else {
+			this.setState(() => ({ isActive: false }));
+		}
+	}
+
+	toggleContent(e) {
+		this.getContentPosition();
+
+		if (this.props.manualToggle) {
+			this.props.manualToggle(e);
+		} else {
+			this.setState(() => ({ isActive: !this.state.isActive }));
+		}
 	}
 
 	onClick(e) {
 		e.preventDefault();
-		this.toggleContent();
+		this.toggleContent(e);
 
 		if (this.props.onClick) {
 			this.props.onClick(e);
@@ -39,109 +105,148 @@ class Dropdown extends React.PureComponent {
 	}
 
 	onKeyDown(e) {
-		if (e.key === 'Enter') {
+		if (e.key === "Enter") {
 			this.toggleContent();
 		}
 	}
 
 	onBodyClick(e) {
-		const isNotDropdownClick = [
-			this.contentRef,
-			this.triggerRef
-		].every(ref => !ref.contains(e.target));
+		if (!this.contentRef || !this.triggerRef) {
+			return;
+		}
+
+		const isNotDropdownClick = [this.contentRef, this.triggerRef].every(
+			ref => !ref.contains(e.target)
+		);
 
 		if (isNotDropdownClick) {
-			this.closeContent();
+			this.closeContent(e);
 		}
 	}
 
 	onBodyKeyDown(e) {
-		if (e.key === 'Escape') {
+		if (e.key === "Escape") {
 			this.closeContent();
 		}
 	}
 
 	componentDidMount() {
-		document.body.addEventListener('click', this.onBodyClick);
-		document.body.addEventListener('keydown', this.onBodyKeyDown);
+		document.body.addEventListener("click", this.onBodyClick);
+		document.body.addEventListener("keydown", this.onBodyKeyDown);
+		window.addEventListener(
+			"resize",
+			throttle(this.getContentPosition, 1000 / 60)
+		); // 1000/60 because 60fps
+		document.addEventListener(
+			"scroll",
+			throttle(this.getContentPosition, 1000 / 60),
+			true
+		); // 1000/60 because 60fps
 	}
 
 	componentWillUnmount() {
-		document.body.removeEventListener('click', this.onBodyClick);
-		document.body.removeEventListener('keydown', this.onBodyKeyDown);
+		document.body.removeEventListener("click", this.onBodyClick);
+		document.body.removeEventListener("keydown", this.onBodyKeyDown);
+		window.removeEventListener("resize", this.getContentPosition);
+		document.removeEventListener("scroll", this.getContentPosition);
 	}
 
 	render() {
-		const isActive = this.state.isActive;
+		const isActive = this.props.manualToggle
+			? this.props.isActive
+			: this.state.isActive;
 		const {
 			className,
 			trigger,
 			content,
 			align, // eslint-disable-line no-unused-vars
+			maxWidth,
+			minWidth,
+			noPortal,
 			...other
 		} = this.props;
 
 		// this.props.onClick is consumed in this.onClick
 		// Do not pass along to children
 		delete other.onClick;
+		delete other.manualToggle;
+		delete other.isActive;
 
 		const classNames = {
 			dropdown: cx(
 				className,
-				'dropdown'
-			),
-			trigger: cx(
-				'dropdown-trigger',
-				{
-					'dropdown-trigger--active': isActive
+				"dropdown", {
+					"dropdown--noPortal": noPortal
 				}
 			),
-			content: cx(
-				'dropdown-content',
-				{
-					'dropdown-content--right': (align == 'right'),
-					'dropdown-content--left': (align == 'left'),
-					'display--none': !isActive,
-					'display--block': isActive
-				}
-			)
+			trigger: cx("dropdown-trigger", {
+				"dropdown-trigger--active": isActive
+			}),
+			content: cx("dropdown-content", {
+				"dropdown-content--right": align === "right",
+				"dropdown-content--left": align === "left",
+				"dropdown-content--center": align === "center",
+				"display--none": !isActive,
+				"display--block": isActive
+			})
 		};
 
 		return (
 			<div
 				className={classNames.dropdown}
-				aria-haspopup='true'
+				aria-haspopup="true"
 				onKeyDown={this.onKeyDown}
 				{...other}
 			>
-
 				<div
-					ref={(el) => this.triggerRef = el}
+					ref={el => (this.triggerRef = el)}
 					className={classNames.trigger}
-					tabIndex='0'
+					tabIndex="0"
 					onClick={this.onClick}
 				>
 					{trigger}
 				</div>
 
-				<div
-					ref={(el) => this.contentRef = el}
-					className={classNames.content}
-					aria-hidden={!isActive}
+				<ConditionalWrap
+					condition={!noPortal}
+					wrap={children => <Portal isOpened={isActive}>{children}</Portal>}
 				>
-					{content}
-				</div>
+					<div
+						ref={el => (this.contentRef = el)}
+						className={classNames.content}
+						aria-hidden={!isActive}
+						style={{
+							left: this.state.left,
+							right: align === 'right' && noPortal && `-${maxWidth}`,
+							top: this.state.top,
+							minWidth: minWidth,
+							maxWidth: maxWidth
+						}}
+					>
+						{content}
+					</div>
+				</ConditionalWrap>
 			</div>
 		);
 	}
 }
 
+Dropdown.defaultProps = {
+	maxWidth: "384px",
+	minWidth: "0px",
+	noPortal: false
+};
+
 Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element.isRequired,
-	align: PropTypes.oneOf(['left', 'right']).isRequired,
+	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
+	manualToggle: PropTypes.func,
+	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	noPortal: PropTypes.bool,
 };
 
 export default Dropdown;

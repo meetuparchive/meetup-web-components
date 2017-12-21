@@ -43,7 +43,7 @@ describe('Textarea', function() {
 			/>
 		);
 		autosizeTextareaComponent = TestUtils.renderIntoDocument(
-			<Textarea autosize label={LABEL_TEXT} value={VALUE} {...formAttrs} />
+			<Textarea id={ID} autosize label={LABEL_TEXT} value={VALUE} {...formAttrs} />
 		);
 
 		textareaEl = TestUtils.findRenderedDOMComponentWithTag(
@@ -71,6 +71,13 @@ describe('Textarea', function() {
 		const newValue = 'hello world';
 		textareaComponent.componentWillReceiveProps({ value: newValue });
 		expect(textareaComponent.state.value).toEqual(newValue);
+	});
+
+	it('should call autosize plugin `update` method on `componentDidUpdate`', function() {
+		const newValue = 'hello world';
+		autosizeTextareaComponent.componentDidUpdate({ value: newValue });
+
+		expect(mockAutosize.update).toHaveBeenCalled();
 	});
 
 	it('should have a name attribute', () => {

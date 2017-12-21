@@ -1,7 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
-import AccordionPanelGroup from './AccordionPanelGroup';
+import AccordionPanelGroup, { isPrimitive } from './AccordionPanelGroup';
 import AccordionPanel from './AccordionPanel';
 
 describe('AccordionPanelGroup', () => {
@@ -57,6 +57,14 @@ describe('AccordionPanelGroup', () => {
 			}
 		/>,
 	];
+
+	describe('isPrimitve', () => {
+		it('returns true when passed a primitive value', () => {
+			const values = [1, 'string', true, () => {}, [], {}];
+			const valueTypes = values.map(x => isPrimitive(x));
+			expect(valueTypes).toEqual([true, true, true, false, false, false]);
+		});
+	});
 
 	describe('AccordionPanelGroup, multiselectable', () => {
 		let accordionPanelGroup;
@@ -115,6 +123,45 @@ describe('AccordionPanelGroup', () => {
 			expect(accordionPanelGroup.state('panelStates')[clickId]).toEqual(
 				!isOpen
 			);
+		});
+
+		it('calls componentWillReceiveProps on AccordionPanel primitive prop changes', () => {
+			const spy = jest.spyOn(
+				AccordionPanelGroup.prototype,
+				'componentWillReceiveProps'
+			);
+
+			const component = shallow(
+				<AccordionPanelGroup accordionPanels={accordionPanelsArr} />
+			);
+
+			expect(component.state('panelStates')['0']).toBe(true);
+			expect(spy).not.toHaveBeenCalled();
+
+			const modifiedAccordionPanelsArr = [ ...accordionPanelsArr ];
+			// Change first panel isOpen prop to false
+			modifiedAccordionPanelsArr[0] = (
+				<AccordionPanel
+					label="First Section"
+					isOpen={false}
+					panelContent={
+						<div className="runningText">
+							<p>
+								Contrary to popular belief, Lorem Ipsum is not simply random text.
+								It has roots in a piece of classical Latin literature from 45 BC,
+								making it over 2000 years old. Richard McClintock, a Latin professor
+								at Hampden-Sydney College in Virginia, looked up one of the more
+								obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+								going through the cites of the word in classical literature,
+								discovered the undoubtable source.
+							</p>
+						</div>
+					}
+				/>
+			);
+
+			component.setProps({ accordionPanels: modifiedAccordionPanelsArr});
+			expect(spy).toHaveBeenCalled();
 		});
 	});
 

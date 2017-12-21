@@ -80,7 +80,7 @@ describe('Modal', () => {
 
 	it('should not render a close button', () => {
 		const modal = TestUtils.renderIntoDocument(
-			<Modal closeArea={false}>{content}</Modal>
+			<Modal onDismiss={e => {}} closeArea={false}>{content}</Modal>
 		);
 		const closeButtons = TestUtils.scryRenderedDOMComponentsWithClass(
 			modal,

@@ -6,6 +6,7 @@ describe('redux-form Textarea', () => {
 
 	const formAttrs = {
 		input: {
+			id: 'heroField',
 			label: 'Super Hero',
 			name: 'superhero',
 			value: 'Wonder Woman and Robin',

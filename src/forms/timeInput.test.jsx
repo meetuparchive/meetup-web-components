@@ -168,6 +168,19 @@ describe('TimeInput', function() {
 			expect(onChangeSpy).toHaveBeenCalled();
 		});
 
+		it('calls onNumberChange when value is changed', () => {
+			hoursInputEl.simulate('change', { target: { value: newHour } });
+			expect(onNumberChangeSpy).toHaveBeenCalled();
+		});
+
+		it('onNumberChange does not update state when receiving non-numeric characters', () => {
+			const initialHrStateValue = component.instance().state.hours;
+			hoursInputEl.simulate('change', { target: { value: '2h' } });
+			component.update();
+			expect(onNumberChangeSpy).toHaveBeenCalled();
+			expect(component.instance().state.hours).toBe(initialHrStateValue);
+		});
+
 		it('calls onChange prop when value is changed', () => {
 			component.instance().onChange(newHour);
 			hoursInputEl.simulate('blur');
@@ -221,11 +234,8 @@ describe('TimeInput', function() {
 
 			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(hoursInputEl.prop('max'));
 
-			hoursInputEl.instance().value = underMax;
-			hoursInputEl.simulate('change');
-			hoursInputEl.simulate('blur');
-
-			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(hoursInputEl.prop('min'));
+			// We don't allow charcters other than 0 through 9, therefore it is impossible to
+			// enter a value less than the min (no negative signs accepted)
 		});
 
 		it('does not accept minute values outside the minimum or maximum', function() {
@@ -235,11 +245,8 @@ describe('TimeInput', function() {
 
 			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(minutesInputEl.prop('max'));
 
-			minutesInputEl.instance().value = underMax;
-			minutesInputEl.simulate('change');
-			minutesInputEl.simulate('blur');
-
-			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(minutesInputEl.prop('min'));
+			// We don't allow charcters other than 0 through 9, therefore it is impossible to
+			// enter a value less than the min (no negative signs accepted)
 		});
 
 		it('should update time value when receiving hours or minutes prop', () => {

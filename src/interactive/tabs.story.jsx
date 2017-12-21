@@ -1,58 +1,66 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
-import { InfoWrapper } from '../utils/storyComponents';
 import { decorateWithLocale } from '../utils/decorators';
+import { StoryLink } from '../utils/storyComponents';
 import { Tabs, TabsTab } from './Tabs';
 
 storiesOf('Tabs', module)
 	.addDecorator(decorateWithLocale)
 	.addWithInfo('default', 'This is the basic usage with the component.', () => (
-		<InfoWrapper>
-			<Tabs>
-				<TabsTab>
-					<Link>First tab</Link>
-				</TabsTab>
-				<TabsTab isSelected>
-					<Link>Second tab</Link>
-				</TabsTab>
-				<TabsTab>
-					<Link>Third tab</Link>
-				</TabsTab>
-			</Tabs>
-		</InfoWrapper>
+		<Tabs>
+			<TabsTab>
+				<StoryLink>First tab</StoryLink>
+			</TabsTab>
+			<TabsTab isSelected>
+				<StoryLink>Second tab</StoryLink>
+			</TabsTab>
+			<TabsTab>
+				<StoryLink>Third tab</StoryLink>
+			</TabsTab>
+		</Tabs>
 	))
 	.addWithInfo('Tabs without btm border', () => {
 		return (
-			<InfoWrapper>
-				<Tabs noBorder>
-					<TabsTab isSelected>
-						<Link>First tab</Link>
-					</TabsTab>
-					<TabsTab>
-						<Link>Second tab</Link>
-					</TabsTab>
-					<TabsTab>
-						<Link>Third tab</Link>
-					</TabsTab>
-				</Tabs>
-			</InfoWrapper>
+			<Tabs noBorder>
+				<TabsTab isSelected>
+					<StoryLink>First tab</StoryLink>
+				</TabsTab>
+				<TabsTab>
+					<StoryLink>Second tab</StoryLink>
+				</TabsTab>
+				<TabsTab>
+					<StoryLink>Third tab</StoryLink>
+				</TabsTab>
+			</Tabs>
 		);
 	})
 	.addWithInfo('Full width tabs', () => {
 		return (
-			<InfoWrapper>
-				<Tabs full>
-					<TabsTab>
-						<Link>First tab</Link>
-					</TabsTab>
-					<TabsTab>
-						<Link>Second tab</Link>
-					</TabsTab>
-					<TabsTab isSelected>
-						<Link>Third tab</Link>
-					</TabsTab>
-				</Tabs>
-			</InfoWrapper>
+			<Tabs full>
+				<TabsTab>
+					<StoryLink>First tab</StoryLink>
+				</TabsTab>
+				<TabsTab>
+					<StoryLink>Second tab</StoryLink>
+				</TabsTab>
+				<TabsTab isSelected>
+					<StoryLink>Third tab</StoryLink>
+				</TabsTab>
+			</Tabs>
+		);
+	})
+	.addWithInfo('Vertical tabs', () => {
+		return (
+			<Tabs isVertical>
+				<TabsTab isSelected>
+					<StoryLink>First tab</StoryLink>
+				</TabsTab>
+				<TabsTab>
+					<StoryLink>Second tab</StoryLink>
+				</TabsTab>
+				<TabsTab>
+					<StoryLink>Third tab</StoryLink>
+				</TabsTab>
+			</Tabs>
 		);
 	});

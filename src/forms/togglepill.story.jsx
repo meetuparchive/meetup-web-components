@@ -1,7 +1,9 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
-import { decorateWithLocale } from '../utils/decorators';
-import { InfoWrapper } from '../utils/storyComponents';
+import {
+	decorateWithLocale,
+	decorateWithInfo,
+} from '../utils/decorators';
 import TogglePill from './TogglePill';
 
 const onChange = e => {
@@ -10,20 +12,16 @@ const onChange = e => {
 
 storiesOf('TogglePill', module)
 	.addDecorator(decorateWithLocale)
-	.addWithInfo(
-		'default',
-		'This is the basic usage with the component.',
-		() => (
-			<InfoWrapper>
-				<TogglePill
-					onChange={onChange}
-					id='togglePillId'
-					name='togglePillName'
-					value='toggle-pill'
-				>
-					Toggle Pill Label
-				</TogglePill>
-			</InfoWrapper>
+	.addDecorator(decorateWithInfo)
+	.add('default', () => (
+			<TogglePill
+				onChange={onChange}
+				id='togglePillId'
+				name='togglePillName'
+				value='toggle-pill'
+			>
+				Toggle Pill Label
+			</TogglePill>
 		)
 	)
 	.add('Default Selected', () => (

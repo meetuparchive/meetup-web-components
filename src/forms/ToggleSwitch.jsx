@@ -6,7 +6,7 @@ import { C_TEXT_PRIMARY, C_TEXT_SECONDARY, C_TEXT_HINT } from 'swarm-constants/d
 
 import Button from './Button';
 import Icon from '../media/Icon';
-import withToggleControl from '../utils/WithToggleControl';
+import withToggleControl from '../utils/components/WithToggleControl';
 
 export const TOGGLE_SWITCH_CLASS = 'toggleSwitch';
 export const TOGGLE_SWITCH_ACTIVE_CLASS = `${TOGGLE_SWITCH_CLASS}--active`;
@@ -116,7 +116,8 @@ ToggleSwitch.propTypes = {
 		PropTypes.string,
 		PropTypes.element
 	]),
-	labelClass: PropTypes.string,
+	labelClassName: PropTypes.string,
+	labelledBy: PropTypes.string,
 	name: PropTypes.string.isRequired
 };
 

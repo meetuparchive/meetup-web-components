@@ -40,7 +40,7 @@ _(The `extend` directive can cause ugly cascade problems)_
 	@include transition(background .15s);
 	box-sizing: border-box;
 	-webkit-appearance: none;
-	border-radius: 6px;
+	border-radius: $defaultRadius;
 	font-size: $font-size-small;
 	line-height: $line-height-smallText;
 	outline: 0;
@@ -191,16 +191,16 @@ _(The `extend` directive can cause ugly cascade problems)_
 		$bgColor: $C_buttonBGNeutral,
 		$hoverColor: opacify($C_buttonBGNeutral, .05),
 		$activeColor: opacify($C_buttonBGNeutral, .1),
-		$textColor: $C_textSecondary
+		$textColor: $C_textPrimary
 	);
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_buttonBGNeutralInverted,
 			$hoverColor: opacify($C_buttonBGNeutralInverted, .05),
 			$activeColor: opacify($C_buttonBGNeutralInverted, .1),
-			$textColor: $C_textSecondary
+			$textColor: $C_textPrimaryInverted
 		);
-		@include color-all($C_textSecondaryInverted);
+		@include color-all($C_textPrimaryInverted);
 	}
 }
 

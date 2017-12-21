@@ -1,5 +1,6 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
+import { withInfo } from '@storybook/addon-info';
 
 export const decorateWithLocale = story => {
 	const locale = 'en-US';
@@ -28,3 +29,5 @@ export const decorateWithLocale = story => {
 		</IntlProvider>
 	);
 };
+
+export const decorateWithInfo = (story, context) => withInfo(`${context.story} ${context.kind}`)(story)(context);
