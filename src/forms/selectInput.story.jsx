@@ -1,7 +1,10 @@
 import React from 'react';
 import SelectInput from './SelectInput';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from '../utils/decorators';
+import {
+	decorateWithLocale,
+	decorateWithInfo,
+} from '../utils/decorators';
 import {
 	IntlProvider,
 	FormattedMessage,
@@ -10,6 +13,7 @@ import {
 
 storiesOf('SelectInput', module)
 	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithInfo)
 	.add('default', () =>
 		(<SelectInput
 			label='Select a name for your horse'
@@ -115,6 +119,19 @@ storiesOf('SelectInput', module)
 			errors={[
 				'This is a bad name for a horse',
 				'You do not have a horse to name'
+			]}
+		/>)
+	)
+	.add('with helper text', () =>
+		(<SelectInput
+			label='Select a name for your horse'
+			helperText='Lorem ipsum is simply dummy text'
+			id='horsename'
+			name='horsename'
+			options={[
+				{ label: 'Geoffrey', value: 'geoffrey' },
+				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
+				{ label: 'Mister Chompy', value: 'chompyhorse' }
 			]}
 		/>)
 	);

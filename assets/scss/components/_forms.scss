@@ -3,10 +3,26 @@
 }
 
 //
+// Input icons
+//
+.icon--field {
+	display: flex !important;
+	align-content: center;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	padding: $space;
+}
+input:focus + .icon--field {
+	@include color-svg($C_textPrimary);
+}
+
+//
 // Labels
 //
 .label--field {
-	padding-bottom: $space-half;
+	padding-bottom: $space-quarter;
 	display: inline-block;
 }
 
@@ -26,6 +42,13 @@
 	@include browser-lessThanIE(10) {
 		top: $space/2;
 	}
+}
+
+//
+// Helper text
+//
+.helperTextContainer {
+	padding-bottom: $space-quarter;
 }
 
 //
@@ -204,6 +227,10 @@ $C_toggleHighlight: $C_blue;
 	display: block;
 	height: 8px;
 	width: 8px;
+}
+
+.checkbox-indicator {
+	height: 100%;
 }
 
 //

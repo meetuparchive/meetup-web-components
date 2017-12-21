@@ -4,15 +4,15 @@ import TestUtils from 'react-dom/test-utils';
 import Hscroll from './Hscroll';
 
 const listItems = [
-	<div>item</div>,
-	<div>item</div>,
-	<div>item</div>,
-	<div>item</div>,
-	<div>item</div>,
-	<div>item</div>,
-	<div>item</div>,
-	<div>item</div>,
-	<div>item</div>,
+	<div key={0}>item</div>,
+	<div key={1}>item</div>,
+	<div key={2}>item</div>,
+	<div key={3}>item</div>,
+	<div key={4}>item</div>,
+	<div key={5}>item</div>,
+	<div key={6}>item</div>,
+	<div key={7}>item</div>,
+	<div key={8}>item</div>,
 ];
 
 describe('Default Hscroll', () => {

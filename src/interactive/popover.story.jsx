@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { storiesOf, action } from '@storybook/react';
-import { InfoWrapper } from '../utils/storyComponents';
+import { StoryLink } from '../utils/storyComponents';
+import { decorateWithInfo } from '../utils/decorators';
 import Popover from './Popover';
 import Button from '../forms/Button';
 
@@ -14,24 +14,23 @@ storiesOf('Popover', module)
 		'default - Button trigger with Link menu items',
 		'This is the basic usage with the component. ',
 		() => (
-			<InfoWrapper>
-				<Popover
-					trigger={<Button>Open</Button>}
-					menuItems={[
-						<Link to="somepath/" onClick={logSelection}>
-							First option
-						</Link>,
-						<Link to="somepath/" onClick={logSelection}>
-							Second option
-						</Link>,
-						<Link to="somepath/" onClick={logSelection}>
-							Third option
-						</Link>,
-					]}
-				/>
-			</InfoWrapper>
+			<Popover
+				trigger={<Button>Open</Button>}
+				menuItems={[
+					<StoryLink onClick={logSelection}>
+						First option
+					</StoryLink>,
+					<StoryLink onClick={logSelection}>
+						Second option
+					</StoryLink>,
+					<StoryLink onClick={logSelection}>
+						Third option
+					</StoryLink>,
+				]}
+			/>
 		)
 	)
+	.addDecorator(decorateWithInfo)
 	.add('DIV trigger with SPAN menu items', () => {
 		return (
 			<Popover
@@ -56,15 +55,15 @@ storiesOf('Popover', module)
 				trigger={<Button>Open</Button>}
 				align="left"
 				menuItems={[
-					<Link to="somepath/" onClick={logSelection}>
+					<StoryLink onClick={logSelection}>
 						First option
-					</Link>,
-					<Link to="somepath/" onClick={logSelection}>
+					</StoryLink>,
+					<StoryLink onClick={logSelection}>
 						Second option
-					</Link>,
-					<Link to="somepath/" onClick={logSelection}>
+					</StoryLink>,
+					<StoryLink onClick={logSelection}>
 						Third option
-					</Link>,
+					</StoryLink>,
 				]}
 			/>
 		);
@@ -75,15 +74,15 @@ storiesOf('Popover', module)
 				trigger={<Button>Open</Button>}
 				align="right"
 				menuItems={[
-					<Link to="somepath/" onClick={logSelection}>
+					<StoryLink onClick={logSelection}>
 						First option
-					</Link>,
-					<Link to="somepath/" onClick={logSelection}>
+					</StoryLink>,
+					<StoryLink onClick={logSelection}>
 						Second option
-					</Link>,
-					<Link to="somepath/" onClick={logSelection}>
+					</StoryLink>,
+					<StoryLink onClick={logSelection}>
 						Third option
-					</Link>,
+					</StoryLink>,
 				]}
 			/>
 		);

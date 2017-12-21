@@ -28,6 +28,7 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
         className="display--block align--center fauxToggle fauxToggle--checkbox checked"
       >
         <Icon
+          className="display--flex flex--center checkbox-indicator"
           shape="check"
           size="xs"
         />

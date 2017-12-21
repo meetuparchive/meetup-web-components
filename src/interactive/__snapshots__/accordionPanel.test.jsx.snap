@@ -305,12 +305,12 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
       </FlexItem>
       <FlexItem
         className="accordionPanel-icon"
-        onClick={false}
+        onClick={[Function]}
         shrink={true}
       >
         <div
           className="flex-item flex-item--shrink accordionPanel-icon"
-          onClick={false}
+          onClick={[Function]}
         >
           <WithToggle
             disabled={false}
@@ -321,7 +321,9 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
           >
             <span
               aria-pressed={false}
+              onKeyUp={[Function]}
               role="button"
+              tabIndex="0"
             >
               <ToggleSwitch
                 disabled={false}

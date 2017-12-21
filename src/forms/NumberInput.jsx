@@ -105,6 +105,7 @@ class NumberInput extends React.Component {
 			step,
 			disabled,
 			value, // eslint-disable-line no-unused-vars
+			helperText,
 			...other
 		} = this.props;
 
@@ -123,8 +124,16 @@ class NumberInput extends React.Component {
 			),
 			label: cx(
 				'label--field',
-				{ required, disabled },
+				{
+					required,
+					disabled,
+					'flush--bottom': helperText
+				},
 				labelClassName
+			),
+			helperText: cx(
+				'helperTextContainer',
+				{ required, disabled }
 			),
 			incrementBtn: cx(
 				'button--reset',
@@ -143,7 +152,11 @@ class NumberInput extends React.Component {
 						{label}
 					</label>
 				}
-
+				{helperText &&
+					<div className={classNames.helperText}>
+						{helperText}
+					</div>
+				}
 				<div
 					className={classNames.fauxInput}
 					ref={ el => this.fauxInputEl = el }>
@@ -167,6 +180,7 @@ class NumberInput extends React.Component {
 
 						<FlexItem shrink>
 							<button
+								tabIndex="-1"
 								className={classNames.decrementBtn}
 								onBlur={this.onBlur}
 								onClick={this.decrementAction}
@@ -178,6 +192,7 @@ class NumberInput extends React.Component {
 
 						<FlexItem shrink>
 							<button
+								tabIndex="-1"
 								className={classNames.incrementBtn}
 								onBlur={this.onBlur}
 								onClick={this.incrementAction}
@@ -223,6 +238,10 @@ NumberInput.propTypes = {
 		PropTypes.string,
 		PropTypes.number,
 	]),
+	helperText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 export default NumberInput;
