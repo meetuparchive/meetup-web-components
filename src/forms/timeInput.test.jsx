@@ -27,8 +27,7 @@ describe('TimeInput', function() {
 		newHour = '23',
 		hourValue = '22',
 		minuteValue = '12',
-		overMax = '666',
-		underMax = '-666';
+		overMax = '666';
 
 	const props = {
 		name: 'time',
