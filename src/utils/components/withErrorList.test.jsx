@@ -58,11 +58,12 @@ describe('withErrorList wrapped component', () => {
 		);
 		const wrappedComponent = component.find(TestComponent);
 		const errorList = component.find(ErrorList);
+		const expected = getErrorId(MOCK_FIELD_ID);
 
 		expect(wrappedComponent.prop('aria-describedby'))
-			.toEqual(getErrorId(MOCK_FIELD_ID));
-		expect(errorList.prop('errorId'))
-			.toEqual(getErrorId(MOCK_FIELD_ID));
+			.toEqual(expected);
+		expect(errorList.prop('id'))
+			.toEqual(expected);
 	});
 
 	it('does NOT provide id for `aria-describedby` in both wrapped components when id is NOT provided', () => {
