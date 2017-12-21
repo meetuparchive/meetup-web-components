@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import SelectInput from './SelectInput';
+import { SelectInput } from './SelectInput';
 
 const testOptions = [
 	{ label: 'One', value: '1' },
@@ -33,20 +33,6 @@ describe('SelectInput basic', () => {
 	});
 	it('default value should fall back on first option value', () => {
 		expect(component.instance().state.value).toBe(testOptions[0].value);
-	});
-});
-
-describe('Errors', () => {
-	it('shows a single error when a single error is passed in', () => {
-		const importantError = 'if you like it then you better put a ring on it';
-		const props = {
-			label: 'Bday',
-			name: 'Deluxe Edition',
-			options: testOptions,
-			error: importantError,
-		};
-		const component = shallow(<SelectInput {...props} />);
-		expect(component.find('.text--error').text()).toEqual(importantError);
 	});
 });
 
