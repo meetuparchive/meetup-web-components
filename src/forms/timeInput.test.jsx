@@ -17,6 +17,7 @@ describe('TimeInput', function() {
 		minutesInputEl,
 		inputEl,
 		onChangeSpy,
+		highlightInputTextSpy,
 		onNumberChangeSpy,
 		onMeridianChangeSpy,
 		onTimeInputChangeSpy;
@@ -24,11 +25,13 @@ describe('TimeInput', function() {
 	const onChangePropMock = jest.fn(),
 		newTime = '23:00',
 		newHour = '23',
+		hourValue = '22',
+		minuteValue = '12',
 		overMax = '666';
 
 	const props = {
 		name: 'time',
-		value: '22:12',
+		value: `${hourValue}:${minuteValue}`,
 		onChange: onChangePropMock,
 		required: true
 	};
@@ -136,6 +139,7 @@ describe('TimeInput', function() {
 			onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
 			onNumberChangeSpy = jest.spyOn(TimeInput.prototype, 'onNumberChange');
 			onMeridianChangeSpy = jest.spyOn(TimeInput.prototype, 'onMeridianChange');
+			highlightInputTextSpy = jest.spyOn(TimeInput.prototype, 'highlightInputText');
 
 			component = mount(<TimeInput {...props} />);
 			component.setState({supportsTime: false});
@@ -153,6 +157,7 @@ describe('TimeInput', function() {
 			minutesInputEl = null;
 			onChangeSpy.mockClear();
 			onNumberChangeSpy.mockClear();
+			highlightInputTextSpy.mockClear();
 		});
 
 		it('calls internal onChange when value is changed', () => {
@@ -250,6 +255,24 @@ describe('TimeInput', function() {
 			jest.spyOn(instance, 'setState');
 			instance.componentWillReceiveProps(newProps);
 			expect(instance.setState).toHaveBeenCalledWith(expected);
+		});
+
+		it('should increase hours or minutes value when pressing up key', () => {
+			const newHourValue = (parseInt(hourValue, 10) + 1);
+			const newMinuteValue = (parseInt(minuteValue, 10) + 1);
+
+			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(parseInt(hourValue));
+			hoursInputEl.simulate('keyDown', {keyCode: 38});
+			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(parseInt(newHourValue));
+
+			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(parseInt(minuteValue));
+			minutesInputEl.simulate('keyDown', {keyCode: 38});
+			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(parseInt(newMinuteValue));
+		});
+
+		it('should highlight hours or minutes input text when clicking', () => {
+			hoursInputEl.simulate('mouseUp');
+			expect(highlightInputTextSpy).toHaveBeenCalled();
 		});
 
 	});
