@@ -32,22 +32,28 @@ const withErrorList = WrappedComponent => {
 			const {
 				id,
 				error,
+				suppressError,
+				...other
 			} = this.props;
 
-			const fieldProps = {
-				id,
-				'aria-invalid': Boolean(error),
-				'aria-describedby': id && getErrorId(id),
-			};
-			const listProps = {
-				errorId: id && getErrorId(id),
-				error,
-			};
+			const errorId = id && getErrorId(id);
 
-			return this.props.suppressError ? <WrappedComponent /> : (
+			// always pass `aria-invalid`, `id`,
+			// and `error` props to wrapped component
+			other.id = id;
+			other.error = error;
+			other['aria-invalid'] = Boolean(error);
+
+			return suppressError ? <WrappedComponent {...other} /> : (
 				<div>
-					<WrappedComponent {...this.props} {...fieldProps} />
-					<ErrorList {...listProps} />
+					<WrappedComponent
+						aria-describedby={errorId}
+						{...other}
+					/>
+					<ErrorList
+						id={errorId}
+						error={error}
+					/>
 				</div>
 			);
 		}
