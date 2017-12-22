@@ -46,10 +46,9 @@ Class                        | Description
 	margin: 0;
 	padding: 0;
 	> li {
+		@include customPropertyValue(padding-right, var(--responsiveSpace), $space);
 		display: inline-block;
-		@include responsiveVarContext--base() {
-			padding-right: $base;
-		}
+
 		&:last-child {
 			padding-right: 0;
 		}
@@ -57,17 +56,12 @@ Class                        | Description
 }
 
 .inlineblockList--separated > li {
-
-	@include responsiveVarContext--base() {
-		padding-right: $base/2;
-	}
+	@include customPropertyValue(padding-right, calc(var(--responsiveSpace)/2), $space-half);
 
 	&:after {
+		@include customPropertyValue(padding-right, calc(var(--responsiveSpace)/2), $space-half);
 		content: attr(data-separator);
 		speak: none;
-		@include responsiveVarContext--base() {
-			padding-left: $base/2;
-		}
 	}
 
 	&:last-child {
