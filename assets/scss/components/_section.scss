@@ -8,15 +8,25 @@ around it's children.
 */
 
 $sectionSpaceMultiple: 2;
-@include responsiveVarContext--base() {
-	.section {
-		margin: 0 $base;
-		padding: $base*$sectionSpaceMultiple 0 0 0;
-	}
+.section {
+	@include customPropertyValue(
+		padding,
+		calc(var(--responsiveSpace)*#{$sectionSpaceMultiple}) 0 0 0,
+		$space*$sectionSpaceMultiple 0 0 0
+	);
+	@include customPropertyValue(
+		margin,
+		0 var(--responsiveSpace),
+		0 $space
+	);
+}
 
-	.section--hasSeparator {
-		padding: $base*$sectionSpaceMultiple 0 $base*$sectionSpaceMultiple - $base 0;
-	}
+.section--hasSeparator {
+	@include customPropertyValue(
+		padding,
+		calc(var(--responsiveSpace)*#{$sectionSpaceMultiple}) 0 calc(var(--responsiveSpace)*#{$sectionSpaceMultiple} - var(--responsiveSpace)) 0,
+		$space*$sectionSpaceMultiple 0 $space*$sectionSpaceMultiple - $space 0
+	);
 }
 
 @include _bpModifier(section, hasSeparator) {
@@ -37,7 +47,5 @@ $sectionSpaceMultiple: 2;
 }
 
 @include _bpModifier(section, flush) {
-	@include responsiveVarContext--base() {
-		margin: 0 $base;
-	}
+	@include customPropertyValue(margin, 0 var(--responsiveSpace), 0 $space);
 }

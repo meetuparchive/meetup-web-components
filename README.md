@@ -200,11 +200,14 @@ column to show how different states affect the rendered component.
 
 ## Release notes
 
-### `v3.4.X`
+### `v4.4.X`
 Form errors update
 
 - removed error elements and logic from base form components
 - form components are now wrapped by the new `withErrorList` HOC to handle error rendering
+
+### `v4.3.X`
+Upgraded to a version of `swarm-sasstools` where we replace responsive sizing/spacing mixins with CSS custom properties
 
 ### `v1.1.X`
 Icons update
