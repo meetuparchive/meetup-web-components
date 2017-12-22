@@ -6,13 +6,24 @@ import { decorateWithLocale } from '../utils/decorators';
 
 storiesOf('TextInput', module)
 	.addDecorator(decorateWithLocale)
+	.addWithInfo('type "tel"', null, () => (
+		<div className='span--50'>
+			<TextInput
+				type="tel"
+				label="Telephone Number"
+				id="telephone"
+			/>
+		</div>
+	)
+	)
 	.addWithInfo('default', null, () => (
 		<div className='span--50'>
 			<TextInput
 				label='Your name'
 				id='fullname'
 				name='name'
-				placeholder='Not your email' />
+				placeholder='enter your name here'
+			/>
 		</div>
 	)
 	)
@@ -23,7 +34,7 @@ storiesOf('TextInput', module)
 				id='fullname'
 				name='name'
 				defaultValue='Phife Dawg'
-				placeholder='Not your email' />
+			/>
 		</div>
 	)
 	)
@@ -66,7 +77,6 @@ storiesOf('TextInput', module)
 				label='Your name'
 				id='fullname'
 				name='name'
-				placeholder='Not your email'
 				helperText='Names cannot contain special characters' />
 		</div>
 	)
