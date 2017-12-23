@@ -44,7 +44,7 @@
     "react-transition-group": "^2.2.1",
     "swarm-animation": "^0.0.95",
     "swarm-icons": "^1.0",
-    "swarm-sasstools": "^2.0.296"
+    "swarm-sasstools": "^3.0.312"
   },
   "dependencies": {
     "autosize": "3.0.21",
