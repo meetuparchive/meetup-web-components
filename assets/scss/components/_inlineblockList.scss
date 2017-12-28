@@ -47,6 +47,7 @@ Class                        | Description
 	padding: 0;
 	> li {
 		@include customPropertyValue(padding-right, var(--responsiveSpace), $space);
+
 		display: inline-block;
 
 		&:last-child {
@@ -59,7 +60,7 @@ Class                        | Description
 	@include customPropertyValue(padding-right, calc(var(--responsiveSpace)/2), $space-half);
 
 	&:after {
-		@include customPropertyValue(padding-right, calc(var(--responsiveSpace)/2), $space-half);
+		@include customPropertyValue(padding-left, calc(var(--responsiveSpace)/2), $space-half);
 		content: attr(data-separator);
 		speak: none;
 	}
