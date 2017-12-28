@@ -49,8 +49,9 @@
   "dependencies": {
     "autosize": "3.0.21",
     "flatpickr": "3.0.6",
-    "recompose": "0.26.0",
-    "react-portal": "3.2.0"
+    "raf-schd": "false2.1.0",
+    "react-portal": "3.2.0",
+    "recompose": "0.26.0"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
