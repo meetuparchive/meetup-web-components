@@ -47,7 +47,6 @@ Class                        | Description
 	padding: 0;
 	> li {
 		@include customPropertyValue(padding-right, var(--responsiveSpace), $space);
-
 		display: inline-block;
 
 		&:last-child {
