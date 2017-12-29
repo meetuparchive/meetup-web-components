@@ -44,7 +44,7 @@ const withMatchMedia = WrappedComponent => {
 			super(props);
 
 			this.state = {
-				media: {},
+				media: props.initialMedia || {},
 			};
 
 			this.handleMediaChange = this.handleMediaChange.bind(this);
