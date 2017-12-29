@@ -2,18 +2,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import cx from "classnames";
 import Portal from "react-portal";
+import rafSchedule from 'raf-schd';
 
 import bindAll from "../utils/bindAll";
-
-const throttle = (fn, wait) => {
-	let time = Date.now();
-	return () => {
-		if (time + wait - Date.now() < 0) {
-			fn();
-			time = Date.now();
-		}
-	};
-};
 
 const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
 
@@ -31,7 +22,12 @@ class Dropdown extends React.PureComponent {
 			"onClick",
 			"onKeyDown",
 			"onBodyClick",
-			"onBodyKeyDown"
+			"onBodyKeyDown",
+			"scheduleContentPosition"
+		);
+
+		this.scheduleUpdate = rafSchedule(
+			triggerClientRect => this.getContentPosition(triggerClientRect)
 		);
 
 		this.state = {
@@ -39,30 +35,35 @@ class Dropdown extends React.PureComponent {
 			left: "0px",
 			top: "0px"
 		};
+
 	}
 
-	getContentPosition() {
+	getContentPosition(triggerClientRect) {
 		if (!this.triggerRef) {
 			return;
 		}
 
 		const positionTarget = this.triggerRef.offsetParent ? this.triggerRef.offsetParent : this.triggerRef;
+		const positionData = triggerClientRect || positionTarget.getBoundingClientRect();
+
 		const {
 			left,
 			top,
 			width,
 			height
-		} = positionTarget.getBoundingClientRect();
+		} = positionData;
 
 		const scrollTop = window.scrollY || window.pageYOffset;
+		const scrollLeft = window.scrollX || window.pageXOffset;
+
 		const getLeftPos = alignment => {
 			switch (alignment) {
 				case 'left':
-					return `${left}px`;
+					return `${left + scrollLeft}px`;
 				case 'center':
-					return `${left + width / 2}px`;
+					return `${(left + width / 2) + scrollLeft}px`;
 				default:
-					return `${left + width}px`;
+					return `${left + width + scrollLeft}px`;
 			}
 		};
 
@@ -75,6 +76,12 @@ class Dropdown extends React.PureComponent {
 			left: ddPosition.left,
 			top: ddPosition.top
 		}));
+	}
+
+	scheduleContentPosition(triggerClientRect) {
+		// When we receive a scroll event, schedule an update.
+		// If we receive many updates within a frame, we'll only publish the latest value.
+		this.scheduleUpdate(triggerClientRect);
 	}
 
 	closeContent(e) {
@@ -131,17 +138,19 @@ class Dropdown extends React.PureComponent {
 	}
 
 	componentDidMount() {
+		const positionTarget = this.triggerRef.offsetParent ? this.triggerRef.offsetParent : this.triggerRef;
+
 		document.body.addEventListener("click", this.onBodyClick);
 		document.body.addEventListener("keydown", this.onBodyKeyDown);
 		window.addEventListener(
 			"resize",
-			throttle(this.getContentPosition, 1000 / 60)
-		); // 1000/60 because 60fps
+			() => {this.scheduleContentPosition(positionTarget.getBoundingClientRect());}
+		);
 		document.addEventListener(
 			"scroll",
-			throttle(this.getContentPosition, 1000 / 60),
+			() => {this.scheduleContentPosition(positionTarget.getBoundingClientRect());},
 			true
-		); // 1000/60 because 60fps
+		);
 	}
 
 	componentWillUnmount() {
@@ -149,6 +158,7 @@ class Dropdown extends React.PureComponent {
 		document.body.removeEventListener("keydown", this.onBodyKeyDown);
 		window.removeEventListener("resize", this.getContentPosition);
 		document.removeEventListener("scroll", this.getContentPosition);
+		this.scheduleUpdate.cancel();
 	}
 
 	render() {
