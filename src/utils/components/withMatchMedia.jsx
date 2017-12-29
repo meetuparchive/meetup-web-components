@@ -104,7 +104,8 @@ const withMatchMedia = WrappedComponent => {
 		 * @returns {React.element}
 		 */
 		render() {
-			return <WrappedComponent {...this.props} media={this.state.media} />;
+			const { initialMedia, ...props } = this.props; // eslint-disable-line no-unused-vars
+			return <WrappedComponent {...props} media={this.state.media} />;
 		}
 	}
 
