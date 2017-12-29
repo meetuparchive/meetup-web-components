@@ -104,7 +104,9 @@ const withMatchMedia = WrappedComponent => {
 		 * @returns {React.element}
 		 */
 		render() {
-			return <WrappedComponent {...this.props} media={this.state.media} />;
+			const props = {...this.props};
+			delete props.initialMedia;
+			return <WrappedComponent {...props} media={this.state.media} />;
 		}
 	}
 
