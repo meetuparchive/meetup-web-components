@@ -96,7 +96,7 @@ Class                                     | Description
 }
 
 .gridList--autoHeight {
-	@include customPropertyValue(margin-left, var(--responsiveSpace), $space);
+	@include customPropertyValue(margin-left, calc(var(--responsiveSpace)* -1), -#{$space});
 
 	> .gridList-item {
 		width: auto;
