@@ -227,7 +227,6 @@ class Dropdown extends React.PureComponent {
 						aria-hidden={!isActive}
 						style={{
 							left: this.state.left,
-							right: align === 'right' && noPortal && `-${maxWidth}`,
 							top: this.state.top,
 							minWidth: minWidth,
 							maxWidth: maxWidth
