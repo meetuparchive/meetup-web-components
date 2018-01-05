@@ -104,9 +104,11 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	transform: translateX(-100%);
 	-webkit-transform: translateX(-100%);
 }
+
 .dropdown-content--left {
 	@include alignDropdown("left");
 }
+
 .dropdown-content--center {
 	@include alignDropdown("center");
 	transform: translateX(-50%);
