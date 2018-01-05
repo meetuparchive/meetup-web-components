@@ -73,7 +73,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 			#{$direction}: $space-2 + 1;
 		}
 	}
-	@if $direction != "center" {
+	@if $direction == "center" {
 		&:before {
 			left: 50%;
 			transform: translateX(-50%);
