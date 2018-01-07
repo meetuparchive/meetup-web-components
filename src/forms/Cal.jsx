@@ -10,14 +10,14 @@ export const CLASSES = {
 };
 
 /**
- * @module CalendarComponent
+ * @module Cal
  * @description Single date picker component.
  * Wraps [react-flatpickr](github.com/coderhaoxin/react-flatpickr)
  *
  * For full documentation of available `datePickerOptions`, see:
  * https://chmln.github.io/flatpickr/options/
 */
-class CalendarComponent extends React.Component {
+class Cal extends React.Component {
 	render() {
 		const {
 			id,
@@ -94,7 +94,7 @@ class CalendarComponent extends React.Component {
 	}
 }
 
-CalendarComponent.propTypes = {
+Cal.propTypes = {
 	label: PropTypes.string,
 	id: PropTypes.string,
 	name: PropTypes.string,
@@ -111,9 +111,9 @@ CalendarComponent.propTypes = {
 	]),
 };
 
-CalendarComponent.defaultProps = {
+Cal.defaultProps = {
 	datepickerOptions: {},
 	suppressError: false,
 };
 
-export default CalendarComponent;
+export default Cal;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CalendarComponent matches snapshot 1`] = `
-<CalendarComponent
+exports[`Cal matches snapshot 1`] = `
+<Cal
   className="beyonce-halo"
   datepickerOptions={
     Object {
@@ -66,5 +66,5 @@ exports[`CalendarComponent matches snapshot 1`] = `
       this is an error
     </p>
   </div>
-</CalendarComponent>
+</Cal>
 `;

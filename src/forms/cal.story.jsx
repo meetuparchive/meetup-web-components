@@ -1,5 +1,5 @@
 import React from 'react';
-import CalendarComponent from './CalendarComponent';
+import Cal from './Cal';
 import { storiesOf } from '@storybook/react';
 import {
 	decorateWithLocale,
@@ -10,14 +10,14 @@ import { withKnobs, boolean } from '@storybook/addon-knobs';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 
-storiesOf('CalendarComponent', module)
+storiesOf('Cal', module)
 	.addDecorator(decorateWithLocale)
 	.addDecorator(decorateWithInfo)
 	.addDecorator(withKnobs)
 	.add('default', () => (
 		<Section>
 			<Chunk className="span--50">
-				<CalendarComponent
+				<Cal
 					name="event_time"
 					label="Start at"
 					value={new Date()}
@@ -35,7 +35,7 @@ storiesOf('CalendarComponent', module)
 	.add('required', () => {
 		return (
 			<div className="span--50">
-				<CalendarComponent
+				<Cal
 					name="event_time"
 					label="Start at"
 					value={new Date()}
@@ -47,7 +47,7 @@ storiesOf('CalendarComponent', module)
 	.add('with error', () => {
 		return (
 			<div className="span--50">
-				<CalendarComponent
+				<Cal
 					name="event_time"
 					label="Start at"
 					value={new Date()}
@@ -59,7 +59,7 @@ storiesOf('CalendarComponent', module)
 	.add('with helper text', () => {
 		return (
 			<div className="span--50">
-				<CalendarComponent
+				<Cal
 					name="event_time"
 					label="Start at"
 					helperText="Lorem Ipsum is simply dummy text"
@@ -82,7 +82,7 @@ storiesOf('CalendarComponent', module)
 		};
 		return (
 			<div className="span--50">
-				<CalendarComponent
+				<Cal
 					name="event_time"
 					label="From 2 days ago to 1 week from now"
 					value={now}
@@ -99,7 +99,7 @@ storiesOf('CalendarComponent', module)
 			date = new Date(3000, 1, 1, 15, 0, 0);
 		return (
 			<div className="span--50">
-				<CalendarComponent
+				<Cal
 					name="event_time"
 					label="In the year 3000"
 					value={date}
@@ -116,7 +116,7 @@ storiesOf('CalendarComponent', module)
 			date = new Date(3000, 1, 1, 15, 0, 0);
 		return (
 			<div className="span--50">
-				<CalendarComponent
+				<Cal
 					name="event_time"
 					label="Start at"
 					value={date}

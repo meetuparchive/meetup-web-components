@@ -1,11 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import CalendarComponent, { CLASSES } from './CalendarComponent';
+import Cal, { CLASSES } from './Cal';
 import Flatpickr from 'react-flatpickr';
 
 const SELECTOR_ERROR = '.text--error';
 
-describe('CalendarComponent', () => {
+describe('Cal', () => {
 	const onChangePropMock = jest.fn();
 	const MOCK_VALUE = new Date('2020-10-12');
 	const MOCK_PROPS = {
@@ -21,10 +21,10 @@ describe('CalendarComponent', () => {
 	};
 
 	const calendarComponent = mount(
-		<CalendarComponent {...MOCK_PROPS} />
+		<Cal {...MOCK_PROPS} />
 	);
 	const suppressErrorComponent = mount(
-		<CalendarComponent
+		<Cal
 			suppressError
 			{...MOCK_PROPS}
 		/>
