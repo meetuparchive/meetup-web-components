@@ -3341,10 +3341,6 @@ flatpickr@^4.0.5:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.2.3.tgz#084b95d353b3b64a164ebfe7151df75c8dae14b1"
 
-flatpickr@^4.0.5:
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.2.3.tgz#084b95d353b3b64a164ebfe7151df75c8dae14b1"
-
 flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
@@ -6128,7 +6124,7 @@ radium@^0.19.0:
     inline-style-prefixer "^2.0.5"
     prop-types "^15.5.8"
 
-raf-schd@false2.1.0:
+raf-schd@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/raf-schd/-/raf-schd-2.1.0.tgz#64d645723380ec25cc1714e909b953ef1cf254bf"
 
@@ -6243,7 +6239,7 @@ react-dom@16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-flatpickr@false3.6.3:
+react-flatpickr@3.6.3:
   version "3.6.3"
   resolved "https://registry.yarnpkg.com/react-flatpickr/-/react-flatpickr-3.6.3.tgz#a4d5ab83b2159192f3c68981e86e721bd67d562a"
   dependencies:
