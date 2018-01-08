@@ -53,7 +53,7 @@ export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen, i
  * @module Modal
  */
 class Modal extends React.Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.onDismiss = this.onDismiss.bind(this);
 		this.onKeyDown = this.onKeyDown.bind(this);
@@ -180,9 +180,12 @@ class Modal extends React.Component {
 
 				<div
 					className={modalClasses}
-					style={{marginTop: this.state.topPosition}}
+					style={{
+						marginTop: this.state.topPosition,
+						// maxHeight: fixed ? `calc(100% - ${this.state.topPosition} * 2)` : 'auto',
+					}}
 				>
-					{ heroContent ?
+					{heroContent ?
 						<Stripe
 							backgroundImage={heroBgImage}
 							inverted={inverted}
