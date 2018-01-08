@@ -182,7 +182,7 @@ class Modal extends React.Component {
 					className={modalClasses}
 					style={{
 						marginTop: this.state.topPosition,
-						// maxHeight: fixed ? `calc(100% - ${this.state.topPosition} * 2)` : 'auto',
+						maxHeight: fixed ? `calc(100% - ${this.state.topPosition} * 2)` : 'auto',
 					}}
 				>
 					{heroContent ?
