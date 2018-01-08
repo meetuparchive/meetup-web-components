@@ -18,6 +18,26 @@ export const CLASSES = {
  * https://chmln.github.io/flatpickr/options/
 */
 class CalendarComponent extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.onFlatPickerChange = this.onFlatPickerChange.bind(this);
+	}
+
+	/**
+	 * @function onFlatPickerChange
+	 * @param {Array} selectedDates - list of recently selected dates from flatpickr
+	 *
+	 * @description the Flatpickr component always passes an array of recently selected
+	 * dates to its onChange handler, with the most recent in first position of the array.
+	 * `redux-form` however, expects a single value. This function ensures that any `onChange`
+	 * prop passed to this component invokes with a single date object.
+	 */
+	onFlatPickerChange(selectedDates) {
+		console.warn(`FIRST SELECTED DATE FROM COMPONENT: ${selectedDates[0]}`);
+		this.props.onChange && this.props.onChange(selectedDates[0]);
+	}
+
 	render() {
 		const {
 			id,
@@ -85,6 +105,7 @@ class CalendarComponent extends React.Component {
 					options={options}
 					aria-label="Use arrow keys to navigate the calendar"
 					className={classNames.field}
+					onChange={this.onFlatPickerChange}
 					{...other}
 				/>
 				{!suppressError &&
