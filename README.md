@@ -200,7 +200,7 @@ column to show how different states affect the rendered component.
 
 ## Release notes
 
-### `v4.4.X`
+### `v4.5.X`
 - Replaced `flatpickr` in `CalendarComponent` with `react-flatpickr`
 
 ### `v4.3.X`
