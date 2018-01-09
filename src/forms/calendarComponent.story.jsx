@@ -7,23 +7,30 @@ import {
 } from '../utils/decorators';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 
+import Section from '../layout/Section';
+import Chunk from '../layout/Chunk';
+
 storiesOf('CalendarComponent', module)
 	.addDecorator(decorateWithLocale)
 	.addDecorator(decorateWithInfo)
 	.addDecorator(withKnobs)
 	.add('default', () => (
-		<div className="span--50">
-			<CalendarComponent
-				name="event_time"
-				label="Start at"
-				value={new Date()}
-				datepickerOptions={{
-					allowInput: true,
-					maxDate: boolean('max date today', false) && new Date(),
-					minDate: boolean('min date today', false) && new Date(),
-				}}
-			/>
-		</div>
+		<Section>
+			<Chunk className="span--50">
+				<CalendarComponent
+					name="event_time"
+					label="Start at"
+					value={new Date()}
+					datepickerOptions={{
+						maxDate: boolean('max date today', false) && new Date(),
+						minDate: boolean('min date today', false) && new Date(),
+					}}
+				/>
+			</Chunk>
+			<Chunk>
+				<p className="text--caption">For a full list of available <code>datepickerOptions</code>, see <a className="link" target="_blank" href="https://chmln.github.io/flatpickr/options/">flatpickr documentation</a></p>
+			</Chunk>
+		</Section>
 	))
 	.add('required', () => {
 		return (
