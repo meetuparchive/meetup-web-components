@@ -38,16 +38,13 @@ const withErrorList = WrappedComponent => {
 
 			const errorId = id && getErrorId(id);
 
-			// always pass `aria-invalid`, `id`,
-			// and `error` props to wrapped component
-			other.id = id;
-			other.error = error;
-			other['aria-invalid'] = Boolean(error);
-
 			return suppressError ? <WrappedComponent {...other} /> : (
 				<div>
 					<WrappedComponent
+						id={id}
+						error={error}
 						aria-describedby={errorId}
+						aria-invalid={Boolean(error)}
 						{...other}
 					/>
 					<ErrorList
