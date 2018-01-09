@@ -125,10 +125,6 @@ export class Textarea extends React.Component {
 			)
 		};
 
-		const heightConstraints = {
-			minHeight: minHeight,
-			maxHeight: maxHeight
-		};
 
 		// WC-158
 		// IE11 does not recognize `-1` as a valid value
@@ -158,7 +154,7 @@ export class Textarea extends React.Component {
 					onChange={this.onChange}
 					rows={rows}
 					ref={(textarea) => {this.textarea = textarea;}}
-					style={{ ...style, ...heightConstraints }}
+					style={{ minHeight, maxHeight, ...style }}
 					id={id}
 					value={this.state.value}
 					{...other}

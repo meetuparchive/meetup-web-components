@@ -23,21 +23,4 @@ describe('ErrorList', () => {
 	it('matches snapshot for input without id', () => {
 		expect(componentWithoutId).toMatchSnapshot();
 	});
-	it('applies id attribute when `errorId` provided', () => {
-		expect(componentWithId.props()).toHaveProperty('id');
-		expect(componentWithId.prop('id')).toEqual(MOCK_ERROR_ID);
-	});
-	it('does NOT apply id attribute when `errorId` is not provided', () => {
-		expect(componentWithoutId.props()).not.toHaveProperty('id');
-	});
-	it('list of errors has `aria-live` attribute', () => {
-		[
-			componentWithoutId,
-			componentWithId
-		].forEach(c => {
-			expect(c.find('ul').html()).toEqual(
-				expect.stringContaining('aria-live')
-			);
-		});
-	});
 });
