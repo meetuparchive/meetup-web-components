@@ -2,37 +2,74 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+import Flatpickr from 'react-flatpickr';
+
+
 /**
  * @module CalendarComponent
- * inits flatpickr js date picker over a text input
+ * @description Single date picker component.
+ * Wraps [react-flatpickr](github.com/coderhaoxin/react-flatpickr)
+ *
+ * For full documentation of available `datePickerOptions`, see:
+ * https://chmln.github.io/flatpickr/options/
 */
 class CalendarComponent extends React.Component {
 	constructor(props) {
 		super(props);
-
-		this.onOpen = this.onOpen.bind(this);
-		this.onClose = this.onClose.bind(this);
-
-		this.onFlatpickrChange = this.onFlatpickrChange.bind(this);
+		this.onFlatPickerChange = this.onFlatPickerChange.bind(this);
 	}
 
 	/**
-	* @description init the js date flatpickr component
-	*/
-	componentDidMount() {
-		// flatpickr uses `window` on import,
-		// which breaks on server-sider render.
-		// lazy-loading flatpickr ensures it is
-		// imported only in clientside envs.
-		const Flatpickr = require('flatpickr');
+	 * @function onFlatPickerChange
+	 * @param {Array} selectedDates - list of recently selected dates from flatpickr
+	 *
+	 * @description the Flatpickr component always passes an array of recently selected
+	 * dates to its onChange handler, with the most recent in first position of the array.
+	 * `redux-form` however, expects a single value. This function ensures that any `onChange`
+	 * prop passed to this component invokes with a single date object.
+	 */
+	onFlatPickerChange(selectedDates) {
+		this.props.onChange && this.props.onChange(selectedDates[0]);
+	}
+
+	render() {
+		const {
+			id,
+			name,
+			label,
+			helperText,
+			error,
+			suppressError,
+			required,
+			datepickerOptions,
+			className,
+			onChange, // eslint-disable-line no-unused-vars
+			...other
+		} = this.props;
+
+		const classNames = {
+			label: cx(
+				{
+					required,
+					'flush--bottom': helperText,
+				},
+				className
+			),
+			helperText: cx(
+				'helperTextContainer',
+				{ required }
+			),
+			field: cx(
+				'input--dateTimePicker select--reset',
+				{
+					'field--error': error
+				}
+			)
+		};
+
 		const options = {
-			onChange: this.onFlatpickrChange,
-			onOpen: this.onOpen,
-			onClose: this.onClose,
 			altInput: true,
-			allowInput: true,
 			altFormat: 'D M d, Y',
-			defaultDate: this.props.value,
 			nextArrow: `<span class="svg svg--chevron-right">
 				<svg preserveAspectRatio="xMinYMin meet" width="12" height="12" viewBox="0 0 12 12" className="svg-icon valign--middle" role="img">
 				<use xlink:href="#icon-chevron-right" />
@@ -43,130 +80,29 @@ class CalendarComponent extends React.Component {
 				<use xlink:href="#icon-chevron-left" />
 				</svg>
 			</span>`,
-			...this.props.datepickerOptions,
+			...datepickerOptions
 		};
-
-		this.flatpickr = new Flatpickr(this.inputEl, options);
-	}
-
-	componentWillUnmount() {
-		this.flatpickr && this.flatpickr.destroy();
-	}
-
-	// replaces updateFlatpickr
-	// if we receive a new value from parent, update Flatpickr
-	componentWillReceiveProps(newProps) {
-		if (this.flatpickr) {
-			if (newProps.datepickerOptions) {
-				this.updateFlatpickrOptions(newProps.datepickerOptions);
-			}
-			this.flatpickr.setDate(newProps.value);
-		}
-	}
-
-	/**
-	 * Updates config options on the flatpickr instance
-	 * @param {Object} newOptions new configaration options for flatpickr
-	 * @return {undefined}
-	 */
-	updateFlatpickrOptions(newOptions) {
-		Object.keys(newOptions)
-			.filter(
-				option => this.props.datepickerOptions[option] !== newOptions[option]
-			)
-			.forEach(option => {
-				this.flatpickr.set(option, newOptions[option]);
-			});
-	}
-
-	/**
-	* @function onFlatpickrChange
-	* @param Array selectedDates
-	* @param dateStr
-	* @param Object instance the calendar instance
-	* @description signature conforms to the onChange handler flatpickr expects
-	* calls onChange if prop provided (eg from redux-form or wrapping components like DateTimePicker)
-	*/
-	onFlatpickrChange(selectedDates, dateStr, instance) {
-		this.props.onChange && this.props.onChange(selectedDates[0]);
-	}
-
-	/**
-	* @function onOpen
-	* @description event hook for flatpickr, used to call onFocus
-	* and apply focus highlight if this is a DateTimePicker
-	*/
-	onOpen() {
-		this.props.onFocus && this.props.onFocus();
-	}
-
-	/**
-	* @function onClose
-	* @description event hook for flatpickr, used to call onBlur
-	* and remove focus highlight if this is a DateTimePicker
-	*/
-	onClose() {
-		this.props.onBlur && this.props.onBlur();
-	}
-
-	render() {
-		const {
-			className,
-			id,
-			name,
-			error,
-			suppressError,
-			label,
-			required,
-			value,
-			datepickerOptions, // eslint-disable-line no-unused-vars
-			onChange, // eslint-disable-line no-unused-vars
-			helperText,
-			...other
-		} = this.props;
-
-		const classNames = {
-			label: cx(
-				{
-					required,
-					'flush--bottom': helperText
-				},
-				className
-			),
-			helperText: cx(
-				'helperTextContainer',
-				{ required }
-			),
-			field: cx(
-				'input--dateTimePicker select--reset',
-				className
-			)
-		};
-
 
 		return (
 			<div>
-				<span>
-					{label && (
-						<label htmlFor={id} className={classNames.label}>
-							{label}
-						</label>
-					)}
-					{helperText &&
-						<div className={classNames.helperText}>
-							{helperText}
-						</div>
-					}
-					<input
-						type="text"
-						id={id}
-						name={name}
-						defaultValue={value}
-						className={classNames.field}
-						ref={input => (this.inputEl = input)}
-						{...other}
-					/>
-				</span>
+				{label && (
+					<label htmlFor={id || name} className={classNames.label}>
+						{label}
+					</label>
+				)}
+				{helperText &&
+					<div className={classNames.helperText}>
+						{helperText}
+					</div>
+				}
+				<Flatpickr
+					id={id || name}
+					options={options}
+					aria-label="Use arrow keys to navigate the calendar"
+					className={classNames.field}
+					onChange={this.onFlatPickerChange}
+					{...other}
+				/>
 				{!suppressError &&
 					error && <p className="text--error text--small">{error}</p>}
 			</div>
@@ -175,14 +111,21 @@ class CalendarComponent extends React.Component {
 }
 
 CalendarComponent.propTypes = {
-	name: PropTypes.string.isRequired,
-	onChange: PropTypes.func, // provided by DateTimePicker or redux-form
+	label: PropTypes.string,
+	id: PropTypes.string,
+	name: PropTypes.string,
 	datepickerOptions: PropTypes.object,
+	required: PropTypes.bool,
 	suppressError: PropTypes.bool,
+	error: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	]),
 	helperText: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
-	])
+	]),
+	onChange: PropTypes.func, // provided by `redux-form`
 };
 
 CalendarComponent.defaultProps = {

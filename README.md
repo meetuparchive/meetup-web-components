@@ -200,8 +200,11 @@ column to show how different states affect the rendered component.
 
 ## Release notes
 
+### `v4.5.X`
+- Replaced `flatpickr` in `CalendarComponent` with `react-flatpickr`
+
 ### `v4.3.X`
-Upgraded to a version of `swarm-sasstools` where we replace responsive sizing/spacing mixins with CSS custom properties
+- Upgraded to a version of `swarm-sasstools` where we replace responsive sizing/spacing mixins with CSS custom properties
 
 ### `v1.1.X`
 Icons update
