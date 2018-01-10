@@ -4,10 +4,6 @@ import cx from 'classnames';
 
 import Flatpickr from 'react-flatpickr';
 
-export const CLASSES = {
-	helperText: 'helperTextContainer',
-	field: 'input--dateTimePicker select--reset',
-};
 
 /**
  * @module CalendarComponent
@@ -20,7 +16,6 @@ export const CLASSES = {
 class CalendarComponent extends React.Component {
 	constructor(props) {
 		super(props);
-
 		this.onFlatPickerChange = this.onFlatPickerChange.bind(this);
 	}
 
@@ -34,7 +29,6 @@ class CalendarComponent extends React.Component {
 	 * prop passed to this component invokes with a single date object.
 	 */
 	onFlatPickerChange(selectedDates) {
-		console.warn(`FIRST SELECTED DATE FROM COMPONENT: ${selectedDates[0]}`);
 		this.props.onChange && this.props.onChange(selectedDates[0]);
 	}
 
@@ -49,6 +43,7 @@ class CalendarComponent extends React.Component {
 			required,
 			datepickerOptions,
 			className,
+			onChange, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -61,11 +56,11 @@ class CalendarComponent extends React.Component {
 				className
 			),
 			helperText: cx(
-				CLASSES.helperText,
+				'helperTextContainer',
 				{ required }
 			),
 			field: cx(
-				CLASSES.field,
+				'input--dateTimePicker select--reset',
 				{
 					'field--error': error
 				}
@@ -130,6 +125,7 @@ CalendarComponent.propTypes = {
 		PropTypes.string,
 		PropTypes.element
 	]),
+	onChange: PropTypes.func, // provided by `redux-form`
 };
 
 CalendarComponent.defaultProps = {

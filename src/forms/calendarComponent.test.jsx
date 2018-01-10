@@ -1,13 +1,15 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import CalendarComponent, { CLASSES } from './CalendarComponent';
-import Flatpickr from 'react-flatpickr';
+import { shallow, mount } from 'enzyme';
+import CalendarComponent from './CalendarComponent';
 
 const SELECTOR_ERROR = '.text--error';
 
 describe('CalendarComponent', () => {
-	const onChangePropMock = jest.fn();
-	const MOCK_VALUE = new Date('2020-10-12');
+
+	// Flatpickr invokes `onChange` with an array arg of `selectedDates`.
+	// the first index is the latest date selected.
+	const MOCK_VALUE = [new Date('2020-10-12')];
+
 	const MOCK_PROPS = {
 		id: 'beyonce',
 		name: 'halo',
@@ -17,32 +19,20 @@ describe('CalendarComponent', () => {
 		value: new Date('2012-10-12'),
 		datepickerOptions: { dateFormat: 'm-d-Y' },
 		error: 'this is an error',
-		onChange: onChangePropMock,
 	};
 
-	const calendarComponent = mount(
+	const calendarComponent = shallow(
 		<CalendarComponent {...MOCK_PROPS} />
 	);
-	const suppressErrorComponent = mount(
+	const suppressErrorComponent = shallow(
 		<CalendarComponent
 			suppressError
 			{...MOCK_PROPS}
 		/>
 	);
-	const fpComponent = calendarComponent.find(Flatpickr);
 
 	it('matches snapshot', () => {
 		expect(calendarComponent).toMatchSnapshot();
-	});
-
-	it('sets helper text when passed as prop', () => {
-		const helperEl = calendarComponent.find(`.${CLASSES.helperText}`);
-		expect(helperEl.text()).toBe(MOCK_PROPS.helperText);
-	});
-
-	it('shows error message when `error` prop is passed', () => {
-		const errorEl = calendarComponent.find(SELECTOR_ERROR);
-		expect(errorEl.text()).toBe(MOCK_PROPS.error);
 	});
 
 	it('does NOT render error message when `suppressError` prop is passed', () => {
@@ -50,17 +40,18 @@ describe('CalendarComponent', () => {
 		expect(errorEl.length).toBe(0);
 	});
 
-	it('calls onChange prop if one is provided, as with redux-form', () => {
-		expect(onChangePropMock).not.toHaveBeenCalled();
-		fpComponent.props().onChange(MOCK_VALUE);
-		expect(onChangePropMock).toHaveBeenCalledWith(MOCK_VALUE);
-	});
+	it('should pass a single date object to `onChange` prop', () => {
+		const spyableChange = jest.fn();
+		const expectedOnChangeArg = MOCK_VALUE[0];
+		const component = mount(
+			<CalendarComponent
+				onChange={spyableChange}
+				{...MOCK_PROPS}
+			/>
+		);
 
-	it('sets correct htmlFor, label text, and field id', () => {
-		const labelEl = calendarComponent.find('label');
-		const fieldEl = fpComponent.find('input');
-		expect(labelEl.text()).toBe(MOCK_PROPS.label);
-		expect(labelEl.prop('htmlFor')).toBe(MOCK_PROPS.id);
-		expect(fieldEl.prop('id')).toBe(MOCK_PROPS.id);
+		expect(spyableChange).not.toHaveBeenCalled();
+		component.instance().onFlatPickerChange(MOCK_VALUE);
+		expect(spyableChange).toHaveBeenCalledWith(expectedOnChangeArg);
 	});
 });
