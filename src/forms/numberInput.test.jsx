@@ -1,6 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
-import NumberInput, {
+import {
+	NumberInput,
 	DECREMENT_BTN_CLASS,
 	INCREMENT_BTN_CLASS,
 	FAUX_INPUT_CLASS,
@@ -12,7 +13,6 @@ describe('NumberInput', function() {
 	const LABEL_TEXT = 'Are you bringing any guests?',
 		VALUE = 2,
 		NAME_ATTR = 'amountCount',
-		ERROR_TEXT = 'Not so fast. You have an error.',
 		PLACEHOLDER = 'Guests',
 		MAX_ATTR = 10,
 		MIN_ATTR = 1,
@@ -25,7 +25,6 @@ describe('NumberInput', function() {
 			id: NAME_ATTR,
 			min: MIN_ATTR,
 			max: MAX_ATTR,
-			error: ERROR_TEXT,
 			required: true,
 		};
 		numberInputComponent = TestUtils.renderIntoDocument(
@@ -109,20 +108,6 @@ describe('NumberInput', function() {
 			);
 
 			expect(inputEl.getAttribute('placeholder')).toEqual(PLACEHOLDER);
-		});
-
-		it('should have an error when one is specified', function() {
-			expect(() =>
-				TestUtils.findRenderedDOMComponentWithClass(
-					numberInputComponent,
-					'text--error'
-				)
-			).not.toThrow();
-			const errorEl = TestUtils.findRenderedDOMComponentWithClass(
-				numberInputComponent,
-				'text--error'
-			);
-			expect(errorEl.textContent).toEqual(ERROR_TEXT);
 		});
 
 		it(`should add class ${FOCUSED_INPUT_CLASS} when the faux input is focused`, () => {

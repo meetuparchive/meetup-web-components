@@ -1,15 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`redux-form Calendar Component renders a Calendar component with expected attributes from mock data 1`] = `
-<CalendarComponent
+<WithErrorList(CalendarComponent)
   className="beyonce-halo"
-  datepickerOptions={Object {}}
   error="pick a different album"
   id="beyonce"
   name="halo"
   onBlur={[Function]}
   onFocus={[Function]}
-  suppressError={false}
   value={2012-10-12T00:00:00.000Z}
 />
 `;
