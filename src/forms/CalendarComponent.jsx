@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import withErrorList from '../utils/components/withErrorList';
 
 import Flatpickr from 'react-flatpickr';
 
@@ -13,7 +14,7 @@ import Flatpickr from 'react-flatpickr';
  * For full documentation of available `datePickerOptions`, see:
  * https://chmln.github.io/flatpickr/options/
 */
-class CalendarComponent extends React.Component {
+export class CalendarComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onFlatPickerChange = this.onFlatPickerChange.bind(this);
@@ -39,7 +40,6 @@ class CalendarComponent extends React.Component {
 			label,
 			helperText,
 			error,
-			suppressError,
 			required,
 			datepickerOptions,
 			className,
@@ -52,8 +52,7 @@ class CalendarComponent extends React.Component {
 				{
 					required,
 					'flush--bottom': helperText,
-				},
-				className
+				}
 			),
 			helperText: cx(
 				'helperTextContainer',
@@ -62,8 +61,9 @@ class CalendarComponent extends React.Component {
 			field: cx(
 				'input--dateTimePicker select--reset',
 				{
-					'field--error': error
-				}
+					'field--error': Boolean(error)
+				},
+				className
 			)
 		};
 
@@ -84,7 +84,7 @@ class CalendarComponent extends React.Component {
 		};
 
 		return (
-			<div>
+			<span>
 				{label && (
 					<label htmlFor={id || name} className={classNames.label}>
 						{label}
@@ -103,9 +103,7 @@ class CalendarComponent extends React.Component {
 					onChange={this.onFlatPickerChange}
 					{...other}
 				/>
-				{!suppressError &&
-					error && <p className="text--error text--small">{error}</p>}
-			</div>
+			</span>
 		);
 	}
 }
@@ -116,7 +114,6 @@ CalendarComponent.propTypes = {
 	name: PropTypes.string,
 	datepickerOptions: PropTypes.object,
 	required: PropTypes.bool,
-	suppressError: PropTypes.bool,
 	error: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
@@ -129,8 +126,7 @@ CalendarComponent.propTypes = {
 };
 
 CalendarComponent.defaultProps = {
-	datepickerOptions: {},
-	suppressError: false,
+	datepickerOptions: {}
 };
 
-export default CalendarComponent;
+export default withErrorList(CalendarComponent);

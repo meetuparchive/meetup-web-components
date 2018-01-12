@@ -1,7 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
 import * as autosizePlugin from 'autosize';
-import Textarea from './Textarea';
+import { Textarea } from './Textarea';
 
 jest.mock('autosize', () => {
 	return jest.fn();
@@ -20,8 +20,7 @@ describe('Textarea', function() {
 		ID = 'super',
 		ROWS = 3,
 		MIN_HEIGHT = 100,
-		MAX_HEIGHT = 300,
-		ERROR_TEXT = 'Too wimpy.';
+		MAX_HEIGHT = 300;
 
 	let textareaComponent, autosizeTextareaComponent, textareaEl;
 
@@ -29,7 +28,6 @@ describe('Textarea', function() {
 		const formAttrs = {
 			id: ID,
 			name: NAME_ATTR,
-			error: ERROR_TEXT,
 			required: true,
 		};
 		textareaComponent = TestUtils.renderIntoDocument(
@@ -111,20 +109,6 @@ describe('Textarea', function() {
 		expect(Number(textareaEl.getAttribute('rows'))).toEqual(ROWS);
 	});
 
-	it('should have an error when one is specified', function() {
-		expect(() =>
-			TestUtils.findRenderedDOMComponentWithClass(
-				textareaComponent,
-				'text--error'
-			)
-		).not.toThrow();
-		const errorEl = TestUtils.findRenderedDOMComponentWithClass(
-			textareaComponent,
-			'text--error'
-		);
-		expect(errorEl.textContent).toEqual(ERROR_TEXT);
-	});
-
 	it('should set its value on input change', function() {
 		const newValue = `${VALUE}r`;
 		expect(textareaEl.value).toEqual(VALUE);
@@ -132,6 +116,7 @@ describe('Textarea', function() {
 		textareaComponent.forceUpdate();
 		expect(textareaEl.value).toEqual(newValue);
 	});
+
 	it('should call onChange with input change', function() {
 		const newValue = `${VALUE}r`;
 		const changeSpy = spyOn(Textarea.prototype, 'onChange').and.callThrough();

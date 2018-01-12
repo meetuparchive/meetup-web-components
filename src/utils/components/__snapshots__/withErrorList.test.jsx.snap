@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withErrorList wrapped component matches snapshot for component with id and error props 1`] = `
+<div>
+  <TestComponent
+    aria-describedby="name-error"
+    aria-invalid={true}
+    error="You are not Keith Hernandez"
+    id="name"
+  />
+  <ErrorList
+    error="You are not Keith Hernandez"
+    id="name-error"
+  />
+</div>
+`;
+
+exports[`withErrorList wrapped component matches snapshot for component without error prop 1`] = `
+<div>
+  <TestComponent
+    aria-describedby="name-error"
+    aria-invalid={false}
+    id="name"
+  />
+  <ErrorList
+    id="name-error"
+  />
+</div>
+`;
+
+exports[`withErrorList wrapped component matches snapshot for component without id or error props 1`] = `
+<div>
+  <TestComponent
+    aria-invalid={false}
+  />
+  <ErrorList />
+</div>
+`;

@@ -1,8 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import CalendarComponent from './CalendarComponent';
-
-const SELECTOR_ERROR = '.text--error';
+import { CalendarComponent } from './CalendarComponent';
 
 describe('CalendarComponent', () => {
 
@@ -31,13 +29,12 @@ describe('CalendarComponent', () => {
 		/>
 	);
 
-	it('matches snapshot', () => {
+	it('standard props matches snapshot', () => {
 		expect(calendarComponent).toMatchSnapshot();
 	});
 
-	it('does NOT render error message when `suppressError` prop is passed', () => {
-		const errorEl = suppressErrorComponent.find(SELECTOR_ERROR);
-		expect(errorEl.length).toBe(0);
+	it('suppressed error matches snapshot', () => {
+		expect(suppressErrorComponent).toMatchSnapshot();
 	});
 
 	it('should pass a single date object to `onChange` prop', () => {
