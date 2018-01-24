@@ -140,6 +140,23 @@ storiesOf("Dropdown", module)
 			/>
 		)
 	)
+	.addWithInfo(
+		"With menu items",
+		"Use the `menuItems` prop to render a menu",
+		() => (
+			<Dropdown
+				align="center"
+				minWidth="0"
+				maxWidth="384px"
+				trigger={<Button small>Open</Button>}
+				menuItems={[
+					'Red',
+					'White',
+					'Swarm'
+				]}
+			/>
+		)
+	)
 	.addWithInfo("with custom toggle functionality", () => (
 		<Flex justify="flexEnd">
 			<FlexItem shrink>

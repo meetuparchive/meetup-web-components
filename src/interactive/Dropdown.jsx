@@ -1,12 +1,26 @@
 import PropTypes from "prop-types";
 import React from "react";
 import cx from "classnames";
-import Portal from "react-portal";
+import { Portal } from "react-portal";
 import rafSchedule from 'raf-schd';
+import Downshift from 'downshift';
 
 import bindAll from "../utils/bindAll";
 
-const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
+const ConditionalWrap = ({condition, wrap, children}) => {
+	return(condition ? wrap(children) : children);
+};
+
+const Item = ({isActive, isSelected, children}) => (
+	<div
+		className="dropdown-menuItem"
+		style={{
+			backgroundColor: isActive ? 'lightgrey' : 'white'
+		}}
+	>
+		{children}
+	</div>
+);
 
 /**
  * @module Dropdown
@@ -18,11 +32,7 @@ class Dropdown extends React.PureComponent {
 		bindAll(
 			this,
 			"getContentPosition",
-			"toggleContent",
-			"onClick",
-			"onKeyDown",
-			"onBodyClick",
-			"onBodyKeyDown",
+			"onDropshiftStateChange",
 			"scheduleContentPosition"
 		);
 
@@ -84,64 +94,16 @@ class Dropdown extends React.PureComponent {
 		this.scheduleUpdate(triggerClientRect);
 	}
 
-	closeContent(e) {
-		if (this.props.manualToggle && this.props.isActive) {
-			this.props.manualToggle(e);
-		} else {
-			this.setState(() => ({ isActive: false }));
-		}
-	}
-
-	toggleContent(e) {
-		this.getContentPosition();
-
-		if (this.props.manualToggle) {
-			this.props.manualToggle(e);
-		} else {
-			this.setState(() => ({ isActive: !this.state.isActive }));
-		}
-	}
-
-	onClick(e) {
-		e.preventDefault();
-		this.toggleContent(e);
-
-		if (this.props.onClick) {
-			this.props.onClick(e);
-		}
-	}
-
-	onKeyDown(e) {
-		if (e.key === "Enter") {
-			this.toggleContent();
-		}
-	}
-
-	onBodyClick(e) {
-		if (!this.contentRef || !this.triggerRef) {
-			return;
-		}
-
-		const isNotDropdownClick = [this.contentRef, this.triggerRef].every(
-			ref => !ref.contains(e.target)
-		);
-
-		if (isNotDropdownClick) {
-			this.closeContent(e);
-		}
-	}
-
-	onBodyKeyDown(e) {
-		if (e.key === "Escape") {
-			this.closeContent();
+	onDropshiftStateChange(changes) {
+		if (changes.isOpen) {
+			this.getContentPosition();
 		}
 	}
 
 	componentDidMount() {
 		const positionTarget = this.triggerRef.offsetParent ? this.triggerRef.offsetParent : this.triggerRef;
 
-		document.body.addEventListener("click", this.onBodyClick);
-		document.body.addEventListener("keydown", this.onBodyKeyDown);
+		this.getContentPosition();
 		window.addEventListener(
 			"resize",
 			() => {this.scheduleContentPosition(positionTarget.getBoundingClientRect());}
@@ -154,17 +116,12 @@ class Dropdown extends React.PureComponent {
 	}
 
 	componentWillUnmount() {
-		document.body.removeEventListener("click", this.onBodyClick);
-		document.body.removeEventListener("keydown", this.onBodyKeyDown);
 		window.removeEventListener("resize", this.getContentPosition);
 		document.removeEventListener("scroll", this.getContentPosition);
 		this.scheduleUpdate.cancel();
 	}
 
 	render() {
-		const isActive = this.props.manualToggle
-			? this.props.isActive
-			: this.state.isActive;
 		const {
 			className,
 			trigger,
@@ -173,12 +130,11 @@ class Dropdown extends React.PureComponent {
 			maxWidth,
 			minWidth,
 			noPortal,
+			menuItems,
 			...other
 		} = this.props;
 
-		// this.props.onClick is consumed in this.onClick
 		// Do not pass along to children
-		delete other.onClick;
 		delete other.manualToggle;
 		delete other.isActive;
 
@@ -188,54 +144,87 @@ class Dropdown extends React.PureComponent {
 				"dropdown", {
 					"dropdown--noPortal": noPortal
 				}
-			),
-			trigger: cx("dropdown-trigger", {
-				"dropdown-trigger--active": isActive
-			}),
-			content: cx("dropdown-content", {
-				"dropdown-content--right": align === "right",
-				"dropdown-content--left": align === "left",
-				"dropdown-content--center": align === "center",
-				"display--none": !isActive,
-				"display--block": isActive
-			})
+			)
 		};
 
 		return (
-			<div
-				className={classNames.dropdown}
-				aria-haspopup="true"
-				onKeyDown={this.onKeyDown}
-				{...other}
+			<Downshift
+				menuItems={menuItems}
+				onStateChange={this.onDropshiftStateChange}
 			>
-				<div
-					ref={el => (this.triggerRef = el)}
-					className={classNames.trigger}
-					tabIndex="0"
-					onClick={this.onClick}
-				>
-					{trigger}
-				</div>
+				{({
+					isOpen,
+					getButtonProps,
+					getItemProps,
+					highlightedIndex,
+					openMenu,
+				}) => (
+						<div
+							className={classNames.dropdown}
+							aria-haspopup="true"
+							{...other}
+						>
+							<div
+								ref={el => (this.triggerRef = el)}
+								className={cx("dropdown-trigger", {
+									"dropdown-trigger--active": isOpen
+								})}
+								{
+									...getButtonProps({
+										onClick() { () => openMenu(); }
+									})
+								}
+							>
+								{trigger}
+							</div>
 
-				<ConditionalWrap
-					condition={!noPortal}
-					wrap={children => <Portal isOpened={isActive}>{children}</Portal>}
-				>
-					<div
-						ref={el => (this.contentRef = el)}
-						className={classNames.content}
-						aria-hidden={!isActive}
-						style={{
-							left: this.state.left,
-							top: this.state.top,
-							minWidth: minWidth,
-							maxWidth: maxWidth
-						}}
-					>
-						{content}
-					</div>
-				</ConditionalWrap>
-			</div>
+							{ isOpen &&
+								<ConditionalWrap
+									condition={!noPortal}
+									wrap={children => <Portal>{children}</Portal>}
+								>
+									<div
+										ref={el => (this.contentRef = el)}
+										className={cx("dropdown-content", {
+											"dropdown-content--right": align === "right",
+											"dropdown-content--left": align === "left",
+											"dropdown-content--center": align === "center",
+											"display--none": !isOpen,
+											"display--block": isOpen
+										})}
+										aria-hidden={!isOpen}
+										style={{
+											left: this.state.left,
+											top: this.state.top,
+											minWidth: minWidth,
+											maxWidth: maxWidth
+										}}
+									>
+
+										{
+											menuItems
+											?
+												menuItems.map((item, index) => (
+													<Item
+														{...getItemProps({
+															item,
+															isActive: highlightedIndex === index,
+														})}
+														key={`menuItem-${index}`}
+													>
+														{item}
+													</Item>
+												))
+											:
+												content
+										}
+									</div>
+								</ConditionalWrap>
+							}
+						</div>
+					)
+				}
+			</Downshift>
 		);
 	}
 }
@@ -248,7 +237,8 @@ Dropdown.defaultProps = {
 
 Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
-	content: PropTypes.element.isRequired,
+	content: PropTypes.element,
+	menuItems: PropTypes.array,
 	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
