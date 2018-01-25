@@ -73,8 +73,8 @@ const withMatchMedia = WrappedComponent => {
 				return;
 			}
 
-			this.mediaQueries.concat(
-				breakpointNames.map(bp => window.matchMedia(MEDIA_QUERIES[bp]))
+			this.mediaQueries.push(
+				...breakpointNames.map(bp => window.matchMedia(MEDIA_QUERIES[bp]))
 			);
 
 			// add listeners for every MediaQueryList object
