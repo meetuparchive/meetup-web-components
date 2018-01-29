@@ -20,15 +20,15 @@ const formatDigits = (number) => `0${number}`.slice(-2);
  * @returns {String|Object} the only parsed value or all the parsed parts if no part defined
  */
 export const getTimeParts = (time) => {
-	const [ hours, minutes ] = time.split(':');
+	const [hours, minutes] = time.split(':');
 	return {
 		hours,
 		minutes,
-		meridian: hours < 12 ? 'AM': 'PM',
+		meridian: hours < 12 ? 'AM' : 'PM',
 	};
 };
 const formatHours = (hours, meridian) => {
-	const newHours = meridian ? (parseInt(hours % 12) + (12 * (meridian === 'PM'))) : hours % 24 ;
+	const newHours = meridian ? (parseInt(hours % 12) + (12 * (meridian === 'PM'))) : hours % 24;
 	return formatDigits(newHours);
 };
 
@@ -100,6 +100,11 @@ export class TimeInput extends React.Component {
 	*/
 	onTimeInputChange(e) {
 		const { value } = e.target;
+		// Time inputs are allowed to return an empty string for invalid input.
+		// We should ignore all invalid input and return immediately
+		// Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#Validation
+		if (value === '') return;
+
 		this.setState(() => ({ value }));
 
 		this.props.onChange && this.props.onChange(value);
@@ -169,7 +174,7 @@ export class TimeInput extends React.Component {
 	 * @param {Object} minmax min and max
 	 * @param {Number} value the value to constrain
 	 */
-	constrainValue(min=-Infinity, max=Infinity, value) {
+	constrainValue(min = -Infinity, max = Infinity, value) {
 		return Math.max(Math.min(value, max), min);
 	}
 
@@ -192,11 +197,11 @@ export class TimeInput extends React.Component {
 
 	onNumberKeyDown(e) {
 		const { name } = e.target;
-		if(e.keyCode == 38 || e.keyCode == 40) {
+		if (e.keyCode == 38 || e.keyCode == 40) {
 			e.preventDefault();
 			e.persist();
 			this.setState(() =>
-				({[name]: this.updateValueByStep(e.target, e.keyCode == 38, e.shiftKey) }),
+				({ [name]: this.updateValueByStep(e.target, e.keyCode == 38, e.shiftKey) }),
 				() => { e.target.select(); }
 			);
 		}
@@ -219,7 +224,7 @@ export class TimeInput extends React.Component {
 		// like redux-form, we need to update state
 		// check if state is already up to date with nextProps.value
 		if (this.props.value !== nextProps.value) {
-			this.setState({...this.parseValueIntoState(nextProps.value, nextProps.is24Hr)});
+			this.setState({ ...this.parseValueIntoState(nextProps.value, nextProps.is24Hr) });
 		}
 	}
 
@@ -294,7 +299,7 @@ export class TimeInput extends React.Component {
 				}
 				{
 					this.state.supportsTime
-					?
+						?
 						<input
 							id={id}
 							type='time'
@@ -304,10 +309,10 @@ export class TimeInput extends React.Component {
 							required={required}
 							disabled={disabled}
 							onChange={this.onTimeInputChange}
-							ref={ input => this.inputEl = input }
+							ref={input => this.inputEl = input}
 							{...other}
 						/>
-					:
+						:
 						<div>
 							<div className={classNames.fauxInput}>
 								<Flex noGutters>
@@ -348,7 +353,7 @@ export class TimeInput extends React.Component {
 											maxLength={2}
 											value={this.state.minutes} />
 									</FlexItem>
-									{ !is24Hr &&
+									{!is24Hr &&
 										<FlexItem shrink className="timeInput-meridianContainer display--flex flex--column flex--center">
 											<SelectInput
 												id={`${id}-meridian`}
