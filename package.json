@@ -48,8 +48,8 @@
   },
   "dependencies": {
     "autosize": "3.0.21",
-    "flatpickr": "3.0.6",
     "raf-schd": "2.1.0",
+    "react-flatpickr": "3.6.3",
     "react-portal": "3.2.0",
     "recompose": "0.26.0"
   },
