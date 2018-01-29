@@ -223,7 +223,6 @@ export class TimeInput extends React.Component {
 		// if we receive new value from a parent,
 		// like redux-form, we need to update state
 		// check if state is already up to date with nextProps.value
-		console.log(nextProps.value);
 		if (this.props.value !== nextProps.value) {
 			this.setState({ ...this.parseValueIntoState(nextProps.value, nextProps.is24Hr) });
 		}
