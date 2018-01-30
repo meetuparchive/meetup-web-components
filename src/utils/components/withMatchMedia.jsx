@@ -8,9 +8,9 @@ const breakpointNames = Object.keys(MEDIA_QUERIES);
  * @returns {String} - state property name (for example, isAtMediumUp)
  */
 export const getStateNameByBreakpoint = breakpoint => {
-	const capitalizedBp = `${breakpoint
-		.substr(0, 1)
-		.toUpperCase()}${breakpoint.substr(1)}`;
+	const firstLetter = breakpoint.substr(0, 1).toUpperCase();
+	const remainder = breakpoint.substr(1);
+	const capitalizedBp = `${firstLetter}${remainder}`;
 	return `isAt${capitalizedBp}Up`;
 };
 
@@ -46,6 +46,7 @@ const withMatchMedia = WrappedComponent => {
 			this.state = {
 				media: props.initialMedia || {},
 			};
+			this.mediaQueries = [];
 
 			this.handleMediaChange = this.handleMediaChange.bind(this);
 		}
@@ -72,8 +73,8 @@ const withMatchMedia = WrappedComponent => {
 				return;
 			}
 
-			this.mediaQueries = breakpointNames.map(bp =>
-				window.matchMedia(MEDIA_QUERIES[bp])
+			this.mediaQueries.push(
+				...breakpointNames.map(bp => window.matchMedia(MEDIA_QUERIES[bp]))
 			);
 
 			// add listeners for every MediaQueryList object
