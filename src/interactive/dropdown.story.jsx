@@ -146,7 +146,7 @@ storiesOf("Dropdown", module)
 		() => (
 			<Dropdown
 				align="center"
-				minWidth="0"
+				minWidth="160px"
 				maxWidth="384px"
 				trigger={<Button small>Open</Button>}
 				menuItems={[

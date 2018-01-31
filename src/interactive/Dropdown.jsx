@@ -13,7 +13,7 @@ const ConditionalWrap = ({condition, wrap, children}) => {
 
 const Item = ({isActive, isSelected, children}) => (
 	<div
-		className="dropdown-menuItem"
+		className="dropdownMenu-item"
 		style={{
 			backgroundColor: isActive ? 'lightgrey' : 'white'
 		}}
@@ -32,8 +32,13 @@ class Dropdown extends React.PureComponent {
 		bindAll(
 			this,
 			"getContentPosition",
-			"onDropshiftStateChange",
-			"scheduleContentPosition"
+			"scheduleContentPosition",
+			"toggleContent",
+			"closeContent",
+			"onClick",
+			"onKeyDown",
+			"onBodyClick",
+			"onBodyKeyDown"
 		);
 
 		this.scheduleUpdate = rafSchedule(
@@ -94,15 +99,64 @@ class Dropdown extends React.PureComponent {
 		this.scheduleUpdate(triggerClientRect);
 	}
 
-	onDropshiftStateChange(changes) {
-		if (changes.isOpen) {
-			this.getContentPosition();
+	closeContent(e) {
+		if (this.props.manualToggle && this.props.isActive) {
+			this.props.manualToggle(e);
+		} else {
+			this.setState(() => ({ isActive: false }));
+		}
+	}
+
+	toggleContent(e) {
+		this.getContentPosition();
+
+		if (this.props.manualToggle) {
+			this.props.manualToggle(e);
+		} else {
+			this.setState({isActive: !this.state.isActive});
+		}
+	}
+
+	onClick(e) {
+		e.preventDefault();
+		this.toggleContent(e);
+
+		if (this.props.onClick) {
+			this.props.onClick(e);
+		}
+	}
+
+	onKeyDown(e) {
+		if (e.key === "Enter" && this.state.isActive) {
+			this.closeContent();
+		}
+	}
+
+	onBodyClick(e) {
+		if (!this.contentRef || !this.triggerRef) {
+			return;
+		}
+
+		const isNotDropdownClick = [this.contentRef, this.triggerRef].every(
+			ref => !ref.contains(e.target)
+		);
+
+		if (isNotDropdownClick) {
+			this.closeContent(e);
+		}
+	}
+
+	onBodyKeyDown(e) {
+		if (e.key === "Escape") {
+			this.closeContent();
 		}
 	}
 
 	componentDidMount() {
 		const positionTarget = this.triggerRef.offsetParent ? this.triggerRef.offsetParent : this.triggerRef;
 
+		document.body.addEventListener("click", this.onBodyClick);
+		document.body.addEventListener("keydown", this.onBodyKeyDown);
 		this.getContentPosition();
 		window.addEventListener(
 			"resize",
@@ -116,6 +170,8 @@ class Dropdown extends React.PureComponent {
 	}
 
 	componentWillUnmount() {
+		document.body.removeEventListener("click", this.onBodyClick);
+		document.body.removeEventListener("keydown", this.onBodyKeyDown);
 		window.removeEventListener("resize", this.getContentPosition);
 		document.removeEventListener("scroll", this.getContentPosition);
 		this.scheduleUpdate.cancel();
@@ -147,10 +203,15 @@ class Dropdown extends React.PureComponent {
 			)
 		};
 
+		const isActive = this.props.manualToggle
+			? this.props.isActive
+			: this.state.isActive;
+
 		return (
 			<Downshift
 				menuItems={menuItems}
-				onStateChange={this.onDropshiftStateChange}
+				isOpen={isActive}
+				onOuterClick={(changes) => {console.log(changes);}}
 			>
 				{({
 					isOpen,
@@ -161,23 +222,19 @@ class Dropdown extends React.PureComponent {
 				}) => (
 						<div
 							className={classNames.dropdown}
-							aria-haspopup="true"
+							onKeyDown={this.onKeyDown}
 							{...other}
 						>
 							<div
+								{...getButtonProps()}
 								ref={el => (this.triggerRef = el)}
 								className={cx("dropdown-trigger", {
 									"dropdown-trigger--active": isOpen
 								})}
-								{
-									...getButtonProps({
-										onClick() { () => openMenu(); }
-									})
-								}
+								onClick={this.onClick}
 							>
 								{trigger}
 							</div>
-
 							{ isOpen &&
 								<ConditionalWrap
 									condition={!noPortal}
@@ -190,7 +247,8 @@ class Dropdown extends React.PureComponent {
 											"dropdown-content--left": align === "left",
 											"dropdown-content--center": align === "center",
 											"display--none": !isOpen,
-											"display--block": isOpen
+											"display--block": isOpen,
+											dropdownMenu: Boolean(menuItems)
 										})}
 										aria-hidden={!isOpen}
 										style={{
