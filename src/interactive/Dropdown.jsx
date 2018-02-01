@@ -241,7 +241,7 @@ class Dropdown extends React.PureComponent {
 							{ isOpen &&
 								<ConditionalWrap
 									condition={!noPortal}
-									wrap={children => <Portal>{children}</Portal>}
+									wrap={children => noPortal ? <div>{children}</div> : <Portal>{children}</Portal>}
 								>
 									<div
 										ref={el => (this.contentRef = el)}
