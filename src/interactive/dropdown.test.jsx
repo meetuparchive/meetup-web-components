@@ -1,8 +1,5 @@
 import React from 'react';
-// import { mount, ReactWrapper } from 'enzyme';
 import { mount } from 'enzyme';
-// import toJson from 'enzyme-to-json';
-// import { Portal } from 'react-portal';
 import Downshift from 'downshift';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
@@ -18,10 +15,6 @@ const dropdownContent = (
 	</Section>
 );
 const dropdownTrigger = <Button small>Open</Button>;
-
-// const getPortalContent = portal =>
-// 	new ReactWrapper(portal.prop('children'));
-
 /**
  * @module DropdownWithToggle
  */
@@ -64,11 +57,7 @@ describe('Dropdown', () => {
 		/>
 	);
 	const wrapper = mount(dropdownJSX);
-	// const portalWrapper = wrapper.find(Portal);
 
-	// it('renders into DOM', () => {
-	// 	expect(wrapper).toMatchSnapshot();
-	// });
 	it('should hide dropdown content by default', () => {
 		expect(wrapper.find('.dropdown-content').length).toBeFalsy();
 	});
@@ -83,10 +72,6 @@ describe('Dropdown', () => {
 		);
 		const rightDropdownWrapper = mount(rightDropdown);
 		const trigger = rightDropdownWrapper.find('.dropdown-trigger');
-
-		// it('renders right-aligned dropdown to DOM', () => {
-		// 	expect(rightDropdownWrapper).toMatchSnapshot();
-		// });
 
 		it('applies correct alignment className to dropdown content', () => {
 			trigger.simulate('click');
