@@ -114,3 +114,11 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);
 }
+
+.dropdownMenu-item {
+	border-bottom: 1px solid $C_border;
+	padding: calc(var(--responsiveSpace)/2);
+	&:last-child {
+		border-bottom: 0;
+	}
+}
