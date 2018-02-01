@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import React from "react";
-import cx from "classnames";
-import { Portal } from "react-portal";
+import PropTypes from 'prop-types';
+import React from 'react';
+import cx from 'classnames';
+import { Portal } from 'react-portal';
 import rafSchedule from 'raf-schd';
 import Downshift from 'downshift';
 
@@ -11,7 +11,7 @@ const ConditionalWrap = ({condition, wrap, children}) => {
 	return(condition ? wrap(children) : children);
 };
 
-const Item = ({isActive, isSelected, children}) => (
+export const Item = ({isActive, isSelected, children}) => (
 	<div
 		className="dropdownMenu-item"
 		style={{
@@ -211,7 +211,6 @@ class Dropdown extends React.PureComponent {
 			<Downshift
 				menuItems={menuItems}
 				isOpen={isActive}
-				onOuterClick={(changes) => {console.log(changes);}}
 			>
 				{({
 					isOpen,
