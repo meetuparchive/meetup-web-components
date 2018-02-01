@@ -5,7 +5,7 @@ import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
 
-import Dropdown, {Item} from './Dropdown';
+import Dropdown, { Item } from './Dropdown';
 
 const dropdownContent = (
 	<Section noSeparator>

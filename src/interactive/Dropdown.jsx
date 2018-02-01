@@ -11,9 +11,7 @@ import {
 
 import bindAll from "../utils/bindAll";
 
-const ConditionalWrap = ({condition, wrap, children}) => {
-	return(condition ? wrap(children) : children);
-};
+const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
 
 export const Item = ({isActive, isSelected, children}) => (
 	<div
@@ -117,7 +115,7 @@ class Dropdown extends React.PureComponent {
 		if (this.props.manualToggle) {
 			this.props.manualToggle(e);
 		} else {
-			this.setState({isActive: !this.state.isActive});
+			this.setState(() => ({isActive: !this.state.isActive}));
 		}
 	}
 
