@@ -1,12 +1,28 @@
-import PropTypes from "prop-types";
-import React from "react";
-import cx from "classnames";
-import Portal from "react-portal";
+import PropTypes from 'prop-types';
+import React from 'react';
+import cx from 'classnames';
+import { Portal } from 'react-portal';
 import rafSchedule from 'raf-schd';
+import Downshift from 'downshift';
+import {
+	C_COOLGRAYLIGHTTRANSP,
+	C_WHITE
+} from 'swarm-constants/dist/js/colorConstants.js';
 
 import bindAll from "../utils/bindAll";
 
 const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
+
+export const Item = ({isActive, isSelected, children}) => (
+	<div
+		className="dropdownMenu-item"
+		style={{
+			backgroundColor: isActive ? C_COOLGRAYLIGHTTRANSP : C_WHITE
+		}}
+	>
+		{children}
+	</div>
+);
 
 /**
  * @module Dropdown
@@ -18,12 +34,13 @@ class Dropdown extends React.PureComponent {
 		bindAll(
 			this,
 			"getContentPosition",
+			"scheduleContentPosition",
 			"toggleContent",
+			"closeContent",
 			"onClick",
 			"onKeyDown",
 			"onBodyClick",
-			"onBodyKeyDown",
-			"scheduleContentPosition"
+			"onBodyKeyDown"
 		);
 
 		this.scheduleUpdate = rafSchedule(
@@ -98,7 +115,7 @@ class Dropdown extends React.PureComponent {
 		if (this.props.manualToggle) {
 			this.props.manualToggle(e);
 		} else {
-			this.setState(() => ({ isActive: !this.state.isActive }));
+			this.setState(() => ({isActive: !this.state.isActive}));
 		}
 	}
 
@@ -112,8 +129,8 @@ class Dropdown extends React.PureComponent {
 	}
 
 	onKeyDown(e) {
-		if (e.key === "Enter") {
-			this.toggleContent();
+		if (e.key === "Enter" && this.state.isActive) {
+			this.closeContent();
 		}
 	}
 
@@ -142,6 +159,7 @@ class Dropdown extends React.PureComponent {
 
 		document.body.addEventListener("click", this.onBodyClick);
 		document.body.addEventListener("keydown", this.onBodyKeyDown);
+		this.getContentPosition();
 		window.addEventListener(
 			"resize",
 			() => {this.scheduleContentPosition(positionTarget.getBoundingClientRect());}
@@ -162,9 +180,6 @@ class Dropdown extends React.PureComponent {
 	}
 
 	render() {
-		const isActive = this.props.manualToggle
-			? this.props.isActive
-			: this.state.isActive;
 		const {
 			className,
 			trigger,
@@ -173,12 +188,11 @@ class Dropdown extends React.PureComponent {
 			maxWidth,
 			minWidth,
 			noPortal,
+			menuItems,
 			...other
 		} = this.props;
 
-		// this.props.onClick is consumed in this.onClick
 		// Do not pass along to children
-		delete other.onClick;
 		delete other.manualToggle;
 		delete other.isActive;
 
@@ -188,54 +202,88 @@ class Dropdown extends React.PureComponent {
 				"dropdown", {
 					"dropdown--noPortal": noPortal
 				}
-			),
-			trigger: cx("dropdown-trigger", {
-				"dropdown-trigger--active": isActive
-			}),
-			content: cx("dropdown-content", {
-				"dropdown-content--right": align === "right",
-				"dropdown-content--left": align === "left",
-				"dropdown-content--center": align === "center",
-				"display--none": !isActive,
-				"display--block": isActive
-			})
+			)
 		};
 
-		return (
-			<div
-				className={classNames.dropdown}
-				aria-haspopup="true"
-				onKeyDown={this.onKeyDown}
-				{...other}
-			>
-				<div
-					ref={el => (this.triggerRef = el)}
-					className={classNames.trigger}
-					tabIndex="0"
-					onClick={this.onClick}
-				>
-					{trigger}
-				</div>
+		const isActive = this.props.manualToggle
+			? this.props.isActive
+			: this.state.isActive;
 
-				<ConditionalWrap
-					condition={!noPortal}
-					wrap={children => <Portal isOpened={isActive}>{children}</Portal>}
-				>
-					<div
-						ref={el => (this.contentRef = el)}
-						className={classNames.content}
-						aria-hidden={!isActive}
-						style={{
-							left: this.state.left,
-							top: this.state.top,
-							minWidth: minWidth,
-							maxWidth: maxWidth
-						}}
-					>
-						{content}
-					</div>
-				</ConditionalWrap>
-			</div>
+		return (
+			<Downshift
+				menuItems={menuItems}
+				isOpen={isActive}
+			>
+				{({
+					isOpen,
+					getButtonProps,
+					getItemProps,
+					highlightedIndex,
+					openMenu,
+				}) => (
+						<div
+							className={classNames.dropdown}
+							onKeyDown={this.onKeyDown}
+							{...other}
+						>
+							<div
+								{...getButtonProps()}
+								ref={el => (this.triggerRef = el)}
+								className={cx("dropdown-trigger", {
+									"dropdown-trigger--active": isOpen
+								})}
+								onClick={this.onClick}
+							>
+								{trigger}
+							</div>
+							{ isOpen &&
+								<ConditionalWrap
+									condition={!noPortal}
+									wrap={children => noPortal ? <div>{children}</div> : <Portal>{children}</Portal>}
+								>
+									<div
+										ref={el => (this.contentRef = el)}
+										className={cx("dropdown-content", {
+											"dropdown-content--right": align === "right",
+											"dropdown-content--left": align === "left",
+											"dropdown-content--center": align === "center",
+											"display--none": !isOpen,
+											"display--block": isOpen,
+											dropdownMenu: Boolean(menuItems)
+										})}
+										aria-hidden={!isOpen}
+										style={{
+											left: this.state.left,
+											top: this.state.top,
+											minWidth: minWidth,
+											maxWidth: maxWidth
+										}}
+									>
+
+										{
+											menuItems
+											?
+												menuItems.map((item, index) => (
+													<Item
+														{...getItemProps({
+															item,
+															isActive: highlightedIndex === index,
+														})}
+														key={`menuItem-${index}`}
+													>
+														{item}
+													</Item>
+												))
+											:
+												content
+										}
+									</div>
+								</ConditionalWrap>
+							}
+						</div>
+					)
+				}
+			</Downshift>
 		);
 	}
 }
@@ -248,7 +296,8 @@ Dropdown.defaultProps = {
 
 Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
-	content: PropTypes.element.isRequired,
+	content: PropTypes.element,
+	menuItems: PropTypes.array,
 	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,

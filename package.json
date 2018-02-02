@@ -48,9 +48,10 @@
   },
   "dependencies": {
     "autosize": "3.0.21",
-    "raf-schd": "2.1.0",
+    "downshift": "1.26.1",
     "react-flatpickr": "3.6.3",
-    "react-portal": "3.2.0",
+    "raf-schd": "2.1.0",
+    "react-portal": "4.1.2",
     "recompose": "0.26.0"
   },
   "devDependencies": {
@@ -74,8 +75,8 @@
     "classnames": "2.2.5",
     "coveralls": "2.13.1",
     "css-loader": "0.28.4",
-    "enzyme": "3.1.0",
-    "enzyme-adapter-react-16": "1.0.2",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.0",
     "enzyme-to-json": "3.1.4",
     "eslint": "4.10.0",
     "eslint-config-airbnb": "16.1.0",
