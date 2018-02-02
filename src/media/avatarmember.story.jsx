@@ -6,6 +6,7 @@ import {
 	decorateWithInfo,
 } from '../utils/decorators';
 import AvatarMember from './AvatarMember.jsx';
+import InlineBlockList from '../layout/InlineBlockList';
 
 storiesOf('AvatarMember', module)
 	.addDecorator(decorateWithLocale)
@@ -13,26 +14,82 @@ storiesOf('AvatarMember', module)
 		'default',
 		'This is the basic usage with the component.',
 		() => (
-			<AvatarMember
-				member={MOCK_MEMBER}
-			/>
+		<InlineBlockList
+			items={[
+				<AvatarMember
+					member={MOCK_MEMBER}
+				/>,
+				<AvatarMember
+					member={MOCK_MEMBER}
+					large
+				/>,
+				<AvatarMember
+					member={MOCK_MEMBER}
+					xxlarge
+				/>,
+			]}
+		/>
 		)
 	)
 	.addDecorator(decorateWithInfo)
 	.add('organizer', () => (
-		<AvatarMember
-			member={MOCK_MEMBER}
-			org
+		<InlineBlockList
+			items={[
+				<AvatarMember
+					member={MOCK_MEMBER}
+					org
+				/>,
+				<AvatarMember
+					member={MOCK_MEMBER}
+					org
+					large
+				/>,
+				<AvatarMember
+					member={MOCK_MEMBER}
+					org
+					xxlarge
+				/>,
+			]}
 		/>
 	))
 	.add('facebook friend', () => (
-		<AvatarMember
-			member={MOCK_MEMBER}
-			fbFriend
+		<InlineBlockList
+			items={[
+				<AvatarMember
+					member={MOCK_MEMBER}
+					fbFriend
+				/>,
+				<AvatarMember
+					member={MOCK_MEMBER}
+					fbFriend
+					large
+				/>,
+				<AvatarMember
+					member={MOCK_MEMBER}
+					fbFriend
+					xxlarge
+				/>,
+			]}
 		/>
 	)).add('no photo', () => {
 		const MOCK_MEMBER_NO_PHOTO = { ...MOCK_MEMBER }; // treat the mock as immutable
 		MOCK_MEMBER_NO_PHOTO.photo = {};
-		return <AvatarMember member={MOCK_MEMBER_NO_PHOTO}/>;
+		return (
+			<InlineBlockList
+				items={[
+					<AvatarMember
+						member={MOCK_MEMBER_NO_PHOTO}
+					/>,
+					<AvatarMember
+						member={MOCK_MEMBER_NO_PHOTO}
+						large
+					/>,
+					<AvatarMember
+						member={MOCK_MEMBER_NO_PHOTO}
+						xxlarge
+					/>,
+				]}
+			/>
+		);
 	});
 
