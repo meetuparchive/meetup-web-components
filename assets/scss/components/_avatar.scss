@@ -163,7 +163,9 @@ $avatarSizeProps: (height, width);
 		@include align-items(center);
 		@include justify-content(center);
 
-		// must be scoped to `svg--profile` in case this is also an org avatar
+		// must be scoped to `svg--profile`,
+		// as it's possible to have additional `Icon`
+		// children in `Avatar`
 		svg {
 			// sets SVG size relative to wrapper
 			width: 40%;
