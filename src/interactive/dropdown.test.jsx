@@ -1,12 +1,11 @@
 import React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
-import Portal from 'react-portal';
-
+import { mount } from 'enzyme';
+import Downshift from 'downshift';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
 
-import Dropdown from './Dropdown';
+import Dropdown, { Item } from './Dropdown';
 
 const dropdownContent = (
 	<Section noSeparator>
@@ -16,10 +15,6 @@ const dropdownContent = (
 	</Section>
 );
 const dropdownTrigger = <Button small>Open</Button>;
-
-const getPortalContent = portal =>
-	new ReactWrapper(portal.prop('children'));
-
 /**
  * @module DropdownWithToggle
  */
@@ -62,16 +57,9 @@ describe('Dropdown', () => {
 		/>
 	);
 	const wrapper = mount(dropdownJSX);
-	const portalWrapper = wrapper.find(Portal);
-
-	it('renders into DOM', () => {
-		expect(wrapper).toMatchSnapshot();
-	});
 
 	it('should hide dropdown content by default', () => {
-		const content = getPortalContent(portalWrapper);
-
-		expect(content.prop('className')).toContain('display--none');
+		expect(wrapper.find('.dropdown-content').length).toBeFalsy();
 	});
 
 	describe('right aligned dropdown', () => {
@@ -83,14 +71,12 @@ describe('Dropdown', () => {
 			/>
 		);
 		const rightDropdownWrapper = mount(rightDropdown);
-		const rightDropdownPortal = rightDropdownWrapper.find(Portal);
-
-		it('renders right-aligned dropdown to DOM', () => {
-			expect(rightDropdownWrapper).toMatchSnapshot();
-		});
+		const trigger = rightDropdownWrapper.find('.dropdown-trigger');
 
 		it('applies correct alignment className to dropdown content', () => {
-			const content = getPortalContent(rightDropdownPortal);
+			trigger.simulate('click');
+			const content = rightDropdownWrapper.find('.dropdown-content');
+
 			expect(content.prop('className')).toContain('dropdown-content--right');
 		});
 	});
@@ -134,30 +120,46 @@ describe('Dropdown', () => {
 		});
 	});
 
+	describe('dropdown with menuItems', () => {
+		const menuItemDropdown = (
+			<Dropdown
+				align="center"
+				trigger={dropdownTrigger}
+				menuItems={['one', 'two', 'three']}
+			/>
+		);
+		const menuItemDropdownWrapper = mount(menuItemDropdown);
+		const trigger = menuItemDropdownWrapper.find('.dropdown-trigger');
+
+		it('renders the menuItems', () => {
+			trigger.simulate('click');
+			const menuItemsProp = menuItemDropdownWrapper.find(Downshift).prop('menuItems');
+			const menuItemsRendered = menuItemDropdownWrapper.find(Item);
+
+			expect(menuItemsRendered.length).toBe(menuItemsProp.length);
+		});
+	});
+
 	describe('manually toggle dropdown', () => {
-		let closedComponent, closeContentSpy, toggleContentSpy, trigger;
+		let closedComponent, trigger;
 
 		beforeEach(() => {
 			closedComponent = mount(<DropdownWithToggle />);
-			closeContentSpy = jest.spyOn(Dropdown.prototype, 'closeContent');
-			toggleContentSpy = jest.spyOn(Dropdown.prototype, 'toggleContent');
 			trigger = closedComponent.find('.dropdown-trigger');
 		});
 
 		afterEach(() => {
 			closedComponent = null;
 			trigger = null;
-			closeContentSpy.mockClear();
-			toggleContentSpy.mockClear();
 		});
 
 		it('should still open and close when clicking the trigger', () => {
-			expect(closeContentSpy).not.toHaveBeenCalled();
+			expect(closedComponent.find('.dropdown-content').length).toBeFalsy();
 			trigger.simulate('click');
+			expect(closedComponent.find('.dropdown-content').length).toBeTruthy();
 
-			closedComponent.find(Dropdown).instance().onBodyClick({ target: '<div />' });
-			expect(closeContentSpy).toHaveBeenCalled();
-			expect(toggleContentSpy).not.toHaveBeenCalled();
+			trigger.simulate('click');
+			expect(closedComponent.find('.dropdown-content').length).toBeFalsy();
 		});
 	});
 });
