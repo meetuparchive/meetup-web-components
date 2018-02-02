@@ -49,6 +49,7 @@ $avatarSizeProps: (height, width);
 		width: 44%;
 		height: 44%;
 
+		// circle behind the icon
 		&:before {
 			position: absolute;
 			top: 0;
@@ -60,6 +61,7 @@ $avatarSizeProps: (height, width);
 			border-radius: 100%;
 		}
 
+		// the icon itself
 		svg {
 			@include color-svg(getPrimaryTextColor($color));
 			width: 80%;
