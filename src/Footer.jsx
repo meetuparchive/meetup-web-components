@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import locales from 'mwp-config/locales';
 
@@ -16,22 +17,21 @@ import withMatchMedia from './utils/components/withMatchMedia';
 
 import { getSocialLinks } from './utils/getSocialLinks';
 
-export function FooterCategory(props) {
-	return (
-		<Chunk>
-			<h4 className="text--bold margin--bottom">{props.header}</h4>
-			<GridList
-				columns={{
-					default: 2,
-					medium: 1,
-				}}
-				className="text--secondary text--small"
-				itemClassNames="footer-item"
-				items={props.items}
-			/>
-		</Chunk>
-	);
-}
+export const FooterCategory = (props) => (
+	<Chunk>
+		<h4 className="text--bold margin--bottom">{props.header}</h4>
+		<GridList
+			columns={{
+				default: 2,
+				medium: 1,
+			}}
+			className="text--secondary text--small"
+			itemClassNames="footer-item"
+			items={props.items}
+		/>
+	</Chunk>
+);
+
 
 export const SocialIconsList = (language) => {
 	const socialLinks = getSocialLinks(language);
@@ -83,12 +83,12 @@ export const languagesAsOptions = locales.map(language => ({
 	value: language,
 }));
 
-export const LanguageSelectInput = (currentLocaleCode, onChange) => (
+export const LanguageSelectInput = (props) => (
 	<SelectInput
-		onChange={onChange}
+		onChange={props.onChange}
 		options={languagesAsOptions}
 		name="languagePicker"
-		value={currentLocaleCode}
+		value={props.currentLocaleCode}
 		label="Language"
 		labelClassName="visibility--a11yHide"
 	/>
@@ -216,6 +216,24 @@ export const Footer = ({
 			</Stripe>
 		</footer>
 	);
+};
+
+Footer.propTypes = {
+	appBadges: PropTypes.element.isRequired,
+	className: PropTypes.string,
+	createMeetup: PropTypes.shape({
+		link: PropTypes.string.isRequired,
+		text: PropTypes.string.isRequired
+	}).isRequired,
+	isLight: PropTypes.bool,
+	isLoggedIn: PropTypes.bool.isRequired,
+	localeCode: PropTypes.string.isRequired,
+	linkSets: PropTypes.arrayOf(PropTypes.shape({
+		header: PropTypes.string.isRequired,
+		items: PropTypes.arrayOf(PropTypes.element).isRequired
+	})).isRequired,
+	onLanguageSelect: PropTypes.func.isRequired,
+	subFooterLinks: PropTypes.arrayOf(PropTypes.element).isRequired
 };
 
 export default withMatchMedia(Footer);
