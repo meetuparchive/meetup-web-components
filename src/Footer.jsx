@@ -37,7 +37,7 @@ export const SocialIconsList = (language) => {
 	const socialLinks = getSocialLinks(language);
 	const socialIcons = [
 		<a href={socialLinks.facebook}>
-			<Icon shape="external-facebookBoxed" size="s" />
+			<Icon shape="external-facebookboxed" size="s" />
 		</a>,
 		<a href={socialLinks.twitter}>
 			<Icon className="margin--left" shape="external-twitter" size="s" />
@@ -138,7 +138,7 @@ export const Footer = ({
 								<Flex direction="column" switchDirection="medium">
 									{
 										linkSets.map((linkSet, i) => (
-											<FlexItem>
+											<FlexItem key={`linkSet-${i}`}>
 												<FooterCategory {...linkSet} />
 											</FlexItem>
 										))
@@ -226,7 +226,7 @@ Footer.propTypes = {
 		text: PropTypes.string.isRequired
 	}).isRequired,
 	isLight: PropTypes.bool,
-	isLoggedIn: PropTypes.bool.isRequired,
+	isLoggedIn: PropTypes.bool,
 	localeCode: PropTypes.string.isRequired,
 	linkSets: PropTypes.arrayOf(PropTypes.shape({
 		header: PropTypes.string.isRequired,
