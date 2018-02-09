@@ -67,10 +67,10 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 @mixin alignDropdown($direction) {
 	@if $direction != "center" {
 		&:before {
-			#{$direction}: $space-2;
+			#{$direction}: $space-half;
 		}
 		&:after {
-			#{$direction}: $space-2 + 1;
+			#{$direction}: $space-half + 1;
 		}
 	}
 	@if $direction == "center" {
@@ -117,7 +117,11 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 
 .dropdownMenu-item {
 	border-bottom: 1px solid $C_border;
+	cursor: pointer;
 	padding: calc(var(--responsiveSpace)/2);
+	&:hover {
+		background-color: $C_coolGrayLight;
+	}
 	&:last-child {
 		border-bottom: 0;
 	}
