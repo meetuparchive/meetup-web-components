@@ -5,8 +5,7 @@ import { Portal } from 'react-portal';
 import rafSchedule from 'raf-schd';
 import Downshift from 'downshift';
 import {
-	C_COOLGRAYLIGHTTRANSP,
-	C_WHITE
+	C_COOLGRAYLIGHTTRANSP
 } from 'swarm-constants/dist/js/colorConstants.js';
 
 import bindAll from "../utils/bindAll";
@@ -17,7 +16,7 @@ export const Item = ({isActive, isSelected, children}) => (
 	<div
 		className="dropdownMenu-item"
 		style={{
-			backgroundColor: isActive ? C_COOLGRAYLIGHTTRANSP : C_WHITE
+			backgroundColor: isActive && C_COOLGRAYLIGHTTRANSP
 		}}
 	>
 		{children}
