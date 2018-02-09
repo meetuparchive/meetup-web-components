@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import locales from 'mwp-config/locales';
 
+import { languageMap } from './utils/languageMap';
+
 import Bounds from './layout/Bounds';
 import Chunk from './layout/Chunk';
 import Flex from './layout/Flex';
@@ -56,37 +58,13 @@ export const SocialIconsList = (language) => {
 	return <InlineBlockList items={socialIcons} />;
 };
 
-// this should probably be folded into mwp-cli, where lang config is kept
-const languageMap = {
-	'en-US': 'English',
-	'en-AU': 'English (Australia)',
-	'de-DE': 'Deutsch',
-	es: 'Español',
-	'es-ES': 'Español (España)',
-	'fr-FR': 'Français',
-	'it-IT': 'Italiano',
-	'nl-NL': 'Nederlands',
-	'pl-PL': 'Polski',
-	'pt-BR': 'Português',
-	'tr-TR': 'Türkçe',
-	'th-TH': 'ไทย',
-	'ja-JP': '日本語',
-	'ko-KR': '한국어',
-	'ru-RU': 'Русский',
-};
-
-/*
- * Turn list of languages into an array of options for select dropdown
- */
-export const languagesAsOptions = locales.map(language => ({
-	label: languageMap[language],
-	value: language,
-}));
-
 export const LanguageSelectInput = (props) => (
 	<SelectInput
 		onChange={props.onChange}
-		options={languagesAsOptions}
+		options={locales.map(language => ({
+			label: languageMap[language],
+			value: language,
+		}))}
 		name="languagePicker"
 		value={props.currentLocaleCode}
 		label="Language"
