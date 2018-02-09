@@ -43,7 +43,7 @@
     "react-intl": "^2.4.0",
     "react-transition-group": "^2.2.1",
     "swarm-animation": "^0.0.95",
-    "swarm-icons": "^1.3",
+    "swarm-icons": "^1.3.285",
     "swarm-sasstools": "^3.0.312"
   },
   "dependencies": {
@@ -93,6 +93,7 @@
     "inquirer": "3.2.0",
     "jest": "20.0.4",
     "meetup-web-mocks": "1.0.242",
+    "mwp-config": "12.1.2092",
     "node-sass": "4.5.3",
     "npm-run-all": "4.0.2",
     "prop-types": "^15.6.0",
