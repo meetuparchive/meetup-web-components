@@ -5,8 +5,7 @@ import {
 	Footer,
 	FooterCategory,
 	LanguageSelectInput,
-	SocialIconsList,
-	languagesAsOptions
+	SocialIconsList
 } from './Footer';
 
 const APP_BADGES_CLASSNAME = 'appBadges';
@@ -103,10 +102,6 @@ describe('LanguageSelectInput', () => {
 	it('exists', () => {
 		const langSelectInput = shallow(<LanguageSelectInput language={DEFAULT_LANG} />);
 		expect(langSelectInput).toMatchSnapshot();
-	});
-	it('should render the correct language options', () => {
-		const langSelectInput = shallow(<LanguageSelectInput language={DEFAULT_LANG} />);
-		expect(langSelectInput.prop('options')).toEqual(languagesAsOptions);
 	});
 	it('should render the correct language value', () => {
 		const langSelectInput = mount(<LanguageSelectInput language={DEFAULT_LANG} />);

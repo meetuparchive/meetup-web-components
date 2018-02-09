@@ -40,7 +40,9 @@ exports[`Footer exists 1`] = `
               direction="column"
               switchDirection="medium"
             >
-              <FlexItem>
+              <FlexItem
+                key="linkSet-0"
+              >
                 <FooterCategory
                   header="Your Account"
                   items={
@@ -64,7 +66,9 @@ exports[`Footer exists 1`] = `
                   }
                 />
               </FlexItem>
-              <FlexItem>
+              <FlexItem
+                key="linkSet-1"
+              >
                 <FooterCategory
                   header="Discover"
                   items={
@@ -93,7 +97,9 @@ exports[`Footer exists 1`] = `
                   }
                 />
               </FlexItem>
-              <FlexItem>
+              <FlexItem
+                key="linkSet-2"
+              >
                 <FooterCategory
                   header="Meetup"
                   items={
@@ -341,7 +347,7 @@ exports[`SocialIconsList exists 1`] = `
         href="https://www.facebook.com/meetup/"
     >
         <Icon
-            shape="external-facebookBoxed"
+            shape="external-facebookboxed"
             size="s"
         />
     </a>,
