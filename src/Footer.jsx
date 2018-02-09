@@ -35,8 +35,8 @@ export const FooterCategory = (props) => (
 );
 
 
-export const SocialIconsList = (language) => {
-	const socialLinks = getSocialLinks(language);
+export const SocialIconsList = (localeCode) => {
+	const socialLinks = getSocialLinks(localeCode);
 	const socialIcons = [
 		<a href={socialLinks.facebook}>
 			<Icon shape="external-facebookboxed" size="s" />
@@ -127,7 +127,7 @@ export const Footer = ({
 								<Flex noGutters direction="column">
 									<FlexItem shrink>
 										<Chunk className="align--center atMedium_align--left">
-											<SocialIconsList language={localeCode} />
+											<SocialIconsList localeCode={localeCode} />
 										</Chunk>
 									</FlexItem>
 									<FlexItem>

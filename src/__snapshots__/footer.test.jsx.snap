@@ -149,7 +149,7 @@ exports[`Footer exists 1`] = `
                   className="align--center atMedium_align--left"
                 >
                   <SocialIconsList
-                    language="en-US"
+                    localeCode="en-US"
                   />
                 </Chunk>
               </FlexItem>
