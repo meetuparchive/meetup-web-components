@@ -61,7 +61,7 @@ const AppBadges = () => (
 			<a href="http://meetu.ps/2ZhShs">
 				<img
 					className="span--100 margin--center"
-					src={require('../assets/images/ios_download_en.png')}
+					src='https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg'
 					style={{maxWidth: '160px'}}
 				/>
 			</a>
@@ -70,7 +70,7 @@ const AppBadges = () => (
 			<a href="http://meetu.ps/2ZhSyb">
 				<img
 					className="span--100 margin--center"
-					src={require('../assets/images/android_download_en.png')}
+					src="https://vignette.wikia.nocookie.net/shallwedate/images/6/66/Google_Play_Banner.png"
 					style={{maxWidth: '160px'}}
 				/>
 			</a>
