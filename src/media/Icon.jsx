@@ -82,6 +82,7 @@ Icon.propTypes = {
 	shape: PropTypes.oneOf(VALID_SHAPES).isRequired,
 	size: PropTypes.oneOf(Object.keys(MEDIA_SIZES)).isRequired,
 	circled: PropTypes.bool,
+	color: PropTypes.string
 };
 
 export default Icon;
