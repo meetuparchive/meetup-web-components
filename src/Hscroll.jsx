@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import rafSchedule from 'raf-schd';
 
 export const HIDE_GRADIENT_CLASSNAME = 'hscrollGradient--hidden';
 
@@ -25,8 +26,7 @@ class Hscroll extends React.Component {
 
 	onScroll(e) {
 		const { scrollLeft } = e.target;
-		console.log('onScroll happening');
-		this.setState(() => ({isScrolled: Boolean(scrollLeft)}));
+		rafSchedule(this.setState(() => ({isScrolled: Boolean(scrollLeft)})));
 	}
 
 	render() {
