@@ -1,7 +1,7 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
+import { shallow } from 'enzyme';
 
-import Hscroll from './Hscroll';
+import Hscroll, { HIDE_GRADIENT_CLASSNAME } from './Hscroll'; // HSCROLL_CLASSNAME
 
 const listItems = [
 	<div key={0}>item</div>,
@@ -19,45 +19,46 @@ describe('Default Hscroll', () => {
 	let component;
 
 	beforeEach(() => {
-		component = TestUtils.renderIntoDocument(<Hscroll>{listItems}</Hscroll>);
+		component = shallow(<Hscroll>{listItems}</Hscroll>);
 	});
 	afterEach(() => {
 		component = null;
 	});
 
+	it('exists', () => {
+		expect(component).toMatchSnapshot();
+	});
+
 	it('does not have graident class when `gradient` prop is not supplied', () => {
-		const gradientEls = TestUtils.scryRenderedDOMComponentsWithClass(
-			component,
-			'hscrollGradientWrap'
-		);
+		const gradientEls = component.find('.hscrollGradientWrap');
 		expect(gradientEls).toHaveLength;
 	});
 });
 
 describe('Gradient Hscroll', () => {
-	const component = TestUtils.renderIntoDocument(
-		<Hscroll hasGradient>{listItems}</Hscroll>
-	);
-	const gradientEls = TestUtils.scryRenderedDOMComponentsWithClass(
-		component,
-		'hscrollGradientWrap'
-	);
+	const component = shallow(<Hscroll hasGradient>{listItems}</Hscroll>);
+	const gradientEls = component.find('.hscrollGradientWrap');
+	const MOCK_EVENT = {
+		target: {
+			scrollLeft: '10px',
+		},
+	};
 
 	it('has graident class when `gradient` prop is supplied', () => {
 		expect(gradientEls.length).toBe(1);
 	});
+
+	it(`adds a the className ${HIDE_GRADIENT_CLASSNAME} when the hscroll has been scrolled`, () => {
+		component.instance().onScroll(MOCK_EVENT);
+		expect(component.hasClass(HIDE_GRADIENT_CLASSNAME)).toBe(true);
+	});
 });
 
 describe('Responsive Hscroll', () => {
-	const component = TestUtils.renderIntoDocument(
-		<Hscroll unclipAt="large">{listItems}</Hscroll>
-	);
-	const hscrollElement = TestUtils.findRenderedDOMComponentWithClass(
-		component,
-		'hscroll'
-	);
+	const component = shallow(<Hscroll unclipAt="large">{listItems}</Hscroll>);
+	const hscrollElement = component.find('.hscroll');
 
 	it('has correct media-conditional modifier on `hscroll` element', () => {
-		expect(hscrollElement.className).toContain('atLarge_hscroll--unclip');
+		expect(hscrollElement.hasClass('atLarge_hscroll--unclip')).toBe(true);
 	});
 });
