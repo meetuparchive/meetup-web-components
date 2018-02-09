@@ -8,6 +8,7 @@ export const AVATAR_PERSON_CLASS = 'avatar--person';
 export const AVATAR_PERSON_ORG_CLASS = 'avatar--org';
 export const AVATAR_PERSON_FB_CLASS = 'avatar--fbFriend';
 export const AVATAR_PERSON_NOPHOTO_CLASS = 'avatar--noPhoto';
+const AVATAR_ICON_BADGE_CLASS = 'svg--avatarBadge';
 
 /**
  * An avatar for a member - just supply a member
@@ -31,22 +32,31 @@ class AvatarMember extends React.PureComponent {
 			className
 		);
 
-		const noPhotoIcon = (<Icon
-			shape="profile"
-			size="m"
-		/>);
-
 		const allProps = {
 			alt: member.name,
 			className: classNames,
-			children: showNoPhoto && noPhotoIcon,
 		};
 
 		if (!showNoPhoto) {
 			allProps.src = member.photo[photoLink];
 		}
 
-		return <Avatar {...allProps} {...other} />;
+		return (<Avatar {...allProps} {...other}>
+			{showNoPhoto &&
+				<Icon shape="profile" size="m" />}
+			{fbFriend && !org &&
+				<Icon
+					className={AVATAR_ICON_BADGE_CLASS}
+					shape="external-facebook"
+					size="m"
+				/>}
+			{org &&
+				<Icon
+					className={AVATAR_ICON_BADGE_CLASS}
+					shape="badge"
+					size="m"
+				/>}
+		</Avatar>);
 	}
 }
 
