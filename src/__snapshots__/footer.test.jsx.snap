@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer exists 1`] = `
+<footer
+  className="column-item column-item--shrink"
+  id="mupFooter"
+>
+  <Stripe
+    className="footerStripe-main"
+    inverted={true}
+  >
+    <Bounds
+      className="bounds--footer"
+      narrow={true}
+    >
+      <Section
+        hasSeparator={true}
+      >
+        <Chunk>
+          <a
+            className="link link--white"
+            href="/create/"
+          >
+            Create a Meetup
+          </a>
+        </Chunk>
+      </Section>
+      <Section
+        className="border--none"
+        hasSeparator={true}
+      >
+        <Flex
+          direction="column"
+          switchDirection="large"
+        >
+          <FlexItem
+            className="margin--bottom"
+          >
+            <Flex
+              direction="column"
+              switchDirection="medium"
+            >
+              <FlexItem
+                key="linkSet-0"
+              >
+                <FooterCategory
+                  header="Your Account"
+                  items={
+                    Array [
+                      <a
+                        href="/register"
+                    >
+                        Settings
+                    </a>,
+                      <a
+                        href="/logout"
+                    >
+                        Log out
+                    </a>,
+                      <a
+                        href="/help"
+                    >
+                        Help
+                    </a>,
+                    ]
+                  }
+                />
+              </FlexItem>
+              <FlexItem
+                key="linkSet-1"
+              >
+                <FooterCategory
+                  header="Discover"
+                  items={
+                    Array [
+                      <a
+                        href="/groups"
+                    >
+                        Groups
+                    </a>,
+                      <a
+                        href="/calendar"
+                    >
+                        Calendar
+                    </a>,
+                      <a
+                        href="/topics"
+                    >
+                        Topics
+                    </a>,
+                      <a
+                        href="/cities"
+                    >
+                        Cities
+                    </a>,
+                    ]
+                  }
+                />
+              </FlexItem>
+              <FlexItem
+                key="linkSet-2"
+              >
+                <FooterCategory
+                  header="Meetup"
+                  items={
+                    Array [
+                      <a
+                        href="/about"
+                    >
+                        About
+                    </a>,
+                      <a
+                        href="/pro"
+                    >
+                        Meetup Pro
+                    </a>,
+                      <a
+                        href="/jobs"
+                    >
+                        Careers
+                    </a>,
+                      <a
+                        href="/apps"
+                    >
+                        Apps
+                    </a>,
+                      <a
+                        href="/meetup_api"
+                    >
+                        API
+                    </a>,
+                    ]
+                  }
+                />
+              </FlexItem>
+            </Flex>
+          </FlexItem>
+          <FlexItem
+            shrink={true}
+          >
+            <Flex
+              direction="column"
+              noGutters={true}
+            >
+              <FlexItem
+                shrink={true}
+              >
+                <Chunk
+                  className="align--center atMedium_align--left"
+                >
+                  <SocialIconsList
+                    localeCode="en-US"
+                  />
+                </Chunk>
+              </FlexItem>
+              <FlexItem>
+                <Flex
+                  direction="column"
+                  justify={null}
+                >
+                  <FlexItem
+                    className="margin--top"
+                    shrink={true}
+                  >
+                    <Chunk>
+                      <LanguageSelectInput
+                        currentLocaleCode="en-US"
+                        onChange={[Function]}
+                      />
+                    </Chunk>
+                  </FlexItem>
+                  <FlexItem
+                    shrink={true}
+                  >
+                    <Chunk
+                      className="align--center atMedium_align--left margin--top"
+                    >
+                      <div
+                        className="appBadges"
+                      />
+                    </Chunk>
+                  </FlexItem>
+                </Flex>
+              </FlexItem>
+            </Flex>
+          </FlexItem>
+        </Flex>
+      </Section>
+    </Bounds>
+  </Stripe>
+  <Stripe
+    className="footerStripe-legal border--none"
+    inverted={true}
+  >
+    <Bounds>
+      <div
+        className="padding--all"
+      >
+        <InlineBlockList
+          className="text--small align--center atMedium_align--left"
+          items={
+            Array [
+              <span>
+                © Meetup 2018
+            </span>,
+              <a
+                href="/terms"
+            >
+                Terms
+            </a>,
+              <a
+                href="/privacy"
+            >
+                Privacy
+            </a>,
+              <a
+                href="/cookie_policy"
+            >
+                Cookies
+            </a>,
+            ]
+          }
+          separator="·"
+        />
+      </div>
+    </Bounds>
+  </Stripe>
+</footer>
+`;
+
+exports[`Footer should render FooterCategory with linkSet 1`] = `
+<Chunk>
+  <h4
+    className="text--bold margin--bottom"
+  >
+    Your Account
+  </h4>
+  <GridList
+    className="text--secondary text--small"
+    columns={
+      Object {
+        "default": 2,
+        "medium": 1,
+      }
+    }
+    itemClassNames="footer-item"
+    items={
+      Array [
+        <a
+          href="/register"
+      >
+          Settings
+      </a>,
+        <a
+          href="/logout"
+      >
+          Log out
+      </a>,
+        <a
+          href="/help"
+      >
+          Help
+      </a>,
+      ]
+    }
+  />
+</Chunk>
+`;
+
+exports[`LanguageSelectInput exists 1`] = `
+<WithErrorList(SelectInput)
+  label="Language"
+  labelClassName="visibility--a11yHide"
+  name="languagePicker"
+  options={
+    Array [
+      Object {
+        "label": "English",
+        "value": "en-US",
+      },
+      Object {
+        "label": "Deutsch",
+        "value": "de-DE",
+      },
+      Object {
+        "label": "English (Australia)",
+        "value": "en-AU",
+      },
+      Object {
+        "label": "Español",
+        "value": "es",
+      },
+      Object {
+        "label": "Español (España)",
+        "value": "es-ES",
+      },
+      Object {
+        "label": "Français",
+        "value": "fr-FR",
+      },
+      Object {
+        "label": "Italiano",
+        "value": "it-IT",
+      },
+      Object {
+        "label": "日本語",
+        "value": "ja-JP",
+      },
+      Object {
+        "label": "한국어",
+        "value": "ko-KR",
+      },
+      Object {
+        "label": "Nederlands",
+        "value": "nl-NL",
+      },
+      Object {
+        "label": "Português",
+        "value": "pt-BR",
+      },
+      Object {
+        "label": "Polski",
+        "value": "pl-PL",
+      },
+      Object {
+        "label": "Русский",
+        "value": "ru-RU",
+      },
+      Object {
+        "label": "ไทย",
+        "value": "th-TH",
+      },
+      Object {
+        "label": "Türkçe",
+        "value": "tr-TR",
+      },
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList exists 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/Meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
