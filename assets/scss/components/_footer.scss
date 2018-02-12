@@ -1,0 +1,46 @@
+.footerStripe--main,
+.footerStripe-legal {
+	// :SDS: consider making this available in swarm-sasstools
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.footerStripe-main {
+	background-color: $C_darkGray;
+}
+
+.footerStripe-main--isLight {
+	background-color: $C_collectionBG;
+}
+
+.footerStripe-legal {
+	background-color: darken($C_darkGray, 03%);
+}
+
+.footerStripe-legal--isLight {
+	background-color: darken($C_collectionBG, 03%);
+}
+
+.bounds--footer {
+	max-width: 320px;
+	@include atMediaUp(medium) {
+		max-width: $bounds-wide;
+	}
+}
+
+.footer-item {
+	padding-bottom: $space-half;
+}
+
+// :SDS: make this the default for links in inverted context
+.link--white {
+	color: white;
+	border-bottom: 1px solid $C_textPrimaryInverted !important;
+
+	&:hover,
+	&:active,
+	&:focus {
+		border-bottom: 1px solid transparent;
+	}
+
+}
