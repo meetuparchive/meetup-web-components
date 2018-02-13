@@ -18,6 +18,30 @@ Table of Contents
   * [Storybook](#storybook)
   * [Release notes](#release-notes)
 
+## Component checklist
+This checklist can be used as a guide for adding components that are easy to reuse and maintain. The categories come from a talk I saw [Elyse Holladay](https://elyseholladay.github.io/) give at Clarity Conf 2017.
+
+**Easy to reason about**
+* [ ] It will be clear to other designers or engineers what problem the component solves and when to use it
+* [ ] All properties, options and variants are documented in Storybook
+* [ ] Has unit tests
+* [ ] Provides logical defaults
+* [ ] If there can be errors, error states are designed and documented
+* [ ] If the component has become complex, it has been broken into smaller components
+
+**Context-agnostic**
+* [ ] Doesn't rely on a parent component to behave or look correctly
+* [ ] Doesn't have logic that controls functionality outside of itself e.g.: if there is a button in the component, it should take an event handler via props instead of assuming what the button is going to do
+* [ ] Works in supported browsers and devices
+* [ ] Design is [accessible](https://meetup.github.io/swarm-design-system/design/usability/a11y/) for all users
+* [ ] Provides necessary ARIA information
+* [ ] Design won't cause issues with translation or [internationalization](https://meetup.github.io/swarm-design-system/design/usability/i18n/)
+
+**Independent and isolated**
+* [ ] Only affects itself
+* [ ] Defines itself and its styles only in one place
+* [ ] Ready to use "out of the box" in consumer apps or by other components
+
 ## Releases
 
 This package uses semver versioning to tag releases, although the patch version
