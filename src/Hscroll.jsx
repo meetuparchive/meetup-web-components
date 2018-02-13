@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import rafSchedule from 'raf-schd';
+
+export const HIDE_GRADIENT_CLASSNAME = 'hscrollGradient--hidden';
 
 export const VALID_BREAKPOINTS = {
 	medium: 'atMedium',
@@ -12,6 +15,20 @@ export const VALID_BREAKPOINTS = {
  * @module Hscroll
  */
 class Hscroll extends React.Component {
+	constructor(props){
+		super(props);
+		this.onScroll = this.onScroll.bind(this);
+
+		this.state = {
+			isScrolled: false
+		};
+	}
+
+	onScroll(e) {
+		const { scrollLeft } = e.target;
+		rafSchedule(this.setState(() => ({isScrolled: Boolean(scrollLeft)})));
+	}
+
 	render() {
 		const {
 			hasGradient,
@@ -24,7 +41,10 @@ class Hscroll extends React.Component {
 
 		const wrapClassNames = cx(
 			'hscrollContainer',
-			{ hscrollGradientWrap: hasGradient && !unclipAt },
+			{
+				hscrollGradientWrap: hasGradient && !unclipAt,
+				[HIDE_GRADIENT_CLASSNAME]: !this.state.isScrolled
+			},
 			className
 		);
 
@@ -34,7 +54,7 @@ class Hscroll extends React.Component {
 		);
 
 		return (
-			<div className={wrapClassNames} {...other}>
+			<div onScroll={this.onScroll} className={wrapClassNames} {...other}>
 				<div className={hscrollClassNames}>
 					<div className='hscroll-content'>
 						{children}
