@@ -301,6 +301,14 @@ $C_toggleHighlight: $C_blue;
 }
 
 //
+// Search input
+//
+input[type="search"] {
+	// avoid safari user agent weirdness with search fields
+	-webkit-appearance: textfield;
+}
+
+//
 // Character counter
 //
 .charCount {
