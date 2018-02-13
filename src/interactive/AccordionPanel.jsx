@@ -142,7 +142,7 @@ class AccordionPanel extends React.Component {
 						aria-labelledby={`label-${ariaId}`}
 						aria-hidden={!isOpen}
 						className={classNames.content}
-						style={{ height: this.getHeight(isOpen) }}
+						style={{ minHeight: this.getHeight(isOpen) }}
 					>
 						<div
 							className='accordionPanel-content'
