@@ -71,7 +71,7 @@ describe('AccordionPanelGroup', () => {
 
 		beforeEach(() => {
 			jest
-				.spyOn(AccordionPanel.prototype, 'getHeight')
+				.spyOn(AccordionPanel.prototype, 'getPanelStyle')
 				.mockImplementation(() => {});
 
 			accordionPanelGroup = mount(
