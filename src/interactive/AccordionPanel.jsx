@@ -22,14 +22,17 @@ class AccordionPanel extends React.Component {
 	}
 
 	/**
-	 * @parm {Boolean} isOpen (is panel open)
-	 * @returns {Number} panel height
+	 * @parm {Boolean} isOpen
+	 * @parm {Ref} contentEl - element ref
+	 * @returns {Object} inline styles
 	 */
-	getHeight(isOpen) {
-		if (!this.contentEl) {
-			return '0px';
-		}
-		return `${isOpen * this.contentEl.getBoundingClientRect().height}px`;
+	getPanelStyle(isOpen, contentEl) {
+		const style = { height: '0px', minHeight: '0px' };
+
+		if (!isOpen || !contentEl) return style;
+
+		style.minHeight = `${contentEl.getBoundingClientRect().height}px`;
+		return style;
 	}
 
 	/**
@@ -142,7 +145,7 @@ class AccordionPanel extends React.Component {
 						aria-labelledby={`label-${ariaId}`}
 						aria-hidden={!isOpen}
 						className={classNames.content}
-						style={{ height: this.getHeight(isOpen) }}
+						style={this.getPanelStyle(isOpen, this.contentEl)}
 					>
 						<div
 							className='accordionPanel-content'
