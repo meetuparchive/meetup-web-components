@@ -33,9 +33,9 @@ This checklist can be used as a guide for adding components that are easy to reu
 * [ ] Doesn't rely on a parent component to behave or look correctly
 * [ ] Doesn't have logic that controls functionality outside of itself e.g.: if there is a button in the component, it should take an event handler via props instead of assuming what the button is going to do
 * [ ] Works in supported browsers and devices
-* [ ] Design is [accessible](link to a11y guides) for all users
+* [ ] Design is [accessible](https://meetup.github.io/swarm-design-system/design/usability/a11y/) for all users
 * [ ] Provides necessary ARIA information
-* [ ] Design won't cause issues with translation or [internationalization](link to i18n guidelines)
+* [ ] Design won't cause issues with translation or [internationalization](https://meetup.github.io/swarm-design-system/design/usability/i18n/)
 
 **Independent and isolated**
 * [ ] Only affects itself
