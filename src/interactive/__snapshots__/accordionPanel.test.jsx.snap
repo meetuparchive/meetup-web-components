@@ -23,11 +23,6 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
       aria-labelledby="label-firstsection"
       className="accordionPanel-animator accordionPanel-animator--collapse"
       role="tabpanel"
-      style={
-        Object {
-          "height": undefined,
-        }
-      }
     >
       <div
         className="accordionPanel-content"
@@ -78,11 +73,6 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
       aria-labelledby="label-firstsection"
       className="accordionPanel-animator accordionPanel-animator--collapse"
       role="tabpanel"
-      style={
-        Object {
-          "height": undefined,
-        }
-      }
     >
       <div
         className="accordionPanel-content"
@@ -155,22 +145,14 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
             aria-labelledby="label-firstsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
             role="tabpanel"
-            style={
-              Object {
-                "height": undefined,
-              }
-            }
+            style={undefined}
           >
             <div
               aria-hidden={true}
               aria-labelledby="label-firstsection"
               className="chunk accordionPanel-animator accordionPanel-animator--collapse"
               role="tabpanel"
-              style={
-                Object {
-                  "height": undefined,
-                }
-              }
+              style={undefined}
             >
               <div
                 className="accordionPanel-content"
@@ -271,22 +253,14 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
             aria-labelledby="label-firstsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
             role="tabpanel"
-            style={
-              Object {
-                "height": undefined,
-              }
-            }
+            style={undefined}
           >
             <div
               aria-hidden={true}
               aria-labelledby="label-firstsection"
               className="chunk accordionPanel-animator accordionPanel-animator--collapse"
               role="tabpanel"
-              style={
-                Object {
-                  "height": undefined,
-                }
-              }
+              style={undefined}
             >
               <div
                 className="accordionPanel-content"
