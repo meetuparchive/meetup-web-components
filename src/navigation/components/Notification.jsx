@@ -8,10 +8,6 @@ import FlexItem from '../../layout/FlexItem';
 import Avatar from '../../media/Avatar';
 import Icon from '../../media/Icon';
 
-
-
-import { generateClassicUrl } from 'src/util/linksHelper';
-
 const MEMBER_NOTIF_TYPES = ['mug_comm', 'convo', 'comment'];
 
 /**
@@ -103,10 +99,7 @@ class Notification extends React.PureComponent {
 			'avatar--person': isMemberRelated,
 		});
 
-		const notifUrlWithTracking = generateClassicUrl(
-			localeCode,
-			`/r/site/${kind}/${memberId}/notification/${link}`
-		);
+		const notifUrlWithTracking = `meetup.com/${localeCode}/${link}/${memberId}`;
 
 		return (
 			<a href={notifUrlWithTracking} className={classNames} onClick={this.onClick}>

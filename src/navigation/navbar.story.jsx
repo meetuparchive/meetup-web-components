@@ -19,7 +19,7 @@ const group = [{
 storiesOf('NavBar', module)
 	.addDecorator(decorateWithLocale)
 	.addDecorator(decorateWithInfo)
-	.add('Default', () => (
+	.add('Authenticated', () => (
 		<NavBar
 			self={{
 				id: 1234,
@@ -27,6 +27,27 @@ storiesOf('NavBar', module)
 				status: 'active'
 			}}
 			groups={group}
+			notifications={[]}
 		/>
-	)
-	);
+	))
+	.add('Unauthenticated', () => (
+		<NavBar
+			self={{
+				id: 1234,
+				status: 'prereg'
+			}}
+		/>
+	))
+	.add('with Badge', () => (
+		<NavBar
+			self={{
+				id: 1234,
+				name: 'John Q. Testington',
+				status: 'active'
+			}}
+			groups={group}
+			notifications={[]}
+			unreadMessages={4}
+			unreadNotifications={2}
+		/>
+	));

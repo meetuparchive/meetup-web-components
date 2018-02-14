@@ -15,6 +15,7 @@ import Icon from '../media/Icon';
 
 import NavItem from './components/NavItem';
 import ProfileDropdown from './components/ProfileDropdown';
+import NotificationsDropdown from './components/NotificationsDropdown';
 
 const DropdownLoader = ({ label }) => (
 	<Section className="valignChildren--center align--center" aria-live="polite">
@@ -243,12 +244,12 @@ export class NavBar extends React.Component {
 
 					{isLoggedOut ? unauthItems : authItems}
 				</Flex>
-				{this.state.isSignUpModalOpen && (
+				{/* this.state.isSignUpModalOpen && (
 					<SignUpModal
 						onDismiss={this.onDismissSignUpModal}
 						localeCode={localeCode}
 					/>
-				)}
+				)*/ }
 			</nav>
 		);
 	}
@@ -256,6 +257,11 @@ export class NavBar extends React.Component {
 
 NavBar.propTypes = {
 	self: PropTypes.object,
+	media: PropTypes.object,
+	notifications: PropTypes.array,
+	unreadNotifications: PropTypes.number,
+	unreadMessages: PropTypes.number,
+	groups: PropTypes.array,
 };
 
 export default withMatchMedia(NavBar);
