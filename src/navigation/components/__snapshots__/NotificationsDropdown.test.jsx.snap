@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notifications Dropdown renders to DOM 1`] = `
+<div
+  className="align--left"
+>
+  <h2
+    className="padding--all border--bottom text--labelSecondary"
+  >
+    Notifications
+  </h2>
+  <NotificationsEmpty />
+</div>
+`;

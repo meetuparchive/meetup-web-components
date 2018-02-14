@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Dropdown renders to DOM 1`] = `
+<Flex
+  className="header-profileDropdown-content align--left padding--all"
+  direction="row"
+  justify="spaceBetween"
+>
+  <FlexItem
+    growFactor={6}
+  >
+    <Chunk>
+      <ul
+        className="list"
+      >
+        <li
+          className="profileDropdown-content-group list-item"
+          key="1111"
+        >
+          hello 1
+        </li>
+        <li
+          className="profileDropdown-content-group list-item"
+          key="2222"
+        >
+          hello 2
+        </li>
+        <li
+          className="profileDropdown-content-group list-item"
+          key="3333"
+        >
+          hello 3
+        </li>
+        <li
+          className="profileDropdown-content-group list-item"
+          key="4444"
+        >
+          hello 4
+        </li>
+      </ul>
+    </Chunk>
+    <a
+      className="button button--small text--small"
+      href="/find"
+    >
+      See All Groups
+      <Icon
+        className="margin--left"
+        color="rgb(255,255,255)"
+        shape="chevron-right"
+        size="xs"
+      />
+    </a>
+  </FlexItem>
+  <FlexItem
+    className="text--secondary margin--left"
+    growFactor={2}
+  >
+    <ul
+      className="list"
+    >
+      <li
+        className="list-item"
+      >
+        <a>
+          Profile
+        </a>
+      </li>
+      <li
+        className="list-item"
+      >
+        <a
+          href="/account"
+        >
+          Settings
+        </a>
+      </li>
+      <li
+        className="list-item"
+      >
+        Logout
+      </li>
+    </ul>
+  </FlexItem>
+</Flex>
+`;
