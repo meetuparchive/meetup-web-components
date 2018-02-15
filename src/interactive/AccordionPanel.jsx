@@ -31,6 +31,7 @@ class AccordionPanel extends React.Component {
 
 		if (!isOpen || !contentEl) return style;
 
+		delete style.height; // allow content to expand the panel when open
 		style.minHeight = `${contentEl.getBoundingClientRect().height}px`;
 		return style;
 	}
