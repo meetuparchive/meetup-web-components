@@ -93,6 +93,6 @@ const DEFAULT_PROPS = {
 
 storiesOf('Footer', module)
 	.addDecorator(decorateWithLocale)
-	.add('default', () => <TestFooter {...DEFAULT_PROPS} />)
+	.add('default', () => <TestFooter />)
 	.add('isLoggedIn', () => <TestFooter {...DEFAULT_PROPS} isLoggedIn />)
 	.add('isLight', () => <TestFooter {...DEFAULT_PROPS} isLight />);
