@@ -196,6 +196,49 @@ export const Footer = ({
 	);
 };
 
+Footer.defaultProps = {
+	createMeetup: {
+		text: 'Create a Meetup',
+		link: '/create/'
+	},
+	linkSets: [
+		{
+			header: 'Your Account',
+			items: [
+				<a href="/register">Settings</a>,
+				<a href="/logout">Log out</a>,
+				<a href="/help">Help</a>
+			]
+		},
+		{
+			header: 'Discover',
+			items: [
+				<a href="/groups">Groups</a>,
+				<a href="/calendar">Calendar</a>,
+				<a href="/topics">Topics</a>,
+				<a href="/cities">Cities</a>
+			]
+		},
+		{
+			header: 'Meetup',
+			items: [
+				<a href="/about">About</a>,
+				<a href="/pro">Meetup Pro</a>,
+				<a href="/jobs">Careers</a>,
+				<a href="/apps">Apps</a>,
+				<a href="/meetup_api">API</a>
+			]
+		},
+	],
+	localeCode: "en-US",
+	subFooterLinks: [
+		<a href="/terms">Terms of Service</a>,
+		<a href="/privacy">Privacy Policy</a>,
+		<a href="/cookie_policy">Cookie Policy</a>
+	],
+	appBadges: <div>App badges go here</div>
+};
+
 Footer.propTypes = {
 	appBadges: PropTypes.element.isRequired,
 	className: PropTypes.string,
