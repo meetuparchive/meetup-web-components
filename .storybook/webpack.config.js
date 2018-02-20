@@ -5,6 +5,29 @@ const CSS_PATH = path.resolve(__dirname, '../assets', 'css');
 const SRC_PATH = path.resolve(__dirname, '../src');
 const PLATFORM_PATH = /node_modules\/meetup-web-platform/;
 
+const OPTS_POSTCSS = {
+	ident: 'postcss',
+	plugins: (loader) => [
+		require('postcss-cssnext')({
+			browsers: [
+				'last 2 versions',
+				'not ie <= 10'
+			],
+			features: {
+				customProperties: false
+			}
+		}),
+		require('postcss-css-variables')({
+			preserve: true
+		})
+	]
+};
+
+// placeholder for modules options
+// modules: true,
+// localIdentName: '_[name]_[local]__[hash:base64:5]',
+const OPTS_CSS = {};
+
 module.exports = {
 	module: {
 		rules: [
@@ -16,13 +39,34 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				loaders: ['style-loader', 'css-loader'],
-				include: CSS_PATH
+				include: CSS_PATH,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {...OPTS_CSS,...{importLoaders: 1}},
+					},
+					{
+						loader: 'postcss-loader',
+						options: OPTS_POSTCSS
+					},
+				]
 			},
 			{
 				test: /\.scss$/,
-				loaders: ['style-loader', 'css-loader', 'sass-loader'],
-				include: SCSS_PATH
+				include: SCSS_PATH,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {...OPTS_CSS,...{importLoaders: 2}},
+					},
+					{
+						loader: 'postcss-loader',
+						options: OPTS_POSTCSS
+					},
+					'sass-loader',
+				]
 			},
 			{
 				test: /\.jsx?$/,
