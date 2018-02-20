@@ -205,7 +205,7 @@ Footer.defaultProps = {
 		{
 			header: 'Your Account',
 			items: [
-				<a href='/register'>Settings</a>,
+				<a href="/register">Settings</a>,
 				<a href="/logout">Log out</a>,
 				<a href="/help">Help</a>
 			]
@@ -213,7 +213,7 @@ Footer.defaultProps = {
 		{
 			header: 'Discover',
 			items: [
-				<a href='/groups'>Groups</a>,
+				<a href="/groups">Groups</a>,
 				<a href="/calendar">Calendar</a>,
 				<a href="/topics">Topics</a>,
 				<a href="/cities">Cities</a>
@@ -222,7 +222,7 @@ Footer.defaultProps = {
 		{
 			header: 'Meetup',
 			items: [
-				<a href='/about'>About</a>,
+				<a href="/about">About</a>,
 				<a href="/pro">Meetup Pro</a>,
 				<a href="/jobs">Careers</a>,
 				<a href="/apps">Apps</a>,
