@@ -19,7 +19,7 @@ describe('AccordionPanel', function() {
 		panelStateCallback = jest.fn();
 		onClickCallback = jest.fn();
 
-		jest.spyOn(AccordionPanel.prototype, 'getHeight').mockImplementation(() => {});
+		jest.spyOn(AccordionPanel.prototype, 'getPanelStyle').mockImplementation(() => {});
 
 		panel = shallow(
 			<AccordionPanel
