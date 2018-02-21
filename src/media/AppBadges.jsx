@@ -15,7 +15,7 @@ const getAppStoreDownloadPhoto = (platform, language) =>
  * Renders iOS and Android app badges
  * @class AppBadges
  */
-const AppBadges = ({ className, locale, getAppStorePhoto, ...other }) => {
+const AppBadges = ({ className, language, getAppStorePhoto, ...other }) => {
 	const classNames = cx('getTheApp-downloadLinks', className);
 
 	return (
@@ -24,7 +24,7 @@ const AppBadges = ({ className, locale, getAppStorePhoto, ...other }) => {
 				<a href={IOS_DOWNLOAD_LINK}>
 					<img
 						className="getTheApp-downloadImage span--100 margin--center"
-						src={getAppStorePhoto('ios', locale)}
+						src={getAppStorePhoto('ios', language)}
 					/>
 				</a>
 			</FlexItem>
@@ -32,7 +32,7 @@ const AppBadges = ({ className, locale, getAppStorePhoto, ...other }) => {
 				<a href={ANDROID_DOWNLOAD_LINK}>
 					<img
 						className="getTheApp-downloadImage span--100 margin--center"
-						src={getAppStorePhoto('android', locale)}
+						src={getAppStorePhoto('android', language)}
 					/>
 				</a>
 			</FlexItem>

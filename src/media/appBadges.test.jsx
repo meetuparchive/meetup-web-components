@@ -3,10 +3,10 @@ import { shallow } from 'enzyme';
 
 import AppBadges, { IOS_DOWNLOAD_LINK, ANDROID_DOWNLOAD_LINK } from './AppBadges';
 
-const testLocale = 'fr';
+const testLanguage = 'fr';
 
 describe('App Badges', () => {
-	const appBadgesComponent = shallow(<AppBadges locale={testLocale} />);
+	const appBadgesComponent = shallow(<AppBadges language={testLanguage} />);
 	it('exists', () => {
 		expect(appBadgesComponent).toMatchSnapshot();
 	});
@@ -20,10 +20,10 @@ describe('App Badges', () => {
 		);
 		expect(googlePlayStoreLink.exists()).toBe(true);
 	});
-	it('should render the correct itunes and google play store images based on locale', () => {
+	it('should render the correct itunes and google play store images based on language', () => {
 		const getAppStorePhoto = jest.fn();
-		shallow(<AppBadges locale={testLocale} getAppStorePhoto={getAppStorePhoto} />);
-		expect(getAppStorePhoto).toHaveBeenCalledWith('android', testLocale);
-		expect(getAppStorePhoto).toHaveBeenCalledWith('ios', testLocale);
+		shallow(<AppBadges language={testLanguage} getAppStorePhoto={getAppStorePhoto} />);
+		expect(getAppStorePhoto).toHaveBeenCalledWith('android', testLanguage);
+		expect(getAppStorePhoto).toHaveBeenCalledWith('ios', testLanguage);
 	});
 });
