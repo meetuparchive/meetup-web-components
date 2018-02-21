@@ -16,6 +16,9 @@ import NavItem from './components/NavItem';
 import ProfileDropdown from './components/ProfileDropdown';
 import NotificationsDropdown from './components/NotificationsDropdown';
 
+const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
+const CLASS_AUTH_ITEM = 'navItem--authenticated';
+
 const DropdownLoader = ({ label }) => (
 	<Section className="valignChildren--center align--center" aria-live="polite">
 		<p className="visibility--a11yHide">{label}</p>
@@ -33,9 +36,7 @@ export class NavBar extends React.Component {
 		this.onDismissSignUpModal = this.onDismissSignUpModal.bind(this);
 		this.onClickSignUpAction = this.onClickSignUpAction.bind(this);
 
-		this.state = {
-			isSignUpModalOpen: false,
-		};
+		this.state = { isSignUpModalOpen: false };
 	}
 
 	onDismissSignUpModal() {
@@ -45,6 +46,9 @@ export class NavBar extends React.Component {
 		this.setState(() => ({ isSignUpModalOpen: true }));
 	}
 
+	/**
+	 * @return {React.element} the navbar component
+	 */
 	render() {
 		const {
 			media,
@@ -56,8 +60,6 @@ export class NavBar extends React.Component {
 			localeCode,
 		} = this.props;
 
-		const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
-		const CLASS_AUTH_ITEM = 'navItem--authenticated';
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 
 		const notificationContent = notifications ? (
