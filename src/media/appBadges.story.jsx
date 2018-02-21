@@ -6,4 +6,4 @@ import AppBadges from './AppBadges';
 
 storiesOf('AppBadges', module)
 	.addDecorator(decorateWithLocale)
-	.add('default', () => <AppBadges locale="en" />);
+	.add('default', () => <AppBadges language="en" />);
