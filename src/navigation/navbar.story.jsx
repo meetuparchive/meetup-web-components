@@ -1,20 +1,29 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import {
-	decorateWithLocale,
-	decorateWithInfo,
-} from '../utils/decorators';
+import { decorateWithLocale, decorateWithInfo } from '../utils/decorators';
 
+import NavItem from './components/NavItem';
 import NavBar from './NavBar';
 
-const group = [{
-	id: 6622782,
-	name: "Whiskey Wednesdays",
-	status: "active",
-	link: "https://www.dev.meetup.com/Whiskey-Wednesdays/",
-	urlname: "Whiskey-Wednesdays",
-	description: "This is a description",
-}];
+const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
+// const CLASS_AUTH_ITEM = 'navItem--authenticated';
+
+const unauthItems = [
+	<NavItem
+		key={0}
+		shrink
+		linkTo="meetup.com"
+		label="Login"
+		className={`${CLASS_UNAUTH_ITEM} navItem--login`}
+	/>,
+	<NavItem
+		key={1}
+		shrink
+		onAction={() => {}}
+		label="Signup"
+		className={CLASS_UNAUTH_ITEM}
+	/>,
+];
 
 storiesOf('NavBar', module)
 	.addDecorator(decorateWithLocale)
@@ -24,18 +33,18 @@ storiesOf('NavBar', module)
 			self={{
 				id: 1234,
 				name: 'John Q. Testington',
-				status: 'active'
+				status: 'active',
 			}}
-			groups={group}
-			notifications={[]}
+			authItems={unauthItems}
 		/>
 	))
 	.add('Unauthenticated', () => (
 		<NavBar
 			self={{
 				id: 1234,
-				status: 'prereg'
+				status: 'prereg',
 			}}
+			unauthItems={unauthItems}
 		/>
 	))
 	.add('with Badge', () => (
@@ -43,11 +52,8 @@ storiesOf('NavBar', module)
 			self={{
 				id: 1234,
 				name: 'John Q. Testington',
-				status: 'active'
+				status: 'active',
 			}}
-			groups={group}
-			notifications={[]}
-			unreadMessages={4}
-			unreadNotifications={2}
+			authItems={unauthItems}
 		/>
 	));
