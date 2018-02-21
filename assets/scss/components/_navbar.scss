@@ -1,0 +1,144 @@
+@mixin _labelLarge() {
+	font-size: $font-size-small;
+	max-width: 20vw; // allow more space for labels @ medium and up
+}
+
+#globalNav {
+	@include standardBorder('bottom');
+}
+
+.header {
+	justify-content: space-between;
+
+	@include atMediaUp(medium) {
+		justify-content: space-around;
+	}
+}
+
+$zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
+.header--aboveFloatingContent {
+	position: relative;
+	z-index: $zindex--aboveFloatingContent+2;
+}
+
+.header-navItem {
+	@include color-svg($C_textSecondary);
+	color: $C_textPrimary;
+	text-align: center;
+	position: relative;
+	padding-left: 0;
+}
+
+// use negative margin to pull in some
+// of the header height and center the logos
+.header-logo {
+	margin-bottom: -6px;
+}
+.header-logo--swarm {
+	margin-top: -8px;
+}
+
+@include atMediaUp(medium) {
+	.header-navItem {
+		@include customPropertyValue(padding-left, calc(var(--responsiveSpace)), $space);
+	}
+}
+
+.header-navItem--unauthenticated {
+	// because login/signup links do not
+	// behave like tabs at mobile sizes,
+	// we have to set an explicit height
+	height: $space-3;
+	@include atMediaUp(medium) {
+		height: auto;
+	}
+
+	.navItem-label {
+		@include _labelLarge();
+	}
+}
+
+$maxLabelSize: 12;
+$minLabelSize: 9;
+$maxScalingBP: $breakpoint-m/1px;
+.navItem-label {
+	display: block;
+	color: $C_textSecondary;
+
+	// Using "CSS locks" technique to
+	// let wider phones get bigger type
+	// https://fvsch.com/code/css-locks/
+	font-size: $minLabelSize;
+	font-size: calc(
+		#{$minLabelSize}px + (#{$maxLabelSize} - #{$minLabelSize}) *
+			(
+				100vw / #{$maxScalingBP}
+			)
+	);
+
+	// hack to fix vert. alignment of Login and Sign up on FF mobile
+	line-height: 2;
+	margin-top: $space-quarter;
+
+	// set max width for i18n wrapping of
+	// mobile nav
+	// (5 items, with some room for padding)
+	max-width: 19vw;
+
+	@include atMediaUp(medium) {
+		margin-top: 0;
+		display: inline-block;
+		@include _labelLarge();
+
+		&:hover,
+		&:active {
+			color: $C_accent;
+		}
+	}
+}
+
+.header-navItemLink {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 0;
+	height: 100%;
+
+	@include atMediaUp(medium) {
+		display: inline;
+		height: auto;
+	}
+}
+.header-navItemLink--create {
+	@include standardBorder('right');
+	padding-right: $space;
+
+	.navItem-label {
+		color: $C_accent !important;
+	}
+}
+
+.counterBadge {
+	$_dotSize: $space-half;
+	background-color: $C_teal;
+	border-radius: 999px;
+	width: $_dotSize;
+	height: $_dotSize;
+	position: absolute;
+	top: -$_dotSize/2;
+	right: 27%;
+	border: 3px solid $C_white;
+
+	.header-navItem--messages & {
+		right: 17%;
+	}
+
+	@include atMediaUp(medium) {
+		@include transform(translate(-2px, -6px));
+		display: inline-block;
+		margin-left: $space-quarter;
+		position: static;
+		border-width: 0;
+	}
+}
