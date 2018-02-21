@@ -19,13 +19,6 @@ category: UI Components
 	<li>
 		<a href="#" class="avatar avatar--person avatar--fbFriend" style="background-image: url(http://photos4.meetupstatic.com/photos/member/5/a/2/thumb_109681442.jpeg);">Member Name</a>
 	</li>
-	<li>
-		<a href="#" class="avatar avatar--person avatar--noPhoto" style="background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDhweCIgaGVpZ2h0PSI0OHB4IiB2aWV3Qm94PSIwIDAgNDggNDgiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQ4IDQ4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIG9wYWNpdHk9IjAuMjYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjQuMTM3LDI2LjA0MmMtNi4xMjEsMC0xMS4xMDEtNC45OC0xMS4xMDEtMTEuMTAxDQoJUzE4LjAxNiwzLjg0LDI0LjEzNywzLjg0YzYuMTIxLDAsMTEuMTAxLDQuOTgsMTEuMTAxLDExLjEwMVMzMC4yNTgsMjYuMDQyLDI0LjEzNywyNi4wNDIgTTQwLjAwNiw0MC42NzcNCgljLTEuNTg5LTYuNTUyLTguNDUzLTExLjQ5My0xNS45NjUtMTEuNDkzUzkuNjY1LDM0LjEyNSw4LjA3Niw0MC42NzdjLTAuMTkzLDAuNzk3LTAuMDEyLDEuNjQzLDAuNDk3LDIuMjkxDQoJYzAuNTE0LDAuNjUzLDEuMjg0LDEuMDQ1LDIuMTEzLDEuMDQ1aDI2LjcxYzAuODMsMCwxLjYtMC4zOTMsMi4xMTMtMS4wNDVDNDAuMDE5LDQyLjMyLDQwLjIsNDEuNDc0LDQwLjAwNiw0MC42NzciLz4NCjwvc3ZnPg0K);
-    background-position-y: 2px;
-    background-size: 48px;">
-			<p>no photo</p> <!-- our person.hbs handlebars template handles this -->
-		</a>
-	</li>
 </ul>
 ```
 
@@ -40,37 +33,50 @@ Class                     | Description
 `avatar--person`          | Variant for people
 `avatar--org`             | Variant for organizers
 `avatar--fbFriend`        | Variant for facebook friends
-`avatar--icon`            | For icons in avatars (might move this in a later version)
 `avatar--noPhoto`         | Resets `text-indent` for avatars without photos, allowing display of fallback content
 */
 $avatarBg: $C_coolGrayLight;
 $avatarSizeProps: (height, width);
-$avatarIconSizeProps: (height, line-height, width);
 
-%backgroundImg--orgBadge {
-	background-image: url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2212px%22%20height%3D%2215px%22%20viewBox%3D%220%200%2012%2015%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xmlns%3Asketch%3D%22http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%2Fns%22%3E%0A%20%20%20%20%3C%21--%20Generator%3A%20Sketch%203.0%20%287573%29%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3EImported%20Layers%2020%3C%2Ftitle%3E%0A%20%20%20%20%3Cdescription%3ECreated%20with%20Sketch.%3C%2Fdescription%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20sketch%3Atype%3D%22MSPage%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M6.00051201%2C3%20C4.34599537%2C3%203%2C4.34613047%203%2C6.00058353%20C3%2C7.65445306%204.34599537%2C9%206.00051201%2C9%20C7.65451664%2C9%209%2C7.65445306%209%2C6.00058353%20C9%2C4.34613047%207.65451664%2C3%206.00051201%2C3%20L6.00051201%2C3%20Z%20M6.00046296%2C10%20C3.79449969%2C10%202%2C8.20594137%202%2C6.00056821%20C2%2C3.79455582%203.79449969%2C2%206.00046296%2C2%20C8.20585643%2C2%2010%2C3.79455582%2010%2C6.00056821%20C10%2C8.20594137%208.20585643%2C10%206.00046296%2C10%20L6.00046296%2C10%20Z%20M6.00014417%2C0%20C5.84004189%2C0%205.68001169%2C0.0448959264%205.55861941%2C0.134907498%20L4.66482913%2C0.796481566%20C4.4219004%2C0.976504709%203.99356732%2C1.17234762%203.69333049%2C1.17234762%20L2.77063385%2C1.17234762%20C2.47039701%2C1.17234762%202.1308014%2C1.36159897%202.03802713%2C1.65250699%20L1.75256786%2C2.54815509%20C1.65986568%2C2.83928284%201.38514718%2C3.2243771%201.14221845%2C3.40410728%20L0.303934136%2C4.02415445%20C0.0609333262%2C4.20388463%20-0.0617564926%2C4.58897889%200.0309456854%2C4.87981368%20L0.351366511%2C5.88385651%20C0.444140774%2C6.17469129%200.444140774%2C6.65074924%200.351366511%2C6.94165727%20L0.0309456854%2C7.94562686%20C-0.0617564926%2C8.23646164%200.0610774975%2C8.6215559%200.304078308%2C8.80135933%20L1.14207428%2C9.42133326%20C1.385003%2C9.60084372%201.65972151%2C9.98593798%201.75242369%2C10.2770657%20L2.0381713%2C11.1735195%20C2.07003317%2C11.2734916%202.13015263%2C11.3660666%202.20569841%2C11.4458978%20L0.912193062%2C14.2035184%20L2.7859881%2C13.5650149%20L3.49768997%2C15%20L4.83307709%2C12.1536862%20L5.55861941%2C12.690533%20C5.68015586%2C12.7804714%205.84018606%2C12.8253673%206.00028834%2C12.8253673%20C6.16031854%2C12.8253673%206.32042083%2C12.7804714%206.44195727%2C12.690533%20L7.16281402%2C12.1569087%20L8.49726404%2C15%20L9.20838922%2C13.5650149%20L11.0827609%2C14.2035184%20L9.79098565%2C11.4502922%20C9.86854983%2C11.3693624%209.92996683%2C11.2751029%209.9623333%2C11.1735195%20L10.2480809%2C10.2770657%20C10.3408552%2C9.98593798%2010.6153574%2C9.60084372%2010.8582861%2C9.42111354%20L11.6960659%2C8.80135933%20C11.9390667%2C8.6215559%2012.0617565%2C8.23646164%2011.9690543%2C7.94562686%20L11.6486335%2C6.94165727%20C11.5558592%2C6.65074924%2011.5558592%2C6.17469129%2011.6486335%2C5.88385651%20L11.9690543%2C4.87981368%20C12.0617565%2C4.58897889%2011.9390667%2C4.20388463%2011.6960659%2C4.02415445%20L10.8582861%2C3.40410728%20C10.6153574%2C3.2243771%2010.340711%2C2.83928284%2010.2479367%2C2.54815509%20L9.96247747%2C1.65250699%20C9.8697032%2C1.36159897%209.52974716%2C1.17234762%209.22951032%2C1.17234762%20L8.30681368%2C1.17234762%20C8.00657685%2C1.17234762%207.57781125%2C0.97628499%207.3350267%2C0.796481566%20L6.4418131%2C0.134907498%20C6.32042083%2C0.0450424058%206.16017437%2C0%206.00014417%2C0%20L6.00014417%2C0%20Z%22%20id%3D%22Imported-Layers-20%22%20fill%3D%22%23FFFFFF%22%20sketch%3Atype%3D%22MSShapeGroup%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E');
-}
+@mixin avatarIconBadge($color) {
+	position: relative;
+	text-indent: initial;
 
-%avatarCharm {
-	overflow: visible;
-
-	&:after {
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: 10px;
-		border-radius: 999px;
-		bottom: 0;
-		content: "";
-		display: inline-block;
-		font-size: 10px;
-		font-weight: $W_bold;
-		height: $space;
-		line-height: $space;
+	.svg--avatarBadge {
 		position: absolute;
+		bottom: -6%;
+		right: -6%;
+		width: 44%;
+		height: 44%;
+
+		// circle behind the icon
+		&:before {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			content: "";
+			background-color: $color;
+			border-radius: 100%;
+		}
+
+		// the icon itself
+		svg {
+			@include color-svg(getPrimaryTextColor($color));
+			width: 80%;
+			height: 80%;
+			transform: translate(12%, 12%);
+		}
+	}
+
+	// Use proportionally smaller badge for larger avatars
+	&.avatar--large .svg--avatarBadge,
+	&.avatar--xxlarge .svg--avatarBadge {
+		width: 30%;
+		height: 30%;
+		bottom: 0;
 		right: 0;
-		text-align: center;
-		text-indent: 0%;
-		width: $space;
 	}
 }
 
@@ -148,7 +154,7 @@ $avatarIconSizeProps: (height, line-height, width);
 	text-indent: initial;
 	background-color: darken($avatarBg, 6%);
 
-	.svg {
+	.svg--profile {
 		// matches size of icon wrapper div
 		// to the size of the avatar
 		width: 100%;
@@ -158,48 +164,25 @@ $avatarIconSizeProps: (height, line-height, width);
 		@include display(inline-flex);
 		@include align-items(center);
 		@include justify-content(center);
-	}
-	svg {
-		// sets SVG size relative to wrapper
-		width: 40%;
-		height: 40%;
 
-		transform: translateX(4%);
-		opacity: alpha($C_textSecondary);
+		// must be scoped to `svg--profile`,
+		// as it's possible to have additional `Icon`
+		// children in `Avatar`
+		svg {
+			// sets SVG size relative to wrapper
+			width: 40%;
+			height: 40%;
+
+			transform: translateX(4%);
+			opacity: alpha($C_textSecondary);
+		}
 	}
 }
 
 .avatar--fbFriend {
-	@extend %avatarCharm;
-	&:after {
-		background-color: $C_facebook;
-		color: $C_textPrimaryInverted;
-		content: "f";
-	}
+	@include avatarIconBadge($C_facebook);
 }
 
 .avatar--org {
-	@extend %avatarCharm;
-	&:after {
-		@extend %backgroundImg--orgBadge;
-		background-color: $C_red;
-		color: $C_textPrimaryInverted;
-	}
-}
-
-.avatar--icon {
-	@include customPropertyValue($avatarIconSizeProps, var(--responsiveMedia-m), $media-m);
-	@include customPropertyValue(font-size, var(--responsiveSpace), $space);
-	@include customPropertyValue(padding, calc(var(--responsiveSpace)/2), $space-half);
-	@include display(inline-flex);
-	@include align-items(center);
-	@include justify-content(center);
-	background: $C_collectionBG;
-	border-radius: 999px;
-	box-sizing: border-box;
-	text-align: center;
-
-	img {
-		width: 100%;
-	}
+	@include avatarIconBadge($C_red);
 }

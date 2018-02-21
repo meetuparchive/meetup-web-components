@@ -9,8 +9,8 @@
 
 .accordionPanel-animator {
 	overflow: hidden;
-	transition: height $duration--medium $easing--standard;
-	will-change: height;
+	transition: min-height $duration--medium $easing--standard;
+	will-change: height, min-height;
 }
 
 .accordionPanel-animator--collapse {

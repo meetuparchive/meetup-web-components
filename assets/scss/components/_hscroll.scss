@@ -59,6 +59,12 @@ Class                       | Description
 	}
 }
 
+.hscrollGradient--hidden {
+	&:before {
+		display: none;
+	}
+}
+
 .hscroll {
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: scrollbar;
