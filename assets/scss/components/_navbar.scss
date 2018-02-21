@@ -34,7 +34,7 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 }
 
 // use negative margin to pull in some
-// of the header height and center the logos
+// of the navbar height and center the logos
 .logo {
 	margin-bottom: -6px;
 }
@@ -43,7 +43,7 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 }
 
 @include atMediaUp(medium) {
-	.header-navItem {
+	.navItem {
 		@include customPropertyValue(padding-left, calc(var(--responsiveSpace)), $space);
 	}
 }
@@ -144,5 +144,12 @@ $maxScalingBP: $breakpoint-m/1px;
 		margin-left: $space-quarter;
 		position: static;
 		border-width: 0;
+	}
+}
+
+.profileDropdown-content {
+	.list-item {
+		padding-top: $space-half !important;
+		padding-bottom: $space-half !important;
 	}
 }
