@@ -10,7 +10,6 @@ import AvatarMember from '../media/AvatarMember';
 import Flex from '../layout/Flex';
 import Section from '../layout/Section';
 
-
 import Icon from '../media/Icon';
 
 import NavItem from './components/NavItem';
@@ -54,7 +53,7 @@ export class NavBar extends React.Component {
 			unreadNotifications,
 			unreadMessages,
 			groups,
-			localeCode
+			localeCode,
 		} = this.props;
 
 		const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
@@ -69,8 +68,8 @@ export class NavBar extends React.Component {
 				localeCode={localeCode}
 			/>
 		) : (
-				<DropdownLoader label="Loading" />
-			);
+			<DropdownLoader label="Loading" />
+		);
 
 		// #TODO: links here are HIGHLY!!! temporary, we will
 		// be adding this data to the /self endpoint
@@ -78,8 +77,8 @@ export class NavBar extends React.Component {
 		const profileContent = groups ? (
 			<ProfileDropdown profileUrl={`/members/${self.id}`} groups={groups} />
 		) : (
-				<DropdownLoader label="Loading" />
-			);
+			<DropdownLoader label="Loading" />
+		);
 
 		const unauthItems = [
 			<NavItem
@@ -105,7 +104,7 @@ export class NavBar extends React.Component {
 				linkTo="meetup.com"
 				label="Explore"
 				className={cx(CLASS_AUTH_ITEM, { 'flush--left': !media.isAtMediumUp })}
-				icon={< Icon shape="search" size="s" className="atMedium_display--none" />}
+				icon={<Icon shape="search" size="s" className="atMedium_display--none" />}
 			/>,
 			<NavItem
 				key={1}
@@ -113,7 +112,7 @@ export class NavBar extends React.Component {
 				linkTo="meetup.com"
 				label="Groups"
 				className={`atMedium_display--none ${CLASS_AUTH_ITEM}`}
-				icon={< Icon shape="groups" size="s" className="display--block" />}
+				icon={<Icon shape="groups" size="s" className="display--block" />}
 			/>,
 			<NavItem
 				key={2}
@@ -133,11 +132,7 @@ export class NavBar extends React.Component {
 			<NavItem
 				key={3}
 				shrink
-				linkTo={
-					media.isAtMediumUp
-						? false
-						: "meetup.com"
-				}
+				linkTo={media.isAtMediumUp ? false : 'meetup.com'}
 				label="Notifications"
 				className={cx('navItem--notifications', CLASS_AUTH_ITEM)}
 				icon={
@@ -208,13 +203,7 @@ export class NavBar extends React.Component {
 						<NavItem
 							linkTo="meetup.com"
 							className="logo logo--swarm flush--left"
-							icon={
-								<img
-									src={swarmLogo}
-									alt="Meetup Logo"
-									height="48px"
-								/>
-							}
+							icon={<img src={swarmLogo} alt="Meetup Logo" height="48px" />}
 						/>
 					)}
 
@@ -224,11 +213,7 @@ export class NavBar extends React.Component {
 							className="logo logo--script flush--left"
 							linkClassName="display--block"
 							icon={
-								<img
-									src={scriptLogo}
-									alt="Meetup Logo"
-									height="44px"
-								/>
+								<img src={scriptLogo} alt="Meetup Logo" height="44px" />
 							}
 						/>
 					)}
@@ -249,7 +234,7 @@ export class NavBar extends React.Component {
 						onDismiss={this.onDismissSignUpModal}
 						localeCode={localeCode}
 					/>
-				)*/ }
+				)*/}
 			</nav>
 		);
 	}

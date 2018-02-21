@@ -7,6 +7,10 @@
 	@include standardBorder('bottom');
 }
 
+.padding--left-half {
+	padding-left: $space-half;
+}
+
 .navBar {
 	justify-content: space-between;
 
@@ -45,7 +49,6 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 }
 
 .navItem--unauthenticated {
-
 	// because login/signup links do not
 	// behave like tabs at mobile sizes,
 	// we have to set an explicit height
@@ -70,7 +73,12 @@ $maxScalingBP: $breakpoint-m/1px;
 	// let wider phones get bigger type
 	// https://fvsch.com/code/css-locks/
 	font-size: $minLabelSize;
-	font-size: calc( #{$minLabelSize}px + (#{$maxLabelSize} - #{$minLabelSize}) * (100vw / #{$maxScalingBP} ));
+	font-size: calc(
+		#{$minLabelSize}px + (#{$maxLabelSize} - #{$minLabelSize}) *
+			(
+				100vw / #{$maxScalingBP}
+			)
+	);
 
 	// hack to fix vert. alignment of Login and Sign up on FF mobile
 	line-height: 2;
@@ -92,7 +100,6 @@ $maxScalingBP: $breakpoint-m/1px;
 		}
 	}
 }
-
 
 .navItemLink {
 	align-items: center;
