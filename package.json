@@ -49,6 +49,7 @@
   "dependencies": {
     "autosize": "3.0.21",
     "downshift": "1.26.1",
+    "file-loader": "1.1.8",
     "react-flatpickr": "3.6.3",
     "raf-schd": "2.1.0",
     "react-portal": "4.1.2",
