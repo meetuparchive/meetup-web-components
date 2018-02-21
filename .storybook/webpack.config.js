@@ -3,6 +3,7 @@ const path = require('path');
 const SCSS_PATH = path.resolve(__dirname, '../assets', 'scss');
 const CSS_PATH = path.resolve(__dirname, '../assets', 'css');
 const SRC_PATH = path.resolve(__dirname, '../src');
+const IMG_PATH = path.resolve(__dirname, '../assets', 'images');
 const PLATFORM_PATH = /node_modules\/meetup-web-platform/;
 
 module.exports = {
@@ -31,6 +32,11 @@ module.exports = {
 					SRC_PATH,
 					PLATFORM_PATH
 				]
+			},
+			{
+				test: /\.(png|jpg|gif)$/,
+				loader: 'file-loader',
+				include: [IMG_PATH],
 			}
 		]
 	},
