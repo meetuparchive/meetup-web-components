@@ -1,17 +1,89 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import Icon from '../media/Icon';
-import NavItem from './NavItem';
+import cx from 'classnames';
 
-export const NavBar = () => (
-	<NavItem
-		key={0}
-		shrink
-		linkTo="meetup.com"
-		label="Explore"
-		className="explore"
-		hasUpdates
-		icon={<Icon shape="search" size="s" className="atMedium_display--none" />}
-	/>
-);
+import swarmLogo from '../../assets/svg/logo--mSwarm--2color.svg';
+import scriptLogo from '../../assets/svg/logo--script.svg';
+import withMatchMedia from '../utils/components/withMatchMedia';
+import Flex from '../layout/Flex';
 
-export default NavBar;
+import NavItem from './components/NavItem';
+
+/**
+ * @param {Object} props component properties
+ * @returns {React.element} Navigation Bar
+ */
+export class NavBar extends React.Component {
+	/**
+	 * @return {React.element} the navbar component
+	 */
+	render() {
+		const { media, self, unauthItems, authItems } = this.props;
+
+		const isLoggedOut = self.status === 'prereg' || !self.name;
+
+		const showScriptLogo = Boolean(media.isAtLargeUp || isLoggedOut);
+		const showSwarmLogo = Boolean(
+			media.isAtMediumUp && !media.isAtLargeUp && !isLoggedOut
+		);
+
+		return (
+			<nav
+				aria-label="Header navigation"
+				role="navigation"
+				className="padding--all"
+			>
+				<Flex
+					align={media.isAtMediumUp ? 'center' : 'top'}
+					justify="spaceBetween"
+					className="span--100 navBar"
+				>
+					{showSwarmLogo && (
+						<NavItem
+							linkTo="meetup.com"
+							className="logo logo--swarm flush--left"
+							icon={<img src={swarmLogo} alt="Meetup Logo" height="48px" />}
+						/>
+					)}
+
+					{showScriptLogo && (
+						<NavItem
+							linkTo="meetup.com"
+							className="logo logo--script flush--left"
+							linkClassName="display--block"
+							icon={
+								<img src={scriptLogo} alt="Meetup Logo" height="44px" />
+							}
+						/>
+					)}
+
+					<NavItem
+						shrink
+						linkTo="meetup.com"
+						label="Create a Meetup"
+						className={cx(
+							'text--blue text--bold navItemLink--create display--none atMedium_display--block'
+						)}
+					/>
+
+					{isLoggedOut ? unauthItems : authItems}
+				</Flex>
+				{/* this.state.isSignUpModalOpen && (
+					<SignUpModal
+						onDismiss={this.onDismissSignUpModal}
+						localeCode={localeCode}
+					/>
+				)*/}
+			</nav>
+		);
+	}
+}
+
+NavBar.propTypes = {
+	self: PropTypes.object,
+	media: PropTypes.object,
+	authItems: PropTypes.array,
+	unauthItems: PropTypes.array,
+};
+
+export default withMatchMedia(NavBar);
