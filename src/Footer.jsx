@@ -5,6 +5,7 @@ import locales from 'mwp-config/locales';
 
 import { languageMap } from './utils/languageMap';
 
+import AppBadges from './media/AppBadges';
 import Bounds from './layout/Bounds';
 import Chunk from './layout/Chunk';
 import Flex from './layout/Flex';
@@ -73,7 +74,6 @@ export const LanguageSelectInput = (props) => (
 );
 
 export const Footer = ({
-	appBadges,
 	className,
 	createMeetup,
 	isLight,
@@ -86,6 +86,7 @@ export const Footer = ({
 	...other
 }) => {
 	const classNames = cx('column-item', 'column-item--shrink', className);
+	const languageShort = localeCode.split('-')[0];
 
 	return (
 		<footer
@@ -162,7 +163,7 @@ export const Footer = ({
 											)}
 											<FlexItem shrink>
 												<Chunk className="align--center atMedium_align--left margin--top">
-													{appBadges}
+													<AppBadges language={languageShort} />
 												</Chunk>
 											</FlexItem>
 										</Flex>
@@ -235,12 +236,10 @@ Footer.defaultProps = {
 		<a href="/terms">Terms of Service</a>,
 		<a href="/privacy">Privacy Policy</a>,
 		<a href="/cookie_policy">Cookie Policy</a>
-	],
-	appBadges: <div>App badges go here</div>
+	]
 };
 
 Footer.propTypes = {
-	appBadges: PropTypes.element.isRequired,
 	className: PropTypes.string,
 	createMeetup: PropTypes.shape({
 		link: PropTypes.string.isRequired,
