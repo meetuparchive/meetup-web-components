@@ -56,22 +56,28 @@ class AccordionPanel extends React.Component {
 	_handleToggle(e){
 		e.preventDefault();
 
-		const isToggledOpen = !this.props.isOpen;
+		const {
+			isOpen,
+			setClickedPanel,
+			onClickCallback
+		} = this.props;
 
 		this.setState(()=>
-			this.getPanelStyle(!isToggledOpen, this.contentEl),
+			this.getPanelStyle(isOpen, this.contentEl),
 			() => {
 				console.log(`_handleToggle - set height to ${this.contentEl.getBoundingClientRect().height}px`);
 
-				this.setState(()=>
-					this.getPanelStyle(isToggledOpen, this.contentEl)
-					// console.log(`_handleToggle - set height to 0px`)
-				);
+				setTimeout(() => {
+					this.setState(()=>
+						this.getPanelStyle(!isOpen, this.contentEl),
+						console.log(`_handleToggle - set height to 0px`)
+					);
+				}, 1);
 
 			}
 		);
-		this.props.setClickedPanel && this.props.setClickedPanel(this.props.clickId, isToggledOpen);
-		this.props.onClickCallback && this.props.onClickCallback(e, isToggledOpen);
+		setClickedPanel && setClickedPanel(this.props.clickId, !isOpen);
+		onClickCallback && onClickCallback(e, !isOpen);
 	}
 
 	onToggleClick(e){
@@ -104,6 +110,7 @@ class AccordionPanel extends React.Component {
 
 	onTransitionEnd() {
 		if (this.props.isOpen) {
+			console.log('onTransitionEnd setting height auto');
 			this.setState(()=>({
 				height: 'auto'
 			}));
