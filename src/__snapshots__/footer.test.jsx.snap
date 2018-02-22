@@ -175,8 +175,9 @@ exports[`Footer exists 1`] = `
                     <Chunk
                       className="align--center atMedium_align--left margin--top"
                     >
-                      <div
-                        className="appBadges"
+                      <AppBadges
+                        getAppStorePhoto={[Function]}
+                        language="en"
                       />
                     </Chunk>
                   </FlexItem>
