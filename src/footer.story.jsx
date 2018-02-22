@@ -1,8 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 
-import Flex from './layout/Flex';
-import FlexItem from './layout/FlexItem';
 import withMatchMedia from './utils/components/withMatchMedia';
 
 import { decorateWithLocale } from './utils/decorators';
@@ -55,35 +53,11 @@ const subFooterLinks = [
 	</a>,
 ];
 
-const AppBadges = () => (
-	<Flex>
-		<FlexItem>
-			<a href="http://meetu.ps/2ZhShs">
-				<img
-					className="span--100 margin--center"
-					src='https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg'
-					style={{maxWidth: '160px'}}
-				/>
-			</a>
-		</FlexItem>
-		<FlexItem>
-			<a href="http://meetu.ps/2ZhSyb">
-				<img
-					className="span--100 margin--center"
-					src="https://vignette.wikia.nocookie.net/shallwedate/images/6/66/Google_Play_Banner.png"
-					style={{maxWidth: '160px'}}
-				/>
-			</a>
-		</FlexItem>
-	</Flex>
-);
-
 const DEFAULT_PROPS = {
 	linkSets: footerLinkSets,
 	localeCode: "en-US",
 	onLanguageSelect: action('language changed'),
 	subFooterLinks: subFooterLinks,
-	appBadges: <AppBadges />,
 	createMeetup: {
 		text: 'Create a Meetup',
 		link: '/create/'
@@ -93,6 +67,6 @@ const DEFAULT_PROPS = {
 
 storiesOf('Footer', module)
 	.addDecorator(decorateWithLocale)
-	.add('default', () => <TestFooter />)
+	.add('default', () => <TestFooter {...DEFAULT_PROPS} />)
 	.add('isLoggedIn', () => <TestFooter {...DEFAULT_PROPS} isLoggedIn />)
 	.add('isLight', () => <TestFooter {...DEFAULT_PROPS} isLight />);
