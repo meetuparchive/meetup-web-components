@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import locales from 'mwp-config/locales';
 
-import { languageMap } from './utils/languageMap';
+import localizedLanguageMap from 'mwp-i18n/lib/localizedLanguageMap';
 
 import Bounds from './layout/Bounds';
 import Chunk from './layout/Chunk';
@@ -62,7 +62,7 @@ export const LanguageSelectInput = (props) => (
 	<SelectInput
 		onChange={props.onChange}
 		options={locales.map(language => ({
-			label: languageMap[language],
+			label: localizedLanguageMap[language],
 			value: language,
 		}))}
 		name="languagePicker"

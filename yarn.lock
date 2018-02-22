@@ -5543,9 +5543,9 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
-mwp-config@12.1.2092:
-  version "12.1.2092"
-  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-12.1.2092.tgz#19e67ecfc5fbd2551773e53e9291f3465ed64f1d"
+mwp-config@12.2.2117:
+  version "12.2.2117"
+  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-12.2.2117.tgz#51c2e2b0f7af4e446db72fb08ac9cf17ee380870"
   dependencies:
     babel-core "6.25.0"
     babel-loader "7.1.1"
@@ -5567,6 +5567,10 @@ mwp-config@12.1.2092:
     webpack-manifest-plugin "1.1.2"
     webpack-node-externals "1.6.0"
     webpack-stats-plugin "0.1.5"
+
+mwp-i18n@12.2.2117:
+  version "12.2.2117"
+  resolved "https://registry.yarnpkg.com/mwp-i18n/-/mwp-i18n-12.2.2117.tgz#8edfd0b161d7bbf85a863a21e70e08a78f217e88"
 
 nan@^2.3.0, nan@^2.3.2:
   version "2.8.0"
