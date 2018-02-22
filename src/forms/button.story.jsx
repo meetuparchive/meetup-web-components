@@ -67,6 +67,19 @@ storiesOf('Button', module)
 			<Button onClick={action('clicked')} bordered>Button Label</Button>
 		</div>
 	))
+	.add('Bordered - disabled', () => (
+		<div
+			className='stripe stripe--collection'
+			style={{
+				height: '100%',
+				width: '100%',
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}>
+			<Button onClick={action('clicked')} bordered disabled>Button Label</Button>
+		</div>
+	))
 	.add('Bordered - inverted', () => (
 		<Inverted>
 			<Button onClick={action('clicked')} bordered>Button Label</Button>
