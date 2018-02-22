@@ -46,7 +46,7 @@ AppBadges.defaultProps = {
 
 AppBadges.propTypes = {
 	getAppStorePhoto: PropTypes.func,
-	locale: PropTypes.string.isRequired,
+	language: PropTypes.string.isRequired,
 };
 
 export default AppBadges;
