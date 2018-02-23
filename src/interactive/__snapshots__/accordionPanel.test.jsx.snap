@@ -319,6 +319,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                     onClick={[Function]}
                     reset={true}
                     role="switch"
+                    tabIndex={-1}
                   >
                     <button
                       aria-checked={false}
@@ -327,6 +328,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                       disabled={false}
                       onClick={[Function]}
                       role="switch"
+                      tabIndex={-1}
                     >
                       <span
                         className="toggleSwitch-knob flex flex--center flex--alignCenter"
