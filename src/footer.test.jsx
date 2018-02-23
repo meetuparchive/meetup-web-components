@@ -8,7 +8,6 @@ import {
 	SocialIconsList
 } from './Footer';
 
-const APP_BADGES_CLASSNAME = 'appBadges';
 const DEFAULT_LANG = 'en-US';
 const FRENCH_LANG = 'fr-FR';
 const onLanguageSelect = jest.fn();
@@ -54,7 +53,6 @@ const MOCK_DEFAULT_STATE = {
 	linkSets: footerLinkSets,
 	onLanguageSelect: onLanguageSelect,
 	subFooterLinks: subFooterLinks,
-	appBadges: <div className={APP_BADGES_CLASSNAME} />,
 	createMeetup: {
 		text: 'Create a Meetup',
 		link: '/create/'
