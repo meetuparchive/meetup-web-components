@@ -36,7 +36,9 @@ AccentHeader.defaultProps = {
 
 PropTypes.AccentHeader = {
 	align: PropTypes.oneOf(ALIGN_VALUES),
-	headingTag: PropTypes.string
+	headingTag: PropTypes.oneOf([
+		'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+	])
 };
 
 export default AccentHeader;
