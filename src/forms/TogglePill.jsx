@@ -95,6 +95,7 @@ class TogglePill extends React.Component {
 					value={value}
 					checked={isActive}
 					onChange={this.onChange}
+					tabIndex={-1}
 					{...other} />
 				<label
 					className={labelClassNames}

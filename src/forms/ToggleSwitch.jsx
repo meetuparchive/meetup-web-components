@@ -94,6 +94,7 @@ class ToggleSwitch extends React.Component {
 					className={classNames.toggleSwitch}
 					aria-labelledby={labelId}
 					aria-checked={isActive}
+					tabIndex={-1}
 					role="switch"
 				>
 					<span className={classNames.knob}>
