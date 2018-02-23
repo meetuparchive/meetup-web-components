@@ -24,6 +24,9 @@ storiesOf('Button', module)
 	.add('Default - with hover shadow', () => (
 		<Button onClick={action('clicked')} hasHoverShadow>Button Label</Button>
 	))
+	.add('Default - isLink', () => (
+		<Button onClick={action('clicked')} buttonTag='a' linkTo="https://meetup.com/">Button Label</Button>
+	))
 	.add('Neutral', () => (
 		<Button onClick={action('clicked')} neutral>Button Label</Button>
 	))
