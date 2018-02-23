@@ -51,7 +51,7 @@ export class SelectInput extends React.Component {
 			label: cx(
 				'label--field',
 				{
-					required,
+					'label--required': required,
 					'flush--bottom': helperText
 				},
 				labelClassName
