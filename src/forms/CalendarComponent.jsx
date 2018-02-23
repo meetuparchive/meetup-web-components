@@ -50,7 +50,7 @@ export class CalendarComponent extends React.Component {
 		const classNames = {
 			label: cx(
 				{
-					required,
+					'label--required': required,
 					'flush--bottom': helperText,
 				}
 			),

@@ -30,6 +30,21 @@ input:focus + .icon--field {
 	font-weight: normal;
 }
 
+.label--required:after {
+	content: attr(data-requiredText);
+	color: $C_textSecondary;
+	font-size: $font-size-tiny;
+	font-weight: $W_normal;
+	line-height: 0;
+	margin-left: $space/4;
+	position: relative;
+	top: 0;
+}
+
+.label--disabled {
+	color: $C_textSecondary;
+}
+
 .radio {
 	cursor: pointer;
 	display: inline-block;

@@ -262,7 +262,8 @@ export class TimeInput extends React.Component {
 			label: cx(
 				'label--field',
 				{
-					required,
+					'label--disabled': disabled,
+					'label--required': required,
 					'flush--bottom': helperText
 				}
 			),

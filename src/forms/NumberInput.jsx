@@ -126,8 +126,8 @@ export class NumberInput extends React.Component {
 			label: cx(
 				'label--field',
 				{
-					required,
-					disabled,
+					'label--disabled': disabled,
+					'label--required': required,
 					'flush--bottom': helperText
 				},
 				labelClassName

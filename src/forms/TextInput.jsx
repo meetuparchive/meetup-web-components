@@ -30,6 +30,7 @@ export const TextInput = (props) => {
 		disabled,
 		iconShape,
 		helperText,
+		requiredText,
 		...other
 	} = props;
 
@@ -45,8 +46,8 @@ export const TextInput = (props) => {
 		label: cx(
 			'label--field',
 			{
-				required,
-				disabled,
+				'label--disabled': disabled,
+				'label--required': required,
 				'flush--bottom': helperText
 			},
 			labelClassName
@@ -79,7 +80,7 @@ export const TextInput = (props) => {
 	return (
 		<div className="inputContainer">
 			{label &&
-				<label className={classNames.label} htmlFor={id}>
+				<label className={classNames.label} htmlFor={id} data-requiredText={requiredText}>
 					{label}
 				</label>
 			}
@@ -135,7 +136,8 @@ TextInput.propTypes = {
 	helperText: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
-	])
+	]),
+	requiredText: PropTypes.string
 };
 
 export default withErrorList(TextInput);
