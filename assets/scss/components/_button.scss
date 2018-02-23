@@ -220,6 +220,11 @@ _(The `extend` directive can cause ugly cascade problems)_
 		border-color: transparent;
 	}
 
+	&.button--disabled,
+	&[disabled] {
+		border: 1px solid $C_border;
+	}
+
 	$C_borderedHoverBase: transparentize($C_textPrimary, .4);
 	.inverted & {
 		@include buttonColor(
@@ -237,11 +242,13 @@ _(The `extend` directive can cause ugly cascade problems)_
 	}
 }
 
-.button--hasHoverShadow {
+.button--hasHoverShadow,
+.button--bordered {
 	@include shadowOnHover();
 	&.button--disabled,
 	&[disabled] {
 		box-shadow: none;
+		transform: translateY(0);
 	}
 }
 
