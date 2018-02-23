@@ -28,6 +28,8 @@ class Button extends React.PureComponent {
 			small,
 			bordered,
 			hasHoverShadow,
+			buttonTag,
+			linkTo,
 			...other
 		} = this.props;
 
@@ -69,18 +71,29 @@ class Button extends React.PureComponent {
 			</Flex>
 		);
 
+		const ButtonTag = buttonTag;
+		const hrefAttr = buttonTag === 'Link' && buttonTag !== 'button' ? 'to' : 'href';
+		const buttonProps = {
+			className: classNames.button,
+			onClick: onClick,
+			role: buttonTag ? 'button' : null,
+			[hrefAttr]: linkTo,
+			...other
+		};
+
 		return (
-			<button
-				className={classNames.button}
-				onClick={onClick}
-				role='button'
-				{...other}
+			<ButtonTag
+				{...buttonProps}
 			>
 				{ icon ? iconChildren : children }
-			</button>
+			</ButtonTag>
 		);
 	}
 }
+
+Button.defaultProps = {
+	buttonTag: 'button'
+};
 
 Button.propTypes = {
 	reset: PropTypes.bool,
@@ -89,5 +102,7 @@ Button.propTypes = {
 	small: PropTypes.bool,
 	icon: PropTypes.any,
 	right: PropTypes.bool,
+	buttonTag: PropTypes.oneOf(['button', 'a', 'Link']),
+	linkTo: PropTypes.string
 };
 export default Button;

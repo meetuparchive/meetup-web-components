@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
+import { shallow } from 'enzyme';
 import { hasRoleAttribute, variantTest } from '../utils/testUtils';
 import Button, {
 	BUTTON_CLASS,
@@ -121,4 +122,24 @@ describe('Button', () => {
 			});
 		});
 	});
+
+	describe('buttonTag', () =>{
+		const tag = 'a';
+		const link = 'https://meetup.com/';
+		const buttonTagComponent = shallow(
+			<Button buttonTag={tag} link={link}>
+				Button label
+			</Button>
+		);
+
+		it('should render element from buttonTag prop', () => {
+			expect(buttonTagComponent.find('a').length).toBe(1);
+		});
+
+		it('should render `link` prop', () => {
+			expect(buttonTagComponent.find('a').prop('link')).toBe(link);
+		});
+
+	});
+
 });
