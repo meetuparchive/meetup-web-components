@@ -31,9 +31,9 @@ input:focus + .icon--field {
 }
 
 .label--required:after {
-	content: attr(data-requiredText);
+	content: attr(data-requiredtext);
 	color: $C_textSecondary;
-	font-size: $font-size-tiny;
+	// font-size: $font-size-tiny;
 	font-weight: $W_normal;
 	line-height: 0;
 	margin-left: $space/4;
