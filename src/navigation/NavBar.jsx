@@ -7,7 +7,7 @@ import scriptLogo from '../../assets/svg/logo--script.svg';
 import withMatchMedia from '../utils/components/withMatchMedia';
 import Flex from '../layout/Flex';
 
-import NavItem from './components/NavItem';
+import NavItem from './NavItem';
 
 /**
  * @param {Object} props component properties
@@ -68,12 +68,6 @@ export class NavBar extends React.Component {
 
 					{isLoggedOut ? unauthItems : authItems}
 				</Flex>
-				{/* this.state.isSignUpModalOpen && (
-					<SignUpModal
-						onDismiss={this.onDismissSignUpModal}
-						localeCode={localeCode}
-					/>
-				)*/}
 			</nav>
 		);
 	}

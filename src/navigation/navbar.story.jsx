@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { decorateWithLocale, decorateWithInfo } from '../utils/decorators';
 
-import NavItem from './components/NavItem';
+import NavItem from './NavItem';
 import NavBar from './NavBar';
 
 const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';

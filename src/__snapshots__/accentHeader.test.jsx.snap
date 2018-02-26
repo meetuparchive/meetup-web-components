@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccentHeader exists 1`] = `
+<header
+  className="accentHeaderWrapper"
+>
+  <h2
+    className="accentHeader
+  					accentHeader--left
+  					align--left
+  					text--normal"
+  >
+    Test
+  </h2>
+</header>
+`;
