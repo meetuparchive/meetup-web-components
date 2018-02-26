@@ -131,15 +131,25 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   aria-hidden={false}
                   aria-labelledby="label-firstsection"
                   className="accordionPanel-animator"
+                  onTransitionEnd={[Function]}
                   role="tabpanel"
-                  style={undefined}
+                  style={
+                    Object {
+                      "height": "0px",
+                    }
+                  }
                 >
                   <div
                     aria-hidden={false}
                     aria-labelledby="label-firstsection"
                     className="chunk accordionPanel-animator"
+                    onTransitionEnd={[Function]}
                     role="tabpanel"
-                    style={undefined}
+                    style={
+                      Object {
+                        "height": "0px",
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
@@ -260,15 +270,25 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   aria-hidden={true}
                   aria-labelledby="label-nextsection"
                   className="accordionPanel-animator accordionPanel-animator--collapse"
+                  onTransitionEnd={[Function]}
                   role="tabpanel"
-                  style={undefined}
+                  style={
+                    Object {
+                      "height": "0px",
+                    }
+                  }
                 >
                   <div
                     aria-hidden={true}
                     aria-labelledby="label-nextsection"
                     className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+                    onTransitionEnd={[Function]}
                     role="tabpanel"
-                    style={undefined}
+                    style={
+                      Object {
+                        "height": "0px",
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
@@ -389,15 +409,25 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   aria-hidden={true}
                   aria-labelledby="label-thirdsection"
                   className="accordionPanel-animator accordionPanel-animator--collapse"
+                  onTransitionEnd={[Function]}
                   role="tabpanel"
-                  style={undefined}
+                  style={
+                    Object {
+                      "height": "0px",
+                    }
+                  }
                 >
                   <div
                     aria-hidden={true}
                     aria-labelledby="label-thirdsection"
                     className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+                    onTransitionEnd={[Function]}
                     role="tabpanel"
-                    style={undefined}
+                    style={
+                      Object {
+                        "height": "0px",
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
@@ -586,15 +616,25 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   aria-hidden={false}
                   aria-labelledby="label-firstsection"
                   className="accordionPanel-animator"
+                  onTransitionEnd={[Function]}
                   role="tabpanel"
-                  style={undefined}
+                  style={
+                    Object {
+                      "height": "0px",
+                    }
+                  }
                 >
                   <div
                     aria-hidden={false}
                     aria-labelledby="label-firstsection"
                     className="chunk accordionPanel-animator"
+                    onTransitionEnd={[Function]}
                     role="tabpanel"
-                    style={undefined}
+                    style={
+                      Object {
+                        "height": "0px",
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
@@ -715,15 +755,25 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   aria-hidden={true}
                   aria-labelledby="label-nextsection"
                   className="accordionPanel-animator accordionPanel-animator--collapse"
+                  onTransitionEnd={[Function]}
                   role="tabpanel"
-                  style={undefined}
+                  style={
+                    Object {
+                      "height": "0px",
+                    }
+                  }
                 >
                   <div
                     aria-hidden={true}
                     aria-labelledby="label-nextsection"
                     className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+                    onTransitionEnd={[Function]}
                     role="tabpanel"
-                    style={undefined}
+                    style={
+                      Object {
+                        "height": "0px",
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"
@@ -844,15 +894,25 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   aria-hidden={true}
                   aria-labelledby="label-thirdsection"
                   className="accordionPanel-animator accordionPanel-animator--collapse"
+                  onTransitionEnd={[Function]}
                   role="tabpanel"
-                  style={undefined}
+                  style={
+                    Object {
+                      "height": "0px",
+                    }
+                  }
                 >
                   <div
                     aria-hidden={true}
                     aria-labelledby="label-thirdsection"
                     className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+                    onTransitionEnd={[Function]}
                     role="tabpanel"
-                    style={undefined}
+                    style={
+                      Object {
+                        "height": "0px",
+                      }
+                    }
                   >
                     <div
                       className="accordionPanel-content"

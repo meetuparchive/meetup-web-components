@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Badges exists 1`] = `
+<Flex
+  className="getTheApp-downloadLinks"
+  direction="row"
+>
+  <FlexItem
+    className="getTheApp-ios"
+  >
+    <a
+      href="http://meetu.ps/2ZhShs"
+    >
+      <img
+        className="getTheApp-downloadImage span--100 margin--center"
+        src=""
+      />
+    </a>
+  </FlexItem>
+  <FlexItem
+    className="getTheApp-android"
+  >
+    <a
+      href="http://meetu.ps/2ZhSyb"
+    >
+      <img
+        className="getTheApp-downloadImage span--100 margin--center"
+        src=""
+      />
+    </a>
+  </FlexItem>
+</Flex>
+`;
