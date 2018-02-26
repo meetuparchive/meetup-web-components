@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { decorateWithLocale, decorateWithInfo } from '../utils/decorators';
 
 import NavItem from './NavItem';
-import NavBar from './NavBar';
+import Nav from './Nav';
 
 const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
 // const CLASS_AUTH_ITEM = 'navItem--authenticated';
@@ -25,30 +25,11 @@ const unauthItems = [
 	/>,
 ];
 
-storiesOf('NavBar', module)
+storiesOf('Nav', module)
 	.addDecorator(decorateWithLocale)
 	.addDecorator(decorateWithInfo)
-	.add('Authenticated', () => (
-		<NavBar
-			self={{
-				id: 1234,
-				name: 'John Q. Testington',
-				status: 'active',
-			}}
-			authItems={unauthItems}
-		/>
-	))
-	.add('Unauthenticated', () => (
-		<NavBar
-			self={{
-				id: 1234,
-				status: 'prereg',
-			}}
-			unauthItems={unauthItems}
-		/>
-	))
-	.add('with Badge', () => (
-		<NavBar
+	.add('default', () => (
+		<Nav
 			self={{
 				id: 1234,
 				name: 'John Q. Testington',
