@@ -13,7 +13,7 @@ import NavItem from './NavItem';
  * @param {Object} props component properties
  * @returns {React.element} Navigation Bar
  */
-export class NavBar extends React.Component {
+export class Nav extends React.Component {
 	/**
 	 * @return {React.element} the navbar component
 	 */
@@ -73,11 +73,11 @@ export class NavBar extends React.Component {
 	}
 }
 
-NavBar.propTypes = {
+Nav.propTypes = {
 	self: PropTypes.object,
 	media: PropTypes.object,
 	authItems: PropTypes.array,
 	unauthItems: PropTypes.array,
 };
 
-export default withMatchMedia(NavBar);
+export default withMatchMedia(Nav);
