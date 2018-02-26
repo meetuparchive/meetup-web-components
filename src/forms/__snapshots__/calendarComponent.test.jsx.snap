@@ -4,6 +4,7 @@ exports[`CalendarComponent standard props matches snapshot 1`] = `
 <span>
   <label
     className="flush--bottom"
+    data-requiredtext="(undefined)"
     htmlFor="beyonce"
   >
     Enter Your Favorite Day
@@ -44,6 +45,7 @@ exports[`CalendarComponent suppressed error matches snapshot 1`] = `
 <span>
   <label
     className="flush--bottom"
+    data-requiredtext="(undefined)"
     htmlFor="beyonce"
   >
     Enter Your Favorite Day
