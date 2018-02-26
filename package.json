@@ -50,8 +50,9 @@
     "autosize": "3.0.21",
     "downshift": "1.26.1",
     "file-loader": "1.1.8",
-    "react-flatpickr": "3.6.3",
+    "meetup-web-components": "4.6.1874-beta",
     "raf-schd": "2.1.0",
+    "react-flatpickr": "3.6.3",
     "react-portal": "4.1.2",
     "recompose": "0.26.0"
   },
