@@ -1,0 +1,41 @@
+.accentHeader,
+.accentHeaderWrapper {
+	@include customPropertyValue(padding-bottom, calc(var(--responsiveSpace)*2), $space-double);
+}
+
+.accentHeader {
+	font-size: $font-size-big2;
+	position: relative;
+
+	&:after {
+		@include customPropertyValue(width, calc(var(--responsiveSpace)*2), $space-double);
+		background-color: $C_blue;
+		bottom: 0;
+		content: '';
+		height: 3px;
+		position: absolute;
+	}
+
+	@include atMediaUp(medium) {
+		font-size: $font-size-title;
+	}
+}
+
+.accentHeader--left {
+	&:after {
+		left: 0;
+	}
+}
+
+.accentHeader--right {
+	&:after {
+		right: 0;
+	}
+}
+
+.accentHeader--center {
+	&:after {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}

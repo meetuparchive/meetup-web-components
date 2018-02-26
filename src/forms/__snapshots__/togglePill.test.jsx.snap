@@ -35,6 +35,7 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
           id="hikingCategory"
           name="meetupCategories"
           onChange={[Function]}
+          tabIndex={-1}
           type="checkbox"
           value="hiking"
         />

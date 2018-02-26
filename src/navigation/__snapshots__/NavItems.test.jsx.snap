@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavItem does *not* render count bubble, label, or dropdown if no count prop is provided 1`] = `
+<FlexItem
+  className="navItem"
+>
+  <LinkItem
+    linkTo="/zombocom/"
+    navItemContent={
+      <div>
+        
+      </div>
+    }
+  />
+</FlexItem>
+`;
+
+exports[`NavItem link component renders correct url from prop 1`] = `
+<LinkItem
+  linkTo="/zombocom/"
+  navItemContent={
+    <div>
+      
+    </div>
+  }
+/>
+`;
+
+exports[`NavItem renders a dropdown when \`dropdownContent\` is passed as a prop 1`] = `
+<FlexItem
+  className="navItem"
+>
+  <DropdownItem
+    dropdownContent={
+      <p>
+        I am in a dropdown
+      </p>
+    }
+    navItemContent={
+      <div>
+        <span
+          className="navItem-label"
+        >
+          <p>
+            Anything is possible
+          </p>
+        </span>
+      </div>
+    }
+  />
+</FlexItem>
+`;
+
+exports[`NavItem renders a label when provided 1`] = `
+<FlexItem
+  className="navItem"
+>
+  <LinkItem
+    linkTo="/zombocom/"
+    navItemContent={
+      <div>
+        <span
+          className="navItem-label"
+        >
+          <p>
+            Anything is possible
+          </p>
+        </span>
+      </div>
+    }
+  />
+</FlexItem>
+`;
+
+exports[`NavItem renders an ActionItem when \`onAction\` is passed as a prop 1`] = `
+<FlexItem
+  className="navItem"
+>
+  <ActionItem
+    action={[Function]}
+    label={
+      <p>
+        Anything is possible
+      </p>
+    }
+    labelClassNames="navItem-label"
+  />
+</FlexItem>
+`;
+
+exports[`NavItem renders count bubble when a count is provided 1`] = `
+<FlexItem
+  className="navItem"
+>
+  <LinkItem
+    linkTo="/zombocom/"
+    navItemContent={
+      <div>
+        <span
+          className="counterBadge"
+        >
+          <span
+            className="visibility--a11yHide"
+          >
+            Updates
+          </span>
+        </span>
+      </div>
+    }
+  />
+</FlexItem>
+`;
