@@ -67,9 +67,11 @@ describe('AccordionPanel', function() {
 			const btn = panel.find('button');
 			const isOpen = panel.prop('isOpen');
 
-			expect(panelStateCallback).not.toHaveBeenCalled();
-			btn.simulate('click', { target: panel, preventDefault: jest.fn(), stopPropagation: jest.fn() });
-			expect(panelStateCallback).toHaveBeenCalledWith(panel.prop('clickId'), !isOpen);
+			setTimeout(() => {
+				expect(panelStateCallback).not.toHaveBeenCalled();
+				btn.simulate('click', { target: panel, preventDefault: jest.fn(), stopPropagation: jest.fn() });
+				expect(panelStateCallback).toHaveBeenCalledWith(panel.prop('clickId'), !isOpen);
+			}, 1);
 		});
 
 		it('calls onClickCallback onClick', function() {
@@ -77,9 +79,11 @@ describe('AccordionPanel', function() {
 			const isOpen = panel.prop('isOpen');
 			const fakeEvent = { target: panel, preventDefault: jest.fn(), stopPropagation: jest.fn() };
 
-			expect(onClickCallback).not.toHaveBeenCalled();
-			btn.simulate('click', fakeEvent);
-			expect(onClickCallback).toHaveBeenCalledWith(fakeEvent, !isOpen);
+			setTimeout(() => {
+				expect(onClickCallback).not.toHaveBeenCalled();
+				btn.simulate('click', fakeEvent);
+				expect(onClickCallback).toHaveBeenCalledWith(fakeEvent, !isOpen);
+			}, 1);
 		});
 
 
