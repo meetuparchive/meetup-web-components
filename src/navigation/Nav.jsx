@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import cx from 'classnames';
 
 import swarmLogo from '../../assets/svg/logo--mSwarm--2color.svg';
 import scriptLogo from '../../assets/svg/logo--script.svg';
@@ -56,15 +55,6 @@ export class Nav extends React.Component {
 							}
 						/>
 					)}
-
-					<NavItem
-						shrink
-						linkTo="meetup.com"
-						label="Create a Meetup"
-						className={cx(
-							'text--blue text--bold navItemLink--create display--none atMedium_display--block'
-						)}
-					/>
 
 					{isLoggedOut ? unauthItems : authItems}
 				</Flex>
