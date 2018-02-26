@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { decorateWithLocale, decorateWithInfo } from '../utils/decorators';
-import cx from 'classnames';
 
 import Icon from '../media/Icon';
 import NavItem from './NavItem';
@@ -16,7 +15,7 @@ storiesOf('NavItem', module)
 			shrink
 			linkTo="meetup.com"
 			label="Explore"
-			className={cx(CLASS_AUTH_ITEM, 'flush--left')}
+			className={`${CLASS_AUTH_ITEM} flush--left`}
 			icon={<Icon shape="search" size="s" className="atMedium_display--none" />}
 		/>
 	))
@@ -24,7 +23,7 @@ storiesOf('NavItem', module)
 		<NavItem
 			shrink
 			label="Notifications"
-			className={cx('navItem--notifications', CLASS_AUTH_ITEM)}
+			className={`navItem--notifications ${CLASS_AUTH_ITEM}`}
 			dropdownContent={
 				<ul>
 					<li> Notif 1 </li>
@@ -39,7 +38,7 @@ storiesOf('NavItem', module)
 			shrink
 			linkTo="meetup.com"
 			label="Messages"
-			className={cx('navItem--messages', CLASS_AUTH_ITEM)}
+			className={`navItem--messages ${CLASS_AUTH_ITEM}`}
 			icon={
 				<Icon
 					shape="messages"
