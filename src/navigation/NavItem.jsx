@@ -8,7 +8,6 @@ import FlexItem from '../layout/FlexItem';
 
 const NAV_ITEM_CLASS = 'navItemLink';
 
-
 export const ActionItem = ({ label, action, labelClassNames }) => (
 	<Button reset className={cx(NAV_ITEM_CLASS, 'text--secondary')} onClick={action}>
 		<span className={labelClassNames}>{label}</span>
@@ -71,9 +70,7 @@ export const NavItem = props => {
 			{label && <span className={classNames.label}>{label}</span>}
 			{hasUpdates && (
 				<span className="counterBadge">
-					<span className="visibility--a11yHide">
-						Updates
-					</span>
+					<span className="visibility--a11yHide">Updates</span>
 				</span>
 			)}
 		</div>
@@ -85,8 +82,8 @@ export const NavItem = props => {
 			navItemContent={navItemContent}
 		/>
 	) : (
-			navItemContent
-		);
+		navItemContent
+	);
 
 	return (
 		<FlexItem shrink={shrink} className={classNames.navItem} {...other}>
