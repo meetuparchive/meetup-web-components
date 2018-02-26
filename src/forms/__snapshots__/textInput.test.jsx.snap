@@ -6,6 +6,7 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
 >
   <label
     className="label--field label--required"
+    data-requiredtext="(undefined)"
     htmlFor="superhero"
   >
     Super Hero

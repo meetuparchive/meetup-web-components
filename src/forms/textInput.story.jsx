@@ -7,83 +7,70 @@ import { decorateWithLocale } from '../utils/decorators';
 storiesOf('TextInput', module)
 	.addDecorator(decorateWithLocale)
 	.addWithInfo('type "tel"', null, () => (
-		<div className='span--50'>
-			<TextInput
-				type="tel"
-				label="Telephone Number"
-				id="telephone"
-			/>
-		</div>
+		<TextInput
+			type="tel"
+			label="Telephone Number"
+			id="telephone"
+		/>
 	)
 	)
 	.addWithInfo('default', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				placeholder='enter your name here'
-			/>
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			placeholder='enter your name here'
+		/>
 	)
 	)
 	.addWithInfo('with value', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				defaultValue='Phife Dawg'
-			/>
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			defaultValue='Phife Dawg'
+		/>
 	)
 	)
 	.addWithInfo('disabled', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				defaultValue='Cannot focus'
-				disabled />
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			defaultValue='Cannot focus'
+			disabled />
 	)
 	)
 	.addWithInfo('error state', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				defaultValue='#$%!$%!'
-				error='Not so fast. You have an error.' />
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			defaultValue='#$%!$%!'
+			error='Not so fast. You have an error.' />
 	)
 	)
 	.addWithInfo('error state as element', null, () => {
 		return (
-			<div className='span--50'>
-				<TextInput label='Your name'
-					id='fullname'
-					name='name'
-					error={<span>This error is an element</span>}
-					placeholder='not your email' />
-			</div>
+			<TextInput label='Your name'
+				id='fullname'
+				name='name'
+				error={<span>This error is an element</span>}
+				placeholder='not your email' />
+
 		);
 	})
 	.addWithInfo('with helper text', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				helperText='Names cannot contain special characters' />
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			helperText='Names cannot contain special characters' />
 	)
 	)
 	.addWithInfo('required', null, () => {
 		return (
-			<form className='span--50'>
+			<form>
 				<TextInput
 					label='Your name'
 					id='fullname'
@@ -117,15 +104,13 @@ storiesOf('TextInput', module)
 		);
 	})
 	.addWithInfo('with icon', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				defaultValue='Phife Dawg'
-				placeholder='Not your email'
-				iconShape='search' />
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			defaultValue='Phife Dawg'
+			placeholder='Not your email'
+			iconShape='search' />
 	)
 	)
 	.addWithInfo(
@@ -138,15 +123,13 @@ storiesOf('TextInput', module)
 				pattern:'.{5,10}'
 			};
 			return (
-				<div className='span--50'>
-					<TextInput
-						label='Your name'
-						id='fullname'
-						name='name'
-						value='how long is this'
-						error='this is an error'
-						{...rules} />
-				</div>
+				<TextInput
+					label='Your name'
+					id='fullname'
+					name='name'
+					value='how long is this'
+					error='this is an error'
+					{...rules} />
 			);
 		}
 	)
