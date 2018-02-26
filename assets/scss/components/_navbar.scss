@@ -7,7 +7,11 @@
 	@include standardBorder('bottom');
 }
 
-.header {
+.padding--left-half {
+	padding-left: $space-half;
+}
+
+.navBar {
 	justify-content: space-between;
 
 	@include atMediaUp(medium) {
@@ -16,12 +20,12 @@
 }
 
 $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
-.header--aboveFloatingContent {
+.aboveFloatingContent {
 	position: relative;
 	z-index: $zindex--aboveFloatingContent+2;
 }
 
-.header-navItem {
+.navItem {
 	@include color-svg($C_textSecondary);
 	color: $C_textPrimary;
 	text-align: center;
@@ -30,21 +34,21 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 }
 
 // use negative margin to pull in some
-// of the header height and center the logos
-.header-logo {
+// of the navbar height and center the logos
+.logo {
 	margin-bottom: -6px;
 }
-.header-logo--swarm {
+.logo--swarm {
 	margin-top: -8px;
 }
 
 @include atMediaUp(medium) {
-	.header-navItem {
+	.navItem {
 		@include customPropertyValue(padding-left, calc(var(--responsiveSpace)), $space);
 	}
 }
 
-.header-navItem--unauthenticated {
+.navItem--unauthenticated {
 	// because login/signup links do not
 	// behave like tabs at mobile sizes,
 	// we have to set an explicit height
@@ -97,7 +101,7 @@ $maxScalingBP: $breakpoint-m/1px;
 	}
 }
 
-.header-navItemLink {
+.navItemLink {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -110,7 +114,7 @@ $maxScalingBP: $breakpoint-m/1px;
 		height: auto;
 	}
 }
-.header-navItemLink--create {
+.navItemLink--create {
 	@include standardBorder('right');
 	padding-right: $space;
 
@@ -130,7 +134,7 @@ $maxScalingBP: $breakpoint-m/1px;
 	right: 27%;
 	border: 3px solid $C_white;
 
-	.header-navItem--messages & {
+	.navItem--messages & {
 		right: 17%;
 	}
 
@@ -140,5 +144,12 @@ $maxScalingBP: $breakpoint-m/1px;
 		margin-left: $space-quarter;
 		position: static;
 		border-width: 0;
+	}
+}
+
+.profileDropdown-content {
+	.list-item {
+		padding-top: $space-half !important;
+		padding-bottom: $space-half !important;
 	}
 }
