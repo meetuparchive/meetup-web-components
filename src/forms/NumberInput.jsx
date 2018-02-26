@@ -150,7 +150,7 @@ export class NumberInput extends React.Component {
 		return (
 			<div>
 				{label &&
-					<label className={classNames.label} htmlFor={id} data-requiredtext={`(${requiredText})`}>
+					<label className={classNames.label} htmlFor={id} data-requiredtext={requiredText && `(${requiredText})`}>
 						{label}
 					</label>
 				}

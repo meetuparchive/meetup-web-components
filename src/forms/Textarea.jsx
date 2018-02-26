@@ -138,7 +138,7 @@ export class Textarea extends React.Component {
 		return (
 			<div className="inputContainer">
 				{label &&
-					<label className={classNames.label} htmlFor={id} data-requiredtext={`(${requiredText})`}>
+					<label className={classNames.label} htmlFor={id} data-requiredtext={requiredText && `(${requiredText})`}>
 						{label}
 					</label>
 				}
