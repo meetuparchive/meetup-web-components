@@ -234,7 +234,6 @@ export class TimeInput extends React.Component {
 			label,
 			name,
 			className,
-			required,
 			value,	// eslint-disable-line no-unused-vars
 			error,
 			disabled,
@@ -243,6 +242,8 @@ export class TimeInput extends React.Component {
 			onChangeCallback, // eslint-disable-line no-unused-vars
 			suppressError, // eslint-disable-line no-unused-vars
 			helperText,
+			required,
+			requiredText,
 			...other
 		} = this.props;
 
@@ -262,7 +263,8 @@ export class TimeInput extends React.Component {
 			label: cx(
 				'label--field',
 				{
-					required,
+					'label--disabled': disabled,
+					'label--required': required,
 					'flush--bottom': helperText
 				}
 			),
@@ -290,7 +292,9 @@ export class TimeInput extends React.Component {
 		return (
 			<div>
 				{label &&
-					<label htmlFor={id} className={classNames.label}>{label}</label>
+					<label htmlFor={id} className={classNames.label} data-requiredtext={requiredText && `(${requiredText})`}>
+						{label}
+					</label>
 				}
 				{helperText &&
 					<div className={classNames.helperText}>
@@ -391,13 +395,17 @@ TimeInput.propTypes = {
 		PropTypes.string,
 		PropTypes.element
 	]),
-	required: PropTypes.bool,
 	onChange: PropTypes.func, // redux-form or DateTimePicker provides an onChange prop
 	onChangeCallback: PropTypes.func,
 	helperText: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
-	])
+	]),
+	required: PropTypes.bool,
+	requiredText: (props) => (
+		props.required && !props.requiredText &&
+			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
+	)
 };
 
 

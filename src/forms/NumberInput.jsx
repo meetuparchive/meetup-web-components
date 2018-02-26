@@ -102,11 +102,12 @@ export class NumberInput extends React.Component {
 			onBlur, // eslint-disable-line no-unused-vars
 			onFocus, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
-			required,
 			step,
 			disabled,
 			value, // eslint-disable-line no-unused-vars
 			helperText,
+			required,
+			requiredText,
 			...other
 		} = this.props;
 
@@ -126,8 +127,8 @@ export class NumberInput extends React.Component {
 			label: cx(
 				'label--field',
 				{
-					required,
-					disabled,
+					'label--disabled': disabled,
+					'label--required': required,
 					'flush--bottom': helperText
 				},
 				labelClassName
@@ -149,7 +150,7 @@ export class NumberInput extends React.Component {
 		return (
 			<div>
 				{label &&
-					<label className={classNames.label} htmlFor={id}>
+					<label className={classNames.label} htmlFor={id} data-requiredtext={requiredText && `(${requiredText})`}>
 						{label}
 					</label>
 				}
@@ -233,7 +234,6 @@ NumberInput.propTypes = {
 	min: PropTypes.number,
 	name: PropTypes.string.isRequired,
 	onChange: PropTypes.func,
-	required: PropTypes.bool,
 	step: PropTypes.number,
 	disabled: PropTypes.bool,
 	value: PropTypes.oneOfType([
@@ -243,7 +243,12 @@ NumberInput.propTypes = {
 	helperText: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
-	])
+	]),
+	required: PropTypes.bool,
+	requiredText: (props) => (
+		props.required && !props.requiredText &&
+			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
+	)
 };
 
 export default withErrorList(NumberInput);
