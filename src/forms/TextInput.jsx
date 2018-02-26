@@ -21,7 +21,6 @@ export const TextInput = (props) => {
 		children,
 		error,
 		placeholder,
-		required,
 		id,
 		onChange,
 		isSearch,
@@ -30,6 +29,8 @@ export const TextInput = (props) => {
 		disabled,
 		iconShape,
 		helperText,
+		required,
+		requiredText,
 		...other
 	} = props;
 
@@ -45,8 +46,8 @@ export const TextInput = (props) => {
 		label: cx(
 			'label--field',
 			{
-				required,
-				disabled,
+				'label--disabled': disabled,
+				'label--required': required,
 				'flush--bottom': helperText
 			},
 			labelClassName
@@ -79,7 +80,7 @@ export const TextInput = (props) => {
 	return (
 		<div className="inputContainer">
 			{label &&
-				<label className={classNames.label} htmlFor={id}>
+				<label className={classNames.label} htmlFor={id} data-requiredtext={`(${requiredText})`}>
 					{label}
 				</label>
 			}
@@ -126,7 +127,6 @@ TextInput.propTypes = {
 	]),
 	labelClassName: PropTypes.string,
 	placeholder: PropTypes.string,
-	required: PropTypes.bool,
 	isSearch: PropTypes.bool,
 	onChange: PropTypes.func,
 	disabled: PropTypes.bool,
@@ -135,7 +135,13 @@ TextInput.propTypes = {
 	helperText: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
-	])
+	]),
+	required: PropTypes.bool,
+	requiredText: (props) => (
+		props.required && !props.requiredText &&
+			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
+	)
+
 };
 
 export default withErrorList(TextInput);

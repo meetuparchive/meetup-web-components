@@ -89,7 +89,6 @@ export class Textarea extends React.Component {
 			labelClassName,
 			className,
 			error,
-			required,
 			rows,
 			style={},
 			maxHeight,
@@ -99,6 +98,8 @@ export class Textarea extends React.Component {
 			onChange, // eslint-disable-line no-unused-vars
 			autosize,
 			helperText,
+			required,
+			requiredText,
 			...other
 		} = this.props;
 
@@ -114,7 +115,7 @@ export class Textarea extends React.Component {
 			label: cx(
 				'label--field',
 				{
-					required,
+					'label--required': required,
 					'flush--bottom': helperText
 				},
 				labelClassName
@@ -137,7 +138,7 @@ export class Textarea extends React.Component {
 		return (
 			<div className="inputContainer">
 				{label &&
-					<label className={classNames.label} htmlFor={id}>
+					<label className={classNames.label} htmlFor={id} data-requiredtext={`(${requiredText})`}>
 						{label}
 					</label>
 				}
@@ -175,7 +176,6 @@ Textarea.propTypes = {
 		PropTypes.element
 	]),
 	labelClassName: PropTypes.string,
-	required: PropTypes.bool,
 	minHeight: PropTypes.number,
 	maxHeight: PropTypes.number,
 	onChange: PropTypes.func,
@@ -185,7 +185,12 @@ Textarea.propTypes = {
 	helperText: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
-	])
+	]),
+	required: PropTypes.bool,
+	requiredText: (props) => (
+		props.required && !props.requiredText &&
+			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
+	)
 };
 
 export default withErrorList(Textarea);

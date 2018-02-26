@@ -40,17 +40,18 @@ export class CalendarComponent extends React.Component {
 			label,
 			helperText,
 			error,
-			required,
 			datepickerOptions,
 			className,
 			onChange, // eslint-disable-line no-unused-vars
+			required,
+			requiredText,
 			...other
 		} = this.props;
 
 		const classNames = {
 			label: cx(
 				{
-					required,
+					'label--required': required,
 					'flush--bottom': helperText,
 				}
 			),
@@ -86,7 +87,7 @@ export class CalendarComponent extends React.Component {
 		return (
 			<span>
 				{label && (
-					<label htmlFor={id || name} className={classNames.label}>
+					<label htmlFor={id || name} className={classNames.label} data-requiredtext={`(${requiredText})`}>
 						{label}
 					</label>
 				)}
@@ -113,7 +114,6 @@ CalendarComponent.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string,
 	datepickerOptions: PropTypes.object,
-	required: PropTypes.bool,
 	error: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
@@ -123,6 +123,11 @@ CalendarComponent.propTypes = {
 		PropTypes.element
 	]),
 	onChange: PropTypes.func, // provided by `redux-form`
+	required: PropTypes.bool,
+	requiredText: (props) => (
+		props.required && !props.requiredText &&
+			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
+	)
 };
 
 CalendarComponent.defaultProps = {
