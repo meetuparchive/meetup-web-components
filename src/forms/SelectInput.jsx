@@ -72,7 +72,7 @@ export class SelectInput extends React.Component {
 			<div>
 				<div className="inputContainer">
 					{label &&
-						<label className={classNames.label} htmlFor={name} data-requiredtext={`(${requiredText})`}>
+						<label className={classNames.label} htmlFor={name} data-requiredtext={requiredText && `(${requiredText})`}>
 							{label}
 						</label>
 					}

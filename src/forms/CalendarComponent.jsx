@@ -87,7 +87,7 @@ export class CalendarComponent extends React.Component {
 		return (
 			<span>
 				{label && (
-					<label htmlFor={id || name} className={classNames.label} data-requiredtext={`(${requiredText})`}>
+					<label htmlFor={id || name} className={classNames.label} data-requiredtext={requiredText && `(${requiredText})`}>
 						{label}
 					</label>
 				)}

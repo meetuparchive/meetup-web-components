@@ -7,7 +7,6 @@ exports[`SelectInput basic renders into the DOM 1`] = `
   >
     <label
       className="label--field"
-      data-requiredtext="(undefined)"
       htmlFor="testSelect"
     >
       Test select
