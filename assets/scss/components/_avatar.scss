@@ -1,3 +1,5 @@
+@import "~swarm-constants/dist/scss/rawColors";
+
 /*doc
 ---
 title: Avatar
@@ -35,7 +37,9 @@ Class                     | Description
 `avatar--fbFriend`        | Variant for facebook friends
 `avatar--noPhoto`         | Resets `text-indent` for avatars without photos, allowing display of fallback content
 */
+
 $avatarBg: $C_coolGrayLight;
+$avatarBgRaw: $RAW_coolGrayLight;
 $avatarSizeProps: (height, width);
 
 @mixin avatarIconBadge($color) {
@@ -152,7 +156,7 @@ $avatarSizeProps: (height, width);
 	@include justify-content(center);
 	position: relative;
 	text-indent: initial;
-	background-color: darken($avatarBg, 6%);
+	background-color: darken($avatarBgRaw, 6%);
 
 	.svg--profile {
 		// matches size of icon wrapper div
@@ -174,7 +178,7 @@ $avatarSizeProps: (height, width);
 			height: 40%;
 
 			transform: translateX(4%);
-			opacity: alpha($C_textSecondary);
+			opacity: alpha($RAW_textSecondary);
 		}
 	}
 }

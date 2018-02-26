@@ -8288,9 +8288,9 @@ swarm-animation@0.0.95:
     jasmine-jquery "^2.1.1"
     jquery "^3.2.1"
 
-swarm-constants@1.2.75:
-  version "1.2.75"
-  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-1.2.75.tgz#cfdb51ac748ceadc6eeabe99f0babe1d8afc5c1c"
+swarm-constants@1.2.80:
+  version "1.2.80"
+  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-1.2.80.tgz#54c7fbcbf2ebcde849f6723b68717afaf47914b8"
 
 swarm-icons@^1.3:
   version "1.3.289"

@@ -1,3 +1,5 @@
+@import "~swarm-constants/dist/scss/rawColors";
+
 .inputContainer {
 	position: relative;
 }
@@ -154,7 +156,7 @@ $C_toggleHighlight: $C_blue;
 			border-color: $C_toggleHighlight;
 
 			&.checked {
-				background-color: darken($C_toggleHighlight, 15%);
+				background-color: darken($RAW_toggleHighlight, 15%);
 			}
 
 			&.disabled {
