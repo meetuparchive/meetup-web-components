@@ -28,8 +28,10 @@ class Button extends React.PureComponent {
 			small,
 			bordered,
 			hasHoverShadow,
-			buttonTag,
-			linkTo,
+			// htmlElement,
+			// linkComponent,
+			// linkTo,
+			wrapper,
 			...other
 		} = this.props;
 
@@ -71,28 +73,23 @@ class Button extends React.PureComponent {
 			</Flex>
 		);
 
-		const ButtonTag = buttonTag;
-		const hrefAttr = buttonTag === 'Link' && buttonTag !== 'button' ? 'to' : 'href';
-		const buttonProps = {
-			className: classNames.button,
-			onClick: onClick,
-			role: buttonTag ? 'button' : null,
-			[hrefAttr]: linkTo,
-			...other
-		};
-
 		return (
-			<ButtonTag
-				{...buttonProps}
-			>
-				{ icon ? iconChildren : children }
-			</ButtonTag>
+			React.cloneElement(
+				wrapper,
+				{
+					className: classNames.button,
+					onClick: onClick,
+					...other
+				},
+				icon ? iconChildren : children
+			)
 		);
 	}
 }
 
 Button.defaultProps = {
-	buttonTag: 'button'
+	htmlElement: 'button',
+	wrapper: <button />
 };
 
 Button.propTypes = {
@@ -102,7 +99,9 @@ Button.propTypes = {
 	small: PropTypes.bool,
 	icon: PropTypes.any,
 	right: PropTypes.bool,
-	buttonTag: PropTypes.oneOf(['button', 'a', 'Link']),
+	htmlElement: PropTypes.oneOf(['button', 'a']),
+	linkComponent: PropTypes.element,
+	wrapper: PropTypes.element,
 	linkTo: PropTypes.string
 };
 export default Button;
