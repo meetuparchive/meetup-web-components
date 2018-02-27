@@ -51,7 +51,7 @@ storiesOf('SelectInput', module)
 			]}
 			error='You forgot to name your horse!'
 			required
-			requiredText='required'
+			requiredText='(required)'
 		/>)
 	)
 	.add('with disabled options', () =>

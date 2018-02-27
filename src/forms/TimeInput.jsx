@@ -292,7 +292,7 @@ export class TimeInput extends React.Component {
 		return (
 			<div>
 				{label &&
-					<label htmlFor={id} className={classNames.label} data-requiredtext={requiredText && `(${requiredText})`}>
+					<label htmlFor={id} className={classNames.label} data-requiredtext={required && requiredText}>
 						{label}
 					</label>
 				}

@@ -77,7 +77,7 @@ storiesOf('TextInput', module)
 					name='name'
 					placeholder='Not your email'
 					required
-					requiredText='required' />
+					requiredText='(required)' />
 				<Button
 					contrast
 					fullWidth>
