@@ -29,6 +29,7 @@ class Button extends React.PureComponent {
 			bordered,
 			hasHoverShadow,
 			wrapperEl,
+			disabled,
 			...other
 		} = this.props;
 
@@ -42,7 +43,8 @@ class Button extends React.PureComponent {
 					'button--reset': reset,
 					'button--bordered': bordered,
 					'button--hasHoverShadow': hasHoverShadow,
-					'button--neutral': neutral
+					'button--neutral': neutral,
+					'button--disabled': disabled
 				},
 				className
 			),
