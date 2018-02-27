@@ -44,7 +44,7 @@
     "react-transition-group": "^2.2.1",
     "swarm-animation": "^0.0.95",
     "swarm-icons": "^1.3.285",
-    "swarm-sasstools": "4.0.352-beta",
+    "swarm-sasstools": "4.0.353-beta",
     "swarm-constants": "1.2.80"
   },
   "dependencies": {
@@ -115,7 +115,7 @@
     "swarm-animation": "0.0.95",
     "swarm-constants": "1.2.80",
     "swarm-icons": "^1.3",
-    "swarm-sasstools": "4.0.352-beta",
+    "swarm-sasstools": "4.0.353-beta",
     "webpack": "2.6.1"
   }
 }
