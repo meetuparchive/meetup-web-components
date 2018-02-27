@@ -40,7 +40,7 @@ storiesOf('CalendarComponent', module)
 					label="Start at"
 					value={new Date()}
 					required
-					requiredText="required"
+					requiredText="(required)"
 				/>
 			</div>
 		);

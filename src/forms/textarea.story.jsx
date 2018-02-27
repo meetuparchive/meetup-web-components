@@ -74,7 +74,7 @@ storiesOf('Textarea', module)
 				error='Not so fast. You have an error.'
 				placeholder='Tell me about your life'
 				required
-				requiredText="required" />
+				requiredText="(required)" />
 		</Section></Bounds>)
 	)
 	.add('with helper text', () =>

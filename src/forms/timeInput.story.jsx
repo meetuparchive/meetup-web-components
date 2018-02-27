@@ -26,7 +26,7 @@ storiesOf('TimeInput', module)
 	))
 	.add('required', () => (
 		<div className='span--25'>
-			<TimeInput name='time' value='13:00' required requiredText='required' label='End time' />
+			<TimeInput name='time' value='13:00' required requiredText='(required)' label='End time' />
 		</div>
 	))
 	.add('with error', () => (

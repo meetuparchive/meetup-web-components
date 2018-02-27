@@ -74,6 +74,6 @@ storiesOf('NumberInput', module)
 			id='amount'
 			name='amount'
 			required
-			requiredText="required" />)
+			requiredText="(required)" />)
 	);
 
