@@ -120,13 +120,12 @@ $maxScalingBP: $breakpoint-m/1px;
 }
 
 .counterBadge {
-	$_dotSize: $space-half;
 	background-color: $C_teal;
 	border-radius: 999px;
-	width: $_dotSize;
-	height: $_dotSize;
+	width: var(--space-half);
+	height: var(--space-half);
 	position: absolute;
-	top: calc(($_dotSize / 2) * -1);
+	top: calc((var(--space-half) / 2) * -1);
 	right: 27%;
 	border: 3px solid $C_white;
 

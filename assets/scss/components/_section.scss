@@ -9,7 +9,7 @@ around it's children.
 
 $sectionSpaceMultiple: 2;
 .section {
-	padding: calc(var(--responsiveSpace) * #{$sectionSpaceMultiple}) 0 0 0;
+	padding: calc(var(--responsive-space) * #{$sectionSpaceMultiple}) 0 0 0;
 	margin: 0 var(--responsive-space);
 }
 

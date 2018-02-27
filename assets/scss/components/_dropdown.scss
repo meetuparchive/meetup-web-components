@@ -117,7 +117,7 @@ $triangleSize: 10px;
 .dropdownMenu-item {
 	border-bottom: 1px solid $C_border;
 	cursor: pointer;
-	padding: calc(var(--responsiveSpace)/2);
+	padding: calc(var(--responsive-space)/2);
 	&:hover {
 		background-color: $C_coolGrayLight;
 	}

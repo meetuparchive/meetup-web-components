@@ -72,7 +72,7 @@ Class                                     | Description
 
 */
 .gridList--photoGrid {
-	margin: 0 calc(($space + $space-half) * -1) 0 calc($space * -1);
+	margin: 0 calc((var(--space-1) + var(--space-half)) * -1) 0 calc(var(--space-1) * -1);
 	padding: 0;
 	> .gridList-item {
 		padding: 0 $space-quarter $space-quarter 0;

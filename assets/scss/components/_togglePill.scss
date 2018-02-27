@@ -13,7 +13,7 @@
 
 .toggleButton-label--large {
 	font-size: $font-size;
-	padding: calc($space * 1.5) $space;
+	padding: calc(var(--space-1) * 1.5) $space;
 }
 
 .toggleButton-input {
