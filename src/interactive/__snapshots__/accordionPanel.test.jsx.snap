@@ -357,7 +357,6 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                       aria-checked={false}
                       aria-labelledby="firstsection-label"
                       className="button button--reset toggleSwitch"
-                      disabled={false}
                       onClick={[Function]}
                       role="switch"
                       tabIndex={-1}
