@@ -40,10 +40,11 @@ export class SelectInput extends React.Component {
 			name,
 			error,
 			errors,
-			required,
 			onChange, // eslint-disable-line no-unused-vars
 			value, // eslint-disable-line no-unused-vars
 			helperText,
+			required,
+			requiredText,
 			...other
 		} = this.props;
 
@@ -51,7 +52,7 @@ export class SelectInput extends React.Component {
 			label: cx(
 				'label--field',
 				{
-					required,
+					'label--required': required,
 					'flush--bottom': helperText
 				},
 				labelClassName
@@ -71,7 +72,7 @@ export class SelectInput extends React.Component {
 			<div>
 				<div className="inputContainer">
 					{label &&
-						<label className={classNames.label} htmlFor={name}>
+						<label className={classNames.label} htmlFor={name} data-requiredtext={required && requiredText}>
 							{label}
 						</label>
 					}
@@ -113,7 +114,6 @@ export class SelectInput extends React.Component {
 
 SelectInput.propTypes = {
 	name: PropTypes.string.isRequired,
-	required: PropTypes.bool,
 	options: PropTypes.arrayOf(PropTypes.shape({
 		label: PropTypes.string.isRequired,
 		value: PropTypes.string.isRequired,
@@ -135,7 +135,12 @@ SelectInput.propTypes = {
 	helperText: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
-	])
+	]),
+	required: PropTypes.bool,
+	requiredText: (props) => (
+		props.required && !props.requiredText &&
+			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
+	)
 };
 
 export default withErrorList(SelectInput);
