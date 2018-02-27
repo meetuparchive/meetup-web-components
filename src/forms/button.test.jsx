@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import { shallow } from 'enzyme';
-import { hasRoleAttribute, variantTest } from '../utils/testUtils';
+import Link from 'react-router-dom/Link';
+import { variantTest } from '../utils/testUtils';
 import Button, {
 	BUTTON_CLASS,
 	BUTTON_ICON_WRAPPER_CLASS,
@@ -38,10 +38,6 @@ describe('Button', () => {
 			expect(btn.length).toBe(1);
 		});
 
-		it('has a `button` role attribute', () => {
-			const buttonEl = ReactDOM.findDOMNode(button);
-			hasRoleAttribute(buttonEl, 'button');
-		});
 	});
 
 	it('applies variant classes for each variant prop', () => {
@@ -124,10 +120,9 @@ describe('Button', () => {
 	});
 
 	describe('buttonTag', () =>{
-		const tag = 'a';
 		const link = 'https://meetup.com/';
 		const buttonTagComponent = shallow(
-			<Button buttonTag={tag} link={link}>
+			<Button wrapper={<a href={link} />}>
 				Button label
 			</Button>
 		);
@@ -136,8 +131,18 @@ describe('Button', () => {
 			expect(buttonTagComponent.find('a').length).toBe(1);
 		});
 
-		it('should render `link` prop', () => {
-			expect(buttonTagComponent.find('a').prop('link')).toBe(link);
+		it('should render the correct `href` value for anchor tag', () => {
+			expect(buttonTagComponent.prop('href')).toBe(link);
+		});
+
+		it('should render the correct `to` value for <Link> component', () => {
+			const buttonTagComponent = shallow(
+				<Button wrapper={<Link to={link} />}>
+					Button label
+				</Button>
+			);
+
+			expect(buttonTagComponent.prop('to')).toBe(link);
 		});
 
 	});
