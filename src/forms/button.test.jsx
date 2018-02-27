@@ -119,7 +119,7 @@ describe('Button', () => {
 		});
 	});
 
-	describe('buttonTag', () =>{
+	describe('wrapperEl', () =>{
 		const link = 'https://meetup.com/';
 		const buttonTagComponent = shallow(
 			<Button wrapperEl={<a href={link} />}>
@@ -127,7 +127,7 @@ describe('Button', () => {
 			</Button>
 		);
 
-		it('should render element from buttonTag prop', () => {
+		it('should render element from wrapperEl prop', () => {
 			expect(buttonTagComponent.find('a').length).toBe(1);
 		});
 
