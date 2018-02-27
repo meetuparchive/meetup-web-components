@@ -73,6 +73,7 @@ storiesOf('NumberInput', module)
 			label='How many?'
 			id='amount'
 			name='amount'
-			required />)
+			required
+			requiredText="(required)" />)
 	);
 

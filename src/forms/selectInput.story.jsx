@@ -44,13 +44,14 @@ storiesOf('SelectInput', module)
 			label='Select a name for your horse'
 			id='horsename'
 			name='horsename'
-			required
 			options={[
 				{ label: 'Geoffrey', value: 'geoffrey' },
 				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
 				{ label: 'Mister Chompy', value: 'chompyhorse' }
 			]}
 			error='You forgot to name your horse!'
+			required
+			requiredText='(required)'
 		/>)
 	)
 	.add('with disabled options', () =>

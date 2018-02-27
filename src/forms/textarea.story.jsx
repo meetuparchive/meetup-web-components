@@ -68,12 +68,13 @@ storiesOf('Textarea', module)
 	.add('error state', () =>
 		(<Bounds><Section>
 			<Textarea
-				required
 				label='Your biography'
 				id='yourBio'
 				name='bio'
 				error='Not so fast. You have an error.'
-				placeholder='Tell me about your life' />
+				placeholder='Tell me about your life'
+				required
+				requiredText="(required)" />
 		</Section></Bounds>)
 	)
 	.add('with helper text', () =>
