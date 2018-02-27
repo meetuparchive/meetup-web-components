@@ -42,7 +42,7 @@ input:focus + .icon--field {
 	margin: 0 $space-half 0 0;
 
 	@include browser-lessThanIE(10) {
-		top: $space/2;
+		top: $space-half;
 	}
 }
 
@@ -140,7 +140,7 @@ input.field--reset:active {
 // Radio and Checkbox styles
 //
 $toggleSize: 20px;
-$C_toggleHighlight: $C_blue;
+$toggleHighlight: $RAW_blue;
 
 .toggleLabel {
 	padding-bottom: $space-half;
@@ -153,10 +153,10 @@ $C_toggleHighlight: $C_blue;
 	&:hover {
 
 		.fauxToggle {
-			border-color: $C_toggleHighlight;
+			border-color: $toggleHighlight;
 
 			&.checked {
-				background-color: darken($RAW_toggleHighlight, 15%);
+				background-color: darken($toggleHighlight, 15%);
 			}
 
 			&.disabled {
@@ -181,7 +181,7 @@ $C_toggleHighlight: $C_blue;
 	}
 
 	&.checked {
-		background-color: $C_toggleHighlight;
+		background-color: $toggleHighlight;
 		border-color: transparent;
 	}
 
@@ -196,10 +196,10 @@ $C_toggleHighlight: $C_blue;
 	}
 
 	&.focused {
-		border-color: $C_toggleHighlight;
+		border-color: $toggleHighlight;
 
 		&.checked {
-			box-shadow: 0 0 4px 1px $C_toggleHighlight;
+			box-shadow: 0 0 4px 1px $toggleHighlight;
 		}
 	}
 
@@ -207,10 +207,10 @@ $C_toggleHighlight: $C_blue;
 
 .radio:focus {
 	+ .fauxToggle {
-		border-color: $C_toggleHighlight;
+		border-color: $toggleHighlight;
 
 		&.checked {
-			box-shadow: 0 0 4px 1px $C_toggleHighlight;
+			box-shadow: 0 0 4px 1px $toggleHighlight;
 		}
 	}
 }

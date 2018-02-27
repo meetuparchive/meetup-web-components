@@ -46,7 +46,7 @@ Class                        | Description
 	margin: 0;
 	padding: 0;
 	> li {
-		@include customPropertyValue(padding-right, var(--responsiveSpace), $space);
+		padding-right: var(--responsive-space);
 		display: inline-block;
 
 		&:last-child {
@@ -56,10 +56,10 @@ Class                        | Description
 }
 
 .inlineblockList--separated > li {
-	@include customPropertyValue(padding-right, calc(var(--responsiveSpace)/2), $space-half);
+	padding-right: calc(var(--responsive-space) / 2);
 
 	&:after {
-		@include customPropertyValue(padding-left, calc(var(--responsiveSpace)/2), $space-half);
+		padding-left: calc(var(--responsive-space) / 2);
 		content: attr(data-separator);
 		speak: none;
 	}

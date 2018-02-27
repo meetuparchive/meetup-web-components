@@ -1,7 +1,6 @@
 @import "~swarm-constants/dist/scss/rawColors";
 
-$trackWidth: $media-l;
-$knobSize: $trackWidth/2;
+$knobSize: calc(var(--media-l) / 2);
 
 .toggleSwitch {
 	background-color: $C_coolGrayLight;

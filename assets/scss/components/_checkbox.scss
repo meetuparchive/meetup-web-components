@@ -37,6 +37,6 @@ input elements.
 	margin: 0 $space-half 0 0;
 
 	@include browser-lessThanIE(10) {
-		top: $space/2;
+		top: $space-half;
 	}
 }

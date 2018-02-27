@@ -40,7 +40,6 @@ Class                     | Description
 
 $avatarBg: $C_coolGrayLight;
 $avatarBgRaw: $RAW_coolGrayLight;
-$avatarSizeProps: (height, width);
 
 @mixin avatarIconBadge($color) {
 	position: relative;
@@ -87,7 +86,8 @@ $avatarSizeProps: (height, width);
 %avatar,
 .avatar {
 	@extend %imgFill;
-	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-m), $media-m);
+	width: var(--media-m);
+	height: var(--media-m);
 	position: relative;
 	background-color: $avatarBg;
 	background-position: center 42%;
@@ -123,7 +123,8 @@ $avatarSizeProps: (height, width);
 // Size variants
 //
 .avatar--small {
-	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-s), $media-s);
+	width: var(--media-s);
+	height: var(--media-s);
 }
 
 .avatar--large {
@@ -137,7 +138,8 @@ $avatarSizeProps: (height, width);
 }
 
 .avatar--xxlarge {
-	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-xxl), $media-xxl);
+	width: var(--media-xxl);
+	height: var(--media-xxl);
 }
 
 //

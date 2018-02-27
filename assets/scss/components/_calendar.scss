@@ -3,7 +3,7 @@
 /* meetup overrides */
 
 .flatpickr-calendar {
-	padding: $space-half;   
+	padding: $space-half;
 	width: auto;
 
 	.svg--chevron-right svg {
@@ -45,8 +45,8 @@ span.flatpickr-weekday {
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: $C_blue; 
-  border-color: $C_blue; 
+  background: $C_blue;
+  border-color: $C_blue;
 }
 
 .flatpickr-day.prevMonthDay, .flatpickr-day.nextMonthDay {

@@ -63,7 +63,7 @@ $tabBorderWidth: 3px;
 }
 
 .tabs-tab {
-	@include customPropertyValue(padding, calc(var(--responsiveSpace)/2) 0, $space-half 0);
+	padding: calc(var(--responsive-space) / 2) 0;
 	color: $C_textPrimary;
 	cursor: pointer;
 	display: inline-block;
@@ -88,7 +88,7 @@ $tabBorderWidth: 3px;
 	}
 
 	.tabs--isVertical & {
-		@include customPropertyValue(padding, 0 calc(var(--responsiveSpace)/2) 0 0, 0 $space-half 0 0);
+		padding: 0 calc(var(--responsive-space) / 2) 0 0;
 		border-right: $tabBorderWidth solid transparent;
 		display: block;
 		margin-bottom: $space;
