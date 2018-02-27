@@ -94,7 +94,7 @@ input.field--reset:active {
 	@include formInput();
 
 	// manually changing height to match other inputs
-	height: ($font-size * $line-height) + $space*2;
+	height: calc(var(--font-size-normal) * var(--line-height-normal) + var(--space-double));
 
 	&.disabled {
 		@include formInput--disabled();

@@ -184,9 +184,9 @@ $avatarSizeProps: (height, width);
 }
 
 .avatar--fbFriend {
-	@include avatarIconBadge($C_facebook);
+	@include avatarIconBadge($RAW_facebook);
 }
 
 .avatar--org {
-	@include avatarIconBadge($C_red);
+	@include avatarIconBadge($RAW_red);
 }
