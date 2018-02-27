@@ -321,7 +321,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                     reset={true}
                     role="switch"
                     tabIndex={-1}
-                    wrapper={<button />}
+                    wrapperEl={<button />}
                   >
                     <button
                       aria-checked={false}
