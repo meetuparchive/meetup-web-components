@@ -28,10 +28,7 @@ class Button extends React.PureComponent {
 			small,
 			bordered,
 			hasHoverShadow,
-			// htmlElement,
-			// linkComponent,
-			// linkTo,
-			wrapper,
+			wrapperEl,
 			...other
 		} = this.props;
 
@@ -75,7 +72,7 @@ class Button extends React.PureComponent {
 
 		return (
 			React.cloneElement(
-				wrapper,
+				wrapperEl,
 				{
 					className: classNames.button,
 					onClick: onClick,
@@ -89,7 +86,7 @@ class Button extends React.PureComponent {
 
 Button.defaultProps = {
 	htmlElement: 'button',
-	wrapper: <button />
+	wrapperEl: <button />
 };
 
 Button.propTypes = {
@@ -99,9 +96,6 @@ Button.propTypes = {
 	small: PropTypes.bool,
 	icon: PropTypes.any,
 	right: PropTypes.bool,
-	htmlElement: PropTypes.oneOf(['button', 'a']),
-	linkComponent: PropTypes.element,
-	wrapper: PropTypes.element,
-	linkTo: PropTypes.string
+	wrapperEl: PropTypes.element,
 };
 export default Button;

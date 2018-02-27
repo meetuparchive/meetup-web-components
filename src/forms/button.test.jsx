@@ -122,7 +122,7 @@ describe('Button', () => {
 	describe('buttonTag', () =>{
 		const link = 'https://meetup.com/';
 		const buttonTagComponent = shallow(
-			<Button wrapper={<a href={link} />}>
+			<Button wrapperEl={<a href={link} />}>
 				Button label
 			</Button>
 		);
@@ -137,7 +137,7 @@ describe('Button', () => {
 
 		it('should render the correct `to` value for <Link> component', () => {
 			const buttonTagComponent = shallow(
-				<Button wrapper={<Link to={link} />}>
+				<Button wrapperEl={<Link to={link} />}>
 					Button label
 				</Button>
 			);
