@@ -22,7 +22,13 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
       aria-hidden={true}
       aria-labelledby="label-firstsection"
       className="accordionPanel-animator accordionPanel-animator--collapse"
+      onTransitionEnd={[Function]}
       role="tabpanel"
+      style={
+        Object {
+          "height": "0px",
+        }
+      }
     >
       <div
         className="accordionPanel-content"
@@ -72,7 +78,13 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
       aria-hidden={true}
       aria-labelledby="label-firstsection"
       className="accordionPanel-animator accordionPanel-animator--collapse"
+      onTransitionEnd={[Function]}
       role="tabpanel"
+      style={
+        Object {
+          "height": "0px",
+        }
+      }
     >
       <div
         className="accordionPanel-content"
@@ -144,15 +156,25 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
             aria-hidden={true}
             aria-labelledby="label-firstsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
+            onTransitionEnd={[Function]}
             role="tabpanel"
-            style={undefined}
+            style={
+              Object {
+                "height": "0px",
+              }
+            }
           >
             <div
               aria-hidden={true}
               aria-labelledby="label-firstsection"
               className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+              onTransitionEnd={[Function]}
               role="tabpanel"
-              style={undefined}
+              style={
+                Object {
+                  "height": "0px",
+                }
+              }
             >
               <div
                 className="accordionPanel-content"
@@ -252,15 +274,25 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
             aria-hidden={true}
             aria-labelledby="label-firstsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
+            onTransitionEnd={[Function]}
             role="tabpanel"
-            style={undefined}
+            style={
+              Object {
+                "height": "0px",
+              }
+            }
           >
             <div
               aria-hidden={true}
               aria-labelledby="label-firstsection"
               className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+              onTransitionEnd={[Function]}
               role="tabpanel"
-              style={undefined}
+              style={
+                Object {
+                  "height": "0px",
+                }
+              }
             >
               <div
                 className="accordionPanel-content"
@@ -327,7 +359,6 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                       aria-checked={false}
                       aria-labelledby="firstsection-label"
                       className="button button--reset toggleSwitch"
-                      disabled={false}
                       htmlElement="button"
                       onClick={[Function]}
                       role="switch"
