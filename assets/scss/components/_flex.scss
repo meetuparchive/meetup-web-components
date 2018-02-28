@@ -23,7 +23,7 @@ basis is not required for most common layout tasks.
 
 .flex-item {
 	@include flexChild('grow');
-	@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+	padding-left: var(--responsive-space);
 	&:first-child {
 		padding-left: 0;
 	}
@@ -53,7 +53,7 @@ Breakpoints        | Direction       | Description
 .flex--row {
 	@include flexParent('row', false);
 	> .flex-item {
-		@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+		padding-left: var(--responsive-space);
 		width: auto;
 		&:first-child {
 			padding-left: 0;
@@ -83,7 +83,7 @@ Breakpoints        | Direction       | Description
 	@include flexParent('row', false);
 	height: auto;
 	> .flex-item {
-		@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+		padding-left: var(--responsive-space);
 		@include flex-basis(0);
 		width: auto;
 		&:first-child {
@@ -157,7 +157,7 @@ Class                            | Description
 	@include flex-direction(row-reverse);
 	> .flex-item {
 		&:first-child {
-			@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+			padding-left: var(--responsive-space);
 		}
 		&:last-child {
 			padding-left: 0;

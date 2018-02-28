@@ -1,3 +1,5 @@
+@import "~swarm-constants/dist/scss/rawColors";
+
 /*doc
 ---
 title: Stripe
@@ -94,10 +96,10 @@ and sets a background image using a URL passed into the
 		mix-blend-mode: hard-light;
 
 		@if $placement == 'bottom' {
-			@include linear-gradient(180deg, transparentize($C_black, .85) 25%, transparentize($C_black, .6) 100%);
+			@include linear-gradient(180deg, transparentize($RAW_black, .85) 25%, transparentize($RAW_black, .6) 100%);
 			bottom: 0;
 		} @else {
-			@include linear-gradient(0deg, transparentize($C_black, .85) 25%, transparentize($C_black, .6) 100%);
+			@include linear-gradient(0deg, transparentize($RAW_black, .85) 25%, transparentize($RAW_black, .6) 100%);
 			top: 0;
 		}
 	}

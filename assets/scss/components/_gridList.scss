@@ -26,7 +26,7 @@ $glColumns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 
 
 .gridList {
-	margin: 0 #{-$space} 0 0;
+	margin: 0 calc(var(--space-1) * -1) 0 0;
 	padding: 0;
 	list-style: none;
 	font-size: 0; // shrink whitespace inside .gridList
@@ -72,7 +72,7 @@ Class                                     | Description
 
 */
 .gridList--photoGrid {
-	margin: 0 #{-($space + $space-half)} 0 #{-$space};
+	margin: 0 calc((var(--space-1) + var(--space-half)) * -1) 0 calc(var(--space-1) * -1);
 	padding: 0;
 	> .gridList-item {
 		padding: 0 $space-quarter $space-quarter 0;
@@ -96,14 +96,14 @@ Class                                     | Description
 }
 
 .gridList--autoHeight {
-	@include customPropertyValue(margin-left, calc(var(--responsiveSpace)* -1), -#{$space});
+	margin-left: calc(var(--responsive-space)* -1);
 
 	> .gridList-item {
 		width: auto;
 	}
 
 	&:first-child {
-		@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+		padding-left: var(--responsive-space);
 	}
 }
 

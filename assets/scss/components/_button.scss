@@ -1,3 +1,11 @@
+@import "~swarm-constants/dist/scss/rawColors";
+
+$buttonBGNeutral: $RAW_coolGrayLightTransp;
+$buttonBGNeutral--disabled: transparentize($RAW_coolGrayLightTransp, .04);
+
+$buttonBGNeutralInverted: $RAW_borderInverted;
+$buttonBGNeutralInverted--disabled: transparentize($RAW_borderInverted, 0.17);
+
 /*doc
 ---
 title: Button personality placeholder
@@ -67,7 +75,7 @@ Applies button color-related styles using a mixin.
 ```
 */
 @mixin buttonColor(
-	$bgColor: $C_blue,
+	$bgColor: $RAW_blue,
 	$hoverColor: darken($bgColor, 5%),
 	$activeColor: darken($bgColor, 12%),
 	$textColor: getPrimaryTextColor($bgColor),
@@ -121,9 +129,9 @@ _(The `extend` directive can cause ugly cascade problems)_
 	@include justify-content(center);
 	@include standardBorder(all);
 	@include buttonColor(
-		$bgColor: $C_white,
-		$hoverColor: $C_white,
-		$activeColor: $C_white,
+		$bgColor: $RAW_white,
+		$hoverColor: $RAW_white,
+		$activeColor: $RAW_white,
 		$textTransition: false
 	);
 	box-sizing: border-box;
@@ -138,9 +146,9 @@ _(The `extend` directive can cause ugly cascade problems)_
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_border,
-			$hoverColor: opacify($C_border, .05),
-			$activeColor: opacify($C_border, .1),
+			$bgColor: $RAW_border,
+			$hoverColor: opacify($RAW_border, .05),
+			$activeColor: opacify($RAW_border, .1),
 			$textTransition: false
 		);
 		border-color: $C_borderInverted;
@@ -156,9 +164,9 @@ _(The `extend` directive can cause ugly cascade problems)_
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_textSecondaryInverted,
-			$hoverColor: opacify($C_textSecondaryInverted, .1),
-			$activeColor: opacify($C_textSecondaryInverted, .25)
+			$bgColor: $RAW_textSecondaryInverted,
+			$hoverColor: opacify($RAW_textSecondaryInverted, .1),
+			$activeColor: opacify($RAW_textSecondaryInverted, .25)
 		);
 	}
 }
@@ -169,15 +177,15 @@ _(The `extend` directive can cause ugly cascade problems)_
 %button--primary,
 .button--primary {
 	@include buttonColor(
-		$bgColor: $C_red,
-		$hoverColor: darken($C_red, 10%),
-		$activeColor: darken($C_red, 15%)
+		$bgColor: $RAW_red,
+		$hoverColor: darken($RAW_red, 10%),
+		$activeColor: darken($RAW_red, 15%)
 	);
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_contentBG,
-			$hoverColor: transparentize($C_contentBG, .2),
-			$activeColor: transparentize($C_contentBG, .4)
+			$bgColor: $RAW_contentBG,
+			$hoverColor: transparentize($RAW_contentBG, .2),
+			$activeColor: transparentize($RAW_contentBG, .4)
 		);
 	}
 }
@@ -188,17 +196,17 @@ _(The `extend` directive can cause ugly cascade problems)_
 %button--neutral,
 .button--neutral {
 	@include buttonColor(
-		$bgColor: $C_buttonBGNeutral,
-		$hoverColor: opacify($C_buttonBGNeutral, .05),
-		$activeColor: opacify($C_buttonBGNeutral, .1),
-		$textColor: $C_textPrimary
+		$bgColor: $buttonBGNeutral,
+		$hoverColor: opacify($buttonBGNeutral, .05),
+		$activeColor: opacify($buttonBGNeutral, .1),
+		$textColor: $RAW_textPrimary
 	);
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_buttonBGNeutralInverted,
-			$hoverColor: opacify($C_buttonBGNeutralInverted, .05),
-			$activeColor: opacify($C_buttonBGNeutralInverted, .1),
-			$textColor: $C_textPrimaryInverted
+			$bgColor: $buttonBGNeutralInverted,
+			$hoverColor: opacify($buttonBGNeutralInverted, .05),
+			$activeColor: opacify($buttonBGNeutralInverted, .1),
+			$textColor: $RAW_textPrimaryInverted
 		);
 		@include color-all($C_textPrimaryInverted);
 	}
@@ -209,9 +217,9 @@ _(The `extend` directive can cause ugly cascade problems)_
 //
 .button--bordered {
 	@include buttonColor(
-		$bgColor: $C_contentBG,
-		$hoverColor: $C_contentBG,
-		$activeColor: $C_lightGray
+		$bgColor: $RAW_contentBG,
+		$hoverColor: $RAW_contentBG,
+		$activeColor: $RAW_lightGray
 	);
 	@include shadowOnHover();
 	border: 1px solid $C_border;
@@ -225,12 +233,12 @@ _(The `extend` directive can cause ugly cascade problems)_
 		border: 1px solid $C_border;
 	}
 
-	$C_borderedHoverBase: transparentize($C_textPrimary, .4);
+	$C_borderedHoverBase: transparentize($RAW_textPrimary, .4);
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_textSecondary,
-			$hoverColor: lighten(transparentize($C_textSecondary, .2), 12%),
-			$activeColor: lighten(transparentize($C_textSecondary, .2), 23%)
+			$bgColor: $RAW_textSecondary,
+			$hoverColor: lighten(transparentize($RAW_textSecondary, .2), 12%),
+			$activeColor: lighten(transparentize($RAW_textSecondary, .2), 23%)
 		);
 		border: 1px solid $C_borderInverted;
 
@@ -258,20 +266,20 @@ _(The `extend` directive can cause ugly cascade problems)_
 .button[disabled],
 .button--disabled {
 	@include buttonColor(
-		$bgColor: $C_buttonBGNeutral--disabled,
-		$hoverColor: $C_buttonBGNeutral--disabled,
-		$activeColor: $C_buttonBGNeutral--disabled,
-		$textColor: $C_textHint
+		$bgColor: $buttonBGNeutral--disabled,
+		$hoverColor: $buttonBGNeutral--disabled,
+		$activeColor: $buttonBGNeutral--disabled,
+		$textColor: $RAW_textHint
 	);
 	outline: none;
 	cursor: default;
 
 	.inverted & {
 		@include buttonColor(
-			$bgColor: $C_buttonBGNeutralInverted--disabled,
-			$hoverColor: $C_buttonBGNeutralInverted--disabled,
-			$activeColor: $C_buttonBGNeutralInverted--disabled,
-			$textColor: $C_textHintInverted
+			$bgColor: $buttonBGNeutralInverted--disabled,
+			$hoverColor: $buttonBGNeutralInverted--disabled,
+			$activeColor: $buttonBGNeutralInverted--disabled,
+			$textColor: $RAW_textHintInverted
 		);
 		@include color-all($C_textHintInverted);
 	}

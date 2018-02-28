@@ -1,0 +1,24 @@
+@import "~swarm-sasstools/scss/utils/helpers/float";
+
+/*doc
+---
+title: Bounds
+---
+Used as a non-visual content container that manages content measure.
+
+Centers children with auto margin, clears floats, applies
+padding, and sets a max-width.
+*/
+
+.bounds {
+	@extend %clearfix;
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: var(--width-bounds);
+	width: 100%;
+}
+
+.bounds--wide {
+	max-width: var(--width-bounds-wide);
+}

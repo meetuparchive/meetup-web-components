@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 
 import Bounds from './Bounds';
+import styles from './bounds.module.scss';
 
-const WIDE_CLASS = 'bounds--wide';
+const WIDE_CLASS = styles['bounds--wide'];
 
 describe('Bounds', function() {
 	const bounds = TestUtils.renderIntoDocument(<Bounds />);

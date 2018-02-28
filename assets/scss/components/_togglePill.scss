@@ -1,3 +1,5 @@
+@import "~swarm-constants/dist/scss/rawColors";
+
 .toggleButton-icon {
 	margin-left: $space-half; // relative sizing because icon could be 's' or 'xs'
 }
@@ -11,13 +13,13 @@
 
 .toggleButton-label--large {
 	font-size: $font-size;
-	padding: $space*1.5 $space;
+	padding: calc(var(--space-1) * 1.5) $space;
 }
 
 .toggleButton-input {
 	&:checked + .toggleButton-label {
 		@include buttonColor(
-			$bgColor: $C_blue,
+			$bgColor: $RAW_blue,
 			$textTransition: false
 		);
 		@include standardBorder(none);

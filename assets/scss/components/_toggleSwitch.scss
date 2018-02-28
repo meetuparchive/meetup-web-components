@@ -1,5 +1,6 @@
-$trackWidth: $media-l;
-$knobSize: $trackWidth/2;
+@import "~swarm-constants/dist/scss/rawColors";
+
+$knobSize: calc(var(--media-l) / 2);
 
 .toggleSwitch {
 	background-color: $C_coolGrayLight;
@@ -9,7 +10,7 @@ $knobSize: $trackWidth/2;
 	width: $media-l;
 
 	&:hover {
-		background-color: darken($C_coolGrayLight, 5%);
+		background-color: darken($RAW_coolGrayLight, 5%);
 	}
 
 	&:focus {
@@ -17,7 +18,7 @@ $knobSize: $trackWidth/2;
 	}
 
 	&:active {
-		background-color: darken($C_coolGrayLight, 10%);
+		background-color: darken($RAW_coolGrayLight, 10%);
 	}
 }
 
@@ -25,7 +26,7 @@ $knobSize: $trackWidth/2;
 	background: $C_darkGray;
 
 	&:hover {
-		background-color: darken($C_darkGray, 5%);
+		background-color: darken($RAW_darkGray, 5%);
 	}
 
 	&:focus {
@@ -33,7 +34,7 @@ $knobSize: $trackWidth/2;
 	}
 
 	&:active {
-		background-color: darken($C_darkGray, 10%);
+		background-color: darken($RAW_darkGray, 10%);
 	}
 }
 

@@ -40,7 +40,7 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 
 @include atMediaUp(medium) {
 	.header-navItem {
-		@include customPropertyValue(padding-left, calc(var(--responsiveSpace)), $space);
+		padding-left: calc(var(--responsive-space));
 	}
 }
 
@@ -120,13 +120,12 @@ $maxScalingBP: $breakpoint-m/1px;
 }
 
 .counterBadge {
-	$_dotSize: $space-half;
 	background-color: $C_teal;
 	border-radius: 999px;
-	width: $_dotSize;
-	height: $_dotSize;
+	width: var(--space-half);
+	height: var(--space-half);
 	position: absolute;
-	top: -$_dotSize/2;
+	top: calc((var(--space-half) / 2) * -1);
 	right: 27%;
 	border: 3px solid $C_white;
 
