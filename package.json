@@ -1,6 +1,6 @@
 {
   "name": "meetup-web-components",
-  "version": "0.1.0",
+  "version": "5.0.1915-beta",
   "license": "UNLICENSED",
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
@@ -115,8 +115,8 @@
     "webpack": "2.6.1"
   },
   "lint-staged": {
-      "**/*.{js,jsx}": [
-        "eslint"
-      ]
+    "**/*.{js,jsx}": [
+      "eslint"
+    ]
   }
 }
