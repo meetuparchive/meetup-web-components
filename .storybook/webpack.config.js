@@ -24,11 +24,6 @@ const OPTS_POSTCSS = {
 	]
 };
 
-// placeholder for modules options
-// modules: true,
-// localIdentName: '_[name]_[local]__[hash:base64:5]',
-const OPTS_CSS = {};
-
 module.exports = {
 	module: {
 		rules: [
@@ -39,18 +34,23 @@ module.exports = {
 				include: SRC_PATH
 			},
 			{
-				test: /\.css$/,
-				include: CSS_PATH,
+				test: /\.module\.scss$/,
+				include: SRC_PATH,
 				use: [
 					'style-loader',
 					{
 						loader: 'css-loader',
-						options: {...OPTS_CSS,...{importLoaders: 1}},
+						options: {
+							importLoaders: 2,
+							modules: true,
+							localIdentName: '_[name]_[local]__[hash:base64:5]',
+						},
 					},
 					{
 						loader: 'postcss-loader',
 						options: OPTS_POSTCSS
 					},
+					'sass-loader',
 				]
 			},
 			{
@@ -60,7 +60,9 @@ module.exports = {
 					'style-loader',
 					{
 						loader: 'css-loader',
-						options: {...OPTS_CSS,...{importLoaders: 2}},
+						options: {
+							importLoaders: 2
+						},
 					},
 					{
 						loader: 'postcss-loader',
