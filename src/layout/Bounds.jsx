@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+
 import React from 'react';
 import cx from 'classnames';
 
-export const BOUNDS_CLASS = 'bounds';
+import styles from './bounds.module.scss';
 
 /**
  * Design System Component: Provides `bounds` container for components
@@ -18,8 +19,8 @@ class Bounds extends React.Component {
 		} = this.props;
 
 		const classNames = cx(
-			BOUNDS_CLASS,
-			{'bounds--wide': !narrow },
+			styles.bounds,
+			{[styles['bounds--wide']]: !narrow },
 			className
 		);
 

@@ -15,7 +15,7 @@
     "modules:clean": "rm -rf node_modules",
     "postcheckout": "yarn install",
     "postmerge": "yarn install",
-    "precommit": "git status --porcelain | awk 'match($1, \"[ACM]\"){print $2}' | grep '[js|jsx]$' | xargs eslint",
+    "precommit": "git status --porcelain | awk 'match($1, \"[ACM]\"){print $2}' | grep '\.js' | xargs eslint",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook-static": "build-storybook -c .storybook -o .storybook-out",
     "gh-pages": "gh-pages -d .storybook-out -b gh-pages",
