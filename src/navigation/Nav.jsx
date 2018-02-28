@@ -31,6 +31,7 @@ export class Nav extends React.Component {
 				aria-label="Header navigation"
 				role="navigation"
 				className="padding--all"
+				id="globalNav"
 			>
 				<Flex
 					align={media.isAtMediumUp ? 'center' : 'top'}
