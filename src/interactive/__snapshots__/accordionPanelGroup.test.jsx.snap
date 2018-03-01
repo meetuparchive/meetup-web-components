@@ -135,7 +135,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   role="tabpanel"
                   style={
                     Object {
-                      "height": "0px",
+                      "height": "auto",
                     }
                   }
                 >
@@ -147,7 +147,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                     role="tabpanel"
                     style={
                       Object {
-                        "height": "0px",
+                        "height": "auto",
                       }
                     }
                   >
@@ -620,7 +620,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   role="tabpanel"
                   style={
                     Object {
-                      "height": "0px",
+                      "height": "auto",
                     }
                   }
                 >
@@ -632,7 +632,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                     role="tabpanel"
                     style={
                       Object {
-                        "height": "0px",
+                        "height": "auto",
                       }
                     }
                   >
