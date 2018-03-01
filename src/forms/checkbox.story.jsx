@@ -3,12 +3,12 @@ import React from 'react';
 import Checkbox from './Checkbox';
 import { storiesOf } from '@storybook/react';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
 
 storiesOf('Checkbox', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (<Checkbox id='nada' name='no-name' value='nada' />))
 	.add('with label', () => <Checkbox label='Ketchup' value='ketchup' name='condiment' />)

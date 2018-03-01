@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from './utils/decorators';
+import { decorateWithBasics } from './utils/decorators';
 import { MEDIA_SIZES } from './utils/designConstants';
 import Hscroll from './Hscroll';
 
@@ -30,7 +30,7 @@ const listItems = [
 ];
 
 storiesOf('Hscroll', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo(
 		'Default',
 		'Basic horizontal scroll usage',

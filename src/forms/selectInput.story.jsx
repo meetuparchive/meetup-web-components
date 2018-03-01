@@ -2,7 +2,7 @@ import React from 'react';
 import SelectInput from './SelectInput';
 import { storiesOf } from '@storybook/react';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
 import {
@@ -12,7 +12,7 @@ import {
 } from 'react-intl';
 
 storiesOf('SelectInput', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () =>
 		(<SelectInput
