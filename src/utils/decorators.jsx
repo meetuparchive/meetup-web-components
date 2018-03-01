@@ -1,10 +1,7 @@
 import React from 'react';
-import { IntlProvider } from 'react-intl';
 import { withInfo } from '@storybook/addon-info';
 
-export const decorateWithLocale = story => {
-	const locale = 'en-US';
-
+export const decorateWithBasics = story => {
 	/*
 	 * -- Inline SVG icon sprite --
 	 *
@@ -21,12 +18,10 @@ export const decorateWithLocale = story => {
 	};
 
 	return (
-		<IntlProvider locale={locale}>
-			<div style={styles}>
-				<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
-				{story()}
-			</div>
-		</IntlProvider>
+		<div style={styles}>
+			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+			{story()}
+		</div>
 	);
 };
 

@@ -2,10 +2,10 @@ import React from 'react';
 import TextInput from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from '../utils/decorators';
+import { decorateWithBasics } from '../utils/decorators';
 
 storiesOf('TextInput', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo('type "tel"', null, () => (
 		<TextInput
 			type="tel"

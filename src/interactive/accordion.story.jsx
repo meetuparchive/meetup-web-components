@@ -3,7 +3,7 @@ import AccordionPanelGroup from './AccordionPanelGroup';
 import AccordionPanel from './AccordionPanel';
 import { storiesOf } from '@storybook/react';
 import { decorateAction } from '@storybook/addon-actions';
-import { decorateWithLocale } from '../utils/decorators';
+import { decorateWithBasics } from '../utils/decorators';
 
 
 const callbackAction = decorateAction([
@@ -11,7 +11,7 @@ const callbackAction = decorateAction([
 ]);
 
 storiesOf('Accordion', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo(
 		'default',
 		'Basic Accordion group',
