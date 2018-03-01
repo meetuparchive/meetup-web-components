@@ -3,7 +3,7 @@ import { storiesOf, action } from '@storybook/react';
 
 import withMatchMedia from './utils/components/withMatchMedia';
 
-import { decorateWithLocale } from './utils/decorators';
+import { decorateWithBasics } from './utils/decorators';
 import { Footer } from './Footer';
 
 const TestFooter = withMatchMedia(Footer);
@@ -66,7 +66,7 @@ const DEFAULT_PROPS = {
 };
 
 storiesOf('Footer', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.add('default', () => <TestFooter {...DEFAULT_PROPS} />)
 	.add('isLoggedIn', () => <TestFooter {...DEFAULT_PROPS} isLoggedIn />)
 	.add('isLight', () => <TestFooter {...DEFAULT_PROPS} isLight />);

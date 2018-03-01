@@ -40,7 +40,6 @@
     "prop-types": "^15.6.0",
     "react": "^16.0.0 || ^15.0.0",
     "react-dom": "^16.0.0 || ^15.0.0",
-    "react-intl": "^2.4.0",
     "react-transition-group": "^2.2.1",
     "swarm-animation": "^0.0.95",
     "swarm-icons": "^1.3.285",

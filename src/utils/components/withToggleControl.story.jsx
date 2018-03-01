@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from '../decorators';
+import { decorateWithBasics } from '../decorators';
 
 import withToggleControl from './WithToggleControl';
 import Icon from '../../media/Icon';
@@ -32,7 +32,7 @@ class TestComponent extends React.Component {
 const TestComponentWithToggleControl = withToggleControl(TestComponent);
 
 storiesOf('withToggleControl', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo('default', () =>
 		<TestComponentWithToggleControl />
 	);
