@@ -34,9 +34,6 @@ class AccordionPanel extends React.Component {
 	getPanelStyle(isOpen, contentEl) {
 		const style = { height: '0px' };
 
-		// console.log(`isOpen: ${isOpen}`);
-		// console.log(`contentEl: ${contentEl}`);
-
 		// set height to 0
 		if (!isOpen || !contentEl) {
 			return style;
@@ -63,7 +60,7 @@ class AccordionPanel extends React.Component {
 			onClickCallback
 		} = this.props;
 
-		setClickedPanel && setClickedPanel(this.props.clickId, !isOpen, this.getPanelStyle(!isOpen, this.contentEl)); // this.getPanelStyle(!isOpen, this.contentEl)
+		setClickedPanel && setClickedPanel(this.props.clickId, !isOpen, this.getPanelStyle(!isOpen, this.contentEl));
 		onClickCallback && onClickCallback(e, !isOpen);
 	}
 
