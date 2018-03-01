@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { WithNotes } from '@storybook/addon-notes';
 import { Inverted } from '../utils/storyComponents';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
 import Icon from './Icon';
@@ -11,7 +11,7 @@ import Icon from './Icon';
 const ICON_NAME = 'heart-outline';
 
 storiesOf('Icon', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (
 			<Icon shape={ICON_NAME} />

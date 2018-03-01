@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 import { Inverted } from '../utils/storyComponents';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
 
@@ -10,7 +10,7 @@ import Button from './Button';
 import Icon from '../media/Icon';
 
 storiesOf('Button', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('Default', () => (
 			<Button onClick={action('clicked')}>Button Label</Button>

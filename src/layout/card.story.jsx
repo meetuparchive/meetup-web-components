@@ -5,14 +5,14 @@ import Section from './Section';
 import Stripe from './Stripe';
 import { storiesOf } from '@storybook/react';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
 
 const wrapperStyle = {margin: '0 auto', maxWidth: '500px'};
 
 storiesOf('Card', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (
 			<div style={wrapperStyle}>

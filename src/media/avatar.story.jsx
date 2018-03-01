@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 import { WithNotes } from '@storybook/addon-notes';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo
 } from '../utils/decorators';
 import Avatar from './Avatar.jsx';
@@ -10,7 +10,7 @@ import Avatar from './Avatar.jsx';
 const MOCK_IMAGE_SRC = 'http://placekitten.com/g/400/400';
 
 storiesOf('Avatar', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo(
 		'default',
 		'This is the basic usage with the component.',

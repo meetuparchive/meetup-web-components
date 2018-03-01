@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo
 } from '../utils/decorators';
 import Bounds from '../layout/Bounds';
@@ -9,7 +9,7 @@ import Section from '../layout/Section';
 import Textarea from './Textarea';
 
 storiesOf('Textarea', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo('default', () => (
 			<Bounds><Section>
 				<Textarea
