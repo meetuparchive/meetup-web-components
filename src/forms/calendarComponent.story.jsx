@@ -2,7 +2,7 @@ import React from 'react';
 import CalendarComponent from './CalendarComponent';
 import { storiesOf } from '@storybook/react';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo
 } from '../utils/decorators';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
@@ -11,7 +11,7 @@ import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 
 storiesOf('CalendarComponent', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addDecorator(withKnobs)
 	.add('default', () => (
