@@ -31,6 +31,8 @@ export const TextInput = (props) => {
 		helperText,
 		required,
 		requiredText,
+		isValid,
+		validityMessage,
 		...other
 	} = props;
 
@@ -69,6 +71,17 @@ export const TextInput = (props) => {
 	const inputStyles = iconShape && {
 		paddingLeft: `${paddingSize}px`
 	};
+	const customValidityMessage = isValid ? '' : validityMessage;
+
+	let textInput = null;
+
+	const handleOnChange = (e) => {
+		if (onChange) {
+			onChange(e);
+		}
+
+		textInput && textInput.setCustomValidity(customValidityMessage);
+	};
 
 	// WC-158
 	// Only add a `value` prop if it is defined.
@@ -95,11 +108,12 @@ export const TextInput = (props) => {
 					required={required}
 					placeholder={placeholder}
 					className={classNames.field}
-					onChange={onChange}
+					onChange={handleOnChange}
 					pattern={pattern}
 					disabled={disabled}
 					id={id}
 					style={inputStyles}
+					ref={(input) => { textInput = input; }}
 					{...other}
 				/>
 				{iconShape &&
