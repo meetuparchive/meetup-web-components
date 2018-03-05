@@ -40,7 +40,7 @@ Card-like boxes.
 
 $cardFlushProps: (margin-left, margin-right);
 .card {
-	@include customPropertyValue(padding, var(--responsiveSpace) var(--responsiveSpace) 0, $media-s);
+	@include customPropertyValue(padding, var(--responsiveSpace) var(--responsiveSpace) 0, $space $space 0);
 	border: .5px solid $C_border;
 	box-sizing: border-box;
 	display: block;
@@ -53,7 +53,7 @@ $cardFlushProps: (margin-left, margin-right);
 }
 
 .card--initialHeight {
-	min-height: initial;
+	min-height: 0;
 }
 
 .card--flush {
