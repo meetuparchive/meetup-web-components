@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { decorateWithLocale, decorateWithInfo } from '../utils/decorators';
-import scriptLogo from '../../assets/svg/logo--script.svg';
 import Icon from '../media/Icon';
 import NavItem from './NavItem';
 import Nav from './Nav';
@@ -28,6 +27,7 @@ const unauthItems = [
 ];
 const authItems = [
 	<NavItem
+		key={0}
 		shrink
 		linkTo="meetup.com"
 		label="Explore"
@@ -35,6 +35,7 @@ const authItems = [
 		icon={<Icon shape="search" size="s" className="atMedium_display--none" />}
 	/>,
 	<NavItem
+		key={1}
 		shrink
 		label="Notifications"
 		className={`navItem--notifications ${CLASS_AUTH_ITEM}`}
@@ -47,6 +48,7 @@ const authItems = [
 		}
 	/>,
 	<NavItem
+		key={2}
 		shrink
 		linkTo="meetup.com"
 		label="Messages"
@@ -59,14 +61,6 @@ const authItems = [
 			/>
 		}
 		hasUpdates
-	/>,
-];
-const logo = [
-	<NavItem
-		linkTo="meetup.com"
-		className="logo logo--script flush--left"
-		linkClassName="display--block"
-		icon={<img src={scriptLogo} alt="Meetup Logo" height="44px" />}
 	/>,
 ];
 
@@ -82,7 +76,6 @@ storiesOf('Nav', module)
 			}}
 			unauthItems={unauthItems}
 			authItems={authItems}
-			logo={logo}
 		/>
 	))
 	.add('unauthenticated', () => (
@@ -92,6 +85,5 @@ storiesOf('Nav', module)
 			}}
 			unauthItems={unauthItems}
 			authItems={authItems}
-			logo={logo}
 		/>
 	));
