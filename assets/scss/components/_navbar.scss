@@ -5,6 +5,7 @@
 
 #globalNav {
 	@include standardBorder('bottom');
+	width: 100%;
 }
 
 .padding--left-half {
@@ -22,7 +23,7 @@
 $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 .aboveFloatingContent {
 	position: relative;
-	z-index: $zindex--aboveFloatingContent+2;
+	z-index: $zindex--aboveFloatingContent + 2;
 }
 
 .navItem {
@@ -75,9 +76,7 @@ $maxScalingBP: $breakpoint-m/1px;
 	font-size: $minLabelSize;
 	font-size: calc(
 		#{$minLabelSize}px + (#{$maxLabelSize} - #{$minLabelSize}) *
-			(
-				100vw / #{$maxScalingBP}
-			)
+			(100vw / #{$maxScalingBP})
 	);
 
 	// hack to fix vert. alignment of Login and Sign up on FF mobile
