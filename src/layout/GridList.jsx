@@ -54,9 +54,13 @@ class GridList extends React.Component {
 				className={autoHeight || autoHeightWithWrap ? autoHeightClassNames : classNames}
 				{...other}
 			>
-				{items.map((item, key) =>
-					<li key={key} className={listItemClassNames}>{item}</li>
-				)}
+				{items.map((item, key) => (
+					<li key={key} className={listItemClassNames}>
+						<div className="gridList-itemInner">
+							{item}
+						</div>
+					</li>
+				))}
 			</ul>
 		);
 	}
