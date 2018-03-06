@@ -36,6 +36,7 @@ storiesOf('Stripe', module)
 					</Stripe>
 					<Stripe
 						hideScrim
+						inverted
 						backgroundImage='https://s-media-cache-ak0.pinimg.com/originals/10/55/e7/1055e79a0519191212035a61ed530800.jpg'>
 						<div style={{zIndex: '1'}}>
 							<h3 className='text--sectionTitle'>Stripe with bg photo, no scrim</h3>
@@ -48,7 +49,10 @@ storiesOf('Stripe', module)
 	)
 	.addWithInfo('hero stripe', () => (
 		<div style={{width: '100%'}}>
-			<Stripe hero backgroundImage='https://placekitten.com/g/600/600'>
+			<Stripe
+				hero
+				className='inverted'
+				backgroundImage='https://placekitten.com/g/600/600'>
 				<h3 className='text--display'>Hero stripe with bg photo</h3>
 				<p>Stripes go full-width and are used to separate distinct regions of a view</p>
 				<p>Hero stripes have a built-in Bounds to wrangle internal content</p>
