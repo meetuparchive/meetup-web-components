@@ -3,7 +3,7 @@ import { storiesOf, action } from '@storybook/react';
 import StoryRouter from 'storybook-router';
 import { Inverted } from '../utils/storyComponents';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
 import Link from 'react-router-dom/Link';
@@ -12,7 +12,7 @@ import Button from './Button';
 import Icon from '../media/Icon';
 
 storiesOf('Button', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addDecorator(StoryRouter())
 	.add('Default', () => (

@@ -4,7 +4,7 @@ import FlexItem from './FlexItem';
 import { storiesOf } from '@storybook/react';
 
 const flexParentStyles = {
-	minHeight: '200px',
+	height: '200px',
 	padding: '20px',
 	width: '100%'
 };

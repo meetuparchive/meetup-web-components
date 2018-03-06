@@ -21,7 +21,6 @@ export const TextInput = (props) => {
 		children,
 		error,
 		placeholder,
-		required,
 		id,
 		onChange,
 		isSearch,
@@ -30,6 +29,10 @@ export const TextInput = (props) => {
 		disabled,
 		iconShape,
 		helperText,
+		required,
+		requiredText,
+		isValid,
+		validityMessage,
 		...other
 	} = props;
 
@@ -45,8 +48,8 @@ export const TextInput = (props) => {
 		label: cx(
 			'label--field',
 			{
-				required,
-				disabled,
+				'label--disabled': disabled,
+				'label--required': required,
 				'flush--bottom': helperText
 			},
 			labelClassName
@@ -68,6 +71,17 @@ export const TextInput = (props) => {
 	const inputStyles = iconShape && {
 		paddingLeft: `${paddingSize}px`
 	};
+	const customValidityMessage = isValid ? '' : validityMessage;
+
+	let textInput;
+
+	const handleOnChange = (e) => {
+		if (onChange) {
+			onChange(e);
+		}
+
+		textInput && textInput.setCustomValidity(customValidityMessage);
+	};
 
 	// WC-158
 	// Only add a `value` prop if it is defined.
@@ -79,7 +93,7 @@ export const TextInput = (props) => {
 	return (
 		<div className="inputContainer">
 			{label &&
-				<label className={classNames.label} htmlFor={id}>
+				<label className={classNames.label} htmlFor={id} data-requiredtext={required && requiredText}>
 					{label}
 				</label>
 			}
@@ -94,11 +108,12 @@ export const TextInput = (props) => {
 					required={required}
 					placeholder={placeholder}
 					className={classNames.field}
-					onChange={onChange}
+					onChange={handleOnChange}
 					pattern={pattern}
 					disabled={disabled}
 					id={id}
 					style={inputStyles}
+					ref={(input) => { textInput = input; }}
 					{...other}
 				/>
 				{iconShape &&
@@ -126,7 +141,6 @@ TextInput.propTypes = {
 	]),
 	labelClassName: PropTypes.string,
 	placeholder: PropTypes.string,
-	required: PropTypes.bool,
 	isSearch: PropTypes.bool,
 	onChange: PropTypes.func,
 	disabled: PropTypes.bool,
@@ -135,7 +149,13 @@ TextInput.propTypes = {
 	helperText: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
-	])
+	]),
+	required: PropTypes.bool,
+	requiredText: (props) => (
+		props.required && !props.requiredText &&
+			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
+	)
+
 };
 
 export default withErrorList(TextInput);

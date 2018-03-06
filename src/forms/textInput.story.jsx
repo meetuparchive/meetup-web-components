@@ -2,94 +2,82 @@ import React from 'react';
 import TextInput from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from '../utils/decorators';
+import { decorateWithBasics } from '../utils/decorators';
 
 storiesOf('TextInput', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo('type "tel"', null, () => (
-		<div className='span--50'>
-			<TextInput
-				type="tel"
-				label="Telephone Number"
-				id="telephone"
-			/>
-		</div>
+		<TextInput
+			type="tel"
+			label="Telephone Number"
+			id="telephone"
+		/>
 	)
 	)
 	.addWithInfo('default', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				placeholder='enter your name here'
-			/>
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			placeholder='enter your name here'
+		/>
 	)
 	)
 	.addWithInfo('with value', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				defaultValue='Phife Dawg'
-			/>
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			defaultValue='Phife Dawg'
+		/>
 	)
 	)
 	.addWithInfo('disabled', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				defaultValue='Cannot focus'
-				disabled />
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			defaultValue='Cannot focus'
+			disabled />
 	)
 	)
 	.addWithInfo('error state', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				defaultValue='#$%!$%!'
-				error='Not so fast. You have an error.' />
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			defaultValue='#$%!$%!'
+			error='Not so fast. You have an error.' />
 	)
 	)
 	.addWithInfo('error state as element', null, () => {
 		return (
-			<div className='span--50'>
-				<TextInput label='Your name'
-					id='fullname'
-					name='name'
-					error={<span>This error is an element</span>}
-					placeholder='not your email' />
-			</div>
+			<TextInput label='Your name'
+				id='fullname'
+				name='name'
+				error={<span>This error is an element</span>}
+				placeholder='not your email' />
+
 		);
 	})
 	.addWithInfo('with helper text', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				helperText='Names cannot contain special characters' />
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			helperText='Names cannot contain special characters' />
 	)
 	)
 	.addWithInfo('required', null, () => {
 		return (
-			<form className='span--50'>
+			<form>
 				<TextInput
 					label='Your name'
 					id='fullname'
 					name='name'
+					placeholder='Not your email'
 					required
-					placeholder='Not your email' />
+					requiredText='(required)' />
 				<Button
 					contrast
 					fullWidth>
@@ -116,15 +104,13 @@ storiesOf('TextInput', module)
 		);
 	})
 	.addWithInfo('with icon', null, () => (
-		<div className='span--50'>
-			<TextInput
-				label='Your name'
-				id='fullname'
-				name='name'
-				defaultValue='Phife Dawg'
-				placeholder='Not your email'
-				iconShape='search' />
-		</div>
+		<TextInput
+			label='Your name'
+			id='fullname'
+			name='name'
+			defaultValue='Phife Dawg'
+			placeholder='Not your email'
+			iconShape='search' />
 	)
 	)
 	.addWithInfo(
@@ -137,30 +123,58 @@ storiesOf('TextInput', module)
 				pattern:'.{5,10}'
 			};
 			return (
-				<div className='span--50'>
-					<TextInput
-						label='Your name'
-						id='fullname'
-						name='name'
-						value='how long is this'
-						error='this is an error'
-						{...rules} />
-				</div>
-			);
-		}
-	)
-	.addWithInfo('has a pattern for min length', null, () => {
-		const rules = {
-			pattern:'.{5,10}'
-		};
-		return (
-			<form>
 				<TextInput
 					label='Your name'
 					id='fullname'
 					name='name'
-					defaultValue='>5'
+					value='how long is this'
+					error='this is an error'
 					{...rules} />
+			);
+		}
+	)
+	.addWithInfo('has a pattern for min length', null, () => {
+		/**
+		 * @module ValidatedTextInput
+		 */
+		class ValidatedTextInput extends React.PureComponent {
+			constructor(props){
+				super(props);
+
+				this.state = {
+					valueIsValid: true
+				};
+			}
+
+			render () {
+				const rules = {
+					pattern:'.{5,10}'
+				};
+				const checkValidity = (e) => {
+					const {value} = e.target;
+
+					if (value.length > 5) {
+						this.setState(() => ({valueIsValid: false}));
+					}
+				};
+				return (
+					<TextInput
+						label='Your name'
+						id='fullname'
+						name='name'
+						defaultValue='>5'
+						onChange={(e) => checkValidity(e)}
+						isValid={this.state.valueIsValid}
+						validityMessage='Must be less than 5 characters'
+						{...rules}
+					/>
+				);
+			}
+		}
+
+		return (
+			<form>
+				<ValidatedTextInput />
 				<Button
 					contrast
 					fullWidth>

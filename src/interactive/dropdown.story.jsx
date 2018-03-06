@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { decorateWithLocale } from "../utils/decorators";
+import { decorateWithBasics } from "../utils/decorators";
 import Dropdown from "./Dropdown";
 import Section from "../layout/Section";
 import Chunk from "../layout/Chunk";
@@ -77,7 +77,7 @@ class DropdownWithToggle extends React.PureComponent {
 }
 
 storiesOf("Dropdown", module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo(
 		"Basic Dropdown component",
 		"Aligned right by default",
