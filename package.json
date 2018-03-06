@@ -52,7 +52,8 @@
     "raf-schd": "2.1.0",
     "react-flatpickr": "3.6.4",
     "react-portal": "4.1.2",
-    "recompose": "0.26.0"
+    "recompose": "0.26.0",
+    "storybook-router": "false0.3.2"
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
