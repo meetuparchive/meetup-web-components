@@ -269,6 +269,10 @@ $C_toggleHighlight: $C_blue;
 		background: transparent;
 		color: $C_textPrimary;
 	}
+
+	&:focus {
+		outline: 0;
+	}
 }
 
 .select-customArrow {
