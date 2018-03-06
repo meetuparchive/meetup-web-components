@@ -69,10 +69,10 @@ class Avatar extends React.PureComponent {
 				/>;
 
 		if (this.props.to || this.props.href) {
-			return <a {...allProps}>{alt}{children}{printPhoto}</a>;
+			return <a {...allProps}><span className="visibility--a11yHide">{alt}</span>{children}{printPhoto}</a>;
 		}
 
-		return <span {...allProps}>{alt}{children}{printPhoto}</span>;
+		return <span {...allProps}><span className="visibility--a11yHide">{alt}</span>{children}{printPhoto}</span>;
 	}
 }
 
