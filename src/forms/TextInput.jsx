@@ -73,7 +73,7 @@ export const TextInput = (props) => {
 	};
 	const customValidityMessage = isValid ? '' : validityMessage;
 
-	let textInput = null;
+	let textInput;
 
 	const handleOnChange = (e) => {
 		if (onChange) {
