@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo
 } from '../utils/decorators';
 import Bounds from '../layout/Bounds';
@@ -9,7 +9,7 @@ import Section from '../layout/Section';
 import Textarea from './Textarea';
 
 storiesOf('Textarea', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo('default', () => (
 			<Bounds><Section>
 				<Textarea
@@ -68,12 +68,13 @@ storiesOf('Textarea', module)
 	.add('error state', () =>
 		(<Bounds><Section>
 			<Textarea
-				required
 				label='Your biography'
 				id='yourBio'
 				name='bio'
 				error='Not so fast. You have an error.'
-				placeholder='Tell me about your life' />
+				placeholder='Tell me about your life'
+				required
+				requiredText="(required)" />
 		</Section></Bounds>)
 	)
 	.add('with helper text', () =>

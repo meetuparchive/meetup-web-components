@@ -22,7 +22,7 @@ class AccordionPanel extends React.Component {
 		this.onTransitionEnd = this.onTransitionEnd.bind(this);
 
 		this.state = {
-			height: '0px'
+			height: props.isOpen ? 'auto' : '0px'
 		};
 	}
 
@@ -60,17 +60,7 @@ class AccordionPanel extends React.Component {
 			onClickCallback
 		} = this.props;
 
-		this.setState(()=>
-			this.getPanelStyle(isOpen, this.contentEl),
-			() => {
-				setTimeout(() => {
-					this.setState(()=>
-						this.getPanelStyle(!isOpen, this.contentEl)
-					);
-				}, 1);
-			}
-		);
-		setClickedPanel && setClickedPanel(this.props.clickId, !isOpen);
+		setClickedPanel && setClickedPanel(this.props.clickId, !isOpen, this.getPanelStyle(!isOpen, this.contentEl));
 		onClickCallback && onClickCallback(e, !isOpen);
 	}
 
@@ -86,6 +76,25 @@ class AccordionPanel extends React.Component {
 	 */
 	componentDidMount() {
 		this.forceUpdate();
+	}
+
+	/**
+	 * @description set height state when the panel receives a change
+	 * @returns {undefined}
+	 */
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.isOpen !== this.props.isOpen) {
+			this.setState(()=>
+				this.getPanelStyle(!nextProps.isOpen, this.contentEl),
+				() => {
+					setTimeout(() => {
+						this.setState(()=>
+							this.getPanelStyle(nextProps.isOpen, this.contentEl)
+						);
+					}, 1);
+				}
+			);
+		}
 	}
 
 	/**
