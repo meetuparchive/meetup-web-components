@@ -40,7 +40,7 @@ $avatarSizeProps: (height, width);
 
 @mixin avatarIconBadge($color) {
 	position: relative;
-	text-indent: initial;
+	text-indent: 0;
 
 	.svg--avatarBadge {
 		position: absolute;
@@ -151,7 +151,7 @@ $avatarSizeProps: (height, width);
 	@include align-items(center);
 	@include justify-content(center);
 	position: relative;
-	text-indent: initial;
+	text-indent: 0;
 	background-color: darken($avatarBg, 6%);
 
 	.svg--profile {
@@ -172,8 +172,6 @@ $avatarSizeProps: (height, width);
 			// sets SVG size relative to wrapper
 			width: 40%;
 			height: 40%;
-
-			transform: translateX(4%);
 			opacity: alpha($C_textSecondary);
 		}
 	}
