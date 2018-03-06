@@ -57,7 +57,7 @@ $cardFlushProps: (margin-left, margin-right);
 }
 
 .card--flush {
-	@include customPropertyValue(cardFlushProps, calc(var(--responsiveSpace)*-1), -#{$space});
+	@include customPropertyValue($cardFlushProps, calc(var(--responsiveSpace) * -1), -#{$space});
 	border-radius: 0;
 	border-width: 0;
 }
