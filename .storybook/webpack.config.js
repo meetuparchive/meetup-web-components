@@ -2,6 +2,7 @@ const path = require('path');
 
 const SCSS_PATH = path.resolve(__dirname, '../assets', 'scss');
 const CSS_PATH = path.resolve(__dirname, '../assets', 'css');
+const SVG_PATH = path.resolve(__dirname, '../assets', 'svg');
 const SRC_PATH = path.resolve(__dirname, '../src');
 const IMG_PATH = path.resolve(__dirname, '../assets', 'images');
 const PLATFORM_PATH = /node_modules\/meetup-web-platform/;
@@ -24,6 +25,11 @@ module.exports = {
 				test: /\.scss$/,
 				loaders: ['style-loader', 'css-loader', 'sass-loader'],
 				include: SCSS_PATH
+			},
+			{
+				test: /\.svg$/,
+				loaders: ['file-loader'],
+				include: SVG_PATH
 			},
 			{
 				test: /\.jsx?$/,
