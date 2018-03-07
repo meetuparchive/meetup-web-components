@@ -6,7 +6,7 @@ import scriptLogo from '../../assets/svg/logo--script.svg';
 import withMatchMedia from '../utils/components/withMatchMedia';
 import Flex from '../layout/Flex';
 
-import NavItem from './NavItem';
+import NavItem from './components/NavItem';
 
 /**
  * @param {Object} props component properties
