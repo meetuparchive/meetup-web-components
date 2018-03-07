@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import Button from '../forms/Button';
-import Dropdown from '../interactive/Dropdown';
-import FlexItem from '../layout/FlexItem';
+import Button from '../../forms/Button';
+import Dropdown from '../../interactive/Dropdown';
+import FlexItem from '../../layout/FlexItem';
 
 const NAV_ITEM_CLASS = 'navItemLink';
 

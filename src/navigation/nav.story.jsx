@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { decorateWithLocale, decorateWithInfo } from '../utils/decorators';
+import { decorateWithInfo } from '../utils/decorators';
 import Icon from '../media/Icon';
-import NavItem from './NavItem';
+import NavItem from './components/NavItem';
 import Nav from './Nav';
 
 const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
@@ -65,7 +65,6 @@ const authItems = [
 ];
 
 storiesOf('Nav', module)
-	.addDecorator(decorateWithLocale)
 	.addDecorator(decorateWithInfo)
 	.add('authenticated', () => (
 		<Nav
