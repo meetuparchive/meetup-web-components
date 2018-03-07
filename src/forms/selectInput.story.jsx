@@ -2,7 +2,7 @@ import React from 'react';
 import SelectInput from './SelectInput';
 import { storiesOf } from '@storybook/react';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
 import {
@@ -12,7 +12,7 @@ import {
 } from 'react-intl';
 
 storiesOf('SelectInput', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () =>
 		(<SelectInput
@@ -44,13 +44,14 @@ storiesOf('SelectInput', module)
 			label='Select a name for your horse'
 			id='horsename'
 			name='horsename'
-			required
 			options={[
 				{ label: 'Geoffrey', value: 'geoffrey' },
 				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
 				{ label: 'Mister Chompy', value: 'chompyhorse' }
 			]}
 			error='You forgot to name your horse!'
+			required
+			requiredText='(required)'
 		/>)
 	)
 	.add('with disabled options', () =>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { decorateWithLocale } from '../utils/decorators';
+import { decorateWithBasics } from '../utils/decorators';
 import { StoryLink } from '../utils/storyComponents';
 import { Tabs, TabsTab } from './Tabs';
 
 storiesOf('Tabs', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo('default', 'This is the basic usage with the component.', () => (
 		<Tabs>
 			<TabsTab>

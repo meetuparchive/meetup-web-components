@@ -19,6 +19,11 @@ class AccordionPanel extends React.Component {
 		super(props);
 		this._handleToggle = this._handleToggle.bind(this);
 		this.onToggleClick = this.onToggleClick.bind(this);
+		this.onTransitionEnd = this.onTransitionEnd.bind(this);
+
+		this.state = {
+			height: props.isOpen ? 'auto' : '0px'
+		};
 	}
 
 	/**
@@ -27,12 +32,15 @@ class AccordionPanel extends React.Component {
 	 * @returns {Object} inline styles
 	 */
 	getPanelStyle(isOpen, contentEl) {
-		const style = { height: '0px', minHeight: '0px' };
+		const style = { height: '0px' };
 
-		if (!isOpen || !contentEl) return style;
+		// set height to 0
+		if (!isOpen || !contentEl) {
+			return style;
+		}
 
-		delete style.height; // allow content to expand the panel when open
-		style.minHeight = `${contentEl.getBoundingClientRect().height}px`;
+		// set height to {n}px
+		style.height = `${contentEl.getBoundingClientRect().height}px`;
 		return style;
 	}
 
@@ -46,13 +54,19 @@ class AccordionPanel extends React.Component {
 	_handleToggle(e){
 		e.preventDefault();
 
-		const isToggledOpen = !this.props.isOpen;
-		this.props.setClickedPanel && this.props.setClickedPanel(this.props.clickId, isToggledOpen);
-		this.props.onClickCallback && this.props.onClickCallback(e, isToggledOpen);
+		const {
+			isOpen,
+			setClickedPanel,
+			onClickCallback
+		} = this.props;
+
+		setClickedPanel && setClickedPanel(this.props.clickId, !isOpen, this.getPanelStyle(!isOpen, this.contentEl));
+		onClickCallback && onClickCallback(e, !isOpen);
 	}
 
 	onToggleClick(e){
 		e.preventDefault();
+
 		this.props.onToggleClick ? this.props.onToggleClick(e) : this._handleToggle(e);
 	}
 
@@ -62,6 +76,25 @@ class AccordionPanel extends React.Component {
 	 */
 	componentDidMount() {
 		this.forceUpdate();
+	}
+
+	/**
+	 * @description set height state when the panel receives a change
+	 * @returns {undefined}
+	 */
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.isOpen !== this.props.isOpen) {
+			this.setState(()=>
+				this.getPanelStyle(!nextProps.isOpen, this.contentEl),
+				() => {
+					setTimeout(() => {
+						this.setState(()=>
+							this.getPanelStyle(nextProps.isOpen, this.contentEl)
+						);
+					}, 1);
+				}
+			);
+		}
 	}
 
 	/**
@@ -76,6 +109,14 @@ class AccordionPanel extends React.Component {
 		return this.props.isOpen && indicatorIconActive ?
 			indicatorIconActive :
 			indicatorIcon;
+	}
+
+	onTransitionEnd() {
+		if (this.props.isOpen) {
+			this.setState(()=>({
+				height: 'auto'
+			}));
+		}
 	}
 
 	render() {
@@ -146,7 +187,8 @@ class AccordionPanel extends React.Component {
 						aria-labelledby={`label-${ariaId}`}
 						aria-hidden={!isOpen}
 						className={classNames.content}
-						style={this.getPanelStyle(isOpen, this.contentEl)}
+						style={{height: this.state.height}}
+						onTransitionEnd={this.onTransitionEnd}
 					>
 						<div
 							className='accordionPanel-content'

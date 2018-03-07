@@ -28,6 +28,8 @@ class Button extends React.PureComponent {
 			small,
 			bordered,
 			hasHoverShadow,
+			wrapperEl,
+			disabled,
 			...other
 		} = this.props;
 
@@ -41,7 +43,8 @@ class Button extends React.PureComponent {
 					'button--reset': reset,
 					'button--bordered': bordered,
 					'button--hasHoverShadow': hasHoverShadow,
-					'button--neutral': neutral
+					'button--neutral': neutral,
+					'button--disabled': disabled
 				},
 				className
 			),
@@ -70,17 +73,23 @@ class Button extends React.PureComponent {
 		);
 
 		return (
-			<button
-				className={classNames.button}
-				onClick={onClick}
-				role='button'
-				{...other}
-			>
-				{ icon ? iconChildren : children }
-			</button>
+			React.cloneElement(
+				wrapperEl,
+				{
+					className: classNames.button,
+					onClick: onClick,
+					...other
+				},
+				icon ? iconChildren : children
+			)
 		);
 	}
 }
+
+Button.defaultProps = {
+	htmlElement: 'button',
+	wrapperEl: <button />
+};
 
 Button.propTypes = {
 	reset: PropTypes.bool,
@@ -89,5 +98,6 @@ Button.propTypes = {
 	small: PropTypes.bool,
 	icon: PropTypes.any,
 	right: PropTypes.bool,
+	wrapperEl: PropTypes.element,
 };
 export default Button;
