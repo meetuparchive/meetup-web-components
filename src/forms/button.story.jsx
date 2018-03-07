@@ -1,17 +1,20 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
+import StoryRouter from 'storybook-router';
 import { Inverted } from '../utils/storyComponents';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
+import Link from 'react-router-dom/Link';
 
 import Button from './Button';
 import Icon from '../media/Icon';
 
 storiesOf('Button', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addDecorator(StoryRouter())
 	.add('Default', () => (
 			<Button onClick={action('clicked')}>Button Label</Button>
 		)
@@ -24,6 +27,13 @@ storiesOf('Button', module)
 	.add('Default - with hover shadow', () => (
 		<Button onClick={action('clicked')} hasHoverShadow>Button Label</Button>
 	))
+	.add('Default - as anchor tag', () => (
+		<Button onClick={action('clicked')} wrapper={<a href="https://meetup.com/" />}>Button Label</Button>
+	))
+	.add('Default - as <Link> component', () => (
+		<Button onClick={action('clicked')} wrapper={<Link to="https://meetup.com/"/>} >Button Label</Button>
+	))
+
 	.add('Neutral', () => (
 		<Button onClick={action('clicked')} neutral>Button Label</Button>
 	))

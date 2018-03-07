@@ -2,14 +2,14 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
 import AvatarMember from './AvatarMember.jsx';
 import InlineBlockList from '../layout/InlineBlockList';
 
 storiesOf('AvatarMember', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo(
 		'default',
 		'This is the basic usage with the component.',

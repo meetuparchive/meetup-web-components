@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
 
@@ -12,7 +12,7 @@ import FlexItem from '../layout/FlexItem';
 import ToggleSwitch from './ToggleSwitch';
 
 storiesOf('ToggleSwitch', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('Default', () => (
 			<ToggleSwitch name="testToggle" />

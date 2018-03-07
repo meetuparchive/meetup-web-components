@@ -2,7 +2,7 @@ import React from 'react';
 import NumberInput from './NumberInput';
 import { storiesOf } from '@storybook/react';
 import {
-	decorateWithLocale,
+	decorateWithBasics,
 	decorateWithInfo,
 } from '../utils/decorators';
 import {
@@ -13,7 +13,7 @@ import {
 
 
 storiesOf('NumberInput', module)
-	.addDecorator(decorateWithLocale)
+	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (<div>
 		<NumberInput
@@ -73,6 +73,7 @@ storiesOf('NumberInput', module)
 			label='How many?'
 			id='amount'
 			name='amount'
-			required />)
+			required
+			requiredText="(required)" />)
 	);
 
