@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav should match the snapshot for ScriptLogo 1`] = `
+<Nav
+  localeCode="en-US"
+  logoAccessible="Meetup Logo"
+  media={Object {}}
+  self={
+    Object {
+      "status": "prereg",
+    }
+  }
+/>
+`;
+
+exports[`Nav should match the snapshot for SwarmLogo 1`] = `
+<Nav
+  localeCode="en-US"
+  logoAccessible="Meetup Logo"
+  media={Object {}}
+  self={
+    Object {
+      "name": "Jeff Cleft",
+      "status": "active",
+    }
+  }
+/>
+`;
