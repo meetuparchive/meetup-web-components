@@ -25,7 +25,10 @@ const navItems = {
 	groups: {
 		link: 'meetup.com/groups',
 		label: 'Groups',
-		list: [],
+		list: [
+			{ urlname: '/mason-mocks', name: 'Mason Mocks' },
+			{ urlname: '/chicken-scratch', name: 'Chicken Scratch' },
+		],
 	},
 	messages: {
 		link: 'meetup.com/messages',
@@ -37,11 +40,28 @@ const navItems = {
 		label: 'Notifications',
 		unreadNotifications: 0,
 		list: [],
+		markRead: () => {},
 	},
 	profile: {
 		link: 'meetup.com/profile',
 		label: 'Profile',
 		getSelfGroupsQuery: () => {},
+		profileDropdown: {
+			settings: {
+				link: 'meetup.com/settings',
+				label: 'Settings',
+			},
+			help: {
+				link: 'meetup.com/help',
+				label: 'Help',
+			},
+			logout: {
+				link: 'meetup.com/logout',
+				label: 'Logout',
+			},
+			allGroupsLabel: 'All Groups',
+			groupHome: () => {},
+		},
 	},
 };
 
@@ -53,6 +73,17 @@ storiesOf('Nav', module)
 				id: 1234,
 				name: 'John Q. Testington',
 				status: 'active',
+			}}
+			navItems={navItems}
+		/>
+	))
+	.add('authenticated Pro member', () => (
+		<Nav
+			self={{
+				id: 1234,
+				name: 'John Q. Testington',
+				status: 'active',
+				isProMember: true,
 			}}
 			navItems={navItems}
 		/>
