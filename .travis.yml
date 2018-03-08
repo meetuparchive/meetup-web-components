@@ -62,6 +62,7 @@ deploy:
    skip_cleanup: true
    github_token: $GITHUB_TOKEN
    local_dir: .storybook-out/
+   verbose: true
    on:
       branch: master
 
