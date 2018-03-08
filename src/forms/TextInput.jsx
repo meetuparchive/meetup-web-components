@@ -3,6 +3,7 @@ import React from 'react';
 import cx from 'classnames';
 import Icon from '../media/Icon';
 import { MEDIA_SIZES } from '../utils/designConstants';
+import CharCounter from './CharCounter';
 import withErrorList from '../utils/components/withErrorList';
 
 export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
@@ -124,7 +125,12 @@ export const TextInput = (props) => {
 					<Icon {...iconProps} />
 				}
 			</div>
-			{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
+			{maxLength &&
+				<CharCounter
+					maxLength={parseInt(maxLength, 10)}
+					valueLength={parseInt(value.length, 10)}
+				/>
+			}
 			{children}
 		</div>
 	);
