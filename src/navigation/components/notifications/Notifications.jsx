@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { FormattedRelative } from 'react-intl';
 
 import Flex from '../../../layout/Flex';
 import FlexItem from '../../../layout/FlexItem';
@@ -121,7 +120,8 @@ class Notification extends React.PureComponent {
 						<p className="text--hint text--small">
 							<Icon shape={getIconShape(kind)} size="xs" />
 							<time className="notification-time text--small">
-								<FormattedRelative value={timeSince} />
+								{timeSince.toDateString()}
+								{/* TODO: Format Time*/}
 							</time>
 						</p>
 					</FlexItem>

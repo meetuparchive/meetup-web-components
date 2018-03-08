@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
+import { MOCK_NOTIFICATIONS_LIST } from 'meetup-web-mocks/lib/notifications/api';
 
 import { decorateWithInfo } from '../utils/decorators';
 
@@ -40,8 +41,12 @@ const navItems = {
 		link: 'meetup.com/notifications',
 		label: 'Notifications',
 		unreadNotifications: 0,
-		list: [],
-		markRead: () => {},
+		list: [...MOCK_NOTIFICATIONS_LIST],
+		notificationsDropdown: {
+			markRead: () => {},
+			emptyContentLabel: "You don't have any notifications yet",
+			generateClassicUrl: () => {},
+		},
 	},
 	profile: {
 		link: 'meetup.com/profile',

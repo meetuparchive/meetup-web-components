@@ -13,6 +13,7 @@ export const NotificationsDropdownComponent = ({
 	localeCode,
 	emptyContentLabel,
 	notificationTitleLabel,
+	generateClassicUrl,
 }) => {
 	const isEmptyState = notifications.length < 1;
 
@@ -35,6 +36,7 @@ export const NotificationsDropdownComponent = ({
 							dangerouslySetInnerHTML={{ __html: notif.text }}
 							updated={notif.updated}
 							localeCode={localeCode}
+							generateClassicUrl={generateClassicUrl}
 						/>
 					</li>
 				))}

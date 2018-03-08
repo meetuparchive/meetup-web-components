@@ -61,8 +61,13 @@ export class Nav extends React.Component {
 			<NotificationsDropdown
 				self={self}
 				notifications={notifications.list}
-				onMarkReadAction={notifications.markRead}
+				onMarkReadAction={notifications.notificationsDropdown.markRead}
 				localeCode={localeCode}
+				emptyContentLabel={notifications.notificationsDropdown.emptyContentLabel}
+				notificationsTitleLabel={notifications.label}
+				generateClassicUrl={
+					notifications.notificationsDropdown.generateClassicUrl
+				}
 			/>
 		) : (
 			<DropdownLoader label={dropdownLoaderLabel} />
@@ -266,6 +271,7 @@ export class Nav extends React.Component {
 
 Nav.defaultProps = {
 	logoAccessible: 'Meetup Logo',
+	localeCode: 'en-US',
 };
 Nav.propTypes = {
 	self: PropTypes.object,
