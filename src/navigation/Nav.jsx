@@ -69,7 +69,15 @@ export class Nav extends React.Component {
 		);
 
 		const profileContent = groups ? (
-			<ProfileDropdown profileUrl={profile.memberUrl} groups={groups.list} />
+			<ProfileDropdown
+				settings={profile.profileDropdown.settings}
+				help={profile.profileDropdown.help}
+				logout={profile.profileDropdown.logout}
+				groupHome={profile.profileDropdown.groupHome}
+				allGroupsLabel={profile.profileDropdown.allGroupsLabel}
+				profile={profile}
+				groups={groups.list}
+			/>
 		) : (
 			<DropdownLoader label={dropdownLoaderLabel} />
 		);
