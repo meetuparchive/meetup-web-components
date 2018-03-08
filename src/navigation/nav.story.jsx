@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 
 import { decorateWithInfo } from '../utils/decorators';
 
@@ -67,32 +68,16 @@ const navItems = {
 
 storiesOf('Nav', module)
 	.addDecorator(decorateWithInfo)
-	.add('authenticated', () => (
-		<Nav
-			self={{
-				id: 1234,
-				name: 'John Q. Testington',
-				status: 'active',
-			}}
-			navItems={navItems}
-		/>
-	))
+	.add('authenticated', () => <Nav self={MOCK_MEMBER} navItems={navItems} />)
 	.add('authenticated Pro member', () => (
 		<Nav
 			self={{
-				id: 1234,
-				name: 'John Q. Testington',
-				status: 'active',
+				...MOCK_MEMBER,
 				isProMember: true,
 			}}
 			navItems={navItems}
 		/>
 	))
 	.add('unauthenticated', () => (
-		<Nav
-			self={{
-				status: 'prereg',
-			}}
-			navItems={navItems}
-		/>
+		<Nav self={{ status: 'prereg' }} navItems={navItems} />
 	));
