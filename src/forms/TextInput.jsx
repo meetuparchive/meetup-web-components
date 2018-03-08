@@ -77,6 +77,10 @@ export const TextInput = (props) => {
 		other.value = value;
 	}
 
+	// Character limits should be a "soft" limit.
+	// Avoid passing maxLength as an HTML attribute
+	if (maxLength) delete other.maxLength;
+
 	return (
 		<div className="inputContainer">
 			{label &&
