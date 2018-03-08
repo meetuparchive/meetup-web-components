@@ -126,14 +126,9 @@ export class Textarea extends React.Component {
 			)
 		};
 
-
-		// WC-158
-		// IE11 does not recognize `-1` as a valid value
-		// for the `maxLength` attribute, so we only
-		// add the prop if `maxLength` is passed.
-		if (maxLength) {
-			other.maxLength = parseInt(maxLength, 10);
-		}
+		// Character limits should be a "soft" limit.
+		// Avoid passing maxLength as an HTML attribute
+		if (maxLength) delete other.maxLength;
 
 		return (
 			<div className="inputContainer">
