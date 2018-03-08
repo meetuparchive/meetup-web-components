@@ -38,10 +38,7 @@ exports[`Notification component should match snapshot 1`] = `
         <time
           className="notification-time text--small"
         >
-          <FormattedRelative
-            updateInterval={10000}
-            value={2017-03-30T15:46:22.000Z}
-          />
+          Thu Mar 30 2017
         </time>
       </p>
     </FlexItem>

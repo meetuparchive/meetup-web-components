@@ -2,6 +2,7 @@
 
 exports[`Nav should match the snapshot for ScriptLogo 1`] = `
 <Nav
+  localeCode="en-US"
   logoAccessible="Meetup Logo"
   media={Object {}}
   self={
@@ -14,6 +15,7 @@ exports[`Nav should match the snapshot for ScriptLogo 1`] = `
 
 exports[`Nav should match the snapshot for SwarmLogo 1`] = `
 <Nav
+  localeCode="en-US"
   logoAccessible="Meetup Logo"
   media={Object {}}
   self={
