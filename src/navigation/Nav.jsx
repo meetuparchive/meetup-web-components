@@ -161,7 +161,7 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: media.isAtMediumUp ? false : '/profile/',
-				label: profile.Label,
+				label: profile.label,
 				labelClassName: 'navItem-label display--block atMedium_display--none',
 				className: cx(CLASS_AUTH_ITEM, 'profileDropdown', {
 					'profileDropdown--hasGroups': Boolean(
