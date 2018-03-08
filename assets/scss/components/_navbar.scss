@@ -146,6 +146,45 @@ $maxScalingBP: $breakpoint-m/1px;
 	}
 }
 
+.notifications--empty {
+	@include color-svg($C_textTertiary);
+	color: $C_textSecondary;
+	background: $C_collectionBG;
+	border-radius: $defaultRadius * 2;
+	padding: $space 0;
+}
+
+.notifications--populated {
+	max-height: 75vh;
+	overflow: scroll;
+}
+
+.notification {
+	@extend %buttonPersonality;
+	display: block;
+	padding: $space-half $space !important; /* override default `list` padding */
+
+	&:hover,
+	&:focus {
+		color: $C_textSecondary;
+		background: $C_highlight;
+	}
+}
+
+.notification-image {
+	width: $media-l;
+	height: $media-l;
+}
+
+.notification-time {
+	margin-left: $space / 2;
+}
+
+.notification--read {
+	@extend %text--secondary;
+	background: $C_collectionBG !important;
+}
+
 .profileDropdown-content {
 	.list-item {
 		padding-top: $space-half !important;
