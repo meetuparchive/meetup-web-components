@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CharCounter exists 1`] = `
+<p
+  className="text--tiny text--secondary align--right charCount"
+  tabIndex="-1"
+>
+  60
+</p>
+`;
