@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import autosize from 'autosize';
+import CharCounter from './CharCounter';
 import withErrorList from '../utils/components/withErrorList';
 
 /**
@@ -160,8 +161,12 @@ export class Textarea extends React.Component {
 					value={this.state.value}
 					{...other}
 				/>
-
-				{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - this.state.value.length)}</p> }
+				{maxLength &&
+					<CharCounter
+						maxLength={parseInt(maxLength, 10)}
+						valueLength={parseInt(this.state.value.length, 10)}
+					/>
+				}
 			</div>
 		);
 	}
