@@ -136,6 +136,10 @@ export const TextInput = (props) => {
 	);
 };
 
+TextInput.defaultProps = {
+	requiredText: '*',
+};
+
 TextInput.propTypes = {
 	name: PropTypes.string.isRequired,
 	error: PropTypes.oneOfType([
@@ -161,11 +165,10 @@ TextInput.propTypes = {
 		PropTypes.element
 	]),
 	required: PropTypes.bool,
-	requiredText: (props) => (
-		props.required && !props.requiredText &&
-			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
-	)
-
+	requiredText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 export default withErrorList(TextInput);
