@@ -112,6 +112,10 @@ export class SelectInput extends React.Component {
 	}
 }
 
+SelectInput.defaultProps = {
+	requiredText: '*'
+};
+
 SelectInput.propTypes = {
 	name: PropTypes.string.isRequired,
 	options: PropTypes.arrayOf(PropTypes.shape({
@@ -137,10 +141,10 @@ SelectInput.propTypes = {
 		PropTypes.element
 	]),
 	required: PropTypes.bool,
-	requiredText: (props) => (
-		props.required && !props.requiredText &&
-			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
-	)
+	requiredText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	]),
 };
 
 export default withErrorList(SelectInput);
