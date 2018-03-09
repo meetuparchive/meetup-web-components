@@ -384,6 +384,7 @@ export class TimeInput extends React.Component {
 }
 
 TimeInput.defaultProps = {
+	requiredText: '*',
 	is24Hr: true
 };
 
@@ -402,10 +403,10 @@ TimeInput.propTypes = {
 		PropTypes.element
 	]),
 	required: PropTypes.bool,
-	requiredText: (props) => (
-		props.required && !props.requiredText &&
-			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
-	)
+	requiredText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	]),
 };
 
 
