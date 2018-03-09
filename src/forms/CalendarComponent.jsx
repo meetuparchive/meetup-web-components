@@ -124,14 +124,15 @@ CalendarComponent.propTypes = {
 	]),
 	onChange: PropTypes.func, // provided by `redux-form`
 	required: PropTypes.bool,
-	requiredText: (props) => (
-		props.required && !props.requiredText &&
-			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
-	)
+	requiredText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 CalendarComponent.defaultProps = {
-	datepickerOptions: {}
+	requiredText: '*',
+	datepickerOptions: {},
 };
 
 export default withErrorList(CalendarComponent);
