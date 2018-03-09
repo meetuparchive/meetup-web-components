@@ -8715,7 +8715,7 @@ storybook-addon-i18n-tools@1.0.0:
   dependencies:
     react-toggle-button "^2.1.0"
 
-storybook-router@false0.3.2:
+storybook-router@0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/storybook-router/-/storybook-router-0.3.2.tgz#cfa46a6fdea3ecc7c56e6447832ebdc391b8d8ec"
   dependencies:
