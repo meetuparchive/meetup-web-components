@@ -140,7 +140,7 @@ Notification.propTypes = {
 		__html: PropTypes.string,
 	}),
 	photoUrl: PropTypes.string,
-	updated: PropTypes.number,
+	formattedTimeSince: PropTypes.string,
 	localeCode: PropTypes.string.isRequired,
 	className: PropTypes.string,
 	notifUrlWithTracking: PropTypes.string,
