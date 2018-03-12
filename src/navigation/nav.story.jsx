@@ -20,6 +20,8 @@ const navItems = {
 	proDashboard: {
 		link: 'meetup.com/pro',
 		label: 'Pro Dashboard',
+		mobileLabel: 'Dashboard',
+		proLogo: MOCK_MEMBER.photo.photo_link,
 	},
 	explore: {
 		link: 'meetup.com/explore',
