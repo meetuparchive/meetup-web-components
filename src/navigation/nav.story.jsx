@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import { MOCK_NOTIFICATIONS_LIST } from 'meetup-web-mocks/lib/notifications/api';
 
-import { decorateWithInfo } from '../utils/decorators';
+import { decorateWithBasics } from '../utils/decorators';
 
 import Nav from './Nav';
 
@@ -73,7 +73,7 @@ const navItems = {
 };
 
 storiesOf('Nav', module)
-	.addDecorator(decorateWithInfo)
+	.addDecorator(decorateWithBasics)
 	.add('authenticated', () => <Nav self={MOCK_MEMBER} navItems={navItems} />)
 	.add('authenticated Pro member', () => (
 		<Nav
