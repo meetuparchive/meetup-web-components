@@ -7,6 +7,11 @@ import { decorateWithBasics } from '../utils/decorators';
 
 import Nav from './Nav';
 
+const updatedNotif = MOCK_NOTIFICATIONS_LIST.map(notif => {
+	const timeSince = new Date(notif.updated);
+	return { ...notif, formattedTimeSince: timeSince.toDateString() };
+});
+
 const navItems = {
 	updatesLabel: 'Updates',
 	login: {
@@ -24,7 +29,7 @@ const navItems = {
 		proLogo: MOCK_MEMBER.photo.photo_link,
 	},
 	explore: {
-		link: 'meetup.com/explore',
+		link: 'meetup.com/find/events',
 		label: 'Explore',
 	},
 	groups: {
@@ -44,7 +49,7 @@ const navItems = {
 		link: 'meetup.com/notifications',
 		label: 'Notifications',
 		unreadNotifications: 0,
-		list: [...MOCK_NOTIFICATIONS_LIST],
+		list: [...updatedNotif],
 		notificationsDropdown: {
 			markRead: () => {},
 			emptyContentLabel: "You don't have any notifications yet",

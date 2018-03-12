@@ -33,7 +33,7 @@ export const NotificationsDropdownComponent = ({
 							link={notif.link}
 							onMarkReadAction={onMarkReadAction}
 							dangerouslySetInnerHTML={{ __html: notif.text }}
-							updated={notif.updated}
+							formattedTimeSince={notif.formattedTimeSince}
 							localeCode={localeCode}
 							generateClassicUrl={generateClassicUrl}
 						/>

@@ -5,6 +5,11 @@ import { MOCK_NOTIFICATION_EVENT } from 'meetup-web-mocks/lib/notifications/api'
 
 import Notification, { getIconShape } from './Notifications';
 
+const MOCK_NOTIF = {
+	...MOCK_NOTIFICATION_EVENT,
+	formattedTimeSince: 'Thu Mar 30 2017',
+};
+
 describe('Notification Icons', () => {
 	it('returns messages icon for message-related notifs', () => {
 		expect(getIconShape('convo')).toBe('messages');
@@ -26,15 +31,15 @@ describe('Notification component', () => {
 
 	const component = shallow(
 		<Notification
-			id={MOCK_NOTIFICATION_EVENT.id}
-			memberId={MOCK_NOTIFICATION_EVENT.id}
-			kind={MOCK_NOTIFICATION_EVENT.kind}
+			id={MOCK_NOTIF.id}
+			memberId={MOCK_NOTIF.id}
+			kind={MOCK_NOTIF.kind}
 			isRead={false}
 			onMarkReadAction={MOCK_HANDLERS.markRead}
-			link={MOCK_NOTIFICATION_EVENT.link}
-			dangerouslySetInnerHTML={{ __html: MOCK_NOTIFICATION_EVENT.text }}
-			photoUrl={MOCK_NOTIFICATION_EVENT.photo.photo_link}
-			updated={MOCK_NOTIFICATION_EVENT.updated}
+			link={MOCK_NOTIF.link}
+			dangerouslySetInnerHTML={{ __html: MOCK_NOTIF.text }}
+			photoUrl={MOCK_NOTIF.photo.photo_link}
+			formattedTimeSince={MOCK_NOTIF.formattedTimeSince}
 			generateClassicUrl={jest.fn()}
 		/>
 	);

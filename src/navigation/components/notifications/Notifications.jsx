@@ -76,7 +76,7 @@ class Notification extends React.PureComponent {
 		const {
 			memberId,
 			kind,
-			updated,
+			formattedTimeSince,
 			photoUrl,
 			link,
 			dangerouslySetInnerHTML,
@@ -85,7 +85,6 @@ class Notification extends React.PureComponent {
 			generateClassicUrl,
 		} = this.props;
 
-		const timeSince = new Date(updated);
 		const isMemberRelated = MEMBER_NOTIF_TYPES.some(t => kind.startsWith(t));
 
 		const classNames = cx(
@@ -120,8 +119,7 @@ class Notification extends React.PureComponent {
 						<p className="text--hint text--small">
 							<Icon shape={getIconShape(kind)} size="xs" />
 							<time className="notification-time text--small">
-								{timeSince.toDateString()}
-								{/* TODO: Format Time*/}
+								{formattedTimeSince}
 							</time>
 						</p>
 					</FlexItem>
