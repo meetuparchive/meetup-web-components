@@ -40,6 +40,8 @@ export class Nav extends React.Component {
 			navItems,
 			dropdownLoaderLabel,
 			localeCode,
+			className,
+			...other
 		} = this.props;
 		const {
 			login,
@@ -53,6 +55,7 @@ export class Nav extends React.Component {
 			updatesLabel,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
+		const classNames = cx('padding--all', className);
 
 		const showScriptLogo = Boolean(media.isAtLargeUp || isLoggedOut);
 		const showSwarmLogo = Boolean(
@@ -237,8 +240,9 @@ export class Nav extends React.Component {
 			<nav
 				aria-label="Header navigation"
 				role="navigation"
-				className="padding--all"
+				className={classNames}
 				id="globalNav"
+				{...other}
 			>
 				<Flex
 					align={media.isAtMediumUp ? 'center' : 'top'}
