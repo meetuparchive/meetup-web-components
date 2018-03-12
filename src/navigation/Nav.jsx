@@ -209,7 +209,7 @@ export class Nav extends React.Component {
 					linkTo={item.linkTo}
 					label={item.label}
 					className={item.className}
-					onAction={item.onAction && item.onAction}
+					onAction={item.onAction}
 				/>
 			);
 		});
@@ -219,15 +219,15 @@ export class Nav extends React.Component {
 				item && (
 					<NavItem
 						key={i}
-						shrink={item.shrink && item.shrink}
+						shrink={item.shrink}
 						linkTo={item.linkTo}
-						label={item.label && item.label}
-						labelClassName={item.labelClassName && item.labelClassName}
-						className={item.className && item.className}
-						icon={item.icon && item.icon}
-						onClickAction={item.onClickAction && item.onClickAction}
-						dropdownContent={item.dropdownContent && item.dropdownContent}
-						hasUpdates={item.hasUpdates && item.hasUpdates}
+						label={item.label}
+						labelClassName={item.labelClassName}
+						className={item.className}
+						icon={item.icon}
+						onClickAction={item.onClickAction}
+						dropdownContent={item.dropdownContent}
+						hasUpdates={item.hasUpdates}
 					/>
 				)
 			);
