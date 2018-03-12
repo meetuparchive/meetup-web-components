@@ -78,7 +78,7 @@ describe('TextInput', function() {
 		});
 
 		it('should call onChange `props` function when input is changed', () => {
-			const eventData = { target: { value: `${VALUE}r` }};
+			const eventData = { target: { value: `${VALUE}r`, setCustomValidity: () => true }};
 			inputEl.simulate('change', eventData);
 			expect(onChange).toHaveBeenCalledWith(eventData);
 		});

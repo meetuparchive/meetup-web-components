@@ -3,6 +3,7 @@ import React from 'react';
 import cx from 'classnames';
 import Icon from '../media/Icon';
 import { MEDIA_SIZES } from '../utils/designConstants';
+import CharCounter from './CharCounter';
 import withErrorList from '../utils/components/withErrorList';
 
 export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
@@ -31,7 +32,6 @@ export const TextInput = (props) => {
 		helperText,
 		required,
 		requiredText,
-		isValid,
 		validityMessage,
 		...other
 	} = props;
@@ -71,16 +71,18 @@ export const TextInput = (props) => {
 	const inputStyles = iconShape && {
 		paddingLeft: `${paddingSize}px`
 	};
-	const customValidityMessage = isValid ? '' : validityMessage;
-
-	let textInput;
 
 	const handleOnChange = (e) => {
 		if (onChange) {
 			onChange(e);
 		}
 
-		textInput && textInput.setCustomValidity(customValidityMessage);
+		e.target.setCustomValidity('');
+	};
+
+	const handleInvalid = (e) => {
+		if (!validityMessage) return;
+		e.target.setCustomValidity(validityMessage);
 	};
 
 	// WC-158
@@ -89,6 +91,10 @@ export const TextInput = (props) => {
 	if (value || typeof value === 'string') {
 		other.value = value;
 	}
+
+	// Character limits should be a "soft" limit.
+	// Avoid passing maxLength as an HTML attribute
+	if (maxLength) delete other.maxLength;
 
 	return (
 		<div className="inputContainer">
@@ -109,21 +115,30 @@ export const TextInput = (props) => {
 					placeholder={placeholder}
 					className={classNames.field}
 					onChange={handleOnChange}
+					onInvalid={handleInvalid}
 					pattern={pattern}
 					disabled={disabled}
 					id={id}
 					style={inputStyles}
-					ref={(input) => { textInput = input; }}
 					{...other}
 				/>
 				{iconShape &&
 					<Icon {...iconProps} />
 				}
 			</div>
-			{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - value.length)}</p> }
+			{maxLength &&
+				<CharCounter
+					maxLength={parseInt(maxLength, 10)}
+					valueLength={parseInt(value.length, 10)}
+				/>
+			}
 			{children}
 		</div>
 	);
+};
+
+TextInput.defaultProps = {
+	requiredText: '*',
 };
 
 TextInput.propTypes = {
@@ -151,11 +166,10 @@ TextInput.propTypes = {
 		PropTypes.element
 	]),
 	required: PropTypes.bool,
-	requiredText: (props) => (
-		props.required && !props.requiredText &&
-			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
-	)
-
+	requiredText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 export default withErrorList(TextInput);
