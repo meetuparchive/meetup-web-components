@@ -50,6 +50,7 @@ export class Nav extends React.Component {
 			notifications,
 			groups,
 			profile,
+			updatesLabel,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 
@@ -107,9 +108,8 @@ export class Nav extends React.Component {
 				shrink: true,
 				linkTo: proDashboard.link,
 				label: proDashboard.label,
-				className: cx(
-					'text--blue text--bold navItemLink--create display--none atMedium_display--block'
-				),
+				className:
+					'text--blue text--bold navItemLink--create display--none atMedium_display--block',
 			},
 			{
 				shrink: true,
@@ -129,7 +129,7 @@ export class Nav extends React.Component {
 				shrink: true,
 				linkTo: messages.link,
 				label: messages.label,
-				className: cx('navItem--messages', CLASS_AUTH_ITEM),
+				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
 				icon: (
 					<Icon
 						shape="messages"
@@ -138,10 +138,11 @@ export class Nav extends React.Component {
 					/>
 				),
 				hasUpdates: messages.unreadMessages > 0,
+				updatesLabel: updatesLabel,
 			},
 			{
 				shrink: true,
-				linkTo: media.isAtMediumUp ? false : notifications.link,
+				linkTo: media.isAtMediumUp ? '' : notifications.link,
 				label: notifications.label,
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
 				icon: (
@@ -152,15 +153,16 @@ export class Nav extends React.Component {
 					/>
 				),
 				onClickAction:
-					media.isAtMediumUp && notifications.list.length == 0
+					media.isAtMediumUp && notifications.list.length === 0
 						? notifications.getNotificationsQuery
 						: false,
 				dropdownContent: media.isAtMediumUp && notificationContent,
 				hasUpdates: notifications.unreadNotifications > 0,
+				updatesLabel: updatesLabel,
 			},
 			{
 				shrink: true,
-				linkTo: media.isAtMediumUp ? false : '/profile/',
+				linkTo: media.isAtMediumUp ? '' : '/profile/',
 				label: profile.label,
 				labelClassName: 'navItem-label display--block atMedium_display--none',
 				className: cx(CLASS_AUTH_ITEM, 'profileDropdown', {
@@ -186,7 +188,7 @@ export class Nav extends React.Component {
 					</Flex>
 				),
 				onClickAction:
-					media.isAtMediumUp && groups.list.length == 0
+					media.isAtMediumUp && groups.list.length === 0
 						? profile.getSelfGroupsQuery
 						: false,
 				dropdownContent: media.isAtMediumUp && profileContent,
@@ -198,7 +200,7 @@ export class Nav extends React.Component {
 				<NavItem
 					key={i}
 					shrink={item.shrink}
-					linkTo={item.linkTo && item.linkTo}
+					linkTo={item.linkTo}
 					label={item.label}
 					className={item.className}
 					onAction={item.onAction && item.onAction}
@@ -212,7 +214,7 @@ export class Nav extends React.Component {
 					<NavItem
 						key={i}
 						shrink={item.shrink && item.shrink}
-						linkTo={item.linkTo && item.linkTo}
+						linkTo={item.linkTo}
 						label={item.label && item.label}
 						labelClassName={item.labelClassName && item.labelClassName}
 						className={item.className && item.className}

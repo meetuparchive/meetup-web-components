@@ -8,8 +8,6 @@ import {
 
 import { NotificationsDropdownComponent } from './NotificationsDropdown';
 
-// add a member comment notifs without a photo
-// to the mock notifications list
 const notifs = [
 	...MOCK_NOTIFICATIONS_LIST,
 	{
