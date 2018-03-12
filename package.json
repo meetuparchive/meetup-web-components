@@ -48,7 +48,6 @@
   "dependencies": {
     "autosize": "3.0.21",
     "downshift": "1.26.1",
-    "lint-staged": "7.0.0",
     "raf-schd": "2.1.0",
     "react-flatpickr": "3.6.4",
     "react-portal": "4.1.2",
@@ -92,6 +91,7 @@
     "gh-pages": "1.0.0",
     "husky": "0.14.3",
     "inquirer": "3.2.0",
+    "lint-staged": "7.0.0",
     "jest": "20.0.4",
     "meetup-web-mocks": "1.0.242",
     "mwp-config": "12.2.2117",
@@ -115,8 +115,8 @@
     "webpack": "2.6.1"
   },
   "lint-staged": {
-      "**/*.{js,jsx}": [
-        "eslint"
-      ]
+    "**/*.{js,jsx}": [
+      "eslint"
+    ]
   }
 }
