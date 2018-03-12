@@ -113,12 +113,14 @@ $maxScalingBP: $breakpoint-m/1px;
 		height: auto;
 	}
 }
-.navItemLink--create {
-	@include standardBorder('right');
-	padding-right: $space;
-
-	.navItem-label {
-		color: $C_accent !important;
+.navItemLink--dashboard {
+	@include atMediaUp(medium) {
+		@include standardBorder('right');
+		padding-right: $space;
+		.navItem-label {
+			color: $C_accent !important;
+			font-weight: $W_bold;
+		}
 	}
 }
 

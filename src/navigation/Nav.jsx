@@ -107,15 +107,21 @@ export class Nav extends React.Component {
 			self.isProMember && {
 				shrink: true,
 				linkTo: proDashboard.link,
-				label: proDashboard.label,
-				className:
-					'text--blue text--bold navItemLink--create display--none atMedium_display--block',
+				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
+				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
+				icon: (
+					<img
+						src={proDashboard.proLogo}
+						className="display--block atMedium_display--none padding--left"
+						height="24px"
+					/>
+				),
 			},
 			{
 				shrink: true,
 				linkTo: explore.link,
 				label: explore.label,
-				className: cx(CLASS_AUTH_ITEM, { 'flush--left': !media.isAtMediumUp }),
+				className: CLASS_AUTH_ITEM,
 				icon: <Icon shape="search" size="s" className="atMedium_display--none" />,
 			},
 			{
