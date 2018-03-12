@@ -14,14 +14,28 @@ storiesOf('TogglePill', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (
-			<TogglePill
-				onChange={onChange}
-				id='togglePillId'
-				name='togglePillName'
-				value='toggle-pill'
-			>
-				Toggle Pill Label
-			</TogglePill>
+			<div>
+				<TogglePill
+					onChange={onChange}
+					id='togglePillId'
+					name='togglePillName'
+					value='toggle-pill'
+				>
+					Toggle Pill Label
+				</TogglePill>
+				{
+					<div className="inverted" style={{backgroundColor: 'rgb(0,0,0)', padding: '5vmin'}}>
+						<TogglePill
+							onChange={onChange}
+							id='togglePillId2'
+							name='togglePillName2'
+							value='toggle-pillz'
+						>
+							Toggle Pill Label
+						</TogglePill>
+					</div>
+				}
+			</div>
 		)
 	)
 	.add('Default Selected', () => (

@@ -3,10 +3,32 @@
 }
 
 .toggleButton-label {
-	@include pillBase();
-	@include shadowOnHover();
-	margin: $space-quarter 0;
+	@include buttonBase();
+	@include align-items(center);
+	@include display(inline-flex);
+	@include flex-direction(row);
+	@include justify-content(center);
+	@include standardBorder(all);
+	@include buttonColor(
+		$bgColor: transparentize($C_accent, 1),
+		$hoverColor: transparentize($C_accent, .9),
+		$activeColor: transparentize($C_accent, .8),
+		$textTransition: false
+	);
+	@include color-all($C_accent);
+	border-color: $C_accent;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
+
+	.inverted & {
+		@include buttonColor(
+			$bgColor: transparentize($C_lightBlue, 1),
+			$hoverColor: transparentize($C_lightBlue, .75),
+			$activeColor: transparentize($C_lightBlue, .65),
+			$textTransition: false
+		);
+		@include color-all($C_accent);
+		border-color: $C_accent;
+	}
 }
 
 .toggleButton-label--large {
