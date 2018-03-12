@@ -6,6 +6,7 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
 >
   <label
     className="label--field label--required"
+    data-requiredtext="*"
     htmlFor="superhero"
   >
     Super Hero
@@ -22,6 +23,7 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
       id="superhero"
       name="superhero"
       onChange={[Function]}
+      onInvalid={[Function]}
       required={true}
       type="text"
       value="Batman"

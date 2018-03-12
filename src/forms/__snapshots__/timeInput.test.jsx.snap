@@ -6,6 +6,7 @@ exports[`TimeInput TimeInput, with input[time] support renders a time html input
   name="time"
   onChange={[Function]}
   required={true}
+  requiredText="*"
   value="22:12"
 >
   <div>

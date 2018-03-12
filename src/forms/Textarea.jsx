@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import autosize from 'autosize';
+import CharCounter from './CharCounter';
 import withErrorList from '../utils/components/withErrorList';
 
 /**
@@ -126,14 +127,9 @@ export class Textarea extends React.Component {
 			)
 		};
 
-
-		// WC-158
-		// IE11 does not recognize `-1` as a valid value
-		// for the `maxLength` attribute, so we only
-		// add the prop if `maxLength` is passed.
-		if (maxLength) {
-			other.maxLength = parseInt(maxLength, 10);
-		}
+		// Character limits should be a "soft" limit.
+		// Avoid passing maxLength as an HTML attribute
+		if (maxLength) delete other.maxLength;
 
 		return (
 			<div className="inputContainer">
@@ -160,12 +156,20 @@ export class Textarea extends React.Component {
 					value={this.state.value}
 					{...other}
 				/>
-
-				{ maxLength && <p tabIndex="-1" className='text--tiny text--secondary align--right charCount'>{parseInt(maxLength - this.state.value.length)}</p> }
+				{maxLength &&
+					<CharCounter
+						maxLength={parseInt(maxLength, 10)}
+						valueLength={parseInt(this.state.value.length, 10)}
+					/>
+				}
 			</div>
 		);
 	}
 }
+
+Textarea.defaultProps = {
+	requiredText: '*',
+};
 
 Textarea.propTypes = {
 	id: PropTypes.string.isRequired,
@@ -187,10 +191,10 @@ Textarea.propTypes = {
 		PropTypes.element
 	]),
 	required: PropTypes.bool,
-	requiredText: (props) => (
-		props.required && !props.requiredText &&
-			new Error('Inputs with `required` prop must provide also provide a translated string for "required" in the `requiredText` prop')
-	)
+	requiredText: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	])
 };
 
 export default withErrorList(Textarea);
