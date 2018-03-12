@@ -32,7 +32,6 @@ export const TextInput = (props) => {
 		helperText,
 		required,
 		requiredText,
-		isValid,
 		validityMessage,
 		...other
 	} = props;
@@ -72,16 +71,18 @@ export const TextInput = (props) => {
 	const inputStyles = iconShape && {
 		paddingLeft: `${paddingSize}px`
 	};
-	const customValidityMessage = isValid ? '' : validityMessage;
-
-	let textInput;
 
 	const handleOnChange = (e) => {
 		if (onChange) {
 			onChange(e);
 		}
 
-		textInput && textInput.setCustomValidity(customValidityMessage);
+		e.target.setCustomValidity('');
+	};
+
+	const handleInvalid = (e) => {
+		if (!validityMessage) return;
+		e.target.setCustomValidity(validityMessage);
 	};
 
 	// WC-158
@@ -114,11 +115,11 @@ export const TextInput = (props) => {
 					placeholder={placeholder}
 					className={classNames.field}
 					onChange={handleOnChange}
+					onInvalid={handleInvalid}
 					pattern={pattern}
 					disabled={disabled}
 					id={id}
 					style={inputStyles}
-					ref={(input) => { textInput = input; }}
 					{...other}
 				/>
 				{iconShape &&
