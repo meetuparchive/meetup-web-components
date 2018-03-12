@@ -57,12 +57,12 @@ after_success:
   #   [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
   #   yarn run publish-docs
 
-#deploy:
-   #provider: pages
-   #skip_cleanup: true
-   #github_token: $GITHUB_TOKEN
-   #local_dir: .storybook-out/
-   #verbose: true
-   #on:
-      #branch: master
+deploy:
+   provider: pages
+   skip_cleanup: true
+   github_token: $GITHUB_TOKEN
+   local_dir: .storybook-out/
+   verbose: true
+   on:
+      branch: master
 
