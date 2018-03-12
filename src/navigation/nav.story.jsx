@@ -89,6 +89,7 @@ storiesOf('Nav', module)
 				isProMember: true,
 			}}
 			navItems={navItems}
+			style={{ width: '100%' }}
 		/>
 	))
 	.add('unauthenticated', () => (
