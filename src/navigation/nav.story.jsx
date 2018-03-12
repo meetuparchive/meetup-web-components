@@ -8,6 +8,7 @@ import { decorateWithInfo } from '../utils/decorators';
 import Nav from './Nav';
 
 const navItems = {
+	updatesLabel: 'Updates',
 	login: {
 		link: 'meetup.com/login',
 		label: 'Login',

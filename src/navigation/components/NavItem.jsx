@@ -56,6 +56,7 @@ export const NavItem = props => {
 		hasUpdates,
 		onClickAction,
 		onAction,
+		updatesLabel,
 		...other
 	} = props;
 
@@ -70,7 +71,7 @@ export const NavItem = props => {
 			{label && <span className={classNames.label}>{label}</span>}
 			{hasUpdates && (
 				<span className="counterBadge">
-					<span className="visibility--a11yHide">Updates</span>
+					<span className="visibility--a11yHide">{updatesLabel}</span>
 				</span>
 			)}
 		</div>

@@ -21,7 +21,6 @@ export const NotificationsDropdownComponent = ({
 		<div className="notifications--populated">
 			<ul className="list">
 				{notifications.map((notif, key) => (
-					// TODO: refactor
 					// eslint-disable-next-line react/no-array-index-key
 					<li key={key}>
 						<Notification
