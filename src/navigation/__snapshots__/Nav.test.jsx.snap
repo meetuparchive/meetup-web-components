@@ -1,6 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Nav should match the snapshot for ScriptLogo 1`] = `
+exports[`Nav should match the snapshot for authenticated large screens 1`] = `
+<Nav
+  localeCode="en-US"
+  logoAccessible="Meetup Logo"
+  media={Object {}}
+  self={
+    Object {
+      "name": "Jeff Cleft",
+      "status": "active",
+    }
+  }
+/>
+`;
+
+exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
+<Nav
+  localeCode="en-US"
+  logoAccessible="Meetup Logo"
+  media={Object {}}
+  self={
+    Object {
+      "name": "Jeff Cleft",
+      "status": "active",
+    }
+  }
+/>
+`;
+
+exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
 <Nav
   localeCode="en-US"
   logoAccessible="Meetup Logo"
@@ -13,7 +41,7 @@ exports[`Nav should match the snapshot for ScriptLogo 1`] = `
 />
 `;
 
-exports[`Nav should match the snapshot for SwarmLogo 1`] = `
+exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = `
 <Nav
   localeCode="en-US"
   logoAccessible="Meetup Logo"
@@ -22,6 +50,32 @@ exports[`Nav should match the snapshot for SwarmLogo 1`] = `
     Object {
       "name": "Jeff Cleft",
       "status": "active",
+    }
+  }
+/>
+`;
+
+exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = `
+<Nav
+  localeCode="en-US"
+  logoAccessible="Meetup Logo"
+  media={Object {}}
+  self={
+    Object {
+      "status": "prereg",
+    }
+  }
+/>
+`;
+
+exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
+<Nav
+  localeCode="en-US"
+  logoAccessible="Meetup Logo"
+  media={Object {}}
+  self={
+    Object {
+      "status": "prereg",
     }
   }
 />
