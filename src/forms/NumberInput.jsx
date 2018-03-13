@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import Button from '../forms/Button';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
@@ -183,7 +184,8 @@ export class NumberInput extends React.Component {
 						</FlexItem>
 
 						<FlexItem shrink>
-							<button
+							<Button
+								reset
 								tabIndex="-1"
 								className={classNames.decrementBtn}
 								onBlur={this.onBlur}
@@ -191,11 +193,12 @@ export class NumberInput extends React.Component {
 								onFocus={this.onFocus}
 								ref={ el => this.decrementBtnEl = el }>
 								<Icon shape='minus' size='xs' />
-							</button>
+							</Button>
 						</FlexItem>
 
 						<FlexItem shrink>
-							<button
+							<Button
+								reset
 								tabIndex="-1"
 								className={classNames.incrementBtn}
 								onBlur={this.onBlur}
@@ -203,7 +206,7 @@ export class NumberInput extends React.Component {
 								onFocus={this.onFocus}
 								ref={ el => this.incrementBtnEl = el }>
 								<Icon shape='plus' size='xs' />
-							</button>
+							</Button>
 						</FlexItem>
 
 						{children}
