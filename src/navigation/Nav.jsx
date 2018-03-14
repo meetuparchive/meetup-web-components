@@ -33,16 +33,7 @@ export class Nav extends React.Component {
 	 * @return {React.element} the navbar component
 	 */
 	render() {
-		const {
-			media,
-			self,
-			logoAccessible,
-			navItems,
-			dropdownLoaderLabel,
-			localeCode,
-			className,
-			...other
-		} = this.props;
+		const { media, self, navItems, localeCode, className, ...other } = this.props;
 		const {
 			login,
 			signup,
@@ -53,6 +44,8 @@ export class Nav extends React.Component {
 			groups,
 			profile,
 			updatesLabel,
+			logo,
+			dropdownLoaderLabel,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all', className);
@@ -171,7 +164,7 @@ export class Nav extends React.Component {
 			},
 			{
 				shrink: true,
-				linkTo: media.isAtMediumUp ? '' : '/profile/',
+				linkTo: media.isAtMediumUp ? '' : profile.link,
 				label: profile.label,
 				labelClassName: 'navItem-label display--block atMedium_display--none',
 				className: cx(CLASS_AUTH_ITEM, 'profileDropdown', {
@@ -251,23 +244,27 @@ export class Nav extends React.Component {
 				>
 					{showSwarmLogo && (
 						<NavItem
-							linkTo="meetup.com"
+							linkTo={logo.link}
 							className="logo logo--swarm flush--left"
 							icon={
-								<img src={swarmLogo} alt={logoAccessible} height="48px" />
+								<img
+									src={swarmLogo}
+									alt={logo.logoAccessible}
+									height="48px"
+								/>
 							}
 						/>
 					)}
 
 					{showScriptLogo && (
 						<NavItem
-							linkTo="meetup.com"
+							linkTo={logo.link}
 							className="logo logo--script flush--left"
 							linkClassName="display--block"
 							icon={
 								<img
 									src={scriptLogo}
-									alt={logoAccessible}
+									alt={logo.logoAccessible}
 									height="44px"
 								/>
 							}
@@ -288,9 +285,7 @@ Nav.defaultProps = {
 Nav.propTypes = {
 	self: PropTypes.object,
 	media: PropTypes.object,
-	authItems: PropTypes.array,
-	unauthItems: PropTypes.array,
-	logoAccessible: PropTypes.string,
+	navItems: PropTypes.objext,
 };
 
 export default withMatchMedia(Nav);
