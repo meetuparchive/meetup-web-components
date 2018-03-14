@@ -80,7 +80,7 @@ exports[`SignupModal should match the snapshot 1`] = `
       </a>
     </Chunk>
     <div
-      className="margin--bottom align--center text--labelSecondary text--normal text--uppercase"
+      className="meetup-signupModal-or margin--bottom align--center text--labelSecondary text--normal"
     >
       Or
     </div>
