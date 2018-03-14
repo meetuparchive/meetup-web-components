@@ -263,8 +263,9 @@ _(The `extend` directive can cause ugly cascade problems)_
 		$activeColor: $C_buttonBGNeutral--disabled,
 		$textColor: $C_textHint
 	);
-	outline: none;
 	cursor: default;
+	outline: none;
+	pointer-events: none;
 
 	.inverted & {
 		@include buttonColor(
