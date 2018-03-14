@@ -1,0 +1,26 @@
+.typeahead {
+	position: relative;
+
+	.typeahead-input {
+		margin-bottom: 0;
+	}
+}
+
+.typeahead-dropdown {
+	background-color: $C_contentBG;
+	border: 1px solid $C_borderDark;
+	border-radius: 0 0 $largeRadius $largeRadius;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: map-get($zindex-map, "floating-content")
+}
+
+.typeahead-item {
+	cursor: pointer;
+	padding: $space-half $space;
+
+	&--isActive {
+		background-color: $C_coolGrayLightTransp;
+	}
+}
