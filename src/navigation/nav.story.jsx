@@ -13,7 +13,12 @@ const updatedNotif = MOCK_NOTIFICATIONS_LIST.map(notif => {
 });
 
 const navItems = {
+	dropdownLoaderLabel: 'Loading',
 	updatesLabel: 'Updates',
+	logo: {
+		logoAccessible: 'Meetup Logo',
+		link: 'meetup.com',
+	},
 	login: {
 		link: 'meetup.com/login',
 		label: 'Login',
@@ -21,12 +26,32 @@ const navItems = {
 	signup: {
 		link: 'meetup.com/signup',
 		label: 'Signup',
+		signupModal: {
+			orLabel: 'Or',
+			title: 'Signup',
+			google: {
+				link: 'google.com',
+				label: 'Google',
+			},
+			facebook: {
+				link: 'facebook.com',
+				label: 'Facebook',
+			},
+			email: {
+				link: 'meetup.com/email',
+				label: 'Email',
+			},
+			login: {
+				text: 'Already a member?',
+				label: 'Login',
+				link: 'meetup.com/login',
+			},
+		},
 	},
 	proDashboard: {
 		link: 'meetup.com/pro',
 		label: 'Pro Dashboard',
 		mobileLabel: 'Dashboard',
-		proLogo: MOCK_MEMBER.photo.photo_link,
 	},
 	explore: {
 		link: 'meetup.com/find/events',
@@ -74,6 +99,7 @@ const navItems = {
 				label: 'Logout',
 			},
 			allGroupsLabel: 'All Groups',
+			allGroupsLink: 'meetup.com/groups',
 			groupHome: () => {},
 		},
 	},
@@ -81,7 +107,9 @@ const navItems = {
 
 storiesOf('Nav', module)
 	.addDecorator(decorateWithBasics)
-	.add('authenticated', () => <Nav self={MOCK_MEMBER} navItems={navItems} />)
+	.add('authenticated', () => (
+		<Nav self={MOCK_MEMBER} navItems={navItems} style={{ width: '100%' }} />
+	))
 	.add('authenticated Pro member', () => (
 		<Nav
 			self={{
@@ -93,5 +121,5 @@ storiesOf('Nav', module)
 		/>
 	))
 	.add('unauthenticated', () => (
-		<Nav self={{ status: 'prereg' }} navItems={navItems} />
+		<Nav self={{ status: 'prereg' }} navItems={navItems} style={{ width: '100%' }} />
 	));

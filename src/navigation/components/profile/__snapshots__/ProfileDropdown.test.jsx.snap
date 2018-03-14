@@ -49,7 +49,7 @@ exports[`Profile Dropdown should match snapshot 1`] = `
     </Chunk>
     <a
       className="button button--small text--small"
-      href="/find"
+      href="meetup.com/find"
     >
       All Groups
       <Icon

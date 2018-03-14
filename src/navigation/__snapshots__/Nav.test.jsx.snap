@@ -3,7 +3,6 @@
 exports[`Nav should match the snapshot for authenticated large screens 1`] = `
 <Nav
   localeCode="en-US"
-  logoAccessible="Meetup Logo"
   media={Object {}}
   self={
     Object {
@@ -17,7 +16,6 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
 exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
 <Nav
   localeCode="en-US"
-  logoAccessible="Meetup Logo"
   media={Object {}}
   self={
     Object {
@@ -31,7 +29,6 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
 exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
 <Nav
   localeCode="en-US"
-  logoAccessible="Meetup Logo"
   media={Object {}}
   self={
     Object {
@@ -44,7 +41,6 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
 exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = `
 <Nav
   localeCode="en-US"
-  logoAccessible="Meetup Logo"
   media={Object {}}
   self={
     Object {
@@ -58,7 +54,6 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
 exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = `
 <Nav
   localeCode="en-US"
-  logoAccessible="Meetup Logo"
   media={Object {}}
   self={
     Object {
@@ -71,7 +66,6 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
 exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
 <Nav
   localeCode="en-US"
-  logoAccessible="Meetup Logo"
   media={Object {}}
   self={
     Object {
