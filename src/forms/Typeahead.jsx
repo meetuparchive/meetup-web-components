@@ -37,7 +37,7 @@ class Typeahead extends React.PureComponent {
 						})}
 					/>
 					{isOpen
-						?
+						&&
 							<div
 								className={TA_DROPDOWN_CLASSNAME}
 								style={height && {
@@ -66,8 +66,6 @@ class Typeahead extends React.PureComponent {
 									))
 								}
 							</div>
-						:
-							null
 					}
 				</div>)}
 			</Downshift>
