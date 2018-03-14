@@ -9,8 +9,9 @@ import Textarea from '../Textarea';
  */
 const ReduxFormTextarea = props => {
 	const { meta, input, ...other } = props;
+	const error = meta.touched ? meta.error : null;
 
-	return <Textarea error={meta.error} {...input} {...other} />;
+	return <Textarea error={error} {...input} {...other} />;
 };
 
 ReduxFormTextarea.displayName = 'ReduxFormTextarea';
