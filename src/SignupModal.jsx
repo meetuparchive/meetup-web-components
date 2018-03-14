@@ -15,11 +15,11 @@ import { C_MEDIUMGRAY } from 'swarm-constants/dist/js/colorConstants';
 
 /* consts */
 export const SIGNUP_MODAL_CLASS = 'meetup-signUpModal';
-export const SIGNUP_MODAL_WRAPPER_CLASS = 'meetup-signUpModal-wrapper';
-export const SIGNUP_MODAL_FACEBOOK_CLASS = 'meetup-signUpModal-facebook';
-export const SIGNUP_MODAL_GOOGLE_CLASS = 'meetup-signUpModal-google';
-export const SIGNUP_MODAL_OR_CLASS = 'meetup-signUpModal-or';
-export const SIGNUP_MODAL_EMAIL_CLASS = 'meetup-signUpModal-email';
+export const SIGNUP_MODAL_WRAPPER_CLASS = `${SIGNUP_MODAL_CLASS}-wrapper`;
+export const SIGNUP_MODAL_FACEBOOK_CLASS = `${SIGNUP_MODAL_CLASS}-facebook`;
+export const SIGNUP_MODAL_GOOGLE_CLASS = `${SIGNUP_MODAL_CLASS}-google`;
+export const SIGNUP_MODAL_OR_CLASS = `${SIGNUP_MODAL_CLASS}-or`;
+export const SIGNUP_MODAL_EMAIL_CLASS = `${SIGNUP_MODAL_CLASS}-email`;
 
 /**
  * @param {Object} props component properties
