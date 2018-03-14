@@ -6,7 +6,7 @@ import { signupOptions } from './signupModal.story';
 
 describe('SignupModal', () => {
 	const MOCK_PROPS = {
-		signupOptions: signupOptions,
+		signupOptions,
 		onDismiss: jest.fn(),
 	};
 	const getWrapper = (props = {}) =>
