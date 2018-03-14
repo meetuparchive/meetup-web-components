@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification component should match snapshot 1`] = `
+<a
+  className="list-item notification"
+  onClick={[Function]}
+>
+  <Flex
+    direction="row"
+  >
+    <FlexItem
+      className="valignChildren--center"
+      shrink={true}
+    >
+      <Avatar
+        className="notification-image"
+        src="http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg"
+      />
+    </FlexItem>
+    <FlexItem
+      className="valignChildren--center"
+    >
+      <h4
+        className="text--small"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<b>Meetup Engineering</b> just announced a new Meetup for Apr 6. Only 13 spots.",
+          }
+        }
+      />
+      <p
+        className="text--hint text--small"
+      >
+        <Icon
+          shape="calendar"
+          size="xs"
+        />
+        <time
+          className="notification-time text--small"
+        >
+          Thu Mar 30 2017
+        </time>
+      </p>
+    </FlexItem>
+  </Flex>
+</a>
+`;

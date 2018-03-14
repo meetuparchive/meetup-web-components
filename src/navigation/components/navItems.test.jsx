@@ -7,6 +7,7 @@ const MOCK_PROPS = {
 	linkTo: '/zombocom/',
 	label: <p>Anything is possible</p>,
 	dropdownContent: <p>I am in a dropdown</p>,
+	updatesLabel: 'Updates',
 };
 const renderComponent = props => shallow(<NavItem {...props} />);
 
@@ -17,6 +18,7 @@ describe('NavItem', () => {
 	const navItemWithUpdates = renderComponent({
 		linkTo: MOCK_PROPS.linkTo,
 		hasUpdates: true,
+		updatesLabel: MOCK_PROPS.updatesLabel,
 	});
 
 	const navItemWithLabel = renderComponent({
