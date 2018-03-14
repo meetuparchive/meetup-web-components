@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignupModal should match the snapshot 1`] = `
+<Modal
+  className="meetup-signupModal"
+  closeArea={true}
+  fixed={true}
+  fullscreen={false}
+  onDismiss={[Function]}
+>
+  <div
+    className="meetup-signupModal-wrapper"
+  >
+    <Chunk>
+      <h1
+        className="text--big"
+      >
+        Signup
+      </h1>
+    </Chunk>
+    <Chunk>
+      <div
+        className="text--secondary display--inlineBlock marginHalf--right"
+      >
+        Already a member?
+      </div>
+      <a
+        className="link display--inlineBlock"
+        href="meetup.com/login"
+      >
+        Login
+      </a>
+    </Chunk>
+    <Chunk
+      className="margin--top"
+    >
+      <a
+        className="meetup-signupModal-facebook button button--fullWidth button--hasHoverShadow paddingHalf--left text--bold text--white"
+        href="facebook.com"
+      >
+        <Flex
+          direction="row"
+        >
+          <FlexItem
+            className="inverted"
+            shrink={true}
+          >
+            <Icon
+              className="align--left"
+              shape="external-facebook"
+              size="xs"
+            />
+          </FlexItem>
+          <FlexItem>
+            Facebook
+          </FlexItem>
+        </Flex>
+      </a>
+    </Chunk>
+    <Chunk>
+      <a
+        className="meetup-signupModal-google button button--bordered button--fullWidth paddingHalf--left text--bold"
+        href="google.com"
+      >
+        <Flex
+          direction="row"
+        >
+          <FlexItem
+            shrink={true}
+          >
+            <img
+              className="align--left"
+              src=""
+            />
+          </FlexItem>
+          <FlexItem>
+            Google
+          </FlexItem>
+        </Flex>
+      </a>
+    </Chunk>
+    <div
+      className="meetup-signupModal-or margin--bottom align--center text--labelSecondary text--normal"
+    >
+      Or
+    </div>
+    <Chunk>
+      <a
+        className="meetup-signupModal-email button button--bordered button--fullWidth paddingHalf--left text--bold"
+        href="meetup.com/email"
+      >
+        <Flex
+          direction="row"
+        >
+          <FlexItem
+            shrink={true}
+          >
+            <Icon
+              className="align--left"
+              color="rgb(117,117,117)"
+              shape="mail"
+              size="xs"
+            />
+          </FlexItem>
+          <FlexItem>
+            Email
+          </FlexItem>
+        </Flex>
+      </a>
+    </Chunk>
+  </div>
+</Modal>
+`;

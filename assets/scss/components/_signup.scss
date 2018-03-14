@@ -1,0 +1,14 @@
+.meetup-signupModal {
+	.meetup-signupModal-wrapper {
+		margin: $space $space-2;
+	}
+	.meetup-signupModal-facebook {
+		background-color: $C_facebook;
+		&:hover {
+			background-color: $C_facebook;
+		}
+	}
+	.meetup-signupModal-or {
+		text-transform: uppercase;
+	}
+}
