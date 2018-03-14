@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import { MOCK_NOTIFICATIONS_LIST } from 'meetup-web-mocks/lib/notifications/api';
-import Modal from '../interactive/Modal';
 
 import { decorateWithBasics } from '../utils/decorators';
 
@@ -27,9 +26,27 @@ const navItems = {
 	signup: {
 		link: 'meetup.com/signup',
 		label: 'Signup',
-		isSignupModalOpen: true,
-		onAction: () => {},
-		signupModal: <Modal onDismiss={() => {}}> Hi! </Modal>,
+		signupModal: {
+			orLabel: 'Or',
+			title: 'Signup',
+			google: {
+				link: 'google.com',
+				label: 'Google',
+			},
+			facebook: {
+				link: 'facebook.com',
+				label: 'Facebook',
+			},
+			email: {
+				link: 'meetup.com/email',
+				label: 'Email',
+			},
+			login: {
+				text: 'Already a member?',
+				label: 'Login',
+				link: 'meetup.com/login',
+			},
+		},
 	},
 	proDashboard: {
 		link: 'meetup.com/pro',

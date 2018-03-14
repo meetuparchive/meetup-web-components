@@ -37,7 +37,7 @@ export const SignupModal = function SignupModal({ onDismiss, signupOptions }) {
 					<div className="text--secondary display--inlineBlock marginHalf--right">
 						{login.text}
 					</div>
-					<a href={login.loginLink} className="link display--inlineBlock">
+					<a href={login.link} className="link display--inlineBlock">
 						{login.label}
 					</a>
 				</Chunk>
@@ -112,7 +112,7 @@ export const SignupModal = function SignupModal({ onDismiss, signupOptions }) {
 };
 
 SignupModal.propTypes = {
-	onDismiss: PropTypes.function,
+	onDismiss: PropTypes.func,
 	signupOptions: PropTypes.object,
 };
 

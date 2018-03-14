@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { decorateWithBasics } from './utils/decorators';
 import { SignupModal } from './SignupModal';
 
-const signupOptions = {
+export const signupOptions = {
 	orLabel: 'Or',
 	title: 'Signup',
 	google: {
@@ -22,9 +22,12 @@ const signupOptions = {
 	login: {
 		text: 'Already a member?',
 		label: 'Login',
+		link: 'meetup.com/login',
 	},
 };
 
 storiesOf('SignupModal', module)
 	.addDecorator(decorateWithBasics)
-	.add('default', () => <SignupModal signupOptions={signupOptions} />);
+	.add('default', () => (
+		<SignupModal signupOptions={signupOptions} onDismiss={() => {}} />
+	));

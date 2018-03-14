@@ -9,6 +9,7 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
 import AvatarMember from '../media/AvatarMember';
+import SignupModal from '../SignupModal';
 
 import NavItem from './components/NavItem';
 import ProfileDropdown from './components/profile/ProfileDropdown';
@@ -29,6 +30,32 @@ export const DropdownLoader = ({ label }) => (
  * @returns {React.element} Navigation Bar
  */
 export class Nav extends React.Component {
+	/**
+	 * @constructor
+	 * @param {Object} props properties passed into component
+	 */
+	constructor(props) {
+		super(props);
+		this.onDismissSignUpModal = this.onDismissSignUpModal.bind(this);
+		this.onClickSignUpAction = this.onClickSignUpAction.bind(this);
+		this.state = { isSignUpModalOpen: false };
+	}
+
+	/**
+	 * Triggers the SignUpModal to be closed
+	 * @return {undefined}
+	 */
+	onDismissSignUpModal() {
+		this.setState(() => ({ isSignUpModalOpen: false }));
+	}
+
+	/**
+	 * Triggers the SignUpModal to be rendered
+	 * @return {undefined}
+	 */
+	onClickSignUpAction() {
+		this.setState(() => ({ isSignUpModalOpen: true }));
+	}
 	/**
 	 * @return {React.element} the navbar component
 	 */
@@ -93,7 +120,7 @@ export class Nav extends React.Component {
 			},
 			{
 				shrink: true,
-				onAction: signup.onAction,
+				onAction: this.onClickSignUpAction,
 				label: signup.label,
 				className: CLASS_UNAUTH_ITEM,
 			},
@@ -277,7 +304,12 @@ export class Nav extends React.Component {
 						/>
 					)}
 
-					{signup.isSignUpModalOpen && signup.signupModal}
+					{this.state.isSignUpModalOpen && (
+						<SignupModal
+							signupOptions={signup.signupModal}
+							onDismiss={this.onDismissSignUpModal}
+						/>
+					)}
 
 					{isLoggedOut ? unauthItems : authItems}
 				</Flex>
