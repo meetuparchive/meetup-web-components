@@ -13,6 +13,7 @@ const MOCK_PROPS = {
 		{ ...MOCK_GROUP, name: 'hello 4', urlname: '4444', id: '4444' },
 	],
 	allGroupsLabel: 'All Groups',
+	allGroupsLink: 'meetup.com/find',
 	profile: {
 		link: 'meetup.com',
 		label: 'Profile',
