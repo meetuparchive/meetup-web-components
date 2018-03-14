@@ -3901,7 +3901,7 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-flatpickr@^4.0.5, flatpickr@^4.3.2:
+flatpickr@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.3.2.tgz#6a477043c075ef36c3ff54fadb49b936a64d635f"
 
@@ -6130,18 +6130,6 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
 
-meetup-web-components@4.6.1874-beta:
-  version "4.6.1874-beta"
-  resolved "https://registry.yarnpkg.com/meetup-web-components/-/meetup-web-components-4.6.1874-beta.tgz#997e1e53e3cb339977eabee39084e850c81558a7"
-  dependencies:
-    autosize "3.0.21"
-    downshift "1.26.1"
-    file-loader "1.1.8"
-    raf-schd "2.1.0"
-    react-flatpickr "3.6.3"
-    react-portal "4.1.2"
-    recompose "0.26.0"
-
 meetup-web-mocks@1.0.242:
   version "1.0.242"
   resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-1.0.242.tgz#071cf481fe976df5262cde54e38cd3a394b74660"
@@ -7672,13 +7660,6 @@ react-dom@16.0.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
-
-react-flatpickr@3.6.3:
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/react-flatpickr/-/react-flatpickr-3.6.3.tgz#a4d5ab83b2159192f3c68981e86e721bd67d562a"
-  dependencies:
-    flatpickr "^4.0.5"
-    prop-types "^15.5.10"
 
 react-flatpickr@3.6.4:
   version "3.6.4"
