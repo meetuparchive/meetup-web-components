@@ -36,25 +36,25 @@ export class Nav extends React.Component {
 	 */
 	constructor(props) {
 		super(props);
-		this.onDismissSignUpModal = this.onDismissSignUpModal.bind(this);
-		this.onClickSignUpAction = this.onClickSignUpAction.bind(this);
-		this.state = { isSignUpModalOpen: false };
+		this.onDismissSignupModal = this.onDismissSignupModal.bind(this);
+		this.onClickSignupAction = this.onClickSignupAction.bind(this);
+		this.state = { isSignupModalOpen: false };
 	}
 
 	/**
-	 * Triggers the SignUpModal to be closed
+	 * Triggers the SignupModal to be closed
 	 * @return {undefined}
 	 */
-	onDismissSignUpModal() {
-		this.setState(() => ({ isSignUpModalOpen: false }));
+	onDismissSignupModal() {
+		this.setState(() => ({ isSignupModalOpen: false }));
 	}
 
 	/**
-	 * Triggers the SignUpModal to be rendered
+	 * Triggers the SignupModal to be rendered
 	 * @return {undefined}
 	 */
-	onClickSignUpAction() {
-		this.setState(() => ({ isSignUpModalOpen: true }));
+	onClickSignupAction() {
+		this.setState(() => ({ isSignupModalOpen: true }));
 	}
 	/**
 	 * @return {React.element} the navbar component
@@ -120,7 +120,7 @@ export class Nav extends React.Component {
 			},
 			{
 				shrink: true,
-				onAction: this.onClickSignUpAction,
+				onAction: this.onClickSignupAction,
 				label: signup.label,
 				className: CLASS_UNAUTH_ITEM,
 			},
@@ -304,10 +304,10 @@ export class Nav extends React.Component {
 						/>
 					)}
 
-					{this.state.isSignUpModalOpen && (
+					{this.state.isSignupModalOpen && (
 						<SignupModal
 							signupOptions={signup.signupModal}
-							onDismiss={this.onDismissSignUpModal}
+							onDismiss={this.onDismissSignupModal}
 						/>
 					)}
 

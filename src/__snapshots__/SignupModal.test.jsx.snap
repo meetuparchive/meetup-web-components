@@ -2,14 +2,14 @@
 
 exports[`SignupModal should match the snapshot 1`] = `
 <Modal
-  className="meetup-signUpModal"
+  className="meetup-signupModal"
   closeArea={true}
   fixed={true}
   fullscreen={false}
   onDismiss={[Function]}
 >
   <div
-    className="meetup-signUpModal-wrapper"
+    className="meetup-signupModal-wrapper"
   >
     <Chunk>
       <h1
@@ -35,7 +35,7 @@ exports[`SignupModal should match the snapshot 1`] = `
       className="margin--top"
     >
       <a
-        className="meetup-signUpModal-facebook button button--fullWidth button--hasHoverShadow paddingHalf--left text--bold text--white"
+        className="meetup-signupModal-facebook button button--fullWidth button--hasHoverShadow paddingHalf--left text--bold text--white"
         href="facebook.com"
       >
         <Flex
@@ -51,7 +51,6 @@ exports[`SignupModal should match the snapshot 1`] = `
               size="xs"
             />
           </FlexItem>
-           
           <FlexItem>
             Facebook
           </FlexItem>
@@ -60,7 +59,7 @@ exports[`SignupModal should match the snapshot 1`] = `
     </Chunk>
     <Chunk>
       <a
-        className="meetup-signUpModal-google button button--bordered button--fullWidth paddingHalf--left text--bold"
+        className="meetup-signupModal-google button button--bordered button--fullWidth paddingHalf--left text--bold"
         href="google.com"
       >
         <Flex
@@ -81,13 +80,13 @@ exports[`SignupModal should match the snapshot 1`] = `
       </a>
     </Chunk>
     <div
-      className="meetup-signUpModal-or margin--bottom align--center text--labelSecondary text--normal"
+      className="margin--bottom align--center text--labelSecondary text--normal text--uppercase"
     >
       Or
     </div>
     <Chunk>
       <a
-        className="meetup-signUpModal-email button button--bordered button--fullWidth paddingHalf--left text--bold"
+        className="meetup-signupModal-email button button--bordered button--fullWidth paddingHalf--left text--bold"
         href="meetup.com/email"
       >
         <Flex

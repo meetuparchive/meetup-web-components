@@ -14,7 +14,7 @@ import googleLogo from '../assets/svg/logo_google.svg';
 import { C_MEDIUMGRAY } from 'swarm-constants/dist/js/colorConstants';
 
 /* consts */
-export const SIGNUP_MODAL_CLASS = 'meetup-signUpModal';
+export const SIGNUP_MODAL_CLASS = 'meetup-signupModal';
 export const SIGNUP_MODAL_WRAPPER_CLASS = `${SIGNUP_MODAL_CLASS}-wrapper`;
 export const SIGNUP_MODAL_FACEBOOK_CLASS = `${SIGNUP_MODAL_CLASS}-facebook`;
 export const SIGNUP_MODAL_GOOGLE_CLASS = `${SIGNUP_MODAL_CLASS}-google`;
