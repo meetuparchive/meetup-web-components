@@ -1,6 +1,6 @@
 {
   "name": "meetup-web-components",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "license": "UNLICENSED",
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
@@ -48,6 +48,8 @@
   "dependencies": {
     "autosize": "3.0.21",
     "downshift": "1.26.1",
+    "file-loader": "1.1.8",
+    "lint-staged": "7.0.0",
     "raf-schd": "2.1.0",
     "react-flatpickr": "3.6.4",
     "react-portal": "4.1.2",
