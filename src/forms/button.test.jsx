@@ -64,6 +64,24 @@ describe('Button', () => {
 		expect(spyable.onClick).toHaveBeenCalled();
 	});
 
+	it('does not execute onClick when disabled', () => {
+		const spyable = {
+			onClick: jest.fn(),
+		};
+
+		spyOn(spyable, 'onClick');
+		const button = TestUtils.renderIntoDocument(
+			<Button onClick={spyable.onClick} disabled />
+		);
+		const buttonNode = TestUtils.scryRenderedDOMComponentsWithClass(
+			button,
+			BUTTON_CLASS
+		)[0];
+
+		TestUtils.Simulate.click(buttonNode);
+		expect(spyable.onClick).not.toHaveBeenCalled();
+	});
+
 	describe('Button with icon', () => {
 		const icon = <Icon shape="chevron-right" />,
 			label = 'Icon Button';
