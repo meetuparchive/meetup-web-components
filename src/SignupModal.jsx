@@ -15,6 +15,7 @@ import { C_MEDIUMGRAY } from 'swarm-constants/dist/js/colorConstants';
 
 /* consts */
 export const SIGNUP_MODAL_CLASS = 'meetup-signupModal';
+export const SIGNUP_MODAL_OR_CLASS = `${SIGNUP_MODAL_CLASS}-or`;
 export const SIGNUP_MODAL_WRAPPER_CLASS = `${SIGNUP_MODAL_CLASS}-wrapper`;
 export const SIGNUP_MODAL_FACEBOOK_CLASS = `${SIGNUP_MODAL_CLASS}-facebook`;
 export const SIGNUP_MODAL_GOOGLE_CLASS = `${SIGNUP_MODAL_CLASS}-google`;
@@ -76,7 +77,12 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 						</Flex>
 					</a>
 				</Chunk>
-				<div className="margin--bottom align--center text--labelSecondary text--normal text--uppercase">
+				<div
+					className={cx(
+						SIGNUP_MODAL_OR_CLASS,
+						'margin--bottom align--center text--labelSecondary text--normal'
+					)}
+				>
 					{orLabel}
 				</div>
 				<Chunk>
