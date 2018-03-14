@@ -5,6 +5,9 @@ import cx from 'classnames';
 
 import TextInput from './TextInput';
 
+export const TA_DROPDOWN_CLASSNAME = 'typeahead-dropdown';
+export const TA_ITEM_CLASSNAME = 'typeahead-input';
+
 /**
  * @module Typeahead
  */
@@ -36,7 +39,7 @@ class Typeahead extends React.PureComponent {
 					{isOpen
 						?
 							<div
-								className="typeahead-dropdown"
+								className={TA_DROPDOWN_CLASSNAME}
 								style={height && {
 									height: height,
 									overflowY: 'scroll'
@@ -51,7 +54,7 @@ class Typeahead extends React.PureComponent {
 											})}
 											key={`typeaheadItem-${i}`}
 											className={cx(
-												'typeahead-item',
+												TA_ITEM_CLASSNAME,
 												item.props.className,
 												{
 													'typeahead-item--isActive': highlightedIndex === i
