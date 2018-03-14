@@ -37,7 +37,10 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 					<div className="text--secondary display--inlineBlock marginHalf--right">
 						{login.text}
 					</div>
-					<a href={login.link} className="link display--inlineBlock">
+					<a
+						href={login.link}
+						className="padding--left-half link display--inlineBlock"
+					>
 						{login.label}
 					</a>
 				</Chunk>
@@ -57,7 +60,7 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 									className="align--left"
 								/>
 							</FlexItem>
-							<FlexItem>{facebook.label}</FlexItem>
+							<FlexItem className="flush--left">{facebook.label}</FlexItem>
 						</Flex>
 					</a>
 				</Chunk>
@@ -73,7 +76,7 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 							<FlexItem shrink>
 								<img src={googleLogo} className="align--left" />
 							</FlexItem>
-							<FlexItem>{google.label}</FlexItem>
+							<FlexItem className="flush--left">{google.label}</FlexItem>
 						</Flex>
 					</a>
 				</Chunk>
@@ -102,7 +105,7 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 									color={C_MEDIUMGRAY}
 								/>
 							</FlexItem>
-							<FlexItem>{email.label}</FlexItem>
+							<FlexItem className="flush--left">{email.label}</FlexItem>
 						</Flex>
 					</a>
 				</Chunk>

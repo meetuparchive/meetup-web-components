@@ -1,4 +1,7 @@
 .meetup-signupModal {
+	.padding--left-half {
+		padding-left: $space-half;
+	}
 	.meetup-signupModal-wrapper {
 		margin: $space $space-2;
 	}
