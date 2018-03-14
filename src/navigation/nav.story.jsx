@@ -81,7 +81,9 @@ const navItems = {
 
 storiesOf('Nav', module)
 	.addDecorator(decorateWithBasics)
-	.add('authenticated', () => <Nav self={MOCK_MEMBER} navItems={navItems} />)
+	.add('authenticated', () => (
+		<Nav self={MOCK_MEMBER} navItems={navItems} style={{ width: '100%' }} />
+	))
 	.add('authenticated Pro member', () => (
 		<Nav
 			self={{
@@ -93,5 +95,5 @@ storiesOf('Nav', module)
 		/>
 	))
 	.add('unauthenticated', () => (
-		<Nav self={{ status: 'prereg' }} navItems={navItems} />
+		<Nav self={{ status: 'prereg' }} navItems={navItems} style={{ width: '100%' }} />
 	));
