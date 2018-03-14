@@ -25,7 +25,7 @@ exports[`SignupModal should match the snapshot 1`] = `
         Already a member?
       </div>
       <a
-        className="link display--inlineBlock"
+        className="padding--left-half link display--inlineBlock"
         href="meetup.com/login"
       >
         Login
@@ -51,7 +51,9 @@ exports[`SignupModal should match the snapshot 1`] = `
               size="xs"
             />
           </FlexItem>
-          <FlexItem>
+          <FlexItem
+            className="flush--left"
+          >
             Facebook
           </FlexItem>
         </Flex>
@@ -73,7 +75,9 @@ exports[`SignupModal should match the snapshot 1`] = `
               src=""
             />
           </FlexItem>
-          <FlexItem>
+          <FlexItem
+            className="flush--left"
+          >
             Google
           </FlexItem>
         </Flex>
@@ -102,7 +106,9 @@ exports[`SignupModal should match the snapshot 1`] = `
               size="xs"
             />
           </FlexItem>
-          <FlexItem>
+          <FlexItem
+            className="flush--left"
+          >
             Email
           </FlexItem>
         </Flex>
