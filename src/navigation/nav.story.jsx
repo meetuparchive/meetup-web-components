@@ -13,7 +13,12 @@ const updatedNotif = MOCK_NOTIFICATIONS_LIST.map(notif => {
 });
 
 const navItems = {
+	dropdownLoaderLabel: 'Loading',
 	updatesLabel: 'Updates',
+	logo: {
+		logoAccessible: 'Meetup Logo',
+		link: 'meetup.com',
+	},
 	login: {
 		link: 'meetup.com/login',
 		label: 'Login',
@@ -74,6 +79,7 @@ const navItems = {
 				label: 'Logout',
 			},
 			allGroupsLabel: 'All Groups',
+			allGroupsLink: 'meetup.com/groups',
 			groupHome: () => {},
 		},
 	},
