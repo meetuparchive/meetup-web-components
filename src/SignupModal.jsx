@@ -55,7 +55,7 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 									size="xs"
 									className="align--left"
 								/>
-							</FlexItem>{' '}
+							</FlexItem>
 							<FlexItem>{facebook.label}</FlexItem>
 						</Flex>
 					</a>
