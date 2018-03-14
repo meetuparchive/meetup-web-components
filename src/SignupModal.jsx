@@ -18,7 +18,6 @@ export const SIGNUP_MODAL_CLASS = 'meetup-signUpModal';
 export const SIGNUP_MODAL_WRAPPER_CLASS = `${SIGNUP_MODAL_CLASS}-wrapper`;
 export const SIGNUP_MODAL_FACEBOOK_CLASS = `${SIGNUP_MODAL_CLASS}-facebook`;
 export const SIGNUP_MODAL_GOOGLE_CLASS = `${SIGNUP_MODAL_CLASS}-google`;
-export const SIGNUP_MODAL_OR_CLASS = `${SIGNUP_MODAL_CLASS}-or`;
 export const SIGNUP_MODAL_EMAIL_CLASS = `${SIGNUP_MODAL_CLASS}-email`;
 
 /**
@@ -77,12 +76,7 @@ export const SignupModal = function SignupModal({ onDismiss, signupOptions }) {
 						</Flex>
 					</a>
 				</Chunk>
-				<div
-					className={cx(
-						SIGNUP_MODAL_OR_CLASS,
-						'margin--bottom align--center text--labelSecondary text--normal'
-					)}
-				>
+				<div className="margin--bottom align--center text--labelSecondary text--normal text--uppercase">
 					{orLabel}
 				</div>
 				<Chunk>
