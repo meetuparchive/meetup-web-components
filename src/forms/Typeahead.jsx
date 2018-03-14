@@ -6,7 +6,7 @@ import cx from 'classnames';
 import TextInput from './TextInput';
 
 export const TA_DROPDOWN_CLASSNAME = 'typeahead-dropdown';
-export const TA_ITEM_CLASSNAME = 'typeahead-input';
+export const TA_ITEM_CLASSNAME = 'typeahead-item';
 
 /**
  * @module Typeahead
