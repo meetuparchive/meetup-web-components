@@ -78,7 +78,7 @@ class Button extends React.PureComponent {
 		return (
 			<Component
 				className={classNames.button}
-				onClick={onClick}
+				onClick={!disabled && onClick}
 				type={type}
 				{...other}
 			>
