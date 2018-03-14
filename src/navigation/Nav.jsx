@@ -93,7 +93,7 @@ export class Nav extends React.Component {
 			},
 			{
 				shrink: true,
-				onAction: () => {},
+				onAction: signup.onAction,
 				label: signup.label,
 				className: CLASS_UNAUTH_ITEM,
 			},
@@ -105,11 +105,17 @@ export class Nav extends React.Component {
 				linkTo: proDashboard.link,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
-				icon: (
+				icon: proDashboard.proLogo ? (
 					<img
 						src={proDashboard.proLogo}
 						className="display--block atMedium_display--none padding--left"
 						height="24px"
+					/>
+				) : (
+					<Icon
+						shape="profile"
+						size="s"
+						className="display--block atMedium_display--none"
 					/>
 				),
 			},
@@ -271,6 +277,8 @@ export class Nav extends React.Component {
 						/>
 					)}
 
+					{signup.isSignUpModalOpen && signup.signupModal}
+
 					{isLoggedOut ? unauthItems : authItems}
 				</Flex>
 			</nav>
@@ -279,13 +287,13 @@ export class Nav extends React.Component {
 }
 
 Nav.defaultProps = {
-	logoAccessible: 'Meetup Logo',
 	localeCode: 'en-US',
 };
+
 Nav.propTypes = {
 	self: PropTypes.object,
 	media: PropTypes.object,
-	navItems: PropTypes.objext,
+	navItems: PropTypes.object,
 };
 
 export default withMatchMedia(Nav);
