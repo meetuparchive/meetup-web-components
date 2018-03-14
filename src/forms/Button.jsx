@@ -30,6 +30,7 @@ class Button extends React.PureComponent {
 			hasHoverShadow,
 			component,
 			disabled,
+			type,
 			...other
 		} = this.props;
 
@@ -75,7 +76,12 @@ class Button extends React.PureComponent {
 		const Component = component;
 
 		return (
-			<Component className={classNames.button} onClick={onClick} {...other}>
+			<Component
+				className={classNames.button}
+				onClick={!disabled && onClick}
+				type={type}
+				{...other}
+			>
 				{icon ? iconChildren : children}
 			</Component>
 		);
@@ -83,7 +89,8 @@ class Button extends React.PureComponent {
 }
 
 Button.defaultProps = {
-	component: 'button'
+	component: 'button',
+	type: 'button'
 };
 
 Button.propTypes = {
@@ -97,5 +104,6 @@ Button.propTypes = {
 		PropTypes.string,
 		PropTypes.func
 	]),
+	type: PropTypes.string
 };
 export default Button;
