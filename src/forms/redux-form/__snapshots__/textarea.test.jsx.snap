@@ -3,7 +3,7 @@
 exports[`redux-form Textarea renders a Textarea component with expected attributes from mock data 1`] = `
 <WithErrorList(Textarea)
   autosize={true}
-  error="Did you mean Batman and Robin?"
+  error={null}
   id="heroField"
   label="Super Hero"
   maxLength={20}
