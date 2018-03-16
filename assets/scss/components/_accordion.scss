@@ -3,10 +3,6 @@
 // Maybe we can bring this into `swarm-constants` or `swarm-animation`?
 //
 
-.accordion--hideFocus .accordionPanel-label:focus {
-	outline: 0;
-}
-
 .accordionPanel-animator {
 	overflow: hidden;
 	transition: height $duration--medium $easing--standard;
@@ -24,6 +20,30 @@
 	border: inherit;
 	text-align: inherit;
 	padding: 0;
+}
+
+.accordionPanel:focus {
+	outline: 0;
+}
+
+.accordionPanel-label:focus {
+	outline: 0;
+
+	.accordionPanel {
+		@include color-svg($C_black);
+		font-weight: $W_bold;
+		position: relative;
+
+		&:after {
+			background-color: $C_selection;
+			content: '';
+			position: absolute;
+			top: -1px;
+			bottom: -2px;
+			left: -#{$space-half};
+			right: -#{$space-half};
+		}
+	}
 }
 
 .accordionPanel-icon {
