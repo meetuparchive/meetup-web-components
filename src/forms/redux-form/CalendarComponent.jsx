@@ -8,8 +8,10 @@ import CalendarComponent from '../CalendarComponent';
  * @return {Component} TextInput
  */
 const ReduxFormCalendarComponent = props => {
-	const { meta, input, ...other } = props;
-	return <CalendarComponent error={meta.error} {...input} {...other} />;
+	const { meta, input, validateBeforeTouched, ...other } = props;
+	const error = (validateBeforeTouched || meta.touched) ? meta.error : null;
+
+	return <CalendarComponent error={error} {...input} {...other} />;
 };
 
 ReduxFormCalendarComponent.displayName = 'ReduxFormCalendarComponent';

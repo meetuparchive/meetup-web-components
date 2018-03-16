@@ -3,7 +3,7 @@
 exports[`redux-form Calendar Component renders a Calendar component with expected attributes from mock data 1`] = `
 <WithErrorList(CalendarComponent)
   className="beyonce-halo"
-  error="pick a different album"
+  error={null}
   id="beyonce"
   name="halo"
   onBlur={[Function]}

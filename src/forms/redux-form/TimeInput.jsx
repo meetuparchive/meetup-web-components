@@ -8,9 +8,10 @@ import TimeInput from '../TimeInput';
  * @return {React.Component} TimeInput
  */
 const ReduxFormTimeInput = props => {
-	const { input, meta, ...other } = props;
+	const { input, meta, validateBeforeTouched, ...other } = props;
+	const error = (validateBeforeTouched || meta.touched) ? meta.error : null;
 
-	return <TimeInput {...input} error={meta.error} {...other} />;
+	return <TimeInput {...input} error={error} {...other} />;
 };
 
 ReduxFormTimeInput.displayName = 'ReduxFormTimeInput';
