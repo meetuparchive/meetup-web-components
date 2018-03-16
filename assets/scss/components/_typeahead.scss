@@ -1,0 +1,27 @@
+.typeahead {
+	position: relative;
+
+	.typeahead-input {
+		margin-bottom: 0;
+	}
+}
+
+.typeahead-dropdown {
+	background-color: $C_contentBG;
+	border: 1px solid $C_textPrimary; // match `input` focus border color
+	border-radius: 0 0 $largeRadius $largeRadius;
+	left: 0;
+	margin-top: -#{$defaultRadius};
+	position: absolute;
+	right: 0;
+	z-index: map-get($zindex-map, "floating-content")
+}
+
+.typeahead-item {
+	cursor: pointer;
+	padding: $space-half $space;
+
+	&--isActive {
+		background-color: $C_coolGrayLightTransp;
+	}
+}

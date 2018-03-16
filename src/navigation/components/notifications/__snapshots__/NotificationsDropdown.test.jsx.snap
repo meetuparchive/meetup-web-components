@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notifications Dropdown should match the snapshot with an empty notifications 1`] = `
+<div
+  className="align--left"
+>
+  <h2
+    className="padding--all border--bottom text--labelSecondary"
+  />
+  <NotificationsEmpty />
+</div>
+`;
+
+exports[`Notifications Dropdown should match the snapshot with notifications  1`] = `
+<div
+  className="align--left"
+>
+  <h2
+    className="padding--all border--bottom text--labelSecondary"
+  />
+  <NotificationsList />
+</div>
+`;

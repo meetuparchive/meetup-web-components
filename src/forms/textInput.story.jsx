@@ -134,47 +134,19 @@ storiesOf('TextInput', module)
 		}
 	)
 	.addWithInfo('has a pattern for min length', null, () => {
-		/**
-		 * @module ValidatedTextInput
-		 */
-		class ValidatedTextInput extends React.PureComponent {
-			constructor(props){
-				super(props);
-
-				this.state = {
-					valueIsValid: true
-				};
-			}
-
-			render () {
-				const rules = {
-					pattern:'.{5,10}'
-				};
-				const checkValidity = (e) => {
-					const {value} = e.target;
-
-					if (value.length > 5) {
-						this.setState(() => ({valueIsValid: false}));
-					}
-				};
-				return (
-					<TextInput
-						label='Your name'
-						id='fullname'
-						name='name'
-						defaultValue='>5'
-						onChange={(e) => checkValidity(e)}
-						isValid={this.state.valueIsValid}
-						validityMessage='Must be less than 5 characters'
-						{...rules}
-					/>
-				);
-			}
-		}
-
+		const rules = {
+			pattern:'.{5,10}'
+		};
 		return (
 			<form>
-				<ValidatedTextInput />
+				<TextInput
+					label='Your name'
+					id='fullname'
+					name='name'
+					defaultValue='>5'
+					validityMessage='Must be more than 5 characters and less than 10'
+					{...rules}
+				/>
 				<Button
 					contrast
 					fullWidth>

@@ -64,6 +64,24 @@ describe('Button', () => {
 		expect(spyable.onClick).toHaveBeenCalled();
 	});
 
+	it('does not execute onClick when disabled', () => {
+		const spyable = {
+			onClick: jest.fn(),
+		};
+
+		spyOn(spyable, 'onClick');
+		const button = TestUtils.renderIntoDocument(
+			<Button onClick={spyable.onClick} disabled />
+		);
+		const buttonNode = TestUtils.scryRenderedDOMComponentsWithClass(
+			button,
+			BUTTON_CLASS
+		)[0];
+
+		TestUtils.Simulate.click(buttonNode);
+		expect(spyable.onClick).not.toHaveBeenCalled();
+	});
+
 	describe('Button with icon', () => {
 		const icon = <Icon shape="chevron-right" />,
 			label = 'Icon Button';
@@ -119,10 +137,10 @@ describe('Button', () => {
 		});
 	});
 
-	describe('wrapperEl', () =>{
+	describe('wrapper component prop', () =>{
 		const link = 'https://meetup.com/';
 		const buttonTagComponent = shallow(
-			<Button wrapperEl={<a href={link} />}>
+			<Button component="a" href={link}>
 				Button label
 			</Button>
 		);
@@ -137,7 +155,7 @@ describe('Button', () => {
 
 		it('should render the correct `to` value for <Link> component', () => {
 			const buttonTagComponent = shallow(
-				<Button wrapperEl={<Link to={link} />}>
+				<Button to={link} component={Link}>
 					Button label
 				</Button>
 			);
