@@ -23,7 +23,6 @@ class AccordionPanel extends React.Component {
 
 		this.state = {
 			height: props.isOpen ? 'auto' : '0px'
-			// hasFocus: false
 		};
 	}
 
@@ -122,20 +121,6 @@ class AccordionPanel extends React.Component {
 			}));
 		}
 	}
-
-	// /**
-	//  * @returns undefined
-	//  */
-	// handleFocus() {
-	// 	this.setState(()=>({hasFocus: true}));
-	// }
-
-	// /**
-	//  * @returns undefined
-	//  */
-	// handleBlur() {
-	// 	this.setState(()=>({hasFocus: false}));
-	// }
 
 	render() {
 		const {
