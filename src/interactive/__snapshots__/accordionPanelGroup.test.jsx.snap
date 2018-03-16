@@ -81,7 +81,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
     role="tabList"
   >
     <li
-      className="list-item"
+      className="list-item flush--top"
       key="0"
     >
       <AccordionPanel
@@ -104,107 +104,113 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         }
         setClickedPanel={[Function]}
       >
-        <Flex
-          className="accordionPanel accordionPanel--active"
-          direction="row"
-          rowReverse={false}
-        >
-          <div
-            className="flex flex--row accordionPanel accordionPanel--active"
+        <div>
+          <button
+            aria-controls="panel-firstsection"
+            aria-expanded={true}
+            aria-selected={true}
+            className="accordionPanel-label display--block span--100"
+            id="label-firstsection"
+            onBlur={undefined}
+            onClick={[Function]}
+            onFocus={undefined}
+            role="tab"
           >
-            <FlexItem>
-              <div
-                className="flex-item"
-              >
-                <button
-                  aria-controls="panel-firstsection"
-                  aria-expanded={true}
-                  aria-selected={true}
-                  className="accordionPanel-label display--block span--100 padding--bottom"
-                  id="label-firstsection"
-                  onClick={[Function]}
-                  role="tab"
-                >
-                  First Section
-                </button>
-                <Chunk
-                  aria-hidden={false}
-                  aria-labelledby="label-firstsection"
-                  className="accordionPanel-animator"
-                  onTransitionEnd={[Function]}
-                  role="tabpanel"
-                  style={
-                    Object {
-                      "height": "auto",
-                    }
-                  }
-                >
-                  <div
-                    aria-hidden={false}
-                    aria-labelledby="label-firstsection"
-                    className="chunk accordionPanel-animator"
-                    onTransitionEnd={[Function]}
-                    role="tabpanel"
-                    style={
-                      Object {
-                        "height": "auto",
-                      }
-                    }
-                  >
-                    <div
-                      className="accordionPanel-content"
-                    >
-                      <div
-                        className="runningText"
-                      >
-                        <p>
-                          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Chunk>
-              </div>
-            </FlexItem>
-            <FlexItem
-              className="accordionPanel-icon"
-              onClick={[Function]}
-              shrink={true}
+            <Flex
+              className="padding--bottom padding--top accordionPanel accordionPanel--active"
+              direction="row"
+              rowReverse={false}
+              tabIndex={-1}
             >
               <div
-                className="flex-item flex-item--shrink accordionPanel-icon"
-                onClick={[Function]}
+                className="flex flex--row padding--bottom padding--top accordionPanel accordionPanel--active"
+                tabIndex={-1}
               >
-                <Icon
-                  shape="chevron-down"
-                  size="xs"
-                >
-                  <span
-                    className="svg svg--chevron-down"
+                <FlexItem>
+                  <div
+                    className="flex-item"
                   >
-                    <svg
-                      className="svg-icon valign--middle"
-                      height="16"
-                      preserveAspectRatio="xMinYMin meet"
-                      role="img"
-                      style={Object {}}
-                      viewBox="0 0 16 16"
-                      width="16"
+                    First Section
+                  </div>
+                </FlexItem>
+                <FlexItem
+                  className="accordionPanel-icon"
+                  onClick={[Function]}
+                  shrink={true}
+                >
+                  <div
+                    className="flex-item flex-item--shrink accordionPanel-icon"
+                    onClick={[Function]}
+                  >
+                    <Icon
+                      shape="chevron-down"
+                      size="xs"
                     >
-                      <use
-                        xlinkHref="#icon-chevron-down--small"
-                      />
-                    </svg>
-                  </span>
-                </Icon>
+                      <span
+                        className="svg svg--chevron-down"
+                      >
+                        <svg
+                          className="svg-icon valign--middle"
+                          height="16"
+                          preserveAspectRatio="xMinYMin meet"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 16 16"
+                          width="16"
+                        >
+                          <use
+                            xlinkHref="#icon-chevron-down--small"
+                          />
+                        </svg>
+                      </span>
+                    </Icon>
+                  </div>
+                </FlexItem>
               </div>
-            </FlexItem>
-          </div>
-        </Flex>
+            </Flex>
+          </button>
+          <Chunk
+            aria-hidden={false}
+            aria-labelledby="label-firstsection"
+            className="accordionPanel-animator"
+            onTransitionEnd={[Function]}
+            role="tabpanel"
+            style={
+              Object {
+                "height": "auto",
+              }
+            }
+          >
+            <div
+              aria-hidden={false}
+              aria-labelledby="label-firstsection"
+              className="chunk accordionPanel-animator"
+              onTransitionEnd={[Function]}
+              role="tabpanel"
+              style={
+                Object {
+                  "height": "auto",
+                }
+              }
+            >
+              <div
+                className="accordionPanel-content"
+              >
+                <div
+                  className="runningText"
+                >
+                  <p>
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Chunk>
+        </div>
       </AccordionPanel>
     </li>
     <li
-      className="list-item"
+      className="list-item flush--top"
       key="1"
     >
       <AccordionPanel
@@ -243,123 +249,129 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         }
         setClickedPanel={[Function]}
       >
-        <Flex
-          className="accordionPanel"
-          direction="row"
-          rowReverse={false}
-        >
-          <div
-            className="flex flex--row accordionPanel"
+        <div>
+          <button
+            aria-controls="panel-nextsection"
+            aria-expanded={false}
+            aria-selected={false}
+            className="accordionPanel-label display--block span--100"
+            id="label-nextsection"
+            onBlur={undefined}
+            onClick={[Function]}
+            onFocus={undefined}
+            role="tab"
           >
-            <FlexItem>
-              <div
-                className="flex-item"
-              >
-                <button
-                  aria-controls="panel-nextsection"
-                  aria-expanded={false}
-                  aria-selected={false}
-                  className="accordionPanel-label display--block span--100 padding--bottom"
-                  id="label-nextsection"
-                  onClick={[Function]}
-                  role="tab"
-                >
-                  Next Section
-                </button>
-                <Chunk
-                  aria-hidden={true}
-                  aria-labelledby="label-nextsection"
-                  className="accordionPanel-animator accordionPanel-animator--collapse"
-                  onTransitionEnd={[Function]}
-                  role="tabpanel"
-                  style={
-                    Object {
-                      "height": "0px",
-                    }
-                  }
-                >
-                  <div
-                    aria-hidden={true}
-                    aria-labelledby="label-nextsection"
-                    className="chunk accordionPanel-animator accordionPanel-animator--collapse"
-                    onTransitionEnd={[Function]}
-                    role="tabpanel"
-                    style={
-                      Object {
-                        "height": "0px",
-                      }
-                    }
-                  >
-                    <div
-                      className="accordionPanel-content"
-                    >
-                      <div>
-                        <div
-                          className="runningText"
-                        >
-                          <p>
-                            Any kind of content can go in here, even inputs.
-                          </p>
-                        </div>
-                        <div
-                          className="chunk"
-                        >
-                          <label
-                            htmlFor="test-textinput"
-                          >
-                            Im a label
-                          </label>
-                          <input
-                            id="test-textinput"
-                            placeholder="Input placeholder"
-                            type="text"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Chunk>
-              </div>
-            </FlexItem>
-            <FlexItem
-              className="accordionPanel-icon"
-              onClick={[Function]}
-              shrink={true}
+            <Flex
+              className="padding--bottom padding--top accordionPanel"
+              direction="row"
+              rowReverse={false}
+              tabIndex={-1}
             >
               <div
-                className="flex-item flex-item--shrink accordionPanel-icon"
-                onClick={[Function]}
+                className="flex flex--row padding--bottom padding--top accordionPanel"
+                tabIndex={-1}
               >
-                <Icon
-                  shape="chevron-down"
-                  size="xs"
-                >
-                  <span
-                    className="svg svg--chevron-down"
+                <FlexItem>
+                  <div
+                    className="flex-item"
                   >
-                    <svg
-                      className="svg-icon valign--middle"
-                      height="16"
-                      preserveAspectRatio="xMinYMin meet"
-                      role="img"
-                      style={Object {}}
-                      viewBox="0 0 16 16"
-                      width="16"
+                    Next Section
+                  </div>
+                </FlexItem>
+                <FlexItem
+                  className="accordionPanel-icon"
+                  onClick={[Function]}
+                  shrink={true}
+                >
+                  <div
+                    className="flex-item flex-item--shrink accordionPanel-icon"
+                    onClick={[Function]}
+                  >
+                    <Icon
+                      shape="chevron-down"
+                      size="xs"
                     >
-                      <use
-                        xlinkHref="#icon-chevron-down--small"
-                      />
-                    </svg>
-                  </span>
-                </Icon>
+                      <span
+                        className="svg svg--chevron-down"
+                      >
+                        <svg
+                          className="svg-icon valign--middle"
+                          height="16"
+                          preserveAspectRatio="xMinYMin meet"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 16 16"
+                          width="16"
+                        >
+                          <use
+                            xlinkHref="#icon-chevron-down--small"
+                          />
+                        </svg>
+                      </span>
+                    </Icon>
+                  </div>
+                </FlexItem>
               </div>
-            </FlexItem>
-          </div>
-        </Flex>
+            </Flex>
+          </button>
+          <Chunk
+            aria-hidden={true}
+            aria-labelledby="label-nextsection"
+            className="accordionPanel-animator accordionPanel-animator--collapse"
+            onTransitionEnd={[Function]}
+            role="tabpanel"
+            style={
+              Object {
+                "height": "0px",
+              }
+            }
+          >
+            <div
+              aria-hidden={true}
+              aria-labelledby="label-nextsection"
+              className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+              onTransitionEnd={[Function]}
+              role="tabpanel"
+              style={
+                Object {
+                  "height": "0px",
+                }
+              }
+            >
+              <div
+                className="accordionPanel-content"
+              >
+                <div>
+                  <div
+                    className="runningText"
+                  >
+                    <p>
+                      Any kind of content can go in here, even inputs.
+                    </p>
+                  </div>
+                  <div
+                    className="chunk"
+                  >
+                    <label
+                      htmlFor="test-textinput"
+                    >
+                      Im a label
+                    </label>
+                    <input
+                      id="test-textinput"
+                      placeholder="Input placeholder"
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Chunk>
+        </div>
       </AccordionPanel>
     </li>
     <li
-      className="list-item"
+      className="list-item flush--top"
       key="2"
     >
       <AccordionPanel
@@ -382,103 +394,109 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         }
         setClickedPanel={[Function]}
       >
-        <Flex
-          className="accordionPanel"
-          direction="row"
-          rowReverse={false}
-        >
-          <div
-            className="flex flex--row accordionPanel"
+        <div>
+          <button
+            aria-controls="panel-thirdsection"
+            aria-expanded={false}
+            aria-selected={false}
+            className="accordionPanel-label display--block span--100"
+            id="label-thirdsection"
+            onBlur={undefined}
+            onClick={[Function]}
+            onFocus={undefined}
+            role="tab"
           >
-            <FlexItem>
-              <div
-                className="flex-item"
-              >
-                <button
-                  aria-controls="panel-thirdsection"
-                  aria-expanded={false}
-                  aria-selected={false}
-                  className="accordionPanel-label display--block span--100 padding--bottom"
-                  id="label-thirdsection"
-                  onClick={[Function]}
-                  role="tab"
-                >
-                  Third Section
-                </button>
-                <Chunk
-                  aria-hidden={true}
-                  aria-labelledby="label-thirdsection"
-                  className="accordionPanel-animator accordionPanel-animator--collapse"
-                  onTransitionEnd={[Function]}
-                  role="tabpanel"
-                  style={
-                    Object {
-                      "height": "0px",
-                    }
-                  }
-                >
-                  <div
-                    aria-hidden={true}
-                    aria-labelledby="label-thirdsection"
-                    className="chunk accordionPanel-animator accordionPanel-animator--collapse"
-                    onTransitionEnd={[Function]}
-                    role="tabpanel"
-                    style={
-                      Object {
-                        "height": "0px",
-                      }
-                    }
-                  >
-                    <div
-                      className="accordionPanel-content"
-                    >
-                      <div
-                        className="runningText"
-                      >
-                        <p>
-                          Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Chunk>
-              </div>
-            </FlexItem>
-            <FlexItem
-              className="accordionPanel-icon"
-              onClick={[Function]}
-              shrink={true}
+            <Flex
+              className="padding--bottom padding--top accordionPanel"
+              direction="row"
+              rowReverse={false}
+              tabIndex={-1}
             >
               <div
-                className="flex-item flex-item--shrink accordionPanel-icon"
-                onClick={[Function]}
+                className="flex flex--row padding--bottom padding--top accordionPanel"
+                tabIndex={-1}
               >
-                <Icon
-                  shape="chevron-down"
-                  size="xs"
-                >
-                  <span
-                    className="svg svg--chevron-down"
+                <FlexItem>
+                  <div
+                    className="flex-item"
                   >
-                    <svg
-                      className="svg-icon valign--middle"
-                      height="16"
-                      preserveAspectRatio="xMinYMin meet"
-                      role="img"
-                      style={Object {}}
-                      viewBox="0 0 16 16"
-                      width="16"
+                    Third Section
+                  </div>
+                </FlexItem>
+                <FlexItem
+                  className="accordionPanel-icon"
+                  onClick={[Function]}
+                  shrink={true}
+                >
+                  <div
+                    className="flex-item flex-item--shrink accordionPanel-icon"
+                    onClick={[Function]}
+                  >
+                    <Icon
+                      shape="chevron-down"
+                      size="xs"
                     >
-                      <use
-                        xlinkHref="#icon-chevron-down--small"
-                      />
-                    </svg>
-                  </span>
-                </Icon>
+                      <span
+                        className="svg svg--chevron-down"
+                      >
+                        <svg
+                          className="svg-icon valign--middle"
+                          height="16"
+                          preserveAspectRatio="xMinYMin meet"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 16 16"
+                          width="16"
+                        >
+                          <use
+                            xlinkHref="#icon-chevron-down--small"
+                          />
+                        </svg>
+                      </span>
+                    </Icon>
+                  </div>
+                </FlexItem>
               </div>
-            </FlexItem>
-          </div>
-        </Flex>
+            </Flex>
+          </button>
+          <Chunk
+            aria-hidden={true}
+            aria-labelledby="label-thirdsection"
+            className="accordionPanel-animator accordionPanel-animator--collapse"
+            onTransitionEnd={[Function]}
+            role="tabpanel"
+            style={
+              Object {
+                "height": "0px",
+              }
+            }
+          >
+            <div
+              aria-hidden={true}
+              aria-labelledby="label-thirdsection"
+              className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+              onTransitionEnd={[Function]}
+              role="tabpanel"
+              style={
+                Object {
+                  "height": "0px",
+                }
+              }
+            >
+              <div
+                className="accordionPanel-content"
+              >
+                <div
+                  className="runningText"
+                >
+                  <p>
+                    Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Chunk>
+        </div>
       </AccordionPanel>
     </li>
   </ul>
@@ -566,7 +584,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
     role="tabList"
   >
     <li
-      className="list-item"
+      className="list-item flush--top"
       key="0"
     >
       <AccordionPanel
@@ -589,107 +607,113 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         }
         setClickedPanel={[Function]}
       >
-        <Flex
-          className="accordionPanel accordionPanel--active"
-          direction="row"
-          rowReverse={false}
-        >
-          <div
-            className="flex flex--row accordionPanel accordionPanel--active"
+        <div>
+          <button
+            aria-controls="panel-firstsection"
+            aria-expanded={true}
+            aria-selected={true}
+            className="accordionPanel-label display--block span--100"
+            id="label-firstsection"
+            onBlur={undefined}
+            onClick={[Function]}
+            onFocus={undefined}
+            role="tab"
           >
-            <FlexItem>
-              <div
-                className="flex-item"
-              >
-                <button
-                  aria-controls="panel-firstsection"
-                  aria-expanded={true}
-                  aria-selected={true}
-                  className="accordionPanel-label display--block span--100 padding--bottom"
-                  id="label-firstsection"
-                  onClick={[Function]}
-                  role="tab"
-                >
-                  First Section
-                </button>
-                <Chunk
-                  aria-hidden={false}
-                  aria-labelledby="label-firstsection"
-                  className="accordionPanel-animator"
-                  onTransitionEnd={[Function]}
-                  role="tabpanel"
-                  style={
-                    Object {
-                      "height": "auto",
-                    }
-                  }
-                >
-                  <div
-                    aria-hidden={false}
-                    aria-labelledby="label-firstsection"
-                    className="chunk accordionPanel-animator"
-                    onTransitionEnd={[Function]}
-                    role="tabpanel"
-                    style={
-                      Object {
-                        "height": "auto",
-                      }
-                    }
-                  >
-                    <div
-                      className="accordionPanel-content"
-                    >
-                      <div
-                        className="runningText"
-                      >
-                        <p>
-                          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Chunk>
-              </div>
-            </FlexItem>
-            <FlexItem
-              className="accordionPanel-icon"
-              onClick={[Function]}
-              shrink={true}
+            <Flex
+              className="padding--bottom padding--top accordionPanel accordionPanel--active"
+              direction="row"
+              rowReverse={false}
+              tabIndex={-1}
             >
               <div
-                className="flex-item flex-item--shrink accordionPanel-icon"
-                onClick={[Function]}
+                className="flex flex--row padding--bottom padding--top accordionPanel accordionPanel--active"
+                tabIndex={-1}
               >
-                <Icon
-                  shape="chevron-down"
-                  size="xs"
-                >
-                  <span
-                    className="svg svg--chevron-down"
+                <FlexItem>
+                  <div
+                    className="flex-item"
                   >
-                    <svg
-                      className="svg-icon valign--middle"
-                      height="16"
-                      preserveAspectRatio="xMinYMin meet"
-                      role="img"
-                      style={Object {}}
-                      viewBox="0 0 16 16"
-                      width="16"
+                    First Section
+                  </div>
+                </FlexItem>
+                <FlexItem
+                  className="accordionPanel-icon"
+                  onClick={[Function]}
+                  shrink={true}
+                >
+                  <div
+                    className="flex-item flex-item--shrink accordionPanel-icon"
+                    onClick={[Function]}
+                  >
+                    <Icon
+                      shape="chevron-down"
+                      size="xs"
                     >
-                      <use
-                        xlinkHref="#icon-chevron-down--small"
-                      />
-                    </svg>
-                  </span>
-                </Icon>
+                      <span
+                        className="svg svg--chevron-down"
+                      >
+                        <svg
+                          className="svg-icon valign--middle"
+                          height="16"
+                          preserveAspectRatio="xMinYMin meet"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 16 16"
+                          width="16"
+                        >
+                          <use
+                            xlinkHref="#icon-chevron-down--small"
+                          />
+                        </svg>
+                      </span>
+                    </Icon>
+                  </div>
+                </FlexItem>
               </div>
-            </FlexItem>
-          </div>
-        </Flex>
+            </Flex>
+          </button>
+          <Chunk
+            aria-hidden={false}
+            aria-labelledby="label-firstsection"
+            className="accordionPanel-animator"
+            onTransitionEnd={[Function]}
+            role="tabpanel"
+            style={
+              Object {
+                "height": "auto",
+              }
+            }
+          >
+            <div
+              aria-hidden={false}
+              aria-labelledby="label-firstsection"
+              className="chunk accordionPanel-animator"
+              onTransitionEnd={[Function]}
+              role="tabpanel"
+              style={
+                Object {
+                  "height": "auto",
+                }
+              }
+            >
+              <div
+                className="accordionPanel-content"
+              >
+                <div
+                  className="runningText"
+                >
+                  <p>
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Chunk>
+        </div>
       </AccordionPanel>
     </li>
     <li
-      className="list-item"
+      className="list-item flush--top"
       key="1"
     >
       <AccordionPanel
@@ -728,123 +752,129 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         }
         setClickedPanel={[Function]}
       >
-        <Flex
-          className="accordionPanel"
-          direction="row"
-          rowReverse={false}
-        >
-          <div
-            className="flex flex--row accordionPanel"
+        <div>
+          <button
+            aria-controls="panel-nextsection"
+            aria-expanded={false}
+            aria-selected={false}
+            className="accordionPanel-label display--block span--100"
+            id="label-nextsection"
+            onBlur={undefined}
+            onClick={[Function]}
+            onFocus={undefined}
+            role="tab"
           >
-            <FlexItem>
-              <div
-                className="flex-item"
-              >
-                <button
-                  aria-controls="panel-nextsection"
-                  aria-expanded={false}
-                  aria-selected={false}
-                  className="accordionPanel-label display--block span--100 padding--bottom"
-                  id="label-nextsection"
-                  onClick={[Function]}
-                  role="tab"
-                >
-                  Next Section
-                </button>
-                <Chunk
-                  aria-hidden={true}
-                  aria-labelledby="label-nextsection"
-                  className="accordionPanel-animator accordionPanel-animator--collapse"
-                  onTransitionEnd={[Function]}
-                  role="tabpanel"
-                  style={
-                    Object {
-                      "height": "0px",
-                    }
-                  }
-                >
-                  <div
-                    aria-hidden={true}
-                    aria-labelledby="label-nextsection"
-                    className="chunk accordionPanel-animator accordionPanel-animator--collapse"
-                    onTransitionEnd={[Function]}
-                    role="tabpanel"
-                    style={
-                      Object {
-                        "height": "0px",
-                      }
-                    }
-                  >
-                    <div
-                      className="accordionPanel-content"
-                    >
-                      <div>
-                        <div
-                          className="runningText"
-                        >
-                          <p>
-                            Any kind of content can go in here, even inputs.
-                          </p>
-                        </div>
-                        <div
-                          className="chunk"
-                        >
-                          <label
-                            htmlFor="test-textinput"
-                          >
-                            Im a label
-                          </label>
-                          <input
-                            id="test-textinput"
-                            placeholder="Input placeholder"
-                            type="text"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Chunk>
-              </div>
-            </FlexItem>
-            <FlexItem
-              className="accordionPanel-icon"
-              onClick={[Function]}
-              shrink={true}
+            <Flex
+              className="padding--bottom padding--top accordionPanel"
+              direction="row"
+              rowReverse={false}
+              tabIndex={-1}
             >
               <div
-                className="flex-item flex-item--shrink accordionPanel-icon"
-                onClick={[Function]}
+                className="flex flex--row padding--bottom padding--top accordionPanel"
+                tabIndex={-1}
               >
-                <Icon
-                  shape="chevron-down"
-                  size="xs"
-                >
-                  <span
-                    className="svg svg--chevron-down"
+                <FlexItem>
+                  <div
+                    className="flex-item"
                   >
-                    <svg
-                      className="svg-icon valign--middle"
-                      height="16"
-                      preserveAspectRatio="xMinYMin meet"
-                      role="img"
-                      style={Object {}}
-                      viewBox="0 0 16 16"
-                      width="16"
+                    Next Section
+                  </div>
+                </FlexItem>
+                <FlexItem
+                  className="accordionPanel-icon"
+                  onClick={[Function]}
+                  shrink={true}
+                >
+                  <div
+                    className="flex-item flex-item--shrink accordionPanel-icon"
+                    onClick={[Function]}
+                  >
+                    <Icon
+                      shape="chevron-down"
+                      size="xs"
                     >
-                      <use
-                        xlinkHref="#icon-chevron-down--small"
-                      />
-                    </svg>
-                  </span>
-                </Icon>
+                      <span
+                        className="svg svg--chevron-down"
+                      >
+                        <svg
+                          className="svg-icon valign--middle"
+                          height="16"
+                          preserveAspectRatio="xMinYMin meet"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 16 16"
+                          width="16"
+                        >
+                          <use
+                            xlinkHref="#icon-chevron-down--small"
+                          />
+                        </svg>
+                      </span>
+                    </Icon>
+                  </div>
+                </FlexItem>
               </div>
-            </FlexItem>
-          </div>
-        </Flex>
+            </Flex>
+          </button>
+          <Chunk
+            aria-hidden={true}
+            aria-labelledby="label-nextsection"
+            className="accordionPanel-animator accordionPanel-animator--collapse"
+            onTransitionEnd={[Function]}
+            role="tabpanel"
+            style={
+              Object {
+                "height": "0px",
+              }
+            }
+          >
+            <div
+              aria-hidden={true}
+              aria-labelledby="label-nextsection"
+              className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+              onTransitionEnd={[Function]}
+              role="tabpanel"
+              style={
+                Object {
+                  "height": "0px",
+                }
+              }
+            >
+              <div
+                className="accordionPanel-content"
+              >
+                <div>
+                  <div
+                    className="runningText"
+                  >
+                    <p>
+                      Any kind of content can go in here, even inputs.
+                    </p>
+                  </div>
+                  <div
+                    className="chunk"
+                  >
+                    <label
+                      htmlFor="test-textinput"
+                    >
+                      Im a label
+                    </label>
+                    <input
+                      id="test-textinput"
+                      placeholder="Input placeholder"
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Chunk>
+        </div>
       </AccordionPanel>
     </li>
     <li
-      className="list-item"
+      className="list-item flush--top"
       key="2"
     >
       <AccordionPanel
@@ -867,103 +897,109 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         }
         setClickedPanel={[Function]}
       >
-        <Flex
-          className="accordionPanel"
-          direction="row"
-          rowReverse={false}
-        >
-          <div
-            className="flex flex--row accordionPanel"
+        <div>
+          <button
+            aria-controls="panel-thirdsection"
+            aria-expanded={false}
+            aria-selected={false}
+            className="accordionPanel-label display--block span--100"
+            id="label-thirdsection"
+            onBlur={undefined}
+            onClick={[Function]}
+            onFocus={undefined}
+            role="tab"
           >
-            <FlexItem>
-              <div
-                className="flex-item"
-              >
-                <button
-                  aria-controls="panel-thirdsection"
-                  aria-expanded={false}
-                  aria-selected={false}
-                  className="accordionPanel-label display--block span--100 padding--bottom"
-                  id="label-thirdsection"
-                  onClick={[Function]}
-                  role="tab"
-                >
-                  Third Section
-                </button>
-                <Chunk
-                  aria-hidden={true}
-                  aria-labelledby="label-thirdsection"
-                  className="accordionPanel-animator accordionPanel-animator--collapse"
-                  onTransitionEnd={[Function]}
-                  role="tabpanel"
-                  style={
-                    Object {
-                      "height": "0px",
-                    }
-                  }
-                >
-                  <div
-                    aria-hidden={true}
-                    aria-labelledby="label-thirdsection"
-                    className="chunk accordionPanel-animator accordionPanel-animator--collapse"
-                    onTransitionEnd={[Function]}
-                    role="tabpanel"
-                    style={
-                      Object {
-                        "height": "0px",
-                      }
-                    }
-                  >
-                    <div
-                      className="accordionPanel-content"
-                    >
-                      <div
-                        className="runningText"
-                      >
-                        <p>
-                          Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Chunk>
-              </div>
-            </FlexItem>
-            <FlexItem
-              className="accordionPanel-icon"
-              onClick={[Function]}
-              shrink={true}
+            <Flex
+              className="padding--bottom padding--top accordionPanel"
+              direction="row"
+              rowReverse={false}
+              tabIndex={-1}
             >
               <div
-                className="flex-item flex-item--shrink accordionPanel-icon"
-                onClick={[Function]}
+                className="flex flex--row padding--bottom padding--top accordionPanel"
+                tabIndex={-1}
               >
-                <Icon
-                  shape="chevron-down"
-                  size="xs"
-                >
-                  <span
-                    className="svg svg--chevron-down"
+                <FlexItem>
+                  <div
+                    className="flex-item"
                   >
-                    <svg
-                      className="svg-icon valign--middle"
-                      height="16"
-                      preserveAspectRatio="xMinYMin meet"
-                      role="img"
-                      style={Object {}}
-                      viewBox="0 0 16 16"
-                      width="16"
+                    Third Section
+                  </div>
+                </FlexItem>
+                <FlexItem
+                  className="accordionPanel-icon"
+                  onClick={[Function]}
+                  shrink={true}
+                >
+                  <div
+                    className="flex-item flex-item--shrink accordionPanel-icon"
+                    onClick={[Function]}
+                  >
+                    <Icon
+                      shape="chevron-down"
+                      size="xs"
                     >
-                      <use
-                        xlinkHref="#icon-chevron-down--small"
-                      />
-                    </svg>
-                  </span>
-                </Icon>
+                      <span
+                        className="svg svg--chevron-down"
+                      >
+                        <svg
+                          className="svg-icon valign--middle"
+                          height="16"
+                          preserveAspectRatio="xMinYMin meet"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 16 16"
+                          width="16"
+                        >
+                          <use
+                            xlinkHref="#icon-chevron-down--small"
+                          />
+                        </svg>
+                      </span>
+                    </Icon>
+                  </div>
+                </FlexItem>
               </div>
-            </FlexItem>
-          </div>
-        </Flex>
+            </Flex>
+          </button>
+          <Chunk
+            aria-hidden={true}
+            aria-labelledby="label-thirdsection"
+            className="accordionPanel-animator accordionPanel-animator--collapse"
+            onTransitionEnd={[Function]}
+            role="tabpanel"
+            style={
+              Object {
+                "height": "0px",
+              }
+            }
+          >
+            <div
+              aria-hidden={true}
+              aria-labelledby="label-thirdsection"
+              className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+              onTransitionEnd={[Function]}
+              role="tabpanel"
+              style={
+                Object {
+                  "height": "0px",
+                }
+              }
+            >
+              <div
+                className="accordionPanel-content"
+              >
+                <div
+                  className="runningText"
+                >
+                  <p>
+                    Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Chunk>
+        </div>
       </AccordionPanel>
     </li>
   </ul>
