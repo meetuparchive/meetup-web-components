@@ -2,6 +2,7 @@
 
 exports[`redux-form NumberInput renders a NumberInput component with expected attributes from mock data 1`] = `
 <WithErrorList(NumberInput)
+  error={null}
   label="Number of internets"
   name="internets"
   onChange={[Function]}
