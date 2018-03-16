@@ -28,10 +28,10 @@ storiesOf('Button', module)
 		<Button onClick={action('clicked')} hasHoverShadow>Button Label</Button>
 	))
 	.add('Default - as anchor tag', () => (
-		<Button onClick={action('clicked')} wrapper={<a href="https://meetup.com/" />}>Button Label</Button>
+		<Button onClick={action('clicked')} component="a" href="https://meetup.com/">Button Label</Button>
 	))
 	.add('Default - as <Link> component', () => (
-		<Button onClick={action('clicked')} wrapper={<Link to="https://meetup.com/"/>} >Button Label</Button>
+		<Button onClick={action('clicked')} component={Link} to="https://meetup.com/">Button Label</Button>
 	))
 
 	.add('Neutral', () => (

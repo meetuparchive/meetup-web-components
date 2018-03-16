@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Dropdown should match snapshot 1`] = `
+<Flex
+  className="profileDropdown-content align--left padding--all"
+  direction="row"
+  justify="spaceBetween"
+>
+  <FlexItem
+    growFactor={6}
+  >
+    <Chunk>
+      <ul
+        className="list"
+      >
+        <li
+          className="profileDropdown-content-group list-item"
+          key="1111"
+        >
+          <a>
+            hello 1
+          </a>
+        </li>
+        <li
+          className="profileDropdown-content-group list-item"
+          key="2222"
+        >
+          <a>
+            hello 2
+          </a>
+        </li>
+        <li
+          className="profileDropdown-content-group list-item"
+          key="3333"
+        >
+          <a>
+            hello 3
+          </a>
+        </li>
+        <li
+          className="profileDropdown-content-group list-item"
+          key="4444"
+        >
+          <a>
+            hello 4
+          </a>
+        </li>
+      </ul>
+    </Chunk>
+    <a
+      className="button button--small text--small"
+      href="/find"
+    >
+      All Groups
+      <Icon
+        className="margin--left"
+        color="rgb(255,255,255)"
+        shape="chevron-right"
+        size="xs"
+      />
+    </a>
+  </FlexItem>
+  <FlexItem
+    className="text--secondary margin--left"
+    growFactor={2}
+  >
+    <ul
+      className="list"
+    >
+      <li
+        className="list-item"
+      >
+        <a
+          href="meetup.com"
+        >
+          Profile
+        </a>
+      </li>
+      <li
+        className="list-item"
+      >
+        <a
+          href="meetup.com"
+        >
+          Settings
+        </a>
+      </li>
+      <li
+        className="list-item"
+      >
+        <a
+          href="meetup.com"
+        >
+          Help
+        </a>
+      </li>
+      <li
+        className="list-item"
+      >
+        <a
+          href="meetup.com"
+        >
+          Logout
+        </a>
+      </li>
+    </ul>
+  </FlexItem>
+</Flex>
+`;

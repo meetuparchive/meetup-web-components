@@ -2,12 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import Button from '../forms/Button';
-import Dropdown from '../interactive/Dropdown';
-import FlexItem from '../layout/FlexItem';
+import Button from '../../forms/Button';
+import Dropdown from '../../interactive/Dropdown';
+import FlexItem from '../../layout/FlexItem';
 
 const NAV_ITEM_CLASS = 'navItemLink';
-
 
 export const ActionItem = ({ label, action, labelClassNames }) => (
 	<Button reset className={cx(NAV_ITEM_CLASS, 'text--secondary')} onClick={action}>
@@ -57,6 +56,7 @@ export const NavItem = props => {
 		hasUpdates,
 		onClickAction,
 		onAction,
+		updatesLabel,
 		...other
 	} = props;
 
@@ -71,9 +71,7 @@ export const NavItem = props => {
 			{label && <span className={classNames.label}>{label}</span>}
 			{hasUpdates && (
 				<span className="counterBadge">
-					<span className="visibility--a11yHide">
-						Updates
-					</span>
+					<span className="visibility--a11yHide">{updatesLabel}</span>
 				</span>
 			)}
 		</div>
@@ -85,8 +83,8 @@ export const NavItem = props => {
 			navItemContent={navItemContent}
 		/>
 	) : (
-			navItemContent
-		);
+		navItemContent
+	);
 
 	return (
 		<FlexItem shrink={shrink} className={classNames.navItem} {...other}>
