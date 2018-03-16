@@ -23,6 +23,7 @@ class AccordionPanel extends React.Component {
 
 		this.state = {
 			height: props.isOpen ? 'auto' : '0px'
+			// hasFocus: false
 		};
 	}
 
@@ -111,6 +112,9 @@ class AccordionPanel extends React.Component {
 			indicatorIcon;
 	}
 
+	/**
+	 * @returns undefined
+	 */
 	onTransitionEnd() {
 		if (this.props.isOpen) {
 			this.setState(()=>({
@@ -118,6 +122,20 @@ class AccordionPanel extends React.Component {
 			}));
 		}
 	}
+
+	// /**
+	//  * @returns undefined
+	//  */
+	// handleFocus() {
+	// 	this.setState(()=>({hasFocus: true}));
+	// }
+
+	// /**
+	//  * @returns undefined
+	//  */
+	// handleBlur() {
+	// 	this.setState(()=>({hasFocus: false}));
+	// }
 
 	render() {
 		const {
@@ -140,6 +158,7 @@ class AccordionPanel extends React.Component {
 
 		const classNames = {
 			accordionPanel: cx(
+				'padding--bottom padding--top',
 				PANEL_CLASS,
 				{
 					[ACTIVEPANEL_CLASS]: isOpen,
@@ -149,7 +168,7 @@ class AccordionPanel extends React.Component {
 			),
 			trigger: cx(
 				className,
-				'accordionPanel-label display--block span--100 padding--bottom'
+				'accordionPanel-label display--block span--100'
 			),
 			content: cx(
 				'accordionPanel-animator',
@@ -163,62 +182,67 @@ class AccordionPanel extends React.Component {
 		const ariaId = label.replace(/\s+/g, '').toLowerCase();
 
 		return(
-			<Flex
-				className={classNames.accordionPanel}
-				rowReverse={indicatorAlign === 'left' && 'all'}
-				{...other}
-			>
-
-				<FlexItem>
-					<button
-						role='tab'
-						id={`label-${ariaId}`}
-						aria-controls={`panel-${ariaId}`}
-						aria-expanded={isOpen}
-						aria-selected={isOpen}
-						className={classNames.trigger}
-						onClick={this.onToggleClick}
-					>
-						{label}
-					</button>
-
-					<Chunk
-						role='tabpanel'
-						aria-labelledby={`label-${ariaId}`}
-						aria-hidden={!isOpen}
-						className={classNames.content}
-						style={{height: this.state.height}}
-						onTransitionEnd={this.onTransitionEnd}
-					>
-						<div
-							className='accordionPanel-content'
-							ref={(div) => { this.contentEl = div; }}
-						>
-							{panelContent}
-						</div>
-					</Chunk>
-				</FlexItem>
-
-				<FlexItem
-					className='accordionPanel-icon'
+			<div>
+				<button
+					role='tab'
+					id={`label-${ariaId}`}
+					aria-controls={`panel-${ariaId}`}
+					aria-expanded={isOpen}
+					aria-selected={isOpen}
+					className={classNames.trigger}
 					onClick={this.onToggleClick}
-					shrink
+					onFocus={this.handleFocus}
+					onBlur={this.handleBlur}
 				>
-					{
-						!indicatorSwitch && indicatorIcon
-							? <Icon shape={this.getIconShape()} size={indicatorIconSize} />
-							:
-							<ToggleSwitch
-								isActive={isOpen}
-								disabled={!!onToggleClick}
-								id={`${ariaId}-switch`}
-								name={ariaId}
-								onClick={this.onToggleClick}
-							/>
-					}
-				</FlexItem>
+					<Flex
+						className={classNames.accordionPanel}
+						rowReverse={indicatorAlign === 'left' && 'all'}
+						tabIndex={-1}
+						{...other}
+					>
 
-			</Flex>
+						<FlexItem>
+							{label}
+						</FlexItem>
+
+						<FlexItem
+							className='accordionPanel-icon'
+							onClick={this.onToggleClick}
+							shrink
+						>
+							{
+								!indicatorSwitch && indicatorIcon
+									? <Icon shape={this.getIconShape()} size={indicatorIconSize} />
+									:
+									<ToggleSwitch
+										isActive={isOpen}
+										disabled={!!onToggleClick}
+										id={`${ariaId}-switch`}
+										name={ariaId}
+										onClick={this.onToggleClick}
+									/>
+							}
+						</FlexItem>
+
+					</Flex>
+				</button>
+
+				<Chunk
+					role='tabpanel'
+					aria-labelledby={`label-${ariaId}`}
+					aria-hidden={!isOpen}
+					className={classNames.content}
+					style={{height: this.state.height}}
+					onTransitionEnd={this.onTransitionEnd}
+				>
+					<div
+						className='accordionPanel-content'
+						ref={(div) => { this.contentEl = div; }}
+					>
+						{panelContent}
+					</div>
+				</Chunk>
+			</div>
 		);
 	}
 }
