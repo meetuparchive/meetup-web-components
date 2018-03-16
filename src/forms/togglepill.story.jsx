@@ -23,18 +23,6 @@ storiesOf('TogglePill', module)
 				>
 					Toggle Pill Label
 				</TogglePill>
-				{
-					<div className="inverted" style={{backgroundColor: 'rgb(0,0,0)', padding: '5vmin'}}>
-						<TogglePill
-							onChange={onChange}
-							id='togglePillId2'
-							name='togglePillName2'
-							value='toggle-pillz'
-						>
-							Toggle Pill Label
-						</TogglePill>
-					</div>
-				}
 			</div>
 		)
 	)
