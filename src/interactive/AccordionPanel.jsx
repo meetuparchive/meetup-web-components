@@ -215,6 +215,7 @@ class AccordionPanel extends React.Component {
 									? <Icon shape={this.getIconShape()} size={indicatorIconSize} />
 									:
 									<ToggleSwitch
+										tabIndex="-1"
 										isActive={isOpen}
 										disabled={!!onToggleClick}
 										id={`${ariaId}-switch`}
