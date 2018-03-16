@@ -46,7 +46,7 @@ export default function withToggleControl(WrappedComponent) {
 
 			return (
 				<span
-					tabIndex="0"
+					tabIndex={this.props.tabIndex || "0"}
 					role="button"
 					aria-pressed={this.state.isActive}
 					onKeyUp={this.onKeyUp}

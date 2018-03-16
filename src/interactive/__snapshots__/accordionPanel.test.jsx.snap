@@ -303,12 +303,13 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                 isActive={false}
                 name="firstsection"
                 onClick={[Function]}
+                tabIndex="-1"
               >
                 <span
                   aria-pressed={false}
                   onKeyUp={[Function]}
                   role="button"
-                  tabIndex="0"
+                  tabIndex="-1"
                 >
                   <ToggleSwitch
                     disabled={false}
@@ -316,11 +317,13 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                     isActive={false}
                     name="firstsection"
                     onClick={[Function]}
+                    tabIndex="-1"
                     toggleActive={[Function]}
                   >
                     <div
                       id="firstsection-switch"
                       onClick={[Function]}
+                      tabIndex="-1"
                     >
                       <Button
                         aria-checked={false}
