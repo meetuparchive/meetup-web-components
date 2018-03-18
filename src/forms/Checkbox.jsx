@@ -1,22 +1,22 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import cx from 'classnames';
-import Flex from '../layout/Flex';
-import FlexItem from '../layout/FlexItem';
-import Icon from '../media/Icon';
+import PropTypes from "prop-types";
+import React from "react";
+import cx from "classnames";
+import Flex from "../layout/Flex";
+import FlexItem from "../layout/FlexItem";
+import Icon from "../media/Icon";
 
-export const FAUX_TOGGLE_CLASS = 'fauxToggle';
-export const FOCUSED_CHECKBOX_CLASS = 'focused';
-export const DISABLED_CHECKBOX_CLASS = 'disabled';
+export const FAUX_TOGGLE_CLASS = "fauxToggle";
+export const FOCUSED_CHECKBOX_CLASS = "focused";
+export const DISABLED_CHECKBOX_CLASS = "disabled";
 
 /**
  * @module Checkbox
  */
-class Checkbox extends React.Component {
+class Checkbox extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
-			checked: props.checked || false,
+			checked: props.checked || false
 		};
 		this.onChange = this.onChange.bind(this);
 		this.onBlur = this.onBlur.bind(this);
@@ -53,21 +53,21 @@ class Checkbox extends React.Component {
 			...other
 		} = this.props;
 
-		const classNames = cx('minTouchHeight', className);
+		const classNames = cx("minTouchHeight", className);
 
 		const labelClassNames = cx(
-			'toggleLabel label--minor display--block',
+			"toggleLabel label--minor display--block",
 			labelClassName
 		);
 
 		const fauxCheckboxClassNames = cx(
-			'display--block align--center',
+			"display--block align--center",
 			FAUX_TOGGLE_CLASS,
 			`${FAUX_TOGGLE_CLASS}--checkbox`,
 			{
 				checked: this.state.checked,
 				disabled,
-				[FOCUSED_CHECKBOX_CLASS]: this.state.focused,
+				[FOCUSED_CHECKBOX_CLASS]: this.state.focused
 			}
 		);
 
@@ -93,20 +93,20 @@ class Checkbox extends React.Component {
 							ref={el => (this.fauxCheckboxEl = el)}
 							className={fauxCheckboxClassNames}
 						>
-							{this.state.checked &&
+							{this.state.checked && (
 								<Icon
 									className="display--flex flex--center checkbox-indicator"
 									shape="check"
 									size="xs"
 								/>
-							}
+							)}
 						</span>
 					</FlexItem>
 					<FlexItem className="toggleLabel-container">
 						<span
 							className={cx({
-								['text--hint']: disabled,
-								['text--bold']: this.state.checked,
+								["text--hint"]: disabled,
+								["text--bold"]: this.state.checked
 							})}
 						>
 							{label}
@@ -121,12 +121,15 @@ class Checkbox extends React.Component {
 
 Checkbox.propTypes = {
 	checked: PropTypes.bool,
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	disabled: PropTypes.bool,
+	id: PropTypes.string,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	labelClassName: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]), // checkboxes don't need values
 	onChange: PropTypes.func,
+	onBlur: PropTypes.func,
+	onFocus: PropTypes.func
 };
 
 export default Checkbox;

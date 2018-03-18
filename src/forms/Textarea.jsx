@@ -1,20 +1,20 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import cx from 'classnames';
-import autosize from 'autosize';
-import CharCounter from './CharCounter';
-import withErrorList from '../utils/components/withErrorList';
+import PropTypes from "prop-types";
+import React from "react";
+import cx from "classnames";
+import autosize from "autosize";
+import CharCounter from "./CharCounter";
+import withErrorList from "../utils/components/withErrorList";
 
 /**
  * @module Textarea
  */
-export class Textarea extends React.Component {
+export class Textarea extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.onChange = this.onChange.bind(this);
 
 		this.state = {
-			value: '',
+			value: ""
 		};
 	}
 
@@ -23,7 +23,7 @@ export class Textarea extends React.Component {
 	 * @return {undefined} side effect only
 	 */
 	componentDidMount() {
-		if (this.props.autosize){
+		if (this.props.autosize) {
 			autosize(this.textarea);
 		}
 	}
@@ -32,9 +32,9 @@ export class Textarea extends React.Component {
 	 * Should override value with info from state
 	 * @return {[type]} [description]
 	 */
-	overrideValue (nextProps) {
+	overrideValue(nextProps) {
 		this.setState(() => ({
-			value: nextProps.value || ''
+			value: nextProps.value || ""
 		}));
 	}
 
@@ -74,7 +74,7 @@ export class Textarea extends React.Component {
 		const value = e.target.value;
 
 		this.setState(() => ({
-			value,
+			value
 		}));
 
 		if (onChange) {
@@ -85,13 +85,13 @@ export class Textarea extends React.Component {
 	render() {
 		const {
 			name,
-			value,	// eslint-disable-line no-unused-vars
+			value, // eslint-disable-line no-unused-vars
 			label,
 			labelClassName,
 			className,
 			error,
 			rows,
-			style={},
+			style = {},
 			maxHeight,
 			minHeight,
 			maxLength,
@@ -106,25 +106,22 @@ export class Textarea extends React.Component {
 
 		const classNames = {
 			textarea: cx(
-				'span--100',
+				"span--100",
 				{
-					'field--error': error,
-					'textarea--autoheight': autosize
+					"field--error": error,
+					"textarea--autoheight": autosize
 				},
 				className
 			),
 			label: cx(
-				'label--field',
+				"label--field",
 				{
-					'label--required': required,
-					'flush--bottom': helperText
+					"label--required": required,
+					"flush--bottom": helperText
 				},
 				labelClassName
 			),
-			helperText: cx(
-				'helperTextContainer',
-				{ required }
-			)
+			helperText: cx("helperTextContainer", { required })
 		};
 
 		// Character limits should be a "soft" limit.
@@ -133,52 +130,51 @@ export class Textarea extends React.Component {
 
 		return (
 			<div className="inputContainer">
-				{label &&
-					<label className={classNames.label} htmlFor={id} data-requiredtext={required && requiredText}>
+				{label && (
+					<label
+						className={classNames.label}
+						htmlFor={id}
+						data-requiredtext={required && requiredText}
+					>
 						{label}
 					</label>
-				}
-				{helperText &&
-					<div className={classNames.helperText}>
-						{helperText}
-					</div>
-				}
+				)}
+				{helperText && <div className={classNames.helperText}>{helperText}</div>}
 				<textarea
-					type='text'
+					type="text"
 					name={name}
 					required={required}
 					className={classNames.textarea}
 					onChange={this.onChange}
 					rows={rows}
-					ref={(textarea) => {this.textarea = textarea;}}
+					ref={textarea => {
+						this.textarea = textarea;
+					}}
 					style={{ minHeight, maxHeight, ...style }}
 					id={id}
 					value={this.state.value}
 					{...other}
 				/>
-				{maxLength &&
+				{maxLength && (
 					<CharCounter
 						maxLength={parseInt(maxLength, 10)}
 						valueLength={parseInt(this.state.value.length, 10)}
 					/>
-				}
+				)}
 			</div>
 		);
 	}
 }
 
 Textarea.defaultProps = {
-	requiredText: '*',
+	requiredText: "*"
 };
 
 Textarea.propTypes = {
 	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	error: PropTypes.string,
-	label: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	labelClassName: PropTypes.string,
 	minHeight: PropTypes.number,
 	maxHeight: PropTypes.number,
@@ -186,15 +182,9 @@ Textarea.propTypes = {
 	rows: PropTypes.number,
 	value: PropTypes.string,
 	autosize: PropTypes.bool,
-	helperText: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	required: PropTypes.bool,
-	requiredText: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	])
+	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
 };
 
 export default withErrorList(Textarea);
