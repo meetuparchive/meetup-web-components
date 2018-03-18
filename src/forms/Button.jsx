@@ -1,13 +1,13 @@
-import PropTypes from "prop-types";
-import React from "react";
-import cx from "classnames";
-import Flex from "../layout/Flex";
-import FlexItem from "../layout/FlexItem";
+import PropTypes from 'prop-types';
+import React from 'react';
+import cx from 'classnames';
+import Flex from '../layout/Flex';
+import FlexItem from '../layout/FlexItem';
 
-export const BUTTON_CLASS = "button";
-export const BUTTON_ICON_WRAPPER_CLASS = "button-icon-wrapper";
-export const BUTTON_LABEL_CLASS = "button-label";
-export const BUTTON_ICON_CLASS = "button-icon";
+export const BUTTON_CLASS = 'button';
+export const BUTTON_ICON_WRAPPER_CLASS = 'button-icon-wrapper';
+export const BUTTON_LABEL_CLASS = 'button-label';
+export const BUTTON_ICON_CLASS = 'button-icon';
 
 /**
  * @module Button
@@ -33,22 +33,22 @@ const Button = ({
 		button: cx(
 			BUTTON_CLASS,
 			{
-				"button--fullWidth": fullWidth,
-				"button--primary": primary,
-				"button--small": small,
-				"button--reset": reset,
-				"button--bordered": bordered,
-				"button--hasHoverShadow": hasHoverShadow,
-				"button--neutral": neutral,
-				"button--disabled": disabled
+				'button--fullWidth': fullWidth,
+				'button--primary': primary,
+				'button--small': small,
+				'button--reset': reset,
+				'button--bordered': bordered,
+				'button--hasHoverShadow': hasHoverShadow,
+				'button--neutral': neutral,
+				'button--disabled': disabled,
 			},
 			className
 		),
 		iconWrap: cx(BUTTON_ICON_WRAPPER_CLASS, {
-			[`${BUTTON_ICON_WRAPPER_CLASS}--right`]: right
-		})
+			[`${BUTTON_ICON_WRAPPER_CLASS}--right`]: right,
+		}),
 	};
-	const opts = right ? { rowReverse: "all" } : {};
+	const opts = right ? { rowReverse: 'all' } : {};
 
 	const iconChildren = (
 		<Flex className={classNames.iconWrap} justify="center" {...opts}>
@@ -85,8 +85,8 @@ const Button = ({
 };
 
 Button.defaultProps = {
-	component: "button",
-	type: "button"
+	component: 'button',
+	type: 'button',
 };
 
 Button.propTypes = {
@@ -101,6 +101,6 @@ Button.propTypes = {
 	hasHoverShadow: PropTypes.bool,
 	component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 	disabled: PropTypes.any,
-	type: PropTypes.string
+	type: PropTypes.string,
 };
 export default Button;

@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import React from "react";
-import cx from "classnames";
-import autosize from "autosize";
-import CharCounter from "./CharCounter";
-import withErrorList from "../utils/components/withErrorList";
+import PropTypes from 'prop-types';
+import React from 'react';
+import cx from 'classnames';
+import autosize from 'autosize';
+import CharCounter from './CharCounter';
+import withErrorList from '../utils/components/withErrorList';
 
 /**
  * @module Textarea
@@ -14,7 +14,7 @@ export class Textarea extends React.PureComponent {
 		this.onChange = this.onChange.bind(this);
 
 		this.state = {
-			value: ""
+			value: '',
 		};
 	}
 
@@ -34,7 +34,7 @@ export class Textarea extends React.PureComponent {
 	 */
 	overrideValue(nextProps) {
 		this.setState(() => ({
-			value: nextProps.value || ""
+			value: nextProps.value || '',
 		}));
 	}
 
@@ -74,7 +74,7 @@ export class Textarea extends React.PureComponent {
 		const value = e.target.value;
 
 		this.setState(() => ({
-			value
+			value,
 		}));
 
 		if (onChange) {
@@ -106,22 +106,22 @@ export class Textarea extends React.PureComponent {
 
 		const classNames = {
 			textarea: cx(
-				"span--100",
+				'span--100',
 				{
-					"field--error": error,
-					"textarea--autoheight": autosize
+					'field--error': error,
+					'textarea--autoheight': autosize,
 				},
 				className
 			),
 			label: cx(
-				"label--field",
+				'label--field',
 				{
-					"label--required": required,
-					"flush--bottom": helperText
+					'label--required': required,
+					'flush--bottom': helperText,
 				},
 				labelClassName
 			),
-			helperText: cx("helperTextContainer", { required })
+			helperText: cx('helperTextContainer', { required }),
 		};
 
 		// Character limits should be a "soft" limit.
@@ -167,7 +167,7 @@ export class Textarea extends React.PureComponent {
 }
 
 Textarea.defaultProps = {
-	requiredText: "*"
+	requiredText: '*',
 };
 
 Textarea.propTypes = {
@@ -184,7 +184,7 @@ Textarea.propTypes = {
 	autosize: PropTypes.bool,
 	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	required: PropTypes.bool,
-	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 export default withErrorList(Textarea);

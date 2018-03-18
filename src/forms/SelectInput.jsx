@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import React from "react";
-import cx from "classnames";
+import PropTypes from 'prop-types';
+import React from 'react';
+import cx from 'classnames';
 
-import Icon from "../media/Icon";
-import withErrorList from "../utils/components/withErrorList";
+import Icon from '../media/Icon';
+import withErrorList from '../utils/components/withErrorList';
 
 /**
  * @module SelectInput
@@ -12,7 +12,7 @@ export class SelectInput extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: props.value || (props.options[0] || {}).value
+			value: props.value || (props.options[0] || {}).value,
 		};
 		this.onChange = this.onChange.bind(this);
 	}
@@ -50,19 +50,19 @@ export class SelectInput extends React.PureComponent {
 
 		const classNames = {
 			label: cx(
-				"label--field",
+				'label--field',
 				{
-					"label--required": required,
-					"flush--bottom": helperText
+					'label--required': required,
+					'flush--bottom': helperText,
 				},
 				labelClassName
 			),
 			field: cx(
-				"select--reset span--100 padding--selectArrow",
-				{ "field--error": (errors && errors.length > 0) || error },
+				'select--reset span--100 padding--selectArrow',
+				{ 'field--error': (errors && errors.length > 0) || error },
 				className
 			),
-			helperText: cx("helperTextContainer", { required })
+			helperText: cx('helperTextContainer', { required }),
 		};
 
 		return (
@@ -108,7 +108,7 @@ export class SelectInput extends React.PureComponent {
 }
 
 SelectInput.defaultProps = {
-	requiredText: "*"
+	requiredText: '*',
 };
 
 SelectInput.propTypes = {
@@ -116,7 +116,7 @@ SelectInput.propTypes = {
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
 			label: PropTypes.string.isRequired,
-			value: PropTypes.string.isRequired
+			value: PropTypes.string.isRequired,
 		})
 	).isRequired,
 	error: PropTypes.string,
@@ -134,7 +134,7 @@ SelectInput.propTypes = {
 	},
 	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	required: PropTypes.bool,
-	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 export default withErrorList(SelectInput);
