@@ -99,54 +99,6 @@ Applies button color-related styles using a mixin.
 	}
 }
 
-/*doc
----
-title: Pill base mixin
-name: pillBaseMixin
-parent: buttons
----
-Applies base pill styles using a mixin (for tokens and toggle pills)
-
-_(The `extend` directive can cause ugly cascade problems)_
-
-```
-@include pillBase();
-```
-*/
-@mixin pillBase() {
-	@extend %buttonPersonality;
-	@include align-items(center);
-	@include display(inline-flex);
-	@include flex-direction(row);
-	@include justify-content(center);
-	@include standardBorder(all);
-	@include buttonColor(
-		$bgColor: $C_white,
-		$hoverColor: $C_white,
-		$activeColor: $C_white,
-		$textTransition: false
-	);
-	box-sizing: border-box;
-	-webkit-appearance: none;
-	border-radius: $defaultRadius;
-	font-weight: $W_normal;
-	font-size: $font-size-small;
-	margin: 0;
-	outline: 0;
-	padding: $space-half $space;
-	vertical-align: middle;
-
-	.inverted & {
-		@include buttonColor(
-			$bgColor: $C_border,
-			$hoverColor: opacify($C_border, .05),
-			$activeColor: opacify($C_border, .1),
-			$textTransition: false
-		);
-		border-color: $C_borderInverted;
-	}
-}
-
 //
 // Default buttons
 //
