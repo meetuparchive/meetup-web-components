@@ -9,6 +9,7 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
 import AvatarMember from '../media/AvatarMember';
+import SignupModal from '../SignupModal';
 
 import NavItem from './components/NavItem';
 import ProfileDropdown from './components/profile/ProfileDropdown';
@@ -30,19 +31,36 @@ export const DropdownLoader = ({ label }) => (
  */
 export class Nav extends React.Component {
 	/**
+	 * @constructor
+	 * @param {Object} props properties passed into component
+	 */
+	constructor(props) {
+		super(props);
+		this.onDismissSignupModal = this.onDismissSignupModal.bind(this);
+		this.onClickSignupAction = this.onClickSignupAction.bind(this);
+		this.state = { isSignupModalOpen: false };
+	}
+
+	/**
+	 * Triggers the SignupModal to be closed
+	 * @return {undefined}
+	 */
+	onDismissSignupModal() {
+		this.setState(() => ({ isSignupModalOpen: false }));
+	}
+
+	/**
+	 * Triggers the SignupModal to be rendered
+	 * @return {undefined}
+	 */
+	onClickSignupAction() {
+		this.setState(() => ({ isSignupModalOpen: true }));
+	}
+	/**
 	 * @return {React.element} the navbar component
 	 */
 	render() {
-		const {
-			media,
-			self,
-			logoAccessible,
-			navItems,
-			dropdownLoaderLabel,
-			localeCode,
-			className,
-			...other
-		} = this.props;
+		const { media, self, navItems, localeCode, className, ...other } = this.props;
 		const {
 			login,
 			signup,
@@ -53,6 +71,8 @@ export class Nav extends React.Component {
 			groups,
 			profile,
 			updatesLabel,
+			logo,
+			dropdownLoaderLabel,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all', className);
@@ -100,7 +120,7 @@ export class Nav extends React.Component {
 			},
 			{
 				shrink: true,
-				onAction: () => {},
+				onAction: this.onClickSignupAction,
 				label: signup.label,
 				className: CLASS_UNAUTH_ITEM,
 			},
@@ -112,11 +132,17 @@ export class Nav extends React.Component {
 				linkTo: proDashboard.link,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
-				icon: (
+				icon: proDashboard.proLogo ? (
 					<img
 						src={proDashboard.proLogo}
 						className="display--block atMedium_display--none padding--left"
 						height="24px"
+					/>
+				) : (
+					<Icon
+						shape="profile"
+						size="s"
+						className="display--block atMedium_display--none"
 					/>
 				),
 			},
@@ -171,7 +197,7 @@ export class Nav extends React.Component {
 			},
 			{
 				shrink: true,
-				linkTo: media.isAtMediumUp ? '' : '/profile/',
+				linkTo: media.isAtMediumUp ? '' : profile.link,
 				label: profile.label,
 				labelClassName: 'navItem-label display--block atMedium_display--none',
 				className: cx(CLASS_AUTH_ITEM, 'profileDropdown', {
@@ -251,26 +277,37 @@ export class Nav extends React.Component {
 				>
 					{showSwarmLogo && (
 						<NavItem
-							linkTo="meetup.com"
+							linkTo={logo.link}
 							className="logo logo--swarm flush--left"
 							icon={
-								<img src={swarmLogo} alt={logoAccessible} height="48px" />
+								<img
+									src={swarmLogo}
+									alt={logo.logoAccessible}
+									height="48px"
+								/>
 							}
 						/>
 					)}
 
 					{showScriptLogo && (
 						<NavItem
-							linkTo="meetup.com"
+							linkTo={logo.link}
 							className="logo logo--script flush--left"
 							linkClassName="display--block"
 							icon={
 								<img
 									src={scriptLogo}
-									alt={logoAccessible}
+									alt={logo.logoAccessible}
 									height="44px"
 								/>
 							}
+						/>
+					)}
+
+					{this.state.isSignupModalOpen && (
+						<SignupModal
+							signupOptions={signup.signupModal}
+							onDismiss={this.onDismissSignupModal}
 						/>
 					)}
 
@@ -282,15 +319,13 @@ export class Nav extends React.Component {
 }
 
 Nav.defaultProps = {
-	logoAccessible: 'Meetup Logo',
 	localeCode: 'en-US',
 };
+
 Nav.propTypes = {
 	self: PropTypes.object,
 	media: PropTypes.object,
-	authItems: PropTypes.array,
-	unauthItems: PropTypes.array,
-	logoAccessible: PropTypes.string,
+	navItems: PropTypes.object,
 };
 
 export default withMatchMedia(Nav);
