@@ -224,6 +224,9 @@ column to show how different states affect the rendered component.
 
 ## Release notes
 
+### `v4.6.X`
+- Updated `TogglePill` styles per the design team's specifications. These updates will partially break in `mup-web` if the original style overrides are not removed
+
 ### `v4.5.X`
 - Replaced `flatpickr` in `CalendarComponent` with `react-flatpickr`
 
