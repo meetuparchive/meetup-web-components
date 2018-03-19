@@ -14,14 +14,16 @@ storiesOf('TogglePill', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (
-			<TogglePill
-				onChange={onChange}
-				id='togglePillId'
-				name='togglePillName'
-				value='toggle-pill'
-			>
-				Toggle Pill Label
-			</TogglePill>
+			<div>
+				<TogglePill
+					onChange={onChange}
+					id='togglePillId'
+					name='togglePillName'
+					value='toggle-pill'
+				>
+					Toggle Pill Label
+				</TogglePill>
+			</div>
 		)
 	)
 	.add('Default Selected', () => (
