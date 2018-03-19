@@ -175,7 +175,7 @@ class AccordionPanelGroup extends React.Component {
 			>
 				{
 					this.accordionPanels.map((panel, i) => (
-						<li key={i} className='list-item'>
+						<li key={i} className='list-item flush--top'>
 							{panel}
 						</li>
 					))
