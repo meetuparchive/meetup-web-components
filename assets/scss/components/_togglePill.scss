@@ -35,7 +35,7 @@
 
 .toggleButton-label--large {
 	font-size: $font-size;
-	padding: $space*1.5 $space;
+	padding: $space-2 $space;
 }
 
 .toggleButton-input {
@@ -44,7 +44,6 @@
 			$bgColor: $C_blue,
 			$textTransition: false
 		);
-		@include standardBorder(none);
 		font-weight: $W_medium;
 	}
 }
