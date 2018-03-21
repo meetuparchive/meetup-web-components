@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TimeInput from '../TimeInput';
 
 /**
@@ -12,6 +13,12 @@ const ReduxFormTimeInput = props => {
 	const error = (validateBeforeTouched || meta.touched) ? meta.error : null;
 
 	return <TimeInput {...input} error={error} {...other} />;
+};
+
+ReduxFormTimeInput.propTypes = {
+	meta: PropTypes.object.isRequired,
+	input: PropTypes.element.isRequired,
+	validateBeforeTouched: PropTypes.bool,
 };
 
 ReduxFormTimeInput.displayName = 'ReduxFormTimeInput';
