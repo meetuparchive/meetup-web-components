@@ -350,7 +350,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                             className="toggleSwitch-knob flex flex--center flex--alignCenter"
                           >
                             <Icon
-                              color="rgba(46,62,72,0.6)"
+                              color="rgba(46, 62, 72, 0.6)"
                               label="Toggle switch label"
                               shape="cross"
                               size="xxs"
@@ -366,7 +366,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                                   role="img"
                                   style={
                                     Object {
-                                      "fill": "rgba(46,62,72,0.6)",
+                                      "fill": "rgba(46, 62, 72, 0.6)",
                                     }
                                   }
                                   viewBox="0 0 12 12"
