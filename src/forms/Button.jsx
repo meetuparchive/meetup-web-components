@@ -12,77 +12,80 @@ export const BUTTON_ICON_CLASS = 'button-icon';
 /**
  * @module Button
  */
-const Button = ({
-	children,
-	className,
-	reset,
-	fullWidth,
-	primary,
-	neutral,
-	icon,
-	right,
-	small,
-	bordered,
-	hasHoverShadow,
-	component,
-	disabled,
-	type,
-	...other
-}) => {
-	const classNames = {
-		button: cx(
-			BUTTON_CLASS,
-			{
-				'button--fullWidth': fullWidth,
-				'button--primary': primary,
-				'button--small': small,
-				'button--reset': reset,
-				'button--bordered': bordered,
-				'button--hasHoverShadow': hasHoverShadow,
-				'button--neutral': neutral,
-				'button--disabled': disabled,
-			},
-			className
-		),
-		iconWrap: cx(BUTTON_ICON_WRAPPER_CLASS, {
-			[`${BUTTON_ICON_WRAPPER_CLASS}--right`]: right,
-		}),
-	};
-	const opts = right ? { rowReverse: 'all' } : {};
+class Button extends React.PureComponent {
+	render() {
+		const {
+			children,
+			className,
+			reset,
+			fullWidth,
+			primary,
+			neutral,
+			icon,
+			right,
+			small,
+			bordered,
+			hasHoverShadow,
+			component,
+			disabled,
+			type,
+			...other
+		} = this.props;
+		const classNames = {
+			button: cx(
+				BUTTON_CLASS,
+				{
+					'button--fullWidth': fullWidth,
+					'button--primary': primary,
+					'button--small': small,
+					'button--reset': reset,
+					'button--bordered': bordered,
+					'button--hasHoverShadow': hasHoverShadow,
+					'button--neutral': neutral,
+					'button--disabled': disabled,
+				},
+				className
+			),
+			iconWrap: cx(BUTTON_ICON_WRAPPER_CLASS, {
+				[`${BUTTON_ICON_WRAPPER_CLASS}--right`]: right,
+			}),
+		};
+		const opts = right ? { rowReverse: 'all' } : {};
 
-	const iconChildren = (
-		<Flex className={classNames.iconWrap} justify="center" {...opts}>
-			{icon && (
-				<FlexItem
-					shrink
-					className={`${BUTTON_ICON_CLASS} valign--middle flush--left`}
-				>
-					{icon}
-				</FlexItem>
-			)}
-			{children && (
-				<FlexItem
-					shrink
-					className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}
-				>
-					{children}
-				</FlexItem>
-			)}
-		</Flex>
-	);
+		const iconChildren = (
+			<Flex className={classNames.iconWrap} justify="center" {...opts}>
+				{icon && (
+					<FlexItem
+						shrink
+						className={`${BUTTON_ICON_CLASS} valign--middle flush--left`}
+					>
+						{icon}
+					</FlexItem>
+				)}
+				{children && (
+					<FlexItem
+						shrink
+						className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}
+					>
+						{children}
+					</FlexItem>
+				)}
+			</Flex>
+		);
 
-	const Component = component;
+		const Component = component;
 
-	if (disabled) {
-		delete other.onClick;
+		if (disabled) {
+			delete other.onClick;
+		}
+
+		return (
+			<Component className={classNames.button} type={type} {...other}>
+				{icon ? iconChildren : children}
+			</Component>
+		);
 	}
-
-	return (
-		<Component className={classNames.button} type={type} {...other}>
-			{icon ? iconChildren : children}
-		</Component>
-	);
-};
+}
 
 Button.defaultProps = {
 	component: 'button',
