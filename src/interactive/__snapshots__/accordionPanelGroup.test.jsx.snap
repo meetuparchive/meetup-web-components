@@ -105,7 +105,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         setClickedPanel={[Function]}
       >
         <div>
-          <button
+          <div
             aria-controls="panel-firstsection"
             aria-expanded={true}
             aria-selected={true}
@@ -168,7 +168,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                 </FlexItem>
               </div>
             </Flex>
-          </button>
+          </div>
           <Chunk
             aria-hidden={false}
             aria-labelledby="label-firstsection"
@@ -250,7 +250,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         setClickedPanel={[Function]}
       >
         <div>
-          <button
+          <div
             aria-controls="panel-nextsection"
             aria-expanded={false}
             aria-selected={false}
@@ -313,7 +313,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                 </FlexItem>
               </div>
             </Flex>
-          </button>
+          </div>
           <Chunk
             aria-hidden={true}
             aria-labelledby="label-nextsection"
@@ -395,7 +395,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         setClickedPanel={[Function]}
       >
         <div>
-          <button
+          <div
             aria-controls="panel-thirdsection"
             aria-expanded={false}
             aria-selected={false}
@@ -458,7 +458,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                 </FlexItem>
               </div>
             </Flex>
-          </button>
+          </div>
           <Chunk
             aria-hidden={true}
             aria-labelledby="label-thirdsection"
@@ -608,7 +608,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         setClickedPanel={[Function]}
       >
         <div>
-          <button
+          <div
             aria-controls="panel-firstsection"
             aria-expanded={true}
             aria-selected={true}
@@ -671,7 +671,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                 </FlexItem>
               </div>
             </Flex>
-          </button>
+          </div>
           <Chunk
             aria-hidden={false}
             aria-labelledby="label-firstsection"
@@ -753,7 +753,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         setClickedPanel={[Function]}
       >
         <div>
-          <button
+          <div
             aria-controls="panel-nextsection"
             aria-expanded={false}
             aria-selected={false}
@@ -816,7 +816,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                 </FlexItem>
               </div>
             </Flex>
-          </button>
+          </div>
           <Chunk
             aria-hidden={true}
             aria-labelledby="label-nextsection"
@@ -898,7 +898,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         setClickedPanel={[Function]}
       >
         <div>
-          <button
+          <div
             aria-controls="panel-thirdsection"
             aria-expanded={false}
             aria-selected={false}
@@ -961,7 +961,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                 </FlexItem>
               </div>
             </Flex>
-          </button>
+          </div>
           <Chunk
             aria-hidden={true}
             aria-labelledby="label-thirdsection"
