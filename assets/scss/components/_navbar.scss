@@ -37,6 +37,13 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 	border-radius: 100%;
 }
 
+.proDashboard-noLogo {
+	background-color: $C_coolGrayLight;
+	height: $space-and-half;
+	width: $space-and-half;
+	line-height: $space-and-half;
+}
+
 // use negative margin to pull in some
 // of the navbar height and center the logos
 .logo {
