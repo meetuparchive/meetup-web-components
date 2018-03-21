@@ -33,6 +33,10 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 	padding-left: 0;
 }
 
+.circular {
+	border-radius: 100%;
+}
+
 // use negative margin to pull in some
 // of the navbar height and center the logos
 .logo {

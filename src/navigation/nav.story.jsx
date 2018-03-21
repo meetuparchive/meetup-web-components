@@ -24,7 +24,6 @@ const navItems = {
 		label: 'Login',
 	},
 	signup: {
-		link: 'meetup.com/signup',
 		label: 'Sign up',
 		signupModal: {
 			orLabel: 'Or',
