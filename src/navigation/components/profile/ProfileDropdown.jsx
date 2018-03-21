@@ -102,6 +102,7 @@ ProfileDropdownComponent.propTypes = {
 	groups: PropTypes.arrayOf(PropTypes.object),
 	groupHome: PropTypes.func.isRequired,
 	allGroupsLabel: PropTypes.string.isRequired,
+	allGroupsLink: PropTypes.string.isRequired,
 };
 
 export default ProfileDropdownComponent;
