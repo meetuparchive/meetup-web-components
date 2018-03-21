@@ -54,7 +54,7 @@ exports[`Profile Dropdown should match snapshot 1`] = `
       All Groups
       <Icon
         className="margin--left"
-        color="rgb(255,255,255)"
+        color="rgb(255, 255, 255)"
         shape="chevron-right"
         size="xs"
       />

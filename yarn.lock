@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@alrra/travis-scripts@3.0.1", "@alrra/travis-scripts@^3.0.1":
+"@alrra/travis-scripts@3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@alrra/travis-scripts/-/travis-scripts-3.0.1.tgz#45d5b9357317b6cc5553dfd99931843ae0b0e53a"
 
@@ -4100,7 +4100,7 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gh-pages@1.0.0, gh-pages@^1.0.0:
+gh-pages@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gh-pages/-/gh-pages-1.0.0.tgz#4a46f4c25439f7a2b7e6835504d4a49e949f04ca"
   dependencies:
@@ -8979,13 +8979,9 @@ swarm-animation@0.0.95:
     jasmine-jquery "^2.1.1"
     jquery "^3.2.1"
 
-swarm-constants@1.2.44:
-  version "1.2.44"
-  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-1.2.44.tgz#4c2e0801705163a6678d8cbded75c9e3c793e03f"
-  dependencies:
-    "@alrra/travis-scripts" "^3.0.1"
-    gh-pages "^1.0.0"
-    mkdirp "^0.5.1"
+swarm-constants@1.2.94:
+  version "1.2.94"
+  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-1.2.94.tgz#859364602af081b1e7ea52018a967eec4663fbbd"
 
 swarm-icons@^1.3:
   version "1.3.289"
@@ -8994,13 +8990,12 @@ swarm-icons@^1.3:
     mustache "^2.3.0"
     xml2js "^0.4.17"
 
-swarm-sasstools@3.0.312:
-  version "3.0.312"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-3.0.312.tgz#159bf507a0aee978d817ccf680408edae5e03e42"
+swarm-sasstools@3.1.381:
+  version "3.1.381"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-3.1.381.tgz#0be59aac14f6b52d858668f6cc761f8b65694f08"
   dependencies:
     bourbon "4.2.3"
     sass-rem "^1.2.4"
-    swarm-constants "1.2.44"
 
 symbol-observable@1.0.1:
   version "1.0.1"
