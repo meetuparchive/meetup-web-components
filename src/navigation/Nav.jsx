@@ -9,6 +9,7 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
 import AvatarMember from '../media/AvatarMember';
+import Avatar from '../media/Avatar';
 import SignupModal from '../SignupModal';
 
 import NavItem from './components/NavItem';
@@ -76,6 +77,8 @@ export class Nav extends React.Component {
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all', className);
+		const proLogo = ((proDashboard.mainAccount || {}).group_photo || {}).thumb_link;
+		const proLetter = ((proDashboard.mainAccount || {}).name || {}).slice(0, 1);
 
 		const showScriptLogo = Boolean(media.isAtLargeUp || isLoggedOut);
 		const showSwarmLogo = Boolean(
@@ -97,13 +100,14 @@ export class Nav extends React.Component {
 			<DropdownLoader label={dropdownLoaderLabel} />
 		);
 
-		const profileContent = groups ? (
+		const profileContent = groups.list ? (
 			<ProfileDropdown
 				settings={profile.profileDropdown.settings}
 				help={profile.profileDropdown.help}
 				logout={profile.profileDropdown.logout}
 				groupHome={profile.profileDropdown.groupHome}
 				allGroupsLabel={profile.profileDropdown.allGroupsLabel}
+				allGroupsLink={profile.profileDropdown.allGroupsLink}
 				profile={profile}
 				groups={groups.list}
 			/>
@@ -132,18 +136,32 @@ export class Nav extends React.Component {
 				linkTo: proDashboard.link,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
-				icon: proDashboard.proLogo ? (
-					<img
-						src={proDashboard.proLogo}
-						className="display--block atMedium_display--none padding--left"
-						height="24px"
-					/>
-				) : (
-					<Icon
-						shape="profile"
-						size="s"
-						className="display--block atMedium_display--none"
-					/>
+				icon: (
+					<Flex noGutters align="center">
+						<FlexItem>
+							{proLogo ? (
+								<Avatar
+									src={proLogo}
+									className="display--block atMedium_display--none margin--left circular"
+									small
+								/>
+							) : (
+								<div className="proDashboard-noLogo circular margin--left text--secondary">
+									{proLetter}
+								</div>
+							)}
+						</FlexItem>
+						<FlexItem
+							shrink
+							className="display--block atMedium_display--none"
+						>
+							<Icon
+								shape="chevron-down"
+								size="xxs"
+								className="padding--left-half"
+							/>
+						</FlexItem>
+					</Flex>
 				),
 			},
 			{
@@ -204,6 +222,7 @@ export class Nav extends React.Component {
 					'profileDropdown--hasGroups': Boolean(
 						groups.list && groups.list.length
 					),
+					'display--none': self.isProMember && !media.isAtMediumUp,
 				}),
 				icon: (
 					<Flex noGutters align="center">
