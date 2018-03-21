@@ -10,19 +10,20 @@ import ToggleSwitch from '../forms/ToggleSwitch';
 
 export const PANEL_CLASS = 'accordionPanel';
 export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
+export const ACCORDION_LABEL_CLASS = 'accordionPanel-label';
 
 /**
  * @module AccordionPanel
  */
 class AccordionPanel extends React.Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this._handleToggle = this._handleToggle.bind(this);
 		this.onToggleClick = this.onToggleClick.bind(this);
 		this.onTransitionEnd = this.onTransitionEnd.bind(this);
 
 		this.state = {
-			height: props.isOpen ? 'auto' : '0px'
+			height: props.isOpen ? 'auto' : '0px',
 		};
 	}
 
@@ -51,20 +52,21 @@ class AccordionPanel extends React.Component {
 	 * @param {Event} e - the event object
 	 * @returns {undefined}
 	 */
-	_handleToggle(e){
+	_handleToggle(e) {
 		e.preventDefault();
 
-		const {
-			isOpen,
-			setClickedPanel,
-			onClickCallback
-		} = this.props;
+		const { isOpen, setClickedPanel, onClickCallback } = this.props;
 
-		setClickedPanel && setClickedPanel(this.props.clickId, !isOpen, this.getPanelStyle(!isOpen, this.contentEl));
+		setClickedPanel &&
+			setClickedPanel(
+				this.props.clickId,
+				!isOpen,
+				this.getPanelStyle(!isOpen, this.contentEl)
+			);
 		onClickCallback && onClickCallback(e, !isOpen);
 	}
 
-	onToggleClick(e){
+	onToggleClick(e) {
 		e.preventDefault();
 
 		this.props.onToggleClick ? this.props.onToggleClick(e) : this._handleToggle(e);
@@ -84,11 +86,11 @@ class AccordionPanel extends React.Component {
 	 */
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.isOpen !== this.props.isOpen) {
-			this.setState(()=>
-				this.getPanelStyle(!nextProps.isOpen, this.contentEl),
+			this.setState(
+				() => this.getPanelStyle(!nextProps.isOpen, this.contentEl),
 				() => {
 					setTimeout(() => {
-						this.setState(()=>
+						this.setState(() =>
 							this.getPanelStyle(nextProps.isOpen, this.contentEl)
 						);
 					}, 1);
@@ -101,14 +103,11 @@ class AccordionPanel extends React.Component {
 	 * @returns {String} icon shape
 	 */
 	getIconShape() {
-		const {
-			indicatorIcon,
-			indicatorIconActive
-		} = this.props;
+		const { indicatorIcon, indicatorIconActive } = this.props;
 
-		return this.props.isOpen && indicatorIconActive ?
-			indicatorIconActive :
-			indicatorIcon;
+		return this.props.isOpen && indicatorIconActive
+			? indicatorIconActive
+			: indicatorIcon;
 	}
 
 	/**
@@ -116,8 +115,8 @@ class AccordionPanel extends React.Component {
 	 */
 	onTransitionEnd() {
 		if (this.props.isOpen) {
-			this.setState(()=>({
-				height: 'auto'
+			this.setState(() => ({
+				height: 'auto',
 			}));
 		}
 	}
@@ -125,19 +124,19 @@ class AccordionPanel extends React.Component {
 	render() {
 		const {
 			panelContent,
-			clickId, 				// eslint-disable-line no-unused-vars
+			clickId, // eslint-disable-line no-unused-vars
 			label,
 			isOpen,
-			setClickedPanel, 		// eslint-disable-line no-unused-vars
-			onClickCallback, 		// eslint-disable-line no-unused-vars
-			indicatorAlign, 		// eslint-disable-line no-unused-vars
-			indicatorIcon, 			// eslint-disable-line no-unused-vars
-			indicatorIconActive,	// eslint-disable-line no-unused-vars
+			setClickedPanel, // eslint-disable-line no-unused-vars
+			onClickCallback, // eslint-disable-line no-unused-vars
+			indicatorAlign, // eslint-disable-line no-unused-vars
+			indicatorIcon, // eslint-disable-line no-unused-vars
+			indicatorIconActive, // eslint-disable-line no-unused-vars
 			indicatorIconSize,
 			indicatorSwitch,
 			classNamesActive,
 			className,
-			onToggleClick,			// eslint-disable-line no-unused-vars
+			onToggleClick, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -147,29 +146,23 @@ class AccordionPanel extends React.Component {
 				PANEL_CLASS,
 				{
 					[ACTIVEPANEL_CLASS]: isOpen,
-					[classNamesActive]: isOpen && classNamesActive
+					[classNamesActive]: isOpen && classNamesActive,
 				},
 				className
 			),
-			trigger: cx(
-				className,
-				'accordionPanel-label display--block span--100'
-			),
-			content: cx(
-				'accordionPanel-animator',
-				{
-					'accordionPanel-animator--collapse': !isOpen
-				}
-			)
+			trigger: cx(className, ACCORDION_LABEL_CLASS, 'display--block span--100'),
+			content: cx('accordionPanel-animator', {
+				'accordionPanel-animator--collapse': !isOpen,
+			}),
 		};
 
 		// create valid attribute name from trigger label
 		const ariaId = label.replace(/\s+/g, '').toLowerCase();
 
-		return(
+		return (
 			<div>
-				<button
-					role='tab'
+				<div
+					role="tab"
 					id={`label-${ariaId}`}
 					aria-controls={`panel-${ariaId}`}
 					aria-expanded={isOpen}
@@ -185,45 +178,45 @@ class AccordionPanel extends React.Component {
 						tabIndex={-1}
 						{...other}
 					>
-
-						<FlexItem>
-							{label}
-						</FlexItem>
+						<FlexItem>{label}</FlexItem>
 
 						<FlexItem
-							className='accordionPanel-icon'
+							className="accordionPanel-icon"
 							onClick={this.onToggleClick}
 							shrink
 						>
-							{
-								!indicatorSwitch && indicatorIcon
-									? <Icon shape={this.getIconShape()} size={indicatorIconSize} />
-									:
-									<ToggleSwitch
-										tabIndex="-1"
-										isActive={isOpen}
-										disabled={!!onToggleClick}
-										id={`${ariaId}-switch`}
-										name={ariaId}
-										onClick={this.onToggleClick}
-									/>
-							}
+							{!indicatorSwitch && indicatorIcon ? (
+								<Icon
+									shape={this.getIconShape()}
+									size={indicatorIconSize}
+								/>
+							) : (
+								<ToggleSwitch
+									tabIndex="-1"
+									isActive={isOpen}
+									disabled={!!onToggleClick}
+									id={`${ariaId}-switch`}
+									name={ariaId}
+									onClick={this.onToggleClick}
+								/>
+							)}
 						</FlexItem>
-
 					</Flex>
-				</button>
+				</div>
 
 				<Chunk
-					role='tabpanel'
+					role="tabpanel"
 					aria-labelledby={`label-${ariaId}`}
 					aria-hidden={!isOpen}
 					className={classNames.content}
-					style={{height: this.state.height}}
+					style={{ height: this.state.height }}
 					onTransitionEnd={this.onTransitionEnd}
 				>
 					<div
-						className='accordionPanel-content'
-						ref={(div) => { this.contentEl = div; }}
+						className="accordionPanel-content"
+						ref={div => {
+							this.contentEl = div;
+						}}
 					>
 						{panelContent}
 					</div>
@@ -237,7 +230,7 @@ AccordionPanel.defaultProps = {
 	isOpen: false,
 	indicatorAlign: 'right',
 	indicatorIcon: 'chevron-down',
-	indicatorIconSize: 'xs'
+	indicatorIconSize: 'xs',
 };
 
 AccordionPanel.propTypes = {
@@ -253,7 +246,7 @@ AccordionPanel.propTypes = {
 	indicatorIcon: PropTypes.string,
 	indicatorIconActive: PropTypes.string,
 	indicatorIconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	indicatorSwitch: PropTypes.bool
+	indicatorSwitch: PropTypes.bool,
 };
 
 export default AccordionPanel;

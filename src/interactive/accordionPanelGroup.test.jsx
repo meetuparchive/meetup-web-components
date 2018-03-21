@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 
 import AccordionPanelGroup, { isPrimitive } from './AccordionPanelGroup';
-import AccordionPanel from './AccordionPanel';
+import AccordionPanel, { ACCORDION_LABEL_CLASS } from './AccordionPanel';
 
 describe('AccordionPanelGroup', () => {
 	const accordionPanelsArr = [
@@ -14,11 +14,11 @@ describe('AccordionPanelGroup', () => {
 					<p>
 						Contrary to popular belief, Lorem Ipsum is not simply random text.
 						It has roots in a piece of classical Latin literature from 45 BC,
-						making it over 2000 years old. Richard McClintock, a Latin professor
-						at Hampden-Sydney College in Virginia, looked up one of the more
-						obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-						going through the cites of the word in classical literature,
-						discovered the undoubtable source.
+						making it over 2000 years old. Richard McClintock, a Latin
+						professor at Hampden-Sydney College in Virginia, looked up one of
+						the more obscure Latin words, consectetur, from a Lorem Ipsum
+						passage, and going through the cites of the word in classical
+						literature, discovered the undoubtable source.
 					</p>
 				</div>
 			}
@@ -47,11 +47,11 @@ describe('AccordionPanelGroup', () => {
 				<div className="runningText">
 					<p>
 						Classical Latin literature from 45 BC, making it over 2000 years
-						old. Richard McClintock, a Latin professor at Hampden-Sydney College
-						in Virginia, looked up one of the more obscure Latin words,
-						consectetur, from a Lorem Ipsum passage, and going through the cites
-						of the word in classical literature, discovered the undoubtable
-						source.
+						old. Richard McClintock, a Latin professor at Hampden-Sydney
+						College in Virginia, looked up one of the more obscure Latin
+						words, consectetur, from a Lorem Ipsum passage, and going through
+						the cites of the word in classical literature, discovered the
+						undoubtable source.
 					</p>
 				</div>
 			}
@@ -103,9 +103,7 @@ describe('AccordionPanelGroup', () => {
 
 		it('stores panel open states in state', () => {
 			// this test will have one open panel to start based on isOpen prop
-			const isOpenValues = Object.values(
-				accordionPanelGroup.state('panelStates')
-			);
+			const isOpenValues = Object.values(accordionPanelGroup.state('panelStates'));
 			const openPanels = isOpenValues.filter((isOpen, i) => isOpen === true);
 			const closedPanels = isOpenValues.filter((isOpen, i) => isOpen === false);
 
@@ -120,9 +118,7 @@ describe('AccordionPanelGroup', () => {
 
 			expect(accordionPanelGroup.state('panelStates')[clickId]).toEqual(isOpen);
 			accordionPanelGroup.instance().setPanelStates(clickId, !isOpen);
-			expect(accordionPanelGroup.state('panelStates')[clickId]).toEqual(
-				!isOpen
-			);
+			expect(accordionPanelGroup.state('panelStates')[clickId]).toEqual(!isOpen);
 		});
 
 		it('calls componentWillReceiveProps on AccordionPanel primitive prop changes', () => {
@@ -138,7 +134,7 @@ describe('AccordionPanelGroup', () => {
 			expect(component.state('panelStates')['0']).toBe(true);
 			expect(spy).not.toHaveBeenCalled();
 
-			const modifiedAccordionPanelsArr = [ ...accordionPanelsArr ];
+			const modifiedAccordionPanelsArr = [...accordionPanelsArr];
 			// Change first panel isOpen prop to false
 			modifiedAccordionPanelsArr[0] = (
 				<AccordionPanel
@@ -147,20 +143,21 @@ describe('AccordionPanelGroup', () => {
 					panelContent={
 						<div className="runningText">
 							<p>
-								Contrary to popular belief, Lorem Ipsum is not simply random text.
-								It has roots in a piece of classical Latin literature from 45 BC,
-								making it over 2000 years old. Richard McClintock, a Latin professor
-								at Hampden-Sydney College in Virginia, looked up one of the more
-								obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-								going through the cites of the word in classical literature,
-								discovered the undoubtable source.
+								Contrary to popular belief, Lorem Ipsum is not simply
+								random text. It has roots in a piece of classical Latin
+								literature from 45 BC, making it over 2000 years old.
+								Richard McClintock, a Latin professor at Hampden-Sydney
+								College in Virginia, looked up one of the more obscure
+								Latin words, consectetur, from a Lorem Ipsum passage, and
+								going through the cites of the word in classical
+								literature, discovered the undoubtable source.
 							</p>
 						</div>
 					}
 				/>
 			);
 
-			component.setProps({ accordionPanels: modifiedAccordionPanelsArr});
+			component.setProps({ accordionPanels: modifiedAccordionPanelsArr });
 			expect(spy).toHaveBeenCalled();
 		});
 	});
@@ -197,7 +194,7 @@ describe('AccordionPanelGroup', () => {
 			expect(openPanels.length).toBe(1);
 
 			const panel1 = panelWrappers.at(1);
-			panel1.find('button').simulate('click');
+			panel1.find(`.${ACCORDION_LABEL_CLASS}`).simulate('click');
 			openPanels = accordionPanelGroup
 				.find(AccordionPanel)
 				.filterWhere(panel => panel.prop('isOpen') === true);
@@ -205,7 +202,7 @@ describe('AccordionPanelGroup', () => {
 			expect(openPanels.at(0).prop('clickId')).toEqual(panel1.prop('clickId'));
 
 			const panel2 = panelWrappers.at(2);
-			panel2.find('button').simulate('click');
+			panel2.find(`.${ACCORDION_LABEL_CLASS}`).simulate('click');
 			openPanels = accordionPanelGroup
 				.find(AccordionPanel)
 				.filterWhere(panel => panel.prop('isOpen') === true);
@@ -226,13 +223,11 @@ describe('AccordionPanelGroup', () => {
 			);
 			expect(openPanelIds.length).toBe(1);
 
-			expect(parseInt(openPanelIds[0])).toEqual(
-				openPanels.at(0).prop('clickId')
-			);
+			expect(parseInt(openPanelIds[0])).toEqual(openPanels.at(0).prop('clickId'));
 
 			// we have one with prop isOpen
 			const panel1 = panelWrappers.at(1);
-			panel1.find('button').simulate('click');
+			panel1.find(`.${ACCORDION_LABEL_CLASS}`).simulate('click');
 			expect(setPanelStatesMock).toHaveBeenCalled();
 
 			// assert only one key in panelStates with isOpen and matching clickId
