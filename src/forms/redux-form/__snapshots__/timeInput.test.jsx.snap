@@ -2,7 +2,7 @@
 
 exports[`redux-form TimeInput renders a TimeInput component with expected attributes from mock data 1`] = `
 <WithErrorList(TimeInput)
-  error="Now approaching midnight!!?"
+  error={null}
   label="What time is it?"
   name="partytime"
   required={true}
