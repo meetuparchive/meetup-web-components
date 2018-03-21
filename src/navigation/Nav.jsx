@@ -9,6 +9,7 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
 import AvatarMember from '../media/AvatarMember';
+import Avatar from '../media/Avatar';
 import SignupModal from '../SignupModal';
 
 import NavItem from './components/NavItem';
@@ -132,18 +133,26 @@ export class Nav extends React.Component {
 				linkTo: proDashboard.link,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
-				icon: proDashboard.proLogo ? (
-					<img
-						src={proDashboard.proLogo}
-						className="display--block atMedium_display--none padding--left"
-						height="24px"
-					/>
-				) : (
-					<Icon
-						shape="profile"
-						size="s"
-						className="display--block atMedium_display--none"
-					/>
+				icon: (
+					<Flex noGutters align="center">
+						<FlexItem>
+							<Avatar
+								src={proDashboard.proLogo}
+								className="display--block atMedium_display--none margin--left circular"
+								small
+							/>
+						</FlexItem>
+						<FlexItem
+							shrink
+							className="display--block atMedium_display--none"
+						>
+							<Icon
+								shape="chevron-down"
+								size="xxs"
+								className="padding--left-half"
+							/>
+						</FlexItem>
+					</Flex>
 				),
 			},
 			{
@@ -204,6 +213,7 @@ export class Nav extends React.Component {
 					'profileDropdown--hasGroups': Boolean(
 						groups.list && groups.list.length
 					),
+					'display--none': self.isProMember && !media.isAtMediumUp,
 				}),
 				icon: (
 					<Flex noGutters align="center">
