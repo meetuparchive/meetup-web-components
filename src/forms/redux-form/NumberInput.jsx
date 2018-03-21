@@ -9,7 +9,7 @@ import NumberInput from '../NumberInput';
  * @return {Component} NumberInput
  */
 const ReduxFormNumberInput = props => {
-	const { meta, input, validateBeforeTouched, ...other } = props;
+	const { meta, input, ...other } = props;
 
 	// NumberInput calls onChange with a plain object that simulates an Event.
 	// redux-form will treat anything other than a React SyntheticEvent instance
@@ -17,9 +17,7 @@ const ReduxFormNumberInput = props => {
 	// logic that will extract the simulated value from the NumberInput onChange
 	const wrappedOnChange = ({ target: { value } }) => input.onChange(value);
 
-	const error = (validateBeforeTouched || meta.touched || meta.submitFailed)
-		? meta.error
-		: null;
+	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
 
 	return (
 		<NumberInput
@@ -34,7 +32,6 @@ const ReduxFormNumberInput = props => {
 ReduxFormNumberInput.propTypes = {
 	meta: PropTypes.object.isRequired,
 	input: PropTypes.element.isRequired,
-	validateBeforeTouched: PropTypes.bool,
 };
 
 ReduxFormNumberInput.displayName = 'ReduxFormNumberInput';

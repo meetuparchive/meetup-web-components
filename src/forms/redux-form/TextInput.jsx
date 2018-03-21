@@ -9,10 +9,8 @@ import TextInput from '../TextInput';
  * @return {Component} TextInput
  */
 const ReduxFormTextInput = props => {
-	const { meta, input, validateBeforeTouched, ...other } = props;
-	const error = (validateBeforeTouched || meta.touched || meta.submitFailed)
-		? meta.error
-		: null;
+	const { meta, input, ...other } = props;
+	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
 
 	return <TextInput error={error} {...input} {...other} />;
 };
@@ -20,7 +18,6 @@ const ReduxFormTextInput = props => {
 ReduxFormTextInput.propTypes = {
 	meta: PropTypes.object.isRequired,
 	input: PropTypes.element.isRequired,
-	validateBeforeTouched: PropTypes.bool,
 };
 
 ReduxFormTextInput.displayName = 'ReduxFormTextInput';
