@@ -310,3 +310,7 @@ Applies button color-related styles using a mixin.
 	}
 
 }
+
+.button--iconOnly {
+	padding: $space-half $space;
+}
