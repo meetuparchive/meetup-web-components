@@ -77,6 +77,8 @@ export class Nav extends React.Component {
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all', className);
+		const proLogo = ((proDashboard.mainAccount || {}).group_photo || {}).thumb_link;
+		const proLetter = (proDashboard.mainAccount || {}).name.slice(0, 1);
 
 		const showScriptLogo = Boolean(media.isAtLargeUp || isLoggedOut);
 		const showSwarmLogo = Boolean(
@@ -137,15 +139,15 @@ export class Nav extends React.Component {
 				icon: (
 					<Flex noGutters align="center">
 						<FlexItem>
-							{proDashboard.proLogo ? (
+							{proLogo ? (
 								<Avatar
-									src={proDashboard.proLogo}
+									src={proLogo}
 									className="display--block atMedium_display--none margin--left circular"
 									small
 								/>
 							) : (
 								<div className="proDashboard-noLogo circular margin--left text--secondary">
-									G
+									{proLetter}
 								</div>
 							)}
 						</FlexItem>
