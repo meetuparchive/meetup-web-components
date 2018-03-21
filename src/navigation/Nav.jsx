@@ -78,7 +78,7 @@ export class Nav extends React.Component {
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all', className);
 		const proLogo = ((proDashboard.mainAccount || {}).group_photo || {}).thumb_link;
-		const proLetter = ((proDashboard.mainAccount || {}).name || {})
+		const proLetter = ((proDashboard.mainAccount || {}).name || '')
 			.slice(0, 1)
 			.toUpperCase();
 
