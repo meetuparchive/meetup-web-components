@@ -137,11 +137,17 @@ export class Nav extends React.Component {
 				icon: (
 					<Flex noGutters align="center">
 						<FlexItem>
-							<Avatar
-								src={proDashboard.proLogo}
-								className="display--block atMedium_display--none margin--left circular"
-								small
-							/>
+							{proDashboard.proLogo ? (
+								<Avatar
+									src={proDashboard.proLogo}
+									className="display--block atMedium_display--none margin--left circular"
+									small
+								/>
+							) : (
+								<div className="proDashboard-noLogo circular margin--left text--secondary">
+									G
+								</div>
+							)}
 						</FlexItem>
 						<FlexItem
 							shrink
