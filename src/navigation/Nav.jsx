@@ -105,6 +105,7 @@ export class Nav extends React.Component {
 				logout={profile.profileDropdown.logout}
 				groupHome={profile.profileDropdown.groupHome}
 				allGroupsLabel={profile.profileDropdown.allGroupsLabel}
+				allGroupsLink={profile.profileDropdown.allGroupsLink}
 				profile={profile}
 				groups={groups.list}
 			/>
