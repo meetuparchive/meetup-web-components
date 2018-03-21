@@ -25,6 +25,7 @@ export const ProfileDropdownComponent = ({
 	groups,
 	groupHome,
 	allGroupsLabel,
+	allGroupsLink,
 }) => {
 	const groupsContent = groups.map(group => (
 		<li
@@ -47,7 +48,7 @@ export const ProfileDropdownComponent = ({
 					<Chunk>
 						<ul className="list">{groupsContent}</ul>
 					</Chunk>
-					<a href="/find" className="button button--small text--small">
+					<a href={allGroupsLink} className="button button--small text--small">
 						{allGroupsLabel}
 						<Icon
 							className="margin--left"
