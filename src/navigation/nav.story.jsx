@@ -24,7 +24,6 @@ const navItems = {
 		label: 'Login',
 	},
 	signup: {
-		link: 'meetup.com/signup',
 		label: 'Sign up',
 		signupModal: {
 			orLabel: 'Or',
@@ -52,6 +51,9 @@ const navItems = {
 		link: 'meetup.com/pro',
 		label: 'Pro Dashboard',
 		mobileLabel: 'Dashboard',
+		mainAccount: {
+			name: 'Mason Mocks',
+		},
 	},
 	explore: {
 		link: 'meetup.com/find/events',

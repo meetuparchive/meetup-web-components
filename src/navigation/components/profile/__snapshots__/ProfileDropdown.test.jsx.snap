@@ -7,7 +7,7 @@ exports[`Profile Dropdown should match snapshot 1`] = `
   justify="spaceBetween"
 >
   <FlexItem
-    growFactor={6}
+    growFactor={2}
   >
     <Chunk>
       <ul
@@ -62,7 +62,7 @@ exports[`Profile Dropdown should match snapshot 1`] = `
   </FlexItem>
   <FlexItem
     className="text--secondary margin--left"
-    growFactor={2}
+    growFactor={1}
   >
     <ul
       className="list"
