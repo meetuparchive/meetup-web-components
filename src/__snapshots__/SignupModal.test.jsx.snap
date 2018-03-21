@@ -101,7 +101,7 @@ exports[`SignupModal should match the snapshot 1`] = `
           >
             <Icon
               className="align--left"
-              color="rgb(117,117,117)"
+              color="rgb(117, 117, 117)"
               shape="mail"
               size="xs"
             />
