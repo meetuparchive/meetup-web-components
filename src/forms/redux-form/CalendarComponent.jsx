@@ -9,10 +9,8 @@ import CalendarComponent from '../CalendarComponent';
  * @return {Component} TextInput
  */
 const ReduxFormCalendarComponent = props => {
-	const { meta, input, validateBeforeTouched, ...other } = props;
-	const error = (validateBeforeTouched || meta.touched || meta.submitFailed)
-		? meta.error
-		: null;
+	const { meta, input, ...other } = props;
+	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
 
 	return <CalendarComponent error={error} {...input} {...other} />;
 };
@@ -20,7 +18,6 @@ const ReduxFormCalendarComponent = props => {
 ReduxFormCalendarComponent.propTypes = {
 	meta: PropTypes.object.isRequired,
 	input: PropTypes.element.isRequired,
-	validateBeforeTouched: PropTypes.bool,
 };
 
 ReduxFormCalendarComponent.displayName = 'ReduxFormCalendarComponent';

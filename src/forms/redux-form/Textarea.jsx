@@ -9,10 +9,8 @@ import Textarea from '../Textarea';
  * @return {React.Component} Textarea
  */
 const ReduxFormTextarea = props => {
-	const { meta, input, validateBeforeTouched, ...other } = props;
-	const error = (validateBeforeTouched || meta.touched || meta.submitFailed)
-		? meta.error
-		: null;
+	const { meta, input, ...other } = props;
+	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
 
 	return <Textarea error={error} {...input} {...other} />;
 };
@@ -20,7 +18,6 @@ const ReduxFormTextarea = props => {
 ReduxFormTextarea.propTypes = {
 	meta: PropTypes.object.isRequired,
 	input: PropTypes.element.isRequired,
-	validateBeforeTouched: PropTypes.bool,
 };
 
 ReduxFormTextarea.displayName = 'ReduxFormTextarea';

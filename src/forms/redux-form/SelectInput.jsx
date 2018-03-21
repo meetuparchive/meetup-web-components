@@ -9,10 +9,8 @@ import SelectInput from '../SelectInput';
  * @return {React.Component} SelectInput
  */
 const ReduxFormSelectInput = props => {
-	const { meta, validateBeforeTouched, input, ...other } = props;
-	const error = (validateBeforeTouched || meta.touched || meta.submitFailed)
-		? meta.error
-		: null;
+	const { meta, input, ...other } = props;
+	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
 
 	return <SelectInput error={error} {...input} {...other} />;
 };
@@ -20,7 +18,6 @@ const ReduxFormSelectInput = props => {
 ReduxFormSelectInput.propTypes = {
 	meta: PropTypes.object.isRequired,
 	input: PropTypes.element.isRequired,
-	validateBeforeTouched: PropTypes.bool,
 };
 
 ReduxFormSelectInput.displayName = 'ReduxFormSelectInput';
