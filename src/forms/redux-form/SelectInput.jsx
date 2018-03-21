@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SelectInput from '../SelectInput';
 
 /**
@@ -8,9 +9,15 @@ import SelectInput from '../SelectInput';
  * @return {React.Component} SelectInput
  */
 const ReduxFormSelectInput = props => {
-	const { meta, validateBeforeTouched, input, ...other } = props;
-	const error = (validateBeforeTouched || meta.touched) ? meta.error : null;
+	const { meta, input, ...other } = props;
+	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
+
 	return <SelectInput error={error} {...input} {...other} />;
+};
+
+ReduxFormSelectInput.propTypes = {
+	meta: PropTypes.object.isRequired,
+	input: PropTypes.element.isRequired,
 };
 
 ReduxFormSelectInput.displayName = 'ReduxFormSelectInput';
