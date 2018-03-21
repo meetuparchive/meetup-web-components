@@ -51,6 +51,9 @@ const navItems = {
 		link: 'meetup.com/pro',
 		label: 'Pro Dashboard',
 		mobileLabel: 'Dashboard',
+		mainAccount: {
+			name: 'Mason Mocks',
+		},
 	},
 	explore: {
 		link: 'meetup.com/find/events',
