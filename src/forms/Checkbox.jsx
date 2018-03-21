@@ -12,7 +12,7 @@ export const DISABLED_CHECKBOX_CLASS = 'disabled';
 /**
  * @module Checkbox
  */
-class Checkbox extends React.Component {
+class Checkbox extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -93,13 +93,13 @@ class Checkbox extends React.Component {
 							ref={el => (this.fauxCheckboxEl = el)}
 							className={fauxCheckboxClassNames}
 						>
-							{this.state.checked &&
+							{this.state.checked && (
 								<Icon
 									className="display--flex flex--center checkbox-indicator"
 									shape="check"
 									size="xs"
 								/>
-							}
+							)}
 						</span>
 					</FlexItem>
 					<FlexItem className="toggleLabel-container">
@@ -121,12 +121,15 @@ class Checkbox extends React.Component {
 
 Checkbox.propTypes = {
 	checked: PropTypes.bool,
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	disabled: PropTypes.bool,
+	id: PropTypes.string,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	labelClassName: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]), // checkboxes don't need values
 	onChange: PropTypes.func,
+	onBlur: PropTypes.func,
+	onFocus: PropTypes.func,
 };
 
 export default Checkbox;
