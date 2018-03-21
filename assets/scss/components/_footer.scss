@@ -31,16 +31,3 @@
 .footer-item {
 	padding-bottom: $space-half;
 }
-
-// :SDS: make this the default for links in inverted context
-.link--white {
-	color: white;
-	border-bottom: 1px solid $C_textPrimaryInverted !important;
-
-	&:hover,
-	&:active,
-	&:focus {
-		border-bottom: 1px solid transparent;
-	}
-
-}
