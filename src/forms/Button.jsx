@@ -13,12 +13,10 @@ export const BUTTON_ICON_CLASS = 'button-icon';
  * @module Button
  */
 class Button extends React.PureComponent {
-
 	render() {
 		const {
 			children,
 			className,
-			onClick,
 			reset,
 			fullWidth,
 			primary,
@@ -33,7 +31,6 @@ class Button extends React.PureComponent {
 			type,
 			...other
 		} = this.props;
-
 		const classNames = {
 			button: cx(
 				BUTTON_CLASS,
@@ -45,43 +42,45 @@ class Button extends React.PureComponent {
 					'button--bordered': bordered,
 					'button--hasHoverShadow': hasHoverShadow,
 					'button--neutral': neutral,
-					'button--disabled': disabled
+					'button--disabled': disabled,
 				},
 				className
 			),
-			iconWrap: cx(
-				BUTTON_ICON_WRAPPER_CLASS,
-				{
-					[`${BUTTON_ICON_WRAPPER_CLASS}--right`]: right
-				}
-			)
+			iconWrap: cx(BUTTON_ICON_WRAPPER_CLASS, {
+				[`${BUTTON_ICON_WRAPPER_CLASS}--right`]: right,
+			}),
 		};
 		const opts = right ? { rowReverse: 'all' } : {};
 
 		const iconChildren = (
-			<Flex className={classNames.iconWrap} justify='center' {...opts}>
-				{icon &&
-					<FlexItem shrink className={`${BUTTON_ICON_CLASS} valign--middle flush--left`}>
+			<Flex className={classNames.iconWrap} justify="center" {...opts}>
+				{icon && (
+					<FlexItem
+						shrink
+						className={`${BUTTON_ICON_CLASS} valign--middle flush--left`}
+					>
 						{icon}
 					</FlexItem>
-				}
-				{children &&
-					<FlexItem shrink className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}>
+				)}
+				{children && (
+					<FlexItem
+						shrink
+						className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}
+					>
 						{children}
 					</FlexItem>
-				}
+				)}
 			</Flex>
 		);
 
 		const Component = component;
 
+		if (disabled) {
+			delete other.onClick;
+		}
+
 		return (
-			<Component
-				className={classNames.button}
-				onClick={!disabled && onClick}
-				type={type}
-				{...other}
-			>
+			<Component className={classNames.button} type={type} {...other}>
 				{icon ? iconChildren : children}
 			</Component>
 		);
@@ -90,20 +89,21 @@ class Button extends React.PureComponent {
 
 Button.defaultProps = {
 	component: 'button',
-	type: 'button'
+	type: 'button',
 };
 
 Button.propTypes = {
 	reset: PropTypes.bool,
 	fullWidth: PropTypes.bool,
 	primary: PropTypes.bool,
-	small: PropTypes.bool,
+	neutral: PropTypes.bool,
 	icon: PropTypes.any,
 	right: PropTypes.bool,
-	component: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.func
-	]),
-	type: PropTypes.string
+	small: PropTypes.bool,
+	bordered: PropTypes.bool,
+	hasHoverShadow: PropTypes.bool,
+	component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+	disabled: PropTypes.any,
+	type: PropTypes.string,
 };
 export default Button;
