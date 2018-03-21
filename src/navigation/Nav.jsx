@@ -148,7 +148,7 @@ export class Nav extends React.Component {
 									small
 								/>
 							) : (
-								<div className="proDashboard-noLogo circular margin--left text--secondary">
+								<div className="proDashboard-noLogo atMedium_display--none circular margin--left text--secondary">
 									{proLetter}
 								</div>
 							)}
