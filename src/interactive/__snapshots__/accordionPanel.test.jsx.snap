@@ -2,7 +2,7 @@
 
 exports[`AccordionPanel Panel basic behavior exists and renders with mock props 1`] = `
 <div>
-  <button
+  <div
     aria-controls="panel-firstsection"
     aria-expanded={false}
     aria-selected={false}
@@ -31,7 +31,7 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
         />
       </FlexItem>
     </Flex>
-  </button>
+  </div>
   <Chunk
     aria-hidden={true}
     aria-labelledby="label-firstsection"
@@ -61,7 +61,7 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
 
 exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 1`] = `
 <div>
-  <button
+  <div
     aria-controls="panel-firstsection"
     aria-expanded={false}
     aria-selected={false}
@@ -90,7 +90,7 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
         />
       </FlexItem>
     </Flex>
-  </button>
+  </div>
   <Chunk
     aria-hidden={true}
     aria-labelledby="label-firstsection"
@@ -136,7 +136,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
   }
 >
   <div>
-    <button
+    <div
       aria-controls="panel-firstsection"
       aria-expanded={false}
       aria-selected={false}
@@ -199,7 +199,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
           </FlexItem>
         </div>
       </Flex>
-    </button>
+    </div>
     <Chunk
       aria-hidden={true}
       aria-labelledby="label-firstsection"
@@ -260,7 +260,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
   }
 >
   <div>
-    <button
+    <div
       aria-controls="panel-firstsection"
       aria-expanded={false}
       aria-selected={false}
@@ -389,7 +389,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
           </FlexItem>
         </div>
       </Flex>
-    </button>
+    </div>
     <Chunk
       aria-hidden={true}
       aria-labelledby="label-firstsection"
