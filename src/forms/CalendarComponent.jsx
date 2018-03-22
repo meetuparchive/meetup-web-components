@@ -5,7 +5,6 @@ import withErrorList from '../utils/components/withErrorList';
 
 import Flatpickr from 'react-flatpickr';
 
-
 /**
  * @module CalendarComponent
  * @description Single date picker component.
@@ -13,7 +12,7 @@ import Flatpickr from 'react-flatpickr';
  *
  * For full documentation of available `datePickerOptions`, see:
  * https://chmln.github.io/flatpickr/options/
-*/
+ */
 export class CalendarComponent extends React.Component {
 	constructor(props) {
 		super(props);
@@ -49,23 +48,18 @@ export class CalendarComponent extends React.Component {
 		} = this.props;
 
 		const classNames = {
-			label: cx(
-				{
-					'label--required': required,
-					'flush--bottom': helperText,
-				}
-			),
-			helperText: cx(
-				'helperTextContainer',
-				{ required }
-			),
+			label: cx({
+				'label--required': required,
+				'flush--bottom': helperText,
+			}),
+			helperText: cx('helperTextContainer', { required }),
 			field: cx(
 				'input--dateTimePicker select--reset',
 				{
-					'field--error': Boolean(error)
+					'field--error': Boolean(error),
 				},
 				className
-			)
+			),
 		};
 
 		const options = {
@@ -81,21 +75,21 @@ export class CalendarComponent extends React.Component {
 				<use xlink:href="#icon-chevron-left" />
 				</svg>
 			</span>`,
-			...datepickerOptions
+			...datepickerOptions,
 		};
 
 		return (
 			<span>
 				{label && (
-					<label htmlFor={id || name} className={classNames.label} data-requiredtext={required && requiredText}>
+					<label
+						htmlFor={id || name}
+						className={classNames.label}
+						data-requiredtext={required && requiredText}
+					>
 						{label}
 					</label>
 				)}
-				{helperText &&
-					<div className={classNames.helperText}>
-						{helperText}
-					</div>
-				}
+				{helperText && <div className={classNames.helperText}>{helperText}</div>}
 				<Flatpickr
 					id={id || name}
 					options={options}
@@ -114,20 +108,11 @@ CalendarComponent.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string,
 	datepickerOptions: PropTypes.object,
-	error: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
-	helperText: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.bool]),
+	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	onChange: PropTypes.func, // provided by `redux-form`
 	required: PropTypes.bool,
-	requiredText: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	])
+	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 CalendarComponent.defaultProps = {
