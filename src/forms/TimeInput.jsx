@@ -402,7 +402,7 @@ TimeInput.defaultProps = {
 
 TimeInput.propTypes = {
 	name: PropTypes.string.isRequired,
-	error: PropTypes.string,
+	error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	is24Hr: PropTypes.bool,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	onChange: PropTypes.func, // redux-form or DateTimePicker provides an onChange prop
