@@ -126,6 +126,9 @@ storiesOf('Button', module)
 	.add('Icon Right', () => (
 		<Button onClick={action('clicked')} icon={<Icon shape='search' size='xxs' />} right>Button Label</Button>
 	))
+	.add('Icon Only', () => (
+		<Button onClick={action('clicked')} icon={<Icon shape='search' size='xxs' />} />
+	))
 	.add('No Label', () => (
 		<Button></Button>
 	));

@@ -43,6 +43,7 @@ class Button extends React.PureComponent {
 					'button--hasHoverShadow': hasHoverShadow,
 					'button--neutral': neutral,
 					'button--disabled': disabled,
+					'button--iconOnly': icon && !children
 				},
 				className
 			),
