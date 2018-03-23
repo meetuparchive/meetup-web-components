@@ -36,7 +36,7 @@ class Typeahead extends React.PureComponent {
 							...inputProps
 						})}
 					/>
-					{isOpen
+					{Boolean(isOpen && items && items.length)
 						&&
 							<div
 								className={TA_DROPDOWN_CLASSNAME}
