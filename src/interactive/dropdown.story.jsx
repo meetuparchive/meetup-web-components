@@ -1,5 +1,5 @@
 import React from "react";
-import { storiesOf } from "@storybook/react";
+import { storiesOf, action } from '@storybook/react';
 import { decorateWithBasics } from "../utils/decorators";
 import Dropdown from "./Dropdown";
 import Section from "../layout/Section";
@@ -150,9 +150,9 @@ storiesOf("Dropdown", module)
 				maxWidth="384px"
 				trigger={<Button small>Open</Button>}
 				menuItems={[
-					'Red',
-					'White',
-					'Swarm'
+					<div onClick={action('red click')}>Red</div>,
+					<div onClick={action('white click')}>White</div>,
+					<div onClick={action('swarm click')}>Swarm</div>
 				]}
 			/>
 		)
