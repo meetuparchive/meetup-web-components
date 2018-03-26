@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
+import { MOCK_MEMBER, MOCK_GROUP } from 'meetup-web-mocks/lib/api';
 import { MOCK_NOTIFICATIONS_LIST } from 'meetup-web-mocks/lib/notifications/api';
 
 import { decorateWithBasics } from '../utils/decorators';
@@ -12,7 +12,7 @@ const updatedNotif = MOCK_NOTIFICATIONS_LIST.map(notif => {
 	return { ...notif, formattedTimeSince: timeSince.toDateString() };
 });
 
-const navItems = {
+export const navItems = {
 	dropdownLoaderLabel: 'Loading',
 	updatesLabel: 'Updates',
 	logo: {
@@ -24,7 +24,6 @@ const navItems = {
 		label: 'Login',
 	},
 	signup: {
-		link: 'meetup.com/signup',
 		label: 'Sign up',
 		signupModal: {
 			orLabel: 'Or',
@@ -52,6 +51,7 @@ const navItems = {
 		link: 'meetup.com/pro',
 		label: 'Pro Dashboard',
 		mobileLabel: 'Dashboard',
+		mainAccount: MOCK_GROUP,
 	},
 	explore: {
 		link: 'meetup.com/find/events',
