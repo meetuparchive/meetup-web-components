@@ -17,11 +17,8 @@ class Checkbox extends React.PureComponent {
 		super(props);
 		const state = {
 			focused: false,
+			checked: props.checked || false,
 		};
-
-		if (props.controlled) {
-			state.checked = props.checked || false;
-		}
 
 		this.onChange = this.onChange.bind(this);
 		this.onBlur = this.onBlur.bind(this);
@@ -29,8 +26,16 @@ class Checkbox extends React.PureComponent {
 		this.state = state;
 	}
 
+	componentWillReceiveProps(nextProps) {
+		const { checked, controlled } = nextProps;
+		if (this.props.controlled !== controlled && controlled) {
+			this.setState({ checked });
+		}
+	}
+
 	onChange(e) {
 		this.props.onChange && this.props.onChange(e);
+
 		if (this.props.controlled) {
 			this.setState({ checked: e.target.checked });
 		}
