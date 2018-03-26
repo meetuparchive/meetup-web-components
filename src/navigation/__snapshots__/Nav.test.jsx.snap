@@ -6,8 +6,12 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
   media={Object {}}
   self={
     Object {
-      "name": "Jeff Cleft",
-      "status": "active",
+      "id": 1243,
+      "name": "mocky mcmockerson",
+      "photo": Object {
+        "photo_link": "http://placekitten.com/g/400/400",
+        "thumb_link": "http://placekitten.com/g/200/200",
+      },
     }
   }
 />
@@ -19,8 +23,12 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
   media={Object {}}
   self={
     Object {
-      "name": "Jeff Cleft",
-      "status": "active",
+      "id": 1243,
+      "name": "mocky mcmockerson",
+      "photo": Object {
+        "photo_link": "http://placekitten.com/g/400/400",
+        "thumb_link": "http://placekitten.com/g/200/200",
+      },
     }
   }
 />
@@ -44,8 +52,12 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
   media={Object {}}
   self={
     Object {
-      "name": "Jeff Cleft",
-      "status": "active",
+      "id": 1243,
+      "name": "mocky mcmockerson",
+      "photo": Object {
+        "photo_link": "http://placekitten.com/g/400/400",
+        "thumb_link": "http://placekitten.com/g/200/200",
+      },
     }
   }
 />
