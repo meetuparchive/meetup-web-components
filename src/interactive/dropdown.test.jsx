@@ -5,7 +5,7 @@ import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
 
-import Dropdown, { Item } from './Dropdown';
+import Dropdown, { DROPDOWN_MENU_ITEM_CLASS } from './Dropdown';
 
 const dropdownContent = (
 	<Section noSeparator>
@@ -125,7 +125,7 @@ describe('Dropdown', () => {
 			<Dropdown
 				align="center"
 				trigger={dropdownTrigger}
-				menuItems={['one', 'two', 'three']}
+				menuItems={[<div>one</div>, <div>two</div>, <div>three</div>]}
 			/>
 		);
 		const menuItemDropdownWrapper = mount(menuItemDropdown);
@@ -134,7 +134,7 @@ describe('Dropdown', () => {
 		it('renders the menuItems', () => {
 			trigger.simulate('click');
 			const menuItemsProp = menuItemDropdownWrapper.find(Downshift).prop('menuItems');
-			const menuItemsRendered = menuItemDropdownWrapper.find(Item);
+			const menuItemsRendered = menuItemDropdownWrapper.find(`.${DROPDOWN_MENU_ITEM_CLASS}`);
 
 			expect(menuItemsRendered.length).toBe(menuItemsProp.length);
 		});
