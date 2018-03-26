@@ -44,7 +44,7 @@ export const ProfileDropdownComponent = ({
 			className={cx(PROFILE_CLASS, 'align--left', 'padding--all')}
 		>
 			{showGroups && (
-				<FlexItem growFactor={6}>
+				<FlexItem growFactor={2}>
 					<Chunk>
 						<ul className="list">{groupsContent}</ul>
 					</Chunk>
@@ -60,7 +60,7 @@ export const ProfileDropdownComponent = ({
 				</FlexItem>
 			)}
 			<FlexItem
-				growFactor={2}
+				growFactor={1}
 				className={cx('text--secondary', { 'margin--left': showGroups })}
 			>
 				<ul className="list">
@@ -102,6 +102,7 @@ ProfileDropdownComponent.propTypes = {
 	groups: PropTypes.arrayOf(PropTypes.object),
 	groupHome: PropTypes.func.isRequired,
 	allGroupsLabel: PropTypes.string.isRequired,
+	allGroupsLink: PropTypes.string.isRequired,
 };
 
 export default ProfileDropdownComponent;
