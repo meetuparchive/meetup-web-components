@@ -7,6 +7,7 @@ import scriptLogo from '../../assets/svg/logo--script.svg';
 import withMatchMedia from '../utils/components/withMatchMedia';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
+import Section from '../layout/Section';
 import Icon from '../media/Icon';
 import AvatarMember from '../media/AvatarMember';
 import Avatar from '../media/Avatar';
