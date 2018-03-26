@@ -63,7 +63,49 @@ describe('Checkbox', function() {
 			expect(fakeOnChange).not.toHaveBeenCalled();
 			checkbox.simulate('change', { target: { checked: true } });
 			expect(component.find('input').props().checked).toBe(true);
+			expect(component.instance().state.checked).toBe(true);
 			expect(fakeOnChange).toHaveBeenCalled();
+		});
+
+		it('calls onChange and does not set state', function() {
+			fakeOnChange.mockClear();
+			const component = mount(
+				<Checkbox
+					label="Hello!"
+					name="greeting"
+					id="hello"
+					value="hello"
+					checked
+					controlled={false}
+					onChange={fakeOnChange}
+				/>
+			);
+			const checkbox = component.find('input');
+
+			expect(checkbox.props().checked).toBe(true);
+			expect(fakeOnChange).not.toHaveBeenCalled();
+			checkbox.simulate('change', { target: { checked: true } });
+			expect(component.find('input').props().checked).toBe(true);
+			expect(component.instance().state.checked).toBe(true);
+			expect(fakeOnChange).toHaveBeenCalled();
+		});
+
+		it('sets state when changing from uncontrolled to controlled', function() {
+			const component = mount(
+				<Checkbox
+					label="Hello!"
+					name="greeting"
+					id="hello"
+					value="hello"
+					checked={false}
+					controlled={false}
+				/>
+			);
+			expect(component.instance().state.checked).toBe(false);
+			component.setProps({ checked: true });
+			expect(component.instance().state.checked).toBe(false);
+			component.setProps({ controlled: true });
+			expect(component.instance().state.checked).toBe(true);
 		});
 	});
 
