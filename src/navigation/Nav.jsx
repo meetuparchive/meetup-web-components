@@ -7,7 +7,6 @@ import scriptLogo from '../../assets/svg/logo--script.svg';
 import withMatchMedia from '../utils/components/withMatchMedia';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
-import Section from '../layout/Section';
 import Icon from '../media/Icon';
 import AvatarMember from '../media/AvatarMember';
 import Avatar from '../media/Avatar';
@@ -21,10 +20,10 @@ const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
 const CLASS_AUTH_ITEM = 'navItem--authenticated';
 
 export const DropdownLoader = ({ label }) => (
-	<Section className="valignChildren--center align--center" aria-live="polite">
+	<div className="valignChildren--center align--center" aria-live="polite">
 		<p className="visibility--a11yHide">{label}</p>
 		<Icon shape="updates" size="l" />
-	</Section>
+	</div>
 );
 
 /**
