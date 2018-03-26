@@ -290,7 +290,7 @@ Dropdown.defaultProps = {
 Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element,
-	menuItems: PropTypes.array,
+	menuItems: PropTypes.arrayOf(PropTypes.element),
 	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
