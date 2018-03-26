@@ -12,7 +12,7 @@ const updatedNotif = MOCK_NOTIFICATIONS_LIST.map(notif => {
 	return { ...notif, formattedTimeSince: timeSince.toDateString() };
 });
 
-const navItems = {
+export const navItems = {
 	dropdownLoaderLabel: 'Loading',
 	updatesLabel: 'Updates',
 	logo: {
