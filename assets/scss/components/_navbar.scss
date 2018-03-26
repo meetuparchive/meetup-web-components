@@ -5,6 +5,7 @@
 
 #globalNav {
 	@include standardBorder('bottom');
+	background-color: $C_white;
 }
 
 .padding--left-half {
