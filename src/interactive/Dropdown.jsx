@@ -10,18 +10,9 @@ import {
 
 import bindAll from "../utils/bindAll";
 
-const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
+export const DROPDOWN_MENU_ITEM_CLASS = 'dropdownMenu-item';
 
-export const Item = ({isActive, isSelected, children}) => (
-	<div
-		className="dropdownMenu-item"
-		style={{
-			backgroundColor: isActive && C_COOLGRAYLIGHTTRANSP
-		}}
-	>
-		{children}
-	</div>
-);
+const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
 
 /**
  * @module Dropdown
@@ -262,16 +253,19 @@ class Dropdown extends React.PureComponent {
 										{
 											menuItems
 											?
-												menuItems.map((item, index) => (
-													<Item
-														{...getItemProps({
-															item,
-															isActive: highlightedIndex === index,
-														})}
-														key={`menuItem-${index}`}
-													>
-														{item}
-													</Item>
+												menuItems.map((item, index) => React.cloneElement(
+													item,
+													{
+														key: `menuItem-${index}`,
+														className: cx(
+															item.props.className,
+															DROPDOWN_MENU_ITEM_CLASS,
+															'display--flex span--100'
+														),
+														style: {
+															backgroundColor: highlightedIndex === index && C_COOLGRAYLIGHTTRANSP
+														}
+													}
 												))
 											:
 												content
