@@ -125,7 +125,7 @@ describe('Dropdown', () => {
 			<Dropdown
 				align="center"
 				trigger={dropdownTrigger}
-				menuItems={['one', 'two', 'three']}
+				menuItems={[<div>one</div>, <div>two</div>, <div>three</div>]}
 			/>
 		);
 		const menuItemDropdownWrapper = mount(menuItemDropdown);
