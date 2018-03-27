@@ -277,7 +277,8 @@ $calendarWidth: 310px;
 	pointer-events: none;
 }
 
-.flatpickr-weekdays {
+.flatpickr-weekdays,
+.flatpickr-weekdaycontainer {
 	@include display(flex);
 	text-align: center;
 	overflow: hidden;
