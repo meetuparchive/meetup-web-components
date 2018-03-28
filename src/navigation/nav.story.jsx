@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { MOCK_MEMBER, MOCK_GROUP } from 'meetup-web-mocks/lib/api';
+import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import { MOCK_NOTIFICATIONS_LIST } from 'meetup-web-mocks/lib/notifications/api';
 
 import { decorateWithBasics } from '../utils/decorators';
@@ -8,38 +8,23 @@ import { decorateWithBasics } from '../utils/decorators';
 import Nav from './Nav';
 
 const updatedNotif = MOCK_NOTIFICATIONS_LIST.map(notif => {
-	const timeSince = new Date(notif.updated);
+	const timeSince = new Date('1995-12-17T03:24:00');
 	return { ...notif, formattedTimeSince: timeSince.toDateString() };
 });
 
 export const navItems = {
 	dropdownLoaderLabel: 'Loading',
 	updatesLabel: 'Updates',
-	logo: {
-		logoAccessible: 'Meetup Logo',
-		link: 'meetup.com',
-	},
-	login: {
-		link: 'meetup.com/login',
-		label: 'Login',
-	},
+	logo: { logoAccessible: 'Meetup Logo', link: 'meetup.com' },
+	login: { link: 'meetup.com/login', label: 'Login' },
 	signup: {
 		label: 'Sign up',
 		signupModal: {
 			orLabel: 'Or',
 			title: 'Signup',
-			google: {
-				link: 'google.com',
-				label: 'Google',
-			},
-			facebook: {
-				link: 'facebook.com',
-				label: 'Facebook',
-			},
-			email: {
-				link: 'meetup.com/email',
-				label: 'Email',
-			},
+			google: { link: 'google.com', label: 'Google' },
+			facebook: { link: 'facebook.com', label: 'Facebook' },
+			email: { link: 'meetup.com/email', label: 'Email' },
 			login: {
 				text: 'Already a member?',
 				label: 'Login',
@@ -51,12 +36,9 @@ export const navItems = {
 		link: 'meetup.com/pro',
 		label: 'Pro Dashboard',
 		mobileLabel: 'Dashboard',
-		mainAccount: MOCK_GROUP,
+		mainAccount: { urlname: '/mason-mocks', name: 'Mason Mocks' },
 	},
-	explore: {
-		link: 'meetup.com/find/events',
-		label: 'Explore',
-	},
+	explore: { link: 'meetup.com/find/events', label: 'Explore' },
 	groups: {
 		link: 'meetup.com/groups',
 		label: 'Groups',
@@ -65,11 +47,7 @@ export const navItems = {
 			{ urlname: '/chicken-scratch', name: 'Chicken Scratch' },
 		],
 	},
-	messages: {
-		link: 'meetup.com/messages',
-		label: 'Messages',
-		unreadMessage: 1,
-	},
+	messages: { link: 'meetup.com/messages', label: 'Messages', unreadMessage: 1 },
 	notifications: {
 		link: 'meetup.com/notifications',
 		label: 'Notifications',
@@ -86,18 +64,9 @@ export const navItems = {
 		label: 'Profile',
 		getSelfGroupsQuery: () => {},
 		profileDropdown: {
-			settings: {
-				link: 'meetup.com/settings',
-				label: 'Settings',
-			},
-			help: {
-				link: 'meetup.com/help',
-				label: 'Help',
-			},
-			logout: {
-				link: 'meetup.com/logout',
-				label: 'Logout',
-			},
+			settings: { link: 'meetup.com/settings', label: 'Settings' },
+			help: { link: 'meetup.com/help', label: 'Help' },
+			logout: { link: 'meetup.com/logout', label: 'Logout' },
 			allGroupsLabel: 'All Groups',
 			allGroupsLink: 'meetup.com/groups',
 			groupHome: () => {},

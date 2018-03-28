@@ -1,9 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { MOCK_MEMBER, MOCK_GROUP } from 'meetup-web-mocks/lib/api';
+import { mount } from 'enzyme';
+import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 
 import Nav from './Nav';
-import navItems from './nav.story';
+import { navItems } from './nav.story';
 
 const MOCK_PROPS = {
 	navItems,
@@ -15,7 +15,7 @@ const MOCK_PROPS = {
 	self: { status: 'prereg' },
 };
 
-const wrapper = props => shallow(<Nav {...MOCK_PROPS} {...props} />);
+const wrapper = props => mount(<Nav {...MOCK_PROPS} {...props} />);
 
 describe('Nav', () => {
 	it('should match the snapshot for unauthenticated small screens', () => {
@@ -64,15 +64,33 @@ describe('Nav', () => {
 		expect(
 			wrapper({
 				navItems: {
-					mainAccount: MOCK_GROUP,
+					...navItems,
+					proDashboard: {
+						mainAccount: {
+							urlname: '/mason-mocks',
+							name: 'Mason Mocks',
+							group_photo: {
+								thumb_link: 'https://placeimg.com/640/480/any',
+							},
+						},
+					},
 				},
 			})
-		);
+		).toMatchSnapshot();
 	});
 
 	it('should match the snapshot without a logo photo', () => {
 		expect(
-			wrapper({ navItems: { mainAccount: { ...MOCK_GROUP, group_photo: {} } } })
-		);
+			wrapper({
+				navItems: {
+					...navItems,
+					mainAccount: {
+						urlname: '/mason-mocks',
+						name: 'Mason Mocks',
+						group_photo: {},
+					},
+				},
+			})
+		).toMatchSnapshot();
 	});
 });
