@@ -1,8 +1,8 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 
-import Nav from './Nav';
+import { Nav } from './Nav';
 import { navItems } from './nav.story';
 
 const MOCK_PROPS = {
@@ -15,7 +15,7 @@ const MOCK_PROPS = {
 	self: { status: 'prereg' },
 };
 
-const wrapper = props => mount(<Nav {...MOCK_PROPS} {...props} />);
+const wrapper = props => shallow(<Nav {...MOCK_PROPS} {...props} />);
 
 describe('Nav', () => {
 	it('should match the snapshot for unauthenticated small screens', () => {
