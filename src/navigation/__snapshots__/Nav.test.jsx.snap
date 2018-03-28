@@ -1150,29 +1150,106 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="logo logo--script flush--left"
+      className="navItem--authenticated"
       icon={
-        <img
-          alt="Meetup Logo"
-          height="44px"
-          src=""
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
         />
       }
-      linkClassName="display--block"
-      linkTo="meetup.com"
-    />
-    <NavItem
-      className="navItem--unauthenticated navItem--login"
-      key="0"
-      label="Login"
-      linkTo="meetup.com/login"
+      key="1"
+      label="Explore"
+      linkTo="meetup.com/find/events"
       shrink={true}
     />
     <NavItem
-      className="navItem--unauthenticated"
-      key="1"
-      label="Sign up"
-      onAction={[Function]}
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="2"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="messages"
+          size="s"
+        />
+      }
+      key="3"
+      label="Messages"
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      dropdownContent={false}
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="notifications"
+          size="s"
+        />
+      }
+      key="4"
+      label="Notifications"
+      linkTo="meetup.com/notifications"
+      onClickAction={false}
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
+      dropdownContent={false}
+      icon={
+        <Flex
+          align="center"
+          direction="row"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="5"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo="meetup.com/profile"
+      onClickAction={false}
       shrink={true}
     />
   </Flex>
@@ -1193,29 +1270,106 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="logo logo--script flush--left"
+      className="navItem--authenticated"
       icon={
-        <img
-          alt="Meetup Logo"
-          height="44px"
-          src=""
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
         />
       }
-      linkClassName="display--block"
-      linkTo="meetup.com"
-    />
-    <NavItem
-      className="navItem--unauthenticated navItem--login"
-      key="0"
-      label="Login"
-      linkTo="meetup.com/login"
+      key="1"
+      label="Explore"
+      linkTo="meetup.com/find/events"
       shrink={true}
     />
     <NavItem
-      className="navItem--unauthenticated"
-      key="1"
-      label="Sign up"
-      onAction={[Function]}
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="2"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="messages"
+          size="s"
+        />
+      }
+      key="3"
+      label="Messages"
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      dropdownContent={false}
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="notifications"
+          size="s"
+        />
+      }
+      key="4"
+      label="Notifications"
+      linkTo="meetup.com/notifications"
+      onClickAction={false}
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
+      dropdownContent={false}
+      icon={
+        <Flex
+          align="center"
+          direction="row"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="5"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo="meetup.com/profile"
+      onClickAction={false}
       shrink={true}
     />
   </Flex>
