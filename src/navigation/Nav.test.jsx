@@ -63,6 +63,7 @@ describe('Nav', () => {
 	it('should match the snapshot with logo photo', () => {
 		expect(
 			wrapper({
+				self: MOCK_MEMBER,
 				navItems: {
 					...navItems,
 					proDashboard: {
@@ -82,6 +83,7 @@ describe('Nav', () => {
 	it('should match the snapshot without a logo photo', () => {
 		expect(
 			wrapper({
+				self: MOCK_MEMBER,
 				navItems: {
 					...navItems,
 					mainAccount: {
