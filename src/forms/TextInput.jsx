@@ -88,7 +88,7 @@ export const TextInput = (props) => {
 	// WC-158
 	// Only add a `value` prop if it is defined.
 	// Workaround for IE11 support (see ticket)
-	if (value || typeof value === 'string') {
+	if (value !== undefined) {
 		other.value = value;
 	}
 
