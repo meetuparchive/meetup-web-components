@@ -15,39 +15,41 @@ class Typeahead extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.onItemMouseEnter = this.onItemMouseEnter.bind(this);
-		this.onItemKeyUp = this.onItemKeyUp.bind(this);
+		this.stateReducer = this.stateReducer.bind(this);
 
 		this.state = {
-			actualHighlightedIndex: 0
+			highlightedIndex: -1
 		};
 	}
 
 	onItemMouseEnter (i) {
-		this.setState({actualHighlightedIndex: i});
+		this.setState({highlightedIndex: i});
 	}
 
-	onItemKeyUp(e) {
-		switch (e.key) {
-			case 'ArrowDown':
+	stateReducer(state, changes) {
+		switch (changes.type) {
+			case Downshift.stateChangeTypes.keyDownArrowDown:
 				this.setState({
-					actualHighlightedIndex:
-						parseInt(this.state.actualHighlightedIndex + 1) >= this.props.items.length
+					highlightedIndex:
+						parseInt(this.state.highlightedIndex + 1) >= this.props.items.length
 							?
 								0
 							:
-								parseInt(this.state.actualHighlightedIndex+1)
+								parseInt(this.state.highlightedIndex+1)
 				});
-				break;
-			case 'ArrowUp':
+				return changes;
+			case Downshift.stateChangeTypes.keyDownArrowUp:
 				this.setState({
-					actualHighlightedIndex:
-						this.state.actualHighlightedIndex < 1
+					highlightedIndex:
+						this.state.highlightedIndex < 1
 							?
-								0
+								parseInt(this.props.items.length-1)
 							:
-								parseInt(this.state.actualHighlightedIndex-1)
+								parseInt(this.state.highlightedIndex-1)
 				});
-				break;
+				return changes;
+			default:
+				return changes;
 		}
 	}
 
@@ -60,7 +62,10 @@ class Typeahead extends React.PureComponent {
 		} = this.props;
 
 		return (
-			<Downshift {...other}>
+			<Downshift
+				stateReducer={this.stateReducer}
+				{...other}
+			>
 				{({
 					getInputProps,
 					getItemProps,
@@ -70,8 +75,7 @@ class Typeahead extends React.PureComponent {
 					<TextInput
 						{...getInputProps({
 							...inputProps,
-							className: 'typeahead-input',
-							onKeyUp: this.onItemKeyUp
+							className: 'typeahead-input'
 						})}
 					/>
 					{Boolean(isOpen && items && items.length)
@@ -96,7 +100,7 @@ class Typeahead extends React.PureComponent {
 													TA_ITEM_CLASSNAME,
 													item.props.className,
 													{
-														'typeahead-item--isActive': this.state.actualHighlightedIndex == i,
+														'typeahead-item--isActive': this.state.highlightedIndex == i,
 													}
 												)
 											})}
