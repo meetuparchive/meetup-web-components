@@ -73,7 +73,7 @@ class Typeahead extends React.PureComponent {
 	}
 }
 
-TextInput.propTypes = {
+Typeahead.propTypes = {
 	inputProps: PropTypes.object,
 	items: PropTypes.arrayOf(PropTypes.element),
 	height: PropTypes.string
