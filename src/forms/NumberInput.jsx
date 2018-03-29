@@ -44,6 +44,12 @@ export class NumberInput extends React.Component {
 		return newValue;
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (this.props.onChange && this.props.value !== nextProps.value) {
+			this.setState(() => ({value: nextProps.value }));
+		}
+	}
+
 	componentWillUpdate(nextProps, nextState) {
 		if (this.props.onChange && nextState.value !== this.state.value) {
 			this.props.onChange({ target: { name: nextProps.name, value: nextState.value }});
