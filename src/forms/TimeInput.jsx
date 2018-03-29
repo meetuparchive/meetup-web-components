@@ -108,10 +108,12 @@ export class TimeInput extends React.PureComponent {
 	 */
 	onTimeInputChange(e) {
 		const { value } = e.target;
+		const isValid = /^([0-1]?[1-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(value);
+
 		// Time inputs are allowed to return an empty string for invalid input.
 		// We should ignore all invalid input and return immediately
 		// Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#Validation
-		if (value === '') return;
+		if (!isValid) return;
 
 		this.setState(() => ({ value }));
 
