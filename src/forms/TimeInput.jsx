@@ -107,11 +107,14 @@ export class TimeInput extends React.PureComponent {
 	 * 	handler prop, if there is one provided (eg supplied by redux-form or DateTimePicker)
 	 */
 	onTimeInputChange(e) {
-		const { value } = e.target;
+		let { value } = e.target;
+
 		// Time inputs are allowed to return an empty string for invalid input.
 		// We should ignore all invalid input and return immediately
 		// Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#Validation
-		if (value === '') return;
+		if (value === '') {
+			value = '00:00';
+		}
 
 		this.setState(() => ({ value }));
 
