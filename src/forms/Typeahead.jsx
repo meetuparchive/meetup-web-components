@@ -12,6 +12,44 @@ export const TA_ITEM_CLASSNAME = 'typeahead-item';
  * @module Typeahead
  */
 class Typeahead extends React.PureComponent {
+	constructor(props) {
+		super(props);
+		this.onItemMouseEnter = this.onItemMouseEnter.bind(this);
+		this.onItemKeyUp = this.onItemKeyUp.bind(this);
+
+		this.state = {
+			actualHighlightedIndex: 0
+		};
+	}
+
+	onItemMouseEnter (i) {
+		this.setState({actualHighlightedIndex: i});
+	}
+
+	onItemKeyUp(e) {
+		switch (e.key) {
+			case 'ArrowDown':
+				this.setState({
+					actualHighlightedIndex:
+						parseInt(this.state.actualHighlightedIndex + 1) >= this.props.items.length
+							?
+								0
+							:
+								parseInt(this.state.actualHighlightedIndex+1)
+				});
+				break;
+			case 'ArrowUp':
+				this.setState({
+					actualHighlightedIndex:
+						this.state.actualHighlightedIndex < 1
+							?
+								0
+							:
+								parseInt(this.state.actualHighlightedIndex-1)
+				});
+				break;
+		}
+	}
 
 	render() {
 		const {
@@ -27,13 +65,13 @@ class Typeahead extends React.PureComponent {
 					getInputProps,
 					getItemProps,
 					isOpen,
-					highlightedIndex,
 				}) =>
 				(<div className="typeahead">
 					<TextInput
-						className="typeahead-input"
 						{...getInputProps({
-							...inputProps
+							...inputProps,
+							className: 'typeahead-input',
+							onKeyUp: this.onItemKeyUp
 						})}
 					/>
 					{Boolean(isOpen && items && items.length)
@@ -51,15 +89,17 @@ class Typeahead extends React.PureComponent {
 											{...getItemProps({
 												item: item.props.value,
 												i,
+												key: `typeaheadItem-${i}-${Date.now()}`,
+												id: `typeaheadItem-${i}-${Date.now()}`,
+												onMouseMove: () => {this.onItemMouseEnter(i);},
+												className: cx(
+													TA_ITEM_CLASSNAME,
+													item.props.className,
+													{
+														'typeahead-item--isActive': this.state.actualHighlightedIndex == i,
+													}
+												)
 											})}
-											key={`typeaheadItem-${i}`}
-											className={cx(
-												TA_ITEM_CLASSNAME,
-												item.props.className,
-												{
-													'typeahead-item--isActive': highlightedIndex === i
-												}
-											)}
 										>
 											{item.props.children}
 										</div>
