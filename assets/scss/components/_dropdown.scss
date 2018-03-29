@@ -116,8 +116,10 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 }
 
 .dropdownMenu-item {
+	box-sizing: border-box;
 	border-bottom: 1px solid $C_border;
 	cursor: pointer;
+	justify-content: flex-start;
 	padding: calc(var(--responsiveSpace)/2);
 	&:hover {
 		background-color: $C_coolGrayLight;
