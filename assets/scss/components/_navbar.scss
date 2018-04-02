@@ -5,6 +5,7 @@
 
 #globalNav {
 	@include standardBorder('bottom');
+	background-color: $C_white;
 }
 
 .padding--left-half {
@@ -31,6 +32,17 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 	text-align: center;
 	position: relative;
 	padding-left: 0;
+}
+
+.circular {
+	border-radius: 100%;
+}
+
+.proDashboard-noLogo {
+	background-color: $C_coolGrayLight;
+	height: $space-and-half;
+	width: $space-and-half;
+	line-height: $space-and-half;
 }
 
 // use negative margin to pull in some
