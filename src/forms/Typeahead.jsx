@@ -27,27 +27,37 @@ class Typeahead extends React.PureComponent {
 	}
 
 	stateReducer(state, changes) {
+		let highlightedIndexState;
+
 		switch (changes.type) {
 			case Downshift.stateChangeTypes.keyDownArrowDown:
+				highlightedIndexState =
+					parseInt(this.state.highlightedIndex + 1) >= this.props.items.length
+						?
+							0
+						:
+							parseInt(this.state.highlightedIndex+1);
 				this.setState({
-					highlightedIndex:
-						parseInt(this.state.highlightedIndex + 1) >= this.props.items.length
-							?
-								0
-							:
-								parseInt(this.state.highlightedIndex+1)
+					highlightedIndex: highlightedIndexState
 				});
-				return changes;
+				return {
+					...changes,
+					highlightedIndex: highlightedIndexState
+				};
 			case Downshift.stateChangeTypes.keyDownArrowUp:
+				highlightedIndexState =
+					this.state.highlightedIndex < 1
+						?
+							parseInt(this.props.items.length-1)
+						:
+							parseInt(this.state.highlightedIndex-1);
 				this.setState({
-					highlightedIndex:
-						this.state.highlightedIndex < 1
-							?
-								parseInt(this.props.items.length-1)
-							:
-								parseInt(this.state.highlightedIndex-1)
+					highlightedIndex: highlightedIndexState
 				});
-				return changes;
+				return {
+					...changes,
+					highlightedIndex: highlightedIndexState
+				};
 			default:
 				return changes;
 		}
