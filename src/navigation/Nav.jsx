@@ -9,6 +9,7 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
 import AvatarMember from '../media/AvatarMember';
+import Avatar from '../media/Avatar';
 import SignupModal from '../SignupModal';
 
 import NavItem from './components/NavItem';
@@ -19,10 +20,10 @@ const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
 const CLASS_AUTH_ITEM = 'navItem--authenticated';
 
 export const DropdownLoader = ({ label }) => (
-	<Section className="valignChildren--center align--center" aria-live="polite">
+	<div className="valignChildren--center align--center" aria-live="polite">
 		<p className="visibility--a11yHide">{label}</p>
 		<Icon shape="updates" size="l" />
-	</Section>
+	</div>
 );
 
 /**
@@ -76,40 +77,49 @@ export class Nav extends React.Component {
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all', className);
+		const proLogo = ((proDashboard.mainAccount || {}).group_photo || {}).thumb_link;
+		const proLetter = ((proDashboard.mainAccount || {}).name || '')
+			.slice(0, 1)
+			.toUpperCase();
 
 		const showScriptLogo = Boolean(media.isAtLargeUp || isLoggedOut);
 		const showSwarmLogo = Boolean(
 			media.isAtMediumUp && !media.isAtLargeUp && !isLoggedOut
 		);
-		const notificationContent = notifications.list ? (
-			<NotificationsDropdown
-				self={self}
-				notifications={notifications.list}
-				onMarkReadAction={notifications.notificationsDropdown.markRead}
-				localeCode={localeCode}
-				emptyContentLabel={notifications.notificationsDropdown.emptyContentLabel}
-				notificationsTitleLabel={notifications.label}
-				generateClassicUrl={
-					notifications.notificationsDropdown.generateClassicUrl
-				}
-			/>
-		) : (
-			<DropdownLoader label={dropdownLoaderLabel} />
-		);
+		const notificationContent =
+			notifications.list.length > 0 ? (
+				<NotificationsDropdown
+					self={self}
+					notifications={notifications.list}
+					onMarkReadAction={notifications.notificationsDropdown.markRead}
+					localeCode={localeCode}
+					emptyContentLabel={
+						notifications.notificationsDropdown.emptyContentLabel
+					}
+					notificationsTitleLabel={notifications.label}
+					generateClassicUrl={
+						notifications.notificationsDropdown.generateClassicUrl
+					}
+				/>
+			) : (
+				<DropdownLoader label={dropdownLoaderLabel} />
+			);
 
-		const profileContent = groups ? (
-			<ProfileDropdown
-				settings={profile.profileDropdown.settings}
-				help={profile.profileDropdown.help}
-				logout={profile.profileDropdown.logout}
-				groupHome={profile.profileDropdown.groupHome}
-				allGroupsLabel={profile.profileDropdown.allGroupsLabel}
-				profile={profile}
-				groups={groups.list}
-			/>
-		) : (
-			<DropdownLoader label={dropdownLoaderLabel} />
-		);
+		const profileContent =
+			groups.list.length > 0 ? (
+				<ProfileDropdown
+					settings={profile.profileDropdown.settings}
+					help={profile.profileDropdown.help}
+					logout={profile.profileDropdown.logout}
+					groupHome={profile.profileDropdown.groupHome}
+					allGroupsLabel={profile.profileDropdown.allGroupsLabel}
+					allGroupsLink={profile.profileDropdown.allGroupsLink}
+					profile={profile}
+					groups={groups.list}
+				/>
+			) : (
+				<DropdownLoader label={dropdownLoaderLabel} />
+			);
 
 		let unauthItems = [
 			{
@@ -132,18 +142,32 @@ export class Nav extends React.Component {
 				linkTo: proDashboard.link,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
-				icon: proDashboard.proLogo ? (
-					<img
-						src={proDashboard.proLogo}
-						className="display--block atMedium_display--none padding--left"
-						height="24px"
-					/>
-				) : (
-					<Icon
-						shape="profile"
-						size="s"
-						className="display--block atMedium_display--none"
-					/>
+				icon: (
+					<Flex noGutters align="center">
+						<FlexItem>
+							{proLogo ? (
+								<Avatar
+									src={proLogo}
+									className="display--block atMedium_display--none margin--left circular"
+									small
+								/>
+							) : (
+								<div className="proDashboard-noLogo atMedium_display--none circular margin--left text--secondary">
+									{proLetter}
+								</div>
+							)}
+						</FlexItem>
+						<FlexItem
+							shrink
+							className="display--block atMedium_display--none"
+						>
+							<Icon
+								shape="chevron-down"
+								size="xxs"
+								className="padding--left-half"
+							/>
+						</FlexItem>
+					</Flex>
 				),
 			},
 			{
@@ -204,6 +228,7 @@ export class Nav extends React.Component {
 					'profileDropdown--hasGroups': Boolean(
 						groups.list && groups.list.length
 					),
+					'display--none': self.isProMember && !media.isAtMediumUp,
 				}),
 				icon: (
 					<Flex noGutters align="center">
