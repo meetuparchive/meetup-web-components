@@ -9,7 +9,6 @@ import {
 } from './Footer';
 
 const DEFAULT_LANG = 'en-US';
-const FRENCH_LANG = 'fr-FR';
 const onLanguageSelect = jest.fn();
 
 const footerLinkSets = [
@@ -116,9 +115,28 @@ describe('LanguageSelectInput', () => {
 });
 
 describe('SocialIconsList', () => {
-	it('exists', () => {
-		const socialIconList = shallow(<SocialIconsList language={FRENCH_LANG} />);
-		expect(socialIconList).toMatchSnapshot();
+	const allLocales = [
+		'en-US',
+		'en-AU',
+		'de-DE',
+		'es',
+		'es-ES',
+		'fr-FR',
+		'it-IT',
+		'nl-NL',
+		'pl-PL',
+		'pt-BR',
+		'sv-SE',
+		'tr-TR',
+		'th-TH',
+		'ja-JP',
+		'ko-KR',
+	];
+	allLocales.forEach(localeCode => {
+		it(`renders for ${localeCode} locale`, () => {
+			const socialIconList = shallow(<SocialIconsList localeCode={localeCode} />);
+			expect(socialIconList).toMatchSnapshot();
+		});
 	});
 });
 
