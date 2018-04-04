@@ -4,7 +4,7 @@ import { storiesOf, action } from '@storybook/react';
 import withMatchMedia from './utils/components/withMatchMedia';
 
 import { decorateWithBasics } from './utils/decorators';
-import { Footer } from './Footer';
+import { Footer, defaultLegalCopy } from './Footer';
 
 const TestFooter = withMatchMedia(Footer);
 
@@ -57,6 +57,7 @@ const DEFAULT_PROPS = {
 	linkSets: footerLinkSets,
 	localeCode: "en-US",
 	onLanguageSelect: action('language changed'),
+	legalCopy: defaultLegalCopy,
 	subFooterLinks: subFooterLinks,
 	createMeetup: {
 		text: 'Create a Meetup',
