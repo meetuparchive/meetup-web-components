@@ -36,7 +36,7 @@ export const FooterCategory = (props) => (
 );
 
 
-export const SocialIconsList = (localeCode) => {
+export const SocialIconsList = ({localeCode}) => {
 	const socialLinks = getSocialLinks(localeCode);
 	const socialIcons = [
 		<a href={socialLinks.facebook}>
