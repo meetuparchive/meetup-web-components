@@ -37,13 +37,10 @@ class Typeahead extends React.PureComponent {
 							0
 						:
 							parseInt(this.state.highlightedIndex+1);
-				this.setState({
-					highlightedIndex: highlightedIndexState
-				});
-				return {
-					...changes,
-					highlightedIndex: highlightedIndexState
-				};
+					this.setState({
+						highlightedIndex: highlightedIndexState
+					});
+				break;
 			case Downshift.stateChangeTypes.keyDownArrowUp:
 				highlightedIndexState =
 					this.state.highlightedIndex < 1
@@ -51,16 +48,17 @@ class Typeahead extends React.PureComponent {
 							parseInt(this.props.items.length-1)
 						:
 							parseInt(this.state.highlightedIndex-1);
-				this.setState({
-					highlightedIndex: highlightedIndexState
-				});
-				return {
-					...changes,
-					highlightedIndex: highlightedIndexState
-				};
-			default:
-				return changes;
+					this.setState({
+						highlightedIndex: highlightedIndexState
+					});
+				break;
 		}
+
+		return {
+			...changes,
+			highlightedIndex: highlightedIndexState
+		};
+
 	}
 
 	render() {
