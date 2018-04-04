@@ -20,6 +20,8 @@ import withMatchMedia from './utils/components/withMatchMedia';
 
 import { getSocialLinks } from './utils/getSocialLinks';
 
+export const defaultLegalCopy = 'Meetup is a wholly owned subsidiary of WeWork Companies, Inc.';
+
 export const FooterCategory = (props) => (
 	<Chunk>
 		<h4 className="text--bold margin--bottom">{props.header}</h4>
@@ -78,6 +80,7 @@ export const Footer = ({
 	createMeetup,
 	isLight,
 	isLoggedIn,
+	legalCopy,
 	localeCode,
 	linkSets,
 	media,
@@ -187,6 +190,13 @@ export const Footer = ({
 							separator="·"
 							items={[
 								<span>{`© Meetup ${new Date().getFullYear()}`}</span>,
+								<span>{legalCopy}</span>,
+							]}
+						/>
+						<InlineBlockList
+							className="text--small align--center atMedium_align--left margin--top"
+							separator="·"
+							items={[
 								...subFooterLinks
 							]}
 						/>
@@ -202,6 +212,7 @@ Footer.defaultProps = {
 		text: 'Create a Meetup',
 		link: '/create/'
 	},
+	legalCopy: defaultLegalCopy,
 	linkSets: [
 		{
 			header: 'Your Account',
@@ -247,6 +258,7 @@ Footer.propTypes = {
 	}).isRequired,
 	isLight: PropTypes.bool,
 	isLoggedIn: PropTypes.bool,
+	legalCopy: PropTypes.string,
 	localeCode: PropTypes.string.isRequired,
 	linkSets: PropTypes.arrayOf(PropTypes.shape({
 		header: PropTypes.string.isRequired,
