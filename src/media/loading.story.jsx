@@ -36,31 +36,21 @@ storiesOf('Loading', module)
 	.add('default', () => (
 		<Loading />)
 	)
-	.add('partialCover', () => (
-		<Loading partialCover/>)
+	.add('partialCover', () =>
+		<Loading partialCover/>
 	)
-	.add('fullCover', () => (
-		<Loading fullCover/>)
+	.add('fullCover', () =>
+		<Loading fullCover/>
 	)
-	.add('color red', () => (
+	.add('custom size', () =>
+		<Loading size="96px" />
+	)
+	.add('custom color', () =>
+		<Loading color="rgb(241, 58, 89)"/>
+	)
+	.add('custom scrimColor', () => (
 		<Loading
-			partialCover
-			color="rgb(241, 58, 89)"
-			scrimColor="rgba(246, 247, 248, .87)"
-		/>)
-	)
-	.add('scrimColor transp pink', () => (
-		<Loading
-			partialCover
+			fullCover
 			scrimColor="rgba(255, 153, 209, .87)"
-		/>)
-	)
-	.add('shape - swarm', () => (
-		<Loading fullCover option="swarm" />)
-	)
-	.add('shape - busySwarm', () => (
-		<Loading size={80} fullCover option="busySwarm" />)
-	)
-	.add('shape - circular', () => (
-		<Loading size={80} fullCover option="circular" />)
-	);
+		/>
+	));
