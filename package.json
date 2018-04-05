@@ -49,6 +49,7 @@
     "autosize": "3.0.21",
     "downshift": "1.31.2",
     "file-loader": "1.1.8",
+    "focus-trap-react": "false3.1.2",
     "lint-staged": "7.0.0",
     "raf-schd": "2.1.0",
     "react-flatpickr": "3.6.4",

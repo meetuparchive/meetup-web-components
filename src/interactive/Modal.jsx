@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import FocusTrap from 'focus-trap-react';
 
 import Icon from '../media/Icon';
 import Button from '../forms/Button';
@@ -118,6 +119,7 @@ class Modal extends React.Component {
 			hideHeroScrim,
 			inverted,
 			closeArea,
+			initialFocus,
 			...other
 		} = this.props;
 
@@ -185,21 +187,28 @@ class Modal extends React.Component {
 						maxHeight: fixed ? `calc(100% - ${this.state.topPosition} * 2)` : 'auto',
 					}}
 				>
-					{heroContent ?
-						<Stripe
-							backgroundImage={heroBgImage}
-							inverted={inverted}
-							hideScrim={hideHeroScrim}
-							style={heroStyles}
-						>
-							{closeElement}
-							{heroContent}
-						</Stripe>
-						:
-						closeElement
-					}
+					<FocusTrap
+						focusTrapOptions={{
+							initialFocus,
+							escapeDeactivates: false
+						}}
+					>
+						{heroContent ?
+							<Stripe
+								backgroundImage={heroBgImage}
+								inverted={inverted}
+								hideScrim={hideHeroScrim}
+								style={heroStyles}
+							>
+								{closeElement}
+								{heroContent}
+							</Stripe>
+							:
+							closeElement
+						}
 
-					{children}
+						{children}
+					</FocusTrap>
 				</div>
 			</div>
 		);
@@ -216,6 +225,11 @@ Modal.propTypes = {
 	inverted: PropTypes.bool,
 	onDismiss: PropTypes.func.isRequired,
 	closeArea: PropTypes.bool,
+	initialFocus: PropTypes.oneOf([
+		PropTypes.element,
+		PropTypes.func,
+		PropTypes.string
+	])
 };
 
 Modal.defaultProps = {
