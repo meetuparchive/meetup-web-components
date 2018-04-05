@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading exists 1`] = `
+<div
+  className="loading loading--cover loading--fullCover"
+  style={
+    Object {
+      "backgroundColor": "#FFF",
+    }
+  }
+>
+  <svg
+    className="loadingShape"
+    style={
+      Object {
+        "width": "42px",
+      }
+    }
+    viewBox="0 0 50 50"
+  >
+    <circle
+      className="loadingShape-path"
+      cx="25"
+      cy="25"
+      fill="none"
+      r="20"
+      stroke="#000"
+      stroke-miterlimit="10"
+      stroke-width="3"
+    />
+  </svg>
+</div>
+`;
