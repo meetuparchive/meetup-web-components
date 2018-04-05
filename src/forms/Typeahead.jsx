@@ -12,6 +12,54 @@ export const TA_ITEM_CLASSNAME = 'typeahead-item';
  * @module Typeahead
  */
 class Typeahead extends React.PureComponent {
+	constructor(props) {
+		super(props);
+		this.onItemMouseEnter = this.onItemMouseEnter.bind(this);
+		this.stateReducer = this.stateReducer.bind(this);
+
+		this.state = {
+			highlightedIndex: -1
+		};
+	}
+
+	onItemMouseEnter (i) {
+		this.setState({highlightedIndex: i});
+	}
+
+	stateReducer(state, changes) {
+		let highlightedIndexState;
+
+		switch (changes.type) {
+			case Downshift.stateChangeTypes.keyDownArrowDown:
+				highlightedIndexState =
+					parseInt(this.state.highlightedIndex + 1) >= this.props.items.length
+						?
+							0
+						:
+							parseInt(this.state.highlightedIndex+1);
+					this.setState({
+						highlightedIndex: highlightedIndexState
+					});
+				break;
+			case Downshift.stateChangeTypes.keyDownArrowUp:
+				highlightedIndexState =
+					this.state.highlightedIndex < 1
+						?
+							parseInt(this.props.items.length-1)
+						:
+							parseInt(this.state.highlightedIndex-1);
+					this.setState({
+						highlightedIndex: highlightedIndexState
+					});
+				break;
+		}
+
+		return {
+			...changes,
+			highlightedIndex: highlightedIndexState
+		};
+
+	}
 
 	render() {
 		const {
@@ -22,18 +70,20 @@ class Typeahead extends React.PureComponent {
 		} = this.props;
 
 		return (
-			<Downshift {...other}>
+			<Downshift
+				stateReducer={this.stateReducer}
+				{...other}
+			>
 				{({
 					getInputProps,
 					getItemProps,
 					isOpen,
-					highlightedIndex,
 				}) =>
 				(<div className="typeahead">
 					<TextInput
-						className="typeahead-input"
 						{...getInputProps({
-							...inputProps
+							...inputProps,
+							className: 'typeahead-input'
 						})}
 					/>
 					{Boolean(isOpen && items && items.length)
@@ -51,15 +101,17 @@ class Typeahead extends React.PureComponent {
 											{...getItemProps({
 												item: item.props.value,
 												i,
+												key: `typeaheadItem-${i}-${Date.now()}`,
+												id: `typeaheadItem-${i}-${Date.now()}`,
+												onMouseMove: () => {this.onItemMouseEnter(i);},
+												className: cx(
+													TA_ITEM_CLASSNAME,
+													item.props.className,
+													{
+														'typeahead-item--isActive': this.state.highlightedIndex == i,
+													}
+												)
 											})}
-											key={`typeaheadItem-${i}`}
-											className={cx(
-												TA_ITEM_CLASSNAME,
-												item.props.className,
-												{
-													'typeahead-item--isActive': highlightedIndex === i
-												}
-											)}
 										>
 											{item.props.children}
 										</div>
