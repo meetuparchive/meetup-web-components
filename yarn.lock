@@ -3909,7 +3909,7 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-focus-trap-react@false3.1.2:
+focus-trap-react@3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-3.1.2.tgz#4dd021ccd028bbd3321147d132cdf7585d6d1394"
   dependencies:
