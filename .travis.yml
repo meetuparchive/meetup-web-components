@@ -16,10 +16,9 @@ env:
   global:
     # build number used by Makefile and Coveralls
     - CI_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
-    - secure: "DTA/wJ8Z0AMMnCtzokJoAeFWC45FrJNZJIx+2V7esCqdNMTg3vNbbcCdthm2qw/Lgu8SbstzBqGiaaHwvTUoy3y4Kk38T+Fx8uGbfbl7NMN/f/TaxiSJuEHaBgz0ot29EfjIljnxaTLBZY9ADOr8j+jLnJMwBybKzmZcRuRXFE02+Zqvj/UhIBW46KurjMWzcySvIre4wZAIpsff7X9tHpK4y0/1dyo6QEpn/WAuDBB5ueBypZvQvsKRM+PwWR9YuByxHfPtVdAE2sUUFnVFJofWwFrOOtz1fQ8Vp259gEBEXEAVzSifMcItXudXNCcM8Hy4H9IrrNd8gkztSm8pssvjkLhsinTbb+UeGxVEHOQUojAcFHFAThiNGEV1GV7sY1fEBoujgRtlUQJaCBsW4boAwNElsJq3tKJ5Vj/FSaiE58uKjS2FItrvAKiNTe9TUPGTxEiFfbKDH6wmEiYXB33Ra3aoYv68ZEBpLdLHKMIBXoC+QgGsQEEPj8PC8gkBQ7josTJD8UkPQA8L29WUkyPw/TcWb4F6myiUqms2wKfwtuGobDV867dUQy2WxT3h4N5uNRNeirR8mXJdbGdzTg0KgJm1FNKjmewae/n97B+604eQgz4NLqI2pOaaZm5nqqqG3ItzuURuNNBZmL8xGH4VIGH6xJu+6frdDxhssNk="
+	- NPM_TOKEN="$NPM_TOKEN"
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_9064aff2eda1_key -iv $encrypted_9064aff2eda1_iv -in '.travis/github_deploy_key.enc' -out github_deploy_key -d
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
 before_script:
@@ -34,7 +33,6 @@ after_success:
   - npm run coveralls
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
-  - $(yarn bin)/set-up-ssh --key "$encrypted_9064aff2eda1_key" --iv "$encrypted_9064aff2eda1_iv" --path-encrypted-key ".travis/github_deploy_key.enc"
   - >
     [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
     export GIT_TAG=$(make version) ||
@@ -52,10 +50,6 @@ after_success:
     npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" &&
     git push --tags git@github.com:$TRAVIS_REPO_SLUG.git &&
     npm publish --tag $NPM_TAG
-  # skipping storybook publish until it is upgraded to support React 16
-  # - >
-  #   [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
-  #   yarn run publish-docs
 
 deploy:
    provider: pages
