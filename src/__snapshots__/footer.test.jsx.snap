@@ -340,7 +340,749 @@ exports[`LanguageSelectInput exists 1`] = `
 />
 `;
 
-exports[`SocialIconsList exists 1`] = `
+exports[`SocialIconsList renders for de-DE locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetupDE/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/MeetupDE/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for en-AU locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/Meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for en-US locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/Meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for es locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/MeetupES/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for es-ES locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/MeetupES/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for fr-FR locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/MeetupFR/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/MeetupFR/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for it-IT locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/MeetupIT/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for ja-JP locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetupjp/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/MeetupJP/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for ko-KR locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/Meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for nl-NL locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/Meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for pl-PL locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/Meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for pt-BR locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/MeetupBR/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for ru-RU locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/Meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for th-TH locale 1`] = `
+<InlineBlockList
+  items={
+    Array [
+      <a
+        href="https://www.facebook.com/meetup/"
+    >
+        <Icon
+            shape="external-facebookboxed"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://twitter.com/Meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-twitter"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.youtube.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-youtube"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://www.instagram.com/meetup/"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-instagram"
+            size="s"
+        />
+    </a>,
+      <a
+        href="https://medium.com/meetup"
+    >
+        <Icon
+            className="margin--left"
+            shape="external-medium"
+            size="s"
+        />
+    </a>,
+    ]
+  }
+/>
+`;
+
+exports[`SocialIconsList renders for tr-TR locale 1`] = `
 <InlineBlockList
   items={
     Array [
