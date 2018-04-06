@@ -119,6 +119,15 @@ lays out as a dialog on background content on larger screens.
 	position: fixed;
 }
 
+.modal-closeButton:focus {
+	background-color: $C_tappable;
+}
+
+.inverted .modal-closeButton:focus {
+	background-color: $C_tappableInverted;
+	box-shadow: 0 0 2px 1px $C_borderDarkInverted;
+}
+
 /*doc
 ---
 title: Overlay Shim
