@@ -224,6 +224,9 @@ column to show how different states affect the rendered component.
 
 ## Release notes
 
+### `v4.8.X`
+- Updated `redux-form` wrappers to prevent `error` prop from being passed to wrapped component unless the form field has been touched or form submit has failed.
+
 ### `v4.7.X`
 - Updated `TogglePill` styles per the design team's specifications. These updates will partially break in `mup-web` if the original style overrides are not removed
 
