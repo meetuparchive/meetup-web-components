@@ -5,42 +5,42 @@ exports[`Footer exists 1`] = `
   className="column-item column-item--shrink"
   id="mupFooter"
 >
-  <Stripe
+  <Component
     className="footerStripe-main"
     inverted={true}
   >
-    <Bounds
+    <Component
       className="bounds--footer"
       narrow={true}
     >
-      <Section
+      <Component
         hasSeparator={true}
       >
-        <Chunk>
+        <Component>
           <a
             className="link link--white"
             href="/create/"
           >
             Create a Meetup
           </a>
-        </Chunk>
-      </Section>
-      <Section
+        </Component>
+      </Component>
+      <Component
         className="border--none"
         hasSeparator={true}
       >
-        <Flex
+        <Component
           direction="column"
           switchDirection="large"
         >
-          <FlexItem
+          <Component
             className="margin--bottom"
           >
-            <Flex
+            <Component
               direction="column"
               switchDirection="medium"
             >
-              <FlexItem
+              <Component
                 key="linkSet-0"
               >
                 <FooterCategory
@@ -65,8 +65,8 @@ exports[`Footer exists 1`] = `
                     ]
                   }
                 />
-              </FlexItem>
-              <FlexItem
+              </Component>
+              <Component
                 key="linkSet-1"
               >
                 <FooterCategory
@@ -96,8 +96,8 @@ exports[`Footer exists 1`] = `
                     ]
                   }
                 />
-              </FlexItem>
-              <FlexItem
+              </Component>
+              <Component
                 key="linkSet-2"
               >
                 <FooterCategory
@@ -132,72 +132,72 @@ exports[`Footer exists 1`] = `
                     ]
                   }
                 />
-              </FlexItem>
-            </Flex>
-          </FlexItem>
-          <FlexItem
+              </Component>
+            </Component>
+          </Component>
+          <Component
             shrink={true}
           >
-            <Flex
+            <Component
               direction="column"
               noGutters={true}
             >
-              <FlexItem
+              <Component
                 shrink={true}
               >
-                <Chunk
+                <Component
                   className="align--center atMedium_align--left"
                 >
                   <SocialIconsList
                     localeCode="en-US"
                   />
-                </Chunk>
-              </FlexItem>
-              <FlexItem>
-                <Flex
+                </Component>
+              </Component>
+              <Component>
+                <Component
                   direction="column"
                   justify={null}
                 >
-                  <FlexItem
+                  <Component
                     className="margin--top"
                     shrink={true}
                   >
-                    <Chunk>
+                    <Component>
                       <LanguageSelectInput
                         currentLocaleCode="en-US"
                         onChange={[Function]}
                       />
-                    </Chunk>
-                  </FlexItem>
-                  <FlexItem
+                    </Component>
+                  </Component>
+                  <Component
                     shrink={true}
                   >
-                    <Chunk
+                    <Component
                       className="align--center atMedium_align--left margin--top"
                     >
                       <AppBadges
                         getAppStorePhoto={[Function]}
                         language="en"
                       />
-                    </Chunk>
-                  </FlexItem>
-                </Flex>
-              </FlexItem>
-            </Flex>
-          </FlexItem>
-        </Flex>
-      </Section>
-    </Bounds>
-  </Stripe>
-  <Stripe
+                    </Component>
+                  </Component>
+                </Component>
+              </Component>
+            </Component>
+          </Component>
+        </Component>
+      </Component>
+    </Component>
+  </Component>
+  <Component
     className="footerStripe-legal border--none"
     inverted={true}
   >
-    <Bounds>
+    <Component>
       <div
         className="padding--all"
       >
-        <InlineBlockList
+        <Component
           className="text--small align--center atMedium_align--left"
           items={
             Array [
@@ -224,19 +224,19 @@ exports[`Footer exists 1`] = `
           separator="·"
         />
       </div>
-    </Bounds>
-  </Stripe>
+    </Component>
+  </Component>
 </footer>
 `;
 
 exports[`Footer should render FooterCategory with linkSet 1`] = `
-<Chunk>
+<Component>
   <h4
     className="text--bold margin--bottom"
   >
     Your Account
   </h4>
-  <GridList
+  <Component
     className="text--secondary text--small"
     columns={
       Object {
@@ -265,7 +265,7 @@ exports[`Footer should render FooterCategory with linkSet 1`] = `
       ]
     }
   />
-</Chunk>
+</Component>
 `;
 
 exports[`LanguageSelectInput exists 1`] = `
@@ -341,7 +341,7 @@ exports[`LanguageSelectInput exists 1`] = `
 `;
 
 exports[`SocialIconsList renders for de-DE locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -394,7 +394,7 @@ exports[`SocialIconsList renders for de-DE locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for en-AU locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -447,7 +447,7 @@ exports[`SocialIconsList renders for en-AU locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for en-US locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -500,7 +500,7 @@ exports[`SocialIconsList renders for en-US locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for es locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -553,7 +553,7 @@ exports[`SocialIconsList renders for es locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for es-ES locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -606,7 +606,7 @@ exports[`SocialIconsList renders for es-ES locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for fr-FR locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -659,7 +659,7 @@ exports[`SocialIconsList renders for fr-FR locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for it-IT locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -712,7 +712,7 @@ exports[`SocialIconsList renders for it-IT locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for ja-JP locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -765,7 +765,7 @@ exports[`SocialIconsList renders for ja-JP locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for ko-KR locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -818,7 +818,7 @@ exports[`SocialIconsList renders for ko-KR locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for nl-NL locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -871,7 +871,7 @@ exports[`SocialIconsList renders for nl-NL locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for pl-PL locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -924,7 +924,7 @@ exports[`SocialIconsList renders for pl-PL locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for pt-BR locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -977,7 +977,7 @@ exports[`SocialIconsList renders for pt-BR locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for ru-RU locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -1030,7 +1030,7 @@ exports[`SocialIconsList renders for ru-RU locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for th-TH locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a
@@ -1083,7 +1083,7 @@ exports[`SocialIconsList renders for th-TH locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for tr-TR locale 1`] = `
-<InlineBlockList
+<Component
   items={
     Array [
       <a

@@ -11,16 +11,15 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
     onClick={[Function]}
     role="tab"
   >
-    <Flex
+    <Component
       className="padding--bottom padding--top accordionPanel"
-      direction="row"
       rowReverse={false}
       tabIndex={-1}
     >
-      <FlexItem>
+      <Component>
         First Section
-      </FlexItem>
-      <FlexItem
+      </Component>
+      <Component
         className="accordionPanel-icon"
         onClick={[Function]}
         shrink={true}
@@ -29,10 +28,10 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
           shape="chevron-down"
           size="xs"
         />
-      </FlexItem>
-    </Flex>
+      </Component>
+    </Component>
   </div>
-  <Chunk
+  <Component
     aria-hidden={true}
     aria-labelledby="label-firstsection"
     className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -55,7 +54,7 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
         </p>
       </div>
     </div>
-  </Chunk>
+  </Component>
 </div>
 `;
 
@@ -70,16 +69,15 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
     onClick={[Function]}
     role="tab"
   >
-    <Flex
+    <Component
       className="padding--bottom padding--top accordionPanel"
-      direction="row"
       rowReverse="all"
       tabIndex={-1}
     >
-      <FlexItem>
+      <Component>
         First Section
-      </FlexItem>
-      <FlexItem
+      </Component>
+      <Component
         className="accordionPanel-icon"
         onClick={[Function]}
         shrink={true}
@@ -88,10 +86,10 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
           shape="plus"
           size="xs"
         />
-      </FlexItem>
-    </Flex>
+      </Component>
+    </Component>
   </div>
-  <Chunk
+  <Component
     aria-hidden={true}
     aria-labelledby="label-firstsection"
     className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -114,7 +112,7 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
         </p>
       </div>
     </div>
-  </Chunk>
+  </Component>
 </div>
 `;
 
@@ -147,60 +145,81 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
       onFocus={undefined}
       role="tab"
     >
-      <Flex
+      <Component
         className="padding--bottom padding--top accordionPanel"
-        direction="row"
         rowReverse="all"
         tabIndex={-1}
       >
-        <div
-          className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
+        <Flex
+          className="padding--bottom padding--top accordionPanel"
+          direction="row"
+          isLoading={undefined}
+          loadingComponent={undefined}
+          rowReverse="all"
           tabIndex={-1}
         >
-          <FlexItem>
-            <div
-              className="flex-item"
-            >
-              First Section
-            </div>
-          </FlexItem>
-          <FlexItem
-            className="accordionPanel-icon"
-            onClick={[Function]}
-            shrink={true}
+          <div
+            className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
+            tabIndex={-1}
           >
-            <div
-              className="flex-item flex-item--shrink accordionPanel-icon"
-              onClick={[Function]}
-            >
-              <Icon
-                shape="chevron-down"
-                size="xs"
+            <Component>
+              <FlexItem
+                isLoading={undefined}
+                loadingComponent={undefined}
               >
-                <span
-                  className="svg svg--chevron-down"
+                <div
+                  className="flex-item"
                 >
-                  <svg
-                    className="svg-icon valign--middle"
-                    height="16"
-                    preserveAspectRatio="xMinYMin meet"
-                    role="img"
-                    style={Object {}}
-                    viewBox="0 0 16 16"
-                    width="16"
+                  First Section
+                </div>
+              </FlexItem>
+            </Component>
+            <Component
+              className="accordionPanel-icon"
+              onClick={[Function]}
+              shrink={true}
+            >
+              <FlexItem
+                className="accordionPanel-icon"
+                isLoading={undefined}
+                loadingComponent={undefined}
+                onClick={[Function]}
+                shrink={true}
+              >
+                <div
+                  className="flex-item flex-item--shrink accordionPanel-icon"
+                  onClick={[Function]}
+                >
+                  <Icon
+                    shape="chevron-down"
+                    size="xs"
                   >
-                    <use
-                      xlinkHref="#icon-chevron-down--small"
-                    />
-                  </svg>
-                </span>
-              </Icon>
-            </div>
-          </FlexItem>
-        </div>
-      </Flex>
+                    <span
+                      className="svg svg--chevron-down"
+                    >
+                      <svg
+                        className="svg-icon valign--middle"
+                        height="16"
+                        preserveAspectRatio="xMinYMin meet"
+                        role="img"
+                        style={Object {}}
+                        viewBox="0 0 16 16"
+                        width="16"
+                      >
+                        <use
+                          xlinkHref="#icon-chevron-down--small"
+                        />
+                      </svg>
+                    </span>
+                  </Icon>
+                </div>
+              </FlexItem>
+            </Component>
+          </div>
+        </Flex>
+      </Component>
     </div>
-    <Chunk
+    <Component
       aria-hidden={true}
       aria-labelledby="label-firstsection"
       className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -212,10 +231,12 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
         }
       }
     >
-      <div
+      <Chunk
         aria-hidden={true}
         aria-labelledby="label-firstsection"
-        className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+        className="accordionPanel-animator accordionPanel-animator--collapse"
+        isLoading={undefined}
+        loadingComponent={undefined}
         onTransitionEnd={[Function]}
         role="tabpanel"
         style={
@@ -225,18 +246,31 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
         }
       >
         <div
-          className="accordionPanel-content"
+          aria-hidden={true}
+          aria-labelledby="label-firstsection"
+          className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+          onTransitionEnd={[Function]}
+          role="tabpanel"
+          style={
+            Object {
+              "height": "0px",
+            }
+          }
         >
           <div
-            className="runningText"
+            className="accordionPanel-content"
           >
-            <p>
-              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-            </p>
+            <div
+              className="runningText"
+            >
+              <p>
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </Chunk>
+      </Chunk>
+    </Component>
   </div>
 </AccordionPanel>
 `;
@@ -271,126 +305,147 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
       onFocus={undefined}
       role="tab"
     >
-      <Flex
+      <Component
         className="padding--bottom padding--top accordionPanel"
-        direction="row"
         rowReverse="all"
         tabIndex={-1}
       >
-        <div
-          className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
+        <Flex
+          className="padding--bottom padding--top accordionPanel"
+          direction="row"
+          isLoading={undefined}
+          loadingComponent={undefined}
+          rowReverse="all"
           tabIndex={-1}
         >
-          <FlexItem>
-            <div
-              className="flex-item"
-            >
-              First Section
-            </div>
-          </FlexItem>
-          <FlexItem
-            className="accordionPanel-icon"
-            onClick={[Function]}
-            shrink={true}
+          <div
+            className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
+            tabIndex={-1}
           >
-            <div
-              className="flex-item flex-item--shrink accordionPanel-icon"
-              onClick={[Function]}
-            >
-              <WithToggle
-                disabled={false}
-                id="firstsection-switch"
-                isActive={false}
-                name="firstsection"
-                onClick={[Function]}
-                tabIndex="-1"
+            <Component>
+              <FlexItem
+                isLoading={undefined}
+                loadingComponent={undefined}
               >
-                <span
-                  aria-pressed={false}
-                  onKeyUp={[Function]}
-                  role="button"
-                  tabIndex="-1"
+                <div
+                  className="flex-item"
                 >
-                  <ToggleSwitch
+                  First Section
+                </div>
+              </FlexItem>
+            </Component>
+            <Component
+              className="accordionPanel-icon"
+              onClick={[Function]}
+              shrink={true}
+            >
+              <FlexItem
+                className="accordionPanel-icon"
+                isLoading={undefined}
+                loadingComponent={undefined}
+                onClick={[Function]}
+                shrink={true}
+              >
+                <div
+                  className="flex-item flex-item--shrink accordionPanel-icon"
+                  onClick={[Function]}
+                >
+                  <WithToggle
                     disabled={false}
                     id="firstsection-switch"
                     isActive={false}
                     name="firstsection"
                     onClick={[Function]}
                     tabIndex="-1"
-                    toggleActive={[Function]}
                   >
-                    <div
-                      id="firstsection-switch"
-                      onClick={[Function]}
+                    <span
+                      aria-pressed={false}
+                      onKeyUp={[Function]}
+                      role="button"
                       tabIndex="-1"
                     >
-                      <Button
-                        aria-checked={false}
-                        aria-labelledby="firstsection-label"
-                        className="toggleSwitch"
-                        component="button"
+                      <ToggleSwitch
                         disabled={false}
+                        id="firstsection-switch"
+                        isActive={false}
+                        name="firstsection"
                         onClick={[Function]}
-                        reset={true}
-                        role="switch"
-                        tabIndex={-1}
-                        type="button"
+                        tabIndex="-1"
+                        toggleActive={[Function]}
                       >
-                        <button
-                          aria-checked={false}
-                          aria-labelledby="firstsection-label"
-                          className="button button--reset toggleSwitch"
+                        <div
+                          id="firstsection-switch"
                           onClick={[Function]}
-                          role="switch"
-                          tabIndex={-1}
-                          type="button"
+                          tabIndex="-1"
                         >
-                          <span
-                            className="toggleSwitch-knob flex flex--center flex--alignCenter"
+                          <Button
+                            aria-checked={false}
+                            aria-labelledby="firstsection-label"
+                            className="toggleSwitch"
+                            component="button"
+                            disabled={false}
+                            onClick={[Function]}
+                            reset={true}
+                            role="switch"
+                            tabIndex={-1}
+                            type="button"
                           >
-                            <Icon
-                              color="rgba(46, 62, 72, 0.6)"
-                              label="Toggle switch label"
-                              shape="cross"
-                              size="xxs"
+                            <button
+                              aria-checked={false}
+                              aria-labelledby="firstsection-label"
+                              className="button button--reset toggleSwitch"
+                              onClick={[Function]}
+                              role="switch"
+                              tabIndex={-1}
+                              type="button"
                             >
                               <span
-                                className="svg svg--cross"
+                                className="toggleSwitch-knob flex flex--center flex--alignCenter"
                               >
-                                <svg
-                                  className="svg-icon valign--middle"
-                                  height="12"
+                                <Icon
+                                  color="rgba(46, 62, 72, 0.6)"
                                   label="Toggle switch label"
-                                  preserveAspectRatio="xMinYMin meet"
-                                  role="img"
-                                  style={
-                                    Object {
-                                      "fill": "rgba(46, 62, 72, 0.6)",
-                                    }
-                                  }
-                                  viewBox="0 0 12 12"
-                                  width="12"
+                                  shape="cross"
+                                  size="xxs"
                                 >
-                                  <use
-                                    xlinkHref="#icon-cross--small"
-                                  />
-                                </svg>
+                                  <span
+                                    className="svg svg--cross"
+                                  >
+                                    <svg
+                                      className="svg-icon valign--middle"
+                                      height="12"
+                                      label="Toggle switch label"
+                                      preserveAspectRatio="xMinYMin meet"
+                                      role="img"
+                                      style={
+                                        Object {
+                                          "fill": "rgba(46, 62, 72, 0.6)",
+                                        }
+                                      }
+                                      viewBox="0 0 12 12"
+                                      width="12"
+                                    >
+                                      <use
+                                        xlinkHref="#icon-cross--small"
+                                      />
+                                    </svg>
+                                  </span>
+                                </Icon>
                               </span>
-                            </Icon>
-                          </span>
-                        </button>
-                      </Button>
-                    </div>
-                  </ToggleSwitch>
-                </span>
-              </WithToggle>
-            </div>
-          </FlexItem>
-        </div>
-      </Flex>
+                            </button>
+                          </Button>
+                        </div>
+                      </ToggleSwitch>
+                    </span>
+                  </WithToggle>
+                </div>
+              </FlexItem>
+            </Component>
+          </div>
+        </Flex>
+      </Component>
     </div>
-    <Chunk
+    <Component
       aria-hidden={true}
       aria-labelledby="label-firstsection"
       className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -402,10 +457,12 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
         }
       }
     >
-      <div
+      <Chunk
         aria-hidden={true}
         aria-labelledby="label-firstsection"
-        className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+        className="accordionPanel-animator accordionPanel-animator--collapse"
+        isLoading={undefined}
+        loadingComponent={undefined}
         onTransitionEnd={[Function]}
         role="tabpanel"
         style={
@@ -415,18 +472,31 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
         }
       >
         <div
-          className="accordionPanel-content"
+          aria-hidden={true}
+          aria-labelledby="label-firstsection"
+          className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+          onTransitionEnd={[Function]}
+          role="tabpanel"
+          style={
+            Object {
+              "height": "0px",
+            }
+          }
         >
           <div
-            className="runningText"
+            className="accordionPanel-content"
           >
-            <p>
-              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-            </p>
+            <div
+              className="runningText"
+            >
+              <p>
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </Chunk>
+      </Chunk>
+    </Component>
   </div>
 </AccordionPanel>
 `;

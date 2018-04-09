@@ -2,23 +2,28 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-export const INLINEBLOCKLIST_CLASS = 'inlineblockList';
+import WithLoading from '../utils/components/withLoading';
+import ConditionalWrap from '../utils/components/ConditionalWrap';
+
 export const INLINEBLOCKLIST_SEPERATED_CLASS = 'inlineblockList--separated';
 
 /**
  * @module InlineBlockList
  */
-class InlineBlockList extends React.Component {
+export class InlineBlockList extends React.Component {
 	render() {
 		const {
 			className,
 			items,
 			separator,
+			loadingProps = {}, // eslint-disable-line no-unused-vars
+			isLoading,
+			loadingComponent,
 			...other
 		} = this.props;
 
 		const classNames = cx(
-			INLINEBLOCKLIST_CLASS,
+			'inlineblockList',
 			{
 				[INLINEBLOCKLIST_SEPERATED_CLASS]: separator
 			},
@@ -26,14 +31,20 @@ class InlineBlockList extends React.Component {
 		);
 
 		return (
-			<ul
-				className={classNames}
-				{...other}
+			<ConditionalWrap
+				condition={isLoading}
+				wrap={children => <div className={isLoading && 'component--isLoading'}>{children}</div>}
 			>
-				{items.map((item, key) =>
-					<li key={key} data-separator={separator}>{item}</li>
-				)}
-			</ul>
+				<ul
+					className={classNames}
+					{...other}
+				>
+					{items.map((item, key) =>
+						<li key={key} data-separator={separator}>{item}</li>
+					)}
+				</ul>
+				{loadingComponent}
+			</ConditionalWrap>
 		);
 	}
 }
@@ -45,7 +56,13 @@ InlineBlockList.propTypes = {
 			PropTypes.string
 		])
 	).isRequired,
-	separator: PropTypes.string
+	separator: PropTypes.string,
+	isLoading: PropTypes.bool,
+	loadingProps: PropTypes.shape({
+		color: PropTypes.string,
+		scrimColor: PropTypes.string,
+		size: PropTypes.string
+	})
 };
 
-export default InlineBlockList;
+export default WithLoading(InlineBlockList);

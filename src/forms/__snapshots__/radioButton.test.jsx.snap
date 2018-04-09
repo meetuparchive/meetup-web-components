@@ -5,13 +5,12 @@ exports[`RadioButton checked should render an disabled radio button 1`] = `
   className="toggleLabel label--minor display--block"
   htmlFor="RadioButton-name-value"
 >
-  <Flex
+  <Component
     align="center"
     className="some-class"
-    direction="row"
     noGutters={true}
   >
-    <FlexItem
+    <Component
       shrink={true}
     >
       <input
@@ -32,8 +31,8 @@ exports[`RadioButton checked should render an disabled radio button 1`] = `
           className="radio-indicator"
         />
       </span>
-    </FlexItem>
-    <FlexItem
+    </Component>
+    <Component
       className="toggleLabel-container"
       shrink={true}
     >
@@ -42,8 +41,8 @@ exports[`RadioButton checked should render an disabled radio button 1`] = `
       >
         This is a label
       </span>
-    </FlexItem>
-  </Flex>
+    </Component>
+  </Component>
 </label>
 `;
 
@@ -52,13 +51,12 @@ exports[`RadioButton checked should render an enabled radio button 1`] = `
   className="toggleLabel label--minor display--block"
   htmlFor="RadioButton-name-value"
 >
-  <Flex
+  <Component
     align="center"
     className="some-class"
-    direction="row"
     noGutters={true}
   >
-    <FlexItem
+    <Component
       shrink={true}
     >
       <input
@@ -79,8 +77,8 @@ exports[`RadioButton checked should render an enabled radio button 1`] = `
           className="radio-indicator"
         />
       </span>
-    </FlexItem>
-    <FlexItem
+    </Component>
+    <Component
       className="toggleLabel-container"
       shrink={true}
     >
@@ -89,8 +87,8 @@ exports[`RadioButton checked should render an enabled radio button 1`] = `
       >
         This is a label
       </span>
-    </FlexItem>
-  </Flex>
+    </Component>
+  </Component>
 </label>
 `;
 
@@ -99,13 +97,12 @@ exports[`RadioButton unchecked should render an disabled radio button 1`] = `
   className="toggleLabel label--minor display--block"
   htmlFor="RadioButton-name-value"
 >
-  <Flex
+  <Component
     align="center"
     className="some-class"
-    direction="row"
     noGutters={true}
   >
-    <FlexItem
+    <Component
       shrink={true}
     >
       <input
@@ -122,8 +119,8 @@ exports[`RadioButton unchecked should render an disabled radio button 1`] = `
       <span
         className="display--flex flex--alignCenter flex--center align--center fauxToggle fauxToggle--radio"
       />
-    </FlexItem>
-    <FlexItem
+    </Component>
+    <Component
       className="toggleLabel-container"
       shrink={true}
     >
@@ -132,8 +129,8 @@ exports[`RadioButton unchecked should render an disabled radio button 1`] = `
       >
         This is a label
       </span>
-    </FlexItem>
-  </Flex>
+    </Component>
+  </Component>
 </label>
 `;
 
@@ -142,13 +139,12 @@ exports[`RadioButton unchecked should render an enabled radio button 1`] = `
   className="toggleLabel label--minor display--block"
   htmlFor="RadioButton-name-value"
 >
-  <Flex
+  <Component
     align="center"
     className="some-class"
-    direction="row"
     noGutters={true}
   >
-    <FlexItem
+    <Component
       shrink={true}
     >
       <input
@@ -165,8 +161,8 @@ exports[`RadioButton unchecked should render an enabled radio button 1`] = `
       <span
         className="display--flex flex--alignCenter flex--center align--center fauxToggle fauxToggle--radio disabled"
       />
-    </FlexItem>
-    <FlexItem
+    </Component>
+    <Component
       className="toggleLabel-container"
       shrink={true}
     >
@@ -175,7 +171,7 @@ exports[`RadioButton unchecked should render an enabled radio button 1`] = `
       >
         This is a label
       </span>
-    </FlexItem>
-  </Flex>
+    </Component>
+  </Component>
 </label>
 `;

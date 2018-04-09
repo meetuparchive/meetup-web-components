@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineBlockList exists 1`] = `
+<ConditionalWrap
+  wrap={[Function]}
+>
+  <ul
+    className="inlineblockList"
+  >
+    <li
+      key="0"
+    >
+      English
+    </li>
+    <li
+      key="1"
+    >
+      English (Australian)
+    </li>
+    <li
+      key="2"
+    >
+      Deutsch
+    </li>
+    <li
+      key="3"
+    >
+      Español
+    </li>
+    <li
+      key="4"
+    >
+      Español (España)
+    </li>
+    <li
+      key="5"
+    >
+      Français
+    </li>
+    <li
+      key="6"
+    >
+      Italiano
+    </li>
+    <li
+      key="7"
+    >
+      Nederlands
+    </li>
+    <li
+      key="8"
+    >
+      Português
+    </li>
+    <li
+      key="9"
+    >
+      日本語
+    </li>
+    <li
+      key="10"
+    >
+      한국어
+    </li>
+  </ul>
+</ConditionalWrap>
+`;

@@ -68,6 +68,8 @@ Loading.defaultProps = {
 
 Loading.propTypes = {
 	color: PropTypes.string,
+	fullCover: PropTypes.bool,
+	partialCover: PropTypes.bool,
 	scrimColor: PropTypes.string,
 	size: PropTypes.string
 };

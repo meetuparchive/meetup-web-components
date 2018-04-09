@@ -1,7 +1,7 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import InlineBlockList, {
-	INLINEBLOCKLIST_CLASS,
+import { shallow } from 'enzyme';
+import {
+	InlineBlockList,
 	INLINEBLOCKLIST_SEPERATED_CLASS,
 } from './InlineBlockList';
 
@@ -24,10 +24,10 @@ let inlineblockList, inlineblockListSeparated;
 
 describe('InlineBlockList', function() {
 	beforeEach(() => {
-		inlineblockList = TestUtils.renderIntoDocument(
+		inlineblockList = shallow(
 			<InlineBlockList items={ITEMS} />
 		);
-		inlineblockListSeparated = TestUtils.renderIntoDocument(
+		inlineblockListSeparated = shallow(
 			<InlineBlockList items={ITEMS} separator={SEPARATOR} />
 		);
 	});
@@ -37,27 +37,15 @@ describe('InlineBlockList', function() {
 	});
 
 	it('exists', function() {
-		expect(() =>
-			TestUtils.findRenderedDOMComponentWithClass(
-				inlineblockList,
-				INLINEBLOCKLIST_CLASS
-			)
-		).not.toThrow();
+		expect(inlineblockList).toMatchSnapshot();
 	});
 
 	it(`should have a class of '${INLINEBLOCKLIST_SEPERATED_CLASS}' when a separator is defined`, () => {
-		const separatedList = TestUtils.scryRenderedDOMComponentsWithClass(
-			inlineblockListSeparated,
-			INLINEBLOCKLIST_SEPERATED_CLASS
-		);
-		expect(separatedList.length).toBe(1);
+		expect(inlineblockListSeparated.find('ul').hasClass(INLINEBLOCKLIST_SEPERATED_CLASS)).toBe(true);
 	});
 
 	it('should set the data-separator attribute on item elements when a separator is defined', () => {
-		const itemEl = TestUtils.scryRenderedDOMComponentsWithTag(
-			inlineblockListSeparated,
-			'li'
-		);
-		expect(itemEl[0].getAttribute('data-separator')).toEqual(SEPARATOR);
+		const itemEl = inlineblockListSeparated.find('li').first();
+		expect(itemEl.prop('data-separator')).toEqual(SEPARATOR);
 	});
 });

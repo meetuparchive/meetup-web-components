@@ -168,4 +168,53 @@ storiesOf('GridList', module)
 					<TestMember member={MOCK_MEMBER} secondLine='This is a second line' />
 				]}
 			/>
+		))
+	.addWithInfo(
+		'isLoading',
+		() => (
+			<GridList
+				isLoading
+				columns={{
+					default: 3
+				}}
+				style={{padding: '20px'}}
+				items={[
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>
+				]}
+			/>
+		))
+	.addWithInfo(
+		'isLoading with loadingProps',
+		() => (
+			<GridList
+				isLoading
+				loadingProps={{
+					color: 'red',
+					scrimColor: 'rgba(250, 250, 255, 0.8)',
+					size: '96px'
+				}}
+				columns={{
+					default: 3
+				}}
+				style={{padding: '20px'}}
+				items={[
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>,
+					<div style={boxStyles}>GridItem</div>
+				]}
+			/>
 		));
