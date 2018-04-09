@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
-// import Bounds from './Bounds';
+
+import WithLoading from '../utils/components/withLoading';
 
 export const STRIPE_CLASS = 'stripe';
 export const STRIPE_COLLECTION_CLASS = 'stripe--collection';
@@ -13,7 +14,7 @@ export const STRIPE_NOSCRIM_CLASS = 'stripe--noScrim';
  * Design System Component: Provides `stripe` styled container for components
  * @module Stripe
  */
-class Stripe extends React.Component {
+export class Stripe extends React.Component {
 	render() {
 		const {
 			children,
@@ -23,6 +24,9 @@ class Stripe extends React.Component {
 			collection,
 			inverted,
 			hideScrim,
+			loadingProps = {}, // eslint-disable-line no-unused-vars
+			isLoading,
+			loadingComponent,
 			...other
 		} = this.props;
 
@@ -32,8 +36,8 @@ class Stripe extends React.Component {
 				[STRIPE_COLLECTION_CLASS]: collection,
 				[`${STRIPE_INVERTED_CLASS} inverted`]: inverted,
 				[`${STRIPE_HERO_CLASS}`]: backgroundImage,
-				[STRIPE_NOSCRIM_CLASS]: hideScrim
-
+				[STRIPE_NOSCRIM_CLASS]: hideScrim,
+				'component--isLoading': isLoading
 			},
 			className
 		);
@@ -56,6 +60,7 @@ class Stripe extends React.Component {
 					) :
 					children
 				}
+				{loadingComponent}
 			</div>
 		);
 	}
@@ -66,7 +71,13 @@ Stripe.propTypes = {
 	collection: PropTypes.bool,
 	inverted: PropTypes.bool,
 	hero: PropTypes.bool,
-	hideScrim: PropTypes.bool
+	hideScrim: PropTypes.bool,
+	isLoading: PropTypes.bool,
+	loadingProps: PropTypes.shape({
+		color: PropTypes.string,
+		scrimColor: PropTypes.string,
+		size: PropTypes.string
+	})
 };
 
-export default Stripe;
+export default WithLoading(Stripe);

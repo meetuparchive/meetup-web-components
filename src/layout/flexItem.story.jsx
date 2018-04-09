@@ -84,4 +84,32 @@ storiesOf('FlexItem', module)
 					<FlexItem growFactor={1} style={flexItemStyles}><div style={boxStyles}>1</div></FlexItem>
 				</Flex>
 			</div>
+		))
+	.addWithInfo(
+		'isLoading',
+		() => (
+			<Flex style={flexParentStyles}>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+				<FlexItem isLoading style={flexItemStyles}><div style={boxStyles}>isLoading</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+			</Flex>
+		))
+	.addWithInfo(
+		'isLoading with loadingProps',
+		() => (
+			<Flex style={flexParentStyles}>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+				<FlexItem
+					isLoading
+					loadingProps={{
+						color: 'red',
+						scrimColor: 'rgba(250, 250, 255, 0.8)',
+						size: '64px'
+					}}
+					style={flexItemStyles}
+				>
+					<div style={boxStyles}>isLoading</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+			</Flex>
 		));

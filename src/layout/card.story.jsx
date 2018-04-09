@@ -68,4 +68,28 @@ storiesOf('Card', module)
 				<p className="margin--bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 			</Card>
 		</div>
+	))
+	.add('isLoading', () => (
+		<div style={wrapperStyle}>
+			<Card isLoading>
+				<h2 className="text--sectionTitle margin--bottom">This card contains content</h2>
+				<p className="margin--bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+			</Card>
+		</div>
+	))
+	.add('isLoading with loadingProps', () => (
+		<div style={wrapperStyle}>
+			<Card
+				isLoading
+				loadingProps={{
+					color: 'red',
+					scrimColor: 'rgba(250, 250, 255, 0.8)',
+					size: '96px'
+				}}
+			>
+				<h2 className="text--sectionTitle margin--bottom">This card contains content</h2>
+				<p className="margin--bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+			</Card>
+		</div>
 	));
+

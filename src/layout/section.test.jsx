@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
+import { shallow } from 'enzyme';
 
-import Section, {
+import {
+	Section,
 	SECTION_CLASS,
 	SECTION_HASSEPARATOR_CLASS,
 	VALID_BREAKPOINTS,
@@ -10,42 +10,36 @@ import Section, {
 } from './Section';
 
 describe('Section', function() {
-	let section, sectionNode;
+	let section;
 
 	beforeEach(() => {
-		section = TestUtils.renderIntoDocument(<Section />);
-		sectionNode = ReactDOM.findDOMNode(section);
+		section = shallow(<Section />);
 	});
 	afterEach(() => {
 		section = null;
-		sectionNode = null;
 	});
 	it('exists', function() {
-		expect(sectionNode).not.toBeNull();
+		expect(section).toMatchSnapshot();
 	});
 	it(`check that default component has '${SECTION_CLASS}' class`, function() {
-		expect(sectionNode.classList).toContain(SECTION_CLASS);
+		expect(section.hasClass(SECTION_CLASS)).toBe(true);
 	});
 
 	describe('Section hasSeparator', () => {
 		it(`check that component has '${SECTION_HASSEPARATOR_CLASS}' class`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = TestUtils.renderIntoDocument(<Section hasSeparator />);
-				sectionNode = ReactDOM.findDOMNode(section);
-				expect(sectionNode.classList).toContain(SECTION_CLASS);
-				expect(sectionNode.classList).toContain(SECTION_HASSEPARATOR_CLASS);
+				section = shallow(<Section hasSeparator />);
+				expect(section.hasClass(SECTION_CLASS)).toBe(true);
+				expect(section.hasClass(SECTION_HASSEPARATOR_CLASS)).toBe(true);
 			});
 		});
 		it(`check that component has '${SECTION_HASSEPARATOR_CLASS}' class with breakpoint`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = TestUtils.renderIntoDocument(
+				section = shallow(
 					<Section hasSeparatorUntil={breakpoint} />
 				);
-				sectionNode = ReactDOM.findDOMNode(section);
-				expect(sectionNode.classList).toContain(SECTION_CLASS);
-				expect(sectionNode.classList).toContain(
-					`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_HASSEPARATOR_CLASS}`
-				);
+				expect(section.hasClass(SECTION_CLASS)).toBe(true);
+				expect(section.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_HASSEPARATOR_CLASS}`)).toBe(true);
 			});
 		});
 	});
@@ -53,14 +47,11 @@ describe('Section', function() {
 	describe('Section flushUntil', () => {
 		it(`check that component has '${SECTION_FLUSH_CLASS}' class`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = TestUtils.renderIntoDocument(
+				section = shallow(
 					<Section flushUntil={breakpoint} />
 				);
-				sectionNode = ReactDOM.findDOMNode(section);
-				expect(sectionNode.classList).toContain(SECTION_CLASS);
-				expect(sectionNode.classList).toContain(
-					`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_FLUSH_CLASS}`
-				);
+				expect(section.hasClass(SECTION_CLASS)).toBe(true);
+				expect(section.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_FLUSH_CLASS}`)).toBe(true);
 			});
 		});
 	});

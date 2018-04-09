@@ -33,6 +33,10 @@
 	stroke-linecap: round;
 }
 
+.component--isLoading {
+	position: relative;
+}
+
 @keyframes rotate {
 	100% {
 		transform: rotate(360deg);

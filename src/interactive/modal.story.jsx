@@ -266,4 +266,37 @@ storiesOf('Modal', module)
 			</Modal>
 			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{ __html: iconSprite }} />
 		</div>
+	))
+	.addWithInfo(
+	'isLoading',
+	() => (
+		<div style={wrapperStyle}>
+			<Modal
+				isLoading
+				onDismiss={onDismiss}
+				initialFocus="#firstFocus"
+			>
+				{content}
+			</Modal>
+			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{ __html: iconSprite }} />
+		</div>
+	))
+	.addWithInfo(
+	'isLoading with loadingProps',
+	() => (
+		<div style={wrapperStyle}>
+			<Modal
+				isLoading
+				loadingProps={{
+					color: 'red',
+					scrimColor: 'rgba(250, 250, 255, 0.8)',
+					size: '96px'
+				}}
+				onDismiss={onDismiss}
+				initialFocus="#firstFocus"
+			>
+				{content}
+			</Modal>
+			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{ __html: iconSprite }} />
+		</div>
 	));

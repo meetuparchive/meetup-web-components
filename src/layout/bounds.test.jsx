@@ -1,24 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
+import { shallow } from 'enzyme';
 
-import Bounds from './Bounds';
+import { Bounds } from './Bounds';
 
 const WIDE_CLASS = 'bounds--wide';
 
 describe('Bounds', function() {
-	const bounds = TestUtils.renderIntoDocument(<Bounds />);
-	const boundsNode = ReactDOM.findDOMNode(bounds);
-	const boundsNarrow = TestUtils.renderIntoDocument(<Bounds narrow />);
-	const boundsNarrowNode = ReactDOM.findDOMNode(boundsNarrow);
+	const bounds = shallow(<Bounds />);
 
 	it('exists', function() {
-		expect(boundsNode).not.toBeNull();
+		expect(bounds).toMatchSnapshot();
 	});
 	it(`check that default component has '${WIDE_CLASS}' class`, function() {
-		expect(boundsNode.classList).toContain(WIDE_CLASS);
+		expect(bounds.find(`.${WIDE_CLASS}`).length).not.toBe(0);
 	});
 	it("check that narrow component does not have the 'bounds--wide' class", function() {
-		expect(boundsNarrowNode.classList).not.toContain(WIDE_CLASS);
+		const boundsNarrow = shallow(<Bounds narrow />);
+		expect(boundsNarrow.find(`.${WIDE_CLASS}`).length).toBe(0);
 	});
 });

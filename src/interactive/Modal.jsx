@@ -6,6 +6,7 @@ import FocusTrap from 'focus-trap-react';
 import Icon from '../media/Icon';
 import Button from '../forms/Button';
 import Stripe from '../layout/Stripe';
+import WithLoading from '../utils/components/withLoading';
 import { MEDIA_QUERIES } from '../utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
@@ -53,7 +54,7 @@ export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen, i
  * @see {@link http://meetup.github.io/sassquatch2/views.html#modals}
  * @module Modal
  */
-class Modal extends React.Component {
+export class Modal extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onDismiss = this.onDismiss.bind(this);
@@ -120,6 +121,9 @@ class Modal extends React.Component {
 			inverted,
 			closeArea,
 			initialFocus,
+			loadingProps = {}, // eslint-disable-line no-unused-vars
+			isLoading,
+			loadingComponent,
 			...other
 		} = this.props;
 
@@ -135,7 +139,8 @@ class Modal extends React.Component {
 			{
 				'view--modalFull': fullscreen,
 				'view--modalFixed': fixed && !this.state.isMobileSize,
-				'view--modalSnap': !fullscreen
+				'view--modalSnap': !fullscreen,
+				'modal--isLoading component--isLoading': isLoading
 			}
 		);
 
@@ -158,7 +163,7 @@ class Modal extends React.Component {
 		);
 
 		const closeElement = closeArea && (
-			<div className='padding--all'>
+			<div className='padding--all modal-closeButtonContainer'>
 				<Button onClick={this.onDismiss} className={dismissButtonClasses}>
 					<Icon shape='cross' size='s' />
 				</Button>
@@ -208,6 +213,7 @@ class Modal extends React.Component {
 						}
 
 						{children}
+						{loadingComponent}
 					</FocusTrap>
 				</div>
 			</div>
@@ -229,7 +235,13 @@ Modal.propTypes = {
 		PropTypes.element,
 		PropTypes.func,
 		PropTypes.string
-	])
+	]),
+	isLoading: PropTypes.bool,
+	loadingProps: PropTypes.shape({
+		color: PropTypes.string,
+		scrimColor: PropTypes.string,
+		size: PropTypes.string
+	})
 };
 
 Modal.defaultProps = {
@@ -237,4 +249,4 @@ Modal.defaultProps = {
 	closeArea: true,
 };
 
-export default Modal;
+export default WithLoading(Modal);

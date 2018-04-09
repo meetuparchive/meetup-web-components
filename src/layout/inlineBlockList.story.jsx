@@ -65,4 +65,29 @@ storiesOf('InlineBlockList', module)
 					]}
 				/>
 			</Section></Bounds>
+		))
+	.addWithInfo(
+		'isLoading',
+		() => (
+			<Bounds><Section>
+				<InlineBlockList
+					isLoading
+					items={basicItems}
+				/>
+			</Section></Bounds>
+		))
+	.addWithInfo(
+		'isLoading with loadingProps',
+		() => (
+			<Bounds><Section>
+				<InlineBlockList
+					isLoading
+					loadingProps={{
+						color: 'red',
+						scrimColor: 'rgba(250, 250, 255, 0.8)',
+						size: '64px'
+					}}
+					items={basicItems}
+				/>
+			</Section></Bounds>
 		));
