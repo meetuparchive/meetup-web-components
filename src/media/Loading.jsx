@@ -41,10 +41,18 @@ const Loading = ({
 			}
 		>
 			<svg
+				aria-labelledby="title"
+				role="progressbar"
 				className={LOADING_SHAPE_CLASS}
 				viewBox="0 0 50 50"
 				style={{width: size}}
 			>
+				<title
+					id="title"
+					className="visibility--a11yHide"
+				>
+					Loading
+				</title>
 				<circle
 					className={LOADING_SHAPE_PATH_CLASS}
 					cx="25"

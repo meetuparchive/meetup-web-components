@@ -6,6 +6,7 @@ import Loading from '../../media/Loading';
 const WithLoading = (WrappedComponent) =>
 	({ children, isLoading, loadingProps, ...other }) => (
 		<WrappedComponent
+			aria-busy={isLoading}
 			isLoading={isLoading}
 			loadingComponent={
 				isLoading &&
