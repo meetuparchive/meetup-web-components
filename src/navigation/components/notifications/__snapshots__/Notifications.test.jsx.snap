@@ -5,8 +5,8 @@ exports[`Notification component should match snapshot 1`] = `
   className="list-item notification"
   onClick={[Function]}
 >
-  <Component>
-    <Component
+  <WithLoading(Flex)>
+    <WithLoading(FlexItem)
       className="valignChildren--center"
       shrink={true}
     >
@@ -14,8 +14,8 @@ exports[`Notification component should match snapshot 1`] = `
         className="notification-image"
         src="http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg"
       />
-    </Component>
-    <Component
+    </WithLoading(FlexItem)>
+    <WithLoading(FlexItem)
       className="valignChildren--center"
     >
       <h4
@@ -39,7 +39,7 @@ exports[`Notification component should match snapshot 1`] = `
           Thu Mar 30 2017
         </time>
       </p>
-    </Component>
-  </Component>
+    </WithLoading(FlexItem)>
+  </WithLoading(Flex)>
 </a>
 `;

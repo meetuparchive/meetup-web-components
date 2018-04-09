@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import WithLoading from '../utils/components/withLoading';
+import withLoading from '../utils/components/withLoading';
 import ConditionalWrap from '../utils/components/ConditionalWrap';
 
 export const INLINEBLOCKLIST_SEPERATED_CLASS = 'inlineblockList--separated';
@@ -65,4 +65,4 @@ InlineBlockList.propTypes = {
 	})
 };
 
-export default WithLoading(InlineBlockList);
+export default withLoading(InlineBlockList);

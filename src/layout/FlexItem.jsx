@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import WithLoading from '../utils/components/withLoading';
+import withLoading from '../utils/components/withLoading';
 
 export const FLEX_ITEM_CLASS = 'flex-item';
 export const FLEX_ITEM_SHRINK_CLASS = 'flex-item--shrink';
@@ -61,4 +61,4 @@ FlexItem.propTypes = {
 	})
 };
 
-export default WithLoading(FlexItem);
+export default withLoading(FlexItem);

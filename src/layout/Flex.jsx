@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import WithLoading from '../utils/components/withLoading';
+import withLoading from '../utils/components/withLoading';
 
 export const VALID_ALIGNMENTS = {
 	top: 'Top',
@@ -132,4 +132,4 @@ Flex.defaultProps = {
 	direction: DIRECTION_ROW,
 };
 
-export default WithLoading(Flex);
+export default withLoading(Flex);

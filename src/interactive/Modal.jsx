@@ -6,7 +6,7 @@ import FocusTrap from 'focus-trap-react';
 import Icon from '../media/Icon';
 import Button from '../forms/Button';
 import Stripe from '../layout/Stripe';
-import WithLoading from '../utils/components/withLoading';
+import withLoading from '../utils/components/withLoading';
 import { MEDIA_QUERIES } from '../utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
@@ -249,4 +249,4 @@ Modal.defaultProps = {
 	closeArea: true,
 };
 
-export default WithLoading(Modal);
+export default withLoading(Modal);
