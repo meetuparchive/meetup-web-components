@@ -150,9 +150,9 @@ storiesOf("Dropdown", module)
 				maxWidth="250px"
 				trigger={<Button small>Open</Button>}
 				menuItems={[
-					<div onClick={action('red click')}>Item one has text that is really long and should wrap once we reach max width</div>,
-					<div onClick={action('white click')}>Item two</div>,
-					<div onClick={action('swarm click')}>Item three</div>
+					<div onClick={action('item one click')}>Item one has text that is really long and should wrap once we reach max width</div>,
+					<div onClick={action('item two click')}>Item two</div>,
+					<div onClick={action('item three click')}>Item three</div>
 				]}
 				noPortal // to test text-wrapping
 			/>
