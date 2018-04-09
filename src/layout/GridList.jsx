@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import WithLoading from '../utils/components/withLoading';
+import withLoading from '../utils/components/withLoading';
 import ConditionalWrap from '../utils/components/ConditionalWrap';
 
 export const GRID_AUTOHEIGHT_CLASS = 'gridList--autoHeight';
@@ -96,4 +96,4 @@ GridList.propTypes = {
 	})
 };
 
-export default WithLoading(GridList);
+export default withLoading(GridList);

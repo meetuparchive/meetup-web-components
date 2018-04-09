@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import WithLoading from '../utils/components/withLoading';
+import withLoading from '../utils/components/withLoading';
 
 export const STRIPE_CLASS = 'stripe';
 export const STRIPE_COLLECTION_CLASS = 'stripe--collection';
@@ -80,4 +80,4 @@ Stripe.propTypes = {
 	})
 };
 
-export default WithLoading(Stripe);
+export default withLoading(Stripe);

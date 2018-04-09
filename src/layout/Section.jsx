@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import WithLoading from '../utils/components/withLoading';
+import withLoading from '../utils/components/withLoading';
 
 export const SECTION_CLASS = 'section';
 export const SECTION_HASSEPARATOR_CLASS = 'section--hasSeparator';
@@ -76,4 +76,4 @@ Section.propTypes = {
 	})
 };
 
-export default WithLoading(Section);
+export default withLoading(Section);

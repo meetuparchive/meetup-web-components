@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import WithLoading from '../utils/components/withLoading';
+import withLoading from '../utils/components/withLoading';
 
 export const CARD_CLASS = 'card';
 export const CARD_FLUSH_CLASS = `${CARD_CLASS}--flush`;
@@ -70,4 +70,4 @@ Card.propTypes = {
 	})
 };
 
-export default WithLoading(Card);
+export default withLoading(Card);

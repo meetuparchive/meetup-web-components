@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import WithLoading from '../utils/components/withLoading';
+import withLoading from '../utils/components/withLoading';
 
 /**
  * Design System Component: Provides `stripe` styled container for components
@@ -47,4 +47,4 @@ Chunk.propTypes = {
 };
 
 
-export default WithLoading(Chunk);
+export default withLoading(Chunk);

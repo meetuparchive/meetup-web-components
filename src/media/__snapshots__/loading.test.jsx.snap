@@ -10,7 +10,9 @@ exports[`Loading exists 1`] = `
   }
 >
   <svg
+    aria-labelledby="title"
     className="loadingShape"
+    role="progressbar"
     style={
       Object {
         "width": "42px",
@@ -18,6 +20,12 @@ exports[`Loading exists 1`] = `
     }
     viewBox="0 0 50 50"
   >
+    <title
+      className="visibility--a11yHide"
+      id="title"
+    >
+      Loading
+    </title>
     <circle
       className="loadingShape-path"
       cx="25"
