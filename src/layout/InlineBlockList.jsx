@@ -14,6 +14,7 @@ class InlineBlockList extends React.Component {
 			className,
 			items,
 			separator,
+			verticalAlign,
 			...other
 		} = this.props;
 
@@ -25,13 +26,18 @@ class InlineBlockList extends React.Component {
 			className
 		);
 
+		const itemProps = {
+			'data-separator': separator,
+			style: {verticalAlign},
+		};
+
 		return (
 			<ul
 				className={classNames}
 				{...other}
 			>
 				{items.map((item, key) =>
-					<li key={key} data-separator={separator}>{item}</li>
+					<li key={key} {...itemProps}>{item}</li>
 				)}
 			</ul>
 		);
@@ -45,7 +51,8 @@ InlineBlockList.propTypes = {
 			PropTypes.string
 		])
 	).isRequired,
-	separator: PropTypes.string
+	separator: PropTypes.string,
+	verticalAlign: PropTypes.oneOf(['top', 'middle', 'bottom']),
 };
 
 export default InlineBlockList;
