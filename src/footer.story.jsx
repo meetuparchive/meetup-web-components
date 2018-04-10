@@ -4,9 +4,11 @@ import { storiesOf, action } from '@storybook/react';
 import withMatchMedia from './utils/components/withMatchMedia';
 
 import { decorateWithBasics } from './utils/decorators';
-import { Footer, defaultLegalCopy } from './Footer';
+import { Footer } from './Footer';
 
 const TestFooter = withMatchMedia(Footer);
+
+const legalCopy = 'Meetup is a wholly owned subsidiary of WeWork Companies, Inc.';
 
 const footerLinkSets = [
 	{
@@ -54,10 +56,10 @@ const subFooterLinks = [
 ];
 
 const DEFAULT_PROPS = {
+	legalCopy,
 	linkSets: footerLinkSets,
 	localeCode: "en-US",
 	onLanguageSelect: action('language changed'),
-	legalCopy: defaultLegalCopy,
 	subFooterLinks: subFooterLinks,
 	createMeetup: {
 		text: 'Create a Meetup',
