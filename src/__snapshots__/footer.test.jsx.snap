@@ -198,14 +198,11 @@ exports[`Footer exists 1`] = `
         className="padding--all"
       >
         <InlineBlockList
-          className="text--small align--center atMedium_align--left"
+          className="text--small align--center atMedium_align--left footerList-legal"
           items={
             Array [
               <span>
                 © Meetup 2018
-            </span>,
-              <span>
-                Meetup is a wholly owned subsidiary of WeWork Companies, Inc.
             </span>,
             ]
           }
