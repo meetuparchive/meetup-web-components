@@ -9,10 +9,9 @@ import {
 } from 'swarm-constants/dist/js/colorConstants.js';
 
 import bindAll from "../utils/bindAll";
+import ConditionalWrap from '../utils/components/ConditionalWrap';
 
 export const DROPDOWN_MENU_ITEM_CLASS = 'dropdownMenu-item';
-
-const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
 
 /**
  * @module Dropdown

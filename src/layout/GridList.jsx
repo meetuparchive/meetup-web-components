@@ -2,12 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+import withLoading from '../utils/components/withLoading';
+import ConditionalWrap from '../utils/components/ConditionalWrap';
+
 export const GRID_AUTOHEIGHT_CLASS = 'gridList--autoHeight';
 
 /**
  * @module GridList
  */
-class GridList extends React.Component {
+export class GridList extends React.Component {
 	render() {
 		const {
 			className,
@@ -16,6 +19,9 @@ class GridList extends React.Component {
 			autoHeight,
 			autoHeightWithWrap,
 			itemClassNames,
+			loadingProps = {}, // eslint-disable-line no-unused-vars
+			isLoading,
+			loadingComponent,
 			...other
 		} = this.props;
 
@@ -50,18 +56,24 @@ class GridList extends React.Component {
 		);
 
 		return (
-			<ul
-				className={autoHeight || autoHeightWithWrap ? autoHeightClassNames : classNames}
-				{...other}
+			<ConditionalWrap
+				condition={isLoading}
+				wrap={children => <div className={isLoading && 'component--isLoading'}>{children}</div>}
 			>
-				{items.map((item, key) => (
-					<li key={key} className={listItemClassNames}>
-						<div className="gridList-itemInner">
-							{item}
-						</div>
-					</li>
-				))}
-			</ul>
+				<ul
+					className={autoHeight || autoHeightWithWrap ? autoHeightClassNames : classNames}
+					{...other}
+				>
+					{items.map((item, key) => (
+						<li key={key} className={listItemClassNames}>
+							<div className="gridList-itemInner">
+								{item}
+							</div>
+						</li>
+					))}
+				</ul>
+				{loadingComponent}
+			</ConditionalWrap>
 		);
 	}
 }
@@ -75,7 +87,13 @@ GridList.propTypes = {
 		large: PropTypes.number
 	}),
 	items: PropTypes.arrayOf(PropTypes.element).isRequired,
-	itemClassNames: PropTypes.string
+	itemClassNames: PropTypes.string,
+	isLoading: PropTypes.bool,
+	loadingProps: PropTypes.shape({
+		color: PropTypes.string,
+		scrimColor: PropTypes.string,
+		size: PropTypes.string
+	})
 };
 
-export default GridList;
+export default withLoading(GridList);
