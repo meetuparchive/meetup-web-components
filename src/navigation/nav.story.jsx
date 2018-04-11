@@ -79,6 +79,11 @@ storiesOf('Nav', module)
 	.add('authenticated', () => (
 		<Nav self={MOCK_MEMBER} navItems={navItems} style={{ width: '100%' }} />
 	))
+	.add('authenticated not loaded groups', () => {
+		const groups = { ...navItems.groups, list: undefined };
+		const items = { ...navItems, groups };
+		return <Nav self={MOCK_MEMBER} navItems={items} style={{ width: '100%' }} />;
+	})
 	.add('authenticated Pro member', () => (
 		<Nav
 			self={{
