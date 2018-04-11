@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
@@ -11,10 +12,21 @@ import Section from './Section';
  * @param {object} props React props
  * @return {React.element} Form section wrapping component
  */
-function FormSection({ withSeparator, className, children }) {
+function FormSection({
+	className,
+	children,
+	withSeparator,
+	loadingProps = {}, // eslint-disable-line no-unused-vars
+	isLoading,
+}) {
 	return (
 		<Section hasSeparator={withSeparator} className={cx(className, 'border--none')}>
-			<Card initialHeight flushUntil="large">
+			<Card
+				initialHeight
+				flushUntil="large"
+				isLoading={isLoading}
+				loadingProps={loadingProps}
+			>
 				<Bounds narrow>
 					<Section hasSeparator className="border--none padding--top">
 						{children}
@@ -24,5 +36,15 @@ function FormSection({ withSeparator, className, children }) {
 		</Section>
 	);
 }
+
+FormSection.propTypes = {
+	withSeparator: PropTypes.bool,
+	isLoading: PropTypes.bool,
+	loadingProps: PropTypes.shape({
+		color: PropTypes.string,
+		scrimColor: PropTypes.string,
+		size: PropTypes.string
+	})
+};
 
 export default FormSection;

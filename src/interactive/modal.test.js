@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 
 import Button from '../forms/Button';
-import Modal, {
+import {
+	Modal,
 	MODAL_CLOSE_BUTTON,
 	DEFAULT_MARGIN_TOP,
 	MARGIN_TOP_OFFSET,

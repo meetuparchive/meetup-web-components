@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+import withLoading from '../utils/components/withLoading';
+
 export const CARD_CLASS = 'card';
 export const CARD_FLUSH_CLASS = `${CARD_CLASS}--flush`;
 export const CARD_HOVER_PLUS_SHADOW_CLASS = `${CARD_CLASS}--hasShadowPlusHover`;
@@ -14,7 +16,7 @@ export const VALID_BREAKPOINTS = {
 /**
  * @module Card
  */
-class Card extends React.PureComponent {
+export class Card extends React.PureComponent {
 	render() {
 		const {
 			children,
@@ -23,6 +25,9 @@ class Card extends React.PureComponent {
 			hasShadow,
 			hasHoverShadow,
 			flushUntil,
+			loadingProps = {}, // eslint-disable-line no-unused-vars
+			isLoading,
+			loadingComponent,
 			...other
 		} = this.props;
 
@@ -35,7 +40,8 @@ class Card extends React.PureComponent {
 				[`${flushBreakpoint}_${CARD_FLUSH_CLASS} ${CARD_FLUSH_CLASS}`]: flushUntil,
 				[`${CARD_CLASS}--hasShadow`]: hasShadow,
 				[`${CARD_CLASS}--hasHoverShadow`]: hasHoverShadow && !hasShadow,
-				[CARD_HOVER_PLUS_SHADOW_CLASS]: hasHoverShadow && hasShadow
+				[CARD_HOVER_PLUS_SHADOW_CLASS]: hasHoverShadow && hasShadow,
+				'card--isLoading component--isLoading': isLoading
 			},
 			className
 		);
@@ -45,6 +51,7 @@ class Card extends React.PureComponent {
 				className={classNames}
 				{...other}>
 				{children}
+				{loadingComponent}
 			</div>
 		);
 	}
@@ -54,7 +61,13 @@ Card.propTypes = {
 	initialHeight: PropTypes.bool,
 	hasShadow: PropTypes.bool,
 	hasHoverShadow: PropTypes.bool,
-	flushUntil: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))])
+	flushUntil: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))]),
+	isLoading: PropTypes.bool,
+	loadingProps: PropTypes.shape({
+		color: PropTypes.string,
+		scrimColor: PropTypes.string,
+		size: PropTypes.string
+	})
 };
 
-export default Card;
+export default withLoading(Card);
