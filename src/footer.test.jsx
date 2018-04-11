@@ -50,6 +50,7 @@ const subFooterLinks = [
 ];
 
 const MOCK_DEFAULT_STATE = {
+	legalCopy: 'Mock legal copy',
 	localeCode: 'en-US',
 	linkSets: footerLinkSets,
 	onLanguageSelect: onLanguageSelect,

@@ -204,6 +204,9 @@ exports[`Footer exists 1`] = `
               <span>
                 © Meetup 2018
             </span>,
+              <span>
+                Mock legal copy
+            </span>,
             ]
           }
           separator="·"
