@@ -8,6 +8,8 @@ import { Footer } from './Footer';
 
 const TestFooter = withMatchMedia(Footer);
 
+const legalCopy = 'Meetup is a wholly owned subsidiary of WeWork Companies, Inc.';
+
 const footerLinkSets = [
 	{
 		header: 'Your Account',
@@ -54,6 +56,7 @@ const subFooterLinks = [
 ];
 
 const DEFAULT_PROPS = {
+	legalCopy,
 	linkSets: footerLinkSets,
 	localeCode: "en-US",
 	onLanguageSelect: action('language changed'),
