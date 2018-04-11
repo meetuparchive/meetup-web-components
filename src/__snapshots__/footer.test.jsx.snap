@@ -198,12 +198,23 @@ exports[`Footer exists 1`] = `
         className="padding--all"
       >
         <InlineBlockList
-          className="text--small align--center atMedium_align--left"
+          className="text--small align--center atMedium_align--left footerList-legal"
           items={
             Array [
               <span>
                 © Meetup 2018
             </span>,
+              <span>
+                Mock legal copy
+            </span>,
+            ]
+          }
+          separator="·"
+        />
+        <InlineBlockList
+          className="text--small align--center atMedium_align--left margin--top"
+          items={
+            Array [
               <a
                 href="/terms"
             >
