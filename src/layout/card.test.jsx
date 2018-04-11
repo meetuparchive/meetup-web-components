@@ -2,7 +2,8 @@ import React from 'react';
 import { variantTest } from '../utils/testUtils';
 import { shallow } from 'enzyme';
 
-import Card, {
+import {
+	Card,
 	CARD_CLASS,
 	CARD_HOVER_PLUS_SHADOW_CLASS,
 	CARD_FLUSH_CLASS,

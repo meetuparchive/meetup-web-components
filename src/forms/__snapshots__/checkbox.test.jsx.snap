@@ -5,12 +5,11 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
   className="toggleLabel label--minor display--block"
   htmlFor="hello"
 >
-  <Flex
+  <WithLoading(Flex)
     align="center"
     className="minTouchHeight"
-    direction="row"
   >
-    <FlexItem
+    <WithLoading(FlexItem)
       shrink={true}
     >
       <input
@@ -33,8 +32,8 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
           size="xs"
         />
       </span>
-    </FlexItem>
-    <FlexItem
+    </WithLoading(FlexItem)>
+    <WithLoading(FlexItem)
       className="toggleLabel-container"
     >
       <span
@@ -42,8 +41,8 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
       >
         Hello!
       </span>
-    </FlexItem>
-  </Flex>
+    </WithLoading(FlexItem)>
+  </WithLoading(Flex)>
 </label>
 `;
 
@@ -52,12 +51,11 @@ exports[`Checkbox basic renders unchecked checkbox 1`] = `
   className="toggleLabel label--minor display--block"
   htmlFor="hello"
 >
-  <Flex
+  <WithLoading(Flex)
     align="center"
     className="minTouchHeight"
-    direction="row"
   >
-    <FlexItem
+    <WithLoading(FlexItem)
       shrink={true}
     >
       <input
@@ -74,8 +72,8 @@ exports[`Checkbox basic renders unchecked checkbox 1`] = `
       <span
         className="display--block align--center fauxToggle fauxToggle--checkbox"
       />
-    </FlexItem>
-    <FlexItem
+    </WithLoading(FlexItem)>
+    <WithLoading(FlexItem)
       className="toggleLabel-container"
     >
       <span
@@ -83,7 +81,7 @@ exports[`Checkbox basic renders unchecked checkbox 1`] = `
       >
         Hello!
       </span>
-    </FlexItem>
-  </Flex>
+    </WithLoading(FlexItem)>
+  </WithLoading(Flex)>
 </label>
 `;

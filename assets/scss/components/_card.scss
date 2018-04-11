@@ -80,3 +80,7 @@ $cardFlushProps: (margin-left, margin-right);
 .card--hasShadowPlusHover {
 	@include shadowOnHover(true);
 }
+
+.card--isLoading {
+	overflow: hidden;
+}

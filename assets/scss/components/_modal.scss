@@ -119,6 +119,11 @@ lays out as a dialog on background content on larger screens.
 	position: fixed;
 }
 
+.modal-closeButtonContainer {
+	position: relative;
+	z-index: map-get($zindex-map, "popup") + 1;
+}
+
 .modal-closeButton:focus {
 	background-color: $C_tappable;
 }
@@ -126,6 +131,10 @@ lays out as a dialog on background content on larger screens.
 .inverted .modal-closeButton:focus {
 	background-color: $C_tappableInverted;
 	box-shadow: 0 0 2px 1px $C_borderDarkInverted;
+}
+
+.modal--isLoading {
+	min-height: $block-5;
 }
 
 /*doc
