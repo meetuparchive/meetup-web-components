@@ -105,18 +105,21 @@ export class Nav extends React.Component {
 				<DropdownLoader label={dropdownLoaderLabel} />
 			);
 
-		const profileContent = (
-			<ProfileDropdown
-				settings={profile.profileDropdown.settings}
-				help={profile.profileDropdown.help}
-				logout={profile.profileDropdown.logout}
-				groupHome={profile.profileDropdown.groupHome}
-				allGroupsLabel={profile.profileDropdown.allGroupsLabel}
-				allGroupsLink={profile.profileDropdown.allGroupsLink}
-				profile={profile}
-				groups={groups.list}
-			/>
-		);
+		const profileContent =
+			groups ? (
+				<ProfileDropdown
+					settings={profile.profileDropdown.settings}
+					help={profile.profileDropdown.help}
+					logout={profile.profileDropdown.logout}
+					groupHome={profile.profileDropdown.groupHome}
+					allGroupsLabel={profile.profileDropdown.allGroupsLabel}
+					allGroupsLink={profile.profileDropdown.allGroupsLink}
+					profile={profile}
+					groups={groups.list}
+				/>
+			) : (
+				<DropdownLoader label={dropdownLoaderLabel} />
+			);
 
 		let unauthItems = [
 			{
