@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NumberInput from '../NumberInput';
 
 /**
@@ -15,14 +16,22 @@ const ReduxFormNumberInput = props => {
 	// as the input _value_, so we need to wrap its `onChange` handler with
 	// logic that will extract the simulated value from the NumberInput onChange
 	const wrappedOnChange = ({ target: { value } }) => input.onChange(value);
+
+	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
+
 	return (
 		<NumberInput
-			error={(meta || {}).error}
+			error={error}
 			{...input}
 			onChange={wrappedOnChange}
 			{...other}
 		/>
 	);
+};
+
+ReduxFormNumberInput.propTypes = {
+	meta: PropTypes.object.isRequired,
+	input: PropTypes.element.isRequired,
 };
 
 ReduxFormNumberInput.displayName = 'ReduxFormNumberInput';

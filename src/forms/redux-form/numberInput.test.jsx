@@ -5,6 +5,7 @@ import ReduxFormNumberInput from './NumberInput';
 describe('redux-form NumberInput', function() {
 	// props structured to match what redux-form provides to <Field> `component`
 	const props = {
+		meta: {},
 		input: {
 			label: 'Number of internets',
 			name: 'internets',
