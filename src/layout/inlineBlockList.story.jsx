@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
+import Chunk from '../layout/Chunk';
 import InlineBlockList from './InlineBlockList';
 
 const basicItems = [
@@ -90,4 +91,47 @@ storiesOf('InlineBlockList', module)
 					items={basicItems}
 				/>
 			</Section></Bounds>
-		));
+		))
+		.addWithInfo(
+			'vertical alignment',
+			'Elements as items; using `verticalAlign` prop',
+			() => (
+				<Bounds><Section>
+					<Chunk>
+						<InlineBlockList
+							verticalAlign="top"
+							items={[
+								<code>verticalAlign="top"</code>,
+								<img src='https://placeimg.com/80/120/animals' alt='animal' />,
+								<img src='https://placeimg.com/60/60/animals' alt='animal' />,
+								<img src='https://placeimg.com/80/120/animals' alt='animal' />,
+								<img src='https://placeimg.com/60/60/animals' alt='animal' />,
+							]}
+						/>
+					</Chunk>
+					<Chunk>
+						<InlineBlockList
+							verticalAlign="middle"
+							items={[
+								<code>verticalAlign="middle"</code>,
+								<img src='https://placeimg.com/80/120/animals' alt='animal' />,
+								<img src='https://placeimg.com/60/60/animals' alt='animal' />,
+								<img src='https://placeimg.com/80/120/animals' alt='animal' />,
+								<img src='https://placeimg.com/60/60/animals' alt='animal' />,
+							]}
+						/>
+					</Chunk>
+					<Chunk>
+						<InlineBlockList
+							verticalAlign="bottom"
+							items={[
+								<code>verticalAlign="bottom"</code>,
+								<img src='https://placeimg.com/80/120/animals' alt='animal' />,
+								<img src='https://placeimg.com/60/60/animals' alt='animal' />,
+								<img src='https://placeimg.com/80/120/animals' alt='animal' />,
+								<img src='https://placeimg.com/60/60/animals' alt='animal' />,
+							]}
+						/>
+					</Chunk>
+				</Section></Bounds>
+			));

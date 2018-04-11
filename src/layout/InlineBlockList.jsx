@@ -19,6 +19,7 @@ export class InlineBlockList extends React.Component {
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
 			loadingComponent,
+			verticalAlign,
 			...other
 		} = this.props;
 
@@ -30,6 +31,11 @@ export class InlineBlockList extends React.Component {
 			className
 		);
 
+		const itemProps = {
+			'data-separator': separator,
+			style: {verticalAlign},
+		};
+
 		return (
 			<ConditionalWrap
 				condition={isLoading}
@@ -40,7 +46,7 @@ export class InlineBlockList extends React.Component {
 					{...other}
 				>
 					{items.map((item, key) =>
-						<li key={key} data-separator={separator}>{item}</li>
+						<li key={key} {...itemProps}>{item}</li>
 					)}
 				</ul>
 				{loadingComponent}
@@ -62,7 +68,8 @@ InlineBlockList.propTypes = {
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
 		size: PropTypes.string
-	})
+	}),
+	verticalAlign: PropTypes.oneOf(['top', 'middle', 'bottom']),
 };
 
 export default withLoading(InlineBlockList);
