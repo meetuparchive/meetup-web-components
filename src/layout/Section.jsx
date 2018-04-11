@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+import withLoading from '../utils/components/withLoading';
+
 export const SECTION_CLASS = 'section';
 export const SECTION_HASSEPARATOR_CLASS = 'section--hasSeparator';
 export const SECTION_NOSEPARATOR_CLASS = 'section--noSeparator';
@@ -16,7 +18,7 @@ export const VALID_BREAKPOINTS = {
  * Design System Component: Provides `section` container for components
  * @module Section
  */
-class Section extends React.Component {
+export class Section extends React.Component {
 	render() {
 		const {
 			children,
@@ -25,6 +27,9 @@ class Section extends React.Component {
 			hasSeparatorUntil,
 			hasSeparator,
 			flushUntil,
+			loadingProps = {}, // eslint-disable-line no-unused-vars
+			isLoading,
+			loadingComponent,
 			...other
 		} = this.props;
 
@@ -36,7 +41,8 @@ class Section extends React.Component {
 			{
 				[`${flushBreakpoint}_${SECTION_FLUSH_CLASS} ${SECTION_FLUSH_CLASS}`]: flushUntil,
 				[`${hasSeparatorUntilBreakpoint}_${SECTION_HASSEPARATOR_CLASS} ${SECTION_HASSEPARATOR_CLASS}`]: hasSeparatorUntil,
-				[SECTION_HASSEPARATOR_CLASS]: hasSeparator
+				[SECTION_HASSEPARATOR_CLASS]: hasSeparator,
+				'component--isLoading': isLoading
 			},
 			className
 		);
@@ -47,6 +53,7 @@ class Section extends React.Component {
 				{...other}
 			>
 				{children}
+				{loadingComponent}
 			</section>
 		);
 	}
@@ -60,7 +67,13 @@ Section.propTypes = {
 		PropTypes.bool,
 		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	]),
-	flushUntil: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))])
+	flushUntil: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))]),
+	isLoading: PropTypes.bool,
+	loadingProps: PropTypes.shape({
+		color: PropTypes.string,
+		scrimColor: PropTypes.string,
+		size: PropTypes.string
+	})
 };
 
-export default Section;
+export default withLoading(Section);

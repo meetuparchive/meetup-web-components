@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+import withLoading from '../utils/components/withLoading';
+
 export const VALID_ALIGNMENTS = {
 	top: 'Top',
 	bottom: 'Bottom',
@@ -36,7 +38,7 @@ export const FLEX_ALIGN_CLASS = `${FLEX_CLASS}--align`;
  * Design System Component: Provides `Flex` styled container for ideal use with `FlexItem` content
  * @module Flex
  */
-class Flex extends React.Component {
+export class Flex extends React.Component {
 	/**
 	 * @return {React.element} the commend form React element
 	 */
@@ -52,6 +54,9 @@ class Flex extends React.Component {
 			columnReverse,
 			children,
 			className,
+			loadingProps = {}, // eslint-disable-line no-unused-vars
+			isLoading,
+			loadingComponent,
 			...other
 		} = this.props;
 
@@ -79,6 +84,8 @@ class Flex extends React.Component {
 				[FLEX_NOGUTTER_CLASS]: noGutters,
 				[`${FLEX_CLASS}--${VALID_SPACE[justify]}`]: justify,
 				[`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`]: align,
+				[FLEX_WRAP_CLASS]: wrap,
+				'component--isLoading': isLoading
 			}, className);
 
 		return (
@@ -87,6 +94,7 @@ class Flex extends React.Component {
 				{...other}
 			>
 				{children}
+				{loadingComponent}
 			</div>
 		);
 	}
@@ -112,10 +120,16 @@ Flex.propTypes = {
 		PropTypes.bool,
 		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
 	]),
+	isLoading: PropTypes.bool,
+	loadingProps: PropTypes.shape({
+		color: PropTypes.string,
+		scrimColor: PropTypes.string,
+		size: PropTypes.string
+	})
 };
 
 Flex.defaultProps = {
 	direction: DIRECTION_ROW,
 };
 
-export default Flex;
+export default withLoading(Flex);

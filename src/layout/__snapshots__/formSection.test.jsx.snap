@@ -1,21 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FormSection exists and contains form section wrapping elements with proper attributes 1`] = `
-<Section
+<WithLoading(Section)
   className="border--none"
 >
-  <Card
+  <WithLoading(Card)
     flushUntil="large"
     initialHeight={true}
+    loadingProps={Object {}}
   >
-    <Bounds
+    <WithLoading(Bounds)
       narrow={true}
     >
-      <Section
+      <WithLoading(Section)
         className="border--none padding--top"
         hasSeparator={true}
       />
-    </Bounds>
-  </Card>
-</Section>
+    </WithLoading(Bounds)>
+  </WithLoading(Card)>
+</WithLoading(Section)>
 `;

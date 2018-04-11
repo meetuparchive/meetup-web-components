@@ -2,24 +2,32 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+import withLoading from '../utils/components/withLoading';
+
 export const BOUNDS_CLASS = 'bounds';
 
 /**
  * Design System Component: Provides `bounds` container for components
  * @module Bounds
  */
-class Bounds extends React.Component {
+export class Bounds extends React.Component {
 	render() {
 		const {
 			children,
 			className,
 			narrow,
+			loadingProps = {}, // eslint-disable-line no-unused-vars
+			isLoading,
+			loadingComponent,
 			...other
 		} = this.props;
 
 		const classNames = cx(
 			BOUNDS_CLASS,
-			{'bounds--wide': !narrow },
+			{
+				'bounds--wide': !narrow,
+				'component--isLoading': isLoading
+			},
 			className
 		);
 
@@ -29,12 +37,19 @@ class Bounds extends React.Component {
 				{...other}
 			>
 				{children}
+				{loadingComponent}
 			</div>
 		);
 	}
 }
 Bounds.propTypes = {
-	narrow: PropTypes.bool
+	narrow: PropTypes.bool,
+	isLoading: PropTypes.bool,
+	loadingProps: PropTypes.shape({
+		color: PropTypes.string,
+		scrimColor: PropTypes.string,
+		size: PropTypes.string
+	})
 };
 
-export default Bounds;
+export default withLoading(Bounds);

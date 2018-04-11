@@ -1,7 +1,6 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import GridList from './GridList';
-import { GRID_AUTOHEIGHT_CLASS } from './GridList';
+import { shallow } from 'enzyme';
+import { GridList, GRID_AUTOHEIGHT_CLASS } from './GridList';
 
 const glItemCustomClassName = 'flush--all';
 
@@ -137,11 +136,11 @@ let gridList, gridListCustomClassNames, autoheightGridList;
 
 describe('Static GridList', function() {
 	beforeEach(() => {
-		gridList = TestUtils.renderIntoDocument(JSX_GridListStatic);
-		gridListCustomClassNames = TestUtils.renderIntoDocument(
+		gridList = shallow(JSX_GridListStatic);
+		gridListCustomClassNames = shallow(
 			JSX_GridListCustomClassNames
 		);
-		autoheightGridList = TestUtils.renderIntoDocument(
+		autoheightGridList = shallow(
 			JSX_AutoheightGridListStatic
 		);
 	});
@@ -152,98 +151,75 @@ describe('Static GridList', function() {
 	});
 
 	it('wraps gridList items with element containing className "gridList-item"', function() {
-		const glItems = TestUtils.scryRenderedDOMComponentsWithClass(
-			gridList,
-			'gridList-item'
-		);
+		const glItems = gridList.find('.gridList-item');
 		expect(glItems.length).not.toBe(0);
 	});
 
 	it('wraps gridList items with element containing custom className when specified', function() {
-		const glItems = TestUtils.scryRenderedDOMComponentsWithClass(
-			gridListCustomClassNames,
-			glItemCustomClassName
-		);
+		const glItems = gridListCustomClassNames.find(`.${glItemCustomClassName}`);
 		expect(glItems.length).not.toBe(0);
 	});
 
 	it('sets correct autoHeight grid class', function() {
-		const glClassList = TestUtils.scryRenderedDOMComponentsWithTag(
-			autoheightGridList,
-			'UL'
-		)[0].className;
-		expect(glClassList).toContain(GRID_AUTOHEIGHT_CLASS);
+		const glUl = autoheightGridList.find('ul');
+		expect(glUl.hasClass(GRID_AUTOHEIGHT_CLASS)).toBe(true);
 	});
 
 	it('sets correct autoHeight with wrap grid class', function() {
-		const autoheightWithWrapGridList = TestUtils.renderIntoDocument(
-			JSX_AutoheightWithWrapGridListResponsive
-		);
-		const glClassList = TestUtils.scryRenderedDOMComponentsWithTag(
-			autoheightWithWrapGridList,
-			'UL'
-		)[0].className;
-		expect(glClassList).toContain('flex--wrap');
+		const autoheightWithWrapGridList = shallow(JSX_AutoheightWithWrapGridListResponsive);
+		const glUl = autoheightWithWrapGridList.find('ul');
+		expect(glUl.hasClass('flex--wrap')).toBe(true);
 	});
 
 	it('wraps autoHeight gridList items with element containing className "flex-item"', function() {
-		const glItems = TestUtils.scryRenderedDOMComponentsWithClass(
-			autoheightGridList,
-			'flex-item'
-		);
+		const glItems = autoheightGridList.find('.flex-item');
 		expect(glItems.length).not.toBe(0);
 	});
 });
 
 describe('Responsive GridList', function() {
-	let glClassList, autoheightGLClassList;
+	let glUl, autoheightGLUl;
 
 	beforeEach(() => {
-		gridList = TestUtils.renderIntoDocument(JSX_GridListResponsive);
-		autoheightGridList = TestUtils.renderIntoDocument(
-			JSX_AutoheightGridListResponsive
-		);
-		glClassList = TestUtils.scryRenderedDOMComponentsWithTag(gridList, 'UL')[0]
-			.className;
-		autoheightGLClassList = TestUtils.scryRenderedDOMComponentsWithTag(
-			autoheightGridList,
-			'UL'
-		)[0].className;
+		gridList = shallow(JSX_GridListResponsive);
+		autoheightGridList = shallow(JSX_AutoheightGridListResponsive);
+		glUl = gridList.find('ul');
+		autoheightGLUl = autoheightGridList.find('ul');
 	});
 	afterEach(() => {
 		gridList = null;
 		autoheightGridList = null;
-		glClassList = null;
-		autoheightGLClassList = null;
+		glUl = null;
+		autoheightGLUl = null;
 	});
 
 	it('sets correct default columns class', function() {
 		const defaultClass = `gridList--has${responsiveColsDefault}`;
-		expect(glClassList).toContain(defaultClass);
+		expect(glUl.hasClass(defaultClass)).toBe(true);
 	});
 
 	it('sets correct medium breakpoint columns class', function() {
 		const mediumClass = `atMedium_gridList--has${responsiveColsMedium}`;
-		expect(glClassList).toContain(mediumClass);
+		expect(glUl.hasClass(mediumClass)).toBe(true);
 	});
 
 	it('sets correct large breakpoint columns class', function() {
 		const largeClass = `atLarge_gridList--has${responsiveColsLarge}`;
-		expect(glClassList).toContain(largeClass);
+		expect(glUl.hasClass(largeClass)).toBe(true);
 	});
 
 	it('sets correct autoHeight default columns class', function() {
 		const defaultClass = `${GRID_AUTOHEIGHT_CLASS}--has${responsiveColsDefault}`;
-		expect(autoheightGLClassList).toContain(defaultClass);
+		expect(autoheightGLUl.hasClass(defaultClass)).toBe(true);
 	});
 
 	it('sets correct autoHeight medium breakpoint columns class', function() {
 		const mediumClass = `atMedium_${GRID_AUTOHEIGHT_CLASS}--has${responsiveColsMedium}`;
-		expect(autoheightGLClassList).toContain(mediumClass);
+		expect(autoheightGLUl.hasClass(mediumClass)).toBe(true);
 	});
 
 	it('sets correct autoHeight large breakpoint columns class', function() {
 		const largeClass = `atLarge_${GRID_AUTOHEIGHT_CLASS}--has${responsiveColsLarge}`;
-		expect(autoheightGLClassList).toContain(largeClass);
+		expect(autoheightGLUl.hasClass(largeClass)).toBe(true);
 	});
 });
