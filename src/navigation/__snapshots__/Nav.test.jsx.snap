@@ -167,7 +167,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
   id="globalNav"
   role="navigation"
 >
-  <WithLoading(Flex)
+  <Flex
     align="center"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -873,11 +873,11 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
         />
       }
       icon={
-        <WithLoading(Flex)
+        <Flex
           align="center"
           noGutters={true}
         >
-          <WithLoading(FlexItem)>
+          <FlexItem>
             <AvatarMember
               member={
                 Object {
@@ -891,8 +891,8 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
               }
               small={true}
             />
-          </WithLoading(FlexItem)>
-          <WithLoading(FlexItem)
+          </FlexItem>
+          <FlexItem
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -901,8 +901,8 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </WithLoading(FlexItem)>
-        </WithLoading(Flex)>
+          </FlexItem>
+        </Flex>
       }
       key="5"
       label="Profile"
@@ -911,7 +911,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </WithLoading(Flex)>
+  </Flex>
 </nav>
 `;
 
