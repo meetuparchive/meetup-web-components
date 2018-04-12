@@ -37,7 +37,7 @@ export class InlineBlockList extends React.Component {
 
 		return (
 			<ConditionalWrap
-				condition={isLoading || this.props.children}
+				condition={this.props.children}
 				wrap={children => (
 					<div className={isLoading && 'component--isLoading'}>{[children, this.props.children]}</div>
 				)}
