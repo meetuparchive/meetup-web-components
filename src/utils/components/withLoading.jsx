@@ -3,6 +3,10 @@ import React from 'react';
 
 import Loading from '../../media/Loading';
 
+const getDisplayName = (WrappedComponent) => {
+	return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+};
+
 const withLoading = (WrappedComponent) => {
 	/**
 	 * @module WithLoading
@@ -29,6 +33,8 @@ const withLoading = (WrappedComponent) => {
 			);
 		}
 	}
+
+	WithLoading.displayName = getDisplayName(WrappedComponent);
 
 	return WithLoading;
 };

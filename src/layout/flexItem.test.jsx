@@ -9,24 +9,11 @@ import {
 	FLEX_GROW_FACTORS,
 } from './FlexItem';
 
-const dangerousHTML = '<div>Dangerously setting inner HTML</div>';
-const makeDanger = () => ({__html: dangerousHTML});
-
 describe('FlexItem', function() {
 	it('exists', function() {
 		const flexItem = shallow(<FlexItem />);
 		expect(flexItem).toMatchSnapshot;
 	});
-
-	it('can handle dangerouslySetInnerHTML', function() {
-		const dangerousHTMLComponent = shallow(
-			<FlexItem
-				dangerouslySetInnerHTML={makeDanger()}
-			/>
-		);
-		expect(dangerousHTMLComponent.html()).toContain(dangerousHTML);
-	});
-
 	describe('default', () => {
 		it(`check that the component has '${FLEX_ITEM_CLASS}' class`, function() {
 			const flexItem = shallow(<FlexItem />);

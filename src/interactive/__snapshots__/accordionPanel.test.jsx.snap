@@ -11,15 +11,15 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
     onClick={[Function]}
     role="tab"
   >
-    <WithLoading
+    <Flex
       className="padding--bottom padding--top accordionPanel"
       rowReverse={false}
       tabIndex={-1}
     >
-      <WithLoading>
+      <FlexItem>
         First Section
-      </WithLoading>
-      <WithLoading
+      </FlexItem>
+      <FlexItem
         className="accordionPanel-icon"
         onClick={[Function]}
         shrink={true}
@@ -28,10 +28,10 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
           shape="chevron-down"
           size="xs"
         />
-      </WithLoading>
-    </WithLoading>
+      </FlexItem>
+    </Flex>
   </div>
-  <WithLoading
+  <Chunk
     aria-hidden={true}
     aria-labelledby="label-firstsection"
     className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -54,7 +54,7 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
         </p>
       </div>
     </div>
-  </WithLoading>
+  </Chunk>
 </div>
 `;
 
@@ -69,15 +69,15 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
     onClick={[Function]}
     role="tab"
   >
-    <WithLoading
+    <Flex
       className="padding--bottom padding--top accordionPanel"
       rowReverse="all"
       tabIndex={-1}
     >
-      <WithLoading>
+      <FlexItem>
         First Section
-      </WithLoading>
-      <WithLoading
+      </FlexItem>
+      <FlexItem
         className="accordionPanel-icon"
         onClick={[Function]}
         shrink={true}
@@ -86,10 +86,10 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
           shape="plus"
           size="xs"
         />
-      </WithLoading>
-    </WithLoading>
+      </FlexItem>
+    </Flex>
   </div>
-  <WithLoading
+  <Chunk
     aria-hidden={true}
     aria-labelledby="label-firstsection"
     className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -112,7 +112,7 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
         </p>
       </div>
     </div>
-  </WithLoading>
+  </Chunk>
 </div>
 `;
 
@@ -145,7 +145,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
       onFocus={undefined}
       role="tab"
     >
-      <WithLoading
+      <Flex
         className="padding--bottom padding--top accordionPanel"
         rowReverse="all"
         tabIndex={-1}
@@ -163,7 +163,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
             className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
             tabIndex={-1}
           >
-            <WithLoading>
+            <FlexItem>
               <FlexItem
                 aria-busy={undefined}
                 isLoading={undefined}
@@ -175,8 +175,8 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
                   First Section
                 </div>
               </FlexItem>
-            </WithLoading>
-            <WithLoading
+            </FlexItem>
+            <FlexItem
               className="accordionPanel-icon"
               onClick={[Function]}
               shrink={true}
@@ -217,12 +217,12 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
                   </Icon>
                 </div>
               </FlexItem>
-            </WithLoading>
+            </FlexItem>
           </div>
         </Flex>
-      </WithLoading>
+      </Flex>
     </div>
-    <WithLoading
+    <Chunk
       aria-hidden={true}
       aria-labelledby="label-firstsection"
       className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -274,7 +274,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
           </div>
         </div>
       </Chunk>
-    </WithLoading>
+    </Chunk>
   </div>
 </AccordionPanel>
 `;
@@ -309,7 +309,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
       onFocus={undefined}
       role="tab"
     >
-      <WithLoading
+      <Flex
         className="padding--bottom padding--top accordionPanel"
         rowReverse="all"
         tabIndex={-1}
@@ -327,7 +327,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
             className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
             tabIndex={-1}
           >
-            <WithLoading>
+            <FlexItem>
               <FlexItem
                 aria-busy={undefined}
                 isLoading={undefined}
@@ -339,8 +339,8 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                   First Section
                 </div>
               </FlexItem>
-            </WithLoading>
-            <WithLoading
+            </FlexItem>
+            <FlexItem
               className="accordionPanel-icon"
               onClick={[Function]}
               shrink={true}
@@ -447,12 +447,12 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                   </WithToggle>
                 </div>
               </FlexItem>
-            </WithLoading>
+            </FlexItem>
           </div>
         </Flex>
-      </WithLoading>
+      </Flex>
     </div>
-    <WithLoading
+    <Chunk
       aria-hidden={true}
       aria-labelledby="label-firstsection"
       className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -504,7 +504,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
           </div>
         </div>
       </Chunk>
-    </WithLoading>
+    </Chunk>
   </div>
 </AccordionPanel>
 `;

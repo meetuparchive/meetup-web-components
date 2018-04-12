@@ -9,9 +9,6 @@ import {
 	SECTION_FLUSH_CLASS,
 } from './Section';
 
-const dangerousHTML = '<div>Dangerously setting inner HTML</div>';
-const makeDanger = () => ({__html: dangerousHTML});
-
 describe('Section', function() {
 	let section;
 
@@ -24,16 +21,6 @@ describe('Section', function() {
 	it('exists', function() {
 		expect(section).toMatchSnapshot();
 	});
-
-	it('can handle dangerouslySetInnerHTML', function() {
-		const dangerousHTMLComponent = shallow(
-			<Section
-				dangerouslySetInnerHTML={makeDanger()}
-			/>
-		);
-		expect(dangerousHTMLComponent.html()).toContain(dangerousHTML);
-	});
-
 	it(`check that default component has '${SECTION_CLASS}' class`, function() {
 		expect(section.hasClass(SECTION_CLASS)).toBe(true);
 	});
