@@ -5,42 +5,42 @@ exports[`Footer exists 1`] = `
   className="column-item column-item--shrink"
   id="mupFooter"
 >
-  <WithLoading(Stripe)
+  <WithLoading
     className="footerStripe-main"
     inverted={true}
   >
-    <WithLoading(Bounds)
+    <WithLoading
       className="bounds--footer"
       narrow={true}
     >
-      <WithLoading(Section)
+      <WithLoading
         hasSeparator={true}
       >
-        <WithLoading(Chunk)>
+        <WithLoading>
           <a
             className="link link--white"
             href="/create/"
           >
             Create a Meetup
           </a>
-        </WithLoading(Chunk)>
-      </WithLoading(Section)>
-      <WithLoading(Section)
+        </WithLoading>
+      </WithLoading>
+      <WithLoading
         className="border--none"
         hasSeparator={true}
       >
-        <WithLoading(Flex)
+        <WithLoading
           direction="column"
           switchDirection="large"
         >
-          <WithLoading(FlexItem)
+          <WithLoading
             className="margin--bottom"
           >
-            <WithLoading(Flex)
+            <WithLoading
               direction="column"
               switchDirection="medium"
             >
-              <WithLoading(FlexItem)
+              <WithLoading
                 key="linkSet-0"
               >
                 <FooterCategory
@@ -65,8 +65,8 @@ exports[`Footer exists 1`] = `
                     ]
                   }
                 />
-              </WithLoading(FlexItem)>
-              <WithLoading(FlexItem)
+              </WithLoading>
+              <WithLoading
                 key="linkSet-1"
               >
                 <FooterCategory
@@ -96,8 +96,8 @@ exports[`Footer exists 1`] = `
                     ]
                   }
                 />
-              </WithLoading(FlexItem)>
-              <WithLoading(FlexItem)
+              </WithLoading>
+              <WithLoading
                 key="linkSet-2"
               >
                 <FooterCategory
@@ -132,72 +132,72 @@ exports[`Footer exists 1`] = `
                     ]
                   }
                 />
-              </WithLoading(FlexItem)>
-            </WithLoading(Flex)>
-          </WithLoading(FlexItem)>
-          <WithLoading(FlexItem)
+              </WithLoading>
+            </WithLoading>
+          </WithLoading>
+          <WithLoading
             shrink={true}
           >
-            <WithLoading(Flex)
+            <WithLoading
               direction="column"
               noGutters={true}
             >
-              <WithLoading(FlexItem)
+              <WithLoading
                 shrink={true}
               >
-                <WithLoading(Chunk)
+                <WithLoading
                   className="align--center atMedium_align--left"
                 >
                   <SocialIconsList
                     localeCode="en-US"
                   />
-                </WithLoading(Chunk)>
-              </WithLoading(FlexItem)>
-              <WithLoading(FlexItem)>
-                <WithLoading(Flex)
+                </WithLoading>
+              </WithLoading>
+              <WithLoading>
+                <WithLoading
                   direction="column"
                   justify={null}
                 >
-                  <WithLoading(FlexItem)
+                  <WithLoading
                     className="margin--top"
                     shrink={true}
                   >
-                    <WithLoading(Chunk)>
+                    <WithLoading>
                       <LanguageSelectInput
                         currentLocaleCode="en-US"
                         onChange={[Function]}
                       />
-                    </WithLoading(Chunk)>
-                  </WithLoading(FlexItem)>
-                  <WithLoading(FlexItem)
+                    </WithLoading>
+                  </WithLoading>
+                  <WithLoading
                     shrink={true}
                   >
-                    <WithLoading(Chunk)
+                    <WithLoading
                       className="align--center atMedium_align--left margin--top"
                     >
                       <AppBadges
                         getAppStorePhoto={[Function]}
                         language="en"
                       />
-                    </WithLoading(Chunk)>
-                  </WithLoading(FlexItem)>
-                </WithLoading(Flex)>
-              </WithLoading(FlexItem)>
-            </WithLoading(Flex)>
-          </WithLoading(FlexItem)>
-        </WithLoading(Flex)>
-      </WithLoading(Section)>
-    </WithLoading(Bounds)>
-  </WithLoading(Stripe)>
-  <WithLoading(Stripe)
+                    </WithLoading>
+                  </WithLoading>
+                </WithLoading>
+              </WithLoading>
+            </WithLoading>
+          </WithLoading>
+        </WithLoading>
+      </WithLoading>
+    </WithLoading>
+  </WithLoading>
+  <WithLoading
     className="footerStripe-legal border--none"
     inverted={true}
   >
-    <WithLoading(Bounds)>
+    <WithLoading>
       <div
         className="padding--all"
       >
-        <WithLoading(InlineBlockList)
+        <WithLoading
           className="text--small align--center atMedium_align--left footerList-legal"
           items={
             Array [
@@ -211,7 +211,7 @@ exports[`Footer exists 1`] = `
           }
           separator="·"
         />
-        <WithLoading(InlineBlockList)
+        <WithLoading
           className="text--small align--center atMedium_align--left margin--top"
           items={
             Array [
@@ -235,19 +235,19 @@ exports[`Footer exists 1`] = `
           separator="·"
         />
       </div>
-    </WithLoading(Bounds)>
-  </WithLoading(Stripe)>
+    </WithLoading>
+  </WithLoading>
 </footer>
 `;
 
 exports[`Footer should render FooterCategory with linkSet 1`] = `
-<WithLoading(Chunk)>
+<WithLoading>
   <h4
     className="text--bold margin--bottom"
   >
     Your Account
   </h4>
-  <WithLoading(GridList)
+  <WithLoading
     className="text--secondary text--small"
     columns={
       Object {
@@ -276,7 +276,7 @@ exports[`Footer should render FooterCategory with linkSet 1`] = `
       ]
     }
   />
-</WithLoading(Chunk)>
+</WithLoading>
 `;
 
 exports[`LanguageSelectInput exists 1`] = `
@@ -352,7 +352,7 @@ exports[`LanguageSelectInput exists 1`] = `
 `;
 
 exports[`SocialIconsList renders for de-DE locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -405,7 +405,7 @@ exports[`SocialIconsList renders for de-DE locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for en-AU locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -458,7 +458,7 @@ exports[`SocialIconsList renders for en-AU locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for en-US locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -511,7 +511,7 @@ exports[`SocialIconsList renders for en-US locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for es locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -564,7 +564,7 @@ exports[`SocialIconsList renders for es locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for es-ES locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -617,7 +617,7 @@ exports[`SocialIconsList renders for es-ES locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for fr-FR locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -670,7 +670,7 @@ exports[`SocialIconsList renders for fr-FR locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for it-IT locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -723,7 +723,7 @@ exports[`SocialIconsList renders for it-IT locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for ja-JP locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -776,7 +776,7 @@ exports[`SocialIconsList renders for ja-JP locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for ko-KR locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -829,7 +829,7 @@ exports[`SocialIconsList renders for ko-KR locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for nl-NL locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -882,7 +882,7 @@ exports[`SocialIconsList renders for nl-NL locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for pl-PL locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -935,7 +935,7 @@ exports[`SocialIconsList renders for pl-PL locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for pt-BR locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -988,7 +988,7 @@ exports[`SocialIconsList renders for pt-BR locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for ru-RU locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -1041,7 +1041,7 @@ exports[`SocialIconsList renders for ru-RU locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for th-TH locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a
@@ -1094,7 +1094,7 @@ exports[`SocialIconsList renders for th-TH locale 1`] = `
 `;
 
 exports[`SocialIconsList renders for tr-TR locale 1`] = `
-<WithLoading(InlineBlockList)
+<WithLoading
   items={
     Array [
       <a

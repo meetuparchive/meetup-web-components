@@ -7,7 +7,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
   id="globalNav"
   role="navigation"
 >
-  <WithLoading(Flex)
+  <WithLoading
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -86,11 +86,11 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
     <NavItem
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       icon={
-        <WithLoading(Flex)
+        <WithLoading
           align="center"
           noGutters={true}
         >
-          <WithLoading(FlexItem)>
+          <WithLoading>
             <AvatarMember
               member={
                 Object {
@@ -104,8 +104,8 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
               }
               small={true}
             />
-          </WithLoading(FlexItem)>
-          <WithLoading(FlexItem)
+          </WithLoading>
+          <WithLoading
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -114,8 +114,8 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </WithLoading(FlexItem)>
-        </WithLoading(Flex)>
+          </WithLoading>
+        </WithLoading>
       }
       key="5"
       label="Profile"
@@ -124,7 +124,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </WithLoading(Flex)>
+  </WithLoading>
 </nav>
 `;
 
@@ -135,7 +135,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
   id="globalNav"
   role="navigation"
 >
-  <WithLoading(Flex)
+  <WithLoading
     align="center"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -841,11 +841,11 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
         />
       }
       icon={
-        <WithLoading(Flex)
+        <WithLoading
           align="center"
           noGutters={true}
         >
-          <WithLoading(FlexItem)>
+          <WithLoading>
             <AvatarMember
               member={
                 Object {
@@ -859,8 +859,8 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
               }
               small={true}
             />
-          </WithLoading(FlexItem)>
-          <WithLoading(FlexItem)
+          </WithLoading>
+          <WithLoading
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -869,8 +869,8 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </WithLoading(FlexItem)>
-        </WithLoading(Flex)>
+          </WithLoading>
+        </WithLoading>
       }
       key="5"
       label="Profile"
@@ -879,7 +879,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </WithLoading(Flex)>
+  </WithLoading>
 </nav>
 `;
 
@@ -890,7 +890,7 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
   id="globalNav"
   role="navigation"
 >
-  <WithLoading(Flex)
+  <WithLoading
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -921,7 +921,7 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
       onAction={[Function]}
       shrink={true}
     />
-  </WithLoading(Flex)>
+  </WithLoading>
 </nav>
 `;
 
@@ -932,7 +932,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
   id="globalNav"
   role="navigation"
 >
-  <WithLoading(Flex)
+  <WithLoading
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -1001,11 +1001,11 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={false}
       icon={
-        <WithLoading(Flex)
+        <WithLoading
           align="center"
           noGutters={true}
         >
-          <WithLoading(FlexItem)>
+          <WithLoading>
             <AvatarMember
               member={
                 Object {
@@ -1019,8 +1019,8 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
               }
               small={true}
             />
-          </WithLoading(FlexItem)>
-          <WithLoading(FlexItem)
+          </WithLoading>
+          <WithLoading
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -1029,8 +1029,8 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
               shape="chevron-down"
               size="xxs"
             />
-          </WithLoading(FlexItem)>
-        </WithLoading(Flex)>
+          </WithLoading>
+        </WithLoading>
       }
       key="5"
       label="Profile"
@@ -1039,7 +1039,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
       onClickAction={false}
       shrink={true}
     />
-  </WithLoading(Flex)>
+  </WithLoading>
 </nav>
 `;
 
@@ -1050,7 +1050,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
   id="globalNav"
   role="navigation"
 >
-  <WithLoading(Flex)
+  <WithLoading
     align="center"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -1081,7 +1081,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
       onAction={[Function]}
       shrink={true}
     />
-  </WithLoading(Flex)>
+  </WithLoading>
 </nav>
 `;
 
@@ -1092,7 +1092,7 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
   id="globalNav"
   role="navigation"
 >
-  <WithLoading(Flex)
+  <WithLoading
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -1123,7 +1123,7 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
       onAction={[Function]}
       shrink={true}
     />
-  </WithLoading(Flex)>
+  </WithLoading>
 </nav>
 `;
 
@@ -1134,7 +1134,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
   id="globalNav"
   role="navigation"
 >
-  <WithLoading(Flex)
+  <WithLoading
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -1203,11 +1203,11 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={false}
       icon={
-        <WithLoading(Flex)
+        <WithLoading
           align="center"
           noGutters={true}
         >
-          <WithLoading(FlexItem)>
+          <WithLoading>
             <AvatarMember
               member={
                 Object {
@@ -1221,8 +1221,8 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
               }
               small={true}
             />
-          </WithLoading(FlexItem)>
-          <WithLoading(FlexItem)
+          </WithLoading>
+          <WithLoading
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -1231,8 +1231,8 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </WithLoading(FlexItem)>
-        </WithLoading(Flex)>
+          </WithLoading>
+        </WithLoading>
       }
       key="5"
       label="Profile"
@@ -1241,7 +1241,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </WithLoading(Flex)>
+  </WithLoading>
 </nav>
 `;
 
@@ -1252,7 +1252,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
   id="globalNav"
   role="navigation"
 >
-  <WithLoading(Flex)
+  <WithLoading
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -1321,11 +1321,11 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={false}
       icon={
-        <WithLoading(Flex)
+        <WithLoading
           align="center"
           noGutters={true}
         >
-          <WithLoading(FlexItem)>
+          <WithLoading>
             <AvatarMember
               member={
                 Object {
@@ -1339,8 +1339,8 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
               }
               small={true}
             />
-          </WithLoading(FlexItem)>
-          <WithLoading(FlexItem)
+          </WithLoading>
+          <WithLoading
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -1349,8 +1349,8 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </WithLoading(FlexItem)>
-        </WithLoading(Flex)>
+          </WithLoading>
+        </WithLoading>
       }
       key="5"
       label="Profile"
@@ -1359,6 +1359,6 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </WithLoading(Flex)>
+  </WithLoading>
 </nav>
 `;

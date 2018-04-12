@@ -16,11 +16,22 @@ import {
 	VALID_SPACE,
 } from './Flex';
 
+const dangerousHTML = '<div>Dangerously setting inner HTML</div>';
+const makeDanger = () => ({__html: dangerousHTML});
+
 describe('Flex', function() {
 	const flex = shallow(<Flex />);
 
 	it('exists', function() {
 		expect(flex).toMatchSnapshot();
+	});
+	it('can handle dangerouslySetInnerHTML', function() {
+		const dangerousHTMLComponent = shallow(
+			<Flex
+				dangerouslySetInnerHTML={makeDanger()}
+			/>
+		);
+		expect(dangerousHTMLComponent.html()).toContain(dangerousHTML);
 	});
 	describe('default', () => {
 		it(`check that the component has '${FLEX_CLASS}' & '${FLEX_ROW_CLASS}' class`, function() {

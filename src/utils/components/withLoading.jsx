@@ -3,10 +3,6 @@ import React from 'react';
 
 import Loading from '../../media/Loading';
 
-const getDisplayName = (WrappedComponent) => {
-	return WrappedComponent.displayName || WrappedComponent.name || 'Component';
-};
-
 const withLoading = (WrappedComponent) => {
 	/**
 	 * @module WithLoading
@@ -24,22 +20,22 @@ const withLoading = (WrappedComponent) => {
 				<WrappedComponent
 					aria-busy={isLoading}
 					isLoading={isLoading}
-					loadingComponent={
+					/* loadingComponent={
 						isLoading &&
 							<Loading
 								partialCover
 								{...loadingProps}
 							/>
-					}
+					}*/
 					{...other}
 				>
-					{children}
+					{this.props.dangerouslySetInnerHTML
+						? null
+						: [children, isLoading && <Loading key="loadingIndicator" partialCover {...loadingProps}/>]}
 				</WrappedComponent>
 			);
 		}
 	}
-
-	WithLoading.displayName = `WithLoading(${getDisplayName(WrappedComponent)})`;
 
 	return WithLoading;
 };
