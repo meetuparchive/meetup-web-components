@@ -22,23 +22,11 @@ const CardJSX_doubleShadow = (
 	</Card>
 );
 
-const dangerousHTML = '<div>Dangerously setting inner HTML</div>';
-const makeDanger = () => ({__html: dangerousHTML});
-
 describe('Card and variants', function() {
 	const cardComponent = shallow(CardJSX);
 
 	it('renders a card', function() {
 		expect(cardComponent).toMatchSnapshot();
-	});
-
-	it('can handle dangerouslySetInnerHTML', function() {
-		const dangerousHTMLComponent = shallow(
-			<Card
-				dangerouslySetInnerHTML={makeDanger()}
-			/>
-		);
-		expect(dangerousHTMLComponent.html()).toContain(dangerousHTML);
 	});
 
 	it('applies variant classes for each variant prop', () => {

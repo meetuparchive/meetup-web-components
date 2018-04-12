@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Profile Dropdown should match snapshot 1`] = `
-<WithLoading
+<Flex
   className="profileDropdown-content align--left padding--all"
   justify="spaceBetween"
 >
-  <WithLoading
+  <FlexItem
     growFactor={2}
   >
-    <WithLoading>
+    <Chunk>
       <ul
         className="list"
       >
@@ -45,7 +45,7 @@ exports[`Profile Dropdown should match snapshot 1`] = `
           </a>
         </li>
       </ul>
-    </WithLoading>
+    </Chunk>
     <a
       className="button button--small text--small"
       href="meetup.com/find"
@@ -58,8 +58,8 @@ exports[`Profile Dropdown should match snapshot 1`] = `
         size="xs"
       />
     </a>
-  </WithLoading>
-  <WithLoading
+  </FlexItem>
+  <FlexItem
     className="text--secondary margin--left"
     growFactor={1}
   >
@@ -103,6 +103,6 @@ exports[`Profile Dropdown should match snapshot 1`] = `
         </a>
       </li>
     </ul>
-  </WithLoading>
-</WithLoading>
+  </FlexItem>
+</Flex>
 `;

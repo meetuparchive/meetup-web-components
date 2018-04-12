@@ -10,23 +10,11 @@ import {
 	STRIPE_NOSCRIM_CLASS,
 } from './Stripe';
 
-const dangerousHTML = '<div>Dangerously setting inner HTML</div>';
-const makeDanger = () => ({__html: dangerousHTML});
-
 describe('Stripe', function() {
 	const stripe = shallow(<Stripe />);
 
 	it('exists', function() {
 		expect(stripe).toMatchSnapshot();
-	});
-
-	it('can handle dangerouslySetInnerHTML', function() {
-		const dangerousHTMLComponent = shallow(
-			<Stripe
-				dangerouslySetInnerHTML={makeDanger()}
-			/>
-		);
-		expect(dangerousHTMLComponent.html()).toContain(dangerousHTML);
 	});
 
 	describe('collection', () => {
