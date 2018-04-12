@@ -13,6 +13,14 @@ const MOCK_PROPS = {
 		isAtLargeUp: false,
 	},
 	self: { status: 'prereg' },
+	groups: {
+		link: 'meetup.com/groups',
+		label: 'Groups',
+		list: [
+			{ urlname: '/mason-mocks', name: 'Mason Mocks' },
+			{ urlname: '/chicken-scratch', name: 'Chicken Scratch' },
+		],
+	}
 };
 
 const wrapper = props => shallow(<Nav {...MOCK_PROPS} {...props} />);
@@ -35,6 +43,20 @@ describe('Nav', () => {
 			wrapper({
 				media: { isAtMediumUp: true },
 				self: MOCK_MEMBER,
+			})
+		).toMatchSnapshot();
+	});
+
+	it('should match the snapshot for groups loading state', () => {
+		expect(
+			wrapper({
+				media: { isAtMediumUp: true },
+				self: MOCK_MEMBER,
+				groups: {
+					link: 'meetup.com/groups',
+					label: 'Groups',
+					list: undefined,
+				}
 			})
 		).toMatchSnapshot();
 	});

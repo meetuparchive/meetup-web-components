@@ -86,6 +86,7 @@ export class Nav extends React.Component {
 		const showSwarmLogo = Boolean(
 			media.isAtMediumUp && !media.isAtLargeUp && !isLoggedOut
 		);
+		const isGroupsLoaded = Boolean(groups.list);
 		const notificationContent =
 			notifications.list.length > 0 ? (
 				<NotificationsDropdown
@@ -106,7 +107,7 @@ export class Nav extends React.Component {
 			);
 
 		const profileContent =
-			groups.list.length > 0 ? (
+			isGroupsLoaded ? (
 				<ProfileDropdown
 					settings={profile.profileDropdown.settings}
 					help={profile.profileDropdown.help}
@@ -248,7 +249,7 @@ export class Nav extends React.Component {
 					</Flex>
 				),
 				onClickAction:
-					media.isAtMediumUp && groups.list.length === 0
+					media.isAtMediumUp && isGroupsLoaded && groups.list.length === 0
 						? profile.getSelfGroupsQuery
 						: false,
 				dropdownContent: media.isAtMediumUp && profileContent,
