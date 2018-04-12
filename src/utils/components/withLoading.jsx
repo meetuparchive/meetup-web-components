@@ -20,13 +20,6 @@ const withLoading = (WrappedComponent) => {
 				<WrappedComponent
 					aria-busy={isLoading}
 					isLoading={isLoading}
-					/* loadingComponent={
-						isLoading &&
-							<Loading
-								partialCover
-								{...loadingProps}
-							/>
-					}*/
 					{...other}
 				>
 					{this.props.dangerouslySetInnerHTML
