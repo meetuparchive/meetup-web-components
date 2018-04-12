@@ -21,7 +21,6 @@ export class GridList extends React.Component {
 			itemClassNames,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
-			loadingComponent,
 			...other
 		} = this.props;
 
@@ -57,8 +56,8 @@ export class GridList extends React.Component {
 
 		return (
 			<ConditionalWrap
-				condition={isLoading}
-				wrap={children => <div className={isLoading && 'component--isLoading'}>{children}</div>}
+				condition={this.props.children}
+				wrap={children => <div className={isLoading && 'component--isLoading'}>{[children, this.props.children]}</div>}
 			>
 				<ul
 					className={autoHeight || autoHeightWithWrap ? autoHeightClassNames : classNames}
@@ -72,7 +71,6 @@ export class GridList extends React.Component {
 						</li>
 					))}
 				</ul>
-				{loadingComponent}
 			</ConditionalWrap>
 		);
 	}

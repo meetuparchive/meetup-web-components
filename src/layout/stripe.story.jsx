@@ -3,6 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { WithNotes } from '@storybook/addon-notes';
 import Stripe from './Stripe';
 
+const makeDanger = () => ({__html: '<h3 className="text--sectionTitle">Dangerously setting inner HTML</h3>'});
+
 storiesOf('Stripe', module)
 	.addWithInfo(
 		'default',
@@ -58,6 +60,9 @@ storiesOf('Stripe', module)
 				<p>Hero stripes have a built-in Bounds to wrangle internal content</p>
 			</Stripe>
 		</div>
+	))
+	.addWithInfo('dangerouslySetInnerHTML', () => (
+		<Stripe dangerouslySetInnerHTML={makeDanger()} />
 	))
 	.addWithInfo('isLoading', () => (
 		<Stripe isLoading>

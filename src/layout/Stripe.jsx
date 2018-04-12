@@ -26,7 +26,6 @@ export class Stripe extends React.Component {
 			hideScrim,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
-			loadingComponent,
 			...other
 		} = this.props;
 
@@ -60,7 +59,6 @@ export class Stripe extends React.Component {
 					) :
 					children
 				}
-				{loadingComponent}
 			</div>
 		);
 	}

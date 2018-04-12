@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App Badges exists 1`] = `
-<WithLoading(Flex)
+<WithLoading
   className="getTheApp-downloadLinks"
 >
-  <WithLoading(FlexItem)
+  <WithLoading
     className="getTheApp-ios"
   >
     <a
@@ -15,8 +15,8 @@ exports[`App Badges exists 1`] = `
         src=""
       />
     </a>
-  </WithLoading(FlexItem)>
-  <WithLoading(FlexItem)
+  </WithLoading>
+  <WithLoading
     className="getTheApp-android"
   >
     <a
@@ -27,6 +27,6 @@ exports[`App Badges exists 1`] = `
         src=""
       />
     </a>
-  </WithLoading(FlexItem)>
-</WithLoading(Flex)>
+  </WithLoading>
+</WithLoading>
 `;

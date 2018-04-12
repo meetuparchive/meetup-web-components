@@ -18,7 +18,6 @@ export class InlineBlockList extends React.Component {
 			separator,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
-			loadingComponent,
 			verticalAlign,
 			...other
 		} = this.props;
@@ -38,8 +37,10 @@ export class InlineBlockList extends React.Component {
 
 		return (
 			<ConditionalWrap
-				condition={isLoading}
-				wrap={children => <div className={isLoading && 'component--isLoading'}>{children}</div>}
+				condition={isLoading || this.props.children}
+				wrap={children => (
+					<div className={isLoading && 'component--isLoading'}>{[children, this.props.children]}</div>
+				)}
 			>
 				<ul
 					className={classNames}
@@ -49,7 +50,6 @@ export class InlineBlockList extends React.Component {
 						<li key={key} {...itemProps}>{item}</li>
 					)}
 				</ul>
-				{loadingComponent}
 			</ConditionalWrap>
 		);
 	}

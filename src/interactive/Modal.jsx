@@ -123,7 +123,6 @@ export class Modal extends React.Component {
 			initialFocus,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
-			loadingComponent,
 			...other
 		} = this.props;
 
@@ -213,7 +212,6 @@ export class Modal extends React.Component {
 						}
 
 						{children}
-						{loadingComponent}
 					</FocusTrap>
 				</div>
 			</div>

@@ -24,7 +24,6 @@ export class FlexItem extends React.Component {
 			growFactor,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
-			loadingComponent,
 			...other
 		} = this.props;
 
@@ -44,7 +43,6 @@ export class FlexItem extends React.Component {
 				{...other}
 			>
 				{children}
-				{loadingComponent}
 			</div>
 		);
 	}
