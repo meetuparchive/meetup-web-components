@@ -35,7 +35,6 @@ const withLoading = (WrappedComponent) => {
 	}
 
 	WithLoading.displayName = getDisplayName(WrappedComponent);
-
 	return WithLoading;
 };
 
