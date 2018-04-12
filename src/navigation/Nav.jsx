@@ -86,7 +86,7 @@ export class Nav extends React.Component {
 		const showSwarmLogo = Boolean(
 			media.isAtMediumUp && !media.isAtLargeUp && !isLoggedOut
 		);
-		const isGroupsLoaded = !!groups.list;
+		const isGroupsLoaded = Boolean(groups.list);
 		const notificationContent =
 			notifications.list.length > 0 ? (
 				<NotificationsDropdown
