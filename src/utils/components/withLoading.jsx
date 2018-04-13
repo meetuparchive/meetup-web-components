@@ -24,23 +24,17 @@ const withLoading = (WrappedComponent) => {
 				<WrappedComponent
 					aria-busy={isLoading}
 					isLoading={isLoading}
-					loadingComponent={
-						isLoading &&
-							<Loading
-								partialCover
-								{...loadingProps}
-							/>
-					}
 					{...other}
 				>
-					{children}
+					{this.props.dangerouslySetInnerHTML
+						? null
+						: [children, isLoading && <Loading key="loadingIndicator" partialCover {...loadingProps}/>]}
 				</WrappedComponent>
 			);
 		}
 	}
 
-	WithLoading.displayName = `WithLoading(${getDisplayName(WrappedComponent)})`;
-
+	WithLoading.displayName = getDisplayName(WrappedComponent);
 	return WithLoading;
 };
 

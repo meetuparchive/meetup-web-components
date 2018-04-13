@@ -27,7 +27,6 @@ export class Card extends React.PureComponent {
 			flushUntil,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
-			loadingComponent,
 			...other
 		} = this.props;
 
@@ -51,7 +50,6 @@ export class Card extends React.PureComponent {
 				className={classNames}
 				{...other}>
 				{children}
-				{loadingComponent}
 			</div>
 		);
 	}

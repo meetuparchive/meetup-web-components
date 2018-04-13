@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignupModal should match the snapshot 1`] = `
-<WithLoading(Modal)
+<Modal
   className="meetup-signupModal"
   fixed={true}
   onDismiss={[Function]}
@@ -9,14 +9,14 @@ exports[`SignupModal should match the snapshot 1`] = `
   <div
     className="meetup-signupModal-wrapper"
   >
-    <WithLoading(Chunk)>
+    <Chunk>
       <h1
         className="text--big"
       >
         Sign up
       </h1>
-    </WithLoading(Chunk)>
-    <WithLoading(Chunk)>
+    </Chunk>
+    <Chunk>
       <div
         className="text--secondary display--inlineBlock marginHalf--right"
       >
@@ -28,16 +28,16 @@ exports[`SignupModal should match the snapshot 1`] = `
       >
         Login
       </a>
-    </WithLoading(Chunk)>
-    <WithLoading(Chunk)
+    </Chunk>
+    <Chunk
       className="margin--top"
     >
       <a
         className="meetup-signupModal-facebook button button--fullWidth button--hasHoverShadow padding--left-half text--bold text--white"
         href="facebook.com"
       >
-        <WithLoading(Flex)>
-          <WithLoading(FlexItem)
+        <Flex>
+          <FlexItem
             className="inverted"
             shrink={true}
           >
@@ -46,49 +46,49 @@ exports[`SignupModal should match the snapshot 1`] = `
               shape="external-facebook"
               size="xs"
             />
-          </WithLoading(FlexItem)>
-          <WithLoading(FlexItem)
+          </FlexItem>
+          <FlexItem
             className="flush--left"
           >
             Facebook
-          </WithLoading(FlexItem)>
-        </WithLoading(Flex)>
+          </FlexItem>
+        </Flex>
       </a>
-    </WithLoading(Chunk)>
-    <WithLoading(Chunk)>
+    </Chunk>
+    <Chunk>
       <a
         className="meetup-signupModal-google button button--bordered button--fullWidth padding--left-half text--bold"
         href="google.com"
       >
-        <WithLoading(Flex)>
-          <WithLoading(FlexItem)
+        <Flex>
+          <FlexItem
             shrink={true}
           >
             <img
               className="align--left"
               src=""
             />
-          </WithLoading(FlexItem)>
-          <WithLoading(FlexItem)
+          </FlexItem>
+          <FlexItem
             className="flush--left"
           >
             Google
-          </WithLoading(FlexItem)>
-        </WithLoading(Flex)>
+          </FlexItem>
+        </Flex>
       </a>
-    </WithLoading(Chunk)>
+    </Chunk>
     <div
       className="meetup-signupModal-or margin--bottom align--center text--labelSecondary text--normal"
     >
       Or
     </div>
-    <WithLoading(Chunk)>
+    <Chunk>
       <a
         className="meetup-signupModal-email button button--bordered button--fullWidth padding--left-half text--bold"
         href="meetup.com/email"
       >
-        <WithLoading(Flex)>
-          <WithLoading(FlexItem)
+        <Flex>
+          <FlexItem
             shrink={true}
           >
             <Icon
@@ -97,15 +97,15 @@ exports[`SignupModal should match the snapshot 1`] = `
               shape="mail"
               size="xs"
             />
-          </WithLoading(FlexItem)>
-          <WithLoading(FlexItem)
+          </FlexItem>
+          <FlexItem
             className="flush--left"
           >
             Email
-          </WithLoading(FlexItem)>
-        </WithLoading(Flex)>
+          </FlexItem>
+        </Flex>
       </a>
-    </WithLoading(Chunk)>
+    </Chunk>
   </div>
-</WithLoading(Modal)>
+</Modal>
 `;
