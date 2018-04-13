@@ -48,13 +48,12 @@ storiesOf('RadioButtonGroup', module)
 			onChange={action('radio button change')}
 			onBlur={action('radio button blur')}
 			onFocus={action('radio button focus')}
-			selectedValue="third"
+			selectedValue="first"
 		>
 			<TogglePill
 				id='toggle1'
 				name='ranking'
 				value='first'
-				isActive
 				useRadio
 			>
 				First
@@ -63,7 +62,6 @@ storiesOf('RadioButtonGroup', module)
 				id='toggle2'
 				name='ranking'
 				value='second'
-				isActive
 				useRadio
 			>
 				I'm Second
@@ -72,7 +70,6 @@ storiesOf('RadioButtonGroup', module)
 				id='toggle3'
 				name='ranking'
 				value='third'
-				isActive
 				useRadio
 			>
 				3rd.
