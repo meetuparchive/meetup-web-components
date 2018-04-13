@@ -29,7 +29,6 @@ export class Section extends React.Component {
 			flushUntil,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
-			loadingComponent,
 			...other
 		} = this.props;
 
@@ -53,7 +52,6 @@ export class Section extends React.Component {
 				{...other}
 			>
 				{children}
-				{loadingComponent}
 			</section>
 		);
 	}

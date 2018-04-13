@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavItem does *not* render count bubble, label, or dropdown if no count prop is provided 1`] = `
-<WithLoading(FlexItem)
+<FlexItem
   className="navItem"
 >
   <LinkItem
@@ -12,7 +12,7 @@ exports[`NavItem does *not* render count bubble, label, or dropdown if no count 
       </div>
     }
   />
-</WithLoading(FlexItem)>
+</FlexItem>
 `;
 
 exports[`NavItem link component renders correct url from prop 1`] = `
@@ -27,7 +27,7 @@ exports[`NavItem link component renders correct url from prop 1`] = `
 `;
 
 exports[`NavItem renders a dropdown when \`dropdownContent\` is passed as a prop 1`] = `
-<WithLoading(FlexItem)
+<FlexItem
   className="navItem"
 >
   <DropdownItem
@@ -48,11 +48,11 @@ exports[`NavItem renders a dropdown when \`dropdownContent\` is passed as a prop
       </div>
     }
   />
-</WithLoading(FlexItem)>
+</FlexItem>
 `;
 
 exports[`NavItem renders a label when provided 1`] = `
-<WithLoading(FlexItem)
+<FlexItem
   className="navItem"
 >
   <LinkItem
@@ -69,11 +69,11 @@ exports[`NavItem renders a label when provided 1`] = `
       </div>
     }
   />
-</WithLoading(FlexItem)>
+</FlexItem>
 `;
 
 exports[`NavItem renders an ActionItem when \`onAction\` is passed as a prop 1`] = `
-<WithLoading(FlexItem)
+<FlexItem
   className="navItem"
 >
   <ActionItem
@@ -85,11 +85,11 @@ exports[`NavItem renders an ActionItem when \`onAction\` is passed as a prop 1`]
     }
     labelClassNames="navItem-label"
   />
-</WithLoading(FlexItem)>
+</FlexItem>
 `;
 
 exports[`NavItem renders count bubble when a count is provided 1`] = `
-<WithLoading(FlexItem)
+<FlexItem
   className="navItem"
 >
   <LinkItem
@@ -108,5 +108,5 @@ exports[`NavItem renders count bubble when a count is provided 1`] = `
       </div>
     }
   />
-</WithLoading(FlexItem)>
+</FlexItem>
 `;
