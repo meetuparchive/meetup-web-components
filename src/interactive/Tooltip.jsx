@@ -22,11 +22,7 @@ class Tooltip extends React.PureComponent {
 	}
 
 	closeContent(e) {
-		if (this.props.manualClose && this.props.isActive) {
-			this.props.manualClose(e);
-		} else {
-			this.setState(() => ({ isActive: false }));
-		}
+		this.setState(() => ({ isActive: false }));
 
 		if (this.props.onBlur) {
 			this.props.onBlur(e);
@@ -37,11 +33,7 @@ class Tooltip extends React.PureComponent {
 	}
 
 	openContent(e) {
-		if (this.props.manualOpen) {
-			this.props.manualOpen(e);
-		} else {
-			this.setState(() => ({isActive: true}));
-		}
+		this.setState(() => ({isActive: true}));
 
 		if (this.props.onFocus) {
 			this.props.onFocus(e);
@@ -52,10 +44,6 @@ class Tooltip extends React.PureComponent {
 	}
 
 	onBlur(e) {
-		if (!this.contentRef || !this.triggerRef) {
-			return;
-		}
-
 		setTimeout(() => {
 			if (!this.contentRef.contains(document.activeElement)) {
 				this.closeContent(e);
