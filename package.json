@@ -46,6 +46,7 @@
     "swarm-sasstools": "^3.0.312"
   },
   "dependencies": {
+    "@storybook/addon-actions": "false3.4.2",
     "autosize": "3.0.21",
     "downshift": "1.31.2",
     "file-loader": "1.1.8",
