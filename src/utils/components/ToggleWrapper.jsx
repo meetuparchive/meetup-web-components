@@ -30,6 +30,7 @@ class ToggleWrapper extends React.Component {
 
 	toggleBool(e) {
 		this.setState({ isActive: !this.state.isActive });
+
 		if (this.props.onToggle) {
 			this.props.onToggle(e);
 		}
@@ -41,27 +42,33 @@ class ToggleWrapper extends React.Component {
 			'Enter'
 		].some(key => e.key === key);
 
-		if (isActivatingButton && this.props.type !== 'radio') {
+		if (isActivatingButton) { // && this.props.type !== 'radio'
 			this.toggleActive();
 		}
 	}
 
 	render() {
+		const isInput = this.props.type == 'radio' || this.props.type == 'checkbox';
+
 		return (
 			<ConditionalWrap
-				condition={this.props.type !== 'radio' || this.props.type !== 'checkbox'}
+				condition={!isInput}
 				wrap={children => (
 					<div
 						role="button"
 						aria-pressed={this.state.isActive}
 						onKeyUp={this.onKeyUp}
+						tabIndex={this.props.tabIndex || "0"}
 					>
-						{children}
+						{this.props.children({
+							isActive: this.state.isActive,
+							toggleActive: this.toggleActive,
+						})}
 					</div>
 				)}
 			>
 				{this.props.children({
-					tabIndex: this.props.type !== 'radio' && this.props.tabIndex || "0",
+					tabIndex: isInput && this.props.tabIndex || "0",
 					isActive: this.state.isActive,
 					toggleActive: this.toggleActive,
 					onKeyUp: this.props.type !== 'radio' && this.onKeyUp

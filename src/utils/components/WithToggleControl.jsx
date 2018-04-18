@@ -32,32 +32,29 @@ export default function withToggleControl(WrappedComponent) {
 		}
 
 		onKeyUp(e) {
-			const { target } = e;
-
 			const isActivatingButton = [
 				' ', /* space bar */
 				'Enter'
 			].some(key => e.key === key);
 
-			if (isActivatingButton && target.type !== 'radio') {
+			if (isActivatingButton) {
 				this.toggleActive();
 			}
 		}
 
 		render() {
+
 			return (
 				<span
-					// tabIndex={this.props.tabIndex || "0"}
+					tabIndex={this.props.tabIndex || "0"}
 					role="button"
 					aria-pressed={this.state.isActive}
-					// onKeyUp={this.onKeyUp}
+					onKeyUp={this.onKeyUp}
 				>
 					<WrappedComponent
 						{...this.props}
-						tabIndex={this.props.tabIndex || "0"}
 						isActive={this.state.isActive}
 						toggleActive={this.toggleActive}
-						onKeyUp={this.onKeyUp}
 					/>
 				</span>
 			);
