@@ -92,6 +92,25 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	@include alignDropdown("center");
 }
 
+.dropdown-bubble--active {
+	animation-name: fadeDown;
+	animation-duration: $duration--short;
+	animation-fill-mode: forwards;
+	animation-timing-function: $easing--standard;
+}
+
+@keyframes fadeDown {
+	from {
+		opacity: 0;
+		transform: translateY(-#{$triangleSize});
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 .dropdown-content {
 	margin-top: $triangleSize;
 	position: absolute;

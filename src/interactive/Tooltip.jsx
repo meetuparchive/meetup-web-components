@@ -125,13 +125,16 @@ class Tooltip extends React.PureComponent {
 						}) => (
 							<div
 								ref={el => (this.contentRef = el)}
-								className={cx("dropdown-content dropdown-content--tooltip", {
-									"dropdown-content--right": align === "right",
-									"dropdown-content--left": align === "left",
-									"dropdown-content--center": align === "center",
-									"display--none": !isActive,
-									"display--block": isActive,
-								})}
+								className={cx(
+									"dropdown-content dropdown-content--tooltip",
+									{
+										"dropdown-content--right": align === "right",
+										"dropdown-content--left": align === "left",
+										"dropdown-content--center": align === "center",
+										"display--none": !isActive,
+										"display--block": isActive,
+									}
+								)}
 								aria-hidden={!isActive}
 								id={id}
 								role="tooltip"
@@ -143,11 +146,15 @@ class Tooltip extends React.PureComponent {
 								}}
 							>
 								<div
-									className={cx("dropdown-bubble dropdown-bubble--tooltip inverted", {
-										"dropdown-bubble--right": align === "right",
-										"dropdown-bubble--left": align === "left",
-										"dropdown-bubble--center": align === "center"
-									})}
+									className={cx(
+										"dropdown-bubble dropdown-bubble--tooltip inverted",
+										{
+											"dropdown-bubble--active": isActive,
+											"dropdown-bubble--right": align === "right",
+											"dropdown-bubble--left": align === "left",
+											"dropdown-bubble--center": align === "center"
+										}
+									)}
 								>
 									{content}
 								</div>
