@@ -31,19 +31,19 @@ export const DashboardDropdownComponent = ({ mobileTabs, dismissAction }) => {
 			<Flex justify="spaceBetween" className="align--left padding--all">
 				<FlexItem growFactor={1} className="text--secondary margin--left">
 					<ul className="list">
-						<li className="list-item">
+						<li className="list-item padding--bottom">
 							<a href={analytics.link}>{analytics.label}</a>
 						</li>
-						<li className="list-item">
+						<li className="list-item padding--bottom">
 							<a href={members.link}>{members.label}</a>
 						</li>
-						<li className="list-item">
+						<li className="list-item padding--bottom">
 							<a href={groups.link}>{groups.label}</a>
 						</li>
-						<li className="list-item">
+						<li className="list-item padding--bottom">
 							<a href={templates.link}>{templates.label}</a>
 						</li>
-						<li className="list-item">
+						<li className="list-item padding--bottom">
 							<a href={publicProfile.link}>{publicProfile.label}</a>
 						</li>
 						<li className="list-item">
