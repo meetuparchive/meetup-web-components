@@ -92,13 +92,6 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	@include alignDropdown("center");
 }
 
-.dropdown-bubble--active {
-	animation-name: fadeDown;
-	animation-duration: $duration--short;
-	animation-fill-mode: forwards;
-	animation-timing-function: $easing--standard;
-}
-
 @keyframes fadeDown {
 	from {
 		opacity: 0;
@@ -109,6 +102,13 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 		opacity: 1;
 		transform: translateY(0);
 	}
+}
+
+.dropdown-bubble--active {
+	animation-name: fadeDown;
+	animation-duration: $duration--short;
+	animation-fill-mode: forwards;
+	animation-timing-function: $easing--standard;
 }
 
 .dropdown-content {
