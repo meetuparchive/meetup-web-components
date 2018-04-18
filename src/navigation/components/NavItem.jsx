@@ -8,9 +8,9 @@ import FlexItem from '../../layout/FlexItem';
 
 const NAV_ITEM_CLASS = 'navItemLink';
 
-export const ActionItem = ({ label, action, labelClassNames }) => (
+export const ActionItem = ({ navItemContent, action }) => (
 	<Button reset className={cx(NAV_ITEM_CLASS, 'text--secondary')} onClick={action}>
-		<span className={labelClassNames}>{label}</span>
+		{navItemContent}
 	</Button>
 );
 export const LinkItem = ({ linkTo, navItemContent, className }) => (
@@ -101,13 +101,7 @@ export const NavItem = props => {
 					navItemContent={trigger}
 				/>
 			)}
-			{onAction && (
-				<ActionItem
-					label={label}
-					action={onAction}
-					labelClassNames={classNames.label}
-				/>
-			)}
+			{onAction && <ActionItem action={onAction} navItemContent={navItemContent} />}
 		</FlexItem>
 	);
 };
