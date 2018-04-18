@@ -56,7 +56,6 @@ export class Flex extends React.Component {
 			className,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
-			loadingComponent,
 			...other
 		} = this.props;
 
@@ -94,7 +93,6 @@ export class Flex extends React.Component {
 				{...other}
 			>
 				{children}
-				{loadingComponent}
 			</div>
 		);
 	}

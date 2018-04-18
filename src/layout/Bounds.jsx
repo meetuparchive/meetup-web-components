@@ -18,7 +18,6 @@ export class Bounds extends React.Component {
 			narrow,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
-			loadingComponent,
 			...other
 		} = this.props;
 
@@ -37,7 +36,6 @@ export class Bounds extends React.Component {
 				{...other}
 			>
 				{children}
-				{loadingComponent}
 			</div>
 		);
 	}
