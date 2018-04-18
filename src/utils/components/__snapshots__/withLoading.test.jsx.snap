@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withLoading matches snapshot with 0 children 1`] = `<TestComponent />`;
+
+exports[`withLoading matches snapshot with 1 child 1`] = `
+<TestComponent>
+  <span>
+    World
+  </span>
+</TestComponent>
+`;
+
+exports[`withLoading matches snapshot with 2 children 1`] = `
+<TestComponent>
+  <span>
+    Hello
+  </span>
+  <span>
+    World
+  </span>
+</TestComponent>
+`;
+
+exports[`withLoading matches snapshot with isLoading 1`] = `
+<TestComponent
+  aria-busy={true}
+  isLoading={true}
+>
+  <Loading
+    color="rgb(151, 159, 164)"
+    key="loadingIndicator"
+    partialCover={true}
+    scrimColor="rgba(255,255,255, .87)"
+    size="48px"
+  />
+</TestComponent>
+`;

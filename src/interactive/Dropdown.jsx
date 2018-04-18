@@ -9,19 +9,9 @@ import {
 } from 'swarm-constants/dist/js/colorConstants.js';
 
 import bindAll from "../utils/bindAll";
+import ConditionalWrap from '../utils/components/ConditionalWrap';
 
-const ConditionalWrap = ({condition, wrap, children}) => condition ? wrap(children) : children;
-
-export const Item = ({isActive, isSelected, children}) => (
-	<div
-		className="dropdownMenu-item"
-		style={{
-			backgroundColor: isActive && C_COOLGRAYLIGHTTRANSP
-		}}
-	>
-		{children}
-	</div>
-);
+export const DROPDOWN_MENU_ITEM_CLASS = 'dropdownMenu-item';
 
 /**
  * @module Dropdown
@@ -262,16 +252,19 @@ class Dropdown extends React.PureComponent {
 										{
 											menuItems
 											?
-												menuItems.map((item, index) => (
-													<Item
-														{...getItemProps({
-															item,
-															isActive: highlightedIndex === index,
-														})}
-														key={`menuItem-${index}`}
-													>
-														{item}
-													</Item>
+												menuItems.map((item, index) => React.cloneElement(
+													item,
+													{
+														key: `menuItem-${index}`,
+														className: cx(
+															item.props.className,
+															DROPDOWN_MENU_ITEM_CLASS,
+															'display--flex span--100'
+														),
+														style: {
+															backgroundColor: highlightedIndex === index && C_COOLGRAYLIGHTTRANSP
+														}
+													}
 												))
 											:
 												content
@@ -296,7 +289,7 @@ Dropdown.defaultProps = {
 Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element,
-	menuItems: PropTypes.array,
+	menuItems: PropTypes.arrayOf(PropTypes.element),
 	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,

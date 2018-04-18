@@ -1,6 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
+import config from 'mwp-config';
+
 import {
 	Footer,
 	FooterCategory,
@@ -9,7 +11,6 @@ import {
 } from './Footer';
 
 const DEFAULT_LANG = 'en-US';
-const FRENCH_LANG = 'fr-FR';
 const onLanguageSelect = jest.fn();
 
 const footerLinkSets = [
@@ -49,6 +50,7 @@ const subFooterLinks = [
 ];
 
 const MOCK_DEFAULT_STATE = {
+	legalCopy: 'Mock legal copy',
 	localeCode: 'en-US',
 	linkSets: footerLinkSets,
 	onLanguageSelect: onLanguageSelect,
@@ -116,9 +118,12 @@ describe('LanguageSelectInput', () => {
 });
 
 describe('SocialIconsList', () => {
-	it('exists', () => {
-		const socialIconList = shallow(<SocialIconsList language={FRENCH_LANG} />);
-		expect(socialIconList).toMatchSnapshot();
+	const allLocales = config.locales;
+	allLocales.forEach(localeCode => {
+		it(`renders for ${localeCode} locale`, () => {
+			const socialIconList = shallow(<SocialIconsList localeCode={localeCode} />);
+			expect(socialIconList).toMatchSnapshot();
+		});
 	});
 });
 

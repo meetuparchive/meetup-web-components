@@ -3,7 +3,6 @@
 exports[`App Badges exists 1`] = `
 <Flex
   className="getTheApp-downloadLinks"
-  direction="row"
 >
   <FlexItem
     className="getTheApp-ios"

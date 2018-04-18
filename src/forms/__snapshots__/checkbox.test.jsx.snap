@@ -8,7 +8,6 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
   <Flex
     align="center"
     className="minTouchHeight"
-    direction="row"
   >
     <FlexItem
       shrink={true}
@@ -55,7 +54,6 @@ exports[`Checkbox basic renders unchecked checkbox 1`] = `
   <Flex
     align="center"
     className="minTouchHeight"
-    direction="row"
   >
     <FlexItem
       shrink={true}

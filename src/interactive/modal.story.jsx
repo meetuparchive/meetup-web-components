@@ -19,8 +19,14 @@ const onDismiss = e => {
 };
 
 const content = (
-	<Stripe><Section>
+	<Stripe><Section hasSeparator className="border--none">
 		<h2 className='align--center'>This is a modal!</h2>
+		<Chunk>
+			<span>It even has some </span>
+			<a href="#" className="link" id="firstFocus">examples of </a>
+			<Button small>focusable</Button>
+			<a href="#" className="link"> content</a>.
+		</Chunk>
 		<div className='row align--center margin--top'>
 			<div className='row-item'>
 				<Button onClick={onDismiss} fullWidth>Cancel</Button>
@@ -32,7 +38,7 @@ const content = (
 	</Section></Stripe>
 );
 const largeContent = (
-	<Stripe><Section>
+	<Stripe><Section hasSeparator className="border--none">
 		<h2 className='align--center'>This is a modal!</h2>
 		<Chunk>Item</Chunk>
 		<Chunk>Item</Chunk>
@@ -80,6 +86,7 @@ storiesOf('Modal', module)
 		<div style={wrapperStyle}>
 			<Modal
 				onDismiss={onDismiss}
+				initialFocus="#firstFocus"
 			>
 				{content}
 			</Modal>
@@ -101,9 +108,11 @@ storiesOf('Modal', module)
 				onDismiss={onDismiss}
 				fixed
 			>
-				<Stripe><Section>
-					<h2 className='align--center'>This is a modal!</h2>
-					<p>I'm some copy</p>
+				<Stripe><Section hasSeparator className="border--none">
+					<Chunk className="align--center">
+						<h2>This is a modal!</h2>
+						<p>I'm some copy</p>
+					</Chunk>
 					<div className='row align--center margin--top'>
 						<div className='row-item'>
 							<Button onClick={onDismiss} fullWidth>Cancel</Button>
@@ -141,13 +150,15 @@ storiesOf('Modal', module)
 				inverted
 				heroBgColor='rgb(55,30,172)'
 				heroContent={
-					<Section>
+					<Section hasSeparator className="border--none"><Chunk>
 						<h1 className='text--display align--center'>I can be your hero</h1>
-					</Section>
+					</Chunk></Section>
 				}
 			>
-				<Stripe><Section>
-					<h2 className='align--center'>This is a modal!</h2>
+				<Stripe><Section hasSeparator className="border--none">
+					<Chunk>
+						<h2 className='align--center'>This is a modal!</h2>
+					</Chunk>
 					<div className='row align--center margin--top'>
 						<div className='row-item'>
 							<Button onClick={onDismiss} fullWidth>Cancel</Button>
@@ -172,13 +183,15 @@ storiesOf('Modal', module)
 				inverted
 				heroBgImage='http://www.cheatsheet.com/wp-content/uploads/2016/09/Homemade-Meat-Gyro-with-French-Fries.jpg'
 				heroContent={
-					<Section>
+					<Section hasSeparator className="border--none"><Chunk>
 						<h1 className='text--display align--center'>I can be your hero</h1>
-					</Section>
+					</Chunk></Section>
 				}
 			>
-				<Stripe><Section>
-					<h2 className='align--center'>This is a modal!</h2>
+				<Stripe><Section hasSeparator className="border--none">
+					<Chunk>
+						<h2 className='align--center'>This is a modal!</h2>
+					</Chunk>
 					<div className='row align--center margin--top'>
 						<div className='row-item'>
 							<Button onClick={onDismiss} fullWidth>Cancel</Button>
@@ -203,13 +216,15 @@ storiesOf('Modal', module)
 				onDismiss={onDismiss}
 				heroBgImage='http://cds.arbys.com/images/menu/1024x557_RoastBeefGyro_silo_tan.jpg'
 				heroContent={
-					<Section>
+					<Section hasSeparator className="border--none"><Chunk>
 						<h1 className='text--display align--center'>I can be your hero</h1>
-					</Section>
+					</Chunk></Section>
 				}
 			>
-				<Stripe><Section>
-					<h2 className='align--center'>This is a modal!</h2>
+				<Stripe><Section hasSeparator className="border--none">
+					<Chunk>
+						<h2 className='align--center'>This is a modal!</h2>
+					</Chunk>
 					<div className='row align--center margin--top'>
 						<div className='row-item'>
 							<Button onClick={onDismiss} fullWidth>Cancel</Button>
@@ -231,6 +246,7 @@ storiesOf('Modal', module)
 		<div style={wrapperStyle}>
 			<Modal
 				onDismiss={onDismiss}
+				initialFocus="#firstFocus"
 				fullscreen
 			>
 				{content}
@@ -245,6 +261,39 @@ storiesOf('Modal', module)
 		<div style={wrapperStyle}>
 			<Modal
 				closeArea={false}
+			>
+				{content}
+			</Modal>
+			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{ __html: iconSprite }} />
+		</div>
+	))
+	.addWithInfo(
+	'isLoading',
+	() => (
+		<div style={wrapperStyle}>
+			<Modal
+				isLoading
+				onDismiss={onDismiss}
+				initialFocus="#firstFocus"
+			>
+				{content}
+			</Modal>
+			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{ __html: iconSprite }} />
+		</div>
+	))
+	.addWithInfo(
+	'isLoading with loadingProps',
+	() => (
+		<div style={wrapperStyle}>
+			<Modal
+				isLoading
+				loadingProps={{
+					color: 'red',
+					scrimColor: 'rgba(250, 250, 255, 0.8)',
+					size: '96px'
+				}}
+				onDismiss={onDismiss}
+				initialFocus="#firstFocus"
 			>
 				{content}
 			</Modal>

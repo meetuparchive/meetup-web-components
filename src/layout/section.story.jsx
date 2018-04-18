@@ -133,4 +133,53 @@ storiesOf('Section', module)
 				</FlexItem>
 			</Flex>
 		</div>
-	));
+	))
+	.addWithInfo(
+		'isLoading',
+		() => (
+			<div style={{height: '100vh', width: '100%', marginBottom: '20px'}}>
+				<div style={{maxWidth: '850px', margin: 'auto', marginTop:'15px'}}>
+					<Section
+						isLoading
+						style={shadingStyles}
+					>
+						<div className='chunk'>
+							<h2 className='text--sectionTitle'>About us</h2>
+							<div className='runningText'>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+							</div>
+							<ul className='inlineblockList'><li><a className='token token--link' href='/topics/91146/tech-talks'>Tech Talks</a></li><li><a className='token token--link' href='/topics/10209/web'>Web Technology</a></li><li><a className='token token--link' href='/topics/16216/mobile-technology'>Mobile Technology</a></li><li><a className='token token--link' href='/topics/3833/softwaredev'>Software Development</a></li><li><a className='token token--link' href='/topics/48471/computer-programming'>Computer programming</a></li><li><a className='token token--link' href='/topics/127567/ios-development'>iOS Development</a></li><li><a className='token token--link' href='/topics/20346/android-developers'>Android Development</a></li><li><a className='token token--link' href='/topics/1040/ruby'>Ruby</a></li><li><a className='token token--link' href='/topics/563/opensource'>Open Source</a></li><li><a className='token token--link' href='/topics/189/java'>Java</a></li></ul>
+						</div>
+					</Section>
+				</div>
+			</div>
+		)
+	)
+	.addWithInfo(
+		'isLoading with loadingProps',
+		() => (
+			<div style={{height: '100vh', width: '100%', marginBottom: '20px'}}>
+				<div style={{maxWidth: '850px', margin: 'auto', marginTop:'15px'}}>
+					<Section
+						isLoading
+						loadingProps={{
+							color: 'red',
+							scrimColor: 'rgba(250, 250, 255, 0.8)',
+							size: '96px'
+						}}
+						style={shadingStyles}
+					>
+						<div className='chunk'>
+							<h2 className='text--sectionTitle'>About us</h2>
+							<div className='runningText'>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+							</div>
+							<ul className='inlineblockList'><li><a className='token token--link' href='/topics/91146/tech-talks'>Tech Talks</a></li><li><a className='token token--link' href='/topics/10209/web'>Web Technology</a></li><li><a className='token token--link' href='/topics/16216/mobile-technology'>Mobile Technology</a></li><li><a className='token token--link' href='/topics/3833/softwaredev'>Software Development</a></li><li><a className='token token--link' href='/topics/48471/computer-programming'>Computer programming</a></li><li><a className='token token--link' href='/topics/127567/ios-development'>iOS Development</a></li><li><a className='token token--link' href='/topics/20346/android-developers'>Android Development</a></li><li><a className='token token--link' href='/topics/1040/ruby'>Ruby</a></li><li><a className='token token--link' href='/topics/563/opensource'>Open Source</a></li><li><a className='token token--link' href='/topics/189/java'>Java</a></li></ul>
+						</div>
+					</Section>
+				</div>
+			</div>
+		)
+	);

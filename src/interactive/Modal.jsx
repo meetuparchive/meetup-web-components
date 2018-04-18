@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import FocusTrap from 'focus-trap-react';
 
 import Icon from '../media/Icon';
 import Button from '../forms/Button';
 import Stripe from '../layout/Stripe';
+import withLoading from '../utils/components/withLoading';
 import { MEDIA_QUERIES } from '../utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
@@ -52,7 +54,7 @@ export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen, i
  * @see {@link http://meetup.github.io/sassquatch2/views.html#modals}
  * @module Modal
  */
-class Modal extends React.Component {
+export class Modal extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onDismiss = this.onDismiss.bind(this);
@@ -118,6 +120,9 @@ class Modal extends React.Component {
 			hideHeroScrim,
 			inverted,
 			closeArea,
+			initialFocus,
+			loadingProps = {}, // eslint-disable-line no-unused-vars
+			isLoading,
 			...other
 		} = this.props;
 
@@ -133,7 +138,8 @@ class Modal extends React.Component {
 			{
 				'view--modalFull': fullscreen,
 				'view--modalFixed': fixed && !this.state.isMobileSize,
-				'view--modalSnap': !fullscreen
+				'view--modalSnap': !fullscreen,
+				'modal--isLoading component--isLoading': isLoading
 			}
 		);
 
@@ -156,7 +162,7 @@ class Modal extends React.Component {
 		);
 
 		const closeElement = closeArea && (
-			<div className='padding--all'>
+			<div className='padding--all modal-closeButtonContainer'>
 				<Button onClick={this.onDismiss} className={dismissButtonClasses}>
 					<Icon shape='cross' size='s' />
 				</Button>
@@ -185,21 +191,28 @@ class Modal extends React.Component {
 						maxHeight: fixed ? `calc(100% - ${this.state.topPosition} * 2)` : 'auto',
 					}}
 				>
-					{heroContent ?
-						<Stripe
-							backgroundImage={heroBgImage}
-							inverted={inverted}
-							hideScrim={hideHeroScrim}
-							style={heroStyles}
-						>
-							{closeElement}
-							{heroContent}
-						</Stripe>
-						:
-						closeElement
-					}
+					<FocusTrap
+						focusTrapOptions={{
+							initialFocus,
+							escapeDeactivates: false
+						}}
+					>
+						{heroContent ?
+							<Stripe
+								backgroundImage={heroBgImage}
+								inverted={inverted}
+								hideScrim={hideHeroScrim}
+								style={heroStyles}
+							>
+								{closeElement}
+								{heroContent}
+							</Stripe>
+							:
+							closeElement
+						}
 
-					{children}
+						{children}
+					</FocusTrap>
 				</div>
 			</div>
 		);
@@ -216,6 +229,17 @@ Modal.propTypes = {
 	inverted: PropTypes.bool,
 	onDismiss: PropTypes.func.isRequired,
 	closeArea: PropTypes.bool,
+	initialFocus: PropTypes.oneOf([
+		PropTypes.element,
+		PropTypes.func,
+		PropTypes.string
+	]),
+	isLoading: PropTypes.bool,
+	loadingProps: PropTypes.shape({
+		color: PropTypes.string,
+		scrimColor: PropTypes.string,
+		size: PropTypes.string
+	})
 };
 
 Modal.defaultProps = {
@@ -223,4 +247,4 @@ Modal.defaultProps = {
 	closeArea: true,
 };
 
-export default Modal;
+export default withLoading(Modal);

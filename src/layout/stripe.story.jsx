@@ -58,4 +58,29 @@ storiesOf('Stripe', module)
 				<p>Hero stripes have a built-in Bounds to wrangle internal content</p>
 			</Stripe>
 		</div>
+	))
+	.addWithInfo('isLoading', () => (
+		<Stripe isLoading>
+			<h3 className='text--sectionTitle'>Default stripe</h3>
+			<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+			<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+			<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+			<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+		</Stripe>
+	))
+	.addWithInfo('isLoading with loadingProps', () => (
+		<Stripe
+			isLoading
+			loadingProps={{
+				color: 'red',
+				scrimColor: 'rgba(250, 250, 255, 0.8)',
+				size: '96px'
+			}}
+		>
+			<h3 className='text--sectionTitle'>Default stripe</h3>
+			<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+			<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+			<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+			<p>Stripes go full-width and are used to separate distinct regions of a view</p>
+		</Stripe>
 	));

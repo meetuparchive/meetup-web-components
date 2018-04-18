@@ -1,14 +1,15 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
+import { shallow } from 'enzyme';
+// import TestUtils from 'react-dom/test-utils';
 
 export const variantTest = (FoundationComponent, className, variants) => {
 	variants.forEach(variant => {
 		const props = {
-			[variant]: true
+			[variant]: true,
 		};
 
-		const component = TestUtils.renderIntoDocument(<FoundationComponent {...props} />);
-		expect(() => TestUtils.findRenderedDOMComponentWithClass(component, `${className}--${variant}`)).not.toThrow();
+		const component = shallow(<FoundationComponent {...props} />);
+		expect(component.find(`.${className}--${variant}`).exists()).toBe(true);
 	});
 };
 
@@ -32,4 +33,3 @@ export const hasRoleAttribute = (el, roleName) => {
 export const componentHasProperty = (component, prop, value) => {
 	expect(component && component.props && component.props[prop] === value).toBe(true);
 };
-

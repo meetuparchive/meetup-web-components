@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 
 import Button from '../forms/Button';
-import Modal, {
+import {
+	Modal,
 	MODAL_CLOSE_BUTTON,
 	DEFAULT_MARGIN_TOP,
 	MARGIN_TOP_OFFSET,
@@ -80,7 +81,7 @@ describe('Modal', () => {
 
 	it('should not render a close button', () => {
 		const modal = TestUtils.renderIntoDocument(
-			<Modal onDismiss={e => {}} closeArea={false}>{content}</Modal>
+			<Modal onDismiss={e => {}} closeArea={false}>{content} <a href="#">focusable element</a></Modal>
 		);
 		const closeButtons = TestUtils.scryRenderedDOMComponentsWithClass(
 			modal,

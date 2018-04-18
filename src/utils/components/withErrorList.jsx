@@ -10,8 +10,7 @@ import ErrorList from '../../forms/ErrorList';
  * @param {string} id - the id of the form field
  * @returns {string} id for error list
  */
-export const getErrorId = (id) => `${id}-error`;
-
+export const getErrorId = id => `${id}-error`;
 
 /**
  * Provides `ErrorList` component and aria related props
@@ -29,16 +28,13 @@ const withErrorList = WrappedComponent => {
 	 */
 	class WithErrorList extends React.PureComponent {
 		render() {
-			const {
-				id,
-				error,
-				suppressError,
-				...other
-			} = this.props;
+			const { id, error, suppressError, ...other } = this.props;
 
 			const errorId = id && getErrorId(id);
 
-			return suppressError ? <WrappedComponent {...other} /> : (
+			return suppressError ? (
+				<WrappedComponent {...other} />
+			) : (
 				<div>
 					<WrappedComponent
 						id={id}
@@ -47,20 +43,14 @@ const withErrorList = WrappedComponent => {
 						aria-invalid={Boolean(error)}
 						{...other}
 					/>
-					<ErrorList
-						id={errorId}
-						error={error}
-					/>
+					<ErrorList id={errorId} error={error} />
 				</div>
 			);
 		}
 	}
 	WithErrorList.propTypes = {
 		id: PropTypes.string,
-		error: PropTypes.oneOfType([
-			PropTypes.string,
-			PropTypes.element
-		]),
+		error: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.bool]),
 		suppressError: PropTypes.bool,
 	};
 
