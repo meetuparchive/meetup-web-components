@@ -116,7 +116,7 @@ class FloatingPosition extends React.PureComponent {
 }
 
 FloatingPosition.propTypes = {
-	getTrigger: PropTypes.func
+	getTrigger: PropTypes.func.isRequired
 };
 
 export default FloatingPosition;

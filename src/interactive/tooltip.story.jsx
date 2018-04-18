@@ -35,6 +35,7 @@ storiesOf("Tooltip", module)
 					minWidth="0"
 					maxWidth="384px"
 					align="right"
+					id="testTooltip"
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
 				/>
@@ -58,6 +59,7 @@ storiesOf("Tooltip", module)
 					minWidth="0"
 					maxWidth="384px"
 					align="center"
+					id="testTooltip"
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
 				/>
@@ -69,10 +71,11 @@ storiesOf("Tooltip", module)
 		"Use the `noPortal` prop to decide whether a the content should render in document body",
 		() => (
 			<Tooltip
+				noPortal
 				minWidth="0"
 				maxWidth="384px"
 				align="right"
-				noPortal
+				id="testTooltip"
 				trigger={<Button small>Open</Button>}
 				content={dropdownContent}
 			/>
@@ -86,6 +89,7 @@ storiesOf("Tooltip", module)
 				align="left"
 				minWidth="0"
 				maxWidth="384px"
+				id="testTooltip"
 				trigger={<Button small>Open</Button>}
 				content={dropdownContent}
 			/>
@@ -99,6 +103,7 @@ storiesOf("Tooltip", module)
 				align="center"
 				minWidth="0"
 				maxWidth="384px"
+				id="testTooltip"
 				trigger={<Button small>Open</Button>}
 				content={dropdownContent}
 			/>
