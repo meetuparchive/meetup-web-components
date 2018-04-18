@@ -72,6 +72,7 @@ class Tooltip extends React.PureComponent {
 			maxWidth,
 			minWidth,
 			noPortal,
+			id,
 			...other
 		} = this.props;
 
@@ -108,6 +109,7 @@ class Tooltip extends React.PureComponent {
 					onFocus={this.openContent}
 					onBlur={this.onBlur}
 					onMouseEnter={this.openContent}
+					aria-labelledby={id}
 				>
 					{trigger}
 				</div>
@@ -131,6 +133,8 @@ class Tooltip extends React.PureComponent {
 									"display--block": isActive,
 								})}
 								aria-hidden={!isActive}
+								id={id}
+								role="tooltip"
 								style={{
 									left: left,
 									top: top,
@@ -164,6 +168,7 @@ Tooltip.defaultProps = {
 };
 
 Tooltip.propTypes = {
+	id: PropTypes.string.isRequired,
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element,
 	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
