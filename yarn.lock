@@ -7664,9 +7664,9 @@ react-docgen@^2.15.0:
     node-dir "^0.1.10"
     recast "^0.12.6"
 
-react-dom@16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.0.0.tgz#9cc3079c3dcd70d4c6e01b84aab2a7e34c303f58"
+react-dom@16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.1.tgz#6a3c90a4fb62f915bdbcf6204422d93a7d4ca573"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -7843,9 +7843,9 @@ react-treebeard@^2.0.3:
     shallowequal "^0.2.2"
     velocity-react "^1.3.1"
 
-react@16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0.tgz#ce7df8f1941b036f02b2cca9dbd0cb1f0e855e2d"
+react@16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.3.1.tgz#4a2da433d471251c69b6033ada30e2ed1202cfd8"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -8995,9 +8995,9 @@ swarm-constants@1.2.94:
   version "1.2.94"
   resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-1.2.94.tgz#859364602af081b1e7ea52018a967eec4663fbbd"
 
-swarm-icons@^1.3:
-  version "1.3.289"
-  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-1.3.289.tgz#609cbd296635bffe32942bac1d118a90445f853c"
+swarm-icons@^2.3:
+  version "2.3.301"
+  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-2.3.301.tgz#3e4d7a3ddd790853a4209c8935c8784d529ab77f"
   dependencies:
     mustache "^2.3.0"
     xml2js "^0.4.17"
