@@ -1,5 +1,5 @@
 import React from "react";
-import { storiesOf } from "@storybook/react";
+import { storiesOf, action } from '@storybook/react';
 import { decorateWithBasics } from "../utils/decorators";
 import Dropdown from "./Dropdown";
 import Section from "../layout/Section";
@@ -147,13 +147,14 @@ storiesOf("Dropdown", module)
 			<Dropdown
 				align="center"
 				minWidth="160px"
-				maxWidth="384px"
+				maxWidth="250px"
 				trigger={<Button small>Open</Button>}
 				menuItems={[
-					'Red',
-					'White',
-					'Swarm'
+					<div onClick={action('item one click')}>Item one has text that is really long and should wrap once we reach max width</div>,
+					<div onClick={action('item two click')}>Item two</div>,
+					<div onClick={action('item three click')}>Item three</div>
 				]}
+				noPortal // to test text-wrapping
 			/>
 		)
 	)

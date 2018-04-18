@@ -36,7 +36,7 @@ export const FooterCategory = (props) => (
 );
 
 
-export const SocialIconsList = (localeCode) => {
+export const SocialIconsList = ({localeCode}) => {
 	const socialLinks = getSocialLinks(localeCode);
 	const socialIcons = [
 		<a href={socialLinks.facebook}>
@@ -78,6 +78,7 @@ export const Footer = ({
 	createMeetup,
 	isLight,
 	isLoggedIn,
+	legalCopy,
 	localeCode,
 	linkSets,
 	media,
@@ -183,10 +184,17 @@ export const Footer = ({
 				<Bounds>
 					<div className="padding--all">
 						<InlineBlockList
-							className="text--small align--center atMedium_align--left"
+							className="text--small align--center atMedium_align--left footerList-legal"
 							separator="·"
 							items={[
 								<span>{`© Meetup ${new Date().getFullYear()}`}</span>,
+								(legalCopy && <span>{legalCopy}</span>),
+							].filter(item => item)}
+						/>
+						<InlineBlockList
+							className="text--small align--center atMedium_align--left margin--top"
+							separator="·"
+							items={[
 								...subFooterLinks
 							]}
 						/>
@@ -247,6 +255,7 @@ Footer.propTypes = {
 	}).isRequired,
 	isLight: PropTypes.bool,
 	isLoggedIn: PropTypes.bool,
+	legalCopy: PropTypes.string,
 	localeCode: PropTypes.string.isRequired,
 	linkSets: PropTypes.arrayOf(PropTypes.shape({
 		header: PropTypes.string.isRequired,

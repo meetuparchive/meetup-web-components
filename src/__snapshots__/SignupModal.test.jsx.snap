@@ -3,9 +3,7 @@
 exports[`SignupModal should match the snapshot 1`] = `
 <Modal
   className="meetup-signupModal"
-  closeArea={true}
   fixed={true}
-  fullscreen={false}
   onDismiss={[Function]}
 >
   <div
@@ -38,9 +36,7 @@ exports[`SignupModal should match the snapshot 1`] = `
         className="meetup-signupModal-facebook button button--fullWidth button--hasHoverShadow padding--left-half text--bold text--white"
         href="facebook.com"
       >
-        <Flex
-          direction="row"
-        >
+        <Flex>
           <FlexItem
             className="inverted"
             shrink={true}
@@ -64,9 +60,7 @@ exports[`SignupModal should match the snapshot 1`] = `
         className="meetup-signupModal-google button button--bordered button--fullWidth padding--left-half text--bold"
         href="google.com"
       >
-        <Flex
-          direction="row"
-        >
+        <Flex>
           <FlexItem
             shrink={true}
           >
@@ -93,15 +87,13 @@ exports[`SignupModal should match the snapshot 1`] = `
         className="meetup-signupModal-email button button--bordered button--fullWidth padding--left-half text--bold"
         href="meetup.com/email"
       >
-        <Flex
-          direction="row"
-        >
+        <Flex>
           <FlexItem
             shrink={true}
           >
             <Icon
               className="align--left"
-              color="rgb(117,117,117)"
+              color="rgb(117, 117, 117)"
               shape="mail"
               size="xs"
             />

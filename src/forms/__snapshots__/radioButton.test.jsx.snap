@@ -8,7 +8,6 @@ exports[`RadioButton checked should render an disabled radio button 1`] = `
   <Flex
     align="center"
     className="some-class"
-    direction="row"
     noGutters={true}
   >
     <FlexItem
@@ -55,7 +54,6 @@ exports[`RadioButton checked should render an enabled radio button 1`] = `
   <Flex
     align="center"
     className="some-class"
-    direction="row"
     noGutters={true}
   >
     <FlexItem
@@ -102,7 +100,6 @@ exports[`RadioButton unchecked should render an disabled radio button 1`] = `
   <Flex
     align="center"
     className="some-class"
-    direction="row"
     noGutters={true}
   >
     <FlexItem
@@ -145,7 +142,6 @@ exports[`RadioButton unchecked should render an enabled radio button 1`] = `
   <Flex
     align="center"
     className="some-class"
-    direction="row"
     noGutters={true}
   >
     <FlexItem

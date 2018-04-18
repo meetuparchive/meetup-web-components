@@ -5,9 +5,7 @@ exports[`Notification component should match snapshot 1`] = `
   className="list-item notification"
   onClick={[Function]}
 >
-  <Flex
-    direction="row"
-  >
+  <Flex>
     <FlexItem
       className="valignChildren--center"
       shrink={true}

@@ -251,4 +251,37 @@ storiesOf('Flex', module)
 				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
 				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
 			</Flex>
+		))
+	.addWithInfo(
+		'isLoading',
+		() => (
+			<Flex
+				isLoading
+				style={flexParentStyles}
+			>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
+			</Flex>
+		))
+	.addWithInfo(
+		'isLoading with loadingProps',
+		() => (
+			<Flex
+				isLoading
+				loadingProps={{
+					color: 'red',
+					scrimColor: 'rgba(250, 250, 255, 0.8)',
+					size: '64px'
+				}}
+				style={flexParentStyles}
+			>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 1</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 2</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 3</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 4</div></FlexItem>
+				<FlexItem style={flexItemStyles}><div style={boxStyles}>Item 5</div></FlexItem>
+			</Flex>
 		));

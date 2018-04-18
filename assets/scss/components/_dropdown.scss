@@ -115,9 +115,15 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	-webkit-transform: translateX(-50%);
 }
 
+.dropdownMenu {
+	width: max-content;
+}
+
 .dropdownMenu-item {
+	box-sizing: border-box;
 	border-bottom: 1px solid $C_border;
 	cursor: pointer;
+	justify-content: flex-start;
 	padding: calc(var(--responsiveSpace)/2);
 	&:hover {
 		background-color: $C_coolGrayLight;

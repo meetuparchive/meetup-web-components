@@ -1,76 +1,2254 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Nav should match the snapshot for authenticated large screens 1`] = `
-<Nav
-  localeCode="en-US"
-  media={Object {}}
-  self={
+<nav
+  aria-label="Header navigation"
+  className="padding--all"
+  groups={
     Object {
-      "name": "Jeff Cleft",
-      "status": "active",
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
     }
   }
-/>
+  id="globalNav"
+  role="navigation"
+>
+  <Flex
+    align="top"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="logo logo--script flush--left"
+      icon={
+        <img
+          alt="Meetup Logo"
+          height="44px"
+          src=""
+        />
+      }
+      linkClassName="display--block"
+      linkTo="meetup.com"
+    />
+    <NavItem
+      className="navItem--authenticated"
+      icon={
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
+        />
+      }
+      key="1"
+      label="Explore"
+      linkTo="meetup.com/find/events"
+      shrink={true}
+    />
+    <NavItem
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="2"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="messages"
+          size="s"
+        />
+      }
+      key="3"
+      label="Messages"
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="notifications"
+          size="s"
+        />
+      }
+      key="4"
+      label="Notifications"
+      linkTo="meetup.com/notifications"
+      onClickAction={false}
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
+      icon={
+        <Flex
+          align="center"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="5"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo="meetup.com/profile"
+      onClickAction={false}
+      shrink={true}
+    />
+  </Flex>
+</nav>
 `;
 
 exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
-<Nav
-  localeCode="en-US"
-  media={Object {}}
-  self={
+<nav
+  aria-label="Header navigation"
+  className="padding--all"
+  groups={
     Object {
-      "name": "Jeff Cleft",
-      "status": "active",
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
     }
   }
-/>
+  id="globalNav"
+  role="navigation"
+>
+  <Flex
+    align="center"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="logo logo--swarm flush--left"
+      icon={
+        <img
+          alt="Meetup Logo"
+          height="48px"
+          src=""
+        />
+      }
+      linkTo="meetup.com"
+    />
+    <NavItem
+      className="navItem--authenticated"
+      icon={
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
+        />
+      }
+      key="1"
+      label="Explore"
+      linkTo="meetup.com/find/events"
+      shrink={true}
+    />
+    <NavItem
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="2"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="messages"
+          size="s"
+        />
+      }
+      key="3"
+      label="Messages"
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      dropdownContent={
+        <NotificationsDropdownComponent
+          emptyContentLabel="You don't have any notifications yet"
+          generateClassicUrl={[Function]}
+          localeCode="en-US"
+          notifications={
+            Array [
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": false,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": false,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+              Object {
+                "category": "event",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428867509608992768",
+                "important": false,
+                "kind": "event_announce",
+                "link": "https://www.meetup.com/engineering/events/238829706/",
+                "photo": Object {
+                  "base_url": "http://photos4.meetupstatic.com",
+                  "highres_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/highres_434003882.jpeg",
+                  "id": 434003882,
+                  "photo_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg",
+                  "thumb_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/thumb_434003882.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_rsvp",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_announce",
+                  },
+                  "push": Object {
+                    "name": "event_announce_notif",
+                  },
+                },
+                "target": Object {
+                  "event_id": "238829706",
+                  "group_id": 18234757,
+                  "group_urlname": "engineering",
+                  "type": "event",
+                },
+                "text": "<b>Meetup Engineering</b> just announced a new Meetup for Apr 6. Only 13 spots.",
+                "updated": 1490888782000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "event",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428867509608992768",
+                "important": false,
+                "kind": "event_announce",
+                "link": "https://www.meetup.com/engineering/events/238829706/",
+                "photo": Object {
+                  "base_url": "http://photos4.meetupstatic.com",
+                  "highres_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/highres_434003882.jpeg",
+                  "id": 434003882,
+                  "photo_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg",
+                  "thumb_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/thumb_434003882.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_rsvp",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_announce",
+                  },
+                  "push": Object {
+                    "name": "event_announce_notif",
+                  },
+                },
+                "target": Object {
+                  "event_id": "238829706",
+                  "group_id": 18234757,
+                  "group_urlname": "engineering",
+                  "type": "event",
+                },
+                "text": "<b>Meetup Engineering</b> just announced a new Meetup for Apr 6. Only 13 spots.",
+                "updated": 1490888782000,
+              },
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": false,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+              Object {
+                "category": "event",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428867509608992768",
+                "important": false,
+                "kind": "event_announce",
+                "link": "https://www.meetup.com/engineering/events/238829706/",
+                "photo": Object {
+                  "base_url": "http://photos4.meetupstatic.com",
+                  "highres_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/highres_434003882.jpeg",
+                  "id": 434003882,
+                  "photo_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg",
+                  "thumb_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/thumb_434003882.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_rsvp",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_announce",
+                  },
+                  "push": Object {
+                    "name": "event_announce_notif",
+                  },
+                },
+                "target": Object {
+                  "event_id": "238829706",
+                  "group_id": 18234757,
+                  "group_urlname": "engineering",
+                  "type": "event",
+                },
+                "text": "<b>Meetup Engineering</b> just announced a new Meetup for Apr 6. Only 13 spots.",
+                "updated": 1490888782000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "event",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428867509608992768",
+                "important": false,
+                "kind": "event_announce",
+                "link": "https://www.meetup.com/engineering/events/238829706/",
+                "photo": Object {
+                  "base_url": "http://photos4.meetupstatic.com",
+                  "highres_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/highres_434003882.jpeg",
+                  "id": 434003882,
+                  "photo_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg",
+                  "thumb_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/thumb_434003882.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_rsvp",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_announce",
+                  },
+                  "push": Object {
+                    "name": "event_announce_notif",
+                  },
+                },
+                "target": Object {
+                  "event_id": "238829706",
+                  "group_id": 18234757,
+                  "group_urlname": "engineering",
+                  "type": "event",
+                },
+                "text": "<b>Meetup Engineering</b> just announced a new Meetup for Apr 6. Only 13 spots.",
+                "updated": 1490888782000,
+              },
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+            ]
+          }
+          notificationsTitleLabel="Notifications"
+          onMarkReadAction={[Function]}
+          self={
+            Object {
+              "id": 1243,
+              "name": "mocky mcmockerson",
+              "photo": Object {
+                "photo_link": "http://placekitten.com/g/400/400",
+                "thumb_link": "http://placekitten.com/g/200/200",
+              },
+            }
+          }
+        />
+      }
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="notifications"
+          size="s"
+        />
+      }
+      key="4"
+      label="Notifications"
+      linkTo=""
+      onClickAction={false}
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
+      dropdownContent={
+        <ProfileDropdownComponent
+          allGroupsLabel="All Groups"
+          allGroupsLink="meetup.com/groups"
+          groupHome={[Function]}
+          groups={
+            Array [
+              Object {
+                "name": "Mason Mocks",
+                "urlname": "/mason-mocks",
+              },
+              Object {
+                "name": "Chicken Scratch",
+                "urlname": "/chicken-scratch",
+              },
+            ]
+          }
+          help={
+            Object {
+              "label": "Help",
+              "link": "meetup.com/help",
+            }
+          }
+          logout={
+            Object {
+              "label": "Logout",
+              "link": "meetup.com/logout",
+            }
+          }
+          profile={
+            Object {
+              "getSelfGroupsQuery": [Function],
+              "label": "Profile",
+              "link": "meetup.com/profile",
+              "profileDropdown": Object {
+                "allGroupsLabel": "All Groups",
+                "allGroupsLink": "meetup.com/groups",
+                "groupHome": [Function],
+                "help": Object {
+                  "label": "Help",
+                  "link": "meetup.com/help",
+                },
+                "logout": Object {
+                  "label": "Logout",
+                  "link": "meetup.com/logout",
+                },
+                "settings": Object {
+                  "label": "Settings",
+                  "link": "meetup.com/settings",
+                },
+              },
+            }
+          }
+          settings={
+            Object {
+              "label": "Settings",
+              "link": "meetup.com/settings",
+            }
+          }
+        />
+      }
+      icon={
+        <Flex
+          align="center"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="5"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo=""
+      onClickAction={false}
+      shrink={true}
+    />
+  </Flex>
+</nav>
+`;
+
+exports[`Nav should match the snapshot for groups loading state 1`] = `
+<nav
+  aria-label="Header navigation"
+  className="padding--all"
+  groups={
+    Object {
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": undefined,
+    }
+  }
+  id="globalNav"
+  role="navigation"
+>
+  <Flex
+    align="center"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="logo logo--swarm flush--left"
+      icon={
+        <img
+          alt="Meetup Logo"
+          height="48px"
+          src=""
+        />
+      }
+      linkTo="meetup.com"
+    />
+    <NavItem
+      className="navItem--authenticated"
+      icon={
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
+        />
+      }
+      key="1"
+      label="Explore"
+      linkTo="meetup.com/find/events"
+      shrink={true}
+    />
+    <NavItem
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="2"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="messages"
+          size="s"
+        />
+      }
+      key="3"
+      label="Messages"
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      dropdownContent={
+        <NotificationsDropdownComponent
+          emptyContentLabel="You don't have any notifications yet"
+          generateClassicUrl={[Function]}
+          localeCode="en-US"
+          notifications={
+            Array [
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": false,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": false,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+              Object {
+                "category": "event",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428867509608992768",
+                "important": false,
+                "kind": "event_announce",
+                "link": "https://www.meetup.com/engineering/events/238829706/",
+                "photo": Object {
+                  "base_url": "http://photos4.meetupstatic.com",
+                  "highres_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/highres_434003882.jpeg",
+                  "id": 434003882,
+                  "photo_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg",
+                  "thumb_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/thumb_434003882.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_rsvp",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_announce",
+                  },
+                  "push": Object {
+                    "name": "event_announce_notif",
+                  },
+                },
+                "target": Object {
+                  "event_id": "238829706",
+                  "group_id": 18234757,
+                  "group_urlname": "engineering",
+                  "type": "event",
+                },
+                "text": "<b>Meetup Engineering</b> just announced a new Meetup for Apr 6. Only 13 spots.",
+                "updated": 1490888782000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "event",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428867509608992768",
+                "important": false,
+                "kind": "event_announce",
+                "link": "https://www.meetup.com/engineering/events/238829706/",
+                "photo": Object {
+                  "base_url": "http://photos4.meetupstatic.com",
+                  "highres_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/highres_434003882.jpeg",
+                  "id": 434003882,
+                  "photo_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg",
+                  "thumb_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/thumb_434003882.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_rsvp",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_announce",
+                  },
+                  "push": Object {
+                    "name": "event_announce_notif",
+                  },
+                },
+                "target": Object {
+                  "event_id": "238829706",
+                  "group_id": 18234757,
+                  "group_urlname": "engineering",
+                  "type": "event",
+                },
+                "text": "<b>Meetup Engineering</b> just announced a new Meetup for Apr 6. Only 13 spots.",
+                "updated": 1490888782000,
+              },
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": false,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+              Object {
+                "category": "event",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428867509608992768",
+                "important": false,
+                "kind": "event_announce",
+                "link": "https://www.meetup.com/engineering/events/238829706/",
+                "photo": Object {
+                  "base_url": "http://photos4.meetupstatic.com",
+                  "highres_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/highres_434003882.jpeg",
+                  "id": 434003882,
+                  "photo_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg",
+                  "thumb_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/thumb_434003882.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_rsvp",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_announce",
+                  },
+                  "push": Object {
+                    "name": "event_announce_notif",
+                  },
+                },
+                "target": Object {
+                  "event_id": "238829706",
+                  "group_id": 18234757,
+                  "group_urlname": "engineering",
+                  "type": "event",
+                },
+                "text": "<b>Meetup Engineering</b> just announced a new Meetup for Apr 6. Only 13 spots.",
+                "updated": 1490888782000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "comment",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "426750535552851968",
+                "important": true,
+                "kind": "mug_comm_comment",
+                "link": "https://www.meetup.com/hq-faff/communications/17056/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/highres_6098126.jpeg",
+                  "id": 6098126,
+                  "photo_link": "http://photos1.meetupstatic.com/photos/member/9/4/e/e/member_6098126.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/member/9/4/e/e/thumb_6098126.jpeg",
+                  "type": "member",
+                },
+                "photo_type": "member",
+                "read": true,
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_comments",
+                  },
+                  "push": Object {
+                    "name": "group_activity_notif",
+                  },
+                },
+                "target": Object {
+                  "type": "external_url",
+                  "url": "https://www.meetup.com/hq-faff/communications/17056/",
+                  "web_view": true,
+                },
+                "text": "will howard and 2 others commented on \\"Test delete actions\\"",
+                "updated": 1490384056000,
+              },
+              Object {
+                "category": "event",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428867509608992768",
+                "important": false,
+                "kind": "event_announce",
+                "link": "https://www.meetup.com/engineering/events/238829706/",
+                "photo": Object {
+                  "base_url": "http://photos4.meetupstatic.com",
+                  "highres_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/highres_434003882.jpeg",
+                  "id": 434003882,
+                  "photo_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg",
+                  "thumb_link": "http://photos4.meetupstatic.com/photos/event/5/d/4/a/thumb_434003882.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_rsvp",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "event_announce",
+                  },
+                  "push": Object {
+                    "name": "event_announce_notif",
+                  },
+                },
+                "target": Object {
+                  "event_id": "238829706",
+                  "group_id": 18234757,
+                  "group_urlname": "engineering",
+                  "type": "event",
+                },
+                "text": "<b>Meetup Engineering</b> just announced a new Meetup for Apr 6. Only 13 spots.",
+                "updated": 1490888782000,
+              },
+              Object {
+                "category": "group",
+                "formattedTimeSince": "Sun Dec 17 1995",
+                "id": "428939774154616832",
+                "important": false,
+                "kind": "group_announce",
+                "link": "https://www.meetup.com/Central-Park-painting-Plain-Air/",
+                "photo": Object {
+                  "base_url": "http://photos3.meetupstatic.com",
+                  "highres_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/highres_453652197.jpeg",
+                  "id": 453652197,
+                  "photo_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/600_453652197.jpeg",
+                  "thumb_link": "http://photos3.meetupstatic.com/photos/event/c/b/e/5/thumb_453652197.jpeg",
+                  "type": "event",
+                },
+                "photo_type": "event",
+                "read": true,
+                "self": Object {
+                  "action": "instant_join",
+                },
+                "setting": Object {
+                  "email": Object {
+                    "name": "new_group_alert",
+                  },
+                },
+                "target": Object {
+                  "group_id": 23051170,
+                  "group_urlname": "Central-Park-painting-Plain-Air",
+                  "type": "group",
+                },
+                "text": "This new Meetup just started: <b>Central Park painting Plain Air</b>.",
+                "updated": 1490906011000,
+              },
+            ]
+          }
+          notificationsTitleLabel="Notifications"
+          onMarkReadAction={[Function]}
+          self={
+            Object {
+              "id": 1243,
+              "name": "mocky mcmockerson",
+              "photo": Object {
+                "photo_link": "http://placekitten.com/g/400/400",
+                "thumb_link": "http://placekitten.com/g/200/200",
+              },
+            }
+          }
+        />
+      }
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="notifications"
+          size="s"
+        />
+      }
+      key="4"
+      label="Notifications"
+      linkTo=""
+      onClickAction={false}
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
+      dropdownContent={
+        <ProfileDropdownComponent
+          allGroupsLabel="All Groups"
+          allGroupsLink="meetup.com/groups"
+          groupHome={[Function]}
+          groups={
+            Array [
+              Object {
+                "name": "Mason Mocks",
+                "urlname": "/mason-mocks",
+              },
+              Object {
+                "name": "Chicken Scratch",
+                "urlname": "/chicken-scratch",
+              },
+            ]
+          }
+          help={
+            Object {
+              "label": "Help",
+              "link": "meetup.com/help",
+            }
+          }
+          logout={
+            Object {
+              "label": "Logout",
+              "link": "meetup.com/logout",
+            }
+          }
+          profile={
+            Object {
+              "getSelfGroupsQuery": [Function],
+              "label": "Profile",
+              "link": "meetup.com/profile",
+              "profileDropdown": Object {
+                "allGroupsLabel": "All Groups",
+                "allGroupsLink": "meetup.com/groups",
+                "groupHome": [Function],
+                "help": Object {
+                  "label": "Help",
+                  "link": "meetup.com/help",
+                },
+                "logout": Object {
+                  "label": "Logout",
+                  "link": "meetup.com/logout",
+                },
+                "settings": Object {
+                  "label": "Settings",
+                  "link": "meetup.com/settings",
+                },
+              },
+            }
+          }
+          settings={
+            Object {
+              "label": "Settings",
+              "link": "meetup.com/settings",
+            }
+          }
+        />
+      }
+      icon={
+        <Flex
+          align="center"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="5"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo=""
+      onClickAction={false}
+      shrink={true}
+    />
+  </Flex>
+</nav>
 `;
 
 exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
-<Nav
-  localeCode="en-US"
-  media={Object {}}
-  self={
+<nav
+  aria-label="Header navigation"
+  className="padding--all"
+  groups={
     Object {
-      "status": "prereg",
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
     }
   }
-/>
+  id="globalNav"
+  role="navigation"
+>
+  <Flex
+    align="top"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="logo logo--script flush--left"
+      icon={
+        <img
+          alt="Meetup Logo"
+          height="44px"
+          src=""
+        />
+      }
+      linkClassName="display--block"
+      linkTo="meetup.com"
+    />
+    <NavItem
+      className="navItem--unauthenticated navItem--login"
+      key="0"
+      label="Login"
+      linkTo="meetup.com/login"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--unauthenticated"
+      key="1"
+      label="Sign up"
+      onAction={[Function]}
+      shrink={true}
+    />
+  </Flex>
+</nav>
 `;
 
 exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = `
-<Nav
-  localeCode="en-US"
-  media={Object {}}
-  self={
+<nav
+  aria-label="Header navigation"
+  className="padding--all"
+  groups={
     Object {
-      "name": "Jeff Cleft",
-      "status": "active",
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
     }
   }
-/>
+  id="globalNav"
+  role="navigation"
+>
+  <Flex
+    align="top"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="navItem--authenticated"
+      icon={
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
+        />
+      }
+      key="1"
+      label="Explore"
+      linkTo="meetup.com/find/events"
+      shrink={true}
+    />
+    <NavItem
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="2"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="messages"
+          size="s"
+        />
+      }
+      key="3"
+      label="Messages"
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      dropdownContent={false}
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="notifications"
+          size="s"
+        />
+      }
+      key="4"
+      label="Notifications"
+      linkTo="meetup.com/notifications"
+      onClickAction={false}
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
+      dropdownContent={false}
+      icon={
+        <Flex
+          align="center"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="5"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo="meetup.com/profile"
+      onClickAction={false}
+      shrink={true}
+    />
+  </Flex>
+</nav>
 `;
 
 exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = `
-<Nav
-  localeCode="en-US"
-  media={Object {}}
-  self={
+<nav
+  aria-label="Header navigation"
+  className="padding--all"
+  groups={
     Object {
-      "status": "prereg",
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
     }
   }
-/>
+  id="globalNav"
+  role="navigation"
+>
+  <Flex
+    align="center"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="logo logo--script flush--left"
+      icon={
+        <img
+          alt="Meetup Logo"
+          height="44px"
+          src=""
+        />
+      }
+      linkClassName="display--block"
+      linkTo="meetup.com"
+    />
+    <NavItem
+      className="navItem--unauthenticated navItem--login"
+      key="0"
+      label="Login"
+      linkTo="meetup.com/login"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--unauthenticated"
+      key="1"
+      label="Sign up"
+      onAction={[Function]}
+      shrink={true}
+    />
+  </Flex>
+</nav>
 `;
 
 exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
-<Nav
-  localeCode="en-US"
-  media={Object {}}
-  self={
+<nav
+  aria-label="Header navigation"
+  className="padding--all"
+  groups={
     Object {
-      "status": "prereg",
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
     }
   }
-/>
+  id="globalNav"
+  role="navigation"
+>
+  <Flex
+    align="top"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="logo logo--script flush--left"
+      icon={
+        <img
+          alt="Meetup Logo"
+          height="44px"
+          src=""
+        />
+      }
+      linkClassName="display--block"
+      linkTo="meetup.com"
+    />
+    <NavItem
+      className="navItem--unauthenticated navItem--login"
+      key="0"
+      label="Login"
+      linkTo="meetup.com/login"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--unauthenticated"
+      key="1"
+      label="Sign up"
+      onAction={[Function]}
+      shrink={true}
+    />
+  </Flex>
+</nav>
+`;
+
+exports[`Nav should match the snapshot with logo photo 1`] = `
+<nav
+  aria-label="Header navigation"
+  className="padding--all"
+  groups={
+    Object {
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
+    }
+  }
+  id="globalNav"
+  role="navigation"
+>
+  <Flex
+    align="top"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="navItem--authenticated"
+      icon={
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
+        />
+      }
+      key="1"
+      label="Explore"
+      linkTo="meetup.com/find/events"
+      shrink={true}
+    />
+    <NavItem
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="2"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="messages"
+          size="s"
+        />
+      }
+      key="3"
+      label="Messages"
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      dropdownContent={false}
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="notifications"
+          size="s"
+        />
+      }
+      key="4"
+      label="Notifications"
+      linkTo="meetup.com/notifications"
+      onClickAction={false}
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
+      dropdownContent={false}
+      icon={
+        <Flex
+          align="center"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="5"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo="meetup.com/profile"
+      onClickAction={false}
+      shrink={true}
+    />
+  </Flex>
+</nav>
+`;
+
+exports[`Nav should match the snapshot without a logo photo 1`] = `
+<nav
+  aria-label="Header navigation"
+  className="padding--all"
+  groups={
+    Object {
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
+    }
+  }
+  id="globalNav"
+  role="navigation"
+>
+  <Flex
+    align="top"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="navItem--authenticated"
+      icon={
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
+        />
+      }
+      key="1"
+      label="Explore"
+      linkTo="meetup.com/find/events"
+      shrink={true}
+    />
+    <NavItem
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="2"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="messages"
+          size="s"
+        />
+      }
+      key="3"
+      label="Messages"
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      dropdownContent={false}
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="notifications"
+          size="s"
+        />
+      }
+      key="4"
+      label="Notifications"
+      linkTo="meetup.com/notifications"
+      onClickAction={false}
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
+      dropdownContent={false}
+      icon={
+        <Flex
+          align="center"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="5"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo="meetup.com/profile"
+      onClickAction={false}
+      shrink={true}
+    />
+  </Flex>
+</nav>
 `;

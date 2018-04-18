@@ -243,6 +243,7 @@ Applies button color-related styles using a mixin.
 	);
 	border-radius: 0;
 	padding: 0;
+	font-size: inherit;
 
 	&,
 	&.button--disabled,
@@ -309,4 +310,8 @@ Applies button color-related styles using a mixin.
 		padding-right: $space-half;
 	}
 
+}
+
+.button--iconOnly {
+	padding: $space-half $space;
 }

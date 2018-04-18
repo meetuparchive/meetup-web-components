@@ -13,6 +13,13 @@
 	background-color: $C_collectionBG;
 }
 
+.footerList-legal li:after {
+	content: '';
+	@include atMediaUp(medium) {
+		content: attr(data-separator);
+	}
+}
+
 .footerStripe-legal {
 	background-color: darken($C_darkGray, 03%);
 }
@@ -30,17 +37,4 @@
 
 .footer-item {
 	padding-bottom: $space-half;
-}
-
-// :SDS: make this the default for links in inverted context
-.link--white {
-	color: white;
-	border-bottom: 1px solid $C_textPrimaryInverted !important;
-
-	&:hover,
-	&:active,
-	&:focus {
-		border-bottom: 1px solid transparent;
-	}
-
 }

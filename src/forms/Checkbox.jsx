@@ -12,20 +12,33 @@ export const DISABLED_CHECKBOX_CLASS = 'disabled';
 /**
  * @module Checkbox
  */
-class Checkbox extends React.Component {
+class Checkbox extends React.PureComponent {
 	constructor(props) {
 		super(props);
-		this.state = {
+		const state = {
+			focused: false,
 			checked: props.checked || false,
 		};
+
 		this.onChange = this.onChange.bind(this);
 		this.onBlur = this.onBlur.bind(this);
 		this.onFocus = this.onFocus.bind(this);
+		this.state = state;
+	}
+
+	componentWillReceiveProps(nextProps) {
+		const { checked, controlled } = nextProps;
+		if (this.props.controlled !== controlled && controlled) {
+			this.setState({ checked });
+		}
 	}
 
 	onChange(e) {
 		this.props.onChange && this.props.onChange(e);
-		this.setState({ checked: e.target.checked });
+
+		if (this.props.controlled) {
+			this.setState({ checked: e.target.checked });
+		}
 	}
 
 	onBlur(e) {
@@ -34,6 +47,11 @@ class Checkbox extends React.Component {
 
 	onFocus(e) {
 		this.setState({ focused: true });
+	}
+
+	getChecked() {
+		if (this.props.controlled) return this.state.checked;
+		return this.props.checked;
 	}
 
 	render() {
@@ -50,8 +68,10 @@ class Checkbox extends React.Component {
 			onBlur, // eslint-disable-line no-unused-vars
 			onFocus, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
+			controlled, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
+		const stateChecked = this.getChecked();
 
 		const classNames = cx('minTouchHeight', className);
 
@@ -65,7 +85,7 @@ class Checkbox extends React.Component {
 			FAUX_TOGGLE_CLASS,
 			`${FAUX_TOGGLE_CLASS}--checkbox`,
 			{
-				checked: this.state.checked,
+				checked: stateChecked,
 				disabled,
 				[FOCUSED_CHECKBOX_CLASS]: this.state.focused,
 			}
@@ -81,7 +101,7 @@ class Checkbox extends React.Component {
 							type="checkbox"
 							name={name}
 							value={value}
-							checked={this.state.checked}
+							checked={stateChecked}
 							disabled={disabled}
 							className="checkbox visibility--a11yHide"
 							id={elId}
@@ -93,20 +113,20 @@ class Checkbox extends React.Component {
 							ref={el => (this.fauxCheckboxEl = el)}
 							className={fauxCheckboxClassNames}
 						>
-							{this.state.checked &&
+							{stateChecked && (
 								<Icon
 									className="display--flex flex--center checkbox-indicator"
 									shape="check"
 									size="xs"
 								/>
-							}
+							)}
 						</span>
 					</FlexItem>
 					<FlexItem className="toggleLabel-container">
 						<span
 							className={cx({
 								['text--hint']: disabled,
-								['text--bold']: this.state.checked,
+								['text--bold']: stateChecked,
 							})}
 						>
 							{label}
@@ -121,12 +141,20 @@ class Checkbox extends React.Component {
 
 Checkbox.propTypes = {
 	checked: PropTypes.bool,
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	disabled: PropTypes.bool,
+	controlled: PropTypes.bool,
+	id: PropTypes.string,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	labelClassName: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]), // checkboxes don't need values
 	onChange: PropTypes.func,
+	onBlur: PropTypes.func,
+	onFocus: PropTypes.func,
+};
+
+Checkbox.defaultProps = {
+	controlled: true,
 };
 
 export default Checkbox;

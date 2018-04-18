@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextInput from '../TextInput';
 
 /**
@@ -8,10 +9,15 @@ import TextInput from '../TextInput';
  * @return {Component} TextInput
  */
 const ReduxFormTextInput = props => {
-	const { meta, input, validateBeforeTouched, ...other } = props;
-	const error = (validateBeforeTouched || meta.touched) ? meta.error : null;
+	const { meta, input, ...other } = props;
+	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
 
 	return <TextInput error={error} {...input} {...other} />;
+};
+
+ReduxFormTextInput.propTypes = {
+	meta: PropTypes.object.isRequired,
+	input: PropTypes.element.isRequired,
 };
 
 ReduxFormTextInput.displayName = 'ReduxFormTextInput';
