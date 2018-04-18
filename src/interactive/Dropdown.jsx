@@ -232,10 +232,10 @@ class Dropdown extends React.PureComponent {
 								>
 									<div
 										ref={el => (this.contentRef = el)}
-										className={cx("dropdown-content", {
-											"dropdown-content--right": align === "right",
-											"dropdown-content--left": align === "left",
-											"dropdown-content--center": align === "center",
+										className={cx("dropdown-content dropdown-bubble", {
+											"dropdown-content--right dropdown-bubble--right": align === "right",
+											"dropdown-content--left dropdown-bubble--left": align === "left",
+											"dropdown-content--center dropdown-bubble--center": align === "center",
 											"display--none": !isOpen,
 											"display--block": isOpen,
 											dropdownMenu: Boolean(menuItems)
