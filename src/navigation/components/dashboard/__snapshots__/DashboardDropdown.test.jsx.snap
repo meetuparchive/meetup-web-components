@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Dropdown should match snapshot 1`] = `
+<Modal
+  onDismiss={[Function]}
+>
+  <Flex
+    className="align--left padding--all"
+    justify="spaceBetween"
+  >
+    <FlexItem
+      className="text--secondary margin--left"
+      growFactor={1}
+    >
+      <ul
+        className="list"
+      >
+        <li
+          className="list-item padding--bottom"
+        >
+          <a
+            href="meetup.com"
+          >
+            Analytics
+          </a>
+        </li>
+        <li
+          className="list-item padding--bottom"
+        >
+          <a
+            href="meetup.com"
+          >
+            Members
+          </a>
+        </li>
+        <li
+          className="list-item padding--bottom"
+        >
+          <a
+            href="meetup.com"
+          >
+            Groups
+          </a>
+        </li>
+        <li
+          className="list-item padding--bottom"
+        >
+          <a
+            href="meetup.com"
+          >
+            Templates
+          </a>
+        </li>
+        <li
+          className="list-item padding--bottom"
+        >
+          <a
+            href="meetup.com"
+          >
+            Public Profile
+          </a>
+        </li>
+        <li
+          className="list-item"
+        >
+          <a
+            href="meetup.com"
+          >
+            Your profile
+          </a>
+        </li>
+        <li
+          className="padding--top"
+        >
+          <a
+            href="meetup.com"
+          >
+            Contact
+          </a>
+        </li>
+        <li
+          className="padding--top"
+        >
+          <a
+            href="meetup.com"
+          >
+            Help
+          </a>
+        </li>
+        <li
+          className="padding--top"
+        >
+          <a
+            href="meetup.com"
+          >
+            Logout
+          </a>
+        </li>
+      </ul>
+    </FlexItem>
+  </Flex>
+</Modal>
+`;
