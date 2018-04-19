@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
+    "@storybook/addon-actions": "3.4.2",
     "@storybook/addon-info": "3.2.16",
     "@storybook/addon-knobs": "3.2.16",
     "@storybook/addon-notes": "3.2.16",

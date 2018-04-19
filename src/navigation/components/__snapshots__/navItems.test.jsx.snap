@@ -78,12 +78,17 @@ exports[`NavItem renders an ActionItem when \`onAction\` is passed as a prop 1`]
 >
   <ActionItem
     action={[Function]}
-    label={
-      <p>
-        Anything is possible
-      </p>
+    navItemContent={
+      <div>
+        <span
+          className="navItem-label"
+        >
+          <p>
+            Anything is possible
+          </p>
+        </span>
+      </div>
     }
-    labelClassNames="navItem-label"
   />
 </FlexItem>
 `;

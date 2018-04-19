@@ -15,6 +15,7 @@ import SignupModal from '../SignupModal';
 import NavItem from './components/NavItem';
 import ProfileDropdown from './components/profile/ProfileDropdown';
 import NotificationsDropdown from './components/notifications/NotificationsDropdown';
+import DashboardDropdown from './components/dashboard/DashboardDropdown';
 
 const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
 const CLASS_AUTH_ITEM = 'navItem--authenticated';
@@ -39,7 +40,9 @@ export class Nav extends React.Component {
 		super(props);
 		this.onDismissSignupModal = this.onDismissSignupModal.bind(this);
 		this.onClickSignupAction = this.onClickSignupAction.bind(this);
-		this.state = { isSignupModalOpen: false };
+		this.onClickDropdownAction = this.onClickDropdownAction.bind(this);
+		this.onDismissDropdown = this.onDismissDropdown.bind(this);
+		this.state = { isSignupModalOpen: false, showMobileDashboard: false };
 	}
 
 	/**
@@ -57,6 +60,23 @@ export class Nav extends React.Component {
 	onClickSignupAction() {
 		this.setState(() => ({ isSignupModalOpen: true }));
 	}
+
+	/**
+	 * Triggers the Mobile Pro Dashbard to be rendered
+	 * @return {undefined}
+	 */
+	onClickDropdownAction() {
+		this.setState(() => ({ showMobileDashboard: true }));
+	}
+
+	/**
+	 * Triggers the Mobile Pro Dashbard to be closed
+	 * @return {undefined}
+	 */
+	onDismissDropdown() {
+		this.setState(() => ({ showMobileDashboard: false }));
+	}
+
 	/**
 	 * @return {React.element} the navbar component
 	 */
@@ -106,21 +126,20 @@ export class Nav extends React.Component {
 				<DropdownLoader label={dropdownLoaderLabel} />
 			);
 
-		const profileContent =
-			isGroupsLoaded ? (
-				<ProfileDropdown
-					settings={profile.profileDropdown.settings}
-					help={profile.profileDropdown.help}
-					logout={profile.profileDropdown.logout}
-					groupHome={profile.profileDropdown.groupHome}
-					allGroupsLabel={profile.profileDropdown.allGroupsLabel}
-					allGroupsLink={profile.profileDropdown.allGroupsLink}
-					profile={profile}
-					groups={groups.list}
-				/>
-			) : (
-				<DropdownLoader label={dropdownLoaderLabel} />
-			);
+		const profileContent = isGroupsLoaded ? (
+			<ProfileDropdown
+				settings={profile.profileDropdown.settings}
+				help={profile.profileDropdown.help}
+				logout={profile.profileDropdown.logout}
+				groupHome={profile.profileDropdown.groupHome}
+				allGroupsLabel={profile.profileDropdown.allGroupsLabel}
+				allGroupsLink={profile.profileDropdown.allGroupsLink}
+				profile={profile}
+				groups={groups.list}
+			/>
+		) : (
+			<DropdownLoader label={dropdownLoaderLabel} />
+		);
 
 		let unauthItems = [
 			{
@@ -140,7 +159,8 @@ export class Nav extends React.Component {
 		let authItems = [
 			self.isProMember && {
 				shrink: true,
-				linkTo: proDashboard.link,
+				linkTo: media.isAtMediumUp ? proDashboard.link : '',
+				onAction: !media.isAtMediumUp && this.onClickDropdownAction,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
 				icon: (
@@ -282,6 +302,7 @@ export class Nav extends React.Component {
 						icon={item.icon}
 						onClickAction={item.onClickAction}
 						dropdownContent={item.dropdownContent}
+						onAction={item.onAction}
 						hasUpdates={item.hasUpdates}
 					/>
 				)
@@ -334,6 +355,12 @@ export class Nav extends React.Component {
 						<SignupModal
 							signupOptions={signup.signupModal}
 							onDismiss={this.onDismissSignupModal}
+						/>
+					)}
+					{this.state.showMobileDashboard && (
+						<DashboardDropdown
+							dismissAction={this.onDismissDropdown}
+							mobileTabs={proDashboard.mobileTabs}
 						/>
 					)}
 
