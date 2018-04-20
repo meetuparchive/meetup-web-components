@@ -49,11 +49,13 @@ export class CalendarComponent extends React.Component {
 		} = this.props;
 
 		const classNames = {
-			label: cx({
-				'label--required': required,
-				'flush--bottom': helperText,
+			label: cx(
+				{
+					'label--required': required,
+					'flush--bottom': helperText,
+				},
 				labelClassName
-			}),
+			),
 			helperText: cx('helperTextContainer', { required }),
 			field: cx(
 				'input--dateTimePicker select--reset',
