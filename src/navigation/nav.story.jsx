@@ -95,6 +95,17 @@ storiesOf('Nav', module)
 		const items = { ...navItems, groups };
 		return <Nav self={MOCK_MEMBER} navItems={items} style={{ width: '100%' }} />;
 	})
+	.add('authenticated but notifications has not been loaded', () => {
+		const notifications = { ...navItems.notifications, list: undefined };
+		const items = { ...navItems, notifications };
+		return <Nav self={MOCK_MEMBER} navItems={items} style={{ width: '100%' }} />;
+	})
+	.add('authenticated but notifications and groups are empty', () => {
+		const notifications = { ...navItems.notifications, list: [] };
+		const groups = { ...navItems.groups, list: [] };
+		const items = { ...navItems, notifications, groups };
+		return <Nav self={MOCK_MEMBER} navItems={items} style={{ width: '100%' }} />;
+	})
 	.add('authenticated Pro member', () => (
 		<Nav
 			self={{

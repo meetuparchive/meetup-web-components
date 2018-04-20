@@ -107,24 +107,23 @@ export class Nav extends React.Component {
 			media.isAtMediumUp && !media.isAtLargeUp && !isLoggedOut
 		);
 		const isGroupsLoaded = Boolean(groups.list);
-		const notificationContent =
-			notifications.list.length > 0 ? (
-				<NotificationsDropdown
-					self={self}
-					notifications={notifications.list}
-					onMarkReadAction={notifications.notificationsDropdown.markRead}
-					localeCode={localeCode}
-					emptyContentLabel={
-						notifications.notificationsDropdown.emptyContentLabel
-					}
-					notificationsTitleLabel={notifications.label}
-					generateClassicUrl={
-						notifications.notificationsDropdown.generateClassicUrl
-					}
-				/>
-			) : (
-				<DropdownLoader label={dropdownLoaderLabel} />
-			);
+		const isNotificationsLoaded = Boolean(notifications.list);
+
+		const notificationContent = isNotificationsLoaded ? (
+			<NotificationsDropdown
+				self={self}
+				notifications={notifications.list}
+				onMarkReadAction={notifications.notificationsDropdown.markRead}
+				localeCode={localeCode}
+				emptyContentLabel={notifications.notificationsDropdown.emptyContentLabel}
+				notificationsTitleLabel={notifications.label}
+				generateClassicUrl={
+					notifications.notificationsDropdown.generateClassicUrl
+				}
+			/>
+		) : (
+			<DropdownLoader label={dropdownLoaderLabel} />
+		);
 
 		const profileContent = isGroupsLoaded ? (
 			<ProfileDropdown
@@ -233,7 +232,9 @@ export class Nav extends React.Component {
 					/>
 				),
 				onClickAction:
-					media.isAtMediumUp && notifications.list.length === 0
+					media.isAtMediumUp &&
+					isNotificationsLoaded &&
+					notifications.list.length === 0
 						? notifications.getNotificationsQuery
 						: false,
 				dropdownContent: media.isAtMediumUp && notificationContent,
