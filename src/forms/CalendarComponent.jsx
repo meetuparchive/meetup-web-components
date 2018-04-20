@@ -37,6 +37,7 @@ export class CalendarComponent extends React.Component {
 			id,
 			name,
 			label,
+			labelClassName,
 			helperText,
 			error,
 			datepickerOptions,
@@ -51,6 +52,7 @@ export class CalendarComponent extends React.Component {
 			label: cx({
 				'label--required': required,
 				'flush--bottom': helperText,
+				labelClassName
 			}),
 			helperText: cx('helperTextContainer', { required }),
 			field: cx(
@@ -105,6 +107,7 @@ export class CalendarComponent extends React.Component {
 
 CalendarComponent.propTypes = {
 	label: PropTypes.string,
+	labelClassName: PropTypes.string,
 	id: PropTypes.string,
 	name: PropTypes.string,
 	datepickerOptions: PropTypes.object,
