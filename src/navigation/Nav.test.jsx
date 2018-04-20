@@ -61,6 +61,36 @@ describe('Nav', () => {
 		).toMatchSnapshot();
 	});
 
+	it('should match the snapshot for notifications loading state', () => {
+		expect(
+			wrapper({
+				media: { isAtMediumUp: true },
+				self: MOCK_MEMBER,
+				notifications: {
+					link: 'meetup.com/notifications',
+					label: 'Notifications',
+					unreadNotifications: 0,
+					list: undefined
+				}
+			})
+		).toMatchSnapshot();
+	});
+
+	it('should match the snapshot for unread notifications', () => {
+		expect(
+			wrapper({
+				media: { isAtMediumUp: true },
+				self: MOCK_MEMBER,
+				notifications: {
+					link: 'meetup.com/notifications',
+					label: 'Notifications',
+					unreadNotifications: 3,
+					list: []
+				}
+			})
+		).toMatchSnapshot();
+	});
+
 	it('should match the snapshot for unauthenticated medium screens', () => {
 		expect(
 			wrapper({
