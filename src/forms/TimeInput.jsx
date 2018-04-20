@@ -277,12 +277,14 @@ export class TimeInput extends React.PureComponent {
 				disabled,
 				error,
 			}),
-			label: cx('label--field', {
-				'label--disabled': disabled,
-				'label--required': required,
-				'flush--bottom': helperText,
+			label: cx(
+				'label--field', {
+					'label--disabled': disabled,
+					'label--required': required,
+					'flush--bottom': helperText,
+				},
 				labelClassName
-			}),
+			),
 			helperText: cx('helperTextContainer', { required, disabled }),
 			meridian: cx(
 				MERIDIAN_INPUT_CLASS,
