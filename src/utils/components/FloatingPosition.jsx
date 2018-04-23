@@ -28,6 +28,7 @@ class FloatingPosition extends React.PureComponent {
 
 	getContentPosition(triggerClientRect) {
 		const triggerObj = this.props.getTrigger();
+		const contentObj = this.props.getContent();
 
 		if (!triggerObj) {
 			return;
@@ -35,6 +36,7 @@ class FloatingPosition extends React.PureComponent {
 
 		const positionTarget = triggerObj.offsetParent ? triggerObj.offsetParent : triggerObj;
 		const positionData = triggerClientRect || positionTarget.getBoundingClientRect();
+		const contentHeight = contentObj.getBoundingClientRect().height;
 
 		const {
 			left,
@@ -46,21 +48,35 @@ class FloatingPosition extends React.PureComponent {
 		const scrollTop = window.scrollY || window.pageYOffset;
 		const scrollLeft = window.scrollX || window.pageXOffset;
 
-		const getLeftPos = alignment => {
-			switch (alignment) {
-				case 'left':
-					return `${left + scrollLeft}px`;
-				case 'center':
-					return `${(left + width / 2) + scrollLeft}px`;
-				default:
-					return `${left + width + scrollLeft}px`;
+		const getLeftPos = (alignment, noPortal) => {
+			if (!noPortal) {
+				switch (alignment) {
+					case 'left':
+						return `${left + scrollLeft}px`;
+					case 'center':
+						return `${(left + width / 2) + scrollLeft}px`;
+					default:
+						return `${left + width + scrollLeft}px`;
+				}
+			}
+		};
+
+		const getTopPos = (above, noPortal) => {
+			const triggerTopPosition = scrollTop + top + height;
+
+			if (noPortal) {
+				return above ? parseInt(contentHeight * -1) : triggerTopPosition;
+			} else {
+				return above ? (triggerTopPosition - contentHeight - height) : triggerTopPosition;
 			}
 		};
 
 		const ddPosition = {
-			left: !this.props.noPortal && getLeftPos(this.props.align),
-			top: !this.props.noPortal && (scrollTop + top + height)
+			left: getLeftPos(this.props.align, this.props.noPortal),
+			top: getTopPos(this.props.popAbove, this.props.noPortal)
 		};
+
+		console.log(ddPosition);
 
 		this.setState(() => ({
 			left: ddPosition.left,

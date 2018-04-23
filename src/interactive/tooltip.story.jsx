@@ -43,8 +43,32 @@ storiesOf("Tooltip", module)
 		)
 	)
 	.addWithInfo(
+		"Tooltip above trigger",
+		"Aligned right and appearing above the trigger",
+		() => (
+			<div
+				style={{
+					marginTop: "800px",
+					width: "500px",
+					height: "1000px",
+					marginLeft: "600px"
+				}}
+			>
+				<Tooltip
+					popAbove
+					minWidth="0"
+					maxWidth="384px"
+					align="right"
+					id="testTooltip"
+					trigger={<Button small>Open</Button>}
+					content={dropdownContent}
+				/>
+			</div>
+		)
+	)
+	.addWithInfo(
 		"Opened Tooltip component",
-		"Aligned right and opened by default",
+		"Aligned center and opened by default",
 		() => (
 			<div
 				style={{

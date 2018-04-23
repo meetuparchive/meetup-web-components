@@ -25,11 +25,11 @@ describe('Tooltip', () => {
 	);
 	const wrapper = shallow(dropdownJSX);
 
-	it('should hide dropdown content by default', () => {
+	it('should hide tooltip content by default', () => {
 		expect(wrapper.find('.dropdown-content').length).toBeFalsy();
 	});
 
-	describe('right aligned dropdown', () => {
+	describe('right aligned tooltip', () => {
 		const rightDropdown = (
 			<Tooltip
 				align="right"
@@ -40,11 +40,30 @@ describe('Tooltip', () => {
 		const rightDropdownWrapper = mount(rightDropdown);
 		const trigger = rightDropdownWrapper.find('.dropdown-trigger');
 
-		it('applies correct alignment className to dropdown content', () => {
+		it('applies correct alignment className to tooltip content', () => {
 			trigger.simulate('focus');
 			const content = rightDropdownWrapper.find('.dropdown-content');
 
 			expect(content.prop('className')).toContain('dropdown-content--right');
+		});
+	});
+
+	describe('right aligned tooltip', () => {
+		const aboveDropdown = (
+			<Tooltip
+				popAbove
+				trigger={dropdownTrigger}
+				content={dropdownContent}
+			/>
+		);
+		const aboveDropdownWrapper = mount(aboveDropdown);
+		const trigger = aboveDropdownWrapper.find('.dropdown-trigger');
+
+		it('applies correct alignment className to tooltip content', () => {
+			trigger.simulate('focus');
+			const content = aboveDropdownWrapper.find('.dropdown-content');
+
+			expect(content.prop('className')).toContain('dropdown-content--above');
 		});
 	});
 
