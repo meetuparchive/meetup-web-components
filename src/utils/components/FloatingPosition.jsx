@@ -76,8 +76,6 @@ class FloatingPosition extends React.PureComponent {
 			top: getTopPos(this.props.popAbove, this.props.noPortal)
 		};
 
-		console.log(ddPosition);
-
 		this.setState(() => ({
 			left: ddPosition.left,
 			top: ddPosition.top

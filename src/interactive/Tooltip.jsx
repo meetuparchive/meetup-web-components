@@ -66,7 +66,7 @@ class Tooltip extends React.PureComponent {
 		} = this.props;
 
 		// Do not pass along to children
-		delete other.manualToggle;
+	// delete other.manualToggle;
 		delete other.isActive;
 
 		const classNames = {
@@ -179,7 +179,7 @@ Tooltip.propTypes = {
 	popAbove: PropTypes.bool,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
-	manualToggle: PropTypes.func,
+	manualToggle: PropTypes.bool,
 	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	noPortal: PropTypes.bool,
