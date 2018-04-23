@@ -66,7 +66,6 @@ class Tooltip extends React.PureComponent {
 		} = this.props;
 
 		// Do not pass along to children
-	// delete other.manualToggle;
 		delete other.isActive;
 
 		const classNames = {
