@@ -92,6 +92,24 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	@include alignDropdown("center");
 }
 
+.dropdown-bubble--above {
+	// outer triangle for border
+	&:before {
+		border-bottom: none;
+		border-top: ($triangleSize + 1) solid $C_border;
+		bottom: -#{$triangleSize - 0.5};
+		top: initial;
+	}
+
+	// inner triangle to match content color
+	&:after {
+		border-bottom: none;
+		border-top: $triangleSize solid $C_white;
+		bottom: -#{$triangleSize + 1};
+		top: initial;
+	}
+}
+
 @keyframes fadeDown {
 	from {
 		opacity: 0;
@@ -137,6 +155,11 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 
 .dropdown-content--center {
 	transform: translateX(-50%);
+}
+
+.dropdown-content--above {
+	padding-top: 0;
+	padding-bottom: $triangleSize;
 }
 
 .dropdownMenu-item {
