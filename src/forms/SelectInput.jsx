@@ -37,7 +37,8 @@ export class SelectInput extends React.PureComponent {
 			labelClassName,
 			label,
 			options,
-			name,
+      id,
+      name,
 			error,
 			errors,
 			onChange, // eslint-disable-line no-unused-vars
@@ -82,7 +83,7 @@ export class SelectInput extends React.PureComponent {
 					)}
 					<select
 						name={name}
-						id={name}
+						id={id || name}
 						required={required}
 						className={classNames.field}
 						onChange={this.onChange}
@@ -113,6 +114,7 @@ SelectInput.defaultProps = {
 
 SelectInput.propTypes = {
 	name: PropTypes.string.isRequired,
+  id: PropTypes.string,
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
 			label: PropTypes.string.isRequired,
