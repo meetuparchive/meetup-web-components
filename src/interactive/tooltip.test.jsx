@@ -16,17 +16,77 @@ const dropdownContent = (
 const dropdownTrigger = <Button small>Open</Button>;
 
 describe('Tooltip', () => {
-	const dropdownJSX = (
-		<Tooltip
-			align="right"
-			trigger={dropdownTrigger}
-			content={dropdownContent}
-		/>
-	);
-	const wrapper = shallow(dropdownJSX);
+	let dropdownJSX, wrapper;
+
+	beforeEach(() => {
+		dropdownJSX = (
+			<Tooltip
+				align="right"
+				trigger={dropdownTrigger}
+				content={dropdownContent}
+			/>
+		);
+		wrapper = shallow(dropdownJSX);
+	});
+
+	afterEach(() => {
+		dropdownJSX = null;
+		wrapper = null;
+	});
 
 	it('should hide tooltip content by default', () => {
 		expect(wrapper.find('.dropdown-content').length).toBeFalsy();
+	});
+
+	it('should call onMouseEnter and onMouseLeave functions if passed as props', () => {
+		const onMouseEnter = jest.fn();
+		const onMouseLeave = jest.fn();
+
+		const dropdownMouseEvents = shallow(
+			<Tooltip
+				align="right"
+				trigger={dropdownTrigger}
+				content={dropdownContent}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+			/>
+		);
+		const trigger = dropdownMouseEvents.find('.dropdown-trigger').first();
+		const tooltipArea = dropdownMouseEvents.find('.dropdown').first();
+
+		expect(onMouseEnter).not.toHaveBeenCalled();
+		expect(onMouseLeave).not.toHaveBeenCalled();
+		trigger.simulate('mouseEnter');
+		expect(onMouseEnter).toHaveBeenCalled();
+		tooltipArea.simulate('mouseLeave');
+		expect(onMouseLeave).toHaveBeenCalled();
+	});
+
+	it('should call onFocus and onBlur functions if passed as props', () => {
+		const onFocus = jest.fn();
+		const onBlur = jest.fn();
+
+		const dropdownFocusEvents = shallow(
+			<Tooltip
+				align="right"
+				trigger={dropdownTrigger}
+				content={dropdownContent}
+				onFocus={onFocus}
+				onBlur={onBlur}
+			/>
+		);
+		const trigger = dropdownFocusEvents.find('.dropdown-trigger').first();
+		const tooltipArea = dropdownFocusEvents.find('.dropdown').first();
+
+
+		expect(onFocus).not.toHaveBeenCalled();
+		expect(onBlur).not.toHaveBeenCalled();
+		trigger.simulate('focus');
+		expect(onFocus).toHaveBeenCalled();
+		tooltipArea.simulate('blur');
+		setTimeout(() => {
+			expect(onBlur).toHaveBeenCalled();
+		}, 10);
 	});
 
 	describe('right aligned tooltip', () => {
@@ -92,7 +152,9 @@ describe('Tooltip', () => {
 			trigger.simulate('mouseEnter');
 			expect(closedComponent.state('isActive')).toBeTruthy();
 			tooltipArea.simulate('mouseLeave');
-			expect(closedComponent.state('isActive')).toBeFalsy();
+			setTimeout(() => {
+				expect(closedComponent.state('isActive')).toBeFalsy();
+			}, 1);
 		});
 
 		it('should show tooltip when trigger is focused', () => {
@@ -110,6 +172,24 @@ describe('Tooltip', () => {
 			setTimeout(() => {
 				expect(closedComponent.state('isActive')).toBeFalsy();
 			}, 10);
+		});
+	});
+
+	describe('manually toggled tooltip', () => {
+		const manualTooltip = (
+			<Tooltip
+				manualToggle
+				align="right"
+				trigger={dropdownTrigger}
+				content={dropdownContent}
+			/>
+		);
+		const manualTooltipWrapper = mount(manualTooltip);
+		const trigger = manualTooltipWrapper.find('.dropdown-trigger');
+
+		it('does not render content on focus', () => {
+			trigger.simulate('focus');
+			expect(manualTooltipWrapper.find('.dropdown-content').length).toBe(0);
 		});
 	});
 });
