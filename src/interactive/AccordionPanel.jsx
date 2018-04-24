@@ -71,8 +71,6 @@ class AccordionPanel extends React.Component {
 	onToggleClick(e) {
 		e.preventDefault();
 
-		// console.log(this.props.onToggleClick ? 'this.props.onToggleClick(e)' : 'this._handleToggle(e);');
-
 		this.props.onToggleClick ? this.props.onToggleClick(e) : this._handleToggle(e);
 	}
 
@@ -190,8 +188,6 @@ class AccordionPanel extends React.Component {
 					tabIndex={0}
 					onKeyUp={this.onKeyUp}
 					onClick={this.onToggleClick}
-					// onFocus={this.handleFocus}
-					// onBlur={this.handleBlur}
 				>
 					<Flex
 						className={classNames.accordionPanel}
