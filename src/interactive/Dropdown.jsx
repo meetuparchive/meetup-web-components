@@ -188,8 +188,8 @@ class Dropdown extends React.PureComponent {
 		const classNames = {
 			dropdown: cx(
 				className,
-				"dropdown", {
-					"dropdown--noPortal": noPortal
+				"popup", {
+					"popup--noPortal": noPortal
 				}
 			)
 		};
@@ -218,8 +218,8 @@ class Dropdown extends React.PureComponent {
 							<div
 								{...getButtonProps()}
 								ref={el => (this.triggerRef = el)}
-								className={cx("dropdown-trigger", {
-									"dropdown-trigger--active": isOpen
+								className={cx("popup-trigger", {
+									"popup-trigger--active": isOpen
 								})}
 								onClick={this.onClick}
 							>
@@ -232,10 +232,10 @@ class Dropdown extends React.PureComponent {
 								>
 									<div
 										ref={el => (this.contentRef = el)}
-										className={cx("dropdown-content dropdown-bubble", {
-											"dropdown-content--right dropdown-bubble--right": align === "right",
-											"dropdown-content--left dropdown-bubble--left": align === "left",
-											"dropdown-content--center dropdown-bubble--center": align === "center",
+										className={cx("popup-content popup-bubble", {
+											"popup-content--right popup-bubble--right": align === "right",
+											"popup-content--left popup-bubble--left": align === "left",
+											"popup-content--center popup-bubble--center": align === "center",
 											"display--none": !isOpen,
 											"display--block": isOpen,
 											dropdownMenu: Boolean(menuItems)
