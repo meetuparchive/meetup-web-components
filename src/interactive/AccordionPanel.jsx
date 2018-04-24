@@ -11,6 +11,7 @@ import ToggleSwitch from '../forms/ToggleSwitch';
 export const PANEL_CLASS = 'accordionPanel';
 export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
 export const ACCORDION_LABEL_CLASS = 'accordionPanel-label';
+export const ACCORDIONPANEL_CONTENT_CLASS = 'accordionPanel-content';
 
 /**
  * @module AccordionPanel
@@ -19,6 +20,7 @@ class AccordionPanel extends React.Component {
 	constructor(props) {
 		super(props);
 		this._handleToggle = this._handleToggle.bind(this);
+		this.onKeyUp = this.onKeyUp.bind(this);
 		this.onToggleClick = this.onToggleClick.bind(this);
 		this.onTransitionEnd = this.onTransitionEnd.bind(this);
 
@@ -69,7 +71,24 @@ class AccordionPanel extends React.Component {
 	onToggleClick(e) {
 		e.preventDefault();
 
+		// console.log(this.props.onToggleClick ? 'this.props.onToggleClick(e)' : 'this._handleToggle(e);');
+
 		this.props.onToggleClick ? this.props.onToggleClick(e) : this._handleToggle(e);
+	}
+
+	/**
+	 * @description forceUpdate allows us to calculate height again now that contentEl is set
+	 * @returns {undefined}
+	 */
+	onKeyUp(e) {
+		const isActivatingButton = [
+			' ', /* space bar */
+			'Enter'
+		].some(key => e.key === key);
+
+		if (isActivatingButton) {
+			this._handleToggle(e);
+		}
 	}
 
 	/**
@@ -168,9 +187,11 @@ class AccordionPanel extends React.Component {
 					aria-expanded={isOpen}
 					aria-selected={isOpen}
 					className={classNames.trigger}
+					tabIndex={0}
+					onKeyUp={this.onKeyUp}
 					onClick={this.onToggleClick}
-					onFocus={this.handleFocus}
-					onBlur={this.handleBlur}
+					// onFocus={this.handleFocus}
+					// onBlur={this.handleBlur}
 				>
 					<Flex
 						className={classNames.accordionPanel}
@@ -213,7 +234,7 @@ class AccordionPanel extends React.Component {
 					onTransitionEnd={this.onTransitionEnd}
 				>
 					<div
-						className="accordionPanel-content"
+						className={ACCORDIONPANEL_CONTENT_CLASS}
 						ref={div => {
 							this.contentEl = div;
 						}}
