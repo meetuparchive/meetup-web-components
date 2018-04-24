@@ -59,7 +59,7 @@ describe('Dropdown', () => {
 	const wrapper = mount(dropdownJSX);
 
 	it('should hide dropdown content by default', () => {
-		expect(wrapper.find('.dropdown-content').length).toBeFalsy();
+		expect(wrapper.find('.popup-content').length).toBeFalsy();
 	});
 
 	describe('right aligned dropdown', () => {
@@ -71,13 +71,13 @@ describe('Dropdown', () => {
 			/>
 		);
 		const rightDropdownWrapper = mount(rightDropdown);
-		const trigger = rightDropdownWrapper.find('.dropdown-trigger');
+		const trigger = rightDropdownWrapper.find('.popup-trigger');
 
 		it('applies correct alignment className to dropdown content', () => {
 			trigger.simulate('click');
-			const content = rightDropdownWrapper.find('.dropdown-content');
+			const content = rightDropdownWrapper.find('.popup-content');
 
-			expect(content.prop('className')).toContain('dropdown-content--right');
+			expect(content.prop('className')).toContain('popup-content--right');
 		});
 	});
 
@@ -86,7 +86,7 @@ describe('Dropdown', () => {
 
 		beforeEach(() => {
 			closedComponent = mount(dropdownJSX);
-			trigger = closedComponent.find('.dropdown-trigger').first();
+			trigger = closedComponent.find('.popup-trigger').first();
 		});
 		afterEach(() => {
 			closedComponent = null;
@@ -129,7 +129,7 @@ describe('Dropdown', () => {
 			/>
 		);
 		const menuItemDropdownWrapper = mount(menuItemDropdown);
-		const trigger = menuItemDropdownWrapper.find('.dropdown-trigger');
+		const trigger = menuItemDropdownWrapper.find('.popup-trigger');
 
 		it('renders the menuItems', () => {
 			trigger.simulate('click');
@@ -145,7 +145,7 @@ describe('Dropdown', () => {
 
 		beforeEach(() => {
 			closedComponent = mount(<DropdownWithToggle />);
-			trigger = closedComponent.find('.dropdown-trigger');
+			trigger = closedComponent.find('.popup-trigger');
 		});
 
 		afterEach(() => {
@@ -154,12 +154,12 @@ describe('Dropdown', () => {
 		});
 
 		it('should still open and close when clicking the trigger', () => {
-			expect(closedComponent.find('.dropdown-content').length).toBeFalsy();
+			expect(closedComponent.find('.popup-content').length).toBeFalsy();
 			trigger.simulate('click');
-			expect(closedComponent.find('.dropdown-content').length).toBeTruthy();
+			expect(closedComponent.find('.popup-content').length).toBeTruthy();
 
 			trigger.simulate('click');
-			expect(closedComponent.find('.dropdown-content').length).toBeFalsy();
+			expect(closedComponent.find('.popup-content').length).toBeFalsy();
 		});
 	});
 });

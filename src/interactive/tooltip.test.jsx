@@ -26,7 +26,7 @@ describe('Tooltip', () => {
 	const wrapper = shallow(dropdownJSX);
 
 	it('should hide dropdown content by default', () => {
-		expect(wrapper.find('.dropdown-content').length).toBeFalsy();
+		expect(wrapper.find('.popup-content').length).toBeFalsy();
 	});
 
 	describe('right aligned dropdown', () => {
@@ -38,13 +38,13 @@ describe('Tooltip', () => {
 			/>
 		);
 		const rightDropdownWrapper = mount(rightDropdown);
-		const trigger = rightDropdownWrapper.find('.dropdown-trigger');
+		const trigger = rightDropdownWrapper.find('.popup-trigger');
 
 		it('applies correct alignment className to dropdown content', () => {
 			trigger.simulate('focus');
-			const content = rightDropdownWrapper.find('.dropdown-content');
+			const content = rightDropdownWrapper.find('.popup-content');
 
-			expect(content.prop('className')).toContain('dropdown-content--right');
+			expect(content.prop('className')).toContain('popup-content--right');
 		});
 	});
 
@@ -53,8 +53,8 @@ describe('Tooltip', () => {
 
 		beforeEach(() => {
 			closedComponent = shallow(dropdownJSX);
-			trigger = closedComponent.find('.dropdown-trigger').first();
-			tooltipArea = closedComponent.find('.dropdown').first();
+			trigger = closedComponent.find('.popup-trigger').first();
+			tooltipArea = closedComponent.find('.popup').first();
 		});
 		afterEach(() => {
 			closedComponent = null;

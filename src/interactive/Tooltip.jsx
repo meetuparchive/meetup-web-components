@@ -71,8 +71,8 @@ class Tooltip extends React.PureComponent {
 		const classNames = {
 			dropdown: cx(
 				className,
-				"dropdown", {
-					"dropdown--noPortal": noPortal
+				"popup", {
+					"popup--noPortal": noPortal
 				}
 			)
 		};
@@ -93,7 +93,7 @@ class Tooltip extends React.PureComponent {
 			>
 				<div
 					ref={el => (this.triggerRef = el)}
-					className="dropdown-trigger"
+					className="popup-trigger"
 					onFocus={this.openContent}
 					onBlur={this.onBlur}
 					onMouseEnter={this.openContent}
@@ -114,11 +114,11 @@ class Tooltip extends React.PureComponent {
 							<div
 								ref={el => (this.contentRef = el)}
 								className={cx(
-									"dropdown-content dropdown-content--tooltip",
+									"popup-content tooltip-content",
 									{
-										"dropdown-content--right": align === "right",
-										"dropdown-content--left": align === "left",
-										"dropdown-content--center": align === "center",
+										"popup-content--right": align === "right",
+										"popup-content--left": align === "left",
+										"popup-content--center": align === "center",
 										"display--none": !isActive,
 										"display--block": isActive,
 									}
@@ -135,12 +135,12 @@ class Tooltip extends React.PureComponent {
 							>
 								<div
 									className={cx(
-										"dropdown-bubble dropdown-bubble--tooltip inverted",
+										"popup-bubble tooltip-bubble inverted",
 										{
-											"dropdown-bubble--active": isActive,
-											"dropdown-bubble--right": align === "right",
-											"dropdown-bubble--left": align === "left",
-											"dropdown-bubble--center": align === "center"
+											"popup-bubble--active": isActive,
+											"popup-bubble--right": align === "right",
+											"popup-bubble--left": align === "left",
+											"popup-bubble--center": align === "center"
 										}
 									)}
 								>
