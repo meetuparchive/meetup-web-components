@@ -1,15 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
-import { Portal } from 'react-portal';
-import rafSchedule from 'raf-schd';
 import Downshift from 'downshift';
+import FloatingPosition from '../utils/components/FloatingPosition';
 import {
 	C_COOLGRAYLIGHTTRANSP
 } from 'swarm-constants/dist/js/colorConstants.js';
 
 import bindAll from "../utils/bindAll";
-import ConditionalWrap from '../utils/components/ConditionalWrap';
 
 export const DROPDOWN_MENU_ITEM_CLASS = 'dropdownMenu-item';
 
@@ -22,8 +20,6 @@ class Dropdown extends React.PureComponent {
 
 		bindAll(
 			this,
-			"getContentPosition",
-			"scheduleContentPosition",
 			"toggleContent",
 			"closeContent",
 			"onClick",
@@ -32,62 +28,10 @@ class Dropdown extends React.PureComponent {
 			"onBodyKeyDown"
 		);
 
-		this.scheduleUpdate = rafSchedule(
-			triggerClientRect => this.getContentPosition(triggerClientRect)
-		);
-
 		this.state = {
 			isActive: props.isActive || false,
-			left: "0px",
-			top: "0px"
 		};
 
-	}
-
-	getContentPosition(triggerClientRect) {
-		if (!this.triggerRef) {
-			return;
-		}
-
-		const positionTarget = this.triggerRef.offsetParent ? this.triggerRef.offsetParent : this.triggerRef;
-		const positionData = triggerClientRect || positionTarget.getBoundingClientRect();
-
-		const {
-			left,
-			top,
-			width,
-			height
-		} = positionData;
-
-		const scrollTop = window.scrollY || window.pageYOffset;
-		const scrollLeft = window.scrollX || window.pageXOffset;
-
-		const getLeftPos = alignment => {
-			switch (alignment) {
-				case 'left':
-					return `${left + scrollLeft}px`;
-				case 'center':
-					return `${(left + width / 2) + scrollLeft}px`;
-				default:
-					return `${left + width + scrollLeft}px`;
-			}
-		};
-
-		const ddPosition = {
-			left: !this.props.noPortal && getLeftPos(this.props.align),
-			top: !this.props.noPortal && (scrollTop + top + height)
-		};
-
-		this.setState(() => ({
-			left: ddPosition.left,
-			top: ddPosition.top
-		}));
-	}
-
-	scheduleContentPosition(triggerClientRect) {
-		// When we receive a scroll event, schedule an update.
-		// If we receive many updates within a frame, we'll only publish the latest value.
-		this.scheduleUpdate(triggerClientRect);
 	}
 
 	closeContent(e) {
@@ -99,8 +43,6 @@ class Dropdown extends React.PureComponent {
 	}
 
 	toggleContent(e) {
-		this.getContentPosition();
-
 		if (this.props.manualToggle) {
 			this.props.manualToggle(e);
 		} else {
@@ -144,28 +86,13 @@ class Dropdown extends React.PureComponent {
 	}
 
 	componentDidMount() {
-		const positionTarget = this.triggerRef.offsetParent ? this.triggerRef.offsetParent : this.triggerRef;
-
 		document.body.addEventListener("click", this.onBodyClick);
 		document.body.addEventListener("keydown", this.onBodyKeyDown);
-		this.getContentPosition();
-		window.addEventListener(
-			"resize",
-			() => {this.scheduleContentPosition(positionTarget.getBoundingClientRect());}
-		);
-		document.addEventListener(
-			"scroll",
-			() => {this.scheduleContentPosition(positionTarget.getBoundingClientRect());},
-			true
-		);
 	}
 
 	componentWillUnmount() {
 		document.body.removeEventListener("click", this.onBodyClick);
 		document.body.removeEventListener("keydown", this.onBodyKeyDown);
-		window.removeEventListener("resize", this.getContentPosition);
-		document.removeEventListener("scroll", this.getContentPosition);
-		this.scheduleUpdate.cancel();
 	}
 
 	render() {
@@ -178,6 +105,7 @@ class Dropdown extends React.PureComponent {
 			minWidth,
 			noPortal,
 			menuItems,
+			onSelect,
 			...other
 		} = this.props;
 
@@ -198,10 +126,19 @@ class Dropdown extends React.PureComponent {
 			? this.props.isActive
 			: this.state.isActive;
 
+		const getTrigger = () => {
+			return this.triggerRef;
+		};
+
 		return (
 			<Downshift
 				menuItems={menuItems}
 				isOpen={isActive}
+				onSelect={
+					(selectedItem, stateAndHelpers)=>{
+						onSelect(selectedItem, stateAndHelpers);
+					}
+				}
 			>
 				{({
 					isOpen,
@@ -225,52 +162,61 @@ class Dropdown extends React.PureComponent {
 							>
 								{trigger}
 							</div>
-							{ isOpen &&
-								<ConditionalWrap
-									condition={!noPortal}
-									wrap={children => noPortal ? <div>{children}</div> : <Portal>{children}</Portal>}
-								>
-									<div
-										ref={el => (this.contentRef = el)}
-										className={cx("dropdown-content dropdown-bubble", {
-											"dropdown-content--right dropdown-bubble--right": align === "right",
-											"dropdown-content--left dropdown-bubble--left": align === "left",
-											"dropdown-content--center dropdown-bubble--center": align === "center",
-											"display--none": !isOpen,
-											"display--block": isOpen,
-											dropdownMenu: Boolean(menuItems)
-										})}
-										aria-hidden={!isOpen}
-										style={{
-											left: this.state.left,
-											top: this.state.top,
-											minWidth: minWidth,
-											maxWidth: maxWidth
-										}}
-									>
 
-										{
-											menuItems
-											?
-												menuItems.map((item, index) => React.cloneElement(
-													item,
-													{
-														key: `menuItem-${index}`,
-														className: cx(
-															item.props.className,
-															DROPDOWN_MENU_ITEM_CLASS,
-															'display--flex span--100'
-														),
-														style: {
-															backgroundColor: highlightedIndex === index && C_COOLGRAYLIGHTTRANSP
+							{ isOpen &&
+								<FloatingPosition
+									getTrigger={getTrigger}
+									noPortal={noPortal}
+									align={align}
+								>
+									{({
+										top,
+										left
+									}) => (
+										<div
+											ref={el => (this.contentRef = el)}
+											className={cx("dropdown-content dropdown-bubble", {
+												"dropdown-content--right dropdown-bubble--right": align === "right",
+												"dropdown-content--left dropdown-bubble--left": align === "left",
+												"dropdown-content--center dropdown-bubble--center": align === "center",
+												"display--none": !isOpen,
+												"display--block": isOpen
+											})}
+											aria-hidden={!isOpen}
+											style={{
+												left: left,
+												top: top,
+												minWidth: minWidth,
+												maxWidth: maxWidth
+											}}
+										>
+
+											{
+												menuItems
+												?
+													menuItems.map((item, index) => React.cloneElement(
+														item,
+														{
+															...getItemProps({
+																item,
+																key: `menuItem-${index}`,
+																className: cx(
+																	item.props.className,
+																	DROPDOWN_MENU_ITEM_CLASS,
+																	'display--flex span--100'
+																),
+																style: {
+																	backgroundColor: highlightedIndex === index && C_COOLGRAYLIGHTTRANSP
+																}
+															})
 														}
-													}
-												))
-											:
-												content
-										}
-									</div>
-								</ConditionalWrap>
+													))
+												:
+													content
+											}
+										</div>
+									)}
+								</FloatingPosition>
 							}
 						</div>
 					)
