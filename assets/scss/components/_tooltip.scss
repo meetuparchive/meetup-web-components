@@ -1,0 +1,12 @@
+.dropdown-content--tooltip {
+	margin-top: 0;
+	padding-top: $triangleSize;
+}
+
+.dropdown-bubble--tooltip {
+	background-color: $C_darkGray;
+
+	&:after {
+		border-bottom-color: $C_darkGray;
+	}
+}

@@ -37,6 +37,17 @@ export const navItems = {
 		label: 'Pro Dashboard',
 		mobileLabel: 'Dashboard',
 		mainAccount: { urlname: '/mason-mocks', name: 'Mason Mocks' },
+		mobileTabs: {
+			analytics: { link: 'meetup.com/analytics', label: 'Analytics' },
+			members: { link: 'meetup.com/members', label: 'Members' },
+			groups: { link: 'meetup.com/groups', label: 'Groups' },
+			templates: { link: 'meetup.com/templates', label: 'Templates' },
+			profile: { link: 'meetup.com/profile', label: 'Profile' },
+			publicProfile: { link: 'meetup.com/settings', label: 'Public Profile' },
+			contact: { link: 'meetup.com/contact', label: 'Contact' },
+			help: { link: 'meetup.com/help', label: 'Help' },
+			logout: { link: 'meetup.com/logout', label: 'Logout' },
+		},
 	},
 	explore: { link: 'meetup.com/find/events', label: 'Explore' },
 	groups: {
@@ -82,6 +93,17 @@ storiesOf('Nav', module)
 	.add('authenticated but members groups has not been loaded', () => {
 		const groups = { ...navItems.groups, list: undefined };
 		const items = { ...navItems, groups };
+		return <Nav self={MOCK_MEMBER} navItems={items} style={{ width: '100%' }} />;
+	})
+	.add('authenticated but notifications has not been loaded', () => {
+		const notifications = { ...navItems.notifications, list: undefined };
+		const items = { ...navItems, notifications };
+		return <Nav self={MOCK_MEMBER} navItems={items} style={{ width: '100%' }} />;
+	})
+	.add('authenticated but notifications and groups are empty', () => {
+		const notifications = { ...navItems.notifications, list: [] };
+		const groups = { ...navItems.groups, list: [] };
+		const items = { ...navItems, notifications, groups };
 		return <Nav self={MOCK_MEMBER} navItems={items} style={{ width: '100%' }} />;
 	})
 	.add('authenticated Pro member', () => (

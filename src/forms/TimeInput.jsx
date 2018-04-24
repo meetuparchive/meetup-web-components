@@ -251,6 +251,7 @@ export class TimeInput extends React.PureComponent {
 		const {
 			id,
 			label,
+			labelClassName,
 			name,
 			className,
 			value, // eslint-disable-line no-unused-vars
@@ -276,11 +277,14 @@ export class TimeInput extends React.PureComponent {
 				disabled,
 				error,
 			}),
-			label: cx('label--field', {
-				'label--disabled': disabled,
-				'label--required': required,
-				'flush--bottom': helperText,
-			}),
+			label: cx(
+				'label--field', {
+					'label--disabled': disabled,
+					'label--required': required,
+					'flush--bottom': helperText,
+				},
+				labelClassName
+			),
 			helperText: cx('helperTextContainer', { required, disabled }),
 			meridian: cx(
 				MERIDIAN_INPUT_CLASS,
@@ -408,6 +412,7 @@ TimeInput.propTypes = {
 	error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	is24Hr: PropTypes.bool,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	labelClassName: PropTypes.string,
 	onChange: PropTypes.func, // redux-form or DateTimePicker provides an onChange prop
 	onChangeCallback: PropTypes.func,
 	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
