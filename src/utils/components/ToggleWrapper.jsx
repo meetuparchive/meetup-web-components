@@ -42,7 +42,7 @@ class ToggleWrapper extends React.Component {
 			'Enter'
 		].some(key => e.key === key);
 
-		if (isActivatingButton) { // && this.props.type !== 'radio'
+		if (isActivatingButton) {
 			this.toggleActive();
 		}
 	}
