@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Icon from '../media/Icon';
-import withToggleControl from '../utils/components/WithToggleControl';
+import ToggleWrapper from '../utils/components/ToggleWrapper';
 
 export const TOGGLE_PILL_CLASS = 'toggleButton';
 
@@ -12,21 +12,7 @@ export const TOGGLE_PILL_CLASS = 'toggleButton';
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#togglePills}
  * @module TogglePill
  */
-class TogglePill extends React.Component {
-	constructor (props) {
-		super(props);
-
-		this.onChange = this.onChange.bind(this);
-	}
-
-	onChange(e) {
-		this.props.toggleActive();
-
-		if (this.props.onChange) {
-			this.props.onChange(e);
-		}
-	}
-
+class TogglePill extends React.PureComponent {
 	render() {
 		const {
 			isActive,
@@ -39,11 +25,9 @@ class TogglePill extends React.Component {
 			name,
 			useRadio,
 			value,
-			toggleActive, // eslint-disable-line no-unused-vars
+			onChange,
 			...other
 		} = this.props;
-
-		delete other.onChange; // onChange is consumed in this.onChange - do not pass it along to children
 
 		const inputType = useRadio ? 'radio' : 'checkbox';
 
@@ -86,24 +70,38 @@ class TogglePill extends React.Component {
 		// ---
 
 		return (
-			<div className={classNames}>
-				<input
-					className='toggleButton-input visibility--a11yHide'
-					type={inputType}
-					id={id}
-					name={name}
-					value={value}
-					checked={isActive}
-					onChange={this.onChange}
-					tabIndex={-1}
-					{...other} />
-				<label
-					className={labelClassNames}
-					htmlFor={id}>
-					{children}
-					{(topic) ? topicChildren : null}
-				</label>
-			</div>
+			<ToggleWrapper
+				type={inputType}
+				isActive={isActive}
+				onToggle={onChange}
+			>
+				{({
+					tabIndex,
+					isActive,
+					toggleActive,
+					onKeyUp,
+				}) => (
+					<div className={classNames}>
+						<input
+							className='toggleButton-input visibility--a11yHide'
+							type={inputType}
+							id={id}
+							name={name}
+							value={value}
+							checked={isActive}
+							onChange={toggleActive}
+							onKeyUp={onKeyUp}
+							tabIndex={tabIndex}
+							{...other} />
+						<label
+							className={labelClassNames}
+							htmlFor={id}>
+							{children}
+							{(topic) ? topicChildren : null}
+						</label>
+					</div>
+				)}
+			</ToggleWrapper>
 		);
 	}
 }
@@ -123,5 +121,5 @@ TogglePill.defaultProps = {
 	isActive: false
 };
 
-export default withToggleControl(TogglePill);
+export default TogglePill;
 
