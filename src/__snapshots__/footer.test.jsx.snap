@@ -894,7 +894,7 @@ exports[`SocialIconsList renders for pl-PL locale 1`] = `
         />
     </a>,
       <a
-        href="https://twitter.com/Meetup/"
+        href="https://twitter.com/MeetupPL/"
     >
         <Icon
             className="margin--left"
