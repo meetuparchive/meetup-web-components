@@ -3,15 +3,12 @@ import React from 'react';
 import ConditionalWrap from './ConditionalWrap';
 
 /**
+ * @module ToggleWrapper
+ *
  * Provides boolean isActive prop to wrapped component.
  * Prop name can also be customized if need be
  *
- * @param {React.element} ToggleComponent - the component to wrap
  * @returns {React.element}
- */
-// export default function withToggleControl(WrappedComponent) {
-/**
- * @module ToggleWrapper
  */
 class ToggleWrapper extends React.Component {
 	constructor(props) {
@@ -20,6 +17,14 @@ class ToggleWrapper extends React.Component {
 		this.state = { isActive: props.isActive };
 		this.toggleActive = this.toggleBool.bind(this);
 		this.onKeyUp = this.onKeyUp.bind(this);
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.isActive !== this.state.isActive) {
+			this.state.isActive
+				? this.props.onCallback && this.props.onCallback()
+				: this.props.offCallback && this.props.offCallback();
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {
