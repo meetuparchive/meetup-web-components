@@ -46,4 +46,8 @@
 		);
 		font-weight: $W_medium;
 	}
+
+	&:focus + .toggleButton-label {
+		outline: 1px dotted $C_borderDark;
+	}
 }
