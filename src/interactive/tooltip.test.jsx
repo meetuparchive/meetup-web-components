@@ -16,26 +16,17 @@ const dropdownContent = (
 const dropdownTrigger = <Button small>Open</Button>;
 
 describe('Tooltip', () => {
-	let dropdownJSX, wrapper;
+	const dropdownJSX = (
+		<Tooltip
+			align="right"
+			trigger={dropdownTrigger}
+			content={dropdownContent}
+		/>
+	);
+	const wrapper = shallow(dropdownJSX);
 
-	beforeEach(() => {
-		dropdownJSX = (
-			<Tooltip
-				align="right"
-				trigger={dropdownTrigger}
-				content={dropdownContent}
-			/>
-		);
-		wrapper = shallow(dropdownJSX);
-	});
-
-	afterEach(() => {
-		dropdownJSX = null;
-		wrapper = null;
-	});
-
-	it('should hide tooltip content by default', () => {
-		expect(wrapper.find('.dropdown-content').length).toBeFalsy();
+	it('should hide dropdown content by default', () => {
+		expect(wrapper.find('.popup-content').length).toBeFalsy();
 	});
 
 	it('should call onMouseEnter and onMouseLeave functions if passed as props', () => {
@@ -51,8 +42,8 @@ describe('Tooltip', () => {
 				onMouseLeave={onMouseLeave}
 			/>
 		);
-		const trigger = dropdownMouseEvents.find('.dropdown-trigger').first();
-		const tooltipArea = dropdownMouseEvents.find('.dropdown').first();
+		const trigger = dropdownMouseEvents.find('.popup-trigger').first();
+		const tooltipArea = dropdownMouseEvents.find('.popup').first();
 
 		expect(onMouseEnter).not.toHaveBeenCalled();
 		expect(onMouseLeave).not.toHaveBeenCalled();
@@ -75,9 +66,8 @@ describe('Tooltip', () => {
 				onBlur={onBlur}
 			/>
 		);
-		const trigger = dropdownFocusEvents.find('.dropdown-trigger').first();
-		const tooltipArea = dropdownFocusEvents.find('.dropdown').first();
-
+		const trigger = dropdownFocusEvents.find('.popup-trigger').first();
+		const tooltipArea = dropdownFocusEvents.find('.popup').first();
 
 		expect(onFocus).not.toHaveBeenCalled();
 		expect(onBlur).not.toHaveBeenCalled();
@@ -99,7 +89,7 @@ describe('Tooltip', () => {
 			/>
 		);
 		const rightDropdownWrapper = mount(rightDropdown);
-		const trigger = rightDropdownWrapper.find('.dropdown-trigger');
+		const trigger = rightDropdownWrapper.find('.popup-trigger');
 
 		it('matches snapshot', () => {
 			expect(rightDropdown).toMatchSnapshot();
@@ -107,9 +97,9 @@ describe('Tooltip', () => {
 
 		it('applies correct alignment className to tooltip content', () => {
 			trigger.simulate('focus');
-			const content = rightDropdownWrapper.find('.dropdown-content');
+			const content = rightDropdownWrapper.find('.popup-content');
 
-			expect(content.prop('className')).toContain('dropdown-content--right');
+			expect(content.prop('className')).toContain('popup-content--right');
 		});
 	});
 
@@ -118,8 +108,8 @@ describe('Tooltip', () => {
 
 		beforeEach(() => {
 			closedComponent = shallow(dropdownJSX);
-			trigger = closedComponent.find('.dropdown-trigger').first();
-			tooltipArea = closedComponent.find('.dropdown').first();
+			trigger = closedComponent.find('.popup-trigger').first();
+			tooltipArea = closedComponent.find('.popup').first();
 		});
 		afterEach(() => {
 			closedComponent = null;
@@ -171,11 +161,11 @@ describe('Tooltip', () => {
 			/>
 		);
 		const manualTooltipWrapper = mount(manualTooltip);
-		const trigger = manualTooltipWrapper.find('.dropdown-trigger');
+		const trigger = manualTooltipWrapper.find('.popup-trigger');
 
 		it('does not render content on focus', () => {
 			trigger.simulate('focus');
-			expect(manualTooltipWrapper.find('.dropdown-content').length).toBe(0);
+			expect(manualTooltipWrapper.find('.popup-content').length).toBe(0);
 		});
 	});
 });

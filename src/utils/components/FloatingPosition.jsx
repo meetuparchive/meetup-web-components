@@ -64,7 +64,7 @@ class FloatingPosition extends React.PureComponent {
 			const triggerTopPosition = scrollTop + top + height;
 
 			if (noPortal) {
-				return direction == 'top' ? parseInt(contentHeight * -1) : triggerTopPosition;
+				return direction == 'top' ? parseInt(contentHeight * -1) : null;
 			} else {
 				return direction == 'top' ? (triggerTopPosition - contentHeight - height) : triggerTopPosition;
 			}

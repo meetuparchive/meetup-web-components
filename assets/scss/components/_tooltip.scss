@@ -1,9 +1,9 @@
-.dropdown-content--tooltip {
+.tooltip-content {
 	margin-top: 0;
 	padding-top: $triangleSize;
 }
 
-.dropdown-bubble--tooltip {
+.tooltip-bubble {
 	background-color: $C_darkGray;
 
 	&:after {
