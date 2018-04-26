@@ -1,0 +1,160 @@
+$dropdownShadow: $interactiveShadow;
+$content-minWidth: $block-6;
+$triangleSize: 10px;
+$spaceFromTrigger: $space-3 + $triangleSize;
+
+.popup {
+	display: inline-block;
+	position: relative;
+}
+
+.popup-trigger {
+	display: inline;
+	cursor: pointer;
+
+	&--active {
+		&:focus {
+			outline: 0;
+		}
+	}
+}
+
+.popup-bubble {
+	border: 1px solid $C_border;
+	border-radius: $defaultRadius;
+	background-color: $C_contentBG;
+	box-shadow: $dropdownShadow;
+	box-sizing: border-box;
+
+	// outer triangle for border
+	&:before {
+		width: 0;
+		height: 0;
+		border-bottom: ($triangleSize + 1) solid $C_border;
+		border-right: ($triangleSize + 1) solid transparent;
+		border-left: ($triangleSize + 1) solid transparent;
+		top: -$triangleSize - 0.5;
+	}
+
+	// inner triangle to match content color
+	&:after {
+		width: 0;
+		height: 0;
+		border-bottom: $triangleSize solid $C_white;
+		border-right: $triangleSize solid transparent;
+		border-left: $triangleSize solid transparent;
+		top: -$triangleSize + 1;
+	}
+
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+
+		// overlap content container
+		z-index: map-get($zindex-map, "floating-content") + 1;
+	}
+}
+
+@mixin alignDropdown($direction) {
+	@if $direction != "center" {
+		&:before {
+			#{$direction}: $space-half;
+		}
+		&:after {
+			#{$direction}: $space-half + 1;
+		}
+	}
+	@if $direction == "center" {
+		&:before {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		&:after {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}
+
+.popup-bubble--right {
+	@include alignDropdown("right");
+}
+
+.popup-bubble--left {
+	@include alignDropdown("left");
+}
+
+.popup-bubble--center {
+	@include alignDropdown("center");
+}
+
+@keyframes fadeDown {
+	from {
+		opacity: 0;
+		transform: translateY(-#{$triangleSize});
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.popup-bubble--top {
+	// outer triangle for border
+	&:before {
+		border-bottom: none;
+		border-top: ($triangleSize + 1) solid $C_border;
+		bottom: -#{$triangleSize - 0.5};
+		top: initial;
+	}
+
+	// inner triangle to match content color
+	&:after {
+		border-bottom: none;
+		border-top: $triangleSize solid $C_white;
+		bottom: -#{$triangleSize + 1};
+		top: initial;
+	}
+}
+
+.popup-bubble--active {
+	animation-name: fadeDown;
+	animation-duration: $duration--short;
+	animation-fill-mode: forwards;
+	animation-timing-function: $easing--standard;
+}
+
+.popup-content {
+	margin-top: $triangleSize;
+	position: absolute;
+	width: max-content;
+	z-index: map-get($zindex-map, "floating-content");
+}
+
+.popup--noPortal {
+	.popup-content--left {
+		left: 0;
+	}
+	.popup-content--center {
+		left: 50%;
+	}
+	.popup-content--right {
+		right: 0;
+		transform: translateX(0);
+	}
+}
+
+.popup-content--right {
+	transform: translateX(-100%);
+}
+
+.popup-content--center {
+	transform: translateX(-50%);
+}
+
+.popup-content--top {
+	padding-top: 0;
+	padding-bottom: $triangleSize;
+}
