@@ -111,10 +111,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             aria-selected={true}
             className="accordionPanel-label display--block span--100"
             id="label-firstsection"
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
+            onKeyUp={[Function]}
             role="tab"
+            tabIndex={0}
           >
             <Flex
               className="padding--bottom padding--top accordionPanel accordionPanel--active"
@@ -296,10 +296,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
             id="label-nextsection"
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
+            onKeyUp={[Function]}
             role="tab"
+            tabIndex={0}
           >
             <Flex
               className="padding--bottom padding--top accordionPanel"
@@ -481,10 +481,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
             id="label-thirdsection"
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
+            onKeyUp={[Function]}
             role="tab"
+            tabIndex={0}
           >
             <Flex
               className="padding--bottom padding--top accordionPanel"
@@ -734,10 +734,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             aria-selected={true}
             className="accordionPanel-label display--block span--100"
             id="label-firstsection"
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
+            onKeyUp={[Function]}
             role="tab"
+            tabIndex={0}
           >
             <Flex
               className="padding--bottom padding--top accordionPanel accordionPanel--active"
@@ -919,10 +919,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
             id="label-nextsection"
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
+            onKeyUp={[Function]}
             role="tab"
+            tabIndex={0}
           >
             <Flex
               className="padding--bottom padding--top accordionPanel"
@@ -1104,10 +1104,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
             id="label-thirdsection"
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
+            onKeyUp={[Function]}
             role="tab"
+            tabIndex={0}
           >
             <Flex
               className="padding--bottom padding--top accordionPanel"
