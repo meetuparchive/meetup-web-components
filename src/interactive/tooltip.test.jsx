@@ -69,7 +69,6 @@ describe('Tooltip', () => {
 		const trigger = dropdownFocusEvents.find('.popup-trigger').first();
 		const tooltipArea = dropdownFocusEvents.find('.popup').first();
 
-
 		expect(onFocus).not.toHaveBeenCalled();
 		expect(onBlur).not.toHaveBeenCalled();
 		trigger.simulate('focus');
