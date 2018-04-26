@@ -91,7 +91,7 @@ class TogglePill extends React.PureComponent {
 							className={labelClassNames}
 							htmlFor={id}>
 							{children}
-							{(topic) ? topicChildren(isActive) : (isActive) => null}
+							{(topic) ? topicChildren(isActive) : null}
 						</label>
 					</div>
 				)}
