@@ -61,11 +61,11 @@ class Tooltip extends React.PureComponent {
 			minWidth,
 			noPortal,
 			id,
+			direction,
 			...other
 		} = this.props;
 
 		// Do not pass along to children
-		delete other.manualToggle;
 		delete other.isActive;
 
 		const classNames = {
@@ -83,6 +83,10 @@ class Tooltip extends React.PureComponent {
 
 		const getTrigger = () => {
 			return this.triggerRef;
+		};
+
+		const getContent = () => {
+			return this.contentRef;
 		};
 
 		return(
@@ -104,8 +108,10 @@ class Tooltip extends React.PureComponent {
 				{ isActive &&
 					<FloatingPosition
 						getTrigger={getTrigger}
+						getContent={getContent}
 						noPortal={noPortal}
 						align={align}
+						direction={direction}
 					>
 						{({
 							top,
@@ -119,6 +125,7 @@ class Tooltip extends React.PureComponent {
 										"dropdown-content--right": align === "right",
 										"dropdown-content--left": align === "left",
 										"dropdown-content--center": align === "center",
+										"dropdown-content--top": direction === "top",
 										"display--none": !isActive,
 										"display--block": isActive,
 									}
@@ -140,7 +147,8 @@ class Tooltip extends React.PureComponent {
 											"dropdown-bubble--active": isActive,
 											"dropdown-bubble--right": align === "right",
 											"dropdown-bubble--left": align === "left",
-											"dropdown-bubble--center": align === "center"
+											"dropdown-bubble--center": align === "center",
+											"dropdown-bubble--top": direction === "top"
 										}
 									)}
 								>
@@ -157,6 +165,7 @@ class Tooltip extends React.PureComponent {
 }
 
 Tooltip.defaultProps = {
+	direction: "bottom",
 	maxWidth: "384px",
 	minWidth: "0px",
 	noPortal: false
@@ -167,9 +176,10 @@ Tooltip.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element,
 	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
+	direction: PropTypes.oneOf(["top", "bottom"]).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
-	manualToggle: PropTypes.func,
+	manualToggle: PropTypes.bool,
 	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	noPortal: PropTypes.bool,
