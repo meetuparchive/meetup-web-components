@@ -9,7 +9,9 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
     className="accordionPanel-label display--block span--100"
     id="label-firstsection"
     onClick={[Function]}
+    onKeyUp={[Function]}
     role="tab"
+    tabIndex={0}
   >
     <Flex
       className="padding--bottom padding--top accordionPanel"
@@ -67,7 +69,9 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
     className="accordionPanel-label display--block span--100"
     id="label-firstsection"
     onClick={[Function]}
+    onKeyUp={[Function]}
     role="tab"
+    tabIndex={0}
   >
     <Flex
       className="padding--bottom padding--top accordionPanel"
@@ -140,10 +144,10 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
       aria-selected={false}
       className="accordionPanel-label display--block span--100"
       id="label-firstsection"
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
+      onKeyUp={[Function]}
       role="tab"
+      tabIndex={0}
     >
       <Flex
         className="padding--bottom padding--top accordionPanel"
@@ -304,10 +308,10 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
       aria-selected={false}
       className="accordionPanel-label display--block span--100"
       id="label-firstsection"
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
+      onKeyUp={[Function]}
       role="tab"
+      tabIndex={0}
     >
       <Flex
         className="padding--bottom padding--top accordionPanel"

@@ -149,6 +149,7 @@ storiesOf("Dropdown", module)
 				minWidth="160px"
 				maxWidth="250px"
 				trigger={<Button small>Open</Button>}
+				onSelect={(selectedItem, stateAndHelpers) => selectedItem.props.onClick()}
 				menuItems={[
 					<div onClick={action('item one click')}>Item one has text that is really long and should wrap once we reach max width</div>,
 					<div onClick={action('item two click')}>Item two</div>,

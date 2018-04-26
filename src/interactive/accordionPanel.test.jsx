@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import AccordionPanel, { ACTIVEPANEL_CLASS } from './AccordionPanel';
+import AccordionPanel, { ACTIVEPANEL_CLASS, ACCORDIONPANEL_CONTENT_CLASS } from './AccordionPanel';
 import Icon from '../media/Icon';
 import ToggleSwitch from '../forms/ToggleSwitch';
 
@@ -18,8 +18,6 @@ describe('AccordionPanel', function() {
 	beforeEach(() => {
 		panelStateCallback = jest.fn();
 		onClickCallback = jest.fn();
-
-		jest.spyOn(AccordionPanel.prototype, 'getPanelStyle').mockImplementation(() => {});
 
 		panel = shallow(
 			<AccordionPanel
@@ -64,26 +62,35 @@ describe('AccordionPanel', function() {
 		});
 
 		it('calls setPanelState callback onClick', function() {
-			const btn = panel.find('button');
+			const accPanel = panel.find('[role="tab"]');
 			const isOpen = panel.prop('isOpen');
+			const panelContent = panel.find(`.${ACCORDIONPANEL_CONTENT_CLASS}`);
+			const getPanelStyle = panel.instance().getPanelStyle;
 
-			setTimeout(() => {
-				expect(panelStateCallback).not.toHaveBeenCalled();
-				btn.simulate('click', { target: panel, preventDefault: jest.fn(), stopPropagation: jest.fn() });
-				expect(panelStateCallback).toHaveBeenCalledWith(panel.prop('clickId'), !isOpen);
-			}, 1);
+			expect(panelStateCallback).not.toHaveBeenCalled();
+			accPanel.simulate('click', { target: accPanel, preventDefault: jest.fn(), stopPropagation: jest.fn() });
+			expect(panelStateCallback).toHaveBeenCalledWith(panel.prop('clickId'), !isOpen, getPanelStyle(isOpen, panelContent));
+		});
+
+		it('calls setPanelState callback onKeyUp', function() {
+			const accPanel = panel.find('[role="tab"]');
+			const isOpen = panel.prop('isOpen');
+			const panelContent = panel.find(`.${ACCORDIONPANEL_CONTENT_CLASS}`);
+			const getPanelStyle = panel.instance().getPanelStyle;
+
+			expect(panelStateCallback).not.toHaveBeenCalled();
+			accPanel.simulate('keyUp', {key: 'Enter', preventDefault: jest.fn()});
+			expect(panelStateCallback).toHaveBeenCalledWith(panel.prop('clickId'), !isOpen, getPanelStyle(isOpen, panelContent));
 		});
 
 		it('calls onClickCallback onClick', function() {
-			const btn = panel.find('button');
+			const accPanel = panel.find('[role="tab"]');
 			const isOpen = panel.prop('isOpen');
 			const fakeEvent = { target: panel, preventDefault: jest.fn(), stopPropagation: jest.fn() };
 
-			setTimeout(() => {
-				expect(onClickCallback).not.toHaveBeenCalled();
-				btn.simulate('click', fakeEvent);
-				expect(onClickCallback).toHaveBeenCalledWith(fakeEvent, !isOpen);
-			}, 1);
+			expect(onClickCallback).not.toHaveBeenCalled();
+			accPanel.simulate('click', fakeEvent);
+			expect(onClickCallback).toHaveBeenCalledWith(fakeEvent, !isOpen);
 		});
 
 

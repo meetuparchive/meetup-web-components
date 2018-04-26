@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip aligned tooltip matches snapshot 1`] = `
+<Tooltip
+  align="right"
+  content={
+    <Section
+      noSeparator={true}
+    >
+      <Chunk>
+        <h2
+          className="text--big text--bold"
+        >
+          Dropdown content
+        </h2>
+      </Chunk>
+    </Section>
+  }
+  direction="top"
+  maxWidth="384px"
+  minWidth="0px"
+  noPortal={false}
+  trigger={
+    <Button
+      component="button"
+      small={true}
+      type="button"
+    >
+      Open
+    </Button>
+  }
+/>
+`;
