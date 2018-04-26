@@ -75,7 +75,7 @@ class AccordionPanel extends React.Component {
 	}
 
 	/**
-	 * @description forceUpdate allows us to calculate height again now that contentEl is set
+	 * @description allows the AccordionPanel content to be toggled with the "Enter" and "space" keys
 	 * @returns {undefined}
 	 */
 	onKeyUp(e) {
