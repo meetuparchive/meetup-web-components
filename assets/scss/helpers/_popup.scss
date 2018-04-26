@@ -101,6 +101,24 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	}
 }
 
+.popup-bubble--top {
+	// outer triangle for border
+	&:before {
+		border-bottom: none;
+		border-top: ($triangleSize + 1) solid $C_border;
+		bottom: -#{$triangleSize - 0.5};
+		top: initial;
+	}
+
+	// inner triangle to match content color
+	&:after {
+		border-bottom: none;
+		border-top: $triangleSize solid $C_white;
+		bottom: -#{$triangleSize + 1};
+		top: initial;
+	}
+}
+
 .popup-bubble--active {
 	animation-name: fadeDown;
 	animation-duration: $duration--short;
@@ -134,4 +152,9 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 
 .popup-content--center {
 	transform: translateX(-50%);
+}
+
+.popup-content--top {
+	padding-top: 0;
+	padding-bottom: $triangleSize;
 }
