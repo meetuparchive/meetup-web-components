@@ -185,8 +185,8 @@ class Dropdown extends React.PureComponent {
 											})}
 											aria-hidden={!isOpen}
 											style={{
-												left: this.state.left,
-												top: this.state.top,
+												left: left,
+												top: top,
 												minWidth: minWidth,
 												maxWidth: maxWidth
 											}}
