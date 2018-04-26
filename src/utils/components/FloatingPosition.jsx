@@ -27,16 +27,15 @@ class FloatingPosition extends React.PureComponent {
 	}
 
 	getContentPosition(triggerClientRect) {
-		const triggerObj = this.props.getTrigger();
-		const contentObj = this.props.getContent();
+		const {getTrigger, getContent} = this.props;
 
-		if (!triggerObj) {
+		if (!getTrigger()) {
 			return;
 		}
 
-		const positionTarget = triggerObj.offsetParent ? triggerObj.offsetParent : triggerObj;
+		const positionTarget = getTrigger().offsetParent ? getTrigger().offsetParent : getTrigger();
 		const positionData = triggerClientRect || positionTarget.getBoundingClientRect();
-		const contentHeight = contentObj.getBoundingClientRect().height;
+		const contentHeight = getContent && getContent().getBoundingClientRect().height;
 
 		const {
 			left,
@@ -61,19 +60,19 @@ class FloatingPosition extends React.PureComponent {
 			}
 		};
 
-		const getTopPos = (above, noPortal) => {
+		const getTopPos = (direction, noPortal) => {
 			const triggerTopPosition = scrollTop + top + height;
 
 			if (noPortal) {
-				return above ? parseInt(contentHeight * -1) : triggerTopPosition;
+				return direction == 'top' ? parseInt(contentHeight * -1) : triggerTopPosition;
 			} else {
-				return above ? (triggerTopPosition - contentHeight - height) : triggerTopPosition;
+				return direction == 'top' ? (triggerTopPosition - contentHeight - height) : triggerTopPosition;
 			}
 		};
 
 		const ddPosition = {
 			left: getLeftPos(this.props.align, this.props.noPortal),
-			top: getTopPos(this.props.popAbove, this.props.noPortal)
+			top: getTopPos(this.props.direction, this.props.noPortal)
 		};
 
 		this.setState(() => ({
@@ -93,6 +92,7 @@ class FloatingPosition extends React.PureComponent {
 
 		const positionTarget = triggerObj.offsetParent ? triggerObj.offsetParent : triggerObj;
 
+		// this.props.getContent && this.getContentPosition();
 		this.getContentPosition();
 		window.addEventListener(
 			"resize",
@@ -130,7 +130,8 @@ class FloatingPosition extends React.PureComponent {
 }
 
 FloatingPosition.propTypes = {
-	getTrigger: PropTypes.func.isRequired
+	getTrigger: PropTypes.func.isRequired,
+	getContent: PropTypes.func,
 };
 
 export default FloatingPosition;

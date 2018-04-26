@@ -89,10 +89,11 @@ describe('Tooltip', () => {
 		}, 10);
 	});
 
-	describe('right aligned tooltip', () => {
+	describe('aligned tooltip', () => {
 		const rightDropdown = (
 			<Tooltip
 				align="right"
+				direction="top"
 				trigger={dropdownTrigger}
 				content={dropdownContent}
 			/>
@@ -100,30 +101,15 @@ describe('Tooltip', () => {
 		const rightDropdownWrapper = mount(rightDropdown);
 		const trigger = rightDropdownWrapper.find('.dropdown-trigger');
 
+		it('matches snapshot', () => {
+			expect(rightDropdown).toMatchSnapshot();
+		});
+
 		it('applies correct alignment className to tooltip content', () => {
 			trigger.simulate('focus');
 			const content = rightDropdownWrapper.find('.dropdown-content');
 
 			expect(content.prop('className')).toContain('dropdown-content--right');
-		});
-	});
-
-	describe('right aligned tooltip', () => {
-		const aboveDropdown = (
-			<Tooltip
-				popAbove
-				trigger={dropdownTrigger}
-				content={dropdownContent}
-			/>
-		);
-		const aboveDropdownWrapper = mount(aboveDropdown);
-		const trigger = aboveDropdownWrapper.find('.dropdown-trigger');
-
-		it('applies correct alignment className to tooltip content', () => {
-			trigger.simulate('focus');
-			const content = aboveDropdownWrapper.find('.dropdown-content');
-
-			expect(content.prop('className')).toContain('dropdown-content--above');
 		});
 	});
 

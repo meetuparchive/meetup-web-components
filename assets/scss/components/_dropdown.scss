@@ -92,7 +92,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	@include alignDropdown("center");
 }
 
-.dropdown-bubble--above {
+.dropdown-bubble--top {
 	// outer triangle for border
 	&:before {
 		border-bottom: none;
@@ -157,7 +157,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	transform: translateX(-50%);
 }
 
-.dropdown-content--above {
+.dropdown-content--top {
 	padding-top: 0;
 	padding-bottom: $triangleSize;
 }

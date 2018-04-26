@@ -61,7 +61,7 @@ class Tooltip extends React.PureComponent {
 			minWidth,
 			noPortal,
 			id,
-			popAbove,
+			direction,
 			...other
 		} = this.props;
 
@@ -111,7 +111,7 @@ class Tooltip extends React.PureComponent {
 						getContent={getContent}
 						noPortal={noPortal}
 						align={align}
-						popAbove={popAbove}
+						direction={direction}
 					>
 						{({
 							top,
@@ -125,7 +125,7 @@ class Tooltip extends React.PureComponent {
 										"dropdown-content--right": align === "right",
 										"dropdown-content--left": align === "left",
 										"dropdown-content--center": align === "center",
-										"dropdown-content--above": popAbove,
+										"dropdown-content--top": direction === "top",
 										"display--none": !isActive,
 										"display--block": isActive,
 									}
@@ -148,7 +148,7 @@ class Tooltip extends React.PureComponent {
 											"dropdown-bubble--right": align === "right",
 											"dropdown-bubble--left": align === "left",
 											"dropdown-bubble--center": align === "center",
-											"dropdown-bubble--above": popAbove
+											"dropdown-bubble--top": direction === "top"
 										}
 									)}
 								>
@@ -165,6 +165,7 @@ class Tooltip extends React.PureComponent {
 }
 
 Tooltip.defaultProps = {
+	direction: "bottom",
 	maxWidth: "384px",
 	minWidth: "0px",
 	noPortal: false
@@ -175,7 +176,7 @@ Tooltip.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element,
 	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
-	popAbove: PropTypes.bool,
+	direction: PropTypes.oneOf(["top", "bottom"]).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
 	manualToggle: PropTypes.bool,

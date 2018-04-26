@@ -90,7 +90,7 @@ storiesOf("Tooltip", module)
 				}}
 			>
 				<Tooltip
-					popAbove
+					direction="top"
 					minWidth="0"
 					maxWidth="384px"
 					align="right"
