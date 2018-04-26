@@ -9,8 +9,13 @@ const testOptions = [
 	{ label: 'Four', value: '4', disabled: true },
 ];
 const nameAttribute = 'testSelect';
+const idAttribute = 'testSelectID';
+
 const BasicSelect = (
 	<SelectInput label="Test select" name={nameAttribute} options={testOptions} />
+);
+const BasicSelectWithId = (
+	<SelectInput label="Test select" name={nameAttribute} id={idAttribute} options={testOptions} />
 );
 const AdvancedSelect = ({ onChange, value }) => (
 	<SelectInput
@@ -34,6 +39,19 @@ describe('SelectInput basic', () => {
 	it('default value should fall back on first option value', () => {
 		expect(component.instance().state.value).toBe(testOptions[0].value);
 	});
+});
+
+describe('SelectInput basic with an ID and a name', () => {
+	const component = shallow(BasicSelect);
+	const componentWithId = shallow(BasicSelectWithId);
+
+	it('should have a ID attribute matching NAME when ID is not passed in', () => {
+		expect(component.find('select').prop('id')).toBe(nameAttribute);
+	});
+	it('should have a ID attribute matching ID when ID is passed in', () => {
+		expect(componentWithId.find('select').prop('id')).toBe(idAttribute);
+	});
+
 });
 
 describe('SelectInput advanced', () => {
