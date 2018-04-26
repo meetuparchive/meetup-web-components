@@ -17,6 +17,41 @@ const dropdownContent = (
 	</div>
 );
 
+/**
+ * @module ManualToggleDropdown
+ */
+class ManualToggleDropdown extends React.PureComponent {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			tooltipOpen: true
+		};
+
+		this.toggleDropdown = this.toggleDropdown.bind(this);
+	}
+
+	toggleDropdown() {
+		this.setState(() => ({ tooltipOpen: !this.state.tooltipOpen }));
+	}
+
+	render() {
+
+		return (
+			<Tooltip
+				manualToggle
+				isActive={this.state.tooltipOpen}
+				minWidth="0"
+				maxWidth="384px"
+				align="right"
+				id="testTooltip"
+				trigger={<Button onClick={this.toggleDropdown} small>Click to toggle</Button>}
+				content={dropdownContent}
+			/>
+		);
+	}
+}
+
 storiesOf("Tooltip", module)
 	.addDecorator(decorateWithBasics)
 	.addWithInfo(
@@ -43,8 +78,32 @@ storiesOf("Tooltip", module)
 		)
 	)
 	.addWithInfo(
+		"Tooltip above trigger",
+		"Aligned right and appearing above the trigger",
+		() => (
+			<div
+				style={{
+					marginTop: "800px",
+					width: "500px",
+					height: "1000px",
+					marginLeft: "600px"
+				}}
+			>
+				<Tooltip
+					direction="top"
+					minWidth="0"
+					maxWidth="384px"
+					align="right"
+					id="testTooltip"
+					trigger={<Button small>Open</Button>}
+					content={dropdownContent}
+				/>
+			</div>
+		)
+	)
+	.addWithInfo(
 		"Opened Tooltip component",
-		"Aligned right and opened by default",
+		"Aligned center and opened by default",
 		() => (
 			<div
 				style={{
@@ -107,5 +166,12 @@ storiesOf("Tooltip", module)
 				trigger={<Button small>Open</Button>}
 				content={dropdownContent}
 			/>
+		)
+	)
+	.addWithInfo(
+		"manualToggle",
+		"rely on the `isActive` prop to open and close the tooltip",
+		() => (
+			<ManualToggleDropdown/>
 		)
 	);
