@@ -232,9 +232,7 @@ export class Nav extends React.Component {
 					/>
 				),
 				onClickAction:
-					media.isAtMediumUp &&
-					isNotificationsLoaded &&
-					notifications.list.length === 0
+					media.isAtMediumUp && !isNotificationsLoaded
 						? notifications.getNotificationsQuery
 						: false,
 				dropdownContent: media.isAtMediumUp && notificationContent,
@@ -270,7 +268,7 @@ export class Nav extends React.Component {
 					</Flex>
 				),
 				onClickAction:
-					media.isAtMediumUp && isGroupsLoaded && groups.list.length === 0
+					media.isAtMediumUp && !isGroupsLoaded
 						? profile.getSelfGroupsQuery
 						: false,
 				dropdownContent: media.isAtMediumUp && profileContent,
