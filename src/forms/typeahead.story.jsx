@@ -88,18 +88,6 @@ storiesOf("Typeahead", module)
 		)
 	)
 	.addWithInfo(
-		"with label",
-		() => (
-			<Typeahead
-				items={typeaheadItems}
-				inputProps={{
-					label: 'Labeled typeahead',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	)
-	.addWithInfo(
 		"with helperText",
 		() => (
 			<Typeahead
