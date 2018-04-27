@@ -48,22 +48,16 @@ class TogglePill extends React.PureComponent {
 			labelClassName
 		);
 
-		// ---
-		// Topic variant
-		const topicClassName = cx(
-			'toggleButton-icon',
-			{
-				'toggleButton-icon--active' : isActive,
-				'toggleButton-icon--inactive' : (!isActive)
-			}
-		);
-
-		const iconShape = isActive ? 'heart' : 'heart-outline';
-
-		const topicChildren = (
+		const topicChildren = isActive => (
 			<Icon
-				className={topicClassName}
-				shape={iconShape}
+				className={cx(
+					'toggleButton-icon',
+					{
+						'toggleButton-icon--active' : isActive,
+						'toggleButton-icon--inactive' : (!isActive)
+					}
+				)}
+				shape={isActive ? 'heart' : 'heart-outline'}
 				size='xxs'
 				label='Active Topic Icon'/>
 		);
@@ -97,7 +91,7 @@ class TogglePill extends React.PureComponent {
 							className={labelClassNames}
 							htmlFor={id}>
 							{children}
-							{(topic) ? topicChildren : null}
+							{(topic) ? topicChildren(isActive) : null}
 						</label>
 					</div>
 				)}
