@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "autosize": "3.0.21",
-    "downshift": "1.31.2",
+    "downshift": "1.31.12",
     "file-loader": "1.1.8",
     "focus-trap-react": "3.1.2",
     "lint-staged": "7.0.0",

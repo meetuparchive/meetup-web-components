@@ -1,5 +1,4 @@
 import React from 'react';
-import Downshift from 'downshift';
 import { shallow, mount } from 'enzyme';
 
 import Typeahead, {
@@ -72,34 +71,6 @@ describe('Typeahead', () => {
 
 	it('should render `items` passed in', () => {
 		expect(dropdownArea.find(`.${TA_ITEM_CLASSNAME}`).length).toBe(TA_ITEMS.length);
-	});
-
-	it('should update state on keyDownArrowDown', () => {
-		expect(openComponent.state('highlightedIndex')).toBe(-1);
-		openComponent.instance().stateReducer({}, {type: Downshift.stateChangeTypes.keyDownArrowDown});
-		expect(openComponent.state('highlightedIndex')).toBe(0);
-
-		// test whether it moves select to the beginning of the list
-		dropdownArea.find(`.${TA_ITEM_CLASSNAME}`).forEach(()=>{
-			openComponent.instance().stateReducer({}, {type: Downshift.stateChangeTypes.keyDownArrowDown});
-		});
-		expect(openComponent.state('highlightedIndex')).toBe(0);
-	});
-
-	it('should update state on keyDownArrowUp', () => {
-		openComponent.instance().stateReducer({}, {type: Downshift.stateChangeTypes.keyDownArrowDown});
-		expect(openComponent.state('highlightedIndex')).toBe(1);
-		openComponent.instance().stateReducer({}, {type: Downshift.stateChangeTypes.keyDownArrowUp});
-		expect(openComponent.state('highlightedIndex')).toBe(0);
-
-		// test whether it moves select to the end of the list
-		openComponent.instance().stateReducer({}, {type: Downshift.stateChangeTypes.keyDownArrowUp});
-		expect(openComponent.state('highlightedIndex')).toBe(dropdownArea.find(`.${TA_ITEM_CLASSNAME}`).length - 1);
-	});
-
-	it('should update state on mouseMove', () => {
-		dropdownArea.find(`.${TA_ITEM_CLASSNAME}`).first().simulate('mouseMove');
-		expect(openComponent.state('highlightedIndex')).toBe(0);
 	});
 });
 
