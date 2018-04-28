@@ -18,6 +18,14 @@
 	@include atMediaUp(medium) {
 		justify-content: space-around;
 	}
+
+	.logoLink {
+		display: inline-block;
+	}
+
+	.logo {
+		text-align: left;
+	}
 }
 
 $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
