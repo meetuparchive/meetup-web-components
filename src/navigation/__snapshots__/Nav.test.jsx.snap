@@ -29,7 +29,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="logo logo--script flush--left"
+      className="logo logo--script align--left"
       icon={
         <img
           alt="Meetup Logo"
@@ -37,7 +37,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
           src=""
         />
       }
-      linkClassName="display--block"
+      linkClassName="display--inlineBlock"
       linkTo="meetup.com"
     />
     <NavItem
@@ -173,7 +173,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="logo logo--swarm flush--left"
+      className="logo logo--swarm align--left"
       icon={
         <img
           alt="Meetup Logo"
@@ -181,6 +181,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
           src=""
         />
       }
+      linkClassName="display--inlineBlock"
       linkTo="meetup.com"
     />
     <NavItem
@@ -935,7 +936,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="logo logo--swarm flush--left"
+      className="logo logo--swarm align--left"
       icon={
         <img
           alt="Meetup Logo"
@@ -943,6 +944,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
           src=""
         />
       }
+      linkClassName="display--inlineBlock"
       linkTo="meetup.com"
     />
     <NavItem
@@ -1714,7 +1716,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="logo logo--swarm flush--left"
+      className="logo logo--swarm align--left"
       icon={
         <img
           alt="Meetup Logo"
@@ -1722,6 +1724,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
           src=""
         />
       }
+      linkClassName="display--inlineBlock"
       linkTo="meetup.com"
     />
     <NavItem
@@ -2485,7 +2488,7 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="logo logo--script flush--left"
+      className="logo logo--script align--left"
       icon={
         <img
           alt="Meetup Logo"
@@ -2493,7 +2496,7 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
           src=""
         />
       }
-      linkClassName="display--block"
+      linkClassName="display--inlineBlock"
       linkTo="meetup.com"
     />
     <NavItem
@@ -2677,7 +2680,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
     justify="spaceBetween"
   >
     <NavItem
-      className="logo logo--script flush--left"
+      className="logo logo--script align--left"
       icon={
         <img
           alt="Meetup Logo"
@@ -2685,7 +2688,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
           src=""
         />
       }
-      linkClassName="display--block"
+      linkClassName="display--inlineBlock"
       linkTo="meetup.com"
     />
     <NavItem
@@ -2735,7 +2738,7 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="logo logo--script flush--left"
+      className="logo logo--script align--left"
       icon={
         <img
           alt="Meetup Logo"
@@ -2743,7 +2746,7 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
           src=""
         />
       }
-      linkClassName="display--block"
+      linkClassName="display--inlineBlock"
       linkTo="meetup.com"
     />
     <NavItem
@@ -2801,7 +2804,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="logo logo--swarm flush--left"
+      className="logo logo--swarm align--left"
       icon={
         <img
           alt="Meetup Logo"
@@ -2809,6 +2812,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
           src=""
         />
       }
+      linkClassName="display--inlineBlock"
       linkTo="meetup.com"
     />
     <NavItem
