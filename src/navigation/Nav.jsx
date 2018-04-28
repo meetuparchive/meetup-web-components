@@ -325,6 +325,7 @@ export class Nav extends React.Component {
 						<NavItem
 							linkTo={logo.link}
 							className="logo logo--swarm flush--left"
+							linkClassName="logoLink"
 							icon={
 								<img
 									src={swarmLogo}
@@ -339,7 +340,7 @@ export class Nav extends React.Component {
 						<NavItem
 							linkTo={logo.link}
 							className="logo logo--script flush--left"
-							linkClassName="display--block"
+							linkClassName="logoLink"
 							icon={
 								<img
 									src={scriptLogo}
