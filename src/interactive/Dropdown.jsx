@@ -105,7 +105,7 @@ class Dropdown extends React.PureComponent {
 			minWidth,
 			noPortal,
 			menuItems,
-			onSelect,
+			downshiftProps,
 			...other
 		} = this.props;
 
@@ -134,11 +134,7 @@ class Dropdown extends React.PureComponent {
 			<Downshift
 				menuItems={menuItems}
 				isOpen={isActive}
-				onSelect={
-					(selectedItem, stateAndHelpers)=>{
-						onSelect(selectedItem, stateAndHelpers);
-					}
-				}
+				{...downshiftProps}
 			>
 				{({
 					isOpen,
@@ -194,23 +190,28 @@ class Dropdown extends React.PureComponent {
 											{
 												menuItems
 												?
-													menuItems.map((item, index) => React.cloneElement(
-														item,
-														{
-															...getItemProps({
-																item,
-																key: `menuItem-${index}`,
-																className: cx(
-																	item.props.className,
-																	DROPDOWN_MENU_ITEM_CLASS,
-																	'display--flex span--100'
-																),
-																style: {
-																	backgroundColor: highlightedIndex === index && C_COOLGRAYLIGHTTRANSP
-																}
-															})
-														}
-													))
+													menuItems.map((item, index) => {
+														const {className, ...other} = item.props;
+
+														return React.cloneElement(
+															item,
+															{
+																...getItemProps({
+																	item,
+																	key: `menuItem-${index}`,
+																	className: cx(
+																		className,
+																		DROPDOWN_MENU_ITEM_CLASS,
+																		'display--flex span--100'
+																	),
+																	style: {
+																		backgroundColor: highlightedIndex === index && C_COOLGRAYLIGHTTRANSP
+																	},
+																	...other
+																})
+															}
+														);
+													})
 												:
 													content
 											}
@@ -243,6 +244,7 @@ Dropdown.propTypes = {
 	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	noPortal: PropTypes.bool,
+	downshiftProps: PropTypes.object,
 };
 
 export default Dropdown;
