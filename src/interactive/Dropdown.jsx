@@ -190,24 +190,28 @@ class Dropdown extends React.PureComponent {
 											{
 												menuItems
 												?
-													menuItems.map((item, index) => React.cloneElement(
-														item,
-														{
-															...getItemProps({
-																item,
-																key: `menuItem-${index}`,
-																className: cx(
-																	item.props.className,
-																	DROPDOWN_MENU_ITEM_CLASS,
-																	'display--flex span--100'
-																),
-																style: {
-																	backgroundColor: highlightedIndex === index && C_COOLGRAYLIGHTTRANSP
-																},
-																...item.props
-															})
-														}
-													))
+													menuItems.map((item, index) => {
+														const {className, ...other} = item.props;
+
+														return React.cloneElement(
+															item,
+															{
+																...getItemProps({
+																	item,
+																	key: `menuItem-${index}`,
+																	className: cx(
+																		className,
+																		DROPDOWN_MENU_ITEM_CLASS,
+																		'display--flex span--100'
+																	),
+																	style: {
+																		backgroundColor: highlightedIndex === index && C_COOLGRAYLIGHTTRANSP
+																	},
+																	...other
+																})
+															}
+														);
+													})
 												:
 													content
 											}
