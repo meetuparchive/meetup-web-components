@@ -105,7 +105,7 @@ class Dropdown extends React.PureComponent {
 			minWidth,
 			noPortal,
 			menuItems,
-			onSelect,
+			downshiftProps,
 			...other
 		} = this.props;
 
@@ -134,11 +134,7 @@ class Dropdown extends React.PureComponent {
 			<Downshift
 				menuItems={menuItems}
 				isOpen={isActive}
-				onSelect={
-					(selectedItem, stateAndHelpers)=>{
-						onSelect(selectedItem, stateAndHelpers);
-					}
-				}
+				{...downshiftProps}
 			>
 				{({
 					isOpen,
@@ -207,7 +203,8 @@ class Dropdown extends React.PureComponent {
 																),
 																style: {
 																	backgroundColor: highlightedIndex === index && C_COOLGRAYLIGHTTRANSP
-																}
+																},
+																...item.props
 															})
 														}
 													))
@@ -243,6 +240,7 @@ Dropdown.propTypes = {
 	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	noPortal: PropTypes.bool,
+	downshiftProps: PropTypes.object,
 };
 
 export default Dropdown;
