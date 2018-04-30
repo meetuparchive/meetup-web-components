@@ -30,6 +30,9 @@ export const getSocialLinks = locale => {
 		case 'it-IT':
 			socialLinks.twitter = 'https://twitter.com/MeetupIT/';
 			break;
+		case 'pl-PL':
+			socialLinks.twitter = 'https://twitter.com/MeetupPL/';
+			break;
 		case 'pt-BR':
 			socialLinks.twitter = 'https://twitter.com/MeetupBR/';
 			break;
