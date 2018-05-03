@@ -23,13 +23,13 @@ const TA_ITEMS = [
 			<p>Is super cool</p>
 		</div>
 	</TypeaheadItem>,
-	<TypeaheadItem value="Item Three">
+	<TypeaheadItem value={[{text: "Item Three"}]}>
 		<div>
 			<h3 className="text--bold">Item Three</h3>
 			<p>Is super cool</p>
 		</div>
 	</TypeaheadItem>,
-	<TypeaheadItem value="Item Four">
+	<TypeaheadItem value={{text: "Item Four"}}>
 		<div>
 			<h3 className="text--bold">Item Four</h3>
 			<p>Is super cool</p>
