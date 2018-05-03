@@ -8,7 +8,11 @@ const TypeaheadItem = ({value, className, children}) => children;
 export default TypeaheadItem;
 
 TypeaheadItem.propTypes = {
-	value: PropTypes.string.isRequired,
+	value: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.array,
+		PropTypes.object
+	]).isRequired,
 	className: PropTypes.string,
 	children: PropTypes.node.isRequired
 };
