@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
-import StoryRouter from 'storybook-router';
+import StoryRouter from 'storybook-react-router';
 import { Inverted } from '../utils/storyComponents';
 import {
 	decorateWithBasics,

@@ -9,7 +9,7 @@
     "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx --source-maps",
     "coveralls": "if [ \"${TRAVIS_PULL_REQUEST}\" = \"false\" ] && [ \"${COVERALLS_REPO_TOKEN}\" != \"\" ]; then cat coverage/lcov.info | coveralls; fi",
     "generate": "node src/utils/generate.js",
-    "lint": "yarn run lint:base -- --fix",
+    "lint": "yarn run lint:base --fix",
     "lint:base": "eslint . --ext .js,.jsx",
     "lint:airbnb": "eslint --ext .js,.jsx -c .eslintrc.airbnb.js",
     "modules:clean": "rm -rf node_modules",
