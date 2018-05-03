@@ -62,6 +62,7 @@ class Tooltip extends React.PureComponent {
 			noPortal,
 			id,
 			direction,
+			manualToggle,
 			...other
 		} = this.props;
 
@@ -77,7 +78,7 @@ class Tooltip extends React.PureComponent {
 			)
 		};
 
-		const isActive = this.props.manualToggle
+		const isActive = manualToggle
 			? this.props.isActive
 			: this.state.isActive;
 
