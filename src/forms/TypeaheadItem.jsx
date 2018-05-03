@@ -10,7 +10,7 @@ export default TypeaheadItem;
 TypeaheadItem.propTypes = {
 	value: PropTypes.oneOfType([
 		PropTypes.string,
-		PropTypes.element,
+		PropTypes.array,
 		PropTypes.object
 	]).isRequired,
 	className: PropTypes.string,
