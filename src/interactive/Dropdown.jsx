@@ -130,6 +130,10 @@ class Dropdown extends React.PureComponent {
 			return this.triggerRef;
 		};
 
+		const getContent = () => {
+			return this.contentRef;
+		};
+
 		return (
 			<Downshift
 				menuItems={menuItems}
@@ -162,12 +166,14 @@ class Dropdown extends React.PureComponent {
 							{ isOpen &&
 								<FloatingPosition
 									getTrigger={getTrigger}
+									getContent={getContent}
 									noPortal={noPortal}
 									align={align}
 								>
 									{({
 										top,
-										left
+										left,
+										align
 									}) => (
 										<div
 											ref={el => (this.contentRef = el)}
