@@ -8,6 +8,8 @@ import TextInput from './TextInput';
 export const TA_DROPDOWN_CLASSNAME = 'typeahead-dropdown';
 export const TA_ITEM_CLASSNAME = 'typeahead-item';
 
+const defaultItemToString = itemValue => (typeof itemValue === 'string' ? itemValue : '');
+
 /**
  * @module Typeahead
  */
@@ -18,11 +20,15 @@ class Typeahead extends React.PureComponent {
 			inputProps,
 			height,
 			items,
+			itemToString,
 			...other
 		} = this.props;
 
 		return (
-			<Downshift {...other}>
+			<Downshift
+				itemToString={itemToString}
+				{...other}
+			>
 				{({
 					getInputProps,
 					getItemProps,
@@ -74,9 +80,14 @@ class Typeahead extends React.PureComponent {
 	}
 }
 
+Typeahead.defaultProps = {
+	itemToString: defaultItemToString
+};
+
 Typeahead.propTypes = {
 	inputProps: PropTypes.object,
 	items: PropTypes.arrayOf(PropTypes.element),
+	itemToString: PropTypes.func,
 	height: PropTypes.string
 };
 

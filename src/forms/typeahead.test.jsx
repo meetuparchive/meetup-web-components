@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import Downshift from 'downshift';
 
 import Typeahead, {
 	TA_DROPDOWN_CLASSNAME,
@@ -30,6 +31,33 @@ const TA_ITEMS = [
 		</div>
 	</TypeaheadItem>,
 	<TypeaheadItem value={{text: "Item Four"}}>
+		<div>
+			<h3 className="text--bold">Item Four</h3>
+			<p>Is super cool</p>
+		</div>
+	</TypeaheadItem>
+];
+
+const TA_ITEMS_OBJ_VALUES = [
+	<TypeaheadItem value={{name: "Item One", id: 0}}>
+		<div>
+			<h3 className="text--bold">Item One</h3>
+			<p>Is super cool</p>
+		</div>
+	</TypeaheadItem>,
+	<TypeaheadItem value={{name: "Item Two", id: 1}}>
+		<div>
+			<h3 className="text--bold">Item Two</h3>
+			<p>Is super cool</p>
+		</div>
+	</TypeaheadItem>,
+	<TypeaheadItem value={{name: "Item Three", id: 2}}>
+		<div>
+			<h3 className="text--bold">Item Three</h3>
+			<p>Is super cool</p>
+		</div>
+	</TypeaheadItem>,
+	<TypeaheadItem value={{name: "Item Four", id: 3}}>
 		<div>
 			<h3 className="text--bold">Item Four</h3>
 			<p>Is super cool</p>
@@ -71,6 +99,37 @@ describe('Typeahead', () => {
 
 	it('should render `items` passed in', () => {
 		expect(dropdownArea.find(`.${TA_ITEM_CLASSNAME}`).length).toBe(TA_ITEMS.length);
+	});
+
+	it('should set value to empty string if value passed is not a string and no itemToString prop is provided', () => {
+		const openComponentObjValues = mount(
+			<Typeahead
+				isOpen
+				items={TA_ITEMS_OBJ_VALUES}
+				inputProps={{name: INPUT_NAME}}
+			/>
+		);
+		const dropdownArea = openComponentObjValues.find(`.${TA_DROPDOWN_CLASSNAME}`);
+
+		dropdownArea.find(`.${TA_ITEM_CLASSNAME}`).first().simulate('click');
+		expect(openComponentObjValues.find(Downshift).instance().state.inputValue.length).toBe(0);
+	});
+
+	it('should set correct value if itemToString prop is provided', () => {
+		const openComponentObjValues = mount(
+			<Typeahead
+				isOpen
+				items={TA_ITEMS_OBJ_VALUES}
+				itemToString={i => i ? i.name : ''}
+				inputProps={{name: INPUT_NAME}}
+			/>
+		);
+		const dropdownArea = openComponentObjValues.find(`.${TA_DROPDOWN_CLASSNAME}`);
+		const firstItem = dropdownArea.find(`.${TA_ITEM_CLASSNAME}`).first();
+		const firstItemVal = TA_ITEMS_OBJ_VALUES[0].props.value;
+
+		firstItem.simulate('click');
+		expect(openComponentObjValues.find(Downshift).instance().state.inputValue).toBe(firstItemVal.name);
 	});
 });
 
