@@ -42,10 +42,16 @@ class PlainComponent extends React.PureComponent {
  */
 class InputComponent extends React.PureComponent {
 	render() {
+		const {
+			inputType,
+			isActive,
+			other
+		} = this.props;
+
 		return(
 			<ToggleWrapper
-				type={this.props.inputType}
-				isActive={this.props.isActive}
+				type={inputType}
+				isActive={isActive}
 			>
 				{({
 					tabIndex,
@@ -54,13 +60,13 @@ class InputComponent extends React.PureComponent {
 					onKeyUp,
 				}) => (
 					<input
-						type={this.props.inputType}
+						type={inputType}
 						checked={isActive}
 						onChange={toggleActive}
 						onKeyUp={onKeyUp}
 						tabIndex={tabIndex}
 						value="lol nothing matters"
-						{...this.props}
+						{...other}
 					/>
 				)}
 			</ToggleWrapper>
