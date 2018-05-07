@@ -21,7 +21,8 @@ class FloatingPosition extends React.PureComponent {
 
 		this.state = {
 			left: "0px",
-			top: "0px"
+			top: "0px",
+			align: "right"
 		};
 
 	}
@@ -36,24 +37,46 @@ class FloatingPosition extends React.PureComponent {
 		const positionTarget = getTrigger().offsetParent ? getTrigger().offsetParent : getTrigger();
 		const positionData = triggerClientRect || positionTarget.getBoundingClientRect();
 		const contentHeight = getContent && getContent().getBoundingClientRect().height;
-
+		const contentWidth = getContent && getContent().getBoundingClientRect().width;
+		const scrollTop = window.scrollY || window.pageYOffset;
+		const scrollLeft = window.scrollX || window.pageXOffset;
 		const {
 			left,
 			top,
 			width,
 			height
 		} = positionData;
+		const getAdjustedAlignment = alignment => {
+			const overflowLeft = left + contentWidth > window.innerWidth;
+			const overflowRight = (left + width) - contentWidth < 0;
 
-		const scrollTop = window.scrollY || window.pageYOffset;
-		const scrollLeft = window.scrollX || window.pageXOffset;
+			// if of viewport on the left side, go right
+			if (overflowRight && !overflowLeft) {
+				return 'left';
+			// if of viewport on the right side, go left
+			} else if (overflowLeft && !overflowRight) {
+				return 'right';
+			// but if there's no overflow OR there's overflow on
+			// both sides, just use whatever alignment was passed
+			} else {
+				return alignment;
+			}
+		};
 
 		const getLeftPos = (alignment, noPortal) => {
 			if (!noPortal) {
-				switch (alignment) {
+
+				this.setState(() => ({
+					align: getAdjustedAlignment(alignment)
+				}));
+
+				switch (getAdjustedAlignment(alignment)) {
 					case 'left':
 						return `${left + scrollLeft}px`;
 					case 'center':
 						return `${(left + width / 2) + scrollLeft}px`;
+					case 'right':
+						return `${left + width + scrollLeft}px`;
 					default:
 						return `${left + width + scrollLeft}px`;
 				}
@@ -92,7 +115,6 @@ class FloatingPosition extends React.PureComponent {
 
 		const positionTarget = triggerObj.offsetParent ? triggerObj.offsetParent : triggerObj;
 
-		// this.props.getContent && this.getContentPosition();
 		this.getContentPosition();
 		window.addEventListener(
 			"resize",
@@ -120,7 +142,8 @@ class FloatingPosition extends React.PureComponent {
 				{
 					this.props.children({
 						left: this.state.left,
-						top: this.state.top
+						top: this.state.top,
+						align: this.state.align
 					})
 				}
 			</ConditionalWrap>
