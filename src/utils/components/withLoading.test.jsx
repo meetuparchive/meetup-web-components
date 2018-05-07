@@ -1,13 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import Chunk from '../../layout/Chunk';
 import withLoading from './withLoading';
 
 const dangerousHTML = '<div>Dangerously setting inner HTML</div>';
 const makeDanger = () => ({__html: dangerousHTML});
 
 // const testComponentClass = 'testClass';
-const TestComponent = (props) => (<div {...props} />);
+const TestComponent = ({isLoading, ...other}) => (<Chunk isLoading {...other} />);
 const TestComponentWithLoading = withLoading(TestComponent);
 
 describe('withLoading', function() {
