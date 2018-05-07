@@ -5,6 +5,32 @@ import rafSchedule from 'raf-schd';
 
 import ConditionalWrap from './ConditionalWrap';
 
+export const getAdjustedAlignment = (
+	preferredAlignment,
+	triggerPositionData,
+	contentWidth,
+	viewportWidth
+) => {
+	const {
+		left,
+		width,
+	} = triggerPositionData;
+	const overflowLeft = left + contentWidth > viewportWidth;
+	const overflowRight = (left + width) - contentWidth < 0;
+
+	// if overflows viewport on the right side, go left
+	if (overflowRight && !overflowLeft) {
+		return 'left';
+	// if overflows viewport on the left side, go right
+	} else if (overflowLeft && !overflowRight) {
+		return 'right';
+	// but if there's no overflow OR there's overflow on
+	// both sides, just use whatever alignment was passed
+	} else {
+		return preferredAlignment;
+	}
+};
+
 /**
  * @module FloatingPosition
  */
@@ -46,31 +72,17 @@ class FloatingPosition extends React.PureComponent {
 			width,
 			height
 		} = positionData;
-		const getAdjustedAlignment = alignment => {
-			const overflowLeft = left + contentWidth > window.innerWidth;
-			const overflowRight = (left + width) - contentWidth < 0;
-
-			// if of viewport on the left side, go right
-			if (overflowRight && !overflowLeft) {
-				return 'left';
-			// if of viewport on the right side, go left
-			} else if (overflowLeft && !overflowRight) {
-				return 'right';
-			// but if there's no overflow OR there's overflow on
-			// both sides, just use whatever alignment was passed
-			} else {
-				return alignment;
-			}
-		};
 
 		const getLeftPos = (alignment, noPortal) => {
+			const adjustedAlignment = getAdjustedAlignment(alignment, positionData, contentWidth, window.innerWidth);
+
 			if (!noPortal) {
 
 				this.setState(() => ({
-					align: getAdjustedAlignment(alignment)
+					align: adjustedAlignment
 				}));
 
-				switch (getAdjustedAlignment(alignment)) {
+				switch (adjustedAlignment) {
 					case 'left':
 						return `${left + scrollLeft}px`;
 					case 'center':

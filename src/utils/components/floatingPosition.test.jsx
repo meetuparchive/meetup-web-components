@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import FloatingPosition from './FloatingPosition';
+import FloatingPosition, { getAdjustedAlignment } from './FloatingPosition';
 
 /**
  * @module TestComponent
@@ -38,5 +38,13 @@ describe('FloatingPosition', function() {
 
 	it('matches snapshot', () => {
 		expect(floatingPosition).toMatchSnapshot();
+	});
+
+	it('adjusts popup content position if it overflows the viewport', () => {
+		const MOCK_POSITION_DATA = {left: 0, width: 70};
+		const expected = 'left';
+		const actual = getAdjustedAlignment('right', MOCK_POSITION_DATA, 384, 1000);
+
+		expect(actual).toBe(expected);
 	});
 });
