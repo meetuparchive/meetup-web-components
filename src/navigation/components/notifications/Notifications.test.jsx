@@ -41,6 +41,7 @@ describe('Notification component', () => {
 			photoUrl={MOCK_NOTIF.photo.photo_link}
 			formattedTimeSince={MOCK_NOTIF.formattedTimeSince}
 			generateClassicUrl={jest.fn()}
+			localeCode="en-US"
 		/>
 	);
 

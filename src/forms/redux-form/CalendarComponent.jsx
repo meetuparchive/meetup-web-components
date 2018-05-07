@@ -17,7 +17,10 @@ const ReduxFormCalendarComponent = props => {
 
 ReduxFormCalendarComponent.propTypes = {
 	meta: PropTypes.object.isRequired,
-	input: PropTypes.element.isRequired,
+	input: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.object
+	]).isRequired,
 };
 
 ReduxFormCalendarComponent.displayName = 'ReduxFormCalendarComponent';
