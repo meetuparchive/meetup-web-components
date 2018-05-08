@@ -1,6 +1,5 @@
 import React from "react";
 import { storiesOf } from '@storybook/react';
-// import { decorateWithBasics } from "../utils/decorators";
 import Tooltip from "./Tooltip";
 import Button from "../forms/Button";
 
@@ -53,7 +52,6 @@ class ManualToggleDropdown extends React.PureComponent {
 }
 
 storiesOf("Tooltip", module)
-	// .addDecorator(decorateWithBasics)
 	.addWithInfo(
 		"Basic Tooltip component",
 		"Aligned right by default",
