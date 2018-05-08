@@ -47,4 +47,12 @@ describe('FloatingPosition', function() {
 
 		expect(actual).toBe(expected);
 	});
+
+	it('does not adjust popup content position if it fits in the viewport', () => {
+		const MOCK_POSITION_DATA = {left: 500, width: 70};
+		const expected = 'right';
+		const actual = getAdjustedAlignment('right', MOCK_POSITION_DATA, 384, 1000);
+
+		expect(actual).toBe(expected);
+	});
 });
