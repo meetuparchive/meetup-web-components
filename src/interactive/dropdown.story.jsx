@@ -165,4 +165,31 @@ storiesOf("Dropdown", module)
 				<DropdownWithToggle />
 			</FlexItem>
 		</Flex>
-	));
+	))
+	.addWithInfo(
+		"Overflowing viewport",
+		"Aligned right by default, but switches to left",
+		() => (
+			<div
+				style={{
+					textAlign: 'left',
+					width: '100vw'
+				}}
+			>
+				<Dropdown
+					minWidth="0"
+					maxWidth="384px"
+					align="right"
+					trigger={<Button small>Open</Button>}
+					content={
+						<div className="runningText padding--all">
+							<p>
+								This Dropdown component's `align` prop is set to 'right', but because
+								it would overflow the viewport, it gets switched to 'left'
+							</p>
+						</div>
+					}
+				/>
+			</div>
+		)
+	);

@@ -5,6 +5,32 @@ import rafSchedule from 'raf-schd';
 
 import ConditionalWrap from './ConditionalWrap';
 
+export const getAdjustedAlignment = (
+	preferredAlignment,
+	triggerPositionData,
+	contentWidth,
+	viewportWidth
+) => {
+	const {
+		left,
+		width,
+	} = triggerPositionData;
+	const overflowLeft = left + contentWidth > viewportWidth;
+	const overflowRight = (left + width) - contentWidth < 0;
+
+	// if overflows viewport on the right side, go left
+	if (overflowRight && !overflowLeft) {
+		return 'left';
+	// if overflows viewport on the left side, go right
+	} else if (overflowLeft && !overflowRight) {
+		return 'right';
+	// but if there's no overflow OR there's overflow on
+	// both sides, just use whatever alignment was passed
+	} else {
+		return preferredAlignment;
+	}
+};
+
 /**
  * @module FloatingPosition
  */
@@ -21,7 +47,8 @@ class FloatingPosition extends React.PureComponent {
 
 		this.state = {
 			left: "0px",
-			top: "0px"
+			top: "0px",
+			align: "right"
 		};
 
 	}
@@ -36,7 +63,9 @@ class FloatingPosition extends React.PureComponent {
 		const positionTarget = getTrigger().offsetParent ? getTrigger().offsetParent : getTrigger();
 		const positionData = triggerClientRect || positionTarget.getBoundingClientRect();
 		const contentHeight = getContent && getContent().getBoundingClientRect().height;
-
+		const contentWidth = getContent && getContent().getBoundingClientRect().width;
+		const scrollTop = window.scrollY || window.pageYOffset;
+		const scrollLeft = window.scrollX || window.pageXOffset;
 		const {
 			left,
 			top,
@@ -44,16 +73,22 @@ class FloatingPosition extends React.PureComponent {
 			height
 		} = positionData;
 
-		const scrollTop = window.scrollY || window.pageYOffset;
-		const scrollLeft = window.scrollX || window.pageXOffset;
-
 		const getLeftPos = (alignment, noPortal) => {
+			const adjustedAlignment = getAdjustedAlignment(alignment, positionData, contentWidth, window.innerWidth);
+
 			if (!noPortal) {
-				switch (alignment) {
+
+				this.setState(() => ({
+					align: adjustedAlignment
+				}));
+
+				switch (adjustedAlignment) {
 					case 'left':
 						return `${left + scrollLeft}px`;
 					case 'center':
 						return `${(left + width / 2) + scrollLeft}px`;
+					case 'right':
+						return `${left + width + scrollLeft}px`;
 					default:
 						return `${left + width + scrollLeft}px`;
 				}
@@ -92,7 +127,6 @@ class FloatingPosition extends React.PureComponent {
 
 		const positionTarget = triggerObj.offsetParent ? triggerObj.offsetParent : triggerObj;
 
-		// this.props.getContent && this.getContentPosition();
 		this.getContentPosition();
 		window.addEventListener(
 			"resize",
@@ -120,7 +154,8 @@ class FloatingPosition extends React.PureComponent {
 				{
 					this.props.children({
 						left: this.state.left,
-						top: this.state.top
+						top: this.state.top,
+						align: this.state.align
 					})
 				}
 			</ConditionalWrap>
