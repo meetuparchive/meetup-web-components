@@ -39,6 +39,7 @@ class FloatingPosition extends React.PureComponent {
 		super(props);
 
 		this.getContentPosition = this.getContentPosition.bind(this);
+		this.scheduleUpdate = rafSchedule(this.getContentPosition);
 
 		this.state = {
 			left: "0px",
@@ -46,20 +47,17 @@ class FloatingPosition extends React.PureComponent {
 			align: "right"
 		};
 
-		this.scheduleUpdate = rafSchedule(this.getContentPosition);
-		this.triggerClientRect = null;
-
 	}
 
 	getContentPosition() {
-		console.warn('GETTING CONTENT POSITION');
 		const {getTrigger, getContent} = this.props;
 
-		if (!getTrigger()) {
+		if (!getTrigger() || !getContent()) {
 			return;
 		}
 
-		const positionData = this.triggerClientRect;
+		const positionTarget = getTrigger().offsetParent ? getTrigger().offsetParent : getTrigger();
+		const positionData = positionTarget.getBoundingClientRect();
 		const contentHeight = getContent && getContent().getBoundingClientRect().height;
 		const contentWidth = getContent && getContent().getBoundingClientRect().width;
 		const scrollTop = window.scrollY || window.pageYOffset;
@@ -112,31 +110,18 @@ class FloatingPosition extends React.PureComponent {
 			left: ddPosition.left,
 			top: ddPosition.top
 		}));
-		console.warn(`${this.state.left} ${this.state.right}`);
 	}
 
 	componentDidMount() {
-		const triggerObj = this.props.getTrigger();
-
-		const positionTarget = triggerObj.offsetParent ? triggerObj.offsetParent : triggerObj;
-		this.triggerClientRect = positionTarget.getBoundingClientRect();
-
 		this.scheduleUpdate();
-
-		window.addEventListener(
-			"resize",
-			this.scheduleUpdate
-		);
-		window.addEventListener(
-			"scroll",
-			this.scheduleUpdate
-		);
+		window.addEventListener("resize", this.scheduleUpdate);
+		document.addEventListener("scroll", this.scheduleUpdate, true);
 	}
 
 	componentWillUnmount() {
 		this.scheduleUpdate.cancel();
 		window.removeEventListener("resize", this.scheduleUpdate);
-		window.removeEventListener("scroll", this.scheduleUpdate);
+		document.removeEventListener("scroll", this.scheduleUpdate, true);
 	}
 
 	render() {
