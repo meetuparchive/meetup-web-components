@@ -38,12 +38,7 @@ class FloatingPosition extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
-		this.scheduleUpdate = rafSchedule(
-			triggerClientRect => this.getContentPosition(triggerClientRect)
-		);
-
 		this.getContentPosition = this.getContentPosition.bind(this);
-		this.scheduleContentPosition = this.scheduleContentPosition.bind(this);
 
 		this.state = {
 			left: "0px",
@@ -51,17 +46,20 @@ class FloatingPosition extends React.PureComponent {
 			align: "right"
 		};
 
+		this.scheduleUpdate = rafSchedule(this.getContentPosition);
+		this.triggerClientRect = null;
+
 	}
 
-	getContentPosition(triggerClientRect) {
+	getContentPosition() {
+		console.warn('GETTING CONTENT POSITION');
 		const {getTrigger, getContent} = this.props;
 
 		if (!getTrigger()) {
 			return;
 		}
 
-		const positionTarget = getTrigger().offsetParent ? getTrigger().offsetParent : getTrigger();
-		const positionData = triggerClientRect || positionTarget.getBoundingClientRect();
+		const positionData = this.triggerClientRect;
 		const contentHeight = getContent && getContent().getBoundingClientRect().height;
 		const contentWidth = getContent && getContent().getBoundingClientRect().width;
 		const scrollTop = window.scrollY || window.pageYOffset;
@@ -114,35 +112,31 @@ class FloatingPosition extends React.PureComponent {
 			left: ddPosition.left,
 			top: ddPosition.top
 		}));
-	}
-
-	scheduleContentPosition(triggerClientRect) {
-		// When we receive a scroll event, schedule an update.
-		// If we receive many updates within a frame, we'll only publish the latest value.
-		this.scheduleUpdate(triggerClientRect);
+		console.warn(`${this.state.left} ${this.state.right}`);
 	}
 
 	componentDidMount() {
 		const triggerObj = this.props.getTrigger();
 
 		const positionTarget = triggerObj.offsetParent ? triggerObj.offsetParent : triggerObj;
+		this.triggerClientRect = positionTarget.getBoundingClientRect();
 
-		this.getContentPosition();
+		this.scheduleUpdate();
+
 		window.addEventListener(
 			"resize",
-			() => {this.scheduleContentPosition(positionTarget.getBoundingClientRect());}
+			this.scheduleUpdate
 		);
-		document.addEventListener(
+		window.addEventListener(
 			"scroll",
-			() => {this.scheduleContentPosition(positionTarget.getBoundingClientRect());},
-			true
+			this.scheduleUpdate
 		);
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener("resize", this.getContentPosition);
-		document.removeEventListener("scroll", this.getContentPosition);
 		this.scheduleUpdate.cancel();
+		window.removeEventListener("resize", this.scheduleUpdate);
+		window.removeEventListener("scroll", this.scheduleUpdate);
 	}
 
 	render() {
