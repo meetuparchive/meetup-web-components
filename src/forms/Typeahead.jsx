@@ -17,28 +17,37 @@ class Typeahead extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
-		this.handleSingleSelection = this.handleSingleSelection.bind(this);
-		this.handleMultiselectSelect = this.handleMultiselectSelect.bind(this);
+		this.handleSelection = this.handleSelection.bind(this);
+		// this.handleSingleSelection = this.handleSingleSelection.bind(this);
+		// this.handleMultiselectSelect = this.handleMultiselectSelect.bind(this);
 		this.stateReducer = this.stateReducer.bind(this);
 	}
 
-	handleMultiselectSelect(item) {
-		this.props.onSelect(item, [...this.props.multiSelectValues, item]);
-	}
+	// handleMultiselectSelect(item) {
+	// 	this.props.onSelect(item, [...this.props.multiSelectValues, item]);
+	// }
 
-	handleSingleSelection(selectedItem, stateAndHelpers) {
-		!this.props.multiSelect && this.props.onSelect && this.props.onSelect(selectedItem, stateAndHelpers);
+	// handleSingleSelection(selectedItem, stateAndHelpers) {
+	// 	!this.props.multiSelect && this.props.onSelect && this.props.onSelect(selectedItem, stateAndHelpers);
+	// }
+
+	handleSelection(selectedItem, stateAndHelpers) {
+		if(this.props.multiSelect) {
+			this.props.onSelect(selectedItem, [...this.props.multiSelectValues, selectedItem]);
+		} else {
+			this.props.onSelect && this.props.onSelect(selectedItem, stateAndHelpers);
+		}
 	}
 
 	stateReducer(state, changes) {
 		switch (changes.type) {
 			case Downshift.stateChangeTypes.keyDownEnter:
 			case Downshift.stateChangeTypes.clickItem:
-				this.handleMultiselectSelect(changes.selectedItem);
+				this.handleSelection(changes.selectedItem);
 
 				return {
 					...changes,
-					selectedItem: this.props.multiSelectValues,
+					selectedItem: this.props.multiSelectValues ? this.props.multiSelectValues : changes.selectedItem,
 					isOpen: this.props.openOnFocus,
 				};
 
@@ -69,9 +78,9 @@ class Typeahead extends React.PureComponent {
 
 		return (
 			<Downshift
-				onSelect={this.handleSingleSelection}
+				onSelect={this.handleSelection}
 				selectedItem={multiSelectValues}
-				stateReducer={multiSelect && this.stateReducer}
+				stateReducer={openOnFocus && this.stateReducer}
 				itemToString={itemToString}
 				{...other}
 			>
@@ -102,7 +111,7 @@ class Typeahead extends React.PureComponent {
 								>
 								{items &&
 									items.map((item, i) => {
-										const selected = selectedItem && selectedItem.includes(item.props.value);
+										const selected = multiSelect && selectedItem && selectedItem.includes(item.props.value);
 
 										return (
 											<div
@@ -147,6 +156,8 @@ Typeahead.propTypes = {
 	items: PropTypes.arrayOf(PropTypes.element),
 	itemToString: PropTypes.func,
 	height: PropTypes.string
+	// add multiselect and openOnFocus proptypes
+	// add something for onSelect that makes it required if multiSelect is true
 };
 
 export default Typeahead;
