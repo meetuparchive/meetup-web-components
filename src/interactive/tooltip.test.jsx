@@ -14,11 +14,13 @@ const dropdownContent = (
 	</Section>
 );
 const dropdownTrigger = <Button small>Open</Button>;
+const dropdownId = "testDropdown";
 
 describe('Tooltip', () => {
 	const dropdownJSX = (
 		<Tooltip
 			align="right"
+			id={dropdownId}
 			trigger={dropdownTrigger}
 			content={dropdownContent}
 		/>
@@ -36,6 +38,7 @@ describe('Tooltip', () => {
 		const dropdownMouseEvents = shallow(
 			<Tooltip
 				align="right"
+				id={dropdownId}
 				trigger={dropdownTrigger}
 				content={dropdownContent}
 				onMouseEnter={onMouseEnter}
@@ -60,6 +63,7 @@ describe('Tooltip', () => {
 		const dropdownFocusEvents = shallow(
 			<Tooltip
 				align="right"
+				id={dropdownId}
 				trigger={dropdownTrigger}
 				content={dropdownContent}
 				onFocus={onFocus}
@@ -84,6 +88,7 @@ describe('Tooltip', () => {
 			<Tooltip
 				align="right"
 				direction="top"
+				id={dropdownId}
 				trigger={dropdownTrigger}
 				content={dropdownContent}
 			/>
@@ -156,6 +161,7 @@ describe('Tooltip', () => {
 			<Tooltip
 				manualToggle
 				align="right"
+				id={dropdownId}
 				trigger={dropdownTrigger}
 				content={dropdownContent}
 			/>

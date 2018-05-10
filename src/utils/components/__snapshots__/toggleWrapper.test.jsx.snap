@@ -14,7 +14,6 @@ exports[`withLoading when this.props.type is checkbox matches snapshot 1`] = `
     >
       <input
         checked={false}
-        inputType="checkbox"
         onChange={[Function]}
         onKeyUp={[Function]}
         tabIndex="0"
@@ -68,9 +67,8 @@ exports[`withLoading when this.props.type is radio matches snapshot 1`] = `
     >
       <input
         checked={false}
-        inputType="radio"
         onChange={[Function]}
-        onKeyUp={false}
+        onKeyUp={null}
         tabIndex="0"
         type="radio"
         value="lol nothing matters"

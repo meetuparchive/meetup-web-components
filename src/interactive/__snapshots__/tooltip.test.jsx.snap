@@ -17,6 +17,7 @@ exports[`Tooltip aligned tooltip matches snapshot 1`] = `
     </Section>
   }
   direction="top"
+  id="testDropdown"
   maxWidth="384px"
   minWidth="0px"
   noPortal={false}

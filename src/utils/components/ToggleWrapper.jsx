@@ -76,7 +76,7 @@ class ToggleWrapper extends React.Component {
 					tabIndex: isInput && this.props.tabIndex || "0",
 					isActive: this.state.isActive,
 					toggleActive: this.toggleActive,
-					onKeyUp: this.props.type !== 'radio' && this.onKeyUp
+					onKeyUp: this.props.type == 'radio' ? null : this.onKeyUp
 				})}
 			</ConditionalWrap>
 		);
