@@ -65,6 +65,68 @@ const TA_ITEMS_OBJ_VALUES = [
 	</TypeaheadItem>
 ];
 
+const TA_ITEMS_CHECKBOXES = [
+	<TypeaheadItem value="Item One">
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item One" checked={isSelected} name="taItems" value="item1" />
+		)}
+	</TypeaheadItem>,
+	<TypeaheadItem value="Item Two">
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item Two" checked={isSelected} name="taItems" value="item2" />
+		)}
+	</TypeaheadItem>,
+	<TypeaheadItem value="Item Three">
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item Three" checked={isSelected} name="taItems" value="item3" />
+		)}
+	</TypeaheadItem>,
+	<TypeaheadItem value="Item Four">
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item Four" checked={isSelected} name="taItems" value="item4" />
+		)}
+	</TypeaheadItem>
+];
+
+/**
+ * @module TestMultiselectTypeahead
+ */
+class TestMultiselectTypeahead extends React.PureComponent {
+	constructor(props) {
+		super(props);
+
+		this.selectHandler = this.selectHandler.bind(this);
+
+		this.state = {
+			selectedItems: []
+		};
+	}
+
+	selectHandler(prevSelection, selectedItems) {
+		this.setState(() => ({selectedItems}));
+	}
+
+	render() {
+		const {items, ...other} = this.props;
+
+		return (
+			<div>
+				<div className="chunk">
+					{this.state.selectedItems}
+				</div>
+				<Typeahead
+					multiSelect
+					openOnFocus
+					multiSelectValues={this.state.selectedItems}
+					items={items}
+					onSelect={this.selectHandler}
+					{...other}
+				/>
+			</div>
+		);
+	}
+}
+
 describe('Typeahead', () => {
 	const closedComponent = mount(
 		<Typeahead items={TA_ITEMS} inputProps={{name: INPUT_NAME}} />);
@@ -131,6 +193,24 @@ describe('Typeahead', () => {
 		firstItem.simulate('click');
 		expect(openComponentObjValues.find(Downshift).instance().state.inputValue).toBe(firstItemVal.name);
 	});
+
+	it('should open the Typeahead menu on focus when `openOnFocus` is passed', () => {
+		const openComponentCheckboxItems = mount(
+			<TestMultiselectTypeahead
+				items={TA_ITEMS_CHECKBOXES}
+				inputProps={{
+					name: INPUT_NAME,
+				}}
+			/>
+		);
+
+		expect(openComponentCheckboxItems).toMatchSnapshot();
+
+	});
+
+	it('should set multiple values when `multiSelect` and `multiSelectValues` are passed', () => {
+	});
+
 });
 
 describe('TypeaheadItem', () => {
