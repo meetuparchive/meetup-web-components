@@ -31,7 +31,10 @@ const ReduxFormNumberInput = props => {
 
 ReduxFormNumberInput.propTypes = {
 	meta: PropTypes.object.isRequired,
-	input: PropTypes.element.isRequired,
+	input: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.object
+	]).isRequired,
 };
 
 ReduxFormNumberInput.displayName = 'ReduxFormNumberInput';

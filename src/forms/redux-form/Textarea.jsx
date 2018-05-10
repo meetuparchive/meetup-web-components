@@ -17,7 +17,10 @@ const ReduxFormTextarea = props => {
 
 ReduxFormTextarea.propTypes = {
 	meta: PropTypes.object.isRequired,
-	input: PropTypes.element.isRequired,
+	input: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.object
+	]).isRequired,
 };
 
 ReduxFormTextarea.displayName = 'ReduxFormTextarea';

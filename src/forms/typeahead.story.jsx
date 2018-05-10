@@ -101,6 +101,33 @@ class MultiselectTypeahead extends React.PureComponent {
 	}
 }
 
+const typeaheadItemsObjValues = [
+	<TypeaheadItem value={{name: "Item One", id: 0}}>
+		<div>
+			<h3 className="text--bold">Item One</h3>
+			<p>Is super cool</p>
+		</div>
+	</TypeaheadItem>,
+	<TypeaheadItem value={{name: "Item Two", id: 1}}>
+		<div>
+			<h3 className="text--bold">Item Two</h3>
+			<p>Is super cool</p>
+		</div>
+	</TypeaheadItem>,
+	<TypeaheadItem value={{name: "Item Three", id: 2}}>
+		<div>
+			<h3 className="text--bold">Item Three</h3>
+			<p>Is super cool</p>
+		</div>
+	</TypeaheadItem>,
+	<TypeaheadItem value={{name: "Item Four", id: 3}}>
+		<div>
+			<h3 className="text--bold">Item Four</h3>
+			<p>Is super cool</p>
+		</div>
+	</TypeaheadItem>
+];
+
 storiesOf("Typeahead", module)
 	.addDecorator(decorateWithBasics)
 	.addWithInfo(
@@ -247,4 +274,14 @@ storiesOf("Typeahead", module)
 			/>
 		)
 	)
-	;
+	.addWithInfo(
+		"using itemToString (useful for value as Object)",
+		() => (
+			<Typeahead
+				items={typeaheadItemsObjValues}
+				itemToString={i => i ? i.name : ''}
+				inputProps={{
+					label: 'Labeled typeahead',
+					name: 'typeaheadInputName'
+		)
+	);

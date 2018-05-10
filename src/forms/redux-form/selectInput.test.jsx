@@ -9,13 +9,15 @@ describe('redux-form SelectInput', () => {
 		{ label: 'Three', value: '3' }
 	];
 	const formAttrs = {
-		label: 'Countries',
-		name: 'formSelectCountries',
-		options: testOptions,
 		required: true,
 		meta: {
 			touched: false,
 			error: 'Did you mean Batman and Robin?'
+		},
+		input: {
+			label: 'Countries',
+			name: 'formSelectCountries',
+			options: testOptions,
 		}
 	};
 

@@ -8,6 +8,8 @@ import TextInput from './TextInput';
 export const TA_DROPDOWN_CLASSNAME = 'typeahead-dropdown';
 export const TA_ITEM_CLASSNAME = 'typeahead-item';
 
+const defaultItemToString = itemValue => (typeof itemValue === 'string' ? itemValue : '');
+
 /**
  * @module Typeahead
  */
@@ -59,6 +61,7 @@ class Typeahead extends React.PureComponent {
 			multiSelect,
 			multiSelectValues,
 			openOnFocus,
+			itemToString,
 			...other
 		} = this.props;
 
@@ -69,6 +72,7 @@ class Typeahead extends React.PureComponent {
 				onSelect={this.handleSingleSelection}
 				selectedItem={multiSelectValues}
 				stateReducer={multiSelect && this.stateReducer}
+				itemToString={itemToString}
 				{...other}
 			>
 				{({
@@ -135,9 +139,14 @@ class Typeahead extends React.PureComponent {
 	}
 }
 
+Typeahead.defaultProps = {
+	itemToString: defaultItemToString
+};
+
 Typeahead.propTypes = {
 	inputProps: PropTypes.object,
 	items: PropTypes.arrayOf(PropTypes.element),
+	itemToString: PropTypes.func,
 	height: PropTypes.string
 };
 

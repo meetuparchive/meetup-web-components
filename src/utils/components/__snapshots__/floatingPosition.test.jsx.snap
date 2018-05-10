@@ -1,9 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FloatingPosition matches snapshot 1`] = `
-<FloatingPosition
-  align="right"
-  getTrigger={[Function]}
-  noPortal={false}
-/>
+<div>
+  <div>
+    Trigger
+  </div>
+  <FloatingPosition
+    align="right"
+    getContent={[Function]}
+    getTrigger={[Function]}
+    noPortal={false}
+  />
+</div>
 `;

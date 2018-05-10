@@ -141,7 +141,7 @@ class AccordionPanel extends React.Component {
 	render() {
 		const {
 			panelContent,
-			clickId, // eslint-disable-line no-unused-vars
+			clickId,
 			label,
 			isOpen,
 			setClickedPanel, // eslint-disable-line no-unused-vars
@@ -173,15 +173,12 @@ class AccordionPanel extends React.Component {
 			}),
 		};
 
-		// create valid attribute name from trigger label
-		const ariaId = label.replace(/\s+/g, '').toLowerCase();
-
 		return (
 			<div>
 				<div
 					role="tab"
-					id={`label-${ariaId}`}
-					aria-controls={`panel-${ariaId}`}
+					id={`label-${clickId}`}
+					aria-controls={`panel-${clickId}`}
 					aria-expanded={isOpen}
 					aria-selected={isOpen}
 					className={classNames.trigger}
@@ -212,8 +209,8 @@ class AccordionPanel extends React.Component {
 									tabIndex="-1"
 									isActive={isOpen}
 									disabled={!!onToggleClick}
-									id={`${ariaId}-switch`}
-									name={ariaId}
+									id={`${clickId}-switch`}
+									name={clickId}
 									onClick={this.onToggleClick}
 								/>
 							)}
@@ -223,7 +220,8 @@ class AccordionPanel extends React.Component {
 
 				<Chunk
 					role="tabpanel"
-					aria-labelledby={`label-${ariaId}`}
+					id={`panel-${clickId}`}
+					aria-labelledby={`label-${clickId}`}
 					aria-hidden={!isOpen}
 					className={classNames.content}
 					style={{ height: this.state.height }}
@@ -257,7 +255,10 @@ AccordionPanel.propTypes = {
 	panelContent: PropTypes.element,
 	setClickedPanel: PropTypes.func,
 	onClickCallback: PropTypes.func,
-	label: PropTypes.string.isRequired,
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	]).isRequired,
 	className: PropTypes.string,
 	indicatorAlign: PropTypes.string,
 	indicatorIcon: PropTypes.string,

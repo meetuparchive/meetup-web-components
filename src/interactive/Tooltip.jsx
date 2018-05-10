@@ -116,7 +116,8 @@ class Tooltip extends React.PureComponent {
 					>
 						{({
 							top,
-							left
+							left,
+							align
 						}) => (
 							<div
 								ref={el => (this.contentRef = el)}
