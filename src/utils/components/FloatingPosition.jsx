@@ -38,12 +38,8 @@ class FloatingPosition extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
-		this.scheduleUpdate = rafSchedule(
-			triggerClientRect => this.getContentPosition(triggerClientRect)
-		);
-
 		this.getContentPosition = this.getContentPosition.bind(this);
-		this.scheduleContentPosition = this.scheduleContentPosition.bind(this);
+		this.scheduleUpdate = rafSchedule(this.getContentPosition);
 
 		this.state = {
 			left: "0px",
@@ -53,15 +49,15 @@ class FloatingPosition extends React.PureComponent {
 
 	}
 
-	getContentPosition(triggerClientRect) {
+	getContentPosition() {
 		const {getTrigger, getContent} = this.props;
 
-		if (!getTrigger()) {
+		if (!getTrigger() || !getContent()) {
 			return;
 		}
 
 		const positionTarget = getTrigger().offsetParent ? getTrigger().offsetParent : getTrigger();
-		const positionData = triggerClientRect || positionTarget.getBoundingClientRect();
+		const positionData = positionTarget.getBoundingClientRect();
 		const contentHeight = getContent && getContent().getBoundingClientRect().height;
 		const contentWidth = getContent && getContent().getBoundingClientRect().width;
 		const scrollTop = window.scrollY || window.pageYOffset;
@@ -116,33 +112,16 @@ class FloatingPosition extends React.PureComponent {
 		}));
 	}
 
-	scheduleContentPosition(triggerClientRect) {
-		// When we receive a scroll event, schedule an update.
-		// If we receive many updates within a frame, we'll only publish the latest value.
-		this.scheduleUpdate(triggerClientRect);
-	}
-
 	componentDidMount() {
-		const triggerObj = this.props.getTrigger();
-
-		const positionTarget = triggerObj.offsetParent ? triggerObj.offsetParent : triggerObj;
-
-		this.getContentPosition();
-		window.addEventListener(
-			"resize",
-			() => {this.scheduleContentPosition(positionTarget.getBoundingClientRect());}
-		);
-		document.addEventListener(
-			"scroll",
-			() => {this.scheduleContentPosition(positionTarget.getBoundingClientRect());},
-			true
-		);
+		this.scheduleUpdate();
+		window.addEventListener("resize", this.scheduleUpdate);
+		document.addEventListener("scroll", this.scheduleUpdate, true);
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener("resize", this.getContentPosition);
-		document.removeEventListener("scroll", this.getContentPosition);
 		this.scheduleUpdate.cancel();
+		window.removeEventListener("resize", this.scheduleUpdate);
+		document.removeEventListener("scroll", this.scheduleUpdate, true);
 	}
 
 	render() {
@@ -166,7 +145,7 @@ class FloatingPosition extends React.PureComponent {
 
 FloatingPosition.propTypes = {
 	getTrigger: PropTypes.func.isRequired,
-	getContent: PropTypes.func,
+	getContent: PropTypes.func.isRequired,
 };
 
 export default FloatingPosition;
