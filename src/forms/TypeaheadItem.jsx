@@ -13,6 +13,9 @@ TypeaheadItem.propTypes = {
 		PropTypes.array,
 		PropTypes.object
 	]).isRequired,
-	className: PropTypes.string,
-	children: PropTypes.node.isRequired
+	className: PropTypes.string
+	// children: PropTypes.oneOfType([
+	// 	PropTypes.node,
+	// 	PropTypes.function
+	// ]).isRequired
 };
