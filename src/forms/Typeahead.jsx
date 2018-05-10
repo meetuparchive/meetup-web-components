@@ -81,8 +81,7 @@ class Typeahead extends React.PureComponent {
 					isOpen,
 					highlightedIndex,
 					selectedItem,
-					openMenu,
-					closeMenu
+					openMenu
 				}) =>
 				(<div className="typeahead">
 					<TextInput

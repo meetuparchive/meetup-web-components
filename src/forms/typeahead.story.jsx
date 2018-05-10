@@ -283,5 +283,7 @@ storiesOf("Typeahead", module)
 				inputProps={{
 					label: 'Labeled typeahead',
 					name: 'typeaheadInputName'
+				}}
+			/>
 		)
 	);
