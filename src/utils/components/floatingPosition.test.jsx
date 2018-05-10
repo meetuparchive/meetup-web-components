@@ -12,23 +12,30 @@ class TestComponent extends React.PureComponent {
 			return this.triggerRef;
 		};
 
+		const getContent = () => {
+			return this.contentRef;
+		};
+
 		return(
-			<FloatingPosition
-				getTrigger={getTrigger}
-				noPortal={false}
-				align="right"
-			>
-				{({
-					top,
-					left
-				}) => (
-					<div>
-						<div ref={el => (this.triggerRef = el)}>Trigger</div>
-						<p>top: {top}</p>
-						<p>left: {left}</p>
-					</div>
-				)}
-			</FloatingPosition>
+			<div>
+				<div ref={el => (this.triggerRef = el)}>Trigger</div>
+				<FloatingPosition
+					getTrigger={getTrigger}
+					getContent={getContent}
+					noPortal={false}
+					align="right"
+				>
+					{({
+						top,
+						left
+					}) => (
+						<div ref={el => (this.contentRef = el)}>
+							<p>top: {top}</p>
+							<p>left: {left}</p>
+						</div>
+					)}
+				</FloatingPosition>
+			</div>
 		);
 	}
 }
