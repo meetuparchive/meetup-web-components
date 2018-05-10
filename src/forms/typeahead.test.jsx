@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import Checkbox from './Checkbox';
 import Downshift from 'downshift';
 
 import Typeahead, {
@@ -65,13 +66,16 @@ const TA_ITEMS_OBJ_VALUES = [
 	</TypeaheadItem>
 ];
 
+const CHECKBOX_ITEM1_CLASS = 'checkboxItem1';
+const CHECKBOX_ITEM2_CLASS = 'checkboxItem2';
+
 const TA_ITEMS_CHECKBOXES = [
-	<TypeaheadItem value="Item One">
+	<TypeaheadItem value="Item One" className={CHECKBOX_ITEM1_CLASS}>
 		{({isSelected}) => (
 			<Checkbox controlled={false} label="Item One" checked={isSelected} name="taItems" value="item1" />
 		)}
 	</TypeaheadItem>,
-	<TypeaheadItem value="Item Two">
+	<TypeaheadItem value="Item Two" className={CHECKBOX_ITEM2_CLASS}>
 		{({isSelected}) => (
 			<Checkbox controlled={false} label="Item Two" checked={isSelected} name="taItems" value="item2" />
 		)}
@@ -117,6 +121,7 @@ class TestMultiselectTypeahead extends React.PureComponent {
 				<Typeahead
 					multiSelect
 					openOnFocus
+					openOnSelect
 					multiSelectValues={this.state.selectedItems}
 					items={items}
 					onSelect={this.selectHandler}
@@ -195,7 +200,7 @@ describe('Typeahead', () => {
 	});
 
 	it('should open the Typeahead menu on focus when `openOnFocus` is passed', () => {
-		const openComponentCheckboxItems = mount(
+		const closedComponentCheckboxItems = mount(
 			<TestMultiselectTypeahead
 				items={TA_ITEMS_CHECKBOXES}
 				inputProps={{
@@ -204,11 +209,44 @@ describe('Typeahead', () => {
 			/>
 		);
 
-		expect(openComponentCheckboxItems).toMatchSnapshot();
+		expect(closedComponentCheckboxItems.find(Downshift).instance().state.isOpen).toBe(false);
+		closedComponentCheckboxItems.find('input[type="text"]').simulate('focus');
+		expect(closedComponentCheckboxItems.find(Downshift).instance().state.isOpen).toBe(true);
+	});
 
+	it('should keep the Typeahead menu open after selection `openOnSelect` is passed', () => {
+		const closedComponentCheckboxItems = mount(
+			<TestMultiselectTypeahead
+				items={TA_ITEMS_CHECKBOXES}
+				inputProps={{
+					name: INPUT_NAME,
+				}}
+			/>
+		);
+
+		expect(closedComponentCheckboxItems.find(Downshift).instance().state.isOpen).toBe(false);
+		closedComponentCheckboxItems.find('input[type="text"]').simulate('focus');
+		closedComponentCheckboxItems.find(`.${TA_DROPDOWN_CLASSNAME}`).find(`.${CHECKBOX_ITEM1_CLASS}`).simulate('click');
+		expect(closedComponentCheckboxItems.find(Downshift).instance().state.isOpen).toBe(true);
 	});
 
 	it('should set multiple values when `multiSelect` and `multiSelectValues` are passed', () => {
+		const openComponentCheckboxItems = mount(
+			<TestMultiselectTypeahead
+				isOpen
+				items={TA_ITEMS_CHECKBOXES}
+				inputProps={{
+					name: INPUT_NAME,
+				}}
+			/>
+		);
+
+		const dropdownArea = openComponentCheckboxItems.find(`.${TA_DROPDOWN_CLASSNAME}`);
+
+		expect(openComponentCheckboxItems.find(Downshift).prop('selectedItem').length).toBe(0);
+		dropdownArea.find(`.${CHECKBOX_ITEM1_CLASS}`).simulate('click');
+		dropdownArea.find(`.${CHECKBOX_ITEM2_CLASS}`).simulate('click');
+		expect(openComponentCheckboxItems.find(Downshift).prop('selectedItem').length).toBe(2);
 	});
 
 });

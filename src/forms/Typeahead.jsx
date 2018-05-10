@@ -48,13 +48,13 @@ class Typeahead extends React.PureComponent {
 				return {
 					...changes,
 					selectedItem: this.props.multiSelectValues ? this.props.multiSelectValues : changes.selectedItem,
-					isOpen: this.props.openOnFocus,
+					isOpen: this.props.openOnSelect,
 				};
 
 			case Downshift.stateChangeTypes.blurInput:
 				return {
 					...changes,
-					isOpen: this.props.openOnFocus,
+					isOpen: this.props.openOnSelect,
 				};
 
 			default:
@@ -70,6 +70,7 @@ class Typeahead extends React.PureComponent {
 			multiSelect,
 			multiSelectValues,
 			openOnFocus,
+			openOnSelect,
 			itemToString,
 			...other
 		} = this.props;
@@ -80,7 +81,7 @@ class Typeahead extends React.PureComponent {
 			<Downshift
 				onSelect={this.handleSelection}
 				selectedItem={multiSelectValues}
-				stateReducer={openOnFocus && this.stateReducer}
+				stateReducer={openOnSelect && this.stateReducer}
 				itemToString={itemToString}
 				{...other}
 			>
@@ -155,9 +156,17 @@ Typeahead.propTypes = {
 	inputProps: PropTypes.object,
 	items: PropTypes.arrayOf(PropTypes.element),
 	itemToString: PropTypes.func,
-	height: PropTypes.string
-	// add multiselect and openOnFocus proptypes
-	// add something for onSelect that makes it required if multiSelect is true
+	height: PropTypes.string,
+	multiSelect: PropTypes.bool,
+	openOnFocus: PropTypes.bool,
+	openOnSelect: PropTypes.bool,
+	onSelect: (props, propName, componentName) => {
+		if (props['multiSelect'] && !props[propName]) {
+			return new Error(
+				`${propName} handler must be passed to ${componentName} when 'multiSelect' is passed`
+			);
+		}
+	}
 };
 
 export default Typeahead;
