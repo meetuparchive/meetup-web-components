@@ -18,18 +18,8 @@ class Typeahead extends React.PureComponent {
 		super(props);
 
 		this.handleSelection = this.handleSelection.bind(this);
-		// this.handleSingleSelection = this.handleSingleSelection.bind(this);
-		// this.handleMultiselectSelect = this.handleMultiselectSelect.bind(this);
 		this.stateReducer = this.stateReducer.bind(this);
 	}
-
-	// handleMultiselectSelect(item) {
-	// 	this.props.onSelect(item, [...this.props.multiSelectValues, item]);
-	// }
-
-	// handleSingleSelection(selectedItem, stateAndHelpers) {
-	// 	!this.props.multiSelect && this.props.onSelect && this.props.onSelect(selectedItem, stateAndHelpers);
-	// }
 
 	handleSelection(selectedItem, stateAndHelpers) {
 		if(this.props.multiSelect) {
@@ -72,10 +62,9 @@ class Typeahead extends React.PureComponent {
 			openOnFocus,
 			openOnSelect,
 			itemToString,
+			onSelect, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
-
-		delete other.onSelect;
 
 		return (
 			<Downshift
