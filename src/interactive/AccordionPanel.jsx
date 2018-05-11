@@ -177,7 +177,6 @@ class AccordionPanel extends React.Component {
 			<div>
 				<div
 					role="tab"
-					id={`label-${clickId}`}
 					aria-controls={`panel-${clickId}`}
 					aria-expanded={isOpen}
 					aria-selected={isOpen}
@@ -192,7 +191,7 @@ class AccordionPanel extends React.Component {
 						tabIndex={-1}
 						{...other}
 					>
-						<FlexItem>{label}</FlexItem>
+						<FlexItem id={`label-${clickId}`}>{label}</FlexItem>
 
 						<FlexItem
 							className="accordionPanel-icon"
@@ -209,7 +208,8 @@ class AccordionPanel extends React.Component {
 									tabIndex="-1"
 									isActive={isOpen}
 									disabled={!!onToggleClick}
-									id={`${clickId}-switch`}
+									id={`switch-${clickId}`}
+									labelledBy={`label-${clickId}`}
 									name={clickId}
 									onClick={this.onToggleClick}
 								/>

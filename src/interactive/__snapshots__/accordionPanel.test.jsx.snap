@@ -7,7 +7,6 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
     aria-expanded={false}
     aria-selected={false}
     className="accordionPanel-label display--block span--100"
-    id="label-undefined"
     onClick={[Function]}
     onKeyUp={[Function]}
     role="tab"
@@ -18,7 +17,9 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
       rowReverse={false}
       tabIndex={-1}
     >
-      <FlexItem>
+      <FlexItem
+        id="label-undefined"
+      >
         First Section
       </FlexItem>
       <FlexItem
@@ -68,7 +69,6 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
     aria-expanded={false}
     aria-selected={false}
     className="accordionPanel-label display--block span--100"
-    id="label-undefined"
     onClick={[Function]}
     onKeyUp={[Function]}
     role="tab"
@@ -79,7 +79,9 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
       rowReverse="all"
       tabIndex={-1}
     >
-      <FlexItem>
+      <FlexItem
+        id="label-undefined"
+      >
         First Section
       </FlexItem>
       <FlexItem
@@ -145,7 +147,6 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
       aria-expanded={false}
       aria-selected={false}
       className="accordionPanel-label display--block span--100"
-      id="label-undefined"
       onClick={[Function]}
       onKeyUp={[Function]}
       role="tab"
@@ -169,14 +170,18 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
             className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
             tabIndex={-1}
           >
-            <FlexItem>
+            <FlexItem
+              id="label-undefined"
+            >
               <FlexItem
                 aria-busy={undefined}
+                id="label-undefined"
                 isLoading={undefined}
               >
                 <div
                   aria-busy={undefined}
                   className="flex-item"
+                  id="label-undefined"
                 >
                   First Section
                 </div>
@@ -312,7 +317,6 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
       aria-expanded={false}
       aria-selected={false}
       className="accordionPanel-label display--block span--100"
-      id="label-undefined"
       onClick={[Function]}
       onKeyUp={[Function]}
       role="tab"
@@ -336,14 +340,18 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
             className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
             tabIndex={-1}
           >
-            <FlexItem>
+            <FlexItem
+              id="label-undefined"
+            >
               <FlexItem
                 aria-busy={undefined}
+                id="label-undefined"
                 isLoading={undefined}
               >
                 <div
                   aria-busy={undefined}
                   className="flex-item"
+                  id="label-undefined"
                 >
                   First Section
                 </div>
@@ -368,8 +376,9 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                 >
                   <ToggleSwitch
                     disabled={false}
-                    id="undefined-switch"
+                    id="switch-undefined"
                     isActive={false}
+                    labelledBy="label-undefined"
                     name={undefined}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -390,13 +399,13 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                           tabIndex="0"
                         >
                           <div
-                            id="undefined-switch"
+                            id="switch-undefined"
                             onClick={[Function]}
                             tabIndex="-1"
                           >
                             <Button
                               aria-checked={false}
-                              aria-labelledby="undefined-label"
+                              aria-labelledby="label-undefined"
                               className="toggleSwitch"
                               component="button"
                               disabled={false}
@@ -408,7 +417,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                             >
                               <button
                                 aria-checked={false}
-                                aria-labelledby="undefined-label"
+                                aria-labelledby="label-undefined"
                                 className="button button--reset toggleSwitch"
                                 onClick={[Function]}
                                 role="switch"
