@@ -37,7 +37,7 @@ class ToggleSwitch extends React.Component {
 			...other
 		} = this.props;
 
-		const labelId = labelledBy || `${name}-label`;
+		const labelId = labelledBy || `label-${name}`;
 
 		const getActiveIconColor = isActive => isActive ? C_TEXT_PRIMARY : C_TEXT_SECONDARY;
 		const getColor = (disbled, isActive) => disabled ? C_TEXT_HINT : getActiveIconColor(isActive);

@@ -106,11 +106,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
       >
         <div>
           <div
-            aria-controls="panel-0"
+            aria-controls="panel-firstsection"
             aria-expanded={true}
             aria-selected={true}
             className="accordionPanel-label display--block span--100"
-            id="label-0"
             onClick={[Function]}
             onKeyUp={[Function]}
             role="tab"
@@ -134,14 +133,18 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   className="flex flex--row padding--bottom padding--top accordionPanel accordionPanel--active"
                   tabIndex={-1}
                 >
-                  <FlexItem>
+                  <FlexItem
+                    id="label-firstsection"
+                  >
                     <FlexItem
                       aria-busy={undefined}
+                      id="label-firstsection"
                       isLoading={undefined}
                     >
                       <div
                         aria-busy={undefined}
                         className="flex-item"
+                        id="label-firstsection"
                       >
                         First Section
                       </div>
@@ -195,9 +198,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
           </div>
           <Chunk
             aria-hidden={false}
-            aria-labelledby="label-0"
+            aria-labelledby="label-firstsection"
             className="accordionPanel-animator"
-            id="panel-0"
+            id="panel-firstsection"
             onTransitionEnd={[Function]}
             role="tabpanel"
             style={
@@ -209,9 +212,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             <Chunk
               aria-busy={undefined}
               aria-hidden={false}
-              aria-labelledby="label-0"
+              aria-labelledby="label-firstsection"
               className="accordionPanel-animator"
-              id="panel-0"
+              id="panel-firstsection"
               isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
@@ -224,9 +227,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               <div
                 aria-busy={undefined}
                 aria-hidden={false}
-                aria-labelledby="label-0"
+                aria-labelledby="label-firstsection"
                 className="chunk accordionPanel-animator"
-                id="panel-0"
+                id="panel-firstsection"
                 onTransitionEnd={[Function]}
                 role="tabpanel"
                 style={
@@ -294,11 +297,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
       >
         <div>
           <div
-            aria-controls="panel-1"
+            aria-controls="panel-nextsection"
             aria-expanded={false}
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
-            id="label-1"
             onClick={[Function]}
             onKeyUp={[Function]}
             role="tab"
@@ -322,14 +324,18 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
-                  <FlexItem>
+                  <FlexItem
+                    id="label-nextsection"
+                  >
                     <FlexItem
                       aria-busy={undefined}
+                      id="label-nextsection"
                       isLoading={undefined}
                     >
                       <div
                         aria-busy={undefined}
                         className="flex-item"
+                        id="label-nextsection"
                       >
                         Next Section
                       </div>
@@ -383,9 +389,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
           </div>
           <Chunk
             aria-hidden={true}
-            aria-labelledby="label-1"
+            aria-labelledby="label-nextsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
-            id="panel-1"
+            id="panel-nextsection"
             onTransitionEnd={[Function]}
             role="tabpanel"
             style={
@@ -397,9 +403,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             <Chunk
               aria-busy={undefined}
               aria-hidden={true}
-              aria-labelledby="label-1"
+              aria-labelledby="label-nextsection"
               className="accordionPanel-animator accordionPanel-animator--collapse"
-              id="panel-1"
+              id="panel-nextsection"
               isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
@@ -412,9 +418,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               <div
                 aria-busy={undefined}
                 aria-hidden={true}
-                aria-labelledby="label-1"
+                aria-labelledby="label-nextsection"
                 className="chunk accordionPanel-animator accordionPanel-animator--collapse"
-                id="panel-1"
+                id="panel-nextsection"
                 onTransitionEnd={[Function]}
                 role="tabpanel"
                 style={
@@ -482,11 +488,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
       >
         <div>
           <div
-            aria-controls="panel-2"
+            aria-controls="panel-thirdsection"
             aria-expanded={false}
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
-            id="label-2"
             onClick={[Function]}
             onKeyUp={[Function]}
             role="tab"
@@ -510,14 +515,18 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
-                  <FlexItem>
+                  <FlexItem
+                    id="label-thirdsection"
+                  >
                     <FlexItem
                       aria-busy={undefined}
+                      id="label-thirdsection"
                       isLoading={undefined}
                     >
                       <div
                         aria-busy={undefined}
                         className="flex-item"
+                        id="label-thirdsection"
                       >
                         Third Section
                       </div>
@@ -571,9 +580,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
           </div>
           <Chunk
             aria-hidden={true}
-            aria-labelledby="label-2"
+            aria-labelledby="label-thirdsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
-            id="panel-2"
+            id="panel-thirdsection"
             onTransitionEnd={[Function]}
             role="tabpanel"
             style={
@@ -585,9 +594,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             <Chunk
               aria-busy={undefined}
               aria-hidden={true}
-              aria-labelledby="label-2"
+              aria-labelledby="label-thirdsection"
               className="accordionPanel-animator accordionPanel-animator--collapse"
-              id="panel-2"
+              id="panel-thirdsection"
               isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
@@ -600,9 +609,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               <div
                 aria-busy={undefined}
                 aria-hidden={true}
-                aria-labelledby="label-2"
+                aria-labelledby="label-thirdsection"
                 className="chunk accordionPanel-animator accordionPanel-animator--collapse"
-                id="panel-2"
+                id="panel-thirdsection"
                 onTransitionEnd={[Function]}
                 role="tabpanel"
                 style={
@@ -738,11 +747,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
       >
         <div>
           <div
-            aria-controls="panel-0"
+            aria-controls="panel-firstsection"
             aria-expanded={true}
             aria-selected={true}
             className="accordionPanel-label display--block span--100"
-            id="label-0"
             onClick={[Function]}
             onKeyUp={[Function]}
             role="tab"
@@ -766,14 +774,18 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   className="flex flex--row padding--bottom padding--top accordionPanel accordionPanel--active"
                   tabIndex={-1}
                 >
-                  <FlexItem>
+                  <FlexItem
+                    id="label-firstsection"
+                  >
                     <FlexItem
                       aria-busy={undefined}
+                      id="label-firstsection"
                       isLoading={undefined}
                     >
                       <div
                         aria-busy={undefined}
                         className="flex-item"
+                        id="label-firstsection"
                       >
                         First Section
                       </div>
@@ -827,9 +839,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
           </div>
           <Chunk
             aria-hidden={false}
-            aria-labelledby="label-0"
+            aria-labelledby="label-firstsection"
             className="accordionPanel-animator"
-            id="panel-0"
+            id="panel-firstsection"
             onTransitionEnd={[Function]}
             role="tabpanel"
             style={
@@ -841,9 +853,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             <Chunk
               aria-busy={undefined}
               aria-hidden={false}
-              aria-labelledby="label-0"
+              aria-labelledby="label-firstsection"
               className="accordionPanel-animator"
-              id="panel-0"
+              id="panel-firstsection"
               isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
@@ -856,9 +868,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               <div
                 aria-busy={undefined}
                 aria-hidden={false}
-                aria-labelledby="label-0"
+                aria-labelledby="label-firstsection"
                 className="chunk accordionPanel-animator"
-                id="panel-0"
+                id="panel-firstsection"
                 onTransitionEnd={[Function]}
                 role="tabpanel"
                 style={
@@ -926,11 +938,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
       >
         <div>
           <div
-            aria-controls="panel-1"
+            aria-controls="panel-nextsection"
             aria-expanded={false}
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
-            id="label-1"
             onClick={[Function]}
             onKeyUp={[Function]}
             role="tab"
@@ -954,14 +965,18 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
-                  <FlexItem>
+                  <FlexItem
+                    id="label-nextsection"
+                  >
                     <FlexItem
                       aria-busy={undefined}
+                      id="label-nextsection"
                       isLoading={undefined}
                     >
                       <div
                         aria-busy={undefined}
                         className="flex-item"
+                        id="label-nextsection"
                       >
                         Next Section
                       </div>
@@ -1015,9 +1030,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
           </div>
           <Chunk
             aria-hidden={true}
-            aria-labelledby="label-1"
+            aria-labelledby="label-nextsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
-            id="panel-1"
+            id="panel-nextsection"
             onTransitionEnd={[Function]}
             role="tabpanel"
             style={
@@ -1029,9 +1044,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             <Chunk
               aria-busy={undefined}
               aria-hidden={true}
-              aria-labelledby="label-1"
+              aria-labelledby="label-nextsection"
               className="accordionPanel-animator accordionPanel-animator--collapse"
-              id="panel-1"
+              id="panel-nextsection"
               isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
@@ -1044,9 +1059,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               <div
                 aria-busy={undefined}
                 aria-hidden={true}
-                aria-labelledby="label-1"
+                aria-labelledby="label-nextsection"
                 className="chunk accordionPanel-animator accordionPanel-animator--collapse"
-                id="panel-1"
+                id="panel-nextsection"
                 onTransitionEnd={[Function]}
                 role="tabpanel"
                 style={
@@ -1114,11 +1129,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
       >
         <div>
           <div
-            aria-controls="panel-2"
+            aria-controls="panel-thirdsection"
             aria-expanded={false}
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
-            id="label-2"
             onClick={[Function]}
             onKeyUp={[Function]}
             role="tab"
@@ -1142,14 +1156,18 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
-                  <FlexItem>
+                  <FlexItem
+                    id="label-thirdsection"
+                  >
                     <FlexItem
                       aria-busy={undefined}
+                      id="label-thirdsection"
                       isLoading={undefined}
                     >
                       <div
                         aria-busy={undefined}
                         className="flex-item"
+                        id="label-thirdsection"
                       >
                         Third Section
                       </div>
@@ -1203,9 +1221,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
           </div>
           <Chunk
             aria-hidden={true}
-            aria-labelledby="label-2"
+            aria-labelledby="label-thirdsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
-            id="panel-2"
+            id="panel-thirdsection"
             onTransitionEnd={[Function]}
             role="tabpanel"
             style={
@@ -1217,9 +1235,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             <Chunk
               aria-busy={undefined}
               aria-hidden={true}
-              aria-labelledby="label-2"
+              aria-labelledby="label-thirdsection"
               className="accordionPanel-animator accordionPanel-animator--collapse"
-              id="panel-2"
+              id="panel-thirdsection"
               isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
@@ -1232,9 +1250,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               <div
                 aria-busy={undefined}
                 aria-hidden={true}
-                aria-labelledby="label-2"
+                aria-labelledby="label-thirdsection"
                 className="chunk accordionPanel-animator accordionPanel-animator--collapse"
-                id="panel-2"
+                id="panel-thirdsection"
                 onTransitionEnd={[Function]}
                 role="tabpanel"
                 style={
