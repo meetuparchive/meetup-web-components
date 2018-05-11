@@ -173,11 +173,14 @@ class AccordionPanel extends React.Component {
 			}),
 		};
 
+		const isLabelString = label && typeof label == 'string';
+		const panelId = isLabelString ? label.replace(/\s+/g, '').toLowerCase() : clickId;
+
 		return (
 			<div>
 				<div
 					role="tab"
-					aria-controls={`panel-${clickId}`}
+					aria-controls={`panel-${panelId}`}
 					aria-expanded={isOpen}
 					aria-selected={isOpen}
 					className={classNames.trigger}
@@ -191,7 +194,7 @@ class AccordionPanel extends React.Component {
 						tabIndex={-1}
 						{...other}
 					>
-						<FlexItem id={`label-${clickId}`}>{label}</FlexItem>
+						<FlexItem id={`label-${panelId}`}>{label}</FlexItem>
 
 						<FlexItem
 							className="accordionPanel-icon"
@@ -208,9 +211,9 @@ class AccordionPanel extends React.Component {
 									tabIndex="-1"
 									isActive={isOpen}
 									disabled={!!onToggleClick}
-									id={`switch-${clickId}`}
-									labelledBy={`label-${clickId}`}
-									name={clickId}
+									id={`switch-${panelId}`}
+									labelledBy={`label-${panelId}`}
+									name={panelId}
 									onClick={this.onToggleClick}
 								/>
 							)}
@@ -220,8 +223,8 @@ class AccordionPanel extends React.Component {
 
 				<Chunk
 					role="tabpanel"
-					id={`panel-${clickId}`}
-					aria-labelledby={`label-${clickId}`}
+					id={`panel-${panelId}`}
+					aria-labelledby={`label-${panelId}`}
 					aria-hidden={!isOpen}
 					className={classNames.content}
 					style={{ height: this.state.height }}
