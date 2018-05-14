@@ -17,6 +17,10 @@
 	z-index: map-get($zindex-map, "floating-content")
 }
 
+.typeahead-dropdown--inline {
+	position: relative;
+}
+
 .typeahead-item {
 	cursor: pointer;
 	padding: $space-half $space;

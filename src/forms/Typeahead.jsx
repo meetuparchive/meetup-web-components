@@ -11,7 +11,7 @@ export const TA_ITEM_CLASSNAME = 'typeahead-item';
 const defaultItemToString = itemValue => (typeof itemValue === 'string' ? itemValue : '');
 
 /**
- * @module Typeahead
+ * @module typeahead
  */
 class Typeahead extends React.PureComponent {
 	constructor(props) {
@@ -73,6 +73,7 @@ class Typeahead extends React.PureComponent {
 			multiSelectValues,
 			openOnFocus,
 			openOnSelect,
+			openInline,
 			itemToString,
 			onSelect, // eslint-disable-line no-unused-vars
 			...other
@@ -105,7 +106,12 @@ class Typeahead extends React.PureComponent {
 					{Boolean(isOpen && items && items.length)
 						&&
 							<div
-								className={TA_DROPDOWN_CLASSNAME}
+								className={cx(
+									TA_DROPDOWN_CLASSNAME,
+									{
+										[`${TA_DROPDOWN_CLASSNAME}--inline`] : openInline
+									}
+								)}
 								style={height && {
 									height: height,
 									overflowY: 'scroll'
@@ -161,6 +167,7 @@ Typeahead.propTypes = {
 	multiSelect: PropTypes.bool,
 	openOnFocus: PropTypes.bool,
 	openOnSelect: PropTypes.bool,
+	openInline: PropTypes.bool,
 	onSelect: (props, propName, componentName) => {
 		if (props['multiSelect'] && !props[propName]) {
 			return new Error(
