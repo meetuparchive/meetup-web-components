@@ -21,6 +21,13 @@ class Typeahead extends React.PureComponent {
 		this.stateReducer = this.stateReducer.bind(this);
 	}
 
+	/**
+	 * @description calls onSelect prop, but passes a selectedItem along with the
+	 * value of the `multiSelectValue` prop for multiselection
+	 * @parm {(object|string|array)} selectedItem - the previously selected item
+	 * @parm {object} stateAndHelpers - Downshift's internal state
+	 * @returns undefined
+	 */
 	handleSelection(selectedItem, stateAndHelpers) {
 		if(this.props.multiSelect) {
 			this.props.onSelect(selectedItem, [...this.props.multiSelectValues, selectedItem]);
@@ -29,6 +36,11 @@ class Typeahead extends React.PureComponent {
 		}
 	}
 
+	/**
+	 * @parm {object} state - Downshift's internal state
+	 * @parm {object} changes - Changes in Downshift's internal state
+	 * @returns {object} changes - Changes being passed to Downshift's internal state
+	 */
 	stateReducer(state, changes) {
 		switch (changes.type) {
 			case Downshift.stateChangeTypes.keyDownEnter:
