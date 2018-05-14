@@ -21,7 +21,13 @@
 	cursor: pointer;
 	padding: $space-half $space;
 
-	&--isActive {
-		background-color: $C_coolGrayLightTransp;
+	input[type="checkbox"],
+	input[type="radio"],
+	label {
+		pointer-events: none;
 	}
+}
+
+.typeahead-item--isActive {
+	background-color: $C_coolGrayLightTransp;
 }
