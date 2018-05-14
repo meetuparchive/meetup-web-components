@@ -29,9 +29,13 @@ script:
   - yarn test:ci
 
 after_success:
-  - npm run coveralls
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
+  - echo "GIT_TAG=$GIT_TAG"
+  - eval "$(ssh-agent)"
+  - echo "$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
+  - chmod 600 /tmp/github_deploy_key
+  - ssh-add /tmp/github_deploy_key
   - >
     [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
     export GIT_TAG=$(make version) ||
@@ -47,7 +51,9 @@ after_success:
     echo "skipping versioning" ||
     yarn run build &&
     npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" &&
-    npm publish --tag $NPM_TAG
+    npm publish --tag $NPM_TAG &&
+    git tag $GIT_TAG -f -a -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" || true &&
+    git push --tags git@github.com:$TRAVIS_REPO_SLUG.git
 
 deploy:
    provider: pages
