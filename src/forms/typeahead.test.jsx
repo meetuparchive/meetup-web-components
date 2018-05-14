@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import Checkbox from './Checkbox';
 import Downshift from 'downshift';
 
 import Typeahead, {
@@ -64,6 +65,72 @@ const TA_ITEMS_OBJ_VALUES = [
 		</div>
 	</TypeaheadItem>
 ];
+
+const CHECKBOX_ITEM1_CLASS = 'checkboxItem1';
+const CHECKBOX_ITEM2_CLASS = 'checkboxItem2';
+
+const TA_ITEMS_CHECKBOXES = [
+	<TypeaheadItem value="Item One" className={CHECKBOX_ITEM1_CLASS}>
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item One" checked={isSelected} name="taItems" value="item1" />
+		)}
+	</TypeaheadItem>,
+	<TypeaheadItem value="Item Two" className={CHECKBOX_ITEM2_CLASS}>
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item Two" checked={isSelected} name="taItems" value="item2" />
+		)}
+	</TypeaheadItem>,
+	<TypeaheadItem value="Item Three">
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item Three" checked={isSelected} name="taItems" value="item3" />
+		)}
+	</TypeaheadItem>,
+	<TypeaheadItem value="Item Four">
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item Four" checked={isSelected} name="taItems" value="item4" />
+		)}
+	</TypeaheadItem>
+];
+
+/**
+ * @module TestMultiselectTypeahead
+ */
+class TestMultiselectTypeahead extends React.PureComponent {
+	constructor(props) {
+		super(props);
+
+		this.selectHandler = this.selectHandler.bind(this);
+
+		this.state = {
+			selectedItems: []
+		};
+	}
+
+	selectHandler(prevSelection, selectedItems) {
+		this.setState(() => ({selectedItems}));
+	}
+
+	render() {
+		const {items, ...other} = this.props;
+
+		return (
+			<div>
+				<div className="chunk">
+					{this.state.selectedItems}
+				</div>
+				<Typeahead
+					multiSelect
+					openOnFocus
+					openOnSelect
+					multiSelectValues={this.state.selectedItems}
+					items={items}
+					onSelect={this.selectHandler}
+					{...other}
+				/>
+			</div>
+		);
+	}
+}
 
 describe('Typeahead', () => {
 	const closedComponent = mount(
@@ -131,6 +198,57 @@ describe('Typeahead', () => {
 		firstItem.simulate('click');
 		expect(openComponentObjValues.find(Downshift).instance().state.inputValue).toBe(firstItemVal.name);
 	});
+
+	it('should open the Typeahead menu on focus when `openOnFocus` is passed', () => {
+		const closedComponentCheckboxItems = mount(
+			<TestMultiselectTypeahead
+				items={TA_ITEMS_CHECKBOXES}
+				inputProps={{
+					name: INPUT_NAME,
+				}}
+			/>
+		);
+
+		expect(closedComponentCheckboxItems.find(Downshift).instance().state.isOpen).toBe(false);
+		closedComponentCheckboxItems.find('input[type="text"]').simulate('focus');
+		expect(closedComponentCheckboxItems.find(Downshift).instance().state.isOpen).toBe(true);
+	});
+
+	it('should keep the Typeahead menu open after selection `openOnSelect` is passed', () => {
+		const closedComponentCheckboxItems = mount(
+			<TestMultiselectTypeahead
+				items={TA_ITEMS_CHECKBOXES}
+				inputProps={{
+					name: INPUT_NAME,
+				}}
+			/>
+		);
+
+		expect(closedComponentCheckboxItems.find(Downshift).instance().state.isOpen).toBe(false);
+		closedComponentCheckboxItems.find('input[type="text"]').simulate('focus');
+		closedComponentCheckboxItems.find(`.${TA_DROPDOWN_CLASSNAME}`).find(`.${CHECKBOX_ITEM1_CLASS}`).simulate('click');
+		expect(closedComponentCheckboxItems.find(Downshift).instance().state.isOpen).toBe(true);
+	});
+
+	it('should set multiple values when `multiSelect` and `multiSelectValues` are passed', () => {
+		const openComponentCheckboxItems = mount(
+			<TestMultiselectTypeahead
+				isOpen
+				items={TA_ITEMS_CHECKBOXES}
+				inputProps={{
+					name: INPUT_NAME,
+				}}
+			/>
+		);
+
+		const dropdownArea = openComponentCheckboxItems.find(`.${TA_DROPDOWN_CLASSNAME}`);
+
+		expect(openComponentCheckboxItems.find(Downshift).prop('selectedItem').length).toBe(0);
+		dropdownArea.find(`.${CHECKBOX_ITEM1_CLASS}`).simulate('click');
+		dropdownArea.find(`.${CHECKBOX_ITEM2_CLASS}`).simulate('click');
+		expect(openComponentCheckboxItems.find(Downshift).prop('selectedItem').length).toBe(2);
+	});
+
 });
 
 describe('TypeaheadItem', () => {
