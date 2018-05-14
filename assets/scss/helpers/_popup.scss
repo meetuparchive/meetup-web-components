@@ -133,19 +133,6 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	z-index: map-get($zindex-map, "floating-content");
 }
 
-.popup--noPortal {
-	.popup-content--left {
-		left: 0;
-	}
-	.popup-content--center {
-		left: 50%;
-	}
-	.popup-content--right {
-		right: 0;
-		transform: translateX(0);
-	}
-}
-
 .popup-content--right {
 	transform: translateX(-100%);
 }
@@ -157,4 +144,17 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 .popup-content--top {
 	padding-top: 0;
 	padding-bottom: $triangleSize;
+}
+
+.popup--noPortal {
+	.popup-content--left {
+		left: 0;
+	}
+	.popup-content--center {
+		left: 50%;
+	}
+	.popup-content--right {
+		right: 0;
+		transform: none;
+	}
 }
