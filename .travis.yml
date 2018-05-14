@@ -49,11 +49,11 @@ after_success:
   - >
     [ "${TRAVIS_BRANCH}" != "master" ] &&
     echo "skipping versioning" ||
-    yarn run build &&
-    npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" &&
-    npm publish --tag $NPM_TAG &&
-    git tag $GIT_TAG -f -a -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" || true &&
-    git push --tags git@github.com:$TRAVIS_REPO_SLUG.git
+  - yarn run build
+  - npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID"
+  - npm publish --tag $NPM_TAG
+  - git tag $GIT_TAG -f -a -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" || true
+  - git push --tags git@github.com:$TRAVIS_REPO_SLUG.git
 
 deploy:
    provider: pages
