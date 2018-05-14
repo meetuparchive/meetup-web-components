@@ -12,7 +12,6 @@ export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
  * @module TextInput
  */
 export const TextInput = (props) => {
-
 	const {
 		name,
 		value,
@@ -33,6 +32,7 @@ export const TextInput = (props) => {
 		required,
 		requiredText,
 		validityMessage,
+		refCallback,
 		...other
 	} = props;
 
@@ -96,6 +96,14 @@ export const TextInput = (props) => {
 	// Avoid passing maxLength as an HTML attribute
 	if (maxLength) delete other.maxLength;
 
+	// If a refCallback is provided in input props
+	// add a ref to the <input> tag
+	const optionalInputProps = {};
+	if (refCallback) {
+		optionalInputProps.ref = refCallback;
+	}
+
+
 	return (
 		<div className="inputContainer">
 			{label &&
@@ -120,6 +128,7 @@ export const TextInput = (props) => {
 					disabled={disabled}
 					id={id}
 					style={inputStyles}
+					{...optionalInputProps}
 					{...other}
 				/>
 				{iconShape &&
