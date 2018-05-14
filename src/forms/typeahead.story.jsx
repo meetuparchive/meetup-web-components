@@ -4,6 +4,7 @@ import { decorateWithBasics } from '../utils/decorators';
 
 import Typeahead from './Typeahead';
 import TypeaheadItem from './TypeaheadItem';
+import Checkbox from './Checkbox';
 
 const typeaheadItems = [
 	<TypeaheadItem value="Item One">
@@ -31,6 +32,76 @@ const typeaheadItems = [
 		</div>
 	</TypeaheadItem>
 ];
+
+const typeaheadCheckboxes = [
+	<TypeaheadItem value="Item One">
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item One" checked={isSelected} name="taItems" value="item1" />
+		)}
+	</TypeaheadItem>,
+	<TypeaheadItem value="Item Two">
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item Two" checked={isSelected} name="taItems" value="item2" />
+		)}
+	</TypeaheadItem>,
+	<TypeaheadItem value="Item Three">
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item Three" checked={isSelected} name="taItems" value="item3" />
+		)}
+	</TypeaheadItem>,
+	<TypeaheadItem value="Item Four">
+		{({isSelected}) => (
+			<Checkbox controlled={false} label="Item Four" checked={isSelected} name="taItems" value="item4" />
+		)}
+	</TypeaheadItem>
+];
+
+/**
+ * @module MultiselectTypeahead
+ */
+class MultiselectTypeahead extends React.PureComponent {
+	constructor(props) {
+		super(props);
+
+		this.selectHandler = this.selectHandler.bind(this);
+
+		this.state = {
+			selectedItems: []
+		};
+	}
+
+	selectHandler(prevSelection, selectedItems) {
+		const filteredItems = this.state.selectedItems.includes(prevSelection)
+			? this.state.selectedItems.filter(item => item !== prevSelection)
+			: selectedItems;
+
+		this.setState(() => ({
+			selectedItems: filteredItems
+		}));
+	}
+
+	render() {
+		const {items, ...other} = this.props;
+
+		return (
+			<div>
+				<div className="chunk">
+					<h5 className="text--bold display--inline">Selections: </h5>
+					{this.state.selectedItems.map(item => (<span>{item}, </span>))}
+				</div>
+				<Typeahead
+					multiSelect
+					openOnFocus
+					openOnSelect
+					multiSelectValues={this.state.selectedItems}
+					items={items}
+					onSelect={this.selectHandler}
+					{...other}
+				/>
+			</div>
+		);
+	}
+}
 
 const typeaheadItemsObjValues = [
 	<TypeaheadItem value={{name: "Item One", id: 0}}>
@@ -66,10 +137,7 @@ storiesOf("Typeahead", module)
 		() => (
 			<Typeahead
 				items={typeaheadItems}
-				inputProps={{
-					label: 'Labeled typeahead',
-					name: 'typeaheadInputName'
-				}}
+				inputProps={{name: 'typeaheadInputName'}}
 			/>
 		)
 	)
@@ -81,7 +149,7 @@ storiesOf("Typeahead", module)
 					items={typeaheadItems}
 					height="100px"
 					inputProps={{
-						label: 'Labeled typeahead',
+						label: 'Menu scrolls at 100px',
 						name: 'typeaheadInputName'
 					}}
 				/>
@@ -95,7 +163,7 @@ storiesOf("Typeahead", module)
 				items={typeaheadItems}
 				defaultSelectedItem={typeaheadItems[0].props.value}
 				inputProps={{
-					label: 'Labeled typeahead',
+					label: 'Has a default selected item',
 					name: 'typeaheadInputName'
 				}}
 			/>
@@ -134,7 +202,7 @@ storiesOf("Typeahead", module)
 				items={typeaheadItems}
 				inputProps={{
 					disabled: true,
-					label: 'Labeled typeahead',
+					label: 'Disabled typeahead',
 					name: 'typeaheadInputName'
 				}}
 			/>
@@ -147,7 +215,7 @@ storiesOf("Typeahead", module)
 				items={typeaheadItems}
 				inputProps={{
 					error: 'Not so fast. You have an error.',
-					label: 'Labeled typeahead',
+					label: 'Typeahead with error',
 					name: 'typeaheadInputName'
 				}}
 			/>
@@ -160,7 +228,7 @@ storiesOf("Typeahead", module)
 				items={typeaheadItems}
 				inputProps={{
 					required: true,
-					label: 'Labeled typeahead',
+					label: 'Required typeahead',
 					name: 'typeaheadInputName'
 				}}
 			/>
@@ -173,7 +241,7 @@ storiesOf("Typeahead", module)
 				items={typeaheadItems}
 				inputProps={{
 					isSearch: true,
-					label: 'Labeled typeahead',
+					label: 'Search-y typeahead',
 					name: 'typeaheadInputName'
 				}}
 			/>
@@ -186,6 +254,44 @@ storiesOf("Typeahead", module)
 				items={typeaheadItems}
 				inputProps={{
 					iconShape: 'search',
+					label: 'Typeahead with icon',
+					name: 'typeaheadInputName'
+				}}
+			/>
+		)
+	)
+	.addWithInfo(
+		"multiple values",
+		() => (
+			<MultiselectTypeahead
+				items={typeaheadCheckboxes}
+				inputProps={{
+					label: 'Multiselect typeahead',
+					name: 'typeaheadInputName'
+				}}
+			/>
+		)
+	)
+	.addWithInfo(
+		"openOnFocus",
+		() => (
+			<Typeahead
+				openOnFocus
+				items={typeaheadItems}
+				inputProps={{
+					label: 'Labeled typeahead',
+					name: 'typeaheadInputName'
+				}}
+			/>
+		)
+	)
+	.addWithInfo(
+		"openOnSelect",
+		() => (
+			<Typeahead
+				openOnSelect
+				items={typeaheadItems}
+				inputProps={{
 					label: 'Labeled typeahead',
 					name: 'typeaheadInputName'
 				}}
@@ -204,5 +310,4 @@ storiesOf("Typeahead", module)
 				}}
 			/>
 		)
-	)
-	;
+	);
