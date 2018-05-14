@@ -124,13 +124,22 @@ lays out as a dialog on background content on larger screens.
 	z-index: map-get($zindex-map, "popup") + 1;
 }
 
-.modal-closeButton:focus {
-	background-color: $C_tappable;
+.modal-closeButton {
+	@include color-svg($C_textSecondary);
 }
 
-.inverted .modal-closeButton:focus {
-	background-color: $C_tappableInverted;
-	box-shadow: 0 0 2px 1px $C_borderDarkInverted;
+.inverted .modal-closeButton {
+	@include color-svg($C_textSecondaryInverted);
+}
+
+.modal-closeButton:focus,
+.modal-closeButton:hover {
+	@include color-svg($C_textPrimary);
+}
+
+.inverted .modal-closeButton:focus,
+.inverted .modal-closeButton:hover {
+	@include color-svg($C_textPrimaryInverted);
 }
 
 .modal--isLoading {
