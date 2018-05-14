@@ -12,7 +12,6 @@ export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
  * @module TextInput
  */
 export const TextInput = (props) => {
-
 	const {
 		name,
 		value,
@@ -33,6 +32,7 @@ export const TextInput = (props) => {
 		required,
 		requiredText,
 		validityMessage,
+		refCallback,
 		...other
 	} = props;
 
@@ -120,6 +120,7 @@ export const TextInput = (props) => {
 					disabled={disabled}
 					id={id}
 					style={inputStyles}
+					ref={refCallback}
 					{...other}
 				/>
 				{iconShape &&
