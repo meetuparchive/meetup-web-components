@@ -299,6 +299,22 @@ storiesOf("Typeahead", module)
 		)
 	)
 	.addWithInfo(
+		"openInline",
+		() => (
+			<div>
+				<Typeahead
+					openInline
+					items={typeaheadItems}
+					inputProps={{
+						label: 'Labeled typeahead',
+						name: 'typeaheadInputName'
+					}}
+				/>
+				<p>The menu will not hide this text</p>
+			</div>
+		)
+	)
+	.addWithInfo(
 		"using itemToString (useful for value as Object)",
 		() => (
 			<Typeahead
