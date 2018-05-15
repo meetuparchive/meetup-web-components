@@ -100,7 +100,8 @@ class Dropdown extends React.PureComponent {
 			className,
 			trigger,
 			content,
-			align, // eslint-disable-line no-unused-vars
+			align,
+			offset,
 			maxWidth,
 			minWidth,
 			noPortal,
@@ -169,6 +170,7 @@ class Dropdown extends React.PureComponent {
 									getContent={getContent}
 									noPortal={noPortal}
 									align={align}
+									offset={offset}
 								>
 									{({
 										top,
@@ -244,6 +246,10 @@ Dropdown.propTypes = {
 	content: PropTypes.element,
 	menuItems: PropTypes.arrayOf(PropTypes.element),
 	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
+	offset: PropTypes.shape({
+		left: PropTypes.number,
+		top: PropTypes.number
+	}),
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
 	manualToggle: PropTypes.func,
