@@ -10,6 +10,12 @@ exports[`FloatingPosition matches snapshot 1`] = `
     getContent={[Function]}
     getTrigger={[Function]}
     noPortal={false}
+    offset={
+      Object {
+        "left": 16,
+        "top": 8,
+      }
+    }
   />
 </div>
 `;
