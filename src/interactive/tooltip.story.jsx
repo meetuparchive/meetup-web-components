@@ -159,6 +159,30 @@ storiesOf("Tooltip", module)
 		)
 	)
 	.addWithInfo(
+		"Tooltip with offset",
+		"Using an offset to fine-tune the popup alignment to the trigger",
+		() => (
+			<div style={{textAlign: 'center'}}>
+				<Tooltip
+					isActive
+					offset={{top: 8, left: 16}}
+					minWidth="0"
+					maxWidth="384px"
+					align="right"
+					id="testTooltip"
+					trigger={<Button small>Open</Button>}
+					content={
+						<div className="runningText padding--all">
+							<p>
+								This tooltip component is offset 16px from the left and 8px from the top
+							</p>
+						</div>
+					}
+				/>
+			</div>
+		)
+	)
+	.addWithInfo(
 		"manualToggle",
 		"rely on the `isActive` prop to open and close the tooltip",
 		() => (

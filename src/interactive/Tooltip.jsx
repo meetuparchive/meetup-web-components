@@ -56,7 +56,8 @@ class Tooltip extends React.PureComponent {
 			className,
 			trigger,
 			content,
-			align, // eslint-disable-line no-unused-vars
+			align,
+			offset,
 			maxWidth,
 			minWidth,
 			noPortal,
@@ -112,6 +113,7 @@ class Tooltip extends React.PureComponent {
 						getContent={getContent}
 						noPortal={noPortal}
 						align={align}
+						offset={offset}
 						direction={direction}
 					>
 						{({
@@ -178,6 +180,10 @@ Tooltip.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element,
 	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
+	offset: PropTypes.shape({
+		left: PropTypes.number,
+		top: PropTypes.number
+	}),
 	direction: PropTypes.oneOf(["top", "bottom"]).isRequired,
 	className: PropTypes.string,
 	isActive: PropTypes.bool,
