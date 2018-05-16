@@ -17,6 +17,7 @@
 	);
 	@include color-all($C_accent);
 	border-color: $C_accent;
+	border-radius: 999px;
 	font-weight: $W_normal;
 	margin: $space-quarter 0;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -36,6 +37,10 @@
 .toggleButton-label--large {
 	font-size: $font-size;
 	padding: $space-2 $space;
+}
+
+.toggleButton-label--small {
+	padding: $space-half $space;
 }
 
 .toggleButton-input {
