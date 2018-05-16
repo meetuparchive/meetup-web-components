@@ -20,6 +20,7 @@ class TestComponent extends React.PureComponent {
 			<div>
 				<div ref={el => (this.triggerRef = el)}>Trigger</div>
 				<FloatingPosition
+					offset={{top: 8, left: 16}}
 					getTrigger={getTrigger}
 					getContent={getContent}
 					noPortal={false}

@@ -141,6 +141,26 @@ storiesOf("Dropdown", module)
 		)
 	)
 	.addWithInfo(
+		"Dropdown with offset",
+		"Using an offset to fine-tune the popup alignment to the trigger",
+		() => (
+			<Dropdown
+				align="right"
+				offset={{top: 8, left: 16}}
+				minWidth="0"
+				maxWidth="384px"
+				trigger={<Button small>Open</Button>}
+				content={
+					<div className="runningText padding--all">
+						<p>
+							This dropdown component is offset 16px from the left and 8px from the top
+						</p>
+					</div>
+				}
+			/>
+		)
+	)
+	.addWithInfo(
 		"With menu items",
 		"Use the `menuItems` prop to render a menu",
 		() => (
