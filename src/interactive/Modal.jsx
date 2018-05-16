@@ -182,38 +182,37 @@ export class Modal extends React.Component {
 				{...other}
 			>
 
-				{!fullscreen && overlayShim}
-
-				<div
-					className={modalClasses}
-					style={{
-						marginTop: this.state.topPosition,
-						maxHeight: fixed ? `calc(100% - ${this.state.topPosition} * 2)` : 'auto',
+				<FocusTrap
+					focusTrapOptions={{
+						initialFocus,
+						escapeDeactivates: false
 					}}
 				>
-					<FocusTrap
-						focusTrapOptions={{
-							initialFocus,
-							escapeDeactivates: false
+					{!fullscreen && overlayShim}
+					<div
+						className={modalClasses}
+						style={{
+							marginTop: this.state.topPosition,
+							maxHeight: fixed ? `calc(100% - ${this.state.topPosition} * 2)` : 'auto',
 						}}
 					>
-						{heroContent ?
-							<Stripe
-								backgroundImage={heroBgImage}
-								inverted={inverted}
-								hideScrim={hideHeroScrim}
-								style={heroStyles}
-							>
-								{closeElement}
-								{heroContent}
-							</Stripe>
-							:
-							closeElement
-						}
+							{heroContent ?
+								<Stripe
+									backgroundImage={heroBgImage}
+									inverted={inverted}
+									hideScrim={hideHeroScrim}
+									style={heroStyles}
+								>
+									{closeElement}
+									{heroContent}
+								</Stripe>
+								:
+								closeElement
+							}
 
-						{children}
-					</FocusTrap>
-				</div>
+							{children}
+					</div>
+				</FocusTrap>
 			</div>
 		);
 	}
