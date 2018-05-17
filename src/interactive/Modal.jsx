@@ -229,7 +229,7 @@ Modal.propTypes = {
 	inverted: PropTypes.bool,
 	onDismiss: PropTypes.func.isRequired,
 	closeArea: PropTypes.bool,
-	initialFocus: PropTypes.oneOf([
+	initialFocus: PropTypes.oneOfType([
 		PropTypes.element,
 		PropTypes.func,
 		PropTypes.string
