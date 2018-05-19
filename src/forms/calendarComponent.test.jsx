@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 import { CalendarComponent } from './CalendarComponent';
 
 describe('CalendarComponent', () => {
-
 	// Flatpickr invokes `onChange` with an array arg of `selectedDates`.
 	// the first index is the latest date selected.
 	const MOCK_VALUE = [new Date('2020-10-12')];
@@ -11,7 +10,7 @@ describe('CalendarComponent', () => {
 	const MOCK_PROPS = {
 		id: 'beyonce',
 		name: 'halo',
-		label: "Enter Your Favorite Day",
+		label: 'Enter Your Favorite Day',
 		helperText: "I'm here to help",
 		className: 'beyonce-halo',
 		value: new Date('2012-10-12'),
@@ -19,14 +18,9 @@ describe('CalendarComponent', () => {
 		error: 'this is an error',
 	};
 
-	const calendarComponent = shallow(
-		<CalendarComponent {...MOCK_PROPS} />
-	);
+	const calendarComponent = shallow(<CalendarComponent {...MOCK_PROPS} />);
 	const suppressErrorComponent = shallow(
-		<CalendarComponent
-			suppressError
-			{...MOCK_PROPS}
-		/>
+		<CalendarComponent suppressError {...MOCK_PROPS} />
 	);
 
 	it('standard props matches snapshot', () => {
@@ -41,14 +35,15 @@ describe('CalendarComponent', () => {
 		const spyableChange = jest.fn();
 		const expectedOnChangeArg = MOCK_VALUE[0];
 		const component = mount(
-			<CalendarComponent
-				onChange={spyableChange}
-				{...MOCK_PROPS}
-			/>
+			<CalendarComponent onChange={spyableChange} {...MOCK_PROPS} />
 		);
 
 		expect(spyableChange).not.toHaveBeenCalled();
 		component.instance().onFlatPickerChange(MOCK_VALUE);
-		expect(spyableChange).toHaveBeenCalledWith(expectedOnChangeArg);
+		expect(spyableChange).toHaveBeenCalledWith(
+			expectedOnChangeArg,
+			undefined,
+			undefined
+		);
 	});
 });

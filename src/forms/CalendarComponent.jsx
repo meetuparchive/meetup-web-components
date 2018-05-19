@@ -28,8 +28,9 @@ export class CalendarComponent extends React.Component {
 	 * `redux-form` however, expects a single value. This function ensures that any `onChange`
 	 * prop passed to this component invokes with a single date object.
 	 */
-	onFlatPickerChange(selectedDates) {
-		this.props.onChange && this.props.onChange(selectedDates[0]);
+	onFlatPickerChange(selectedDates, dateString, flatpickrInstance) {
+		this.props.onChange &&
+			this.props.onChange(selectedDates[0], dateString, flatpickrInstance);
 	}
 
 	render() {
