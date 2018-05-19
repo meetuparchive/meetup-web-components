@@ -28,8 +28,9 @@ export class CalendarComponent extends React.Component {
 	 * `redux-form` however, expects a single value. This function ensures that any `onChange`
 	 * prop passed to this component invokes with a single date object.
 	 */
-	onFlatPickerChange(selectedDates, dateStr, instance) {
-		this.props.onChange && this.props.onChange(selectedDates[0], dateStr, instance);
+	onFlatPickerChange(selectedDates, dateString, instance) {
+		this.props.onChange &&
+			this.props.onChange(selectedDates[0], dateString, instance);
 	}
 
 	render() {
@@ -37,14 +38,12 @@ export class CalendarComponent extends React.Component {
 			id,
 			name,
 			label,
-			labelClassName,
 			helperText,
 			error,
+			required,
 			datepickerOptions,
 			className,
 			onChange, // eslint-disable-line no-unused-vars
-			required,
-			requiredText,
 			...other
 		} = this.props;
 
@@ -82,11 +81,7 @@ export class CalendarComponent extends React.Component {
 		return (
 			<span>
 				{label && (
-					<label
-						htmlFor={id || name}
-						className={classNames.label}
-						data-requiredtext={required && requiredText}
-					>
+					<label htmlFor={id || name} className={classNames.label}>
 						{label}
 					</label>
 				)}
@@ -106,7 +101,6 @@ export class CalendarComponent extends React.Component {
 
 CalendarComponent.propTypes = {
 	label: PropTypes.string,
-	labelClassName: PropTypes.string,
 	id: PropTypes.string,
 	name: PropTypes.string,
 	datepickerOptions: PropTypes.object,
@@ -114,8 +108,6 @@ CalendarComponent.propTypes = {
 	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	onChange: PropTypes.func, // provided by `redux-form`
-	required: PropTypes.bool,
-	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 CalendarComponent.defaultProps = {
