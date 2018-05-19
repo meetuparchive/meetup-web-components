@@ -28,8 +28,8 @@ export class CalendarComponent extends React.Component {
 	 * `redux-form` however, expects a single value. This function ensures that any `onChange`
 	 * prop passed to this component invokes with a single date object.
 	 */
-	onFlatPickerChange(selectedDates) {
-		this.props.onChange && this.props.onChange(selectedDates[0]);
+	onFlatPickerChange(selectedDates, dateStr, instance) {
+		this.props.onChange && this.props.onChange(selectedDates[0], dateStr, instance);
 	}
 
 	render() {
@@ -49,13 +49,10 @@ export class CalendarComponent extends React.Component {
 		} = this.props;
 
 		const classNames = {
-			label: cx(
-				{
-					'label--required': required,
-					'flush--bottom': helperText,
-				},
-				labelClassName
-			),
+			label: cx({
+				required,
+				'flush--bottom': helperText,
+			}),
 			helperText: cx('helperTextContainer', { required }),
 			field: cx(
 				'input--dateTimePicker select--reset',
@@ -113,7 +110,8 @@ CalendarComponent.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string,
 	datepickerOptions: PropTypes.object,
-	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.bool]),
+	required: PropTypes.bool,
+	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	onChange: PropTypes.func, // provided by `redux-form`
 	required: PropTypes.bool,
@@ -121,7 +119,6 @@ CalendarComponent.propTypes = {
 };
 
 CalendarComponent.defaultProps = {
-	requiredText: '*',
 	datepickerOptions: {},
 };
 
