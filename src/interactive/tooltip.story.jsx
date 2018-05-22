@@ -2,6 +2,7 @@ import React from "react";
 import { storiesOf } from '@storybook/react';
 import Tooltip from "./Tooltip";
 import Button from "../forms/Button";
+import { decorateWithBasics } from '../utils/decorators';
 
 const dropdownContent = (
 	<div className="runningText padding--all">
@@ -52,6 +53,7 @@ class ManualToggleDropdown extends React.PureComponent {
 }
 
 storiesOf("Tooltip", module)
+	.addDecorator(decorateWithBasics)
 	.addWithInfo(
 		"Basic Tooltip component",
 		"Aligned right by default",
@@ -178,6 +180,24 @@ storiesOf("Tooltip", module)
 							</p>
 						</div>
 					}
+				/>
+			</div>
+		)
+	)
+	.addWithInfo(
+		"Tooltip with close button",
+		"Provides it's own close button",
+		() => (
+			<div style={{textAlign: 'center'}}>
+				<Tooltip
+					isActive
+					withClose
+					minWidth="0"
+					maxWidth="384px"
+					align="center"
+					id="testTooltip"
+					trigger={<Button small>Open</Button>}
+					content={dropdownContent}
 				/>
 			</div>
 		)
