@@ -56,8 +56,8 @@ export class GridList extends React.Component {
 
 		return (
 			<ConditionalWrap
-				condition={this.props.children}
-				wrap={children => <div className={isLoading && 'component--isLoading'}>{[children, this.props.children]}</div>}
+				condition={this.props.children && isLoading}
+				wrap={children => <div className="component--isLoading">{[children, this.props.children]}</div>}
 			>
 				<ul
 					className={autoHeight || autoHeightWithWrap ? autoHeightClassNames : classNames}
