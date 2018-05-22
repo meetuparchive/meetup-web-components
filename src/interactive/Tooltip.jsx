@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
+import Button from '../forms/Button';
+import Icon from '../media/Icon';
 import FloatingPosition from '../utils/components/FloatingPosition';
 
 /**
@@ -23,6 +25,7 @@ class Tooltip extends React.PureComponent {
 
 	closeContent(e) {
 		this.setState(() => ({ isActive: false }));
+		console.log('closeContent being called');
 
 		if (this.props.onBlur) {
 			this.props.onBlur(e);
@@ -64,6 +67,7 @@ class Tooltip extends React.PureComponent {
 			id,
 			direction,
 			manualToggle,
+			withClose,
 			...other
 		} = this.props;
 
@@ -156,6 +160,14 @@ class Tooltip extends React.PureComponent {
 										}
 									)}
 								>
+									{withClose &&
+										<Button
+											className="tooltip-closeBtn"
+											onClick={this.closeContent}
+											icon={<Icon shape="cross" className="text--secondary" />}
+											reset
+										/>
+									}
 									{content}
 								</div>
 							</div>
