@@ -3,6 +3,7 @@ import { shallow, mount } from 'enzyme';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
+import Icon from '../media/Icon';
 
 import Tooltip from './Tooltip';
 
@@ -108,51 +109,77 @@ describe('Tooltip', () => {
 		});
 	});
 
-	describe('open and close', () => {
-		let closedComponent, trigger, tooltipArea;
+	// describe('open and close', () => {
+	// 	let closedComponent, trigger, tooltipArea;
 
-		beforeEach(() => {
-			closedComponent = shallow(dropdownJSX);
-			trigger = closedComponent.find('.popup-trigger').first();
-			tooltipArea = closedComponent.find('.popup').first();
+	// 	beforeEach(() => {
+	// 		closedComponent = shallow(dropdownJSX);
+	// 		trigger = closedComponent.find('.popup-trigger').first();
+	// 		tooltipArea = closedComponent.find('.popup').first();
+	// 	});
+	// 	afterEach(() => {
+	// 		closedComponent = null;
+	// 		trigger = null;
+	// 		tooltipArea = null;
+	// 	});
+
+	// 	it('should show tooltip when trigger is hovered', () => {
+	// 		expect(closedComponent.state('isActive')).toBeFalsy();
+	// 		trigger.simulate('mouseEnter');
+	// 		expect(closedComponent.state('isActive')).toBeTruthy();
+	// 	});
+
+	// 	it('should hide tooltip when cursor leaves the tooltip area', () => {
+	// 		expect(closedComponent.state('isActive')).toBeFalsy();
+	// 		trigger.simulate('mouseEnter');
+	// 		expect(closedComponent.state('isActive')).toBeTruthy();
+	// 		tooltipArea.simulate('mouseLeave');
+	// 		setTimeout(() => {
+	// 			expect(closedComponent.state('isActive')).toBeFalsy();
+	// 		}, 1);
+	// 	});
+
+	// 	it('should show tooltip when trigger is focused', () => {
+	// 		expect(closedComponent.state('isActive')).toBeFalsy();
+	// 		trigger.simulate('focus');
+	// 		expect(closedComponent.state('isActive')).toBeTruthy();
+	// 	});
+
+	// 	it('should hide tooltip when trigger is blurred', () => {
+	// 		expect(closedComponent.state('isActive')).toBeFalsy();
+	// 		trigger.simulate('focus');
+	// 		expect(closedComponent.state('isActive')).toBeTruthy();
+	// 		tooltipArea.simulate('blur');
+
+	// 		setTimeout(() => {
+	// 			expect(closedComponent.state('isActive')).toBeFalsy();
+	// 		}, 10);
+	// 	});
+
+	// });
+
+	describe('tooltip with a close button', () => {
+		const openTooltipWithCloseJSX = (
+			<Tooltip
+				isActive
+				withClose
+				align="right"
+				id={dropdownId}
+				trigger={dropdownTrigger}
+				content={dropdownContent}
+			/>
+		);
+		const wrapper = mount(openTooltipWithCloseJSX);
+		const closeBtn = wrapper.find(Icon);
+
+		it('should render correctly', () => {
+			expect(wrapper).toMatchSnapshot();
 		});
-		afterEach(() => {
-			closedComponent = null;
-			trigger = null;
-			tooltipArea = null;
-		});
 
-		it('should show tooltip when trigger is hovered', () => {
-			expect(closedComponent.state('isActive')).toBeFalsy();
-			trigger.simulate('mouseEnter');
-			expect(closedComponent.state('isActive')).toBeTruthy();
-		});
-
-		it('should hide tooltip when cursor leaves the tooltip area', () => {
-			expect(closedComponent.state('isActive')).toBeFalsy();
-			trigger.simulate('mouseEnter');
-			expect(closedComponent.state('isActive')).toBeTruthy();
-			tooltipArea.simulate('mouseLeave');
-			setTimeout(() => {
-				expect(closedComponent.state('isActive')).toBeFalsy();
-			}, 1);
-		});
-
-		it('should show tooltip when trigger is focused', () => {
-			expect(closedComponent.state('isActive')).toBeFalsy();
-			trigger.simulate('focus');
-			expect(closedComponent.state('isActive')).toBeTruthy();
-		});
-
-		it('should hide tooltip when trigger is blurred', () => {
-			expect(closedComponent.state('isActive')).toBeFalsy();
-			trigger.simulate('focus');
-			expect(closedComponent.state('isActive')).toBeTruthy();
-			tooltipArea.simulate('blur');
-
-			setTimeout(() => {
-				expect(closedComponent.state('isActive')).toBeFalsy();
-			}, 10);
+		it('should hide tooltip close button is clicked', () => {
+			expect(wrapper.state('isActive')).toBeTruthy();
+			closeBtn.simulate('click');
+			expect(wrapper.state('isActive')).toBeFalsy();
 		});
 	});
 
