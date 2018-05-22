@@ -25,7 +25,6 @@ class Tooltip extends React.PureComponent {
 
 	closeContent(e) {
 		this.setState(() => ({ isActive: false }));
-		console.log('closeContent being called');
 
 		if (this.props.onBlur) {
 			this.props.onBlur(e);
