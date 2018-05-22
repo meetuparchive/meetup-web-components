@@ -109,54 +109,54 @@ describe('Tooltip', () => {
 		});
 	});
 
-	// describe('open and close', () => {
-	// 	let closedComponent, trigger, tooltipArea;
+	describe('open and close', () => {
+		let closedComponent, trigger, tooltipArea;
 
-	// 	beforeEach(() => {
-	// 		closedComponent = shallow(dropdownJSX);
-	// 		trigger = closedComponent.find('.popup-trigger').first();
-	// 		tooltipArea = closedComponent.find('.popup').first();
-	// 	});
-	// 	afterEach(() => {
-	// 		closedComponent = null;
-	// 		trigger = null;
-	// 		tooltipArea = null;
-	// 	});
+		beforeEach(() => {
+			closedComponent = shallow(dropdownJSX);
+			trigger = closedComponent.find('.popup-trigger').first();
+			tooltipArea = closedComponent.find('.popup').first();
+		});
+		afterEach(() => {
+			closedComponent = null;
+			trigger = null;
+			tooltipArea = null;
+		});
 
-	// 	it('should show tooltip when trigger is hovered', () => {
-	// 		expect(closedComponent.state('isActive')).toBeFalsy();
-	// 		trigger.simulate('mouseEnter');
-	// 		expect(closedComponent.state('isActive')).toBeTruthy();
-	// 	});
+		it('should show tooltip when trigger is hovered', () => {
+			expect(closedComponent.state('isActive')).toBeFalsy();
+			trigger.simulate('mouseEnter');
+			expect(closedComponent.state('isActive')).toBeTruthy();
+		});
 
-	// 	it('should hide tooltip when cursor leaves the tooltip area', () => {
-	// 		expect(closedComponent.state('isActive')).toBeFalsy();
-	// 		trigger.simulate('mouseEnter');
-	// 		expect(closedComponent.state('isActive')).toBeTruthy();
-	// 		tooltipArea.simulate('mouseLeave');
-	// 		setTimeout(() => {
-	// 			expect(closedComponent.state('isActive')).toBeFalsy();
-	// 		}, 1);
-	// 	});
+		it('should hide tooltip when cursor leaves the tooltip area', () => {
+			expect(closedComponent.state('isActive')).toBeFalsy();
+			trigger.simulate('mouseEnter');
+			expect(closedComponent.state('isActive')).toBeTruthy();
+			tooltipArea.simulate('mouseLeave');
+			setTimeout(() => {
+				expect(closedComponent.state('isActive')).toBeFalsy();
+			}, 1);
+		});
 
-	// 	it('should show tooltip when trigger is focused', () => {
-	// 		expect(closedComponent.state('isActive')).toBeFalsy();
-	// 		trigger.simulate('focus');
-	// 		expect(closedComponent.state('isActive')).toBeTruthy();
-	// 	});
+		it('should show tooltip when trigger is focused', () => {
+			expect(closedComponent.state('isActive')).toBeFalsy();
+			trigger.simulate('focus');
+			expect(closedComponent.state('isActive')).toBeTruthy();
+		});
 
-	// 	it('should hide tooltip when trigger is blurred', () => {
-	// 		expect(closedComponent.state('isActive')).toBeFalsy();
-	// 		trigger.simulate('focus');
-	// 		expect(closedComponent.state('isActive')).toBeTruthy();
-	// 		tooltipArea.simulate('blur');
+		it('should hide tooltip when trigger is blurred', () => {
+			expect(closedComponent.state('isActive')).toBeFalsy();
+			trigger.simulate('focus');
+			expect(closedComponent.state('isActive')).toBeTruthy();
+			tooltipArea.simulate('blur');
 
-	// 		setTimeout(() => {
-	// 			expect(closedComponent.state('isActive')).toBeFalsy();
-	// 		}, 10);
-	// 	});
+			setTimeout(() => {
+				expect(closedComponent.state('isActive')).toBeFalsy();
+			}, 10);
+		});
 
-	// });
+	});
 
 	describe('tooltip with a close button', () => {
 		const openTooltipWithCloseJSX = (
