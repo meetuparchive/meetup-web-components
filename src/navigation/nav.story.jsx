@@ -88,23 +88,49 @@ export const navItems = {
 storiesOf('Nav', module)
 	.addDecorator(decorateWithBasics)
 	.add('authenticated', () => (
-		<Nav self={MOCK_MEMBER} navItems={navItems} style={{ width: '100%' }} />
+		<Nav
+			self={MOCK_MEMBER}
+			navItems={navItems}
+			style={{ width: '100%' }}
+			media={{ isAtMediumUp: true, isAtLargeUp: true }}
+		/>
 	))
 	.add('authenticated but members groups has not been loaded', () => {
 		const groups = { ...navItems.groups, list: undefined };
 		const items = { ...navItems, groups };
-		return <Nav self={MOCK_MEMBER} navItems={items} style={{ width: '100%' }} />;
+		return (
+			<Nav
+				self={MOCK_MEMBER}
+				navItems={items}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			/>
+		);
 	})
 	.add('authenticated but notifications has not been loaded', () => {
 		const notifications = { ...navItems.notifications, list: undefined };
 		const items = { ...navItems, notifications };
-		return <Nav self={MOCK_MEMBER} navItems={items} style={{ width: '100%' }} />;
+		return (
+			<Nav
+				self={MOCK_MEMBER}
+				navItems={items}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			/>
+		);
 	})
 	.add('authenticated but notifications and groups are empty', () => {
 		const notifications = { ...navItems.notifications, list: [] };
 		const groups = { ...navItems.groups, list: [] };
 		const items = { ...navItems, notifications, groups };
-		return <Nav self={MOCK_MEMBER} navItems={items} style={{ width: '100%' }} />;
+		return (
+			<Nav
+				self={MOCK_MEMBER}
+				navItems={items}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			/>
+		);
 	})
 	.add('authenticated Pro member', () => (
 		<Nav
@@ -114,8 +140,14 @@ storiesOf('Nav', module)
 			}}
 			navItems={navItems}
 			style={{ width: '100%' }}
+			media={{ isAtMediumUp: true, isAtLargeUp: true }}
 		/>
 	))
 	.add('unauthenticated', () => (
-		<Nav self={{ status: 'prereg' }} navItems={navItems} style={{ width: '100%' }} />
+		<Nav
+			self={{ status: 'prereg' }}
+			navItems={navItems}
+			style={{ width: '100%' }}
+			media={{ isAtMediumUp: true, isAtLargeUp: true }}
+		/>
 	));
