@@ -4,7 +4,6 @@ import cx from 'classnames';
 
 import swarmLogo from '../../assets/svg/logo--mSwarm--2color.svg';
 import scriptLogo from '../../assets/svg/logo--script.svg';
-import withMatchMedia from '../utils/components/withMatchMedia';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
@@ -381,4 +380,4 @@ Nav.propTypes = {
 	navItems: PropTypes.object,
 };
 
-export default withMatchMedia(Nav);
+export default Nav;
