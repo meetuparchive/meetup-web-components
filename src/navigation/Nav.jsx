@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import { renameProp, compose } from 'recompose';
 
 import swarmLogo from '../../assets/svg/logo--mSwarm--2color.svg';
 import scriptLogo from '../../assets/svg/logo--script.svg';
@@ -81,7 +82,15 @@ export class Nav extends React.Component {
 	 * @return {React.element} the navbar component
 	 */
 	render() {
-		const { media, self, navItems, localeCode, className, ...other } = this.props;
+		const {
+			parentMedia,
+			media: _media,
+			self,
+			navItems,
+			localeCode,
+			className,
+			...other
+		} = this.props;
 		const {
 			login,
 			signup,
@@ -95,6 +104,7 @@ export class Nav extends React.Component {
 			logo,
 			dropdownLoaderLabel,
 		} = navItems;
+		const media = parentMedia || _media;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all', className);
 		const proLogo = ((proDashboard.mainAccount || {}).group_photo || {}).thumb_link;
@@ -378,7 +388,10 @@ Nav.defaultProps = {
 Nav.propTypes = {
 	self: PropTypes.object,
 	media: PropTypes.object,
+	parentMedia: PropTypes.object,
 	navItems: PropTypes.object,
 };
 
-export default withMatchMedia(Nav);
+const enhance = compose(renameProp('media', 'parentMedia'), withMatchMedia);
+
+export default enhance(Nav);
