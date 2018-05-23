@@ -1,6 +1,6 @@
 # [5.0]
 
-*   **BREAKING CHANGE** `Nav` component now requires media as a prop.
+*   **BREAKING CHANGE** `Nav` component now requires `media`, from `connectWithMatchMedia`, as a prop.
 
 # [3.3]
 
