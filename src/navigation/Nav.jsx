@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import { renameProp, compose } from 'recompose';
 
 import swarmLogo from '../../assets/svg/logo--mSwarm--2color.svg';
 import scriptLogo from '../../assets/svg/logo--script.svg';
@@ -391,4 +392,6 @@ Nav.propTypes = {
 	navItems: PropTypes.object,
 };
 
-export default withMatchMedia(Nav);
+const enhance = compose(renameProp('media', 'parentMedia'), withMatchMedia);
+
+export default enhance(Nav);
