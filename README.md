@@ -16,7 +16,7 @@ Table of Contents
     * [Verifying child elements](#verifying-child-elements)
   * [Linting](#linting)
   * [Storybook](#storybook)
-  * [Release notes](#release-notes)
+  * [Release notes](https://github.com/meetup/meetup-web-components/blob/master/CHANGELOG.md)
 
 ## Component checklist
 This checklist can be used as a guide for adding components that are easy to reuse and maintain. The categories come from a talk I saw [Elyse Holladay](https://elyseholladay.github.io/) give at Clarity Conf 2017.
@@ -221,36 +221,3 @@ And open the viewer at [http://localhost:9001](http://localhost:9001)
 All of the available components are listed on the left, and clicking on
 one will open it in the preview pane. Variants are also listed in the left
 column to show how different states affect the rendered component.
-
-## Release notes
-
-### `v4.8.X`
-- Updated `redux-form` wrappers to prevent `error` prop from being passed to wrapped component unless the form field has been touched or form submit has failed.
-
-### `v4.7.X`
-- Updated `TogglePill` styles per the design team's specifications. These updates will partially break in `mup-web` if the original style overrides are not removed
-
-### `v4.5.X`
-- Replaced `flatpickr` in `CalendarComponent` with `react-flatpickr`
-
-### `v4.4.X`
-Form errors update
-- removed error elements and logic from base form components
-- form components are now wrapped by the new `withErrorList` HOC to handle error rendering
-
-### `v4.3.X`
-- Upgraded to a version of `swarm-sasstools` where we replace responsive sizing/spacing mixins with CSS custom properties
-- Removed the `responsiveVarContext` mixin. Usage must be replaced with the `customPropertyValue( <property>, var(--responsiveSpace), $space)` mixin.
-	- [Example usage of customPropertyValue](https://github.com/meetup/meetup-web-components/blob/master/assets/scss/components/_inlineblockList.scss#L49)
-	- [customPropertyValue documentation](https://meetup.github.io/swarm-sasstools/sassdoc/index.html#mixin-customPropertyValue)
-
-### `v1.1.X`
-Icons update
-- Updated `swarm-icons` to `1.0.0`
-- Updated `Icon` component to support rendering of separate SVG symbols for `xs` sizes
-- Added `_icon.scss` component sass partial
-	- allows `meetup-web-components` to provide icon styling to consumer apps
-	- changes default icon color to `secondary` from `inherit`
-- Removes unused and confusing `auto` prop from `Icon`
-- Fixed issue where `Icon` would not accept the `xxl` media size
-
