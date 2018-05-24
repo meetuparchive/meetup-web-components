@@ -18,7 +18,6 @@ exports[`Tooltip aligned tooltip matches snapshot 1`] = `
   }
   direction="top"
   id="testDropdown"
-  maxWidth="384px"
   minWidth="0px"
   noPortal={false}
   trigger={
@@ -52,7 +51,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
   direction="bottom"
   id="testDropdown"
   isActive={true}
-  maxWidth="384px"
   minWidth="0px"
   noPortal={false}
   trigger={
@@ -90,7 +88,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
         </button>
       </Button>
     </div>
-    <FloatingPosition
+    <WithMatchMedia(FloatingPosition)
       align="right"
       direction="bottom"
       getContent={[Function]}
@@ -98,144 +96,154 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
       noPortal={false}
       offset={undefined}
     >
-      <ConditionalWrap
-        condition={true}
-        wrap={[Function]}
+      <FloatingPosition
+        align="right"
+        direction="bottom"
+        getContent={[Function]}
+        getTrigger={[Function]}
+        media={Object {}}
+        noPortal={false}
+        offset={undefined}
       >
-        <Portal>
-          <div
-            aria-hidden={false}
-            className="popup-content tooltip-content popup-content--right display--block"
-            id="testDropdown"
-            role="tooltip"
-            style={
-              Object {
-                "left": "0px",
-                "maxWidth": "384px",
-                "minWidth": "0px",
-                "top": "0px",
-              }
-            }
-          >
+        <ConditionalWrap
+          condition={true}
+          wrap={[Function]}
+        >
+          <Portal>
             <div
-              className="popup-bubble tooltip-bubble inverted popup-bubble--active popup-bubble--right"
-            >
-              <Button
-                className="tooltip-closeBtn"
-                component="button"
-                icon={
-                  <Icon
-                    className="text--secondary"
-                    shape="cross"
-                    size="s"
-                  />
+              aria-hidden={false}
+              className="popup-content tooltip-content popup-content--right display--block"
+              id="testDropdown"
+              role="tooltip"
+              style={
+                Object {
+                  "left": "0px",
+                  "maxWidth": "200px",
+                  "minWidth": "0px",
+                  "top": "0px",
                 }
-                onClick={[Function]}
-                reset={true}
-                type="button"
+              }
+            >
+              <div
+                className="popup-bubble tooltip-bubble inverted popup-bubble--active popup-bubble--right"
               >
-                <button
-                  className="button button--reset button--iconOnly tooltip-closeBtn"
+                <Button
+                  className="tooltip-closeBtn"
+                  component="button"
+                  icon={
+                    <Icon
+                      className="text--secondary"
+                      shape="cross"
+                      size="s"
+                    />
+                  }
                   onClick={[Function]}
+                  reset={true}
                   type="button"
                 >
-                  <Flex
-                    className="button-icon-wrapper"
-                    justify="center"
+                  <button
+                    className="button button--reset button--iconOnly tooltip-closeBtn"
+                    onClick={[Function]}
+                    type="button"
                   >
                     <Flex
-                      aria-busy={undefined}
                       className="button-icon-wrapper"
-                      direction="row"
-                      isLoading={undefined}
                       justify="center"
                     >
-                      <div
+                      <Flex
                         aria-busy={undefined}
-                        className="flex flex--row flex--center button-icon-wrapper"
-                      >
-                        <FlexItem
-                          className="button-icon valign--middle flush--left"
-                          shrink={true}
-                        >
-                          <FlexItem
-                            aria-busy={undefined}
-                            className="button-icon valign--middle flush--left"
-                            isLoading={undefined}
-                            shrink={true}
-                          >
-                            <div
-                              aria-busy={undefined}
-                              className="flex-item flex-item--shrink button-icon valign--middle flush--left"
-                            >
-                              <Icon
-                                className="text--secondary"
-                                shape="cross"
-                                size="s"
-                              >
-                                <span
-                                  className="svg svg--cross text--secondary"
-                                >
-                                  <svg
-                                    className="svg-icon valign--middle"
-                                    height="24"
-                                    preserveAspectRatio="xMinYMin meet"
-                                    role="img"
-                                    style={Object {}}
-                                    viewBox="0 0 24 24"
-                                    width="24"
-                                  >
-                                    <use
-                                      xlinkHref="#icon-cross--small"
-                                    />
-                                  </svg>
-                                </span>
-                              </Icon>
-                            </div>
-                          </FlexItem>
-                        </FlexItem>
-                      </div>
-                    </Flex>
-                  </Flex>
-                </button>
-              </Button>
-              <Section
-                noSeparator={true}
-              >
-                <Section
-                  aria-busy={undefined}
-                  isLoading={undefined}
-                  noSeparator={true}
-                >
-                  <section
-                    aria-busy={undefined}
-                    className="section"
-                  >
-                    <Chunk>
-                      <Chunk
-                        aria-busy={undefined}
+                        className="button-icon-wrapper"
+                        direction="row"
                         isLoading={undefined}
+                        justify="center"
                       >
                         <div
                           aria-busy={undefined}
-                          className="chunk"
+                          className="flex flex--row flex--center button-icon-wrapper"
                         >
-                          <h2
-                            className="text--big text--bold"
+                          <FlexItem
+                            className="button-icon valign--middle flush--left"
+                            shrink={true}
                           >
-                            Dropdown content
-                          </h2>
+                            <FlexItem
+                              aria-busy={undefined}
+                              className="button-icon valign--middle flush--left"
+                              isLoading={undefined}
+                              shrink={true}
+                            >
+                              <div
+                                aria-busy={undefined}
+                                className="flex-item flex-item--shrink button-icon valign--middle flush--left"
+                              >
+                                <Icon
+                                  className="text--secondary"
+                                  shape="cross"
+                                  size="s"
+                                >
+                                  <span
+                                    className="svg svg--cross text--secondary"
+                                  >
+                                    <svg
+                                      className="svg-icon valign--middle"
+                                      height="24"
+                                      preserveAspectRatio="xMinYMin meet"
+                                      role="img"
+                                      style={Object {}}
+                                      viewBox="0 0 24 24"
+                                      width="24"
+                                    >
+                                      <use
+                                        xlinkHref="#icon-cross--small"
+                                      />
+                                    </svg>
+                                  </span>
+                                </Icon>
+                              </div>
+                            </FlexItem>
+                          </FlexItem>
                         </div>
+                      </Flex>
+                    </Flex>
+                  </button>
+                </Button>
+                <Section
+                  noSeparator={true}
+                >
+                  <Section
+                    aria-busy={undefined}
+                    isLoading={undefined}
+                    noSeparator={true}
+                  >
+                    <section
+                      aria-busy={undefined}
+                      className="section"
+                    >
+                      <Chunk>
+                        <Chunk
+                          aria-busy={undefined}
+                          isLoading={undefined}
+                        >
+                          <div
+                            aria-busy={undefined}
+                            className="chunk"
+                          >
+                            <h2
+                              className="text--big text--bold"
+                            >
+                              Dropdown content
+                            </h2>
+                          </div>
+                        </Chunk>
                       </Chunk>
-                    </Chunk>
-                  </section>
+                    </section>
+                  </Section>
                 </Section>
-              </Section>
+              </div>
             </div>
-          </div>
-        </Portal>
-      </ConditionalWrap>
-    </FloatingPosition>
+          </Portal>
+        </ConditionalWrap>
+      </FloatingPosition>
+    </WithMatchMedia(FloatingPosition)>
   </div>
 </Tooltip>
 `;
