@@ -129,7 +129,7 @@ class FloatingPosition extends React.PureComponent {
 	}
 
 	render() {
-		const throttledMaxWidth = this.props.media.isAtSmallUp ? '350px' : '200px';
+		const boundedMaxWidth = this.props.media.isAtSmallUp ? '350px' : '200px';
 
 		return(
 			<ConditionalWrap
@@ -141,7 +141,7 @@ class FloatingPosition extends React.PureComponent {
 						left: this.state.left,
 						top: this.state.top,
 						align: this.state.align,
-						throttledMaxWidth
+						boundedMaxWidth
 					})
 				}
 			</ConditionalWrap>
