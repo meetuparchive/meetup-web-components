@@ -46,6 +46,8 @@ class Tooltip extends React.PureComponent {
 	}
 
 	onBlur(e) {
+		if (!this.contentRef) return;
+
 		setTimeout(() => {
 			if (!this.contentRef.contains(document.activeElement)) {
 				this.closeContent(e);
