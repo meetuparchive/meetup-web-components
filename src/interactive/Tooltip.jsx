@@ -122,7 +122,8 @@ class Tooltip extends React.PureComponent {
 						{({
 							top,
 							left,
-							align
+							align,
+							boundedMaxWidth
 						}) => (
 							<div
 								ref={el => (this.contentRef = el)}
@@ -144,7 +145,7 @@ class Tooltip extends React.PureComponent {
 									left: left,
 									top: top,
 									minWidth: minWidth,
-									maxWidth: maxWidth
+									maxWidth: maxWidth || boundedMaxWidth
 								}}
 							>
 								<div
@@ -181,7 +182,6 @@ class Tooltip extends React.PureComponent {
 
 Tooltip.defaultProps = {
 	direction: "bottom",
-	maxWidth: "384px",
 	minWidth: "0px",
 	noPortal: false
 };
