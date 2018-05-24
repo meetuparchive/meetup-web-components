@@ -5,7 +5,7 @@ exports[`FloatingPosition matches snapshot 1`] = `
   <div>
     Trigger
   </div>
-  <FloatingPosition
+  <WithMatchMedia(FloatingPosition)
     align="right"
     getContent={[Function]}
     getTrigger={[Function]}
