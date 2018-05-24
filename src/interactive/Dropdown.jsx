@@ -176,7 +176,7 @@ class Dropdown extends React.PureComponent {
 										top,
 										left,
 										align,
-										throttledMaxWidth
+										boundedMaxWidth
 									}) => (
 										<div
 											ref={el => (this.contentRef = el)}
@@ -193,7 +193,7 @@ class Dropdown extends React.PureComponent {
 												left: left,
 												top: top,
 												minWidth: minWidth,
-												maxWidth: maxWidth || throttledMaxWidth
+												maxWidth: maxWidth || boundedMaxWidth
 											}}
 										>
 											{
