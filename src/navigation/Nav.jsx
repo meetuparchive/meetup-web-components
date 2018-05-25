@@ -83,6 +83,7 @@ export class Nav extends React.Component {
 		const { media, self, navItems, localeCode, className, ...other } = this.props;
 		const {
 			login,
+			create,
 			signup,
 			proDashboard,
 			explore,
@@ -140,6 +141,12 @@ export class Nav extends React.Component {
 		);
 
 		let unauthItems = [
+			media.isAtMediumUp && create && {
+				shrink: true,
+				linkTo: create.link,
+				label: create.label,
+				className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup`,
+			},
 			{
 				shrink: true,
 				linkTo: login.link,
@@ -274,7 +281,7 @@ export class Nav extends React.Component {
 			},
 		];
 
-		unauthItems = unauthItems.map((item, i) => {
+		unauthItems = unauthItems.filter(Boolean).map((item, i) => {
 			return (
 				<NavItem
 					key={i}
@@ -287,7 +294,7 @@ export class Nav extends React.Component {
 			);
 		});
 
-		authItems = authItems.map((item, i) => {
+		authItems = authItems.filter(Boolean).map((item, i) => {
 			return (
 				item && (
 					<NavItem
