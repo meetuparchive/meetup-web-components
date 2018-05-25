@@ -2,10 +2,13 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import { MOCK_NOTIFICATIONS_LIST } from 'meetup-web-mocks/lib/notifications/api';
+import withMatchMedia from '../utils/components/withMatchMedia';
 
 import { decorateWithBasics } from '../utils/decorators';
 
 import Nav from './Nav';
+
+const TestNav = withMatchMedia(Nav);
 
 const updatedNotif = MOCK_NOTIFICATIONS_LIST.map(notif => {
 	const timeSince = new Date('1995-12-17T03:24:00');
@@ -17,6 +20,7 @@ export const navItems = {
 	updatesLabel: 'Updates',
 	logo: { logoAccessible: 'Meetup Logo', link: 'meetup.com' },
 	login: { link: 'meetup.com/login', label: 'Login' },
+	create: { link: 'meetup.com/create', label: 'Create a Meetup' },
 	signup: {
 		label: 'Sign up',
 		signupModal: {
@@ -88,7 +92,7 @@ export const navItems = {
 storiesOf('Nav', module)
 	.addDecorator(decorateWithBasics)
 	.add('authenticated', () => (
-		<Nav
+		<TestNav
 			self={MOCK_MEMBER}
 			navItems={navItems}
 			style={{ width: '100%' }}
@@ -99,7 +103,7 @@ storiesOf('Nav', module)
 		const groups = { ...navItems.groups, list: undefined };
 		const items = { ...navItems, groups };
 		return (
-			<Nav
+			<TestNav
 				self={MOCK_MEMBER}
 				navItems={items}
 				style={{ width: '100%' }}
@@ -111,7 +115,7 @@ storiesOf('Nav', module)
 		const notifications = { ...navItems.notifications, list: undefined };
 		const items = { ...navItems, notifications };
 		return (
-			<Nav
+			<TestNav
 				self={MOCK_MEMBER}
 				navItems={items}
 				style={{ width: '100%' }}
@@ -124,7 +128,7 @@ storiesOf('Nav', module)
 		const groups = { ...navItems.groups, list: [] };
 		const items = { ...navItems, notifications, groups };
 		return (
-			<Nav
+			<TestNav
 				self={MOCK_MEMBER}
 				navItems={items}
 				style={{ width: '100%' }}
@@ -133,7 +137,7 @@ storiesOf('Nav', module)
 		);
 	})
 	.add('authenticated Pro member', () => (
-		<Nav
+		<TestNav
 			self={{
 				...MOCK_MEMBER,
 				isProMember: true,
@@ -144,9 +148,17 @@ storiesOf('Nav', module)
 		/>
 	))
 	.add('unauthenticated', () => (
-		<Nav
+		<TestNav
 			self={{ status: 'prereg' }}
 			navItems={navItems}
+			style={{ width: '100%' }}
+			media={{ isAtMediumUp: true, isAtLargeUp: true }}
+		/>
+	))
+	.add('unauthenticated with no create link', () => (
+		<TestNav
+			self={{ status: 'prereg' }}
+			navItems={{ ...navItems, create: undefined }}
 			style={{ width: '100%' }}
 			media={{ isAtMediumUp: true, isAtLargeUp: true }}
 		/>
