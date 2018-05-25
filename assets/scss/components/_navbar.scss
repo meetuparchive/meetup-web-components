@@ -134,6 +134,16 @@ $maxScalingBP: $breakpoint-m/1px;
 		}
 	}
 }
+.navItemLink--createMeetup {
+	@include atMediaUp(medium) {
+		@include standardBorder('right');
+		padding-right: $space;
+		.navItem-label {
+			color: $C_accent !important;
+			font-weight: $W_bold;
+		}
+	}
+}
 
 .counterBadge {
 	$_dotSize: $space-half;
