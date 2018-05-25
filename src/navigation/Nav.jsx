@@ -140,13 +140,15 @@ export class Nav extends React.Component {
 			<DropdownLoader label={dropdownLoaderLabel} />
 		);
 
+		const createMeetupLink = create && {
+			shrink: true,
+			linkTo: create.link,
+			label: create.label,
+			className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup`,
+		};
+
 		let unauthItems = [
-			media.isAtMediumUp && create && {
-				shrink: true,
-				linkTo: create.link,
-				label: create.label,
-				className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup`,
-			},
+			media.isAtMediumUp && createMeetupLink,
 			{
 				shrink: true,
 				linkTo: login.link,
@@ -196,6 +198,7 @@ export class Nav extends React.Component {
 					</Flex>
 				),
 			},
+			media.isAtMediumUp && !self.isProMember && createMeetupLink,
 			{
 				shrink: true,
 				linkTo: explore.link,
