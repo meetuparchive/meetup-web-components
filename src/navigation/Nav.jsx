@@ -141,7 +141,7 @@ export class Nav extends React.Component {
 		);
 
 		let unauthItems = [
-			media.isAtMediumUp && {
+			media.isAtMediumUp && create && {
 				shrink: true,
 				linkTo: create.link,
 				label: create.label,
