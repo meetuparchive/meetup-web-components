@@ -154,4 +154,12 @@ storiesOf('Nav', module)
 			style={{ width: '100%' }}
 			media={{ isAtMediumUp: true, isAtLargeUp: true }}
 		/>
+	))
+	.add('unauthenticated with no create link', () => (
+		<TestNav
+			self={{ status: 'prereg' }}
+			navItems={{ ...navItems, create: undefined }}
+			style={{ width: '100%' }}
+			media={{ isAtMediumUp: true, isAtLargeUp: true }}
+		/>
 	));
