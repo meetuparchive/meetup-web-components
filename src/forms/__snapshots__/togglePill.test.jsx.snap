@@ -5,7 +5,6 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
   id="hikingCategory"
   isActive={false}
   labelClassName="someClass"
-  large={true}
   name="meetupCategories"
   onChange={[Function]}
   value="hiking"
@@ -34,7 +33,7 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
           value="hiking"
         />
         <label
-          className="toggleButton-label toggleButton-label--large someClass"
+          className="toggleButton-label someClass"
           htmlFor="hikingCategory"
         >
           Hiking!
