@@ -1,22 +1,16 @@
-/**
-* Icon styles
-* -----------------
-* supports `swarm-icons` SVG icon lib
-*
-* See also:
-* [Icon list](https://meetup.github.io/swarm-icons/)
-*/
-
 @mixin _iconColor( $color, $invertedColor ) {
 	@include color-svg($color);
+
 	.inverted & {
 		@include color-svg($invertedColor);
 	}
 }
+
 @include keyframes(spin) {
 	0% {
 		@include transform(rotate(0deg));
 	}
+
 	100% {
 		@include transform(rotate(360deg));
 	}
@@ -39,7 +33,9 @@
 	// (ensures the entire element is clickable, not just the drawn bits
 	position: relative;
 
-	use { pointer-events: none; }
+	use {
+		pointer-events: none;
+	}
 }
 
 //
@@ -48,7 +44,7 @@
 .svg--circled {
 	position: relative;
 
-	&:before {
+	&::before {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -63,7 +59,6 @@
 	svg {
 		transform: scale(0.4);
 	}
-
 }
 
 //

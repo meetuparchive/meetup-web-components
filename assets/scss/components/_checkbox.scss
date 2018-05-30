@@ -1,33 +1,3 @@
-/*doc
----
-title: Checkboxes
-name: checkbox
-category: Forms
----
-A label variant class of `label--minor` is
-used for side-by-side inputs and labels.
-
-For radios and checkboxes, we put the `input`
-element inside the `label` element.
-
-A class of `checkbox` is __required__ on checkbox
-input elements.
-
-```html_example
-<label for="check1" class="label--minor chunk">
-	<input id="check1" class="checkbox" value="green" type="checkbox" />
-	Green
-</label>
-<label for="check2" class="label--minor chunk">
-	<input id="check2" class="checkbox" value="blue" type="checkbox" />
-	Blue
-</label>
-<label for="check3" class="label--minor chunk">
-	<input id="check3" class="checkbox" value="blue" type="checkbox" checked />
-	Already checked
-</label>
-```
-*/
 .checkbox {
 	cursor: pointer;
 	display: inline-block;
@@ -37,6 +7,6 @@ input elements.
 	margin: 0 $space-half 0 0;
 
 	@include browser-lessThanIE(10) {
-		top: $space/2;
+		top: $space / 2;
 	}
 }

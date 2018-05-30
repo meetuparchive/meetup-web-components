@@ -27,7 +27,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	box-sizing: border-box;
 
 	// outer triangle for border
-	&:before {
+	&::before {
 		width: 0;
 		height: 0;
 		border-bottom: ($triangleSize + 1) solid $C_border;
@@ -37,7 +37,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	}
 
 	// inner triangle to match content color
-	&:after {
+	&::after {
 		width: 0;
 		height: 0;
 		border-bottom: $triangleSize solid $C_white;
@@ -46,8 +46,8 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 		top: -$triangleSize + 1;
 	}
 
-	&:before,
-	&:after {
+	&::before,
+	&::after {
 		content: "";
 		position: absolute;
 
@@ -58,19 +58,21 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 
 @mixin alignDropdown($direction) {
 	@if $direction != "center" {
-		&:before {
+		&::before {
 			#{$direction}: $space-half;
 		}
-		&:after {
+
+		&::after {
 			#{$direction}: $space-half + 1;
 		}
 	}
 	@if $direction == "center" {
-		&:before {
+		&::before {
 			left: 50%;
 			transform: translateX(-50%);
 		}
-		&:after {
+
+		&::after {
 			left: 50%;
 			transform: translateX(-50%);
 		}
@@ -103,7 +105,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 
 .popup-bubble--top {
 	// outer triangle for border
-	&:before {
+	&::before {
 		border-bottom: none;
 		border-top: ($triangleSize + 1) solid $C_border;
 		bottom: -#{$triangleSize - 0.5};
@@ -111,7 +113,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	}
 
 	// inner triangle to match content color
-	&:after {
+	&::after {
 		border-bottom: none;
 		border-top: $triangleSize solid $C_white;
 		bottom: -#{$triangleSize + 1};
@@ -150,9 +152,11 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	.popup-content--left {
 		left: 0;
 	}
+
 	.popup-content--center {
 		left: 50%;
 	}
+
 	.popup-content--right {
 		right: 0;
 		transform: none;

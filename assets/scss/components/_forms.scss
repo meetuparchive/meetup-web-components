@@ -14,6 +14,7 @@
 	left: 0;
 	padding: $space;
 }
+
 input:focus + .icon--field {
 	@include color-svg($C_textPrimary);
 }
@@ -27,16 +28,16 @@ input:focus + .icon--field {
 }
 
 .label--minor {
-	font-weight: normal;
+	font-weight: $W_normal;
 }
 
-.label--required:after {
+.label--required::after {
 	content: attr(data-requiredtext);
 	color: $C_textSecondary;
 	// font-size: $font-size-tiny;
 	font-weight: $W_normal;
 	line-height: 0;
-	margin-left: $space/4;
+	margin-left: $space / 4;
 	position: relative;
 	top: 0;
 }
@@ -55,7 +56,7 @@ input:focus + .icon--field {
 	margin: 0 $space-half 0 0;
 
 	@include browser-lessThanIE(10) {
-		top: $space/2;
+		top: $space / 2;
 	}
 }
 
@@ -71,6 +72,7 @@ input:focus + .icon--field {
 //
 .field--error {
 	border-color: $C_attention !important;
+
 	&:focus {
 		border-color: $C_attention !important;
 	}
@@ -79,17 +81,15 @@ input:focus + .icon--field {
 //
 // Reset field styles
 //
-select.field--reset,
-input.field--reset,
-input.field--reset:hover,
-input.field--reset:focus,
-input.field--reset:active {
-	@include resetFieldStyles;
+.field--reset,
+.field--reset:hover,
+.field--reset:focus,
+.field--reset:active {
+	@include resetFieldStyles();
 
 	.inverted & {
-		@include resetFieldStyles;
+		@include resetFieldStyles();
 	}
-
 }
 
 //
@@ -107,7 +107,7 @@ input.field--reset:active {
 	@include formInput();
 
 	// manually changing height to match other inputs
-	height: ($font-size * $line-height) + $space*2;
+	height: ($font-size * $line-height) + $space * 2;
 
 	&.disabled {
 		@include formInput--disabled();
@@ -139,14 +139,11 @@ input.field--reset:active {
 			border-color: transparent;
 			color: $C_textSecondaryInverted;
 
-			&:hover {
+			&:hover { // stylelint-disable-line selector-max-specificity
 				background-color: $C_borderInverted;
 			}
-
 		}
-
 	}
-
 }
 
 //
@@ -164,23 +161,19 @@ $C_toggleHighlight: $C_blue;
 	}
 
 	&:hover {
-
 		.fauxToggle {
 			border-color: $C_toggleHighlight;
 
-			&.checked {
+			&.checked { // stylelint-disable-line selector-max-specificity, selector-max-class
 				background-color: darken($C_toggleHighlight, 15%);
 			}
 
-			&.disabled {
+			&.disabled { // stylelint-disable-line selector-max-specificity, selector-max-class
 				background-color: $C_white;
 				border-color: $C_textHint;
 			}
-
 		}
-
 	}
-
 }
 
 .fauxToggle {
@@ -201,28 +194,27 @@ $C_toggleHighlight: $C_blue;
 	&.disabled {
 		@include color-all($C_textHint);
 		border-color: $C_textHint;
+	}
 
-		&.checked {
-			background-color: $C_white;
-			border-color: $C_textHint;
-		}
+	&.checked--disabled {
+		background-color: $C_white;
+		border-color: $C_textHint;
 	}
 
 	&.focused {
 		border-color: $C_toggleHighlight;
-
-		&.checked {
-			box-shadow: 0 0 4px 1px $C_toggleHighlight;
-		}
 	}
 
+	&.checked--focused {
+		box-shadow: 0 0 4px 1px $C_toggleHighlight;
+	}
 }
 
 .radio:focus {
 	+ .fauxToggle {
 		border-color: $C_toggleHighlight;
 
-		&.checked {
+		&.checked { // stylelint-disable-line selector-max-specificity, selector-max-class
 			box-shadow: 0 0 4px 1px $C_toggleHighlight;
 		}
 	}
@@ -256,7 +248,6 @@ $C_toggleHighlight: $C_blue;
 	-moz-user-select: -moz-none;
 	-ms-user-select: none;
 	user-select: none;
-
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -322,7 +313,7 @@ $C_toggleHighlight: $C_blue;
 //
 // Search input
 //
-input[type="search"] {
+[type="search"] {
 	// avoid safari user agent weirdness with search fields
 	-webkit-appearance: textfield;
 }

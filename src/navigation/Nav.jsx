@@ -96,7 +96,7 @@ export class Nav extends React.Component {
 			dropdownLoaderLabel,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
-		const classNames = cx('padding--all', className);
+		const classNames = cx('padding--all globalNav', className);
 		const proLogo = ((proDashboard.mainAccount || {}).group_photo || {}).thumb_link;
 		const proLetter = ((proDashboard.mainAccount || {}).name || '')
 			.slice(0, 1)
@@ -192,7 +192,7 @@ export class Nav extends React.Component {
 							<Icon
 								shape="chevron-down"
 								size="xxs"
-								className="padding--left-half"
+								className="padding--halfLeft"
 							/>
 						</FlexItem>
 					</Flex>
@@ -322,7 +322,6 @@ export class Nav extends React.Component {
 				aria-label="Header navigation"
 				role="navigation"
 				className={classNames}
-				id="globalNav"
 				{...other}
 			>
 				<Flex
