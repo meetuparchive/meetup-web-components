@@ -1,0 +1,44 @@
+{
+	"extends": [
+		"mwp-config/stylelint/stylelint-config-base",
+		"mwp-config/stylelint/stylelint-config-swarmProject"
+	],
+	"rules": {
+		selector-list-comma-space-after: "never-single-line",
+		declaration-block-semicolon-space-after: "never-single-line",
+		at-rule-empty-line-before: [
+			'always',
+			{
+				except: ["first-nested"],
+				ignore: ["after-comment", "inside-block"],
+				ignoreAtRules: ["if", "else", "import"]
+			}
+		],
+		'rule-empty-line-before': [
+			'always',
+			{ except: ["first-nested", "after-single-line-comment"] }
+		],
+		'property-no-vendor-prefix': [
+			true,
+			{ ignoreProperties: ["appearance", "touch-action", "user-select"] }
+		],
+		block-closing-brace-newline-after: [
+			'always',
+			{ ignoreAtRules: ["if", "else"] }
+		],
+		selector-max-class: 2,
+		selector-max-specificity: '0,3,1',
+		declaration-property-value-blacklist: [
+			{
+				outline: ['none'],
+				'font-size': [
+					'^(((0?[.](7[5-9]|[8-9][0-9])|[1-9].?([0-9]?[0-9]?[0-9])*)rem)|(?:(?:1[2-9]|[2-9][0-9]|[1-9][0-9][0-9])px))$',
+				],
+			},
+			{
+				message:
+					"Either this font-size is too small, or you're overriding the focus outline. Please make sure this interfaces uses other techniques to maintain usability for all users.",
+			},
+		]
+	}
+}

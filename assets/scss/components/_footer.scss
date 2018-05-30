@@ -1,6 +1,5 @@
 .footerStripe--main,
 .footerStripe-legal {
-	// :SDS: consider making this available in swarm-sasstools
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -13,8 +12,9 @@
 	background-color: $C_collectionBG;
 }
 
-.footerList-legal li:after {
-	content: '';
+.footerList-legal li::after {
+	content: "";
+
 	@include atMediaUp(medium) {
 		content: attr(data-separator);
 	}
@@ -30,6 +30,7 @@
 
 .bounds--footer {
 	max-width: 320px;
+
 	@include atMediaUp(medium) {
 		max-width: $bounds-wide;
 	}

@@ -168,11 +168,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                         onClick={[Function]}
                       >
                         <Icon
+                          className="indicator indicator--animateActive"
                           shape="chevron-down"
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down"
+                            className="svg svg--chevron-down indicator indicator--animateActive"
                           >
                             <svg
                               className="svg-icon valign--middle"
@@ -359,11 +360,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                         onClick={[Function]}
                       >
                         <Icon
+                          className="indicator"
                           shape="chevron-down"
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down"
+                            className="svg svg--chevron-down indicator"
                           >
                             <svg
                               className="svg-icon valign--middle"
@@ -550,11 +552,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                         onClick={[Function]}
                       >
                         <Icon
+                          className="indicator"
                           shape="chevron-down"
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down"
+                            className="svg svg--chevron-down indicator"
                           >
                             <svg
                               className="svg-icon valign--middle"
@@ -809,11 +812,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                         onClick={[Function]}
                       >
                         <Icon
+                          className="indicator indicator--animateActive"
                           shape="chevron-down"
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down"
+                            className="svg svg--chevron-down indicator indicator--animateActive"
                           >
                             <svg
                               className="svg-icon valign--middle"
@@ -1000,11 +1004,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                         onClick={[Function]}
                       >
                         <Icon
+                          className="indicator"
                           shape="chevron-down"
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down"
+                            className="svg svg--chevron-down indicator"
                           >
                             <svg
                               className="svg-icon valign--middle"
@@ -1191,11 +1196,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                         onClick={[Function]}
                       >
                         <Icon
+                          className="indicator"
                           shape="chevron-down"
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down"
+                            className="svg svg--chevron-down indicator"
                           >
                             <svg
                               className="svg-icon valign--middle"
