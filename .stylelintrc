@@ -1,10 +1,9 @@
 {
-	"extends": "mwp-config/stylelint/stylelint-config-base",
+	"extends": [
+		"mwp-config/stylelint/stylelint-config-base",
+		"mwp-config/stylelint/stylelint-config-swarmProject"
+	],
 	"rules": {
-		'selector-class-pattern': [
-			'^(?:[a-z]+[a-zA-Z0-9]+_)*(?:[a-z]+[a-zA-Z0-9]+)*(?:-[a-zA-Z0-9]+)*(?:--[a-zA-Z0-9]+)?$',
-			{ resolveNestedSelectors: true },
-		],
 		selector-list-comma-space-after: "never-single-line",
 		declaration-block-semicolon-space-after: "never-single-line",
 		at-rule-empty-line-before: [
