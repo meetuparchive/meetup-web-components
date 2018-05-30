@@ -39,7 +39,7 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 					</div>
 					<a
 						href={login.link}
-						className="padding--left-half link display--inlineBlock"
+						className="padding--halfLeft link display--inlineBlock"
 					>
 						{login.label}
 					</a>
@@ -49,7 +49,7 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 						href={facebook.link}
 						className={cx(
 							SIGNUP_MODAL_FACEBOOK_CLASS,
-							'button button--fullWidth button--hasHoverShadow padding--left-half text--bold text--white'
+							'button button--fullWidth button--hasHoverShadow padding--halfLeft text--bold text--white'
 						)}
 					>
 						<Flex>
@@ -69,7 +69,7 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 						href={google.link}
 						className={cx(
 							SIGNUP_MODAL_GOOGLE_CLASS,
-							'button button--bordered button--fullWidth padding--left-half text--bold'
+							'button button--bordered button--fullWidth padding--halfLeft text--bold'
 						)}
 					>
 						<Flex>
@@ -93,7 +93,7 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 						href={email.link}
 						className={cx(
 							SIGNUP_MODAL_EMAIL_CLASS,
-							'button button--bordered button--fullWidth padding--left-half text--bold'
+							'button button--bordered button--fullWidth padding--halfLeft text--bold'
 						)}
 					>
 						<Flex>

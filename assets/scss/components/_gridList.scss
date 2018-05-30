@@ -1,27 +1,3 @@
-/*doc
----
-title: Grid List
-name: gridList
-category: Layout
----
-A grid layout with breakpoint-specific configurable columns.
-Useful for collections of photos, group cards, or event cards.
-
-For a layout with a fixed number of columns, use `row`.
-
-```html_example
-<ul class="gridList gridList--has1 atMedium_gridList--has3 atLarge_gridList--has4">
-	<li class="gridList-item _DOC-SHADE">grid cell</li>
-	<li class="gridList-item _DOC-SHADE">grid cell</li>
-	<li class="gridList-item _DOC-SHADE">grid cell</li>
-	<li class="gridList-item _DOC-SHADE">grid cell</li>
-	<li class="gridList-item _DOC-SHADE">grid cell</li>
-	<li class="gridList-item _DOC-SHADE">grid cell</li>
-	<li class="gridList-item _DOC-SHADE">grid cell</li>
-	<li class="gridList-item _DOC-SHADE">grid cell</li>
-</ul>
-```
-*/
 $glColumns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 
 
@@ -39,6 +15,7 @@ $glColumns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 	vertical-align: top;
 	width: 50%;
 	box-sizing: border-box;
+
 	> a {
 		display: block;
 	}
@@ -51,41 +28,17 @@ $glColumns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 	padding: 0 $space $space 0;
 }
 
-/*doc
----
-title: Grid List variants
-name: gridListVariants
-parent: gridList
----
-
-A class of `gridList` is __required__ on the gridList
-parent element. By default, gridList creates a 2 column
-grid.
-
-The following classes are optional variants:
-
-Class                                     | Description
------------------------------------------ | ------------------------------
-`.gridList--photoGrid`                    | Optimizes list item spacing for a grid of photos
-`.gridList--autoHeight`                   | Makes the height of each list item consistent
-`.gridList--has[n]`                       | Adjusts number of columns (ie. `.gridList--has4` creates a 4 column grid for all screen sizes)
-`.atMedium_gridList--has[n]`              | Sets number of columns for medium breakpoint and up (ie. `.atMedium_gridList--has6`)
-`.atLarge_gridList--has[n]`               | Sets number of columns for large breakpoint and up (ie. `.atLarge_gridList--has10`)
-`.gridList--autoHeight--has[n]`           | Adjusts number of columns (ie. `.gridList--autoHeight--has4` creates a 4 column grid for all screen sizes)
-`.atMedium_gridList--autoHeight--has[n]`  | Sets number of columns for medium breakpoint and up (ie. `.atMedium_gridList--autoHeight--has6`)
-`.atLarge_gridList--autoHeight--has[n]`   | Sets number of columns for large breakpoint and up (ie. `.atLarge_gridList--autoHeight--has10`)
-
-
-*/
 .gridList--photoGrid {
 	margin: 0 #{-($space + $space-half)} 0 #{-$space};
 	padding: 0;
+
 	> .gridList-item {
 		padding: 0 $space-quarter $space-quarter 0;
 	}
 }
 
 // small/default
+
 @each $col in $glColumns {
 	.gridList--has#{$col} > .gridList-item {
 		width: percentage(1 / $col);
@@ -93,6 +46,7 @@ Class                                     | Description
 }
 
 // larger breakpoints
+
 @each $col in $glColumns {
 	@include _bpModifier(gridList, has#{$col}) {
 		> .gridList-item {
@@ -102,7 +56,7 @@ Class                                     | Description
 }
 
 .gridList--autoHeight {
-	@include customPropertyValue(margin-left, calc(var(--responsiveSpace)* -1), -#{$space});
+	@include customPropertyValue(margin-left, calc(var(--responsiveSpace) * -1), -#{$space});
 
 	> .gridList-item {
 		width: auto;
@@ -114,6 +68,7 @@ Class                                     | Description
 }
 
 // autoHeight - small/default
+
 @each $col in $glColumns {
 	.gridList--autoHeight--has#{$col} > .gridList-item {
 		flex: 0 0 percentage(1 / $col);
@@ -121,6 +76,7 @@ Class                                     | Description
 }
 
 // autoHeight - larger breakpoints
+
 @each $col in $glColumns {
 	@include _bpModifier(gridList--autoHeight, has#{$col}) {
 		> .gridList-item {

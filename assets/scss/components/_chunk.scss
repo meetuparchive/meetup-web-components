@@ -6,9 +6,11 @@ Adds bottom space to an element
 or a group of elements.
 ```
 */
+
 %chunk,
 .chunk {
 	@extend %clearfix;
+
 	@include customPropertyValue(padding-bottom, var(--responsiveSpace) !important, $space !important);
 	display: block;
 }

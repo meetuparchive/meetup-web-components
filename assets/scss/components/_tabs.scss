@@ -1,38 +1,3 @@
-/*doc
----
-title: Tabs
-name: tabs
-category: UI Components
----
-
-```html_example
-<nav>
-	<ul class="tabs">
-		<li class="tabs-tab"><a href="#">Tab One</a>
-		<li class="tabs-tab tabs-tab--selected"><a href="#">Tab Two</a>
-		<li class="tabs-tab"><a href="#">Tab Three</a>
-	</ul>
-</nav>
-```
-
-### Tabs (parent) variants
-A class of `tabs` is __required__. The following classes are
-optional variants:
-
-Class                 | Description
---------------------- | -----------------------------
-`tabs--full`          | Makes tabs span the full width of their parent element
-
-
-### Tab (child) variants
-A class of `tabs-tab` is __required__ for tabs. The following classes
-are optional variants:
-
-Class                 | Description
---------------------- | -----------------------------
-`tabs-tab--selected`  | Applies styles for tab selected state
-*/
-
 $tabBorderWidth: 3px;
 
 .tabs {
@@ -42,6 +7,7 @@ $tabBorderWidth: 3px;
 	margin: 0;
 	padding: 0;
 }
+
 .tabs--full {
 	display: table;
 	table-layout: fixed;
@@ -63,13 +29,13 @@ $tabBorderWidth: 3px;
 }
 
 .tabs-tab {
-	@include customPropertyValue(padding, calc(var(--responsiveSpace)/2) 0, $space-half 0);
+	@include customPropertyValue(padding, calc(var(--responsiveSpace) / 2) 0, $space-half 0);
 	color: $C_textPrimary;
 	cursor: pointer;
 	display: inline-block;
 	margin: 0 0 0 $space;
-	padding-left: $space/4;
-	padding-right: $space/4;
+	padding-left: $space / 4;
+	padding-right: $space / 4;
 	text-align: center;
 
 	&:first-child {
@@ -77,26 +43,24 @@ $tabBorderWidth: 3px;
 	}
 
 	.inverted & {
-		color: $C_textSecondaryInverted;
+		color: $C_textPrimaryInverted;
+		border-bottom-color: $C_textPrimaryInverted;
+
 		&:hover {
 			color: $C_textSecondaryInverted;
-		}
-		&.tabs-tab--selected {
-			color: $C_textPrimaryInverted;
-			border-top-color: $C_textPrimaryInverted;
 		}
 	}
 
 	.tabs--isVertical & {
-		@include customPropertyValue(padding, 0 calc(var(--responsiveSpace)/2) 0 0, 0 $space-half 0 0);
+		@include customPropertyValue(padding, 0 calc(var(--responsiveSpace) / 2) 0 0, 0 $space-half 0 0);
 		border-right: $tabBorderWidth solid transparent;
 		display: block;
 		margin-bottom: $space;
 		margin-left: 0;
 		text-align: left;
 	}
-
 }
+
 .tabs-tab--selected {
 	box-shadow: none;
 	border-bottom: $tabBorderWidth solid $C_accent;

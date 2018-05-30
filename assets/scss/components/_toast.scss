@@ -38,24 +38,24 @@
 //
 .slide-appear,
 .slide-enter {
-  opacity: 0.01;
-  transform: translateY(-100px);
+	opacity: 0.01;
+	transform: translateY(-100px);
 }
 
 .slide-appear.slide-appear-active,
 .slide-enter.slide-enter-active {
-  opacity: 1;
-  transform: translateY(0px);
-  transition: opacity $duration--medium $easing--enter, transform $duration--medium $easing--enter;
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity $duration--medium $easing--enter, transform $duration--medium $easing--enter;
 }
 
 .slide-exit {
-  opacity: 1;
-  transform: translateY(0px);
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .slide-exit.slide-exit-active {
-  opacity: 0.01;
-  transform: translateY(-100px);
-  transition: opacity $duration--medium $easing--exit, transform $duration--medium $easing--exit;
+	opacity: 0.01;
+	transform: translateY(-100px);
+	transition: opacity $duration--medium $easing--exit, transform $duration--medium $easing--exit;
 }

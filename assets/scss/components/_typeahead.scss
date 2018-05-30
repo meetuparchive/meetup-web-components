@@ -1,9 +1,9 @@
 .typeahead {
 	position: relative;
+}
 
-	.typeahead-input {
-		margin-bottom: 0;
-	}
+.typeahead-input {
+	margin-bottom: 0;
 }
 
 .typeahead-dropdown {
@@ -14,7 +14,7 @@
 	margin-top: -#{$defaultRadius};
 	position: absolute;
 	right: 0;
-	z-index: map-get($zindex-map, "floating-content")
+	z-index: map-get($zindex-map, "floating-content");
 }
 
 .typeahead-dropdown--inline {
@@ -25,8 +25,8 @@
 	cursor: pointer;
 	padding: $space-half $space;
 
-	input[type="checkbox"],
-	input[type="radio"],
+	[type="checkbox"],
+	[type="radio"],
 	label {
 		pointer-events: none;
 	}

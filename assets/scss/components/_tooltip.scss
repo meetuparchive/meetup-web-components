@@ -6,7 +6,7 @@
 .tooltip-bubble {
 	background-color: $C_darkGray;
 
-	&:after {
+	&::after {
 		border-bottom-color: $C_darkGray;
 		border-top-color: $C_darkGray;
 	}
