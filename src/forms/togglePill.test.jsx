@@ -19,7 +19,6 @@ describe('TogglePill', () => {
 				onChange={onChangeMock}
 				id={id}
 				name={name}
-				large
 				labelClassName={labelClass}
 				value={value}>
 				{label}

@@ -22,7 +22,6 @@ class TogglePill extends React.PureComponent {
 			topic,
 			id,
 			small,
-			large,
 			name,
 			useRadio,
 			value,
@@ -44,7 +43,6 @@ class TogglePill extends React.PureComponent {
 		const labelClassNames = cx(
 			'toggleButton-label',
 			{
-				'toggleButton-label--large': large,
 				'toggleButton-label--small': small
 			},
 			labelClassName
