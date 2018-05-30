@@ -28,6 +28,7 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
         shrink={true}
       >
         <Icon
+          className="indicator"
           shape="chevron-down"
           size="xs"
         />
@@ -90,6 +91,7 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
         shrink={true}
       >
         <Icon
+          className="indicator"
           shape="plus"
           size="xs"
         />
@@ -205,11 +207,12 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
                   onClick={[Function]}
                 >
                   <Icon
+                    className="indicator"
                     shape="chevron-down"
                     size="xs"
                   >
                     <span
-                      className="svg svg--chevron-down"
+                      className="svg svg--chevron-down indicator"
                     >
                       <svg
                         className="svg-icon valign--middle"
