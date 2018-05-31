@@ -44,7 +44,7 @@ class FloatingPosition extends React.PureComponent {
 		this.state = {
 			left: "0px",
 			top: "0px",
-			align: "right"
+			align: this.props.align
 		};
 
 	}
