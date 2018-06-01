@@ -129,7 +129,7 @@ $avatarSizeProps: (height, width);
 	@include align-items(center);
 	@include justify-content(center);
 
-	// must be scoped to `svg--profile`,
+	// must be scoped to `avatarIcon--noPhoto`,
 	// as it's possible to have additional `Icon`
 	// children in `Avatar`
 	svg {
