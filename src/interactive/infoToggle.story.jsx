@@ -10,7 +10,7 @@ storiesOf("InfoToggle", module)
 		"default",
 		() => (
 			<InfoToggle
-				label="Get info"
+				label={<span>Get info</span>}
 				tooltipId="testTooltip"
 				tooltipContent={
 					<div className="runningText padding--all">
