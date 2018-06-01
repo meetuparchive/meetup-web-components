@@ -48,8 +48,6 @@ class DropdownWithToggle extends React.PureComponent {
 		return (
 			<Dropdown
 				align="right"
-				minWidth="0"
-				maxWidth="384px"
 				isActive={this.state.dropdownToggled}
 				manualToggle={this.toggleDropdown}
 				trigger={<Button small>Open</Button>}
@@ -91,8 +89,6 @@ storiesOf("Dropdown", module)
 				}}
 			>
 				<Dropdown
-					minWidth="0"
-					maxWidth="384px"
 					align="right"
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
@@ -105,8 +101,6 @@ storiesOf("Dropdown", module)
 		"Use the `noPortal` prop to decide whether a the content should render in document body",
 		() => (
 			<Dropdown
-				minWidth="0"
-				maxWidth="384px"
 				align="right"
 				noPortal
 				trigger={<Button small>Open</Button>}
@@ -120,8 +114,6 @@ storiesOf("Dropdown", module)
 		() => (
 			<Dropdown
 				align="left"
-				minWidth="0"
-				maxWidth="384px"
 				trigger={<Button small>Open</Button>}
 				content={dropdownContent}
 			/>
@@ -133,8 +125,6 @@ storiesOf("Dropdown", module)
 		() => (
 			<Dropdown
 				align="center"
-				minWidth="0"
-				maxWidth="384px"
 				trigger={<Button small>Open</Button>}
 				content={dropdownContent}
 			/>
@@ -147,8 +137,6 @@ storiesOf("Dropdown", module)
 			<Dropdown
 				align="right"
 				offset={{top: 8, left: 16}}
-				minWidth="0"
-				maxWidth="384px"
 				trigger={<Button small>Open</Button>}
 				content={
 					<div className="runningText padding--all">
@@ -197,8 +185,6 @@ storiesOf("Dropdown", module)
 				}}
 			>
 				<Dropdown
-					minWidth="0"
-					maxWidth="384px"
 					align="right"
 					trigger={<Button small>Open</Button>}
 					content={
