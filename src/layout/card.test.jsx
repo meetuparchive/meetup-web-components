@@ -7,18 +7,22 @@ import {
 	CARD_CLASS,
 	CARD_HOVER_PLUS_SHADOW_CLASS,
 	CARD_FLUSH_CLASS,
-	VALID_BREAKPOINTS
+	VALID_BREAKPOINTS,
 } from './Card';
 
 const CardJSX = (
 	<Card>
-		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+		<p>
+			Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+		</p>
 	</Card>
 );
 
 const CardJSX_doubleShadow = (
 	<Card hasShadow hasHoverShadow>
-		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+		<p>
+			Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+		</p>
 	</Card>
 );
 
@@ -30,11 +34,7 @@ describe('Card and variants', function() {
 	});
 
 	it('applies variant classes for each variant prop', () => {
-		const variants = [
-			'initialHeight',
-			'hasShadow',
-			'hasHoverShadow'
-		];
+		const variants = ['initialHeight', 'hasShadow', 'hasHoverShadow'];
 
 		variantTest(Card, CARD_CLASS, variants);
 	});
@@ -44,7 +44,6 @@ describe('Card and variants', function() {
 
 		expect(component.hasClass(CARD_HOVER_PLUS_SHADOW_CLASS)).toBe(true);
 	});
-
 });
 
 describe('Card flushUntil', () => {
@@ -52,13 +51,19 @@ describe('Card flushUntil', () => {
 		Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
 			const component = shallow(
 				<Card flushUntil={breakpoint}>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+					<p>
+						Lorem Ipsum is simply dummy text of the printing and typesetting
+						industry.
+					</p>
 				</Card>
 			);
 
 			expect(component.hasClass(CARD_CLASS)).toBe(true);
-			expect(component.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${CARD_FLUSH_CLASS}`)).toBe(true);
+			expect(
+				component.hasClass(
+					`${VALID_BREAKPOINTS[breakpoint]}_${CARD_FLUSH_CLASS}`
+				)
+			).toBe(true);
 		});
 	});
 });
-

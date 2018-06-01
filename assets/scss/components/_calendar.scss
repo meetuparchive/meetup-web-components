@@ -3,28 +3,28 @@ $calendarWidth: 310px;
 
 .flatpickr-calendar {
 	@extend %shadow;
-	overflow: hidden;
-	visibility: hidden;
 	animation: none;
-	direction: ltr;
+	background: $C_contentBG;
 	border: 1px solid $C_border;
+	border-radius: $largeRadius;
+	direction: ltr;
+	display: none;
 	font-size: $font-size-small;
 	line-height: 2;
-	border-radius: $largeRadius;
+	overflow: hidden;
 	padding: $space-half;
 	position: absolute;
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
-	background: $C_contentBG;
-	display: none;
+	visibility: hidden;
 }
 
 .flatpickr-calendar.open,
 .flatpickr-calendar.inline {
-	opacity: 1;
-	visibility: visible;
-	overflow: visible;
 	max-height: 640px;
+	opacity: 1;
+	overflow: visible;
+	visibility: visible;
 }
 
 .flatpickr-calendar.open {
@@ -35,14 +35,14 @@ $calendarWidth: 310px;
 
 .flatpickr-calendar::before,
 .flatpickr-calendar::after {
-	position: absolute;
-	display: block;
-	pointer-events: none;
 	border: solid transparent;
 	content: "";
+	display: block;
 	height: 0;
-	width: 0;
 	left: 22px;
+	pointer-events: none;
+	position: absolute;
+	width: 0;
 }
 
 .flatpickr-calendar.rightMost::before,
@@ -93,24 +93,24 @@ $calendarWidth: 310px;
 
 .flatpickr-month {
 	height: 28px;
-	text-align: center;
+	overflow: hidden;
 	position: relative;
+	text-align: center;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	overflow: hidden;
 }
 
 .flatpickr-prev-month,
 .flatpickr-next-month {
-	text-decoration: none;
 	cursor: pointer;
-	position: absolute;
-	top: 0;
-	line-height: 1;
 	height: 28px;
+	line-height: 1;
 	padding: 10px calc(3.57% - 1.5px);
+	position: absolute;
+	text-decoration: none;
+	top: 0;
 	z-index: 3;
 }
 
@@ -130,8 +130,8 @@ $calendarWidth: 310px;
 }
 
 .numInputWrapper {
-	position: relative;
 	height: auto;
+	position: relative;
 }
 
 .numInputWrapper input,
@@ -148,16 +148,16 @@ $calendarWidth: 310px;
 }
 
 .numInputWrapper span {
-	position: absolute;
-	right: 0;
-	width: 14px;
-	padding: 0 4px 0 2px;
+	border: 1px solid rgba(57, 57, 57, 0.05);
+	box-sizing: border-box;
+	cursor: pointer;
 	height: 50%;
 	line-height: 0.5;
 	opacity: 0;
-	cursor: pointer;
-	border: 1px solid rgba(57, 57, 57, 0.05);
-	box-sizing: border-box;
+	padding: 0 4px 0 2px;
+	position: absolute;
+	right: 0;
+	width: 14px;
 }
 
 .numInputWrapper span:hover {
@@ -169,21 +169,21 @@ $calendarWidth: 310px;
 }
 
 .numInputWrapper span::after {
-	display: block;
 	content: "";
+	display: block;
 	position: absolute;
 	top: 33%;
 }
 
 .numInputWrapper .arrowUp {
-	top: 0;
 	border-bottom: 0;
+	top: 0;
 }
 
 .numInputWrapper .arrowUp::after {
+	border-bottom: 4px solid $C_textPrimary;
 	border-left: 4px solid transparent;
 	border-right: 4px solid transparent;
-	border-bottom: 4px solid $C_textPrimary;
 }
 
 .numInputWrapper .arrowDown {
@@ -205,36 +205,36 @@ $calendarWidth: 310px;
 }
 
 .flatpickr-current-month {
-	font-size: 135%;
-	position: absolute;
-	left: 12.5%;
-	padding: 6.16px 0 0;
-	line-height: 1;
-	height: 28px;
 	display: inline-block;
+	font-size: 135%;
+	height: 28px;
+	left: 12.5%;
+	line-height: 1;
+	padding: 6.16px 0 0;
+	position: absolute;
 	text-align: center;
 	transform: translate3d(0, 0, 0);
 	width: 80%;
 }
 
 .flatpickr-current-month.slideLeft {
-	transform: translate3d(-100%, 0, 0);
 	animation: fpFadeOut 10000ms ease, fpSlideLeft 10000ms cubic-bezier(0.23, 1, 0.32, 1);
+	transform: translate3d(-100%, 0, 0);
 }
 
 .flatpickr-current-month.slideLeftNew {
-	transform: translate3d(100%, 0, 0);
 	animation: fpFadeIn 10000ms ease, fpSlideLeftNew 10000ms cubic-bezier(0.23, 1, 0.32, 1);
+	transform: translate3d(100%, 0, 0);
 }
 
 .flatpickr-current-month.slideRight {
-	transform: translate3d(100%, 0, 0);
 	animation: fpFadeOut 10000ms ease, fpSlideRight 10000ms cubic-bezier(0.23, 1, 0.32, 1);
+	transform: translate3d(100%, 0, 0);
 }
 
 .flatpickr-current-month.slideRightNew {
-	transform: translate3d(0, 0, 0);
 	animation: fpFadeIn 10000ms ease, fpSlideRightNew 10000ms cubic-bezier(0.23, 1, 0.32, 1);
+	transform: translate3d(0, 0, 0);
 }
 
 .flatpickr-current-month .cur-month {
@@ -246,19 +246,19 @@ $calendarWidth: 310px;
 }
 
 .flatpickr-current-month .numInputWrapper {
+	display: inline-block;
 	width: 6ch;
 	width: 7ch\0;
-	display: inline-block;
 }
 
 .flatpickr-current-month .cur-year {
-	cursor: text;
-	padding: 0 0 0 0.5ch;
-	margin: 0;
-	display: inline-block;
-	line-height: inherit;
-	height: auto;
 	border: 0;
+	cursor: text;
+	display: inline-block;
+	height: auto;
+	line-height: inherit;
+	margin: 0;
+	padding: 0 0 0 0.5ch;
 }
 
 .flatpickr-current-month .cur-year:focus {
@@ -273,24 +273,24 @@ $calendarWidth: 310px;
 .flatpickr-weekdays,
 .flatpickr-weekdaycontainer {
 	@include display(flex);
-	text-align: center;
-	overflow: hidden;
-	width: 100%;
 	align-items: center;
 	height: 28px;
+	overflow: hidden;
+	text-align: center;
+	width: 100%;
 }
 
 .flatpickr-weekday {
 	cursor: default;
-	font-size: 90%;
 	flex: 1;
+	font-size: 90%;
 	font-weight: $W_bold;
 }
 
 .flatpickr-days {
 	@include display(flex);
-	position: relative;
 	overflow: hidden;
+	position: relative;
 	width: $calendarWidth;
 }
 
@@ -302,12 +302,12 @@ $calendarWidth: 310px;
 	@include display(flex);
 	@include flex-wrap(wrap);
 	@include justify-content(space-around);
-	text-align: left;
-	width: $calendarWidth;
-	min-width: $calendarWidth;
 	max-width: $calendarWidth;
-	transform: translate3d(0, 0, 0);
+	min-width: $calendarWidth;
 	opacity: 1;
+	text-align: left;
+	transform: translate3d(0, 0, 0);
+	width: $calendarWidth;
 }
 
 .flatpickr-day {
@@ -318,13 +318,13 @@ $calendarWidth: 310px;
 	border-radius: 150px;
 	box-sizing: border-box;
 	cursor: pointer;
+	display: inline-block;
 	font-weight: 400;
-	width: 14.29%;
-	max-width: 39px;
 	height: 39px;
 	line-height: 39px; // stylelint-disable-line declaration-property-unit-whitelist
-	display: inline-block;
+	max-width: 39px;
 	text-align: center;
+	width: 14.29%;
 }
 
 .flatpickr-day:hover,
@@ -333,10 +333,10 @@ $calendarWidth: 310px;
 .flatpickr-day:focus,
 .flatpickr-day.prevMonthDay:focus,
 .flatpickr-day.nextMonthDay:focus {
-	cursor: pointer;
-	outline: 0;
 	background: #e6e6e6;
 	border-color: #e6e6e6;
+	cursor: pointer;
+	outline: 0;
 }
 
 .flatpickr-day.today {
@@ -345,8 +345,8 @@ $calendarWidth: 310px;
 
 .flatpickr-day.today:hover,
 .flatpickr-day.today:focus {
-	border-color: #959ea9;
 	background: #959ea9;
+	border-color: #959ea9;
 	color: #fff;
 }
 
@@ -354,16 +354,16 @@ $calendarWidth: 310px;
 .flatpickr-day.disabled:hover,
 .flatpickr-day.prevMonthDay,
 .flatpickr-day.nextMonthDay {
-	color: $C_textTertiary;
 	background: transparent;
 	border-color: transparent;
+	color: $C_textTertiary;
 	cursor: default;
 }
 
 .flatpickr-day.disabled,
 .flatpickr-day.disabled:hover {
-	cursor: not-allowed;
 	color: rgba(57, 57, 57, 0.1);
+	cursor: not-allowed;
 }
 
 .flatpickr-innerContainer {

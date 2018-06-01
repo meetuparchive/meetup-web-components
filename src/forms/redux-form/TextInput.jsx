@@ -10,17 +10,14 @@ import TextInput from '../TextInput';
  */
 const ReduxFormTextInput = props => {
 	const { meta, input, ...other } = props;
-	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
+	const error = meta.touched || meta.submitFailed ? meta.error : null;
 
 	return <TextInput error={error} {...input} {...other} />;
 };
 
 ReduxFormTextInput.propTypes = {
 	meta: PropTypes.object.isRequired,
-	input: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.object
-	]).isRequired,
+	input: PropTypes.oneOfType([PropTypes.element, PropTypes.object]).isRequired,
 };
 
 ReduxFormTextInput.displayName = 'ReduxFormTextInput';

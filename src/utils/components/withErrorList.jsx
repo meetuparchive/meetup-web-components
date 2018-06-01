@@ -50,7 +50,11 @@ const withErrorList = WrappedComponent => {
 	}
 	WithErrorList.propTypes = {
 		id: PropTypes.string,
-		error: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.bool]),
+		error: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.element,
+			PropTypes.bool,
+		]),
 		suppressError: PropTypes.bool,
 	};
 

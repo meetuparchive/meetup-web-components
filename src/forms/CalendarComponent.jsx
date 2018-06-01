@@ -94,7 +94,9 @@ export class CalendarComponent extends React.Component {
 						{label}
 					</label>
 				)}
-				{helperText && <div className={classNames.helperText}>{helperText}</div>}
+				{helperText && (
+					<div className={classNames.helperText}>{helperText}</div>
+				)}
 				<Flatpickr
 					id={id || name}
 					options={options}
@@ -114,7 +116,11 @@ CalendarComponent.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string,
 	datepickerOptions: PropTypes.object,
-	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.bool]),
+	error: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element,
+		PropTypes.bool,
+	]),
 	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	onChange: PropTypes.func, // provided by `redux-form`
 	required: PropTypes.bool,
