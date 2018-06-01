@@ -171,6 +171,9 @@ class AccordionPanel extends React.Component {
 			content: cx('accordionPanel-animator', {
 				'accordionPanel-animator--collapse': !isOpen,
 			}),
+			icon: cx('indicator', {
+				'indicator--animateActive': this.getIconShape() == 'chevron-down' && isOpen
+			})
 		};
 
 		const isLabelString = label && typeof label == 'string';
@@ -205,6 +208,7 @@ class AccordionPanel extends React.Component {
 								<Icon
 									shape={this.getIconShape()}
 									size={indicatorIconSize}
+									className={classNames.icon}
 								/>
 							) : (
 								<ToggleSwitch

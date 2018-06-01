@@ -1,40 +1,3 @@
-/*doc
----
-title: Avatar
-name: avatar
-category: UI Components
----
-
-```html_example
-<ul class="inlineblockList">
-	<li>
-		<a href="#" class="avatar avatar--person" style="background-image: url(http://photos3.meetupstatic.com/photos/member/9/1/8/4/thumb_141217252.jpeg);">Member Name</a>
-	</li>
-	<li>
-		<a href="#" class="avatar avatar--person avatar--small" style="background-image: url(http://photos3.meetupstatic.com/photos/member/9/1/8/4/thumb_141217252.jpeg);">Member Name</a>
-	</li>
-	<li>
-		<a href="#" class="avatar avatar--person avatar--big" style="background-image: url(http://photos4.meetupstatic.com/photos/member/d/0/2/c/member_156833292.jpeg);">Member Name</a>
-	</li>
-	<li>
-		<a href="#" class="avatar avatar--person avatar--fbFriend" style="background-image: url(http://photos4.meetupstatic.com/photos/member/5/a/2/thumb_109681442.jpeg);">Member Name</a>
-	</li>
-</ul>
-```
-
-## Avatar variants
-A base class of `avatar` is __required__. The following classes are
-optional variants:
-
-Class                     | Description
-------------------------- | ------------------------------------
-`avatar--small`           | Adjusts avatar size to the smallest media size
-`avatar--big`             | Adjusts avatar size to the biggest media size
-`avatar--person`          | Variant for people
-`avatar--org`             | Variant for organizers
-`avatar--fbFriend`        | Variant for facebook friends
-`avatar--noPhoto`         | Resets `text-indent` for avatars without photos, allowing display of fallback content
-*/
 $avatarBg: $C_coolGrayLight;
 $avatarSizeProps: (height, width);
 
@@ -50,7 +13,7 @@ $avatarSizeProps: (height, width);
 		height: 44%;
 
 		// circle behind the icon
-		&:before {
+		&::before {
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -83,6 +46,7 @@ $avatarSizeProps: (height, width);
 %avatar,
 .avatar {
 	@extend %imgFill;
+
 	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-m), $media-m);
 	position: relative;
 	background-color: $avatarBg;
@@ -97,7 +61,6 @@ $avatarSizeProps: (height, width);
 	.inverted & {
 		background: $C_textHintInverted;
 	}
-
 }
 
 //
@@ -108,6 +71,7 @@ $avatarSizeProps: (height, width);
 	speak: none;
 	display: none;
 }
+
 @media print {
 	.avatar-print {
 		width: 100%;
@@ -153,27 +117,26 @@ $avatarSizeProps: (height, width);
 	position: relative;
 	text-indent: 0;
 	background-color: darken($avatarBg, 6%);
+}
 
-	.svg--profile {
-		// matches size of icon wrapper div
-		// to the size of the avatar
-		width: 100%;
-		height: 100%;
+.avatarIcon--noPhoto {
+	// matches size of icon wrapper div
+	// to the size of the avatar
+	width: 100%;
+	height: 100%;
 
-		// center the SVG element within the wrapper
-		@include display(inline-flex);
-		@include align-items(center);
-		@include justify-content(center);
+	// center the SVG element within the wrapper
+	@include align-items(center);
+	@include justify-content(center);
 
-		// must be scoped to `svg--profile`,
-		// as it's possible to have additional `Icon`
-		// children in `Avatar`
-		svg {
-			// sets SVG size relative to wrapper
-			width: 40%;
-			height: 40%;
-			opacity: alpha($C_textSecondary);
-		}
+	// must be scoped to `avatarIcon--noPhoto`,
+	// as it's possible to have additional `Icon`
+	// children in `Avatar`
+	svg {
+		// sets SVG size relative to wrapper
+		width: 40%;
+		height: 40%;
+		opacity: alpha($C_textSecondary);
 	}
 }
 

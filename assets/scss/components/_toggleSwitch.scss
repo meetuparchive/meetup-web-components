@@ -1,5 +1,5 @@
 $trackWidth: $media-l;
-$knobSize: $trackWidth/2;
+$knobSize: $trackWidth / 2;
 
 .toggleSwitch {
 	background-color: $C_coolGrayLight;
@@ -37,10 +37,12 @@ $knobSize: $trackWidth/2;
 	}
 }
 
-.button.toggleSwitch--disabled[disabled] {
+.button.toggleSwitch--disabled {
 	background: $C_lightGray;
 
-	&:hover, &:focus, &:active {
+	&:hover,
+	&:focus,
+	&:active {
 		background-color: $C_lightGray;
 	}
 }

@@ -1,50 +1,8 @@
-/*doc
----
-title: Inline-block list
-name: inlineblockList
-category: Layout
----
-Resets list styles; adds `display: inline-block` to
-each list item and right gutters between items.
-
-#### Example
-
-```html_example
-<ul class="inlineblockList">
-	<li><img src="https://placekitten.com/g/72/72" alt="fluffy kitten" /></li>
-	<li><img src="https://placekitten.com/g/72/72" alt="fluffy kitten" /></li>
-	<li><img src="https://placekitten.com/g/72/72" alt="fluffy kitten" /></li>
-	<li><img src="https://placekitten.com/g/72/72" alt="fluffy kitten" /></li>
-</ul>
-
-<ul class="inlineblockList inlineblockList--bulleted">
-	<li>These</li>
-	<li>list</li>
-	<li>items</li>
-	<li>are</li>
-	<li>bulleted</li>
-</ul>
-
-<ul class="inlineblockList inlineblockList--overlap">
-	<li><img src="https://placekitten.com/g/72/72" alt="fluffy kitten" /></li>
-	<li><img src="https://placekitten.com/g/72/72" alt="fluffy kitten" /></li>
-	<li><img src="https://placekitten.com/g/72/72" alt="fluffy kitten" /></li>
-	<li><img src="https://placekitten.com/g/72/72" alt="fluffy kitten" /></li>
-</ul>
-```
-
-### Variants
-A class of `inlineblockList` is required; the following classes are
-optional variants:
-
-Class                        | Description
----------------------------- | ------------------------------------------------------------
-`inlineblockList--separated` | puts a character between each list item. Used for things like lists of links
-*/
 %inlineblockList,
 .inlineblockList {
 	margin: 0;
 	padding: 0;
+
 	> li {
 		@include customPropertyValue(padding-right, var(--responsiveSpace), $space);
 		display: inline-block;
@@ -56,16 +14,16 @@ Class                        | Description
 }
 
 .inlineblockList--separated > li {
-	@include customPropertyValue(padding-right, calc(var(--responsiveSpace)/2), $space-half);
+	@include customPropertyValue(padding-right, calc(var(--responsiveSpace) / 2), $space-half);
 
-	&:after {
-		@include customPropertyValue(padding-left, calc(var(--responsiveSpace)/2), $space-half);
+	&::after {
+		@include customPropertyValue(padding-left, calc(var(--responsiveSpace) / 2), $space-half);
 		content: attr(data-separator);
 		speak: none;
 	}
 
 	&:last-child {
-		&:after {
+		&::after {
 			display: none;
 		}
 	}

@@ -43,7 +43,11 @@ class AvatarMember extends React.PureComponent {
 
 		return (<Avatar {...allProps} {...other}>
 			{showNoPhoto &&
-				<Icon shape="profile" size="m" />}
+				<Icon
+					className="avatarIcon--noPhoto display--inlineFlex"
+					shape="profile"
+					size="m"
+				/>}
 			{fbFriend && !org &&
 				<Icon
 					className={AVATAR_ICON_BADGE_CLASS}

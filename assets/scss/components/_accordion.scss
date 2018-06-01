@@ -2,7 +2,6 @@
 // Animation values taken from https://github.com/google/material-design-lite/blob/mdl-1.x/src/_variables.scss
 // Maybe we can bring this into `swarm-constants` or `swarm-animation`?
 //
-
 .accordionPanel-animator {
 	overflow: hidden;
 	transition: height $duration--medium $easing--standard;
@@ -34,9 +33,9 @@
 		font-weight: $W_bold;
 		position: relative;
 
-		&:after {
+		&::after {
 			background-color: $C_selection;
-			content: '';
+			content: "";
 			position: absolute;
 			top: -1px;
 			bottom: -2px;
@@ -48,15 +47,13 @@
 
 .accordionPanel-icon {
 	@extend %buttonPersonality;
+}
 
-	.svg--chevron-down .svg-icon {
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-		transition: transform $duration--short $easing--standard;
+.indicator {
+	transform: rotate(0deg);
+	transition: transform $duration--short $easing--standard;
+}
 
-		.accordionPanel--active & {
-			-webkit-transform: rotate(180deg);
-			transform: rotate(180deg);
-		}
-	}
+.indicator--animateActive {
+	transform: rotate(180deg);
 }

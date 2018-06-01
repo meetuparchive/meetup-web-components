@@ -39,9 +39,10 @@ Card-like boxes.
 */
 
 $cardFlushProps: (margin-left, margin-right);
+
 .card {
 	@include customPropertyValue(padding, var(--responsiveSpace) var(--responsiveSpace) 0, $space $space 0);
-	border: .5px solid $C_border;
+	border: 0.5px solid $C_border;
 	box-sizing: border-box;
 	display: block;
 	background: $C_contentBG;
@@ -62,7 +63,7 @@ $cardFlushProps: (margin-left, margin-right);
 	border-width: 0;
 }
 
-@include _bpModifier('card', 'flush') {
+@include _bpModifier("card", "flush") {
 	border-radius: $largeRadius;
 	border-width: 1px;
 	margin-left: 0;

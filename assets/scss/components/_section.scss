@@ -8,24 +8,17 @@ around it's children.
 */
 
 $sectionSpaceMultiple: 2;
+
 .section {
 	@include customPropertyValue(
 		padding,
-		calc(var(--responsiveSpace)*#{$sectionSpaceMultiple}) 0 0 0,
-		$space*$sectionSpaceMultiple 0 0 0
+		calc(var(--responsiveSpace) * #{$sectionSpaceMultiple}) 0 0 0,
+		$space * $sectionSpaceMultiple 0 0 0
 	);
 	@include customPropertyValue(
 		margin,
 		0 var(--responsiveSpace),
 		0 $space
-	);
-}
-
-.section--hasSeparator {
-	@include customPropertyValue(
-		padding,
-		calc(var(--responsiveSpace)*#{$sectionSpaceMultiple}) 0 calc(var(--responsiveSpace)*#{$sectionSpaceMultiple} - var(--responsiveSpace)) 0,
-		$space*$sectionSpaceMultiple 0 $space*$sectionSpaceMultiple - $space 0
 	);
 }
 
@@ -35,6 +28,11 @@ $sectionSpaceMultiple: 2;
 }
 
 .section--hasSeparator {
+	@include customPropertyValue(
+		padding,
+		calc(var(--responsiveSpace) * #{$sectionSpaceMultiple}) 0 calc(var(--responsiveSpace) * #{$sectionSpaceMultiple} - var(--responsiveSpace)) 0,
+		$space * $sectionSpaceMultiple 0 $space * $sectionSpaceMultiple - $space 0
+	);
 	border-bottom: 1px solid $C_border;
 
 	.inverted & {

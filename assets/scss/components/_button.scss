@@ -10,6 +10,7 @@ Disables user-select, sets cursor, and resets text-decoration.
 @extend %buttonPersonality;
 ```
 */
+
 %buttonPersonality {
 	@include user-select(none);
 	cursor: pointer;
@@ -33,11 +34,12 @@ _(The `extend` directive can cause ugly cascade problems)_
 
 @mixin buttonBase() {
 	@extend %buttonPersonality;
+
 	@include display(inline-flex);
 	@include flex-direction(row);
 	@include justify-content(center);
 	@include align-items(center);
-	@include transition(background .15s);
+	@include transition(background 0.15s);
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	border-radius: $defaultRadius;
@@ -66,6 +68,7 @@ Applies button color-related styles using a mixin.
 @include buttonColor();
 ```
 */
+
 @mixin buttonColor(
 	$bgColor: $C_blue,
 	$hoverColor: darken($bgColor, 5%),
@@ -78,13 +81,13 @@ Applies button color-related styles using a mixin.
 
 	&:hover {
 		@if $textTransition {
-			transition: all 0.4s $animate_easeOutQuad;
+			transition: all 400ms $animate_easeOutQuad;
+
 			svg {
-				transition: fill 0.4s $animate_easeOutQuad;
+				transition: fill 400ms $animate_easeOutQuad;
 			}
-		}
-		@else {
-			transition: background 0.4s $animate_easeOutQuad;
+		}@else {
+			transition: background 400ms $animate_easeOutQuad;
 		}
 	}
 
@@ -109,8 +112,8 @@ Applies button color-related styles using a mixin.
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_textSecondaryInverted,
-			$hoverColor: opacify($C_textSecondaryInverted, .1),
-			$activeColor: opacify($C_textSecondaryInverted, .25)
+			$hoverColor: opacify($C_textSecondaryInverted, 0.1),
+			$activeColor: opacify($C_textSecondaryInverted, 0.25)
 		);
 	}
 }
@@ -125,11 +128,12 @@ Applies button color-related styles using a mixin.
 		$hoverColor: darken($C_red, 10%),
 		$activeColor: darken($C_red, 15%)
 	);
+
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_contentBG,
-			$hoverColor: transparentize($C_contentBG, .2),
-			$activeColor: transparentize($C_contentBG, .4)
+			$hoverColor: transparentize($C_contentBG, 0.2),
+			$activeColor: transparentize($C_contentBG, 0.4)
 		);
 	}
 }
@@ -141,15 +145,16 @@ Applies button color-related styles using a mixin.
 .button--neutral {
 	@include buttonColor(
 		$bgColor: $C_buttonBGNeutral,
-		$hoverColor: opacify($C_buttonBGNeutral, .05),
-		$activeColor: opacify($C_buttonBGNeutral, .1),
+		$hoverColor: opacify($C_buttonBGNeutral, 0.05),
+		$activeColor: opacify($C_buttonBGNeutral, 0.1),
 		$textColor: $C_textPrimary
 	);
+
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_buttonBGNeutralInverted,
-			$hoverColor: opacify($C_buttonBGNeutralInverted, .05),
-			$activeColor: opacify($C_buttonBGNeutralInverted, .1),
+			$hoverColor: opacify($C_buttonBGNeutralInverted, 0.05),
+			$activeColor: opacify($C_buttonBGNeutralInverted, 0.1),
 			$textColor: $C_textPrimaryInverted
 		);
 		@include color-all($C_textPrimaryInverted);
@@ -168,7 +173,8 @@ Applies button color-related styles using a mixin.
 	@include shadowOnHover();
 	border: 1px solid $C_border;
 
-	&:hover, &:focus {
+	&:hover,
+	&:focus {
 		border-color: transparent;
 	}
 
@@ -177,26 +183,28 @@ Applies button color-related styles using a mixin.
 		border: 1px solid $C_border;
 	}
 
-	$C_borderedHoverBase: transparentize($C_textPrimary, .4);
+	$C_borderedHoverBase: transparentize($C_textPrimary, 0.4);
+
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_textSecondary,
-			$hoverColor: lighten(transparentize($C_textSecondary, .2), 12%),
-			$activeColor: lighten(transparentize($C_textSecondary, .2), 23%)
+			$hoverColor: lighten(transparentize($C_textSecondary, 0.2), 12%),
+			$activeColor: lighten(transparentize($C_textSecondary, 0.2), 23%)
 		);
 		border: 1px solid $C_borderInverted;
 
-		&:hover, &:focus {
-			border-color: $C_borderDarkInverted, .1;
+		&:hover,
+		&:focus {
+			border-color: $C_borderDarkInverted, 0.1;
 			transform: translateY(0);
 		}
-
 	}
 }
 
 .button--hasHoverShadow,
 .button--bordered {
 	@include shadowOnHover();
+
 	&.button--disabled,
 	&[disabled] {
 		box-shadow: none;
@@ -216,7 +224,7 @@ Applies button color-related styles using a mixin.
 		$textColor: $C_textHint
 	);
 	cursor: default;
-	outline: none;
+	outline: none; // stylelint-disable-line declaration-property-value-blacklist
 	pointer-events: none;
 
 	.inverted & {
@@ -228,7 +236,6 @@ Applies button color-related styles using a mixin.
 		);
 		@include color-all($C_textHintInverted);
 	}
-
 }
 
 //
@@ -300,6 +307,7 @@ Applies button color-related styles using a mixin.
 
 	// this full shorthand property for `flex`
 	// is required to prevent IE11 from "shrinkwrapping" text nodes
+
 	@include flex(1 1 auto);
 
 	.button-icon-wrapper & {
@@ -309,7 +317,6 @@ Applies button color-related styles using a mixin.
 	.button-icon-wrapper--right & {
 		padding-right: $space-half;
 	}
-
 }
 
 .button--iconOnly {
