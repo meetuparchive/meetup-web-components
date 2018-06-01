@@ -22,13 +22,14 @@ class TogglePill extends React.PureComponent {
 			topic,
 			id,
 			small,
-			large,
 			name,
 			useRadio,
 			value,
 			onChange,
 			...other
 		} = this.props;
+
+		delete other.large;
 
 		const inputType = useRadio ? 'radio' : 'checkbox';
 
@@ -44,7 +45,6 @@ class TogglePill extends React.PureComponent {
 		const labelClassNames = cx(
 			'toggleButton-label',
 			{
-				'toggleButton-label--large': large,
 				'toggleButton-label--small': small
 			},
 			labelClassName
