@@ -25,6 +25,8 @@ $glColumns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 // IE11 ignores `box-sizing: border-box` on items with a flex-basis,
 // causing the `gridListAutoheight` variant not to work correctly
 .gridList-itemInner {
+	box-sizing: border-box;
+	height: 100%;
 	padding: 0 $space $space 0;
 }
 
@@ -72,6 +74,7 @@ $glColumns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 @each $col in $glColumns {
 	.gridList--autoHeight--has#{$col} > .gridList-item {
 		flex: 0 0 percentage(1 / $col);
+		max-width: percentage(1 / $col);
 	}
 }
 
