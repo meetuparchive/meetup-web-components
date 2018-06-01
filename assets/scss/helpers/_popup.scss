@@ -9,8 +9,8 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 }
 
 .popup-trigger {
-	display: inline;
 	cursor: pointer;
+	display: inline;
 
 	&--active {
 		&:focus {
@@ -20,30 +20,30 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 }
 
 .popup-bubble {
+	background-color: $C_contentBG;
 	border: 1px solid $C_border;
 	border-radius: $defaultRadius;
-	background-color: $C_contentBG;
 	box-shadow: $dropdownShadow;
 	box-sizing: border-box;
 
 	// outer triangle for border
 	&::before {
-		width: 0;
-		height: 0;
 		border-bottom: ($triangleSize + 1) solid $C_border;
-		border-right: ($triangleSize + 1) solid transparent;
 		border-left: ($triangleSize + 1) solid transparent;
+		border-right: ($triangleSize + 1) solid transparent;
+		height: 0;
 		top: -$triangleSize - 0.5;
+		width: 0;
 	}
 
 	// inner triangle to match content color
 	&::after {
-		width: 0;
-		height: 0;
 		border-bottom: $triangleSize solid $C_white;
-		border-right: $triangleSize solid transparent;
 		border-left: $triangleSize solid transparent;
+		border-right: $triangleSize solid transparent;
+		height: 0;
 		top: -$triangleSize + 1;
+		width: 0;
 	}
 
 	&::before,
@@ -122,9 +122,9 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 }
 
 .popup-bubble--active {
-	animation-name: fadeDown;
 	animation-duration: $duration--short;
 	animation-fill-mode: forwards;
+	animation-name: fadeDown;
 	animation-timing-function: $easing--standard;
 }
 
@@ -144,8 +144,8 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 }
 
 .popup-content--top {
-	padding-top: 0;
 	padding-bottom: $triangleSize;
+	padding-top: 0;
 }
 
 .popup--noPortal {

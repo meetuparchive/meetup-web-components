@@ -4,13 +4,7 @@ import cx from 'classnames';
 
 export const ALIGN_VALUES = ['left', 'right', 'center'];
 
-const AccentHeader = ({
-	align,
-	headingTag,
-	children,
-	className,
-	...other
-}) => {
+const AccentHeader = ({ align, headingTag, children, className, ...other }) => {
 	const HeadingTagEl = headingTag;
 	return (
 		<header className="accentHeaderWrapper">
@@ -31,14 +25,12 @@ const AccentHeader = ({
 
 AccentHeader.defaultProps = {
 	align: 'left',
-	headingTag: 'h2'
+	headingTag: 'h2',
 };
 
 PropTypes.AccentHeader = {
 	align: PropTypes.oneOf(ALIGN_VALUES),
-	headingTag: PropTypes.oneOf([
-		'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
-	])
+	headingTag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
 };
 
 export default AccentHeader;

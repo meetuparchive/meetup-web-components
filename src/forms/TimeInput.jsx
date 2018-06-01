@@ -278,7 +278,8 @@ export class TimeInput extends React.PureComponent {
 				error,
 			}),
 			label: cx(
-				'label--field', {
+				'label--field',
+				{
 					'label--disabled': disabled,
 					'label--required': required,
 					'flush--bottom': helperText,
@@ -314,7 +315,9 @@ export class TimeInput extends React.PureComponent {
 						{label}
 					</label>
 				)}
-				{helperText && <div className={classNames.helperText}>{helperText}</div>}
+				{helperText && (
+					<div className={classNames.helperText}>{helperText}</div>
+				)}
 				{this.state.supportsTime ? (
 					<input
 						id={id}

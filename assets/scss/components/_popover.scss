@@ -29,15 +29,15 @@ $view-minWidth: 320px;
 }
 
 .popover-container {
-	border-radius: $defaultRadius;
 	background-color: $C_contentBG;
-	box-sizing: border-box;
+	border-radius: $defaultRadius;
 	box-shadow: $popoverShadow;
+	box-sizing: border-box;
 	max-height: $block-6;
-	position: absolute;
 	max-width: $view-minWidth;
-	z-index: 1;
+	position: absolute;
 	text-align: left !important;
+	z-index: 1;
 }
 
 .popover-container--menu {
@@ -58,8 +58,8 @@ $view-minWidth: 320px;
 		padding: $space-half $space;
 
 		&:focus {
-			outline: 0;
 			background: $C_selection;
+			outline: 0;
 		}
 	}
 }

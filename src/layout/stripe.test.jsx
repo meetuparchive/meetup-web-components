@@ -53,9 +53,7 @@ describe('Stripe', function() {
 		const src = 'https://placekitten.com/g/200/300';
 		let stripeImg;
 		beforeEach(() => {
-			stripeImg = shallow(
-				<Stripe hideScrim backgroundImage={src} />
-			);
+			stripeImg = shallow(<Stripe hideScrim backgroundImage={src} />);
 		});
 		afterEach(() => {
 			stripeImg = null;
