@@ -4,6 +4,7 @@ import { Portal } from 'react-portal';
 import rafSchedule from 'raf-schd';
 
 import ConditionalWrap from './ConditionalWrap';
+import withMatchMedia from './withMatchMedia';
 
 export const getAdjustedAlignment = (
 	preferredAlignment,
@@ -128,6 +129,8 @@ class FloatingPosition extends React.PureComponent {
 	}
 
 	render() {
+		const boundedMaxWidth = this.props.media.isAtSmallUp ? '350px' : '200px';
+
 		return(
 			<ConditionalWrap
 				condition={!this.props.noPortal}
@@ -137,7 +140,8 @@ class FloatingPosition extends React.PureComponent {
 					this.props.children({
 						left: this.state.left,
 						top: this.state.top,
-						align: this.state.align
+						align: this.state.align,
+						boundedMaxWidth
 					})
 				}
 			</ConditionalWrap>
@@ -151,4 +155,4 @@ FloatingPosition.propTypes = {
 	getContent: PropTypes.func.isRequired,
 };
 
-export default FloatingPosition;
+export default withMatchMedia(FloatingPosition);
