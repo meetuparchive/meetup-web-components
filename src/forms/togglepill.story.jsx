@@ -1,9 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
-import {
-	decorateWithBasics,
-	decorateWithInfo,
-} from '../utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import TogglePill from './TogglePill';
 
 const onChange = e => {
@@ -14,24 +11,23 @@ storiesOf('TogglePill', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (
-			<div>
-				<TogglePill
-					onChange={onChange}
-					id='togglePillId'
-					name='togglePillName'
-					value='toggle-pill'
-				>
-					Toggle Pill Label
-				</TogglePill>
-			</div>
-		)
-	)
+		<div>
+			<TogglePill
+				onChange={onChange}
+				id="togglePillId"
+				name="togglePillName"
+				value="toggle-pill"
+			>
+				Toggle Pill Label
+			</TogglePill>
+		</div>
+	))
 	.add('Default Selected', () => (
 		<TogglePill
 			onChange={onChange}
-			id='togglePillId'
-			name='togglePillName'
-			value='toggle-pill'
+			id="togglePillId"
+			name="togglePillName"
+			value="toggle-pill"
 			isActive
 		>
 			Toggle Pill Label
@@ -40,9 +36,9 @@ storiesOf('TogglePill', module)
 	.add('small', () => (
 		<TogglePill
 			onChange={onChange}
-			id='togglePillId'
-			name='togglePillName'
-			value='toggle-pill'
+			id="togglePillId"
+			name="togglePillName"
+			value="toggle-pill"
 			small
 		>
 			Toggle Pill Label
@@ -51,10 +47,10 @@ storiesOf('TogglePill', module)
 	.add('with labelClassName', () => (
 		<TogglePill
 			onChange={onChange}
-			id='togglePillId'
-			name='togglePillName'
-			value='toggle-pill'
-			labelClassName='span--100'
+			id="togglePillId"
+			name="togglePillName"
+			value="toggle-pill"
+			labelClassName="span--100"
 		>
 			I will span--100
 		</TogglePill>
@@ -63,9 +59,9 @@ storiesOf('TogglePill', module)
 		<TogglePill
 			topic
 			onChange={onChange}
-			id='togglePillId'
-			name='togglePillName'
-			value='toggle-pill'
+			id="togglePillId"
+			name="togglePillName"
+			value="toggle-pill"
 		>
 			Toggle Pill Label
 		</TogglePill>
@@ -74,9 +70,9 @@ storiesOf('TogglePill', module)
 		<TogglePill
 			topic
 			onChange={onChange}
-			id='togglePillId'
-			name='togglePillName'
-			value='toggle-pill'
+			id="togglePillId"
+			name="togglePillName"
+			value="toggle-pill"
 			isActive
 		>
 			Toggle Pill Label
@@ -86,9 +82,9 @@ storiesOf('TogglePill', module)
 		<div>
 			<TogglePill
 				onChange={onChange}
-				id='togglePill1'
-				name='pills'
-				value='toggle-pill'
+				id="togglePill1"
+				name="pills"
+				value="toggle-pill"
 				isActive
 				useRadio
 			>
@@ -96,9 +92,9 @@ storiesOf('TogglePill', module)
 			</TogglePill>
 			<TogglePill
 				onChange={onChange}
-				id='togglePill2'
-				name='pills'
-				value='toggle-pill'
+				id="togglePill2"
+				name="pills"
+				value="toggle-pill"
 				isActive
 				useRadio
 			>

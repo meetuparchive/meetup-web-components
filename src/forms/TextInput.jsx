@@ -11,7 +11,7 @@ export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
 /**
  * @module TextInput
  */
-export const TextInput = (props) => {
+export const TextInput = props => {
 	const {
 		name,
 		value,
@@ -41,7 +41,7 @@ export const TextInput = (props) => {
 			'span--100',
 			{
 				'field--error': error,
-				[FIELD_WITH_ICON_CLASS]: iconShape
+				[FIELD_WITH_ICON_CLASS]: iconShape,
 			},
 			className
 		),
@@ -50,14 +50,11 @@ export const TextInput = (props) => {
 			{
 				'label--disabled': disabled,
 				'label--required': required,
-				'flush--bottom': helperText
+				'flush--bottom': helperText,
 			},
 			labelClassName
 		),
-		helperText: cx(
-			'helperTextContainer',
-			{ required, disabled }
-		),
+		helperText: cx('helperTextContainer', { required, disabled }),
 		icon: 'icon--field',
 	};
 
@@ -69,10 +66,10 @@ export const TextInput = (props) => {
 
 	const paddingSize = parseInt(MEDIA_SIZES[iconProps.size], 10) + 24; // #TODO :SDS: replace '32' with something like "$space * 1.5" from `swarm-constants`
 	const inputStyles = iconShape && {
-		paddingLeft: `${paddingSize}px`
+		paddingLeft: `${paddingSize}px`,
 	};
 
-	const handleOnChange = (e) => {
+	const handleOnChange = e => {
 		if (onChange) {
 			onChange(e);
 		}
@@ -80,7 +77,7 @@ export const TextInput = (props) => {
 		e.target.setCustomValidity('');
 	};
 
-	const handleInvalid = (e) => {
+	const handleInvalid = e => {
 		if (!validityMessage) return;
 		e.target.setCustomValidity(validityMessage);
 	};
@@ -103,21 +100,21 @@ export const TextInput = (props) => {
 		optionalInputProps.ref = refCallback;
 	}
 
-
 	return (
 		<div className="inputContainer">
-			{label &&
-				<label className={classNames.label} htmlFor={id} data-requiredtext={required && requiredText}>
+			{label && (
+				<label
+					className={classNames.label}
+					htmlFor={id}
+					data-requiredtext={required && requiredText}
+				>
 					{label}
 				</label>
-			}
-			{helperText &&
-				<div className={classNames.helperText}>
-					{helperText}
-				</div>
-			}
-			<div style={{position: 'relative'}}>
-				<input type={isSearch ? 'search' : 'text'}
+			)}
+			{helperText && <div className={classNames.helperText}>{helperText}</div>}
+			<div style={{ position: 'relative' }}>
+				<input
+					type={isSearch ? 'search' : 'text'}
 					name={name}
 					required={required}
 					placeholder={placeholder}
@@ -131,16 +128,14 @@ export const TextInput = (props) => {
 					{...optionalInputProps}
 					{...other}
 				/>
-				{iconShape &&
-					<Icon {...iconProps} />
-				}
+				{iconShape && <Icon {...iconProps} />}
 			</div>
-			{maxLength &&
+			{maxLength && (
 				<CharCounter
 					maxLength={parseInt(maxLength, 10)}
 					valueLength={parseInt(value.length, 10)}
 				/>
-			}
+			)}
 			{children}
 		</div>
 	);
@@ -152,17 +147,11 @@ TextInput.defaultProps = {
 
 TextInput.propTypes = {
 	name: PropTypes.string.isRequired,
-	error: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	id: PropTypes.string,
 	maxLength: PropTypes.number,
 	pattern: PropTypes.string,
-	label: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	labelClassName: PropTypes.string,
 	placeholder: PropTypes.string,
 	isSearch: PropTypes.bool,
@@ -170,15 +159,9 @@ TextInput.propTypes = {
 	disabled: PropTypes.bool,
 	iconShape: PropTypes.string,
 	iconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	helperText: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	required: PropTypes.bool,
-	requiredText: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	])
+	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 export default withErrorList(TextInput);

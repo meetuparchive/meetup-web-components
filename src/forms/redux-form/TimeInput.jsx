@@ -10,17 +10,14 @@ import TimeInput from '../TimeInput';
  */
 const ReduxFormTimeInput = props => {
 	const { input, meta, ...other } = props;
-	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
+	const error = meta.touched || meta.submitFailed ? meta.error : null;
 
 	return <TimeInput {...input} error={error} {...other} />;
 };
 
 ReduxFormTimeInput.propTypes = {
 	meta: PropTypes.object.isRequired,
-	input: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.object
-	]).isRequired,
+	input: PropTypes.oneOfType([PropTypes.element, PropTypes.object]).isRequired,
 };
 
 ReduxFormTimeInput.displayName = 'ReduxFormTimeInput';

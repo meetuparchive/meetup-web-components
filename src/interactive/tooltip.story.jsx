@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Tooltip from "./Tooltip";
-import Button from "../forms/Button";
+import Tooltip from './Tooltip';
+import Button from '../forms/Button';
 import { decorateWithBasics } from '../utils/decorators';
 
 const dropdownContent = (
 	<div className="runningText padding--all">
 		<p>
-			This is a basic tooltip component. It accepts a `content` prop with
-			which you can pass arbitrary JSX content.
+			This is a basic tooltip component. It accepts a `content` prop with which
+			you can pass arbitrary JSX content.
 		</p>
 		<p>
 			<a href="#">Tab-focusable links</a> should work as if they're in normal
@@ -25,7 +25,7 @@ class ManualToggleDropdown extends React.PureComponent {
 		super(props);
 
 		this.state = {
-			tooltipOpen: true
+			tooltipOpen: true,
 		};
 
 		this.toggleDropdown = this.toggleDropdown.bind(this);
@@ -36,48 +36,47 @@ class ManualToggleDropdown extends React.PureComponent {
 	}
 
 	render() {
-
 		return (
 			<Tooltip
 				manualToggle
 				isActive={this.state.tooltipOpen}
 				align="right"
 				id="testTooltip"
-				trigger={<Button onClick={this.toggleDropdown} small>Click to toggle</Button>}
+				trigger={
+					<Button onClick={this.toggleDropdown} small>
+						Click to toggle
+					</Button>
+				}
 				content={dropdownContent}
 			/>
 		);
 	}
 }
 
-storiesOf("Tooltip", module)
+storiesOf('Tooltip', module)
 	.addDecorator(decorateWithBasics)
+	.addWithInfo('Basic Tooltip component', 'Aligned right by default', () => (
+		<div
+			style={{
+				marginTop: '800px',
+				width: '500px',
+				height: '1000px',
+				marginLeft: '600px',
+			}}
+		>
+			<Tooltip
+				align="right"
+				id="testTooltip"
+				trigger={<Button small>Open</Button>}
+				content={dropdownContent}
+			/>
+		</div>
+	))
 	.addWithInfo(
-		"Basic Tooltip component",
-		"Aligned right by default",
+		'Tooltip above trigger',
+		'Aligned right and appearing above the trigger',
 		() => (
-			<div
-				style={{
-					marginTop: "800px",
-					width: "500px",
-					height: "1000px",
-					marginLeft: "600px"
-				}}
-			>
-				<Tooltip
-					align="right"
-					id="testTooltip"
-					trigger={<Button small>Open</Button>}
-					content={dropdownContent}
-				/>
-			</div>
-		)
-	)
-	.addWithInfo(
-		"Tooltip above trigger",
-		"Aligned right and appearing above the trigger",
-		() => (
-			<div style={{textAlign: 'center'}}>
+			<div style={{ textAlign: 'center' }}>
 				<Tooltip
 					direction="top"
 					align="right"
@@ -89,10 +88,10 @@ storiesOf("Tooltip", module)
 		)
 	)
 	.addWithInfo(
-		"Opened Tooltip component",
-		"Aligned center and opened by default",
+		'Opened Tooltip component',
+		'Aligned center and opened by default',
 		() => (
-			<div style={{textAlign: 'center'}}>
+			<div style={{ textAlign: 'center' }}>
 				<Tooltip
 					isActive
 					align="center"
@@ -104,10 +103,10 @@ storiesOf("Tooltip", module)
 		)
 	)
 	.addWithInfo(
-		"Tooltip component (no Portal)",
-		"Use the `noPortal` prop to decide whether a the content should render in document body",
+		'Tooltip component (no Portal)',
+		'Use the `noPortal` prop to decide whether a the content should render in document body',
 		() => (
-			<div style={{textAlign: 'center'}}>
+			<div style={{ textAlign: 'center' }}>
 				<Tooltip
 					noPortal
 					align="right"
@@ -119,10 +118,10 @@ storiesOf("Tooltip", module)
 		)
 	)
 	.addWithInfo(
-		"Left aligned tooltip",
-		"Use the `align` prop to change alignment to left",
+		'Left aligned tooltip',
+		'Use the `align` prop to change alignment to left',
 		() => (
-			<div style={{textAlign: 'center'}}>
+			<div style={{ textAlign: 'center' }}>
 				<Tooltip
 					align="left"
 					id="testTooltip"
@@ -133,10 +132,10 @@ storiesOf("Tooltip", module)
 		)
 	)
 	.addWithInfo(
-		"Center aligned tooltip",
-		"Use the `align` prop to change alignment to left",
+		'Center aligned tooltip',
+		'Use the `align` prop to change alignment to left',
 		() => (
-			<div style={{textAlign: 'center'}}>
+			<div style={{ textAlign: 'center' }}>
 				<Tooltip
 					align="center"
 					id="testTooltip"
@@ -147,20 +146,21 @@ storiesOf("Tooltip", module)
 		)
 	)
 	.addWithInfo(
-		"Tooltip with offset",
-		"Using an offset to fine-tune the popup alignment to the trigger",
+		'Tooltip with offset',
+		'Using an offset to fine-tune the popup alignment to the trigger',
 		() => (
-			<div style={{textAlign: 'center'}}>
+			<div style={{ textAlign: 'center' }}>
 				<Tooltip
 					isActive
-					offset={{top: 8, left: 16}}
+					offset={{ top: 8, left: 16 }}
 					align="right"
 					id="testTooltip"
 					trigger={<Button small>Open</Button>}
 					content={
 						<div className="runningText padding--all">
 							<p>
-								This tooltip component is offset 16px from the left and 8px from the top
+								This tooltip component is offset 16px from the left and 8px from
+								the top
 							</p>
 						</div>
 					}
@@ -169,10 +169,10 @@ storiesOf("Tooltip", module)
 		)
 	)
 	.addWithInfo(
-		"Tooltip with close button",
+		'Tooltip with close button',
 		"Provides it's own close button",
 		() => (
-			<div style={{textAlign: 'center'}}>
+			<div style={{ textAlign: 'center' }}>
 				<Tooltip
 					isActive
 					withClose
@@ -185,17 +185,15 @@ storiesOf("Tooltip", module)
 		)
 	)
 	.addWithInfo(
-		"manualToggle",
-		"rely on the `isActive` prop to open and close the tooltip",
-		() => (
-			<ManualToggleDropdown/>
-		)
+		'manualToggle',
+		'rely on the `isActive` prop to open and close the tooltip',
+		() => <ManualToggleDropdown />
 	)
 	.addWithInfo(
-		"Overflowing viewport",
-		"Aligned right by default, but switches to left",
+		'Overflowing viewport',
+		'Aligned right by default, but switches to left',
 		() => (
-			<div style={{textAlign: 'left'}}>
+			<div style={{ textAlign: 'left' }}>
 				<Tooltip
 					isActive
 					align="right"
@@ -204,8 +202,9 @@ storiesOf("Tooltip", module)
 					content={
 						<div className="runningText padding--all">
 							<p>
-								This Tooltip component's `align` prop is set to 'right', but because
-								it would overflow the viewport, it gets switched to 'left'
+								This Tooltip component's `align` prop is set to 'right', but
+								because it would overflow the viewport, it gets switched to
+								'left'
 							</p>
 						</div>
 					}

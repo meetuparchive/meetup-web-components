@@ -37,7 +37,7 @@ class TogglePill extends React.PureComponent {
 			TOGGLE_PILL_CLASS,
 			{
 				'toggleButton--topic': topic,
-				'toggleButton--radio': useRadio
+				'toggleButton--radio': useRadio,
 			},
 			className
 		);
@@ -45,41 +45,30 @@ class TogglePill extends React.PureComponent {
 		const labelClassNames = cx(
 			'toggleButton-label',
 			{
-				'toggleButton-label--small': small
+				'toggleButton-label--small': small,
 			},
 			labelClassName
 		);
 
 		const topicChildren = isActive => (
 			<Icon
-				className={cx(
-					'toggleButton-icon',
-					{
-						'toggleButton-icon--active' : isActive,
-						'toggleButton-icon--inactive' : (!isActive)
-					}
-				)}
+				className={cx('toggleButton-icon', {
+					'toggleButton-icon--active': isActive,
+					'toggleButton-icon--inactive': !isActive,
+				})}
 				shape={isActive ? 'heart' : 'heart-outline'}
-				size='xxs'
-				label='Active Topic Icon'/>
+				size="xxs"
+				label="Active Topic Icon"
+			/>
 		);
 		// ---
 
 		return (
-			<ToggleWrapper
-				type={inputType}
-				isActive={isActive}
-				onToggle={onChange}
-			>
-				{({
-					tabIndex,
-					isActive,
-					toggleActive,
-					onKeyUp,
-				}) => (
+			<ToggleWrapper type={inputType} isActive={isActive} onToggle={onChange}>
+				{({ tabIndex, isActive, toggleActive, onKeyUp }) => (
 					<div className={classNames}>
 						<input
-							className='toggleButton-input visibility--a11yHide'
+							className="toggleButton-input visibility--a11yHide"
 							type={inputType}
 							id={id}
 							name={name}
@@ -88,12 +77,11 @@ class TogglePill extends React.PureComponent {
 							onChange={toggleActive}
 							onKeyUp={onKeyUp}
 							tabIndex={tabIndex}
-							{...other} />
-						<label
-							className={labelClassNames}
-							htmlFor={id}>
+							{...other}
+						/>
+						<label className={labelClassNames} htmlFor={id}>
 							{children}
-							{(topic) ? topicChildren(isActive) : null}
+							{topic ? topicChildren(isActive) : null}
 						</label>
 					</div>
 				)}
@@ -114,8 +102,7 @@ TogglePill.protoTypes = {
 };
 
 TogglePill.defaultProps = {
-	isActive: false
+	isActive: false,
 };
 
 export default TogglePill;
-

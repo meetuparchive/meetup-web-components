@@ -25,16 +25,13 @@ export class Bounds extends React.Component {
 			BOUNDS_CLASS,
 			{
 				'bounds--wide': !narrow,
-				'component--isLoading': isLoading
+				'component--isLoading': isLoading,
 			},
 			className
 		);
 
 		return (
-			<div
-				className={classNames}
-				{...other}
-			>
+			<div className={classNames} {...other}>
 				{children}
 			</div>
 		);
@@ -46,8 +43,8 @@ Bounds.propTypes = {
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
-		size: PropTypes.string
-	})
+		size: PropTypes.string,
+	}),
 };
 
 export default withLoading(Bounds);

@@ -30,7 +30,8 @@ export class Card extends React.PureComponent {
 			...other
 		} = this.props;
 
-		const flushBreakpoint = VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
+		const flushBreakpoint =
+			VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
 
 		const classNames = cx(
 			CARD_CLASS,
@@ -40,15 +41,13 @@ export class Card extends React.PureComponent {
 				[`${CARD_CLASS}--hasShadow`]: hasShadow,
 				[`${CARD_CLASS}--hasHoverShadow`]: hasHoverShadow && !hasShadow,
 				[CARD_HOVER_PLUS_SHADOW_CLASS]: hasHoverShadow && hasShadow,
-				'card--isLoading component--isLoading': isLoading
+				'card--isLoading component--isLoading': isLoading,
 			},
 			className
 		);
 
 		return (
-			<div
-				className={classNames}
-				{...other}>
+			<div className={classNames} {...other}>
 				{children}
 			</div>
 		);
@@ -59,13 +58,15 @@ Card.propTypes = {
 	initialHeight: PropTypes.bool,
 	hasShadow: PropTypes.bool,
 	hasHoverShadow: PropTypes.bool,
-	flushUntil: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))]),
+	flushUntil: PropTypes.oneOfType([
+		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
+	]),
 	isLoading: PropTypes.bool,
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
-		size: PropTypes.string
-	})
+		size: PropTypes.string,
+	}),
 };
 
 export default withLoading(Card);
