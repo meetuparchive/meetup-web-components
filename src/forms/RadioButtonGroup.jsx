@@ -42,23 +42,27 @@ export default class RadioButtonGroup extends PureComponent {
 			switchDirection,
 			children,
 			name,
-			className
+			className,
 		} = this.props;
 
-		const switchDirectionAttr = (switchDirection) ? { switchDirection } : '';
+		const switchDirectionAttr = switchDirection ? { switchDirection } : '';
 
 		return (
-			<Flex direction={direction} {...switchDirectionAttr} className={className}>
-				{React.Children.map(children, option =>
-					(<FlexItem shrink>
+			<Flex
+				direction={direction}
+				{...switchDirectionAttr}
+				className={className}
+			>
+				{React.Children.map(children, option => (
+					<FlexItem shrink>
 						{React.cloneElement(option, {
 							onChange: this.handleChange,
 							...option.props,
 							name,
 							checked: option.props.value === this.state.selectedValue,
 						})}
-					</FlexItem>)
-				)}
+					</FlexItem>
+				))}
 			</Flex>
 		);
 	}

@@ -13,14 +13,15 @@ function promptCreate() {
 		{
 			type: 'input',
 			name: 'name',
-			message: (answers) => 'Name of your component:',
-			validate: validateName
-		}, {
+			message: answers => 'Name of your component:',
+			validate: validateName,
+		},
+		{
 			type: 'confirm',
 			name: 'isIntl',
-			message: (answers) => 'Add i18n wrappers to tests and story?',
-			default: false
-		}
+			message: answers => 'Add i18n wrappers to tests and story?',
+			default: false,
+		},
 	];
 
 	return inquirer.prompt(questions);
@@ -30,14 +31,16 @@ function promptCreate() {
 promptCreate()
 	.then(answers => ({
 		answers,
-		createPath: path.resolve(__dirname, '../../src/')
+		createPath: path.resolve(__dirname, '../../src/'),
 	}))
-	.then((config) => {
+	.then(config => {
 		'use strict';
 		const createPath = config.createPath;
 		const name = config.answers.name;
 		const isIntl = config.answers.isIntl;
-		const nameLcase = name.replace(/^[A-Z]/, (firstLetter) => firstLetter.toLowerCase());
+		const nameLcase = name.replace(/^[A-Z]/, firstLetter =>
+			firstLetter.toLowerCase()
+		);
 		let filepath;
 
 		filepath = path.resolve(createPath, `${name}.jsx`);
@@ -65,7 +68,7 @@ promptCreate()
 		() => {
 			console.log('Done');
 		},
-		(err) => {
+		err => {
 			console.log(err.stack);
 		}
 	);

@@ -8,7 +8,8 @@ import TextInput from './TextInput';
 export const TA_DROPDOWN_CLASSNAME = 'typeahead-dropdown';
 export const TA_ITEM_CLASSNAME = 'typeahead-item';
 
-const defaultItemToString = itemValue => (typeof itemValue === 'string' ? itemValue : '');
+const defaultItemToString = itemValue =>
+	typeof itemValue === 'string' ? itemValue : '';
 
 /**
  * @module typeahead
@@ -29,8 +30,11 @@ class Typeahead extends React.PureComponent {
 	 * @returns undefined
 	 */
 	handleSelection(selectedItem, stateAndHelpers) {
-		if(this.props.multiSelect) {
-			this.props.onSelect(selectedItem, [...this.props.multiSelectValues, selectedItem]);
+		if (this.props.multiSelect) {
+			this.props.onSelect(selectedItem, [
+				...this.props.multiSelectValues,
+				selectedItem,
+			]);
 		} else {
 			this.props.onSelect && this.props.onSelect(selectedItem, stateAndHelpers);
 		}
@@ -49,7 +53,9 @@ class Typeahead extends React.PureComponent {
 
 				return {
 					...changes,
-					selectedItem: this.props.multiSelectValues ? this.props.multiSelectValues : changes.selectedItem,
+					selectedItem: this.props.multiSelectValues
+						? this.props.multiSelectValues
+						: changes.selectedItem,
 					isOpen: this.props.openOnSelect,
 				};
 
@@ -93,33 +99,34 @@ class Typeahead extends React.PureComponent {
 					isOpen,
 					highlightedIndex,
 					selectedItem,
-					openMenu
-				}) =>
-				(<div className="typeahead">
-					<TextInput
-						{...getInputProps({
-							...inputProps,
-							className: 'typeahead-input',
-							onFocus: openOnFocus && openMenu
-						})}
-					/>
-					{Boolean(isOpen && items && items.length)
-						&&
+					openMenu,
+				}) => (
+					<div className="typeahead">
+						<TextInput
+							{...getInputProps({
+								...inputProps,
+								className: 'typeahead-input',
+								onFocus: openOnFocus && openMenu,
+							})}
+						/>
+						{Boolean(isOpen && items && items.length) && (
 							<div
-								className={cx(
-									TA_DROPDOWN_CLASSNAME,
-									{
-										[`${TA_DROPDOWN_CLASSNAME}--inline`] : openInline
+								className={cx(TA_DROPDOWN_CLASSNAME, {
+									[`${TA_DROPDOWN_CLASSNAME}--inline`]: openInline,
+								})}
+								style={
+									height && {
+										height: height,
+										overflowY: 'scroll',
 									}
-								)}
-								style={height && {
-									height: height,
-									overflowY: 'scroll'
-								}}
-								>
+								}
+							>
 								{items &&
 									items.map((item, i) => {
-										const selected = multiSelect && selectedItem && selectedItem.includes(item.props.value);
+										const selected =
+											multiSelect &&
+											selectedItem &&
+											selectedItem.includes(item.props.value);
 
 										return (
 											<div
@@ -135,28 +142,26 @@ class Typeahead extends React.PureComponent {
 															'typeahead-item--isActive': highlightedIndex == i,
 														}
 													),
-													...item.props
+													...item.props,
 												})}
 											>
-												{
-													typeof item.props.children === 'function'
-														? item.props.children({ isSelected: selected })
-														: item.props.children
-												}
+												{typeof item.props.children === 'function'
+													? item.props.children({ isSelected: selected })
+													: item.props.children}
 											</div>
-										);}
-									)
-								}
+										);
+									})}
 							</div>
-					}
-				</div>)}
+						)}
+					</div>
+				)}
 			</Downshift>
 		);
 	}
 }
 
 Typeahead.defaultProps = {
-	itemToString: defaultItemToString
+	itemToString: defaultItemToString,
 };
 
 Typeahead.propTypes = {
@@ -174,7 +179,7 @@ Typeahead.propTypes = {
 				`${propName} handler must be passed to ${componentName} when 'multiSelect' is passed`
 			);
 		}
-	}
+	},
 };
 
 export default Typeahead;

@@ -6682,9 +6682,9 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
-mwp-config@16.0.2418:
-  version "16.0.2418"
-  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-16.0.2418.tgz#b14c08ffabb24d7c91a36b9de07ef9442e57d65f"
+mwp-config@16.0.2422:
+  version "16.0.2422"
+  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-16.0.2422.tgz#196e28d96792f224fc2fcf0360735cdbbb161988"
   dependencies:
     babel-core "6.25.0"
     babel-plugin-react-intl "2.3.1"
@@ -6696,6 +6696,7 @@ mwp-config@16.0.2418:
     babel-preset-stage-2 "6.24.1"
     convict "4.0.1"
     stylelint "9.2.1"
+    stylelint-order "0.8.1"
     stylelint-scss "3.1.0"
 
 mwp-i18n@16.0.2418:
@@ -7771,6 +7772,13 @@ postcss-selector-parser@^4.0.0:
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
+postcss-sorting@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/postcss-sorting/-/postcss-sorting-3.1.0.tgz#af7c90ee73ad12569a57664eaf06735c2e25bec0"
+  dependencies:
+    lodash "^4.17.4"
+    postcss "^6.0.13"
+
 postcss-svgo@^2.1.1:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/postcss-svgo/-/postcss-svgo-2.1.6.tgz#b6df18aa613b666e133f08adb5219c2684ac108d"
@@ -7804,7 +7812,7 @@ postcss-zindex@^2.0.1:
     postcss "^5.0.4"
     uniqs "^2.0.0"
 
-postcss@6.0.22, postcss@^6.0.14, postcss@^6.0.16, postcss@^6.0.21, postcss@^6.0.22, postcss@^6.0.6, postcss@^6.0.8:
+postcss@6.0.22, postcss@^6.0.13, postcss@^6.0.14, postcss@^6.0.16, postcss@^6.0.21, postcss@^6.0.22, postcss@^6.0.6, postcss@^6.0.8:
   version "6.0.22"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.22.tgz#e23b78314905c3b90cbd61702121e7a78848f2a3"
   dependencies:
@@ -9504,6 +9512,14 @@ style-loader@^0.20.3:
 style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
+
+stylelint-order@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/stylelint-order/-/stylelint-order-0.8.1.tgz#35f71af3a15954154e0e99e5646ba3d6fbe34f8d"
+  dependencies:
+    lodash "^4.17.4"
+    postcss "^6.0.14"
+    postcss-sorting "^3.1.0"
 
 stylelint-scss@3.1.0:
   version "3.1.0"

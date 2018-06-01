@@ -30,9 +30,7 @@ describe('Flex', function() {
 	});
 	describe('row', () => {
 		it(`check that the component has '${FLEX_CLASS}' & '${FLEX_ROW_CLASS}' class`, function() {
-			const flex = shallow(
-				<Flex direction={DIRECTION_ROW} />
-			);
+			const flex = shallow(<Flex direction={DIRECTION_ROW} />);
 			expect(flex.hasClass(FLEX_CLASS)).toBe(true);
 			expect(flex.hasClass(FLEX_ROW_CLASS)).toBe(true);
 		});
@@ -44,16 +42,18 @@ describe('Flex', function() {
 					);
 					expect(flex.hasClass(FLEX_CLASS)).toBe(true);
 					expect(flex.hasClass(FLEX_ROW_CLASS)).toBe(true);
-					expect(flex.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${FLEX_COLUMN_CLASS}`)).toBe(true);
+					expect(
+						flex.hasClass(
+							`${VALID_BREAKPOINTS[breakpoint]}_${FLEX_COLUMN_CLASS}`
+						)
+					).toBe(true);
 				});
 			});
 		});
 	});
 	describe('column', () => {
 		it(`check that the component has '${FLEX_CLASS}' & '${FLEX_COLUMN_CLASS}' class`, function() {
-			const flex = shallow(
-				<Flex direction={DIRECTION_COLUMN} />
-			);
+			const flex = shallow(<Flex direction={DIRECTION_COLUMN} />);
 			expect(flex.hasClass(FLEX_CLASS)).toBe(true);
 			expect(flex.hasClass(FLEX_COLUMN_CLASS)).toBe(true);
 		});
@@ -65,7 +65,9 @@ describe('Flex', function() {
 					);
 					expect(flex.hasClass(FLEX_CLASS)).toBe(true);
 					expect(flex.hasClass(FLEX_COLUMN_CLASS)).toBe(true);
-					expect(flex.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${FLEX_ROW_CLASS}`)).toBe(true);
+					expect(
+						flex.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${FLEX_ROW_CLASS}`)
+					).toBe(true);
 				});
 			});
 		});
@@ -89,7 +91,9 @@ describe('Flex', function() {
 			Object.keys(VALID_SPACE).forEach(justify => {
 				const flex = shallow(<Flex justify={justify} />);
 				expect(flex.hasClass(FLEX_CLASS)).toBe(true);
-				expect(flex.hasClass(`${FLEX_CLASS}--${VALID_SPACE[justify]}`)).toBe(true);
+				expect(flex.hasClass(`${FLEX_CLASS}--${VALID_SPACE[justify]}`)).toBe(
+					true
+				);
 			});
 		});
 	});
@@ -98,7 +102,9 @@ describe('Flex', function() {
 			Object.keys(VALID_ALIGNMENTS).forEach(align => {
 				const flex = shallow(<Flex align={align} />);
 				expect(flex.hasClass(FLEX_CLASS)).toBe(true);
-				expect(flex.hasClass(`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`)).toBe(true);
+				expect(
+					flex.hasClass(`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`)
+				).toBe(true);
 			});
 		});
 	});
@@ -108,15 +114,17 @@ describe('Flex', function() {
 		]} class`, function() {
 			const flex = shallow(<Flex rowReverse />);
 			expect(flex.hasClass(FLEX_CLASS)).toBe(true);
-			expect(flex.hasClass(`${VALID_BREAKPOINTS['all']}_flex--rowReverse`)).toBe(true);
+			expect(
+				flex.hasClass(`${VALID_BREAKPOINTS['all']}_flex--rowReverse`)
+			).toBe(true);
 		});
 		it('check rowReverse at valid breakpoints classes', function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				const flex = shallow(
-					<Flex rowReverse={breakpoint} />
-				);
+				const flex = shallow(<Flex rowReverse={breakpoint} />);
 				expect(flex.hasClass(FLEX_CLASS)).toBe(true);
-				expect(flex.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_flex--rowReverse`)).toBe(true);
+				expect(
+					flex.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_flex--rowReverse`)
+				).toBe(true);
 			});
 		});
 	});
@@ -126,15 +134,17 @@ describe('Flex', function() {
 		]} class`, function() {
 			const flex = shallow(<Flex columnReverse />);
 			expect(flex.hasClass(FLEX_CLASS)).toBe(true);
-			expect(flex.hasClass(`${VALID_BREAKPOINTS['all']}_flex--columnReverse`)).toBe(true);
+			expect(
+				flex.hasClass(`${VALID_BREAKPOINTS['all']}_flex--columnReverse`)
+			).toBe(true);
 		});
 		it('check columnReverse at valid breakpoints classes', function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				const flex = shallow(
-					<Flex columnReverse={breakpoint} />
-				);
+				const flex = shallow(<Flex columnReverse={breakpoint} />);
 				expect(flex.hasClass(FLEX_CLASS)).toBe(true);
-				expect(flex.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_flex--columnReverse`)).toBe(true);
+				expect(
+					flex.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_flex--columnReverse`)
+				).toBe(true);
 			});
 		});
 	});
