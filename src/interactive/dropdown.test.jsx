@@ -23,7 +23,7 @@ class DropdownWithToggle extends React.PureComponent {
 		super(props);
 
 		this.state = {
-			dropdownToggled: false
+			dropdownToggled: false,
 		};
 
 		this.toggleDropdown = this.toggleDropdown.bind(this);
@@ -34,7 +34,6 @@ class DropdownWithToggle extends React.PureComponent {
 	}
 
 	render() {
-
 		return (
 			<Dropdown
 				align="center"
@@ -44,7 +43,6 @@ class DropdownWithToggle extends React.PureComponent {
 				content={dropdownContent}
 			/>
 		);
-
 	}
 }
 
@@ -133,8 +131,12 @@ describe('Dropdown', () => {
 
 		it('renders the menuItems', () => {
 			trigger.simulate('click');
-			const menuItemsProp = menuItemDropdownWrapper.find(Downshift).prop('menuItems');
-			const menuItemsRendered = menuItemDropdownWrapper.find(`.${DROPDOWN_MENU_ITEM_CLASS}`);
+			const menuItemsProp = menuItemDropdownWrapper
+				.find(Downshift)
+				.prop('menuItems');
+			const menuItemsRendered = menuItemDropdownWrapper.find(
+				`.${DROPDOWN_MENU_ITEM_CLASS}`
+			);
 
 			expect(menuItemsRendered.length).toBe(menuItemsProp.length);
 		});

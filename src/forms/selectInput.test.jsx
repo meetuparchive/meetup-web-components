@@ -15,7 +15,12 @@ const BasicSelect = (
 	<SelectInput label="Test select" name={nameAttribute} options={testOptions} />
 );
 const BasicSelectWithId = (
-	<SelectInput label="Test select" name={nameAttribute} id={idAttribute} options={testOptions} />
+	<SelectInput
+		label="Test select"
+		name={nameAttribute}
+		id={idAttribute}
+		options={testOptions}
+	/>
 );
 const AdvancedSelect = ({ onChange, value }) => (
 	<SelectInput
@@ -51,7 +56,6 @@ describe('SelectInput basic with an ID and a name', () => {
 	it('should have a ID attribute matching ID when ID is passed in', () => {
 		expect(componentWithId.find('select').prop('id')).toBe(idAttribute);
 	});
-
 });
 
 describe('SelectInput advanced', () => {

@@ -5,14 +5,18 @@ import Chunk from '../../layout/Chunk';
 import withLoading from './withLoading';
 
 const dangerousHTML = '<div>Dangerously setting inner HTML</div>';
-const makeDanger = () => ({__html: dangerousHTML});
+const makeDanger = () => ({ __html: dangerousHTML });
 
 // const testComponentClass = 'testClass';
-const TestComponent = ({isLoading, ...other}) => (<Chunk isLoading {...other} />);
+const TestComponent = ({ isLoading, ...other }) => (
+	<Chunk isLoading {...other} />
+);
 const TestComponentWithLoading = withLoading(TestComponent);
 
 describe('withLoading', function() {
-	const testComponentWithLoading = shallow(<TestComponentWithLoading isLoading />);
+	const testComponentWithLoading = shallow(
+		<TestComponentWithLoading isLoading />
+	);
 	const testComponentNoChildren = shallow(<TestComponentWithLoading />);
 	const testComponentWithOneChild = shallow(
 		<TestComponentWithLoading>
@@ -44,9 +48,7 @@ describe('withLoading', function() {
 
 	it('can handle dangerouslySetInnerHTML', function() {
 		const dangerousHTMLComponent = shallow(
-			<TestComponentWithLoading
-				dangerouslySetInnerHTML={makeDanger()}
-			/>
+			<TestComponentWithLoading dangerouslySetInnerHTML={makeDanger()} />
 		);
 		expect(dangerousHTMLComponent.html()).toContain(dangerousHTML);
 	});

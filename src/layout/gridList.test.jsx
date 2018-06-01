@@ -137,12 +137,8 @@ let gridList, gridListCustomClassNames, autoheightGridList;
 describe('Static GridList', function() {
 	beforeEach(() => {
 		gridList = shallow(JSX_GridListStatic);
-		gridListCustomClassNames = shallow(
-			JSX_GridListCustomClassNames
-		);
-		autoheightGridList = shallow(
-			JSX_AutoheightGridListStatic
-		);
+		gridListCustomClassNames = shallow(JSX_GridListCustomClassNames);
+		autoheightGridList = shallow(JSX_AutoheightGridListStatic);
 	});
 	afterEach(() => {
 		gridList = null;
@@ -166,7 +162,9 @@ describe('Static GridList', function() {
 	});
 
 	it('sets correct autoHeight with wrap grid class', function() {
-		const autoheightWithWrapGridList = shallow(JSX_AutoheightWithWrapGridListResponsive);
+		const autoheightWithWrapGridList = shallow(
+			JSX_AutoheightWithWrapGridListResponsive
+		);
 		const glUl = autoheightWithWrapGridList.find('ul');
 		expect(glUl.hasClass('flex--wrap')).toBe(true);
 	});

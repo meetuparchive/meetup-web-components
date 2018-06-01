@@ -62,7 +62,11 @@ export const navItems = {
 			{ urlname: '/chicken-scratch', name: 'Chicken Scratch' },
 		],
 	},
-	messages: { link: 'meetup.com/messages', label: 'Messages', unreadMessage: 1 },
+	messages: {
+		link: 'meetup.com/messages',
+		label: 'Messages',
+		unreadMessage: 1,
+	},
 	notifications: {
 		link: 'meetup.com/notifications',
 		label: 'Notifications',

@@ -32,8 +32,10 @@ export class Section extends React.Component {
 			...other
 		} = this.props;
 
-		const hasSeparatorUntilBreakpoint = VALID_BREAKPOINTS[hasSeparatorUntil] || VALID_BREAKPOINTS['all'];
-		const flushBreakpoint = VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
+		const hasSeparatorUntilBreakpoint =
+			VALID_BREAKPOINTS[hasSeparatorUntil] || VALID_BREAKPOINTS['all'];
+		const flushBreakpoint =
+			VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
 
 		const classNames = cx(
 			SECTION_CLASS,
@@ -41,16 +43,13 @@ export class Section extends React.Component {
 				[`${flushBreakpoint}_${SECTION_FLUSH_CLASS} ${SECTION_FLUSH_CLASS}`]: flushUntil,
 				[`${hasSeparatorUntilBreakpoint}_${SECTION_HASSEPARATOR_CLASS} ${SECTION_HASSEPARATOR_CLASS}`]: hasSeparatorUntil,
 				[SECTION_HASSEPARATOR_CLASS]: hasSeparator,
-				'component--isLoading': isLoading
+				'component--isLoading': isLoading,
 			},
 			className
 		);
 
 		return (
-			<section
-				className={classNames}
-				{...other}
-			>
+			<section className={classNames} {...other}>
 				{children}
 			</section>
 		);
@@ -59,19 +58,21 @@ export class Section extends React.Component {
 Section.propTypes = {
 	hasSeparatorUntil: PropTypes.oneOfType([
 		PropTypes.bool,
-		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 	]),
 	noSeparator: PropTypes.oneOfType([
 		PropTypes.bool,
-		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 	]),
-	flushUntil: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))]),
+	flushUntil: PropTypes.oneOfType([
+		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
+	]),
 	isLoading: PropTypes.bool,
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
-		size: PropTypes.string
-	})
+		size: PropTypes.string,
+	}),
 };
 
 export default withLoading(Section);
