@@ -88,6 +88,8 @@ class Checkbox extends React.PureComponent {
 				checked: stateChecked,
 				disabled,
 				[FOCUSED_CHECKBOX_CLASS]: this.state.focused,
+				'checked--disabled': stateChecked && disabled,
+				'checked--focused': this.state.focused && disabled,
 			}
 		);
 

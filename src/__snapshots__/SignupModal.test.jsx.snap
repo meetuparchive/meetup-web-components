@@ -23,7 +23,7 @@ exports[`SignupModal should match the snapshot 1`] = `
         Already a member?
       </div>
       <a
-        className="padding--left-half link display--inlineBlock"
+        className="padding--halfLeft link display--inlineBlock"
         href="meetup.com/login"
       >
         Login
@@ -33,7 +33,7 @@ exports[`SignupModal should match the snapshot 1`] = `
       className="margin--top"
     >
       <a
-        className="meetup-signupModal-facebook button button--fullWidth button--hasHoverShadow padding--left-half text--bold text--white"
+        className="meetup-signupModal-facebook button button--fullWidth button--hasHoverShadow padding--halfLeft text--bold text--white"
         href="facebook.com"
       >
         <Flex>
@@ -57,7 +57,7 @@ exports[`SignupModal should match the snapshot 1`] = `
     </Chunk>
     <Chunk>
       <a
-        className="meetup-signupModal-google button button--bordered button--fullWidth padding--left-half text--bold"
+        className="meetup-signupModal-google button button--bordered button--fullWidth padding--halfLeft text--bold"
         href="google.com"
       >
         <Flex>
@@ -84,7 +84,7 @@ exports[`SignupModal should match the snapshot 1`] = `
     </div>
     <Chunk>
       <a
-        className="meetup-signupModal-email button button--bordered button--fullWidth padding--left-half text--bold"
+        className="meetup-signupModal-email button button--bordered button--fullWidth padding--halfLeft text--bold"
         href="meetup.com/email"
       >
         <Flex>
