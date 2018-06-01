@@ -1,66 +1,51 @@
-/*doc
----
-title: Horizontal Scroll
-name: hscroll
-category: Layout
----
-Applies styles for horizontal scrolling lists.
-
-## Gradient `hscroll`
-Wrap the `hscroll` element with `hscrollGradientWrap` to add
-gradient overlays to both sides of the `hscroll`.
-
-## Variants
-
-A class of `hscroll` is __required__; the following classes are
-optional variants:
-
-Class                       | Description
---------------------------- | ----------------------------------
-`atMedium_hscroll--unclip`  | Allows visible overflow (as inline block list) at medium & up
-`atLarge_hscroll--unclip`  | Allows visible overflow (as inline block list) at large & up
-
-*/
 .hscrollGradientWrap {
 	position: relative;
-	&:before, &:after {
-		content: '';
+
+	&::before,
+	&::after {
+		content: "";
 		display: block;
 		position: absolute;
 		height: 100%;
 		width: $space;
 		top: 0;
 	}
-	&:before {
+
+	&::before {
 		left: 0;
+
 		@include background-image(linear-gradient(to right, $C_contentBG, transparentize($C_contentBG, 1)));
 	}
-	&:after {
+
+	&::after {
 		right: 0;
+
 		@include background-image(linear-gradient(to left, #fff, transparentize(#ffffff, 1)));
 	}
 
 	.stripe--collection & {
-		&:before {
+		&::before {
 			@include background-image(linear-gradient(to right, $C_collectionBG, transparentize($C_collectionBG, 1)));
 		}
-		&:after {
+
+		&::after {
 			@include background-image(linear-gradient(to left, $C_collectionBG, transparentize($C_collectionBG, 1)));
 		}
 	}
 
 	.stripe--inverted {
-		&:before {
+		&::before {
 			@include background-image(linear-gradient(to right, $C_contentBGInverted, transparentize($C_contentBGInverted, 1)));
 		}
-		&:after {
+
+		&::after {
 			@include background-image(linear-gradient(to left, $C_contentBGInverted, transparentize($C_contentBGInverted, 1)));
 		}
 	}
 }
 
 .hscrollGradient--hidden {
-	&:before {
+	&::before {
 		display: none;
 	}
 }
@@ -79,6 +64,7 @@ Class                       | Description
 	@extend %inlineblockList;
 	box-sizing: content-box;
 	white-space: nowrap;
+
 	> li {
 		vertical-align: top;
 	}

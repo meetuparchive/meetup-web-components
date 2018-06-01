@@ -2,4 +2,4 @@
 // shadow for "interactive" elements,
 // like popover or dropdown menus
 $interactiveShadow: 0 2px 2px 0 $C_border,0 3px 1px -2px $C_separator,0 1px 5px 0 $C_border;
-$animate_easeOutQuad: cubic-bezier(0.165, 0.84, 0.44, 1);
+$animate_easeOutQuad: cubic-bezier(0.165, 0.84, 0.44, 1); // stylelint-disable-line number-max-precision

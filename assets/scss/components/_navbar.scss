@@ -3,13 +3,9 @@
 	max-width: 20vw; // allow more space for labels @ medium and up
 }
 
-#globalNav {
-	@include standardBorder('bottom');
+.globalNav {
+	@include standardBorder("bottom");
 	background-color: $C_white;
-}
-
-.padding--left-half {
-	padding-left: $space-half;
 }
 
 .navBar {
@@ -20,7 +16,8 @@
 	}
 }
 
-$zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
+$zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
+
 .aboveFloatingContent {
 	position: relative;
 	z-index: $zindex--aboveFloatingContent + 2;
@@ -50,6 +47,7 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 .logo {
 	margin-bottom: -6px;
 }
+
 .logo--swarm {
 	margin-top: -8px;
 }
@@ -65,6 +63,7 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 	// behave like tabs at mobile sizes,
 	// we have to set an explicit height
 	height: $space-3;
+
 	@include atMediaUp(medium) {
 		height: auto;
 	}
@@ -76,7 +75,8 @@ $zindex--aboveFloatingContent: map-get($zindex-map, 'floating-content') + 1;
 
 $maxLabelSize: 12;
 $minLabelSize: 9;
-$maxScalingBP: $breakpoint-m/1px;
+$maxScalingBP: $breakpoint-m / 1px;
+
 .navItem-label {
 	display: block;
 	color: $C_textSecondary;
@@ -85,10 +85,7 @@ $maxScalingBP: $breakpoint-m/1px;
 	// let wider phones get bigger type
 	// https://fvsch.com/code/css-locks/
 	font-size: $minLabelSize;
-	font-size: calc(
-		#{$minLabelSize}px + (#{$maxLabelSize} - #{$minLabelSize}) *
-			(100vw / #{$maxScalingBP})
-	);
+	font-size: calc(#{$minLabelSize}px + (#{$maxLabelSize} - #{$minLabelSize}) * (100vw / #{$maxScalingBP}));
 
 	// hack to fix vert. alignment of Login and Sign up on FF mobile
 	line-height: 2;
@@ -102,6 +99,7 @@ $maxScalingBP: $breakpoint-m/1px;
 	@include atMediaUp(medium) {
 		margin-top: 0;
 		display: inline-block;
+
 		@include _labelLarge();
 
 		&:hover,
@@ -124,20 +122,24 @@ $maxScalingBP: $breakpoint-m/1px;
 		height: auto;
 	}
 }
+
 .navItemLink--dashboard {
 	@include atMediaUp(medium) {
-		@include standardBorder('right');
+		@include standardBorder("right");
 		padding-right: $space;
+
 		.navItem-label {
 			color: $C_accent !important;
 			font-weight: $W_bold;
 		}
 	}
 }
+
 .navItemLink--createMeetup {
 	@include atMediaUp(medium) {
-		@include standardBorder('right');
+		@include standardBorder("right");
 		padding-right: $space;
+
 		.navItem-label {
 			color: $C_accent !important;
 			font-weight: $W_bold;
@@ -152,7 +154,7 @@ $maxScalingBP: $breakpoint-m/1px;
 	width: $_dotSize;
 	height: $_dotSize;
 	position: absolute;
-	top: -$_dotSize/2;
+	top: -$_dotSize / 2;
 	right: 27%;
 	border: 3px solid $C_white;
 

@@ -1,3 +1,6 @@
+/* stylelint-disable */
+// disabling stylelint because this file is going away,
+// per https://meetup.atlassian.net/browse/WC-235
 //
 // Popover
 //
@@ -14,9 +17,11 @@ $view-minWidth: 320px;
 
 .popover-trigger {
 	cursor: pointer;
+
 	&--active {
 		background: $C_selection;
 		box-shadow: 0 0 0 8px $C_selection;
+
 		&:focus {
 			outline: 0;
 		}
@@ -68,6 +73,7 @@ $view-minWidth: 320px;
 			&:focus {
 				background: transparent;
 			}
+
 			&:hover {
 				background: $C_selection;
 			}
@@ -82,3 +88,4 @@ $view-minWidth: 320px;
 .popover-container--horizontal-right {
 	left: 0;
 }
+/* stylelint-enable */

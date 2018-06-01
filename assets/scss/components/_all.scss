@@ -1,54 +1,56 @@
+//
 // color vars
-@import '../util/color-mappings';
-@import '../util/vars';
+//
+@import "../util/color-mappings";
+@import "../util/vars";
 
 //
 // Layout
 //
-@import 'bounds';
-@import 'chunk';
-@import 'flex';
-@import 'stripe';
-@import 'section';
-@import 'hscroll';
-@import 'gridList';
-@import 'inlineblockList';
+@import "bounds";
+@import "chunk";
+@import "flex";
+@import "stripe";
+@import "section";
+@import "hscroll";
+@import "gridList";
+@import "inlineblockList";
 
 //
 // Animation
 //
-@import '~swarm-animation/src/constants';
-@import '~swarm-animation/src/fade';
+@import "~swarm-animation/src/constants";
+@import "~swarm-animation/src/fade";
 
 //
 // Helpers
 //
-@import '../helpers/popup';
+@import "../helpers/popup";
 
 //
 // UI Components
 //
-@import 'accentHeader';
-@import 'appBadges';
-@import 'accordion';
-@import 'avatar';
-@import 'button';
-@import 'card';
-@import 'calendar';
-@import 'checkbox';
-@import 'dropdown';
-@import 'footer';
-@import 'forms';
-@import 'icon';
-@import 'infoToggle';
-@import 'loading';
-@import 'modal';
-@import 'popover';
-@import 'tabs';
-@import 'toast';
-@import 'togglePill';
-@import 'toggleSwitch';
-@import 'tooltip';
-@import 'typeahead';
-@import 'navbar';
-@import 'signup';
+@import "accentHeader";
+@import "appBadges";
+@import "accordion";
+@import "avatar";
+@import "button";
+@import "card";
+@import "calendar";
+@import "checkbox";
+@import "dropdown";
+@import "footer";
+@import "forms";
+@import "icon";
+@import "infoToggle";
+@import "loading";
+@import "modal";
+@import "popover";
+@import "tabs";
+@import "toast";
+@import "togglePill";
+@import "toggleSwitch";
+@import "tooltip";
+@import "typeahead";
+@import "navbar";
+@import "signup";

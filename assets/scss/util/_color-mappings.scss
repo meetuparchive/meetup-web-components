@@ -1,7 +1,7 @@
 $C_accent: $C_blue;
 
 $C_buttonBGNeutral: $C_coolGrayLightTransp;
-$C_buttonBGNeutral--disabled: transparentize($C_coolGrayLightTransp, .04);
+$C_buttonBGNeutral--disabled: transparentize($C_coolGrayLightTransp, 0.04);
 
 $C_buttonBGNeutralInverted: $C_borderInverted;
 $C_buttonBGNeutralInverted--disabled: transparentize($C_borderInverted, 0.17);
