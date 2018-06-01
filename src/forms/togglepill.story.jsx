@@ -37,17 +37,6 @@ storiesOf('TogglePill', module)
 			Toggle Pill Label
 		</TogglePill>
 	))
-	.add('large', () => (
-		<TogglePill
-			onChange={onChange}
-			id='togglePillId'
-			name='togglePillName'
-			value='toggle-pill'
-			large
-		>
-			Toggle Pill Label
-		</TogglePill>
-	))
 	.add('small', () => (
 		<TogglePill
 			onChange={onChange}

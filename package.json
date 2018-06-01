@@ -12,6 +12,7 @@
     "lint": "yarn run lint:base --fix",
     "lint:base": "eslint . --ext .js,.jsx",
     "lint:airbnb": "eslint --ext .js,.jsx -c .eslintrc.airbnb.js",
+    "lint:prettier": "prettier -l {src,src/**,src/**/**,assets/,assets/**}/*.{js,jsx,scss}",
     "modules:clean": "rm -rf node_modules",
     "postcheckout": "yarn install",
     "postmerge": "yarn install",
