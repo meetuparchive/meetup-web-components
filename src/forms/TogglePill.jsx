@@ -29,6 +29,8 @@ class TogglePill extends React.PureComponent {
 			...other
 		} = this.props;
 
+		delete other.large;
+
 		const inputType = useRadio ? 'radio' : 'checkbox';
 
 		const classNames = cx(
