@@ -41,8 +41,6 @@ class ManualToggleDropdown extends React.PureComponent {
 			<Tooltip
 				manualToggle
 				isActive={this.state.tooltipOpen}
-				minWidth="0"
-				maxWidth="384px"
 				align="right"
 				id="testTooltip"
 				trigger={<Button onClick={this.toggleDropdown} small>Click to toggle</Button>}
@@ -67,8 +65,6 @@ storiesOf("Tooltip", module)
 				}}
 			>
 				<Tooltip
-					minWidth="0"
-					maxWidth="384px"
 					align="right"
 					id="testTooltip"
 					trigger={<Button small>Open</Button>}
@@ -84,8 +80,6 @@ storiesOf("Tooltip", module)
 			<div style={{textAlign: 'center'}}>
 				<Tooltip
 					direction="top"
-					minWidth="0"
-					maxWidth="384px"
 					align="right"
 					id="testTooltip"
 					trigger={<Button small>Open</Button>}
@@ -101,8 +95,6 @@ storiesOf("Tooltip", module)
 			<div style={{textAlign: 'center'}}>
 				<Tooltip
 					isActive
-					minWidth="0"
-					maxWidth="384px"
 					align="center"
 					id="testTooltip"
 					trigger={<Button small>Open</Button>}
@@ -118,8 +110,6 @@ storiesOf("Tooltip", module)
 			<div style={{textAlign: 'center'}}>
 				<Tooltip
 					noPortal
-					minWidth="0"
-					maxWidth="384px"
 					align="right"
 					id="testTooltip"
 					trigger={<Button small>Open</Button>}
@@ -135,8 +125,6 @@ storiesOf("Tooltip", module)
 			<div style={{textAlign: 'center'}}>
 				<Tooltip
 					align="left"
-					minWidth="0"
-					maxWidth="384px"
 					id="testTooltip"
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
@@ -151,8 +139,6 @@ storiesOf("Tooltip", module)
 			<div style={{textAlign: 'center'}}>
 				<Tooltip
 					align="center"
-					minWidth="0"
-					maxWidth="384px"
 					id="testTooltip"
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
@@ -168,8 +154,6 @@ storiesOf("Tooltip", module)
 				<Tooltip
 					isActive
 					offset={{top: 8, left: 16}}
-					minWidth="0"
-					maxWidth="384px"
 					align="right"
 					id="testTooltip"
 					trigger={<Button small>Open</Button>}
@@ -192,8 +176,6 @@ storiesOf("Tooltip", module)
 				<Tooltip
 					isActive
 					withClose
-					minWidth="0"
-					maxWidth="384px"
 					align="center"
 					id="testTooltip"
 					trigger={<Button small>Open</Button>}
@@ -216,8 +198,6 @@ storiesOf("Tooltip", module)
 			<div style={{textAlign: 'left'}}>
 				<Tooltip
 					isActive
-					minWidth="0"
-					maxWidth="384px"
 					align="right"
 					id="testTooltip"
 					trigger={<Button small>Open</Button>}

@@ -74,7 +74,7 @@ Tabs.propTypes = {
 
 		const validChildren = React.Children.map(
 			children,
-			child => child && child.type === TabsTab
+			child => child && child.type.name === 'TabsTab'
 		).every(child => child);
 
 		if (!validChildren) {

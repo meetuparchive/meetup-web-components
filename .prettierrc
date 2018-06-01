@@ -1,5 +1,15 @@
 {
 	"trailingComma": "es5",
+	"useTabs": true,
+	"semi": true,
 	"singleQuote": true,
-	"useTabs": true
+	"overrides": [
+		{
+			"files": "assets/scss/**/*.scss",
+			"options": {
+				"singleQuote": false,
+				"trailingComma": "none"
+			}
+		}
+	]
 }
