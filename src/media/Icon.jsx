@@ -9,8 +9,7 @@ export const SVG_THIN_STYLE = '--small';
 export const ICON_CIRCLED_CLASS = 'svg--circled';
 
 const SMALL_ICON_VARIANT_WHITELIST = VALID_SHAPES.filter(
-	s =>
-		!s.startsWith('external') && !s.startsWith('meetup') // no third party icons // logos use same path for `xs`
+	s => !s.startsWith('external') && !s.startsWith('meetup') // no third party icons // logos use same path for `xs`
 );
 
 /**

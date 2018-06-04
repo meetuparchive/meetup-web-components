@@ -7,6 +7,7 @@ import AccordionPanel, {
 } from './AccordionPanel';
 import Icon from '../media/Icon';
 import ToggleSwitch from '../forms/ToggleSwitch';
+import { textContent1 } from '../../__mocks__/textContentMocks';
 
 describe('AccordionPanel', function() {
 	let panel, openPanel;
@@ -27,15 +28,7 @@ describe('AccordionPanel', function() {
 				onClickCallback={onClickCallback}
 				panelContent={
 					<div className="runningText">
-						<p>
-							Contrary to popular belief, Lorem Ipsum is not simply random text.
-							It has roots in a piece of classical Latin literature from 45 BC,
-							making it over 2000 years old. Richard McClintock, a Latin
-							professor at Hampden-Sydney College in Virginia, looked up one of
-							the more obscure Latin words, consectetur, from a Lorem Ipsum
-							passage, and going through the cites of the word in classical
-							literature, discovered the undoubtable source.
-						</p>
+						<p>{textContent1}</p>
 					</div>
 				}
 			/>
@@ -47,15 +40,7 @@ describe('AccordionPanel', function() {
 				label="First Section"
 				panelContent={
 					<div className="runningText">
-						<p>
-							Contrary to popular belief, Lorem Ipsum is not simply random text.
-							It has roots in a piece of classical Latin literature from 45 BC,
-							making it over 2000 years old. Richard McClintock, a Latin
-							professor at Hampden-Sydney College in Virginia, looked up one of
-							the more obscure Latin words, consectetur, from a Lorem Ipsum
-							passage, and going through the cites of the word in classical
-							literature, discovered the undoubtable source.
-						</p>
+						<p>{textContent1}</p>
 					</div>
 				}
 			/>
@@ -143,15 +128,7 @@ describe('AccordionPanel', function() {
 					indicatorAlign="left"
 					panelContent={
 						<div className="runningText">
-							<p>
-								Contrary to popular belief, Lorem Ipsum is not simply random
-								text. It has roots in a piece of classical Latin literature from
-								45 BC, making it over 2000 years old. Richard McClintock, a
-								Latin professor at Hampden-Sydney College in Virginia, looked up
-								one of the more obscure Latin words, consectetur, from a Lorem
-								Ipsum passage, and going through the cites of the word in
-								classical literature, discovered the undoubtable source.
-							</p>
+							<p>{textContent1}</p>
 						</div>
 					}
 				/>
@@ -184,15 +161,7 @@ describe('AccordionPanel', function() {
 					indicatorIconActive={customIconActive}
 					panelContent={
 						<div className="runningText">
-							<p>
-								Contrary to popular belief, Lorem Ipsum is not simply random
-								text. It has roots in a piece of classical Latin literature from
-								45 BC, making it over 2000 years old. Richard McClintock, a
-								Latin professor at Hampden-Sydney College in Virginia, looked up
-								one of the more obscure Latin words, consectetur, from a Lorem
-								Ipsum passage, and going through the cites of the word in
-								classical literature, discovered the undoubtable source.
-							</p>
+							<p>{textContent1}</p>
 						</div>
 					}
 				/>
@@ -223,15 +192,7 @@ describe('AccordionPanel', function() {
 					indicatorAlign="left"
 					panelContent={
 						<div className="runningText">
-							<p>
-								Contrary to popular belief, Lorem Ipsum is not simply random
-								text. It has roots in a piece of classical Latin literature from
-								45 BC, making it over 2000 years old. Richard McClintock, a
-								Latin professor at Hampden-Sydney College in Virginia, looked up
-								one of the more obscure Latin words, consectetur, from a Lorem
-								Ipsum passage, and going through the cites of the word in
-								classical literature, discovered the undoubtable source.
-							</p>
+							<p>{textContent1}</p>
 						</div>
 					}
 				/>
@@ -268,15 +229,7 @@ describe('AccordionPanel', function() {
 					indicatorAlign="left"
 					panelContent={
 						<div className="runningText">
-							<p>
-								Contrary to popular belief, Lorem Ipsum is not simply random
-								text. It has roots in a piece of classical Latin literature from
-								45 BC, making it over 2000 years old. Richard McClintock, a
-								Latin professor at Hampden-Sydney College in Virginia, looked up
-								one of the more obscure Latin words, consectetur, from a Lorem
-								Ipsum passage, and going through the cites of the word in
-								classical literature, discovered the undoubtable source.
-							</p>
+							<p>{textContent1}</p>
 						</div>
 					}
 				/>
