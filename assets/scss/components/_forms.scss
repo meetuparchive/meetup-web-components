@@ -81,16 +81,23 @@ input:focus + .icon--field {
 //
 // Reset field styles
 //
-.field--reset,
-.field--reset:hover,
-.field--reset:focus,
-.field--reset:active {
+// We need to disable stylelint's `selector-no-qualifying-type`
+// rule because we need to beat the specificity of the base form
+// styles coming from swarm-sasstools.
+//
+/* stylelint-disable selector-no-qualifying-type */
+select.field--reset,
+input.field--reset,
+input.field--reset:hover,
+input.field--reset:focus,
+input.field--reset:active {
 	@include resetFieldStyles();
 
 	.inverted & {
 		@include resetFieldStyles();
 	}
 }
+/* stylelint-enable */
 
 //
 // Styles for a field with an icon
