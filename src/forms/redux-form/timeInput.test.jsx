@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 import ReduxFormTimeInput from './TimeInput';
 
 describe('redux-form TimeInput', function() {
-
 	// props given in the structure that
 	// redux form would
 	const reduxFormProps = {
@@ -11,11 +10,11 @@ describe('redux-form TimeInput', function() {
 			label: 'What time is it?',
 			name: 'partytime',
 			value: '22:00',
-			required: true
+			required: true,
 		},
 		meta: {
-			error: 'Now approaching midnight!!?'
-		}
+			error: 'Now approaching midnight!!?',
+		},
 	};
 
 	it('renders a TimeInput component with expected attributes from mock data', () => {

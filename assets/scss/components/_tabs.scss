@@ -43,8 +43,8 @@ $tabBorderWidth: 3px;
 	}
 
 	.inverted & {
-		color: $C_textPrimaryInverted;
 		border-bottom-color: $C_textPrimaryInverted;
+		color: $C_textPrimaryInverted;
 
 		&:hover {
 			color: $C_textSecondaryInverted;
@@ -62,8 +62,8 @@ $tabBorderWidth: 3px;
 }
 
 .tabs-tab--selected {
-	box-shadow: none;
 	border-bottom: $tabBorderWidth solid $C_accent;
+	box-shadow: none;
 	color: $C_accent;
 	font-weight: $W_medium;
 

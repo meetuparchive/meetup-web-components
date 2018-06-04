@@ -26,12 +26,12 @@ const Loading = ({
 		{
 			[`${LOADING_CLASS}--cover`]: isCover,
 			[`${LOADING_CLASS}--fullCover`]: fullCover,
-			[`${LOADING_CLASS}--partialCover`]: partialCover
+			[`${LOADING_CLASS}--partialCover`]: partialCover,
 		},
 		className
 	);
 
-	return(
+	return (
 		<div
 			className={classNames}
 			style={
@@ -45,12 +45,9 @@ const Loading = ({
 				role="progressbar"
 				className={LOADING_SHAPE_CLASS}
 				viewBox="0 0 50 50"
-				style={{width: size}}
+				style={{ width: size }}
 			>
-				<title
-					id="title"
-					className="visibility--a11yHide"
-				>
+				<title id="title" className="visibility--a11yHide">
 					Loading
 				</title>
 				<circle
@@ -71,7 +68,7 @@ const Loading = ({
 Loading.defaultProps = {
 	color: C_COOLGRAYMEDIUM,
 	scrimColor: 'rgba(255,255,255, .87)',
-	size: `${MEDIA_SIZES.l}px`
+	size: `${MEDIA_SIZES.l}px`,
 };
 
 Loading.propTypes = {
@@ -79,7 +76,7 @@ Loading.propTypes = {
 	fullCover: PropTypes.bool,
 	partialCover: PropTypes.bool,
 	scrimColor: PropTypes.string,
-	size: PropTypes.string
+	size: PropTypes.string,
 };
 
 export default Loading;

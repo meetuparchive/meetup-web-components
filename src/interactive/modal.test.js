@@ -81,7 +81,9 @@ describe('Modal', () => {
 
 	it('should not render a close button', () => {
 		const modal = TestUtils.renderIntoDocument(
-			<Modal onDismiss={e => {}} closeArea={false}>{content} <a href="#">focusable element</a></Modal>
+			<Modal onDismiss={e => {}} closeArea={false}>
+				{content} <a href="#">focusable element</a>
+			</Modal>
 		);
 		const closeButtons = TestUtils.scryRenderedDOMComponentsWithClass(
 			modal,

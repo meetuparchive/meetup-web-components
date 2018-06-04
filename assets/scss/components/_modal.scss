@@ -31,18 +31,19 @@ $modal-width: 440px;
 
 .view {
 	@include flexParent("column", false);
-	box-sizing: border-box;
 	background: white;
-	width: 100%;
+	box-sizing: border-box;
 	min-height: 100vh;
-	position: relative;
 	overflow-x: hidden;
+	position: relative;
+	width: 100%;
 }
 
 // MODAL VIEW SNAP
 // full at narrow widths, dialog at wide widths
 .view--modalSnap {
 	@include modal-full();
+	z-index: map-get($zindex-map, "modal");
 	@include atMediaUp(medium) {
 		@include modal-dialog();
 
@@ -50,7 +51,6 @@ $modal-width: 440px;
 			background-color: $C_collectionBG;
 		}
 	}
-	z-index: map-get($zindex-map, "modal");
 }
 
 .view--modal {
@@ -97,17 +97,17 @@ $modal-width: 440px;
 
 .overlayShim {
 	@include fullScreenAbsolute();
-	text-align: center;
 	background-color: rgba(0, 0, 0, 0.7);
+	text-align: center;
 	z-index: map-get($zindex-map, shade);
 }
 
 .overlayShim-content {
-	position: fixed;
 	bottom: 4em;
-	z-index: map-get($zindex-map, shade-content);
 	margin: auto;
+	position: fixed;
 	width: 100%;
+	z-index: map-get($zindex-map, shade-content);
 }
 
 .overlayShim--fixed {

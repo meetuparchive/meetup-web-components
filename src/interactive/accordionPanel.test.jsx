@@ -1,19 +1,20 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import AccordionPanel, { ACTIVEPANEL_CLASS, ACCORDIONPANEL_CONTENT_CLASS } from './AccordionPanel';
+import AccordionPanel, {
+	ACTIVEPANEL_CLASS,
+	ACCORDIONPANEL_CONTENT_CLASS,
+} from './AccordionPanel';
 import Icon from '../media/Icon';
 import ToggleSwitch from '../forms/ToggleSwitch';
 
 describe('AccordionPanel', function() {
-	let panel,
-		openPanel;
+	let panel, openPanel;
 
 	const customIcon = 'plus';
 	const customIconActive = 'minus';
 
-	let panelStateCallback,
-		onClickCallback;
+	let panelStateCallback, onClickCallback;
 
 	beforeEach(() => {
 		panelStateCallback = jest.fn();
@@ -21,25 +22,43 @@ describe('AccordionPanel', function() {
 
 		panel = shallow(
 			<AccordionPanel
-				label='First Section'
+				label="First Section"
 				setClickedPanel={panelStateCallback}
 				onClickCallback={onClickCallback}
 				panelContent={
-					<div className='runningText'>
-						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+					<div className="runningText">
+						<p>
+							Contrary to popular belief, Lorem Ipsum is not simply random text.
+							It has roots in a piece of classical Latin literature from 45 BC,
+							making it over 2000 years old. Richard McClintock, a Latin
+							professor at Hampden-Sydney College in Virginia, looked up one of
+							the more obscure Latin words, consectetur, from a Lorem Ipsum
+							passage, and going through the cites of the word in classical
+							literature, discovered the undoubtable source.
+						</p>
 					</div>
-				} />
+				}
+			/>
 		);
 
 		openPanel = shallow(
 			<AccordionPanel
 				isOpen
-				label='First Section'
+				label="First Section"
 				panelContent={
-					<div className='runningText'>
-						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+					<div className="runningText">
+						<p>
+							Contrary to popular belief, Lorem Ipsum is not simply random text.
+							It has roots in a piece of classical Latin literature from 45 BC,
+							making it over 2000 years old. Richard McClintock, a Latin
+							professor at Hampden-Sydney College in Virginia, looked up one of
+							the more obscure Latin words, consectetur, from a Lorem Ipsum
+							passage, and going through the cites of the word in classical
+							literature, discovered the undoubtable source.
+						</p>
 					</div>
-				} />
+				}
+			/>
 		);
 	});
 
@@ -51,7 +70,6 @@ describe('AccordionPanel', function() {
 	});
 
 	describe('Panel basic behavior', () => {
-
 		it('exists and renders with mock props', () => {
 			expect(panel).toMatchSnapshot();
 		});
@@ -68,8 +86,16 @@ describe('AccordionPanel', function() {
 			const getPanelStyle = panel.instance().getPanelStyle;
 
 			expect(panelStateCallback).not.toHaveBeenCalled();
-			accPanel.simulate('click', { target: accPanel, preventDefault: jest.fn(), stopPropagation: jest.fn() });
-			expect(panelStateCallback).toHaveBeenCalledWith(panel.prop('clickId'), !isOpen, getPanelStyle(isOpen, panelContent));
+			accPanel.simulate('click', {
+				target: accPanel,
+				preventDefault: jest.fn(),
+				stopPropagation: jest.fn(),
+			});
+			expect(panelStateCallback).toHaveBeenCalledWith(
+				panel.prop('clickId'),
+				!isOpen,
+				getPanelStyle(isOpen, panelContent)
+			);
 		});
 
 		it('calls setPanelState callback onKeyUp', function() {
@@ -79,22 +105,29 @@ describe('AccordionPanel', function() {
 			const getPanelStyle = panel.instance().getPanelStyle;
 
 			expect(panelStateCallback).not.toHaveBeenCalled();
-			accPanel.simulate('keyUp', {key: 'Enter', preventDefault: jest.fn()});
-			expect(panelStateCallback).toHaveBeenCalledWith(panel.prop('clickId'), !isOpen, getPanelStyle(isOpen, panelContent));
+			accPanel.simulate('keyUp', { key: 'Enter', preventDefault: jest.fn() });
+			expect(panelStateCallback).toHaveBeenCalledWith(
+				panel.prop('clickId'),
+				!isOpen,
+				getPanelStyle(isOpen, panelContent)
+			);
 		});
 
 		it('calls onClickCallback onClick', function() {
 			const accPanel = panel.find('[role="tab"]');
 			const isOpen = panel.prop('isOpen');
-			const fakeEvent = { target: panel, preventDefault: jest.fn(), stopPropagation: jest.fn() };
+			const fakeEvent = {
+				target: panel,
+				preventDefault: jest.fn(),
+				stopPropagation: jest.fn(),
+			};
 
 			expect(onClickCallback).not.toHaveBeenCalled();
 			accPanel.simulate('click', fakeEvent);
 			expect(onClickCallback).toHaveBeenCalledWith(fakeEvent, !isOpen);
 		});
 
-
-		it('renders an icon component', function(){
+		it('renders an icon component', function() {
 			const node = panel.find(Icon);
 			expect(node.length).toBe(1);
 		});
@@ -106,13 +139,22 @@ describe('AccordionPanel', function() {
 		beforeEach(() => {
 			panelLeftIcon = mount(
 				<AccordionPanel
-					label='First Section'
-					indicatorAlign='left'
+					label="First Section"
+					indicatorAlign="left"
 					panelContent={
-						<div className='runningText'>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+						<div className="runningText">
+							<p>
+								Contrary to popular belief, Lorem Ipsum is not simply random
+								text. It has roots in a piece of classical Latin literature from
+								45 BC, making it over 2000 years old. Richard McClintock, a
+								Latin professor at Hampden-Sydney College in Virginia, looked up
+								one of the more obscure Latin words, consectetur, from a Lorem
+								Ipsum passage, and going through the cites of the word in
+								classical literature, discovered the undoubtable source.
+							</p>
 						</div>
-					} />
+					}
+				/>
 			);
 		});
 
@@ -131,21 +173,29 @@ describe('AccordionPanel', function() {
 	});
 
 	describe('Panel with custom icon', () => {
-
 		let panelCustomIcon;
 
 		beforeEach(() => {
 			panelCustomIcon = shallow(
 				<AccordionPanel
-					label='First Section'
-					indicatorAlign='left'
+					label="First Section"
+					indicatorAlign="left"
 					indicatorIcon={customIcon}
 					indicatorIconActive={customIconActive}
 					panelContent={
-						<div className='runningText'>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+						<div className="runningText">
+							<p>
+								Contrary to popular belief, Lorem Ipsum is not simply random
+								text. It has roots in a piece of classical Latin literature from
+								45 BC, making it over 2000 years old. Richard McClintock, a
+								Latin professor at Hampden-Sydney College in Virginia, looked up
+								one of the more obscure Latin words, consectetur, from a Lorem
+								Ipsum passage, and going through the cites of the word in
+								classical literature, discovered the undoubtable source.
+							</p>
 						</div>
-					} />
+					}
+				/>
 			);
 		});
 
@@ -153,28 +203,38 @@ describe('AccordionPanel', function() {
 			panelCustomIcon = null;
 		});
 
-		it('exists and renders a custom icon', function(){
+		it('exists and renders a custom icon', function() {
 			expect(panelCustomIcon).toMatchSnapshot();
 		});
 	});
 
 	describe('Panel with toggle switch', () => {
-		let panelSwitch,
-			handleToggleSpy;
+		let panelSwitch, handleToggleSpy;
 
 		beforeEach(() => {
-			handleToggleSpy = jest.spyOn(AccordionPanel.prototype, '_handleToggle').mockImplementation(() => {});
+			handleToggleSpy = jest
+				.spyOn(AccordionPanel.prototype, '_handleToggle')
+				.mockImplementation(() => {});
 
 			panelSwitch = mount(
 				<AccordionPanel
 					indicatorSwitch
-					label='First Section'
-					indicatorAlign='left'
+					label="First Section"
+					indicatorAlign="left"
 					panelContent={
-						<div className='runningText'>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+						<div className="runningText">
+							<p>
+								Contrary to popular belief, Lorem Ipsum is not simply random
+								text. It has roots in a piece of classical Latin literature from
+								45 BC, making it over 2000 years old. Richard McClintock, a
+								Latin professor at Hampden-Sydney College in Virginia, looked up
+								one of the more obscure Latin words, consectetur, from a Lorem
+								Ipsum passage, and going through the cites of the word in
+								classical literature, discovered the undoubtable source.
+							</p>
 						</div>
-					} />
+					}
+				/>
 			);
 		});
 
@@ -183,7 +243,7 @@ describe('AccordionPanel', function() {
 			handleToggleSpy.mockRestore();
 		});
 
-		it('exists and renders a toggle switch', function(){
+		it('exists and renders a toggle switch', function() {
 			expect(panelSwitch).toMatchSnapshot();
 		});
 
@@ -196,18 +256,30 @@ describe('AccordionPanel', function() {
 
 		it('calls custom function and does not call handleToggle when toggle switch is clicked and onToggleClick is specified', function() {
 			const onToggleClickCallback = jest.fn();
-			const onToggleClickSpy = jest.spyOn(AccordionPanel.prototype, 'onToggleClick');
+			const onToggleClickSpy = jest.spyOn(
+				AccordionPanel.prototype,
+				'onToggleClick'
+			);
 			const panelOnToggleClick = mount(
 				<AccordionPanel
 					indicatorSwitch
 					onToggleClick={onToggleClickCallback}
-					label='First Section'
-					indicatorAlign='left'
+					label="First Section"
+					indicatorAlign="left"
 					panelContent={
-						<div className='runningText'>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+						<div className="runningText">
+							<p>
+								Contrary to popular belief, Lorem Ipsum is not simply random
+								text. It has roots in a piece of classical Latin literature from
+								45 BC, making it over 2000 years old. Richard McClintock, a
+								Latin professor at Hampden-Sydney College in Virginia, looked up
+								one of the more obscure Latin words, consectetur, from a Lorem
+								Ipsum passage, and going through the cites of the word in
+								classical literature, discovered the undoubtable source.
+							</p>
 						</div>
-					} />
+					}
+				/>
 			);
 			const switchNode = panelOnToggleClick.find(ToggleSwitch);
 			expect(onToggleClickSpy).not.toHaveBeenCalled();
@@ -215,6 +287,5 @@ describe('AccordionPanel', function() {
 			expect(handleToggleSpy).not.toHaveBeenCalled();
 			expect(onToggleClickSpy).toHaveBeenCalled();
 		});
-
 	});
 });

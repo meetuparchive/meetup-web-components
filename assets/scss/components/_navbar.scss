@@ -26,9 +26,9 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 .navItem {
 	@include color-svg($C_textSecondary);
 	color: $C_textPrimary;
-	text-align: center;
-	position: relative;
 	padding-left: 0;
+	position: relative;
+	text-align: center;
 }
 
 .circular {
@@ -38,8 +38,8 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 .proDashboard-noLogo {
 	background-color: $C_coolGrayLight;
 	height: $space-and-half;
-	width: $space-and-half;
 	line-height: $space-and-half;
+	width: $space-and-half;
 }
 
 // use negative margin to pull in some
@@ -78,8 +78,8 @@ $minLabelSize: 9;
 $maxScalingBP: $breakpoint-m / 1px;
 
 .navItem-label {
-	display: block;
 	color: $C_textSecondary;
+	display: block;
 
 	// Using "CSS locks" technique to
 	// let wider phones get bigger type
@@ -97,10 +97,10 @@ $maxScalingBP: $breakpoint-m / 1px;
 	max-width: 19vw;
 
 	@include atMediaUp(medium) {
-		margin-top: 0;
-		display: inline-block;
 
 		@include _labelLarge();
+		display: inline-block;
+		margin-top: 0;
 
 		&:hover,
 		&:active {
@@ -113,9 +113,9 @@ $maxScalingBP: $breakpoint-m / 1px;
 	align-items: center;
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 	justify-content: space-between;
 	margin: 0;
-	height: 100%;
 
 	@include atMediaUp(medium) {
 		display: inline;
@@ -150,32 +150,32 @@ $maxScalingBP: $breakpoint-m / 1px;
 .counterBadge {
 	$_dotSize: $space-half;
 	background-color: $C_teal;
+	border: 3px solid $C_white;
 	border-radius: 999px;
-	width: $_dotSize;
 	height: $_dotSize;
 	position: absolute;
-	top: -$_dotSize / 2;
 	right: 27%;
-	border: 3px solid $C_white;
-
-	.navItem--messages & {
-		right: 17%;
-	}
+	top: -$_dotSize / 2;
+	width: $_dotSize;
 
 	@include atMediaUp(medium) {
 		@include transform(translate(-2px, -6px));
+		border-width: 0;
 		display: inline-block;
 		margin-left: $space-quarter;
 		position: static;
-		border-width: 0;
+	}
+
+	.navItem--messages & {
+		right: 17%;
 	}
 }
 
 .notifications--empty {
 	@include color-svg($C_textTertiary);
-	color: $C_textSecondary;
 	background: $C_collectionBG;
 	border-radius: $defaultRadius * 2;
+	color: $C_textSecondary;
 	padding: $space 0;
 }
 
@@ -191,14 +191,14 @@ $maxScalingBP: $breakpoint-m / 1px;
 
 	&:hover,
 	&:focus {
-		color: $C_textSecondary;
 		background: $C_highlight;
+		color: $C_textSecondary;
 	}
 }
 
 .notification-image {
-	width: $media-l;
 	height: $media-l;
+	width: $media-l;
 }
 
 .notification-time {
@@ -212,7 +212,7 @@ $maxScalingBP: $breakpoint-m / 1px;
 
 .profileDropdown-content {
 	.list-item {
-		padding-top: $space-half !important;
 		padding-bottom: $space-half !important;
+		padding-top: $space-half !important;
 	}
 }

@@ -34,10 +34,9 @@ export class NumberInput extends React.Component {
 		const step = new Number(this.props.step);
 		let newValue = isIncreasing ? currentVal + step : currentVal - step;
 
-		if (newValue > this.props.max){
+		if (newValue > this.props.max) {
 			newValue = this.props.max;
-		}
-		else if (newValue < this.props.min){
+		} else if (newValue < this.props.min) {
 			newValue = this.props.min;
 		}
 
@@ -45,14 +44,20 @@ export class NumberInput extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (this.props.onChange && (this.props.value !== nextProps.value) && (nextProps.value !== this.state.value)) {
-			this.setState(() => ({value: nextProps.value }));
+		if (
+			this.props.onChange &&
+			this.props.value !== nextProps.value &&
+			nextProps.value !== this.state.value
+		) {
+			this.setState(() => ({ value: nextProps.value }));
 		}
 	}
 
 	componentWillUpdate(nextProps, nextState) {
 		if (this.props.onChange && nextState.value !== this.state.value) {
-			this.props.onChange({ target: { name: nextProps.name, value: nextState.value }});
+			this.props.onChange({
+				target: { name: nextProps.name, value: nextState.value },
+			});
 		}
 	}
 
@@ -60,7 +65,7 @@ export class NumberInput extends React.Component {
 		const formControls = [
 			this.fauxInputEl,
 			this.decrementBtnEl,
-			this.incrementBtnEl
+			this.incrementBtnEl,
 		];
 		if (formControls.every(c => c !== document.activeElement)) {
 			this.fauxInputEl.classList.remove(FOCUSED_INPUT_CLASS);
@@ -119,59 +124,47 @@ export class NumberInput extends React.Component {
 		} = this.props;
 
 		const classNames = {
-			field: cx(
-				'field--reset',
-				{ 'field--error': error },
-				className
-			),
-			fauxInput: cx(
-				FAUX_INPUT_CLASS,
-				{
-					disabled,
-					error
-				}
-			),
+			field: cx('field--reset', { 'field--error': error }, className),
+			fauxInput: cx(FAUX_INPUT_CLASS, {
+				disabled,
+				error,
+			}),
 			label: cx(
 				'label--field',
 				{
 					'label--disabled': disabled,
 					'label--required': required,
-					'flush--bottom': helperText
+					'flush--bottom': helperText,
 				},
 				labelClassName
 			),
-			helperText: cx(
-				'helperTextContainer',
-				{ required, disabled }
-			),
-			incrementBtn: cx(
-				'button--reset',
-				INCREMENT_BTN_CLASS
-			),
-			decrementBtn: cx(
-				'button--reset',
-				DECREMENT_BTN_CLASS
-			),
+			helperText: cx('helperTextContainer', { required, disabled }),
+			incrementBtn: cx('button--reset', INCREMENT_BTN_CLASS),
+			decrementBtn: cx('button--reset', DECREMENT_BTN_CLASS),
 		};
 
 		return (
 			<div>
-				{label &&
-					<label className={classNames.label} htmlFor={id} data-requiredtext={required && requiredText}>
+				{label && (
+					<label
+						className={classNames.label}
+						htmlFor={id}
+						data-requiredtext={required && requiredText}
+					>
 						{label}
 					</label>
-				}
-				{helperText &&
-					<div className={classNames.helperText}>
-						{helperText}
-					</div>
-				}
+				)}
+				{helperText && (
+					<div className={classNames.helperText}>{helperText}</div>
+				)}
 				<div
 					className={classNames.fauxInput}
-					ref={ el => this.fauxInputEl = el }>
-					<Flex align='center'>
+					ref={el => (this.fauxInputEl = el)}
+				>
+					<Flex align="center">
 						<FlexItem>
-							<input type='number'
+							<input
+								type="number"
 								id={id}
 								name={name}
 								max={max}
@@ -197,8 +190,9 @@ export class NumberInput extends React.Component {
 								onBlur={this.onBlur}
 								onClick={this.decrementAction}
 								onFocus={this.onFocus}
-								ref={ el => this.decrementBtnEl = el }>
-								<Icon shape='minus' size='xs' />
+								ref={el => (this.decrementBtnEl = el)}
+							>
+								<Icon shape="minus" size="xs" />
 							</Button>
 						</FlexItem>
 
@@ -210,8 +204,9 @@ export class NumberInput extends React.Component {
 								onBlur={this.onBlur}
 								onClick={this.incrementAction}
 								onFocus={this.onFocus}
-								ref={ el => this.incrementBtnEl = el }>
-								<Icon shape='plus' size='xs' />
+								ref={el => (this.incrementBtnEl = el)}
+							>
+								<Icon shape="plus" size="xs" />
 							</Button>
 						</FlexItem>
 
@@ -231,14 +226,8 @@ NumberInput.defaultProps = {
 
 NumberInput.propTypes = {
 	id: PropTypes.string,
-	error: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
-	label: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	labelClassName: PropTypes.string,
 	max: PropTypes.number,
 	min: PropTypes.number,
@@ -246,19 +235,10 @@ NumberInput.propTypes = {
 	onChange: PropTypes.func,
 	step: PropTypes.number,
 	disabled: PropTypes.bool,
-	value: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-	]),
-	helperText: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	required: PropTypes.bool,
-	requiredText: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	])
+	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 export default withErrorList(NumberInput);
