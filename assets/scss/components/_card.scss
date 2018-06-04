@@ -42,15 +42,15 @@ $cardFlushProps: (margin-left, margin-right);
 
 .card {
 	@include customPropertyValue(padding, var(--responsiveSpace) var(--responsiveSpace) 0, $space $space 0);
+	background: $C_contentBG;
+	background-clip: padding-box;
+	background-size: cover;
 	border: 0.5px solid $C_border;
+	border-radius: $largeRadius;
 	box-sizing: border-box;
 	display: block;
-	background: $C_contentBG;
-	border-radius: $largeRadius;
-	position: relative;
-	background-size: cover;
-	background-clip: padding-box;
 	min-height: $block-4;
+	position: relative;
 }
 
 .card--initialHeight {

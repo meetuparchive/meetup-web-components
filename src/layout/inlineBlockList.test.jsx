@@ -24,9 +24,7 @@ let inlineblockList, inlineblockListSeparated;
 
 describe('InlineBlockList', function() {
 	beforeEach(() => {
-		inlineblockList = shallow(
-			<InlineBlockList items={ITEMS} />
-		);
+		inlineblockList = shallow(<InlineBlockList items={ITEMS} />);
 		inlineblockListSeparated = shallow(
 			<InlineBlockList items={ITEMS} separator={SEPARATOR} />
 		);
@@ -41,7 +39,11 @@ describe('InlineBlockList', function() {
 	});
 
 	it(`should have a class of '${INLINEBLOCKLIST_SEPERATED_CLASS}' when a separator is defined`, () => {
-		expect(inlineblockListSeparated.find('ul').hasClass(INLINEBLOCKLIST_SEPERATED_CLASS)).toBe(true);
+		expect(
+			inlineblockListSeparated
+				.find('ul')
+				.hasClass(INLINEBLOCKLIST_SEPERATED_CLASS)
+		).toBe(true);
 	});
 
 	it('should set the data-separator attribute on item elements when a separator is defined', () => {

@@ -100,7 +100,7 @@
     "jest": "20.0.4",
     "lint-staged": "7.0.0",
     "meetup-web-mocks": "1.0.242",
-    "mwp-config": "16.0.2418",
+    "mwp-config": "16.0.2422",
     "mwp-i18n": "16.0.2418",
     "node-sass": "4.5.3",
     "npm-run-all": "4.0.2",

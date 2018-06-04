@@ -20,7 +20,10 @@ function FormSection({
 	isLoading,
 }) {
 	return (
-		<Section hasSeparator={withSeparator} className={cx(className, 'border--none')}>
+		<Section
+			hasSeparator={withSeparator}
+			className={cx(className, 'border--none')}
+		>
 			<Card
 				initialHeight
 				flushUntil="large"
@@ -43,8 +46,8 @@ FormSection.propTypes = {
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
-		size: PropTypes.string
-	})
+		size: PropTypes.string,
+	}),
 };
 
 export default FormSection;

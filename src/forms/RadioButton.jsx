@@ -16,9 +16,9 @@ const RadioButton = ({ label, className, ...inputProps }) => {
 			'display--flex flex--alignCenter flex--center align--center fauxToggle fauxToggle--radio',
 			{
 				checked: inputProps.checked,
-				disabled: inputProps.disabled
+				disabled: inputProps.disabled,
 			}
-		)
+		),
 	};
 
 	return (
@@ -40,7 +40,7 @@ const RadioButton = ({ label, className, ...inputProps }) => {
 					<span
 						className={cx({
 							'text--hint': inputProps.disabled,
-							'text--bold': inputProps.checked
+							'text--bold': inputProps.checked,
 						})}
 					>
 						{label}
@@ -55,7 +55,7 @@ RadioButton.displayName = 'RadioButton';
 
 RadioButton.propTypes = {
 	label: PropTypes.string.isRequired,
-	className: PropTypes.string
+	className: PropTypes.string,
 };
 
 export default RadioButton;

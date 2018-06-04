@@ -12,32 +12,44 @@ import Section from '../../layout/Section';
  */
 class TestComponent extends React.Component {
 	render() {
-		const {
-			media
-		} = this.props;
+		const { media } = this.props;
 
 		const stripeStyle = {
-			height: '100%'
+			height: '100%',
 		};
 
 		return (
 			<Stripe inverted style={stripeStyle}>
-				<Bounds className='padding--left padding--right'>
-					<Section className='runningText'>
-						<h1 className='text--display1'>Viewport-aware props</h1>
+				<Bounds className="padding--left padding--right">
+					<Section className="runningText">
+						<h1 className="text--display1">Viewport-aware props</h1>
 						<p>
-							By wrapping <code>TestComponent</code> with <code className='text--red'>withMatchMedia</code>,
-							we can use the breakpoint props it provides to conditionally render elements based on viewport size.
+							By wrapping <code>TestComponent</code> with{' '}
+							<code className="text--red">withMatchMedia</code>, we can use the
+							breakpoint props it provides to conditionally render elements
+							based on viewport size.
 						</p>
-						<p className='text--bold'>Resize your browser to see it in action.</p>
+						<p className="text--bold">
+							Resize your browser to see it in action.
+						</p>
 					</Section>
-					<Section className='runningText border--none'>
-						<h1 className='text--display3 text--secondary'><code>True</code> props:</h1>
-						<ul className='text--big text--mono'>
-							{media.isAtSmallUp && <li className='text--teal'>media.isAtSmallUp</li>}
-							{media.isAtMediumUp && <li className='text--yellow'>media.isAtMediumUp</li>}
-							{media.isAtLargeUp && <li className='text--pink'>media.isAtLargeUp</li>}
-							{media.isAtHugeUp && <li className='text--red'>media.isAtHugeUp</li>}
+					<Section className="runningText border--none">
+						<h1 className="text--display3 text--secondary">
+							<code>True</code> props:
+						</h1>
+						<ul className="text--big text--mono">
+							{media.isAtSmallUp && (
+								<li className="text--teal">media.isAtSmallUp</li>
+							)}
+							{media.isAtMediumUp && (
+								<li className="text--yellow">media.isAtMediumUp</li>
+							)}
+							{media.isAtLargeUp && (
+								<li className="text--pink">media.isAtLargeUp</li>
+							)}
+							{media.isAtHugeUp && (
+								<li className="text--red">media.isAtHugeUp</li>
+							)}
 						</ul>
 					</Section>
 				</Bounds>
@@ -47,9 +59,11 @@ class TestComponent extends React.Component {
 }
 const TestComponentWithMatchMedia = withMatchMedia(TestComponent);
 
-storiesOf('withMatchMedia', module)
-	.addWithInfo(
-		'Test component using provided media props',
-		'Basic example of match media component usage.', () =>
-		<TestComponentWithMatchMedia />
-	);
+storiesOf(
+	'withMatchMedia',
+	module
+).addWithInfo(
+	'Test component using provided media props',
+	'Basic example of match media component usage.',
+	() => <TestComponentWithMatchMedia />
+);

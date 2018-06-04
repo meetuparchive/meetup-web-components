@@ -6,13 +6,13 @@
 // Input icons
 //
 .icon--field {
-	display: flex !important;
 	align-content: center;
-	position: absolute;
-	top: 0;
 	bottom: 0;
+	display: flex !important;
 	left: 0;
 	padding: $space;
+	position: absolute;
+	top: 0;
 }
 
 input:focus + .icon--field {
@@ -23,8 +23,8 @@ input:focus + .icon--field {
 // Labels
 //
 .label--field {
-	padding-bottom: $space-quarter;
 	display: inline-block;
+	padding-bottom: $space-quarter;
 }
 
 .label--minor {
@@ -32,8 +32,8 @@ input:focus + .icon--field {
 }
 
 .label--required::after {
-	content: attr(data-requiredtext);
 	color: $C_textSecondary;
+	content: attr(data-requiredtext);
 	// font-size: $font-size-tiny;
 	font-weight: $W_normal;
 	line-height: 0;
@@ -103,8 +103,8 @@ input.field--reset:active {
 // Styles for a field with an icon
 //
 .field--withIcon {
-	background-repeat: no-repeat;
 	background-position: $space center;
+	background-repeat: no-repeat;
 }
 
 //
@@ -251,13 +251,13 @@ $C_toggleHighlight: $C_blue;
 // Select input
 //
 .select--reset {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 	-webkit-user-select: none;
 	-moz-user-select: -moz-none;
 	-ms-user-select: none;
 	user-select: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
 
 	&::-ms-expand {
 		display: none;
@@ -275,8 +275,8 @@ $C_toggleHighlight: $C_blue;
 
 .select-customArrow {
 	bottom: $space; // 4px is for margin between forms
-	position: absolute;
 	pointer-events: none;
+	position: absolute;
 	right: $space;
 }
 

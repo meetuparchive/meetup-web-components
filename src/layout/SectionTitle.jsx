@@ -11,46 +11,29 @@ export const SECTIONTITLE_CLASS = 'sectionTitle';
  */
 class SectionTitle extends React.Component {
 	render() {
-		const {
-			action,
-			className,
-			title,
-			...other
-		} = this.props;
+		const { action, className, title, ...other } = this.props;
 
-		const classNames = cx(
-			SECTIONTITLE_CLASS,
-			className
-		);
+		const classNames = cx(SECTIONTITLE_CLASS, className);
 
 		return (
-			<Flex
-				align='center'
-				className={classNames}
-				{...other}
-			>
+			<Flex align="center" className={classNames} {...other}>
 				<FlexItem>
 					<Chunk>
-						<h2 className='text--sectionTitle'>{title}</h2>
+						<h2 className="text--sectionTitle">{title}</h2>
 					</Chunk>
 				</FlexItem>
-				{action &&
+				{action && (
 					<FlexItem shrink>
-						<Chunk>
-							{action}
-						</Chunk>
+						<Chunk>{action}</Chunk>
 					</FlexItem>
-				}
+				)}
 			</Flex>
 		);
 	}
 }
 SectionTitle.propTypes = {
-	title: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.string
-	]).isRequired,
-	action: PropTypes.element
+	title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
+	action: PropTypes.element,
 };
 
 export default SectionTitle;

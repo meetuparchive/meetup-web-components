@@ -21,7 +21,7 @@ export const VALID_SPACE = {
 	spaceAround: 'spaceAround',
 	spaceBetween: 'spaceBetween',
 	flexEnd: 'flexEnd',
-	flexStart: 'flexStart'
+	flexStart: 'flexStart',
 };
 
 export const DIRECTION_ROW = 'row';
@@ -59,8 +59,10 @@ export class Flex extends React.Component {
 			...other
 		} = this.props;
 
-		const columnReverseBreakpoint = VALID_BREAKPOINTS[columnReverse] || VALID_BREAKPOINTS['all'];
-		const rowReverseBreakpoint = VALID_BREAKPOINTS[rowReverse] || VALID_BREAKPOINTS['all'];
+		const columnReverseBreakpoint =
+			VALID_BREAKPOINTS[columnReverse] || VALID_BREAKPOINTS['all'];
+		const rowReverseBreakpoint =
+			VALID_BREAKPOINTS[rowReverse] || VALID_BREAKPOINTS['all'];
 
 		const isColumn = direction === DIRECTION_COLUMN;
 		const classNames = cx(
@@ -68,11 +70,13 @@ export class Flex extends React.Component {
 			{
 				// horizontal default
 				[FLEX_ROW_CLASS]: !isColumn,
-				[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_COLUMN_CLASS}`]: !isColumn && switchDirection,
+				[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_COLUMN_CLASS}`]:
+					!isColumn && switchDirection,
 
 				// vertical default
 				[FLEX_COLUMN_CLASS]: isColumn,
-				[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_ROW_CLASS}`]: isColumn && switchDirection,
+				[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_ROW_CLASS}`]:
+					isColumn && switchDirection,
 
 				// reverse breakpoint modifiers
 				[`${rowReverseBreakpoint}_flex--rowReverse`]: rowReverse,
@@ -84,14 +88,13 @@ export class Flex extends React.Component {
 				[`${FLEX_CLASS}--${VALID_SPACE[justify]}`]: justify,
 				[`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`]: align,
 				[FLEX_WRAP_CLASS]: wrap,
-				'component--isLoading': isLoading
-			}, className);
+				'component--isLoading': isLoading,
+			},
+			className
+		);
 
 		return (
-			<div
-				className={classNames}
-				{...other}
-			>
+			<div className={classNames} {...other}>
 				{children}
 			</div>
 		);
@@ -104,26 +107,23 @@ Flex.propTypes = {
 	wrap: PropTypes.bool,
 	noGutters: PropTypes.bool,
 
-	direction: PropTypes.oneOf([
-		DIRECTION_ROW,
-		DIRECTION_COLUMN,
-	]),
+	direction: PropTypes.oneOf([DIRECTION_ROW, DIRECTION_COLUMN]),
 	switchDirection: PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 
 	rowReverse: PropTypes.oneOfType([
 		PropTypes.bool,
-		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 	]),
 	columnReverse: PropTypes.oneOfType([
 		PropTypes.bool,
-		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))
+		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 	]),
 	isLoading: PropTypes.bool,
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
-		size: PropTypes.string
-	})
+		size: PropTypes.string,
+	}),
 };
 
 Flex.defaultProps = {

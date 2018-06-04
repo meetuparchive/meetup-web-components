@@ -10,11 +10,11 @@ const itemStyle = {
 	width: `${MEDIA_SIZES.xxl}px`,
 	height: `${MEDIA_SIZES.xl}px`,
 	outline: '1px dotted red',
-	padding: `${MEDIA_SIZES.xs}px`
+	padding: `${MEDIA_SIZES.xs}px`,
 };
 
 const hscrollInlineStyle = {
-	width: '50vw'
+	width: '50vw',
 };
 
 const listItems = [
@@ -31,25 +31,14 @@ const listItems = [
 
 storiesOf('Hscroll', module)
 	.addDecorator(decorateWithBasics)
-	.addWithInfo(
-		'Default',
-		'Basic horizontal scroll usage',
-		() => (
-			<Hscroll
-				style={hscrollInlineStyle}
-			>
-				{listItems}
-			</Hscroll>
-		)
-	)
+	.addWithInfo('Default', 'Basic horizontal scroll usage', () => (
+		<Hscroll style={hscrollInlineStyle}>{listItems}</Hscroll>
+	))
 	.addWithInfo(
 		'With gradient',
 		'Basic horizontal scroll with edge gradients',
 		() => (
-			<Hscroll
-				style={hscrollInlineStyle}
-				hasGradient
-			>
+			<Hscroll style={hscrollInlineStyle} hasGradient>
 				{listItems}
 			</Hscroll>
 		)
@@ -58,10 +47,7 @@ storiesOf('Hscroll', module)
 		'Media-conditional unclip',
 		'Unclip at a given breakpoint (large)',
 		() => (
-			<Hscroll
-				style={hscrollInlineStyle}
-				unclipAt='large'
-			>
+			<Hscroll style={hscrollInlineStyle} unclipAt="large">
 				{listItems}
 			</Hscroll>
 		)

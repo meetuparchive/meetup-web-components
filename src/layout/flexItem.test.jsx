@@ -30,11 +30,11 @@ describe('FlexItem', function() {
 	describe('growFactor', () => {
 		it("check that component has correct 'growFactor' class", function() {
 			FLEX_GROW_FACTORS.forEach(growFactor => {
-				const flexItem = shallow(
-					<FlexItem growFactor={growFactor} />
-				);
+				const flexItem = shallow(<FlexItem growFactor={growFactor} />);
 				expect(flexItem.hasClass(FLEX_ITEM_CLASS)).toBe(true);
-				expect(flexItem.hasClass(`${FLEX_ITEM_GROW_CLASS}${growFactor}`)).toBe(true);
+				expect(flexItem.hasClass(`${FLEX_ITEM_GROW_CLASS}${growFactor}`)).toBe(
+					true
+				);
 			});
 		});
 	});
