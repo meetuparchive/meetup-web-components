@@ -36,29 +36,25 @@ export class Stripe extends React.Component {
 				[`${STRIPE_INVERTED_CLASS} inverted`]: inverted,
 				[`${STRIPE_HERO_CLASS}`]: backgroundImage,
 				[STRIPE_NOSCRIM_CLASS]: hideScrim,
-				'component--isLoading': isLoading
+				'component--isLoading': isLoading,
 			},
 			className
 		);
 
-		const styles = backgroundImage ? {
-			...style,
-			backgroundImage: `url(${backgroundImage})`
-		} : style;
+		const styles = backgroundImage
+			? {
+					...style,
+					backgroundImage: `url(${backgroundImage})`,
+				}
+			: style;
 
 		return (
-			<div
-				className={classNames}
-				style={styles}
-				{...other}>
-				{ backgroundImage && !hideScrim ?
-					(
-						<div className='stripe-aboveScrim'>
-							{children}
-						</div>
-					) :
+			<div className={classNames} style={styles} {...other}>
+				{backgroundImage && !hideScrim ? (
+					<div className="stripe-aboveScrim">{children}</div>
+				) : (
 					children
-				}
+				)}
 			</div>
 		);
 	}
@@ -74,8 +70,8 @@ Stripe.propTypes = {
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
-		size: PropTypes.string
-	})
+		size: PropTypes.string,
+	}),
 };
 
 export default withLoading(Stripe);

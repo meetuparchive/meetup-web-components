@@ -80,7 +80,14 @@ export class Nav extends React.Component {
 	 * @return {React.element} the navbar component
 	 */
 	render() {
-		const { media, self, navItems, localeCode, className, ...other } = this.props;
+		const {
+			media,
+			self,
+			navItems,
+			localeCode,
+			className,
+			...other
+		} = this.props;
 		const {
 			login,
 			create,
@@ -97,7 +104,8 @@ export class Nav extends React.Component {
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all globalNav', className);
-		const proLogo = ((proDashboard.mainAccount || {}).group_photo || {}).thumb_link;
+		const proLogo = ((proDashboard.mainAccount || {}).group_photo || {})
+			.thumb_link;
 		const proLetter = ((proDashboard.mainAccount || {}).name || '')
 			.slice(0, 1)
 			.toUpperCase();
@@ -115,7 +123,9 @@ export class Nav extends React.Component {
 				notifications={notifications.list}
 				onMarkReadAction={notifications.notificationsDropdown.markRead}
 				localeCode={localeCode}
-				emptyContentLabel={notifications.notificationsDropdown.emptyContentLabel}
+				emptyContentLabel={
+					notifications.notificationsDropdown.emptyContentLabel
+				}
 				notificationsTitleLabel={notifications.label}
 				generateClassicUrl={
 					notifications.notificationsDropdown.generateClassicUrl
@@ -168,7 +178,9 @@ export class Nav extends React.Component {
 				shrink: true,
 				linkTo: media.isAtMediumUp ? proDashboard.link : '',
 				onAction: !media.isAtMediumUp && this.onClickDropdownAction,
-				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
+				label: media.isAtMediumUp
+					? proDashboard.label
+					: proDashboard.mobileLabel,
 				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
 				icon: (
 					<Flex noGutters align="center">
@@ -185,10 +197,7 @@ export class Nav extends React.Component {
 								</div>
 							)}
 						</FlexItem>
-						<FlexItem
-							shrink
-							className="display--block atMedium_display--none"
-						>
+						<FlexItem shrink className="display--block atMedium_display--none">
 							<Icon
 								shape="chevron-down"
 								size="xxs"
@@ -204,7 +213,9 @@ export class Nav extends React.Component {
 				linkTo: explore.link,
 				label: explore.label,
 				className: CLASS_AUTH_ITEM,
-				icon: <Icon shape="search" size="s" className="atMedium_display--none" />,
+				icon: (
+					<Icon shape="search" size="s" className="atMedium_display--none" />
+				),
 			},
 			{
 				shrink: true,
@@ -264,10 +275,7 @@ export class Nav extends React.Component {
 						<FlexItem>
 							<AvatarMember small member={self} />
 						</FlexItem>
-						<FlexItem
-							shrink
-							className="display--none atMedium_display--block"
-						>
+						<FlexItem shrink className="display--none atMedium_display--block">
 							<Icon
 								shape="chevron-down"
 								size="xxs"
@@ -335,11 +343,7 @@ export class Nav extends React.Component {
 							className="logo logo--swarm align--left"
 							linkClassName="display--inlineBlock"
 							icon={
-								<img
-									src={swarmLogo}
-									alt={logo.logoAccessible}
-									height="48px"
-								/>
+								<img src={swarmLogo} alt={logo.logoAccessible} height="48px" />
 							}
 						/>
 					)}
@@ -350,11 +354,7 @@ export class Nav extends React.Component {
 							className="logo logo--script align--left"
 							linkClassName="display--inlineBlock"
 							icon={
-								<img
-									src={scriptLogo}
-									alt={logo.logoAccessible}
-									height="44px"
-								/>
+								<img src={scriptLogo} alt={logo.logoAccessible} height="44px" />
 							}
 						/>
 					)}

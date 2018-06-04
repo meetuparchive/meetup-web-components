@@ -5,16 +5,17 @@ import React from 'react';
  *
  * Creates an inverted stripe for use in a story
  */
-export const Inverted = (props) => (
+export const Inverted = props => (
 	<div
-		className='stripe stripe--inverted inverted'
+		className="stripe stripe--inverted inverted"
 		style={{
 			height: '100%',
 			width: '100%',
 			display: 'flex',
 			justifyContent: 'center',
 			alignItems: 'center',
-		}}>
+		}}
+	>
 		{props.children}
 	</div>
 );
@@ -27,10 +28,10 @@ export const Inverted = (props) => (
  *
  * Also disables link from being followed on click
  */
-export const StoryLink = (props) => (
+export const StoryLink = props => (
 	<a
 		href="#"
-		style={props.onClick ? null : {pointerEvents: "none"}}
+		style={props.onClick ? null : { pointerEvents: 'none' }}
 		onClick={props.onClick}
 	>
 		{props.children}

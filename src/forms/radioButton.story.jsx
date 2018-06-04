@@ -9,12 +9,13 @@ storiesOf('RadioButton', module)
 	.addWithInfo(
 		'Basic usage',
 		'A single radio input with a label. Demonstrates the basic usage',
-		() =>
-			(<RadioButton
+		() => (
+			<RadioButton
 				name="option"
 				value="1"
 				checked={boolean('checked', true)}
 				className={text('className', '')}
 				label={text('label', 'This is a radio')}
-			/>)
+			/>
+		)
 	);

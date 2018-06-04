@@ -8,11 +8,9 @@ export const ICON_CLASS = 'svg';
 export const SVG_THIN_STYLE = '--small';
 export const ICON_CIRCLED_CLASS = 'svg--circled';
 
-const SMALL_ICON_VARIANT_WHITELIST = VALID_SHAPES
-	.filter(s =>
-		!s.startsWith('external') // no third party icons
-		&& !s.startsWith('meetup') // logos use same path for `xs`
-	);
+const SMALL_ICON_VARIANT_WHITELIST = VALID_SHAPES.filter(
+	s => !s.startsWith('external') && !s.startsWith('meetup') // no third party icons // logos use same path for `xs`
+);
 
 /**
  * @param {String} shape - icon shape
@@ -24,7 +22,8 @@ export const getIconShape = (shape, size) => {
 		return shape;
 	}
 
-	const suffix = (size === 'xxs' || size === 'xs' || size === 's') ? SVG_THIN_STYLE : '';
+	const suffix =
+		size === 'xxs' || size === 'xs' || size === 's' ? SVG_THIN_STYLE : '';
 	return `${shape}${suffix}`;
 };
 
@@ -39,7 +38,15 @@ export const getIconShape = (shape, size) => {
  */
 class Icon extends React.PureComponent {
 	render() {
-		const { className, shape, size, color, style, circled, ...other } = this.props;
+		const {
+			className,
+			shape,
+			size,
+			color,
+			style,
+			circled,
+			...other
+		} = this.props;
 
 		const classNames = cx(
 			ICON_CLASS,
@@ -58,12 +65,12 @@ class Icon extends React.PureComponent {
 		return (
 			<span className={classNames}>
 				<svg
-					preserveAspectRatio='xMinYMin meet'
+					preserveAspectRatio="xMinYMin meet"
 					width={sizeVal}
 					height={sizeVal}
 					viewBox={`0 0 ${sizeVal} ${sizeVal}`}
-					className='svg-icon valign--middle'
-					role='img'
+					className="svg-icon valign--middle"
+					role="img"
 					style={allStyles}
 					{...other}
 				>
@@ -82,7 +89,7 @@ Icon.propTypes = {
 	shape: PropTypes.oneOf(VALID_SHAPES).isRequired,
 	size: PropTypes.oneOf(Object.keys(MEDIA_SIZES)).isRequired,
 	circled: PropTypes.bool,
-	color: PropTypes.string
+	color: PropTypes.string,
 };
 
 export default Icon;

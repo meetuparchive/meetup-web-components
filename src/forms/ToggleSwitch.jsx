@@ -2,7 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import { C_TEXT_PRIMARY, C_TEXT_SECONDARY, C_TEXT_HINT } from 'swarm-constants/dist/js/colorConstants.js';
+import {
+	C_TEXT_PRIMARY,
+	C_TEXT_SECONDARY,
+	C_TEXT_HINT,
+} from 'swarm-constants/dist/js/colorConstants.js';
 
 import Button from './Button';
 import Icon from '../media/Icon';
@@ -22,7 +26,6 @@ export const LABEL_CLASS = `${TOGGLE_SWITCH_CLASS}-label`;
  * @module ToggleSwitch
  */
 class ToggleSwitch extends React.Component {
-
 	render() {
 		const {
 			className,
@@ -39,8 +42,10 @@ class ToggleSwitch extends React.Component {
 
 		const labelId = labelledBy || `label-${name}`;
 
-		const getActiveIconColor = isActive => isActive ? C_TEXT_PRIMARY : C_TEXT_SECONDARY;
-		const getColor = (disbled, isActive) => disabled ? C_TEXT_HINT : getActiveIconColor(isActive);
+		const getActiveIconColor = isActive =>
+			isActive ? C_TEXT_PRIMARY : C_TEXT_SECONDARY;
+		const getColor = (disbled, isActive) =>
+			disabled ? C_TEXT_HINT : getActiveIconColor(isActive);
 
 		return (
 			<ToggleWrapper
@@ -48,19 +53,16 @@ class ToggleSwitch extends React.Component {
 				onCallback={onCallback}
 				offCallback={offCallback}
 			>
-				{({
-					isActive,
-					toggleActive,
-				}) => (
+				{({ isActive, toggleActive }) => (
 					<div {...other}>
-						{ label &&
+						{label && (
 							<label
 								className={`${LABEL_CLASS} ${labelClassName} margin--right`}
 								id={labelId}
 							>
 								{label}
 							</label>
-						}
+						)}
 						<Button
 							reset
 							disabled={disabled}
@@ -69,7 +71,7 @@ class ToggleSwitch extends React.Component {
 								TOGGLE_SWITCH_CLASS,
 								{
 									[TOGGLE_SWITCH_ACTIVE_CLASS]: isActive,
-									[TOGGLE_SWITCH_DISABLED_CLASS]: disabled
+									[TOGGLE_SWITCH_DISABLED_CLASS]: disabled,
 								},
 								className
 							)}
@@ -78,18 +80,21 @@ class ToggleSwitch extends React.Component {
 							tabIndex={-1}
 							role="switch"
 						>
-							<span className={cx(
-								`${KNOB_CLASS} flex flex--center flex--alignCenter`,
-								{
-									[KNOB_ACTIVE_CLASS]: isActive,
-									[KNOB_DISABLED_CLASS]: disabled
-								}
-							)}>
+							<span
+								className={cx(
+									`${KNOB_CLASS} flex flex--center flex--alignCenter`,
+									{
+										[KNOB_ACTIVE_CLASS]: isActive,
+										[KNOB_DISABLED_CLASS]: disabled,
+									}
+								)}
+							>
 								<Icon
 									shape={isActive ? 'check' : 'cross'}
 									color={getColor(disabled, isActive)}
-									size='xxs'
-									label='Toggle switch label'/>
+									size="xxs"
+									label="Toggle switch label"
+								/>
 							</span>
 						</Button>
 					</div>
@@ -102,13 +107,10 @@ class ToggleSwitch extends React.Component {
 ToggleSwitch.propTypes = {
 	disabled: PropTypes.bool,
 	isActive: PropTypes.bool,
-	label: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	labelClassName: PropTypes.string,
 	labelledBy: PropTypes.string,
-	name: PropTypes.string.isRequired
+	name: PropTypes.string.isRequired,
 };
 
 export default ToggleSwitch;

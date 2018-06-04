@@ -66,11 +66,11 @@ Class                | Description
 		content: "";
 		display: block;
 		height: 100%;
+		left: 0;
+		mix-blend-mode: hard-light;
 		position: absolute;
 		width: 100%;
 		z-index: 0;
-		left: 0;
-		mix-blend-mode: hard-light;
 
 		@if $placement == "bottom" {
 			@include linear-gradient(180deg, transparentize($C_black, 0.85) 25%, transparentize($C_black, 0.6) 100%);
@@ -85,9 +85,9 @@ Class                | Description
 .stripe--withBGImg {
 	@include textProtectionScrim();
 	background-color: $C_contentBGInverted;
-	background-size: cover;
 	background-position: center 20%;
 	background-repeat: no-repeat;
+	background-size: cover;
 	border-top: none;
 	overflow: hidden;
 	position: relative;

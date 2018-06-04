@@ -1,5 +1,5 @@
-import React from "react";
-import { storiesOf } from "@storybook/react";
+import React from 'react';
+import { storiesOf } from '@storybook/react';
 import { decorateWithBasics } from '../utils/decorators';
 
 import Typeahead from './Typeahead';
@@ -30,30 +30,54 @@ const typeaheadItems = [
 			<h3 className="text--bold">Item Four</h3>
 			<p>Is super cool</p>
 		</div>
-	</TypeaheadItem>
+	</TypeaheadItem>,
 ];
 
 const typeaheadCheckboxes = [
 	<TypeaheadItem value="Item One">
-		{({isSelected}) => (
-			<Checkbox controlled={false} label="Item One" checked={isSelected} name="taItems" value="item1" />
+		{({ isSelected }) => (
+			<Checkbox
+				controlled={false}
+				label="Item One"
+				checked={isSelected}
+				name="taItems"
+				value="item1"
+			/>
 		)}
 	</TypeaheadItem>,
 	<TypeaheadItem value="Item Two">
-		{({isSelected}) => (
-			<Checkbox controlled={false} label="Item Two" checked={isSelected} name="taItems" value="item2" />
+		{({ isSelected }) => (
+			<Checkbox
+				controlled={false}
+				label="Item Two"
+				checked={isSelected}
+				name="taItems"
+				value="item2"
+			/>
 		)}
 	</TypeaheadItem>,
 	<TypeaheadItem value="Item Three">
-		{({isSelected}) => (
-			<Checkbox controlled={false} label="Item Three" checked={isSelected} name="taItems" value="item3" />
+		{({ isSelected }) => (
+			<Checkbox
+				controlled={false}
+				label="Item Three"
+				checked={isSelected}
+				name="taItems"
+				value="item3"
+			/>
 		)}
 	</TypeaheadItem>,
 	<TypeaheadItem value="Item Four">
-		{({isSelected}) => (
-			<Checkbox controlled={false} label="Item Four" checked={isSelected} name="taItems" value="item4" />
+		{({ isSelected }) => (
+			<Checkbox
+				controlled={false}
+				label="Item Four"
+				checked={isSelected}
+				name="taItems"
+				value="item4"
+			/>
 		)}
-	</TypeaheadItem>
+	</TypeaheadItem>,
 ];
 
 /**
@@ -66,7 +90,7 @@ class MultiselectTypeahead extends React.PureComponent {
 		this.selectHandler = this.selectHandler.bind(this);
 
 		this.state = {
-			selectedItems: []
+			selectedItems: [],
 		};
 	}
 
@@ -76,18 +100,18 @@ class MultiselectTypeahead extends React.PureComponent {
 			: selectedItems;
 
 		this.setState(() => ({
-			selectedItems: filteredItems
+			selectedItems: filteredItems,
 		}));
 	}
 
 	render() {
-		const {items, ...other} = this.props;
+		const { items, ...other } = this.props;
 
 		return (
 			<div>
 				<div className="chunk">
 					<h5 className="text--bold display--inline">Selections: </h5>
-					{this.state.selectedItems.map(item => (<span>{item}, </span>))}
+					{this.state.selectedItems.map(item => <span>{item}, </span>)}
 				</div>
 				<Typeahead
 					multiSelect
@@ -104,226 +128,181 @@ class MultiselectTypeahead extends React.PureComponent {
 }
 
 const typeaheadItemsObjValues = [
-	<TypeaheadItem value={{name: "Item One", id: 0}}>
+	<TypeaheadItem value={{ name: 'Item One', id: 0 }}>
 		<div>
 			<h3 className="text--bold">Item One</h3>
 			<p>Is super cool</p>
 		</div>
 	</TypeaheadItem>,
-	<TypeaheadItem value={{name: "Item Two", id: 1}}>
+	<TypeaheadItem value={{ name: 'Item Two', id: 1 }}>
 		<div>
 			<h3 className="text--bold">Item Two</h3>
 			<p>Is super cool</p>
 		</div>
 	</TypeaheadItem>,
-	<TypeaheadItem value={{name: "Item Three", id: 2}}>
+	<TypeaheadItem value={{ name: 'Item Three', id: 2 }}>
 		<div>
 			<h3 className="text--bold">Item Three</h3>
 			<p>Is super cool</p>
 		</div>
 	</TypeaheadItem>,
-	<TypeaheadItem value={{name: "Item Four", id: 3}}>
+	<TypeaheadItem value={{ name: 'Item Four', id: 3 }}>
 		<div>
 			<h3 className="text--bold">Item Four</h3>
 			<p>Is super cool</p>
 		</div>
-	</TypeaheadItem>
+	</TypeaheadItem>,
 ];
 
-storiesOf("Typeahead", module)
+storiesOf('Typeahead', module)
 	.addDecorator(decorateWithBasics)
-	.addWithInfo(
-		"default",
-		() => (
+	.addWithInfo('default', () => (
+		<Typeahead
+			items={typeaheadItems}
+			inputProps={{ name: 'typeaheadInputName' }}
+		/>
+	))
+	.addWithInfo('scrolling with max height', () => (
+		<div>
 			<Typeahead
 				items={typeaheadItems}
-				inputProps={{name: 'typeaheadInputName'}}
-			/>
-		)
-	)
-	.addWithInfo(
-		"scrolling with max height",
-		() => (
-			<div>
-				<Typeahead
-					items={typeaheadItems}
-					height="100px"
-					inputProps={{
-						label: 'Menu scrolls at 100px',
-						name: 'typeaheadInputName'
-					}}
-				/>
-			</div>
-		)
-	)
-	.addWithInfo(
-		"with value",
-		() => (
-			<Typeahead
-				items={typeaheadItems}
-				defaultSelectedItem={typeaheadItems[0].props.value}
+				height="100px"
 				inputProps={{
-					label: 'Has a default selected item',
-					name: 'typeaheadInputName'
+					label: 'Menu scrolls at 100px',
+					name: 'typeaheadInputName',
 				}}
 			/>
-		)
-	)
-	.addWithInfo(
-		"with placeholder",
-		() => (
+		</div>
+	))
+	.addWithInfo('with value', () => (
+		<Typeahead
+			items={typeaheadItems}
+			defaultSelectedItem={typeaheadItems[0].props.value}
+			inputProps={{
+				label: 'Has a default selected item',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('with placeholder', () => (
+		<Typeahead
+			items={typeaheadItems}
+			inputProps={{
+				placeholder: 'Placeholder text',
+				label: 'Labeled typeahead',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('with helperText', () => (
+		<Typeahead
+			items={typeaheadItems}
+			inputProps={{
+				helperText: 'Some helper info',
+				label: 'Labeled typeahead',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('disabled', () => (
+		<Typeahead
+			items={typeaheadItems}
+			inputProps={{
+				disabled: true,
+				label: 'Disabled typeahead',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('error', () => (
+		<Typeahead
+			items={typeaheadItems}
+			inputProps={{
+				error: 'Not so fast. You have an error.',
+				label: 'Typeahead with error',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('required', () => (
+		<Typeahead
+			items={typeaheadItems}
+			inputProps={{
+				required: true,
+				label: 'Required typeahead',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('search', () => (
+		<Typeahead
+			items={typeaheadItems}
+			inputProps={{
+				isSearch: true,
+				label: 'Search-y typeahead',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('with icon', () => (
+		<Typeahead
+			items={typeaheadItems}
+			inputProps={{
+				iconShape: 'search',
+				label: 'Typeahead with icon',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('multiple values', () => (
+		<MultiselectTypeahead
+			items={typeaheadCheckboxes}
+			inputProps={{
+				label: 'Multiselect typeahead',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('openOnFocus', () => (
+		<Typeahead
+			openOnFocus
+			items={typeaheadItems}
+			inputProps={{
+				label: 'Labeled typeahead',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('openOnSelect', () => (
+		<Typeahead
+			openOnSelect
+			items={typeaheadItems}
+			inputProps={{
+				label: 'Labeled typeahead',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	))
+	.addWithInfo('openInline', () => (
+		<div>
 			<Typeahead
-				items={typeaheadItems}
-				inputProps={{
-					placeholder: 'Placeholder text',
-					label: 'Labeled typeahead',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	)
-	.addWithInfo(
-		"with helperText",
-		() => (
-			<Typeahead
-				items={typeaheadItems}
-				inputProps={{
-					helperText: 'Some helper info',
-					label: 'Labeled typeahead',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	)
-	.addWithInfo(
-		"disabled",
-		() => (
-			<Typeahead
-				items={typeaheadItems}
-				inputProps={{
-					disabled: true,
-					label: 'Disabled typeahead',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	)
-	.addWithInfo(
-		"error",
-		() => (
-			<Typeahead
-				items={typeaheadItems}
-				inputProps={{
-					error: 'Not so fast. You have an error.',
-					label: 'Typeahead with error',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	)
-	.addWithInfo(
-		"required",
-		() => (
-			<Typeahead
-				items={typeaheadItems}
-				inputProps={{
-					required: true,
-					label: 'Required typeahead',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	)
-	.addWithInfo(
-		"search",
-		() => (
-			<Typeahead
-				items={typeaheadItems}
-				inputProps={{
-					isSearch: true,
-					label: 'Search-y typeahead',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	)
-	.addWithInfo(
-		"with icon",
-		() => (
-			<Typeahead
-				items={typeaheadItems}
-				inputProps={{
-					iconShape: 'search',
-					label: 'Typeahead with icon',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	)
-	.addWithInfo(
-		"multiple values",
-		() => (
-			<MultiselectTypeahead
-				items={typeaheadCheckboxes}
-				inputProps={{
-					label: 'Multiselect typeahead',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	)
-	.addWithInfo(
-		"openOnFocus",
-		() => (
-			<Typeahead
-				openOnFocus
+				openInline
 				items={typeaheadItems}
 				inputProps={{
 					label: 'Labeled typeahead',
-					name: 'typeaheadInputName'
+					name: 'typeaheadInputName',
 				}}
 			/>
-		)
-	)
-	.addWithInfo(
-		"openOnSelect",
-		() => (
-			<Typeahead
-				openOnSelect
-				items={typeaheadItems}
-				inputProps={{
-					label: 'Labeled typeahead',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	)
-	.addWithInfo(
-		"openInline",
-		() => (
-			<div>
-				<Typeahead
-					openInline
-					items={typeaheadItems}
-					inputProps={{
-						label: 'Labeled typeahead',
-						name: 'typeaheadInputName'
-					}}
-				/>
-				<p>The menu will not hide this text</p>
-			</div>
-		)
-	)
-	.addWithInfo(
-		"using itemToString (useful for value as Object)",
-		() => (
-			<Typeahead
-				items={typeaheadItemsObjValues}
-				itemToString={i => i ? i.name : ''}
-				inputProps={{
-					label: 'Labeled typeahead',
-					name: 'typeaheadInputName'
-				}}
-			/>
-		)
-	);
+			<p>The menu will not hide this text</p>
+		</div>
+	))
+	.addWithInfo('using itemToString (useful for value as Object)', () => (
+		<Typeahead
+			items={typeaheadItemsObjValues}
+			itemToString={i => (i ? i.name : '')}
+			inputProps={{
+				label: 'Labeled typeahead',
+				name: 'typeaheadInputName',
+			}}
+		/>
+	));

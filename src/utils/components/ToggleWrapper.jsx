@@ -42,10 +42,9 @@ class ToggleWrapper extends React.Component {
 	}
 
 	onKeyUp(e) {
-		const isActivatingButton = [
-			' ', /* space bar */
-			'Enter'
-		].some(key => e.key === key);
+		const isActivatingButton = [' ' /* space bar */, 'Enter'].some(
+			key => e.key === key
+		);
 
 		if (isActivatingButton) {
 			this.toggleActive();
@@ -63,7 +62,7 @@ class ToggleWrapper extends React.Component {
 						role="button"
 						aria-pressed={this.state.isActive}
 						onKeyUp={this.onKeyUp}
-						tabIndex={this.props.tabIndex || "0"}
+						tabIndex={this.props.tabIndex || '0'}
 					>
 						{this.props.children({
 							isActive: this.state.isActive,
@@ -73,10 +72,10 @@ class ToggleWrapper extends React.Component {
 				)}
 			>
 				{this.props.children({
-					tabIndex: isInput && this.props.tabIndex || "0",
+					tabIndex: (isInput && this.props.tabIndex) || '0',
 					isActive: this.state.isActive,
 					toggleActive: this.toggleActive,
-					onKeyUp: this.props.type == 'radio' ? null : this.onKeyUp
+					onKeyUp: this.props.type == 'radio' ? null : this.onKeyUp,
 				})}
 			</ConditionalWrap>
 		);
@@ -84,10 +83,10 @@ class ToggleWrapper extends React.Component {
 }
 
 ToggleWrapper.defaultProps = {
-	isActive: false
+	isActive: false,
 };
 ToggleWrapper.propTypes = {
-	isActive: PropTypes.bool
+	isActive: PropTypes.bool,
 };
 
 export default ToggleWrapper;

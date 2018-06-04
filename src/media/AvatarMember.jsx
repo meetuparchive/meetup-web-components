@@ -41,26 +41,28 @@ class AvatarMember extends React.PureComponent {
 			allProps.src = member.photo[photoLink];
 		}
 
-		return (<Avatar {...allProps} {...other}>
-			{showNoPhoto &&
-				<Icon
-					className="avatarIcon--noPhoto display--inlineFlex"
-					shape="profile"
-					size="m"
-				/>}
-			{fbFriend && !org &&
-				<Icon
-					className={AVATAR_ICON_BADGE_CLASS}
-					shape="external-facebook"
-					size="m"
-				/>}
-			{org &&
-				<Icon
-					className={AVATAR_ICON_BADGE_CLASS}
-					shape="badge"
-					size="m"
-				/>}
-		</Avatar>);
+		return (
+			<Avatar {...allProps} {...other}>
+				{showNoPhoto && (
+					<Icon
+						className="avatarIcon--noPhoto display--inlineFlex"
+						shape="profile"
+						size="m"
+					/>
+				)}
+				{fbFriend &&
+					!org && (
+						<Icon
+							className={AVATAR_ICON_BADGE_CLASS}
+							shape="external-facebook"
+							size="m"
+						/>
+					)}
+				{org && (
+					<Icon className={AVATAR_ICON_BADGE_CLASS} shape="badge" size="m" />
+				)}
+			</Avatar>
+		);
 	}
 }
 
