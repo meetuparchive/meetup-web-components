@@ -4,7 +4,7 @@ import AccordionPanel from './AccordionPanel';
 import { storiesOf } from '@storybook/react';
 import { decorateAction } from '@storybook/addon-actions';
 import { decorateWithBasics } from '../utils/decorators';
-import { textContent1, textContent2 } from '../__mocks__/textContentMocks';
+import { textContent1, textContent2 } from '../../__mocks__/textContentMocks';
 
 const callbackAction = decorateAction([args => ['Am I open?', args[1]]]);
 
