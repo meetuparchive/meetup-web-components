@@ -1,3 +1,7 @@
+# [4.10]
+
+- **Change** Reformatted code with Prettier and Stylelint
+
 # [5.0]
 
 - **BREAKING CHANGE** `Nav` component now requires `media`, from `connectWithMatchMedia`, as a prop.
