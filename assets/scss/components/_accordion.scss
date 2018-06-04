@@ -17,8 +17,8 @@
 	@extend %buttonPersonality;
 	background: inherit;
 	border: inherit;
-	text-align: inherit;
 	padding: 0;
+	text-align: inherit;
 }
 
 .accordionPanel:focus {
@@ -35,12 +35,12 @@
 
 		&::after {
 			background-color: $C_selection;
-			content: "";
-			position: absolute;
-			top: -1px;
 			bottom: -2px;
+			content: "";
 			left: -#{$space-half};
+			position: absolute;
 			right: -#{$space-half};
+			top: -1px;
 		}
 	}
 }

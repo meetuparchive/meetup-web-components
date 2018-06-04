@@ -20,7 +20,7 @@ const MOCK_PROPS = {
 			{ urlname: '/mason-mocks', name: 'Mason Mocks' },
 			{ urlname: '/chicken-scratch', name: 'Chicken Scratch' },
 		],
-	}
+	},
 };
 
 const wrapper = props => shallow(<Nav {...MOCK_PROPS} {...props} />);
@@ -56,7 +56,7 @@ describe('Nav', () => {
 					link: 'meetup.com/groups',
 					label: 'Groups',
 					list: undefined,
-				}
+				},
 			})
 		).toMatchSnapshot();
 	});
@@ -70,8 +70,8 @@ describe('Nav', () => {
 					link: 'meetup.com/notifications',
 					label: 'Notifications',
 					unreadNotifications: 0,
-					list: undefined
-				}
+					list: undefined,
+				},
 			})
 		).toMatchSnapshot();
 	});
@@ -85,8 +85,8 @@ describe('Nav', () => {
 					link: 'meetup.com/notifications',
 					label: 'Notifications',
 					unreadNotifications: 3,
-					list: []
-				}
+					list: [],
+				},
 			})
 		).toMatchSnapshot();
 	});

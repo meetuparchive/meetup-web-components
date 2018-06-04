@@ -1,10 +1,7 @@
 import React from 'react';
 import CalendarComponent from './CalendarComponent';
 import { storiesOf } from '@storybook/react';
-import {
-	decorateWithBasics,
-	decorateWithInfo
-} from '../utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 
 import Section from '../layout/Section';
@@ -28,7 +25,16 @@ storiesOf('CalendarComponent', module)
 				/>
 			</Chunk>
 			<Chunk>
-				<p className="text--caption">For a full list of available <code>datepickerOptions</code>, see <a className="link" target="_blank" href="https://chmln.github.io/flatpickr/options/">flatpickr documentation</a></p>
+				<p className="text--caption">
+					For a full list of available <code>datepickerOptions</code>, see{' '}
+					<a
+						className="link"
+						target="_blank"
+						href="https://chmln.github.io/flatpickr/options/"
+					>
+						flatpickr documentation
+					</a>
+				</p>
 			</Chunk>
 		</Section>
 	))

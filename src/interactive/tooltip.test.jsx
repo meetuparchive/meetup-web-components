@@ -15,7 +15,7 @@ const dropdownContent = (
 	</Section>
 );
 const dropdownTrigger = <Button small>Open</Button>;
-const dropdownId = "testDropdown";
+const dropdownId = 'testDropdown';
 
 describe('Tooltip', () => {
 	const dropdownJSX = (
@@ -155,7 +155,6 @@ describe('Tooltip', () => {
 				expect(closedComponent.state('isActive')).toBeFalsy();
 			}, 10);
 		});
-
 	});
 
 	describe('tooltip with a close button', () => {

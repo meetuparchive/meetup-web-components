@@ -35,11 +35,13 @@ describe('Section', function() {
 		});
 		it(`check that component has '${SECTION_HASSEPARATOR_CLASS}' class with breakpoint`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = shallow(
-					<Section hasSeparatorUntil={breakpoint} />
-				);
+				section = shallow(<Section hasSeparatorUntil={breakpoint} />);
 				expect(section.hasClass(SECTION_CLASS)).toBe(true);
-				expect(section.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_HASSEPARATOR_CLASS}`)).toBe(true);
+				expect(
+					section.hasClass(
+						`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_HASSEPARATOR_CLASS}`
+					)
+				).toBe(true);
 			});
 		});
 	});
@@ -47,11 +49,13 @@ describe('Section', function() {
 	describe('Section flushUntil', () => {
 		it(`check that component has '${SECTION_FLUSH_CLASS}' class`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = shallow(
-					<Section flushUntil={breakpoint} />
-				);
+				section = shallow(<Section flushUntil={breakpoint} />);
 				expect(section.hasClass(SECTION_CLASS)).toBe(true);
-				expect(section.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_FLUSH_CLASS}`)).toBe(true);
+				expect(
+					section.hasClass(
+						`${VALID_BREAKPOINTS[breakpoint]}_${SECTION_FLUSH_CLASS}`
+					)
+				).toBe(true);
 			});
 		});
 	});

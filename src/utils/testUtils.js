@@ -31,5 +31,7 @@ export const hasRoleAttribute = (el, roleName) => {
 };
 
 export const componentHasProperty = (component, prop, value) => {
-	expect(component && component.props && component.props[prop] === value).toBe(true);
+	expect(component && component.props && component.props[prop] === value).toBe(
+		true
+	);
 };

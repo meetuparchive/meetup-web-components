@@ -27,7 +27,11 @@ const ErrorList = props => {
 };
 ErrorList.propTypes = {
 	errorId: PropTypes.string,
-	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.bool]),
+	error: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element,
+		PropTypes.bool,
+	]),
 };
 
 export default ErrorList;

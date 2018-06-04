@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 const MOCK_FIELD_ID = 'name';
 const MOCK_ERROR_MSG = 'You are not Keith Hernandez';
 
-const TestComponent = (props) => (<h1 {...props}>Hello world</h1>);
+const TestComponent = props => <h1 {...props}>Hello world</h1>;
 const TestComponentWithErrorList = withErrorList(TestComponent);
 
 describe('error id', () => {
@@ -19,19 +19,12 @@ describe('error id', () => {
 
 describe('withErrorList wrapped component', () => {
 	const component = shallow(
-		<TestComponentWithErrorList
-			id={MOCK_FIELD_ID}
-			error={MOCK_ERROR_MSG}
-		/>
+		<TestComponentWithErrorList id={MOCK_FIELD_ID} error={MOCK_ERROR_MSG} />
 	);
 	const componentNoError = shallow(
-		<TestComponentWithErrorList
-			id={MOCK_FIELD_ID}
-		/>
+		<TestComponentWithErrorList id={MOCK_FIELD_ID} />
 	);
-	const componentNoIdNoError = shallow(
-		<TestComponentWithErrorList />
-	);
+	const componentNoIdNoError = shallow(<TestComponentWithErrorList />);
 
 	it('matches snapshot for component with id and error props', () => {
 		expect(component).toMatchSnapshot();
@@ -53,10 +46,8 @@ describe('withErrorList wrapped component', () => {
 		const errorList = component.find(ErrorList);
 		const expected = getErrorId(MOCK_FIELD_ID);
 
-		expect(wrappedComponent.prop('aria-describedby'))
-			.toEqual(expected);
-		expect(errorList.prop('id'))
-			.toEqual(expected);
+		expect(wrappedComponent.prop('aria-describedby')).toEqual(expected);
+		expect(errorList.prop('id')).toEqual(expected);
 	});
 
 	it('does NOT provide id for `aria-describedby` in both wrapped components when id is NOT provided', () => {

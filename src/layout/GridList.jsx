@@ -29,7 +29,7 @@ export class GridList extends React.Component {
 			{
 				[`gridList--has${columns.default}`]: !!columns.default,
 				[`atMedium_gridList--has${columns.medium}`]: !!columns.medium,
-				[`atLarge_gridList--has${columns.large}`]: !!columns.large
+				[`atLarge_gridList--has${columns.large}`]: !!columns.large,
 			},
 			className
 		);
@@ -38,36 +38,37 @@ export class GridList extends React.Component {
 			'flex gridList',
 			GRID_AUTOHEIGHT_CLASS,
 			{
-				'flex--wrap' : autoHeightWithWrap,
+				'flex--wrap': autoHeightWithWrap,
 				[`${GRID_AUTOHEIGHT_CLASS}--has${columns.default}`]: !!columns.default,
 				[`atMedium_${GRID_AUTOHEIGHT_CLASS}--has${columns.medium}`]: !!columns.medium,
-				[`atLarge_${GRID_AUTOHEIGHT_CLASS}--has${columns.large}`]: !!columns.large
+				[`atLarge_${GRID_AUTOHEIGHT_CLASS}--has${columns.large}`]: !!columns.large,
 			},
 			className
 		);
 
-		const listItemClassNames = cx(
-			'gridList-item',
-			{
-				['flex-item']: autoHeight,
-				[itemClassNames]: itemClassNames
-			}
-		);
+		const listItemClassNames = cx('gridList-item', {
+			['flex-item']: autoHeight,
+			[itemClassNames]: itemClassNames,
+		});
 
 		return (
 			<ConditionalWrap
 				condition={this.props.children && isLoading}
-				wrap={children => <div className="component--isLoading">{[children, this.props.children]}</div>}
+				wrap={children => (
+					<div className="component--isLoading">
+						{[children, this.props.children]}
+					</div>
+				)}
 			>
 				<ul
-					className={autoHeight || autoHeightWithWrap ? autoHeightClassNames : classNames}
+					className={
+						autoHeight || autoHeightWithWrap ? autoHeightClassNames : classNames
+					}
 					{...other}
 				>
 					{items.map((item, key) => (
 						<li key={key} className={listItemClassNames}>
-							<div className="gridList-itemInner">
-								{item}
-							</div>
+							<div className="gridList-itemInner">{item}</div>
 						</li>
 					))}
 				</ul>
@@ -82,7 +83,7 @@ GridList.propTypes = {
 	columns: PropTypes.shape({
 		default: PropTypes.number.isRequired,
 		medium: PropTypes.number,
-		large: PropTypes.number
+		large: PropTypes.number,
 	}),
 	items: PropTypes.arrayOf(PropTypes.element).isRequired,
 	itemClassNames: PropTypes.string,
@@ -90,8 +91,8 @@ GridList.propTypes = {
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
-		size: PropTypes.string
-	})
+		size: PropTypes.string,
+	}),
 };
 
 export default withLoading(GridList);

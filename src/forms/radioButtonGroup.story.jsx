@@ -33,7 +33,8 @@ storiesOf('RadioButtonGroup', module)
 					onFocus={action('radio button focus')}
 					className={classNameKnob}
 					direction={directionKnob}
-					selectedValue={selectedValueKnob} >
+					selectedValue={selectedValueKnob}
+				>
 					<RadioButton value="one" label="Option 1" />
 					<RadioButton value="two" label="Option 2" />
 					<RadioButton value="three" label="Option 3" />
@@ -50,67 +51,52 @@ storiesOf('RadioButtonGroup', module)
 			onFocus={action('radio button focus')}
 			selectedValue="first"
 		>
-			<TogglePill
-				id='toggle1'
-				name='ranking'
-				value='first'
-				useRadio
-			>
+			<TogglePill id="toggle1" name="ranking" value="first" useRadio>
 				First
 			</TogglePill>
-			<TogglePill
-				id='toggle2'
-				name='ranking'
-				value='second'
-				useRadio
-			>
+			<TogglePill id="toggle2" name="ranking" value="second" useRadio>
 				I'm Second
 			</TogglePill>
-			<TogglePill
-				id='toggle3'
-				name='ranking'
-				value='third'
-				useRadio
-			>
+			<TogglePill id="toggle3" name="ranking" value="third" useRadio>
 				3rd.
 			</TogglePill>
 		</RadioButtonGroup>
 	))
 	.add('with column at breakpoint', () => (
 		<RadioButtonGroup
-			name='option'
-			direction='column'
-			switchDirection='medium'
+			name="option"
+			direction="column"
+			switchDirection="medium"
 			onChange={action('radio button change')}
 			onBlur={action('radio button blur')}
 			onFocus={action('radio button focus')}
 			selectedValue="third"
 		>
 			<TogglePill
-				id='toggle1'
-				name='ranking'
-				value='first'
-				labelClassName='span--100'
+				id="toggle1"
+				name="ranking"
+				value="first"
+				labelClassName="span--100"
 				isActive
 				useRadio
 			>
 				Responsive btn
 			</TogglePill>
 			<TogglePill
-				id='toggle2'
-				name='ranking'
-				value='second'
-				labelClassName='span--100'
+				id="toggle2"
+				name="ranking"
+				value="second"
+				labelClassName="span--100"
 				isActive
 				useRadio
 			>
 				Me too
 			</TogglePill>
 			<TogglePill
-				id='toggle3'
-				name='ranking'
-				value='third'
-				labelClassName='span--100'
+				id="toggle3"
+				name="ranking"
+				value="third"
+				labelClassName="span--100"
 				isActive
 				useRadio
 			>

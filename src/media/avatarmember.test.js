@@ -1,7 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
-import AvatarMember, { AVATAR_PERSON_CLASS, AVATAR_PERSON_NOPHOTO_CLASS } from './AvatarMember';
+import AvatarMember, {
+	AVATAR_PERSON_CLASS,
+	AVATAR_PERSON_NOPHOTO_CLASS,
+} from './AvatarMember';
 import Avatar from './Avatar';
 import Icon from './Icon';
 
@@ -20,8 +23,12 @@ describe('AvatarMember', function() {
 		const MOCK_MEMBER_NO_PHOTO = { ...MOCK_MEMBER };
 		MOCK_MEMBER_NO_PHOTO.photo = {};
 
-		const avatarMember = shallow(<AvatarMember member={MOCK_MEMBER_NO_PHOTO} />);
-		expect(avatarMember.find(`.${AVATAR_PERSON_NOPHOTO_CLASS}`).exists()).toBe(true);
+		const avatarMember = shallow(
+			<AvatarMember member={MOCK_MEMBER_NO_PHOTO} />
+		);
+		expect(avatarMember.find(`.${AVATAR_PERSON_NOPHOTO_CLASS}`).exists()).toBe(
+			true
+		);
 	});
 
 	it('should render member photo on large size', () => {
@@ -60,7 +67,9 @@ describe('AvatarMember', function() {
 			photo: { ...MOCK_MEMBER.photo, thumb_link: 'test image' },
 		};
 		const avatarMember = shallow(<AvatarMember member={mockMember} />);
-		expect(avatarMember.find(`.${AVATAR_PERSON_NOPHOTO_CLASS}`).exists()).toBe(false);
+		expect(avatarMember.find(`.${AVATAR_PERSON_NOPHOTO_CLASS}`).exists()).toBe(
+			false
+		);
 		expect(avatarMember.find(Icon).exists()).toBe(false);
 	});
 
