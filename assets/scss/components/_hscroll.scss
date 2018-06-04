@@ -5,22 +5,22 @@
 	&::after {
 		content: "";
 		display: block;
-		position: absolute;
 		height: 100%;
-		width: $space;
+		position: absolute;
 		top: 0;
+		width: $space;
 	}
 
 	&::before {
-		left: 0;
 
 		@include background-image(linear-gradient(to right, $C_contentBG, transparentize($C_contentBG, 1)));
+		left: 0;
 	}
 
 	&::after {
-		right: 0;
 
 		@include background-image(linear-gradient(to left, #fff, transparentize(#ffffff, 1)));
+		right: 0;
 	}
 
 	.stripe--collection & {

@@ -20,7 +20,8 @@ describe('TogglePill', () => {
 				id={id}
 				name={name}
 				labelClassName={labelClass}
-				value={value}>
+				value={value}
+			>
 				{label}
 			</TogglePill>
 		);
@@ -46,26 +47,19 @@ describe('TogglePill', () => {
 		expect(onChangeMock).toHaveBeenCalled();
 	});
 
-
 	describe('TogglePill with topic icon', () => {
 		const id = 'parentingTopic',
 			name = 'topics',
 			label = 'Moms and Dads',
 			value = 'parenting';
 
-
 		beforeEach(() => {
 			togglePillComponent = mount(
-				<TogglePill
-					topic
-					id={id}
-					name={name}
-					value={value}>
+				<TogglePill topic id={id} name={name} value={value}>
 					{label}
 				</TogglePill>
 			);
 		});
-
 
 		afterEach(() => {
 			togglePillComponent = null;
@@ -74,7 +68,6 @@ describe('TogglePill', () => {
 		it('creates an Icon component', function() {
 			expect(togglePillComponent.find(Icon).length).toBeGreaterThan(0);
 		});
-
 	});
 
 	describe('TogglePill with radio input', () => {
@@ -85,11 +78,7 @@ describe('TogglePill', () => {
 
 		beforeEach(() => {
 			togglePillComponent = mount(
-				<TogglePill
-					useRadio
-					id={id}
-					name={name}
-					value={value}>
+				<TogglePill useRadio id={id} name={name} value={value}>
 					{label}
 				</TogglePill>
 			);
@@ -100,8 +89,9 @@ describe('TogglePill', () => {
 		});
 
 		it('creates a Toggle Pill with a radio input', function() {
-			expect(togglePillComponent.find('input[type="radio"]').length).toBeGreaterThan(0);
+			expect(
+				togglePillComponent.find('input[type="radio"]').length
+			).toBeGreaterThan(0);
 		});
-
 	});
 });

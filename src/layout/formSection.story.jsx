@@ -74,7 +74,7 @@ storiesOf('FormSection', module)
 				loadingProps={{
 					color: 'red',
 					scrimColor: 'rgba(250, 250, 255, 0.8)',
-					size: '64px'
+					size: '64px',
 				}}
 			>
 				<Chunk>

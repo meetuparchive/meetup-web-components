@@ -17,7 +17,7 @@ const ReduxFormNumberInput = props => {
 	// logic that will extract the simulated value from the NumberInput onChange
 	const wrappedOnChange = ({ target: { value } }) => input.onChange(value);
 
-	const error = (meta.touched || meta.submitFailed) ? meta.error : null;
+	const error = meta.touched || meta.submitFailed ? meta.error : null;
 
 	return (
 		<NumberInput
@@ -31,10 +31,7 @@ const ReduxFormNumberInput = props => {
 
 ReduxFormNumberInput.propTypes = {
 	meta: PropTypes.object.isRequired,
-	input: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.object
-	]).isRequired,
+	input: PropTypes.oneOfType([PropTypes.element, PropTypes.object]).isRequired,
 };
 
 ReduxFormNumberInput.displayName = 'ReduxFormNumberInput';

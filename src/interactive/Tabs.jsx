@@ -7,16 +7,11 @@ import cx from 'classnames';
  */
 export class TabsTab extends React.Component {
 	render() {
-		const {
-			children,
-			isSelected,
-			className,
-			...other
-		} = this.props;
+		const { children, isSelected, className, ...other } = this.props;
 
 		const classNames = cx(
 			'tabs-tab',
-			{'tabs-tab--selected': isSelected},
+			{ 'tabs-tab--selected': isSelected },
 			className
 		);
 
@@ -28,7 +23,7 @@ export class TabsTab extends React.Component {
 	}
 }
 TabsTab.propTypes = {
-	isSelected: PropTypes.bool
+	isSelected: PropTypes.bool,
 };
 
 /**
@@ -46,14 +41,11 @@ export class Tabs extends React.Component {
 			...other
 		} = this.props;
 
-		const ulClasses = cx(
-			'tabs',
-			{
-				'tabs--noBorder': noBorder,
-				'tabs--full': full,
-				'tabs--isVertical': isVertical
-			}
-		);
+		const ulClasses = cx('tabs', {
+			'tabs--noBorder': noBorder,
+			'tabs--full': full,
+			'tabs--isVertical': isVertical,
+		});
 
 		return (
 			<nav className={className}>
@@ -72,10 +64,9 @@ Tabs.propTypes = {
 			return new Error('At least two children of type TabsTab required');
 		}
 
-		const validChildren = React.Children.map(
-			children,
-			child => child && child.type.name === 'TabsTab'
-		).every(child => child);
+		const validChildren = React.Children
+			.map(children, child => child && child.type.name === 'TabsTab')
+			.every(child => child);
 
 		if (!validChildren) {
 			return new Error('Children must be React elements of type TabsTab');
@@ -83,5 +74,5 @@ Tabs.propTypes = {
 	},
 	full: PropTypes.bool,
 	bordered: PropTypes.bool, // deprecating in favor of bordered being default
-	noBorder: PropTypes.bool
+	noBorder: PropTypes.bool,
 };

@@ -10,19 +10,23 @@ export const decorateWithBasics = story => {
 	const iconSpriteStyle = { display: 'none' };
 	const iconSprite = require('raw-loader!swarm-icons/dist/sprite/sprite.inc');
 	const styles = {
-		display:'flex',
+		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
 		height: '100%',
-		width: '100%'
+		width: '100%',
 	};
 
 	return (
 		<div style={styles}>
-			<div style={iconSpriteStyle} dangerouslySetInnerHTML={{__html: iconSprite}} />
+			<div
+				style={iconSpriteStyle}
+				dangerouslySetInnerHTML={{ __html: iconSprite }}
+			/>
 			{story()}
 		</div>
 	);
 };
 
-export const decorateWithInfo = (story, context) => withInfo(`${context.story} ${context.kind}`)(story)(context);
+export const decorateWithInfo = (story, context) =>
+	withInfo(`${context.story} ${context.kind}`)(story)(context);
