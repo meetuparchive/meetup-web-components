@@ -81,9 +81,7 @@ class AccordionPanel extends React.Component {
 	 * @returns {undefined}
 	 */
 	onKeyUp(e) {
-		const isActivatingButton = [' ', 'Enter'].some(
-			key => e.key === key
-		);
+		const isActivatingButton = [' ', 'Enter'].some(key => e.key === key);
 
 		if (isActivatingButton) {
 			this._handleToggle(e);

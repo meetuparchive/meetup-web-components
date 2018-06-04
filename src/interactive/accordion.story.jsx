@@ -4,28 +4,21 @@ import AccordionPanel from './AccordionPanel';
 import { storiesOf } from '@storybook/react';
 import { decorateAction } from '@storybook/addon-actions';
 import { decorateWithBasics } from '../utils/decorators';
+import { textContent1, textContent2 } from '../__mocks__/textContentMocks';
 
 const callbackAction = decorateAction([args => ['Am I open?', args[1]]]);
 
 const panelOneProps = {
-	panelContent:
+	panelContent: (
 		<div className="runningText">
-			<p>
-				Contrary to popular belief, Lorem Ipsum is not simply random
-				text. It has roots in a piece of classical Latin literature
-				from 45 BC, making it over 2000 years old. Richard
-				McClintock, a Latin professor at Hampden-Sydney College in
-				Virginia, looked up one of the more obscure Latin words,
-				consectetur, from a Lorem Ipsum passage, and going through
-				the cites of the word in classical literature, discovered
-				the undoubtable source.
-			</p>
-		</div>,
-	label: 'First in default group'
+			<p>{textContent1}</p>
+		</div>
+	),
+	label: 'First in default group',
 };
 
 const panelTwoProps = {
-	panelContent:
+	panelContent: (
 		<div>
 			<div className="runningText">
 				<p>Any kind of content can go in here, even inputs.</p>
@@ -38,23 +31,18 @@ const panelTwoProps = {
 					placeholder="Input placeholder"
 				/>
 			</div>
-		</div>,
-	label: 'Second in default group'
+		</div>
+	),
+	label: 'Second in default group',
 };
 
 const panelThreeProps = {
-	panelContent:
+	panelContent: (
 		<div className="runningText">
-			<p>
-				Classical Latin literature from 45 BC, making it over 2000
-				years old. Richard McClintock, a Latin professor at
-				Hampden-Sydney College in Virginia, looked up one of the
-				more obscure Latin words, consectetur, from a Lorem Ipsum
-				passage, and going through the cites of the word in
-				classical literature, discovered the undoubtable source.
-			</p>
-		</div>,
-	label: 'Third in default group'
+			<p>{textContent2}</p>
+		</div>
+	),
+	label: 'Third in default group',
 };
 
 const defaultPanels = [
@@ -67,9 +55,7 @@ storiesOf('Accordion', module)
 	.addDecorator(decorateWithBasics)
 	.addWithInfo('default', 'Basic Accordion group', () => (
 		<div className="span--100 padding--all">
-			<AccordionPanelGroup
-				accordionPanels={defaultPanels}
-			/>
+			<AccordionPanelGroup accordionPanels={defaultPanels} />
 		</div>
 	))
 	.addWithInfo(
@@ -139,10 +125,7 @@ storiesOf('Accordion', module)
 		'Show the indicator as a switch',
 		() => (
 			<div className="span--100 padding--all">
-				<AccordionPanelGroup
-					indicatorSwitch
-					accordionPanels={defaultPanels}
-				/>
+				<AccordionPanelGroup indicatorSwitch accordionPanels={defaultPanels} />
 			</div>
 		)
 	)
@@ -190,10 +173,7 @@ storiesOf('Accordion', module)
 			<div className="span--100 padding--all">
 				<AccordionPanelGroup
 					accordionPanels={[
-						<AccordionPanel
-							{...panelOneProps}
-							isOpen
-						/>,
+						<AccordionPanel {...panelOneProps} isOpen />,
 						<AccordionPanel {...panelTwoProps} />,
 						<AccordionPanel {...panelThreeProps} />,
 					]}
