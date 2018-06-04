@@ -131,6 +131,19 @@ storiesOf("Dropdown", module)
 		)
 	)
 	.addWithInfo(
+		"Dropdown above trigger",
+		"Aligned right and appearing above the trigger",
+		() => (
+			<Dropdown
+				isActive
+				direction="top"
+				align="right"
+				trigger={<Button small>Open</Button>}
+				content={dropdownContent}
+			/>
+		)
+	)
+	.addWithInfo(
 		"Dropdown with offset",
 		"Using an offset to fine-tune the popup alignment to the trigger",
 		() => (

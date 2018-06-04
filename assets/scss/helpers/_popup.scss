@@ -25,6 +25,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	background-color: $C_contentBG;
 	box-shadow: $dropdownShadow;
 	box-sizing: border-box;
+	position: relative;
 
 	// outer triangle for border
 	&::before {
@@ -108,7 +109,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	&::before {
 		border-bottom: none;
 		border-top: ($triangleSize + 1) solid $C_border;
-		bottom: -#{$triangleSize - 0.5};
+		bottom: -#{$triangleSize + 0.5};
 		top: initial;
 	}
 
@@ -116,7 +117,7 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 	&::after {
 		border-bottom: none;
 		border-top: $triangleSize solid $C_white;
-		bottom: -#{$triangleSize + 1};
+		bottom: -#{$triangleSize - 1};
 		top: initial;
 	}
 }
@@ -144,8 +145,9 @@ $spaceFromTrigger: $space-3 + $triangleSize;
 }
 
 .popup-content--top {
-	padding-top: 0;
+	margin-top: 0;
 	padding-bottom: $triangleSize;
+	padding-top: $triangleSize;
 }
 
 .popup--noPortal {
