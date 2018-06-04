@@ -41,7 +41,10 @@ InfoToggle.defaultProps = {
 
 InfoToggle.propTypes = {
 	tooltipContent: PropTypes.element,
-	label: PropTypes.string,
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
+	]),
 	tooltipId: PropTypes.string.isRequired,
 	tooltipProps: PropTypes.object,
 };
