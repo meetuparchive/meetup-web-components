@@ -131,7 +131,6 @@ storiesOf('Dropdown', module)
 		'Aligned right and appearing above the trigger',
 		() => (
 			<Dropdown
-				isActive
 				direction="top"
 				align="right"
 				trigger={<Button small>Open</Button>}

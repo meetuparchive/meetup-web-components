@@ -152,95 +152,76 @@ class Dropdown extends React.PureComponent {
 							})}
 							onClick={this.onClick}
 						>
-							<div
-								{...getButtonProps()}
-								ref={el => (this.triggerRef = el)}
-								className={cx("popup-trigger", {
-									"popup-trigger--active": isOpen
-								})}
-								onClick={this.onClick}
-							>
-								{trigger}
-							</div>
-
-							{ isOpen &&
-								<FloatingPosition
-									getTrigger={getTrigger}
-									getContent={getContent}
-									noPortal={noPortal}
-									align={align}
-									offset={offset}
-									direction={direction}
-								>
-									{({
-										top,
-										left,
-										align,
-										boundedMaxWidth
-									}) => (
-										<div
-											ref={el => (this.contentRef = el)}
-											className={cx("popup-content", {
-												"popup-content--right": align === "right",
-												"popup-content--left": align === "left",
-												"popup-content--center": align === "center",
-												"popup-content--top": direction === "top",
-												"display--none": !isOpen,
-												"display--block": isOpen,
-												dropdownMenu: Boolean(menuItems)
-											})}
-											aria-hidden={!isOpen}
-											style={{
-												left: left,
-												top: top,
-												minWidth: minWidth,
-												maxWidth: maxWidth || boundedMaxWidth
-											}}
-										>
-											<div
-												className={cx("popup-bubble", {
-													"popup-bubble--right": align === "right",
-													"popup-bubble--left": align === "left",
-													"popup-bubble--center": align === "center",
-													"popup-bubble--top": direction === "top",
-												})}
-											>
-												{
-													menuItems
-													?
-														menuItems.map((item, index) => {
-															const {className, ...other} = item.props;
-
-															return React.cloneElement(
-																item,
-																{
-																	...getItemProps({
-																		item,
-																		key: `menuItem-${index}`,
-																		className: cx(
-																			className,
-																			DROPDOWN_MENU_ITEM_CLASS,
-																			'display--flex span--100'
-																		),
-																		style: {
-																			backgroundColor: highlightedIndex === index && C_COOLGRAYLIGHTTRANSP
-																		},
-																		...other
-																	})
-																}
-															);
-														})
-													:
-														content
-												}
-											</div>
-										</div>
-									)}
-								</FloatingPosition>
-							}
+							{trigger}
 						</div>
-					)
-				}
+
+						{isOpen && (
+							<FloatingPosition
+								getTrigger={getTrigger}
+								getContent={getContent}
+								noPortal={noPortal}
+								align={align}
+								offset={offset}
+								direction={direction}
+							>
+								{({ top, left, align, boundedMaxWidth }) => (
+									<div
+										ref={el => (this.contentRef = el)}
+										className={cx('popup-content', {
+											'popup-content--right': align === 'right',
+											'popup-content--left': align === 'left',
+											'popup-content--center': align === 'center',
+											'popup-content--top': direction === 'top',
+											'display--none': !isOpen,
+											'display--block': isOpen,
+											dropdownMenu: Boolean(menuItems),
+										})}
+										aria-hidden={!isOpen}
+										style={{
+											left: left,
+											top: top,
+											minWidth: minWidth,
+											maxWidth: maxWidth || boundedMaxWidth,
+										}}
+									>
+										<div
+											className={cx('popup-bubble', {
+												'popup-bubble--right': align === 'right',
+												'popup-bubble--left': align === 'left',
+												'popup-bubble--center': align === 'center',
+												'popup-bubble--top': direction === 'top',
+											})}
+										>
+											{menuItems
+												? menuItems.map((item, index) => {
+														const { className, ...other } = item.props;
+
+														return React.cloneElement(item, {
+															...getItemProps({
+																item,
+																key: `menuItem-${index}`,
+																className: cx(
+																	className,
+																	DROPDOWN_MENU_ITEM_CLASS,
+																	'display--flex span--100'
+																),
+																style: {
+																	backgroundColor:
+																		highlightedIndex === index &&
+																		C_COOLGRAYLIGHTTRANSP,
+																},
+																...other,
+															}),
+														});
+													})
+												: content}
+										</div>
+									</div>
+								)}
+							</FloatingPosition>
+						)}
+					</div>
+				)}
 			</Downshift>
 		);
 	}
@@ -249,7 +230,7 @@ class Dropdown extends React.PureComponent {
 Dropdown.defaultProps = {
 	direction: 'bottom',
 	minWidth: '0px',
-	noPortal: false
+	noPortal: false,
 };
 
 Dropdown.propTypes = {
