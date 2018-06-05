@@ -6,40 +6,40 @@ $avatarSizeProps: (height, width);
 	text-indent: 0;
 
 	.svg--avatarBadge {
-		position: absolute;
 		bottom: -6%;
+		height: 44%;
+		position: absolute;
 		right: -6%;
 		width: 44%;
-		height: 44%;
 
 		// circle behind the icon
 		&::before {
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			content: "";
 			background-color: $color;
 			border-radius: 100%;
+			bottom: 0;
+			content: "";
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
 		}
 
 		// the icon itself
 		svg {
 			@include color-svg(getPrimaryTextColor($color));
-			width: 80%;
 			height: 80%;
 			transform: translate(12%, 12%);
+			width: 80%;
 		}
 	}
 
 	// Use proportionally smaller badge for larger avatars
 	&.avatar--large .svg--avatarBadge,
 	&.avatar--xxlarge .svg--avatarBadge {
-		width: 30%;
-		height: 30%;
 		bottom: 0;
+		height: 30%;
 		right: 0;
+		width: 30%;
 	}
 }
 
@@ -48,15 +48,15 @@ $avatarSizeProps: (height, width);
 	@extend %imgFill;
 
 	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-m), $media-m);
-	position: relative;
 	background-color: $avatarBg;
 	background-position: center 42%;
 	color: transparent;
 	display: inline-block;
 	font-size: 0;
+	position: relative;
 	text-indent: 100%;
-	white-space: nowrap;
 	vertical-align: top;
+	white-space: nowrap;
 
 	.inverted & {
 		background: $C_textHintInverted;
@@ -68,14 +68,14 @@ $avatarSizeProps: (height, width);
 // (hidden by default)
 //
 .avatar-print {
-	speak: none;
 	display: none;
+	speak: none;
 }
 
 @media print {
 	.avatar-print {
-		width: 100%;
 		display: block;
+		width: 100%;
 	}
 }
 
@@ -105,38 +105,38 @@ $avatarSizeProps: (height, width);
 //
 .avatar--person {
 	@extend %avatar;
-	vertical-align: middle;
 	border-radius: 999px;
 	box-sizing: border-box;
+	vertical-align: middle;
 }
 
 .avatar--noPhoto {
 	@include display(inline-flex);
 	@include align-items(center);
 	@include justify-content(center);
+	background-color: darken($avatarBg, 6%);
 	position: relative;
 	text-indent: 0;
-	background-color: darken($avatarBg, 6%);
 }
 
 .avatarIcon--noPhoto {
-	// matches size of icon wrapper div
-	// to the size of the avatar
-	width: 100%;
-	height: 100%;
 
 	// center the SVG element within the wrapper
 	@include align-items(center);
 	@include justify-content(center);
+	height: 100%;
+	// matches size of icon wrapper div
+	// to the size of the avatar
+	width: 100%;
 
 	// must be scoped to `avatarIcon--noPhoto`,
 	// as it's possible to have additional `Icon`
 	// children in `Avatar`
 	svg {
-		// sets SVG size relative to wrapper
-		width: 40%;
 		height: 40%;
 		opacity: alpha($C_textSecondary);
+		// sets SVG size relative to wrapper
+		width: 40%;
 	}
 }
 

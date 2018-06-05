@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 import ReduxFormTogglePill from './TogglePill';
 
 describe('redux-form TogglePill', function() {
-
 	// props given in the structure that
 	// redux form would
 	const togglePillProps = {
@@ -11,7 +10,7 @@ describe('redux-form TogglePill', function() {
 			label: 'Parenting',
 			name: 'parenting',
 			value: false, // as a checkbox, redux form will pass true / false for values
-		}
+		},
 	};
 
 	it('renders a TogglePill component with expected attributes from mock data', () => {
@@ -29,6 +28,4 @@ describe('redux-form TogglePill', function() {
 		const component = mount(<ReduxFormTogglePill {...togglePillProps} />);
 		expect(component.find('TogglePill').prop('isActive')).toBe(true);
 	});
-
 });
-

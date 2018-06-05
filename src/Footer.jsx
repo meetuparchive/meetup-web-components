@@ -20,7 +20,7 @@ import withMatchMedia from './utils/components/withMatchMedia';
 
 import { getSocialLinks } from './utils/getSocialLinks';
 
-export const FooterCategory = (props) => (
+export const FooterCategory = props => (
 	<Chunk>
 		<h4 className="text--bold margin--bottom">{props.header}</h4>
 		<GridList
@@ -35,8 +35,7 @@ export const FooterCategory = (props) => (
 	</Chunk>
 );
 
-
-export const SocialIconsList = ({localeCode}) => {
+export const SocialIconsList = ({ localeCode }) => {
 	const socialLinks = getSocialLinks(localeCode);
 	const socialIcons = [
 		<a href={socialLinks.facebook}>
@@ -59,7 +58,7 @@ export const SocialIconsList = ({localeCode}) => {
 	return <InlineBlockList items={socialIcons} />;
 };
 
-export const LanguageSelectInput = (props) => (
+export const LanguageSelectInput = props => (
 	<SelectInput
 		onChange={props.onChange}
 		options={locales.map(language => ({
@@ -90,11 +89,7 @@ export const Footer = ({
 	const languageShort = localeCode.split('-')[0];
 
 	return (
-		<footer
-			id="mupFooter"
-			className={classNames}
-			{...other}
-		>
+		<footer id="mupFooter" className={classNames} {...other}>
 			<Stripe
 				inverted={!isLight}
 				className={cx('footerStripe-main', {
@@ -104,10 +99,7 @@ export const Footer = ({
 				<Bounds narrow className="bounds--footer">
 					<Section hasSeparator>
 						<Chunk>
-							<a
-								href={createMeetup.link}
-								className="link link--white"
-							>
+							<a href={createMeetup.link} className="link link--white">
 								{createMeetup.text}
 							</a>
 						</Chunk>
@@ -116,13 +108,11 @@ export const Footer = ({
 						<Flex direction="column" switchDirection="large">
 							<FlexItem className="margin--bottom">
 								<Flex direction="column" switchDirection="medium">
-									{
-										linkSets.map((linkSet, i) => (
-											<FlexItem key={`linkSet-${i}`}>
-												<FooterCategory {...linkSet} />
-											</FlexItem>
-										))
-									}
+									{linkSets.map((linkSet, i) => (
+										<FlexItem key={`linkSet-${i}`}>
+											<FooterCategory {...linkSet} />
+										</FlexItem>
+									))}
 								</Flex>
 							</FlexItem>
 							<FlexItem shrink>
@@ -140,14 +130,10 @@ export const Footer = ({
 													: 'row'
 											}
 											rowReverse={
-												media.isAtMediumUp &&
-												!media.isAtLargeUp &&
-												!isLoggedIn
+												media.isAtMediumUp && !media.isAtLargeUp && !isLoggedIn
 											}
 											justify={
-												media.isAtMediumUp &&
-												!media.isAtLargeUp &&
-												!isLoggedIn
+												media.isAtMediumUp && !media.isAtLargeUp && !isLoggedIn
 													? 'spaceBetween'
 													: null
 											}
@@ -188,15 +174,13 @@ export const Footer = ({
 							separator="·"
 							items={[
 								<span>{`© Meetup ${new Date().getFullYear()}`}</span>,
-								(legalCopy && <span>{legalCopy}</span>),
+								legalCopy && <span>{legalCopy}</span>,
 							].filter(item => item)}
 						/>
 						<InlineBlockList
 							className="text--small align--center atMedium_align--left margin--top"
 							separator="·"
-							items={[
-								...subFooterLinks
-							]}
+							items={[...subFooterLinks]}
 						/>
 					</div>
 				</Bounds>
@@ -208,7 +192,7 @@ export const Footer = ({
 Footer.defaultProps = {
 	createMeetup: {
 		text: 'Create a Meetup',
-		link: '/create/'
+		link: '/create/',
 	},
 	linkSets: [
 		{
@@ -216,8 +200,8 @@ Footer.defaultProps = {
 			items: [
 				<a href="/register">Settings</a>,
 				<a href="/logout">Log out</a>,
-				<a href="/help">Help</a>
-			]
+				<a href="/help">Help</a>,
+			],
 		},
 		{
 			header: 'Discover',
@@ -225,8 +209,8 @@ Footer.defaultProps = {
 				<a href="/groups">Groups</a>,
 				<a href="/calendar">Calendar</a>,
 				<a href="/topics">Topics</a>,
-				<a href="/cities">Cities</a>
-			]
+				<a href="/cities">Cities</a>,
+			],
 		},
 		{
 			header: 'Meetup',
@@ -235,34 +219,36 @@ Footer.defaultProps = {
 				<a href="/pro">Meetup Pro</a>,
 				<a href="/jobs">Careers</a>,
 				<a href="/apps">Apps</a>,
-				<a href="/meetup_api">API</a>
-			]
+				<a href="/meetup_api">API</a>,
+			],
 		},
 	],
-	localeCode: "en-US",
+	localeCode: 'en-US',
 	subFooterLinks: [
 		<a href="/terms">Terms of Service</a>,
 		<a href="/privacy">Privacy Policy</a>,
-		<a href="/cookie_policy">Cookie Policy</a>
-	]
+		<a href="/cookie_policy">Cookie Policy</a>,
+	],
 };
 
 Footer.propTypes = {
 	className: PropTypes.string,
 	createMeetup: PropTypes.shape({
 		link: PropTypes.string.isRequired,
-		text: PropTypes.string.isRequired
+		text: PropTypes.string.isRequired,
 	}).isRequired,
 	isLight: PropTypes.bool,
 	isLoggedIn: PropTypes.bool,
 	legalCopy: PropTypes.string,
 	localeCode: PropTypes.string.isRequired,
-	linkSets: PropTypes.arrayOf(PropTypes.shape({
-		header: PropTypes.string.isRequired,
-		items: PropTypes.arrayOf(PropTypes.element).isRequired
-	})).isRequired,
+	linkSets: PropTypes.arrayOf(
+		PropTypes.shape({
+			header: PropTypes.string.isRequired,
+			items: PropTypes.arrayOf(PropTypes.element).isRequired,
+		})
+	).isRequired,
 	onLanguageSelect: PropTypes.func.isRequired,
-	subFooterLinks: PropTypes.arrayOf(PropTypes.element).isRequired
+	subFooterLinks: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default withMatchMedia(Footer);

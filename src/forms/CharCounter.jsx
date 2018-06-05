@@ -2,10 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-const CharCounter = ({
-	maxLength,
-	valueLength,
-}) => {
+const CharCounter = ({ maxLength, valueLength }) => {
 	const remainingChars = maxLength - valueLength;
 
 	const classNames = cx(
@@ -16,7 +13,11 @@ const CharCounter = ({
 		{ 'text--error': remainingChars < 0 }
 	);
 
-	return <p tabIndex="-1" className={classNames}>{remainingChars}</p>;
+	return (
+		<p tabIndex="-1" className={classNames}>
+			{remainingChars}
+		</p>
+	);
 };
 
 CharCounter.propTypes = {

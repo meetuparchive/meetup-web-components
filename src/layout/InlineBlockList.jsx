@@ -25,30 +25,31 @@ export class InlineBlockList extends React.Component {
 		const classNames = cx(
 			'inlineblockList',
 			{
-				[INLINEBLOCKLIST_SEPERATED_CLASS]: separator
+				[INLINEBLOCKLIST_SEPERATED_CLASS]: separator,
 			},
 			className
 		);
 
 		const itemProps = {
 			'data-separator': separator,
-			style: {verticalAlign},
+			style: { verticalAlign },
 		};
 
 		return (
 			<ConditionalWrap
 				condition={this.props.children && isLoading}
 				wrap={children => (
-					<div className="component--isLoading">{[children, this.props.children]}</div>
+					<div className="component--isLoading">
+						{[children, this.props.children]}
+					</div>
 				)}
 			>
-				<ul
-					className={classNames}
-					{...other}
-				>
-					{items.map((item, key) =>
-						<li key={key} {...itemProps}>{item}</li>
-					)}
+				<ul className={classNames} {...other}>
+					{items.map((item, key) => (
+						<li key={key} {...itemProps}>
+							{item}
+						</li>
+					))}
 				</ul>
 			</ConditionalWrap>
 		);
@@ -57,17 +58,14 @@ export class InlineBlockList extends React.Component {
 
 InlineBlockList.propTypes = {
 	items: PropTypes.arrayOf(
-		PropTypes.oneOfType([
-			PropTypes.element,
-			PropTypes.string
-		])
+		PropTypes.oneOfType([PropTypes.element, PropTypes.string])
 	).isRequired,
 	separator: PropTypes.string,
 	isLoading: PropTypes.bool,
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
-		size: PropTypes.string
+		size: PropTypes.string,
 	}),
 	verticalAlign: PropTypes.oneOf(['top', 'middle', 'bottom']),
 };

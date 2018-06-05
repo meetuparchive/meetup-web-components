@@ -26,12 +26,12 @@
 .svg-icon { // SVG element
 	@include _iconColor( $C_textSecondary, $C_textSecondaryInverted );
 	@include display(inline-flex);
-	vertical-align: bottom;
 	font-size: 0;
 
 	// click handling on svg elements
 	// (ensures the entire element is clickable, not just the drawn bits
 	position: relative;
+	vertical-align: bottom;
 
 	use {
 		pointer-events: none;
@@ -45,15 +45,15 @@
 	position: relative;
 
 	&::before {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		content: "";
 		background-color: $C_lightGray;
 		border: 1px solid $C_border;
 		border-radius: 100%;
+		bottom: 0;
+		content: "";
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
 	}
 
 	svg {

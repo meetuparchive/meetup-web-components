@@ -54,7 +54,7 @@ class Toast extends React.PureComponent {
 			'inverted',
 			{
 				[SUCCESS_TOAST_CLASS]: success,
-				[ERROR_TOAST_CLASS]: error
+				[ERROR_TOAST_CLASS]: error,
 			},
 			className
 		);
@@ -63,10 +63,11 @@ class Toast extends React.PureComponent {
 			<span
 				className={classNames}
 				role={error ? 'alert' : 'log'}
-				aria-relevant='all'
-				aria-atomic='true'
-				{...other}>
-				<Flex align='center'>
+				aria-relevant="all"
+				aria-atomic="true"
+				{...other}
+			>
+				<Flex align="center">
 					<FlexItem>{children}</FlexItem>
 					{action && (
 						<FlexItem shrink>
@@ -82,11 +83,10 @@ class Toast extends React.PureComponent {
 							onClick={this.handleDismiss}
 						>
 							<Button reset>
-								<Icon shape='cross' size='s' />
+								<Icon shape="cross" size="s" />
 							</Button>
 						</FlexItem>
 					)}
-
 				</Flex>
 			</span>
 		);
@@ -103,7 +103,7 @@ Toast.propTypes = {
 
 Toast.defaultProps = {
 	autodismiss: true,
-	dismissable: true
+	dismissable: true,
 };
 
 export default Toast;

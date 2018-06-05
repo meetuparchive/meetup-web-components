@@ -1,12 +1,8 @@
 import React from 'react';
-import {
-	TextInput,
-	FIELD_WITH_ICON_CLASS,
-} from './TextInput';
+import { TextInput, FIELD_WITH_ICON_CLASS } from './TextInput';
 import { shallow, mount } from 'enzyme';
 
 describe('TextInput', function() {
-
 	const LABEL_TEXT = 'Super Hero',
 		VALUE = 'Batman',
 		NAME_ATTR = 'superhero',
@@ -17,7 +13,6 @@ describe('TextInput', function() {
 		maxLength: MAX_LEN,
 		required: true,
 	};
-
 
 	it('renders a required HTML <input> with expected attributes for mock data', () => {
 		const component = shallow(
@@ -47,7 +42,7 @@ describe('TextInput', function() {
 					onChange={onChange}
 					isSearch
 					disabled
-					iconShape='search'
+					iconShape="search"
 					{...formAttrs}
 				/>
 			).find('input');
@@ -78,7 +73,9 @@ describe('TextInput', function() {
 		});
 
 		it('should call onChange `props` function when input is changed', () => {
-			const eventData = { target: { value: `${VALUE}r`, setCustomValidity: () => true }};
+			const eventData = {
+				target: { value: `${VALUE}r`, setCustomValidity: () => true },
+			};
 			inputEl.simulate('change', eventData);
 			expect(onChange).toHaveBeenCalledWith(eventData);
 		});
@@ -86,7 +83,6 @@ describe('TextInput', function() {
 		it('should show an icon when iconShape prop is specified', () => {
 			expect(inputEl.find(`.${FIELD_WITH_ICON_CLASS}`).exists()).toBe(true);
 		});
-
 	});
 
 	describe('dom checks, full rendering', () => {
@@ -113,6 +109,5 @@ describe('TextInput', function() {
 			const labelEl = component.find('label').getDOMNode();
 			expect(labelEl.textContent).toEqual(LABEL_TEXT);
 		});
-
 	});
 });

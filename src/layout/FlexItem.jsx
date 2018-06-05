@@ -7,7 +7,7 @@ import withLoading from '../utils/components/withLoading';
 export const FLEX_ITEM_CLASS = 'flex-item';
 export const FLEX_ITEM_SHRINK_CLASS = 'flex-item--shrink';
 export const FLEX_ITEM_GROW_CLASS = 'flex-item--';
-export const FLEX_GROW_FACTORS = [1,2,3,4,5,6,7];
+export const FLEX_GROW_FACTORS = [1, 2, 3, 4, 5, 6, 7];
 /**
  * Design System Component: Provides `FlexItem` styled container for use in `Flex` component containers
  * @module FlexItem
@@ -31,17 +31,14 @@ export class FlexItem extends React.Component {
 			FLEX_ITEM_CLASS,
 			{
 				[FLEX_ITEM_SHRINK_CLASS]: shrink,
-				[`${FLEX_ITEM_GROW_CLASS}${growFactor}`] : growFactor,
-				'component--isLoading': isLoading
+				[`${FLEX_ITEM_GROW_CLASS}${growFactor}`]: growFactor,
+				'component--isLoading': isLoading,
 			},
 			className
 		);
 
 		return (
-			<div
-				className={classNames}
-				{...other}
-			>
+			<div className={classNames} {...other}>
 				{children}
 			</div>
 		);
@@ -55,8 +52,8 @@ FlexItem.propTypes = {
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
-		size: PropTypes.string
-	})
+		size: PropTypes.string,
+	}),
 };
 
 export default withLoading(FlexItem);

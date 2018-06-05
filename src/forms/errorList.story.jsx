@@ -10,5 +10,4 @@ storiesOf('ErrorList', module)
 		<Bounds>
 			<ErrorList error="There is an error. ErrorList ensures the error container is always rendered with ARIA attributes." />
 		</Bounds>
-		)
-	);
+	));
