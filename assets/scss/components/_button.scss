@@ -40,9 +40,9 @@ _(The `extend` directive can cause ugly cascade problems)_
 	@include justify-content(center);
 	@include align-items(center);
 	@include transition(background 0.15s);
-	box-sizing: border-box;
 	-webkit-appearance: none;
 	border-radius: $defaultRadius;
+	box-sizing: border-box;
 	font-size: $font-size-small;
 	line-height: $line-height-smallText;
 	outline: 0;
@@ -51,8 +51,8 @@ _(The `extend` directive can cause ugly cascade problems)_
 
 	@include browser-ie11() {
 		min-height: 0;
-		padding-top: 0.33em;
 		padding-bottom: 0.5em;
+		padding-top: 0.33em;
 	}
 }
 
@@ -165,6 +165,8 @@ Applies button color-related styles using a mixin.
 // Bordered buttons
 //
 .button--bordered {
+
+	$C_borderedHoverBase: transparentize($C_textPrimary, 0.4);
 	@include buttonColor(
 		$bgColor: $C_contentBG,
 		$hoverColor: $C_contentBG,
@@ -182,8 +184,6 @@ Applies button color-related styles using a mixin.
 	&[disabled] {
 		border: 1px solid $C_border;
 	}
-
-	$C_borderedHoverBase: transparentize($C_textPrimary, 0.4);
 
 	.inverted & {
 		@include buttonColor(
@@ -249,8 +249,8 @@ Applies button color-related styles using a mixin.
 		$textColor: $C_textPrimary
 	);
 	border-radius: 0;
-	padding: 0;
 	font-size: inherit;
+	padding: 0;
 
 	&,
 	&.button--disabled,
@@ -303,12 +303,12 @@ Applies button color-related styles using a mixin.
 }
 
 .button-label {
-	text-align: center;
 
 	// this full shorthand property for `flex`
 	// is required to prevent IE11 from "shrinkwrapping" text nodes
 
 	@include flex(1 1 auto);
+	text-align: center;
 
 	.button-icon-wrapper & {
 		padding-left: $space-half;

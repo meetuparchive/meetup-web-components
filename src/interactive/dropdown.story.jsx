@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import { storiesOf, action } from '@storybook/react';
-import { decorateWithBasics } from "../utils/decorators";
-import Dropdown from "./Dropdown";
-import Section from "../layout/Section";
-import Chunk from "../layout/Chunk";
-import Flex from "../layout/Flex";
-import FlexItem from "../layout/FlexItem";
-import Button from "../forms/Button";
+import { decorateWithBasics } from '../utils/decorators';
+import Dropdown from './Dropdown';
+import Section from '../layout/Section';
+import Chunk from '../layout/Chunk';
+import Flex from '../layout/Flex';
+import FlexItem from '../layout/FlexItem';
+import Button from '../forms/Button';
 
 const dropdownContent = (
 	<Section className="border--none">
@@ -34,7 +34,7 @@ class DropdownWithToggle extends React.PureComponent {
 		super(props);
 
 		this.state = {
-			dropdownToggled: false
+			dropdownToggled: false,
 		};
 
 		this.toggleDropdown = this.toggleDropdown.bind(this);
@@ -74,31 +74,27 @@ class DropdownWithToggle extends React.PureComponent {
 	}
 }
 
-storiesOf("Dropdown", module)
+storiesOf('Dropdown', module)
 	.addDecorator(decorateWithBasics)
+	.addWithInfo('Basic Dropdown component', 'Aligned right by default', () => (
+		<div
+			style={{
+				marginTop: '800px',
+				width: '500px',
+				height: '1000px',
+				marginLeft: '600px',
+			}}
+		>
+			<Dropdown
+				align="right"
+				trigger={<Button small>Open</Button>}
+				content={dropdownContent}
+			/>
+		</div>
+	))
 	.addWithInfo(
-		"Basic Dropdown component",
-		"Aligned right by default",
-		() => (
-			<div
-				style={{
-					marginTop: "800px",
-					width: "500px",
-					height: "1000px",
-					marginLeft: "600px"
-				}}
-			>
-				<Dropdown
-					align="right"
-					trigger={<Button small>Open</Button>}
-					content={dropdownContent}
-				/>
-			</div>
-		)
-	)
-	.addWithInfo(
-		"Dropdown component (no Portal)",
-		"Use the `noPortal` prop to decide whether a the content should render in document body",
+		'Dropdown component (no Portal)',
+		'Use the `noPortal` prop to decide whether a the content should render in document body',
 		() => (
 			<Dropdown
 				align="right"
@@ -109,8 +105,8 @@ storiesOf("Dropdown", module)
 		)
 	)
 	.addWithInfo(
-		"Left aligned dropdown",
-		"Use the `align` prop to change alignment to left",
+		'Left aligned dropdown',
+		'Use the `align` prop to change alignment to left',
 		() => (
 			<Dropdown
 				align="left"
@@ -120,8 +116,8 @@ storiesOf("Dropdown", module)
 		)
 	)
 	.addWithInfo(
-		"Center aligned dropdown",
-		"Use the `align` prop to change alignment to left",
+		'Center aligned dropdown',
+		'Use the `align` prop to change alignment to left',
 		() => (
 			<Dropdown
 				align="center"
@@ -131,8 +127,8 @@ storiesOf("Dropdown", module)
 		)
 	)
 	.addWithInfo(
-		"Dropdown above trigger",
-		"Aligned right and appearing above the trigger",
+		'Dropdown above trigger',
+		'Aligned right and appearing above the trigger',
 		() => (
 			<Dropdown
 				isActive
@@ -144,17 +140,18 @@ storiesOf("Dropdown", module)
 		)
 	)
 	.addWithInfo(
-		"Dropdown with offset",
-		"Using an offset to fine-tune the popup alignment to the trigger",
+		'Dropdown with offset',
+		'Using an offset to fine-tune the popup alignment to the trigger',
 		() => (
 			<Dropdown
 				align="right"
-				offset={{top: 8, left: 16}}
+				offset={{ top: 8, left: 16 }}
 				trigger={<Button small>Open</Button>}
 				content={
 					<div className="runningText padding--all">
 						<p>
-							This dropdown component is offset 16px from the left and 8px from the top
+							This dropdown component is offset 16px from the left and 8px from
+							the top
 						</p>
 					</div>
 				}
@@ -162,25 +159,29 @@ storiesOf("Dropdown", module)
 		)
 	)
 	.addWithInfo(
-		"With menu items",
-		"Use the `menuItems` prop to render a menu",
+		'With menu items',
+		'Use the `menuItems` prop to render a menu',
 		() => (
 			<Dropdown
 				align="center"
 				minWidth="160px"
 				maxWidth="250px"
 				trigger={<Button small>Open</Button>}
-				onSelect={(selectedItem, stateAndHelpers) => selectedItem.props.onClick()}
+				onSelect={(selectedItem, stateAndHelpers) =>
+					selectedItem.props.onClick()}
 				menuItems={[
-					<div onClick={action('item one click')}>Item one has text that is really long and should wrap once we reach max width</div>,
+					<div onClick={action('item one click')}>
+						Item one has text that is really long and should wrap once we reach
+						max width
+					</div>,
 					<div onClick={action('item two click')}>Item two</div>,
-					<div onClick={action('item three click')}>Item three</div>
+					<div onClick={action('item three click')}>Item three</div>,
 				]}
 				noPortal // to test text-wrapping
 			/>
 		)
 	)
-	.addWithInfo("with custom toggle functionality", () => (
+	.addWithInfo('with custom toggle functionality', () => (
 		<Flex justify="flexEnd">
 			<FlexItem shrink>
 				<DropdownWithToggle />
@@ -188,13 +189,13 @@ storiesOf("Dropdown", module)
 		</Flex>
 	))
 	.addWithInfo(
-		"Overflowing viewport",
-		"Aligned right by default, but switches to left",
+		'Overflowing viewport',
+		'Aligned right by default, but switches to left',
 		() => (
 			<div
 				style={{
 					textAlign: 'left',
-					width: '100vw'
+					width: '100vw',
 				}}
 			>
 				<Dropdown
@@ -203,8 +204,9 @@ storiesOf("Dropdown", module)
 					content={
 						<div className="runningText padding--all">
 							<p>
-								This Dropdown component's `align` prop is set to 'right', but because
-								it would overflow the viewport, it gets switched to 'left'
+								This Dropdown component's `align` prop is set to 'right', but
+								because it would overflow the viewport, it gets switched to
+								'left'
 							</p>
 						</div>
 					}

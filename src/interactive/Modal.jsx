@@ -13,7 +13,6 @@ export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
 export const DEFAULT_MARGIN_TOP = '10vh';
 export const MARGIN_TOP_OFFSET = 36;
 
-
 /**
  * Gets `margin-top` value for vertically positioning the modal
  *
@@ -25,17 +24,20 @@ export const MARGIN_TOP_OFFSET = 36;
  *
  * @returns {String} CSS value for setting modal margin-top
  */
-export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen, isFixedPosition, isMobileSize) => {
-
+export const getModalPosition = (
+	scrollPosition,
+	viewportHeight,
+	isFullScreen,
+	isFixedPosition,
+	isMobileSize
+) => {
 	// full screen dialogs should be flush with top of the viewport
 	if (isFullScreen) {
 		return '0px';
 	}
 
 	if (isFixedPosition) {
-		return isMobileSize
-			? scrollPosition
-			: DEFAULT_MARGIN_TOP;
+		return isMobileSize ? scrollPosition : DEFAULT_MARGIN_TOP;
 	}
 
 	// for mobile-sized viewports, return the scroll position without a gutter
@@ -44,9 +46,9 @@ export const getModalPosition = (scrollPosition, viewportHeight, isFullScreen, i
 	}
 
 	// set the margin-top based on scroll position unless user is above fold
-	return scrollPosition > viewportHeight ?
-		scrollPosition + MARGIN_TOP_OFFSET :
-		DEFAULT_MARGIN_TOP;
+	return scrollPosition > viewportHeight
+		? scrollPosition + MARGIN_TOP_OFFSET
+		: DEFAULT_MARGIN_TOP;
 };
 
 /**
@@ -64,7 +66,6 @@ export class Modal extends React.Component {
 			topPosition: DEFAULT_MARGIN_TOP, // matches default margin-top in CSS
 			isMobileSize: true,
 		};
-
 	}
 
 	onDismiss(e) {
@@ -89,12 +90,15 @@ export class Modal extends React.Component {
 				this.setState({
 					topPosition: getModalPosition(
 						window.pageYOffset,
-						Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+						Math.max(
+							document.documentElement.clientHeight,
+							window.innerHeight || 0
+						),
 						this.props.fullscreen,
 						this.props.fixed,
 						this.mediaQuery && !this.mediaQuery.matches
 					),
-					isMobileSize: this.mediaQuery && !this.mediaQuery.matches
+					isMobileSize: this.mediaQuery && !this.mediaQuery.matches,
 				});
 			};
 
@@ -128,64 +132,51 @@ export class Modal extends React.Component {
 
 		delete other.onDismiss; // onDismiss is consumed in this.onDismiss - do not pass it along to children
 
-		const classNames = cx(
-			className,
-			'modal'
-		);
+		const classNames = cx(className, 'modal');
 
-		const modalClasses = cx(
-			'view view--modal',
-			{
-				'view--modalFull': fullscreen,
-				'view--modalFixed': fixed && !this.state.isMobileSize,
-				'view--modalSnap': !fullscreen,
-				'modal--isLoading component--isLoading': isLoading
-			}
-		);
+		const modalClasses = cx('view view--modal', {
+			'view--modalFull': fullscreen,
+			'view--modalFixed': fixed && !this.state.isMobileSize,
+			'view--modalSnap': !fullscreen,
+			'modal--isLoading component--isLoading': isLoading,
+		});
 
-		const overlayClasses = cx(
-			'overlayShim',
-			{
-				'overlayShim--fixed': fixed && !this.state.isMobileSize,
-			}
-		);
+		const overlayClasses = cx('overlayShim', {
+			'overlayShim--fixed': fixed && !this.state.isMobileSize,
+		});
 
-		const dismissButtonClasses = cx(
-			MODAL_CLOSE_BUTTON,
-			'button--reset'
-		);
+		const dismissButtonClasses = cx(MODAL_CLOSE_BUTTON, 'button--reset');
 
 		const overlayShim = (
 			<div className={overlayClasses} onClick={this.onDismiss}>
-				<div className='inverted'></div>
+				<div className="inverted" />
 			</div>
 		);
 
 		const closeElement = closeArea && (
-			<div className='padding--all modal-closeButtonContainer'>
+			<div className="padding--all modal-closeButtonContainer">
 				<Button onClick={this.onDismiss} className={dismissButtonClasses}>
-					<Icon shape='cross' size='s' />
+					<Icon shape="cross" size="s" />
 				</Button>
 			</div>
 		);
 
 		const heroStyles = {
-			backgroundColor: heroBgColor || 'transparent'
+			backgroundColor: heroBgColor || 'transparent',
 		};
 
 		return (
 			<div
-				role='dialog'
-				tabIndex='0'
+				role="dialog"
+				tabIndex="0"
 				onKeyDown={this.onKeyDown}
 				className={classNames}
 				{...other}
 			>
-
 				<FocusTrap
 					focusTrapOptions={{
 						initialFocus,
-						escapeDeactivates: false
+						escapeDeactivates: false,
 					}}
 				>
 					{!fullscreen && overlayShim}
@@ -193,24 +184,26 @@ export class Modal extends React.Component {
 						className={modalClasses}
 						style={{
 							marginTop: this.state.topPosition,
-							maxHeight: fixed ? `calc(100% - ${this.state.topPosition} * 2)` : 'auto',
+							maxHeight: fixed
+								? `calc(100% - ${this.state.topPosition} * 2)`
+								: 'auto',
 						}}
 					>
-							{heroContent ?
-								<Stripe
-									backgroundImage={heroBgImage}
-									inverted={inverted}
-									hideScrim={hideHeroScrim}
-									style={heroStyles}
-								>
-									{closeElement}
-									{heroContent}
-								</Stripe>
-								:
-								closeElement
-							}
+						{heroContent ? (
+							<Stripe
+								backgroundImage={heroBgImage}
+								inverted={inverted}
+								hideScrim={hideHeroScrim}
+								style={heroStyles}
+							>
+								{closeElement}
+								{heroContent}
+							</Stripe>
+						) : (
+							closeElement
+						)}
 
-							{children}
+						{children}
 					</div>
 				</FocusTrap>
 			</div>
@@ -231,14 +224,14 @@ Modal.propTypes = {
 	initialFocus: PropTypes.oneOfType([
 		PropTypes.element,
 		PropTypes.func,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	isLoading: PropTypes.bool,
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
-		size: PropTypes.string
-	})
+		size: PropTypes.string,
+	}),
 };
 
 Modal.defaultProps = {

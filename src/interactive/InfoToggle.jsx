@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Button from "../forms/Button";
-import Tooltip from "./Tooltip";
+import Button from '../forms/Button';
+import Tooltip from './Tooltip';
 
 const InfoTooltipTrigger = () => (
 	<Button reset>
@@ -20,12 +20,8 @@ const InfoToggle = ({
 	tooltipContent,
 	...other
 }) => {
-
 	return (
-		<div
-			className={className}
-			{...other}
-		>
+		<div className={className} {...other}>
 			<span>{label}</span>
 			<Tooltip
 				id={tooltipId}
@@ -39,16 +35,13 @@ const InfoToggle = ({
 
 InfoToggle.defaultProps = {
 	tooltipProps: {
-		align: 'right'
-	}
+		align: 'right',
+	},
 };
 
 InfoToggle.propTypes = {
 	tooltipContent: PropTypes.element,
-	label: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	tooltipId: PropTypes.string.isRequired,
 	tooltipProps: PropTypes.object,
 };

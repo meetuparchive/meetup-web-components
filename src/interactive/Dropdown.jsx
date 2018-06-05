@@ -3,11 +3,9 @@ import React from 'react';
 import cx from 'classnames';
 import Downshift from 'downshift';
 import FloatingPosition from '../utils/components/FloatingPosition';
-import {
-	C_COOLGRAYLIGHTTRANSP
-} from 'swarm-constants/dist/js/colorConstants.js';
+import { C_COOLGRAYLIGHTTRANSP } from 'swarm-constants/dist/js/colorConstants.js';
 
-import bindAll from "../utils/bindAll";
+import bindAll from '../utils/bindAll';
 
 export const DROPDOWN_MENU_ITEM_CLASS = 'dropdownMenu-item';
 
@@ -20,18 +18,17 @@ class Dropdown extends React.PureComponent {
 
 		bindAll(
 			this,
-			"toggleContent",
-			"closeContent",
-			"onClick",
-			"onKeyDown",
-			"onBodyClick",
-			"onBodyKeyDown"
+			'toggleContent',
+			'closeContent',
+			'onClick',
+			'onKeyDown',
+			'onBodyClick',
+			'onBodyKeyDown'
 		);
 
 		this.state = {
 			isActive: props.isActive || false,
 		};
-
 	}
 
 	closeContent(e) {
@@ -46,7 +43,7 @@ class Dropdown extends React.PureComponent {
 		if (this.props.manualToggle) {
 			this.props.manualToggle(e);
 		} else {
-			this.setState(() => ({isActive: !this.state.isActive}));
+			this.setState(() => ({ isActive: !this.state.isActive }));
 		}
 	}
 
@@ -60,7 +57,7 @@ class Dropdown extends React.PureComponent {
 	}
 
 	onKeyDown(e) {
-		if (e.key === "Enter" && this.state.isActive) {
+		if (e.key === 'Enter' && this.state.isActive) {
 			this.closeContent();
 		}
 	}
@@ -80,19 +77,19 @@ class Dropdown extends React.PureComponent {
 	}
 
 	onBodyKeyDown(e) {
-		if (e.key === "Escape") {
+		if (e.key === 'Escape') {
 			this.closeContent();
 		}
 	}
 
 	componentDidMount() {
-		document.body.addEventListener("click", this.onBodyClick);
-		document.body.addEventListener("keydown", this.onBodyKeyDown);
+		document.body.addEventListener('click', this.onBodyClick);
+		document.body.addEventListener('keydown', this.onBodyKeyDown);
 	}
 
 	componentWillUnmount() {
-		document.body.removeEventListener("click", this.onBodyClick);
-		document.body.removeEventListener("keydown", this.onBodyKeyDown);
+		document.body.removeEventListener('click', this.onBodyClick);
+		document.body.removeEventListener('keydown', this.onBodyKeyDown);
 	}
 
 	render() {
@@ -116,12 +113,9 @@ class Dropdown extends React.PureComponent {
 		delete other.isActive;
 
 		const classNames = {
-			dropdown: cx(
-				className,
-				"popup", {
-					"popup--noPortal": noPortal
-				}
-			)
+			dropdown: cx(className, 'popup', {
+				'popup--noPortal': noPortal,
+			}),
 		};
 
 		const isActive = this.props.manualToggle
@@ -137,11 +131,7 @@ class Dropdown extends React.PureComponent {
 		};
 
 		return (
-			<Downshift
-				menuItems={menuItems}
-				isOpen={isActive}
-				{...downshiftProps}
-			>
+			<Downshift menuItems={menuItems} isOpen={isActive} {...downshiftProps}>
 				{({
 					isOpen,
 					getButtonProps,
@@ -149,10 +139,18 @@ class Dropdown extends React.PureComponent {
 					highlightedIndex,
 					openMenu,
 				}) => (
+					<div
+						className={classNames.dropdown}
+						onKeyDown={this.onKeyDown}
+						{...other}
+					>
 						<div
-							className={classNames.dropdown}
-							onKeyDown={this.onKeyDown}
-							{...other}
+							{...getButtonProps()}
+							ref={el => (this.triggerRef = el)}
+							className={cx('popup-trigger', {
+								'popup-trigger--active': isOpen,
+							})}
+							onClick={this.onClick}
 						>
 							<div
 								{...getButtonProps()}
@@ -249,8 +247,8 @@ class Dropdown extends React.PureComponent {
 }
 
 Dropdown.defaultProps = {
-	direction: "bottom",
-	minWidth: "0px",
+	direction: 'bottom',
+	minWidth: '0px',
 	noPortal: false
 };
 
@@ -258,11 +256,11 @@ Dropdown.propTypes = {
 	trigger: PropTypes.element.isRequired,
 	content: PropTypes.element,
 	menuItems: PropTypes.arrayOf(PropTypes.element),
-	align: PropTypes.oneOf(["left", "right", "center"]).isRequired,
-	direction: PropTypes.oneOf(["top", "bottom"]).isRequired,
+	align: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
+	direction: PropTypes.oneOf(['top', 'bottom']).isRequired,
 	offset: PropTypes.shape({
 		left: PropTypes.number,
-		top: PropTypes.number
+		top: PropTypes.number,
 	}),
 	className: PropTypes.string,
 	isActive: PropTypes.bool,

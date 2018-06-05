@@ -33,7 +33,7 @@ class Avatar extends React.PureComponent {
 			{
 				'avatar--small': small,
 				'avatar--large': large,
-				'avatar--xxlarge': big || xxlarge
+				'avatar--xxlarge': big || xxlarge,
 			},
 			className
 		);
@@ -50,41 +50,50 @@ class Avatar extends React.PureComponent {
 
 		const computedProps = {
 			className: classNames,
-			style: allStyles
+			style: allStyles,
 		};
 
 		const allProps = {
 			...computedProps,
 			...aria,
-			...other
+			...other,
 		};
 
 		// hidden by default;
 		// displayed only for print media
-		const printPhoto = src
-			&& <img
-					className="avatar-print"
-					src={src}
-					alt={alt}
-				/>;
+		const printPhoto = src && (
+			<img className="avatar-print" src={src} alt={alt} />
+		);
 
 		if (this.props.to || this.props.href) {
-			return <a {...allProps}><span className="visibility--a11yHide">{alt}</span>{children}{printPhoto}</a>;
+			return (
+				<a {...allProps}>
+					<span className="visibility--a11yHide">{alt}</span>
+					{children}
+					{printPhoto}
+				</a>
+			);
 		}
 
-		return <span {...allProps}><span className="visibility--a11yHide">{alt}</span>{children}{printPhoto}</span>;
+		return (
+			<span {...allProps}>
+				<span className="visibility--a11yHide">{alt}</span>
+				{children}
+				{printPhoto}
+			</span>
+		);
 	}
 }
 
 Avatar.propTypes = {
 	small: PropTypes.bool,
 	large: PropTypes.bool,
-	big: PropTypes.bool, /** Would like to deprecate this in favor of xxlarge */
+	big: PropTypes.bool /** Would like to deprecate this in favor of xxlarge */,
 	xxlarge: PropTypes.bool,
-	src: PropTypes.string, /** The image source URL for the Avatar */
-	href: PropTypes.string, /** Link to arbitrary URL outside app */
-	alt: PropTypes.string, /** the image label, mainly for accessibility */
-	to: PropTypes.string, /** For linking to app routes */
+	src: PropTypes.string /** The image source URL for the Avatar */,
+	href: PropTypes.string /** Link to arbitrary URL outside app */,
+	alt: PropTypes.string /** the image label, mainly for accessibility */,
+	to: PropTypes.string /** For linking to app routes */,
 };
 
 export default Avatar;

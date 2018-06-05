@@ -139,7 +139,9 @@ export class Textarea extends React.PureComponent {
 						{label}
 					</label>
 				)}
-				{helperText && <div className={classNames.helperText}>{helperText}</div>}
+				{helperText && (
+					<div className={classNames.helperText}>{helperText}</div>
+				)}
 				<textarea
 					type="text"
 					name={name}

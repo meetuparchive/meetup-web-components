@@ -5,12 +5,10 @@ import {
 	HOURS_INPUT_CLASS,
 	MINUTES_INPUT_CLASS,
 	MERIDIAN_INPUT_CLASS,
-	getTimeParts
+	getTimeParts,
 } from './TimeInput';
 
-
 describe('TimeInput', function() {
-
 	let component,
 		component12Hr,
 		hoursInputEl,
@@ -33,18 +31,17 @@ describe('TimeInput', function() {
 		name: 'time',
 		value: `${hourValue}:${minuteValue}`,
 		onChange: onChangePropMock,
-		required: true
+		required: true,
 	};
 
 	describe('TimeInput, basic functionality', () => {
-
 		describe('getTimeParts', () => {
 			it('returns an object of hours, min, meridian from a time string', () => {
 				const result = getTimeParts('13:00');
 				const expected = {
 					hours: '13',
 					minutes: '00',
-					meridian: 'PM'
+					meridian: 'PM',
 				};
 				expect(result).toEqual(expected);
 			});
@@ -53,13 +50,13 @@ describe('TimeInput', function() {
 		describe('parseValueForState', () => {
 			it('takes a value string for 24Hr time and returns an object with hours, min, meridian, value', () => {
 				const value = '13:00',
-				is24Hr = true;
+					is24Hr = true;
 				const result = TimeInput.prototype.parseValueIntoState(value, is24Hr);
 				const expected = {
 					hours: '13',
 					minutes: '00',
 					meridian: false,
-					value
+					value,
 				};
 				expect(result).toEqual(expected);
 			});
@@ -71,7 +68,7 @@ describe('TimeInput', function() {
 					hours: '01',
 					minutes: '15',
 					meridian: 'PM',
-					value
+					value,
 				};
 				expect(result).toEqual(expected);
 			});
@@ -80,7 +77,11 @@ describe('TimeInput', function() {
 		describe('constrainValue', () => {
 			it('returns the same value if no min and max', () => {
 				const value = '10';
-				const result = TimeInput.prototype.constrainValue(undefined, undefined, value);
+				const result = TimeInput.prototype.constrainValue(
+					undefined,
+					undefined,
+					value
+				);
 				expect(result).toEqual(parseInt(value));
 			});
 			it('returns the same value if within min and max', () => {
@@ -91,13 +92,21 @@ describe('TimeInput', function() {
 			it('returns the constrained value if min', () => {
 				const value = '10';
 				const min = 20;
-				const result = TimeInput.prototype.constrainValue(min, undefined, value);
+				const result = TimeInput.prototype.constrainValue(
+					min,
+					undefined,
+					value
+				);
 				expect(result).toEqual(min);
 			});
 			it('returns the constrained value if max', () => {
 				const value = '10';
 				const max = 5;
-				const result = TimeInput.prototype.constrainValue(undefined, max, value);
+				const result = TimeInput.prototype.constrainValue(
+					undefined,
+					max,
+					value
+				);
 				expect(result).toEqual(max);
 			});
 		});
@@ -106,7 +115,10 @@ describe('TimeInput', function() {
 	describe('TimeInput, with input[time] support', () => {
 		beforeEach(() => {
 			onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
-			onTimeInputChangeSpy = jest.spyOn(TimeInput.prototype, 'onTimeInputChange');
+			onTimeInputChangeSpy = jest.spyOn(
+				TimeInput.prototype,
+				'onTimeInputChange'
+			);
 			component = mount(<TimeInput {...props} />);
 			inputEl = component.find('input');
 		});
@@ -131,7 +143,6 @@ describe('TimeInput', function() {
 			component.instance().onChange(newTime);
 			expect(onChangePropMock).toHaveBeenCalledWith(newTime);
 		});
-
 	});
 
 	describe('TimeInput, without input[time] support', () => {
@@ -139,13 +150,16 @@ describe('TimeInput', function() {
 			onChangeSpy = jest.spyOn(TimeInput.prototype, 'onChange');
 			onNumberChangeSpy = jest.spyOn(TimeInput.prototype, 'onNumberChange');
 			onMeridianChangeSpy = jest.spyOn(TimeInput.prototype, 'onMeridianChange');
-			highlightInputTextSpy = jest.spyOn(TimeInput.prototype, 'highlightInputText');
+			highlightInputTextSpy = jest.spyOn(
+				TimeInput.prototype,
+				'highlightInputText'
+			);
 
 			component = mount(<TimeInput {...props} />);
-			component.setState({supportsTime: false});
+			component.setState({ supportsTime: false });
 
 			component12Hr = mount(<TimeInput is24Hr={false} {...props} />);
-			component12Hr.setState({supportsTime: false});
+			component12Hr.setState({ supportsTime: false });
 
 			hoursInputEl = component.find(`.${HOURS_INPUT_CLASS}`);
 			minutesInputEl = component.find(`.${MINUTES_INPUT_CLASS}`);
@@ -188,7 +202,9 @@ describe('TimeInput', function() {
 		});
 
 		it('calls onChange prop with appropriately formatted time', () => {
-			component.setState(component.instance().parseValueIntoState('15:15', true));
+			component.setState(
+				component.instance().parseValueIntoState('15:15', true)
+			);
 			onChangePropMock.mockClear();
 
 			hoursInputEl.instance().value = '1';
@@ -200,9 +216,13 @@ describe('TimeInput', function() {
 
 		it('calls onChange prop with appropriately formatted time, hours from 12 into 24Hr', () => {
 			const hoursInputEl_12Hr = component12Hr.find(`.${HOURS_INPUT_CLASS}`);
-			const meridianInputEl = component12Hr.find(`select.${MERIDIAN_INPUT_CLASS}`);
+			const meridianInputEl = component12Hr.find(
+				`select.${MERIDIAN_INPUT_CLASS}`
+			);
 
-			component12Hr.setState(component.instance().parseValueIntoState('15:15', false));
+			component12Hr.setState(
+				component.instance().parseValueIntoState('15:15', false)
+			);
 			onChangePropMock.mockClear();
 
 			meridianInputEl.instance().value = 'PM';
@@ -216,7 +236,9 @@ describe('TimeInput', function() {
 		});
 
 		it('renders the meridian input for 12hr time', function() {
-			const meridianInputEl = component12Hr.find(`select.${MERIDIAN_INPUT_CLASS}`);
+			const meridianInputEl = component12Hr.find(
+				`select.${MERIDIAN_INPUT_CLASS}`
+			);
 			meridianInputEl.simulate('change', { target: { value: 'PM' } });
 
 			expect(onMeridianChangeSpy).toHaveBeenCalled();
@@ -231,7 +253,9 @@ describe('TimeInput', function() {
 			hoursInputEl.simulate('change');
 			hoursInputEl.simulate('blur');
 
-			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(hoursInputEl.prop('max'));
+			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(
+				hoursInputEl.prop('max')
+			);
 
 			// We don't allow charcters other than 0 through 9, therefore it is impossible to
 			// enter a value less than the min (no negative signs accepted)
@@ -242,7 +266,9 @@ describe('TimeInput', function() {
 			minutesInputEl.simulate('change');
 			minutesInputEl.simulate('blur');
 
-			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(minutesInputEl.prop('max'));
+			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(
+				minutesInputEl.prop('max')
+			);
 
 			// We don't allow charcters other than 0 through 9, therefore it is impossible to
 			// enter a value less than the min (no negative signs accepted)
@@ -251,31 +277,39 @@ describe('TimeInput', function() {
 		it('should update time value when receiving hours or minutes prop', () => {
 			const instance = component.instance();
 			const newProps = { value: '23:00', is24Hr: true };
-			const expected = TimeInput.prototype.parseValueIntoState(newProps.value, newProps.is24Hr);
+			const expected = TimeInput.prototype.parseValueIntoState(
+				newProps.value,
+				newProps.is24Hr
+			);
 			jest.spyOn(instance, 'setState');
 			instance.componentWillReceiveProps(newProps);
 			expect(instance.setState).toHaveBeenCalledWith(expected);
 		});
 
 		it('should increase hours or minutes value when pressing up key', () => {
-			const newHourValue = (parseInt(hourValue, 10) + 1);
-			const newMinuteValue = (parseInt(minuteValue, 10) + 1);
+			const newHourValue = parseInt(hourValue, 10) + 1;
+			const newMinuteValue = parseInt(minuteValue, 10) + 1;
 
-			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(parseInt(hourValue));
-			hoursInputEl.simulate('keyDown', {keyCode: 38});
-			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(parseInt(newHourValue));
+			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(
+				parseInt(hourValue)
+			);
+			hoursInputEl.simulate('keyDown', { keyCode: 38 });
+			expect(parseInt(hoursInputEl.instance().value, 10)).toEqual(
+				parseInt(newHourValue)
+			);
 
-			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(parseInt(minuteValue));
-			minutesInputEl.simulate('keyDown', {keyCode: 38});
-			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(parseInt(newMinuteValue));
+			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(
+				parseInt(minuteValue)
+			);
+			minutesInputEl.simulate('keyDown', { keyCode: 38 });
+			expect(parseInt(minutesInputEl.instance().value, 10)).toEqual(
+				parseInt(newMinuteValue)
+			);
 		});
 
 		it('should highlight hours or minutes input text when clicking', () => {
 			hoursInputEl.simulate('mouseUp');
 			expect(highlightInputTextSpy).toHaveBeenCalled();
 		});
-
 	});
-
 });
-

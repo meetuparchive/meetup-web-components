@@ -54,14 +54,20 @@ class AccordionPanelGroup extends React.Component {
 					return;
 				}
 
-				if (isPrimitive(nextPanelProps[key]) && nextPanelProps[key] !== currentPanelProps[key]) {
+				if (
+					isPrimitive(nextPanelProps[key]) &&
+					nextPanelProps[key] !== currentPanelProps[key]
+				) {
 					panelPropsHaveChanged = true;
 				}
 			});
 		});
 
 		if (panelPropsHaveChanged) {
-			this.accordionPanels = nextProps.accordionPanels.map(this.initPanel, this);
+			this.accordionPanels = nextProps.accordionPanels.map(
+				this.initPanel,
+				this
+			);
 			const panelStates = this.getPanelStates();
 			this.setState({ panelStates });
 		}
@@ -87,17 +93,16 @@ class AccordionPanelGroup extends React.Component {
 	 * @returns {undefined}
 	 */
 	setPanelStates(clickedPanelId, isOpen) {
-		const panelStates = (!this.props.multiSelectable && isOpen) ?
-			Object.keys(this.state.panelStates).reduce(
-				(stateObj, clickId) => {
-					stateObj[clickId] = (parseInt(clickId) === clickedPanelId);
-					return stateObj;
-				}, {}
-			) :
-			{
-				...this.state.panelStates,
-				[clickedPanelId]: isOpen
-			};
+		const panelStates =
+			!this.props.multiSelectable && isOpen
+				? Object.keys(this.state.panelStates).reduce((stateObj, clickId) => {
+						stateObj[clickId] = parseInt(clickId) === clickedPanelId;
+						return stateObj;
+					}, {})
+				: {
+						...this.state.panelStates,
+						[clickedPanelId]: isOpen,
+					};
 		this.setState({ panelStates });
 	}
 
@@ -138,19 +143,22 @@ class AccordionPanelGroup extends React.Component {
 				panelContent, // eslint-disable-line no-unused-vars
 				...other
 			} = panel.props;
-			return React.cloneElement(updatedPanels[i], { ...other, isOpen: this.state.panelStates[panel.props.clickId] });
+			return React.cloneElement(updatedPanels[i], {
+				...other,
+				isOpen: this.state.panelStates[panel.props.clickId],
+			});
 		});
 	}
 
 	render() {
 		const {
 			accordionPanels,
-			panelContent,			// eslint-disable-line no-unused-vars
-			indicatorAlign,			// eslint-disable-line no-unused-vars
-			indicatorIcon,			// eslint-disable-line no-unused-vars
-			indicatorIconActive,	// eslint-disable-line no-unused-vars
-			indicatorIconSize,		// eslint-disable-line no-unused-vars
-			indicatorSwitch,		// eslint-disable-line no-unused-vars
+			panelContent, // eslint-disable-line no-unused-vars
+			indicatorAlign, // eslint-disable-line no-unused-vars
+			indicatorIcon, // eslint-disable-line no-unused-vars
+			indicatorIconActive, // eslint-disable-line no-unused-vars
+			indicatorIconSize, // eslint-disable-line no-unused-vars
+			indicatorSwitch, // eslint-disable-line no-unused-vars
 			multiSelectable,
 			className,
 			...other
@@ -160,26 +168,20 @@ class AccordionPanelGroup extends React.Component {
 		// passing accordionPanels to pass on any updated props
 		this.cloneAccordionPanels(accordionPanels);
 
-		const classNames = cx(
-			ACCORDIONPANELGROUP_CLASS,
-			'list',
-			className
-		);
+		const classNames = cx(ACCORDIONPANELGROUP_CLASS, 'list', className);
 
 		return (
 			<ul
-				role='tabList'
+				role="tabList"
 				aria-multiselectable={multiSelectable}
 				className={classNames}
 				{...other}
 			>
-				{
-					this.accordionPanels.map((panel, i) => (
-						<li key={i} className='list-item flush--top'>
-							{panel}
-						</li>
-					))
-				}
+				{this.accordionPanels.map((panel, i) => (
+					<li key={i} className="list-item flush--top">
+						{panel}
+					</li>
+				))}
 			</ul>
 		);
 	}
@@ -189,7 +191,7 @@ AccordionPanelGroup.defaultProps = {
 	indicatorAlign: 'right',
 	indicatorIcon: 'chevron-down',
 	multiSelectable: true,
-	indicatorIconSize: 'xs'
+	indicatorIconSize: 'xs',
 };
 
 AccordionPanelGroup.propTypes = {
@@ -199,7 +201,7 @@ AccordionPanelGroup.propTypes = {
 	indicatorIcon: PropTypes.string,
 	indicatorIconActive: PropTypes.string,
 	indicatorIconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	indicatorSwitch: PropTypes.bool
+	indicatorSwitch: PropTypes.bool,
 };
 
 export default AccordionPanelGroup;

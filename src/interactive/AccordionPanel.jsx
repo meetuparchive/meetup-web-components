@@ -71,7 +71,9 @@ class AccordionPanel extends React.Component {
 	onToggleClick(e) {
 		e.preventDefault();
 
-		this.props.onToggleClick ? this.props.onToggleClick(e) : this._handleToggle(e);
+		this.props.onToggleClick
+			? this.props.onToggleClick(e)
+			: this._handleToggle(e);
 	}
 
 	/**
@@ -79,10 +81,7 @@ class AccordionPanel extends React.Component {
 	 * @returns {undefined}
 	 */
 	onKeyUp(e) {
-		const isActivatingButton = [
-			' ', /* space bar */
-			'Enter'
-		].some(key => e.key === key);
+		const isActivatingButton = [' ', 'Enter'].some(key => e.key === key);
 
 		if (isActivatingButton) {
 			this._handleToggle(e);
@@ -172,12 +171,15 @@ class AccordionPanel extends React.Component {
 				'accordionPanel-animator--collapse': !isOpen,
 			}),
 			icon: cx('indicator', {
-				'indicator--animateActive': this.getIconShape() == 'chevron-down' && isOpen
-			})
+				'indicator--animateActive':
+					this.getIconShape() == 'chevron-down' && isOpen,
+			}),
 		};
 
 		const isLabelString = label && typeof label == 'string';
-		const panelId = isLabelString ? label.replace(/\s+/g, '').toLowerCase() : clickId;
+		const panelId = isLabelString
+			? label.replace(/\s+/g, '').toLowerCase()
+			: clickId;
 
 		return (
 			<div>
@@ -262,10 +264,7 @@ AccordionPanel.propTypes = {
 	panelContent: PropTypes.element,
 	setClickedPanel: PropTypes.func,
 	onClickCallback: PropTypes.func,
-	label: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]).isRequired,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
 	className: PropTypes.string,
 	indicatorAlign: PropTypes.string,
 	indicatorIcon: PropTypes.string,

@@ -16,20 +16,17 @@ class TestComponent extends React.PureComponent {
 			return this.contentRef;
 		};
 
-		return(
+		return (
 			<div>
 				<div ref={el => (this.triggerRef = el)}>Trigger</div>
 				<FloatingPosition
-					offset={{top: 8, left: 16}}
+					offset={{ top: 8, left: 16 }}
 					getTrigger={getTrigger}
 					getContent={getContent}
 					noPortal={false}
 					align="right"
 				>
-					{({
-						top,
-						left
-					}) => (
+					{({ top, left }) => (
 						<div ref={el => (this.contentRef = el)}>
 							<p>top: {top}</p>
 							<p>left: {left}</p>
@@ -49,7 +46,7 @@ describe('FloatingPosition', function() {
 	});
 
 	it('adjusts popup content position if it overflows the viewport', () => {
-		const MOCK_POSITION_DATA = {left: 0, width: 70};
+		const MOCK_POSITION_DATA = { left: 0, width: 70 };
 		const expected = 'left';
 		const actual = getAdjustedAlignment('right', MOCK_POSITION_DATA, 384, 1000);
 
@@ -57,7 +54,7 @@ describe('FloatingPosition', function() {
 	});
 
 	it('does not adjust popup content position if it fits in the viewport', () => {
-		const MOCK_POSITION_DATA = {left: 500, width: 70};
+		const MOCK_POSITION_DATA = { left: 500, width: 70 };
 		const expected = 'right';
 		const actual = getAdjustedAlignment('right', MOCK_POSITION_DATA, 384, 1000);
 

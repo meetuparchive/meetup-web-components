@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import Loading, {
 	LOADING_CLASS,
 	LOADING_SHAPE_CLASS,
-	LOADING_SHAPE_PATH_CLASS
+	LOADING_SHAPE_PATH_CLASS,
 } from './Loading';
 
 const CUSTOM_COLOR = '#000';
@@ -26,10 +26,7 @@ describe('Loading', () => {
 	});
 
 	it('applies variant classes for each variant prop', () => {
-		const variants = [
-			'fullCover',
-			'partialCover'
-		];
+		const variants = ['fullCover', 'partialCover'];
 
 		variantTest(Loading, LOADING_CLASS, variants);
 	});
@@ -40,7 +37,9 @@ describe('Loading', () => {
 	});
 
 	it('colors the scrim', () => {
-		expect(loadingComponent.prop('style').backgroundColor).toBe(CUSTOM_SCRIM_COLOR);
+		expect(loadingComponent.prop('style').backgroundColor).toBe(
+			CUSTOM_SCRIM_COLOR
+		);
 	});
 
 	it('resizes when a custom size is passed', () => {
