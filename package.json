@@ -123,6 +123,12 @@
     "webpack": "2.6.1"
   },
   "lint-staged": {
+    "{src,src/**,src/**/**,assets/,assets/**}/*.{js,jsx,scss}": [
+        "prettier --write"
+    ],
+    "assets/scss/**/*.scss": [
+        "stylelint --syntax scss --fix"
+    ],
     "**/*.{js,jsx}": [
       "eslint"
     ]
