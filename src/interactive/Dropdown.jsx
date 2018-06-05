@@ -98,6 +98,7 @@ class Dropdown extends React.PureComponent {
 			trigger,
 			content,
 			align,
+			direction,
 			offset,
 			maxWidth,
 			minWidth,
@@ -161,17 +162,16 @@ class Dropdown extends React.PureComponent {
 								noPortal={noPortal}
 								align={align}
 								offset={offset}
+								direction={direction}
 							>
 								{({ top, left, align, boundedMaxWidth }) => (
 									<div
 										ref={el => (this.contentRef = el)}
-										className={cx('popup-content popup-bubble', {
-											'popup-content--right popup-bubble--right':
-												align === 'right',
-											'popup-content--left popup-bubble--left':
-												align === 'left',
-											'popup-content--center popup-bubble--center':
-												align === 'center',
+										className={cx('popup-content', {
+											'popup-content--right': align === 'right',
+											'popup-content--left': align === 'left',
+											'popup-content--center': align === 'center',
+											'popup-content--top': direction === 'top',
 											'display--none': !isOpen,
 											'display--block': isOpen,
 											dropdownMenu: Boolean(menuItems),
@@ -184,29 +184,38 @@ class Dropdown extends React.PureComponent {
 											maxWidth: maxWidth || boundedMaxWidth,
 										}}
 									>
-										{menuItems
-											? menuItems.map((item, index) => {
-													const { className, ...other } = item.props;
+										<div
+											className={cx('popup-bubble', {
+												'popup-bubble--right': align === 'right',
+												'popup-bubble--left': align === 'left',
+												'popup-bubble--center': align === 'center',
+												'popup-bubble--top': direction === 'top',
+											})}
+										>
+											{menuItems
+												? menuItems.map((item, index) => {
+														const { className, ...other } = item.props;
 
-													return React.cloneElement(item, {
-														...getItemProps({
-															item,
-															key: `menuItem-${index}`,
-															className: cx(
-																className,
-																DROPDOWN_MENU_ITEM_CLASS,
-																'display--flex span--100'
-															),
-															style: {
-																backgroundColor:
-																	highlightedIndex === index &&
-																	C_COOLGRAYLIGHTTRANSP,
-															},
-															...other,
-														}),
-													});
-												})
-											: content}
+														return React.cloneElement(item, {
+															...getItemProps({
+																item,
+																key: `menuItem-${index}`,
+																className: cx(
+																	className,
+																	DROPDOWN_MENU_ITEM_CLASS,
+																	'display--flex span--100'
+																),
+																style: {
+																	backgroundColor:
+																		highlightedIndex === index &&
+																		C_COOLGRAYLIGHTTRANSP,
+																},
+																...other,
+															}),
+														});
+													})
+												: content}
+										</div>
 									</div>
 								)}
 							</FloatingPosition>
@@ -219,6 +228,7 @@ class Dropdown extends React.PureComponent {
 }
 
 Dropdown.defaultProps = {
+	direction: 'bottom',
 	minWidth: '0px',
 	noPortal: false,
 };
@@ -228,6 +238,7 @@ Dropdown.propTypes = {
 	content: PropTypes.element,
 	menuItems: PropTypes.arrayOf(PropTypes.element),
 	align: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
+	direction: PropTypes.oneOf(['top', 'bottom']).isRequired,
 	offset: PropTypes.shape({
 		left: PropTypes.number,
 		top: PropTypes.number,
