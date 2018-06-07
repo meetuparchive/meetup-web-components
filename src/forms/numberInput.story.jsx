@@ -14,7 +14,7 @@ class ControlledNumberInput extends React.Component {
 		this.updateInputValue = this.updateInputValue.bind(this);
 
 		this.state = {
-			controlledValue: props.value
+			controlledValue: props.value,
 		};
 	}
 
@@ -23,7 +23,7 @@ class ControlledNumberInput extends React.Component {
 	}
 
 	render() {
-		return(
+		return (
 			<div>
 				<NumberInput
 					value={this.state.controlledValue}
@@ -35,7 +35,6 @@ class ControlledNumberInput extends React.Component {
 			</div>
 		);
 	}
-
 }
 
 storiesOf('NumberInput', module)
