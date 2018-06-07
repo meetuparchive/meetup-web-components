@@ -4,12 +4,51 @@ import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { IntlProvider, FormattedMessage, defineMessages } from 'react-intl';
 
+/**
+ * @module ControlledNumberInput
+ */
+class ControlledNumberInput extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.updateInputValue = this.updateInputValue.bind(this);
+
+		this.state = {
+			controlledValue: props.value
+		};
+	}
+
+	updateInputValue(e) {
+		this.setState({ controlledValue: e.target.value });
+	}
+
+	render() {
+		return(
+			<div>
+				<NumberInput
+					value={this.state.controlledValue}
+					onChange={this.updateInputValue}
+					label="How many?"
+					id="amount"
+					name="amount"
+				/>
+			</div>
+		);
+	}
+
+}
+
 storiesOf('NumberInput', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (
 		<div>
 			<NumberInput label="How many?" id="amount" name="amount" />
+		</div>
+	))
+	.add('controlled', () => (
+		<div>
+			<ControlledNumberInput value="0" />
 		</div>
 	))
 	.add('with value', () => (
