@@ -19,7 +19,7 @@ export class NumberInput extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: props.value
+			value: props.value,
 		};
 
 		this._updateValueByStep = this._updateValueByStep.bind(this);
@@ -32,12 +32,12 @@ export class NumberInput extends React.Component {
 	}
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		const isNewValue = nextProps.onChange &&
-			nextProps.value !== prevState.value;
+		const isNewValue =
+			nextProps.onChange && nextProps.value !== prevState.value;
 
-		return({
-			value: isNewValue ? nextProps.value : prevState.value
-		});
+		return {
+			value: isNewValue ? nextProps.value : prevState.value,
+		};
 	}
 
 	_updateValueByStep(isIncreasing) {
@@ -76,7 +76,7 @@ export class NumberInput extends React.Component {
 		}));
 
 		if (onChange) {
-			onChange({target: { value, name }});
+			onChange({ target: { value, name } });
 		}
 	}
 
