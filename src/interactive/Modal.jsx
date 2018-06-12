@@ -11,7 +11,8 @@ import { MEDIA_QUERIES } from '../utils/designConstants';
 
 export const MODAL_CLOSE_BUTTON = 'modal-closeButton';
 export const MODAL_CLOSE_AREA_STICKY = 'modal-closeButtonContainer--sticky';
-export const MODAL_CLOSE_AREA_STICKYTRANSP = 'modal-closeButtonContainer--stickyTransparent';
+export const MODAL_CLOSE_AREA_STICKYTRANSP =
+	'modal-closeButtonContainer--stickyTransparent';
 export const DEFAULT_MARGIN_TOP = '10vh';
 export const MARGIN_TOP_OFFSET = 36;
 
@@ -165,8 +166,10 @@ export class Modal extends React.Component {
 				className={cx(
 					{
 						[MODAL_CLOSE_AREA_STICKY]: stickyCloseArea,
-						[MODAL_CLOSE_AREA_STICKYTRANSP]: stickyCloseArea && (Boolean(heroBgColor) || Boolean(heroBgImage)),
-						'border--none': stickyCloseArea && (Boolean(heroBgColor) || Boolean(heroBgImage))
+						[MODAL_CLOSE_AREA_STICKYTRANSP]:
+							stickyCloseArea && (Boolean(heroBgColor) || Boolean(heroBgImage)),
+						'border--none':
+							stickyCloseArea && (Boolean(heroBgColor) || Boolean(heroBgImage)),
 					},
 					'padding--all modal-closeButtonContainer'
 				)}

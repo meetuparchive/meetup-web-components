@@ -151,13 +151,19 @@ describe('Modal hero header', () => {
 
 	it('sets the close area to sticky when stickyCloseArea is passed', () => {
 		expect(() =>
-			TestUtils.findRenderedDOMComponentWithClass(modal, MODAL_CLOSE_AREA_STICKY)
+			TestUtils.findRenderedDOMComponentWithClass(
+				modal,
+				MODAL_CLOSE_AREA_STICKY
+			)
 		).not.toThrow();
 	});
 
 	it('sets the sticky close area to be transparent when background image or color are passed', () => {
 		expect(() =>
-			TestUtils.findRenderedDOMComponentWithClass(modal, MODAL_CLOSE_AREA_STICKYTRANSP)
+			TestUtils.findRenderedDOMComponentWithClass(
+				modal,
+				MODAL_CLOSE_AREA_STICKYTRANSP
+			)
 		).not.toThrow();
 	});
 
