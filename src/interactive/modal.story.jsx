@@ -49,7 +49,7 @@ const content = (
 	</Stripe>
 );
 const largeContent = (
-	<Stripe>
+	<Stripe className="border--none">
 		<Section hasSeparator className="border--none">
 			<h2 className="align--center">This is a modal!</h2>
 			<Chunk>Item</Chunk>
@@ -112,7 +112,7 @@ storiesOf('Modal', module)
 		'The close area will be sticky at the top of the modal when the content is long enough to scroll',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal stickyCloseArea>{largeContent}</Modal>
+				<Modal fixed stickyCloseArea>{largeContent}</Modal>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
