@@ -69,8 +69,6 @@ export class NumberInput extends React.Component {
 		const { onChange } = this.props;
 		const { value, name } = e.target;
 
-		console.info('onChange value: ', value);
-
 		this.setState(() => ({
 			value,
 		}));
