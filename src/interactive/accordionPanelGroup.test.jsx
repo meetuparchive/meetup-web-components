@@ -1,7 +1,7 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
-import AccordionPanelGroup, { isPrimitive } from './AccordionPanelGroup';
+import AccordionPanelGroup, { getNewPanelState } from './AccordionPanelGroup';
 import AccordionPanel, { ACCORDION_LABEL_CLASS } from './AccordionPanel';
 
 describe('AccordionPanelGroup', () => {
@@ -58,11 +58,14 @@ describe('AccordionPanelGroup', () => {
 		/>,
 	];
 
-	describe('isPrimitve', () => {
-		it('returns true when passed a primitive value', () => {
-			const values = [1, 'string', true, () => {}, [], {}];
-			const valueTypes = values.map(x => isPrimitive(x));
-			expect(valueTypes).toEqual([true, true, true, false, false, false]);
+	describe('getNewPanelState', () => {
+		it('returns expected new panel state list when passed accordionPanelGroup data', () => {
+			const isMultiselect = true;
+			const panelStates = [false, false, false];
+			const clickedPanelData = { panelIndex: 0, isOpen: true };
+			expect(
+				getNewPanelState(isMultiselect, panelStates, clickedPanelData)
+			).toEqual([true, false, false]);
 		});
 	});
 
@@ -92,19 +95,19 @@ describe('AccordionPanelGroup', () => {
 			expect(panels.length).toEqual(3);
 		});
 
-		it('gives panels a clickId', () => {
+		it('gives panels a panelIndex', () => {
 			expect(accordionPanelGroup).toMatchSnapshot();
 
 			const panels = accordionPanelGroup.find(AccordionPanel);
-			expect(panels.at(0).prop('clickId')).not.toBeUndefined();
-			expect(panels.at(1).prop('clickId')).not.toBeUndefined();
-			expect(panels.at(2).prop('clickId')).not.toBeUndefined();
+			expect(panels.at(0).prop('panelIndex')).not.toBeUndefined();
+			expect(panels.at(1).prop('panelIndex')).not.toBeUndefined();
+			expect(panels.at(2).prop('panelIndex')).not.toBeUndefined();
 		});
 
 		it('stores panel open states in state', () => {
 			// this test will have one open panel to start based on isOpen prop
 			const isOpenValues = Object.values(
-				accordionPanelGroup.state('panelStates')
+				accordionPanelGroup.state('panelStatesList')
 			);
 			const openPanels = isOpenValues.filter((isOpen, i) => isOpen === true);
 			const closedPanels = isOpenValues.filter((isOpen, i) => isOpen === false);
@@ -113,30 +116,28 @@ describe('AccordionPanelGroup', () => {
 			expect(closedPanels.length).toEqual(2);
 		});
 
-		it('changes panel open state with setPanelStates', () => {
+		it('changes panel open state with handlePanelClick', () => {
 			const panels = accordionPanelGroup.find(AccordionPanel);
-			const clickId = panels.at(0).prop('clickId');
+			const panelIndex = panels.at(0).prop('panelIndex');
 			const isOpen = panels.at(0).prop('isOpen');
 
-			expect(accordionPanelGroup.state('panelStates')[clickId]).toEqual(isOpen);
-			accordionPanelGroup.instance().setPanelStates(clickId, !isOpen);
-			expect(accordionPanelGroup.state('panelStates')[clickId]).toEqual(
+			expect(accordionPanelGroup.state('panelStatesList')[panelIndex]).toEqual(
+				isOpen
+			);
+			accordionPanelGroup
+				.instance()
+				.handlePanelClick({}, { panelIndex: panelIndex, isOpen: !isOpen });
+			expect(accordionPanelGroup.state('panelStatesList')[panelIndex]).toEqual(
 				!isOpen
 			);
 		});
 
-		it('calls componentWillReceiveProps on AccordionPanel primitive prop changes', () => {
-			const spy = jest.spyOn(
-				AccordionPanelGroup.prototype,
-				'componentWillReceiveProps'
-			);
-
-			const component = shallow(
+		it('calls getDerivedStateFromProps on AccordionPanel prop changes', () => {
+			const component = mount(
 				<AccordionPanelGroup accordionPanels={accordionPanelsArr} />
 			);
 
-			expect(component.state('panelStates')['0']).toBe(true);
-			expect(spy).not.toHaveBeenCalled();
+			expect(component.state('panelStatesList')['0']).toBe(true);
 
 			const modifiedAccordionPanelsArr = [...accordionPanelsArr];
 			// Change first panel isOpen prop to false
@@ -161,7 +162,7 @@ describe('AccordionPanelGroup', () => {
 			);
 
 			component.setProps({ accordionPanels: modifiedAccordionPanelsArr });
-			expect(spy).toHaveBeenCalled();
+			expect(component.state('panelStatesList')[0]).toBe(false);
 		});
 	});
 
@@ -171,7 +172,7 @@ describe('AccordionPanelGroup', () => {
 		beforeEach(() => {
 			setPanelStatesMock = jest.spyOn(
 				AccordionPanelGroup.prototype,
-				'setPanelStates'
+				'handlePanelClick'
 			);
 
 			accordionPanelGroup = mount(
@@ -202,7 +203,9 @@ describe('AccordionPanelGroup', () => {
 				.find(AccordionPanel)
 				.filterWhere(panel => panel.prop('isOpen') === true);
 			expect(openPanels.length).toBe(1);
-			expect(openPanels.at(0).prop('clickId')).toEqual(panel1.prop('clickId'));
+			expect(openPanels.at(0).prop('panelIndex')).toEqual(
+				panel1.prop('panelIndex')
+			);
 
 			const panel2 = panelWrappers.at(2);
 			panel2.find(`.${ACCORDION_LABEL_CLASS}`).simulate('click');
@@ -210,7 +213,9 @@ describe('AccordionPanelGroup', () => {
 				.find(AccordionPanel)
 				.filterWhere(panel => panel.prop('isOpen') === true);
 			expect(openPanels.length).toBe(1);
-			expect(openPanels.at(0).prop('clickId')).toEqual(panel2.prop('clickId'));
+			expect(openPanels.at(0).prop('panelIndex')).toEqual(
+				panel2.prop('panelIndex')
+			);
 		});
 
 		it('has state where isOpen is true for only one panel at-a-time', () => {
@@ -220,14 +225,14 @@ describe('AccordionPanelGroup', () => {
 			);
 			expect(openPanels.length).toBe(1);
 
-			let panelStates = accordionPanelGroup.state('panelStates');
+			let panelStates = accordionPanelGroup.state('panelStatesList');
 			let openPanelIds = Object.keys(panelStates).filter(
 				(key, i) => panelStates[key] === true
 			);
 			expect(openPanelIds.length).toBe(1);
 
 			expect(parseInt(openPanelIds[0])).toEqual(
-				openPanels.at(0).prop('clickId')
+				openPanels.at(0).prop('panelIndex')
 			);
 
 			// we have one with prop isOpen
@@ -235,13 +240,13 @@ describe('AccordionPanelGroup', () => {
 			panel1.find(`.${ACCORDION_LABEL_CLASS}`).simulate('click');
 			expect(setPanelStatesMock).toHaveBeenCalled();
 
-			// assert only one key in panelStates with isOpen and matching clickId
-			panelStates = accordionPanelGroup.state('panelStates');
+			// assert only one key in panelStates with isOpen and matching panelIndex
+			panelStates = accordionPanelGroup.state('panelStatesList');
 			openPanelIds = Object.keys(panelStates).filter(
 				(key, i) => panelStates[key] === true
 			);
 			expect(openPanelIds.length).toBe(1);
-			expect(parseInt(openPanelIds[0])).toEqual(panel1.prop('clickId'));
+			expect(parseInt(openPanelIds[0])).toEqual(panel1.prop('panelIndex'));
 		});
 	});
 });
