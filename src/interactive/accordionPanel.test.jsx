@@ -1,9 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import AccordionPanel, {
-	ACTIVEPANEL_CLASS,
-} from './AccordionPanel';
+import AccordionPanel, { ACTIVEPANEL_CLASS } from './AccordionPanel';
 import Icon from '../media/Icon';
 import ToggleSwitch from '../forms/ToggleSwitch';
 import { textContent1 } from '../../__mocks__/textContentMocks';
