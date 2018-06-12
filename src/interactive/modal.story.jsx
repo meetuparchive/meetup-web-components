@@ -108,6 +108,21 @@ storiesOf('Modal', module)
 		</div>
 	))
 	.addWithInfo(
+		'stickyCloseArea',
+		'The close area will be sticky at the top of the modal when the content is long enough to scroll',
+		() => (
+			<div style={wrapperStyle}>
+				<Modal stickyCloseArea>
+					{largeContent}
+				</Modal>
+				<div
+					style={iconSpriteStyle}
+					dangerouslySetInnerHTML={{ __html: iconSprite }}
+				/>
+			</div>
+		)
+	)
+	.addWithInfo(
 		'fixed',
 		'This is the basic usage with fixed position content.',
 		() => (
@@ -225,7 +240,7 @@ storiesOf('Modal', module)
 		'Modals with content larger than the screens theyre in will scroll the content',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal closeArea={false} fixed>
+				<Modal fixed>
 					{largeContent}
 				</Modal>
 				<div
