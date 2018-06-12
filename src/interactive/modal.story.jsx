@@ -112,7 +112,9 @@ storiesOf('Modal', module)
 		'The close area will be sticky at the top of the modal when the content is long enough to scroll',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal fixed stickyCloseArea>{largeContent}</Modal>
+				<Modal fixed stickyCloseArea>
+					{largeContent}
+				</Modal>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
