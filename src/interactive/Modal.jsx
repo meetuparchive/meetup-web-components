@@ -236,6 +236,7 @@ Modal.propTypes = {
 	inverted: PropTypes.bool,
 	onDismiss: PropTypes.func.isRequired,
 	closeArea: PropTypes.bool,
+	stickyCloseArea: PropTypes.bool,
 	initialFocus: PropTypes.oneOfType([
 		PropTypes.element,
 		PropTypes.func,
