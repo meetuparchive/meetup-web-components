@@ -1,3 +1,7 @@
+# [4.11]
+
+- **Change** Added the ability to set the close area at the top of a Modal to be sticky using the `stickyCloseArea` prop
+
 # [4.10]
 
 - **Change** Reformatted code with Prettier and Stylelint
