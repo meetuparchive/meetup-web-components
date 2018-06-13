@@ -28,7 +28,6 @@ $modal-width: 440px;
 	}
 }
 
-
 .view {
 	@include flexParent("column", false);
 	background: white;
@@ -71,6 +70,18 @@ $modal-width: 440px;
 .modal-closeButtonContainer {
 	position: relative;
 	z-index: map-get($zindex-map, "popup") + 1;
+}
+
+.modal-closeButtonContainer--sticky {
+	background-color: $C_contentBG;
+	border-bottom: 1px solid $C_border;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+}
+
+.modal-closeButtonContainer--stickyTransparent {
+	background-color: transparent;
 }
 
 .modal-closeButton {
