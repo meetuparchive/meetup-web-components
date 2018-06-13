@@ -75,8 +75,8 @@ $modal-width: 440px;
 .modal-closeButtonContainer--sticky {
 	background-color: $C_contentBG;
 	border-bottom: 1px solid $C_border;
-	position: sticky;
 	position: -webkit-sticky;
+	position: sticky;
 	top: 0;
 }
 
