@@ -1,8 +1,8 @@
-assets/
 build/
 coverage/
-icons/
-lib/
+flow-typed/
+infrastructure/
 node_modules/
 svg/
 *.log
+tests/

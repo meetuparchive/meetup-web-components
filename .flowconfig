@@ -1,0 +1,11 @@
+[ignore]
+./build/*
+./coverage/*
+.*.json
+# ./node_modules/radium/*
+
+[include]
+
+[libs]
+
+[options]
