@@ -2,9 +2,9 @@
 ./build/*
 ./coverage/*
 .*.json
-# ./node_modules/radium/*
 
 [include]
+<PROJECT_ROOT>/node_modules/redux-form
 
 [libs]
 
