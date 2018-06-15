@@ -47,7 +47,7 @@ describe('CalendarComponent', () => {
 	});
 
 	it('passes `true` suppressError prop to Flatpickr', () => {
-		expect(suppressErrorComponent.find(Flatpickr).props('suppressError')).toBe(true);
+		expect(suppressErrorComponent.find(Flatpickr).prop('suppressError')).toBe(true);
 	});
 
 	it('should pass a single date object to `onChange` prop', () => {
