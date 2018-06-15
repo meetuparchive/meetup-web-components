@@ -46,15 +46,6 @@ const config = {
 		'prefer-const': 2,
 		'prefer-template': 2,
 		'quote-props': [2, 'as-needed'],
-		'require-jsdoc': [
-			2,
-			{
-				require: {
-					FunctionDeclaration: false,
-					ClassDeclaration: true,
-				},
-			},
-		],
 		'react/jsx-no-undef': 0,
 		'react/jsx-uses-react': 1,
 		'react/jsx-uses-vars': 1,
