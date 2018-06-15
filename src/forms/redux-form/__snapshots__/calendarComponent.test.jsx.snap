@@ -7,7 +7,8 @@ exports[`redux-form Calendar Component renders a Calendar component with expecte
   id="beyonce"
   name="halo"
   onBlur={[Function]}
+  onChange={[Function]}
   onFocus={[Function]}
-  value={2012-10-12T00:00:00.000Z}
+  value={"2012-10-12"}
 />
 `;
