@@ -59,9 +59,17 @@ describe('AccordionPanelGroup', () => {
 	];
 
 	describe('getNewPanelState', () => {
-		it('returns expected new panel state list when passed accordionPanelGroup data', () => {
+		it('returns expected new panel state list when passed multiselectable accordionPanelGroup data', () => {
 			const isMultiselect = true;
-			const panelStates = [false, false, false];
+			const panelStates = [false, true, false];
+			const clickedPanelData = { panelIndex: 0, isOpen: true };
+			expect(
+				getNewPanelState(isMultiselect, panelStates, clickedPanelData)
+			).toEqual([true, true, false]);
+		});
+		it('returns expected new panel state list when passed non-multiselectable accordionPanelGroup data', () => {
+			const isMultiselect = false;
+			const panelStates = [false, true, false];
 			const clickedPanelData = { panelIndex: 0, isOpen: true };
 			expect(
 				getNewPanelState(isMultiselect, panelStates, clickedPanelData)
