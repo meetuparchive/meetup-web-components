@@ -11,16 +11,17 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
  * @param {Object} clickedPanelData
  * @returns {Array} newPanelStatesList - an array of each panel's `isOpen` prop value
  */
-export const getNewPanelState = (isMultiselect, statesList, clickedPanelData) => statesList.map((panelState, i) => {
-	const defaultState = isMultiselect ? panelState : false;
+export const getNewPanelState = (isMultiselect, statesList, clickedPanelData) =>
+	statesList.map((panelState, i) => {
+		const defaultState = isMultiselect ? panelState : false;
 
-	// not the panel that was clicked
-	if (clickedPanelData.panelIndex !== i) {
-		return defaultState;
-	}
+		// not the panel that was clicked
+		if (clickedPanelData.panelIndex !== i) {
+			return defaultState;
+		}
 
-	return clickedPanelData.isOpen;
-});
+		return clickedPanelData.isOpen;
+	});
 
 /**
  * @module AccordionPanelGroup
