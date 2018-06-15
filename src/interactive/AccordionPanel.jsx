@@ -11,7 +11,6 @@ import ToggleSwitch from '../forms/ToggleSwitch';
 export const PANEL_CLASS = 'accordionPanel';
 export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
 export const ACCORDION_LABEL_CLASS = 'accordionPanel-label';
-export const ACCORDIONPANEL_CONTENT_CLASS = 'accordionPanel-content';
 
 /**
  * @module AccordionPanel
@@ -60,11 +59,11 @@ class AccordionPanel extends React.Component {
 		const { isOpen, setClickedPanel, onClickCallback } = this.props;
 
 		setClickedPanel &&
-			setClickedPanel(
-				this.props.clickId,
-				!isOpen,
-				this.getPanelStyle(!isOpen, this.contentEl)
-			);
+			setClickedPanel(e, {
+				panelIndex: this.props.panelIndex,
+				isOpen: !isOpen,
+			});
+		this.getPanelStyle(!isOpen, this.contentEl);
 		onClickCallback && onClickCallback(e, !isOpen);
 	}
 
@@ -140,7 +139,7 @@ class AccordionPanel extends React.Component {
 	render() {
 		const {
 			panelContent,
-			clickId,
+			panelIndex,
 			label,
 			isOpen,
 			setClickedPanel, // eslint-disable-line no-unused-vars
@@ -179,7 +178,7 @@ class AccordionPanel extends React.Component {
 		const isLabelString = label && typeof label == 'string';
 		const panelId = isLabelString
 			? label.replace(/\s+/g, '').toLowerCase()
-			: clickId;
+			: panelIndex;
 
 		return (
 			<div>
@@ -237,7 +236,7 @@ class AccordionPanel extends React.Component {
 					onTransitionEnd={this.onTransitionEnd}
 				>
 					<div
-						className={ACCORDIONPANEL_CONTENT_CLASS}
+						className={'accordionPanel-content'}
 						ref={div => {
 							this.contentEl = div;
 						}}
@@ -258,7 +257,7 @@ AccordionPanel.defaultProps = {
 };
 
 AccordionPanel.propTypes = {
-	clickId: PropTypes.number,
+	panelIndex: PropTypes.number,
 	classNamesActive: PropTypes.string,
 	isOpen: PropTypes.bool,
 	panelContent: PropTypes.element,
