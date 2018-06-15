@@ -4,7 +4,6 @@
 .*.json
 
 [include]
-<PROJECT_ROOT>/node_modules/redux-form
 
 [libs]
 
