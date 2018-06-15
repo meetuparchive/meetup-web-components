@@ -8,22 +8,19 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
  * @description takes AccordionPanelGroup and AccordionPanel data and returns an array of new panel `isOpen` states
  * @param {Boolean} isMultiselect
  * @param {Array} statesList
- * @param {Object} panelData
+ * @param {Object} clickedPanelData
  * @returns {Array} newPanelStatesList - an array of each panel's `isOpen` prop value
  */
-export const getNewPanelState = (isMultiselect, statesList, panelData) => {
-	const newPanelStatesList = statesList.map((panelState, i) => {
-		const defaultState = isMultiselect ? panelState : false;
+export const getNewPanelState = (isMultiselect, statesList, clickedPanelData) => statesList.map((panelState, i) => {
+	const defaultState = isMultiselect ? panelState : false;
 
-		// not the panel that was clicked
-		if (panelData.panelIndex !== i) {
-			return defaultState;
-		}
+	// not the panel that was clicked
+	if (clickedPanelData.panelIndex !== i) {
+		return defaultState;
+	}
 
-		return panelData.isOpen;
-	});
-	return newPanelStatesList;
-};
+	return clickedPanelData.isOpen;
+});
 
 /**
  * @module AccordionPanelGroup
@@ -42,14 +39,14 @@ class AccordionPanelGroup extends React.Component {
 	}
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		let panelPropsHaveChanged = false;
+		// let panelPropsHaveChanged = false;
 		let derivedPanelListState;
 
 		nextProps.accordionPanels.forEach((panel, i) => {
 			const nextPanelProps = panel.props;
 
 			if (nextPanelProps['isOpen'] !== prevState.panelStatesList[i]) {
-				panelPropsHaveChanged = true;
+				// panelPropsHaveChanged = true;
 				derivedPanelListState = getNewPanelState(
 					nextProps.multiSelectable,
 					prevState.panelStatesList,
@@ -59,7 +56,10 @@ class AccordionPanelGroup extends React.Component {
 		});
 
 		return {
-			panelStatesList: panelPropsHaveChanged
+			// panelStatesList: panelPropsHaveChanged
+			// 	? derivedPanelListState
+			// 	: prevState.panelStatesList,
+			panelStatesList: derivedPanelListState
 				? derivedPanelListState
 				: prevState.panelStatesList,
 		};
@@ -146,6 +146,3 @@ AccordionPanelGroup.propTypes = {
 };
 
 export default AccordionPanelGroup;
-
-// TODO: impliment non-multiselectable
-// TODO: update tests
