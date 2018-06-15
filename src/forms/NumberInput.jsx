@@ -18,7 +18,9 @@ export const INCREMENT_BTN_CLASS = 'incrementButton';
 export class NumberInput extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { value: props.value };
+		this.state = {
+			value: props.value,
+		};
 
 		this._updateValueByStep = this._updateValueByStep.bind(this);
 		this.decrementAction = this.decrementAction.bind(this);
@@ -27,6 +29,15 @@ export class NumberInput extends React.Component {
 		this.onChange = this.onChange.bind(this);
 		this.onFocus = this.onFocus.bind(this);
 		this.onKeyDown = this.onKeyDown.bind(this);
+	}
+
+	static getDerivedStateFromProps(nextProps, prevState) {
+		const isNewValue =
+			nextProps.onChange && nextProps.value !== prevState.value;
+
+		return {
+			value: isNewValue ? nextProps.value : prevState.value,
+		};
 	}
 
 	_updateValueByStep(isIncreasing) {
@@ -43,24 +54,6 @@ export class NumberInput extends React.Component {
 		return newValue;
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (
-			this.props.onChange &&
-			this.props.value !== nextProps.value &&
-			nextProps.value !== this.state.value
-		) {
-			this.setState(() => ({ value: nextProps.value }));
-		}
-	}
-
-	componentWillUpdate(nextProps, nextState) {
-		if (this.props.onChange && nextState.value !== this.state.value) {
-			this.props.onChange({
-				target: { name: nextProps.name, value: nextState.value },
-			});
-		}
-	}
-
 	onBlur(e) {
 		const formControls = [
 			this.fauxInputEl,
@@ -73,9 +66,16 @@ export class NumberInput extends React.Component {
 	}
 
 	onChange(e) {
-		const { value } = e.target;
+		const { onChange } = this.props;
+		const { value, name } = e.target;
 
-		this.setState(() => ({ value }));
+		this.setState(() => ({
+			value,
+		}));
+
+		if (onChange) {
+			onChange({ target: { value, name } });
+		}
 	}
 
 	onFocus(e) {
@@ -92,12 +92,16 @@ export class NumberInput extends React.Component {
 
 	incrementAction(e) {
 		e.preventDefault();
-		this.setState(() => ({ value: this._updateValueByStep(true) }));
+		this.onChange({
+			target: { value: this._updateValueByStep(true), name: this.props.name },
+		});
 	}
 
 	decrementAction(e) {
 		e.preventDefault();
-		this.setState(() => ({ value: this._updateValueByStep(false) }));
+		this.onChange({
+			target: { value: this._updateValueByStep(false), name: this.props.name },
+		});
 	}
 
 	render() {

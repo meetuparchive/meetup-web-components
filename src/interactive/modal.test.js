@@ -6,6 +6,8 @@ import Button from '../forms/Button';
 import {
 	Modal,
 	MODAL_CLOSE_BUTTON,
+	MODAL_CLOSE_AREA_STICKY,
+	MODAL_CLOSE_AREA_STICKYTRANSP,
 	DEFAULT_MARGIN_TOP,
 	MARGIN_TOP_OFFSET,
 	getModalPosition,
@@ -108,6 +110,7 @@ describe('Modal hero header', () => {
 		modal = TestUtils.renderIntoDocument(
 			<Modal
 				inverted
+				stickyCloseArea
 				heroBgColor={bgColor}
 				heroBgImage={bgImage}
 				heroContent={heroContentHtml}
@@ -143,6 +146,24 @@ describe('Modal hero header', () => {
 	it('sets the hero Stripe to inverted', () => {
 		expect(() =>
 			TestUtils.findRenderedDOMComponentWithClass(modal, STRIPE_INVERTED_CLASS)
+		).not.toThrow();
+	});
+
+	it('sets the close area to sticky when stickyCloseArea is passed', () => {
+		expect(() =>
+			TestUtils.findRenderedDOMComponentWithClass(
+				modal,
+				MODAL_CLOSE_AREA_STICKY
+			)
+		).not.toThrow();
+	});
+
+	it('sets the sticky close area to be transparent when background image or color are passed', () => {
+		expect(() =>
+			TestUtils.findRenderedDOMComponentWithClass(
+				modal,
+				MODAL_CLOSE_AREA_STICKYTRANSP
+			)
 		).not.toThrow();
 	});
 
