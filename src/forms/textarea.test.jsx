@@ -2,6 +2,7 @@ import React from 'react';
 import TestUtils from 'react-dom/test-utils';
 import * as autosizePlugin from 'autosize';
 import { Textarea } from './Textarea';
+import { shallow } from 'enzyme';
 
 jest.mock('autosize', () => {
 	return jest.fn();
@@ -22,14 +23,26 @@ describe('Textarea', function() {
 		MIN_HEIGHT = 100,
 		MAX_HEIGHT = 300;
 
+	const formAttrs = {
+		id: ID,
+		name: NAME_ATTR,
+		required: true,
+	};
+
 	let textareaComponent, autosizeTextareaComponent, textareaEl;
 
+	const renderComponent = props =>
+		shallow(
+			<Textarea
+				id={ID}
+				autosize
+				label={LABEL_TEXT}
+				value={VALUE}
+				{...formAttrs}
+				{...props}
+			/>
+		);
 	beforeEach(() => {
-		const formAttrs = {
-			id: ID,
-			name: NAME_ATTR,
-			required: true,
-		};
 		textareaComponent = TestUtils.renderIntoDocument(
 			<Textarea
 				rows={ROWS}
@@ -41,13 +54,7 @@ describe('Textarea', function() {
 			/>
 		);
 		autosizeTextareaComponent = TestUtils.renderIntoDocument(
-			<Textarea
-				id={ID}
-				autosize
-				label={LABEL_TEXT}
-				value={VALUE}
-				{...formAttrs}
-			/>
+			<Textarea id={ID} autosize label={LABEL_TEXT} value={VALUE} {...formAttrs} />
 		);
 
 		textareaEl = TestUtils.findRenderedDOMComponentWithTag(
@@ -82,6 +89,18 @@ describe('Textarea', function() {
 		autosizeTextareaComponent.componentDidUpdate({ value: newValue });
 
 		expect(mockAutosize.update).toHaveBeenCalled();
+	});
+	it('should call autosize plugin in componentDidUpdate using the property textarearef if passed', () => {
+		const ref = 'test123';
+		const textarea = renderComponent({ textarearef: ref });
+		textarea.instance().componentDidUpdate({ value: 'yo'});
+		expect(mockAutosize.update).toHaveBeenCalledWith(ref);
+	});
+
+	it('should call autosize plugin in componentDidMount using the property textarearef if passed', () => {
+		const ref = 'test123';
+		renderComponent({ textarearef: ref });
+		expect(mockAutosize.update).toHaveBeenCalledWith(ref);
 	});
 
 	it('should have a name attribute', () => {
