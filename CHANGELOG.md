@@ -1,3 +1,7 @@
+# [4.12]
+
+- **Change** All `GridList` items constrain their width to obey the grid columns
+
 # [4.11]
 
 - **Feature** Added the ability to set the close area at the top of a Modal to be sticky using the `stickyCloseArea` prop
