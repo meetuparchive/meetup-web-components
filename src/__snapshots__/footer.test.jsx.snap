@@ -387,7 +387,7 @@ exports[`SocialIconsList renders for de-DE locale 1`] = `
         />
     </a>,
       <a
-        href="https://www.instagram.com/meetup/"
+        href="https://www.instagram.com/meetupde/"
     >
         <Icon
             className="margin--left"
@@ -652,7 +652,7 @@ exports[`SocialIconsList renders for fr-FR locale 1`] = `
         />
     </a>,
       <a
-        href="https://www.instagram.com/meetup/"
+        href="https://twitter.com/meetupfr/"
     >
         <Icon
             className="margin--left"
