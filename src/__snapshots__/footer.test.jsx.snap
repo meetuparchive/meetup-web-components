@@ -148,6 +148,11 @@ exports[`Footer exists 1`] = `
                 <Chunk
                   className="align--center atMedium_align--left"
                 >
+                  <h4
+                    className="text--bold margin--bottom"
+                  >
+                    Follow Us
+                  </h4>
                   <SocialIconsList
                     localeCode="en-US"
                   />
