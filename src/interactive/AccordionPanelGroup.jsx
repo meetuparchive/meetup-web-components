@@ -40,14 +40,12 @@ class AccordionPanelGroup extends React.Component {
 	}
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		// let panelPropsHaveChanged = false;
 		let derivedPanelListState;
 
 		nextProps.accordionPanels.forEach((panel, i) => {
 			const nextPanelProps = panel.props;
 
 			if (nextPanelProps['isOpen'] !== prevState.panelStatesList[i]) {
-				// panelPropsHaveChanged = true;
 				derivedPanelListState = getNewPanelState(
 					nextProps.multiSelectable,
 					prevState.panelStatesList,
@@ -57,9 +55,6 @@ class AccordionPanelGroup extends React.Component {
 		});
 
 		return {
-			// panelStatesList: panelPropsHaveChanged
-			// 	? derivedPanelListState
-			// 	: prevState.panelStatesList,
 			panelStatesList: derivedPanelListState
 				? derivedPanelListState
 				: prevState.panelStatesList,
