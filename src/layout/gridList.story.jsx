@@ -204,6 +204,43 @@ storiesOf('GridList', module)
 			/>
 		)
 	)
+	.addWithInfo(
+		'Responsive wrapping autoHeight grid',
+		'GridList where items are the same height and increases number of columns for larger breakpoints',
+		() => (
+			<GridList
+				autoHeightWithWrap
+				columns={{
+					default: 2,
+					medium: 4,
+					large: 6,
+				}}
+				style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}
+				items={[
+					<TestMember member={MOCK_MEMBER} />,
+					<TestMember
+						member={{
+							...MOCK_MEMBER,
+							name: "mockymcmockersonnnn"
+						}}
+						secondLine="This is a second line"
+					/>,
+					<TestMember member={MOCK_MEMBER} />,
+					<TestMember
+						member={MOCK_MEMBER}
+						secondLine="This is a second line"
+					/>,
+					<TestMember
+						member={{
+							...MOCK_MEMBER,
+							name: "mockymcmockersonnnn"
+						}}
+					/>,
+					<TestMember member={MOCK_MEMBER} />,
+				]}
+			/>
+		)
+	)
 	.addWithInfo('isLoading', () => (
 		<GridList
 			isLoading
