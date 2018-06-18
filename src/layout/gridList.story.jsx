@@ -221,7 +221,7 @@ storiesOf('GridList', module)
 					<TestMember
 						member={{
 							...MOCK_MEMBER,
-							name: "mockymcmockersonnnn"
+							name: 'mockymcmockersonnnn',
 						}}
 						secondLine="This is a second line"
 					/>,
@@ -233,7 +233,7 @@ storiesOf('GridList', module)
 					<TestMember
 						member={{
 							...MOCK_MEMBER,
-							name: "mockymcmockersonnnn"
+							name: 'mockymcmockersonnnn',
 						}}
 					/>,
 					<TestMember member={MOCK_MEMBER} />,
