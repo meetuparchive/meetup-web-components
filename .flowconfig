@@ -2,6 +2,7 @@
 ./build/*
 ./coverage/*
 .*.json
+./node_modules/stylelint/*
 # ./node_modules/radium/*
 
 [include]
