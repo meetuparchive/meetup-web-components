@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a clickId 1`] = `
+exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a panelIndex 1`] = `
 <AccordionPanelGroup
   accordionPanels={
     Array [
@@ -85,7 +85,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
       key="0"
     >
       <AccordionPanel
-        clickId={0}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconActive={undefined}
@@ -102,6 +101,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             </p>
           </div>
         }
+        panelIndex={0}
         setClickedPanel={[Function]}
       >
         <div>
@@ -261,7 +261,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
       key="1"
     >
       <AccordionPanel
-        clickId={1}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconActive={undefined}
@@ -294,6 +293,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             </div>
           </div>
         }
+        panelIndex={1}
         setClickedPanel={[Function]}
       >
         <div>
@@ -469,7 +469,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
       key="2"
     >
       <AccordionPanel
-        clickId={2}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconActive={undefined}
@@ -486,6 +485,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             </p>
           </div>
         }
+        panelIndex={2}
         setClickedPanel={[Function]}
       >
         <div>
@@ -729,7 +729,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
       key="0"
     >
       <AccordionPanel
-        clickId={0}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconActive={undefined}
@@ -746,6 +745,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             </p>
           </div>
         }
+        panelIndex={0}
         setClickedPanel={[Function]}
       >
         <div>
@@ -905,7 +905,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
       key="1"
     >
       <AccordionPanel
-        clickId={1}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconActive={undefined}
@@ -938,6 +937,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             </div>
           </div>
         }
+        panelIndex={1}
         setClickedPanel={[Function]}
       >
         <div>
@@ -1113,7 +1113,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
       key="2"
     >
       <AccordionPanel
-        clickId={2}
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconActive={undefined}
@@ -1130,6 +1129,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             </p>
           </div>
         }
+        panelIndex={2}
         setClickedPanel={[Function]}
       >
         <div>

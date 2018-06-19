@@ -148,6 +148,11 @@ exports[`Footer exists 1`] = `
                 <Chunk
                   className="align--center atMedium_align--left"
                 >
+                  <h4
+                    className="text--bold margin--bottom"
+                  >
+                    Follow Us
+                  </h4>
                   <SocialIconsList
                     localeCode="en-US"
                   />
@@ -382,7 +387,7 @@ exports[`SocialIconsList renders for de-DE locale 1`] = `
         />
     </a>,
       <a
-        href="https://www.instagram.com/meetup/"
+        href="https://www.instagram.com/meetupde/"
     >
         <Icon
             className="margin--left"
@@ -647,7 +652,7 @@ exports[`SocialIconsList renders for fr-FR locale 1`] = `
         />
     </a>,
       <a
-        href="https://www.instagram.com/meetup/"
+        href="https://twitter.com/meetupfr/"
     >
         <Icon
             className="margin--left"
