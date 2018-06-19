@@ -12,12 +12,18 @@ export const getSocialLinks = locale => {
 		case 'fr-FR':
 			socialLinks.facebook = 'https://www.facebook.com/MeetupFR/';
 			socialLinks.twitter = 'https://twitter.com/MeetupFR/';
+			socialLinks.instagram = 'https://twitter.com/meetupfr/';
 			break;
 		case 'de-DE':
 			socialLinks.facebook = 'https://www.facebook.com/meetupDE/';
 			socialLinks.twitter = 'https://twitter.com/MeetupDE/';
+			socialLinks.instagram = 'https://www.instagram.com/meetupde/';
 			break;
 		case 'ja-JP':
+			socialLinks.facebook = 'https://www.facebook.com/meetupjp/';
+			socialLinks.twitter = 'https://twitter.com/MeetupJP/';
+			break;
+		case 'ja':
 			socialLinks.facebook = 'https://www.facebook.com/meetupjp/';
 			socialLinks.twitter = 'https://twitter.com/MeetupJP/';
 			break;
