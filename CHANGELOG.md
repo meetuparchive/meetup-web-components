@@ -12,6 +12,10 @@
 
     Better to just convert your implementation full to js-joda, however.
 
+# [4.12]
+
+-   **Change** Refactored AccordionPanelGroup not to use deprecated lifecycle methods `componentWillMount` and `componentWillReceiveProps`. This had a nice side-effect of removing a lot of code and complexity
+
 # [4.11]
 
 -   **Feature** Added the ability to set the close area at the top of a Modal to be sticky using the `stickyCloseArea` prop
