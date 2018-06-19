@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { convert, LocalDate, nativeJs } from 'js-joda';
 import CalendarComponent from '../CalendarComponent';
 
@@ -40,11 +39,6 @@ const ReduxFormCalendarComponent = (props: FieldProps): React$Element<*> => {
 			{...other}
 		/>
 	);
-};
-
-ReduxFormCalendarComponent.propTypes = {
-	meta: PropTypes.object.isRequired,
-	input: PropTypes.oneOfType([PropTypes.element, PropTypes.object]).isRequired,
 };
 
 ReduxFormCalendarComponent.displayName = 'ReduxFormCalendarComponent';

@@ -35,24 +35,31 @@ export class CalendarComponent extends React.Component<Props> {
 	constructor(props: Props) {
 		super(props);
 
-		// need an instance-specific memoized function for getting a vanilla JS
-		// date from the current LocalDate props.value
-		let lastArg;
-		let lastReturn;
-		this.getPickrValue = (value): ?Date => {
-			if (value === lastArg) {
-				return lastReturn;
+		// the wrapped Flatpickr requires a `value` that is a vanilla JS `Date`
+		// instance, but `CalendarComponent` provides a `LocalDate` interface.
+		// Converting between those two data types is relatively expensive, so
+		// we define a memoized 'converter' instance method that will only calculate
+		// a new `Date` value when `this.props.value` changes.
+		let prevArg;
+		let prevReturn;
+		this.getPickrValue = (value: ?LocalDate): ?Date => {
+			if (value === prevArg) {
+				return prevReturn;
 			}
-			lastArg = value;
-			lastReturn = this.props.value && convert(this.props.value).toDate();
-			return lastReturn;
+			prevArg = value;
+			prevReturn = this.props.value && convert(this.props.value).toDate();
+			return prevReturn;
 		};
 	}
 
 	/*
 	 * the Flatpickr component always passes an array of recently selected
 	 * dates to its onChange handler, with the most recent in first position of
-	 * the array. We are only interested in the most-recently-selected value
+	 * the array. We are only interested in the most-recently-selected value.
+	 *
+	 * Flatpickr also provides a dateString and a reference to the flatpickr
+	 * instance, which can be used for more advanced behaviors, but should
+	 * generally be ignored. See flatpickr docs for details.
 	 */
 	onFlatPickerChange = (
 		selectedDates: Array<Date>,
@@ -141,10 +148,5 @@ export class CalendarComponent extends React.Component<Props> {
 		);
 	}
 }
-
-CalendarComponent.defaultProps = {
-	requiredText: '*',
-	datepickerOptions: {},
-};
 
 export default withErrorList(CalendarComponent);
