@@ -24,10 +24,6 @@ export class Textarea extends React.PureComponent {
 	 */
 	componentDidMount() {
 		if (this.props.autosize) {
-			if (this.props.textarearef) {
-				autosize(this.props.textarearef);
-				return;
-			}
 			autosize(this.textarea);
 		}
 	}
@@ -64,10 +60,6 @@ export class Textarea extends React.PureComponent {
 	 */
 	componentDidUpdate(prevProps) {
 		if (this.props.value !== prevProps.value) {
-			if (this.props.textarearef) {
-				autosize.update(this.props.textarearef);
-				return;
-			}
 			autosize.update(this.textarea);
 		}
 	}
@@ -109,7 +101,6 @@ export class Textarea extends React.PureComponent {
 			helperText,
 			required,
 			requiredText,
-			textarearef,
 			...other
 		} = this.props;
 
@@ -156,13 +147,9 @@ export class Textarea extends React.PureComponent {
 					className={classNames.textarea}
 					onChange={this.onChange}
 					rows={rows}
-					ref={
-						textarearef
-							? textarearef
-							: textarea => {
-									this.textarea = textarea;
-							  }
-					}
+					ref={textarea => {
+						this.textarea = textarea;
+					}}
 					style={{ minHeight, maxHeight, ...style }}
 					id={id}
 					value={this.state.value}
