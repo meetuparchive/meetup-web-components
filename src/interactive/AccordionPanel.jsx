@@ -70,9 +70,7 @@ class AccordionPanel extends React.Component {
 	onToggleClick(e) {
 		e.preventDefault();
 
-		this.props.onToggleClick
-			? this.props.onToggleClick(e)
-			: this._handleToggle(e);
+		this.props.onToggleClick ? this.props.onToggleClick(e) : this._handleToggle(e);
 	}
 
 	/**
