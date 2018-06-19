@@ -120,7 +120,9 @@ export const Footer = ({
 								<Flex noGutters direction="column">
 									<FlexItem shrink>
 										<Chunk className="align--center atMedium_align--left">
-											<h4 className="text--bold margin--bottom">{socialHeader}</h4>
+											<h4 className="text--bold margin--bottom">
+												{socialHeader}
+											</h4>
 											<SocialIconsList localeCode={localeCode} />
 										</Chunk>
 									</FlexItem>
@@ -132,10 +134,14 @@ export const Footer = ({
 													: 'row'
 											}
 											rowReverse={
-												media.isAtMediumUp && !media.isAtLargeUp && !isLoggedIn
+												media.isAtMediumUp &&
+												!media.isAtLargeUp &&
+												!isLoggedIn
 											}
 											justify={
-												media.isAtMediumUp && !media.isAtLargeUp && !isLoggedIn
+												media.isAtMediumUp &&
+												!media.isAtLargeUp &&
+												!isLoggedIn
 													? 'spaceBetween'
 													: null
 											}

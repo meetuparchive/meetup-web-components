@@ -93,7 +93,7 @@ describe('Textarea', function() {
 	it('should call autosize plugin in componentDidUpdate using the property textarearef if passed', () => {
 		const ref = 'test123';
 		const textarea = renderComponent({ textarearef: ref });
-		textarea.instance().componentDidUpdate({ value: 'yo'});
+		textarea.instance().componentDidUpdate({ value: 'yo' });
 		expect(mockAutosize.update).toHaveBeenCalledWith(ref);
 	});
 
