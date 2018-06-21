@@ -1,4 +1,5 @@
 // @flow
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Icon from '../media/Icon';
@@ -164,6 +165,25 @@ export const TextInput = (props: Props): React$Element<*> => {
 
 TextInput.defaultProps = {
 	requiredText: '*',
+};
+
+TextInput.propTypes = {
+	name: PropTypes.string.isRequired,
+	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	id: PropTypes.string,
+	maxLength: PropTypes.number,
+	pattern: PropTypes.string,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	labelClassName: PropTypes.string,
+	placeholder: PropTypes.string,
+	isSearch: PropTypes.bool,
+	onChange: PropTypes.func,
+	disabled: PropTypes.bool,
+	iconShape: PropTypes.string,
+	iconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	required: PropTypes.bool,
+	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 export default withErrorList(TextInput);
