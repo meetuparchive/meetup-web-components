@@ -26,7 +26,8 @@
     "test:coverage": "yarn run test:unit -- --coverage",
     "test:base": "jest --color --config jest.config.json",
     "test:unit": "yarn run test:base",
-    "test:watch": "yarn run test:base -- --watch --verbose"
+    "test:watch": "yarn run test:base -- --watch --verbose",
+    "typecheck": "flow && flow stop"
   },
   "repository": {
     "type": "git",
