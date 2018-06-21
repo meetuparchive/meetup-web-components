@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// @flow
 import React from 'react';
 import cx from 'classnames';
 import Icon from '../media/Icon';
@@ -8,31 +8,55 @@ import withErrorList from '../utils/components/withErrorList';
 
 export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
 
+type Props = {
+	children?: React$Node,
+	className?: string,
+	disabled?: boolean,
+	error?: string | React$Node,
+	helperText?: string | React$Node,
+	iconShape?: string,
+	iconSize?: 'xs' | 's' | 'm' | 'l' | 'xl',
+	id?: string,
+	isSearch?: boolean,
+	label?: string | React$Node,
+	labelClassName?: string,
+	maxLength?: number,
+	name: string,
+	onChange: string => void,
+	pattern?: string,
+	placeholder?: string,
+	refCallback: React$Node => void,
+	required?: boolean,
+	requiredText?: string | React$Node,
+	validityMessage?: string,
+	value: string,
+};
+
 /**
  * @module TextInput
  */
-export const TextInput = props => {
+export const TextInput = (props: Props): React$Element<*> => {
 	const {
-		name,
-		value,
-		label,
-		labelClassName,
 		className,
 		children,
+		disabled,
 		error,
-		placeholder,
+		helperText,
+		iconShape,
 		id,
-		onChange,
 		isSearch,
 		maxLength,
+		name,
+		label,
+		labelClassName,
+		onChange,
 		pattern,
-		disabled,
-		iconShape,
-		helperText,
+		placeholder,
+		refCallback,
 		required,
 		requiredText,
 		validityMessage,
-		refCallback,
+		value,
 		...other
 	} = props;
 
@@ -62,6 +86,7 @@ export const TextInput = props => {
 		shape: iconShape,
 		size: props.iconSize || 'xs',
 		className: classNames.icon,
+		'aria-hidden': true,
 	};
 
 	const paddingSize = parseInt(MEDIA_SIZES[iconProps.size], 10) + 24; // #TODO :SDS: replace '32' with something like "$space * 1.5" from `swarm-constants`
@@ -82,20 +107,16 @@ export const TextInput = props => {
 		e.target.setCustomValidity(validityMessage);
 	};
 
+	const optionalInputProps = {};
 	// WC-158
 	// Only add a `value` prop if it is defined.
 	// Workaround for IE11 support (see ticket)
 	if (value !== undefined) {
-		other.value = value;
+		optionalInputProps.value = value;
 	}
-
-	// Character limits should be a "soft" limit.
-	// Avoid passing maxLength as an HTML attribute
-	if (maxLength) delete other.maxLength;
 
 	// If a refCallback is provided in input props
 	// add a ref to the <input> tag
-	const optionalInputProps = {};
 	if (refCallback) {
 		optionalInputProps.ref = refCallback;
 	}
@@ -143,25 +164,6 @@ export const TextInput = props => {
 
 TextInput.defaultProps = {
 	requiredText: '*',
-};
-
-TextInput.propTypes = {
-	name: PropTypes.string.isRequired,
-	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	id: PropTypes.string,
-	maxLength: PropTypes.number,
-	pattern: PropTypes.string,
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	labelClassName: PropTypes.string,
-	placeholder: PropTypes.string,
-	isSearch: PropTypes.bool,
-	onChange: PropTypes.func,
-	disabled: PropTypes.bool,
-	iconShape: PropTypes.string,
-	iconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	required: PropTypes.bool,
-	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 export default withErrorList(TextInput);
