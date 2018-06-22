@@ -3,6 +3,12 @@
 -   **BREAKING CHANGE** `CalendarComponent` now works exclusively with js-joda `LocalDate`
     values. When supplying an optional `value`, it must be a `LocalDate`, and `onChange`
     callbacks will receive a `LocalDate` instance as the first argument.
+	
+	To convert a JS `Date` object to a `LocalDate`, use
+	
+	```js
+	LocalDate.from(nativeJs(input.value))
+	```
 
     To convert the `LocalDate` back to a JS `Date` object in legacy code, use
 
@@ -10,7 +16,8 @@
     convert(localDate).toDate();
     ```
 
-    Better to just convert your implementation full to js-joda, however.
+    Better to just convert your implementation full to js-joda, however. API docs are
+	[here](https://js-joda.github.io/js-joda/esdoc/)
 
 # [4.12]
 
