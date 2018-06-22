@@ -1,7 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
 import * as autosizePlugin from 'autosize';
-import { Textarea } from './Textarea';
+import { Textarea, overrideValue } from './Textarea';
 
 jest.mock('autosize', () => {
 	return jest.fn();
@@ -56,19 +56,9 @@ describe('Textarea', function() {
 
 	it('should set state to value on `overrideValue`', function() {
 		const newValue = 'someValue';
-		textareaComponent.overrideValue({ value: newValue });
-		expect(textareaComponent.state.value).toEqual(newValue);
-	});
+		const newState = overrideValue({ value: newValue });
 
-	it('should set state to value on `componentwillmount`', function() {
-		textareaComponent.componentWillMount();
-		expect(textareaComponent.state.value).toEqual(VALUE);
-	});
-
-	it('should set state to value on `componentWillReceiveProps`', function() {
-		const newValue = 'hello world';
-		textareaComponent.componentWillReceiveProps({ value: newValue });
-		expect(textareaComponent.state.value).toEqual(newValue);
+		expect(newState.value).toEqual(newValue);
 	});
 
 	it('should call autosize plugin `update` method on `componentDidUpdate`', function() {
