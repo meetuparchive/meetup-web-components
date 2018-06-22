@@ -6,6 +6,14 @@ import CharCounter from './CharCounter';
 import withErrorList from '../utils/components/withErrorList';
 
 /**
+ * Should override value with info from state
+ * @return {Object} the new state for the component
+ */
+export const overrideValue = nextProps => ({
+	value: nextProps.value || '',
+});
+
+/**
  * @module Textarea
  */
 export class Textarea extends React.PureComponent {
@@ -19,6 +27,14 @@ export class Textarea extends React.PureComponent {
 	}
 
 	/**
+	 * @param {Object} nextProps the incoming props
+	 * @return {undefined} side effect only
+	 */
+	static getDerivedStateFromProps(nextProps) {
+		return overrideValue(nextProps);
+	}
+
+	/**
 	 * Turns on autosize if requested
 	 * @return {undefined} side effect only
 	 */
@@ -26,32 +42,6 @@ export class Textarea extends React.PureComponent {
 		if (this.props.autosize) {
 			autosize(this.textarea);
 		}
-	}
-
-	/**
-	 * Should override value with info from state
-	 * @return {[type]} [description]
-	 */
-	overrideValue(nextProps) {
-		this.setState(() => ({
-			value: nextProps.value || '',
-		}));
-	}
-
-	/**
-	 * @param {Object} props the incoming props
-	 * @return {undefined} side effect only
-	 */
-	componentWillMount() {
-		this.overrideValue(this.props);
-	}
-
-	/**
-	 * @param {Object} nextProps the incoming props
-	 * @return {undefined} side effect only
-	 */
-	componentWillReceiveProps(nextProps) {
-		this.overrideValue(nextProps);
 	}
 
 	/**
