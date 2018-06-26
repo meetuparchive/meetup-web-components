@@ -80,21 +80,17 @@ Applies button color-related styles using a mixin.
 	background: $bgColor;
 
 	&:hover {
+		background: $hoverColor;
+
 		@if $textTransition {
 			transition: all 400ms $animate_easeOutQuad;
 
 			svg {
 				transition: fill 400ms $animate_easeOutQuad;
 			}
-		}@else {
+		} @else {
 			transition: background 400ms $animate_easeOutQuad;
 		}
-	}
-
-
-	&:hover,
-	&:focus {
-		background: $hoverColor;
 	}
 
 	&:active {
@@ -109,12 +105,20 @@ Applies button color-related styles using a mixin.
 	@include buttonBase();
 	@include buttonColor();
 
+	&:focus {
+		outline: 1px dotted $C_borderDark;
+	}
+
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_textSecondaryInverted,
 			$hoverColor: opacify($C_textSecondaryInverted, 0.1),
 			$activeColor: opacify($C_textSecondaryInverted, 0.25)
 		);
+
+		&:focus {
+			outline: 1px dotted $C_borderDarkInverted;
+		}
 	}
 }
 
@@ -165,19 +169,16 @@ Applies button color-related styles using a mixin.
 // Bordered buttons
 //
 .button--bordered {
-
 	$C_borderedHoverBase: transparentize($C_textPrimary, 0.4);
 	@include buttonColor(
 		$bgColor: $C_contentBG,
-		$hoverColor: $C_contentBG,
+		$hoverColor: $C_lightGray,
 		$activeColor: $C_lightGray
 	);
-	@include shadowOnHover();
 	border: 1px solid $C_border;
 
-	&:hover,
-	&:focus {
-		border-color: transparent;
+	&:active {
+		border-color: opacify($C_border, 0.2);
 	}
 
 	&.button--disabled,
@@ -188,21 +189,19 @@ Applies button color-related styles using a mixin.
 	.inverted & {
 		@include buttonColor(
 			$bgColor: $C_textSecondary,
-			$hoverColor: lighten(transparentize($C_textSecondary, 0.2), 12%),
-			$activeColor: lighten(transparentize($C_textSecondary, 0.2), 23%)
+			$hoverColor: lighten(transparentize($C_textSecondary, 0.2), 25%),
+			$activeColor: lighten(transparentize($C_textSecondary, 0.2), 50%)
 		);
-		border: 1px solid $C_borderInverted;
+		border: 1px solid opacify($C_borderInverted, 0.2);
 
 		&:hover,
 		&:focus {
-			border-color: $C_borderDarkInverted, 0.1;
 			transform: translateY(0);
 		}
 	}
 }
 
-.button--hasHoverShadow,
-.button--bordered {
+.button--hasHoverShadow {
 	@include shadowOnHover();
 
 	&.button--disabled,
@@ -303,7 +302,6 @@ Applies button color-related styles using a mixin.
 }
 
 .button-label {
-
 	// this full shorthand property for `flex`
 	// is required to prevent IE11 from "shrinkwrapping" text nodes
 
