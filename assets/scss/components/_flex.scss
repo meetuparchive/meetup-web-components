@@ -26,7 +26,8 @@
 	}
 }
 
-@include _bpModifier(flex, column, true) { // `true` arg generates "atAll" conditional class
+@include _bpModifier(flex, column, true) {
+	// `true` arg generates "atAll" conditional class
 	@include flexParent("column", false);
 
 	> .flex-item {
@@ -60,7 +61,6 @@
 		}
 	}
 }
-
 
 $flexGrowFactors: 1, 2, 3, 4, 5, 6, 7;
 
