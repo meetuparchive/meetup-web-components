@@ -1,3 +1,5 @@
+@import "~bourbon/app/assets/stylesheets/_bourbon.scss"; // stylelint-disable-line scss/at-import-no-partial-leading-underscore
+
 .flex {
 	@include flexParent("row", false);
 }
@@ -24,7 +26,8 @@
 	}
 }
 
-@include _bpModifier(flex, column, true) { // `true` arg generates "atAll" conditional class
+@include _bpModifier(flex, column, true) {
+	// `true` arg generates "atAll" conditional class
 	@include flexParent("column", false);
 
 	> .flex-item {
@@ -58,7 +61,6 @@
 		}
 	}
 }
-
 
 $flexGrowFactors: 1, 2, 3, 4, 5, 6, 7;
 
