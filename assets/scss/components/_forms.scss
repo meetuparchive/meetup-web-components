@@ -97,6 +97,11 @@ input.field--reset:active {
 		@include resetFieldStyles();
 	}
 }
+
+[type="number"].field--reset {
+	// hide spinner in Firefox
+	-moz-appearance: textfield;
+}
 /* stylelint-enable */
 
 //
@@ -146,9 +151,11 @@ input.field--reset:active {
 			border-color: transparent;
 			color: $C_textSecondaryInverted;
 
-			&:hover { // stylelint-disable-line selector-max-specificity
+			/* stylelint-disable selector-max-specificity */
+			&:hover {
 				background-color: $C_borderInverted;
 			}
+			/* stylelint-enable */
 		}
 	}
 }
@@ -171,14 +178,16 @@ $C_toggleHighlight: $C_blue;
 		.fauxToggle {
 			border-color: $C_toggleHighlight;
 
-			&.checked { // stylelint-disable-line selector-max-specificity, selector-max-class
+			/* stylelint-disable selector-max-specificity, selector-max-class */
+			&.checked {
 				background-color: darken($C_toggleHighlight, 15%);
 			}
 
-			&.disabled { // stylelint-disable-line selector-max-specificity, selector-max-class
+			&.disabled {
 				background-color: $C_white;
 				border-color: $C_textHint;
 			}
+			/* stylelint-enable */
 		}
 	}
 }
@@ -221,9 +230,11 @@ $C_toggleHighlight: $C_blue;
 	+ .fauxToggle {
 		border-color: $C_toggleHighlight;
 
-		&.checked { // stylelint-disable-line selector-max-specificity, selector-max-class
+		/* stylelint-disable selector-max-specificity, selector-max-class */
+		&.checked {
 			box-shadow: 0 0 4px 1px $C_toggleHighlight;
 		}
+		/* stylelint-enable */
 	}
 }
 
