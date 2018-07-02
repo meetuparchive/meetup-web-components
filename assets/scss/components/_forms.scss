@@ -98,7 +98,10 @@ input.field--reset:active {
 	}
 }
 
-[type="number"].field--reset {
+[type="number"].field--reset,
+[type="number"].field--reset:hover,
+[type="number"].field--reset:focus,
+[type="number"].field--reset:active {
 	// hide spinner in Firefox
 	-moz-appearance: textfield;
 }
