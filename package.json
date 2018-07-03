@@ -124,6 +124,7 @@
     "storybook-addon-i18n-tools": "1.0.0",
     "storybook-react-router": "1.0.1",
     "style-loader": "0.18.2",
+    "stylelint-config-prettier": "3.3.0",
     "swarm-animation": "0.0.95",
     "swarm-constants": "1.2.94",
     "swarm-icons": "^2.3",

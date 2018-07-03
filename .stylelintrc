@@ -1,6 +1,11 @@
 {
 	"extends": [
 		"mwp-config/stylelint/stylelint-config-base",
-		"mwp-config/stylelint/stylelint-config-swarmProject"
-	]
+		"mwp-config/stylelint/stylelint-config-swarmProject",
+		"stylelint-config-prettier"
+	],
+	"rules": {
+		"scss/operator-no-newline-after": null,
+		"scss/operator-no-newline-before": null
+	}
 }

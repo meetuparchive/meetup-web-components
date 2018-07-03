@@ -47,12 +47,9 @@ Class                | Description
 
 // color variants
 
-@each $colorName, $color in (
-	"red": $C_red,
-	"purple": $C_purple,
-	"black": $C_black,
-	"plum": $C_plum
-) {
+@each $colorName,
+	$color in ("red": $C_red, "purple": $C_purple, "black": $C_black, "plum": $C_plum)
+{
 	.stripe--#{$colorName} {
 		background-color: $color;
 	}
@@ -73,10 +70,18 @@ Class                | Description
 		z-index: 0;
 
 		@if $placement == "bottom" {
-			@include linear-gradient(180deg, transparentize($C_black, 0.85) 25%, transparentize($C_black, 0.6) 100%);
+			background-image: linear-gradient(
+				180deg,
+				transparentize($C_black, 0.85) 25%,
+				transparentize($C_black, 0.6) 100%
+			);
 			bottom: 0;
 		} @else {
-			@include linear-gradient(0deg, transparentize($C_black, 0.85) 25%, transparentize($C_black, 0.6) 100%);
+			background-image: linear-gradient(
+				0deg,
+				transparentize($C_black, 0.85) 25%,
+				transparentize($C_black, 0.6) 100%
+			);
 			top: 0;
 		}
 	}
