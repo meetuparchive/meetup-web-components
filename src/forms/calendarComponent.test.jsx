@@ -67,4 +67,17 @@ describe('CalendarComponent', () => {
 			undefined
 		);
 	});
+
+	it('should not call `onChange` if date value is invalid', () => {
+		const spyableChange = jest.fn();
+		const component = mount(
+			<CalendarComponent onChange={spyableChange} {...MOCK_PROPS} />
+		);
+
+		expect(spyableChange).not.toHaveBeenCalled();
+		component
+			.instance()
+			.onFlatPickerChange([]);
+		expect(spyableChange).not.toHaveBeenCalled();
+	});
 });

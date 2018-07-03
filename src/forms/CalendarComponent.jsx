@@ -68,7 +68,11 @@ export class CalendarComponent extends React.Component<Props> {
 	) => {
 		const [selectedDate] = selectedDates;
 		const { onChange } = this.props;
-		if (!onChange) {
+		/*
+		 * Seems like Flatpickr can have non-valid dates
+		 * js-joda fails to create intance in that case
+		 */
+		if (!onChange || !selectedDate) {
 			return;
 		}
 		onChange(LocalDate.from(nativeJs(selectedDate)), dateString, flatpickrInstance);
