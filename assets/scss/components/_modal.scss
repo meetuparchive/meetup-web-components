@@ -9,12 +9,12 @@ $modal-width: 440px;
 	width: $modal-width !important;
 
 	&.off {
-		@include transform( translateY(100vh) );
+		@include transform(translateY(100vh));
 	}
 }
 
 @mixin modal-full {
-	@include transform( translate3d(0, 0, 0) );
+	@include transform(translate3d(0, 0, 0));
 	@include transition(transform 0.3s);
 	left: 0;
 	margin: 0;
@@ -24,7 +24,7 @@ $modal-width: 440px;
 	width: 100%;
 
 	&.off {
-		@include transform( translateY(100vh) );
+		@include transform(translateY(100vh));
 	}
 }
 
@@ -50,6 +50,11 @@ $modal-width: 440px;
 			background-color: $C_collectionBG;
 		}
 	}
+}
+
+.view--modalFull {
+	@include modal-full();
+	z-index: map-get($zindex-map, "modal");
 }
 
 .view--modal {
