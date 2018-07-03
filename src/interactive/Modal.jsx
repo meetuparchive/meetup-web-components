@@ -34,6 +34,12 @@ export const getModalPosition = (
 	isFixedPosition,
 	isMobileSize
 ) => {
+	// console.log('scrollPosition', scrollPosition);
+	// console.log('viewportHeight', viewportHeight);
+	// console.log('isFullScreen', isFullScreen);
+	// console.log('isFixedPosition', isFixedPosition);
+	// console.log('isMobileSize', isMobileSize);
+
 	// full screen dialogs should be flush with top of the viewport
 	if (isFullScreen) {
 		return '0px';
@@ -86,28 +92,34 @@ export class Modal extends React.Component {
 	}
 
 	componentDidMount() {
+		const handlePositioning = () => {
+			this.setState({
+				topPosition: getModalPosition(
+					window.pageYOffset,
+					Math.max(
+						document.documentElement.clientHeight,
+						window.innerHeight || 0
+					),
+					this.props.fullscreen,
+					this.props.fixed,
+					this.mediaQuery && !this.mediaQuery.matches
+				),
+				isMobileSize: this.mediaQuery && !this.mediaQuery.matches,
+			});
+		};
+
 		if (!this.props.fullscreen && typeof window.matchMedia != 'undefined') {
 			this.mediaQuery = window.matchMedia(MEDIA_QUERIES.medium);
 
 			this.handleMediaChange = () => {
-				this.setState({
-					topPosition: getModalPosition(
-						window.pageYOffset,
-						Math.max(
-							document.documentElement.clientHeight,
-							window.innerHeight || 0
-						),
-						this.props.fullscreen,
-						this.props.fixed,
-						this.mediaQuery && !this.mediaQuery.matches
-					),
-					isMobileSize: this.mediaQuery && !this.mediaQuery.matches,
-				});
+				handlePositioning();
 			};
 
 			// fire on mount, _then_ listen for matchMedia changes
 			this.handleMediaChange();
 			this.mqListener = this.mediaQuery.addListener(this.handleMediaChange);
+		} else if (this.props.fullscreen) {
+			handlePositioning();
 		}
 	}
 
@@ -167,9 +179,11 @@ export class Modal extends React.Component {
 					{
 						[MODAL_CLOSE_AREA_STICKY]: stickyCloseArea,
 						[MODAL_CLOSE_AREA_STICKYTRANSP]:
-							stickyCloseArea && (Boolean(heroBgColor) || Boolean(heroBgImage)),
+							stickyCloseArea &&
+							(Boolean(heroBgColor) || Boolean(heroBgImage)),
 						'border--none':
-							stickyCloseArea && (Boolean(heroBgColor) || Boolean(heroBgImage)),
+							stickyCloseArea &&
+							(Boolean(heroBgColor) || Boolean(heroBgImage)),
 					},
 					'padding--all modal-closeButtonContainer'
 				)}
@@ -194,7 +208,7 @@ export class Modal extends React.Component {
 						escapeDeactivates: false,
 					}}
 				>
-					{!fullscreen && overlayShim}
+					{overlayShim}
 					<div
 						className={modalClasses}
 						style={{
