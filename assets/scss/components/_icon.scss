@@ -1,4 +1,4 @@
-@mixin _iconColor( $color, $invertedColor ) {
+@mixin _iconColor($color, $invertedColor) {
 	@include color-svg($color);
 
 	.inverted & {
@@ -6,26 +6,28 @@
 	}
 }
 
-@include keyframes(spin) {
+@keyframes spin {
 	0% {
-		@include transform(rotate(0deg));
+		transform: rotate(0deg);
 	}
 
 	100% {
-		@include transform(rotate(360deg));
+		transform: rotate(360deg);
 	}
 }
 
 //
 // Base icon styles
 //
-.svg { // SVG wrapping span
+.svg {
+	// SVG wrapping span
 	display: inline-block;
 }
 
-.svg-icon { // SVG element
-	@include _iconColor( $C_textSecondary, $C_textSecondaryInverted );
-	@include display(inline-flex);
+.svg-icon {
+	// SVG element
+	@include _iconColor($C_textSecondary, $C_textSecondaryInverted);
+	display: inline-flex;
 	font-size: 0;
 
 	// click handling on svg elements
@@ -65,7 +67,7 @@
 // Specific icon shape styles
 //
 .svg--updates {
-	@include transform-origin(center center);
-	@include animation(spin 0.4s linear);
-	@include animation-iteration-count(infinite);
+	animation: spin 400ms linear;
+	animation-iteration-count: infinite;
+	transform-origin: center center;
 }

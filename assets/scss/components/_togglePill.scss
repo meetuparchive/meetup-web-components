@@ -4,10 +4,6 @@
 
 .toggleButton-label {
 	@include buttonBase();
-	@include align-items(center);
-	@include display(inline-flex);
-	@include flex-direction(row);
-	@include justify-content(center);
 	@include standardBorder(all);
 	@include buttonColor(
 		$bgColor: transparentize($C_accent, 1),
@@ -16,9 +12,13 @@
 		$textTransition: false
 	);
 	@include color-all($C_accent);
+	align-items: center;
 	border-color: $C_accent;
 	border-radius: 999px;
+	display: inline-flex;
+	flex-direction: row;
 	font-weight: $W_normal;
+	justify-content: center;
 	margin: $space-quarter 0;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
@@ -40,10 +40,7 @@
 
 .toggleButton-input {
 	&:checked + .toggleButton-label {
-		@include buttonColor(
-			$bgColor: $C_blue,
-			$textTransition: false
-		);
+		@include buttonColor($bgColor: $C_blue, $textTransition: false);
 		font-weight: $W_medium;
 	}
 

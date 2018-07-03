@@ -97,7 +97,11 @@ $avatarSizeProps: (height, width);
 }
 
 .avatar--xxlarge {
-	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-xxl), $media-xxl);
+	@include customPropertyValue(
+		$avatarSizeProps,
+		var(--responsiveMedia-xxl),
+		$media-xxl
+	);
 }
 
 //
@@ -111,20 +115,19 @@ $avatarSizeProps: (height, width);
 }
 
 .avatar--noPhoto {
-	@include display(inline-flex);
-	@include align-items(center);
-	@include justify-content(center);
+	align-items: center;
 	background-color: darken($avatarBg, 6%);
+	display: inline-flex;
+	justify-content: center;
 	position: relative;
 	text-indent: 0;
 }
 
 .avatarIcon--noPhoto {
-
 	// center the SVG element within the wrapper
-	@include align-items(center);
-	@include justify-content(center);
+	align-items: center;
 	height: 100%;
+	justify-content: center;
 	// matches size of icon wrapper div
 	// to the size of the avatar
 	width: 100%;
