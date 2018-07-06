@@ -5,7 +5,7 @@
 
 	> li {
 		display: inline-block;
-		padding-right: var(--responsiveSpace);
+		padding-right: var(--responsive-space);
 
 		&:last-child {
 			padding-right: 0;
@@ -14,11 +14,11 @@
 }
 
 .inlineblockList--separated > li {
-	padding-right: calc(var(--responsiveSpace) / 2);
+	padding-right: calc(var(--responsive-space) / 2);
 
 	&::after {
 		content: attr(data-separator);
-		padding-left: calc(var(--responsiveSpace) / 2);
+		padding-left: calc(var(--responsive-space) / 2);
 		speak: none;
 	}
 

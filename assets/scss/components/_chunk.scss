@@ -11,5 +11,5 @@ or a group of elements.
 .chunk {
 	@extend %clearfix;
 	display: block;
-	padding-bottom: var(--responsiveSpace) !important;
+	padding-bottom: var(--responsive-space) !important;
 }

@@ -47,7 +47,7 @@ Card-like boxes.
 	box-sizing: border-box;
 	display: block;
 	min-height: $block-4;
-	padding: var(--responsiveSpace) var(--responsiveSpace) 0;
+	padding: var(--responsive-space) var(--responsive-space) 0;
 	position: relative;
 }
 
@@ -58,8 +58,8 @@ Card-like boxes.
 .card--flush {
 	border-radius: 0;
 	border-width: 0;
-	margin-left: calc(var(--responsiveSpace) * -1);
-	margin-right: calc(var(--responsiveSpace) * -1);
+	margin-left: calc(var(--responsive-space) * -1);
+	margin-right: calc(var(--responsive-space) * -1);
 }
 
 @include _bpModifier("card", "flush") {

@@ -33,7 +33,7 @@ $tabBorderWidth: 3px;
 	cursor: pointer;
 	display: inline-block;
 	margin: 0 0 0 $space;
-	padding: calc(var(--responsiveSpace) / 2) calc(var(--responsiveSpace) / 4);
+	padding: calc(var(--responsive-space) / 2) calc(var(--responsive-space) / 4);
 	text-align: center;
 
 	&:first-child {
@@ -54,7 +54,7 @@ $tabBorderWidth: 3px;
 		display: block;
 		margin-bottom: $space;
 		margin-left: 0;
-		padding: 0 calc(var(--responsiveSpace) / 2) 0 0;
+		padding: 0 calc(var(--responsive-space) / 2) 0 0;
 		text-align: left;
 	}
 }

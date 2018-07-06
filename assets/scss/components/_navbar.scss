@@ -54,7 +54,7 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 
 @include atMediaUp(medium) {
 	.navItem {
-		padding-left: calc(var(--responsiveSpace));
+		padding-left: calc(var(--responsive-space));
 	}
 }
 

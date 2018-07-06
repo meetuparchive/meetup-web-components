@@ -1,6 +1,6 @@
 .accentHeader,
 .accentHeaderWrapper {
-	padding-bottom: calc(var(--responsiveSpace) * 2);
+	padding-bottom: calc(var(--responsive-space) * 2);
 }
 
 .accentHeader {
@@ -13,7 +13,7 @@
 		content: "";
 		height: 3px;
 		position: absolute;
-		width: calc(var(--responsiveSpace) * 2);
+		width: calc(var(--responsive-space) * 2);
 	}
 
 	@include atMediaUp(medium) {
