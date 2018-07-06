@@ -10,8 +10,8 @@ around it's children.
 $sectionSpaceMultiple: 2;
 
 .section {
-	margin: 0 var(--responsiveSpace);
-	padding: calc(var(--responsiveSpace) * #{$sectionSpaceMultiple}) 0 0 0;
+	margin: 0 var(--responsive-space);
+	padding: calc(var(--responsive-space) * #{$sectionSpaceMultiple}) 0 0 0;
 }
 
 @include _bpModifier(section, hasSeparator) {
@@ -21,8 +21,8 @@ $sectionSpaceMultiple: 2;
 
 .section--hasSeparator {
 	border-bottom: 1px solid $C_border;
-	padding: calc(var(--responsiveSpace) * #{$sectionSpaceMultiple}) 0
-		calc(var(--responsiveSpace) * #{$sectionSpaceMultiple} - var(--responsiveSpace)) 0;
+	padding: calc(var(--responsive-space) * #{$sectionSpaceMultiple}) 0
+		calc(var(--responsive-space) * #{$sectionSpaceMultiple} - var(--responsive-space)) 0;
 
 	.inverted & {
 		border-bottom: 1px solid $C_borderInverted;
@@ -34,5 +34,5 @@ $sectionSpaceMultiple: 2;
 }
 
 @include _bpModifier(section, flush) {
-	margin: 0 var(--responsiveSpace);
+	margin: 0 var(--responsive-space);
 }
