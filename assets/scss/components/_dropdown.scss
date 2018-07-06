@@ -3,7 +3,7 @@
 	box-sizing: border-box;
 	cursor: pointer;
 	justify-content: flex-start;
-	padding: calc(var(--responsiveSpace) / 2);
+	padding: calc(var(--responsive-space) / 2);
 
 	&:hover {
 		background-color: $C_coolGrayLight;
