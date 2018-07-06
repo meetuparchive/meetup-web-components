@@ -50,8 +50,8 @@
 	height: auto;
 
 	> .flex-item {
-		padding-left: var(--responsiveSpace);
 		flex-basis: 0;
+		padding-left: var(--responsiveSpace);
 		width: auto;
 
 		&:first-child {
