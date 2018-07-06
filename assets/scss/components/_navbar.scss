@@ -54,7 +54,7 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 
 @include atMediaUp(medium) {
 	.navItem {
-		@include customPropertyValue(padding-left, calc(var(--responsiveSpace)), $space);
+		padding-left: calc(var(--responsiveSpace));
 	}
 }
 
@@ -85,7 +85,10 @@ $maxScalingBP: $breakpoint-m / 1px;
 	// let wider phones get bigger type
 	// https://fvsch.com/code/css-locks/
 	font-size: $minLabelSize;
-	font-size: calc(#{$minLabelSize}px + (#{$maxLabelSize} - #{$minLabelSize}) * (100vw / #{$maxScalingBP}));
+	font-size: calc(
+		#{$minLabelSize}px + (#{$maxLabelSize} - #{$minLabelSize}) *
+			(100vw / #{$maxScalingBP})
+	);
 
 	// hack to fix vert. alignment of Login and Sign up on FF mobile
 	line-height: 2;
@@ -97,7 +100,6 @@ $maxScalingBP: $breakpoint-m / 1px;
 	max-width: 19vw;
 
 	@include atMediaUp(medium) {
-
 		@include _labelLarge();
 		display: inline-block;
 		margin-top: 0;
@@ -159,11 +161,11 @@ $maxScalingBP: $breakpoint-m / 1px;
 	width: $_dotSize;
 
 	@include atMediaUp(medium) {
-		@include transform(translate(-2px, -6px));
 		border-width: 0;
 		display: inline-block;
 		margin-left: $space-quarter;
 		position: static;
+		transform: translate(-2px, -6px);
 	}
 
 	.navItem--messages & {

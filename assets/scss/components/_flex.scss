@@ -1,12 +1,10 @@
-@import "~bourbon/app/assets/stylesheets/_bourbon.scss"; // stylelint-disable-line scss/at-import-no-partial-leading-underscore
-
 .flex {
 	@include flexParent("row", false);
 }
 
 .flex-item {
 	@include flexChild("grow");
-	@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+	padding-left: var(--responsiveSpace);
 
 	&:first-child {
 		padding-left: 0;
@@ -17,7 +15,7 @@
 	@include flexParent("row", false);
 
 	> .flex-item {
-		@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+		padding-left: var(--responsiveSpace);
 		width: auto;
 
 		&:first-child {
@@ -41,7 +39,7 @@
 	height: 100%;
 
 	> .flex-item {
-		@include flex-basis(auto);
+		flex-basis: auto;
 		padding-left: 0;
 		width: 100%;
 	}
@@ -52,8 +50,8 @@
 	height: auto;
 
 	> .flex-item {
-		@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
-		@include flex-basis(0);
+		flex-basis: 0;
+		padding-left: var(--responsiveSpace);
 		width: auto;
 
 		&:first-child {
@@ -66,7 +64,7 @@ $flexGrowFactors: 1, 2, 3, 4, 5, 6, 7;
 
 @each $factor in $flexGrowFactors {
 	.flex > .flex-item--#{$factor} {
-		@include flex-grow($factor);
+		flex-grow: $factor;
 	}
 }
 
@@ -84,19 +82,19 @@ $flexGrowFactors: 1, 2, 3, 4, 5, 6, 7;
 }
 
 .flex--wrap {
-	@include flex-wrap(wrap);
+	flex-wrap: wrap;
 }
 
 @include _bpModifier(flex, columnReverse, true) {
-	@include flex-direction(column-reverse);
+	flex-direction: column-reverse;
 }
 
 @include _bpModifier(flex, rowReverse, true) {
-	@include flex-direction(row-reverse);
+	flex-direction: row-reverse;
 
 	> .flex-item {
 		&:first-child {
-			@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+			padding-left: var(--responsiveSpace);
 		}
 
 		&:last-child {
@@ -107,12 +105,12 @@ $flexGrowFactors: 1, 2, 3, 4, 5, 6, 7;
 
 @each $jName, $jprop in $flexJustifyMap {
 	.flex--#{$jName} {
-		@include justify-content($jprop);
+		justify-content: $jprop;
 	}
 }
 
 @each $aName, $aprop in $flexAlignMap {
 	.flex--align#{str-firstCharToUpper($aName)} {
-		@include align-items($aprop);
+		align-items: $aprop;
 	}
 }

@@ -4,8 +4,8 @@
 	padding: 0;
 
 	> li {
-		@include customPropertyValue(padding-right, var(--responsiveSpace), $space);
 		display: inline-block;
+		padding-right: var(--responsiveSpace);
 
 		&:last-child {
 			padding-right: 0;
@@ -14,11 +14,11 @@
 }
 
 .inlineblockList--separated > li {
-	@include customPropertyValue(padding-right, calc(var(--responsiveSpace) / 2), $space-half);
+	padding-right: calc(var(--responsiveSpace) / 2);
 
 	&::after {
-		@include customPropertyValue(padding-left, calc(var(--responsiveSpace) / 2), $space-half);
 		content: attr(data-separator);
+		padding-left: calc(var(--responsiveSpace) / 2);
 		speak: none;
 	}
 

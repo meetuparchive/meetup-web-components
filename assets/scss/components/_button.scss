@@ -12,9 +12,9 @@ Disables user-select, sets cursor, and resets text-decoration.
 */
 
 %buttonPersonality {
-	@include user-select(none);
 	cursor: pointer;
 	text-decoration: none !important;
+	user-select: none;
 }
 
 /*doc
@@ -34,19 +34,18 @@ _(The `extend` directive can cause ugly cascade problems)_
 
 @mixin buttonBase() {
 	@extend %buttonPersonality;
-
-	@include display(inline-flex);
-	@include flex-direction(row);
-	@include justify-content(center);
-	@include align-items(center);
-	@include transition(background 0.15s);
+	align-items: center;
 	-webkit-appearance: none;
 	border-radius: $defaultRadius;
 	box-sizing: border-box;
+	display: inline-flex;
+	flex-direction: row;
 	font-size: $font-size-small;
+	justify-content: center;
 	line-height: $line-height-smallText;
 	outline: 0;
 	padding: $space-half $space-double;
+	transition: background 150ms;
 	vertical-align: middle;
 
 	@include browser-ie11() {
@@ -298,14 +297,13 @@ Applies button color-related styles using a mixin.
 //
 .button-label,
 .button-icon {
-	@include align-self(center);
+	align-self: center;
 }
 
 .button-label {
 	// this full shorthand property for `flex`
 	// is required to prevent IE11 from "shrinkwrapping" text nodes
-
-	@include flex(1 1 auto);
+	flex: 1 1 auto;
 	text-align: center;
 
 	.button-icon-wrapper & {
