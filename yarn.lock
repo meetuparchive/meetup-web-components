@@ -9480,11 +9480,10 @@ swarm-icons@^3.4:
   version "3.4.334"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-3.4.334.tgz#a6fcb73605a481885e1e0367e9ad6273cccec6ae"
 
-swarm-sasstools@3.1.381:
-  version "3.1.381"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-3.1.381.tgz#0be59aac14f6b52d858668f6cc761f8b65694f08"
+swarm-sasstools@4.2.404:
+  version "4.2.404"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-4.2.404.tgz#1df8fcfed26cd151eaa662ba3a14389b27bf8ef4"
   dependencies:
-    bourbon "4.2.3"
     sass-rem "^1.2.4"
 
 symbol-observable@^1.0.3, symbol-observable@^1.0.4, symbol-observable@^1.1.0, symbol-observable@^1.2.0:
