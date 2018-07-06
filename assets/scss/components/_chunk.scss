@@ -10,7 +10,6 @@ or a group of elements.
 %chunk,
 .chunk {
 	@extend %clearfix;
-
 	display: block;
 	padding-bottom: var(--responsiveSpace) !important;
 }

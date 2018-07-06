@@ -17,8 +17,8 @@
 	padding-right: calc(var(--responsiveSpace) / 2);
 
 	&::after {
-		padding-left: calc(var(--responsiveSpace) / 2);
 		content: attr(data-separator);
+		padding-left: calc(var(--responsiveSpace) / 2);
 		speak: none;
 	}
 
