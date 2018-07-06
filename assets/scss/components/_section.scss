@@ -22,7 +22,8 @@ $sectionSpaceMultiple: 2;
 .section--hasSeparator {
 	border-bottom: 1px solid $C_border;
 	padding: calc(var(--responsive-space) * #{$sectionSpaceMultiple}) 0
-		calc(var(--responsive-space) * #{$sectionSpaceMultiple} - var(--responsive-space)) 0;
+		calc(var(--responsive-space) * #{$sectionSpaceMultiple} - var(--responsive-space))
+		0;
 
 	.inverted & {
 		border-bottom: 1px solid $C_borderInverted;
