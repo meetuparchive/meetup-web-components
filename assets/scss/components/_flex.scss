@@ -4,7 +4,7 @@
 
 .flex-item {
 	@include flexChild("grow");
-	@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+	padding-left: var(--responsiveSpace);
 
 	&:first-child {
 		padding-left: 0;
@@ -15,7 +15,7 @@
 	@include flexParent("row", false);
 
 	> .flex-item {
-		@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+		padding-left: var(--responsiveSpace);
 		width: auto;
 
 		&:first-child {
@@ -50,7 +50,7 @@
 	height: auto;
 
 	> .flex-item {
-		@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+		padding-left: var(--responsiveSpace);
 		flex-basis: 0;
 		width: auto;
 
@@ -94,7 +94,7 @@ $flexGrowFactors: 1, 2, 3, 4, 5, 6, 7;
 
 	> .flex-item {
 		&:first-child {
-			@include customPropertyValue(padding-left, var(--responsiveSpace), $space);
+			padding-left: var(--responsiveSpace);
 		}
 
 		&:last-child {

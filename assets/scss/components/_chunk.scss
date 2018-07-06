@@ -11,6 +11,6 @@ or a group of elements.
 .chunk {
 	@extend %clearfix;
 
-	@include customPropertyValue(padding-bottom, var(--responsiveSpace) !important, $space !important);
 	display: block;
+	padding-bottom: var(--responsiveSpace) !important;
 }

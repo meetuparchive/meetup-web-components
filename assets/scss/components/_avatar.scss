@@ -1,5 +1,4 @@
 $avatarBg: $C_coolGrayLight;
-$avatarSizeProps: (height, width);
 
 @mixin avatarIconBadge($color) {
 	position: relative;
@@ -47,7 +46,8 @@ $avatarSizeProps: (height, width);
 .avatar {
 	@extend %imgFill;
 
-	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-m), $media-m);
+	height: var(--responsiveMedia-m);
+	width: var(--responsiveMedia-m);
 	background-color: $avatarBg;
 	background-position: center 42%;
 	color: transparent;
@@ -83,7 +83,8 @@ $avatarSizeProps: (height, width);
 // Size variants
 //
 .avatar--small {
-	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-s), $media-s);
+	height: var(--responsiveMedia-s);
+	width: var(--responsiveMedia-s);
 }
 
 .avatar--large {
@@ -97,11 +98,8 @@ $avatarSizeProps: (height, width);
 }
 
 .avatar--xxlarge {
-	@include customPropertyValue(
-		$avatarSizeProps,
-		var(--responsiveMedia-xxl),
-		$media-xxl
-	);
+	height: var(--responsiveMedia-xxl);
+	width: var(--responsiveMedia-xxl);
 }
 
 //
