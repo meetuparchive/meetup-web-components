@@ -1,9 +1,11 @@
 [ignore]
 ./build/*
 ./coverage/*
+./node_modules/radium/*
+./node_modules/stylelint/*
 .*.json
 ./node_modules/stylelint/*
-# ./node_modules/radium/*
+./node_modules/radium/*
 
 [include]
 
