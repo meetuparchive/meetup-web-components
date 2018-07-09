@@ -19,6 +19,10 @@
     Better to just convert your implementation full to js-joda, however. API docs are
 	[here](https://js-joda.github.io/js-joda/esdoc/)
 
+# [4.13]
+
+- **Change** All `GridList` items constrain their width to obey the grid columns
+
 # [4.12]
 
 -   **Change** Refactored AccordionPanelGroup not to use deprecated lifecycle methods `componentWillMount` and `componentWillReceiveProps`. This had a nice side-effect of removing a lot of code and complexity
