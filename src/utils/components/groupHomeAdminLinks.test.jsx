@@ -1,0 +1,60 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+
+import { MOCK_GROUP } from 'meetup-web-mocks/lib/api';
+
+import GroupHomeAdminLinks from './GroupHomeAdminLinks';
+
+describe('GroupHomeAdminLinks', () => {
+	const group = { ...MOCK_GROUP, ...{ event_sample: [] } };
+	it('renders correctly', () => {
+		const MOCK_PROPS = {
+			group: group,
+			isAdmin: true,
+		};
+		const component = shallow(<GroupHomeAdminLinks {...MOCK_PROPS} />);
+		expect(component).toMatchSnapshot();
+	});
+	it('renders nothing if user is not an admin', () => {
+		const MOCK_PROPS = {
+			group: group,
+			isAdmin: false,
+		};
+		const component = shallow(<GroupHomeAdminLinks {...MOCK_PROPS} />);
+		expect(component).toMatchSnapshot();
+	});
+	it('renders correctly when no org exists', () => {
+		const mockProps = group;
+		delete mockProps.organizer;
+		const MOCK_PROPS = {
+			group: mockProps,
+			isAdmin: true,
+		};
+		const component = shallow(<GroupHomeAdminLinks {...MOCK_PROPS} />);
+		expect(component).toMatchSnapshot();
+	});
+	it('renders correctly when QLd', () => {
+		const MOCK_PROPS = {
+			group: group,
+			isAdmin: true,
+			isQL: true,
+			self: {
+				name: 'testing name',
+			},
+		};
+		const component = shallow(<GroupHomeAdminLinks {...MOCK_PROPS} />);
+		expect(component).toMatchSnapshot();
+	});
+	it('renders correctly when isProd', () => {
+		const MOCK_PROPS = {
+			group: group,
+			isAdmin: true,
+			isProd: true,
+			self: {
+				name: 'testing name',
+			},
+		};
+		const component = shallow(<GroupHomeAdminLinks {...MOCK_PROPS} />);
+		expect(component).toMatchSnapshot();
+	});
+});
