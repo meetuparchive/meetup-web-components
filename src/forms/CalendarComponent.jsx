@@ -1,37 +1,82 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+// @flow
+import * as React from 'react';
 import cx from 'classnames';
 import withErrorList from '../utils/components/withErrorList';
 
 import Flatpickr from 'react-flatpickr';
 
-/**
- * @module CalendarComponent
- * @description Single date picker component.
+import { convert, LocalDate, nativeJs } from 'js-joda';
+
+type Props = {
+	...React.ElementProps<'input'>,
+	labelClassName: string,
+	datepickerOptions: FlatpickrOptions,
+	error: string | React$Node | boolean,
+	helperText: string | React$Node,
+	required: boolean,
+	requiredText: string | React$Node,
+	onChange?: (LocalDate, ?string, ?FlatpickrInstance) => void,
+	value?: LocalDate,
+};
+
+/*
+ * Single date picker component.
  * Wraps [react-flatpickr](github.com/coderhaoxin/react-flatpickr)
  *
  * For full documentation of available `datePickerOptions`, see:
  * https://chmln.github.io/flatpickr/options/
  */
-export class CalendarComponent extends React.Component {
-	constructor(props) {
+export class CalendarComponent extends React.Component<Props> {
+	static defaultProps = {
+		requiredText: '*',
+		datepickerOptions: {},
+	};
+	getPickrValue: (?LocalDate) => ?Date;
+	constructor(props: Props) {
 		super(props);
-		this.onFlatPickerChange = this.onFlatPickerChange.bind(this);
+
+		// the wrapped Flatpickr requires a `value` that is a vanilla JS `Date`
+		// instance, but `CalendarComponent` provides a `LocalDate` interface.
+		// Converting between those two data types is relatively expensive, so
+		// we define a memoized 'converter' instance method that will only calculate
+		// a new `Date` value when `this.props.value` changes.
+		let prevArg;
+		let prevReturn;
+		this.getPickrValue = (value: ?LocalDate): ?Date => {
+			if (value === prevArg) {
+				return prevReturn;
+			}
+			prevArg = value;
+			prevReturn = this.props.value && convert(this.props.value).toDate();
+			return prevReturn;
+		};
 	}
 
-	/**
-	 * @function onFlatPickerChange
-	 * @param {Array} selectedDates - list of recently selected dates from flatpickr
+	/*
+	 * the Flatpickr component always passes an array of recently selected
+	 * dates to its onChange handler, with the most recent in first position of
+	 * the array. We are only interested in the most-recently-selected value.
 	 *
-	 * @description the Flatpickr component always passes an array of recently selected
-	 * dates to its onChange handler, with the most recent in first position of the array.
-	 * `redux-form` however, expects a single value. This function ensures that any `onChange`
-	 * prop passed to this component invokes with a single date object.
+	 * Flatpickr also provides a dateString and a reference to the flatpickr
+	 * instance, which can be used for more advanced behaviors, but should
+	 * generally be ignored. See flatpickr docs for details.
 	 */
-	onFlatPickerChange(selectedDates, dateString, flatpickrInstance) {
-		this.props.onChange &&
-			this.props.onChange(selectedDates[0], dateString, flatpickrInstance);
-	}
+	onFlatPickerChange = (
+		selectedDates: Array<Date>,
+		dateString: string,
+		flatpickrInstance: {}
+	) => {
+		const [selectedDate] = selectedDates;
+		const { onChange } = this.props;
+		/*
+		 * Seems like Flatpickr can have non-valid dates
+		 * js-joda fails to create intance in that case
+		 */
+		if (!onChange || !selectedDate) {
+			return;
+		}
+		onChange(LocalDate.from(nativeJs(selectedDate)), dateString, flatpickrInstance);
+	};
 
 	render() {
 		const {
@@ -46,6 +91,7 @@ export class CalendarComponent extends React.Component {
 			onChange, // eslint-disable-line no-unused-vars
 			required,
 			requiredText,
+			value,
 			...other
 		} = this.props;
 
@@ -60,9 +106,7 @@ export class CalendarComponent extends React.Component {
 			helperText: cx('helperTextContainer', { required }),
 			field: cx(
 				'input--dateTimePicker select--reset',
-				{
-					'field--error': Boolean(error),
-				},
+				{ 'field--error': Boolean(error) },
 				className
 			),
 		};
@@ -94,42 +138,19 @@ export class CalendarComponent extends React.Component {
 						{label}
 					</label>
 				)}
-				{helperText && (
-					<div className={classNames.helperText}>{helperText}</div>
-				)}
+				{helperText && <div className={classNames.helperText}>{helperText}</div>}
 				<Flatpickr
 					id={id || name}
 					options={options}
 					aria-label="Use arrow keys to navigate the calendar"
 					className={classNames.field}
 					onChange={this.onFlatPickerChange}
+					value={this.getPickrValue(value)}
 					{...other}
 				/>
 			</span>
 		);
 	}
 }
-
-CalendarComponent.propTypes = {
-	label: PropTypes.string,
-	labelClassName: PropTypes.string,
-	id: PropTypes.string,
-	name: PropTypes.string,
-	datepickerOptions: PropTypes.object,
-	error: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element,
-		PropTypes.bool,
-	]),
-	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	onChange: PropTypes.func, // provided by `redux-form`
-	required: PropTypes.bool,
-	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-};
-
-CalendarComponent.defaultProps = {
-	requiredText: '*',
-	datepickerOptions: {},
-};
 
 export default withErrorList(CalendarComponent);
