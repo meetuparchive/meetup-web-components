@@ -9,19 +9,24 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
  * @param {Boolean} isMultiselect
  * @param {Array} statesList
  * @param {Object} clickedPanelData
- * @returns {Array} newPanelStatesList - an array of each panel's `isOpen` prop value
+ * @returns {Function} a Promise that maps statesList to an array of each panel's `isOpen` prop value
  */
-export const getNewPanelState = (isMultiselect, statesList, clickedPanelData) =>
-	statesList.map((panelState, i) => {
-		const defaultState = isMultiselect ? panelState : false;
+const getNewPanelState = (isMultiselect, statesList, clickedPanelData) => {
+	return new Promise((resolve, reject) => {
+		resolve(
+			statesList.map((panelState, i) => {
+				const defaultState = isMultiselect ? panelState : false;
 
-		// not the panel that was clicked
-		if (clickedPanelData.panelIndex !== i) {
-			return defaultState;
-		}
+				// not the panel that was clicked
+				if (clickedPanelData.panelIndex !== i) {
+					return defaultState;
+				}
 
-		return clickedPanelData.isOpen;
+				return clickedPanelData.isOpen;
+			})
+		);
 	});
+};
 
 /**
  * @module AccordionPanelGroup
@@ -40,25 +45,28 @@ class AccordionPanelGroup extends React.Component {
 	}
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		let derivedPanelListState;
-
+		let newPanelState;
 		nextProps.accordionPanels.forEach((panel, i) => {
 			const nextPanelProps = panel.props;
 
+			// This is done as a Promise because `getNewPanelState`
+			// would sometimes take too long to complete, and we would
+			// return prevState.panelStatesList, showing no change
 			if (nextPanelProps['isOpen'] !== prevState.panelStatesList[i]) {
-				derivedPanelListState = getNewPanelState(
-					nextProps.multiSelectable,
-					prevState.panelStatesList,
-					{ panelIndex: i, isOpen: nextPanelProps['isOpen'] }
-				);
+				getNewPanelState(nextProps.multiSelectable, prevState.panelStatesList, {
+					panelIndex: i,
+					isOpen: nextPanelProps['isOpen'],
+				}).then(panelState => {
+					newPanelState = panelState;
+
+					return {
+						panelStatesList: panelState,
+					};
+				});
 			}
 		});
 
-		return {
-			panelStatesList: derivedPanelListState
-				? derivedPanelListState
-				: prevState.panelStatesList,
-		};
+		return { panelStatesList: newPanelState || prevState.panelStatesList };
 	}
 
 	/**
@@ -69,13 +77,13 @@ class AccordionPanelGroup extends React.Component {
 	handlePanelClick(e, panelData) {
 		const { panelStatesList } = this.state;
 
-		this.setState({
-			panelStatesList: getNewPanelState(
-				this.props.multiSelectable,
-				panelStatesList,
-				panelData
-			),
-		});
+		getNewPanelState(this.props.multiSelectable, panelStatesList, panelData).then(
+			panelState => {
+				this.setState({
+					panelStatesList: panelState,
+				});
+			}
+		);
 	}
 
 	render() {
