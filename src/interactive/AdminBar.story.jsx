@@ -3,43 +3,37 @@ import { storiesOf } from '@storybook/react';
 import { MOCK_GROUP } from 'meetup-web-mocks/lib/api';
 import { decorateWithBasics } from '../utils/decorators';
 
-import GroupHomeAdminLinks from './GroupHomeAdminLinks';
+import AdminBar from './AdminBar';
 
-storiesOf('GroupHomeAdminLinks', module)
+storiesOf('AdminBar', module)
 	.addDecorator(decorateWithBasics)
 	.add('default: isAdmin={false}', () => (
 		<div>
-			<GroupHomeAdminLinks isAdmin={false} />
+			<AdminBar isAdmin={false} />
 			<p>Component is not rendered if props: isAdmin=false</p>
 		</div>
 	))
 	.add('isAdmin', () => (
 		<div>
-			<GroupHomeAdminLinks group={MOCK_GROUP} isAdmin />
+			<AdminBar group={MOCK_GROUP} isAdmin />
 			<p>Props: isAdmin, group</p>
 		</div>
 	))
 	.add('isQL', () => (
 		<div>
-			<GroupHomeAdminLinks group={MOCK_GROUP} self={{ id: '' }} isAdmin isQL />
+			<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isQL />
 			<p>Props: isAdmin, isQL, group, self</p>
 		</div>
 	))
 	.add('isProd', () => (
 		<div>
-			<GroupHomeAdminLinks group={MOCK_GROUP} self={{ id: '' }} isAdmin isProd />
+			<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isProd />
 			<p>Props: isProd, isAdmin, group, self</p>
 		</div>
 	))
 	.add('isProd and isQL', () => (
 		<div>
-			<GroupHomeAdminLinks
-				group={MOCK_GROUP}
-				self={{ id: '' }}
-				isAdmin
-				isProd
-				isQL
-			/>
+			<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isProd isQL />
 			<p>Props: isProd, isQL, isAdmin, group, self</p>
 		</div>
 	));

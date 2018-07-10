@@ -10,11 +10,10 @@ import Section from '../layout/Section';
 import Tooltip from './Tooltip';
 import SelectInput from '../forms/SelectInput';
 
-const host = process.env.NODE_ENV === 'production' ? 'meetup.com' : 'dev.meetup.com';
-
 type DropdownProps = {
 	group: Group,
 	event?: EventInfo,
+	host: string,
 };
 
 type Props = {
@@ -24,6 +23,7 @@ type Props = {
 	isAdmin: boolean,
 	isProd: boolean,
 	self: Self,
+	nodeEnv: string,
 };
 
 type State = {
@@ -31,7 +31,7 @@ type State = {
 	showHighlighter: boolean,
 };
 
-const DropdownContent = ({ group, event }: DropdownProps): React$Node => (
+const DropdownContent = ({ group, event, host }: DropdownProps): React$Node => (
 	<ul className="padding--all">
 		{group.organizer && (
 			<li>
@@ -107,7 +107,7 @@ const DropdownContent = ({ group, event }: DropdownProps): React$Node => (
 	</ul>
 );
 
-export class GroupHomeAdminLinks extends React.PureComponent<Props, State> {
+export class AdminBar extends React.PureComponent<Props, State> {
 	constructor(props: Props) {
 		super(props);
 		this.state = {
@@ -120,7 +120,7 @@ export class GroupHomeAdminLinks extends React.PureComponent<Props, State> {
 		this.setState({ highlightValue: e.target.value });
 	};
 
-	highlightGroup = () => {
+	highlightGroup = (host: string) => {
 		fetch(`https://admin.${host}/admin_api/index/highlight/`, {
 			method: 'POST',
 			headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -137,7 +137,8 @@ export class GroupHomeAdminLinks extends React.PureComponent<Props, State> {
 	};
 
 	render() {
-		const { group, event, isQL, isAdmin, self, isProd } = this.props;
+		const { group, event, isQL, isAdmin, self, isProd, nodeEnv } = this.props;
+		const host = nodeEnv === 'production' ? 'meetup.com' : 'dev.meetup.com';
 
 		// when not admin we don't want to show admin bar
 		if (!isAdmin) {
@@ -222,7 +223,7 @@ export class GroupHomeAdminLinks extends React.PureComponent<Props, State> {
 								/>
 								<a
 									className="button margin--bottom"
-									onClick={this.highlightGroup}
+									onClick={this.highlightGroup.bind(host)}
 								>
 									submit
 								</a>
@@ -235,4 +236,4 @@ export class GroupHomeAdminLinks extends React.PureComponent<Props, State> {
 	}
 }
 
-export default GroupHomeAdminLinks;
+export default AdminBar;
