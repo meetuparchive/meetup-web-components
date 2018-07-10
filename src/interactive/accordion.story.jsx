@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { decorateAction } from '@storybook/addon-actions';
 import { decorateWithBasics } from '../utils/decorators';
 import { textContent1, textContent2 } from '../../__mocks__/textContentMocks';
+// import Button from '../forms/Button';
 
 const callbackAction = decorateAction([args => ['Am I open?', args[1]]]);
 
@@ -47,53 +48,12 @@ const defaultPanels = [
 	<AccordionPanel {...panelThreeProps} />,
 ];
 
-/**
- * @module ControlledAccordionPanel
- */
-class ControlledAccordionPanel extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.togglePanel = this.togglePanel.bind(this);
-
-		this.state = {
-			firstOpen: true,
-		};
-	}
-
-	togglePanel() {
-		this.setState({ firstOpen: !this.state.firstOpen });
-	}
-
-	render() {
-		return (
-			<div className="span--100 padding--all">
-				<button onClick={this.togglePanel}>Toggle the first panel</button>
-
-				<AccordionPanelGroup
-					accordionPanels={[
-						<AccordionPanel
-							{...panelOneProps}
-							isOpen={this.state.firstOpen}
-						/>,
-						<AccordionPanel {...panelTwoProps} />,
-						<AccordionPanel {...panelThreeProps} />,
-					]}
-				/>
-			</div>
-		);
-	}
-}
-
 storiesOf('Accordion', module)
 	.addDecorator(decorateWithBasics)
 	.addWithInfo('default', 'Basic Accordion group', () => (
 		<div className="span--100 padding--all">
 			<AccordionPanelGroup accordionPanels={defaultPanels} />
 		</div>
-	))
-	.addWithInfo('controlled accordion', 'Controlled Accordion group', () => (
-		<ControlledAccordionPanel />
 	))
 	.addWithInfo(
 		'with onClick callback',

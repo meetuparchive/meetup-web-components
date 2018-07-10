@@ -39,34 +39,6 @@ class AccordionPanelGroup extends React.Component {
 		this.handlePanelClick = this.handlePanelClick.bind(this);
 	}
 
-	static getDerivedStateFromProps(nextProps, prevState) {
-		const { accordionPanels } = nextProps;
-
-		const { panelStatesList } = prevState;
-
-		const cache = { valueChanged: false, updatedPanelIndex: null, newValue: null };
-
-		for (let i = 0; i < accordionPanels.length; i++) {
-			const panel = accordionPanels[i];
-			const { props: panelProps } = panel;
-
-			if (panelProps.isOpen !== panelStatesList[i]) {
-				cache.valueChanged = true;
-				cache.updatedPanelIndex = i;
-				cache.newValue = panelProps.isOpen;
-				break;
-			}
-		}
-
-		if (cache.valueChanged) {
-			const newPanelStatesList = panelStatesList.slice();
-			newPanelStatesList[cache.updatedPanelIndex] = cache.newValue;
-			return { panelStatesList: newPanelStatesList };
-		}
-
-		return prevState;
-	}
-
 	/**
 	 * @param {Object} e
 	 * @param {Object} panelData
@@ -98,6 +70,7 @@ class AccordionPanelGroup extends React.Component {
 			indicatorSwitch,
 			multiSelectable,
 			className,
+			isOpen, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -148,6 +121,7 @@ AccordionPanelGroup.propTypes = {
 	indicatorIconActive: PropTypes.string,
 	indicatorIconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
 	indicatorSwitch: PropTypes.bool,
+	isOpen: PropTypes.oneOf([null, true, false]),
 };
 
 export default AccordionPanelGroup;
