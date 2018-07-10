@@ -11,22 +11,17 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
  * @param {Object} clickedPanelData
  * @returns {Function} a Promise that maps statesList to an array of each panel's `isOpen` prop value
  */
-const getNewPanelState = (isMultiselect, statesList, clickedPanelData) => {
-	return new Promise((resolve, reject) => {
-		resolve(
-			statesList.map((panelState, i) => {
-				const defaultState = isMultiselect ? panelState : false;
+const getNewPanelState = (isMultiselect, statesList, clickedPanelData) =>
+	statesList.map((panelState, i) => {
+		const defaultState = isMultiselect ? panelState : false;
 
-				// not the panel that was clicked
-				if (clickedPanelData.panelIndex !== i) {
-					return defaultState;
-				}
+		// not the panel that was clicked
+		if (clickedPanelData.panelIndex !== i) {
+			return defaultState;
+		}
 
-				return clickedPanelData.isOpen;
-			})
-		);
+		return clickedPanelData.isOpen;
 	});
-};
 
 /**
  * @module AccordionPanelGroup
@@ -44,30 +39,37 @@ class AccordionPanelGroup extends React.Component {
 		this.handlePanelClick = this.handlePanelClick.bind(this);
 	}
 
-	static getDerivedStateFromProps(nextProps, prevState) {
-		let newPanelState;
-		nextProps.accordionPanels.forEach((panel, i) => {
-			const nextPanelProps = panel.props;
+	// commenting this out as this is not needed for most of the stories in storybook
+	// will clean up in a follow up
 
-			// This is done as a Promise because `getNewPanelState`
-			// would sometimes take too long to complete, and we would
-			// return prevState.panelStatesList, showing no change
-			if (nextPanelProps['isOpen'] !== prevState.panelStatesList[i]) {
-				getNewPanelState(nextProps.multiSelectable, prevState.panelStatesList, {
-					panelIndex: i,
-					isOpen: nextPanelProps['isOpen'],
-				}).then(panelState => {
-					newPanelState = panelState;
+	// static getDerivedStateFromProps(nextProps, prevState) {
+	// 	const { accordionPanels, multiSelectable } = nextProps;
 
-					return {
-						panelStatesList: panelState,
-					};
-				});
-			}
-		});
+	// 	const { panelStatesList } = prevState;
 
-		return { panelStatesList: newPanelState || prevState.panelStatesList };
-	}
+	// 	const foundFlippedValue = [];
+
+	// 	const newPanelStates = accordionPanels.map((panel, i) => {
+	// 		const { props: panelProps } = panel;
+	// 		console.log(`index: ${i}: ${panelStatesList[i]}`);
+	// 		// console.log(panelProps);
+
+	// 		if (panelProps.isOpen !== panelStatesList[i]) {
+	// 			foundFlippedValue.push(panelProps.isOpen);
+	// 			console.log(panelProps);
+
+
+	// 			return newPanelState;
+	// 		}
+	// 		return panel;
+	// 	});
+
+	// 	if (foundFlippedValue.length > 0) {
+	// 		return { panelStatesList: newPanelStates || prevState.panelStatesList };
+	// 	}
+
+	// 	return { panelStatesList };
+	// }
 
 	/**
 	 * @param {Object} e
@@ -75,15 +77,18 @@ class AccordionPanelGroup extends React.Component {
 	 * @returns undefined
 	 */
 	handlePanelClick(e, panelData) {
-		const { panelStatesList } = this.state;
+		const { multiSelectable } = this.props;
 
-		getNewPanelState(this.props.multiSelectable, panelStatesList, panelData).then(
-			panelState => {
-				this.setState({
-					panelStatesList: panelState,
-				});
-			}
-		);
+		this.setState(prevState => {
+			const { panelStatesList } = prevState;
+			const newPanelState = getNewPanelState(
+				multiSelectable,
+				panelStatesList,
+				panelData
+			);
+
+			return { panelStatesList: newPanelState };
+		});
 	}
 
 	render() {
