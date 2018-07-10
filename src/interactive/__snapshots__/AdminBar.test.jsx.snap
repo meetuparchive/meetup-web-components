@@ -1,0 +1,587 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdminBar renders correctly 1`] = `
+<Flex
+  className="groupAdminLinks"
+>
+  <FlexItem
+    shrink={true}
+  >
+    <Tooltip
+      align="left"
+      content={
+        <DropdownContent
+          event={undefined}
+          group={
+            Object {
+              "duotoneUrl": Object {
+                "large": "http://a.b",
+                "small": "http://a.b",
+              },
+              "event_sample": Array [],
+              "group_photo": Object {
+                "id": 1234,
+                "photo_link": "http://placekitten.com/400/300",
+                "thumb_link": "http://placekitten.com/400/300",
+              },
+              "id": 1234,
+              "key_photo": Object {
+                "id": 1234,
+                "photo_link": "http://placekitten.com/400/300",
+                "thumb_link": "http://placekitten.com/400/300",
+              },
+              "link": "http://example.com/fake-hq-faff",
+              "members": 999,
+              "name": "fake HQ FAFF",
+              "organizer": Object {
+                "bio": "Org bio lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu tellus sit amet erat blandit volutpat.",
+                "id": 164510652,
+                "name": "Grayson Cheese",
+                "photo": Object {
+                  "base_url": "http://photos1.dev.meetupstatic.com",
+                  "highres_link": "http://photos1.dev.meetupstatic.com/photos/member/a/c/7/b/highres_257204155.jpeg",
+                  "id": 257204155,
+                  "photo_link": "http://photos1.dev.meetupstatic.com/photos/member/a/c/7/b/member_257204155.jpeg",
+                  "thumb_link": "http://photos1.dev.meetupstatic.com/photos/member/a/c/7/b/thumb_257204155.jpeg",
+                  "type": "member",
+                },
+              },
+              "photo_gradient": Object {
+                "dark_color": "a",
+                "light_color": "b",
+              },
+              "plain_text_description": "Plain text description lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu tellus sit amet erat blandit volutpat. Suspendisse tincidunt pulvinar vehicula. Mauris eget tristique mi. Ut tincidunt, ante eget aliquet eleifend, ligula lorem elementum felis, quis consectetur sapien justo ut eros. Maecenas tempus lacus metus, eu pretium massa convallis vitae. Donec id fringilla orci. Nunc eget elementum massa. Pellentesque pulvinar ipsum porta finibus laoreet. Donec pharetra quis nunc in auctor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse potenti. Nulla eget nibh quis nisi commodo accumsan. Donec sed suscipit justo. Aliquam erat volutpat. Nunc a nulla massa. Curabitur at elit eu neque congue fermentum",
+              "urlname": "fake-hq-faff",
+              "who": "Faffers",
+            }
+          }
+          host="dev.meetup.com"
+        />
+      }
+      direction="top"
+      id="admin-label-btn"
+      minWidth="100px"
+      noPortal={true}
+      trigger={
+        <Button
+          component="button"
+          icon={
+            <Icon
+              shape="cog"
+              size="xs"
+            />
+          }
+          id="admin-label-btn"
+          type="button"
+        >
+          Admin
+        </Button>
+      }
+      withClose={true}
+    />
+  </FlexItem>
+  <FlexItem
+    shrink={true}
+  >
+    <Tooltip
+      align="left"
+      content={
+        <Section>
+          <WithErrorList(SelectInput)
+            name="highlightValue"
+            onChange={[Function]}
+            options={
+              Array [
+                Object {
+                  "label": "1",
+                  "value": "1",
+                },
+                Object {
+                  "label": "2",
+                  "value": "2",
+                },
+                Object {
+                  "label": "3",
+                  "value": "3",
+                },
+                Object {
+                  "label": "4",
+                  "value": "4",
+                },
+                Object {
+                  "label": "5",
+                  "value": "5",
+                },
+                Object {
+                  "label": "lowlight",
+                  "value": "lowlight",
+                },
+              ]
+            }
+            value={undefined}
+          />
+          <a
+            className="button margin--bottom"
+            onClick={[Function]}
+          >
+            submit
+          </a>
+        </Section>
+      }
+      direction="top"
+      id="highlight-label-btn"
+      isActive={false}
+      minWidth="0px"
+      noPortal={true}
+      trigger={
+        <Button
+          component="button"
+          id="highlight-label-btn"
+          type="button"
+        >
+          Highlight 
+          (undefined)
+        </Button>
+      }
+      withClose={true}
+    />
+  </FlexItem>
+</Flex>
+`;
+
+exports[`AdminBar renders correctly when QLd 1`] = `
+<Flex
+  className="groupAdminLinks warning"
+>
+  <FlexItem
+    className="inverted padding--top-half"
+  >
+    <p
+      className="text--display3"
+    >
+      QL:
+       
+      <a
+        className="link"
+        href="https://admin.dev.meetup.com/admin/member.jsp?m=undefined"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        testing name
+      </a>
+    </p>
+  </FlexItem>
+  <FlexItem
+    shrink={true}
+  >
+    <Tooltip
+      align="left"
+      content={
+        <DropdownContent
+          event={undefined}
+          group={
+            Object {
+              "duotoneUrl": Object {
+                "large": "http://a.b",
+                "small": "http://a.b",
+              },
+              "event_sample": Array [],
+              "group_photo": Object {
+                "id": 1234,
+                "photo_link": "http://placekitten.com/400/300",
+                "thumb_link": "http://placekitten.com/400/300",
+              },
+              "id": 1234,
+              "key_photo": Object {
+                "id": 1234,
+                "photo_link": "http://placekitten.com/400/300",
+                "thumb_link": "http://placekitten.com/400/300",
+              },
+              "link": "http://example.com/fake-hq-faff",
+              "members": 999,
+              "name": "fake HQ FAFF",
+              "photo_gradient": Object {
+                "dark_color": "a",
+                "light_color": "b",
+              },
+              "plain_text_description": "Plain text description lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu tellus sit amet erat blandit volutpat. Suspendisse tincidunt pulvinar vehicula. Mauris eget tristique mi. Ut tincidunt, ante eget aliquet eleifend, ligula lorem elementum felis, quis consectetur sapien justo ut eros. Maecenas tempus lacus metus, eu pretium massa convallis vitae. Donec id fringilla orci. Nunc eget elementum massa. Pellentesque pulvinar ipsum porta finibus laoreet. Donec pharetra quis nunc in auctor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse potenti. Nulla eget nibh quis nisi commodo accumsan. Donec sed suscipit justo. Aliquam erat volutpat. Nunc a nulla massa. Curabitur at elit eu neque congue fermentum",
+              "urlname": "fake-hq-faff",
+              "who": "Faffers",
+            }
+          }
+          host="dev.meetup.com"
+        />
+      }
+      direction="top"
+      id="admin-label-btn"
+      minWidth="100px"
+      noPortal={true}
+      trigger={
+        <Button
+          component="button"
+          icon={
+            <Icon
+              shape="cog"
+              size="xs"
+            />
+          }
+          id="admin-label-btn"
+          type="button"
+        >
+          Admin
+        </Button>
+      }
+      withClose={true}
+    />
+  </FlexItem>
+  <FlexItem
+    shrink={true}
+  >
+    <Tooltip
+      align="left"
+      content={
+        <Section>
+          <WithErrorList(SelectInput)
+            name="highlightValue"
+            onChange={[Function]}
+            options={
+              Array [
+                Object {
+                  "label": "1",
+                  "value": "1",
+                },
+                Object {
+                  "label": "2",
+                  "value": "2",
+                },
+                Object {
+                  "label": "3",
+                  "value": "3",
+                },
+                Object {
+                  "label": "4",
+                  "value": "4",
+                },
+                Object {
+                  "label": "5",
+                  "value": "5",
+                },
+                Object {
+                  "label": "lowlight",
+                  "value": "lowlight",
+                },
+              ]
+            }
+            value={undefined}
+          />
+          <a
+            className="button margin--bottom"
+            onClick={[Function]}
+          >
+            submit
+          </a>
+        </Section>
+      }
+      direction="top"
+      id="highlight-label-btn"
+      isActive={false}
+      minWidth="0px"
+      noPortal={true}
+      trigger={
+        <Button
+          component="button"
+          id="highlight-label-btn"
+          type="button"
+        >
+          Highlight 
+          (undefined)
+        </Button>
+      }
+      withClose={true}
+    />
+  </FlexItem>
+</Flex>
+`;
+
+exports[`AdminBar renders correctly when isProd 1`] = `
+<Flex
+  className="groupAdminLinks warning"
+>
+  <FlexItem
+    className="inverted padding--top-half"
+  >
+    <p
+      className="text--display4"
+    >
+      You are using production data.
+    </p>
+  </FlexItem>
+  <FlexItem
+    shrink={true}
+  >
+    <Tooltip
+      align="left"
+      content={
+        <DropdownContent
+          event={undefined}
+          group={
+            Object {
+              "duotoneUrl": Object {
+                "large": "http://a.b",
+                "small": "http://a.b",
+              },
+              "event_sample": Array [],
+              "group_photo": Object {
+                "id": 1234,
+                "photo_link": "http://placekitten.com/400/300",
+                "thumb_link": "http://placekitten.com/400/300",
+              },
+              "id": 1234,
+              "key_photo": Object {
+                "id": 1234,
+                "photo_link": "http://placekitten.com/400/300",
+                "thumb_link": "http://placekitten.com/400/300",
+              },
+              "link": "http://example.com/fake-hq-faff",
+              "members": 999,
+              "name": "fake HQ FAFF",
+              "photo_gradient": Object {
+                "dark_color": "a",
+                "light_color": "b",
+              },
+              "plain_text_description": "Plain text description lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu tellus sit amet erat blandit volutpat. Suspendisse tincidunt pulvinar vehicula. Mauris eget tristique mi. Ut tincidunt, ante eget aliquet eleifend, ligula lorem elementum felis, quis consectetur sapien justo ut eros. Maecenas tempus lacus metus, eu pretium massa convallis vitae. Donec id fringilla orci. Nunc eget elementum massa. Pellentesque pulvinar ipsum porta finibus laoreet. Donec pharetra quis nunc in auctor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse potenti. Nulla eget nibh quis nisi commodo accumsan. Donec sed suscipit justo. Aliquam erat volutpat. Nunc a nulla massa. Curabitur at elit eu neque congue fermentum",
+              "urlname": "fake-hq-faff",
+              "who": "Faffers",
+            }
+          }
+          host="dev.meetup.com"
+        />
+      }
+      direction="top"
+      id="admin-label-btn"
+      minWidth="100px"
+      noPortal={true}
+      trigger={
+        <Button
+          component="button"
+          icon={
+            <Icon
+              shape="cog"
+              size="xs"
+            />
+          }
+          id="admin-label-btn"
+          type="button"
+        >
+          Admin
+        </Button>
+      }
+      withClose={true}
+    />
+  </FlexItem>
+  <FlexItem
+    shrink={true}
+  >
+    <Tooltip
+      align="left"
+      content={
+        <Section>
+          <WithErrorList(SelectInput)
+            name="highlightValue"
+            onChange={[Function]}
+            options={
+              Array [
+                Object {
+                  "label": "1",
+                  "value": "1",
+                },
+                Object {
+                  "label": "2",
+                  "value": "2",
+                },
+                Object {
+                  "label": "3",
+                  "value": "3",
+                },
+                Object {
+                  "label": "4",
+                  "value": "4",
+                },
+                Object {
+                  "label": "5",
+                  "value": "5",
+                },
+                Object {
+                  "label": "lowlight",
+                  "value": "lowlight",
+                },
+              ]
+            }
+            value={undefined}
+          />
+          <a
+            className="button margin--bottom"
+            onClick={[Function]}
+          >
+            submit
+          </a>
+        </Section>
+      }
+      direction="top"
+      id="highlight-label-btn"
+      isActive={false}
+      minWidth="0px"
+      noPortal={true}
+      trigger={
+        <Button
+          component="button"
+          id="highlight-label-btn"
+          type="button"
+        >
+          Highlight 
+          (undefined)
+        </Button>
+      }
+      withClose={true}
+    />
+  </FlexItem>
+</Flex>
+`;
+
+exports[`AdminBar renders correctly when no org exists 1`] = `
+<Flex
+  className="groupAdminLinks"
+>
+  <FlexItem
+    shrink={true}
+  >
+    <Tooltip
+      align="left"
+      content={
+        <DropdownContent
+          event={undefined}
+          group={
+            Object {
+              "duotoneUrl": Object {
+                "large": "http://a.b",
+                "small": "http://a.b",
+              },
+              "event_sample": Array [],
+              "group_photo": Object {
+                "id": 1234,
+                "photo_link": "http://placekitten.com/400/300",
+                "thumb_link": "http://placekitten.com/400/300",
+              },
+              "id": 1234,
+              "key_photo": Object {
+                "id": 1234,
+                "photo_link": "http://placekitten.com/400/300",
+                "thumb_link": "http://placekitten.com/400/300",
+              },
+              "link": "http://example.com/fake-hq-faff",
+              "members": 999,
+              "name": "fake HQ FAFF",
+              "photo_gradient": Object {
+                "dark_color": "a",
+                "light_color": "b",
+              },
+              "plain_text_description": "Plain text description lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu tellus sit amet erat blandit volutpat. Suspendisse tincidunt pulvinar vehicula. Mauris eget tristique mi. Ut tincidunt, ante eget aliquet eleifend, ligula lorem elementum felis, quis consectetur sapien justo ut eros. Maecenas tempus lacus metus, eu pretium massa convallis vitae. Donec id fringilla orci. Nunc eget elementum massa. Pellentesque pulvinar ipsum porta finibus laoreet. Donec pharetra quis nunc in auctor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse potenti. Nulla eget nibh quis nisi commodo accumsan. Donec sed suscipit justo. Aliquam erat volutpat. Nunc a nulla massa. Curabitur at elit eu neque congue fermentum",
+              "urlname": "fake-hq-faff",
+              "who": "Faffers",
+            }
+          }
+          host="dev.meetup.com"
+        />
+      }
+      direction="top"
+      id="admin-label-btn"
+      minWidth="100px"
+      noPortal={true}
+      trigger={
+        <Button
+          component="button"
+          icon={
+            <Icon
+              shape="cog"
+              size="xs"
+            />
+          }
+          id="admin-label-btn"
+          type="button"
+        >
+          Admin
+        </Button>
+      }
+      withClose={true}
+    />
+  </FlexItem>
+  <FlexItem
+    shrink={true}
+  >
+    <Tooltip
+      align="left"
+      content={
+        <Section>
+          <WithErrorList(SelectInput)
+            name="highlightValue"
+            onChange={[Function]}
+            options={
+              Array [
+                Object {
+                  "label": "1",
+                  "value": "1",
+                },
+                Object {
+                  "label": "2",
+                  "value": "2",
+                },
+                Object {
+                  "label": "3",
+                  "value": "3",
+                },
+                Object {
+                  "label": "4",
+                  "value": "4",
+                },
+                Object {
+                  "label": "5",
+                  "value": "5",
+                },
+                Object {
+                  "label": "lowlight",
+                  "value": "lowlight",
+                },
+              ]
+            }
+            value={undefined}
+          />
+          <a
+            className="button margin--bottom"
+            onClick={[Function]}
+          >
+            submit
+          </a>
+        </Section>
+      }
+      direction="top"
+      id="highlight-label-btn"
+      isActive={false}
+      minWidth="0px"
+      noPortal={true}
+      trigger={
+        <Button
+          component="button"
+          id="highlight-label-btn"
+          type="button"
+        >
+          Highlight 
+          (undefined)
+        </Button>
+      }
+      withClose={true}
+    />
+  </FlexItem>
+</Flex>
+`;
+
+exports[`AdminBar renders nothing if user is not an admin 1`] = `""`;
