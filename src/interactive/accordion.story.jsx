@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { decorateAction } from '@storybook/addon-actions';
 import { decorateWithBasics } from '../utils/decorators';
 import { textContent1, textContent2 } from '../../__mocks__/textContentMocks';
+// import Button from '../forms/Button';
 
 const callbackAction = decorateAction([args => ['Am I open?', args[1]]]);
 
@@ -25,11 +26,7 @@ const panelTwoProps = {
 			</div>
 			<div className="chunk">
 				<label htmlFor="test-textinput">I'm a label</label>
-				<input
-					id="test-textinput"
-					type="text"
-					placeholder="Input placeholder"
-				/>
+				<input id="test-textinput" type="text" placeholder="Input placeholder" />
 			</div>
 		</div>
 	),
@@ -80,10 +77,15 @@ storiesOf('Accordion', module)
 							panelContent={
 								<div>
 									<div className="runningText">
-										<p>Any kind of content can go in here, even inputs.</p>
+										<p>
+											Any kind of content can go in here, even
+											inputs.
+										</p>
 									</div>
 									<div className="chunk">
-										<label htmlFor="test-textinput">I'm a label</label>
+										<label htmlFor="test-textinput">
+											I'm a label
+										</label>
 										<input
 											id="test-textinput"
 											type="text"
@@ -120,15 +122,11 @@ storiesOf('Accordion', module)
 			</div>
 		)
 	)
-	.addWithInfo(
-		'ToggleSwitch indicator',
-		'Show the indicator as a switch',
-		() => (
-			<div className="span--100 padding--all">
-				<AccordionPanelGroup indicatorSwitch accordionPanels={defaultPanels} />
-			</div>
-		)
-	)
+	.addWithInfo('ToggleSwitch indicator', 'Show the indicator as a switch', () => (
+		<div className="span--100 padding--all">
+			<AccordionPanelGroup indicatorSwitch accordionPanels={defaultPanels} />
+		</div>
+	))
 	.addWithInfo(
 		'onToggleClick',
 		'overrides toggle open behavior with custom click handler',
