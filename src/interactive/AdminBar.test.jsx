@@ -45,11 +45,11 @@ describe('AdminBar', () => {
 		const component = shallow(<AdminBar {...MOCK_PROPS} />);
 		expect(component).toMatchSnapshot();
 	});
-	it('renders correctly when isProd', () => {
+	it('renders correctly when isProdApi', () => {
 		const MOCK_PROPS = {
 			group: group,
 			isAdmin: true,
-			isProd: true,
+			isProdApi: true,
 			self: {
 				name: 'testing name',
 			},

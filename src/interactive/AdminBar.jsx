@@ -21,7 +21,7 @@ type Props = {
 	event?: EventInfo,
 	isQL: boolean,
 	isAdmin: boolean,
-	isProd: boolean,
+	isProdApi: boolean,
 	self: Self,
 	nodeEnv: string,
 };
@@ -137,14 +137,12 @@ export class AdminBar extends React.PureComponent<Props, State> {
 	};
 
 	render() {
-		const { group, event, isQL, isAdmin, self, isProd, nodeEnv } = this.props;
-		const host = nodeEnv === 'production' ? 'meetup.com' : 'dev.meetup.com';
-
+		const { group, event, isQL, isAdmin, self, isProdApi, nodeEnv } = this.props;
 		// when not admin we don't want to show admin bar
 		if (!isAdmin) {
 			return null;
 		}
-
+		const host: string = nodeEnv === 'production' ? 'meetup.com' : 'dev.meetup.com';
 		const savedHighlightValue = group.highlight === '' ? '' : `(${group.highlight})`;
 		const highlightOptions = ['1', '2', '3', '4', '5', 'lowlight'].map(h => ({
 			label: h,
@@ -154,7 +152,7 @@ export class AdminBar extends React.PureComponent<Props, State> {
 		return (
 			<Flex
 				className={cx('groupAdminLinks', {
-					['warning']: isQL || isProd,
+					['warning']: isQL || isProdApi,
 				})}
 			>
 				{isQL && (
@@ -174,7 +172,7 @@ export class AdminBar extends React.PureComponent<Props, State> {
 						</p>
 					</FlexItem>
 				)}
-				{isProd && (
+				{isProdApi && (
 					<FlexItem className="inverted padding--top-half">
 						<p className="text--display4">You are using production data.</p>
 					</FlexItem>
