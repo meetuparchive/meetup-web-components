@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GroupHomeAdminLinks renders correctly 1`] = `
+exports[`AdminBar renders correctly 1`] = `
 <Flex
   className="groupAdminLinks"
 >
@@ -149,7 +149,7 @@ exports[`GroupHomeAdminLinks renders correctly 1`] = `
 </Flex>
 `;
 
-exports[`GroupHomeAdminLinks renders correctly when QLd 1`] = `
+exports[`AdminBar renders correctly when QLd 1`] = `
 <Flex
   className="groupAdminLinks warning"
 >
@@ -303,7 +303,7 @@ exports[`GroupHomeAdminLinks renders correctly when QLd 1`] = `
 </Flex>
 `;
 
-exports[`GroupHomeAdminLinks renders correctly when isProd 1`] = `
+exports[`AdminBar renders correctly when isProd 1`] = `
 <Flex
   className="groupAdminLinks warning"
 >
@@ -448,7 +448,7 @@ exports[`GroupHomeAdminLinks renders correctly when isProd 1`] = `
 </Flex>
 `;
 
-exports[`GroupHomeAdminLinks renders correctly when no org exists 1`] = `
+exports[`AdminBar renders correctly when no org exists 1`] = `
 <Flex
   className="groupAdminLinks"
 >
@@ -584,4 +584,4 @@ exports[`GroupHomeAdminLinks renders correctly when no org exists 1`] = `
 </Flex>
 `;
 
-exports[`GroupHomeAdminLinks renders nothing if user is not an admin 1`] = `""`;
+exports[`AdminBar renders nothing if user is not an admin 1`] = `""`;
