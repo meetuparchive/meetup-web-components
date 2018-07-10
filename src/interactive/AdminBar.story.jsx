@@ -16,9 +16,9 @@ storiesOf('AdminBar', module)
 	.addWithInfo('isQL', () => (
 		<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isQL />
 	))
-	.addWithInfo('isProd', () => (
-		<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isProd />
+	.addWithInfo('isProdApi', () => (
+		<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isProdApi />
 	))
-	.addWithInfo('isProd and isQL', () => (
-		<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isProd isQL />
+	.addWithInfo('isProdApi and isQL', () => (
+		<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isProdApi isQL />
 	));

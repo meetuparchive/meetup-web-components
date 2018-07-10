@@ -303,7 +303,7 @@ exports[`AdminBar renders correctly when QLd 1`] = `
 </Flex>
 `;
 
-exports[`AdminBar renders correctly when isProd 1`] = `
+exports[`AdminBar renders correctly when isProdApi 1`] = `
 <Flex
   className="groupAdminLinks warning"
 >
