@@ -25,11 +25,7 @@ const panelTwoProps = {
 			</div>
 			<div className="chunk">
 				<label htmlFor="test-textinput">I'm a label</label>
-				<input
-					id="test-textinput"
-					type="text"
-					placeholder="Input placeholder"
-				/>
+				<input id="test-textinput" type="text" placeholder="Input placeholder" />
 			</div>
 		</div>
 	),
@@ -51,12 +47,53 @@ const defaultPanels = [
 	<AccordionPanel {...panelThreeProps} />,
 ];
 
+/**
+ * @module ControlledAccordionPanel
+ */
+class ControlledAccordionPanel extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.togglePanel = this.togglePanel.bind(this);
+
+		this.state = {
+			firstOpen: true,
+		};
+	}
+
+	togglePanel() {
+		this.setState({ firstOpen: !this.state.firstOpen });
+	}
+
+	render() {
+		return (
+			<div className="span--100 padding--all">
+				<button onClick={this.togglePanel}>Toggle the first panel</button>
+
+				<AccordionPanelGroup
+					accordionPanels={[
+						<AccordionPanel
+							{...panelOneProps}
+							isOpen={this.state.firstOpen}
+						/>,
+						<AccordionPanel {...panelTwoProps} />,
+						<AccordionPanel {...panelThreeProps} />,
+					]}
+				/>
+			</div>
+		);
+	}
+}
+
 storiesOf('Accordion', module)
 	.addDecorator(decorateWithBasics)
 	.addWithInfo('default', 'Basic Accordion group', () => (
 		<div className="span--100 padding--all">
 			<AccordionPanelGroup accordionPanels={defaultPanels} />
 		</div>
+	))
+	.addWithInfo('controlled accordion', 'Controlled Accordion group', () => (
+		<ControlledAccordionPanel />
 	))
 	.addWithInfo(
 		'with onClick callback',
@@ -80,10 +117,15 @@ storiesOf('Accordion', module)
 							panelContent={
 								<div>
 									<div className="runningText">
-										<p>Any kind of content can go in here, even inputs.</p>
+										<p>
+											Any kind of content can go in here, even
+											inputs.
+										</p>
 									</div>
 									<div className="chunk">
-										<label htmlFor="test-textinput">I'm a label</label>
+										<label htmlFor="test-textinput">
+											I'm a label
+										</label>
 										<input
 											id="test-textinput"
 											type="text"
@@ -120,15 +162,11 @@ storiesOf('Accordion', module)
 			</div>
 		)
 	)
-	.addWithInfo(
-		'ToggleSwitch indicator',
-		'Show the indicator as a switch',
-		() => (
-			<div className="span--100 padding--all">
-				<AccordionPanelGroup indicatorSwitch accordionPanels={defaultPanels} />
-			</div>
-		)
-	)
+	.addWithInfo('ToggleSwitch indicator', 'Show the indicator as a switch', () => (
+		<div className="span--100 padding--all">
+			<AccordionPanelGroup indicatorSwitch accordionPanels={defaultPanels} />
+		</div>
+	))
 	.addWithInfo(
 		'onToggleClick',
 		'overrides toggle open behavior with custom click handler',

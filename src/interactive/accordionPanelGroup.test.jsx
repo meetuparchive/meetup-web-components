@@ -140,6 +140,8 @@ describe('AccordionPanelGroup', () => {
 			);
 		});
 
+		// this test is only needed for the controlled accordion story. skipping to to get a fix out, will follow up in new PR.
+
 		it('calls getDerivedStateFromProps on AccordionPanel prop changes', () => {
 			const component = mount(
 				<AccordionPanelGroup accordionPanels={accordionPanelsArr} />

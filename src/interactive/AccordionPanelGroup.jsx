@@ -9,7 +9,7 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
  * @param {Boolean} isMultiselect
  * @param {Array} statesList
  * @param {Object} clickedPanelData
- * @returns {Array} newPanelStatesList - an array of each panel's `isOpen` prop value
+ * @returns {Function} a Promise that maps statesList to an array of each panel's `isOpen` prop value
  */
 export const getNewPanelState = (isMultiselect, statesList, clickedPanelData) =>
 	statesList.map((panelState, i) => {
@@ -40,25 +40,31 @@ class AccordionPanelGroup extends React.Component {
 	}
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		let derivedPanelListState;
+		const { accordionPanels } = nextProps;
 
-		nextProps.accordionPanels.forEach((panel, i) => {
-			const nextPanelProps = panel.props;
+		const { panelStatesList } = prevState;
 
-			if (nextPanelProps['isOpen'] !== prevState.panelStatesList[i]) {
-				derivedPanelListState = getNewPanelState(
-					nextProps.multiSelectable,
-					prevState.panelStatesList,
-					{ panelIndex: i, isOpen: nextPanelProps['isOpen'] }
-				);
+		const cache = { valueChanged: false, updatedPanelIndex: null, newValue: null };
+
+		for (let i = 0; i < accordionPanels.length; i++) {
+			const panel = accordionPanels[i];
+			const { props: panelProps } = panel;
+
+			if (panelProps.isOpen !== panelStatesList[i]) {
+				cache.valueChanged = true;
+				cache.updatedPanelIndex = i;
+				cache.newValue = panelProps.isOpen;
+				break;
 			}
-		});
+		}
 
-		return {
-			panelStatesList: derivedPanelListState
-				? derivedPanelListState
-				: prevState.panelStatesList,
-		};
+		if (cache.valueChanged) {
+			const newPanelStatesList = panelStatesList.slice();
+			newPanelStatesList[cache.updatedPanelIndex] = cache.newValue;
+			return { panelStatesList: newPanelStatesList };
+		}
+
+		return prevState;
 	}
 
 	/**
@@ -67,14 +73,17 @@ class AccordionPanelGroup extends React.Component {
 	 * @returns undefined
 	 */
 	handlePanelClick(e, panelData) {
-		const { panelStatesList } = this.state;
+		const { multiSelectable } = this.props;
 
-		this.setState({
-			panelStatesList: getNewPanelState(
-				this.props.multiSelectable,
+		this.setState(prevState => {
+			const { panelStatesList } = prevState;
+			const newPanelState = getNewPanelState(
+				multiSelectable,
 				panelStatesList,
 				panelData
-			),
+			);
+
+			return { panelStatesList: newPanelState };
 		});
 	}
 
