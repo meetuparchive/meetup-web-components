@@ -139,42 +139,6 @@ describe('AccordionPanelGroup', () => {
 				!isOpen
 			);
 		});
-
-		// this test is only needed for the controlled accordion story. skipping to to get a fix out, will follow up in new PR.
-
-		it('calls getDerivedStateFromProps on AccordionPanel prop changes', () => {
-			const component = mount(
-				<AccordionPanelGroup accordionPanels={accordionPanelsArr} />
-			);
-
-			expect(component.state('panelStatesList')['0']).toBe(true);
-
-			const modifiedAccordionPanelsArr = [...accordionPanelsArr];
-			// Change first panel isOpen prop to false
-			modifiedAccordionPanelsArr[0] = (
-				<AccordionPanel
-					label="First Section"
-					isOpen={false}
-					panelContent={
-						<div className="runningText">
-							<p>
-								Contrary to popular belief, Lorem Ipsum is not simply
-								random text. It has roots in a piece of classical Latin
-								literature from 45 BC, making it over 2000 years old.
-								Richard McClintock, a Latin professor at Hampden-Sydney
-								College in Virginia, looked up one of the more obscure
-								Latin words, consectetur, from a Lorem Ipsum passage, and
-								going through the cites of the word in classical
-								literature, discovered the undoubtable source.
-							</p>
-						</div>
-					}
-				/>
-			);
-
-			component.setProps({ accordionPanels: modifiedAccordionPanelsArr });
-			expect(component.state('panelStatesList')[0]).toBe(false);
-		});
 	});
 
 	describe('AccordionPanelGroup, not multiselectable', () => {

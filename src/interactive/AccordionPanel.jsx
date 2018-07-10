@@ -98,6 +98,7 @@ class AccordionPanel extends React.Component {
 	 * @returns {undefined}
 	 */
 	componentWillReceiveProps(nextProps) {
+		console.log(nextProps.isOpen);
 		if (nextProps.isOpen !== this.props.isOpen) {
 			this.setState(
 				() => this.getPanelStyle(!nextProps.isOpen, this.contentEl),
