@@ -56,11 +56,11 @@ class AccordionPanel extends React.Component {
 	_handleToggle(e) {
 		e.preventDefault();
 
-		const { isOpen, setClickedPanel, onClickCallback } = this.props;
+		const { isOpen, setClickedPanel, onClickCallback, panelIndex } = this.props;
 
 		setClickedPanel &&
 			setClickedPanel(e, {
-				panelIndex: this.props.panelIndex,
+				panelIndex: panelIndex,
 				isOpen: !isOpen,
 			});
 		this.getPanelStyle(!isOpen, this.contentEl);
@@ -98,6 +98,7 @@ class AccordionPanel extends React.Component {
 	 * @returns {undefined}
 	 */
 	componentWillReceiveProps(nextProps) {
+		console.log(nextProps.isOpen);
 		if (nextProps.isOpen !== this.props.isOpen) {
 			this.setState(
 				() => this.getPanelStyle(!nextProps.isOpen, this.contentEl),

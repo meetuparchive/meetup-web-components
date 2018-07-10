@@ -9,7 +9,7 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
  * @param {Boolean} isMultiselect
  * @param {Array} statesList
  * @param {Object} clickedPanelData
- * @returns {Array} newPanelStatesList - an array of each panel's `isOpen` prop value
+ * @returns {Function} a Promise that maps statesList to an array of each panel's `isOpen` prop value
  */
 export const getNewPanelState = (isMultiselect, statesList, clickedPanelData) =>
 	statesList.map((panelState, i) => {
@@ -39,42 +39,23 @@ class AccordionPanelGroup extends React.Component {
 		this.handlePanelClick = this.handlePanelClick.bind(this);
 	}
 
-	static getDerivedStateFromProps(nextProps, prevState) {
-		let derivedPanelListState;
-
-		nextProps.accordionPanels.forEach((panel, i) => {
-			const nextPanelProps = panel.props;
-
-			if (nextPanelProps['isOpen'] !== prevState.panelStatesList[i]) {
-				derivedPanelListState = getNewPanelState(
-					nextProps.multiSelectable,
-					prevState.panelStatesList,
-					{ panelIndex: i, isOpen: nextPanelProps['isOpen'] }
-				);
-			}
-		});
-
-		return {
-			panelStatesList: derivedPanelListState
-				? derivedPanelListState
-				: prevState.panelStatesList,
-		};
-	}
-
 	/**
 	 * @param {Object} e
 	 * @param {Object} panelData
 	 * @returns undefined
 	 */
 	handlePanelClick(e, panelData) {
-		const { panelStatesList } = this.state;
+		const { multiSelectable } = this.props;
 
-		this.setState({
-			panelStatesList: getNewPanelState(
-				this.props.multiSelectable,
+		this.setState(prevState => {
+			const { panelStatesList } = prevState;
+			const newPanelState = getNewPanelState(
+				multiSelectable,
 				panelStatesList,
 				panelData
-			),
+			);
+
+			return { panelStatesList: newPanelState };
 		});
 	}
 
@@ -89,6 +70,7 @@ class AccordionPanelGroup extends React.Component {
 			indicatorSwitch,
 			multiSelectable,
 			className,
+			isOpen, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -139,6 +121,7 @@ AccordionPanelGroup.propTypes = {
 	indicatorIconActive: PropTypes.string,
 	indicatorIconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
 	indicatorSwitch: PropTypes.bool,
+	isOpen: PropTypes.oneOf([null, true, false]),
 };
 
 export default AccordionPanelGroup;
