@@ -1,0 +1,12 @@
+.groupAdminLinks {
+	bottom: 0;
+	padding: var(--space-1);
+	position: fixed;
+	right: 0;
+	z-index: 9999;
+}
+
+.warning {
+	background-color: var(--c-red);
+	width: 100%;
+}
