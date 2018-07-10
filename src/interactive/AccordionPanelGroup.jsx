@@ -39,36 +39,33 @@ class AccordionPanelGroup extends React.Component {
 		this.handlePanelClick = this.handlePanelClick.bind(this);
 	}
 
-	// commenting this out as this is not needed for most of the stories in storybook
-	// will clean up in a follow up
+	static getDerivedStateFromProps(nextProps, prevState) {
+		const { accordionPanels } = nextProps;
 
-	// static getDerivedStateFromProps(nextProps, prevState) {
-	// 	const { accordionPanels, multiSelectable } = nextProps;
+		const { panelStatesList } = prevState;
 
-	// 	const { panelStatesList } = prevState;
+		const cache = { valueChanged: false, updatedPanelIndex: null, newValue: null };
 
-	// 	const foundFlippedValue = [];
+		for (let i = 0; i < accordionPanels.length; i++) {
+			const panel = accordionPanels[i];
+			const { props: panelProps } = panel;
 
-	// 	const newPanelStates = accordionPanels.map((panel, i) => {
-	// 		const { props: panelProps } = panel;
-	// 		console.log(`index: ${i}: ${panelStatesList[i]}`);
-	// 		// console.log(panelProps);
+			if (panelProps.isOpen !== panelStatesList[i]) {
+				cache.valueChanged = true;
+				cache.updatedPanelIndex = i;
+				cache.newValue = panelProps.isOpen;
+				break;
+			}
+		}
 
-	// 		if (panelProps.isOpen !== panelStatesList[i]) {
-	// 			foundFlippedValue.push(panelProps.isOpen);
-	// 			console.log(panelProps);
+		if (cache.valueChanged) {
+			const newPanelStatesList = panelStatesList.slice();
+			newPanelStatesList[cache.updatedPanelIndex] = cache.newValue;
+			return { panelStatesList: newPanelStatesList };
+		}
 
-	// 			return newPanelState;
-	// 		}
-	// 		return panel;
-	// 	});
-
-	// 	if (foundFlippedValue.length > 0) {
-	// 		return { panelStatesList: newPanelStates || prevState.panelStatesList };
-	// 	}
-
-	// 	return { panelStatesList };
-	// }
+		return prevState;
+	}
 
 	/**
 	 * @param {Object} e
