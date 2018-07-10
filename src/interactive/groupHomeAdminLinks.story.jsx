@@ -1,10 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { MOCK_GROUP } from 'meetup-web-mocks/lib/api';
+import { decorateWithBasics } from '../utils/decorators';
 
 import GroupHomeAdminLinks from './GroupHomeAdminLinks';
 
 storiesOf('GroupHomeAdminLinks', module)
+	.addDecorator(decorateWithBasics)
 	.add('default: isAdmin={false}', () => (
 		<div>
 			<GroupHomeAdminLinks isAdmin={false} />

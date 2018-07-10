@@ -2,13 +2,13 @@
 import React from 'react';
 import cx from 'classnames';
 
-import Button from '../../forms/Button';
-import Flex from '../../layout/Flex';
-import FlexItem from '../../layout/FlexItem';
-import Icon from '../../media/Icon';
-import Section from '../../layout/Section';
-import Tooltip from '../../interactive/Tooltip';
-import SelectInput from '../../forms/SelectInput';
+import Button from '../forms/Button';
+import Flex from '../layout/Flex';
+import FlexItem from '../layout/FlexItem';
+import Icon from '../media/Icon';
+import Section from '../layout/Section';
+import Tooltip from './Tooltip';
+import SelectInput from '../forms/SelectInput';
 
 const host = process.env.NODE_ENV === 'production' ? 'meetup.com' : 'dev.meetup.com';
 
