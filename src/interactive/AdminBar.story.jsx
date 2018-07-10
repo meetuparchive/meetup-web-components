@@ -7,33 +7,18 @@ import AdminBar from './AdminBar';
 
 storiesOf('AdminBar', module)
 	.addDecorator(decorateWithBasics)
-	.add('default: isAdmin={false}', () => (
-		<div>
+	.addWithInfo('default: isAdmin={false}', 'Component is not rendered if props: isAdmin=false', () => (
 			<AdminBar isAdmin={false} />
-			<p>Component is not rendered if props: isAdmin=false</p>
-		</div>
 	))
-	.add('isAdmin', () => (
-		<div>
+	.addWithInfo('isAdmin', () => (
 			<AdminBar group={MOCK_GROUP} isAdmin />
-			<p>Props: isAdmin, group</p>
-		</div>
 	))
-	.add('isQL', () => (
-		<div>
+	.addWithInfo('isQL', () => (
 			<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isQL />
-			<p>Props: isAdmin, isQL, group, self</p>
-		</div>
 	))
-	.add('isProd', () => (
-		<div>
+	.addWithInfo('isProd', () => (
 			<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isProd />
-			<p>Props: isProd, isAdmin, group, self</p>
-		</div>
 	))
-	.add('isProd and isQL', () => (
-		<div>
+	.addWithInfo('isProd and isQL', () => (
 			<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isProd isQL />
-			<p>Props: isProd, isQL, isAdmin, group, self</p>
-		</div>
 	));
