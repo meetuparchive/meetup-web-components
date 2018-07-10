@@ -11,7 +11,7 @@ export const ACCORDIONPANELGROUP_CLASS = 'accordionPanelGroup';
  * @param {Object} clickedPanelData
  * @returns {Function} a Promise that maps statesList to an array of each panel's `isOpen` prop value
  */
-const getNewPanelState = (isMultiselect, statesList, clickedPanelData) =>
+export const getNewPanelState = (isMultiselect, statesList, clickedPanelData) =>
 	statesList.map((panelState, i) => {
 		const defaultState = isMultiselect ? panelState : false;
 
@@ -57,7 +57,6 @@ class AccordionPanelGroup extends React.Component {
 	// 		if (panelProps.isOpen !== panelStatesList[i]) {
 	// 			foundFlippedValue.push(panelProps.isOpen);
 	// 			console.log(panelProps);
-
 
 	// 			return newPanelState;
 	// 		}
