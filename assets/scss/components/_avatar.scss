@@ -1,5 +1,4 @@
 $avatarBg: $C_coolGrayLight;
-$avatarSizeProps: (height, width);
 
 @mixin avatarIconBadge($color) {
 	position: relative;
@@ -46,17 +45,17 @@ $avatarSizeProps: (height, width);
 %avatar,
 .avatar {
 	@extend %imgFill;
-
-	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-m), $media-m);
 	background-color: $avatarBg;
 	background-position: center 42%;
 	color: transparent;
 	display: inline-block;
 	font-size: 0;
+	height: var(--responsiveMedia-m);
 	position: relative;
 	text-indent: 100%;
 	vertical-align: top;
 	white-space: nowrap;
+	width: var(--responsiveMedia-m);
 
 	.inverted & {
 		background: $C_textHintInverted;
@@ -83,7 +82,8 @@ $avatarSizeProps: (height, width);
 // Size variants
 //
 .avatar--small {
-	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-s), $media-s);
+	height: var(--responsiveMedia-s);
+	width: var(--responsiveMedia-s);
 }
 
 .avatar--large {
@@ -97,7 +97,8 @@ $avatarSizeProps: (height, width);
 }
 
 .avatar--xxlarge {
-	@include customPropertyValue($avatarSizeProps, var(--responsiveMedia-xxl), $media-xxl);
+	height: var(--responsiveMedia-xxl);
+	width: var(--responsiveMedia-xxl);
 }
 
 //
@@ -111,20 +112,19 @@ $avatarSizeProps: (height, width);
 }
 
 .avatar--noPhoto {
-	@include display(inline-flex);
-	@include align-items(center);
-	@include justify-content(center);
+	align-items: center;
 	background-color: darken($avatarBg, 6%);
+	display: inline-flex;
+	justify-content: center;
 	position: relative;
 	text-indent: 0;
 }
 
 .avatarIcon--noPhoto {
-
 	// center the SVG element within the wrapper
-	@include align-items(center);
-	@include justify-content(center);
+	align-items: center;
 	height: 100%;
+	justify-content: center;
 	// matches size of icon wrapper div
 	// to the size of the avatar
 	width: 100%;
