@@ -223,7 +223,8 @@ $calendarWidth: 310px;
 }
 
 .flatpickr-current-month.slideLeftNew {
-	animation: fpFadeIn 10000ms ease, fpSlideLeftNew 10000ms cubic-bezier(0.23, 1, 0.32, 1);
+	animation: fpFadeIn 10000ms ease,
+		fpSlideLeftNew 10000ms cubic-bezier(0.23, 1, 0.32, 1);
 	transform: translate3d(100%, 0, 0);
 }
 
@@ -233,7 +234,8 @@ $calendarWidth: 310px;
 }
 
 .flatpickr-current-month.slideRightNew {
-	animation: fpFadeIn 10000ms ease, fpSlideRightNew 10000ms cubic-bezier(0.23, 1, 0.32, 1);
+	animation: fpFadeIn 10000ms ease,
+		fpSlideRightNew 10000ms cubic-bezier(0.23, 1, 0.32, 1);
 	transform: translate3d(0, 0, 0);
 }
 
@@ -272,8 +274,8 @@ $calendarWidth: 310px;
 
 .flatpickr-weekdays,
 .flatpickr-weekdaycontainer {
-	@include display(flex);
 	align-items: center;
+	display: flex;
 	height: 28px;
 	overflow: hidden;
 	text-align: center;
@@ -288,7 +290,7 @@ $calendarWidth: 310px;
 }
 
 .flatpickr-days {
-	@include display(flex);
+	display: flex;
 	overflow: hidden;
 	position: relative;
 	width: $calendarWidth;
@@ -299,9 +301,9 @@ $calendarWidth: 310px;
 }
 
 .dayContainer {
-	@include display(flex);
-	@include flex-wrap(wrap);
-	@include justify-content(space-around);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 	max-width: $calendarWidth;
 	min-width: $calendarWidth;
 	opacity: 1;
@@ -311,16 +313,16 @@ $calendarWidth: 310px;
 }
 
 .flatpickr-day {
-	@include flex-basis(14.29%);
-	@include justify-content(center);
 	background: none;
 	border: 1px solid transparent;
 	border-radius: 150px;
 	box-sizing: border-box;
 	cursor: pointer;
 	display: inline-block;
+	flex-basis: 14.29%;
 	font-weight: 400;
 	height: 39px;
+	justify-content: center;
 	line-height: 39px; // stylelint-disable-line declaration-property-unit-whitelist
 	max-width: 39px;
 	text-align: center;

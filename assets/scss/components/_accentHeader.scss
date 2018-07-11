@@ -1,6 +1,6 @@
 .accentHeader,
 .accentHeaderWrapper {
-	@include customPropertyValue(padding-bottom, calc(var(--responsiveSpace) * 2), $space-double);
+	padding-bottom: calc(var(--responsive-space) * 2);
 }
 
 .accentHeader {
@@ -8,12 +8,12 @@
 	position: relative;
 
 	&::after {
-		@include customPropertyValue(width, calc(var(--responsiveSpace) * 2), $space-double);
 		background-color: $C_blue;
 		bottom: 0;
 		content: "";
 		height: 3px;
 		position: absolute;
+		width: calc(var(--responsive-space) * 2);
 	}
 
 	@include atMediaUp(medium) {

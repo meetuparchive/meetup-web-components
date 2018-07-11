@@ -10,16 +10,8 @@ around it's children.
 $sectionSpaceMultiple: 2;
 
 .section {
-	@include customPropertyValue(
-		padding,
-		calc(var(--responsiveSpace) * #{$sectionSpaceMultiple}) 0 0 0,
-		$space * $sectionSpaceMultiple 0 0 0
-	);
-	@include customPropertyValue(
-		margin,
-		0 var(--responsiveSpace),
-		0 $space
-	);
+	margin: 0 var(--responsive-space);
+	padding: calc(var(--responsive-space) * #{$sectionSpaceMultiple}) 0 0 0;
 }
 
 @include _bpModifier(section, hasSeparator) {
@@ -28,12 +20,10 @@ $sectionSpaceMultiple: 2;
 }
 
 .section--hasSeparator {
-	@include customPropertyValue(
-		padding,
-		calc(var(--responsiveSpace) * #{$sectionSpaceMultiple}) 0 calc(var(--responsiveSpace) * #{$sectionSpaceMultiple} - var(--responsiveSpace)) 0,
-		$space * $sectionSpaceMultiple 0 $space * $sectionSpaceMultiple - $space 0
-	);
 	border-bottom: 1px solid $C_border;
+	padding: calc(var(--responsive-space) * #{$sectionSpaceMultiple}) 0
+		calc(var(--responsive-space) * #{$sectionSpaceMultiple} - var(--responsive-space))
+		0;
 
 	.inverted & {
 		border-bottom: 1px solid $C_borderInverted;
@@ -45,5 +35,5 @@ $sectionSpaceMultiple: 2;
 }
 
 @include _bpModifier(section, flush) {
-	@include customPropertyValue(margin, 0 var(--responsiveSpace), 0 $space);
+	margin: 0 var(--responsive-space);
 }
