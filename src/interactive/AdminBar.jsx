@@ -142,7 +142,8 @@ export class AdminBar extends React.PureComponent<Props, State> {
 		if (!isAdmin) {
 			return null;
 		}
-		const host: string = (nodeEnv === 'production' || isProdApi) ? 'meetup.com' : 'dev.meetup.com';
+		const host: string =
+			nodeEnv === 'production' || isProdApi ? 'meetup.com' : 'dev.meetup.com';
 		const savedHighlightValue = group.highlight === '' ? '' : `(${group.highlight})`;
 		const highlightOptions = ['1', '2', '3', '4', '5', 'lowlight'].map(h => ({
 			label: h,

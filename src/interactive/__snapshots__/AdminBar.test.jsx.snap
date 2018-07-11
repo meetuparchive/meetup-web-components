@@ -354,7 +354,7 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
               "who": "Faffers",
             }
           }
-          host="dev.meetup.com"
+          host="meetup.com"
         />
       }
       direction="top"
