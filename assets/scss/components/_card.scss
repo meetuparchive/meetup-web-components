@@ -49,6 +49,7 @@ Card-like boxes.
 	min-height: $block-4;
 	padding: var(--responsive-space) var(--responsive-space) 0;
 	position: relative;
+	white-space: initial;
 }
 
 .card--initialHeight {
