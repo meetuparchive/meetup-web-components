@@ -17,7 +17,7 @@ type DropdownProps = {
 };
 
 type Props = {
-	group: Group,
+	group?: Group,
 	event?: EventInfo,
 	isQL: boolean,
 	isAdmin: boolean,
@@ -120,16 +120,15 @@ export class AdminBar extends React.PureComponent<Props, State> {
 		this.setState({ highlightValue: e.target.value });
 	};
 
-	highlightGroup = (host: string) => {
-		fetch(`https://admin.${host}/admin_api/index/highlight/`, {
-			method: 'POST',
-			headers: { 'content-type': 'application/x-www-form-urlencoded' },
-			body: `chapter_id=${this.props.group.id}&value=${this.state.highlightValue}`,
-			credentials: 'include',
-		}).then(() => {
-			this.props.group.highlight = this.state.highlightValue;
-			this.toggleHighlighter();
-		});
+	highlightGroup = (host: string, group: Group) => {
+			fetch(`https://admin.${host}/admin_api/index/highlight/`, {
+				method: 'POST',
+				headers: { 'content-type': 'application/x-www-form-urlencoded' },
+				body: `chapter_id=${group.id}&value=${this.state.highlightValue}`,
+				credentials: 'include',
+			}).then(() => {
+				this.toggleHighlighter();
+			});
 	};
 
 	toggleHighlighter = () => {
@@ -144,7 +143,6 @@ export class AdminBar extends React.PureComponent<Props, State> {
 		}
 		const host: string =
 			nodeEnv === 'production' || isProdApi ? 'meetup.com' : 'dev.meetup.com';
-		const savedHighlightValue = group.highlight === '' ? '' : `(${group.highlight})`;
 		const highlightOptions = ['1', '2', '3', '4', '5', 'lowlight'].map(h => ({
 			label: h,
 			value: h,
@@ -178,6 +176,8 @@ export class AdminBar extends React.PureComponent<Props, State> {
 						<p className="text--display4">You are using production data.</p>
 					</FlexItem>
 				)}
+				{
+					group !== undefined &&
 				<FlexItem shrink>
 					<Tooltip
 						direction="top"
@@ -195,41 +195,45 @@ export class AdminBar extends React.PureComponent<Props, State> {
 							</Button>
 						}
 						content={
-							<DropdownContent host={host} group={group} event={event} />
+							group !== undefined && <DropdownContent host={host} group={group} event={event} />
 						}
 					/>
 				</FlexItem>
-				<FlexItem shrink>
-					<Tooltip
-						direction="top"
-						align="left"
-						withClose
-						noPortal
-						id="highlight-label-btn"
-						isActive={this.state.showHighlighter}
-						trigger={
-							<Button id="highlight-label-btn">
-								Highlight {savedHighlightValue}
-							</Button>
-						}
-						content={
-							<Section>
-								<SelectInput
-									name="highlightValue"
-									onChange={this.onHighlightValueChange}
-									options={highlightOptions}
-									value={group.highlight}
-								/>
-								<a
-									className="button margin--bottom"
-									onClick={this.highlightGroup.bind(host)}
-								>
-									submit
-								</a>
-							</Section>
-						}
-					/>
-				</FlexItem>
+			}
+				{
+					group !== undefined &&
+					<FlexItem shrink>
+						<Tooltip
+							direction="top"
+							align="left"
+							withClose
+							noPortal
+							id="highlight-label-btn"
+							isActive={this.state.showHighlighter}
+							trigger={
+								<Button id="highlight-label-btn">
+									Highlight {`${this.state.highlightValue}`}
+								</Button>
+							}
+							content={
+								<Section>
+									<SelectInput
+										name="highlightValue"
+										onChange={this.onHighlightValueChange}
+										options={highlightOptions}
+										value={this.state.highlightValue}
+									/>
+									<a
+										className="button margin--bottom"
+										onClick={this.highlightGroup.bind(this, host, group)}
+									>
+										submit
+									</a>
+								</Section>
+							}
+						/>
+					</FlexItem>
+				}
 			</Flex>
 		);
 	}
