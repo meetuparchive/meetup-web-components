@@ -121,14 +121,14 @@ export class AdminBar extends React.PureComponent<Props, State> {
 	};
 
 	highlightGroup = (host: string, group: Group) => {
-			fetch(`https://admin.${host}/admin_api/index/highlight/`, {
-				method: 'POST',
-				headers: { 'content-type': 'application/x-www-form-urlencoded' },
-				body: `chapter_id=${group.id}&value=${this.state.highlightValue}`,
-				credentials: 'include',
-			}).then(() => {
-				this.toggleHighlighter();
-			});
+		fetch(`https://admin.${host}/admin_api/index/highlight/`, {
+			method: 'POST',
+			headers: { 'content-type': 'application/x-www-form-urlencoded' },
+			body: `chapter_id=${group.id}&value=${this.state.highlightValue}`,
+			credentials: 'include',
+		}).then(() => {
+			this.toggleHighlighter();
+		});
 	};
 
 	toggleHighlighter = () => {
@@ -176,32 +176,36 @@ export class AdminBar extends React.PureComponent<Props, State> {
 						<p className="text--display4">You are using production data.</p>
 					</FlexItem>
 				)}
-				{
-					group !== undefined &&
-				<FlexItem shrink>
-					<Tooltip
-						direction="top"
-						align="left"
-						minWidth="100px"
-						withClose
-						noPortal
-						id="admin-label-btn"
-						trigger={
-							<Button
-								id="admin-label-btn"
-								icon={<Icon shape="cog" size="xs" />}
-							>
-								Admin
-							</Button>
-						}
-						content={
-							group !== undefined && <DropdownContent host={host} group={group} event={event} />
-						}
-					/>
-				</FlexItem>
-			}
-				{
-					group !== undefined &&
+				{group !== undefined && (
+					<FlexItem shrink>
+						<Tooltip
+							direction="top"
+							align="left"
+							minWidth="100px"
+							withClose
+							noPortal
+							id="admin-label-btn"
+							trigger={
+								<Button
+									id="admin-label-btn"
+									icon={<Icon shape="cog" size="xs" />}
+								>
+									Admin
+								</Button>
+							}
+							content={
+								group !== undefined && (
+									<DropdownContent
+										host={host}
+										group={group}
+										event={event}
+									/>
+								)
+							}
+						/>
+					</FlexItem>
+				)}
+				{group !== undefined && (
 					<FlexItem shrink>
 						<Tooltip
 							direction="top"
@@ -225,7 +229,11 @@ export class AdminBar extends React.PureComponent<Props, State> {
 									/>
 									<a
 										className="button margin--bottom"
-										onClick={this.highlightGroup.bind(this, host, group)}
+										onClick={this.highlightGroup.bind(
+											this,
+											host,
+											group
+										)}
 									>
 										submit
 									</a>
@@ -233,7 +241,7 @@ export class AdminBar extends React.PureComponent<Props, State> {
 							}
 						/>
 					</FlexItem>
-				}
+				)}
 			</Flex>
 		);
 	}
