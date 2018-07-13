@@ -1,6 +1,7 @@
 import React from 'react';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
+import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 
 const flexParentStyles = {
@@ -37,9 +38,9 @@ const infoReverse =
 	'You can change the direction of content flow for a specific breakpoint, or at all viewport sizes.';
 
 storiesOf('Flex', module)
-	.addWithInfo(
+	.addDecorator(decorateWithInfo)
+	.add(
 		'Row (default)',
-		'The `Flex` component follows flexbox convention, using normal flow direction and row orientation by default.',
 		() => (
 			<Flex style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
@@ -58,11 +59,16 @@ storiesOf('Flex', module)
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
 			</Flex>
-		)
+		),
+		{
+			info: {
+				text:
+					'The `Flex` component follows flexbox convention, using normal flow direction and row orientation by default.',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Column',
-		'You can change the `direction` of the flex layout with the `direction` prop.',
 		() => (
 			<Flex direction="column" style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
@@ -81,11 +87,16 @@ storiesOf('Flex', module)
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
 			</Flex>
-		)
+		),
+		{
+			info: {
+				text:
+					'You can change the `direction` of the flex layout with the `direction` prop.',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Wrap',
-		'By default, child `FlexItem` components will not wrap. Use the `wrap` property to override.',
 		() => (
 			<Flex wrap style={flexParentStyles}>
 				<FlexItem shrink style={flexItemStyles}>
@@ -134,11 +145,16 @@ storiesOf('Flex', module)
 					<div style={boxStyles}>Item 15</div>
 				</FlexItem>
 			</Flex>
-		)
+		),
+		{
+			info: {
+				text:
+					'By default, child `FlexItem` components will not wrap. Use the `wrap` property to override.',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'No gutters',
-		'By default, child `FlexItem` components have gutters between them. You can remove gutters with the `noGutters` prop.',
 		() => (
 			<Flex noGutters style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
@@ -157,215 +173,260 @@ storiesOf('Flex', module)
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
 			</Flex>
-		)
+		),
+		{
+			info: {
+				text:
+					'By default, child `FlexItem` components have gutters between them. You can remove gutters with the `noGutters` prop.',
+			},
+		}
 	)
-	.addWithInfo('Justify center', infoJustify, () => (
-		<div style={{ width: '800px', border: '1px dotted red' }}>
-			<Flex justify="center" style={flexParentStyles}>
-				<FlexItem shrink style={flexItemStyles}>
+	.add(
+		'Justify center',
+		() => (
+			<div style={{ width: '800px', border: '1px dotted red' }}>
+				<Flex justify="center" style={flexParentStyles}>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 1</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 2</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 3</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 4</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 5</div>
+					</FlexItem>
+				</Flex>
+			</div>
+		),
+		{ info: { text: infoJustify } }
+	)
+	.add(
+		'Justify spaceAround',
+		() => (
+			<div style={{ width: '800px', border: '1px dotted red' }}>
+				<Flex justify="spaceAround" style={flexParentStyles}>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 1</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 2</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 3</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 4</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 5</div>
+					</FlexItem>
+				</Flex>
+			</div>
+		),
+		{ info: { text: infoJustify } }
+	)
+	.add(
+		'Justify spaceBetween',
+		() => (
+			<div style={{ width: '800px', border: '1px dotted red' }}>
+				<Flex justify="spaceBetween" style={flexParentStyles}>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 1</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 2</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 3</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 4</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 5</div>
+					</FlexItem>
+				</Flex>
+			</div>
+		),
+		{ info: { text: infoJustify } }
+	)
+	.add(
+		'Justify end',
+		() => (
+			<div style={{ width: '800px', border: '1px dotted red' }}>
+				<Flex justify="flexEnd" style={flexParentStyles}>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 1</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 2</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 3</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 4</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 5</div>
+					</FlexItem>
+				</Flex>
+			</div>
+		),
+		{ info: { text: infoJustify } }
+	)
+	.add(
+		'Align top',
+		() => (
+			<div style={{ border: '1px solid red' }}>
+				<Flex align="top" style={flexParentStyles}>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 1</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 2</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 3</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 4</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 5</div>
+					</FlexItem>
+				</Flex>
+			</div>
+		),
+		{ info: { text: infoAlign } }
+	)
+	.add(
+		'Align center',
+		() => (
+			<div style={{ border: '1px solid red' }}>
+				<Flex align="center" style={flexParentStyles}>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 1</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 2</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 3</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 4</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 5</div>
+					</FlexItem>
+				</Flex>
+			</div>
+		),
+		{ info: { text: infoAlign } }
+	)
+	.add(
+		'Align bottom',
+		() => (
+			<div style={{ border: '1px solid red' }}>
+				<Flex align="bottom" style={flexParentStyles}>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 1</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 2</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 3</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 4</div>
+					</FlexItem>
+					<FlexItem shrink style={flexItemStyles}>
+						<div style={boxStyles}>Item 5</div>
+					</FlexItem>
+				</Flex>
+			</div>
+		),
+		{ info: { text: infoAlign } }
+	)
+	.add(
+		'Row reverse',
+		() => (
+			<Flex rowReverse="all" style={flexParentStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 2</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 3</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 4</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
 			</Flex>
-		</div>
-	))
-	.addWithInfo('Justify spaceAround', infoJustify, () => (
-		<div style={{ width: '800px', border: '1px dotted red' }}>
-			<Flex justify="spaceAround" style={flexParentStyles}>
-				<FlexItem shrink style={flexItemStyles}>
+		),
+		{ info: { text: infoReverse } }
+	)
+	.add(
+		'Row reverse (at medium breakpoint)',
+		() => (
+			<Flex rowReverse="medium" style={flexParentStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 2</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 3</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 4</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
 			</Flex>
-		</div>
-	))
-	.addWithInfo('Justify spaceBetween', infoJustify, () => (
-		<div style={{ width: '800px', border: '1px dotted red' }}>
-			<Flex justify="spaceBetween" style={flexParentStyles}>
-				<FlexItem shrink style={flexItemStyles}>
+		),
+		{ info: { text: infoReverse } }
+	)
+	.add(
+		'Row reverse (at large breakpoint)',
+		() => (
+			<Flex rowReverse="large" style={flexParentStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 2</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 3</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 4</div>
 				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
 			</Flex>
-		</div>
-	))
-	.addWithInfo('Justify end', infoJustify, () => (
-		<div style={{ width: '800px', border: '1px dotted red' }}>
-			<Flex justify="flexEnd" style={flexParentStyles}>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 1</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 3</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 4</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 5</div>
-				</FlexItem>
-			</Flex>
-		</div>
-	))
-	.addWithInfo('Align top', infoAlign, () => (
-		<div style={{ border: '1px solid red' }}>
-			<Flex align="top" style={flexParentStyles}>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 1</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 3</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 4</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 5</div>
-				</FlexItem>
-			</Flex>
-		</div>
-	))
-	.addWithInfo('Align center', infoAlign, () => (
-		<div style={{ border: '1px solid red' }}>
-			<Flex align="center" style={flexParentStyles}>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 1</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 3</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 4</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 5</div>
-				</FlexItem>
-			</Flex>
-		</div>
-	))
-	.addWithInfo('Align bottom', infoAlign, () => (
-		<div style={{ border: '1px solid red' }}>
-			<Flex align="bottom" style={flexParentStyles}>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 1</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 3</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 4</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
-					<div style={boxStyles}>Item 5</div>
-				</FlexItem>
-			</Flex>
-		</div>
-	))
-	.addWithInfo('Row reverse', infoReverse, () => (
-		<Flex rowReverse="all" style={flexParentStyles}>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 1</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 2</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 3</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 4</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 5</div>
-			</FlexItem>
-		</Flex>
-	))
-	.addWithInfo('Row reverse (at medium breakpoint)', infoReverse, () => (
-		<Flex rowReverse="medium" style={flexParentStyles}>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 1</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 2</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 3</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 4</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 5</div>
-			</FlexItem>
-		</Flex>
-	))
-	.addWithInfo('Row reverse (at large breakpoint)', infoReverse, () => (
-		<Flex rowReverse="large" style={flexParentStyles}>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 1</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 2</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 3</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 4</div>
-			</FlexItem>
-			<FlexItem style={flexItemStyles}>
-				<div style={boxStyles}>Item 5</div>
-			</FlexItem>
-		</Flex>
-	))
-	.addWithInfo(
+		),
+		{ info: { text: infoReverse } }
+	)
+	.add(
 		'Column reverse',
-		'You can also reverse column-oriented content flow. At any given breakpoint (or `all` breakpoints).',
 		() => (
 			<Flex direction="column" columnReverse="all" style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
@@ -384,17 +445,18 @@ storiesOf('Flex', module)
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
 			</Flex>
-		)
+		),
+		{
+			info: {
+				text:
+					'You can also reverse column-oriented content flow. At any given breakpoint (or `all` breakpoints).',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Switch flex-direction (at medium breakpoint)',
-		'You can switch direction of content flow at a given breakpoint, or `all` breakpoints.',
 		() => (
-			<Flex
-				direction="column"
-				switchDirection="medium"
-				style={flexParentStyles}
-			>
+			<Flex direction="column" switchDirection="medium" style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -411,9 +473,15 @@ storiesOf('Flex', module)
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
 			</Flex>
-		)
+		),
+		{
+			info: {
+				text:
+					'You can switch direction of content flow at a given breakpoint, or `all` breakpoints.',
+			},
+		}
 	)
-	.addWithInfo('isLoading', () => (
+	.add('isLoading', () => (
 		<Flex isLoading style={flexParentStyles}>
 			<FlexItem style={flexItemStyles}>
 				<div style={boxStyles}>Item 1</div>
@@ -432,7 +500,7 @@ storiesOf('Flex', module)
 			</FlexItem>
 		</Flex>
 	))
-	.addWithInfo('isLoading with loadingProps', () => (
+	.add('isLoading with loadingProps', () => (
 		<Flex
 			isLoading
 			loadingProps={{

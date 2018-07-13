@@ -105,6 +105,7 @@ Button.propTypes = {
 	hasHoverShadow: PropTypes.bool,
 	component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 	disabled: PropTypes.any,
+	/** html element type */
 	type: PropTypes.string,
 };
 export default Button;

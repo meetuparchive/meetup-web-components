@@ -1,5 +1,6 @@
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import withMatchMedia from './utils/components/withMatchMedia';
 
@@ -8,8 +9,7 @@ import { Footer } from './Footer';
 
 const TestFooter = withMatchMedia(Footer);
 
-const legalCopy =
-	'Meetup is a wholly owned subsidiary of WeWork Companies, Inc.';
+const legalCopy = 'Meetup is a wholly owned subsidiary of WeWork Companies, Inc.';
 
 const footerLinkSets = [
 	{
@@ -44,21 +44,15 @@ const footerLinkSets = [
 const subFooterLinks = [
 	<a href="/terms">
 		<span className="atMedium_display--none">Terms</span>
-		<span className="display--none atMedium_display--inline">
-			Terms of Service
-		</span>
+		<span className="display--none atMedium_display--inline">Terms of Service</span>
 	</a>,
 	<a href="/privacy">
 		<span className="atMedium_display--none">Privacy</span>
-		<span className="display--none atMedium_display--inline">
-			Privacy Policy
-		</span>
+		<span className="display--none atMedium_display--inline">Privacy Policy</span>
 	</a>,
 	<a href="/cookie_policy">
 		<span className="atMedium_display--none">Cookies</span>
-		<span className="display--none atMedium_display--inline">
-			Cookie Policy
-		</span>
+		<span className="display--none atMedium_display--inline">Cookie Policy</span>
 	</a>,
 ];
 

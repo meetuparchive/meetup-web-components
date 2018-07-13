@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { decorateWithBasics } from './utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from './utils/decorators';
 import { MEDIA_SIZES } from './utils/designConstants';
 import Hscroll from './Hscroll';
 
@@ -31,24 +31,25 @@ const listItems = [
 
 storiesOf('Hscroll', module)
 	.addDecorator(decorateWithBasics)
-	.addWithInfo('Default', 'Basic horizontal scroll usage', () => (
-		<Hscroll style={hscrollInlineStyle}>{listItems}</Hscroll>
-	))
-	.addWithInfo(
+	.addDecorator(decorateWithInfo)
+	.add('Default', () => <Hscroll style={hscrollInlineStyle}>{listItems}</Hscroll>, {
+		info: { text: 'Basic horizontal scroll usage' },
+	})
+	.add(
 		'With gradient',
-		'Basic horizontal scroll with edge gradients',
 		() => (
 			<Hscroll style={hscrollInlineStyle} hasGradient>
 				{listItems}
 			</Hscroll>
-		)
+		),
+		{ info: { text: 'Basic horizontal scroll with edge gradients' } }
 	)
-	.addWithInfo(
+	.add(
 		'Media-conditional unclip',
-		'Unclip at a given breakpoint (large)',
 		() => (
 			<Hscroll style={hscrollInlineStyle} unclipAt="large">
 				{listItems}
 			</Hscroll>
-		)
+		),
+		{ info: { text: 'Unclip at a given breakpoint (large)' } }
 	);

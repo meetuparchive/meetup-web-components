@@ -1,4 +1,5 @@
 import React from 'react';
+import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import GridList from './GridList';
@@ -46,9 +47,9 @@ const TestMember = props => {
 };
 
 storiesOf('GridList', module)
-	.addWithInfo(
+	.addDecorator(decorateWithInfo)
+	.add(
 		'Static grid',
-		'Basic usage of GridList with columns fixed at 3 for all breakpoints',
 		() => (
 			<GridList
 				columns={{
@@ -67,11 +68,16 @@ storiesOf('GridList', module)
 					<div style={boxStyles}>GridItem</div>,
 				]}
 			/>
-		)
+		),
+		{
+			info: {
+				text:
+					'Basic usage of GridList with columns fixed at 3 for all breakpoints',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'GridList items with custom class names',
-		'GridList where items require a custom class for more flexible styling',
 		() => (
 			<GridList
 				columns={{
@@ -91,11 +97,16 @@ storiesOf('GridList', module)
 					<div style={boxStyles}>GridItem</div>,
 				]}
 			/>
-		)
+		),
+		{
+			info: {
+				text:
+					'GridList where items require a custom class for more flexible styling',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Static autoHeight grid',
-		'GridList where items are the same height with columns fixed at 3 for all breakpoints',
 		() => (
 			<GridList
 				autoHeight
@@ -118,11 +129,16 @@ storiesOf('GridList', module)
 					<TestMember member={MOCK_MEMBER} />,
 				]}
 			/>
-		)
+		),
+		{
+			info: {
+				text:
+					'GridList where items are the same height with columns fixed at 3 for all breakpoints',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Static wrapping autoHeight grid',
-		'GridList where items are the same height with columns fixed at 3 for all breakpoints',
 		() => (
 			<GridList
 				autoHeightWithWrap
@@ -145,11 +161,16 @@ storiesOf('GridList', module)
 					<TestMember member={MOCK_MEMBER} />,
 				]}
 			/>
-		)
+		),
+		{
+			info: {
+				text:
+					'GridList where items are the same height with columns fixed at 3 for all breakpoints',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Responsive grid',
-		'Responsive GridList that increases number of columns for larger breakpoints',
 		() => (
 			<GridList
 				columns={{
@@ -170,11 +191,16 @@ storiesOf('GridList', module)
 					<div style={boxStyles}>GridItem</div>,
 				]}
 			/>
-		)
+		),
+		{
+			info: {
+				text:
+					'Responsive GridList that increases number of columns for larger breakpoints',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Responsive autoHeight grid',
-		'Responsive GridList where items are the same height, and that increases number of columns for larger breakpoints',
 		() => (
 			<GridList
 				autoHeight
@@ -202,11 +228,16 @@ storiesOf('GridList', module)
 					/>,
 				]}
 			/>
-		)
+		),
+		{
+			info: {
+				text:
+					'Responsive GridList where items are the same height, and that increases number of columns for larger breakpoints',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Responsive wrapping autoHeight grid',
-		'GridList where items are the same height and increases number of columns for larger breakpoints',
 		() => (
 			<GridList
 				autoHeightWithWrap
@@ -239,9 +270,15 @@ storiesOf('GridList', module)
 					<TestMember member={MOCK_MEMBER} />,
 				]}
 			/>
-		)
+		),
+		{
+			info: {
+				text:
+					'GridList where items are the same height and increases number of columns for larger breakpoints',
+			},
+		}
 	)
-	.addWithInfo('isLoading', () => (
+	.add('isLoading', () => (
 		<GridList
 			isLoading
 			columns={{
@@ -261,7 +298,7 @@ storiesOf('GridList', module)
 			]}
 		/>
 	))
-	.addWithInfo('isLoading with loadingProps', () => (
+	.add('isLoading with loadingProps', () => (
 		<GridList
 			isLoading
 			loadingProps={{
