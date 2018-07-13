@@ -7,71 +7,71 @@ import Textarea from './Textarea';
 
 storiesOf('Textarea', module)
 	.addDecorator(decorateWithBasics)
-	// .addWithInfo('default', () => (
-	// 	<Bounds>
-	// 		<Section>
-	// 			<Textarea
-	// 				label="Your biography"
-	// 				id="yourBio"
-	// 				name="bio"
-	// 				placeholder="Tell me about your life"
-	// 			/>
-	// 		</Section>
-	// 	</Bounds>
-	// ))
-	// .addWithInfo(
-	// 	'auto resizing',
-	// 	'Usage example where the textarea expands depending on the inner content',
-	// 	() => (
-	// 		<Bounds>
-	// 			<Section>
-	// 				<Textarea
-	// 					autosize
-	// 					label="Your biography"
-	// 					id="yourBio"
-	// 					name="bio"
-	// 					placeholder="Tell me about your life"
-	// 				/>
-	// 			</Section>
-	// 		</Bounds>
-	// 	)
-	// )
-	// .addWithInfo(
-	// 	'min and max height',
-	// 	'Usage example where the textarea has a min and max height',
-	// 	() => (
-	// 		<Bounds>
-	// 			<Section>
-	// 				<Textarea
-	// 					minHeight={100}
-	// 					maxHeight={300}
-	// 					label="Your biography"
-	// 					id="yourBio"
-	// 					name="bio"
-	// 					placeholder="Tell me about your life"
-	// 				/>
-	// 			</Section>
-	// 		</Bounds>
-	// 	)
-	// )
-	// .addWithInfo(
-	// 	'set rows',
-	// 	'Usage example where the textarea height is set with the rows attribute',
-	// 	() => (
-	// 		<Bounds>
-	// 			<Section>
-	// 				<Textarea
-	// 					rows={3}
-	// 					label="Your biography"
-	// 					id="yourBio"
-	// 					name="bio"
-	// 					placeholder="Tell me about your life"
-	// 				/>
-	// 			</Section>
-	// 		</Bounds>
-	// 	)
-	// )
 	.addDecorator(decorateWithInfo)
+	.add('default', () => (
+		<Bounds>
+			<Section>
+				<Textarea
+					label="Your biography"
+					id="yourBio"
+					name="bio"
+					placeholder="Tell me about your life"
+				/>
+			</Section>
+		</Bounds>
+	))
+	.add(
+		'auto resizing',
+		() => (
+			<Bounds>
+				<Section>
+					<Textarea
+						autosize
+						label="Your biography"
+						id="yourBio"
+						name="bio"
+						placeholder="Tell me about your life"
+					/>
+				</Section>
+			</Bounds>
+		),
+		{ info: { text: 'Usage example where the textarea expands depending on the inner content' } }
+	)
+	.add(
+		'min and max height',
+		() => (
+			<Bounds>
+				<Section>
+					<Textarea
+						minHeight={100}
+						maxHeight={300}
+						label="Your biography"
+						id="yourBio"
+						name="bio"
+						placeholder="Tell me about your life"
+					/>
+				</Section>
+			</Bounds>
+		),
+		{ info: { text: 'Usage example where the textarea has a min and max height' } }
+	)
+	.add(
+		'set rows',
+		() => (
+			<Bounds>
+				<Section>
+					<Textarea
+						rows={3}
+						label="Your biography"
+						id="yourBio"
+						name="bio"
+						placeholder="Tell me about your life"
+					/>
+				</Section>
+			</Bounds>
+		),
+		{ info: { text: 'Usage example where the textarea height is set with the rows attribute' } }
+	)
 	.add('error state', () => (
 		<Bounds>
 			<Section>
