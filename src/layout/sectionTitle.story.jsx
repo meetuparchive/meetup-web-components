@@ -2,12 +2,13 @@ import React from 'react';
 import Bounds from './Bounds';
 import Section from './Section';
 import SectionTitle from './SectionTitle';
+import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 
 storiesOf('SectionTitle', module)
-	.addWithInfo(
+	.addDecorator(decorateWithInfo)
+	.add(
 		'Default',
-		'Basic section title without action on the right',
 		() => (
 			<div style={{ height: '100vh', width: '100%' }}>
 				<Bounds>
@@ -15,11 +16,11 @@ storiesOf('SectionTitle', module)
 						<SectionTitle title="Section One" />
 						<div className="runningText">
 							<p>
-								Section content goes here. Lorem Ipsum is simply dummy text of
-								the printing and typesetting industry. Lorem Ipsum has been the
-								industry's standard dummy text ever since the 1500s, when an
-								unknown printer took a galley of type and scrambled it to make a
-								type specimen book.
+								Section content goes here. Lorem Ipsum is simply dummy
+								text of the printing and typesetting industry. Lorem Ipsum
+								has been the industry's standard dummy text ever since the
+								1500s, when an unknown printer took a galley of type and
+								scrambled it to make a type specimen book.
 							</p>
 						</div>
 					</Section>
@@ -27,22 +28,22 @@ storiesOf('SectionTitle', module)
 						<SectionTitle title="Section Two" />
 						<div className="runningText">
 							<p>
-								More section content goes here. It is a long established fact
-								that a reader will be distracted by the readable content of a
-								page when looking at its layout. The point of using Lorem Ipsum
-								is that it has a more-or-less normal distribution of letters, as
-								opposed to using 'Content here, content here', making it look
-								like readable English.
+								More section content goes here. It is a long established
+								fact that a reader will be distracted by the readable
+								content of a page when looking at its layout. The point of
+								using Lorem Ipsum is that it has a more-or-less normal
+								distribution of letters, as opposed to using 'Content
+								here, content here', making it look like readable English.
 							</p>
 						</div>
 					</Section>
 				</Bounds>
 			</div>
-		)
+		),
+		{ info: { text: 'Basic section title without action on the right' } }
 	)
-	.addWithInfo(
+	.add(
 		'With action link',
-		'Section title with action on the right',
 		() => (
 			<div style={{ height: '100vh', width: '100%' }}>
 				<Bounds>
@@ -104,5 +105,6 @@ storiesOf('SectionTitle', module)
 					</Section>
 				</Bounds>
 			</div>
-		)
+		),
+		{ info: { text: 'Section title with action on the right' } }
 	);
