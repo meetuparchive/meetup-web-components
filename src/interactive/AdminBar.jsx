@@ -151,7 +151,7 @@ export class AdminBar extends React.PureComponent<Props, State> {
 		return (
 			<Flex
 				className={cx('groupAdminLinks', {
-					['redbar']: isQL && isProdApi,
+					['redbar']: isProdApi,
 					['greenbar']: isQL && !isProdApi,
 				})}
 			>
