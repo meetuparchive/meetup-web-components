@@ -1,6 +1,7 @@
 import React from 'react';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
+import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 
 const flexParentStyles = {
@@ -27,9 +28,9 @@ const boxStyles = {
 };
 
 storiesOf('FlexItem', module)
-	.addWithInfo(
+	.addDecorator(decorateWithInfo)
+	.add(
 		'Flex Item grow (default)',
-		'Following CSS flexbox convention, flex items by default will grow equally with each other to fill the space of their parent `Flex`.',
 		() => (
 			<Flex style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
@@ -42,11 +43,16 @@ storiesOf('FlexItem', module)
 					<div style={boxStyles}>Item 2</div>
 				</FlexItem>
 			</Flex>
-		)
+		),
+		{
+			info: {
+				text:
+					'Following CSS flexbox convention, flex items by default will grow equally with each other to fill the space of their parent `Flex`.',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Flex Item shrink',
-		'Adding the `shrink` prop to a `FlexItem` will cause the flex item to shrink to content width (or height, in a column-oriented `Flex`).',
 		() => (
 			<Flex style={flexParentStyles}>
 				<FlexItem shrink style={flexItemStyles}>
@@ -59,14 +65,16 @@ storiesOf('FlexItem', module)
 					<div style={boxStyles}>Item 2</div>
 				</FlexItem>
 			</Flex>
-		)
+		),
+		{
+			info: {
+				text:
+					'Adding the `shrink` prop to a `FlexItem` will cause the flex item to shrink to content width (or height, in a column-oriented `Flex`).',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Flex Item growFactors',
-		`The \`growFactor\` prop accepts a number, which is used as a flexbox \`grow\` value.
-		The total of all grow factors in sibling \`FlexItem\` components are euqal to their parent \`Flex\` width.
-		For example, if there are flex items with \`growFactor\` values of \`2\` and \`3\`, the first flex item will
-		fill two fifths of its parent. Grow factors can be thought of fractional widths.`,
 		() => (
 			<div style={{ height: '100vh', width: '100%' }}>
 				<Flex style={flexParentStyles}>
@@ -126,9 +134,17 @@ storiesOf('FlexItem', module)
 					</FlexItem>
 				</Flex>
 			</div>
-		)
+		),
+		{
+			info: {
+				text: `The \`growFactor\` prop accepts a number, which is used as a flexbox \`grow\` value.
+            The total of all grow factors in sibling \`FlexItem\` components are euqal to their parent \`Flex\` width.
+            For example, if there are flex items with \`growFactor\` values of \`2\` and \`3\`, the first flex item will
+            fill two fifths of its parent. Grow factors can be thought of fractional widths.`,
+			},
+		}
 	)
-	.addWithInfo('isLoading', () => (
+	.add('isLoading', () => (
 		<Flex style={flexParentStyles}>
 			<FlexItem style={flexItemStyles}>
 				<div style={boxStyles}>Item 1</div>
@@ -141,7 +157,7 @@ storiesOf('FlexItem', module)
 			</FlexItem>
 		</Flex>
 	))
-	.addWithInfo('isLoading with loadingProps', () => (
+	.add('isLoading with loadingProps', () => (
 		<Flex style={flexParentStyles}>
 			<FlexItem style={flexItemStyles}>
 				<div style={boxStyles}>Item 1</div>
