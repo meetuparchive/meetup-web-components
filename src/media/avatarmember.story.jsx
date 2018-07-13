@@ -7,16 +7,20 @@ import InlineBlockList from '../layout/InlineBlockList';
 
 storiesOf('AvatarMember', module)
 	.addDecorator(decorateWithBasics)
-	.addWithInfo('default', 'This is the basic usage with the component.', () => (
-		<InlineBlockList
-			items={[
-				<AvatarMember member={MOCK_MEMBER} />,
-				<AvatarMember member={MOCK_MEMBER} large />,
-				<AvatarMember member={MOCK_MEMBER} xxlarge />,
-			]}
-		/>
-	))
 	.addDecorator(decorateWithInfo)
+	.add(
+		'default',
+		() => (
+			<InlineBlockList
+				items={[
+					<AvatarMember member={MOCK_MEMBER} />,
+					<AvatarMember member={MOCK_MEMBER} large />,
+					<AvatarMember member={MOCK_MEMBER} xxlarge />,
+				]}
+			/>
+		),
+		{ info: { text: 'This is the basic usage with the component.' } }
+	)
 	.add('organizer', () => (
 		<InlineBlockList
 			items={[

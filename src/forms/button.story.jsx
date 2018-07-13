@@ -1,5 +1,6 @@
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import StoryRouter from 'storybook-react-router';
 import { Inverted } from '../utils/storyComponents';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
@@ -12,9 +13,7 @@ storiesOf('Button', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addDecorator(StoryRouter())
-	.add('Default', () => (
-		<Button onClick={action('clicked')}>Button Label</Button>
-	))
+	.add('Default', () => <Button onClick={action('clicked')}>Button Label</Button>)
 	.add('Default - inverted', () => (
 		<Inverted>
 			<Button onClick={action('clicked')}>Button Label</Button>
@@ -26,20 +25,12 @@ storiesOf('Button', module)
 		</Button>
 	))
 	.add('Default - as anchor tag', () => (
-		<Button
-			onClick={action('clicked')}
-			component="a"
-			href="https://meetup.com/"
-		>
+		<Button onClick={action('clicked')} component="a" href="https://meetup.com/">
 			Button Label
 		</Button>
 	))
 	.add('Default - as <Link> component', () => (
-		<Button
-			onClick={action('clicked')}
-			component={Link}
-			to="https://meetup.com/"
-		>
+		<Button onClick={action('clicked')} component={Link} to="https://meetup.com/">
 			Button Label
 		</Button>
 	))
@@ -156,10 +147,7 @@ storiesOf('Button', module)
 		</Button>
 	))
 	.add('Icon', () => (
-		<Button
-			onClick={action('clicked')}
-			icon={<Icon shape="search" size="xxs" />}
-		>
+		<Button onClick={action('clicked')} icon={<Icon shape="search" size="xxs" />}>
 			Button Label
 		</Button>
 	))
@@ -174,10 +162,7 @@ storiesOf('Button', module)
 	))
 	.add('Icon - inverted', () => (
 		<Inverted>
-			<Button
-				onClick={action('clicked')}
-				icon={<Icon shape="search" size="xxs" />}
-			>
+			<Button onClick={action('clicked')} icon={<Icon shape="search" size="xxs" />}>
 				Button Label
 			</Button>
 		</Inverted>
@@ -192,9 +177,6 @@ storiesOf('Button', module)
 		</Button>
 	))
 	.add('Icon Only', () => (
-		<Button
-			onClick={action('clicked')}
-			icon={<Icon shape="search" size="xxs" />}
-		/>
+		<Button onClick={action('clicked')} icon={<Icon shape="search" size="xxs" />} />
 	))
 	.add('No Label', () => <Button />);

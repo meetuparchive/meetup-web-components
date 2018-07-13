@@ -12,130 +12,151 @@ const shadingStyles = {
 };
 
 storiesOf('Section', module)
-	.addWithInfo('default', 'This is the basic usage with the component.', () => (
-		<div style={{ height: '100vh', width: '100%', marginBottom: '20px' }}>
-			<div style={{ maxWidth: '850px', margin: 'auto', marginTop: '15px' }}>
-				<Section style={shadingStyles}>
-					<div className="chunk">
-						<h2 className="text--sectionTitle">About us</h2>
-						<div className="runningText">
-							<p>
-								Lorem Ipsum is simply dummy text of the printing and typesetting
-								industry. Lorem Ipsum has been the industry's standard dummy
-								text ever since the 1500s, when an unknown printer took a galley
-								of type and scrambled it to make a type specimen book. It has
-								survived not only five centuries, but also the leap into
-								electronic typesetting, remaining essentially unchanged. It was
-								popularised in the 1960s with the release of Letraset sheets
-								containing Lorem Ipsum passages, and more recently with desktop
-								publishing software like Aldus PageMaker including versions of
-								Lorem Ipsum.
-							</p>
-							<p>
-								It is a long established fact that a reader will be distracted
-								by the readable content of a page when looking at its layout.
-								The point of using Lorem Ipsum is that it has a more-or-less
-								normal distribution of letters, as opposed to using 'Content
-								here, content here', making it look like readable English. Many
-								desktop publishing packages and web page editors now use Lorem
-								Ipsum as their default model text, and a search for 'lorem
-								ipsum' will uncover many web sites still in their infancy.
-								Various versions have evolved over the years, sometimes by
-								accident, sometimes on purpose (injected humour and the like).
-							</p>
+	.addDecorator(decorateWithInfo)
+	.add(
+		'default',
+		() => (
+			<div style={{ height: '100vh', width: '100%', marginBottom: '20px' }}>
+				<div style={{ maxWidth: '850px', margin: 'auto', marginTop: '15px' }}>
+					<Section style={shadingStyles}>
+						<div className="chunk">
+							<h2 className="text--sectionTitle">About us</h2>
+							<div className="runningText">
+								<p>
+									Lorem Ipsum is simply dummy text of the printing and
+									typesetting industry. Lorem Ipsum has been the
+									industry's standard dummy text ever since the 1500s,
+									when an unknown printer took a galley of type and
+									scrambled it to make a type specimen book. It has
+									survived not only five centuries, but also the leap
+									into electronic typesetting, remaining essentially
+									unchanged. It was popularised in the 1960s with the
+									release of Letraset sheets containing Lorem Ipsum
+									passages, and more recently with desktop publishing
+									software like Aldus PageMaker including versions of
+									Lorem Ipsum.
+								</p>
+								<p>
+									It is a long established fact that a reader will be
+									distracted by the readable content of a page when
+									looking at its layout. The point of using Lorem Ipsum
+									is that it has a more-or-less normal distribution of
+									letters, as opposed to using 'Content here, content
+									here', making it look like readable English. Many
+									desktop publishing packages and web page editors now
+									use Lorem Ipsum as their default model text, and a
+									search for 'lorem ipsum' will uncover many web sites
+									still in their infancy. Various versions have evolved
+									over the years, sometimes by accident, sometimes on
+									purpose (injected humour and the like).
+								</p>
+							</div>
+							<ul className="inlineblockList">
+								<li>
+									<a
+										className="token token--link"
+										href="/topics/91146/tech-talks"
+									>
+										Tech Talks
+									</a>
+								</li>
+								<li>
+									<a
+										className="token token--link"
+										href="/topics/10209/web"
+									>
+										Web Technology
+									</a>
+								</li>
+								<li>
+									<a
+										className="token token--link"
+										href="/topics/16216/mobile-technology"
+									>
+										Mobile Technology
+									</a>
+								</li>
+								<li>
+									<a
+										className="token token--link"
+										href="/topics/3833/softwaredev"
+									>
+										Software Development
+									</a>
+								</li>
+								<li>
+									<a
+										className="token token--link"
+										href="/topics/48471/computer-programming"
+									>
+										Computer programming
+									</a>
+								</li>
+								<li>
+									<a
+										className="token token--link"
+										href="/topics/127567/ios-development"
+									>
+										iOS Development
+									</a>
+								</li>
+								<li>
+									<a
+										className="token token--link"
+										href="/topics/20346/android-developers"
+									>
+										Android Development
+									</a>
+								</li>
+								<li>
+									<a
+										className="token token--link"
+										href="/topics/1040/ruby"
+									>
+										Ruby
+									</a>
+								</li>
+								<li>
+									<a
+										className="token token--link"
+										href="/topics/563/opensource"
+									>
+										Open Source
+									</a>
+								</li>
+								<li>
+									<a
+										className="token token--link"
+										href="/topics/189/java"
+									>
+										Java
+									</a>
+								</li>
+							</ul>
 						</div>
-						<ul className="inlineblockList">
-							<li>
-								<a
-									className="token token--link"
-									href="/topics/91146/tech-talks"
-								>
-									Tech Talks
-								</a>
-							</li>
-							<li>
-								<a className="token token--link" href="/topics/10209/web">
-									Web Technology
-								</a>
-							</li>
-							<li>
-								<a
-									className="token token--link"
-									href="/topics/16216/mobile-technology"
-								>
-									Mobile Technology
-								</a>
-							</li>
-							<li>
-								<a
-									className="token token--link"
-									href="/topics/3833/softwaredev"
-								>
-									Software Development
-								</a>
-							</li>
-							<li>
-								<a
-									className="token token--link"
-									href="/topics/48471/computer-programming"
-								>
-									Computer programming
-								</a>
-							</li>
-							<li>
-								<a
-									className="token token--link"
-									href="/topics/127567/ios-development"
-								>
-									iOS Development
-								</a>
-							</li>
-							<li>
-								<a
-									className="token token--link"
-									href="/topics/20346/android-developers"
-								>
-									Android Development
-								</a>
-							</li>
-							<li>
-								<a className="token token--link" href="/topics/1040/ruby">
-									Ruby
-								</a>
-							</li>
-							<li>
-								<a className="token token--link" href="/topics/563/opensource">
-									Open Source
-								</a>
-							</li>
-							<li>
-								<a className="token token--link" href="/topics/189/java">
-									Java
-								</a>
-							</li>
-						</ul>
-					</div>
-				</Section>
+					</Section>
 
-				<Section style={shadingStyles}>
-					<div className="chunk">
-						<h2 className="text--sectionTitle">Organized by</h2>
-						<ul className="inlineblockList inlineblockList--bulleted">
-							<li>Ana</li>
-							<li>Maria</li>
-							<li>Helen Ford</li>
-							<li>K Rattan</li>
-							<li>Jenn</li>
-							<li>Michael Colby</li>
-							<li>Sarah Hall</li>
-							<li>Viki</li>
-						</ul>
-					</div>
-				</Section>
+					<Section style={shadingStyles}>
+						<div className="chunk">
+							<h2 className="text--sectionTitle">Organized by</h2>
+							<ul className="inlineblockList inlineblockList--bulleted">
+								<li>Ana</li>
+								<li>Maria</li>
+								<li>Helen Ford</li>
+								<li>K Rattan</li>
+								<li>Jenn</li>
+								<li>Michael Colby</li>
+								<li>Sarah Hall</li>
+								<li>Viki</li>
+							</ul>
+						</div>
+					</Section>
+				</div>
 			</div>
-		</div>
-	))
-	.addWithInfo('hasSeparator', () => (
+		),
+		{ info: { text: 'This is the basic usage with the component.' } }
+	)
+	.add('hasSeparator', () => (
 		<div style={{ width: '100%' }}>
 			<div style={{ maxWidth: '850px', margin: 'auto' }}>
 				<Section hasSeparator style={shadingStyles}>
@@ -148,9 +169,9 @@ storiesOf('Section', module)
 						</p>
 						<p>
 							Lorem Ipsum was popularised in the 1960s with the release of
-							Letraset sheets containing Lorem Ipsum passages, and more recently
-							with desktop publishing software like Aldus PageMaker including
-							versions of Lorem Ipsum.
+							Letraset sheets containing Lorem Ipsum passages, and more
+							recently with desktop publishing software like Aldus PageMaker
+							including versions of Lorem Ipsum.
 						</p>
 					</div>
 				</Section>
@@ -164,12 +185,13 @@ storiesOf('Section', module)
 					<div className="chunk">
 						<div className="runningText">
 							<p>
-								Lorem Ipsum is simply dummy text of the printing and typesetting
-								industry. Lorem Ipsum has been the industry's standard dummy
-								text ever since the 1500s, when an unknown printer took a galley
-								of type and scrambled it to make a type specimen book. It has
-								survived not only five centuries, but also the leap into
-								electronic typesetting, remaining essentially unchanged.
+								Lorem Ipsum is simply dummy text of the printing and
+								typesetting industry. Lorem Ipsum has been the industry's
+								standard dummy text ever since the 1500s, when an unknown
+								printer took a galley of type and scrambled it to make a
+								type specimen book. It has survived not only five
+								centuries, but also the leap into electronic typesetting,
+								remaining essentially unchanged.
 							</p>
 						</div>
 					</div>
@@ -177,14 +199,13 @@ storiesOf('Section', module)
 			</div>
 		</div>
 	))
-	.addDecorator(decorateWithInfo)
 	.add('Conditionally flush left and right (at medium breakpoint)', () => (
 		<div style={{ width: '100%', border: '1px dotted orange' }}>
 			<Section flushUntil="medium" style={shadingStyles}>
 				<div className="chunk">
 					<p className="text--bold">
-						This section flushes to the left and right of the viewport until the
-						`medium` breakpoint
+						This section flushes to the left and right of the viewport until
+						the `medium` breakpoint
 					</p>
 				</div>
 			</Section>
@@ -244,7 +265,7 @@ storiesOf('Section', module)
 			</Flex>
 		</div>
 	))
-	.addWithInfo('isLoading', () => (
+	.add('isLoading', () => (
 		<div style={{ height: '100vh', width: '100%', marginBottom: '20px' }}>
 			<div style={{ maxWidth: '850px', margin: 'auto', marginTop: '15px' }}>
 				<Section isLoading style={shadingStyles}>
@@ -252,28 +273,31 @@ storiesOf('Section', module)
 						<h2 className="text--sectionTitle">About us</h2>
 						<div className="runningText">
 							<p>
-								Lorem Ipsum is simply dummy text of the printing and typesetting
-								industry. Lorem Ipsum has been the industry's standard dummy
-								text ever since the 1500s, when an unknown printer took a galley
-								of type and scrambled it to make a type specimen book. It has
-								survived not only five centuries, but also the leap into
-								electronic typesetting, remaining essentially unchanged. It was
-								popularised in the 1960s with the release of Letraset sheets
-								containing Lorem Ipsum passages, and more recently with desktop
-								publishing software like Aldus PageMaker including versions of
-								Lorem Ipsum.
+								Lorem Ipsum is simply dummy text of the printing and
+								typesetting industry. Lorem Ipsum has been the industry's
+								standard dummy text ever since the 1500s, when an unknown
+								printer took a galley of type and scrambled it to make a
+								type specimen book. It has survived not only five
+								centuries, but also the leap into electronic typesetting,
+								remaining essentially unchanged. It was popularised in the
+								1960s with the release of Letraset sheets containing Lorem
+								Ipsum passages, and more recently with desktop publishing
+								software like Aldus PageMaker including versions of Lorem
+								Ipsum.
 							</p>
 							<p>
-								It is a long established fact that a reader will be distracted
-								by the readable content of a page when looking at its layout.
-								The point of using Lorem Ipsum is that it has a more-or-less
-								normal distribution of letters, as opposed to using 'Content
-								here, content here', making it look like readable English. Many
-								desktop publishing packages and web page editors now use Lorem
-								Ipsum as their default model text, and a search for 'lorem
-								ipsum' will uncover many web sites still in their infancy.
-								Various versions have evolved over the years, sometimes by
-								accident, sometimes on purpose (injected humour and the like).
+								It is a long established fact that a reader will be
+								distracted by the readable content of a page when looking
+								at its layout. The point of using Lorem Ipsum is that it
+								has a more-or-less normal distribution of letters, as
+								opposed to using 'Content here, content here', making it
+								look like readable English. Many desktop publishing
+								packages and web page editors now use Lorem Ipsum as their
+								default model text, and a search for 'lorem ipsum' will
+								uncover many web sites still in their infancy. Various
+								versions have evolved over the years, sometimes by
+								accident, sometimes on purpose (injected humour and the
+								like).
 							</p>
 						</div>
 						<ul className="inlineblockList">
@@ -336,7 +360,10 @@ storiesOf('Section', module)
 								</a>
 							</li>
 							<li>
-								<a className="token token--link" href="/topics/563/opensource">
+								<a
+									className="token token--link"
+									href="/topics/563/opensource"
+								>
 									Open Source
 								</a>
 							</li>
@@ -351,7 +378,7 @@ storiesOf('Section', module)
 			</div>
 		</div>
 	))
-	.addWithInfo('isLoading with loadingProps', () => (
+	.add('isLoading with loadingProps', () => (
 		<div style={{ height: '100vh', width: '100%', marginBottom: '20px' }}>
 			<div style={{ maxWidth: '850px', margin: 'auto', marginTop: '15px' }}>
 				<Section
@@ -367,28 +394,31 @@ storiesOf('Section', module)
 						<h2 className="text--sectionTitle">About us</h2>
 						<div className="runningText">
 							<p>
-								Lorem Ipsum is simply dummy text of the printing and typesetting
-								industry. Lorem Ipsum has been the industry's standard dummy
-								text ever since the 1500s, when an unknown printer took a galley
-								of type and scrambled it to make a type specimen book. It has
-								survived not only five centuries, but also the leap into
-								electronic typesetting, remaining essentially unchanged. It was
-								popularised in the 1960s with the release of Letraset sheets
-								containing Lorem Ipsum passages, and more recently with desktop
-								publishing software like Aldus PageMaker including versions of
-								Lorem Ipsum.
+								Lorem Ipsum is simply dummy text of the printing and
+								typesetting industry. Lorem Ipsum has been the industry's
+								standard dummy text ever since the 1500s, when an unknown
+								printer took a galley of type and scrambled it to make a
+								type specimen book. It has survived not only five
+								centuries, but also the leap into electronic typesetting,
+								remaining essentially unchanged. It was popularised in the
+								1960s with the release of Letraset sheets containing Lorem
+								Ipsum passages, and more recently with desktop publishing
+								software like Aldus PageMaker including versions of Lorem
+								Ipsum.
 							</p>
 							<p>
-								It is a long established fact that a reader will be distracted
-								by the readable content of a page when looking at its layout.
-								The point of using Lorem Ipsum is that it has a more-or-less
-								normal distribution of letters, as opposed to using 'Content
-								here, content here', making it look like readable English. Many
-								desktop publishing packages and web page editors now use Lorem
-								Ipsum as their default model text, and a search for 'lorem
-								ipsum' will uncover many web sites still in their infancy.
-								Various versions have evolved over the years, sometimes by
-								accident, sometimes on purpose (injected humour and the like).
+								It is a long established fact that a reader will be
+								distracted by the readable content of a page when looking
+								at its layout. The point of using Lorem Ipsum is that it
+								has a more-or-less normal distribution of letters, as
+								opposed to using 'Content here, content here', making it
+								look like readable English. Many desktop publishing
+								packages and web page editors now use Lorem Ipsum as their
+								default model text, and a search for 'lorem ipsum' will
+								uncover many web sites still in their infancy. Various
+								versions have evolved over the years, sometimes by
+								accident, sometimes on purpose (injected humour and the
+								like).
 							</p>
 						</div>
 						<ul className="inlineblockList">
@@ -451,7 +481,10 @@ storiesOf('Section', module)
 								</a>
 							</li>
 							<li>
-								<a className="token token--link" href="/topics/563/opensource">
+								<a
+									className="token token--link"
+									href="/topics/563/opensource"
+								>
 									Open Source
 								</a>
 							</li>

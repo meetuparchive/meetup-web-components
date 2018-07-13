@@ -3,9 +3,8 @@ import AccordionPanelGroup from './AccordionPanelGroup';
 import AccordionPanel from './AccordionPanel';
 import { storiesOf } from '@storybook/react';
 import { decorateAction } from '@storybook/addon-actions';
-import { decorateWithBasics } from '../utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { textContent1, textContent2 } from '../../__mocks__/textContentMocks';
-// import Button from '../forms/Button';
 
 const callbackAction = decorateAction([args => ['Am I open?', args[1]]]);
 
@@ -50,14 +49,18 @@ const defaultPanels = [
 
 storiesOf('Accordion', module)
 	.addDecorator(decorateWithBasics)
-	.addWithInfo('default', 'Basic Accordion group', () => (
-		<div className="span--100 padding--all">
-			<AccordionPanelGroup accordionPanels={defaultPanels} />
-		</div>
-	))
-	.addWithInfo(
+	.addDecorator(decorateWithInfo)
+	.add(
+		'default',
+		() => (
+			<div className="span--100 padding--all">
+				<AccordionPanelGroup accordionPanels={defaultPanels} />
+			</div>
+		),
+		{ info: { text: 'Basic Accordion group' } }
+	)
+	.add(
 		'with onClick callback',
-		'add an onClickCallback prop to a panel',
 		() => (
 			<div className="span--100 padding--all">
 				<AccordionPanelGroup
@@ -107,11 +110,11 @@ storiesOf('Accordion', module)
 					]}
 				/>
 			</div>
-		)
+		),
+		{ info: { text: 'add an onClickCallback prop to a panel' } }
 	)
-	.addWithInfo(
+	.add(
 		'Custom icon indicator',
-		'Adds custom icons via AccordionPanelGroup props',
 		() => (
 			<div className="span--100 padding--all">
 				<AccordionPanelGroup
@@ -120,16 +123,16 @@ storiesOf('Accordion', module)
 					accordionPanels={defaultPanels}
 				/>
 			</div>
-		)
+		),
+		{ info: { text: 'Adds custom icons via AccordionPanelGroup props' } }
 	)
-	.addWithInfo('ToggleSwitch indicator', 'Show the indicator as a switch', () => (
+	.add('ToggleSwitch indicator', 'Show the indicator as a switch', () => (
 		<div className="span--100 padding--all">
 			<AccordionPanelGroup indicatorSwitch accordionPanels={defaultPanels} />
 		</div>
 	))
-	.addWithInfo(
+	.add(
 		'onToggleClick',
-		'overrides toggle open behavior with custom click handler',
 		() => (
 			<div className="span--100 padding--all">
 				<AccordionPanelGroup
@@ -150,11 +153,11 @@ storiesOf('Accordion', module)
 					]}
 				/>
 			</div>
-		)
+		),
+		{ info: { text: 'overrides toggle open behavior with custom click handler' } }
 	)
-	.addWithInfo(
+	.add(
 		'Left-aligned icon',
-		'Aligns icons left using AccordionPanelGroup props',
 		() => (
 			<div className="span--100 padding--all">
 				<AccordionPanelGroup
@@ -162,11 +165,11 @@ storiesOf('Accordion', module)
 					accordionPanels={defaultPanels}
 				/>
 			</div>
-		)
+		),
+		{ info: { text: 'Aligns icons left using AccordionPanelGroup props' } }
 	)
-	.addWithInfo(
+	.add(
 		'Panel open by default',
-		'Sets first panel to be open by default via the AccordionPanel props',
 		() => (
 			<div className="span--100 padding--all">
 				<AccordionPanelGroup
@@ -177,11 +180,16 @@ storiesOf('Accordion', module)
 					]}
 				/>
 			</div>
-		)
+		),
+		{
+			info: {
+				text:
+					'Sets first panel to be open by default via the AccordionPanel props',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'Not multiSelectable',
-		'Overrides default multiSelectable prop in AccordionPanelGroup so only one panel can be open at a time',
 		() => (
 			<div className="span--100 padding--all">
 				<AccordionPanelGroup
@@ -189,5 +197,11 @@ storiesOf('Accordion', module)
 					accordionPanels={defaultPanels}
 				/>
 			</div>
-		)
+		),
+		{
+			info: {
+				text:
+					'Overrides default multiSelectable prop in AccordionPanelGroup so only one panel can be open at a time',
+			},
+		}
 	);

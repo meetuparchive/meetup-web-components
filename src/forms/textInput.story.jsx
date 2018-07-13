@@ -2,14 +2,15 @@ import React from 'react';
 import TextInput from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@storybook/react';
-import { decorateWithBasics } from '../utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
 storiesOf('TextInput', module)
 	.addDecorator(decorateWithBasics)
-	.addWithInfo('type "tel"', null, () => (
+	.addDecorator(decorateWithInfo)
+	.add('type "tel"', () => (
 		<TextInput type="tel" label="Telephone Number" id="telephone" />
 	))
-	.addWithInfo('default', null, () => (
+	.add('default', () => (
 		<TextInput
 			label="Your name"
 			id="fullname"
@@ -17,7 +18,7 @@ storiesOf('TextInput', module)
 			placeholder="enter your name here"
 		/>
 	))
-	.addWithInfo('with value', null, () => (
+	.add('with value', () => (
 		<TextInput
 			label="Your name"
 			id="fullname"
@@ -25,7 +26,7 @@ storiesOf('TextInput', module)
 			defaultValue="Phife Dawg"
 		/>
 	))
-	.addWithInfo('disabled', null, () => (
+	.add('disabled', () => (
 		<TextInput
 			label="Your name"
 			id="fullname"
@@ -34,7 +35,7 @@ storiesOf('TextInput', module)
 			disabled
 		/>
 	))
-	.addWithInfo('error state', null, () => (
+	.add('error state', () => (
 		<TextInput
 			label="Your name"
 			id="fullname"
@@ -43,7 +44,7 @@ storiesOf('TextInput', module)
 			error="Not so fast. You have an error."
 		/>
 	))
-	.addWithInfo('error state as element', null, () => {
+	.add('error state as element', () => {
 		return (
 			<TextInput
 				label="Your name"
@@ -54,7 +55,7 @@ storiesOf('TextInput', module)
 			/>
 		);
 	})
-	.addWithInfo('with helper text', null, () => (
+	.add('with helper text', () => (
 		<TextInput
 			label="Your name"
 			id="fullname"
@@ -62,7 +63,7 @@ storiesOf('TextInput', module)
 			helperText="Names cannot contain special characters"
 		/>
 	))
-	.addWithInfo('required', null, () => {
+	.add('required', () => {
 		return (
 			<form>
 				<TextInput
@@ -79,7 +80,7 @@ storiesOf('TextInput', module)
 			</form>
 		);
 	})
-	.addWithInfo('search', null, () => {
+	.add('search', () => {
 		return (
 			<form>
 				<TextInput
@@ -95,7 +96,7 @@ storiesOf('TextInput', module)
 			</form>
 		);
 	})
-	.addWithInfo('with icon', null, () => (
+	.add('with icon', () => (
 		<TextInput
 			label="Your name"
 			id="fullname"
@@ -105,10 +106,8 @@ storiesOf('TextInput', module)
 			iconShape="search"
 		/>
 	))
-	.addWithInfo(
+	.add(
 		'with char counter if you provide maxLength',
-		`Note: updating field with charcounter relies on parent to give value,
-			thats why you cant interact with the field in this story`,
 		() => {
 			const rules = {
 				maxLength: 20,
@@ -124,9 +123,15 @@ storiesOf('TextInput', module)
 					{...rules}
 				/>
 			);
+		},
+		{
+			info: {
+				text: `Note: updating field with charcounter relies on parent to give value, 
+            thats why you cant interact with the field in this story`,
+			},
 		}
 	)
-	.addWithInfo('has a pattern for min length', null, () => {
+	.add('has a pattern for min length', () => {
 		const rules = {
 			pattern: '.{5,10}',
 		};
