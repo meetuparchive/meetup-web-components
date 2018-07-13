@@ -151,7 +151,7 @@ exports[`AdminBar renders correctly 1`] = `
 
 exports[`AdminBar renders correctly when QLd 1`] = `
 <Flex
-  className="groupAdminLinks warning"
+  className="groupAdminLinks greenbar"
 >
   <FlexItem
     className="inverted padding--top-half"
@@ -305,7 +305,7 @@ exports[`AdminBar renders correctly when QLd 1`] = `
 
 exports[`AdminBar renders correctly when isProdApi 1`] = `
 <Flex
-  className="groupAdminLinks warning"
+  className="groupAdminLinks redbar"
 >
   <FlexItem
     className="inverted padding--top-half"
