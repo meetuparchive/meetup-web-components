@@ -21,4 +21,13 @@ storiesOf('AdminBar', module)
 	))
 	.addWithInfo('isProdApi and isQL', () => (
 		<AdminBar group={MOCK_GROUP} self={{ id: '' }} isAdmin isProdApi isQL />
+	))
+	.addWithInfo('group is the optional param', () => (
+		<AdminBar self={{ id: '' }} isAdmin isProdApi isQL />
+	))
+	.addWithInfo('when QL on dev the bar color is green', () => (
+		<AdminBar self={{ id: '' }} isAdmin isQL />
+	))
+	.addWithInfo('when QL on prod the bar color is red', () => (
+		<AdminBar self={{ id: '' }} isAdmin isProdApi isQL />
 	));
