@@ -35,7 +35,12 @@ storiesOf('Textarea', module)
 				</Section>
 			</Bounds>
 		),
-		{ info: { text: 'Usage example where the textarea expands depending on the inner content' } }
+		{
+			info: {
+				text:
+					'Usage example where the textarea expands depending on the inner content',
+			},
+		}
 	)
 	.add(
 		'min and max height',
@@ -70,7 +75,12 @@ storiesOf('Textarea', module)
 				</Section>
 			</Bounds>
 		),
-		{ info: { text: 'Usage example where the textarea height is set with the rows attribute' } }
+		{
+			info: {
+				text:
+					'Usage example where the textarea height is set with the rows attribute',
+			},
+		}
 	)
 	.add('error state', () => (
 		<Bounds>
