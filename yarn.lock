@@ -9476,9 +9476,9 @@ swarm-icons@^3.4:
   version "3.4.334"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-3.4.334.tgz#a6fcb73605a481885e1e0367e9ad6273cccec6ae"
 
-swarm-sasstools@4.2.404:
-  version "4.2.404"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-4.2.404.tgz#1df8fcfed26cd151eaa662ba3a14389b27bf8ef4"
+swarm-sasstools@5.0.412:
+  version "5.0.412"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-5.0.412.tgz#7675f40b6a9f895851a37a4e16639f6736613bdf"
   dependencies:
     sass-rem "^1.2.4"
 
