@@ -4,14 +4,18 @@ import { storiesOf } from '@storybook/react';
 import { decorateWithInfo } from '../utils/decorators';
 
 storiesOf('TimeInput', module)
-	.addWithInfo(
+	.addDecorator(decorateWithInfo)
+	.add(
 		'default',
-		'renders a time input, provided values are in 24hr time (ex 13:00)',
-		() => <TimeInput name="time" value="14:30" label="Dentist appt time" />
+		() => <TimeInput name="time" value="14:30" label="Dentist appt time" />,
+		{
+			info: {
+				text: 'renders a time input, provided values are in 24hr time (ex 13:00)',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'12hr time (text input fallback)',
-		'this example only makes sense in a browser that does not support input[type=time]. renders a time input, provided values are in 24hr time (ex 13:00), but are displayed in the input as 12 hour time',
 		() => (
 			<TimeInput
 				is24Hr={false}
@@ -20,9 +24,14 @@ storiesOf('TimeInput', module)
 				label="Dentist appt time"
 				forceTextInput
 			/>
-		)
+		),
+		{
+			info: {
+				text:
+					'this example only makes sense in a browser that does not support input[type=time]. renders a time input, provided values are in 24hr time (ex 13:00), but are displayed in the input as 12 hour time',
+			},
+		}
 	)
-	.addDecorator(decorateWithInfo)
 	.add('initial value', () => (
 		<div className="span--25">
 			<TimeInput name="time" value="13:00" label="End time" />

@@ -7,7 +7,8 @@ import Textarea from './Textarea';
 
 storiesOf('Textarea', module)
 	.addDecorator(decorateWithBasics)
-	.addWithInfo('default', () => (
+	.addDecorator(decorateWithInfo)
+	.add('default', () => (
 		<Bounds>
 			<Section>
 				<Textarea
@@ -19,9 +20,8 @@ storiesOf('Textarea', module)
 			</Section>
 		</Bounds>
 	))
-	.addWithInfo(
+	.add(
 		'auto resizing',
-		'Usage example where the textarea expands depending on the inner content',
 		() => (
 			<Bounds>
 				<Section>
@@ -34,11 +34,16 @@ storiesOf('Textarea', module)
 					/>
 				</Section>
 			</Bounds>
-		)
+		),
+		{
+			info: {
+				text:
+					'Usage example where the textarea expands depending on the inner content',
+			},
+		}
 	)
-	.addWithInfo(
+	.add(
 		'min and max height',
-		'Usage example where the textarea has a min and max height',
 		() => (
 			<Bounds>
 				<Section>
@@ -52,11 +57,11 @@ storiesOf('Textarea', module)
 					/>
 				</Section>
 			</Bounds>
-		)
+		),
+		{ info: { text: 'Usage example where the textarea has a min and max height' } }
 	)
-	.addWithInfo(
+	.add(
 		'set rows',
-		'Usage example where the textarea height is set with the rows attribute',
 		() => (
 			<Bounds>
 				<Section>
@@ -69,9 +74,14 @@ storiesOf('Textarea', module)
 					/>
 				</Section>
 			</Bounds>
-		)
+		),
+		{
+			info: {
+				text:
+					'Usage example where the textarea height is set with the rows attribute',
+			},
+		}
 	)
-	.addDecorator(decorateWithInfo)
 	.add('error state', () => (
 		<Bounds>
 			<Section>

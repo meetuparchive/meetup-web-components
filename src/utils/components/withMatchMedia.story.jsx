@@ -1,4 +1,5 @@
 import React from 'react';
+import { decorateWithInfo } from '../decorators';
 import { storiesOf } from '@storybook/react';
 
 import withMatchMedia from './withMatchMedia';
@@ -25,9 +26,9 @@ class TestComponent extends React.Component {
 						<h1 className="text--display1">Viewport-aware props</h1>
 						<p>
 							By wrapping <code>TestComponent</code> with{' '}
-							<code className="text--red">withMatchMedia</code>, we can use the
-							breakpoint props it provides to conditionally render elements
-							based on viewport size.
+							<code className="text--red">withMatchMedia</code>, we can use
+							the breakpoint props it provides to conditionally render
+							elements based on viewport size.
 						</p>
 						<p className="text--bold">
 							Resize your browser to see it in action.
@@ -59,11 +60,10 @@ class TestComponent extends React.Component {
 }
 const TestComponentWithMatchMedia = withMatchMedia(TestComponent);
 
-storiesOf(
-	'withMatchMedia',
-	module
-).addWithInfo(
-	'Test component using provided media props',
-	'Basic example of match media component usage.',
-	() => <TestComponentWithMatchMedia />
-);
+storiesOf('withMatchMedia', module)
+	.addDecorator(decorateWithInfo)
+	.add(
+		'Test component using provided media props',
+		() => <TestComponentWithMatchMedia />,
+		{ info: { text: 'Basic example of match media component usage.' } }
+	);
