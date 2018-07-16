@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { SelectInput } from './SelectInput';
+import SelectInput from './SelectInput';
 
 const testOptions = [
 	{ label: 'One', value: '1' },
@@ -9,18 +9,9 @@ const testOptions = [
 	{ label: 'Four', value: '4', disabled: true },
 ];
 const nameAttribute = 'testSelect';
-const idAttribute = 'testSelectID';
 
 const BasicSelect = (
 	<SelectInput label="Test select" name={nameAttribute} options={testOptions} />
-);
-const BasicSelectWithId = (
-	<SelectInput
-		label="Test select"
-		name={nameAttribute}
-		id={idAttribute}
-		options={testOptions}
-	/>
 );
 const AdvancedSelect = ({ onChange, value }) => (
 	<SelectInput
@@ -37,24 +28,6 @@ describe('SelectInput basic', () => {
 
 	it('renders into the DOM', () => {
 		expect(component).toMatchSnapshot();
-	});
-	it('should have a NAME attribute', () => {
-		expect(component.find('select').prop('name')).toBe(nameAttribute);
-	});
-	it('default value should fall back on first option value', () => {
-		expect(component.instance().state.value).toBe(testOptions[0].value);
-	});
-});
-
-describe('SelectInput basic with an ID and a name', () => {
-	const component = shallow(BasicSelect);
-	const componentWithId = shallow(BasicSelectWithId);
-
-	it('should have a ID attribute matching NAME when ID is not passed in', () => {
-		expect(component.find('select').prop('id')).toBe(nameAttribute);
-	});
-	it('should have a ID attribute matching ID when ID is passed in', () => {
-		expect(componentWithId.find('select').prop('id')).toBe(idAttribute);
 	});
 });
 
@@ -76,8 +49,8 @@ describe('SelectInput advanced', () => {
 
 	it('should set correct value specified in props', () => {
 		const CUSTOM_VALUE = '2';
-		const component = mount(<AdvancedSelect value={CUSTOM_VALUE} />);
-		expect(component.prop('value')).toBe(CUSTOM_VALUE);
+		const wrapper = shallow(<AdvancedSelect value={CUSTOM_VALUE} />).dive();
+		expect(wrapper.state('value')).toBe(CUSTOM_VALUE);
 	});
 
 	it('should throw error for invalid default value', () => {
