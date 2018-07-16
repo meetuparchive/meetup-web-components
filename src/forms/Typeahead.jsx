@@ -8,8 +8,7 @@ import TextInput from './TextInput';
 export const TA_DROPDOWN_CLASSNAME = 'typeahead-dropdown';
 export const TA_ITEM_CLASSNAME = 'typeahead-item';
 
-const defaultItemToString = itemValue =>
-	typeof itemValue === 'string' ? itemValue : '';
+const defaultItemToString = itemValue => (typeof itemValue === 'string' ? itemValue : '');
 
 /**
  * @module typeahead
@@ -110,10 +109,11 @@ class Typeahead extends React.PureComponent {
 							})}
 						/>
 						{Boolean(isOpen && items && items.length) && (
-							<div
+							<ul
 								className={cx(TA_DROPDOWN_CLASSNAME, {
 									[`${TA_DROPDOWN_CLASSNAME}--inline`]: openInline,
 								})}
+								role="list"
 								style={
 									height && {
 										height: height,
@@ -129,7 +129,8 @@ class Typeahead extends React.PureComponent {
 											selectedItem.includes(item.props.value);
 
 										return (
-											<div
+											<li
+												role="listitem"
 												{...getItemProps({
 													item: item.props.value,
 													i,
@@ -139,19 +140,22 @@ class Typeahead extends React.PureComponent {
 														TA_ITEM_CLASSNAME,
 														item.props.className,
 														{
-															'typeahead-item--isActive': highlightedIndex == i,
+															'typeahead-item--isActive':
+																highlightedIndex == i,
 														}
 													),
 													...item.props,
 												})}
 											>
 												{typeof item.props.children === 'function'
-													? item.props.children({ isSelected: selected })
+													? item.props.children({
+															isSelected: selected,
+													  })
 													: item.props.children}
-											</div>
+											</li>
 										);
 									})}
-							</div>
+							</ul>
 						)}
 					</div>
 				)}
