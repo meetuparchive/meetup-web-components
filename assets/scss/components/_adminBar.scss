@@ -6,7 +6,12 @@
 	z-index: 9999;
 }
 
-.warning {
+.redbar {
 	background-color: var(--c-red);
+	width: 100%;
+}
+
+.greenbar {
+	background-color: var(--c-teal);
 	width: 100%;
 }
