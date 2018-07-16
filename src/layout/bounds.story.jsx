@@ -1,22 +1,27 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { decorateWithInfo } from '../utils/decorators';
 import Bounds from './Bounds';
 
 storiesOf('Bounds', module)
-	.addWithInfo('default', 'By default, `Bounds` is wide', () => (
-		<div style={{ width: '100%' }}>
-			<Bounds>
-				<h3 className="text--sectionTitle">Normal (wide) Bounds</h3>
-				<p>
-					Bounds is used as a non-visual content container that manages content
-					measure and centers children.
-				</p>
-			</Bounds>
-		</div>
-	))
-	.addWithInfo(
+	.addDecorator(decorateWithInfo)
+	.add(
+		'default',
+		() => (
+			<div style={{ width: '100%' }}>
+				<Bounds>
+					<h3 className="text--sectionTitle">Normal (wide) Bounds</h3>
+					<p>
+						Bounds is used as a non-visual content container that manages
+						content measure and centers children.
+					</p>
+				</Bounds>
+			</div>
+		),
+		{ info: { text: 'By default, `Bounds` is wide' } }
+	)
+	.add(
 		'narrow',
-		'Use the boolean prop `narrow` to create a narrow bounds with a smaller `max-width`',
 		() => (
 			<div style={{ width: '100%' }}>
 				<Bounds narrow>
@@ -27,9 +32,15 @@ storiesOf('Bounds', module)
 					</p>
 				</Bounds>
 			</div>
-		)
+		),
+		{
+			info: {
+				text:
+					'Use the boolean prop `narrow` to create a narrow bounds with a smaller `max-width`',
+			},
+		}
 	)
-	.addWithInfo('isLoading', () => (
+	.add('isLoading', () => (
 		<div style={{ width: '100%' }}>
 			<Bounds isLoading>
 				<h3 className="text--sectionTitle">Loading Bounds</h3>
@@ -44,7 +55,7 @@ storiesOf('Bounds', module)
 			</Bounds>
 		</div>
 	))
-	.addWithInfo('isLoading with loadingProps', () => (
+	.add('isLoading with loadingProps', () => (
 		<div style={{ width: '100%' }}>
 			<Bounds
 				isLoading

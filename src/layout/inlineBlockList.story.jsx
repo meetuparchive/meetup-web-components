@@ -1,4 +1,5 @@
 import React from 'react';
+import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
@@ -20,16 +21,20 @@ const basicItems = [
 ];
 
 storiesOf('InlineBlockList', module)
-	.addWithInfo('default', 'Basic usage of InlineBlockList', () => (
-		<Bounds>
-			<Section>
-				<InlineBlockList items={basicItems} />
-			</Section>
-		</Bounds>
-	))
-	.addWithInfo(
+	.addDecorator(decorateWithInfo)
+	.add(
+		'default',
+		() => (
+			<Bounds>
+				<Section>
+					<InlineBlockList items={basicItems} />
+				</Section>
+			</Bounds>
+		),
+		{ info: { text: 'Basic usage of InlineBlockList' } }
+	)
+	.add(
 		'with separator',
-		'Basic usage of InlineBlockList with a middot between items',
 		() => (
 			<Bounds>
 				<Section>
@@ -42,37 +47,59 @@ storiesOf('InlineBlockList', module)
 					/>
 				</Section>
 			</Bounds>
-		)
+		),
+		{ info: { text: 'Basic usage of InlineBlockList with a middot between items' } }
 	)
-	.addWithInfo(
+	.add(
 		'using elements',
-		'InlineBlockList using elements as items',
 		() => (
 			<Bounds>
 				<Section>
 					<InlineBlockList
 						items={[
-							<img src="https://placekitten.com/g/72/72" alt="fluffy kitten" />,
-							<img src="https://placekitten.com/g/72/72" alt="fluffy kitten" />,
-							<img src="https://placekitten.com/g/72/72" alt="fluffy kitten" />,
-							<img src="https://placekitten.com/g/72/72" alt="fluffy kitten" />,
-							<img src="https://placekitten.com/g/72/72" alt="fluffy kitten" />,
-							<img src="https://placekitten.com/g/72/72" alt="fluffy kitten" />,
-							<img src="https://placekitten.com/g/72/72" alt="fluffy kitten" />,
+							<img
+								src="https://placekitten.com/g/72/72"
+								alt="fluffy kitten"
+							/>,
+							<img
+								src="https://placekitten.com/g/72/72"
+								alt="fluffy kitten"
+							/>,
+							<img
+								src="https://placekitten.com/g/72/72"
+								alt="fluffy kitten"
+							/>,
+							<img
+								src="https://placekitten.com/g/72/72"
+								alt="fluffy kitten"
+							/>,
+							<img
+								src="https://placekitten.com/g/72/72"
+								alt="fluffy kitten"
+							/>,
+							<img
+								src="https://placekitten.com/g/72/72"
+								alt="fluffy kitten"
+							/>,
+							<img
+								src="https://placekitten.com/g/72/72"
+								alt="fluffy kitten"
+							/>,
 						]}
 					/>
 				</Section>
 			</Bounds>
-		)
+		),
+		{ info: { text: 'InlineBlockList using elements as items' } }
 	)
-	.addWithInfo('isLoading', () => (
+	.add('isLoading', () => (
 		<Bounds>
 			<Section>
 				<InlineBlockList isLoading items={basicItems} />
 			</Section>
 		</Bounds>
 	))
-	.addWithInfo('isLoading with loadingProps', () => (
+	.add('isLoading with loadingProps', () => (
 		<Bounds>
 			<Section>
 				<InlineBlockList
@@ -87,9 +114,8 @@ storiesOf('InlineBlockList', module)
 			</Section>
 		</Bounds>
 	))
-	.addWithInfo(
+	.add(
 		'vertical alignment',
-		'Elements as items; using `verticalAlign` prop',
 		() => (
 			<Bounds>
 				<Section>
@@ -98,10 +124,22 @@ storiesOf('InlineBlockList', module)
 							verticalAlign="top"
 							items={[
 								<code>verticalAlign="top"</code>,
-								<img src="https://placeimg.com/80/120/animals" alt="animal" />,
-								<img src="https://placeimg.com/60/60/animals" alt="animal" />,
-								<img src="https://placeimg.com/80/120/animals" alt="animal" />,
-								<img src="https://placeimg.com/60/60/animals" alt="animal" />,
+								<img
+									src="https://placeimg.com/80/120/animals"
+									alt="animal"
+								/>,
+								<img
+									src="https://placeimg.com/60/60/animals"
+									alt="animal"
+								/>,
+								<img
+									src="https://placeimg.com/80/120/animals"
+									alt="animal"
+								/>,
+								<img
+									src="https://placeimg.com/60/60/animals"
+									alt="animal"
+								/>,
 							]}
 						/>
 					</Chunk>
@@ -110,10 +148,22 @@ storiesOf('InlineBlockList', module)
 							verticalAlign="middle"
 							items={[
 								<code>verticalAlign="middle"</code>,
-								<img src="https://placeimg.com/80/120/animals" alt="animal" />,
-								<img src="https://placeimg.com/60/60/animals" alt="animal" />,
-								<img src="https://placeimg.com/80/120/animals" alt="animal" />,
-								<img src="https://placeimg.com/60/60/animals" alt="animal" />,
+								<img
+									src="https://placeimg.com/80/120/animals"
+									alt="animal"
+								/>,
+								<img
+									src="https://placeimg.com/60/60/animals"
+									alt="animal"
+								/>,
+								<img
+									src="https://placeimg.com/80/120/animals"
+									alt="animal"
+								/>,
+								<img
+									src="https://placeimg.com/60/60/animals"
+									alt="animal"
+								/>,
 							]}
 						/>
 					</Chunk>
@@ -122,14 +172,27 @@ storiesOf('InlineBlockList', module)
 							verticalAlign="bottom"
 							items={[
 								<code>verticalAlign="bottom"</code>,
-								<img src="https://placeimg.com/80/120/animals" alt="animal" />,
-								<img src="https://placeimg.com/60/60/animals" alt="animal" />,
-								<img src="https://placeimg.com/80/120/animals" alt="animal" />,
-								<img src="https://placeimg.com/60/60/animals" alt="animal" />,
+								<img
+									src="https://placeimg.com/80/120/animals"
+									alt="animal"
+								/>,
+								<img
+									src="https://placeimg.com/60/60/animals"
+									alt="animal"
+								/>,
+								<img
+									src="https://placeimg.com/80/120/animals"
+									alt="animal"
+								/>,
+								<img
+									src="https://placeimg.com/60/60/animals"
+									alt="animal"
+								/>,
 							]}
 						/>
 					</Chunk>
 				</Section>
 			</Bounds>
-		)
+		),
+		{ info: { text: 'Elements as items; using `verticalAlign` prop' } }
 	);

@@ -8,10 +8,10 @@ const MOCK_IMAGE_SRC = 'http://placekitten.com/g/400/400';
 
 storiesOf('Avatar', module)
 	.addDecorator(decorateWithBasics)
-	.addWithInfo('default', 'This is the basic usage with the component.', () => (
-		<Avatar src={MOCK_IMAGE_SRC} />
-	))
 	.addDecorator(decorateWithInfo)
+	.add('default', () => <Avatar src={MOCK_IMAGE_SRC} />, {
+		info: { text: 'This is the basic usage with the component.' },
+	})
 	.add('small', () => <Avatar src={MOCK_IMAGE_SRC} small />)
 	.add('large', () => <Avatar src={MOCK_IMAGE_SRC} large />)
 	.add('xxlarge', () => <Avatar src={MOCK_IMAGE_SRC} xxlarge />)

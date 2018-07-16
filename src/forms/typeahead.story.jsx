@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { decorateWithBasics } from '../utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
 import Typeahead from './Typeahead';
 import TypeaheadItem from './TypeaheadItem';
@@ -156,13 +156,11 @@ const typeaheadItemsObjValues = [
 
 storiesOf('Typeahead', module)
 	.addDecorator(decorateWithBasics)
-	.addWithInfo('default', () => (
-		<Typeahead
-			items={typeaheadItems}
-			inputProps={{ name: 'typeaheadInputName' }}
-		/>
+	.addDecorator(decorateWithInfo)
+	.add('default', () => (
+		<Typeahead items={typeaheadItems} inputProps={{ name: 'typeaheadInputName' }} />
 	))
-	.addWithInfo('scrolling with max height', () => (
+	.add('scrolling with max height', () => (
 		<div>
 			<Typeahead
 				items={typeaheadItems}
@@ -174,7 +172,7 @@ storiesOf('Typeahead', module)
 			/>
 		</div>
 	))
-	.addWithInfo('with value', () => (
+	.add('with value', () => (
 		<Typeahead
 			items={typeaheadItems}
 			defaultSelectedItem={typeaheadItems[0].props.value}
@@ -184,7 +182,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('with placeholder', () => (
+	.add('with placeholder', () => (
 		<Typeahead
 			items={typeaheadItems}
 			inputProps={{
@@ -194,7 +192,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('with helperText', () => (
+	.add('with helperText', () => (
 		<Typeahead
 			items={typeaheadItems}
 			inputProps={{
@@ -204,7 +202,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('disabled', () => (
+	.add('disabled', () => (
 		<Typeahead
 			items={typeaheadItems}
 			inputProps={{
@@ -214,7 +212,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('error', () => (
+	.add('error', () => (
 		<Typeahead
 			items={typeaheadItems}
 			inputProps={{
@@ -224,7 +222,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('required', () => (
+	.add('required', () => (
 		<Typeahead
 			items={typeaheadItems}
 			inputProps={{
@@ -234,7 +232,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('search', () => (
+	.add('search', () => (
 		<Typeahead
 			items={typeaheadItems}
 			inputProps={{
@@ -244,7 +242,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('with icon', () => (
+	.add('with icon', () => (
 		<Typeahead
 			items={typeaheadItems}
 			inputProps={{
@@ -254,7 +252,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('multiple values', () => (
+	.add('multiple values', () => (
 		<MultiselectTypeahead
 			items={typeaheadCheckboxes}
 			inputProps={{
@@ -263,7 +261,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('openOnFocus', () => (
+	.add('openOnFocus', () => (
 		<Typeahead
 			openOnFocus
 			items={typeaheadItems}
@@ -273,7 +271,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('openOnSelect', () => (
+	.add('openOnSelect', () => (
 		<Typeahead
 			openOnSelect
 			items={typeaheadItems}
@@ -283,7 +281,7 @@ storiesOf('Typeahead', module)
 			}}
 		/>
 	))
-	.addWithInfo('openInline', () => (
+	.add('openInline', () => (
 		<div>
 			<Typeahead
 				openInline
@@ -296,7 +294,7 @@ storiesOf('Typeahead', module)
 			<p>The menu will not hide this text</p>
 		</div>
 	))
-	.addWithInfo('using itemToString (useful for value as Object)', () => (
+	.add('using itemToString (useful for value as Object)', () => (
 		<Typeahead
 			items={typeaheadItemsObjValues}
 			itemToString={i => (i ? i.name : '')}

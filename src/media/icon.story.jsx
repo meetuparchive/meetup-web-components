@@ -28,13 +28,11 @@ storiesOf('Icon', module)
 	.add('X-Large', () => <Icon shape={ICON_NAME} size="xl" />)
 	.add('XX-Large', () => <Icon shape={ICON_NAME} size="xxl" />)
 	.add('Passed color', () => <Icon shape={ICON_NAME} color="#F13959" />)
-	.addWithInfo(
-		'Circled',
-		'The boolean prop `circled` adds an enclosing circle around the icon.',
-		() => <Icon shape="external-twitter" size="l" circled />
-	)
-	.addWithInfo(
-		'Loading indicator',
-		'The `updates` icon is animated by default.',
-		() => <Icon shape="updates" size="l" />
-	);
+	.add('Circled', () => <Icon shape="external-twitter" size="l" circled />, {
+		info: {
+			text: 'The boolean prop `circled` adds an enclosing circle around the icon.',
+		},
+	})
+	.add('Loading indicator', () => <Icon shape="updates" size="l" />, {
+		info: { text: 'The `updates` icon is animated by default.' },
+	});

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { decorateWithInfo } from '../utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
 import RadioButton from './RadioButton';
 import TogglePill from './TogglePill';
@@ -10,9 +10,10 @@ import RadioButtonGroup from './RadioButtonGroup';
 
 storiesOf('RadioButtonGroup', module)
 	.addDecorator(withKnobs)
-	.addWithInfo(
+	.addDecorator(decorateWithBasics)
+	.addDecorator(decorateWithInfo)
+	.add(
 		'Basic usage',
-		'Renders a group of <RadioButton>s. Demonstrates the basic usage.',
 		() => {
 			const classNameKnob = text('className', '');
 			const directionKnob = select(
@@ -40,9 +41,13 @@ storiesOf('RadioButtonGroup', module)
 					<RadioButton value="three" label="Option 3" />
 				</RadioButtonGroup>
 			);
+		},
+		{
+			info: {
+				text: 'Renders a group of <RadioButton>s. Demonstrates the basic usage.',
+			},
 		}
 	)
-	.addDecorator(decorateWithInfo)
 	.add('with Toggle Pill Radios', () => (
 		<RadioButtonGroup
 			name="option"
