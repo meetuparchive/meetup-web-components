@@ -5,7 +5,7 @@ import Bounds, { BoundsComponent } from './Bounds';
 
 storiesOf('Bounds', module)
 	.addDecorator(decorateWithInfo)
-	.addParameters({ info: { propTables: [BoundsComponent] } })
+	.addParameters({ info: { propTables: [BoundsComponent], propTablesExclude: [Bounds] } })
 	.add(
 		'default',
 		() => (
@@ -55,7 +55,8 @@ storiesOf('Bounds', module)
 				</p>
 			</Bounds>
 		</div>
-	))
+		)
+	)
 	.add('isLoading with loadingProps', () => (
 		<div style={{ width: '100%' }}>
 			<Bounds

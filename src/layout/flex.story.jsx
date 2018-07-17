@@ -39,7 +39,7 @@ const infoReverse =
 
 storiesOf('Flex', module)
 	.addDecorator(decorateWithInfo)
-	.addParameters({ info: { propTables: [FlexComponent, FlexItemComponent] } })
+	.addParameters({ info: { propTables: [FlexComponent, FlexItemComponent], propTablesExclude: [Flex, FlexItem] } })
 	.add(
 		'Row (default)',
 		() => (

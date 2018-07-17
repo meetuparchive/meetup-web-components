@@ -8,7 +8,7 @@ import { Textarea } from './Textarea';
 storiesOf('Textarea', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.addParameters({ info: { propTables: [Textarea] } })
+	.addParameters({ info: { propTables: [Textarea], propTablesExclude: [Bounds, Section] } })
 	.add('default', () => (
 		<Bounds>
 			<Section>

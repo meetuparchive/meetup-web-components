@@ -72,7 +72,7 @@ const DEFAULT_PROPS = {
 storiesOf('Footer', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.addParameters({ info: { propTables: [Footer] } })
+	.addParameters({ info: { propTables: [Footer], propTablesExclude: [TestFooter] } })
 	.add('default', () => <TestFooter {...DEFAULT_PROPS} />, {
 		info: { text: 'Footer content for a logged out user on replatformed pages' },
 	})

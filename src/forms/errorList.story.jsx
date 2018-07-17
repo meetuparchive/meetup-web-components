@@ -6,6 +6,7 @@ import { storiesOf } from '@storybook/react';
 
 storiesOf('ErrorList', module)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTablesExclude: [Bounds] } })
 	.add(
 		'Single Error',
 		() => (

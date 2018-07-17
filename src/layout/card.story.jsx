@@ -11,7 +11,7 @@ const wrapperStyle = { margin: '0 auto', maxWidth: '500px' };
 storiesOf('Card', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.addParameters({ info: { propTables: [CardComponent] } })
+	.addParameters({ info: { propTables: [CardComponent], propTablesExclude: [Card] } })
 	.add('default', () => (
 		<div style={wrapperStyle}>
 			<CardComponent>
