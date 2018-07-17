@@ -35,7 +35,9 @@ const formatHours = (hours, meridian) => {
 };
 
 /**
+ * Deprecated - use <InputTime> directly, supply `value` from parent
  * @module TimeInput
+ * @deprecated
  */
 export class TimeInput extends React.PureComponent {
 	constructor(props) {
@@ -315,9 +317,7 @@ export class TimeInput extends React.PureComponent {
 						{label}
 					</label>
 				)}
-				{helperText && (
-					<div className={classNames.helperText}>{helperText}</div>
-				)}
+				{helperText && <div className={classNames.helperText}>{helperText}</div>}
 				{this.state.supportsTime ? (
 					<input
 						id={id}
