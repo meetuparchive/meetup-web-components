@@ -62,7 +62,7 @@ export const SelectInput = (props: Props) => {
 			<select
 				name={name}
 				id={id || name}
-				required={required}
+				required={Boolean(required)}
 				className={classNames.field}
 				{...other}
 			/>
