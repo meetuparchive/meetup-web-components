@@ -14,7 +14,7 @@ const testOptions = (
 );
 
 const BasicSelect = (
-	<SelectInput label="Test select" name="testSelect">
+	<SelectInput label="Test select" name="testSelect" required="yo check it">
 		{testOptions}
 	</SelectInput>
 );

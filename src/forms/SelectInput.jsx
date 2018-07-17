@@ -32,13 +32,15 @@ export default class SelectInput extends React.PureComponent {
 
 	render() {
 		// eslint-disable-next-line no-unused-vars
-		const { options, error, errors, requiredText, ...other } = this.props;
+		const { options, error, errors, requiredText, required, ...other } = this.props;
 		const { value } = this.state;
+		const actualRequired = required && requiredText;
 
 		return (
 			<Select
 				{...other}
 				value={value}
+				required={actualRequired}
 				error={(errors && errors.length > 0) || error}
 				onChange={this.onChange}
 			>

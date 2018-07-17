@@ -13,7 +13,7 @@ type Props = React.ElementConfig<HTMLSelectElement> & {
 	helperText?: string,
 	labelClassName?: string,
 	label?: string,
-	required?: boolean,
+	required?: boolean | string, // supply a string for a custom error message
 };
 
 /*
@@ -45,11 +45,16 @@ export const SelectInput = (props: Props) => {
 		),
 		helperText: cx('helperTextContainer', { required }),
 	};
+	const requiredText = typeof required === 'string' ? required : '*';
 
 	return (
 		<div className="inputContainer">
 			{label && (
-				<label className={classNames.label} htmlFor={name} data-requiredtext="*">
+				<label
+					className={classNames.label}
+					htmlFor={name}
+					data-requiredtext={requiredText}
+				>
 					{label}
 				</label>
 			)}

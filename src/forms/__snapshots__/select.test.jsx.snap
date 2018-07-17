@@ -5,8 +5,8 @@ exports[`SelectInput basic renders into the DOM 1`] = `
   className="inputContainer"
 >
   <label
-    className="label--field"
-    data-requiredtext="*"
+    className="label--field label--required"
+    data-requiredtext="yo check it"
     htmlFor="testSelect"
   >
     Test select
@@ -15,6 +15,7 @@ exports[`SelectInput basic renders into the DOM 1`] = `
     className="select--reset span--100 padding--selectArrow"
     id="testSelect"
     name="testSelect"
+    required="yo check it"
   >
     <React.Fragment>
       <option
