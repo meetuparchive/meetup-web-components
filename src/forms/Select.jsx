@@ -9,7 +9,7 @@ type Props = React.ElementConfig<HTMLSelectElement> & {
 	className?: string,
 	name: string, // required - will be used as 'id' as well
 	onChange: (e: SyntheticInputEvent<*>) => void, // required - this component is stateless
-	error?: boolean,
+	error?: React.Node, // supplied by withErrorList
 	helperText?: string,
 	labelClassName?: string,
 	label?: string,

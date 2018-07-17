@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
-import { SelectInput } from './SelectInput';
+import SelectInput from './SelectInput';
 import withErrorList from '../utils/components/withErrorList';
 
 export const HOURS_INPUT_CLASS = 'timeInput-hours';
@@ -315,9 +315,7 @@ export class TimeInput extends React.PureComponent {
 						{label}
 					</label>
 				)}
-				{helperText && (
-					<div className={classNames.helperText}>{helperText}</div>
-				)}
+				{helperText && <div className={classNames.helperText}>{helperText}</div>}
 				{this.state.supportsTime ? (
 					<input
 						id={id}
