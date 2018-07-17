@@ -23,6 +23,7 @@ export class TabsTab extends React.Component {
 	}
 }
 TabsTab.propTypes = {
+	/** Whether the Tab is selected */
 	isSelected: PropTypes.bool,
 };
 
@@ -57,6 +58,7 @@ export class Tabs extends React.Component {
 	}
 }
 Tabs.propTypes = {
+	/** Individual tabs to render */
 	children: (props, propName, componentName) => {
 		const children = props[propName];
 
@@ -72,7 +74,16 @@ Tabs.propTypes = {
 			return new Error('Children must be React elements of type TabsTab');
 		}
 	},
+
+	/** Whether the Tabs bar spans the full width of it's container */
 	full: PropTypes.bool,
+
+	/** DEPRECATED */
 	bordered: PropTypes.bool, // deprecating in favor of bordered being default
+
+	/** Whether the Tabs bar excludes a bottom or right border */
 	noBorder: PropTypes.bool,
+
+	/** Whether the Tabs bar is layed out on the Y axis */
+	isVertical: PropTypes.bool,
 };

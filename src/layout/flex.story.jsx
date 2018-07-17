@@ -1,6 +1,6 @@
 import React from 'react';
-import Flex from './Flex';
-import FlexItem from './FlexItem';
+import Flex, { FlexComponent } from './Flex';
+import FlexItem, { FlexItemComponent } from './FlexItem';
 import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 
@@ -39,10 +39,11 @@ const infoReverse =
 
 storiesOf('Flex', module)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [FlexComponent, FlexItemComponent] } })
 	.add(
 		'Row (default)',
 		() => (
-			<Flex style={flexParentStyles}>
+			<FlexComponent style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -58,7 +59,7 @@ storiesOf('Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</Flex>
+			</FlexComponent>
 		),
 		{
 			info: {
@@ -70,7 +71,7 @@ storiesOf('Flex', module)
 	.add(
 		'Column',
 		() => (
-			<Flex direction="column" style={flexParentStyles}>
+			<FlexComponent direction="column" style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -86,7 +87,7 @@ storiesOf('Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</Flex>
+			</FlexComponent>
 		),
 		{
 			info: {
@@ -98,7 +99,7 @@ storiesOf('Flex', module)
 	.add(
 		'Wrap',
 		() => (
-			<Flex wrap style={flexParentStyles}>
+			<FlexComponent wrap style={flexParentStyles}>
 				<FlexItem shrink style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -144,7 +145,7 @@ storiesOf('Flex', module)
 				<FlexItem shrink style={flexItemStyles}>
 					<div style={boxStyles}>Item 15</div>
 				</FlexItem>
-			</Flex>
+			</FlexComponent>
 		),
 		{
 			info: {
@@ -156,7 +157,7 @@ storiesOf('Flex', module)
 	.add(
 		'No gutters',
 		() => (
-			<Flex noGutters style={flexParentStyles}>
+			<FlexComponent noGutters style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -172,7 +173,7 @@ storiesOf('Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</Flex>
+			</FlexComponent>
 		),
 		{
 			info: {
@@ -185,7 +186,7 @@ storiesOf('Flex', module)
 		'Justify center',
 		() => (
 			<div style={{ width: '800px', border: '1px dotted red' }}>
-				<Flex justify="center" style={flexParentStyles}>
+				<FlexComponent justify="center" style={flexParentStyles}>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -201,7 +202,7 @@ storiesOf('Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</Flex>
+				</FlexComponent>
 			</div>
 		),
 		{ info: { text: infoJustify } }
@@ -210,7 +211,7 @@ storiesOf('Flex', module)
 		'Justify spaceAround',
 		() => (
 			<div style={{ width: '800px', border: '1px dotted red' }}>
-				<Flex justify="spaceAround" style={flexParentStyles}>
+				<FlexComponent justify="spaceAround" style={flexParentStyles}>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -226,7 +227,7 @@ storiesOf('Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</Flex>
+				</FlexComponent>
 			</div>
 		),
 		{ info: { text: infoJustify } }
@@ -235,7 +236,7 @@ storiesOf('Flex', module)
 		'Justify spaceBetween',
 		() => (
 			<div style={{ width: '800px', border: '1px dotted red' }}>
-				<Flex justify="spaceBetween" style={flexParentStyles}>
+				<FlexComponent justify="spaceBetween" style={flexParentStyles}>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -251,7 +252,7 @@ storiesOf('Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</Flex>
+				</FlexComponent>
 			</div>
 		),
 		{ info: { text: infoJustify } }
@@ -260,7 +261,7 @@ storiesOf('Flex', module)
 		'Justify end',
 		() => (
 			<div style={{ width: '800px', border: '1px dotted red' }}>
-				<Flex justify="flexEnd" style={flexParentStyles}>
+				<FlexComponent justify="flexEnd" style={flexParentStyles}>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -276,7 +277,7 @@ storiesOf('Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</Flex>
+				</FlexComponent>
 			</div>
 		),
 		{ info: { text: infoJustify } }
@@ -285,7 +286,7 @@ storiesOf('Flex', module)
 		'Align top',
 		() => (
 			<div style={{ border: '1px solid red' }}>
-				<Flex align="top" style={flexParentStyles}>
+				<FlexComponent align="top" style={flexParentStyles}>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -301,7 +302,7 @@ storiesOf('Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</Flex>
+				</FlexComponent>
 			</div>
 		),
 		{ info: { text: infoAlign } }
@@ -310,7 +311,7 @@ storiesOf('Flex', module)
 		'Align center',
 		() => (
 			<div style={{ border: '1px solid red' }}>
-				<Flex align="center" style={flexParentStyles}>
+				<FlexComponent align="center" style={flexParentStyles}>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -326,7 +327,7 @@ storiesOf('Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</Flex>
+				</FlexComponent>
 			</div>
 		),
 		{ info: { text: infoAlign } }
@@ -335,7 +336,7 @@ storiesOf('Flex', module)
 		'Align bottom',
 		() => (
 			<div style={{ border: '1px solid red' }}>
-				<Flex align="bottom" style={flexParentStyles}>
+				<FlexComponent align="bottom" style={flexParentStyles}>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -351,7 +352,7 @@ storiesOf('Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</Flex>
+				</FlexComponent>
 			</div>
 		),
 		{ info: { text: infoAlign } }
@@ -359,7 +360,7 @@ storiesOf('Flex', module)
 	.add(
 		'Row reverse',
 		() => (
-			<Flex rowReverse="all" style={flexParentStyles}>
+			<FlexComponent rowReverse="all" style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -375,14 +376,14 @@ storiesOf('Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</Flex>
+			</FlexComponent>
 		),
 		{ info: { text: infoReverse } }
 	)
 	.add(
 		'Row reverse (at medium breakpoint)',
 		() => (
-			<Flex rowReverse="medium" style={flexParentStyles}>
+			<FlexComponent rowReverse="medium" style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -398,14 +399,14 @@ storiesOf('Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</Flex>
+			</FlexComponent>
 		),
 		{ info: { text: infoReverse } }
 	)
 	.add(
 		'Row reverse (at large breakpoint)',
 		() => (
-			<Flex rowReverse="large" style={flexParentStyles}>
+			<FlexComponent rowReverse="large" style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -421,14 +422,14 @@ storiesOf('Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</Flex>
+			</FlexComponent>
 		),
 		{ info: { text: infoReverse } }
 	)
 	.add(
 		'Column reverse',
 		() => (
-			<Flex direction="column" columnReverse="all" style={flexParentStyles}>
+			<FlexComponent direction="column" columnReverse="all" style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -444,7 +445,7 @@ storiesOf('Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</Flex>
+			</FlexComponent>
 		),
 		{
 			info: {
@@ -456,7 +457,7 @@ storiesOf('Flex', module)
 	.add(
 		'Switch flex-direction (at medium breakpoint)',
 		() => (
-			<Flex direction="column" switchDirection="medium" style={flexParentStyles}>
+			<FlexComponent direction="column" switchDirection="medium" style={flexParentStyles}>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -472,7 +473,7 @@ storiesOf('Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</Flex>
+			</FlexComponent>
 		),
 		{
 			info: {

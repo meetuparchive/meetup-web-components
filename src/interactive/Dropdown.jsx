@@ -234,21 +234,46 @@ Dropdown.defaultProps = {
 };
 
 Dropdown.propTypes = {
+	/** The element that opens the dropdown when clicked */
 	trigger: PropTypes.element.isRequired,
+
+	/** The content that's rendered inside the dropdown */
 	content: PropTypes.element,
+
+	/** An array of elements that are rendered as a menu inside the dropdown */
 	menuItems: PropTypes.arrayOf(PropTypes.element),
+
+	/** The horizontal alignment of the dropdown content bubble to the dropdown trigger */
 	align: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
+
+	/** Which side of the dropdown trigger the dropdown content bubble renders on */
 	direction: PropTypes.oneOf(['top', 'bottom']).isRequired,
+
+	/** How many additional pixels to push the dropdown content bubble */
 	offset: PropTypes.shape({
 		left: PropTypes.number,
 		top: PropTypes.number,
 	}),
+
+	/** Class names to add to the wrapper of the dropdown trigger and content */
 	className: PropTypes.string,
+
+	/** Whether the dropdown content is being shown */
 	isActive: PropTypes.bool,
+
+	/** A function that is used to control the toggling of the dropdown */
 	manualToggle: PropTypes.func,
+
+	/** The largest width the dropdown content can be */
 	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+	/** The smallest width the dropdown content can be */
 	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+	/** Whether to render the dropdown content directly in the component instead of bulling it out and attaching to the document root */
 	noPortal: PropTypes.bool,
+
+	/** Props to pass to the `Downshift` component */
 	downshiftProps: PropTypes.object,
 };
 

@@ -86,9 +86,16 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
+	/** The name of the icon shape to render */
 	shape: PropTypes.oneOf(VALID_SHAPES).isRequired,
+
+	/** Which of our media sizes to render the icon at */
 	size: PropTypes.oneOf(Object.keys(MEDIA_SIZES)).isRequired,
+
+	/** Whether the icon is outlined with a circle */
 	circled: PropTypes.bool,
+
+	/** What color the icon should be filled with */
 	color: PropTypes.string,
 };
 

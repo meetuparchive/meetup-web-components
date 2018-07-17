@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectInput from './SelectInput';
+import { SelectInput } from './SelectInput';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { IntlProvider, FormattedMessage, defineMessages } from 'react-intl';
@@ -7,6 +7,7 @@ import { IntlProvider, FormattedMessage, defineMessages } from 'react-intl';
 storiesOf('SelectInput', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTable: SelectInput } })
 	.add('default', () => (
 		<SelectInput
 			label="Select a name for your horse"

@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { decorateWithInfo } from '../utils/decorators';
 
 import Bounds from './Bounds';
 import Chunk from './Chunk';
@@ -7,6 +8,7 @@ import FormSection from './FormSection';
 import TextInput from '../forms/TextInput';
 
 storiesOf('FormSection', module)
+	.addDecorator(decorateWithInfo)
 	.add('default', () => (
 		<Bounds>
 			<FormSection>

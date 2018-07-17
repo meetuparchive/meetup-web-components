@@ -72,10 +72,19 @@ Loading.defaultProps = {
 };
 
 Loading.propTypes = {
+	/** What color the spinning graphic should be filled with */
 	color: PropTypes.string,
+
+	/** Whether to cover the entire screen with a loader */
 	fullCover: PropTypes.bool,
+
+	/** Whether to cover the component's parent container */
 	partialCover: PropTypes.bool,
+
+	/** The color of the overlay that covers content */
 	scrimColor: PropTypes.string,
+
+	/** The width of the loading graphic */
 	size: PropTypes.string,
 };
 

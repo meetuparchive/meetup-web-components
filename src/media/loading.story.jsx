@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { decorateWithInfo } from '../utils/decorators';
 
 import Loading from './Loading';
 
@@ -48,6 +49,7 @@ const LoadingDecorator = storyFn => (
 
 storiesOf('Loading', module)
 	.addDecorator(LoadingDecorator)
+	.addDecorator(decorateWithInfo)
 	.add('default', () => <Loading />)
 	.add('partialCover', () => <Loading partialCover />)
 	.add('fullCover', () => <Loading fullCover />)

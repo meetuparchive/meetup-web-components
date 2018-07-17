@@ -26,7 +26,10 @@ const ErrorList = props => {
 	);
 };
 ErrorList.propTypes = {
+	/** Unique identifier for the errors - used to associate form field with error */
 	errorId: PropTypes.string,
+
+	/** Error content to render */
 	error: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element,

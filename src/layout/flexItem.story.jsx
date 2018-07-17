@@ -1,6 +1,6 @@
 import React from 'react';
-import Flex from './Flex';
-import FlexItem from './FlexItem';
+import Flex, { FlexComponent } from './Flex';
+import FlexItem, { FlexItemComponent } from './FlexItem';
 import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 
@@ -29,20 +29,21 @@ const boxStyles = {
 
 storiesOf('FlexItem', module)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [FlexComponent, FlexItemComponent] } })
 	.add(
 		'Flex Item grow (default)',
 		() => (
-			<Flex style={flexParentStyles}>
-				<FlexItem style={flexItemStyles}>
+			<FlexComponent style={flexParentStyles}>
+				<FlexItemComponent style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
+				</FlexItemComponent>
+				<FlexItemComponent style={flexItemStyles}>
 					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
+				</FlexItemComponent>
+				<FlexItemComponent style={flexItemStyles}>
 					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-			</Flex>
+				</FlexItemComponent>
+			</FlexComponent>
 		),
 		{
 			info: {
@@ -54,17 +55,17 @@ storiesOf('FlexItem', module)
 	.add(
 		'Flex Item shrink',
 		() => (
-			<Flex style={flexParentStyles}>
-				<FlexItem shrink style={flexItemStyles}>
+			<FlexComponent style={flexParentStyles}>
+				<FlexItemComponent shrink style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				</FlexItemComponent>
+				<FlexItemComponent shrink style={flexItemStyles}>
 					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-				<FlexItem shrink style={flexItemStyles}>
+				</FlexItemComponent>
+				<FlexItemComponent shrink style={flexItemStyles}>
 					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-			</Flex>
+				</FlexItemComponent>
+			</FlexComponent>
 		),
 		{
 			info: {
@@ -77,62 +78,62 @@ storiesOf('FlexItem', module)
 		'Flex Item growFactors',
 		() => (
 			<div style={{ height: '100vh', width: '100%' }}>
-				<Flex style={flexParentStyles}>
-					<FlexItem growFactor={1} style={flexItemStyles}>
+				<FlexComponent style={flexParentStyles}>
+					<FlexItemComponent growFactor={1} style={flexItemStyles}>
 						<div style={boxStyles}>1</div>
-					</FlexItem>
-					<FlexItem growFactor={7} style={flexItemStyles}>
+					</FlexItemComponent>
+					<FlexItemComponent growFactor={7} style={flexItemStyles}>
 						<div style={boxStyles}>7</div>
-					</FlexItem>
-				</Flex>
-				<Flex style={flexParentStyles}>
-					<FlexItem growFactor={1} style={flexItemStyles}>
+					</FlexItemComponent>
+				</FlexComponent>
+				<FlexComponent style={flexParentStyles}>
+					<FlexItemComponent growFactor={1} style={flexItemStyles}>
 						<div style={boxStyles}>1</div>
-					</FlexItem>
-					<FlexItem growFactor={6} style={flexItemStyles}>
+					</FlexItemComponent>
+					<FlexItemComponent growFactor={6} style={flexItemStyles}>
 						<div style={boxStyles}>6</div>
-					</FlexItem>
-				</Flex>
-				<Flex style={flexParentStyles}>
-					<FlexItem growFactor={1} style={flexItemStyles}>
+					</FlexItemComponent>
+				</FlexComponent>
+				<FlexComponent style={flexParentStyles}>
+					<FlexItemComponent growFactor={1} style={flexItemStyles}>
 						<div style={boxStyles}>1</div>
-					</FlexItem>
-					<FlexItem growFactor={5} style={flexItemStyles}>
+					</FlexItemComponent>
+					<FlexItemComponent growFactor={5} style={flexItemStyles}>
 						<div style={boxStyles}>5</div>
-					</FlexItem>
-				</Flex>
-				<Flex style={flexParentStyles}>
-					<FlexItem growFactor={1} style={flexItemStyles}>
+					</FlexItemComponent>
+				</FlexComponent>
+				<FlexComponent style={flexParentStyles}>
+					<FlexItemComponent growFactor={1} style={flexItemStyles}>
 						<div style={boxStyles}>1</div>
-					</FlexItem>
-					<FlexItem growFactor={4} style={flexItemStyles}>
+					</FlexItemComponent>
+					<FlexItemComponent growFactor={4} style={flexItemStyles}>
 						<div style={boxStyles}>4</div>
-					</FlexItem>
-				</Flex>
-				<Flex style={flexParentStyles}>
-					<FlexItem growFactor={1} style={flexItemStyles}>
+					</FlexItemComponent>
+				</FlexComponent>
+				<FlexComponent style={flexParentStyles}>
+					<FlexItemComponent growFactor={1} style={flexItemStyles}>
 						<div style={boxStyles}>1</div>
-					</FlexItem>
-					<FlexItem growFactor={3} style={flexItemStyles}>
+					</FlexItemComponent>
+					<FlexItemComponent growFactor={3} style={flexItemStyles}>
 						<div style={boxStyles}>3</div>
-					</FlexItem>
-				</Flex>
-				<Flex style={flexParentStyles}>
-					<FlexItem growFactor={1} style={flexItemStyles}>
+					</FlexItemComponent>
+				</FlexComponent>
+				<FlexComponent style={flexParentStyles}>
+					<FlexItemComponent growFactor={1} style={flexItemStyles}>
 						<div style={boxStyles}>1</div>
-					</FlexItem>
-					<FlexItem growFactor={2} style={flexItemStyles}>
+					</FlexItemComponent>
+					<FlexItemComponent growFactor={2} style={flexItemStyles}>
 						<div style={boxStyles}>2</div>
-					</FlexItem>
-				</Flex>
-				<Flex style={flexParentStyles}>
-					<FlexItem growFactor={1} style={flexItemStyles}>
+					</FlexItemComponent>
+				</FlexComponent>
+				<FlexComponent style={flexParentStyles}>
+					<FlexItemComponent growFactor={1} style={flexItemStyles}>
 						<div style={boxStyles}>1</div>
-					</FlexItem>
-					<FlexItem growFactor={1} style={flexItemStyles}>
+					</FlexItemComponent>
+					<FlexItemComponent growFactor={1} style={flexItemStyles}>
 						<div style={boxStyles}>1</div>
-					</FlexItem>
-				</Flex>
+					</FlexItemComponent>
+				</FlexComponent>
 			</div>
 		),
 		{

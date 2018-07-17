@@ -1,21 +1,22 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { decorateWithInfo } from '../utils/decorators';
-import Bounds from './Bounds';
+import Bounds, { BoundsComponent } from './Bounds';
 
 storiesOf('Bounds', module)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [BoundsComponent] } })
 	.add(
 		'default',
 		() => (
 			<div style={{ width: '100%' }}>
-				<Bounds>
+				<BoundsComponent>
 					<h3 className="text--sectionTitle">Normal (wide) Bounds</h3>
 					<p>
 						Bounds is used as a non-visual content container that manages
 						content measure and centers children.
 					</p>
-				</Bounds>
+				</BoundsComponent>
 			</div>
 		),
 		{ info: { text: 'By default, `Bounds` is wide' } }
@@ -24,13 +25,13 @@ storiesOf('Bounds', module)
 		'narrow',
 		() => (
 			<div style={{ width: '100%' }}>
-				<Bounds narrow>
+				<BoundsComponent narrow>
 					<h3 className="text--sectionTitle">Narrow Bounds</h3>
 					<p>
 						Bounds is used as a non-visual content container that manages
 						content measure and centers children.
 					</p>
-				</Bounds>
+				</BoundsComponent>
 			</div>
 		),
 		{

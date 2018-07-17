@@ -165,14 +165,31 @@ Typeahead.defaultProps = {
 };
 
 Typeahead.propTypes = {
+	/** Props to pass to the TextInput */
 	inputProps: PropTypes.object,
+
+	/** List of items to render into the dropdown menu area */
 	items: PropTypes.arrayOf(PropTypes.element),
+
+	/** A function to pass to Typeahead to make sure all item values are strings */
 	itemToString: PropTypes.func,
+
+	/** Height of the dropdown menu of selectable items */
 	height: PropTypes.string,
+
+	/** Whether there can be more than one selected value */
 	multiSelect: PropTypes.bool,
+
+	/** Whether the dropdown menu shows when the TextInput is focused */
 	openOnFocus: PropTypes.bool,
+
+	/** Whether the dropdown menu remains open after an item is selected */
 	openOnSelect: PropTypes.bool,
+
+	/** Whether the dropdown menu opens in document flow */
 	openInline: PropTypes.bool,
+
+	/** A callback that happens when an item is selected from the dropdown menu */
 	onSelect: (props, propName, componentName) => {
 		if (props['multiSelect'] && !props[propName]) {
 			return new Error(
