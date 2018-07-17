@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectInput basic renders into the DOM 1`] = `
+<div
+  className="inputContainer"
+>
+  <label
+    className="label--field label--required"
+    data-requiredtext="yo check it"
+    htmlFor="testSelect"
+  >
+    Test select
+  </label>
+  <select
+    className="select--reset span--100 padding--selectArrow"
+    id="testSelect"
+    name="testSelect"
+    required="yo check it"
+  >
+    <React.Fragment>
+      <option
+        value="1"
+      >
+        One
+      </option>
+      ,
+      <option
+        value="2"
+      >
+        Two
+      </option>
+      ,
+      <option
+        value="3"
+      >
+        Three
+      </option>
+      ,
+      <option
+        disabled={true}
+        value="4"
+      >
+        Four
+      </option>
+      ,
+    </React.Fragment>
+  </select>
+  <Icon
+    className="select-customArrow"
+    shape="chevron-down"
+    size="xs"
+  />
+</div>
+`;
