@@ -86,6 +86,8 @@ export class TimeInput extends React.PureComponent {
 	 * 	(eg supplied by redux-form or DateTimePicker) with the updated values
 	 */
 	onChange(partialState) {
+		// TODO: make sure this.props.onChange called with value
+		// AND onChangeCallback is called
 		if (!this.props.onChange) {
 			return;
 		}
