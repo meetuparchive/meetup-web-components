@@ -5,7 +5,7 @@ import Chunk, { ChunkComponent } from './Chunk';
 
 storiesOf('Chunk', module)
 	.addDecorator(decorateWithInfo)
-	.addParameters({ info: { propTables: [ChunkComponent] } })
+	.addParameters({ info: { propTables: [ChunkComponent], propTablesExclude: [Chunk] } })
 	.add(
 		'default',
 		() => (

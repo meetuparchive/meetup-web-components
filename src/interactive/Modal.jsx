@@ -63,9 +63,9 @@ export const getModalPosition = (
 /**
  * SQ2 Modal component
  * @see {@link http://meetup.github.io/sassquatch2/views.html#modals}
- * @module Modal
+ * @module ModalComponent
  */
-export class Modal extends React.Component {
+export class ModalComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onDismiss = this.onDismiss.bind(this);
@@ -141,6 +141,7 @@ export class Modal extends React.Component {
 			closeArea,
 			stickyCloseArea,
 			initialFocus,
+			focusTrapActive,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
 			...other
@@ -207,6 +208,7 @@ export class Modal extends React.Component {
 						initialFocus,
 						escapeDeactivates: false,
 					}}
+					active={focusTrapActive}
 				>
 					{overlayShim}
 					<div
@@ -240,7 +242,7 @@ export class Modal extends React.Component {
 	}
 }
 
-Modal.propTypes = {
+ModalComponent.propTypes = {
 	/** Whether the modal should cover the entire screen */
 	fullscreen: PropTypes.bool,
 
@@ -278,6 +280,9 @@ Modal.propTypes = {
 		PropTypes.string,
 	]),
 
+	/** Whether focus is trapped within the modal */
+	focusTrapActive: PropTypes.bool,
+
 	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
 
@@ -289,9 +294,10 @@ Modal.propTypes = {
 	}),
 };
 
-Modal.defaultProps = {
+ModalComponent.defaultProps = {
 	fullscreen: false,
 	closeArea: true,
+	focusTrapActive: true
 };
 
-export default withLoading(Modal);
+export default withLoading(ModalComponent);
