@@ -30,7 +30,6 @@ exports[`withLoading when this.props.type is not checkbox or radio matches snaps
   <ToggleWrapper
     isActive={false}
     onToggle={[Function]}
-    tabIndex={undefined}
   >
     <ConditionalWrap
       condition={true}
