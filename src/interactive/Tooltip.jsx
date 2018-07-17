@@ -171,20 +171,43 @@ Tooltip.defaultProps = {
 };
 
 Tooltip.propTypes = {
+	/** The unique identifier for the Tooltip */
 	id: PropTypes.string.isRequired,
+
+	/** The element that opens the tooltip when hovered or focused */
 	trigger: PropTypes.element.isRequired,
+
+	/** The content that's rendered inside the tooltip */
 	content: PropTypes.element,
+
+	/** The horizontal alignment of the tooltip content bubble to the dropdown trigger */
 	align: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
+
+	/** How many additional pixels to push the tooltip content bubble */
 	offset: PropTypes.shape({
 		left: PropTypes.number,
 		top: PropTypes.number,
 	}),
+
+	/** Which side of the tooltip trigger the dropdown content bubble renders on */
 	direction: PropTypes.oneOf(['top', 'bottom']).isRequired,
+
+	/** Class names to add to the wrapper of the tooltip trigger and content */
 	className: PropTypes.string,
+
+	/** Whether the tooltip content is being shown */
 	isActive: PropTypes.bool,
+
+	/** Whether the Tooltip is a controlled component, relying on `isActive` prop for toggling */
 	manualToggle: PropTypes.bool,
+
+	/** The largest width the tooltip content can be */
 	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+	/** The smallest width the tooltip content can be */
 	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+	/** Whether to render the dropdown content directly in the component instead of bulling it out and attaching to the document root */
 	noPortal: PropTypes.bool,
 };
 

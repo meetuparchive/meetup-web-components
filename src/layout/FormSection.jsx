@@ -41,8 +41,13 @@ function FormSection({
 }
 
 FormSection.propTypes = {
+	/** Whether the inner `<Section />` has a separator (extra spacing and a border on the bottom) */
 	withSeparator: PropTypes.bool,
+
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,

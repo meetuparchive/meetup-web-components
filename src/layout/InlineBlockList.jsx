@@ -8,9 +8,9 @@ import ConditionalWrap from '../utils/components/ConditionalWrap';
 export const INLINEBLOCKLIST_SEPERATED_CLASS = 'inlineblockList--separated';
 
 /**
- * @module InlineBlockList
+ * @module InlineBlockListComponent
  */
-export class InlineBlockList extends React.Component {
+export class InlineBlockListComponent extends React.Component {
 	render() {
 		const {
 			className,
@@ -56,18 +56,27 @@ export class InlineBlockList extends React.Component {
 	}
 }
 
-InlineBlockList.propTypes = {
+InlineBlockListComponent.propTypes = {
+	/** Items to render into an inline list */
 	items: PropTypes.arrayOf(
 		PropTypes.oneOfType([PropTypes.element, PropTypes.string])
 	).isRequired,
+
+	/** The glyph that separates each item */
 	separator: PropTypes.string,
+
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
 		size: PropTypes.string,
 	}),
+
+	/** The vertical alignment of all items within their container */
 	verticalAlign: PropTypes.oneOf(['top', 'middle', 'bottom']),
 };
 
-export default withLoading(InlineBlockList);
+export default withLoading(InlineBlockListComponent);

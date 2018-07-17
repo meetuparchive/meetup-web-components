@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Card from './Card';
+import Card, { CardComponent } from './Card';
 import Section from './Section';
 import Stripe from './Stripe';
 import { storiesOf } from '@storybook/react';
@@ -11,9 +11,10 @@ const wrapperStyle = { margin: '0 auto', maxWidth: '500px' };
 storiesOf('Card', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [CardComponent] } })
 	.add('default', () => (
 		<div style={wrapperStyle}>
-			<Card>
+			<CardComponent>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
@@ -21,12 +22,12 @@ storiesOf('Card', module)
 					Lorem Ipsum is simply dummy text of the printing and typesetting
 					industry.
 				</p>
-			</Card>
+			</CardComponent>
 		</div>
 	))
 	.add('initialHeight', () => (
 		<div style={wrapperStyle}>
-			<Card initialHeight>
+			<CardComponent initialHeight>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
@@ -34,7 +35,7 @@ storiesOf('Card', module)
 					Lorem Ipsum is simply dummy text of the printing and typesetting
 					industry.
 				</p>
-			</Card>
+			</CardComponent>
 		</div>
 	))
 	.add('Conditionally flush left and right (at medium breakpoint)', () => (
@@ -47,7 +48,7 @@ storiesOf('Card', module)
 				<h2 className="text--sectionTitle margin--bottom">
 					Headline will not flush
 				</h2>
-				<Card
+				<CardComponent
 					flushUntil="medium"
 					style={{
 						width: 'auto',
@@ -60,13 +61,13 @@ storiesOf('Card', module)
 						Lorem Ipsum is simply dummy text of the printing and typesetting
 						industry.
 					</p>
-				</Card>
+				</CardComponent>
 			</Section>
 		</Stripe>
 	))
 	.add('hasShadow', () => (
 		<div style={wrapperStyle}>
-			<Card hasShadow>
+			<CardComponent hasShadow>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
@@ -74,12 +75,12 @@ storiesOf('Card', module)
 					Lorem Ipsum is simply dummy text of the printing and typesetting
 					industry.
 				</p>
-			</Card>
+			</CardComponent>
 		</div>
 	))
 	.add('hasHoverShadow', () => (
 		<div style={wrapperStyle}>
-			<Card hasHoverShadow>
+			<CardComponent hasHoverShadow>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
@@ -87,12 +88,12 @@ storiesOf('Card', module)
 					Lorem Ipsum is simply dummy text of the printing and typesetting
 					industry.
 				</p>
-			</Card>
+			</CardComponent>
 		</div>
 	))
 	.add('hasShadow and hasHoverShadow', () => (
 		<div style={wrapperStyle}>
-			<Card hasShadow hasHoverShadow>
+			<CardComponent hasShadow hasHoverShadow>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
@@ -100,7 +101,7 @@ storiesOf('Card', module)
 					Lorem Ipsum is simply dummy text of the printing and typesetting
 					industry.
 				</p>
-			</Card>
+			</CardComponent>
 		</div>
 	))
 	.add('isLoading', () => (

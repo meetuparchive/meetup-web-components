@@ -241,22 +241,47 @@ export class Modal extends React.Component {
 }
 
 Modal.propTypes = {
+	/** Whether the modal should cover the entire screen */
 	fullscreen: PropTypes.bool,
+
+	/** Whether the modal should scroll with the document */
 	fixed: PropTypes.bool,
+
+	/** Background color for the modal's hero content area */
 	heroBgColor: PropTypes.string,
+
+	/** Background image for the modal's hero content area */
 	heroBgImage: PropTypes.string,
+
+	/** Content to render in the modal's hero content area */
 	heroContent: PropTypes.element,
+
+	/** Whether to shade the modal's hero area with a text protection scrim */
 	hideHeroScrim: PropTypes.bool,
+
+	/** Whether the modal's hero area is dark instead of light */
 	inverted: PropTypes.bool,
+
+	/** Callback that happens when a user dismisses the modal */
 	onDismiss: PropTypes.func.isRequired,
+
+	/** Whether to render the close button in the top corner of the modal */
 	closeArea: PropTypes.bool,
+
+	/** Whether the close button should stick to the top of the modal when the modal is scrolled */
 	stickyCloseArea: PropTypes.bool,
+
+	/** Which element inside the modal should get focus when the Modal mounts and renders */
 	initialFocus: PropTypes.oneOfType([
 		PropTypes.element,
 		PropTypes.func,
 		PropTypes.string,
 	]),
+
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,

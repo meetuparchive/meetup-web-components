@@ -114,14 +114,26 @@ AccordionPanelGroup.defaultProps = {
 };
 
 AccordionPanelGroup.propTypes = {
+	/** Panels to render in a group */
 	accordionPanels: PropTypes.arrayOf(PropTypes.element).isRequired,
+
+	/** Whether more than one panel can be open at a time */
 	multiSelectable: PropTypes.bool,
+
+	/** Which side of each panel that the icon or indicator switch renders on */
 	indicatorAlign: PropTypes.string,
+
+	/** Shape name of the icon to render as an indicator for closed panels */
 	indicatorIcon: PropTypes.string,
+
+	/** Shape name of the icon to render as an indicator for opened panels */
 	indicatorIconActive: PropTypes.string,
+
+	/** Size key for the icon rendered for open and closed indicators */
 	indicatorIconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+
+	/** Whether to use a ToggleSwitch as an indicator instead of an icon */
 	indicatorSwitch: PropTypes.bool,
-	isOpen: PropTypes.oneOf([null, true, false]),
 };
 
 export default AccordionPanelGroup;

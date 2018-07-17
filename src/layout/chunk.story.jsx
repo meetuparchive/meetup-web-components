@@ -1,35 +1,36 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { decorateWithInfo } from '../utils/decorators';
-import Chunk from './Chunk';
+import Chunk, { ChunkComponent } from './Chunk';
 
 storiesOf('Chunk', module)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [ChunkComponent] } })
 	.add(
 		'default',
 		() => (
 			<div style={{ maxWidth: '850px', magin: 'auto' }}>
-				<Chunk>
+				<ChunkComponent>
 					<h4 className="text--bold">Chunks</h4>
 					<p>
 						Chunks are used to sub-divide content within a Section by adding
 						space to the bottom of an element.
 					</p>
-				</Chunk>
-				<Chunk>
+				</ChunkComponent>
+				<ChunkComponent>
 					<h4 className="text--bold">Tuesday, December 20</h4>
 					<p>6:00pm</p>
-				</Chunk>
-				<Chunk>
+				</ChunkComponent>
+				<ChunkComponent>
 					<h4 className="text--bold">Galvanize NYC - West SoHo</h4>
 					<p>315 Hudson Street · New York, NY</p>
-				</Chunk>
-				<Chunk>
+				</ChunkComponent>
+				<ChunkComponent>
 					<button className="button button--primary" href="#">
 						Take action
 					</button>
 					<p className="text--caption">It'll be super cool</p>
-				</Chunk>
+				</ChunkComponent>
 			</div>
 		),
 		{ info: { text: 'This is the basic usage with the component.' } }

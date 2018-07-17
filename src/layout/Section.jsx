@@ -16,9 +16,9 @@ export const VALID_BREAKPOINTS = {
 
 /**
  * Design System Component: Provides `section` container for components
- * @module Section
+ * @module SectionComponent
  */
-export class Section extends React.Component {
+export class SectionComponent extends React.Component {
 	render() {
 		const {
 			children,
@@ -55,19 +55,28 @@ export class Section extends React.Component {
 		);
 	}
 }
-Section.propTypes = {
+SectionComponent.propTypes = {
+	/** When to remove the extra bottom padding and bottom border */
 	hasSeparatorUntil: PropTypes.oneOfType([
 		PropTypes.bool,
 		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 	]),
+
+	/** Whether to remove the bottom padding and bottom border */
 	noSeparator: PropTypes.oneOfType([
 		PropTypes.bool,
 		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 	]),
+
+	/** When to remove the left and right margins */
 	flushUntil: PropTypes.oneOfType([
 		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 	]),
+
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
@@ -75,4 +84,4 @@ Section.propTypes = {
 	}),
 };
 
-export default withLoading(Section);
+export default withLoading(SectionComponent);

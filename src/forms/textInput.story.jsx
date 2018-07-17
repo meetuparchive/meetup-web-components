@@ -1,5 +1,5 @@
 import React from 'react';
-import TextInput from './TextInput';
+import { TextInput } from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
@@ -7,6 +7,7 @@ import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 storiesOf('TextInput', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({info: { propTable: TextInput }})
 	.add('type "tel"', () => (
 		<TextInput type="tel" label="Telephone Number" id="telephone" />
 	))

@@ -384,9 +384,17 @@ Nav.defaultProps = {
 };
 
 Nav.propTypes = {
+	/** Data for the current user */
 	self: PropTypes.object,
+
+	/** Info about viewport size */
 	media: PropTypes.object,
+
+	/** Data for links and buttons to render into the nav */
 	navItems: PropTypes.object,
+
+	/** The locale code of the current user */
+	localeCode: PropTypes.string
 };
 
 export default Nav;

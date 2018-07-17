@@ -229,19 +229,46 @@ NumberInput.defaultProps = {
 };
 
 NumberInput.propTypes = {
+	/** Adds an `id` attribute to the input, and associates it with the `<label />` */
 	id: PropTypes.string,
+
+	/** Error content to render */
 	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** What we render into the input's `<label />` */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** The class name/s to add to the `<label />` element */
 	labelClassName: PropTypes.string,
+
+	/** The largest number value the input can have */
 	max: PropTypes.number,
+
+	/** The smallest number value the input can have */
 	min: PropTypes.number,
+
+	/** The `name` attribute for the input */
 	name: PropTypes.string.isRequired,
+
+	/** Callback that happens when the input changes */
 	onChange: PropTypes.func,
+
+	/** How much the number input should increase or decrease */
 	step: PropTypes.number,
+
+	/** Whether to use disabled attribute and disabled field styles */
 	disabled: PropTypes.bool,
+
+	/** Value of the input */
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+	/** An additional piece of helpful info rendered with the field */
 	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** Whether the field is required to have a value */
 	required: PropTypes.bool,
+
+	/** What to render in order to indicate the field is required */
 	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
-import TogglePill from './TogglePill';
+import { TogglePill } from './TogglePill';
 
 const onChange = e => {
 	action(`The value of the Toggle Pill clicked is: ${e.target.value}`)(e);
@@ -10,6 +10,7 @@ const onChange = e => {
 storiesOf('TogglePill', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [TogglePill] } })
 	.add('default', () => (
 		<div>
 			<TogglePill

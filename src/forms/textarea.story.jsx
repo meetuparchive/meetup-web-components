@@ -3,11 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
-import Textarea from './Textarea';
+import { Textarea } from './Textarea';
 
 storiesOf('Textarea', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [Textarea] } })
 	.add('default', () => (
 		<Bounds>
 			<Section>

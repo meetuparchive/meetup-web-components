@@ -7,7 +7,17 @@ import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 storiesOf('Checkbox', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.add('default', () => <Checkbox id="nada" name="no-name" value="nada" />)
+	.add(
+		'default',
+		() => <Checkbox id="nada" name="no-name" value="nada" />,
+		{ info: {
+			text: `
+				Checkbox with no label or id. This should never be done in production.
+				Instead, use the labelClassName prop to hide the label with a classname like
+				swarm-sasstools' 'visibility--a11yHide'
+			`
+		} }
+	)
 	.add('with label', () => (
 		<Checkbox label="Ketchup" value="ketchup" name="condiment" />
 	))

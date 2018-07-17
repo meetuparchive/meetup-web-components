@@ -45,6 +45,7 @@ class ToasterContainer extends React.PureComponent {
 storiesOf('Toast', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [Toaster, Toast] } })
 	.add('default', () => <ToasterContainer addedToasts={toastArray} />)
 	.add("don't automatically dismiss", () => (
 		<Toaster

@@ -1,10 +1,11 @@
 import React from 'react';
-import TimeInput from './TimeInput';
+import { TimeInput } from './TimeInput';
 import { storiesOf } from '@storybook/react';
 import { decorateWithInfo } from '../utils/decorators';
 
 storiesOf('TimeInput', module)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: {propTables: [TimeInput] } })
 	.add(
 		'default',
 		() => <TimeInput name="time" value="14:30" label="Dentist appt time" />,
