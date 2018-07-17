@@ -109,10 +109,11 @@ class Typeahead extends React.PureComponent {
 							})}
 						/>
 						{Boolean(isOpen && items && items.length) && (
-							<div
+							<ul
 								className={cx(TA_DROPDOWN_CLASSNAME, {
 									[`${TA_DROPDOWN_CLASSNAME}--inline`]: openInline,
 								})}
+								role="list"
 								style={
 									height && {
 										height: height,
@@ -128,7 +129,8 @@ class Typeahead extends React.PureComponent {
 											selectedItem.includes(item.props.value);
 
 										return (
-											<div
+											<li
+												role="listitem"
 												{...getItemProps({
 													item: item.props.value,
 													i,
@@ -150,10 +152,10 @@ class Typeahead extends React.PureComponent {
 															isSelected: selected,
 													  })
 													: item.props.children}
-											</div>
+											</li>
 										);
 									})}
-							</div>
+							</ul>
 						)}
 					</div>
 				)}
