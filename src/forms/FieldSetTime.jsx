@@ -8,7 +8,9 @@ import FlexItem from '../layout/FlexItem';
 import { SelectInput } from './SelectInput';
 
 export const HOURS_INPUT_CLASS = 'timeInput-hours';
+export const HOURS_INPUT_NAME = 'mwc-hour';
 export const MINUTES_INPUT_CLASS = 'timeInput-minutes';
+export const MINUTES_INPUT_NAME = 'mwc-minute';
 export const MERIDIAN_INPUT_CLASS = 'timeInput-meridian';
 
 const formatDigits = number => `0${number}`.slice(-2);
@@ -56,6 +58,7 @@ const getValueComponents = (
 		meridian: Number(hour && hour > 12), // '0' or '1'
 	};
 };
+type PartialChange = {| hour: ?number |} | {| minute: ?number |} | {| meridian: number |};
 
 /*
  * 3-input component to provide 'HH:mm' value to `onChange` - used for browsers
@@ -66,7 +69,7 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 	// Based on state, create a fake onChange with the complete time value
 	makeOnChange = (
 		e: SyntheticEvent<HTMLInputElement>,
-		partialChange: { [string]: ?number }
+		partialChange: PartialChange
 	) => () => {
 		const { hour, minute, meridian } = {
 			...getValueComponents(this.props.value),
@@ -92,7 +95,14 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 			return;
 		}
 
-		this.makeOnChange(e, { [name]: parseInt(value, 10) });
+		switch (name) {
+			case HOURS_INPUT_NAME:
+				this.makeOnChange(e, { hour: parseInt(value, 10) });
+				break;
+			case MINUTES_INPUT_NAME:
+				this.makeOnChange(e, { minute: parseInt(value, 10) });
+				break;
+		}
 	};
 
 	// selects text when the hour or minute input gets focus
@@ -161,8 +171,8 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 						<input
 							type="text"
 							pattern="\d*"
-							id={`${id}-hours`}
-							name="mwc-hours"
+							id={`${id}-hour`}
+							name={HOURS_INPUT_NAME}
 							min={is24Hr ? 0 : 1}
 							max={is24Hr ? 23 : 12}
 							disabled={disabled}
@@ -183,8 +193,8 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 						<input
 							type="text"
 							pattern="\d*"
-							id={`${id}-minutes`}
-							name="mwc-minutes"
+							id={`${id}-minute`}
+							name={MINUTES_INPUT_NAME}
 							min={0}
 							max={59}
 							disabled={disabled}
