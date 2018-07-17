@@ -111,10 +111,7 @@ storiesOf('SelectInput', module)
 				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
 				{ label: 'Mister Chompy', value: 'chompyhorse' },
 			]}
-			errors={[
-				'This is a bad name for a horse',
-				'You do not have a horse to name',
-			]}
+			errors={['This is a bad name for a horse', 'You do not have a horse to name']}
 		/>
 	))
 	.add('with helper text', () => (

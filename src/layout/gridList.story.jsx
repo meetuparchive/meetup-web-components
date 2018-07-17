@@ -48,7 +48,7 @@ const TestMember = props => {
 
 storiesOf('GridList', module)
 	.addDecorator(decorateWithInfo)
-	.addParameters({info: {propTables: [GridListComponent]}})
+	.addParameters({ info: { propTables: [GridListComponent] } })
 	.add(
 		'Static grid',
 		() => (

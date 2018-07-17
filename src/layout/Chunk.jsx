@@ -18,11 +18,7 @@ export class ChunkComponent extends React.Component {
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			'chunk',
-			{ 'component--isLoading': isLoading },
-			className
-		);
+		const classNames = cx('chunk', { 'component--isLoading': isLoading }, className);
 
 		return (
 			<div className={classNames} {...other}>

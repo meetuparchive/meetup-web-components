@@ -32,8 +32,7 @@ export class NumberInput extends React.Component {
 	}
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		const isNewValue =
-			nextProps.onChange && nextProps.value !== prevState.value;
+		const isNewValue = nextProps.onChange && nextProps.value !== prevState.value;
 
 		return {
 			value: isNewValue ? nextProps.value : prevState.value,
@@ -55,11 +54,7 @@ export class NumberInput extends React.Component {
 	}
 
 	onBlur(e) {
-		const formControls = [
-			this.fauxInputEl,
-			this.decrementBtnEl,
-			this.incrementBtnEl,
-		];
+		const formControls = [this.fauxInputEl, this.decrementBtnEl, this.incrementBtnEl];
 		if (formControls.every(c => c !== document.activeElement)) {
 			this.fauxInputEl.classList.remove(FOCUSED_INPUT_CLASS);
 		}
@@ -158,13 +153,8 @@ export class NumberInput extends React.Component {
 						{label}
 					</label>
 				)}
-				{helperText && (
-					<div className={classNames.helperText}>{helperText}</div>
-				)}
-				<div
-					className={classNames.fauxInput}
-					ref={el => (this.fauxInputEl = el)}
-				>
+				{helperText && <div className={classNames.helperText}>{helperText}</div>}
+				<div className={classNames.fauxInput} ref={el => (this.fauxInputEl = el)}>
 					<Flex align="center">
 						<FlexItem>
 							<input

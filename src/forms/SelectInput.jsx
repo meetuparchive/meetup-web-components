@@ -91,7 +91,11 @@ export class SelectInput extends React.PureComponent {
 						{...other}
 					>
 						{options.map((option, key) => (
-							<option key={key} value={option.value} disabled={option.disabled}>
+							<option
+								key={key}
+								value={option.value}
+								disabled={option.disabled}
+							>
 								{option.label}
 							</option>
 						))}

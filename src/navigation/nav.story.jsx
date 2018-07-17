@@ -96,7 +96,7 @@ export const navItems = {
 storiesOf('Nav', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.addParameters({info: {propTables: [Nav]}})
+	.addParameters({ info: { propTables: [Nav] } })
 	.add('authenticated', () => (
 		<TestNav
 			self={MOCK_MEMBER}

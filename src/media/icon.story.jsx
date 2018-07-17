@@ -10,9 +10,14 @@ storiesOf('Icon', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => <Icon shape={ICON_NAME} />)
-	.add('Accessible',
+	.add(
+		'Accessible',
 		() => <Icon shape={ICON_NAME} aria-label="Go west and seek your fortune" />,
-		{info: { text: 'This Icon has an `aria-label` attribute to improve accesibility'} }
+		{
+			info: {
+				text: 'This Icon has an `aria-label` attribute to improve accesibility',
+			},
+		}
 	)
 	.add('Inverted', () => (
 		<Inverted>

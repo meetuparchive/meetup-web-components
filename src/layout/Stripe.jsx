@@ -45,7 +45,7 @@ export class StripeComponent extends React.Component {
 			? {
 					...style,
 					backgroundImage: `url(${backgroundImage})`,
-				}
+			  }
 			: style;
 
 		return (

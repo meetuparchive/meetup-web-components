@@ -8,7 +8,7 @@ import InlineBlockList from '../layout/InlineBlockList';
 storiesOf('AvatarMember', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.addParameters({info: {propTables: [AvatarMember]}})
+	.addParameters({ info: { propTables: [AvatarMember] } })
 	.add(
 		'default',
 		() => (

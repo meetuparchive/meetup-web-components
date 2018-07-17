@@ -61,9 +61,7 @@ class Avatar extends React.PureComponent {
 
 		// hidden by default;
 		// displayed only for print media
-		const printPhoto = src && (
-			<img className="avatar-print" src={src} alt={alt} />
-		);
+		const printPhoto = src && <img className="avatar-print" src={src} alt={alt} />;
 
 		if (this.props.to || this.props.href) {
 			return (
