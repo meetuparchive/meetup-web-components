@@ -34,8 +34,7 @@ export class SectionComponent extends React.Component {
 
 		const hasSeparatorUntilBreakpoint =
 			VALID_BREAKPOINTS[hasSeparatorUntil] || VALID_BREAKPOINTS['all'];
-		const flushBreakpoint =
-			VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
+		const flushBreakpoint = VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
 
 		const classNames = cx(
 			SECTION_CLASS,
@@ -69,9 +68,7 @@ SectionComponent.propTypes = {
 	]),
 
 	/** When to remove the left and right margins */
-	flushUntil: PropTypes.oneOfType([
-		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
-	]),
+	flushUntil: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))]),
 
 	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,

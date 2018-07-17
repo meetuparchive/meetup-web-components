@@ -5,7 +5,7 @@ import { decorateWithInfo } from '../utils/decorators';
 
 storiesOf('TimeInput', module)
 	.addDecorator(decorateWithInfo)
-	.addParameters({ info: {propTables: [TimeInput] } })
+	.addParameters({ info: { propTables: [TimeInput] } })
 	.add(
 		'default',
 		() => <TimeInput name="time" value="14:30" label="Dentist appt time" />,

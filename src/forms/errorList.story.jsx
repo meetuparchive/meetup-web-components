@@ -13,5 +13,10 @@ storiesOf('ErrorList', module)
 				<ErrorList error="There is an error. ErrorList ensures the error container is always rendered with ARIA attributes." />
 			</Bounds>
 		),
-		{info: {text: 'ErrorList ensures the error container is always rendered with ARIA attributes. It is rendered using the `withErrorList` higher-order component'}}
+		{
+			info: {
+				text:
+					'ErrorList ensures the error container is always rendered with ARIA attributes. It is rendered using the `withErrorList` higher-order component',
+			},
+		}
 	);

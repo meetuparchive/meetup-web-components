@@ -58,9 +58,8 @@ export class InlineBlockListComponent extends React.Component {
 
 InlineBlockListComponent.propTypes = {
 	/** Items to render into an inline list */
-	items: PropTypes.arrayOf(
-		PropTypes.oneOfType([PropTypes.element, PropTypes.string])
-	).isRequired,
+	items: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.element, PropTypes.string]))
+		.isRequired,
 
 	/** The glyph that separates each item */
 	separator: PropTypes.string,

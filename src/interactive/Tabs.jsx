@@ -66,9 +66,10 @@ Tabs.propTypes = {
 			return new Error('At least two children of type TabsTab required');
 		}
 
-		const validChildren = React.Children
-			.map(children, child => child && child.type.name === 'TabsTab')
-			.every(child => child);
+		const validChildren = React.Children.map(
+			children,
+			child => child && child.type.name === 'TabsTab'
+		).every(child => child);
 
 		if (!validChildren) {
 			return new Error('Children must be React elements of type TabsTab');

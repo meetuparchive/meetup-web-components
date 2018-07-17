@@ -12,32 +12,35 @@ storiesOf('Stripe', module)
 				<StripeComponent>
 					<h3 className="text--sectionTitle">Default stripe</h3>
 					<p>
-						Stripes go full-width and are used to separate distinct
-						regions of a view
+						Stripes go full-width and are used to separate distinct regions of
+						a view
 					</p>
 				</StripeComponent>
 
 				<StripeComponent collection>
 					<h3 className="text--sectionTitle">Collection stripe</h3>
 					<p>
-						Stripes go full-width and are used to separate distinct
-						regions of a view
+						Stripes go full-width and are used to separate distinct regions of
+						a view
 					</p>
 					<p>
-						Collection stripes have an off-white background to help make
-						Cards appear like they have depth, but cards aren't required.
+						Collection stripes have an off-white background to help make Cards
+						appear like they have depth, but cards aren't required.
 					</p>
 				</StripeComponent>
 
 				<StripeComponent inverted>
 					<h3 className="text--sectionTitle">Stripe</h3>
 					<p>
-						Stripes go full-width and are used to separate distinct
-						regions of a view
+						Stripes go full-width and are used to separate distinct regions of
+						a view
 					</p>
 				</StripeComponent>
 
-				<StripeComponent inverted backgroundImage="https://placekitten.com/g/600/600">
+				<StripeComponent
+					inverted
+					backgroundImage="https://placekitten.com/g/600/600"
+				>
 					<div style={{ zIndex: '1' }}>
 						<h3 className="text--sectionTitle">Stripe with bg photo</h3>
 						<p>
@@ -63,7 +66,12 @@ storiesOf('Stripe', module)
 				</StripeComponent>
 			</div>
 		),
-		{ info: { text: 'This is the basic usage with the component. Stripes are almost never used alone. The <Bounds> and <Section> components provide padding and align content within a <Stripe>.' } }
+		{
+			info: {
+				text:
+					'This is the basic usage with the component. Stripes are almost never used alone. The <Bounds> and <Section> components provide padding and align content within a <Stripe>.',
+			},
+		}
 	)
 	.add('hero stripe', () => (
 		<div style={{ width: '100%' }}>

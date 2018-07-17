@@ -40,8 +40,12 @@ export class GridListComponent extends React.Component {
 			{
 				'flex--wrap': autoHeightWithWrap,
 				[`${GRID_AUTOHEIGHT_CLASS}--has${columns.default}`]: !!columns.default,
-				[`atMedium_${GRID_AUTOHEIGHT_CLASS}--has${columns.medium}`]: !!columns.medium,
-				[`atLarge_${GRID_AUTOHEIGHT_CLASS}--has${columns.large}`]: !!columns.large,
+				[`atMedium_${GRID_AUTOHEIGHT_CLASS}--has${
+					columns.medium
+				}`]: !!columns.medium,
+				[`atLarge_${GRID_AUTOHEIGHT_CLASS}--has${
+					columns.large
+				}`]: !!columns.large,
 			},
 			className
 		);
@@ -62,7 +66,9 @@ export class GridListComponent extends React.Component {
 			>
 				<ul
 					className={
-						autoHeight || autoHeightWithWrap ? autoHeightClassNames : classNames
+						autoHeight || autoHeightWithWrap
+							? autoHeightClassNames
+							: classNames
 					}
 					{...other}
 				>

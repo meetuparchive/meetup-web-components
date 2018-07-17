@@ -7,7 +7,7 @@ import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 storiesOf('TextInput', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.addParameters({info: { propTable: TextInput }})
+	.addParameters({ info: { propTable: TextInput } })
 	.add('type "tel"', () => (
 		<TextInput type="tel" label="Telephone Number" id="telephone" />
 	))

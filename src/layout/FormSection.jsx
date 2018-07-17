@@ -20,10 +20,7 @@ function FormSection({
 	isLoading,
 }) {
 	return (
-		<Section
-			hasSeparator={withSeparator}
-			className={cx(className, 'border--none')}
-		>
+		<Section hasSeparator={withSeparator} className={cx(className, 'border--none')}>
 			<Card
 				initialHeight
 				flushUntil="large"

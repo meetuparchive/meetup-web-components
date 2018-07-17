@@ -8,8 +8,7 @@ import TextInput from './TextInput';
 export const TA_DROPDOWN_CLASSNAME = 'typeahead-dropdown';
 export const TA_ITEM_CLASSNAME = 'typeahead-item';
 
-const defaultItemToString = itemValue =>
-	typeof itemValue === 'string' ? itemValue : '';
+const defaultItemToString = itemValue => (typeof itemValue === 'string' ? itemValue : '');
 
 /**
  * @module typeahead
@@ -139,14 +138,17 @@ class Typeahead extends React.PureComponent {
 														TA_ITEM_CLASSNAME,
 														item.props.className,
 														{
-															'typeahead-item--isActive': highlightedIndex == i,
+															'typeahead-item--isActive':
+																highlightedIndex == i,
 														}
 													),
 													...item.props,
 												})}
 											>
 												{typeof item.props.children === 'function'
-													? item.props.children({ isSelected: selected })
+													? item.props.children({
+															isSelected: selected,
+													  })
 													: item.props.children}
 											</div>
 										);

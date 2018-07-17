@@ -30,8 +30,7 @@ export class CardComponent extends React.PureComponent {
 			...other
 		} = this.props;
 
-		const flushBreakpoint =
-			VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
+		const flushBreakpoint = VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
 
 		const classNames = cx(
 			CARD_CLASS,
@@ -65,9 +64,7 @@ CardComponent.propTypes = {
 	hasHoverShadow: PropTypes.bool,
 
 	/** Breakpoint at which the card should be inset from it's container instead of being flushed to the left and right edges of it's container */
-	flushUntil: PropTypes.oneOfType([
-		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
-	]),
+	flushUntil: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))]),
 
 	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,

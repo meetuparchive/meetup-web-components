@@ -72,19 +72,16 @@ const DEFAULT_PROPS = {
 storiesOf('Footer', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.addParameters({info: {propTables: [Footer]}})
-	.add(
-		'default',
-		() => <TestFooter {...DEFAULT_PROPS} />,
-		{ info: { text: 'Footer content for a logged out user on replatformed pages' } }
-	)
-	.add(
-		'isLoggedIn',
-		() => <TestFooter {...DEFAULT_PROPS} isLoggedIn />,
-		{ info: { text: 'Footer content for a logged in user on replatformed pages' } }
-	)
-	.add(
-		'isLight',
-		() => <TestFooter {...DEFAULT_PROPS} isLight />,
-		{ info: { text: 'This light-colored variant of the footer is rendered on very sparse pages like our 404 page or the standard error page' } }
-	);
+	.addParameters({ info: { propTables: [Footer] } })
+	.add('default', () => <TestFooter {...DEFAULT_PROPS} />, {
+		info: { text: 'Footer content for a logged out user on replatformed pages' },
+	})
+	.add('isLoggedIn', () => <TestFooter {...DEFAULT_PROPS} isLoggedIn />, {
+		info: { text: 'Footer content for a logged in user on replatformed pages' },
+	})
+	.add('isLight', () => <TestFooter {...DEFAULT_PROPS} isLight />, {
+		info: {
+			text:
+				'This light-colored variant of the footer is rendered on very sparse pages like our 404 page or the standard error page',
+		},
+	});

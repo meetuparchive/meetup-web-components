@@ -429,7 +429,11 @@ storiesOf('Flex', module)
 	.add(
 		'Column reverse',
 		() => (
-			<FlexComponent direction="column" columnReverse="all" style={flexParentStyles}>
+			<FlexComponent
+				direction="column"
+				columnReverse="all"
+				style={flexParentStyles}
+			>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -457,7 +461,11 @@ storiesOf('Flex', module)
 	.add(
 		'Switch flex-direction (at medium breakpoint)',
 		() => (
-			<FlexComponent direction="column" switchDirection="medium" style={flexParentStyles}>
+			<FlexComponent
+				direction="column"
+				switchDirection="medium"
+				style={flexParentStyles}
+			>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>

@@ -30,11 +30,7 @@ ErrorList.propTypes = {
 	errorId: PropTypes.string,
 
 	/** Error content to render */
-	error: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element,
-		PropTypes.bool,
-	]),
+	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.bool]),
 };
 
 export default ErrorList;

@@ -22,8 +22,7 @@ export const getIconShape = (shape, size) => {
 		return shape;
 	}
 
-	const suffix =
-		size === 'xxs' || size === 'xs' || size === 's' ? SVG_THIN_STYLE : '';
+	const suffix = size === 'xxs' || size === 'xs' || size === 's' ? SVG_THIN_STYLE : '';
 	return `${shape}${suffix}`;
 };
 
@@ -38,15 +37,7 @@ export const getIconShape = (shape, size) => {
  */
 class Icon extends React.PureComponent {
 	render() {
-		const {
-			className,
-			shape,
-			size,
-			color,
-			style,
-			circled,
-			...other
-		} = this.props;
+		const { className, shape, size, color, style, circled, ...other } = this.props;
 
 		const classNames = cx(
 			ICON_CLASS,

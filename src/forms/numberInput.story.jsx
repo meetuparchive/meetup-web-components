@@ -40,7 +40,7 @@ class ControlledNumberInput extends React.Component {
 storiesOf('NumberInput', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.addParameters({info: { propTable: NumberInput }})
+	.addParameters({ info: { propTable: NumberInput } })
 	.add('default', () => (
 		<div>
 			<NumberInput label="How many?" id="amount" name="amount" />
