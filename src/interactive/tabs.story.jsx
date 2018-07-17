@@ -7,7 +7,7 @@ import { Tabs, TabsTab } from './Tabs';
 storiesOf('Tabs', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.addParameters({info: {propTablesExclude: [StoryLink] }})
+	.addParameters({ info: { propTablesExclude: [StoryLink] } })
 	.add(
 		'default',
 		() => (
