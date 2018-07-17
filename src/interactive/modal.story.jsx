@@ -100,12 +100,16 @@ const wrapperStyle = {
 
 storiesOf('Modal', module)
 	.addDecorator(withInfo)
-	.addParameters({info: {propTablesExclude: [Button, Chunk, Section, Stripe] }})
+	.addParameters({ info: { propTablesExclude: [Button, Chunk, Section, Stripe] } })
 	.add(
 		'default',
 		() => (
 			<div style={wrapperStyle}>
-				<ModalComponent onDismiss={onDismiss} initialFocus="#firstFocus" focusTrapActive={false}>
+				<ModalComponent
+					onDismiss={onDismiss}
+					initialFocus="#firstFocus"
+					focusTrapActive={false}
+				>
 					{content}
 				</ModalComponent>
 				<div
@@ -433,7 +437,11 @@ storiesOf('Modal', module)
 		'fullscreen',
 		() => (
 			<div style={wrapperStyle}>
-				<ModalComponent onDismiss={onDismiss} initialFocus="#firstFocus" fullscreen>
+				<ModalComponent
+					onDismiss={onDismiss}
+					initialFocus="#firstFocus"
+					fullscreen
+				>
 					{content}
 				</ModalComponent>
 				<div

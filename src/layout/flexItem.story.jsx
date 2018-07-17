@@ -29,7 +29,12 @@ const boxStyles = {
 
 storiesOf('FlexItem', module)
 	.addDecorator(decorateWithInfo)
-	.addParameters({ info: { propTables: [FlexComponent, FlexItemComponent], propTablesExclude: [Flex, FlexItem] } })
+	.addParameters({
+		info: {
+			propTables: [FlexComponent, FlexItemComponent],
+			propTablesExclude: [Flex, FlexItem],
+		},
+	})
 	.add(
 		'Flex Item grow (default)',
 		() => (

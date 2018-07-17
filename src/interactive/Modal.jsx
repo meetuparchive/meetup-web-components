@@ -297,7 +297,7 @@ ModalComponent.propTypes = {
 ModalComponent.defaultProps = {
 	fullscreen: false,
 	closeArea: true,
-	focusTrapActive: true
+	focusTrapActive: true,
 };
 
 export default withLoading(ModalComponent);
