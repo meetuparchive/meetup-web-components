@@ -1,54 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SelectInput basic renders into the DOM 1`] = `
-<div>
-  <div
-    className="inputContainer"
+<Select
+  label="Test select"
+  name="testSelect"
+  onChange={[Function]}
+  value="1"
+>
+  <option
+    key="0"
+    value="1"
   >
-    <label
-      className="label--field"
-      htmlFor="testSelect"
-    >
-      Test select
-    </label>
-    <select
-      className="select--reset span--100 padding--selectArrow"
-      id="testSelect"
-      name="testSelect"
-      onChange={[Function]}
-      value="1"
-    >
-      <option
-        key="0"
-        value="1"
-      >
-        One
-      </option>
-      <option
-        key="1"
-        value="2"
-      >
-        Two
-      </option>
-      <option
-        key="2"
-        value="3"
-      >
-        Three
-      </option>
-      <option
-        disabled={true}
-        key="3"
-        value="4"
-      >
-        Four
-      </option>
-    </select>
-    <Icon
-      className="select-customArrow"
-      shape="chevron-down"
-      size="xs"
-    />
-  </div>
-</div>
+    One
+  </option>
+  <option
+    key="1"
+    value="2"
+  >
+    Two
+  </option>
+  <option
+    key="2"
+    value="3"
+  >
+    Three
+  </option>
+  <option
+    disabled={true}
+    key="3"
+    value="4"
+  >
+    Four
+  </option>
+</Select>
 `;

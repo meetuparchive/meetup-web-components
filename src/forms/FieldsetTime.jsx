@@ -5,7 +5,7 @@ import { LocalTime, ChronoField } from 'js-joda';
 
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
-import { SelectInput } from './SelectInput';
+import Select from './Select';
 
 export const HOURS_INPUT_CLASS = 'timeInput-hours';
 export const HOURS_INPUT_NAME = 'hour';
@@ -225,18 +225,17 @@ class FieldsetTime extends React.PureComponent<Props> {
 							shrink
 							className="timeInput-meridianContainer display--flex flex--column flex--center"
 						>
-							<SelectInput
+							<Select
 								id={`${displayId}-meridian`}
 								name="mwc-meridian"
 								className={classNames.meridian}
 								disabled={disabled}
 								value={meridian.toString()} // 0 or 1
 								onChange={this.onMeridianChange}
-								options={[
-									{ label: 'AM', value: '0' },
-									{ label: 'PM', value: '1' },
-								]}
-							/>
+							>
+								<option value="0">AM</option>
+								<option value="1">PM</option>
+							</Select>
 						</FlexItem>
 					)}
 				</Flex>

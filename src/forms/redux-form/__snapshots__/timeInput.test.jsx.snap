@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`redux-form TimeInput renders a TimeInput component with expected attributes from mock data 1`] = `
-<WithErrorList(TimeInput)
+<TimeInput
   error={null}
   label="What time is it?"
   name="partytime"
