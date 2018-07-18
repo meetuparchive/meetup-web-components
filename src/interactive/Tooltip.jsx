@@ -94,6 +94,7 @@ class Tooltip extends React.PureComponent {
 			<div
 				className={classNames.dropdown}
 				onMouseLeave={this.closeContent}
+				id={id}
 				{...other}
 			>
 				<div
@@ -137,19 +138,27 @@ class Tooltip extends React.PureComponent {
 								}}
 							>
 								<div
-									className={cx('popup-bubble tooltip-bubble inverted', {
-										'popup-bubble--active': isActive,
-										'popup-bubble--right': align === 'right',
-										'popup-bubble--left': align === 'left',
-										'popup-bubble--center': align === 'center',
-										'popup-bubble--top': direction === 'top',
-									})}
+									className={cx(
+										'popup-bubble tooltip-bubble inverted',
+										{
+											'popup-bubble--active': isActive,
+											'popup-bubble--right': align === 'right',
+											'popup-bubble--left': align === 'left',
+											'popup-bubble--center': align === 'center',
+											'popup-bubble--top': direction === 'top',
+										}
+									)}
 								>
 									{withClose && (
 										<Button
 											className="tooltip-closeBtn"
 											onClick={this.closeContent}
-											icon={<Icon shape="cross" className="text--secondary" />}
+											icon={
+												<Icon
+													shape="cross"
+													className="text--secondary"
+												/>
+											}
 											reset
 										/>
 									)}

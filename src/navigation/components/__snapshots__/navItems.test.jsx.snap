@@ -11,6 +11,7 @@ exports[`NavItem does *not* render count bubble, label, or dropdown if no count 
         
       </div>
     }
+    title="Just a simple title for a11y"
   />
 </FlexItem>
 `;
@@ -23,6 +24,7 @@ exports[`NavItem link component renders correct url from prop 1`] = `
       
     </div>
   }
+  title="Just a simple title for a11y"
 />
 `;
 
@@ -40,6 +42,7 @@ exports[`NavItem renders a dropdown when \`dropdownContent\` is passed as a prop
       <div>
         <span
           className="navItem-label"
+          title="Just a simple title for a11y"
         >
           <p>
             Anything is possible
@@ -61,6 +64,7 @@ exports[`NavItem renders a label when provided 1`] = `
       <div>
         <span
           className="navItem-label"
+          title="Just a simple title for a11y"
         >
           <p>
             Anything is possible
@@ -68,6 +72,7 @@ exports[`NavItem renders a label when provided 1`] = `
         </span>
       </div>
     }
+    title="Just a simple title for a11y"
   />
 </FlexItem>
 `;
@@ -82,6 +87,7 @@ exports[`NavItem renders an ActionItem when \`onAction\` is passed as a prop 1`]
       <div>
         <span
           className="navItem-label"
+          title="Just a simple title for a11y"
         >
           <p>
             Anything is possible
@@ -89,6 +95,7 @@ exports[`NavItem renders an ActionItem when \`onAction\` is passed as a prop 1`]
         </span>
       </div>
     }
+    title="Just a simple title for a11y"
   />
 </FlexItem>
 `;
@@ -112,6 +119,7 @@ exports[`NavItem renders count bubble when a count is provided 1`] = `
         </span>
       </div>
     }
+    title="Just a simple title for a11y"
   />
 </FlexItem>
 `;

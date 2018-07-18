@@ -6,7 +6,11 @@ import Tooltip from './Tooltip';
 
 const InfoTooltipTrigger = () => (
 	<Button reset>
-		<span className="infoToggle-trigger align--center" role="img">
+		<span
+			className="infoToggle-trigger align--center"
+			role="img"
+			title="Additional info tooltip"
+		>
 			?
 		</span>
 	</Button>
