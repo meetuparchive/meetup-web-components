@@ -6,7 +6,7 @@ import {
 	C_TEXT_PRIMARY,
 	C_TEXT_SECONDARY,
 	C_TEXT_HINT,
-} from 'swarm-constants/dist/js/colorConstants.js';
+} from 'swarm-constants/dist/js/constants';
 
 import Button from './Button';
 import Icon from '../media/Icon';

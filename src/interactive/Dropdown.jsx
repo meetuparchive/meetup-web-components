@@ -3,7 +3,7 @@ import React from 'react';
 import cx from 'classnames';
 import Downshift from 'downshift';
 import FloatingPosition from '../utils/components/FloatingPosition';
-import { C_COOLGRAYLIGHTTRANSP } from 'swarm-constants/dist/js/colorConstants.js';
+import { C_COOLGRAYLIGHTTRANSP } from 'swarm-constants/dist/js/constants';
 
 import bindAll from '../utils/bindAll';
 
@@ -188,13 +188,17 @@ class Dropdown extends React.PureComponent {
 											className={cx('popup-bubble', {
 												'popup-bubble--right': align === 'right',
 												'popup-bubble--left': align === 'left',
-												'popup-bubble--center': align === 'center',
+												'popup-bubble--center':
+													align === 'center',
 												'popup-bubble--top': direction === 'top',
 											})}
 										>
 											{menuItems
 												? menuItems.map((item, index) => {
-														const { className, ...other } = item.props;
+														const {
+															className,
+															...other
+														} = item.props;
 
 														return React.cloneElement(item, {
 															...getItemProps({
@@ -207,13 +211,14 @@ class Dropdown extends React.PureComponent {
 																),
 																style: {
 																	backgroundColor:
-																		highlightedIndex === index &&
+																		highlightedIndex ===
+																			index &&
 																		C_COOLGRAYLIGHTTRANSP,
 																},
 																...other,
 															}),
 														});
-													})
+												  })
 												: content}
 										</div>
 									</div>
