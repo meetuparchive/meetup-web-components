@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import {
-	Section,
+	SectionComponent,
 	SECTION_CLASS,
 	SECTION_HASSEPARATOR_CLASS,
 	VALID_BREAKPOINTS,
@@ -13,7 +13,7 @@ describe('Section', function() {
 	let section;
 
 	beforeEach(() => {
-		section = shallow(<Section />);
+		section = shallow(<SectionComponent />);
 	});
 	afterEach(() => {
 		section = null;
@@ -28,14 +28,14 @@ describe('Section', function() {
 	describe('Section hasSeparator', () => {
 		it(`check that component has '${SECTION_HASSEPARATOR_CLASS}' class`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = shallow(<Section hasSeparator />);
+				section = shallow(<SectionComponent hasSeparator />);
 				expect(section.hasClass(SECTION_CLASS)).toBe(true);
 				expect(section.hasClass(SECTION_HASSEPARATOR_CLASS)).toBe(true);
 			});
 		});
 		it(`check that component has '${SECTION_HASSEPARATOR_CLASS}' class with breakpoint`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = shallow(<Section hasSeparatorUntil={breakpoint} />);
+				section = shallow(<SectionComponent hasSeparatorUntil={breakpoint} />);
 				expect(section.hasClass(SECTION_CLASS)).toBe(true);
 				expect(
 					section.hasClass(
@@ -49,7 +49,7 @@ describe('Section', function() {
 	describe('Section flushUntil', () => {
 		it(`check that component has '${SECTION_FLUSH_CLASS}' class`, function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
-				section = shallow(<Section flushUntil={breakpoint} />);
+				section = shallow(<SectionComponent flushUntil={breakpoint} />);
 				expect(section.hasClass(SECTION_CLASS)).toBe(true);
 				expect(
 					section.hasClass(
