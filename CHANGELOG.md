@@ -1,14 +1,22 @@
+# [5.1]
+
+-   **New feature** `Select` component that provides all the display logic of the
+    existing `SelectInput` but does not control the `value` prop - it should be
+    treated as a direct replacement of a vanilla `<select>` component.
+-   **DEPRECATED** `SelectInput` - parent components should be responsible for
+    supplying the `value` property or determining whether it should be uncontrolled
+
 # [5.0]
 
 -   **BREAKING CHANGE** `CalendarComponent` now works exclusively with js-joda `LocalDate`
     values. When supplying an optional `value`, it must be a `LocalDate`, and `onChange`
     callbacks will receive a `LocalDate` instance as the first argument.
-	
-	To convert a JS `Date` object to a `LocalDate`, use
-	
-	```js
-	LocalDate.from(nativeJs(input.value))
-	```
+
+    To convert a JS `Date` object to a `LocalDate`, use
+
+    ```js
+    LocalDate.from(nativeJs(input.value));
+    ```
 
     To convert the `LocalDate` back to a JS `Date` object in legacy code, use
 
@@ -17,11 +25,11 @@
     ```
 
     Better to just convert your implementation full to js-joda, however. API docs are
-	[here](https://js-joda.github.io/js-joda/esdoc/)
+    [here](https://js-joda.github.io/js-joda/esdoc/)
 
 # [4.13]
 
-- **Change** All `GridList` items constrain their width to obey the grid columns
+-   **Change** All `GridList` items constrain their width to obey the grid columns
 
 # [4.12]
 

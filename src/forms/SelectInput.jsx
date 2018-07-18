@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import cx from 'classnames';
 
-import Icon from '../media/Icon';
-import withErrorList from '../utils/components/withErrorList';
+import Select from './Select';
 
 /**
+ * Deprecated - use <Select> directly, supply `value` from parent
  * @module SelectInput
+ * @deprecated
  */
-export class SelectInput extends React.PureComponent {
+export default class SelectInput extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -31,75 +31,25 @@ export class SelectInput extends React.PureComponent {
 	}
 
 	render() {
-		const {
-			children,
-			className,
-			labelClassName,
-			label,
-			options,
-			id,
-			name,
-			error,
-			errors,
-			onChange, // eslint-disable-line no-unused-vars
-			value, // eslint-disable-line no-unused-vars
-			helperText,
-			required,
-			requiredText,
-			...other
-		} = this.props;
-
-		const classNames = {
-			label: cx(
-				'label--field',
-				{
-					'label--required': required,
-					'flush--bottom': helperText,
-				},
-				labelClassName
-			),
-			field: cx(
-				'select--reset span--100 padding--selectArrow',
-				{ 'field--error': (errors && errors.length > 0) || error },
-				className
-			),
-			helperText: cx('helperTextContainer', { required }),
-		};
+		// eslint-disable-next-line no-unused-vars
+		const { options, error, errors, requiredText, required, ...other } = this.props;
+		const { value } = this.state;
+		const actualRequired = required && requiredText;
 
 		return (
-			<div>
-				<div className="inputContainer">
-					{label && (
-						<label
-							className={classNames.label}
-							htmlFor={name}
-							data-requiredtext={required && requiredText}
-						>
-							{label}
-						</label>
-					)}
-					{helperText && (
-						<div className={classNames.helperText}>{helperText}</div>
-					)}
-					<select
-						name={name}
-						id={id || name}
-						required={required}
-						className={classNames.field}
-						onChange={this.onChange}
-						value={this.state.value}
-						{...other}
-					>
-						{options.map((option, key) => (
-							<option key={key} value={option.value} disabled={option.disabled}>
-								{option.label}
-							</option>
-						))}
-					</select>
-					<Icon className="select-customArrow" shape="chevron-down" size="xs" />
-				</div>
-				{children}
-			</div>
+			<Select
+				{...other}
+				value={value}
+				required={actualRequired}
+				error={(errors && errors.length > 0) || error}
+				onChange={this.onChange}
+			>
+				{options.map((option, key) => (
+					<option key={key} value={option.value} disabled={option.disabled}>
+						{option.label}
+					</option>
+				))}
+			</Select>
 		);
 	}
 }
@@ -134,5 +84,3 @@ SelectInput.propTypes = {
 	required: PropTypes.bool,
 	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
-
-export default withErrorList(SelectInput);
