@@ -1,10 +1,20 @@
+# [5.2]
+
+-   **New feature** `InputTime` component that provides all the display logic of the
+    existing `TimeInput` but does not control the `value` prop - it should be
+    treated as a direct replacement of a vanilla `<input type="time">` component.
+-   **DEPRECATED** `TimeInput` - parent components should be responsible for
+    supplying the `value` property or determining whether it should be uncontrolled,
+    and use `InputTime` instead
+
 # [5.1]
 
 -   **New feature** `Select` component that provides all the display logic of the
     existing `SelectInput` but does not control the `value` prop - it should be
     treated as a direct replacement of a vanilla `<select>` component.
 -   **DEPRECATED** `SelectInput` - parent components should be responsible for
-    supplying the `value` property or determining whether it should be uncontrolled
+    supplying the `value` property or determining whether it should be uncontrolled,
+    and use `Select` instead
 
 # [5.0]
 
