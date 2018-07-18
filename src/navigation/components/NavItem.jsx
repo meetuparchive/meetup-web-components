@@ -8,13 +8,18 @@ import FlexItem from '../../layout/FlexItem';
 
 const NAV_ITEM_CLASS = 'navItemLink';
 
-export const ActionItem = ({ navItemContent, action }) => (
-	<Button reset className={cx(NAV_ITEM_CLASS, 'text--secondary')} onClick={action}>
+export const ActionItem = ({ navItemContent, action, title }) => (
+	<Button
+		reset
+		className={cx(NAV_ITEM_CLASS, 'text--secondary')}
+		onClick={action}
+		title={title}
+	>
 		{navItemContent}
 	</Button>
 );
-export const LinkItem = ({ linkTo, navItemContent, className }) => (
-	<a href={linkTo} className={cx(NAV_ITEM_CLASS, className)}>
+export const LinkItem = ({ linkTo, navItemContent, className, title }) => (
+	<a href={linkTo} className={cx(NAV_ITEM_CLASS, className)} title={title}>
 		{navItemContent}
 	</a>
 );
@@ -29,7 +34,7 @@ export const ContentLoaderItem = ({ navItemContent, onClickAction, title }) => (
 		{navItemContent}
 	</Button>
 );
-export const DropdownItem = ({ navItemContent, dropdownContent }) => (
+export const DropdownItem = ({ navItemContent, dropdownContent, title }) => (
 	<Dropdown
 		noPortal
 		align="right"
@@ -105,6 +110,7 @@ export const NavItem = props => {
 					className={linkClassName}
 					linkTo={linkTo}
 					navItemContent={navItemContent}
+					title={title}
 				/>
 			)}
 			{dropdownContent && (
@@ -113,7 +119,13 @@ export const NavItem = props => {
 					navItemContent={trigger}
 				/>
 			)}
-			{onAction && <ActionItem action={onAction} navItemContent={navItemContent} />}
+			{onAction && (
+				<ActionItem
+					action={onAction}
+					navItemContent={navItemContent}
+					title={title}
+				/>
+			)}
 		</FlexItem>
 	);
 };
