@@ -9,11 +9,7 @@ import FlexItem from '../../layout/FlexItem';
 const NAV_ITEM_CLASS = 'navItemLink';
 
 export const ActionItem = ({ navItemContent, action }) => (
-	<Button
-		reset
-		className={cx(NAV_ITEM_CLASS, 'text--secondary')}
-		onClick={action}
-	>
+	<Button reset className={cx(NAV_ITEM_CLASS, 'text--secondary')} onClick={action}>
 		{navItemContent}
 	</Button>
 );
@@ -23,12 +19,7 @@ export const LinkItem = ({ linkTo, navItemContent, className }) => (
 	</a>
 );
 export const ContentLoaderItem = ({ navItemContent, onClickAction }) => (
-	<Button
-		aria-haspopup
-		reset
-		className={NAV_ITEM_CLASS}
-		onClick={onClickAction}
-	>
+	<Button aria-haspopup reset className={NAV_ITEM_CLASS} onClick={onClickAction}>
 		{navItemContent}
 	</Button>
 );
@@ -66,6 +57,7 @@ export const NavItem = props => {
 		onClickAction,
 		onAction,
 		updatesLabel,
+		title,
 		...other
 	} = props;
 
@@ -77,7 +69,11 @@ export const NavItem = props => {
 	const navItemContent = (
 		<div>
 			{icon}
-			{label && <span className={classNames.label}>{label}</span>}
+			{label && (
+				<span className={classNames.label} title={title}>
+					{label}
+				</span>
+			)}
 			{hasUpdates && (
 				<span className="counterBadge">
 					<span className="visibility--a11yHide">{updatesLabel}</span>
@@ -110,9 +106,7 @@ export const NavItem = props => {
 					navItemContent={trigger}
 				/>
 			)}
-			{onAction && (
-				<ActionItem action={onAction} navItemContent={navItemContent} />
-			)}
+			{onAction && <ActionItem action={onAction} navItemContent={navItemContent} />}
 		</FlexItem>
 	);
 };
