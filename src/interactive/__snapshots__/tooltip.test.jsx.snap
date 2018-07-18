@@ -66,6 +66,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
 >
   <div
     className="popup"
+    id="testDropdown"
     onMouseLeave={[Function]}
   >
     <div
