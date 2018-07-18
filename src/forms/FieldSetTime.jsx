@@ -7,36 +7,20 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import { SelectInput } from './SelectInput';
 
-type PartialChange = {| hour: ?number |} | {| minute: ?number |} | {| meridian: number |};
-
 export const HOURS_INPUT_CLASS = 'timeInput-hours';
-export const HOURS_INPUT_NAME = 'mwc-hour';
+export const HOURS_INPUT_NAME = 'hour';
 export const MINUTES_INPUT_CLASS = 'timeInput-minutes';
-export const MINUTES_INPUT_NAME = 'mwc-minute';
+export const MINUTES_INPUT_NAME = 'minute';
 export const MERIDIAN_INPUT_CLASS = 'timeInput-meridian';
 
-const formatDigits = number => `0${number}`.slice(-2);
-const updateValueByStep = (
-	e: SyntheticEvent<HTMLInputElement>,
-	stepSize: number
-): string => {
-	const { min, max, value } = e.currentTarget;
-	const currentVal = parseInt(value, 10);
-	const newValue = currentVal + stepSize;
+type Props = React.ElementConfig<'input'> & {
+	value: string, // empty string or HH:mm
+	disabled?: boolean,
+	error?: string | boolean,
+	is24Hr?: boolean,
+	onChange: string => void,
+};
 
-	if (newValue <= parseInt(max, 10) && newValue >= parseInt(min, 10)) {
-		return formatDigits(newValue);
-	}
-	return value;
-};
-const constrainValue = (min: ?string, max: ?string, value: string): number => {
-	const val = parseInt(value, 10);
-	const constrainedMin = min ? Math.max(val, parseInt(min, 10)) : val;
-	const constrained = max
-		? Math.min(constrainedMin, parseInt(max, 10))
-		: constrainedMin;
-	return constrained;
-};
 const UP_ARROW = 38;
 const DOWN_ARROW = 40;
 const KEY_INCREMENT = {
@@ -44,23 +28,22 @@ const KEY_INCREMENT = {
 	[DOWN_ARROW]: -1,
 };
 
-type Props = React.ElementConfig<'input'> & {
-	value: string, // empty string or HH:mm
-	disabled?: boolean,
-	error?: string | boolean,
-	is24Hr?: boolean,
-	onChange: (SyntheticEvent<*>) => void,
-};
-
 const getValueComponents = (
-	value: string
-): { hour: ?number, minute: ?number, meridian: number } => {
-	const localTime = (value && LocalTime.parse(value)) || null;
-	const hour = localTime && localTime.hour();
+	is24Hr: boolean,
+	value: ?string
+): { hour: ?string, minute: ?string, meridian: string } => {
+	if (!value) {
+		return { hour: undefined, minute: undefined, meridian: '0' };
+	}
+	const localTime = LocalTime.parse(value);
+	const [hourString, minuteString] = localTime.toString().split(':');
+
 	return {
-		hour,
-		minute: localTime && localTime.minute(),
-		meridian: Number(hour && hour < 13), // '0' or '1'
+		hour: is24Hr
+			? hourString
+			: localTime.get(ChronoField.CLOCK_HOUR_OF_AMPM).toString(),
+		minute: minuteString,
+		meridian: localTime.get(ChronoField.AMPM_OF_DAY).toString(), // '0' or '1'
 	};
 };
 
@@ -70,46 +53,48 @@ const getValueComponents = (
  */
 class FieldsetTime extends React.PureComponent<Props> {
 	static defaultProps = { is24Hr: true };
-	// Based on state, create a fake onChange with the complete time value
-	makeOnChange = (
-		e: SyntheticEvent<HTMLInputElement>,
-		partialChange: PartialChange
-	) => {
-		const { hour, minute, meridian } = {
-			...getValueComponents(this.props.value),
-			...partialChange,
-		};
-		if (
-			typeof hour !== 'number' ||
-			typeof minute !== 'number' ||
-			typeof meridian !== 'number'
-		) {
-			return; // not all fields available - no change to report
-		}
-		const baseLocalTime = LocalTime.of(hour, minute, 0);
-		const localTime = this.props.is24Hr
-			? baseLocalTime
-			: baseLocalTime.with(ChronoField.AMPM_OF_DAY, meridian);
-		e.currentTarget.name = this.props.name;
-		e.currentTarget.value = localTime.toString();
-		this.props.onChange(e);
+	onHourChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
+		// get the last 2 digits entered
+		const value = parseInt(e.target.value.slice(-2));
+		// determine if the last 2 digits are a valid hour, otherwise take only the last digit
+		const validMax = this.props.is24Hr ? 23 : 12;
+		const truncated = value > validMax ? parseInt(e.target.value.slice(-1)) : value;
+		this.changeHour(truncated);
 	};
-	onNumberChange = (e: SyntheticEvent<HTMLInputElement>) => {
-		const { value, name } = e.currentTarget;
-
-		if (/[^\d]/.test(value)) {
-			// only allow digits
+	changeHour = (hour: number) => {
+		const currentTime = this.props.value
+			? LocalTime.parse(this.props.value)
+			: LocalTime.of(0, 0, 0);
+		const newTime = currentTime.withHour(hour % 24);
+		if (this.props.is24Hr) {
+			this.props.onChange(newTime.toString());
 			return;
 		}
-
-		switch (name) {
-			case HOURS_INPUT_NAME:
-				this.makeOnChange(e, { hour: parseInt(value, 10) });
-				break;
-			case MINUTES_INPUT_NAME:
-				this.makeOnChange(e, { minute: parseInt(value, 10) });
-				break;
+		this.props.onChange(
+			newTime
+				.with(ChronoField.AMPM_OF_DAY, currentTime.get(ChronoField.AMPM_OF_DAY))
+				.toString()
+		);
+	};
+	onMinuteChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
+		const value = parseInt(e.target.value.slice(-2));
+		const truncated = value < 60 ? value : parseInt(e.target.value.slice(-1));
+		this.changeMinute(truncated);
+	};
+	changeMinute = (minute: number) => {
+		const currentTime = this.props.value
+			? LocalTime.parse(this.props.value)
+			: LocalTime.of(0, 0, 0);
+		const newTime = currentTime.withMinute(minute % 60);
+		if (this.props.is24Hr) {
+			this.props.onChange(newTime.toString());
+			return;
 		}
+		this.props.onChange(
+			newTime
+				.with(ChronoField.AMPM_OF_DAY, currentTime.get(ChronoField.AMPM_OF_DAY))
+				.toString()
+		);
 	};
 
 	// selects text when the hour or minute input gets focus
@@ -122,29 +107,42 @@ class FieldsetTime extends React.PureComponent<Props> {
 	 * in turn changes the state and updates the value of the <select>
 	 */
 	onMeridianChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
-		this.makeOnChange(e, { meridian: parseInt(e.currentTarget.value, 10) });
-	};
-
-	/**
-	 * called when either the hour or minute input loses focus,
-	 * and ensures the value entered is not out of the min/max range
-	 */
-	onBlur = (e: SyntheticEvent<HTMLInputElement>) => {
-		const { value, min, max } = e.currentTarget;
-		e.currentTarget.value = constrainValue(min, max, value).toString();
-		this.onNumberChange(e);
+		if (!this.props.value) {
+			return;
+		}
+		const localTime = LocalTime.parse(this.props.value);
+		this.props.onChange(
+			localTime
+				.with(ChronoField.AMPM_OF_DAY, parseInt(e.target.value, 10))
+				.toString()
+		);
 	};
 
 	// Handle up/down arrow behavior in hour/minute fields
 	onNumberKeyDown = (e: SyntheticKeyboardEvent<HTMLInputElement>) => {
-		if (Object.keys(KEY_INCREMENT).includes(e.keyCode)) {
+		if (KEY_INCREMENT[e.keyCode]) {
 			e.preventDefault();
 			const stepMultiplier = e.shiftKey ? 10 : 1;
 			const stepSize = KEY_INCREMENT[e.keyCode] * stepMultiplier;
-			e.currentTarget.value = updateValueByStep(e, stepSize);
-			this.onNumberChange(e);
+			const field = e.currentTarget.name;
+			if (!this.props.value) {
+				// brand new localTime
+				const newTime = {
+					hour: 0,
+					minute: 0,
+				};
+				newTime[field] = parseInt(e.currentTarget.value, 10) + stepSize;
+				this.props.onChange(
+					LocalTime.of(newTime.hour % 24, newTime.minute % 60, 0).toString()
+				);
+				return;
+			}
+
 			// TODO: test this behavior - might need to implement in callback
 			e.currentTarget.select();
+		}
+		if (!/[0-9]/.test(String.fromCharCode(e.keyCode))) {
+			e.preventDefault();
 		}
 	};
 
@@ -167,7 +165,7 @@ class FieldsetTime extends React.PureComponent<Props> {
 		};
 		const displayId = id || name;
 
-		const { hour, minute, meridian } = getValueComponents(value);
+		const { hour, minute, meridian } = getValueComponents(is24Hr, value);
 		return (
 			<fieldset className={classNames.fauxInput}>
 				<Flex noGutters>
@@ -181,12 +179,9 @@ class FieldsetTime extends React.PureComponent<Props> {
 							max={is24Hr ? 23 : 12}
 							disabled={disabled}
 							className={`field--reset align--center ${HOURS_INPUT_CLASS}`}
-							onMouseUp={this.highlightInputText}
-							onBlur={this.onBlur}
-							onChange={this.onNumberChange}
-							onKeyDown={this.onNumberKeyDown}
-							size={2}
-							maxLength={2}
+							onMouseUp={e => this.highlightInputText(e)}
+							onChange={e => this.onHourChange(e)}
+							onKeyDown={e => this.onNumberKeyDown(e)}
 							value={hour}
 						/>{' '}
 					</FlexItem>
@@ -203,12 +198,9 @@ class FieldsetTime extends React.PureComponent<Props> {
 							max={59}
 							disabled={disabled}
 							className={`field--reset align--center ${MINUTES_INPUT_CLASS}`}
-							onMouseUp={this.highlightInputText}
-							onBlur={this.onBlur}
-							onChange={this.onNumberChange}
-							onKeyDown={this.onNumberKeyDown}
-							size={2}
-							maxLength={2}
+							onMouseUp={e => this.highlightInputText(e)}
+							onChange={e => this.onMinuteChange(e)}
+							onKeyDown={e => this.onNumberKeyDown(e)}
 							value={minute}
 						/>
 					</FlexItem>
@@ -222,8 +214,8 @@ class FieldsetTime extends React.PureComponent<Props> {
 								name="mwc-meridian"
 								className={classNames.meridian}
 								disabled={disabled}
-								onChange={this.onMeridianChange}
 								value={meridian.toString()} // 0 or 1
+								onChange={this.onMeridianChange}
 								options={[
 									{ label: 'AM', value: '0' },
 									{ label: 'PM', value: '1' },
