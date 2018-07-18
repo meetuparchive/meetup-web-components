@@ -315,9 +315,7 @@ export class TimeInput extends React.PureComponent {
 						{label}
 					</label>
 				)}
-				{helperText && (
-					<div className={classNames.helperText}>{helperText}</div>
-				)}
+				{helperText && <div className={classNames.helperText}>{helperText}</div>}
 				{this.state.supportsTime ? (
 					<input
 						id={id}
@@ -411,15 +409,34 @@ TimeInput.defaultProps = {
 };
 
 TimeInput.propTypes = {
+	/** The `name` attribute for the input */
 	name: PropTypes.string.isRequired,
+
+	/** Error content to render */
 	error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+
+	/** Whether to render time in 24hr time format (e.g.: 02:00 PM => 14:00) */
 	is24Hr: PropTypes.bool,
+
+	/** What we render into the input's `<label />` */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** The class name/s to add to the `<label />` element */
 	labelClassName: PropTypes.string,
+
+	/** onChange function that happens when input value changes */
 	onChange: PropTypes.func, // redux-form or DateTimePicker provides an onChange prop
+
+	/** Callback that happens after onChange is complete */
 	onChangeCallback: PropTypes.func,
+
+	/** An additional piece of helpful info rendered with the field */
 	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** Whether the field is required to have a value */
 	required: PropTypes.bool,
+
+	/** What to render in order to indicate the field is required */
 	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 

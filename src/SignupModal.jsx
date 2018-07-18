@@ -115,7 +115,10 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 };
 
 SignupModal.propTypes = {
+	/** Callback that happens when a user dismisses the modal */
 	onDismiss: PropTypes.func,
+
+	/** Ways a user can sign into Meetup (or sign up for Meetup) */
 	signupOptions: PropTypes.object,
 };
 

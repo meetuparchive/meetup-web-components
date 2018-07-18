@@ -4,7 +4,7 @@ import TestUtils from 'react-dom/test-utils';
 
 import Button from '../forms/Button';
 import {
-	Modal,
+	ModalComponent,
 	MODAL_CLOSE_BUTTON,
 	MODAL_CLOSE_AREA_STICKY,
 	MODAL_CLOSE_AREA_STICKYTRANSP,
@@ -30,7 +30,7 @@ describe('Modal', () => {
 		spyOn(spyable, 'onDismiss');
 
 		modal = TestUtils.renderIntoDocument(
-			<Modal onDismiss={spyable.onDismiss}>{content}</Modal>
+			<ModalComponent onDismiss={spyable.onDismiss}>{content}</ModalComponent>
 		);
 		modalEl = ReactDOM.findDOMNode(modal);
 	});
@@ -83,9 +83,9 @@ describe('Modal', () => {
 
 	it('should not render a close button', () => {
 		const modal = TestUtils.renderIntoDocument(
-			<Modal onDismiss={e => {}} closeArea={false}>
+			<ModalComponent onDismiss={e => {}} closeArea={false}>
 				{content} <a href="#">focusable element</a>
-			</Modal>
+			</ModalComponent>
 		);
 		const closeButtons = TestUtils.scryRenderedDOMComponentsWithClass(
 			modal,
@@ -108,7 +108,7 @@ describe('Modal hero header', () => {
 
 	beforeEach(() => {
 		modal = TestUtils.renderIntoDocument(
-			<Modal
+			<ModalComponent
 				inverted
 				stickyCloseArea
 				heroBgColor={bgColor}
@@ -117,7 +117,7 @@ describe('Modal hero header', () => {
 				onDismiss={e => {}}
 			>
 				{content}
-			</Modal>
+			</ModalComponent>
 		);
 		heroEl = TestUtils.findRenderedDOMComponentWithClass(
 			modal,
@@ -175,14 +175,14 @@ describe('Modal hero header', () => {
 
 	it('should hide text protection scrim when specified', () => {
 		const modalNoScrim = TestUtils.renderIntoDocument(
-			<Modal
+			<ModalComponent
 				hideHeroScrim
 				heroBgImage={bgImage}
 				heroContent={heroContentHtml}
 				onDismiss={e => {}}
 			>
 				{content}
-			</Modal>
+			</ModalComponent>
 		);
 		expect(() =>
 			TestUtils.findRenderedDOMComponentWithClass(

@@ -50,6 +50,7 @@ const defaultPanels = [
 storiesOf('Accordion', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [AccordionPanel, AccordionPanelGroup] } })
 	.add(
 		'default',
 		() => (

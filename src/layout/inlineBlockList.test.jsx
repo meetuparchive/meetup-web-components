@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import {
-	InlineBlockList,
+	InlineBlockListComponent,
 	INLINEBLOCKLIST_SEPERATED_CLASS,
 } from './InlineBlockList';
 
@@ -24,9 +24,9 @@ let inlineblockList, inlineblockListSeparated;
 
 describe('InlineBlockList', function() {
 	beforeEach(() => {
-		inlineblockList = shallow(<InlineBlockList items={ITEMS} />);
+		inlineblockList = shallow(<InlineBlockListComponent items={ITEMS} />);
 		inlineblockListSeparated = shallow(
-			<InlineBlockList items={ITEMS} separator={SEPARATOR} />
+			<InlineBlockListComponent items={ITEMS} separator={SEPARATOR} />
 		);
 	});
 	afterEach(() => {

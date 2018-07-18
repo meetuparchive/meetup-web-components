@@ -3,7 +3,7 @@ import { variantTest } from '../utils/testUtils';
 import { shallow } from 'enzyme';
 
 import {
-	Card,
+	CardComponent,
 	CARD_CLASS,
 	CARD_HOVER_PLUS_SHADOW_CLASS,
 	CARD_FLUSH_CLASS,
@@ -11,19 +11,19 @@ import {
 } from './Card';
 
 const CardJSX = (
-	<Card>
+	<CardComponent>
 		<p>
 			Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 		</p>
-	</Card>
+	</CardComponent>
 );
 
 const CardJSX_doubleShadow = (
-	<Card hasShadow hasHoverShadow>
+	<CardComponent hasShadow hasHoverShadow>
 		<p>
 			Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 		</p>
-	</Card>
+	</CardComponent>
 );
 
 describe('Card and variants', function() {
@@ -36,7 +36,7 @@ describe('Card and variants', function() {
 	it('applies variant classes for each variant prop', () => {
 		const variants = ['initialHeight', 'hasShadow', 'hasHoverShadow'];
 
-		variantTest(Card, CARD_CLASS, variants);
+		variantTest(CardComponent, CARD_CLASS, variants);
 	});
 
 	it('applies class name `hasShadowPlusHover` when `hasHoverShadow` AND `hasShadow` props are passed', () => {
@@ -50,12 +50,12 @@ describe('Card flushUntil', () => {
 	it(`check that component has '${CARD_FLUSH_CLASS}' class`, function() {
 		Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
 			const component = shallow(
-				<Card flushUntil={breakpoint}>
+				<CardComponent flushUntil={breakpoint}>
 					<p>
 						Lorem Ipsum is simply dummy text of the printing and typesetting
 						industry.
 					</p>
-				</Card>
+				</CardComponent>
 			);
 
 			expect(component.hasClass(CARD_CLASS)).toBe(true);

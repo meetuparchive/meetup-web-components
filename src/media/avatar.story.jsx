@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
-import { WithNotes } from '@storybook/addon-notes';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import Avatar from './Avatar.jsx';
 
@@ -15,8 +14,9 @@ storiesOf('Avatar', module)
 	.add('small', () => <Avatar src={MOCK_IMAGE_SRC} small />)
 	.add('large', () => <Avatar src={MOCK_IMAGE_SRC} large />)
 	.add('xxlarge', () => <Avatar src={MOCK_IMAGE_SRC} xxlarge />)
-	.add('link to external URL', () => (
-		<WithNotes notes="To link within the app, supply a `to` prop instead of `href`">
+	.add(
+		'link to external URL',
+		() => (
 			<Avatar
 				href="http://google.com"
 				onClick={e => {
@@ -25,6 +25,7 @@ storiesOf('Avatar', module)
 				}}
 				src={MOCK_IMAGE_SRC}
 			/>
-		</WithNotes>
-	))
+		),
+		{ info: { text: 'To link within the app, supply a `to` prop instead of `href`' } }
+	)
 	.add('no photo', () => <Avatar />);
