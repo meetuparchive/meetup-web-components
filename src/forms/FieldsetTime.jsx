@@ -21,8 +21,8 @@ type Props = React.ElementConfig<'input'> & {
 	onChange: string => void,
 };
 
-const UP_ARROW = 38;
-const DOWN_ARROW = 40;
+export const UP_ARROW = 38;
+export const DOWN_ARROW = 40;
 const KEY_INCREMENT = {
 	[UP_ARROW]: 1,
 	[DOWN_ARROW]: -1,
