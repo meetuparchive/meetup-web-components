@@ -72,26 +72,24 @@ exports[`FieldsetTime FieldsetTime with is24hr=false renders expected elements 1
       className="timeInput-meridianContainer display--flex flex--column flex--center"
       shrink={true}
     >
-      <SelectInput
+      <Select
         className="timeInput-meridian flush--all border--none field--reset padding--left"
         id="mocktime-meridian"
         name="mwc-meridian"
         onChange={[Function]}
-        options={
-          Array [
-            Object {
-              "label": "AM",
-              "value": "0",
-            },
-            Object {
-              "label": "PM",
-              "value": "1",
-            },
-          ]
-        }
-        requiredText="*"
         value="1"
-      />
+      >
+        <option
+          value="0"
+        >
+          AM
+        </option>
+        <option
+          value="1"
+        >
+          PM
+        </option>
+      </Select>
     </FlexItem>
   </Flex>
 </fieldset>

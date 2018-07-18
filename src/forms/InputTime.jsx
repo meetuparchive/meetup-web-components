@@ -115,4 +115,6 @@ export class InputTimeComponent extends React.PureComponent<Props, State> {
 	}
 }
 
-export default withErrorList(InputTimeComponent);
+const InputTimeWithErrors = withErrorList(InputTimeComponent);
+InputTimeWithErrors.displayName = 'InputTime';
+export default InputTimeWithErrors;
