@@ -18,8 +18,8 @@ export const LinkItem = ({ linkTo, navItemContent, className }) => (
 		{navItemContent}
 	</a>
 );
-export const ContentLoaderItem = ({ navItemContent, onClickAction }) => (
-	<Button aria-haspopup reset className={NAV_ITEM_CLASS} onClick={onClickAction}>
+export const ContentLoaderItem = ({ navItemContent, onClickAction, title }) => (
+	<Button aria-haspopup reset className={NAV_ITEM_CLASS} onClick={onClickAction} title={title}>
 		{navItemContent}
 	</Button>
 );
@@ -86,6 +86,7 @@ export const NavItem = props => {
 		<ContentLoaderItem
 			onClickAction={onClickAction}
 			navItemContent={navItemContent}
+			title={title}
 		/>
 	) : (
 		navItemContent
