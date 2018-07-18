@@ -2,7 +2,9 @@ import React from 'react';
 import FieldsetTime from './FieldsetTime';
 import { storiesOf } from '@storybook/react';
 import { decorateWithInfo } from '../utils/decorators';
+import { action } from '@storybook/addon-actions';
 
+const logValueChange = action('Value changed:');
 class ControlledFieldsetTime extends React.Component {
 	state = { value: this.props.value };
 	render() {
@@ -10,7 +12,7 @@ class ControlledFieldsetTime extends React.Component {
 			<div className="span--25">
 				<FieldsetTime
 					onChange={value => {
-						console.log(value);
+						logValueChange(value);
 						this.setState({ value });
 					}}
 					{...this.props}

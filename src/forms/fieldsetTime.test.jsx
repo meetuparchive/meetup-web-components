@@ -35,90 +35,12 @@ describe('FieldsetTime', () => {
 					const inputWrapper = wrapper.find(`input.${className}`);
 					expect(MOCK_PROPS.onChange).not.toHaveBeenCalled();
 					inputWrapper.simulate('change', {
-						currentTarget: { ...inputTarget },
+						target: { ...inputTarget },
 					});
-					inputWrapper.simulate('blur', {
-						currentTarget: { ...inputTarget },
-					});
-					expect(MOCK_PROPS.onChange).toHaveBeenCalledTimes(2);
-					expect(MOCK_PROPS.onChange.mock.calls).toMatchSnapshot();
+					expect(MOCK_PROPS.onChange).toHaveBeenCalled();
+					expect(MOCK_PROPS.onChange.mock.calls[0]).toMatchSnapshot();
 				});
 			});
-
-			// 	describe('getTimeParts', () => {
-			// 		it('returns an object of hours, min, meridian from a time string', () => {
-			// 			const result = getTimeParts('13:00');
-			// 			const expected = {
-			// 				hours: '13',
-			// 				minutes: '00',
-			// 				meridian: 'PM',
-			// 			};
-			// 			expect(result).toEqual(expected);
-			// 		});
-			// 	});
-
-			// 	describe('parseValueForState', () => {
-			// 		it('takes a value string for 24Hr time and returns an object with hours, min, meridian, value', () => {
-			// 			const value = '13:00',
-			// 				is24Hr = true;
-			// 			const result = FieldsetTime.prototype.parseValueIntoState(value, is24Hr);
-			// 			const expected = {
-			// 				hours: '13',
-			// 				minutes: '00',
-			// 				meridian: false,
-			// 				value,
-			// 			};
-			// 			expect(result).toEqual(expected);
-			// 		});
-			// 		it('takes a value string, is24hr as false, and returns an object with hours, min, meridian, value', () => {
-			// 			const value = '13:15',
-			// 				is24Hr = false;
-			// 			const result = FieldsetTime.prototype.parseValueIntoState(value, is24Hr);
-			// 			const expected = {
-			// 				hours: '01',
-			// 				minutes: '15',
-			// 				meridian: 'PM',
-			// 				value,
-			// 			};
-			// 			expect(result).toEqual(expected);
-			// 		});
-			// 	});
-
-			// 	describe('constrainValue', () => {
-			// 		it('returns the same value if no min and max', () => {
-			// 			const value = '10';
-			// 			const result = FieldsetTime.prototype.constrainValue(
-			// 				undefined,
-			// 				undefined,
-			// 				value
-			// 			);
-			// 			expect(result).toEqual(parseInt(value));
-			// 		});
-			// 		it('returns the same value if within min and max', () => {
-			// 			const value = '10';
-			// 			const result = FieldsetTime.prototype.constrainValue(2, 22, value);
-			// 			expect(result).toEqual(parseInt(value));
-			// 		});
-			// 		it('returns the constrained value if min', () => {
-			// 			const value = '10';
-			// 			const min = 20;
-			// 			const result = FieldsetTime.prototype.constrainValue(
-			// 				min,
-			// 				undefined,
-			// 				value
-			// 			);
-			// 			expect(result).toEqual(min);
-			// 		});
-			// 		it('returns the constrained value if max', () => {
-			// 			const value = '10';
-			// 			const max = 5;
-			// 			const result = FieldsetTime.prototype.constrainValue(
-			// 				undefined,
-			// 				max,
-			// 				value
-			// 			);
-			// 			expect(result).toEqual(max);
-			// 		});
 		});
 	});
 });
