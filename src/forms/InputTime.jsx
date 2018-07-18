@@ -3,7 +3,7 @@ import * as React from 'react';
 import cx from 'classnames';
 
 import withErrorList from '../utils/components/withErrorList';
-import FieldSetTime from './FieldSetTime';
+import FieldsetTime from './FieldsetTime';
 
 type Props = React.ElementConfig<HTMLInputElement> & {
 	name: string,
@@ -91,7 +91,7 @@ export class InputTimeComponent extends React.PureComponent<Props, State> {
 				)}
 				{helperText && <div className={classNames.helperText}>{helperText}</div>}
 				{this.state.forceTextInput ? (
-					<FieldSetTime
+					<FieldsetTime
 						{...other}
 						disabled={disabled}
 						error={error}
