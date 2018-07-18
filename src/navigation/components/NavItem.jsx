@@ -66,6 +66,7 @@ export const NavItem = props => {
 		onClickAction,
 		onAction,
 		updatesLabel,
+		title,
 		...other
 	} = props;
 
@@ -77,7 +78,7 @@ export const NavItem = props => {
 	const navItemContent = (
 		<div>
 			{icon}
-			{label && <span className={classNames.label}>{label}</span>}
+			{label && <span className={classNames.label} title={title}>{label}</span>}
 			{hasUpdates && (
 				<span className="counterBadge">
 					<span className="visibility--a11yHide">{updatesLabel}</span>

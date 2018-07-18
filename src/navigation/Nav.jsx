@@ -153,6 +153,7 @@ export class Nav extends React.Component {
 		const createMeetupLink = create && {
 			shrink: true,
 			linkTo: create.link,
+			title: create.title,
 			label: create.label,
 			className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup`,
 		};
@@ -162,12 +163,14 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: login.link,
+				title: login.title,
 				label: login.label,
 				className: `${CLASS_UNAUTH_ITEM} navItem--login`,
 			},
 			{
 				shrink: true,
 				onAction: this.onClickSignupAction,
+				title: signup.title,
 				label: signup.label,
 				className: CLASS_UNAUTH_ITEM,
 			},
@@ -177,6 +180,7 @@ export class Nav extends React.Component {
 			self.isProMember && {
 				shrink: true,
 				linkTo: media.isAtMediumUp ? proDashboard.link : '',
+				title: proDashboard.title,
 				onAction: !media.isAtMediumUp && this.onClickDropdownAction,
 				label: media.isAtMediumUp
 					? proDashboard.label
@@ -211,6 +215,7 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: explore.link,
+				title: explore.title,
 				label: explore.label,
 				className: CLASS_AUTH_ITEM,
 				icon: (
@@ -220,6 +225,7 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: groups.link,
+				title: groups.title,
 				label: groups.label,
 				className: `atMedium_display--none ${CLASS_AUTH_ITEM}`,
 				icon: <Icon shape="groups" size="s" className="display--block" />,
@@ -227,6 +233,7 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: messages.link,
+				title: messages.title,
 				label: messages.label,
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
 				icon: (
@@ -242,6 +249,7 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: media.isAtMediumUp ? '' : notifications.link,
+				title: notifications.title,
 				label: notifications.label,
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
 				icon: (
@@ -262,6 +270,7 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: media.isAtMediumUp ? '' : profile.link,
+				title: profile.title,
 				label: profile.label,
 				labelClassName: 'navItem-label display--block atMedium_display--none',
 				className: cx(CLASS_AUTH_ITEM, 'profileDropdown', {
