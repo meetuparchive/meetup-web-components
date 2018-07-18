@@ -38,7 +38,10 @@ describe('Flex', function() {
 			it('check break point classes for switchDirection', function() {
 				Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
 					const flex = shallow(
-						<FlexComponent direction={DIRECTION_ROW} switchDirection={breakpoint} />
+						<FlexComponent
+							direction={DIRECTION_ROW}
+							switchDirection={breakpoint}
+						/>
 					);
 					expect(flex.hasClass(FLEX_CLASS)).toBe(true);
 					expect(flex.hasClass(FLEX_ROW_CLASS)).toBe(true);
@@ -61,12 +64,17 @@ describe('Flex', function() {
 			it('check break point classes for switchDirection', function() {
 				Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
 					const flex = shallow(
-						<FlexComponent direction={DIRECTION_COLUMN} switchDirection={breakpoint} />
+						<FlexComponent
+							direction={DIRECTION_COLUMN}
+							switchDirection={breakpoint}
+						/>
 					);
 					expect(flex.hasClass(FLEX_CLASS)).toBe(true);
 					expect(flex.hasClass(FLEX_COLUMN_CLASS)).toBe(true);
 					expect(
-						flex.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${FLEX_ROW_CLASS}`)
+						flex.hasClass(
+							`${VALID_BREAKPOINTS[breakpoint]}_${FLEX_ROW_CLASS}`
+						)
 					).toBe(true);
 				});
 			});
@@ -109,14 +117,14 @@ describe('Flex', function() {
 		});
 	});
 	describe('rowReverse', () => {
-		it(`check rowReverse default value is ${VALID_BREAKPOINTS[
-			'all'
-		]} class`, function() {
+		it(`check rowReverse default value is ${
+			VALID_BREAKPOINTS['all']
+		} class`, function() {
 			const flex = shallow(<FlexComponent rowReverse />);
 			expect(flex.hasClass(FLEX_CLASS)).toBe(true);
-			expect(
-				flex.hasClass(`${VALID_BREAKPOINTS['all']}_flex--rowReverse`)
-			).toBe(true);
+			expect(flex.hasClass(`${VALID_BREAKPOINTS['all']}_flex--rowReverse`)).toBe(
+				true
+			);
 		});
 		it('check rowReverse at valid breakpoints classes', function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {
@@ -129,14 +137,14 @@ describe('Flex', function() {
 		});
 	});
 	describe('columnReverse', () => {
-		it(`check columnReverse default value is ${VALID_BREAKPOINTS[
-			'all'
-		]} class`, function() {
+		it(`check columnReverse default value is ${
+			VALID_BREAKPOINTS['all']
+		} class`, function() {
 			const flex = shallow(<FlexComponent columnReverse />);
 			expect(flex.hasClass(FLEX_CLASS)).toBe(true);
-			expect(
-				flex.hasClass(`${VALID_BREAKPOINTS['all']}_flex--columnReverse`)
-			).toBe(true);
+			expect(flex.hasClass(`${VALID_BREAKPOINTS['all']}_flex--columnReverse`)).toBe(
+				true
+			);
 		});
 		it('check columnReverse at valid breakpoints classes', function() {
 			Object.keys(VALID_BREAKPOINTS).forEach(breakpoint => {

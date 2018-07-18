@@ -40,9 +40,7 @@ describe('InlineBlockList', function() {
 
 	it(`should have a class of '${INLINEBLOCKLIST_SEPERATED_CLASS}' when a separator is defined`, () => {
 		expect(
-			inlineblockListSeparated
-				.find('ul')
-				.hasClass(INLINEBLOCKLIST_SEPERATED_CLASS)
+			inlineblockListSeparated.find('ul').hasClass(INLINEBLOCKLIST_SEPERATED_CLASS)
 		).toBe(true);
 	});
 

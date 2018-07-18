@@ -12,17 +12,13 @@ import {
 
 const CardJSX = (
 	<CardComponent>
-		<p>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-		</p>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 	</CardComponent>
 );
 
 const CardJSX_doubleShadow = (
 	<CardComponent hasShadow hasHoverShadow>
-		<p>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-		</p>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 	</CardComponent>
 );
 
@@ -60,9 +56,7 @@ describe('Card flushUntil', () => {
 
 			expect(component.hasClass(CARD_CLASS)).toBe(true);
 			expect(
-				component.hasClass(
-					`${VALID_BREAKPOINTS[breakpoint]}_${CARD_FLUSH_CLASS}`
-				)
+				component.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_${CARD_FLUSH_CLASS}`)
 			).toBe(true);
 		});
 	});
