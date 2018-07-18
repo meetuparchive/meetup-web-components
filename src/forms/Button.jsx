@@ -94,18 +94,40 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+	/** Behaves like a button in the browser, but just looks like regular text or icons */
 	reset: PropTypes.bool,
+
+	/** Forces button to span the full width of it's container */
 	fullWidth: PropTypes.bool,
+
+	/** Used to highlight the most important action on a screen. Not intended to be used more than once on a screen/modal/section. */
 	primary: PropTypes.bool,
+
+	/** The standard button for most use cases. Other styles are available for buttons that need more visual weight */
 	neutral: PropTypes.bool,
+
+	/** Takes an `Icon` element to render inside of the button */
 	icon: PropTypes.any,
+
+	/** Renders the icon on the right side of the button text */
 	right: PropTypes.bool,
+
+	/** Reduces the size of the button */
 	small: PropTypes.bool,
+
+	/** Sometimes used in place of a Neutral button on shaded backgrounds to maintain the appropriate visual weight */
 	bordered: PropTypes.bool,
+
+	/** Button "lifts" on hover with a shadow */
 	hasHoverShadow: PropTypes.bool,
+
+	/** Which component or html element type to use */
 	component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-	disabled: PropTypes.any,
-	/** html element type */
+
+	/** Whether to use disabled attribute and disabled button styles */
+	disabled: PropTypes.bool,
+
+	/** HTML type attribute. e.g.: `<button type="submit"/>`  */
 	type: PropTypes.string,
 };
 export default Button;

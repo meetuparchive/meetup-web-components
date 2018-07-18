@@ -6,9 +6,9 @@ import withLoading from '../utils/components/withLoading';
 
 /**
  * Design System Component: Provides `stripe` styled container for components
- * @module Chunk
+ * @module ChunkComponent
  */
-export class Chunk extends React.Component {
+export class ChunkComponent extends React.Component {
 	render() {
 		const {
 			children,
@@ -18,11 +18,7 @@ export class Chunk extends React.Component {
 			...other
 		} = this.props;
 
-		const classNames = cx(
-			'chunk',
-			{ 'component--isLoading': isLoading },
-			className
-		);
+		const classNames = cx('chunk', { 'component--isLoading': isLoading }, className);
 
 		return (
 			<div className={classNames} {...other}>
@@ -32,8 +28,11 @@ export class Chunk extends React.Component {
 	}
 }
 
-Chunk.propTypes = {
+ChunkComponent.propTypes = {
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
@@ -41,4 +40,4 @@ Chunk.propTypes = {
 	}),
 };
 
-export default withLoading(Chunk);
+export default withLoading(ChunkComponent);

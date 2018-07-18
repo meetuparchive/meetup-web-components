@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import {
-	Stripe,
+	StripeComponent,
 	STRIPE_CLASS,
 	STRIPE_COLLECTION_CLASS,
 	STRIPE_INVERTED_CLASS,
@@ -11,7 +11,7 @@ import {
 } from './Stripe';
 
 describe('Stripe', function() {
-	const stripe = shallow(<Stripe />);
+	const stripe = shallow(<StripeComponent />);
 
 	it('exists', function() {
 		expect(stripe).toMatchSnapshot();
@@ -20,7 +20,7 @@ describe('Stripe', function() {
 	describe('collection', () => {
 		let stripeCollection;
 		beforeEach(() => {
-			stripeCollection = shallow(<Stripe collection />);
+			stripeCollection = shallow(<StripeComponent collection />);
 		});
 		afterEach(() => {
 			stripeCollection = null;
@@ -36,7 +36,7 @@ describe('Stripe', function() {
 	describe('inverted', () => {
 		let stripeInverted;
 		beforeEach(() => {
-			stripeInverted = shallow(<Stripe inverted />);
+			stripeInverted = shallow(<StripeComponent inverted />);
 		});
 		afterEach(() => {
 			stripeInverted = null;
@@ -53,7 +53,7 @@ describe('Stripe', function() {
 		const src = 'https://placekitten.com/g/200/300';
 		let stripeImg;
 		beforeEach(() => {
-			stripeImg = shallow(<Stripe hideScrim backgroundImage={src} />);
+			stripeImg = shallow(<StripeComponent hideScrim backgroundImage={src} />);
 		});
 		afterEach(() => {
 			stripeImg = null;

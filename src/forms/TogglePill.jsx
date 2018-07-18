@@ -12,7 +12,7 @@ export const TOGGLE_PILL_CLASS = 'toggleButton';
  * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#togglePills}
  * @module TogglePill
  */
-class TogglePill extends React.PureComponent {
+export class TogglePill extends React.PureComponent {
 	render() {
 		const {
 			isActive,
@@ -90,14 +90,28 @@ class TogglePill extends React.PureComponent {
 	}
 }
 
-TogglePill.protoTypes = {
+TogglePill.propTypes = {
+	/** Adds an `id` attribute to the input, and associates it with the `<label />` */
 	id: PropTypes.string.isRequired,
+
+	/** The `name` attribute for the input */
 	name: PropTypes.string.isRequired,
+
+	/** The `value` attribute for the input */
 	value: PropTypes.string.isRequired,
+
 	children: PropTypes.node.isRequired,
+
+	/** Whether the pill is toggled on/selected */
 	isActive: PropTypes.bool,
+
+	/** Whether to use input[type="radio"] to limit the selection to one toggle pill in a group */
 	useRadio: PropTypes.bool,
+
+	/** Whether the pill should be rendered in a way that visually indicates it's a topic */
 	topic: PropTypes.bool,
+
+	/** The class name/s to add to the `<label />` element */
 	labelClassName: PropTypes.string,
 };
 

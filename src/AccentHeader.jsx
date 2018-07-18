@@ -28,8 +28,11 @@ AccentHeader.defaultProps = {
 	headingTag: 'h2',
 };
 
-PropTypes.AccentHeader = {
+AccentHeader.propTypes = {
+	/** Controls text alignment */
 	align: PropTypes.oneOf(ALIGN_VALUES),
+
+	/** Which level of HTML heading tag to use */
 	headingTag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
 };
 

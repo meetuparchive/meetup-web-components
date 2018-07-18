@@ -67,11 +67,22 @@ class AvatarMember extends React.PureComponent {
 }
 
 AvatarMember.propTypes = {
+	/** Would like to deprecate this in favor of xxlarge */
 	big: PropTypes.bool,
+
+	/** Render Avatar at a larger size */
 	large: PropTypes.bool,
+
+	/** Render Avatar at a very large size */
 	xxlarge: PropTypes.bool,
+
+	/** Data for the person who's avatar we're displaying */
 	member: PropTypes.object.isRequired,
+
+	/** Whether this avatar is for an organizer */
 	org: PropTypes.bool,
+
+	/** Whether this avatar is for a person the user is friends with on FB */
 	fbFriend: PropTypes.bool,
 };
 

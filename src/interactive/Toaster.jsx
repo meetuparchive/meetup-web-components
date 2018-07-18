@@ -149,6 +149,7 @@ class Toaster extends React.PureComponent {
 }
 
 Toaster.propTypes = {
+	/** Which toasts to be rendered */
 	toasts: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 

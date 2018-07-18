@@ -56,7 +56,10 @@ class Hscroll extends React.PureComponent {
 }
 
 Hscroll.propTypes = {
+	/** Whether the beginning and end of the scrolling element disappears into a gradient instead of being abruptly cut off */
 	hasGradient: PropTypes.bool,
+
+	/** Breakpoint at which to render the items without a horizontal scroll */
 	unclipAt: PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 };
 

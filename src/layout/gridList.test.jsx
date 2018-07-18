@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { GridList, GRID_AUTOHEIGHT_CLASS } from './GridList';
+import { GridListComponent, GRID_AUTOHEIGHT_CLASS } from './GridList';
 
 const glItemCustomClassName = 'flush--all';
 
 const JSX_GridListStatic = (
-	<GridList
+	<GridListComponent
 		columns={{
 			default: 3,
 		}}
@@ -24,7 +24,7 @@ const JSX_GridListStatic = (
 );
 
 const JSX_GridListCustomClassNames = (
-	<GridList
+	<GridListComponent
 		columns={{
 			default: 3,
 		}}
@@ -44,7 +44,7 @@ const JSX_GridListCustomClassNames = (
 );
 
 const JSX_AutoheightGridListStatic = (
-	<GridList
+	<GridListComponent
 		autoHeight
 		columns={{
 			default: 3,
@@ -68,7 +68,7 @@ const responsiveColsDefault = 2,
 	responsiveColsLarge = 6;
 
 const JSX_GridListResponsive = (
-	<GridList
+	<GridListComponent
 		columns={{
 			default: responsiveColsDefault,
 			medium: responsiveColsMedium,
@@ -89,7 +89,7 @@ const JSX_GridListResponsive = (
 );
 
 const JSX_AutoheightGridListResponsive = (
-	<GridList
+	<GridListComponent
 		autoHeight
 		columns={{
 			default: responsiveColsDefault,
@@ -111,7 +111,7 @@ const JSX_AutoheightGridListResponsive = (
 );
 
 const JSX_AutoheightWithWrapGridListResponsive = (
-	<GridList
+	<GridListComponent
 		autoHeightWithWrap
 		columns={{
 			default: responsiveColsDefault,
