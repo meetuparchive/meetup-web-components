@@ -38,19 +38,19 @@ export const FooterCategory = props => (
 export const SocialIconsList = ({ localeCode }) => {
 	const socialLinks = getSocialLinks(localeCode);
 	const socialIcons = [
-		<a href={socialLinks.facebook}>
+		<a href={socialLinks.facebook} aria-label="facebook">
 			<Icon shape="external-facebookboxed" size="s" />
 		</a>,
-		<a href={socialLinks.twitter}>
+		<a href={socialLinks.twitter} aria-label="twitter">
 			<Icon className="margin--left" shape="external-twitter" size="s" />
 		</a>,
-		<a href={socialLinks.youtube}>
+		<a href={socialLinks.youtube} aria-label="youtube">
 			<Icon className="margin--left" shape="external-youtube" size="s" />
 		</a>,
-		<a href={socialLinks.instagram}>
+		<a href={socialLinks.instagram} aria-label="instagram">
 			<Icon className="margin--left" shape="external-instagram" size="s" />
 		</a>,
-		<a href={socialLinks.medium}>
+		<a href={socialLinks.medium} aria-label="medium">
 			<Icon className="margin--left" shape="external-medium" size="s" />
 		</a>,
 	];
