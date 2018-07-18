@@ -300,6 +300,7 @@ export class Nav extends React.Component {
 					shrink={item.shrink}
 					linkTo={item.linkTo}
 					label={item.label}
+					title={item.title}
 					className={item.className}
 					onAction={item.onAction}
 				/>
@@ -314,6 +315,7 @@ export class Nav extends React.Component {
 						shrink={item.shrink}
 						linkTo={item.linkTo}
 						label={item.label}
+						title={item.title}
 						labelClassName={item.labelClassName}
 						className={item.className}
 						icon={item.icon}
