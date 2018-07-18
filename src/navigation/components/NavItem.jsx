@@ -19,7 +19,13 @@ export const LinkItem = ({ linkTo, navItemContent, className }) => (
 	</a>
 );
 export const ContentLoaderItem = ({ navItemContent, onClickAction, title }) => (
-	<Button aria-haspopup reset className={NAV_ITEM_CLASS} onClick={onClickAction} title={title}>
+	<Button
+		aria-haspopup
+		reset
+		className={NAV_ITEM_CLASS}
+		onClick={onClickAction}
+		title={title}
+	>
 		{navItemContent}
 	</Button>
 );
