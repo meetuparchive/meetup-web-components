@@ -15,7 +15,7 @@ exports[`SelectInput basic renders into the DOM 1`] = `
     className="select--reset span--100 padding--selectArrow"
     id="testSelect"
     name="testSelect"
-    required="yo check it"
+    required={true}
   >
     <React.Fragment>
       <option
