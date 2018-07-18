@@ -7,6 +7,8 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import { SelectInput } from './SelectInput';
 
+type PartialChange = {| hour: ?number |} | {| minute: ?number |} | {| meridian: number |};
+
 export const HOURS_INPUT_CLASS = 'timeInput-hours';
 export const HOURS_INPUT_NAME = 'mwc-hour';
 export const MINUTES_INPUT_CLASS = 'timeInput-minutes';
@@ -27,11 +29,14 @@ const updateValueByStep = (
 	}
 	return value;
 };
-const constrainValue = (
-	min: number = -Infinity,
-	max: number = Infinity,
-	value: number
-): number => Math.max(Math.min(value, max), min);
+const constrainValue = (min: ?string, max: ?string, value: string): number => {
+	const val = parseInt(value, 10);
+	const constrainedMin = min ? Math.max(val, parseInt(min, 10)) : val;
+	const constrained = max
+		? Math.min(constrainedMin, parseInt(max, 10))
+		: constrainedMin;
+	return constrained;
+};
 const UP_ARROW = 38;
 const DOWN_ARROW = 40;
 const KEY_INCREMENT = {
@@ -55,22 +60,21 @@ const getValueComponents = (
 	return {
 		hour,
 		minute: localTime && localTime.minute(),
-		meridian: Number(hour && hour > 12), // '0' or '1'
+		meridian: Number(hour && hour < 13), // '0' or '1'
 	};
 };
-type PartialChange = {| hour: ?number |} | {| minute: ?number |} | {| meridian: number |};
 
 /*
  * 3-input component to provide 'HH:mm' value to `onChange` - used for browsers
  * that don't support <input type="time" />
  */
-export default class FieldSetTime extends React.PureComponent<Props> {
-	defaultProps: { is24Hr: true };
+class FieldsetTime extends React.PureComponent<Props> {
+	static defaultProps = { is24Hr: true };
 	// Based on state, create a fake onChange with the complete time value
 	makeOnChange = (
 		e: SyntheticEvent<HTMLInputElement>,
 		partialChange: PartialChange
-	) => () => {
+	) => {
 		const { hour, minute, meridian } = {
 			...getValueComponents(this.props.value),
 			...partialChange,
@@ -82,9 +86,12 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 		) {
 			return; // not all fields available - no change to report
 		}
-		e.currentTarget.value = LocalTime.of(hour, minute, 0)
-			.with(ChronoField.AMPM_OF_DAY, meridian)
-			.toString();
+		const baseLocalTime = LocalTime.of(hour, minute, 0);
+		const localTime = this.props.is24Hr
+			? baseLocalTime
+			: baseLocalTime.with(ChronoField.AMPM_OF_DAY, meridian);
+		e.currentTarget.name = this.props.name;
+		e.currentTarget.value = localTime.toString();
 		this.props.onChange(e);
 	};
 	onNumberChange = (e: SyntheticEvent<HTMLInputElement>) => {
@@ -124,11 +131,7 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 	 */
 	onBlur = (e: SyntheticEvent<HTMLInputElement>) => {
 		const { value, min, max } = e.currentTarget;
-		e.currentTarget.value = constrainValue(
-			parseInt(min, 10),
-			parseInt(max, 10),
-			parseInt(value, 10)
-		).toString();
+		e.currentTarget.value = constrainValue(min, max, value).toString();
 		this.onNumberChange(e);
 	};
 
@@ -146,7 +149,7 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 	};
 
 	render() {
-		const { id, error, disabled, is24Hr, value } = this.props;
+		const { id, error, disabled, name, is24Hr, value } = this.props;
 
 		const classNames = {
 			fauxInput: cx('fauxInput fauxInput--time', {
@@ -162,6 +165,7 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 				}
 			),
 		};
+		const displayId = id || name;
 
 		const { hour, minute, meridian } = getValueComponents(value);
 		return (
@@ -171,7 +175,7 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 						<input
 							type="text"
 							pattern="\d*"
-							id={`${id}-hour`}
+							id={`${displayId}-hour`}
 							name={HOURS_INPUT_NAME}
 							min={is24Hr ? 0 : 1}
 							max={is24Hr ? 23 : 12}
@@ -193,7 +197,7 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 						<input
 							type="text"
 							pattern="\d*"
-							id={`${id}-minute`}
+							id={`${displayId}-minute`}
 							name={MINUTES_INPUT_NAME}
 							min={0}
 							max={59}
@@ -214,12 +218,12 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 							className="timeInput-meridianContainer display--flex flex--column flex--center"
 						>
 							<SelectInput
-								id={`${id}-meridian`}
+								id={`${displayId}-meridian`}
 								name="mwc-meridian"
 								className={classNames.meridian}
 								disabled={disabled}
 								onChange={this.onMeridianChange}
-								value={meridian} // 0 or 1
+								value={meridian.toString()} // 0 or 1
 								options={[
 									{ label: 'AM', value: '0' },
 									{ label: 'PM', value: '1' },
@@ -232,3 +236,5 @@ export default class FieldSetTime extends React.PureComponent<Props> {
 		);
 	}
 }
+
+export default FieldsetTime;
