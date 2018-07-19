@@ -160,15 +160,12 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
         tabIndex={-1}
       >
         <FlexComponent
-          aria-busy={undefined}
           className="padding--bottom padding--top accordionPanel"
           direction="row"
-          isLoading={undefined}
           rowReverse="all"
           tabIndex={-1}
         >
           <div
-            aria-busy={undefined}
             className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
             tabIndex={-1}
           >
@@ -176,12 +173,9 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
               id="label-firstsection"
             >
               <FlexItemComponent
-                aria-busy={undefined}
                 id="label-firstsection"
-                isLoading={undefined}
               >
                 <div
-                  aria-busy={undefined}
                   className="flex-item"
                   id="label-firstsection"
                 >
@@ -195,14 +189,11 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
               shrink={true}
             >
               <FlexItemComponent
-                aria-busy={undefined}
                 className="accordionPanel-icon"
-                isLoading={undefined}
                 onClick={[Function]}
                 shrink={true}
               >
                 <div
-                  aria-busy={undefined}
                   className="flex-item flex-item--shrink accordionPanel-icon"
                   onClick={[Function]}
                 >
@@ -250,12 +241,10 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
       }
     >
       <ChunkComponent
-        aria-busy={undefined}
         aria-hidden={true}
         aria-labelledby="label-firstsection"
         className="accordionPanel-animator accordionPanel-animator--collapse"
         id="panel-firstsection"
-        isLoading={undefined}
         onTransitionEnd={[Function]}
         role="tabpanel"
         style={
@@ -265,7 +254,6 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
         }
       >
         <div
-          aria-busy={undefined}
           aria-hidden={true}
           aria-labelledby="label-firstsection"
           className="chunk accordionPanel-animator accordionPanel-animator--collapse"
@@ -331,15 +319,12 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
         tabIndex={-1}
       >
         <FlexComponent
-          aria-busy={undefined}
           className="padding--bottom padding--top accordionPanel"
           direction="row"
-          isLoading={undefined}
           rowReverse="all"
           tabIndex={-1}
         >
           <div
-            aria-busy={undefined}
             className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
             tabIndex={-1}
           >
@@ -347,12 +332,9 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
               id="label-firstsection"
             >
               <FlexItemComponent
-                aria-busy={undefined}
                 id="label-firstsection"
-                isLoading={undefined}
               >
                 <div
-                  aria-busy={undefined}
                   className="flex-item"
                   id="label-firstsection"
                 >
@@ -366,14 +348,11 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
               shrink={true}
             >
               <FlexItemComponent
-                aria-busy={undefined}
                 className="accordionPanel-icon"
-                isLoading={undefined}
                 onClick={[Function]}
                 shrink={true}
               >
                 <div
-                  aria-busy={undefined}
                   className="flex-item flex-item--shrink accordionPanel-icon"
                   onClick={[Function]}
                 >
@@ -388,8 +367,6 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                   >
                     <ToggleWrapper
                       isActive={false}
-                      offCallback={undefined}
-                      onCallback={undefined}
                     >
                       <ConditionalWrap
                         condition={true}
@@ -488,12 +465,10 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
       }
     >
       <ChunkComponent
-        aria-busy={undefined}
         aria-hidden={true}
         aria-labelledby="label-firstsection"
         className="accordionPanel-animator accordionPanel-animator--collapse"
         id="panel-firstsection"
-        isLoading={undefined}
         onTransitionEnd={[Function]}
         role="tabpanel"
         style={
@@ -503,7 +478,6 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
         }
       >
         <div
-          aria-busy={undefined}
           aria-hidden={true}
           aria-labelledby="label-firstsection"
           className="chunk accordionPanel-animator accordionPanel-animator--collapse"

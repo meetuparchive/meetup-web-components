@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`redux-form SelectInput renders a SelectInput component with expected attributes from mock data 1`] = `
-<WithErrorList(SelectInput)
+<SelectInput
   error={null}
   label="Countries"
   name="formSelectCountries"
@@ -22,5 +22,6 @@ exports[`redux-form SelectInput renders a SelectInput component with expected at
     ]
   }
   required={true}
+  requiredText="*"
 />
 `;

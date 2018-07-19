@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
-import { SelectInput } from './SelectInput';
+import SelectInput from './SelectInput';
 import withErrorList from '../utils/components/withErrorList';
 
 export const HOURS_INPUT_CLASS = 'timeInput-hours';
