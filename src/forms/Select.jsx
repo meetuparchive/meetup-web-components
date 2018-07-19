@@ -6,14 +6,29 @@ import Icon from '../media/Icon';
 import withErrorList from '../utils/components/withErrorList';
 
 type Props = React.ElementConfig<HTMLSelectElement> & {
+	/** Additional class name/s to add to the `<select/>` element  */
 	className?: string,
+
+	/** The `name` attribute for the input, and associates it with the `<label />` */
 	name: string, // required - will be used as 'id' as well
-	onChange: (e: SyntheticInputEvent<*>) => void, // required - this component is stateless
-	error?: React.Node, // supplied by withErrorList
+
+	/** Required - this component is stateless. A callback that happens when the input changes */
+	onChange: (e: SyntheticInputEvent<*>) => void,
+
+	/** Supplied by withErrorList */
+	error?: React.Node,
+
+	/** An additional piece of helpful info rendered with the field */
 	helperText?: string,
+
+	/** The class name/s to add to the `<label />` element */
 	labelClassName?: string,
+
+	/** What we render into the input's `<label />` */
 	label?: string,
-	required?: boolean | string, // supply a string for a custom error message
+
+	/** What to render in order to indicate the field is required. Supply a string for a custom error message */
+	required?: boolean | string,
 };
 
 /*
