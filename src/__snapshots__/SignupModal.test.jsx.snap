@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignupModal should match the snapshot 1`] = `
-<ModalComponent
+<Modal
   className="meetup-signupModal"
   fixed={true}
   onDismiss={[Function]}
@@ -9,14 +9,14 @@ exports[`SignupModal should match the snapshot 1`] = `
   <div
     className="meetup-signupModal-wrapper"
   >
-    <ChunkComponent>
+    <Chunk>
       <h1
         className="text--big"
       >
         Sign up
       </h1>
-    </ChunkComponent>
-    <ChunkComponent>
+    </Chunk>
+    <Chunk>
       <div
         className="text--secondary display--inlineBlock marginHalf--right"
       >
@@ -28,16 +28,16 @@ exports[`SignupModal should match the snapshot 1`] = `
       >
         Login
       </a>
-    </ChunkComponent>
-    <ChunkComponent
+    </Chunk>
+    <Chunk
       className="margin--top"
     >
       <a
         className="meetup-signupModal-facebook button button--fullWidth button--hasHoverShadow padding--halfLeft text--bold text--white"
         href="facebook.com"
       >
-        <FlexComponent>
-          <FlexItemComponent
+        <Flex>
+          <FlexItem
             className="inverted"
             shrink={true}
           >
@@ -46,49 +46,49 @@ exports[`SignupModal should match the snapshot 1`] = `
               shape="external-facebook"
               size="xs"
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="flush--left"
           >
             Facebook
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       </a>
-    </ChunkComponent>
-    <ChunkComponent>
+    </Chunk>
+    <Chunk>
       <a
         className="meetup-signupModal-google button button--bordered button--fullWidth padding--halfLeft text--bold"
         href="google.com"
       >
-        <FlexComponent>
-          <FlexItemComponent
+        <Flex>
+          <FlexItem
             shrink={true}
           >
             <img
               className="align--left"
               src=""
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="flush--left"
           >
             Google
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       </a>
-    </ChunkComponent>
+    </Chunk>
     <div
       className="meetup-signupModal-or margin--bottom align--center text--labelSecondary text--normal"
     >
       Or
     </div>
-    <ChunkComponent>
+    <Chunk>
       <a
         className="meetup-signupModal-email button button--bordered button--fullWidth padding--halfLeft text--bold"
         href="meetup.com/email"
       >
-        <FlexComponent>
-          <FlexItemComponent
+        <Flex>
+          <FlexItem
             shrink={true}
           >
             <Icon
@@ -97,15 +97,15 @@ exports[`SignupModal should match the snapshot 1`] = `
               shape="mail"
               size="xs"
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="flush--left"
           >
             Email
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       </a>
-    </ChunkComponent>
+    </Chunk>
   </div>
-</ModalComponent>
+</Modal>
 `;

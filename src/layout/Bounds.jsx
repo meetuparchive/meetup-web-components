@@ -52,4 +52,6 @@ BoundsComponent.propTypes = {
 	}),
 };
 
-export default withLoading(BoundsComponent);
+const Bounds = withLoading(BoundsComponent);
+Bounds.displayName = 'Bounds';
+export default Bounds;

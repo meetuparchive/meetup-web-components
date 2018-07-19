@@ -40,4 +40,6 @@ ChunkComponent.propTypes = {
 	}),
 };
 
-export default withLoading(ChunkComponent);
+const Chunk = withLoading(ChunkComponent);
+Chunk.displayName = 'Chunk';
+export default Chunk;

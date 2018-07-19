@@ -81,4 +81,6 @@ SectionComponent.propTypes = {
 	}),
 };
 
-export default withLoading(SectionComponent);
+const Section = withLoading(SectionComponent);
+Section.displayName = 'Section';
+export default Section;

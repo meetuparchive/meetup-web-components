@@ -114,4 +114,6 @@ GridListComponent.propTypes = {
 	}),
 };
 
-export default withLoading(GridListComponent);
+const GridList = withLoading(GridListComponent);
+GridList.displayName = 'GridList';
+export default GridList;

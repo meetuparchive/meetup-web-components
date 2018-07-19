@@ -147,4 +147,6 @@ FlexComponent.defaultProps = {
 	direction: DIRECTION_ROW,
 };
 
-export default withLoading(FlexComponent);
+const Flex = withLoading(FlexComponent);
+Flex.displayName = 'Flex';
+export default Flex;

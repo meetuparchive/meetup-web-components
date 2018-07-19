@@ -300,4 +300,6 @@ ModalComponent.defaultProps = {
 	focusTrapActive: true,
 };
 
-export default withLoading(ModalComponent);
+const Modal = withLoading(ModalComponent);
+Modal.displayName = 'Modal';
+export default Modal;
