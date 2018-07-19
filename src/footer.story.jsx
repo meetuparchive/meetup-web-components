@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import withMatchMedia from './utils/components/withMatchMedia';
 
-import { decorateWithBasics } from './utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from './utils/decorators';
 import { Footer } from './Footer';
 
 const TestFooter = withMatchMedia(Footer);
@@ -71,6 +71,17 @@ const DEFAULT_PROPS = {
 
 storiesOf('Footer', module)
 	.addDecorator(decorateWithBasics)
-	.add('default', () => <TestFooter {...DEFAULT_PROPS} />)
-	.add('isLoggedIn', () => <TestFooter {...DEFAULT_PROPS} isLoggedIn />)
-	.add('isLight', () => <TestFooter {...DEFAULT_PROPS} isLight />);
+	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [Footer], propTablesExclude: [TestFooter] } })
+	.add('default', () => <TestFooter {...DEFAULT_PROPS} />, {
+		info: { text: 'Footer content for a logged out user on replatformed pages' },
+	})
+	.add('isLoggedIn', () => <TestFooter {...DEFAULT_PROPS} isLoggedIn />, {
+		info: { text: 'Footer content for a logged in user on replatformed pages' },
+	})
+	.add('isLight', () => <TestFooter {...DEFAULT_PROPS} isLight />, {
+		info: {
+			text:
+				'This light-colored variant of the footer is rendered on very sparse pages like our 404 page or the standard error page',
+		},
+	});

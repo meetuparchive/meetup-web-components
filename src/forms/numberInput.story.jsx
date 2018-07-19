@@ -1,5 +1,5 @@
 import React from 'react';
-import NumberInput from './NumberInput';
+import { NumberInput } from './NumberInput';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { IntlProvider, FormattedMessage, defineMessages } from 'react-intl';
@@ -40,6 +40,7 @@ class ControlledNumberInput extends React.Component {
 storiesOf('NumberInput', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTable: NumberInput } })
 	.add('default', () => (
 		<div>
 			<NumberInput label="How many?" id="amount" name="amount" />
