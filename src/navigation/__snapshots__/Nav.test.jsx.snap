@@ -22,7 +22,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -101,11 +101,11 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
     <NavItem
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       icon={
-        <FlexComponent
+        <Flex
           align="center"
           noGutters={true}
         >
-          <FlexItemComponent>
+          <FlexItem>
             <AvatarMember
               member={
                 Object {
@@ -119,8 +119,8 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
               }
               small={true}
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -129,8 +129,8 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       }
       key="4"
       label="Profile"
@@ -139,7 +139,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;
 
@@ -165,7 +165,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="center"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -879,11 +879,11 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
         />
       }
       icon={
-        <FlexComponent
+        <Flex
           align="center"
           noGutters={true}
         >
-          <FlexItemComponent>
+          <FlexItem>
             <AvatarMember
               member={
                 Object {
@@ -897,8 +897,8 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
               }
               small={true}
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -907,8 +907,8 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       }
       key="5"
       label="Profile"
@@ -917,7 +917,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;
 
@@ -934,7 +934,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="center"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -1648,11 +1648,11 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
         />
       }
       icon={
-        <FlexComponent
+        <Flex
           align="center"
           noGutters={true}
         >
-          <FlexItemComponent>
+          <FlexItem>
             <AvatarMember
               member={
                 Object {
@@ -1666,8 +1666,8 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
               }
               small={true}
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -1676,8 +1676,8 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       }
       key="5"
       label="Profile"
@@ -1686,7 +1686,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;
 
@@ -1720,7 +1720,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="center"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -2434,11 +2434,11 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
         />
       }
       icon={
-        <FlexComponent
+        <Flex
           align="center"
           noGutters={true}
         >
-          <FlexItemComponent>
+          <FlexItem>
             <AvatarMember
               member={
                 Object {
@@ -2452,8 +2452,8 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
               }
               small={true}
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -2462,8 +2462,8 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       }
       key="5"
       label="Profile"
@@ -2472,7 +2472,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;
 
@@ -2498,7 +2498,7 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -2529,7 +2529,7 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
       onAction={[Function]}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;
 
@@ -2555,7 +2555,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -2624,11 +2624,11 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={false}
       icon={
-        <FlexComponent
+        <Flex
           align="center"
           noGutters={true}
         >
-          <FlexItemComponent>
+          <FlexItem>
             <AvatarMember
               member={
                 Object {
@@ -2642,8 +2642,8 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
               }
               small={true}
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -2652,8 +2652,8 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
               shape="chevron-down"
               size="xxs"
             />
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       }
       key="4"
       label="Profile"
@@ -2662,7 +2662,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
       onClickAction={false}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;
 
@@ -2688,7 +2688,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="center"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -2726,7 +2726,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
       onAction={[Function]}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;
 
@@ -2752,7 +2752,7 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -2783,7 +2783,7 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
       onAction={[Function]}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;
 
@@ -2817,7 +2817,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="center"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -3531,11 +3531,11 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
         />
       }
       icon={
-        <FlexComponent
+        <Flex
           align="center"
           noGutters={true}
         >
-          <FlexItemComponent>
+          <FlexItem>
             <AvatarMember
               member={
                 Object {
@@ -3549,8 +3549,8 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
               }
               small={true}
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -3559,8 +3559,8 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       }
       key="5"
       label="Profile"
@@ -3569,7 +3569,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;
 
@@ -3595,7 +3595,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -3664,11 +3664,11 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={false}
       icon={
-        <FlexComponent
+        <Flex
           align="center"
           noGutters={true}
         >
-          <FlexItemComponent>
+          <FlexItem>
             <AvatarMember
               member={
                 Object {
@@ -3682,8 +3682,8 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
               }
               small={true}
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -3692,8 +3692,8 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       }
       key="4"
       label="Profile"
@@ -3702,7 +3702,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;
 
@@ -3728,7 +3728,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
   }
   role="navigation"
 >
-  <FlexComponent
+  <Flex
     align="top"
     className="span--100 navBar"
     justify="spaceBetween"
@@ -3797,11 +3797,11 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={false}
       icon={
-        <FlexComponent
+        <Flex
           align="center"
           noGutters={true}
         >
-          <FlexItemComponent>
+          <FlexItem>
             <AvatarMember
               member={
                 Object {
@@ -3815,8 +3815,8 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
               }
               small={true}
             />
-          </FlexItemComponent>
-          <FlexItemComponent
+          </FlexItem>
+          <FlexItem
             className="display--none atMedium_display--block"
             shrink={true}
           >
@@ -3825,8 +3825,8 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
               shape="chevron-down"
               size="xxs"
             />
-          </FlexItemComponent>
-        </FlexComponent>
+          </FlexItem>
+        </Flex>
       }
       key="4"
       label="Profile"
@@ -3835,6 +3835,6 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
       onClickAction={false}
       shrink={true}
     />
-  </FlexComponent>
+  </Flex>
 </nav>
 `;

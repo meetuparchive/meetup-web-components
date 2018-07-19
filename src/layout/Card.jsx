@@ -77,4 +77,6 @@ CardComponent.propTypes = {
 	}),
 };
 
-export default withLoading(CardComponent);
+const Card = withLoading(CardComponent);
+Card.displayName = 'Card';
+export default Card;

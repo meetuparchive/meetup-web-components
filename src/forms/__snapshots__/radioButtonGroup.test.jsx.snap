@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RadioButtonGroup should apply switchDirection and direction props 1`] = `
-<FlexComponent
+<Flex
   className="some-class"
   direction="column"
   switchDirection="medium"
 >
-  <FlexItemComponent
+  <FlexItem
     key=".0"
     shrink={true}
   >
@@ -17,8 +17,8 @@ exports[`RadioButtonGroup should apply switchDirection and direction props 1`] =
       onChange={[Function]}
       value="one"
     />
-  </FlexItemComponent>
-  <FlexItemComponent
+  </FlexItem>
+  <FlexItem
     key=".1"
     shrink={true}
   >
@@ -29,16 +29,16 @@ exports[`RadioButtonGroup should apply switchDirection and direction props 1`] =
       onChange={[Function]}
       value="two"
     />
-  </FlexItemComponent>
-</FlexComponent>
+  </FlexItem>
+</Flex>
 `;
 
 exports[`RadioButtonGroup should match the snapshot 1`] = `
-<FlexComponent
+<Flex
   className="some-class"
   direction="row"
 >
-  <FlexItemComponent
+  <FlexItem
     key=".0"
     shrink={true}
   >
@@ -49,8 +49,8 @@ exports[`RadioButtonGroup should match the snapshot 1`] = `
       onChange={[Function]}
       value="one"
     />
-  </FlexItemComponent>
-  <FlexItemComponent
+  </FlexItem>
+  <FlexItem
     key=".1"
     shrink={true}
   >
@@ -61,6 +61,6 @@ exports[`RadioButtonGroup should match the snapshot 1`] = `
       onChange={[Function]}
       value="two"
     />
-  </FlexItemComponent>
-</FlexComponent>
+  </FlexItem>
+</Flex>
 `;

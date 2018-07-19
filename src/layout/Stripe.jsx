@@ -74,4 +74,6 @@ StripeComponent.propTypes = {
 	}),
 };
 
-export default withLoading(StripeComponent);
+const Stripe = withLoading(StripeComponent);
+Stripe.displayName = 'Stripe';
+export default Stripe;

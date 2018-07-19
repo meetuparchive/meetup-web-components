@@ -63,4 +63,6 @@ FlexItemComponent.propTypes = {
 	}),
 };
 
-export default withLoading(FlexItemComponent);
+const FlexItem = withLoading(FlexItemComponent);
+FlexItem.displayName = 'FlexItem';
+export default FlexItem;

@@ -78,4 +78,6 @@ InlineBlockListComponent.propTypes = {
 	verticalAlign: PropTypes.oneOf(['top', 'middle', 'bottom']),
 };
 
-export default withLoading(InlineBlockListComponent);
+const InlineBlockList = withLoading(InlineBlockListComponent);
+InlineBlockList.displayName = 'InlineBlockList';
+export default InlineBlockList;

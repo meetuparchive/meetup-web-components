@@ -113,7 +113,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             role="tab"
             tabIndex={0}
           >
-            <FlexComponent
+            <Flex
               className="padding--bottom padding--top accordionPanel accordionPanel--active"
               rowReverse={false}
               tabIndex={-1}
@@ -128,7 +128,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   className="flex flex--row padding--bottom padding--top accordionPanel accordionPanel--active"
                   tabIndex={-1}
                 >
-                  <FlexItemComponent
+                  <FlexItem
                     id="label-firstsection"
                   >
                     <FlexItemComponent
@@ -141,8 +141,8 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                         First Section
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
-                  <FlexItemComponent
+                  </FlexItem>
+                  <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
@@ -181,12 +181,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                         </Icon>
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
+                  </FlexItem>
                 </div>
               </FlexComponent>
-            </FlexComponent>
+            </Flex>
           </div>
-          <ChunkComponent
+          <Chunk
             aria-hidden={false}
             aria-labelledby="label-firstsection"
             className="accordionPanel-animator"
@@ -238,7 +238,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                 </div>
               </div>
             </ChunkComponent>
-          </ChunkComponent>
+          </Chunk>
         </div>
       </AccordionPanel>
     </li>
@@ -291,7 +291,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             role="tab"
             tabIndex={0}
           >
-            <FlexComponent
+            <Flex
               className="padding--bottom padding--top accordionPanel"
               rowReverse={false}
               tabIndex={-1}
@@ -306,7 +306,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
-                  <FlexItemComponent
+                  <FlexItem
                     id="label-nextsection"
                   >
                     <FlexItemComponent
@@ -319,8 +319,8 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                         Next Section
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
-                  <FlexItemComponent
+                  </FlexItem>
+                  <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
@@ -359,12 +359,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                         </Icon>
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
+                  </FlexItem>
                 </div>
               </FlexComponent>
-            </FlexComponent>
+            </Flex>
           </div>
-          <ChunkComponent
+          <Chunk
             aria-hidden={true}
             aria-labelledby="label-nextsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -432,7 +432,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                 </div>
               </div>
             </ChunkComponent>
-          </ChunkComponent>
+          </Chunk>
         </div>
       </AccordionPanel>
     </li>
@@ -469,7 +469,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             role="tab"
             tabIndex={0}
           >
-            <FlexComponent
+            <Flex
               className="padding--bottom padding--top accordionPanel"
               rowReverse={false}
               tabIndex={-1}
@@ -484,7 +484,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
-                  <FlexItemComponent
+                  <FlexItem
                     id="label-thirdsection"
                   >
                     <FlexItemComponent
@@ -497,8 +497,8 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                         Third Section
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
-                  <FlexItemComponent
+                  </FlexItem>
+                  <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
@@ -537,12 +537,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                         </Icon>
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
+                  </FlexItem>
                 </div>
               </FlexComponent>
-            </FlexComponent>
+            </Flex>
           </div>
-          <ChunkComponent
+          <Chunk
             aria-hidden={true}
             aria-labelledby="label-thirdsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -594,7 +594,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                 </div>
               </div>
             </ChunkComponent>
-          </ChunkComponent>
+          </Chunk>
         </div>
       </AccordionPanel>
     </li>
@@ -715,7 +715,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             role="tab"
             tabIndex={0}
           >
-            <FlexComponent
+            <Flex
               className="padding--bottom padding--top accordionPanel accordionPanel--active"
               rowReverse={false}
               tabIndex={-1}
@@ -730,7 +730,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   className="flex flex--row padding--bottom padding--top accordionPanel accordionPanel--active"
                   tabIndex={-1}
                 >
-                  <FlexItemComponent
+                  <FlexItem
                     id="label-firstsection"
                   >
                     <FlexItemComponent
@@ -743,8 +743,8 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                         First Section
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
-                  <FlexItemComponent
+                  </FlexItem>
+                  <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
@@ -783,12 +783,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                         </Icon>
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
+                  </FlexItem>
                 </div>
               </FlexComponent>
-            </FlexComponent>
+            </Flex>
           </div>
-          <ChunkComponent
+          <Chunk
             aria-hidden={false}
             aria-labelledby="label-firstsection"
             className="accordionPanel-animator"
@@ -840,7 +840,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                 </div>
               </div>
             </ChunkComponent>
-          </ChunkComponent>
+          </Chunk>
         </div>
       </AccordionPanel>
     </li>
@@ -893,7 +893,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             role="tab"
             tabIndex={0}
           >
-            <FlexComponent
+            <Flex
               className="padding--bottom padding--top accordionPanel"
               rowReverse={false}
               tabIndex={-1}
@@ -908,7 +908,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
-                  <FlexItemComponent
+                  <FlexItem
                     id="label-nextsection"
                   >
                     <FlexItemComponent
@@ -921,8 +921,8 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                         Next Section
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
-                  <FlexItemComponent
+                  </FlexItem>
+                  <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
@@ -961,12 +961,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                         </Icon>
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
+                  </FlexItem>
                 </div>
               </FlexComponent>
-            </FlexComponent>
+            </Flex>
           </div>
-          <ChunkComponent
+          <Chunk
             aria-hidden={true}
             aria-labelledby="label-nextsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -1034,7 +1034,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                 </div>
               </div>
             </ChunkComponent>
-          </ChunkComponent>
+          </Chunk>
         </div>
       </AccordionPanel>
     </li>
@@ -1071,7 +1071,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             role="tab"
             tabIndex={0}
           >
-            <FlexComponent
+            <Flex
               className="padding--bottom padding--top accordionPanel"
               rowReverse={false}
               tabIndex={-1}
@@ -1086,7 +1086,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
-                  <FlexItemComponent
+                  <FlexItem
                     id="label-thirdsection"
                   >
                     <FlexItemComponent
@@ -1099,8 +1099,8 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                         Third Section
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
-                  <FlexItemComponent
+                  </FlexItem>
+                  <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
@@ -1139,12 +1139,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                         </Icon>
                       </div>
                     </FlexItemComponent>
-                  </FlexItemComponent>
+                  </FlexItem>
                 </div>
               </FlexComponent>
-            </FlexComponent>
+            </Flex>
           </div>
-          <ChunkComponent
+          <Chunk
             aria-hidden={true}
             aria-labelledby="label-thirdsection"
             className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -1196,7 +1196,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                 </div>
               </div>
             </ChunkComponent>
-          </ChunkComponent>
+          </Chunk>
         </div>
       </AccordionPanel>
     </li>
