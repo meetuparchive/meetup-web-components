@@ -8,31 +8,33 @@ import FlexItem from '../../layout/FlexItem';
 
 const NAV_ITEM_CLASS = 'navItemLink';
 
-export const ActionItem = ({ navItemContent, action }) => (
+export const ActionItem = ({ navItemContent, action, title }) => (
 	<Button
 		reset
 		className={cx(NAV_ITEM_CLASS, 'text--secondary')}
 		onClick={action}
+		title={title}
 	>
 		{navItemContent}
 	</Button>
 );
-export const LinkItem = ({ linkTo, navItemContent, className }) => (
-	<a href={linkTo} className={cx(NAV_ITEM_CLASS, className)}>
+export const LinkItem = ({ linkTo, navItemContent, className, title }) => (
+	<a href={linkTo} className={cx(NAV_ITEM_CLASS, className)} title={title}>
 		{navItemContent}
 	</a>
 );
-export const ContentLoaderItem = ({ navItemContent, onClickAction }) => (
+export const ContentLoaderItem = ({ navItemContent, onClickAction, title }) => (
 	<Button
 		aria-haspopup
 		reset
 		className={NAV_ITEM_CLASS}
 		onClick={onClickAction}
+		title={title}
 	>
 		{navItemContent}
 	</Button>
 );
-export const DropdownItem = ({ navItemContent, dropdownContent }) => (
+export const DropdownItem = ({ navItemContent, dropdownContent, title }) => (
 	<Dropdown
 		noPortal
 		align="right"
@@ -66,6 +68,7 @@ export const NavItem = props => {
 		onClickAction,
 		onAction,
 		updatesLabel,
+		title,
 		...other
 	} = props;
 
@@ -77,7 +80,11 @@ export const NavItem = props => {
 	const navItemContent = (
 		<div>
 			{icon}
-			{label && <span className={classNames.label}>{label}</span>}
+			{label && (
+				<span className={classNames.label} title={title}>
+					{label}
+				</span>
+			)}
 			{hasUpdates && (
 				<span className="counterBadge">
 					<span className="visibility--a11yHide">{updatesLabel}</span>
@@ -90,6 +97,7 @@ export const NavItem = props => {
 		<ContentLoaderItem
 			onClickAction={onClickAction}
 			navItemContent={navItemContent}
+			title={title}
 		/>
 	) : (
 		navItemContent
@@ -102,6 +110,7 @@ export const NavItem = props => {
 					className={linkClassName}
 					linkTo={linkTo}
 					navItemContent={navItemContent}
+					title={title}
 				/>
 			)}
 			{dropdownContent && (
@@ -111,7 +120,11 @@ export const NavItem = props => {
 				/>
 			)}
 			{onAction && (
-				<ActionItem action={onAction} navItemContent={navItemContent} />
+				<ActionItem
+					action={onAction}
+					navItemContent={navItemContent}
+					title={title}
+				/>
 			)}
 		</FlexItem>
 	);

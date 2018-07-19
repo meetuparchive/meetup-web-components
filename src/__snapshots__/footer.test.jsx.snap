@@ -362,6 +362,7 @@ exports[`SocialIconsList renders for de-DE locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetupDE/"
     >
         <Icon
@@ -370,6 +371,7 @@ exports[`SocialIconsList renders for de-DE locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/MeetupDE/"
     >
         <Icon
@@ -379,6 +381,7 @@ exports[`SocialIconsList renders for de-DE locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -388,6 +391,7 @@ exports[`SocialIconsList renders for de-DE locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetupde/"
     >
         <Icon
@@ -397,6 +401,7 @@ exports[`SocialIconsList renders for de-DE locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -415,6 +420,7 @@ exports[`SocialIconsList renders for en-AU locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -423,6 +429,7 @@ exports[`SocialIconsList renders for en-AU locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/Meetup/"
     >
         <Icon
@@ -432,6 +439,7 @@ exports[`SocialIconsList renders for en-AU locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -441,6 +449,7 @@ exports[`SocialIconsList renders for en-AU locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -450,6 +459,7 @@ exports[`SocialIconsList renders for en-AU locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -468,6 +478,7 @@ exports[`SocialIconsList renders for en-US locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -476,6 +487,7 @@ exports[`SocialIconsList renders for en-US locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/Meetup/"
     >
         <Icon
@@ -485,6 +497,7 @@ exports[`SocialIconsList renders for en-US locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -494,6 +507,7 @@ exports[`SocialIconsList renders for en-US locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -503,6 +517,7 @@ exports[`SocialIconsList renders for en-US locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -521,6 +536,7 @@ exports[`SocialIconsList renders for es locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -529,6 +545,7 @@ exports[`SocialIconsList renders for es locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/MeetupES/"
     >
         <Icon
@@ -538,6 +555,7 @@ exports[`SocialIconsList renders for es locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -547,6 +565,7 @@ exports[`SocialIconsList renders for es locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -556,6 +575,7 @@ exports[`SocialIconsList renders for es locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -574,6 +594,7 @@ exports[`SocialIconsList renders for es-ES locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -582,6 +603,7 @@ exports[`SocialIconsList renders for es-ES locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/MeetupES/"
     >
         <Icon
@@ -591,6 +613,7 @@ exports[`SocialIconsList renders for es-ES locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -600,6 +623,7 @@ exports[`SocialIconsList renders for es-ES locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -609,6 +633,7 @@ exports[`SocialIconsList renders for es-ES locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -627,6 +652,7 @@ exports[`SocialIconsList renders for fr-FR locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/MeetupFR/"
     >
         <Icon
@@ -635,6 +661,7 @@ exports[`SocialIconsList renders for fr-FR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/MeetupFR/"
     >
         <Icon
@@ -644,6 +671,7 @@ exports[`SocialIconsList renders for fr-FR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -653,6 +681,7 @@ exports[`SocialIconsList renders for fr-FR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://twitter.com/meetupfr/"
     >
         <Icon
@@ -662,6 +691,7 @@ exports[`SocialIconsList renders for fr-FR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -680,6 +710,7 @@ exports[`SocialIconsList renders for it-IT locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -688,6 +719,7 @@ exports[`SocialIconsList renders for it-IT locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/MeetupIT/"
     >
         <Icon
@@ -697,6 +729,7 @@ exports[`SocialIconsList renders for it-IT locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -706,6 +739,7 @@ exports[`SocialIconsList renders for it-IT locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -715,6 +749,7 @@ exports[`SocialIconsList renders for it-IT locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -733,6 +768,7 @@ exports[`SocialIconsList renders for ja-JP locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetupjp/"
     >
         <Icon
@@ -741,6 +777,7 @@ exports[`SocialIconsList renders for ja-JP locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/MeetupJP/"
     >
         <Icon
@@ -750,6 +787,7 @@ exports[`SocialIconsList renders for ja-JP locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -759,6 +797,7 @@ exports[`SocialIconsList renders for ja-JP locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -768,6 +807,7 @@ exports[`SocialIconsList renders for ja-JP locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -786,6 +826,7 @@ exports[`SocialIconsList renders for ko-KR locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -794,6 +835,7 @@ exports[`SocialIconsList renders for ko-KR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/Meetup/"
     >
         <Icon
@@ -803,6 +845,7 @@ exports[`SocialIconsList renders for ko-KR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -812,6 +855,7 @@ exports[`SocialIconsList renders for ko-KR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -821,6 +865,7 @@ exports[`SocialIconsList renders for ko-KR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -839,6 +884,7 @@ exports[`SocialIconsList renders for nl-NL locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -847,6 +893,7 @@ exports[`SocialIconsList renders for nl-NL locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/Meetup/"
     >
         <Icon
@@ -856,6 +903,7 @@ exports[`SocialIconsList renders for nl-NL locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -865,6 +913,7 @@ exports[`SocialIconsList renders for nl-NL locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -874,6 +923,7 @@ exports[`SocialIconsList renders for nl-NL locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -892,6 +942,7 @@ exports[`SocialIconsList renders for pl-PL locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -900,6 +951,7 @@ exports[`SocialIconsList renders for pl-PL locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/MeetupPL/"
     >
         <Icon
@@ -909,6 +961,7 @@ exports[`SocialIconsList renders for pl-PL locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -918,6 +971,7 @@ exports[`SocialIconsList renders for pl-PL locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -927,6 +981,7 @@ exports[`SocialIconsList renders for pl-PL locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -945,6 +1000,7 @@ exports[`SocialIconsList renders for pt-BR locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -953,6 +1009,7 @@ exports[`SocialIconsList renders for pt-BR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/MeetupBR/"
     >
         <Icon
@@ -962,6 +1019,7 @@ exports[`SocialIconsList renders for pt-BR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -971,6 +1029,7 @@ exports[`SocialIconsList renders for pt-BR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -980,6 +1039,7 @@ exports[`SocialIconsList renders for pt-BR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -998,6 +1058,7 @@ exports[`SocialIconsList renders for ru-RU locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -1006,6 +1067,7 @@ exports[`SocialIconsList renders for ru-RU locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/Meetup/"
     >
         <Icon
@@ -1015,6 +1077,7 @@ exports[`SocialIconsList renders for ru-RU locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -1024,6 +1087,7 @@ exports[`SocialIconsList renders for ru-RU locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -1033,6 +1097,7 @@ exports[`SocialIconsList renders for ru-RU locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -1051,6 +1116,7 @@ exports[`SocialIconsList renders for th-TH locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -1059,6 +1125,7 @@ exports[`SocialIconsList renders for th-TH locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/Meetup/"
     >
         <Icon
@@ -1068,6 +1135,7 @@ exports[`SocialIconsList renders for th-TH locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -1077,6 +1145,7 @@ exports[`SocialIconsList renders for th-TH locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -1086,6 +1155,7 @@ exports[`SocialIconsList renders for th-TH locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon
@@ -1104,6 +1174,7 @@ exports[`SocialIconsList renders for tr-TR locale 1`] = `
   items={
     Array [
       <a
+        aria-label="facebook"
         href="https://www.facebook.com/meetup/"
     >
         <Icon
@@ -1112,6 +1183,7 @@ exports[`SocialIconsList renders for tr-TR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="twitter"
         href="https://twitter.com/Meetup/"
     >
         <Icon
@@ -1121,6 +1193,7 @@ exports[`SocialIconsList renders for tr-TR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="youtube"
         href="https://www.youtube.com/meetup"
     >
         <Icon
@@ -1130,6 +1203,7 @@ exports[`SocialIconsList renders for tr-TR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="instagram"
         href="https://www.instagram.com/meetup/"
     >
         <Icon
@@ -1139,6 +1213,7 @@ exports[`SocialIconsList renders for tr-TR locale 1`] = `
         />
     </a>,
       <a
+        aria-label="medium"
         href="https://medium.com/meetup"
     >
         <Icon

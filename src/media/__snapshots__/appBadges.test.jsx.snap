@@ -8,11 +8,13 @@ exports[`App Badges exists 1`] = `
     className="getTheApp-ios"
   >
     <a
+      aria-label="Get the iOS app"
       href="http://meetu.ps/2ZhShs"
     >
       <img
         className="getTheApp-downloadImage span--100 margin--center"
         src=""
+        title="iOS App Download"
       />
     </a>
   </FlexItem>
@@ -20,11 +22,13 @@ exports[`App Badges exists 1`] = `
     className="getTheApp-android"
   >
     <a
+      aria-label="Get the Android app"
       href="http://meetu.ps/2ZhSyb"
     >
       <img
         className="getTheApp-downloadImage span--100 margin--center"
         src=""
+        title="Android App Download"
       />
     </a>
   </FlexItem>
