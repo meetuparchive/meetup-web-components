@@ -161,19 +161,46 @@ Textarea.defaultProps = {
 };
 
 Textarea.propTypes = {
+	/** Adds an `id` attribute to the input, and associates it with the `<label />` */
 	id: PropTypes.string.isRequired,
+
+	/** The `name` attribute for the input */
 	name: PropTypes.string.isRequired,
+
+	/** Error content to render */
 	error: PropTypes.string,
+
+	/** What we render into the input's `<label />` */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** The class name/s to add to the `<label />` element */
 	labelClassName: PropTypes.string,
+
+	/** The smallest height the `<textarea />` can be */
 	minHeight: PropTypes.number,
+
+	/** The largest height the `<textarea />` can be */
 	maxHeight: PropTypes.number,
+
+	/** Callback that happens when the textarea value changes */
 	onChange: PropTypes.func,
+
+	/** Number of rows high the textarea is */
 	rows: PropTypes.number,
+
+	/** Value of the textarea */
 	value: PropTypes.string,
+
+	/** Whether to grow the height of the textarea to fit all of the textarea content without scrolling */
 	autosize: PropTypes.bool,
+
+	/** An additional piece of helpful info rendered with the field */
 	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** Whether the field is required to have a value */
 	required: PropTypes.bool,
+
+	/** What to render in order to indicate the field is required */
 	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 

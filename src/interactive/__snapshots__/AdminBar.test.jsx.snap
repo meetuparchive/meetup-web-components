@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AdminBar renders correctly 1`] = `
-<Flex
+<FlexComponent
   className="groupAdminLinks"
 >
-  <FlexItem
+  <FlexItemComponent
     shrink={true}
   >
     <Tooltip
@@ -79,14 +79,14 @@ exports[`AdminBar renders correctly 1`] = `
       }
       withClose={true}
     />
-  </FlexItem>
-  <FlexItem
+  </FlexItemComponent>
+  <FlexItemComponent
     shrink={true}
   >
     <Tooltip
       align="left"
       content={
-        <Section>
+        <SectionComponent>
           <SelectInput
             name="highlightValue"
             onChange={[Function]}
@@ -127,7 +127,7 @@ exports[`AdminBar renders correctly 1`] = `
           >
             submit
           </a>
-        </Section>
+        </SectionComponent>
       }
       direction="top"
       id="highlight-label-btn"
@@ -146,15 +146,15 @@ exports[`AdminBar renders correctly 1`] = `
       }
       withClose={true}
     />
-  </FlexItem>
-</Flex>
+  </FlexItemComponent>
+</FlexComponent>
 `;
 
 exports[`AdminBar renders correctly when QLd 1`] = `
-<Flex
+<FlexComponent
   className="groupAdminLinks greenbar"
 >
-  <FlexItem
+  <FlexItemComponent
     className="inverted padding--top-half"
   >
     <p
@@ -171,8 +171,8 @@ exports[`AdminBar renders correctly when QLd 1`] = `
         testing name
       </a>
     </p>
-  </FlexItem>
-  <FlexItem
+  </FlexItemComponent>
+  <FlexItemComponent
     shrink={true}
   >
     <Tooltip
@@ -234,14 +234,14 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       }
       withClose={true}
     />
-  </FlexItem>
-  <FlexItem
+  </FlexItemComponent>
+  <FlexItemComponent
     shrink={true}
   >
     <Tooltip
       align="left"
       content={
-        <Section>
+        <SectionComponent>
           <SelectInput
             name="highlightValue"
             onChange={[Function]}
@@ -282,7 +282,7 @@ exports[`AdminBar renders correctly when QLd 1`] = `
           >
             submit
           </a>
-        </Section>
+        </SectionComponent>
       }
       direction="top"
       id="highlight-label-btn"
@@ -301,15 +301,15 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       }
       withClose={true}
     />
-  </FlexItem>
-</Flex>
+  </FlexItemComponent>
+</FlexComponent>
 `;
 
 exports[`AdminBar renders correctly when isProdApi 1`] = `
-<Flex
+<FlexComponent
   className="groupAdminLinks redbar"
 >
-  <FlexItem
+  <FlexItemComponent
     className="inverted padding--top-half"
   >
     <p
@@ -317,8 +317,8 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
     >
       You are using production data.
     </p>
-  </FlexItem>
-  <FlexItem
+  </FlexItemComponent>
+  <FlexItemComponent
     shrink={true}
   >
     <Tooltip
@@ -380,14 +380,14 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       }
       withClose={true}
     />
-  </FlexItem>
-  <FlexItem
+  </FlexItemComponent>
+  <FlexItemComponent
     shrink={true}
   >
     <Tooltip
       align="left"
       content={
-        <Section>
+        <SectionComponent>
           <SelectInput
             name="highlightValue"
             onChange={[Function]}
@@ -428,7 +428,7 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
           >
             submit
           </a>
-        </Section>
+        </SectionComponent>
       }
       direction="top"
       id="highlight-label-btn"
@@ -447,15 +447,15 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       }
       withClose={true}
     />
-  </FlexItem>
-</Flex>
+  </FlexItemComponent>
+</FlexComponent>
 `;
 
 exports[`AdminBar renders correctly when no org exists 1`] = `
-<Flex
+<FlexComponent
   className="groupAdminLinks"
 >
-  <FlexItem
+  <FlexItemComponent
     shrink={true}
   >
     <Tooltip
@@ -517,14 +517,14 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       }
       withClose={true}
     />
-  </FlexItem>
-  <FlexItem
+  </FlexItemComponent>
+  <FlexItemComponent
     shrink={true}
   >
     <Tooltip
       align="left"
       content={
-        <Section>
+        <SectionComponent>
           <SelectInput
             name="highlightValue"
             onChange={[Function]}
@@ -565,7 +565,7 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
           >
             submit
           </a>
-        </Section>
+        </SectionComponent>
       }
       direction="top"
       id="highlight-label-btn"
@@ -584,8 +584,8 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       }
       withClose={true}
     />
-  </FlexItem>
-</Flex>
+  </FlexItemComponent>
+</FlexComponent>
 `;
 
 exports[`AdminBar renders nothing if user is not an admin 1`] = `""`;

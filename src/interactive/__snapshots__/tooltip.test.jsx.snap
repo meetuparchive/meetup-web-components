@@ -4,17 +4,17 @@ exports[`Tooltip aligned tooltip matches snapshot 1`] = `
 <Tooltip
   align="right"
   content={
-    <Section
+    <SectionComponent
       noSeparator={true}
     >
-      <Chunk>
+      <ChunkComponent>
         <h2
           className="text--big text--bold"
         >
           Dropdown content
         </h2>
-      </Chunk>
-    </Section>
+      </ChunkComponent>
+    </SectionComponent>
   }
   direction="top"
   id="testDropdown"
@@ -36,17 +36,17 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
 <Tooltip
   align="right"
   content={
-    <Section
+    <SectionComponent
       noSeparator={true}
     >
-      <Chunk>
+      <ChunkComponent>
         <h2
           className="text--big text--bold"
         >
           Dropdown content
         </h2>
-      </Chunk>
-    </Section>
+      </ChunkComponent>
+    </SectionComponent>
   }
   direction="bottom"
   id="testDropdown"
@@ -144,11 +144,11 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                     onClick={[Function]}
                     type="button"
                   >
-                    <Flex
+                    <FlexComponent
                       className="button-icon-wrapper"
                       justify="center"
                     >
-                      <Flex
+                      <FlexComponent
                         className="button-icon-wrapper"
                         direction="row"
                         justify="center"
@@ -156,11 +156,11 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                         <div
                           className="flex flex--row flex--center button-icon-wrapper"
                         >
-                          <FlexItem
+                          <FlexItemComponent
                             className="button-icon valign--middle flush--left"
                             shrink={true}
                           >
-                            <FlexItem
+                            <FlexItemComponent
                               className="button-icon valign--middle flush--left"
                               shrink={true}
                             >
@@ -191,24 +191,24 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                                   </span>
                                 </Icon>
                               </div>
-                            </FlexItem>
-                          </FlexItem>
+                            </FlexItemComponent>
+                          </FlexItemComponent>
                         </div>
-                      </Flex>
-                    </Flex>
+                      </FlexComponent>
+                    </FlexComponent>
                   </button>
                 </Button>
-                <Section
+                <SectionComponent
                   noSeparator={true}
                 >
-                  <Section
+                  <SectionComponent
                     noSeparator={true}
                   >
                     <section
                       className="section"
                     >
-                      <Chunk>
-                        <Chunk>
+                      <ChunkComponent>
+                        <ChunkComponent>
                           <div
                             className="chunk"
                           >
@@ -218,11 +218,11 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                               Dropdown content
                             </h2>
                           </div>
-                        </Chunk>
-                      </Chunk>
+                        </ChunkComponent>
+                      </ChunkComponent>
                     </section>
-                  </Section>
-                </Section>
+                  </SectionComponent>
+                </SectionComponent>
               </div>
             </div>
           </Portal>

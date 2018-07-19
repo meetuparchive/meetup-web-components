@@ -255,18 +255,43 @@ AccordionPanel.defaultProps = {
 };
 
 AccordionPanel.propTypes = {
+	/** zero-indexed position of the panel */
 	panelIndex: PropTypes.number,
+
+	/** Class names to add to the panel wrapper when the panel is open */
 	classNamesActive: PropTypes.string,
-	isOpen: PropTypes.bool,
+
+	/** Whether the panel is open */
+	isOpen: PropTypes.oneOf([null, true, false]),
+
+	/** The content to render inside the detail area of an expanded panel */
 	panelContent: PropTypes.element,
+
+	/** A function used to set the clicked panel to it's opened state */
 	setClickedPanel: PropTypes.func,
+
+	/** A callback that happens after the panel has been toggled */
 	onClickCallback: PropTypes.func,
+
+	/** Content to render in the part of the panel that is always visible (does not include indicator icon or switch) */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+
+	/** Class names to add to the wrapper of the panel label and indicator */
 	className: PropTypes.string,
+
+	/** Which side of each panel that the icon or indicator switch renders on */
 	indicatorAlign: PropTypes.string,
+
+	/** Shape name of the icon to render as an indicator for closed panels */
 	indicatorIcon: PropTypes.string,
+
+	/** Shape name of the icon to render as an indicator for opened panels */
 	indicatorIconActive: PropTypes.string,
+
+	/** Size key for the icon rendered for open and closed indicators */
 	indicatorIconSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+
+	/** Whether to use a ToggleSwitch as an indicator instead of an icon */
 	indicatorSwitch: PropTypes.bool,
 };
 

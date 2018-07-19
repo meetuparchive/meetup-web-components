@@ -14,9 +14,9 @@ export const VALID_BREAKPOINTS = {
 };
 
 /**
- * @module Card
+ * @module CardComponent
  */
-export class Card extends React.PureComponent {
+export class CardComponent extends React.PureComponent {
 	render() {
 		const {
 			children,
@@ -30,8 +30,7 @@ export class Card extends React.PureComponent {
 			...other
 		} = this.props;
 
-		const flushBreakpoint =
-			VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
+		const flushBreakpoint = VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
 
 		const classNames = cx(
 			CARD_CLASS,
@@ -54,14 +53,23 @@ export class Card extends React.PureComponent {
 	}
 }
 
-Card.propTypes = {
+CardComponent.propTypes = {
+	/** Whether the card's height is be determined by it's content instead of having a minimum height */
 	initialHeight: PropTypes.bool,
+
+	/** The card has a dropshadow */
 	hasShadow: PropTypes.bool,
+
+	/** The card has a dropshadow only on hover */
 	hasHoverShadow: PropTypes.bool,
-	flushUntil: PropTypes.oneOfType([
-		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
-	]),
+
+	/** Breakpoint at which the card should be inset from it's container instead of being flushed to the left and right edges of it's container */
+	flushUntil: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))]),
+
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
@@ -69,4 +77,4 @@ Card.propTypes = {
 	}),
 };
 
-export default withLoading(Card);
+export default withLoading(CardComponent);

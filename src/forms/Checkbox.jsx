@@ -144,14 +144,32 @@ class Checkbox extends React.PureComponent {
 Checkbox.propTypes = {
 	checked: PropTypes.bool,
 	disabled: PropTypes.bool,
+
+	/** Whether the input's `checked` prop is handled outside the component or by using component's internal state */
 	controlled: PropTypes.bool,
+
+	/** Adds an `id` attribute to the input, and associates it with the `<label />` */
 	id: PropTypes.string,
+
+	/** What we render into the input's `<label />` */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** The class name/s to add to the `<label />` element */
 	labelClassName: PropTypes.string,
+
+	/** The `name` attribute for the input */
 	name: PropTypes.string.isRequired,
+
+	/** The `value` attribute for the input */
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]), // checkboxes don't need values
+
+	/** Callback that happens when the input changes */
 	onChange: PropTypes.func,
+
+	/** Callback that happens when the input loses :focus */
 	onBlur: PropTypes.func,
+
+	/** Callback that happens when the input gets :focus */
 	onFocus: PropTypes.func,
 };
 
