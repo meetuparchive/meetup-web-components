@@ -94,7 +94,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
       getContent={[Function]}
       getTrigger={[Function]}
       noPortal={false}
-      offset={undefined}
     >
       <FloatingPosition
         align="right"
@@ -103,7 +102,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
         getTrigger={[Function]}
         media={Object {}}
         noPortal={false}
-        offset={undefined}
       >
         <ConditionalWrap
           condition={true}
@@ -151,14 +149,11 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       justify="center"
                     >
                       <FlexComponent
-                        aria-busy={undefined}
                         className="button-icon-wrapper"
                         direction="row"
-                        isLoading={undefined}
                         justify="center"
                       >
                         <div
-                          aria-busy={undefined}
                           className="flex flex--row flex--center button-icon-wrapper"
                         >
                           <FlexItemComponent
@@ -166,13 +161,10 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                             shrink={true}
                           >
                             <FlexItemComponent
-                              aria-busy={undefined}
                               className="button-icon valign--middle flush--left"
-                              isLoading={undefined}
                               shrink={true}
                             >
                               <div
-                                aria-busy={undefined}
                                 className="flex-item flex-item--shrink button-icon valign--middle flush--left"
                               >
                                 <Icon
@@ -210,21 +202,14 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                   noSeparator={true}
                 >
                   <SectionComponent
-                    aria-busy={undefined}
-                    isLoading={undefined}
                     noSeparator={true}
                   >
                     <section
-                      aria-busy={undefined}
                       className="section"
                     >
                       <ChunkComponent>
-                        <ChunkComponent
-                          aria-busy={undefined}
-                          isLoading={undefined}
-                        >
+                        <ChunkComponent>
                           <div
-                            aria-busy={undefined}
                             className="chunk"
                           >
                             <h2
