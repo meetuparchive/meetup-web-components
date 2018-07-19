@@ -2,9 +2,10 @@
   "presets": [
     "es2015",
     "react",
+    "flow",
     "stage-2"
   ],
   "plugins": [
-    "transform-flow-strip-types"
+    "transform-class-properties"
   ]
 }
