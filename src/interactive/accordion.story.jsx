@@ -127,11 +127,15 @@ storiesOf('Accordion', module)
 		),
 		{ info: { text: 'Adds custom icons via AccordionPanelGroup props' } }
 	)
-	.add('ToggleSwitch indicator', 'Show the indicator as a switch', () => (
-		<div className="span--100 padding--all">
-			<AccordionPanelGroup indicatorSwitch accordionPanels={defaultPanels} />
-		</div>
-	))
+	.add(
+		'ToggleSwitch indicator',
+		() => (
+			<div className="span--100 padding--all">
+				<AccordionPanelGroup indicatorSwitch accordionPanels={defaultPanels} />
+			</div>
+		),
+		{ info: { text: 'Show the indicator as a switch' } }
+	)
 	.add(
 		'onToggleClick',
 		() => (
