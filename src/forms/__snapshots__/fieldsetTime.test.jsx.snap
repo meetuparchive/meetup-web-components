@@ -40,6 +40,8 @@ exports[`FieldsetTime FieldsetTime with is24hr=false renders expected elements 1
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         pattern="\\\\d*"
+        placeholder="--"
+        required={true}
         type="number"
         value="12"
       />
@@ -64,6 +66,8 @@ exports[`FieldsetTime FieldsetTime with is24hr=false renders expected elements 1
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         pattern="\\\\d*"
+        placeholder="--"
+        required={true}
         type="number"
         value="15"
       />
@@ -135,6 +139,8 @@ exports[`FieldsetTime FieldsetTime with is24hr=true renders expected elements 1`
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         pattern="\\\\d*"
+        placeholder="--"
+        required={true}
         type="number"
         value="12"
       />
@@ -159,6 +165,8 @@ exports[`FieldsetTime FieldsetTime with is24hr=true renders expected elements 1`
         onKeyDown={[Function]}
         onMouseUp={[Function]}
         pattern="\\\\d*"
+        placeholder="--"
+        required={true}
         type="number"
         value="15"
       />
