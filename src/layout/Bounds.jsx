@@ -8,9 +8,9 @@ export const BOUNDS_CLASS = 'bounds';
 
 /**
  * Design System Component: Provides `bounds` container for components
- * @module Bounds
+ * @module BoundsComponent
  */
-export class Bounds extends React.Component {
+export class BoundsComponent extends React.Component {
 	render() {
 		const {
 			children,
@@ -37,9 +37,14 @@ export class Bounds extends React.Component {
 		);
 	}
 }
-Bounds.propTypes = {
+BoundsComponent.propTypes = {
+	/** Whether the bounds max-width should use the narrow variant */
 	narrow: PropTypes.bool,
+
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
@@ -47,4 +52,6 @@ Bounds.propTypes = {
 	}),
 };
 
-export default withLoading(Bounds);
+const Bounds = withLoading(BoundsComponent);
+Bounds.displayName = 'Bounds';
+export default Bounds;

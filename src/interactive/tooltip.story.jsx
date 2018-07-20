@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Tooltip from './Tooltip';
 import Button from '../forms/Button';
-import { decorateWithBasics } from '../utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
 const dropdownContent = (
 	<div className="runningText padding--all">
@@ -55,6 +55,7 @@ class ManualToggleDropdown extends React.PureComponent {
 
 storiesOf('Tooltip', module)
 	.addDecorator(decorateWithBasics)
+	.addDecorator(decorateWithInfo)
 	.add(
 		'Basic Tooltip component',
 		() => (

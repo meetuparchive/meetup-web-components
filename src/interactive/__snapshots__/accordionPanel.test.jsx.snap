@@ -159,7 +159,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
         rowReverse="all"
         tabIndex={-1}
       >
-        <Flex
+        <FlexComponent
           className="padding--bottom padding--top accordionPanel"
           direction="row"
           rowReverse="all"
@@ -172,7 +172,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
             <FlexItem
               id="label-firstsection"
             >
-              <FlexItem
+              <FlexItemComponent
                 id="label-firstsection"
               >
                 <div
@@ -181,14 +181,14 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
                 >
                   First Section
                 </div>
-              </FlexItem>
+              </FlexItemComponent>
             </FlexItem>
             <FlexItem
               className="accordionPanel-icon"
               onClick={[Function]}
               shrink={true}
             >
-              <FlexItem
+              <FlexItemComponent
                 className="accordionPanel-icon"
                 onClick={[Function]}
                 shrink={true}
@@ -221,10 +221,10 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
                     </span>
                   </Icon>
                 </div>
-              </FlexItem>
+              </FlexItemComponent>
             </FlexItem>
           </div>
-        </Flex>
+        </FlexComponent>
       </Flex>
     </div>
     <Chunk
@@ -240,7 +240,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
         }
       }
     >
-      <Chunk
+      <ChunkComponent
         aria-hidden={true}
         aria-labelledby="label-firstsection"
         className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -278,7 +278,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
             </div>
           </div>
         </div>
-      </Chunk>
+      </ChunkComponent>
     </Chunk>
   </div>
 </AccordionPanel>
@@ -318,7 +318,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
         rowReverse="all"
         tabIndex={-1}
       >
-        <Flex
+        <FlexComponent
           className="padding--bottom padding--top accordionPanel"
           direction="row"
           rowReverse="all"
@@ -331,7 +331,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
             <FlexItem
               id="label-firstsection"
             >
-              <FlexItem
+              <FlexItemComponent
                 id="label-firstsection"
               >
                 <div
@@ -340,14 +340,14 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                 >
                   First Section
                 </div>
-              </FlexItem>
+              </FlexItemComponent>
             </FlexItem>
             <FlexItem
               className="accordionPanel-icon"
               onClick={[Function]}
               shrink={true}
             >
-              <FlexItem
+              <FlexItemComponent
                 className="accordionPanel-icon"
                 onClick={[Function]}
                 shrink={true}
@@ -445,10 +445,10 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                     </ToggleWrapper>
                   </ToggleSwitch>
                 </div>
-              </FlexItem>
+              </FlexItemComponent>
             </FlexItem>
           </div>
-        </Flex>
+        </FlexComponent>
       </Flex>
     </div>
     <Chunk
@@ -464,7 +464,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
         }
       }
     >
-      <Chunk
+      <ChunkComponent
         aria-hidden={true}
         aria-labelledby="label-firstsection"
         className="accordionPanel-animator accordionPanel-animator--collapse"
@@ -502,7 +502,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
             </div>
           </div>
         </div>
-      </Chunk>
+      </ChunkComponent>
     </Chunk>
   </div>
 </AccordionPanel>

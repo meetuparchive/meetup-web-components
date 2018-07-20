@@ -22,8 +22,7 @@ export const getIconShape = (shape, size) => {
 		return shape;
 	}
 
-	const suffix =
-		size === 'xxs' || size === 'xs' || size === 's' ? SVG_THIN_STYLE : '';
+	const suffix = size === 'xxs' || size === 'xs' || size === 's' ? SVG_THIN_STYLE : '';
 	return `${shape}${suffix}`;
 };
 
@@ -38,15 +37,7 @@ export const getIconShape = (shape, size) => {
  */
 class Icon extends React.PureComponent {
 	render() {
-		const {
-			className,
-			shape,
-			size,
-			color,
-			style,
-			circled,
-			...other
-		} = this.props;
+		const { className, shape, size, color, style, circled, ...other } = this.props;
 
 		const classNames = cx(
 			ICON_CLASS,
@@ -86,9 +77,16 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
+	/** The name of the icon shape to render */
 	shape: PropTypes.oneOf(VALID_SHAPES).isRequired,
+
+	/** Which of our media sizes to render the icon at */
 	size: PropTypes.oneOf(Object.keys(MEDIA_SIZES)).isRequired,
+
+	/** Whether the icon is outlined with a circle */
 	circled: PropTypes.bool,
+
+	/** What color the icon should be filled with */
 	color: PropTypes.string,
 };
 
