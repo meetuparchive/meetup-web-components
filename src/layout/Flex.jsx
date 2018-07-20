@@ -36,9 +36,9 @@ export const FLEX_ALIGN_CLASS = `${FLEX_CLASS}--align`;
 
 /**
  * Design System Component: Provides `Flex` styled container for ideal use with `FlexItem` content
- * @module Flex
+ * @module FlexComponent
  */
-export class Flex extends React.Component {
+export class FlexComponent extends React.Component {
 	/**
 	 * @return {React.element} the commend form React element
 	 */
@@ -101,24 +101,41 @@ export class Flex extends React.Component {
 	}
 }
 
-Flex.propTypes = {
+FlexComponent.propTypes = {
+	/** Alignment of flex items along the axis of the flex direction */
 	align: PropTypes.oneOf(Object.keys(VALID_ALIGNMENTS)),
+
+	/** Justification of flex items along the axis of the flex direction */
 	justify: PropTypes.oneOf(Object.keys(VALID_SPACE)),
+
+	/** Whether flex items should wrap within their flex container */
 	wrap: PropTypes.bool,
+
+	/** Whether to render flex items without padding between them */
 	noGutters: PropTypes.bool,
 
+	/** Direction to lay out flex items */
 	direction: PropTypes.oneOf([DIRECTION_ROW, DIRECTION_COLUMN]),
+
+	/** The breakpoint at which the direction of the layout switches */
 	switchDirection: PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 
+	/** When to reverse the order of flex items along the row axis */
 	rowReverse: PropTypes.oneOfType([
 		PropTypes.bool,
 		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 	]),
+
+	/** When to reverse the order of flex items along the column axis */
 	columnReverse: PropTypes.oneOfType([
 		PropTypes.bool,
 		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
 	]),
+
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
@@ -126,8 +143,10 @@ Flex.propTypes = {
 	}),
 };
 
-Flex.defaultProps = {
+FlexComponent.defaultProps = {
 	direction: DIRECTION_ROW,
 };
 
-export default withLoading(Flex);
+const Flex = withLoading(FlexComponent);
+Flex.displayName = 'Flex';
+export default Flex;

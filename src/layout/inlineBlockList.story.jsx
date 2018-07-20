@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
-import InlineBlockList from './InlineBlockList';
+import InlineBlockList, { InlineBlockListComponent } from './InlineBlockList';
 
 const basicItems = [
 	'English',
@@ -27,7 +27,7 @@ storiesOf('InlineBlockList', module)
 		() => (
 			<Bounds>
 				<Section>
-					<InlineBlockList items={basicItems} />
+					<InlineBlockListComponent items={basicItems} />
 				</Section>
 			</Bounds>
 		),
@@ -38,10 +38,10 @@ storiesOf('InlineBlockList', module)
 		() => (
 			<Bounds>
 				<Section>
-					<InlineBlockList items={basicItems} separator="·" />
+					<InlineBlockListComponent items={basicItems} separator="·" />
 				</Section>
 				<Section>
-					<InlineBlockList
+					<InlineBlockListComponent
 						items={['any', 'glyph', 'will', 'work']}
 						separator="👏"
 					/>
@@ -55,7 +55,7 @@ storiesOf('InlineBlockList', module)
 		() => (
 			<Bounds>
 				<Section>
-					<InlineBlockList
+					<InlineBlockListComponent
 						items={[
 							<img
 								src="https://placekitten.com/g/72/72"

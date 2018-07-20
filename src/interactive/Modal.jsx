@@ -63,9 +63,9 @@ export const getModalPosition = (
 /**
  * SQ2 Modal component
  * @see {@link http://meetup.github.io/sassquatch2/views.html#modals}
- * @module Modal
+ * @module ModalComponent
  */
-export class Modal extends React.Component {
+export class ModalComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onDismiss = this.onDismiss.bind(this);
@@ -141,6 +141,7 @@ export class Modal extends React.Component {
 			closeArea,
 			stickyCloseArea,
 			initialFocus,
+			focusTrapActive,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
 			...other
@@ -207,6 +208,7 @@ export class Modal extends React.Component {
 						initialFocus,
 						escapeDeactivates: false,
 					}}
+					active={focusTrapActive}
 				>
 					{overlayShim}
 					<div
@@ -240,23 +242,51 @@ export class Modal extends React.Component {
 	}
 }
 
-Modal.propTypes = {
+ModalComponent.propTypes = {
+	/** Whether the modal should cover the entire screen */
 	fullscreen: PropTypes.bool,
+
+	/** Whether the modal should scroll with the document */
 	fixed: PropTypes.bool,
+
+	/** Background color for the modal's hero content area */
 	heroBgColor: PropTypes.string,
+
+	/** Background image for the modal's hero content area */
 	heroBgImage: PropTypes.string,
+
+	/** Content to render in the modal's hero content area */
 	heroContent: PropTypes.element,
+
+	/** Whether to shade the modal's hero area with a text protection scrim */
 	hideHeroScrim: PropTypes.bool,
+
+	/** Whether the modal's hero area is dark instead of light */
 	inverted: PropTypes.bool,
+
+	/** Callback that happens when a user dismisses the modal */
 	onDismiss: PropTypes.func.isRequired,
+
+	/** Whether to render the close button in the top corner of the modal */
 	closeArea: PropTypes.bool,
+
+	/** Whether the close button should stick to the top of the modal when the modal is scrolled */
 	stickyCloseArea: PropTypes.bool,
+
+	/** Which element inside the modal should get focus when the Modal mounts and renders */
 	initialFocus: PropTypes.oneOfType([
 		PropTypes.element,
 		PropTypes.func,
 		PropTypes.string,
 	]),
+
+	/** Whether focus is trapped within the modal */
+	focusTrapActive: PropTypes.bool,
+
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
@@ -264,9 +294,12 @@ Modal.propTypes = {
 	}),
 };
 
-Modal.defaultProps = {
+ModalComponent.defaultProps = {
 	fullscreen: false,
 	closeArea: true,
+	focusTrapActive: true,
 };
 
-export default withLoading(Modal);
+const Modal = withLoading(ModalComponent);
+Modal.displayName = 'Modal';
+export default Modal;

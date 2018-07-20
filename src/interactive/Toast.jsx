@@ -94,10 +94,19 @@ class Toast extends React.PureComponent {
 }
 
 Toast.propTypes = {
+	/** Function that gets called when clicking the action in a toast */
 	action: PropTypes.func,
+
+	/** Element that can be clicked to call the function passed to the `action` prop */
 	actionLabel: PropTypes.node,
+
+	/** Whether the Toast can be dismissed */
 	dismissable: PropTypes.bool,
+
+	/** Whether the Toast is automatically dismissed after a period of time */
 	autodismiss: PropTypes.bool,
+
+	/** Callback that happens when the Toast is dismissed */
 	onDismiss: PropTypes.func,
 };
 

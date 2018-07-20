@@ -1,5 +1,5 @@
 import React from 'react';
-import InputTime from './InputTime';
+import InputTime, { InputTimeComponent } from './InputTime';
 import { storiesOf } from '@storybook/react';
 import { decorateWithInfo } from '../utils/decorators';
 import { action } from '@storybook/addon-actions';
@@ -24,12 +24,12 @@ class ControlledInputTime extends React.Component {
 	}
 }
 
-const timeInputStories = storiesOf('InputTime/input[type=time]', module).addDecorator(
-	decorateWithInfo
-);
-const fieldsetStories = storiesOf('InputTime/fieldset', module).addDecorator(
-	decorateWithInfo
-);
+const timeInputStories = storiesOf('InputTime/input[type=time]', module)
+	.addParameters({ info: { propTables: [InputTimeComponent] } })
+	.addDecorator(decorateWithInfo);
+const fieldsetStories = storiesOf('InputTime/fieldset', module)
+	.addParameters({ info: { propTables: [InputTimeComponent] } })
+	.addDecorator(decorateWithInfo);
 
 [false, true].forEach(forceTextInput => {
 	// nested stories - 3-input fieldset vs input[type=time]

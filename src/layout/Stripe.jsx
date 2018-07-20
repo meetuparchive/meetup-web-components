@@ -12,9 +12,9 @@ export const STRIPE_NOSCRIM_CLASS = 'stripe--noScrim';
 
 /**
  * Design System Component: Provides `stripe` styled container for components
- * @module Stripe
+ * @module StripeComponent
  */
-export class Stripe extends React.Component {
+export class StripeComponent extends React.Component {
 	render() {
 		const {
 			children,
@@ -45,7 +45,7 @@ export class Stripe extends React.Component {
 			? {
 					...style,
 					backgroundImage: `url(${backgroundImage})`,
-				}
+			  }
 			: style;
 
 		return (
@@ -60,7 +60,7 @@ export class Stripe extends React.Component {
 	}
 }
 
-Stripe.propTypes = {
+StripeComponent.propTypes = {
 	backgroundImage: PropTypes.string,
 	collection: PropTypes.bool,
 	inverted: PropTypes.bool,
@@ -74,4 +74,6 @@ Stripe.propTypes = {
 	}),
 };
 
-export default withLoading(Stripe);
+const Stripe = withLoading(StripeComponent);
+Stripe.displayName = 'Stripe';
+export default Stripe;

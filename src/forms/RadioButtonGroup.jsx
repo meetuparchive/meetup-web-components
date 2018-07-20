@@ -37,22 +37,12 @@ export default class RadioButtonGroup extends PureComponent {
 	}
 
 	render() {
-		const {
-			direction,
-			switchDirection,
-			children,
-			name,
-			className,
-		} = this.props;
+		const { direction, switchDirection, children, name, className } = this.props;
 
 		const switchDirectionAttr = switchDirection ? { switchDirection } : '';
 
 		return (
-			<Flex
-				direction={direction}
-				{...switchDirectionAttr}
-				className={className}
-			>
+			<Flex direction={direction} {...switchDirectionAttr} className={className}>
 				{React.Children.map(children, option => (
 					<FlexItem shrink>
 						{React.cloneElement(option, {
@@ -70,10 +60,20 @@ export default class RadioButtonGroup extends PureComponent {
 
 RadioButtonGroup.propTypes = {
 	children: PropTypes.arrayOf(PropTypes.element).isRequired,
+
+	/** The value of the selected input in the radio group */
 	selectedValue: PropTypes.string,
+
+	/** The name attribute on each radio in the group */
 	name: PropTypes.string.isRequired,
+
+	/** Additional class name/s to add to the wrapper element */
 	className: PropTypes.string,
+
+	/** The axis the radio buttons will be layed out on */
 	direction: PropTypes.oneOf(['row', 'column']),
+
+	/** Callback that happens when the input changes */
 	onChange: PropTypes.func,
 };
 

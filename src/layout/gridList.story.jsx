@@ -2,7 +2,7 @@ import React from 'react';
 import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
-import GridList from './GridList';
+import GridList, { GridListComponent } from './GridList';
 
 const boxStyles = {
 	alignItems: 'center',
@@ -48,10 +48,11 @@ const TestMember = props => {
 
 storiesOf('GridList', module)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [GridListComponent] } })
 	.add(
 		'Static grid',
 		() => (
-			<GridList
+			<GridListComponent
 				columns={{
 					default: 3,
 				}}
@@ -79,7 +80,7 @@ storiesOf('GridList', module)
 	.add(
 		'GridList items with custom class names',
 		() => (
-			<GridList
+			<GridListComponent
 				columns={{
 					default: 3,
 				}}
@@ -108,7 +109,7 @@ storiesOf('GridList', module)
 	.add(
 		'Static autoHeight grid',
 		() => (
-			<GridList
+			<GridListComponent
 				autoHeight
 				columns={{
 					default: 3,
@@ -140,7 +141,7 @@ storiesOf('GridList', module)
 	.add(
 		'Static wrapping autoHeight grid',
 		() => (
-			<GridList
+			<GridListComponent
 				autoHeightWithWrap
 				columns={{
 					default: 3,
@@ -172,7 +173,7 @@ storiesOf('GridList', module)
 	.add(
 		'Responsive grid',
 		() => (
-			<GridList
+			<GridListComponent
 				columns={{
 					default: 2,
 					medium: 4,
@@ -202,7 +203,7 @@ storiesOf('GridList', module)
 	.add(
 		'Responsive autoHeight grid',
 		() => (
-			<GridList
+			<GridListComponent
 				autoHeight
 				columns={{
 					default: 2,
@@ -239,7 +240,7 @@ storiesOf('GridList', module)
 	.add(
 		'Responsive wrapping autoHeight grid',
 		() => (
-			<GridList
+			<GridListComponent
 				autoHeightWithWrap
 				columns={{
 					default: 2,

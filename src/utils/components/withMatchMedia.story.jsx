@@ -1,5 +1,4 @@
 import React from 'react';
-import { decorateWithInfo } from '../decorators';
 import { storiesOf } from '@storybook/react';
 
 import withMatchMedia from './withMatchMedia';
@@ -60,10 +59,8 @@ class TestComponent extends React.Component {
 }
 const TestComponentWithMatchMedia = withMatchMedia(TestComponent);
 
-storiesOf('withMatchMedia', module)
-	.addDecorator(decorateWithInfo)
-	.add(
-		'Test component using provided media props',
-		() => <TestComponentWithMatchMedia />,
-		{ info: { text: 'Basic example of match media component usage.' } }
-	);
+storiesOf('withMatchMedia', module).add(
+	'Test component using provided media props',
+	() => <TestComponentWithMatchMedia />,
+	{ info: { text: 'Basic example of match media component usage.' } }
+);
