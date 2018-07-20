@@ -17,12 +17,25 @@ type DropdownProps = {
 };
 
 type Props = {
+	/** The group for which to render the admin bar */
 	group?: Group,
-	event?: EventInfo,
+
+	/** The event for which to render the admin bar */
+  event?: EventInfo,
+
+	/** Whether the user is QL'ed into somebody else */
 	isQL: boolean,
+
+	/** Whether the user is logged into Meetup's admin tools */
 	isAdmin: boolean,
+
+	/** Whether the data being rendered is from production */
 	isProdApi: boolean,
+
+	/** Info about the current user */
 	self: Self,
+
+	/** Environment the component is being rendered in. e.g.: production */
 	nodeEnv: string,
 };
 

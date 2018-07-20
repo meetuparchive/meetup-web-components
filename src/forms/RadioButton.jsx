@@ -54,7 +54,10 @@ const RadioButton = ({ label, className, ...inputProps }) => {
 RadioButton.displayName = 'RadioButton';
 
 RadioButton.propTypes = {
+	/** What we render into the input's `<label />` */
 	label: PropTypes.string.isRequired,
+
+	/** Additional class name/s to add to the wrapper element  */
 	className: PropTypes.string,
 };
 

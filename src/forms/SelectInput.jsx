@@ -59,18 +59,33 @@ SelectInput.defaultProps = {
 };
 
 SelectInput.propTypes = {
+	/** The `name` attribute for the input */
 	name: PropTypes.string.isRequired,
+
+	/** Adds an `id` attribute to the `<select />`, and associates it with the `<label />` */
 	id: PropTypes.string,
+
+	/** Provides a list of option data to render each `<option />` in the `<select />` */
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
 			label: PropTypes.string.isRequired,
 			value: PropTypes.string.isRequired,
 		})
 	).isRequired,
+
+	/** Error content to render */
 	error: PropTypes.string,
+
+	/** A list of errors */
 	errors: PropTypes.array,
+
+	/** What we render into the input's `<label />` */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** The class name/s to add to the `<label />` element */
 	labelClassName: PropTypes.string,
+
+	/** Which `<option />` is selected */
 	value: (props, propName, componentName) => {
 		const validValues = props.options.map(opt => opt.value);
 
@@ -80,7 +95,13 @@ SelectInput.propTypes = {
 			);
 		}
 	},
+
+	/** An additional piece of helpful info rendered with the field */
 	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** Whether the field is required to have a value */
 	required: PropTypes.bool,
+
+	/** What to render in order to indicate the field is required */
 	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };

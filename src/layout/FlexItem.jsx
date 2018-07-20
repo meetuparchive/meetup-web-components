@@ -10,9 +10,9 @@ export const FLEX_ITEM_GROW_CLASS = 'flex-item--';
 export const FLEX_GROW_FACTORS = [1, 2, 3, 4, 5, 6, 7];
 /**
  * Design System Component: Provides `FlexItem` styled container for use in `Flex` component containers
- * @module FlexItem
+ * @module FlexItemComponent
  */
-export class FlexItem extends React.Component {
+export class FlexItemComponent extends React.Component {
 	/**
 	 * @return {React.element} the commend form React element
 	 */
@@ -45,10 +45,17 @@ export class FlexItem extends React.Component {
 	}
 }
 
-FlexItem.propTypes = {
+FlexItemComponent.propTypes = {
+	/** Whether the flex item should shrink to the size of it's content */
 	shrink: PropTypes.bool,
+
+	/** Proportion of flex item's size compared to sibling flex items */
 	growFactor: PropTypes.oneOf(FLEX_GROW_FACTORS),
+
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
@@ -56,4 +63,6 @@ FlexItem.propTypes = {
 	}),
 };
 
-export default withLoading(FlexItem);
+const FlexItem = withLoading(FlexItemComponent);
+FlexItem.displayName = 'FlexItem';
+export default FlexItem;

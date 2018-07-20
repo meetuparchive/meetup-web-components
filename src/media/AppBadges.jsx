@@ -45,7 +45,10 @@ AppBadges.defaultProps = {
 };
 
 AppBadges.propTypes = {
+	/** A function to load the app badge images - will likely take language and platform parameters */
 	getAppStorePhoto: PropTypes.func,
+
+	/** The language the badge image is in */
 	language: PropTypes.string.isRequired,
 };
 
