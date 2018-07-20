@@ -6,39 +6,42 @@ import withErrorList from '../utils/components/withErrorList';
 import FieldsetTime from './FieldsetTime';
 
 type Props = React.ElementConfig<HTMLInputElement> & {
-	name: string,
-	onChange: (SyntheticEvent<*>) => void,
+	/** onChange handler that receives a 'HH:mm' string value (not a change event) */
+	onChange: string => void,
+	/** Error content to render */
 	error?: string | boolean,
-	disabled?: boolean,
+	/** Force text fallback if native <input type="time" element should _not_ be used */
 	forceTextInput?: boolean,
+	/** An additional piece of helpful info rendered with the field */
 	helperText?: React.Node,
+	/** Whether to render time in 24hr time format (e.g.: 02:00 PM => 14:00) */
 	is24Hr?: boolean,
 	label?: React.Node,
 	labelClassName?: string,
 	required?: boolean | string, // supply string for custom error text
 };
-type State = { forceTextInput: boolean }; // determined at runtime
+type State = { forceTextInput: ?boolean }; // determined at runtime
 
 /*
  * All-purpose replacement for `<input type="time">` field, even for browsers
  * that don't support it
  */
 export class InputTimeComponent extends React.PureComponent<Props, State> {
-	state: State = { forceTextInput: false };
+	state: State = { forceTextInput: this.props.forceTextInput };
 	defaultProps: { is24Hr: true };
 	inputEl = null;
 
 	// determine runtime support for <input type='time'>
 	componentDidMount() {
-		this.setState(() => ({
-			forceTextInput:
-				this.props.forceTextInput || (this.inputEl || {}).type !== 'time',
-		}));
+		if ((this.inputEl || {}).type !== 'time') {
+			this.setState(() => ({ forceTextInput: true }));
+		}
 	}
 
 	render() {
 		const {
 			id,
+			forceTextInput, // eslint-disable-line no-unused-vars
 			label,
 			labelClassName,
 			name,
@@ -48,6 +51,7 @@ export class InputTimeComponent extends React.PureComponent<Props, State> {
 			is24Hr,
 			helperText,
 			required,
+			value,
 			...other
 		} = this.props;
 
@@ -93,6 +97,10 @@ export class InputTimeComponent extends React.PureComponent<Props, State> {
 				{this.state.forceTextInput ? (
 					<FieldsetTime
 						{...other}
+						value={value}
+						id={displayId}
+						name={name}
+						required={Boolean(required)}
 						disabled={disabled}
 						error={error}
 						onChange={this.props.onChange}
@@ -101,9 +109,10 @@ export class InputTimeComponent extends React.PureComponent<Props, State> {
 				) : (
 					<input
 						{...other}
+						value={value || ''}
 						id={displayId}
-						type="time"
 						name={name}
+						type="time"
 						className={classNames.field}
 						required={Boolean(required)}
 						disabled={disabled}

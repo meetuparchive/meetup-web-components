@@ -71,8 +71,13 @@ const getValidValue = (max: number, value: string): number => {
 };
 
 /*
- * 3-input component to provide 'HH:mm' value to `onChange` - used for browsers
- * that don't support <input type="time" />
+ * **IMPORTANT**: In general, consumers should never use this component directly.
+ * Instead, use `<InputTime>`, which will delegate to this component in browsers
+ * that do not support `<input type="time" />` but will otherwise use the more-standard
+ * input
+ *
+ * FieldsetTime is a 3-input component to provide 'HH:mm' value to `onChange`
+ * - used for browsers that don't support <input type="time" />
  *
  * Cool features:
  * - keyboard up/down support for hour/minute inputs (hold shift for +10 increment)
@@ -163,7 +168,7 @@ class FieldsetTime extends React.PureComponent<Props> {
 	};
 
 	render() {
-		const { id, error, disabled, name, is24Hr, value } = this.props;
+		const { id, error, required, disabled, name, is24Hr, value } = this.props;
 
 		const classNames = {
 			fauxInput: cx('fauxInput fauxInput--time', {
@@ -193,12 +198,14 @@ class FieldsetTime extends React.PureComponent<Props> {
 							name={HOURS_INPUT_NAME}
 							min={is24Hr ? 0 : 1}
 							max={is24Hr ? 23 : 12}
+							required={required}
 							disabled={disabled}
 							className={`field--reset align--center ${HOURS_INPUT_CLASS}`}
 							onMouseUp={this.selectInputText}
 							onChange={this.onHourChange}
 							onKeyDown={this.onNumberKeyDown}
 							value={hour}
+							placeholder="--"
 						/>{' '}
 					</FlexItem>
 					<FlexItem shrink className="align--center">
@@ -212,12 +219,14 @@ class FieldsetTime extends React.PureComponent<Props> {
 							name={MINUTES_INPUT_NAME}
 							min={0}
 							max={59}
+							required={required}
 							disabled={disabled}
 							className={`field--reset align--center ${MINUTES_INPUT_CLASS}`}
 							onMouseUp={this.selectInputText}
 							onChange={this.onMinuteChange}
 							onKeyDown={this.onNumberKeyDown}
 							value={minute}
+							placeholder="--"
 						/>
 					</FlexItem>
 					{!is24Hr && (
