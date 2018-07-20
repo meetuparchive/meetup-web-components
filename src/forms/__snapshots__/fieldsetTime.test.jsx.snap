@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FieldsetTime FieldsetTime with is24hr=false calls props.onChange with full time value when hour value is changed 1`] = `"23:15"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=false calls props.onChange with full time value when minute value is changed 1`] = `"12:11"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=false increments/wraps 00:00 on keyboard input (38) in hour input 1`] = `"01:00"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=false increments/wraps 00:00 on keyboard input (38) in minute input 1`] = `"00:01"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=false increments/wraps 00:00 on keyboard input (40) in hour input 1`] = `"23:00"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=false increments/wraps 00:00 on keyboard input (40) in minute input 1`] = `"23:59"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=false increments/wraps 23:59 on keyboard input (38) in hour input 1`] = `"01:00"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=false increments/wraps 23:59 on keyboard input (38) in minute input 1`] = `"00:01"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=false increments/wraps 23:59 on keyboard input (40) in hour input 1`] = `"23:00"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=false increments/wraps 23:59 on keyboard input (40) in minute input 1`] = `"23:59"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=false renders expected elements 1`] = `
+<fieldset
+  className="fauxInput fauxInput--time"
+>
+  <Flex
+    noGutters={true}
+  >
+    <FlexItem
+      shrink={true}
+    >
+      <input
+        className="field--reset align--center timeInput-hours"
+        id="mocktime-hour"
+        max={12}
+        min={1}
+        name="hour"
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        pattern="\\\\d*"
+        placeholder="--"
+        required={true}
+        type="number"
+        value="12"
+      />
+       
+    </FlexItem>
+    <FlexItem
+      className="align--center"
+      shrink={true}
+    >
+      :
+    </FlexItem>
+    <FlexItem
+      shrink={true}
+    >
+      <input
+        className="field--reset align--center timeInput-minutes"
+        id="mocktime-minute"
+        max={59}
+        min={0}
+        name="minute"
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        pattern="\\\\d*"
+        placeholder="--"
+        required={true}
+        type="number"
+        value="15"
+      />
+    </FlexItem>
+    <FlexItem
+      className="timeInput-meridianContainer display--flex flex--column flex--center"
+      shrink={true}
+    >
+      <Select
+        className="timeInput-meridian flush--all border--none field--reset padding--left"
+        id="mocktime-meridian"
+        name="mwc-meridian"
+        onChange={[Function]}
+        value="1"
+      >
+        <option
+          value="0"
+        >
+          AM
+        </option>
+        <option
+          value="1"
+        >
+          PM
+        </option>
+      </Select>
+    </FlexItem>
+  </Flex>
+</fieldset>
+`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true calls props.onChange with full time value when hour value is changed 1`] = `"11:15"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true calls props.onChange with full time value when minute value is changed 1`] = `"12:11"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true increments/wraps 00:00 on keyboard input (38) in hour input 1`] = `"01:00"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true increments/wraps 00:00 on keyboard input (38) in minute input 1`] = `"00:01"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true increments/wraps 00:00 on keyboard input (40) in hour input 1`] = `"23:00"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true increments/wraps 00:00 on keyboard input (40) in minute input 1`] = `"23:59"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true increments/wraps 23:59 on keyboard input (38) in hour input 1`] = `"01:00"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true increments/wraps 23:59 on keyboard input (38) in minute input 1`] = `"00:01"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true increments/wraps 23:59 on keyboard input (40) in hour input 1`] = `"23:00"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true increments/wraps 23:59 on keyboard input (40) in minute input 1`] = `"23:59"`;
+
+exports[`FieldsetTime FieldsetTime with is24hr=true renders expected elements 1`] = `
+<fieldset
+  className="fauxInput fauxInput--time"
+>
+  <Flex
+    noGutters={true}
+  >
+    <FlexItem
+      shrink={true}
+    >
+      <input
+        className="field--reset align--center timeInput-hours"
+        id="mocktime-hour"
+        max={23}
+        min={0}
+        name="hour"
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        pattern="\\\\d*"
+        placeholder="--"
+        required={true}
+        type="number"
+        value="12"
+      />
+       
+    </FlexItem>
+    <FlexItem
+      className="align--center"
+      shrink={true}
+    >
+      :
+    </FlexItem>
+    <FlexItem
+      shrink={true}
+    >
+      <input
+        className="field--reset align--center timeInput-minutes"
+        id="mocktime-minute"
+        max={59}
+        min={0}
+        name="minute"
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        pattern="\\\\d*"
+        placeholder="--"
+        required={true}
+        type="number"
+        value="15"
+      />
+    </FlexItem>
+  </Flex>
+</fieldset>
+`;
+
+exports[`FieldsetTime updates 00:00 value based on meridian change to AM 1`] = `"00:00"`;
+
+exports[`FieldsetTime updates 00:00 value based on meridian change to PM 1`] = `"12:00"`;
+
+exports[`FieldsetTime updates 01:00 value based on meridian change to AM 1`] = `"01:00"`;
+
+exports[`FieldsetTime updates 01:00 value based on meridian change to PM 1`] = `"13:00"`;
+
+exports[`FieldsetTime updates 12:00 value based on meridian change to AM 1`] = `"00:00"`;
+
+exports[`FieldsetTime updates 12:00 value based on meridian change to PM 1`] = `"12:00"`;
