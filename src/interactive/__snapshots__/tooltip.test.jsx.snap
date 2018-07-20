@@ -148,7 +148,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       className="button-icon-wrapper"
                       justify="center"
                     >
-                      <Flex
+                      <FlexComponent
                         className="button-icon-wrapper"
                         direction="row"
                         justify="center"
@@ -160,7 +160,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                             className="button-icon valign--middle flush--left"
                             shrink={true}
                           >
-                            <FlexItem
+                            <FlexItemComponent
                               className="button-icon valign--middle flush--left"
                               shrink={true}
                             >
@@ -191,24 +191,24 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                                   </span>
                                 </Icon>
                               </div>
-                            </FlexItem>
+                            </FlexItemComponent>
                           </FlexItem>
                         </div>
-                      </Flex>
+                      </FlexComponent>
                     </Flex>
                   </button>
                 </Button>
                 <Section
                   noSeparator={true}
                 >
-                  <Section
+                  <SectionComponent
                     noSeparator={true}
                   >
                     <section
                       className="section"
                     >
                       <Chunk>
-                        <Chunk>
+                        <ChunkComponent>
                           <div
                             className="chunk"
                           >
@@ -218,10 +218,10 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                               Dropdown content
                             </h2>
                           </div>
-                        </Chunk>
+                        </ChunkComponent>
                       </Chunk>
                     </section>
-                  </Section>
+                  </SectionComponent>
                 </Section>
               </div>
             </div>

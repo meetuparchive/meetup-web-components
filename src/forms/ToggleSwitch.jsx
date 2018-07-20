@@ -105,11 +105,22 @@ class ToggleSwitch extends React.Component {
 }
 
 ToggleSwitch.propTypes = {
+	/** Whether to use disabled attribute on the button element and apply disabled switch styles */
 	disabled: PropTypes.bool,
+
+	/** Whether the switch is toggled on */
 	isActive: PropTypes.bool,
+
+	/** What we render into the input's `<label />` */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** The class name/s to add to the `<label />` element */
 	labelClassName: PropTypes.string,
+
+	/** The id of the element that labels the toggle switch */
 	labelledBy: PropTypes.string,
+
+	/** The identifier used to associate a label with a toggle switch */
 	name: PropTypes.string.isRequired,
 };
 

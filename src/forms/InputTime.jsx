@@ -16,6 +16,7 @@ type Props = React.ElementConfig<HTMLInputElement> & {
 	helperText?: React.Node,
 	/** Whether to render time in 24hr time format (e.g.: 02:00 PM => 14:00) */
 	is24Hr?: boolean,
+	/** Label for the input */
 	label?: React.Node,
 	labelClassName?: string,
 	required?: boolean | string, // supply string for custom error text
