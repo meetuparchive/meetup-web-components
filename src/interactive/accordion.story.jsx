@@ -134,7 +134,7 @@ storiesOf('Accordion', module)
 				<AccordionPanelGroup indicatorSwitch accordionPanels={defaultPanels} />
 			</div>
 		),
-		{info: { text: 'Show the indicator as a switch' }}
+		{ info: { text: 'Show the indicator as a switch' } }
 	)
 	.add(
 		'onToggleClick',
