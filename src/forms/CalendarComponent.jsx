@@ -7,8 +7,7 @@ import Flatpickr from 'react-flatpickr';
 
 import { convert, LocalDate, nativeJs } from 'js-joda';
 
-type Props = {
-	...React.ElementProps<'input'>,
+type Props = React.ElementProps<'input'> & {
 	labelClassName: string,
 	datepickerOptions: FlatpickrOptions,
 	error: string | React$Node | boolean,
@@ -17,6 +16,7 @@ type Props = {
 	requiredText: string | React$Node,
 	onChange?: (LocalDate, ?string, ?FlatpickrInstance) => void,
 	value?: LocalDate,
+	key?: string | number,
 };
 
 /*
@@ -126,6 +126,12 @@ export class CalendarComponent extends React.Component<Props> {
 			</span>`,
 			...datepickerOptions,
 		};
+
+		// When using altInput, the Flatpickr must be re-mounted in order to apply
+		// new classnames - this is only 'safe' when the picker has a supplied value
+		if (value && !other.key) {
+			other.key = classNames.field;
+		}
 
 		return (
 			<span>
