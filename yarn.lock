@@ -9961,17 +9961,17 @@ swarm-animation@0.0.95:
     jasmine-jquery "^2.1.1"
     jquery "^3.2.1"
 
-swarm-constants@1.2.94:
-  version "1.2.94"
-  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-1.2.94.tgz#859364602af081b1e7ea52018a967eec4663fbbd"
+swarm-constants@2.2.126-beta:
+  version "2.2.126-beta"
+  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-2.2.126-beta.tgz#26bff3da14e0dfacf4c7a8f60954ad4a5f040088"
 
 swarm-icons@^3.4:
   version "3.4.334"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-3.4.334.tgz#a6fcb73605a481885e1e0367e9ad6273cccec6ae"
 
-swarm-sasstools@5.0.412:
-  version "5.0.412"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-5.0.412.tgz#7675f40b6a9f895851a37a4e16639f6736613bdf"
+swarm-sasstools@5.0.413-beta:
+  version "5.0.413-beta"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-5.0.413-beta.tgz#743dc7b6dda710c7512ed4baa545cc07ee7a20be"
   dependencies:
     sass-rem "^1.2.4"
 
