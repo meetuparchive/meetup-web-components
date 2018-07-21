@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputTime InputTime, with input[time] support renders a <input type="time" /> with expected props 1`] = `
+<div>
+  <input
+    className="input--time select--reset"
+    id="mocktime"
+    name="mocktime"
+    onChange={[Function]}
+    required={true}
+    type="time"
+    value="12:15"
+  />
+</div>
+`;
+
+exports[`InputTime InputTime, with input[time] support renders error state as expected 1`] = `
+<div>
+  <input
+    aria-describedby="mocktime-error"
+    aria-invalid={true}
+    className="input--time select--reset field--error"
+    id="mocktime"
+    name="mocktime"
+    onChange={[Function]}
+    required={true}
+    type="time"
+    value="12:15"
+  />
+</div>
+`;
