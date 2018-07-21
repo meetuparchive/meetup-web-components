@@ -38,6 +38,7 @@ export class InputTimeComponent extends React.PureComponent<Props, State> {
 			this.setState(() => ({ forceTextInput: true }));
 		}
 	}
+	onChange = (e: SyntheticEvent<*>) => this.props.onChange(e.currentTarget.value);
 
 	render() {
 		const {
@@ -53,6 +54,7 @@ export class InputTimeComponent extends React.PureComponent<Props, State> {
 			helperText,
 			required,
 			value,
+			onChange,
 			...other
 		} = this.props;
 
@@ -104,7 +106,7 @@ export class InputTimeComponent extends React.PureComponent<Props, State> {
 						required={Boolean(required)}
 						disabled={disabled}
 						error={error}
-						onChange={this.props.onChange}
+						onChange={onChange}
 						is24Hr={is24Hr}
 					/>
 				) : (
@@ -117,6 +119,7 @@ export class InputTimeComponent extends React.PureComponent<Props, State> {
 						className={classNames.field}
 						required={Boolean(required)}
 						disabled={disabled}
+						onChange={this.onChange}
 						ref={(input: HTMLElement | null) => (this.inputEl = input)}
 					/>
 				)}

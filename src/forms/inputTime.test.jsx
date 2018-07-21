@@ -29,11 +29,12 @@ describe('InputTime', function() {
 
 		it('calls props.onChange when value is changed', () => {
 			MOCK_PROPS.onChange.mockClear();
+			const newValue = '23:00';
 			const wrapper = render();
 			const inputWrap = wrapper.find('input');
 			expect(MOCK_PROPS.onChange).not.toHaveBeenCalled();
-			inputWrap.simulate('change', { target: { value: '23:00' } });
-			expect(MOCK_PROPS.onChange).toHaveBeenCalled();
+			inputWrap.simulate('change', { currentTarget: { value: newValue } });
+			expect(MOCK_PROPS.onChange).toHaveBeenCalledWith(newValue);
 		});
 	});
 });
