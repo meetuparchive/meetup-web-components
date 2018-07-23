@@ -150,10 +150,11 @@ export class AdminBar extends React.PureComponent<Props, State> {
 
 	render() {
 		const { group, event, isQL, isAdmin, self, isProdApi, nodeEnv } = this.props;
-		// when not admin we don't want to show admin bar
-		if (!isAdmin) {
+		const isProdEnv = nodeEnv === 'production';
+		if (!isAdmin && isProdEnv) {
 			return null;
 		}
+
 		const host: string =
 			nodeEnv === 'production' || isProdApi ? 'meetup.com' : 'dev.meetup.com';
 		const highlightOptions = ['1', '2', '3', '4', '5', 'lowlight'].map(h => ({
@@ -168,7 +169,7 @@ export class AdminBar extends React.PureComponent<Props, State> {
 					['greenbar']: isQL && !isProdApi,
 				})}
 			>
-				{isQL && (
+				{isQL && isAdmin && (
 					<FlexItem className="inverted padding--top-half">
 						<p className="text--display3">
 							QL:{' '}
@@ -185,12 +186,12 @@ export class AdminBar extends React.PureComponent<Props, State> {
 						</p>
 					</FlexItem>
 				)}
-				{isProdApi && (
+				{isProdApi && !isProdEnv && (
 					<FlexItem className="inverted padding--top-half">
 						<p className="text--display4">You are using production data.</p>
 					</FlexItem>
 				)}
-				{group !== undefined && (
+				{group !== undefined && isAdmin && (
 					<FlexItem shrink>
 						<Tooltip
 							direction="top"
@@ -219,7 +220,7 @@ export class AdminBar extends React.PureComponent<Props, State> {
 						/>
 					</FlexItem>
 				)}
-				{group !== undefined && (
+				{group !== undefined && isAdmin && (
 					<FlexItem shrink>
 						<Tooltip
 							direction="top"
