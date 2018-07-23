@@ -130,9 +130,9 @@
     "style-loader": "0.18.2",
     "stylelint-config-prettier": "3.3.0",
     "swarm-animation": "0.0.95",
-    "swarm-constants": "1.2.94",
+    "swarm-constants": "2.2.122",
     "swarm-icons": "^3.4",
-    "swarm-sasstools": "5.0.412",
+    "swarm-sasstools": "5.0.415",
     "uri-js": "3.0.2",
     "webpack": "4.14.0"
   },

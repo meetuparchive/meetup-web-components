@@ -11,7 +11,7 @@ import Icon from './media/Icon';
 
 import googleLogo from '../assets/svg/logo_google.svg';
 
-import { C_MEDIUMGRAY } from 'swarm-constants/dist/js/colorConstants';
+import { C_MEDIUMGRAY } from 'swarm-constants/dist/js/constants';
 
 /* consts */
 export const SIGNUP_MODAL_CLASS = 'meetup-signupModal';
