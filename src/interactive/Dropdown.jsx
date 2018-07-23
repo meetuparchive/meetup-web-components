@@ -3,7 +3,7 @@ import React from 'react';
 import cx from 'classnames';
 import Downshift from 'downshift';
 import FloatingPosition from '../utils/components/FloatingPosition';
-import { C_COOLGRAYLIGHTTRANSP } from 'swarm-constants/dist/js/colorConstants.js';
+import { C_COOLGRAYLIGHTTRANSP } from 'swarm-constants/dist/js/constants.js';
 
 import bindAll from '../utils/bindAll';
 
