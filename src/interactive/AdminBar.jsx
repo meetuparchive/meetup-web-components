@@ -21,7 +21,7 @@ type Props = {
 	group?: Group,
 
 	/** The event for which to render the admin bar */
-  event?: EventInfo,
+	event?: EventInfo,
 
 	/** Whether the user is QL'ed into somebody else */
 	isQL: boolean,
@@ -150,10 +150,11 @@ export class AdminBar extends React.PureComponent<Props, State> {
 
 	render() {
 		const { group, event, isQL, isAdmin, self, isProdApi, nodeEnv } = this.props;
-		// when not admin we don't want to show admin bar
-		if (!isAdmin) {
+		const isProdEnv = nodeEnv === 'production';
+		if (!isAdmin && isProdEnv) {
 			return null;
 		}
+
 		const host: string =
 			nodeEnv === 'production' || isProdApi ? 'meetup.com' : 'dev.meetup.com';
 		const highlightOptions = ['1', '2', '3', '4', '5', 'lowlight'].map(h => ({
@@ -168,94 +169,100 @@ export class AdminBar extends React.PureComponent<Props, State> {
 					['greenbar']: isQL && !isProdApi,
 				})}
 			>
-				{isQL && (
-					<FlexItem className="inverted padding--top-half">
-						<p className="text--display3">
-							QL:{' '}
-							<a
-								href={`https://admin.${host}/admin/member.jsp?m=${
-									self.id
-								}`}
-								className="link"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{self.name}
-							</a>
-						</p>
-					</FlexItem>
-				)}
-				{isProdApi && (
-					<FlexItem className="inverted padding--top-half">
-						<p className="text--display4">You are using production data.</p>
-					</FlexItem>
-				)}
-				{group !== undefined && (
-					<FlexItem shrink>
-						<Tooltip
-							direction="top"
-							align="left"
-							minWidth="100px"
-							withClose
-							noPortal
-							id="admin-label-btn"
-							trigger={
-								<Button
-									id="admin-label-btn"
-									icon={<Icon shape="cog" size="xs" />}
+				{isQL &&
+					isAdmin && (
+						<FlexItem className="inverted padding--top-half">
+							<p className="text--display3">
+								QL:{' '}
+								<a
+									href={`https://admin.${host}/admin/member.jsp?m=${
+										self.id
+									}`}
+									className="link"
+									target="_blank"
+									rel="noopener noreferrer"
 								>
-									Admin
-								</Button>
-							}
-							content={
-								group !== undefined && (
-									<DropdownContent
-										host={host}
-										group={group}
-										event={event}
-									/>
-								)
-							}
-						/>
-					</FlexItem>
-				)}
-				{group !== undefined && (
-					<FlexItem shrink>
-						<Tooltip
-							direction="top"
-							align="left"
-							withClose
-							noPortal
-							id="highlight-label-btn"
-							isActive={this.state.showHighlighter}
-							trigger={
-								<Button id="highlight-label-btn">
-									Highlight {`${this.state.highlightValue}`}
-								</Button>
-							}
-							content={
-								<Section>
-									<SelectInput
-										name="highlightValue"
-										onChange={this.onHighlightValueChange}
-										options={highlightOptions}
-										value={this.state.highlightValue}
-									/>
-									<a
-										className="button margin--bottom"
-										onClick={this.highlightGroup.bind(
-											this,
-											host,
-											group
-										)}
+									{self.name}
+								</a>
+							</p>
+						</FlexItem>
+					)}
+				{isProdApi &&
+					!isProdEnv && (
+						<FlexItem className="inverted padding--top-half">
+							<p className="text--display4">
+								You are using production data.
+							</p>
+						</FlexItem>
+					)}
+				{group !== undefined &&
+					isAdmin && (
+						<FlexItem shrink>
+							<Tooltip
+								direction="top"
+								align="left"
+								minWidth="100px"
+								withClose
+								noPortal
+								id="admin-label-btn"
+								trigger={
+									<Button
+										id="admin-label-btn"
+										icon={<Icon shape="cog" size="xs" />}
 									>
-										submit
-									</a>
-								</Section>
-							}
-						/>
-					</FlexItem>
-				)}
+										Admin
+									</Button>
+								}
+								content={
+									group !== undefined && (
+										<DropdownContent
+											host={host}
+											group={group}
+											event={event}
+										/>
+									)
+								}
+							/>
+						</FlexItem>
+					)}
+				{group !== undefined &&
+					isAdmin && (
+						<FlexItem shrink>
+							<Tooltip
+								direction="top"
+								align="left"
+								withClose
+								noPortal
+								id="highlight-label-btn"
+								isActive={this.state.showHighlighter}
+								trigger={
+									<Button id="highlight-label-btn">
+										Highlight {`${this.state.highlightValue}`}
+									</Button>
+								}
+								content={
+									<Section>
+										<SelectInput
+											name="highlightValue"
+											onChange={this.onHighlightValueChange}
+											options={highlightOptions}
+											value={this.state.highlightValue}
+										/>
+										<a
+											className="button margin--bottom"
+											onClick={this.highlightGroup.bind(
+												this,
+												host,
+												group
+											)}
+										>
+											submit
+										</a>
+									</Section>
+								}
+							/>
+						</FlexItem>
+					)}
 			</Flex>
 		);
 	}
