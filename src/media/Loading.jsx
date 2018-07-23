@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
-import { C_COOLGRAYMEDIUM } from 'swarm-constants/dist/js/colorConstants';
+import { C_COOLGRAYMEDIUM } from 'swarm-constants/dist/js/constants';
 
 // TODO: replace MEDIA_SIZES with size values
 // from `swarm-constants` when available in JS
