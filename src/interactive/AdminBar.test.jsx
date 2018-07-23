@@ -19,7 +19,7 @@ describe('AdminBar', () => {
 		const MOCK_PROPS = {
 			group: group,
 			isAdmin: false,
-			nodeEnv: 'production'
+			nodeEnv: 'production',
 		};
 		const component = shallow(<AdminBar {...MOCK_PROPS} />);
 		expect(component).toMatchSnapshot();
@@ -28,7 +28,7 @@ describe('AdminBar', () => {
 		const MOCK_PROPS = {
 			isAdmin: false,
 			isProdApi: true,
-			nodeEnv: 'development'
+			nodeEnv: 'development',
 		};
 		const component = shallow(<AdminBar {...MOCK_PROPS} />);
 		expect(component).toMatchSnapshot();
