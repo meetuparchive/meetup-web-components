@@ -15,10 +15,20 @@ describe('AdminBar', () => {
 		const component = shallow(<AdminBar {...MOCK_PROPS} />);
 		expect(component).toMatchSnapshot();
 	});
-	it('renders nothing if user is not an admin', () => {
+	it('renders nothing if user is not an admin and nodeEnv is prod', () => {
 		const MOCK_PROPS = {
 			group: group,
 			isAdmin: false,
+			nodeEnv: 'production',
+		};
+		const component = shallow(<AdminBar {...MOCK_PROPS} />);
+		expect(component).toMatchSnapshot();
+	});
+	it('renders warning when nodeEnv is development and using isProdApi', () => {
+		const MOCK_PROPS = {
+			isAdmin: false,
+			isProdApi: true,
+			nodeEnv: 'development',
 		};
 		const component = shallow(<AdminBar {...MOCK_PROPS} />);
 		expect(component).toMatchSnapshot();

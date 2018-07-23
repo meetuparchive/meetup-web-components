@@ -588,4 +588,20 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
 </Flex>
 `;
 
-exports[`AdminBar renders nothing if user is not an admin 1`] = `""`;
+exports[`AdminBar renders nothing if user is not an admin and nodeEnv is prod 1`] = `""`;
+
+exports[`AdminBar renders warning when nodeEnv is development and using isProdApi 1`] = `
+<Flex
+  className="groupAdminLinks redbar"
+>
+  <FlexItem
+    className="inverted padding--top-half"
+  >
+    <p
+      className="text--display4"
+    >
+      You are using production data.
+    </p>
+  </FlexItem>
+</Flex>
+`;
