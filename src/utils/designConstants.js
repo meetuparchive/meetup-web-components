@@ -2,7 +2,7 @@ import {
 	BREAKPOINT_S,
 	BREAKPOINT_M,
 	BREAKPOINT_L,
-	BREAKPOINT_XL
+	BREAKPOINT_XL,
 } from 'swarm-constants/dist/js/constants.js';
 
 export const MEDIA_QUERIES = {
