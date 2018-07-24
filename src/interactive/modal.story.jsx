@@ -98,7 +98,7 @@ const wrapperStyle = {
 	position: 'relative',
 };
 
-storiesOf('Modal', module)
+storiesOf('Interactive/Modal', module)
 	.addDecorator(withInfo)
 	.addParameters({ info: { propTablesExclude: [Button, Chunk, Section, Stripe] } })
 	.add(

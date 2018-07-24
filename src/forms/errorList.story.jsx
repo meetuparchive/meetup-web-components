@@ -4,7 +4,7 @@ import Bounds from '../layout/Bounds';
 import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 
-storiesOf('ErrorList', module)
+storiesOf('Forms/ErrorList', module)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTablesExclude: [Bounds] } })
 	.add(

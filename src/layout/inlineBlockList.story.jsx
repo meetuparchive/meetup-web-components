@@ -20,7 +20,7 @@ const basicItems = [
 	'한국어',
 ];
 
-storiesOf('InlineBlockList', module)
+storiesOf('Layout/InlineBlockList', module)
 	.addDecorator(decorateWithInfo)
 	.add(
 		'default',
