@@ -13,9 +13,7 @@ storiesOf('Forms/ToggleSwitch', module)
 	.addDecorator(decorateWithInfo)
 	.add('Default', () => <ToggleSwitch name="testToggle" />)
 	.add('Checked', () => <ToggleSwitch name="testToggle" isActive />)
-	.add('With label', () => (
-		<ToggleSwitch name="testToggle" label="Turn it on?" />
-	))
+	.add('With label', () => <ToggleSwitch name="testToggle" label="Turn it on?" />)
 	.add('With onCallback and offCallback', () => (
 		<ToggleSwitch
 			name="testToggle"
