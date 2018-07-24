@@ -4,7 +4,7 @@ import Button from './Button';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
-storiesOf('TextInput', module)
+storiesOf('Forms/TextInput', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTable: TextInput } })

@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import AccentHeader from './AccentHeader';
 
-storiesOf('AccentHeader', module)
+storiesOf('Uncategorized/AccentHeader', module)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (
 		<div>

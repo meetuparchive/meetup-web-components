@@ -47,7 +47,7 @@ const LoadingDecorator = storyFn => (
 	</div>
 );
 
-storiesOf('Loading', module)
+storiesOf('Media/Loading', module)
 	.addDecorator(LoadingDecorator)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => <Loading />)

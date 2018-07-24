@@ -47,7 +47,7 @@ const defaultPanels = [
 	<AccordionPanel {...panelThreeProps} />,
 ];
 
-storiesOf('Accordion', module)
+storiesOf('Interactive/Accordion', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTables: [AccordionPanel, AccordionPanelGroup] } })

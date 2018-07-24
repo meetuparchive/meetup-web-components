@@ -26,7 +26,7 @@ export const signupOptions = {
 	},
 };
 
-storiesOf('SignupModal', module)
+storiesOf('Uncategorized/SignupModal', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (

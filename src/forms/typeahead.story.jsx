@@ -154,7 +154,7 @@ const typeaheadItemsObjValues = [
 	</TypeaheadItem>,
 ];
 
-storiesOf('Typeahead', module)
+storiesOf('Forms/Typeahead', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (

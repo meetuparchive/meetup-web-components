@@ -37,7 +37,7 @@ For a row-oriented \`Flex\`, this adjusts vertical alignment. For a column-orien
 const infoReverse =
 	'You can change the direction of content flow for a specific breakpoint, or at all viewport sizes.';
 
-storiesOf('Flex', module)
+storiesOf('Layout/Flex', module)
 	.addDecorator(decorateWithInfo)
 	.addParameters({
 		info: {
