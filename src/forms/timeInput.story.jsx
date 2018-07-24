@@ -3,7 +3,7 @@ import { TimeInput } from './TimeInput';
 import { storiesOf } from '@storybook/react';
 import { decorateWithInfo } from '../utils/decorators';
 
-storiesOf('TimeInput', module)
+storiesOf('Forms/TimeInput', module)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTables: [TimeInput] } })
 	.add(

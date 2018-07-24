@@ -7,7 +7,7 @@ import { withKnobs, boolean } from '@storybook/addon-knobs';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 
-storiesOf('CalendarComponent', module)
+storiesOf('Forms/CalendarComponent', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addDecorator(withKnobs)

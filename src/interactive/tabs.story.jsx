@@ -4,7 +4,7 @@ import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { StoryLink } from '../utils/storyComponents';
 import { Tabs, TabsTab } from './Tabs';
 
-storiesOf('Tabs', module)
+storiesOf('Interactive/Tabs', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTablesExclude: [StoryLink] } })

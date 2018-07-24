@@ -93,7 +93,7 @@ export const navItems = {
 	},
 };
 
-storiesOf('Nav', module)
+storiesOf('Site Chrome/Nav', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTables: [Nav] } })

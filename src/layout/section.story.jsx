@@ -11,7 +11,7 @@ const shadingStyles = {
 	outline: '1px dotted red',
 };
 
-storiesOf('Section', module)
+storiesOf('Layout/Section', module)
 	.addDecorator(decorateWithInfo)
 	.add(
 		'default',

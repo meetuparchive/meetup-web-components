@@ -5,7 +5,7 @@ import Avatar from './Avatar.jsx';
 
 const MOCK_IMAGE_SRC = 'http://placekitten.com/g/400/400';
 
-storiesOf('Avatar', module)
+storiesOf('Media/Avatar', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => <Avatar src={MOCK_IMAGE_SRC} />, {

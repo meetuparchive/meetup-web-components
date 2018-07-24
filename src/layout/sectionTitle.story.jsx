@@ -5,7 +5,7 @@ import SectionTitle from './SectionTitle';
 import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 
-storiesOf('SectionTitle', module)
+storiesOf('Layout/SectionTitle', module)
 	.addDecorator(decorateWithInfo)
 	.add(
 		'Default',

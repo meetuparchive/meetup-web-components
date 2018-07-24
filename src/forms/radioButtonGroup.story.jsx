@@ -8,7 +8,7 @@ import RadioButton from './RadioButton';
 import TogglePill from './TogglePill';
 import RadioButtonGroup from './RadioButtonGroup';
 
-storiesOf('RadioButtonGroup', module)
+storiesOf('Forms/RadioButtonGroup', module)
 	.addDecorator(withKnobs)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)

@@ -42,7 +42,7 @@ class ToasterContainer extends React.PureComponent {
 	}
 }
 
-storiesOf('Toast', module)
+storiesOf('Interactive/Toast', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({

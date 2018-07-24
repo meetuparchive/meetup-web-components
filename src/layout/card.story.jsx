@@ -8,7 +8,7 @@ import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
 const wrapperStyle = { margin: '0 auto', maxWidth: '500px' };
 
-storiesOf('Card', module)
+storiesOf('Layout/Card', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTables: [CardComponent], propTablesExclude: [Card] } })

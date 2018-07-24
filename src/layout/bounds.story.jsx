@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { decorateWithInfo } from '../utils/decorators';
 import Bounds, { BoundsComponent } from './Bounds';
 
-storiesOf('Bounds', module)
+storiesOf('Layout/Bounds', module)
 	.addDecorator(decorateWithInfo)
 	.addParameters({
 		info: { propTables: [BoundsComponent], propTablesExclude: [Bounds] },
