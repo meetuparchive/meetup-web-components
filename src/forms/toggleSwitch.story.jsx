@@ -8,7 +8,7 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import ToggleSwitch from './ToggleSwitch';
 
-storiesOf('ToggleSwitch', module)
+storiesOf('Forms/ToggleSwitch', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('Default', () => <ToggleSwitch name="testToggle" />)

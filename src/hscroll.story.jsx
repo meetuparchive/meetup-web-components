@@ -29,7 +29,7 @@ const listItems = [
 	<div style={itemStyle}>inline-block item</div>,
 ];
 
-storiesOf('Hscroll', module)
+storiesOf('Uncategorized/Hscroll', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('Default', () => <Hscroll style={hscrollInlineStyle}>{listItems}</Hscroll>, {

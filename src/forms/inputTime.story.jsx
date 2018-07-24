@@ -24,10 +24,10 @@ class ControlledInputTime extends React.Component {
 	}
 }
 
-const timeInputStories = storiesOf('InputTime/input[type=time]', module)
+const timeInputStories = storiesOf('Forms/InputTime/input[type=time]', module)
 	.addParameters({ info: { propTables: [InputTimeComponent] } })
 	.addDecorator(decorateWithInfo);
-const fieldsetStories = storiesOf('InputTime/fieldset', module)
+const fieldsetStories = storiesOf('Forms/InputTime/fieldset', module)
 	.addParameters({ info: { propTables: [InputTimeComponent] } })
 	.addDecorator(decorateWithInfo);
 

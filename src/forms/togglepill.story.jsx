@@ -7,7 +7,7 @@ const onChange = e => {
 	action(`The value of the Toggle Pill clicked is: ${e.target.value}`)(e);
 };
 
-storiesOf('TogglePill', module)
+storiesOf('Forms/TogglePill', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTables: [TogglePill] } })
