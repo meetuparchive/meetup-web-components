@@ -123,7 +123,7 @@ export class NumberInput extends React.Component {
 		} = this.props;
 
 		const classNames = {
-			field: cx('field--reset', { 'field--error': error }, className),
+			field: cx('field--reset span--100', { 'field--error': error }, className),
 			fauxInput: cx(FAUX_INPUT_CLASS, {
 				disabled,
 				error,
