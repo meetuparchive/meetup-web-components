@@ -133,7 +133,7 @@
     "swarm-animation": "0.0.95",
     "swarm-constants": "2.2.122",
     "swarm-icons": "^3.4",
-    "swarm-sasstools": "5.0.415",
+    "swarm-sasstools": "5.0.417",
     "uri-js": "3.0.2",
     "webpack": "4.14.0"
   },
