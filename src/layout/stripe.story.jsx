@@ -3,7 +3,7 @@ import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
 import Stripe, { StripeComponent } from './Stripe';
 
-storiesOf('Stripe', module)
+storiesOf('Layout/Stripe', module)
 	.addDecorator(decorateWithInfo)
 	.add(
 		'default',

@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { IntlProvider, FormattedMessage, defineMessages } from 'react-intl';
 
-storiesOf('SelectInput', module)
+storiesOf('Forms/SelectInput', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTable: SelectInput } })

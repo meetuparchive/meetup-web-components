@@ -69,7 +69,7 @@ const DEFAULT_PROPS = {
 	style: { width: '100%' },
 };
 
-storiesOf('Footer', module)
+storiesOf('Site Chrome/Footer', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTables: [Footer], propTablesExclude: [TestFooter] } })

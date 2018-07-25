@@ -37,7 +37,7 @@ class ControlledNumberInput extends React.Component {
 	}
 }
 
-storiesOf('NumberInput', module)
+storiesOf('Forms/NumberInput', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTable: NumberInput } })

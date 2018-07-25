@@ -4,7 +4,7 @@ import Checkbox from './Checkbox';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
-storiesOf('Checkbox', module)
+storiesOf('Forms/Checkbox', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => <Checkbox id="nada" name="no-name" value="nada" />, {

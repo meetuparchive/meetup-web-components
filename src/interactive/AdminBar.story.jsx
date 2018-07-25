@@ -5,7 +5,7 @@ import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
 import AdminBar from './AdminBar';
 
-storiesOf('AdminBar', module)
+storiesOf('Interactive/AdminBar', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add(
