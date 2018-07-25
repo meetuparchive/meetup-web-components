@@ -53,7 +53,7 @@ class ManualToggleDropdown extends React.PureComponent {
 	}
 }
 
-storiesOf('Tooltip', module)
+storiesOf('Interactive/Tooltip', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add(

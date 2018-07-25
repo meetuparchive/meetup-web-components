@@ -27,7 +27,7 @@ const boxStyles = {
 	padding: '20px',
 };
 
-storiesOf('FlexItem', module)
+storiesOf('Layout/FlexItem', module)
 	.addDecorator(decorateWithInfo)
 	.addParameters({
 		info: {

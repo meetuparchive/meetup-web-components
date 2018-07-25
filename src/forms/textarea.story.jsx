@@ -5,7 +5,7 @@ import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
 import { Textarea } from './Textarea';
 
-storiesOf('Textarea', module)
+storiesOf('Forms/Textarea', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({

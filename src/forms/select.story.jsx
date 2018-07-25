@@ -3,7 +3,7 @@ import Select from './Select';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
-storiesOf('Select', module)
+storiesOf('Forms/Select', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (

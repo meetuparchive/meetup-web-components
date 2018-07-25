@@ -7,7 +7,7 @@ import Chunk from './Chunk';
 import FormSection from './FormSection';
 import TextInput from '../forms/TextInput';
 
-storiesOf('FormSection', module)
+storiesOf('Layout/FormSection', module)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTablesExclude: [Bounds, Chunk, TextInput] } })
 	.add('default', () => (

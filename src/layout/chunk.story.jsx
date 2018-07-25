@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { decorateWithInfo } from '../utils/decorators';
 import Chunk, { ChunkComponent } from './Chunk';
 
-storiesOf('Chunk', module)
+storiesOf('Layout/Chunk', module)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTables: [ChunkComponent], propTablesExclude: [Chunk] } })
 	.add(

@@ -6,7 +6,7 @@ import Icon from './Icon';
 
 const ICON_NAME = 'heart-outline';
 
-storiesOf('Icon', module)
+storiesOf('Media/Icon', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => <Icon shape={ICON_NAME} />)

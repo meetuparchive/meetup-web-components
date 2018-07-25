@@ -4,7 +4,7 @@ import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
 import InfoToggle from './InfoToggle';
 
-storiesOf('InfoToggle', module)
+storiesOf('Interactive/InfoToggle', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (

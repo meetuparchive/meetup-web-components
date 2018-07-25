@@ -46,7 +46,7 @@ const TestMember = props => {
 	);
 };
 
-storiesOf('GridList', module)
+storiesOf('Layout/GridList', module)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTables: [GridListComponent] } })
 	.add(
