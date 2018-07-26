@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectInput } from './SelectInput';
+import SelectInput from './SelectInput';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { IntlProvider, FormattedMessage, defineMessages } from 'react-intl';
