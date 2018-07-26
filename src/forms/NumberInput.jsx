@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// @flow
 import React from 'react';
 import cx from 'classnames';
 import Button from '../forms/Button';
@@ -12,26 +12,50 @@ export const FAUX_INPUT_CLASS = 'fauxInput';
 export const FOCUSED_INPUT_CLASS = 'focused';
 export const INCREMENT_BTN_CLASS = 'incrementButton';
 
+type InputChange = {| target: { value: number, name: string } |};
+type Props = {
+	className?: string,
+	children?: React$Node,
+	disabled?: boolean,
+	error?: React$Node,
+	helperText?: string | React$Node,
+	id: string,
+	label?: React$Node,
+	labelClassName?: string,
+	max?: number,
+	min: number,
+	name: string,
+	onChange: InputChange => void,
+	required?: boolean,
+	requiredText?: string | React$Node,
+	step: number,
+	value: number,
+};
+
+type State = {
+	isFieldFocused: boolean,
+	value: number,
+};
+
 /**
  * @module NumberInput
  */
-export class NumberInput extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			value: props.value,
-		};
+export class NumberInput extends React.PureComponent<Props, State> {
+	fauxInputEl: HTMLInputElement | null;
+	decrementBtnEl: HTMLButtonElement | null;
+	incrementBtnEl: HTMLButtonElement | null;
 
-		this._updateValueByStep = this._updateValueByStep.bind(this);
-		this.decrementAction = this.decrementAction.bind(this);
-		this.incrementAction = this.incrementAction.bind(this);
-		this.onBlur = this.onBlur.bind(this);
-		this.onChange = this.onChange.bind(this);
-		this.onFocus = this.onFocus.bind(this);
-		this.onKeyDown = this.onKeyDown.bind(this);
-	}
+	static defaultProps = {
+		requiredText: '*',
+		step: 1,
+		min: 0,
+	};
+	state = {
+		value: this.props.value,
+		isFieldFocused: false,
+	};
 
-	static getDerivedStateFromProps(nextProps, prevState) {
+	static getDerivedStateFromProps(nextProps: Props, prevState: State) {
 		const isNewValue = nextProps.onChange && nextProps.value !== prevState.value;
 
 		return {
@@ -39,86 +63,86 @@ export class NumberInput extends React.Component {
 		};
 	}
 
-	_updateValueByStep(isIncreasing) {
-		const currentVal = new Number(this.state.value);
-		const step = new Number(this.props.step);
-		let newValue = isIncreasing ? currentVal + step : currentVal - step;
+	_updateValueByStep: boolean => number;
+	_updateValueByStep = (isIncreasing: boolean) => {
+		const currentVal = this.state.value;
+		const step = this.props.step;
 
-		if (newValue > this.props.max) {
-			newValue = this.props.max;
-		} else if (newValue < this.props.min) {
-			newValue = this.props.min;
-		}
+		const newValue = isIncreasing ? currentVal + step : currentVal - step;
+		const minConstrained = Math.max(newValue, this.props.min);
+		return Math.min(minConstrained, this.props.max || Infinity);
+	};
 
-		return newValue;
-	}
-
-	onBlur(e) {
+	onBlur: (SyntheticInputEvent<*>) => void;
+	onBlur = (e: SyntheticInputEvent<*>) => {
 		const formControls = [this.fauxInputEl, this.decrementBtnEl, this.incrementBtnEl];
 		if (formControls.every(c => c !== document.activeElement)) {
-			this.fauxInputEl.classList.remove(FOCUSED_INPUT_CLASS);
+			this.setState(() => ({ isFieldFocused: false }));
 		}
-	}
+	};
 
-	onChange(e) {
+	onChange: (HTMLInputElement | InputChange) => void;
+	onChange = (e: HTMLInputElement | InputChange) => {
 		const { onChange } = this.props;
 		const { value, name } = e.target;
 
 		this.setState(() => ({
-			value,
+			value: parseInt(value),
 		}));
 
 		if (onChange) {
 			onChange({ target: { value, name } });
 		}
-	}
+	};
 
-	onFocus(e) {
-		this.fauxInputEl.classList.add(FOCUSED_INPUT_CLASS);
-	}
+	onFocus: (SyntheticFocusEvent<*>) => void;
+	onFocus = (e: SyntheticFocusEvent<*>) => {
+		this.setState(() => ({ isFieldFocused: true }));
+	};
 
-	onKeyDown(e) {
+	onKeyDown: (SyntheticKeyboardEvent<*>) => void;
+	onKeyDown = (e: SyntheticKeyboardEvent<*>) => {
 		// Disable the 'e' or 'E' values because we don't
 		// support scientific notation at the moment
 		if (e.key.toLowerCase() === 'e') {
 			e.preventDefault();
 		}
-	}
+	};
 
-	incrementAction(e) {
+	incrementAction: (SyntheticInputEvent<*>) => void;
+	incrementAction = (e: SyntheticInputEvent<*>) => {
 		e.preventDefault();
 		this.onChange({
 			target: { value: this._updateValueByStep(true), name: this.props.name },
 		});
-	}
+	};
 
-	decrementAction(e) {
+	decrementAction: (SyntheticInputEvent<*>) => void;
+	decrementAction = (e: SyntheticInputEvent<*>) => {
 		e.preventDefault();
 		this.onChange({
 			target: { value: this._updateValueByStep(false), name: this.props.name },
 		});
-	}
+	};
 
 	render() {
 		const {
 			children,
 			className,
+			disabled,
 			error,
+			helperText,
 			id,
 			label,
 			labelClassName,
 			max,
 			min,
 			name,
-			onBlur, // eslint-disable-line no-unused-vars
-			onFocus, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
-			step,
-			disabled,
-			value, // eslint-disable-line no-unused-vars
-			helperText,
 			required,
 			requiredText,
+			step,
+			value, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -127,6 +151,7 @@ export class NumberInput extends React.Component {
 			fauxInput: cx(FAUX_INPUT_CLASS, {
 				disabled,
 				error,
+				[FOCUSED_INPUT_CLASS]: this.state.isFieldFocused,
 			}),
 			label: cx(
 				'label--field',
@@ -154,7 +179,10 @@ export class NumberInput extends React.Component {
 					</label>
 				)}
 				{helperText && <div className={classNames.helperText}>{helperText}</div>}
-				<div className={classNames.fauxInput} ref={el => (this.fauxInputEl = el)}>
+				<div
+					className={classNames.fauxInput}
+					ref={(el: HTMLButtonElement | null) => (this.fauxInputEl = el)}
+				>
 					<Flex align="center">
 						<FlexItem>
 							<input
@@ -164,7 +192,7 @@ export class NumberInput extends React.Component {
 								max={max}
 								min={min}
 								step={step}
-								value={this.state.value}
+								value={this.state.value === 0 ? '' : this.state.value}
 								required={required}
 								className={classNames.field}
 								onBlur={this.onBlur}
@@ -184,7 +212,9 @@ export class NumberInput extends React.Component {
 								onBlur={this.onBlur}
 								onClick={this.decrementAction}
 								onFocus={this.onFocus}
-								ref={el => (this.decrementBtnEl = el)}
+								ref={(el: HTMLButtonElement | null) =>
+									(this.decrementBtnEl = el)
+								}
 							>
 								<Icon shape="minus" size="xs" />
 							</Button>
@@ -198,7 +228,9 @@ export class NumberInput extends React.Component {
 								onBlur={this.onBlur}
 								onClick={this.incrementAction}
 								onFocus={this.onFocus}
-								ref={el => (this.incrementBtnEl = el)}
+								ref={(el: HTMLButtonElement | null) =>
+									(this.incrementBtnEl = el)
+								}
 							>
 								<Icon shape="plus" size="xs" />
 							</Button>
@@ -211,55 +243,5 @@ export class NumberInput extends React.Component {
 		);
 	}
 }
-
-NumberInput.defaultProps = {
-	requiredText: '*',
-	step: 1,
-	min: 0,
-};
-
-NumberInput.propTypes = {
-	/** Adds an `id` attribute to the input, and associates it with the `<label />` */
-	id: PropTypes.string,
-
-	/** Error content to render */
-	error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-
-	/** What we render into the input's `<label />` */
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-
-	/** The class name/s to add to the `<label />` element */
-	labelClassName: PropTypes.string,
-
-	/** The largest number value the input can have */
-	max: PropTypes.number,
-
-	/** The smallest number value the input can have */
-	min: PropTypes.number,
-
-	/** The `name` attribute for the input */
-	name: PropTypes.string.isRequired,
-
-	/** Callback that happens when the input changes */
-	onChange: PropTypes.func,
-
-	/** How much the number input should increase or decrease */
-	step: PropTypes.number,
-
-	/** Whether to use disabled attribute and disabled field styles */
-	disabled: PropTypes.bool,
-
-	/** Value of the input */
-	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-	/** An additional piece of helpful info rendered with the field */
-	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-
-	/** Whether the field is required to have a value */
-	required: PropTypes.bool,
-
-	/** What to render in order to indicate the field is required */
-	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-};
 
 export default withErrorList(NumberInput);
