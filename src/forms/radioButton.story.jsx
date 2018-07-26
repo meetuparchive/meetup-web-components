@@ -5,7 +5,7 @@ import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
 import RadioButton from './RadioButton';
 
-storiesOf('RadioButton', module)
+storiesOf('Forms/RadioButton', module)
 	.addDecorator(withKnobs)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)

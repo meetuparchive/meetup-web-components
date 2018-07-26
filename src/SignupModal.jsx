@@ -11,7 +11,7 @@ import Icon from './media/Icon';
 
 import googleLogo from '../assets/svg/logo_google.svg';
 
-import { C_MEDIUMGRAY } from 'swarm-constants/dist/js/colorConstants';
+import { C_MEDIUMGRAY } from 'swarm-constants/dist/js/constants';
 
 /* consts */
 export const SIGNUP_MODAL_CLASS = 'meetup-signupModal';
@@ -115,7 +115,10 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 };
 
 SignupModal.propTypes = {
+	/** Callback that happens when a user dismisses the modal */
 	onDismiss: PropTypes.func,
+
+	/** Ways a user can sign into Meetup (or sign up for Meetup) */
 	signupOptions: PropTypes.object,
 };
 

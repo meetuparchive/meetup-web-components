@@ -1,25 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TimeInput TimeInput, with input[time] support renders a time html input with expected props 1`] = `
-<TimeInput
-  is24Hr={true}
+<InputTime
   name="time"
   onChange={[Function]}
-  required={true}
-  requiredText="*"
-  value="22:12"
->
-  <div>
-    <input
-      className="input--time select--reset"
-      disabled={undefined}
-      id={undefined}
-      name="time"
-      onChange={[Function]}
-      required={true}
-      type="time"
-      value="22:12"
-    />
-  </div>
-</TimeInput>
+  required="*"
+  value="11:15"
+/>
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { C_TEXT_PRIMARYINVERTED } from 'swarm-constants/dist/js/colorConstants';
+import { C_TEXT_PRIMARYINVERTED } from 'swarm-constants/dist/js/constants';
 
 import Chunk from '../../../layout/Chunk';
 import Flex from '../../../layout/Flex';

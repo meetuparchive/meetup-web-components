@@ -42,14 +42,15 @@ class ToasterContainer extends React.PureComponent {
 	}
 }
 
-storiesOf('Toast', module)
+storiesOf('Interactive/Toast', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({
+		info: { propTables: [Toaster, Toast], propTablesExclude: [ToasterContainer] },
+	})
 	.add('default', () => <ToasterContainer addedToasts={toastArray} />)
 	.add("don't automatically dismiss", () => (
-		<Toaster
-			toasts={[<Toast autodismiss={false}>Your toast is ready</Toast>]}
-		/>
+		<Toaster toasts={[<Toast autodismiss={false}>Your toast is ready</Toast>]} />
 	))
 	.add("don't allow dismissal", () => (
 		<Toaster
@@ -63,9 +64,7 @@ storiesOf('Toast', module)
 	.add('success', () => (
 		<Toaster toasts={[<Toast success>Your toast is ready</Toast>]} />
 	))
-	.add('error', () => (
-		<Toaster toasts={[<Toast error>Your toast is ready</Toast>]} />
-	))
+	.add('error', () => <Toaster toasts={[<Toast error>Your toast is ready</Toast>]} />)
 	.add('action on dismiss', () => (
 		<Toaster
 			toasts={[

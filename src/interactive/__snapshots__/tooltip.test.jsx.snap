@@ -94,7 +94,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
       getContent={[Function]}
       getTrigger={[Function]}
       noPortal={false}
-      offset={undefined}
     >
       <FloatingPosition
         align="right"
@@ -103,7 +102,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
         getTrigger={[Function]}
         media={Object {}}
         noPortal={false}
-        offset={undefined}
       >
         <ConditionalWrap
           condition={true}
@@ -150,29 +148,23 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       className="button-icon-wrapper"
                       justify="center"
                     >
-                      <Flex
-                        aria-busy={undefined}
+                      <FlexComponent
                         className="button-icon-wrapper"
                         direction="row"
-                        isLoading={undefined}
                         justify="center"
                       >
                         <div
-                          aria-busy={undefined}
                           className="flex flex--row flex--center button-icon-wrapper"
                         >
                           <FlexItem
                             className="button-icon valign--middle flush--left"
                             shrink={true}
                           >
-                            <FlexItem
-                              aria-busy={undefined}
+                            <FlexItemComponent
                               className="button-icon valign--middle flush--left"
-                              isLoading={undefined}
                               shrink={true}
                             >
                               <div
-                                aria-busy={undefined}
                                 className="flex-item flex-item--shrink button-icon valign--middle flush--left"
                               >
                                 <Icon
@@ -199,32 +191,25 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                                   </span>
                                 </Icon>
                               </div>
-                            </FlexItem>
+                            </FlexItemComponent>
                           </FlexItem>
                         </div>
-                      </Flex>
+                      </FlexComponent>
                     </Flex>
                   </button>
                 </Button>
                 <Section
                   noSeparator={true}
                 >
-                  <Section
-                    aria-busy={undefined}
-                    isLoading={undefined}
+                  <SectionComponent
                     noSeparator={true}
                   >
                     <section
-                      aria-busy={undefined}
                       className="section"
                     >
                       <Chunk>
-                        <Chunk
-                          aria-busy={undefined}
-                          isLoading={undefined}
-                        >
+                        <ChunkComponent>
                           <div
-                            aria-busy={undefined}
                             className="chunk"
                           >
                             <h2
@@ -233,10 +218,10 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                               Dropdown content
                             </h2>
                           </div>
-                        </Chunk>
+                        </ChunkComponent>
                       </Chunk>
                     </section>
-                  </Section>
+                  </SectionComponent>
                 </Section>
               </div>
             </div>

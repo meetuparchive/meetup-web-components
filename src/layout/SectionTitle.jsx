@@ -32,7 +32,10 @@ class SectionTitle extends React.Component {
 	}
 }
 SectionTitle.propTypes = {
+	/** Text to display */
 	title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
+
+	/** A button-like element to associate an action with the Section */
 	action: PropTypes.element,
 };
 

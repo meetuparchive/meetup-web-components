@@ -1,12 +1,13 @@
 import React from 'react';
-import SelectInput from './SelectInput';
+import { SelectInput } from './SelectInput';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { IntlProvider, FormattedMessage, defineMessages } from 'react-intl';
 
-storiesOf('SelectInput', module)
+storiesOf('Forms/SelectInput', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTable: SelectInput } })
 	.add('default', () => (
 		<SelectInput
 			label="Select a name for your horse"
@@ -110,10 +111,7 @@ storiesOf('SelectInput', module)
 				{ label: 'Doctor Horse, MD Junior', value: 'drhorse' },
 				{ label: 'Mister Chompy', value: 'chompyhorse' },
 			]}
-			errors={[
-				'This is a bad name for a horse',
-				'You do not have a horse to name',
-			]}
+			errors={['This is a bad name for a horse', 'You do not have a horse to name']}
 		/>
 	))
 	.add('with helper text', () => (

@@ -241,23 +241,42 @@ Footer.defaultProps = {
 };
 
 Footer.propTypes = {
+	/** Additional class name/s to add to the `<footer/>` element  */
 	className: PropTypes.string,
+
+	/** Takes a URL and a text label to render the link to create a new Meetup group  */
 	createMeetup: PropTypes.shape({
 		link: PropTypes.string.isRequired,
 		text: PropTypes.string.isRequired,
 	}).isRequired,
+
+	/** Renders a light footer background instead of dark. Used for 404's and error pages  */
 	isLight: PropTypes.bool,
+
+	/** Used to decide which content to render based on whether user is logged into their Meetup account  */
 	isLoggedIn: PropTypes.bool,
+
+	/** Fine print required by Meetup's legal team */
 	legalCopy: PropTypes.string,
+
+	/** The current user's locale code, which is used to render the correct social media links and language dropdown */
 	localeCode: PropTypes.string.isRequired,
+
+	/** Collections of links to render in the footer. For example: "Your Account" links, "Discovery" links, and Meetup-specific links */
 	linkSets: PropTypes.arrayOf(
 		PropTypes.shape({
 			header: PropTypes.string.isRequired,
 			items: PropTypes.arrayOf(PropTypes.element).isRequired,
 		})
 	).isRequired,
+
+	/** Function to call when a user selects a language */
 	onLanguageSelect: PropTypes.func.isRequired,
+
+	/** Label for our social media links. e.g.: "Follow us" */
 	socialHeader: PropTypes.string,
+
+	/** Small-print links. e.g.: "Terms of Servuce" */
 	subFooterLinks: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 

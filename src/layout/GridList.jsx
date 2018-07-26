@@ -8,9 +8,9 @@ import ConditionalWrap from '../utils/components/ConditionalWrap';
 export const GRID_AUTOHEIGHT_CLASS = 'gridList--autoHeight';
 
 /**
- * @module GridList
+ * @module GridListComponent
  */
-export class GridList extends React.Component {
+export class GridListComponent extends React.Component {
 	render() {
 		const {
 			className,
@@ -40,8 +40,12 @@ export class GridList extends React.Component {
 			{
 				'flex--wrap': autoHeightWithWrap,
 				[`${GRID_AUTOHEIGHT_CLASS}--has${columns.default}`]: !!columns.default,
-				[`atMedium_${GRID_AUTOHEIGHT_CLASS}--has${columns.medium}`]: !!columns.medium,
-				[`atLarge_${GRID_AUTOHEIGHT_CLASS}--has${columns.large}`]: !!columns.large,
+				[`atMedium_${GRID_AUTOHEIGHT_CLASS}--has${
+					columns.medium
+				}`]: !!columns.medium,
+				[`atLarge_${GRID_AUTOHEIGHT_CLASS}--has${
+					columns.large
+				}`]: !!columns.large,
 			},
 			className
 		);
@@ -62,7 +66,9 @@ export class GridList extends React.Component {
 			>
 				<ul
 					className={
-						autoHeight || autoHeightWithWrap ? autoHeightClassNames : classNames
+						autoHeight || autoHeightWithWrap
+							? autoHeightClassNames
+							: classNames
 					}
 					{...other}
 				>
@@ -77,17 +83,30 @@ export class GridList extends React.Component {
 	}
 }
 
-GridList.propTypes = {
+GridListComponent.propTypes = {
+	/** Whether the height of the items in the GridList should fill the available height */
 	autoHeight: PropTypes.bool,
+
+	/** Whether autoheight GridList items should wrap lines */
 	autoHeightWithWrap: PropTypes.bool,
+
+	/** Columns in the grid at each breakpoint */
 	columns: PropTypes.shape({
 		default: PropTypes.number.isRequired,
 		medium: PropTypes.number,
 		large: PropTypes.number,
 	}),
+
+	/** Items to render into a grid */
 	items: PropTypes.arrayOf(PropTypes.element).isRequired,
+
+	/** Class names to add to each item's wrapper */
 	itemClassNames: PropTypes.string,
+
+	/** Whether the component is in a loading state */
 	isLoading: PropTypes.bool,
+
+	/** Props to pass to the `<Loading />` component */
 	loadingProps: PropTypes.shape({
 		color: PropTypes.string,
 		scrimColor: PropTypes.string,
@@ -95,4 +114,6 @@ GridList.propTypes = {
 	}),
 };
 
-export default withLoading(GridList);
+const GridList = withLoading(GridListComponent);
+GridList.displayName = 'GridList';
+export default GridList;

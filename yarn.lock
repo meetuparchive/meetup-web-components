@@ -1605,7 +1605,7 @@ babel-plugin-minify-type-constructors@^0.4.1:
   dependencies:
     babel-helper-is-void-0 "^0.4.3"
 
-babel-plugin-react-docgen@^2.0.0-rc.1:
+babel-plugin-react-docgen@2.0.0-rc.1, babel-plugin-react-docgen@^2.0.0-rc.1:
   version "2.0.0-rc.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-react-docgen/-/babel-plugin-react-docgen-2.0.0-rc.1.tgz#2538ecff4102c9e4e4087dbb90bcc76a8db3658f"
   dependencies:
@@ -3808,9 +3808,9 @@ enzyme-adapter-utils@^1.1.0:
     object.assign "^4.0.4"
     prop-types "^15.6.0"
 
-enzyme-to-json@3.1.4:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.1.4.tgz#a4a85a8f7b561cb8c9c0d728ad1b619a3fed7df2"
+enzyme-to-json@3.3.4:
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.3.4.tgz#67c6040e931182f183418af2eb9f4323258aa77f"
   dependencies:
     lodash "^4.17.4"
 
@@ -9961,17 +9961,17 @@ swarm-animation@0.0.95:
     jasmine-jquery "^2.1.1"
     jquery "^3.2.1"
 
-swarm-constants@1.2.94:
-  version "1.2.94"
-  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-1.2.94.tgz#859364602af081b1e7ea52018a967eec4663fbbd"
+swarm-constants@2.2.122:
+  version "2.2.122"
+  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-2.2.122.tgz#bdc7573e1f2691b8dfd3a730cdf01e5b91d8e6fc"
 
 swarm-icons@^3.4:
   version "3.4.334"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-3.4.334.tgz#a6fcb73605a481885e1e0367e9ad6273cccec6ae"
 
-swarm-sasstools@5.0.412:
-  version "5.0.412"
-  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-5.0.412.tgz#7675f40b6a9f895851a37a4e16639f6736613bdf"
+swarm-sasstools@5.0.417:
+  version "5.0.417"
+  resolved "https://registry.yarnpkg.com/swarm-sasstools/-/swarm-sasstools-5.0.417.tgz#f13aec5678df480473e058256901ebf5f921a4b6"
   dependencies:
     sass-rem "^1.2.4"
 

@@ -87,9 +87,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
       <AccordionPanel
         indicatorAlign="right"
         indicatorIcon="chevron-down"
-        indicatorIconActive={undefined}
         indicatorIconSize="xs"
-        indicatorSwitch={undefined}
         isOpen={true}
         label="First Section"
         panelContent={
@@ -120,50 +118,41 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               rowReverse={false}
               tabIndex={-1}
             >
-              <Flex
-                aria-busy={undefined}
+              <FlexComponent
                 className="padding--bottom padding--top accordionPanel accordionPanel--active"
                 direction="row"
-                isLoading={undefined}
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  aria-busy={undefined}
                   className="flex flex--row padding--bottom padding--top accordionPanel accordionPanel--active"
                   tabIndex={-1}
                 >
                   <FlexItem
                     id="label-firstsection"
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       id="label-firstsection"
-                      isLoading={undefined}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item"
                         id="label-firstsection"
                       >
                         First Section
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                   <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       className="accordionPanel-icon"
-                      isLoading={undefined}
                       onClick={[Function]}
                       shrink={true}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item flex-item--shrink accordionPanel-icon"
                         onClick={[Function]}
                       >
@@ -191,10 +180,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                           </span>
                         </Icon>
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                 </div>
-              </Flex>
+              </FlexComponent>
             </Flex>
           </div>
           <Chunk
@@ -210,13 +199,11 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               }
             }
           >
-            <Chunk
-              aria-busy={undefined}
+            <ChunkComponent
               aria-hidden={false}
               aria-labelledby="label-firstsection"
               className="accordionPanel-animator"
               id="panel-firstsection"
-              isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
               style={
@@ -226,7 +213,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               }
             >
               <div
-                aria-busy={undefined}
                 aria-hidden={false}
                 aria-labelledby="label-firstsection"
                 className="chunk accordionPanel-animator"
@@ -251,7 +237,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   </div>
                 </div>
               </div>
-            </Chunk>
+            </ChunkComponent>
           </Chunk>
         </div>
       </AccordionPanel>
@@ -263,9 +249,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
       <AccordionPanel
         indicatorAlign="right"
         indicatorIcon="chevron-down"
-        indicatorIconActive={undefined}
         indicatorIconSize="xs"
-        indicatorSwitch={undefined}
         isOpen={false}
         label="Next Section"
         panelContent={
@@ -312,50 +296,41 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               rowReverse={false}
               tabIndex={-1}
             >
-              <Flex
-                aria-busy={undefined}
+              <FlexComponent
                 className="padding--bottom padding--top accordionPanel"
                 direction="row"
-                isLoading={undefined}
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  aria-busy={undefined}
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
                   <FlexItem
                     id="label-nextsection"
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       id="label-nextsection"
-                      isLoading={undefined}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item"
                         id="label-nextsection"
                       >
                         Next Section
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                   <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       className="accordionPanel-icon"
-                      isLoading={undefined}
                       onClick={[Function]}
                       shrink={true}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item flex-item--shrink accordionPanel-icon"
                         onClick={[Function]}
                       >
@@ -383,10 +358,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                           </span>
                         </Icon>
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                 </div>
-              </Flex>
+              </FlexComponent>
             </Flex>
           </div>
           <Chunk
@@ -402,13 +377,11 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               }
             }
           >
-            <Chunk
-              aria-busy={undefined}
+            <ChunkComponent
               aria-hidden={true}
               aria-labelledby="label-nextsection"
               className="accordionPanel-animator accordionPanel-animator--collapse"
               id="panel-nextsection"
-              isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
               style={
@@ -418,7 +391,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               }
             >
               <div
-                aria-busy={undefined}
                 aria-hidden={true}
                 aria-labelledby="label-nextsection"
                 className="chunk accordionPanel-animator accordionPanel-animator--collapse"
@@ -459,7 +431,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   </div>
                 </div>
               </div>
-            </Chunk>
+            </ChunkComponent>
           </Chunk>
         </div>
       </AccordionPanel>
@@ -471,9 +443,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
       <AccordionPanel
         indicatorAlign="right"
         indicatorIcon="chevron-down"
-        indicatorIconActive={undefined}
         indicatorIconSize="xs"
-        indicatorSwitch={undefined}
         isOpen={false}
         label="Third Section"
         panelContent={
@@ -504,50 +474,41 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               rowReverse={false}
               tabIndex={-1}
             >
-              <Flex
-                aria-busy={undefined}
+              <FlexComponent
                 className="padding--bottom padding--top accordionPanel"
                 direction="row"
-                isLoading={undefined}
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  aria-busy={undefined}
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
                   <FlexItem
                     id="label-thirdsection"
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       id="label-thirdsection"
-                      isLoading={undefined}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item"
                         id="label-thirdsection"
                       >
                         Third Section
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                   <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       className="accordionPanel-icon"
-                      isLoading={undefined}
                       onClick={[Function]}
                       shrink={true}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item flex-item--shrink accordionPanel-icon"
                         onClick={[Function]}
                       >
@@ -575,10 +536,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                           </span>
                         </Icon>
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                 </div>
-              </Flex>
+              </FlexComponent>
             </Flex>
           </div>
           <Chunk
@@ -594,13 +555,11 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               }
             }
           >
-            <Chunk
-              aria-busy={undefined}
+            <ChunkComponent
               aria-hidden={true}
               aria-labelledby="label-thirdsection"
               className="accordionPanel-animator accordionPanel-animator--collapse"
               id="panel-thirdsection"
-              isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
               style={
@@ -610,7 +569,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
               }
             >
               <div
-                aria-busy={undefined}
                 aria-hidden={true}
                 aria-labelledby="label-thirdsection"
                 className="chunk accordionPanel-animator accordionPanel-animator--collapse"
@@ -635,7 +593,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                   </div>
                 </div>
               </div>
-            </Chunk>
+            </ChunkComponent>
           </Chunk>
         </div>
       </AccordionPanel>
@@ -731,9 +689,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
       <AccordionPanel
         indicatorAlign="right"
         indicatorIcon="chevron-down"
-        indicatorIconActive={undefined}
         indicatorIconSize="xs"
-        indicatorSwitch={undefined}
         isOpen={true}
         label="First Section"
         panelContent={
@@ -764,50 +720,41 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               rowReverse={false}
               tabIndex={-1}
             >
-              <Flex
-                aria-busy={undefined}
+              <FlexComponent
                 className="padding--bottom padding--top accordionPanel accordionPanel--active"
                 direction="row"
-                isLoading={undefined}
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  aria-busy={undefined}
                   className="flex flex--row padding--bottom padding--top accordionPanel accordionPanel--active"
                   tabIndex={-1}
                 >
                   <FlexItem
                     id="label-firstsection"
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       id="label-firstsection"
-                      isLoading={undefined}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item"
                         id="label-firstsection"
                       >
                         First Section
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                   <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       className="accordionPanel-icon"
-                      isLoading={undefined}
                       onClick={[Function]}
                       shrink={true}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item flex-item--shrink accordionPanel-icon"
                         onClick={[Function]}
                       >
@@ -835,10 +782,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                           </span>
                         </Icon>
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                 </div>
-              </Flex>
+              </FlexComponent>
             </Flex>
           </div>
           <Chunk
@@ -854,13 +801,11 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               }
             }
           >
-            <Chunk
-              aria-busy={undefined}
+            <ChunkComponent
               aria-hidden={false}
               aria-labelledby="label-firstsection"
               className="accordionPanel-animator"
               id="panel-firstsection"
-              isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
               style={
@@ -870,7 +815,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               }
             >
               <div
-                aria-busy={undefined}
                 aria-hidden={false}
                 aria-labelledby="label-firstsection"
                 className="chunk accordionPanel-animator"
@@ -895,7 +839,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   </div>
                 </div>
               </div>
-            </Chunk>
+            </ChunkComponent>
           </Chunk>
         </div>
       </AccordionPanel>
@@ -907,9 +851,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
       <AccordionPanel
         indicatorAlign="right"
         indicatorIcon="chevron-down"
-        indicatorIconActive={undefined}
         indicatorIconSize="xs"
-        indicatorSwitch={undefined}
         isOpen={false}
         label="Next Section"
         panelContent={
@@ -956,50 +898,41 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               rowReverse={false}
               tabIndex={-1}
             >
-              <Flex
-                aria-busy={undefined}
+              <FlexComponent
                 className="padding--bottom padding--top accordionPanel"
                 direction="row"
-                isLoading={undefined}
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  aria-busy={undefined}
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
                   <FlexItem
                     id="label-nextsection"
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       id="label-nextsection"
-                      isLoading={undefined}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item"
                         id="label-nextsection"
                       >
                         Next Section
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                   <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       className="accordionPanel-icon"
-                      isLoading={undefined}
                       onClick={[Function]}
                       shrink={true}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item flex-item--shrink accordionPanel-icon"
                         onClick={[Function]}
                       >
@@ -1027,10 +960,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                           </span>
                         </Icon>
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                 </div>
-              </Flex>
+              </FlexComponent>
             </Flex>
           </div>
           <Chunk
@@ -1046,13 +979,11 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               }
             }
           >
-            <Chunk
-              aria-busy={undefined}
+            <ChunkComponent
               aria-hidden={true}
               aria-labelledby="label-nextsection"
               className="accordionPanel-animator accordionPanel-animator--collapse"
               id="panel-nextsection"
-              isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
               style={
@@ -1062,7 +993,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               }
             >
               <div
-                aria-busy={undefined}
                 aria-hidden={true}
                 aria-labelledby="label-nextsection"
                 className="chunk accordionPanel-animator accordionPanel-animator--collapse"
@@ -1103,7 +1033,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   </div>
                 </div>
               </div>
-            </Chunk>
+            </ChunkComponent>
           </Chunk>
         </div>
       </AccordionPanel>
@@ -1115,9 +1045,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
       <AccordionPanel
         indicatorAlign="right"
         indicatorIcon="chevron-down"
-        indicatorIconActive={undefined}
         indicatorIconSize="xs"
-        indicatorSwitch={undefined}
         isOpen={false}
         label="Third Section"
         panelContent={
@@ -1148,50 +1076,41 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               rowReverse={false}
               tabIndex={-1}
             >
-              <Flex
-                aria-busy={undefined}
+              <FlexComponent
                 className="padding--bottom padding--top accordionPanel"
                 direction="row"
-                isLoading={undefined}
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  aria-busy={undefined}
                   className="flex flex--row padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
                   <FlexItem
                     id="label-thirdsection"
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       id="label-thirdsection"
-                      isLoading={undefined}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item"
                         id="label-thirdsection"
                       >
                         Third Section
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                   <FlexItem
                     className="accordionPanel-icon"
                     onClick={[Function]}
                     shrink={true}
                   >
-                    <FlexItem
-                      aria-busy={undefined}
+                    <FlexItemComponent
                       className="accordionPanel-icon"
-                      isLoading={undefined}
                       onClick={[Function]}
                       shrink={true}
                     >
                       <div
-                        aria-busy={undefined}
                         className="flex-item flex-item--shrink accordionPanel-icon"
                         onClick={[Function]}
                       >
@@ -1219,10 +1138,10 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                           </span>
                         </Icon>
                       </div>
-                    </FlexItem>
+                    </FlexItemComponent>
                   </FlexItem>
                 </div>
-              </Flex>
+              </FlexComponent>
             </Flex>
           </div>
           <Chunk
@@ -1238,13 +1157,11 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               }
             }
           >
-            <Chunk
-              aria-busy={undefined}
+            <ChunkComponent
               aria-hidden={true}
               aria-labelledby="label-thirdsection"
               className="accordionPanel-animator accordionPanel-animator--collapse"
               id="panel-thirdsection"
-              isLoading={undefined}
               onTransitionEnd={[Function]}
               role="tabpanel"
               style={
@@ -1254,7 +1171,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
               }
             >
               <div
-                aria-busy={undefined}
                 aria-hidden={true}
                 aria-labelledby="label-thirdsection"
                 className="chunk accordionPanel-animator accordionPanel-animator--collapse"
@@ -1279,7 +1195,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                   </div>
                 </div>
               </div>
-            </Chunk>
+            </ChunkComponent>
           </Chunk>
         </div>
       </AccordionPanel>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Section from './Section';
+import Section, { SectionComponent } from './Section';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
 import { decorateWithInfo } from '../utils/decorators';
@@ -11,14 +11,14 @@ const shadingStyles = {
 	outline: '1px dotted red',
 };
 
-storiesOf('Section', module)
+storiesOf('Layout/Section', module)
 	.addDecorator(decorateWithInfo)
 	.add(
 		'default',
 		() => (
 			<div style={{ height: '100vh', width: '100%', marginBottom: '20px' }}>
 				<div style={{ maxWidth: '850px', margin: 'auto', marginTop: '15px' }}>
-					<Section style={shadingStyles}>
+					<SectionComponent style={shadingStyles}>
 						<div className="chunk">
 							<h2 className="text--sectionTitle">About us</h2>
 							<div className="runningText">
@@ -134,9 +134,9 @@ storiesOf('Section', module)
 								</li>
 							</ul>
 						</div>
-					</Section>
+					</SectionComponent>
 
-					<Section style={shadingStyles}>
+					<SectionComponent style={shadingStyles}>
 						<div className="chunk">
 							<h2 className="text--sectionTitle">Organized by</h2>
 							<ul className="inlineblockList inlineblockList--bulleted">
@@ -150,7 +150,7 @@ storiesOf('Section', module)
 								<li>Viki</li>
 							</ul>
 						</div>
-					</Section>
+					</SectionComponent>
 				</div>
 			</div>
 		),
@@ -159,7 +159,7 @@ storiesOf('Section', module)
 	.add('hasSeparator', () => (
 		<div style={{ width: '100%' }}>
 			<div style={{ maxWidth: '850px', margin: 'auto' }}>
-				<Section hasSeparator style={shadingStyles}>
+				<SectionComponent hasSeparator style={shadingStyles}>
 					<div className="chunk">
 						<h2 className="text--sectionTitle">
 							These sections always get separators
@@ -174,14 +174,14 @@ storiesOf('Section', module)
 							including versions of Lorem Ipsum.
 						</p>
 					</div>
-				</Section>
-				<Section hasSeparator style={shadingStyles}>
+				</SectionComponent>
+				<SectionComponent hasSeparator style={shadingStyles}>
 					<div className="chunk">
 						<p className="text--bold">123 attending</p>
 						<p>Hosted by Amy, Rick, Mike, Natalie</p>
 					</div>
-				</Section>
-				<Section hasSeparator style={shadingStyles}>
+				</SectionComponent>
+				<SectionComponent hasSeparator style={shadingStyles}>
 					<div className="chunk">
 						<div className="runningText">
 							<p>
@@ -195,27 +195,27 @@ storiesOf('Section', module)
 							</p>
 						</div>
 					</div>
-				</Section>
+				</SectionComponent>
 			</div>
 		</div>
 	))
 	.add('Conditionally flush left and right (at medium breakpoint)', () => (
 		<div style={{ width: '100%', border: '1px dotted orange' }}>
-			<Section flushUntil="medium" style={shadingStyles}>
+			<SectionComponent flushUntil="medium" style={shadingStyles}>
 				<div className="chunk">
 					<p className="text--bold">
 						This section flushes to the left and right of the viewport until
 						the `medium` breakpoint
 					</p>
 				</div>
-			</Section>
-			<Section flushUntil="medium" style={shadingStyles}>
+			</SectionComponent>
+			<SectionComponent flushUntil="medium" style={shadingStyles}>
 				<div className="chunk">
 					<p className="text--bold">
 						This section has the same flushing behavior
 					</p>
 				</div>
-			</Section>
+			</SectionComponent>
 		</div>
 	))
 	.add('hasSeparatorUntil (large breakpoint)', () => (
@@ -223,43 +223,43 @@ storiesOf('Section', module)
 			<Flex direction="column" switchDirection="large">
 				<FlexItem>
 					<div style={{ maxWidth: '850px', margin: 'auto' }}>
-						<Section style={shadingStyles}>
+						<SectionComponent style={shadingStyles}>
 							<div className="chunk">
 								<p>NEVER gets separator</p>
 							</div>
-						</Section>
-						<Section style={shadingStyles}>
+						</SectionComponent>
+						<SectionComponent style={shadingStyles}>
 							<div className="chunk">
 								<p>NEVER gets separator</p>
 							</div>
-						</Section>
-						<Section hasSeparatorUntil="large" style={shadingStyles}>
+						</SectionComponent>
+						<SectionComponent hasSeparatorUntil="large" style={shadingStyles}>
 							<div className="chunk">
 								<p className="text--bold">
 									Gets separator, removes at "large" breakpoint
 								</p>
 							</div>
-						</Section>
+						</SectionComponent>
 					</div>
 				</FlexItem>
 
 				<FlexItem>
 					<div style={{ maxWidth: '850px', margin: 'auto' }}>
-						<Section style={shadingStyles}>
+						<SectionComponent style={shadingStyles}>
 							<div className="chunk">
 								<p>NEVER gets separator</p>
 							</div>
-						</Section>
-						<Section style={shadingStyles}>
+						</SectionComponent>
+						<SectionComponent style={shadingStyles}>
 							<div className="chunk">
 								<p>NEVER gets separator</p>
 							</div>
-						</Section>
-						<Section style={shadingStyles}>
+						</SectionComponent>
+						<SectionComponent style={shadingStyles}>
 							<div className="chunk">
 								<p>NEVER gets separator</p>
 							</div>
-						</Section>
+						</SectionComponent>
 					</div>
 				</FlexItem>
 			</Flex>

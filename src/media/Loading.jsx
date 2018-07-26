@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
-import { C_COOLGRAYMEDIUM } from 'swarm-constants/dist/js/colorConstants';
+import { C_COOLGRAYMEDIUM } from 'swarm-constants/dist/js/constants';
 
 // TODO: replace MEDIA_SIZES with size values
 // from `swarm-constants` when available in JS
@@ -72,10 +72,19 @@ Loading.defaultProps = {
 };
 
 Loading.propTypes = {
+	/** What color the spinning graphic should be filled with */
 	color: PropTypes.string,
+
+	/** Whether to cover the entire screen with a loader */
 	fullCover: PropTypes.bool,
+
+	/** Whether to cover the component's parent container */
 	partialCover: PropTypes.bool,
+
+	/** The color of the overlay that covers content */
 	scrimColor: PropTypes.string,
+
+	/** The width of the loading graphic */
 	size: PropTypes.string,
 };
 

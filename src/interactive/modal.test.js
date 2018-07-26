@@ -4,7 +4,7 @@ import TestUtils from 'react-dom/test-utils';
 
 import Button from '../forms/Button';
 import {
-	Modal,
+	ModalComponent,
 	MODAL_CLOSE_BUTTON,
 	MODAL_CLOSE_AREA_STICKY,
 	MODAL_CLOSE_AREA_STICKYTRANSP,
@@ -30,7 +30,7 @@ describe('Modal', () => {
 		spyOn(spyable, 'onDismiss');
 
 		modal = TestUtils.renderIntoDocument(
-			<Modal onDismiss={spyable.onDismiss}>{content}</Modal>
+			<ModalComponent onDismiss={spyable.onDismiss}>{content}</ModalComponent>
 		);
 		modalEl = ReactDOM.findDOMNode(modal);
 	});
@@ -54,9 +54,8 @@ describe('Modal', () => {
 	it('creates a Button component for dismissal', () => {
 		const buttons = TestUtils.scryRenderedComponentsWithType(modal, Button);
 		expect(
-			buttons.filter(button =>
-				button.props.className.includes(MODAL_CLOSE_BUTTON)
-			).length
+			buttons.filter(button => button.props.className.includes(MODAL_CLOSE_BUTTON))
+				.length
 		).toBe(1);
 	});
 
@@ -83,9 +82,9 @@ describe('Modal', () => {
 
 	it('should not render a close button', () => {
 		const modal = TestUtils.renderIntoDocument(
-			<Modal onDismiss={e => {}} closeArea={false}>
+			<ModalComponent onDismiss={e => {}} closeArea={false}>
 				{content} <a href="#">focusable element</a>
-			</Modal>
+			</ModalComponent>
 		);
 		const closeButtons = TestUtils.scryRenderedDOMComponentsWithClass(
 			modal,
@@ -102,13 +101,11 @@ describe('Modal hero header', () => {
 	const bgImage =
 		'http://www.cheatsheet.com/wp-content/uploads/2016/09/Homemade-Meat-Gyro-with-French-Fries.jpg';
 	const HERO_CONTENT_CLASS = 'heroContent';
-	const heroContentHtml = (
-		<h1 className={HERO_CONTENT_CLASS}>I can be your hero</h1>
-	);
+	const heroContentHtml = <h1 className={HERO_CONTENT_CLASS}>I can be your hero</h1>;
 
 	beforeEach(() => {
 		modal = TestUtils.renderIntoDocument(
-			<Modal
+			<ModalComponent
 				inverted
 				stickyCloseArea
 				heroBgColor={bgColor}
@@ -117,12 +114,9 @@ describe('Modal hero header', () => {
 				onDismiss={e => {}}
 			>
 				{content}
-			</Modal>
+			</ModalComponent>
 		);
-		heroEl = TestUtils.findRenderedDOMComponentWithClass(
-			modal,
-			STRIPE_HERO_CLASS
-		);
+		heroEl = TestUtils.findRenderedDOMComponentWithClass(modal, STRIPE_HERO_CLASS);
 	});
 
 	afterEach(() => {
@@ -151,10 +145,7 @@ describe('Modal hero header', () => {
 
 	it('sets the close area to sticky when stickyCloseArea is passed', () => {
 		expect(() =>
-			TestUtils.findRenderedDOMComponentWithClass(
-				modal,
-				MODAL_CLOSE_AREA_STICKY
-			)
+			TestUtils.findRenderedDOMComponentWithClass(modal, MODAL_CLOSE_AREA_STICKY)
 		).not.toThrow();
 	});
 
@@ -175,14 +166,14 @@ describe('Modal hero header', () => {
 
 	it('should hide text protection scrim when specified', () => {
 		const modalNoScrim = TestUtils.renderIntoDocument(
-			<Modal
+			<ModalComponent
 				hideHeroScrim
 				heroBgImage={bgImage}
 				heroContent={heroContentHtml}
 				onDismiss={e => {}}
 			>
 				{content}
-			</Modal>
+			</ModalComponent>
 		);
 		expect(() =>
 			TestUtils.findRenderedDOMComponentWithClass(
@@ -200,13 +191,7 @@ describe('Modal positioning', () => {
 	});
 
 	it('always returns 0px when full screen prop is set', () => {
-		const calculatedPositionAtTop = getModalPosition(
-			0,
-			400,
-			true,
-			false,
-			false
-		);
+		const calculatedPositionAtTop = getModalPosition(0, 400, true, false, false);
 		const calculatedPositionBelowFold = getModalPosition(
 			800,
 			400,

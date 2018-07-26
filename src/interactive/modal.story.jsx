@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { decorateWithInfo } from '../utils/decorators';
+import { withInfo } from '@storybook/addon-info';
+// import { decorateWithInfo } from '../utils/decorators';
 import Button from '../forms/Button';
-import Modal from './Modal';
+import Modal, { ModalComponent } from './Modal';
 import Section from '../layout/Section';
 import Stripe from '../layout/Stripe';
 import Chunk from '../layout/Chunk';
@@ -97,15 +98,20 @@ const wrapperStyle = {
 	position: 'relative',
 };
 
-storiesOf('Modal', module)
-	.addDecorator(decorateWithInfo)
+storiesOf('Interactive/Modal', module)
+	.addDecorator(withInfo)
+	.addParameters({ info: { propTablesExclude: [Button, Chunk, Section, Stripe] } })
 	.add(
 		'default',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal onDismiss={onDismiss} initialFocus="#firstFocus">
+				<ModalComponent
+					onDismiss={onDismiss}
+					initialFocus="#firstFocus"
+					focusTrapActive={false}
+				>
 					{content}
-				</Modal>
+				</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
@@ -118,9 +124,9 @@ storiesOf('Modal', module)
 		'stickyCloseArea',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal fixed stickyCloseArea>
+				<ModalComponent fixed stickyCloseArea>
 					{largeContent}
-				</Modal>
+				</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
@@ -220,7 +226,7 @@ storiesOf('Modal', module)
 						meow or run outside as soon as door open.
 					</p>
 				</div>
-				<Modal onDismiss={onDismiss} fixed>
+				<ModalComponent onDismiss={onDismiss} fixed>
 					<Stripe>
 						<Section hasSeparator className="border--none">
 							<Chunk className="align--center">
@@ -245,7 +251,7 @@ storiesOf('Modal', module)
 							</div>
 						</Section>
 					</Stripe>
-				</Modal>
+				</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
@@ -258,7 +264,7 @@ storiesOf('Modal', module)
 		'fixed - long content',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal fixed>{largeContent}</Modal>
+				<ModalComponent fixed>{largeContent}</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
@@ -276,7 +282,7 @@ storiesOf('Modal', module)
 		'has hero - color',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal
+				<ModalComponent
 					onDismiss={onDismiss}
 					inverted
 					heroBgColor="rgb(55,30,172)"
@@ -313,7 +319,7 @@ storiesOf('Modal', module)
 							</div>
 						</Section>
 					</Stripe>
-				</Modal>
+				</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
@@ -326,7 +332,7 @@ storiesOf('Modal', module)
 		'has hero - image',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal
+				<ModalComponent
 					onDismiss={onDismiss}
 					inverted
 					heroBgImage="http://www.cheatsheet.com/wp-content/uploads/2016/09/Homemade-Meat-Gyro-with-French-Fries.jpg"
@@ -363,7 +369,7 @@ storiesOf('Modal', module)
 							</div>
 						</Section>
 					</Stripe>
-				</Modal>
+				</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
@@ -376,7 +382,7 @@ storiesOf('Modal', module)
 		'has hero - image (no scrim)',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal
+				<ModalComponent
 					hideHeroScrim
 					onDismiss={onDismiss}
 					heroBgImage="http://cds.arbys.com/images/menu/1024x557_RoastBeefGyro_silo_tan.jpg"
@@ -413,7 +419,7 @@ storiesOf('Modal', module)
 							</div>
 						</Section>
 					</Stripe>
-				</Modal>
+				</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
@@ -431,9 +437,13 @@ storiesOf('Modal', module)
 		'fullscreen',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal onDismiss={onDismiss} initialFocus="#firstFocus" fullscreen>
+				<ModalComponent
+					onDismiss={onDismiss}
+					initialFocus="#firstFocus"
+					fullscreen
+				>
 					{content}
-				</Modal>
+				</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
@@ -450,7 +460,7 @@ storiesOf('Modal', module)
 		'No close area',
 		() => (
 			<div style={wrapperStyle}>
-				<Modal closeArea={false}>{content}</Modal>
+				<ModalComponent closeArea={false}>{content}</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
