@@ -25,10 +25,10 @@ export const SIGNUP_MODAL_EMAIL_CLASS = `${SIGNUP_MODAL_CLASS}-email`;
  * @param {Object} props component properties
  * @returns {React.element} SignupModal
  */
-export const SignupModal = ({ onDismiss, signupOptions }) => {
+export const SignupModal = ({ onDismiss, signupOptions, ...other }) => {
 	const { google, facebook, email, login, title, orLabel } = signupOptions;
 	return (
-		<Modal className={SIGNUP_MODAL_CLASS} onDismiss={onDismiss} fixed>
+		<Modal className={SIGNUP_MODAL_CLASS} onDismiss={onDismiss} fixed {...other}>
 			<div className={SIGNUP_MODAL_WRAPPER_CLASS}>
 				<Chunk>
 					<h1 className="text--big">{title}</h1>

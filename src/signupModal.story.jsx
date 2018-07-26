@@ -30,5 +30,9 @@ storiesOf('Uncategorized/SignupModal', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add('default', () => (
-		<SignupModal signupOptions={signupOptions} onDismiss={() => {}} />
+		<SignupModal
+			signupOptions={signupOptions}
+			onDismiss={() => {}}
+			focusTrapActive={false}
+		/>
 	));
