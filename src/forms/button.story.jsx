@@ -9,7 +9,7 @@ import Link from 'react-router-dom/Link';
 import Button from './Button';
 import Icon from '../media/Icon';
 
-storiesOf('Button', module)
+storiesOf('Forms/Button', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addDecorator(StoryRouter())

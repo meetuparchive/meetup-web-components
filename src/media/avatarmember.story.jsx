@@ -5,9 +5,10 @@ import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import AvatarMember from './AvatarMember.jsx';
 import InlineBlockList from '../layout/InlineBlockList';
 
-storiesOf('AvatarMember', module)
+storiesOf('Media/AvatarMember', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [AvatarMember] } })
 	.add(
 		'default',
 		() => (

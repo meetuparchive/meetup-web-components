@@ -12,32 +12,28 @@ export const FAUX_INPUT_CLASS = 'fauxInput';
 export const FOCUSED_INPUT_CLASS = 'focused';
 export const INCREMENT_BTN_CLASS = 'incrementButton';
 
+type InputChange = {| target: { value: number, name: string } |};
 type Props = {
-	id: string,
 	className?: string,
-	children?: React$Element<*>,
-	error?: string | React$Node,
-	label?: string | React$Node,
+	children?: React$Node,
+	disabled?: boolean,
+	error?: React$Node,
+	helperText?: string | React$Node,
+	id: string,
+	label?: React$Node,
 	labelClassName?: string,
 	max?: number,
 	min: number,
 	name: string,
-	decrementAction: Function,
-	incrementAction: Function,
-	_updateValueByStep: Function,
-	onBlur: Function,
-	onFocus: Function,
-	onKeyDown: Function,
-	onChange?: Function,
+	onChange: InputChange => void,
+	required?: boolean,
+	requiredText?: string | React$Node,
 	step: number,
-	disabled: boolean,
 	value: number,
-	helperText: string | React$Node,
-	required: boolean,
-	requiredText: string | React$Node,
 };
 
 type State = {
+	isFieldFocused: boolean,
 	value: number,
 };
 
@@ -49,25 +45,15 @@ export class NumberInput extends React.PureComponent<Props, State> {
 	decrementBtnEl: HTMLButtonElement | null;
 	incrementBtnEl: HTMLButtonElement | null;
 
-	defaultProps: {
+	static defaultProps = {
 		requiredText: '*',
 		step: 1,
 		min: 0,
 	};
-	constructor(props: Props) {
-		super(props);
-		this.state = {
-			value: props.value,
-		};
-
-		this._updateValueByStep = this._updateValueByStep.bind(this);
-		this.decrementAction = this.decrementAction.bind(this);
-		this.incrementAction = this.incrementAction.bind(this);
-		this.onBlur = this.onBlur.bind(this);
-		this.onChange = this.onChange.bind(this);
-		this.onFocus = this.onFocus.bind(this);
-		this.onKeyDown = this.onKeyDown.bind(this);
-	}
+	state = {
+		value: this.props.value,
+		isFieldFocused: false,
+	};
 
 	static getDerivedStateFromProps(nextProps: Props, prevState: State) {
 		const isNewValue = nextProps.onChange && nextProps.value !== prevState.value;
@@ -77,33 +63,26 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		};
 	}
 
-	_updateValueByStep: Function;
-	_updateValueByStep(isIncreasing: boolean) {
-		const currentVal = parseInt(this.state.value);
-		const step = parseInt(this.props.step);
-		let newValue = isIncreasing ? currentVal + step : currentVal - step;
+	_updateValueByStep: boolean => number;
+	_updateValueByStep = (isIncreasing: boolean) => {
+		const currentVal = this.state.value;
+		const step = this.props.step;
 
-		if (newValue < this.props.min) {
-			return this.props.min;
-		}
+		const newValue = isIncreasing ? currentVal + step : currentVal - step;
+		const minConstrained = Math.max(newValue, this.props.min);
+		return Math.min(minConstrained, this.props.max || Infinity);
+	};
 
-		if (this.props.max && newValue > this.props.max) {
-			newValue = this.props.max;
-		}
-
-		return newValue;
-	}
-
-	onBlur: Function;
-	onBlur(e: SyntheticInputEvent<*>) {
+	onBlur: (SyntheticInputEvent<*>) => void;
+	onBlur = (e: SyntheticInputEvent<*>) => {
 		const formControls = [this.fauxInputEl, this.decrementBtnEl, this.incrementBtnEl];
 		if (formControls.every(c => c !== document.activeElement)) {
-			this.fauxInputEl && this.fauxInputEl.classList.remove(FOCUSED_INPUT_CLASS);
+			this.setState(() => ({ isFieldFocused: false }));
 		}
-	}
+	};
 
-	onChange: Function;
-	onChange(e: HTMLInputElement) {
+	onChange: (HTMLInputElement | InputChange) => void;
+	onChange = (e: HTMLInputElement | InputChange) => {
 		const { onChange } = this.props;
 		const { value, name } = e.target;
 
@@ -114,66 +93,65 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		if (onChange) {
 			onChange({ target: { value, name } });
 		}
-	}
+	};
 
-	onFocus: Function;
-	onFocus(e: SyntheticFocusEvent<*>) {
-		this.fauxInputEl && this.fauxInputEl.classList.add(FOCUSED_INPUT_CLASS);
-	}
+	onFocus: (SyntheticFocusEvent<*>) => void;
+	onFocus = (e: SyntheticFocusEvent<*>) => {
+		this.setState(() => ({ isFieldFocused: true }));
+	};
 
-	onKeyDown: Function;
-	onKeyDown(e: SyntheticKeyboardEvent<*>) {
+	onKeyDown: (SyntheticKeyboardEvent<*>) => void;
+	onKeyDown = (e: SyntheticKeyboardEvent<*>) => {
 		// Disable the 'e' or 'E' values because we don't
 		// support scientific notation at the moment
 		if (e.key.toLowerCase() === 'e') {
 			e.preventDefault();
 		}
-	}
+	};
 
-	incrementAction: Function;
-	incrementAction(e: SyntheticInputEvent<*>) {
+	incrementAction: (SyntheticInputEvent<*>) => void;
+	incrementAction = (e: SyntheticInputEvent<*>) => {
 		e.preventDefault();
 		this.onChange({
 			target: { value: this._updateValueByStep(true), name: this.props.name },
 		});
-	}
+	};
 
-	decrementAction: Function;
-	decrementAction(e: SyntheticInputEvent<*>) {
+	decrementAction: (SyntheticInputEvent<*>) => void;
+	decrementAction = (e: SyntheticInputEvent<*>) => {
 		e.preventDefault();
 		this.onChange({
 			target: { value: this._updateValueByStep(false), name: this.props.name },
 		});
-	}
+	};
 
 	render() {
 		const {
 			children,
 			className,
+			disabled,
 			error,
+			helperText,
 			id,
 			label,
 			labelClassName,
 			max,
 			min,
 			name,
-			onBlur, // eslint-disable-line no-unused-vars
-			onFocus, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
-			step,
-			disabled,
-			value, // eslint-disable-line no-unused-vars
-			helperText,
 			required,
 			requiredText,
+			step,
+			value, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
 		const classNames = {
-			field: cx('field--reset', { 'field--error': error }, className),
+			field: cx('field--reset span--100', { 'field--error': error }, className),
 			fauxInput: cx(FAUX_INPUT_CLASS, {
 				disabled,
 				error,
+				[FOCUSED_INPUT_CLASS]: this.state.isFieldFocused,
 			}),
 			label: cx(
 				'label--field',
@@ -265,11 +243,5 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		);
 	}
 }
-
-// NumberInput.defaultProps = {
-// 	requiredText: '*',
-// 	step: 1,
-// 	min: 0,
-// };
 
 export default withErrorList(NumberInput);

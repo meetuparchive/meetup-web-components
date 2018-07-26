@@ -76,7 +76,7 @@ class DropdownWithToggle extends React.PureComponent {
 	}
 }
 
-storiesOf('Dropdown', module)
+storiesOf('Interactive/Dropdown', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.add(

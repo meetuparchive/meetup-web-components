@@ -4,7 +4,7 @@ import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import { MOCK_NOTIFICATIONS_LIST } from 'meetup-web-mocks/lib/notifications/api';
 import withMatchMedia from '../utils/components/withMatchMedia';
 
-import { decorateWithBasics } from '../utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
 import Nav from './Nav';
 
@@ -93,8 +93,10 @@ export const navItems = {
 	},
 };
 
-storiesOf('Nav', module)
+storiesOf('Site Chrome/Nav', module)
 	.addDecorator(decorateWithBasics)
+	.addDecorator(decorateWithInfo)
+	.addParameters({ info: { propTables: [Nav] } })
 	.add('authenticated', () => (
 		<TestNav
 			self={MOCK_MEMBER}

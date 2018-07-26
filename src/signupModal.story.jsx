@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { decorateWithBasics } from './utils/decorators';
+import { decorateWithBasics, decorateWithInfo } from './utils/decorators';
 import { SignupModal } from './SignupModal';
 
 export const signupOptions = {
@@ -26,8 +26,9 @@ export const signupOptions = {
 	},
 };
 
-storiesOf('SignupModal', module)
+storiesOf('Uncategorized/SignupModal', module)
 	.addDecorator(decorateWithBasics)
+	.addDecorator(decorateWithInfo)
 	.add('default', () => (
 		<SignupModal signupOptions={signupOptions} onDismiss={() => {}} />
 	));
