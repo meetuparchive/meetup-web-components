@@ -124,7 +124,7 @@ storiesOf('Interactive/Modal', module)
 		'stickyCloseArea',
 		() => (
 			<div style={wrapperStyle}>
-				<ModalComponent fixed stickyCloseArea>
+				<ModalComponent focusTrapActive={false} fixed stickyCloseArea>
 					{largeContent}
 				</ModalComponent>
 				<div
@@ -226,7 +226,7 @@ storiesOf('Interactive/Modal', module)
 						meow or run outside as soon as door open.
 					</p>
 				</div>
-				<ModalComponent onDismiss={onDismiss} fixed>
+				<ModalComponent onDismiss={onDismiss} focusTrapActive={false} fixed>
 					<Stripe>
 						<Section hasSeparator className="border--none">
 							<Chunk className="align--center">
@@ -264,7 +264,9 @@ storiesOf('Interactive/Modal', module)
 		'fixed - long content',
 		() => (
 			<div style={wrapperStyle}>
-				<ModalComponent fixed>{largeContent}</ModalComponent>
+				<ModalComponent focusTrapActive={false} fixed>
+					{largeContent}
+				</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
@@ -295,6 +297,7 @@ storiesOf('Interactive/Modal', module)
 							</Chunk>
 						</Section>
 					}
+					focusTrapActive={false}
 				>
 					<Stripe>
 						<Section hasSeparator className="border--none">
@@ -345,6 +348,7 @@ storiesOf('Interactive/Modal', module)
 							</Chunk>
 						</Section>
 					}
+					focusTrapActive={false}
 				>
 					<Stripe>
 						<Section hasSeparator className="border--none">
@@ -395,6 +399,7 @@ storiesOf('Interactive/Modal', module)
 							</Chunk>
 						</Section>
 					}
+					focusTrapActive={false}
 				>
 					<Stripe>
 						<Section hasSeparator className="border--none">
@@ -440,6 +445,7 @@ storiesOf('Interactive/Modal', module)
 				<ModalComponent
 					onDismiss={onDismiss}
 					initialFocus="#firstFocus"
+					focusTrapActive={false}
 					fullscreen
 				>
 					{content}
@@ -460,7 +466,9 @@ storiesOf('Interactive/Modal', module)
 		'No close area',
 		() => (
 			<div style={wrapperStyle}>
-				<ModalComponent closeArea={false}>{content}</ModalComponent>
+				<ModalComponent closeArea={false} focusTrapActive={false}>
+					{content}
+				</ModalComponent>
 				<div
 					style={iconSpriteStyle}
 					dangerouslySetInnerHTML={{ __html: iconSprite }}
@@ -476,7 +484,12 @@ storiesOf('Interactive/Modal', module)
 	)
 	.add('isLoading', () => (
 		<div style={wrapperStyle}>
-			<Modal isLoading onDismiss={onDismiss} initialFocus="#firstFocus">
+			<Modal
+				isLoading
+				onDismiss={onDismiss}
+				initialFocus="#firstFocus"
+				focusTrapActive={false}
+			>
 				{content}
 			</Modal>
 			<div
@@ -496,6 +509,7 @@ storiesOf('Interactive/Modal', module)
 				}}
 				onDismiss={onDismiss}
 				initialFocus="#firstFocus"
+				focusTrapActive={false}
 			>
 				{content}
 			</Modal>
