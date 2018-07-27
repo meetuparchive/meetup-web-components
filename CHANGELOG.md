@@ -1,3 +1,10 @@
+# [6.0]
+
+-   **BREAKING CHANGE** `NumberInput`'s `onChange` callback will now receive a
+    `Number` argument, not a `SyntheticInputEvent` (or the previous fake event).
+    Consumers should update their `onChange` handlers to expect _only_ the number
+    value in the callback, not something like `{ target: { name, value } }`.
+
 # [5.2]
 
 -   **New feature** `InputTime` component that provides all the display logic of the
