@@ -5,7 +5,6 @@ exports[`redux-form NumberInput renders a NumberInput component with expected at
   error={null}
   label="Number of internets"
   name="internets"
-  onChange={[Function]}
   value={10}
 />
 `;
