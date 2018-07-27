@@ -31,7 +31,7 @@ type Props = {
 	required?: boolean,
 	requiredText?: string | React$Node,
 	step: number,
-	value: ?number,
+	value: Value,
 };
 
 type State = {
@@ -50,7 +50,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		min: 0,
 	};
 	state = {
-		value: this.props.value === undefined ? null : this.props.value,
+		value: this.props.value ? this.props.value : null,
 		isFieldFocused: false,
 	};
 
@@ -184,7 +184,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 								max={max}
 								min={min}
 								step={step}
-								value={this.state.value === 0 ? '' : this.state.value}
+								value={this.state.value === null ? '' : this.state.value}
 								required={required}
 								className={classNames.field}
 								onBlur={this.onBlur}
