@@ -1,3 +1,7 @@
+# [6.0]
+
+-   **Breaking Change** `NumberInput` component has been updated with new flow coverage improvements including an addition of updating `onChange` to send the updated `value` vs a composed "input" like object to help get better tighter type checking.
+
 # [5.2]
 
 -   **New feature** `InputTime` component that provides all the display logic of the
