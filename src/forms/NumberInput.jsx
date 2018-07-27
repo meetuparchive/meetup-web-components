@@ -12,7 +12,7 @@ export const FAUX_INPUT_CLASS = 'fauxInput';
 export const FOCUSED_INPUT_CLASS = 'focused';
 export const INCREMENT_BTN_CLASS = 'incrementButton';
 
-type Value = ?number;
+type Value = number | null;
 type Props = {
 	className?: string,
 	children?: React$Node,
@@ -50,7 +50,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		min: 0,
 	};
 	state = {
-		value: this.props.value === undefined ? undefined : this.props.value,
+		value: this.props.value ? this.props.value : null,
 		isFieldFocused: false,
 	};
 
@@ -90,7 +90,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 	};
 
 	onChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
-		const newValue = e.target.value ? parseInt(e.target.value, 10) : undefined;
+		const newValue = e.target.value ? parseInt(e.target.value, 10) : null;
 		this._updateValue(newValue);
 	};
 
@@ -184,7 +184,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 								max={max}
 								min={min}
 								step={step}
-								value={this.state.value}
+								value={this.state.value === null ? '' : this.state.value}
 								required={required}
 								className={classNames.field}
 								onBlur={this.onBlur}
