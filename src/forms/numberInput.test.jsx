@@ -171,9 +171,7 @@ describe('NumberInput', function() {
 			const newValue = new Number(VALUE) + new Number(STEP_ATTR);
 			inputEl.simulate('change', { target: { value: newValue, name: NAME_ATTR } });
 			expect(numberInputComponent.state('value')).toEqual(newValue);
-			expect(onChange).toHaveBeenCalledWith({
-				target: { value: newValue, name: NAME_ATTR },
-			});
+			expect(onChange).toHaveBeenCalledWith(newValue);
 		});
 	});
 

@@ -12,7 +12,6 @@ export const FAUX_INPUT_CLASS = 'fauxInput';
 export const FOCUSED_INPUT_CLASS = 'focused';
 export const INCREMENT_BTN_CLASS = 'incrementButton';
 
-type InputChange = {| target: { value: number, name: string } |};
 type Props = {
 	className?: string,
 	children?: React$Node,
@@ -26,7 +25,8 @@ type Props = {
 	max?: number,
 	min: number,
 	name: string,
-	onChange: InputChange => void,
+	onChange: number => void,
+	onBlur: (SyntheticInputEvent<HTMLInputElement>) => void,
 	required?: boolean,
 	requiredText?: string | React$Node,
 	step: number,
@@ -64,7 +64,6 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		};
 	}
 
-	_updateValueByStep: boolean => number;
 	_updateValueByStep = (isIncreasing: boolean) => {
 		const currentVal = this.state.value;
 		const step = this.props.step;
@@ -74,35 +73,35 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		return Math.min(minConstrained, this.props.max || Infinity);
 	};
 
-	onBlur: (SyntheticInputEvent<*>) => void;
-	onBlur = (e: SyntheticInputEvent<*>) => {
+	_updateValue = (value: number) => {
+		this.setState(() => ({
+			value,
+		}));
+
+		if (this.props.onChange) {
+			this.props.onChange(value);
+		}
+	};
+
+	onBlur = (e: SyntheticInputEvent<HTMLInputElement>) => {
 		const formControls = [this.fauxInputEl, this.decrementBtnEl, this.incrementBtnEl];
 		if (formControls.every(c => c !== document.activeElement)) {
 			this.setState(() => ({ isFieldFocused: false }));
 		}
-	};
-
-	onChange: (HTMLInputElement | InputChange) => void;
-	onChange = (e: HTMLInputElement | InputChange) => {
-		const { onChange } = this.props;
-		const { value, name } = e.target;
-
-		this.setState(() => ({
-			value: parseInt(value),
-		}));
-
-		if (onChange) {
-			onChange({ target: { value, name } });
+		if (this.props.onBlur) {
+			this.props.onBlur(e);
 		}
 	};
 
-	onFocus: (SyntheticFocusEvent<*>) => void;
-	onFocus = (e: SyntheticFocusEvent<*>) => {
+	onChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
+		this._updateValue(parseInt(e.target.value));
+	};
+
+	onFocus = (e: SyntheticFocusEvent<HTMLInputElement>) => {
 		this.setState(() => ({ isFieldFocused: true }));
 	};
 
-	onKeyDown: (SyntheticKeyboardEvent<*>) => void;
-	onKeyDown = (e: SyntheticKeyboardEvent<*>) => {
+	onKeyDown = (e: SyntheticKeyboardEvent<HTMLInputElement>) => {
 		// Disable the 'e' or 'E' values because we don't
 		// support scientific notation at the moment
 		if (e.key.toLowerCase() === 'e') {
@@ -110,20 +109,14 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		}
 	};
 
-	incrementAction: (SyntheticInputEvent<*>) => void;
-	incrementAction = (e: SyntheticInputEvent<*>) => {
+	incrementAction = (e: SyntheticInputEvent<HTMLInputElement>) => {
 		e.preventDefault();
-		this.onChange({
-			target: { value: this._updateValueByStep(true), name: this.props.name },
-		});
+		this._updateValue(this._updateValueByStep(true));
 	};
 
-	decrementAction: (SyntheticInputEvent<*>) => void;
-	decrementAction = (e: SyntheticInputEvent<*>) => {
+	decrementAction = (e: SyntheticInputEvent<HTMLInputElement>) => {
 		e.preventDefault();
-		this.onChange({
-			target: { value: this._updateValueByStep(false), name: this.props.name },
-		});
+		this._updateValue(this._updateValueByStep(false));
 	};
 
 	render() {
