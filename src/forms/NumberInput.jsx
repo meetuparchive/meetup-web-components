@@ -38,9 +38,6 @@ type State = {
 	value: number,
 };
 
-/**
- * @module NumberInput
- */
 export class NumberInput extends React.PureComponent<Props, State> {
 	fauxInputEl: HTMLInputElement | null;
 	decrementBtnEl: HTMLButtonElement | null;
