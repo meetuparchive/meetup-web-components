@@ -18,6 +18,7 @@ type Props = {
 	children?: React$Node,
 	disabled?: boolean,
 	error?: React$Node,
+	fauxInputClassName?: string,
 	helperText?: string | React$Node,
 	id: string,
 	label?: React$Node,
@@ -135,6 +136,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 			id,
 			label,
 			labelClassName,
+			fauxInputClassName,
 			max,
 			min,
 			name,
@@ -148,7 +150,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 
 		const classNames = {
 			field: cx('field--reset span--100', { 'field--error': error }, className),
-			fauxInput: cx(FAUX_INPUT_CLASS, {
+			fauxInput: cx(FAUX_INPUT_CLASS, fauxInputClassName, {
 				disabled,
 				error,
 				[FOCUSED_INPUT_CLASS]: this.state.isFieldFocused,
@@ -168,7 +170,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		};
 
 		return (
-			<div>
+			<React.Fragment>
 				{label && (
 					<label
 						className={classNames.label}
@@ -239,7 +241,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 						{children}
 					</Flex>
 				</div>
-			</div>
+			</React.Fragment>
 		);
 	}
 }
