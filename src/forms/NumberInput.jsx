@@ -12,6 +12,7 @@ export const FAUX_INPUT_CLASS = 'fauxInput';
 export const FOCUSED_INPUT_CLASS = 'focused';
 export const INCREMENT_BTN_CLASS = 'incrementButton';
 
+type Value = number | null;
 type Props = {
 	className?: string,
 	children?: React$Node,
@@ -25,17 +26,17 @@ type Props = {
 	max?: number,
 	min: number,
 	name: string,
-	onChange: number => void,
+	onChange: Value => void,
 	onBlur: (SyntheticInputEvent<HTMLInputElement>) => void,
 	required?: boolean,
 	requiredText?: string | React$Node,
 	step: number,
-	value: number,
+	value: ?number,
 };
 
 type State = {
 	isFieldFocused: boolean,
-	value: number,
+	value: Value,
 };
 
 export class NumberInput extends React.PureComponent<Props, State> {
@@ -49,7 +50,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		min: 0,
 	};
 	state = {
-		value: this.props.value,
+		value: this.props.value === undefined ? null : this.props.value,
 		isFieldFocused: false,
 	};
 
@@ -62,7 +63,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 	}
 
 	_updateValueByStep = (isIncreasing: boolean) => {
-		const currentVal = this.state.value;
+		const currentVal = this.state.value || this.props.min || 0;
 		const step = this.props.step;
 
 		const newValue = isIncreasing ? currentVal + step : currentVal - step;
@@ -70,10 +71,8 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		return Math.min(minConstrained, this.props.max || Infinity);
 	};
 
-	_updateValue = (value: number) => {
-		this.setState(() => ({
-			value,
-		}));
+	_updateValue = (value: Value) => {
+		this.setState(() => ({ value }));
 
 		if (this.props.onChange) {
 			this.props.onChange(value);
@@ -91,7 +90,8 @@ export class NumberInput extends React.PureComponent<Props, State> {
 	};
 
 	onChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
-		this._updateValue(parseInt(e.target.value));
+		const newValue = e.target.value ? parseInt(e.target.value, 10) : null;
+		this._updateValue(newValue);
 	};
 
 	onFocus = (e: SyntheticFocusEvent<HTMLInputElement>) => {
