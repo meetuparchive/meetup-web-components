@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`NumberInput basic can be initialized to 0 1`] = `
+Object {
+  "className": "field--reset span--100",
+  "disabled": undefined,
+  "id": "amountCount",
+  "max": 10,
+  "min": 1,
+  "name": "amountCount",
+  "onBlur": [Function],
+  "onChange": [Function],
+  "onFocus": [Function],
+  "onKeyDown": [Function],
+  "required": true,
+  "step": 1,
+  "type": "number",
+  "value": 0,
+}
+`;
+
 exports[`NumberInput basic exists 1`] = `
 <React.Fragment>
   <label
@@ -92,16 +111,6 @@ Object {
   "type": "number",
   "value": 2,
 }
-`;
-
-exports[`NumberInput basic should have a label when label is given 1`] = `
-<label
-  className="label--field label--required"
-  data-requiredtext="*"
-  htmlFor="amountCount"
->
-  Are you bringing any guests?
-</label>
 `;
 
 exports[`NumberInput basic should specify attributes that are passed in 1`] = `
