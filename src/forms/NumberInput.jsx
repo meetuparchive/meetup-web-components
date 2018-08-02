@@ -184,7 +184,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 								max={max}
 								min={min}
 								step={step}
-								value={this.state.value === 0 ? '' : this.state.value}
+								value={this.state.value === null ? '' : this.state.value}
 								required={required}
 								className={classNames.field}
 								onBlur={this.onBlur}
