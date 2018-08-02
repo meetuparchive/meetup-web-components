@@ -50,7 +50,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 		min: 0,
 	};
 	state = {
-		value: this.props.value ? this.props.value : null,
+		value: this.props.value || this.props.value === 0 ? this.props.value : null,
 		isFieldFocused: false,
 	};
 
@@ -91,6 +91,9 @@ export class NumberInput extends React.PureComponent<Props, State> {
 
 	onChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
 		const newValue = e.target.value ? parseInt(e.target.value, 10) : null;
+		if (Number.isNaN(newValue)) {
+			return;
+		}
 		this._updateValue(newValue);
 	};
 
