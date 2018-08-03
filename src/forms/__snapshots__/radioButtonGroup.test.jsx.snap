@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RadioButtonGroup should apply switchDirection and direction props 1`] = `
+exports[`RadioButtonGroup should apply switchDirection, direction, and wrap props 1`] = `
 <Flex
   className="some-class"
   direction="column"
   switchDirection="medium"
+  wrap={true}
 >
   <FlexItem
     key=".0"
