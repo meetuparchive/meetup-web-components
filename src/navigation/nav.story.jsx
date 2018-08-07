@@ -142,11 +142,11 @@ storiesOf('Site Chrome/Nav', module)
 			/>
 		);
 	})
-	.add('authenticated Pro member', () => (
+	.add('authenticated Pro admins', () => (
 		<TestNav
 			self={{
+				is_pro_admin: true,
 				...MOCK_MEMBER,
-				isProMember: true,
 			}}
 			navItems={navItems}
 			style={{ width: '100%' }}
