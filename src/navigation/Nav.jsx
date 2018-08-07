@@ -164,7 +164,7 @@ export class Nav extends React.Component {
 		];
 
 		let authItems = [
-			self.isProMember && {
+			self.is_pro_admin && {
 				shrink: true,
 				linkTo: media.isAtMediumUp ? proDashboard.link : '',
 				onAction: !media.isAtMediumUp && this.onClickDropdownAction,
@@ -198,7 +198,7 @@ export class Nav extends React.Component {
 					</Flex>
 				),
 			},
-			media.isAtMediumUp && !self.isProMember && createMeetupLink,
+			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
 			{
 				shrink: true,
 				linkTo: explore.link,
@@ -257,7 +257,7 @@ export class Nav extends React.Component {
 					'profileDropdown--hasGroups': Boolean(
 						groups.list && groups.list.length
 					),
-					'display--none': self.isProMember && !media.isAtMediumUp,
+					'display--none': self.is_pro_admin && !media.isAtMediumUp,
 				}),
 				icon: (
 					<Flex noGutters align="center">

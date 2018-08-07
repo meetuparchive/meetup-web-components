@@ -147,4 +147,24 @@ describe('Nav', () => {
 			})
 		).toMatchSnapshot();
 	});
+
+	it('should match the snapshot for authenticated pro admins', () => {
+		expect(
+			wrapper({
+				self: { ...MOCK_MEMBER, is_pro_admin: true },
+				navItems: {
+					...navItems,
+					proDashboard: {
+						mainAccount: {
+							urlname: '/mason-mocks',
+							name: 'Mason Mocks',
+							group_photo: {
+								thumb_link: 'https://placeimg.com/640/480/any',
+							},
+						},
+					},
+				},
+			})
+		).toMatchSnapshot();
+	});
 });
