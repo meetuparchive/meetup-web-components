@@ -921,6 +921,171 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
 </nav>
 `;
 
+exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
+<nav
+  aria-label="Header navigation"
+  className="padding--all globalNav"
+  groups={
+    Object {
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
+    }
+  }
+  role="navigation"
+>
+  <Flex
+    align="top"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="navItem--authenticated navItemLink--dashboard atMedium_display--block"
+      icon={
+        <Flex
+          align="center"
+          noGutters={true}
+        >
+          <FlexItem>
+            <Avatar
+              className="display--block atMedium_display--none margin--left circular"
+              small={true}
+              src="https://placeimg.com/640/480/any"
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--block atMedium_display--none"
+            shrink={true}
+          >
+            <Icon
+              className="padding--halfLeft"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="0"
+      linkTo=""
+      onAction={[Function]}
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated"
+      icon={
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
+        />
+      }
+      key="1"
+      label="Explore"
+      linkTo="meetup.com/find/events"
+      shrink={true}
+    />
+    <NavItem
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="2"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="messages"
+          size="s"
+        />
+      }
+      key="3"
+      label="Messages"
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      dropdownContent={false}
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block atMedium_display--none"
+          shape="notifications"
+          size="s"
+        />
+      }
+      key="4"
+      label="Notifications"
+      linkTo="meetup.com/notifications"
+      onClickAction={false}
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups display--none"
+      dropdownContent={false}
+      icon={
+        <Flex
+          align="center"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "is_pro_admin": true,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="5"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo="meetup.com/profile"
+      onClickAction={false}
+      shrink={true}
+    />
+  </Flex>
+</nav>
+`;
+
 exports[`Nav should match the snapshot for groups loading state 1`] = `
 <nav
   aria-label="Header navigation"
