@@ -72,6 +72,7 @@ Card-like boxes.
 
 .card--hasShadow {
 	@extend %shadow;
+	border: 0px;
 }
 
 .card--hasHoverShadow {
