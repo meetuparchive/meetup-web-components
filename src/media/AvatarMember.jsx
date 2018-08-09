@@ -19,7 +19,16 @@ class AvatarMember extends React.PureComponent {
 		const { member, org, fbFriend, className, ...other } = this.props;
 		const { big, large, xxlarge } = other;
 
-		const photoLink = big || large || xxlarge ? 'photo_link' : 'thumb_link';
+		let photoLink = 'thumb_link';
+
+		if (big || large || xxlarge) {
+			photoLink = 'photo_link';
+
+			// try `highres_link` in case `photo_link` is undefined
+			if ((member.photo || {})[photoLink] == undefined) {
+				photoLink = 'highres_link';
+			}
+		}
 		const showNoPhoto = (member.photo || {})[photoLink] == undefined;
 
 		const classNames = cx(

@@ -41,6 +41,16 @@ describe('AvatarMember', function() {
 		expect(avatarMember.find(Avatar).prop('src')).toBe(mockPhoto);
 	});
 
+	it('should render member highres_link on large size if no photo_link', () => {
+		const mockPhoto = 'photo image';
+		const mockMember = {
+			...MOCK_MEMBER,
+			photo: { highres_link: mockPhoto },
+		};
+		const avatarMember = shallow(<AvatarMember member={mockMember} large />);
+		expect(avatarMember.find(Avatar).prop('src')).toBe(mockPhoto);
+	});
+
 	it('should render thumbnail photo on regular size', () => {
 		const mockPhoto = 'photo image';
 		const mockMember = {
