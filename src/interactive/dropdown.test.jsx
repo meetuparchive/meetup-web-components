@@ -48,11 +48,7 @@ class DropdownWithToggle extends React.PureComponent {
 
 describe('Dropdown', () => {
 	const dropdownJSX = (
-		<Dropdown
-			align="right"
-			trigger={dropdownTrigger}
-			content={dropdownContent}
-		/>
+		<Dropdown align="right" trigger={dropdownTrigger} content={dropdownContent} />
 	);
 	const wrapper = mount(dropdownJSX);
 
@@ -62,11 +58,7 @@ describe('Dropdown', () => {
 
 	describe('right aligned dropdown', () => {
 		const rightDropdown = (
-			<Dropdown
-				align="right"
-				trigger={dropdownTrigger}
-				content={dropdownContent}
-			/>
+			<Dropdown align="right" trigger={dropdownTrigger} content={dropdownContent} />
 		);
 		const rightDropdownWrapper = mount(rightDropdown);
 		const trigger = rightDropdownWrapper.find('.popup-trigger');
@@ -113,7 +105,7 @@ describe('Dropdown', () => {
 			trigger.simulate('click');
 			expect(closedComponent.state('isActive')).toBeTruthy();
 
-			closedComponent.instance().onBodyClick({ target: '<div />' });
+			closedComponent.instance().onBodyClick({ target: document.body });
 			expect(closedComponent.state('isActive')).toBeFalsy();
 		});
 	});

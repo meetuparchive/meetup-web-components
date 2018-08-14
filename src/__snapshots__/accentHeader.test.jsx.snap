@@ -6,9 +6,9 @@ exports[`AccentHeader exists 1`] = `
 >
   <h2
     className="accentHeader
-  					accentHeader--left
-  					align--left
-  					text--normal"
+					accentHeader--left
+					align--left
+					text--normal"
   >
     Test
   </h2>

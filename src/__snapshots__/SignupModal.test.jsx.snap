@@ -4,7 +4,7 @@ exports[`SignupModal should match the snapshot 1`] = `
 <Modal
   className="meetup-signupModal"
   fixed={true}
-  onDismiss={[Function]}
+  onDismiss={[MockFunction]}
 >
   <div
     className="meetup-signupModal-wrapper"
