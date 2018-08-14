@@ -61,13 +61,13 @@ const getValueComponents = (
  * the most recent valid value that has been entered
  * getValidValue(10, '0123') === 3;
  * getValidValue(10, '01234') === 4;
- * getValidValue(100, '0123467') === 67
- * getValidValue(500, '0123467') === 467
+ * getValidValue(100, '0123456') === 56
+ * getValidValue(500, '0123456') === 456
  */
-const getValidValue = (max: number, value: string): number => {
+export const getValidValue = (max: number, value: string): number => {
 	const maxDigits = max.toString().length;
 	const value2digit = parseInt(value.slice(-maxDigits), 10);
-	return value2digit >= max ? parseInt(value.slice(-(maxDigits - 1)), 10) : value2digit;
+	return value2digit > max ? parseInt(value.slice(-(maxDigits - 1)), 10) : value2digit;
 };
 
 /*

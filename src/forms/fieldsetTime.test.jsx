@@ -7,9 +7,20 @@ import FieldsetTime, {
 	MINUTES_INPUT_NAME,
 	UP_ARROW,
 	DOWN_ARROW,
+	getValidValue,
 } from './FieldsetTime';
 
-// TODO: could use some inline snapshots here - upgrade Jest to make it happen
+describe('getValidValue', () => {
+	test.each([
+		[10, '0123', 3],
+		[10, '01234', 4],
+		[100, '0123456', 56],
+		[500, '0123456', 456],
+		[100, '100', 100], // exact max is ok
+	])('getValidValue(%i, %i)', (max, value, expected) => {
+		expect(getValidValue(max, value)).toBe(expected);
+	});
+});
 describe('FieldsetTime', () => {
 	const MOCK_PROPS = {
 		name: 'mocktime',
