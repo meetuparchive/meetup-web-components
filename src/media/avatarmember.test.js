@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import AvatarMember, {
+	getPhoto,
 	AVATAR_PERSON_CLASS,
 	AVATAR_PERSON_NOPHOTO_CLASS,
 } from './AvatarMember';
@@ -23,12 +24,8 @@ describe('AvatarMember', function() {
 		const MOCK_MEMBER_NO_PHOTO = { ...MOCK_MEMBER };
 		MOCK_MEMBER_NO_PHOTO.photo = {};
 
-		const avatarMember = shallow(
-			<AvatarMember member={MOCK_MEMBER_NO_PHOTO} />
-		);
-		expect(avatarMember.find(`.${AVATAR_PERSON_NOPHOTO_CLASS}`).exists()).toBe(
-			true
-		);
+		const avatarMember = shallow(<AvatarMember member={MOCK_MEMBER_NO_PHOTO} />);
+		expect(avatarMember.find(`.${AVATAR_PERSON_NOPHOTO_CLASS}`).exists()).toBe(true);
 	});
 
 	it('should render member photo on large size', () => {
@@ -77,9 +74,7 @@ describe('AvatarMember', function() {
 			photo: { ...MOCK_MEMBER.photo, thumb_link: 'test image' },
 		};
 		const avatarMember = shallow(<AvatarMember member={mockMember} />);
-		expect(avatarMember.find(`.${AVATAR_PERSON_NOPHOTO_CLASS}`).exists()).toBe(
-			false
-		);
+		expect(avatarMember.find(`.${AVATAR_PERSON_NOPHOTO_CLASS}`).exists()).toBe(false);
 		expect(avatarMember.find(Icon).exists()).toBe(false);
 	});
 
@@ -92,6 +87,33 @@ describe('AvatarMember', function() {
 			};
 			const avatarMember = shallow(<AvatarMember {...props} />);
 			expect(avatarMember.find(`.avatar--${variant}`).exists()).toBe(true);
+		});
+	});
+
+	describe('getPhoto', function() {
+		it('returns undefined if member.photo is undefined', function() {
+			const member = { ...MOCK_MEMBER, photo: undefined };
+			expect(getPhoto(member.photo, 'big')).toBe(undefined);
+		});
+
+		it('returns photo_link for member.photo and big size', function() {
+			expect(getPhoto(MOCK_MEMBER.photo, 'big')).toBe(MOCK_MEMBER.photo.photo_link);
+		});
+
+		it('returns highres_link for member.photo and big size in case photo_link is undefined', function() {
+			const member = {
+				...MOCK_MEMBER,
+				photo: {
+					...MOCK_MEMBER.photo,
+					highres_link: 'http://placekitten.com/g/500/500',
+					photo_link: undefined,
+				}
+			};
+			expect(getPhoto(member.photo, 'big')).toBe(member.photo.highres_link);
+		});
+
+		it('returns thumb_link for member.photo and small size', function() {
+			expect(getPhoto(MOCK_MEMBER.photo)).toBe(MOCK_MEMBER.photo.thumb_link);
 		});
 	});
 });
