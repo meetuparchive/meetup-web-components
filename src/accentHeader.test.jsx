@@ -11,13 +11,13 @@ describe('AccentHeader', () => {
 	});
 
 	it('applies correct alignment className to dropdown content', () => {
-		Object.keys(ALIGN_VALUES).forEach(alignment => {
+		ALIGN_VALUES.forEach(alignment => {
 			const accentHeaderComponent = shallow(
 				<AccentHeader align={alignment}>Test</AccentHeader>
 			);
-			expect(accentHeaderComponent)
-				.prop('className')
-				.toContain(`accentHeader--${alignment}`);
+			expect(accentHeaderComponent.find('h2').prop('className')).toContain(
+				`accentHeader--${alignment}`
+			);
 		});
 	});
 
