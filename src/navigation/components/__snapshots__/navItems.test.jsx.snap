@@ -6,11 +6,7 @@ exports[`NavItem does *not* render count bubble, label, or dropdown if no count 
 >
   <LinkItem
     linkTo="/zombocom/"
-    navItemContent={
-      <div>
-        
-      </div>
-    }
+    navItemContent={<div />}
   />
 </FlexItem>
 `;
@@ -18,11 +14,7 @@ exports[`NavItem does *not* render count bubble, label, or dropdown if no count 
 exports[`NavItem link component renders correct url from prop 1`] = `
 <LinkItem
   linkTo="/zombocom/"
-  navItemContent={
-    <div>
-      
-    </div>
-  }
+  navItemContent={<div />}
 />
 `;
 
@@ -77,7 +69,7 @@ exports[`NavItem renders an ActionItem when \`onAction\` is passed as a prop 1`]
   className="navItem"
 >
   <ActionItem
-    action={[Function]}
+    action={[MockFunction]}
     navItemContent={
       <div>
         <span

@@ -11,15 +11,15 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         isOpen={true}
         label="First Section"
         panelContent={
-            <div
-                className="runningText"
-            >
-                <p>
-                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-                </p>
-            </div>
+          <div
+            className="runningText"
+          >
+            <p>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+            </p>
+          </div>
         }
-    />,
+      />,
       <AccordionPanel
         indicatorAlign="right"
         indicatorIcon="chevron-down"
@@ -27,31 +27,31 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         isOpen={false}
         label="Next Section"
         panelContent={
-            <div>
-                <div
-                    className="runningText"
-                >
-                    <p>
-                        Any kind of content can go in here, even inputs.
-                    </p>
-                </div>
-                <div
-                    className="chunk"
-                >
-                    <label
-                        htmlFor="test-textinput"
-                    >
-                        Im a label
-                    </label>
-                    <input
-                        id="test-textinput"
-                        placeholder="Input placeholder"
-                        type="text"
-                    />
-                </div>
+          <div>
+            <div
+              className="runningText"
+            >
+              <p>
+                Any kind of content can go in here, even inputs.
+              </p>
             </div>
+            <div
+              className="chunk"
+            >
+              <label
+                htmlFor="test-textinput"
+              >
+                Im a label
+              </label>
+              <input
+                id="test-textinput"
+                placeholder="Input placeholder"
+                type="text"
+              />
+            </div>
+          </div>
         }
-    />,
+      />,
       <AccordionPanel
         indicatorAlign="right"
         indicatorIcon="chevron-down"
@@ -59,15 +59,15 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         isOpen={false}
         label="Third Section"
         panelContent={
-            <div
-                className="runningText"
-            >
-                <p>
-                    Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-                </p>
-            </div>
+          <div
+            className="runningText"
+          >
+            <p>
+              Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+            </p>
+          </div>
         }
-    />,
+      />,
     ]
   }
   indicatorAlign="right"
@@ -613,15 +613,15 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         isOpen={true}
         label="First Section"
         panelContent={
-            <div
-                className="runningText"
-            >
-                <p>
-                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-                </p>
-            </div>
+          <div
+            className="runningText"
+          >
+            <p>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+            </p>
+          </div>
         }
-    />,
+      />,
       <AccordionPanel
         indicatorAlign="right"
         indicatorIcon="chevron-down"
@@ -629,31 +629,31 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         isOpen={false}
         label="Next Section"
         panelContent={
-            <div>
-                <div
-                    className="runningText"
-                >
-                    <p>
-                        Any kind of content can go in here, even inputs.
-                    </p>
-                </div>
-                <div
-                    className="chunk"
-                >
-                    <label
-                        htmlFor="test-textinput"
-                    >
-                        Im a label
-                    </label>
-                    <input
-                        id="test-textinput"
-                        placeholder="Input placeholder"
-                        type="text"
-                    />
-                </div>
+          <div>
+            <div
+              className="runningText"
+            >
+              <p>
+                Any kind of content can go in here, even inputs.
+              </p>
             </div>
+            <div
+              className="chunk"
+            >
+              <label
+                htmlFor="test-textinput"
+              >
+                Im a label
+              </label>
+              <input
+                id="test-textinput"
+                placeholder="Input placeholder"
+                type="text"
+              />
+            </div>
+          </div>
         }
-    />,
+      />,
       <AccordionPanel
         indicatorAlign="right"
         indicatorIcon="chevron-down"
@@ -661,15 +661,15 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         isOpen={false}
         label="Third Section"
         panelContent={
-            <div
-                className="runningText"
-            >
-                <p>
-                    Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-                </p>
-            </div>
+          <div
+            className="runningText"
+          >
+            <p>
+              Classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+            </p>
+          </div>
         }
-    />,
+      />,
     ]
   }
   indicatorAlign="right"

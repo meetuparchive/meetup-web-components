@@ -1,8 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import ToggleWrapper from './ToggleWrapper';
-import ConditionalWrap from './ConditionalWrap';
 
 const PLAIN_COMPONENT_CLASS = 'plainComponent';
 
@@ -64,39 +63,23 @@ describe('withLoading', function() {
 	});
 
 	describe('when this.props.type is not checkbox or radio', () => {
-		let plainComponent, plainComponentNode;
+		let plainComponent;
 
 		beforeEach(() => {
-			plainComponent = mount(<PlainComponent />);
-			plainComponentNode = plainComponent.find(`.${PLAIN_COMPONENT_CLASS}`);
+			plainComponent = shallow(<PlainComponent />);
+			onToggle.mockClear();
 		});
 		afterEach(() => {
 			plainComponent = null;
-			plainComponentNode = null;
 		});
 
 		it('matches snapshot', () => {
 			expect(plainComponent).toMatchSnapshot();
 		});
 
-		it('wraps children in an accessible wrapper component', () => {
-			const wrapperComponent = plainComponent
-				.find(ConditionalWrap)
-				.find('[role="button"]');
-
-			expect(wrapperComponent.length).toBe(1);
-		});
-
-		it('passes props wrapper component', () => {
-			const plainComponent = mount(<PlainComponent tabIndex="1" />);
-			const wrapperComponent = plainComponent
-				.find(ConditionalWrap)
-				.find('[role="button"]');
-
-			expect(wrapperComponent.prop('tabIndex')).toBe('1');
-		});
-
 		it('isActive state updates using child component handler', () => {
+			const plainComponent = mount(<PlainComponent />);
+			const plainComponentNode = plainComponent.find(`.${PLAIN_COMPONENT_CLASS}`);
 			expect(plainComponent.find(ToggleWrapper).instance().state.isActive).toBe(
 				false
 			);
@@ -107,6 +90,8 @@ describe('withLoading', function() {
 		});
 
 		it('isActive state updates on valid key press (Enter or Space bar)', () => {
+			const plainComponent = mount(<PlainComponent />);
+			const plainComponentNode = plainComponent.find(`.${PLAIN_COMPONENT_CLASS}`);
 			expect(plainComponent.find(ToggleWrapper).instance().state.isActive).toBe(
 				false
 			);
@@ -121,7 +106,8 @@ describe('withLoading', function() {
 		let checkboxComponent;
 
 		beforeEach(() => {
-			checkboxComponent = mount(<InputComponent inputType="checkbox" />);
+			checkboxComponent = shallow(<InputComponent inputType="checkbox" />);
+			onToggle.mockClear();
 		});
 		afterEach(() => {
 			checkboxComponent = null;
@@ -132,13 +118,14 @@ describe('withLoading', function() {
 		});
 
 		it('isActive state updates onChange', () => {
-			expect(
-				checkboxComponent.find(ToggleWrapper).instance().state.isActive
-			).toBe(false);
+			const checkboxComponent = mount(<InputComponent inputType="checkbox" />);
+			expect(checkboxComponent.find(ToggleWrapper).instance().state.isActive).toBe(
+				false
+			);
 			checkboxComponent.find('input').simulate('change');
-			expect(
-				checkboxComponent.find(ToggleWrapper).instance().state.isActive
-			).toBe(true);
+			expect(checkboxComponent.find(ToggleWrapper).instance().state.isActive).toBe(
+				true
+			);
 		});
 	});
 
@@ -146,7 +133,8 @@ describe('withLoading', function() {
 		let radioComponent;
 
 		beforeEach(() => {
-			radioComponent = mount(<InputComponent inputType="radio" />);
+			radioComponent = shallow(<InputComponent inputType="radio" />);
+			onToggle.mockClear();
 		});
 		afterEach(() => {
 			radioComponent = null;
@@ -157,6 +145,7 @@ describe('withLoading', function() {
 		});
 
 		it('does not pass internal onKeyUp to children', () => {
+			const radioComponent = mount(<InputComponent inputType="radio" />);
 			const checkboxKeyUp = radioComponent.find('input').prop('onKeyUp');
 			const toggleWrapperKeyUp = radioComponent.find(ToggleWrapper).instance()
 				.onKeyUp;
