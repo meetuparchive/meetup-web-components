@@ -2,7 +2,7 @@
 
 exports[`Profile Dropdown should match snapshot 1`] = `
 <Modal
-  onDismiss={[Function]}
+  onDismiss={[MockFunction]}
 >
   <Flex
     className="align--left padding--all"

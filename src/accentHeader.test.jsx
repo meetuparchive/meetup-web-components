@@ -10,16 +10,14 @@ describe('AccentHeader', () => {
 		expect(accentHeaderComponent).toMatchSnapshot();
 	});
 
-	it('renders classname correct alignments', () => {
-		it('applies correct alignment className to dropdown content', () => {
-			Object.keys(ALIGN_VALUES).forEach(alignment => {
-				const accentHeaderComponent = shallow(
-					<AccentHeader align={alignment}>Test</AccentHeader>
-				);
-				expect(accentHeaderComponent)
-					.prop('className')
-					.toContain(`accentHeader--${alignment}`);
-			});
+	it('applies correct alignment className to dropdown content', () => {
+		ALIGN_VALUES.forEach(alignment => {
+			const accentHeaderComponent = shallow(
+				<AccentHeader align={alignment}>Test</AccentHeader>
+			);
+			expect(accentHeaderComponent.find('h2').prop('className')).toContain(
+				`accentHeader--${alignment}`
+			);
 		});
 	});
 

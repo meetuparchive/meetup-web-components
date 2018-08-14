@@ -6,12 +6,12 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
   isActive={false}
   labelClassName="someClass"
   name="meetupCategories"
-  onChange={[Function]}
+  onChange={[MockFunction]}
   value="hiking"
 >
   <ToggleWrapper
     isActive={false}
-    onToggle={[Function]}
+    onToggle={[MockFunction]}
     type="checkbox"
   >
     <ConditionalWrap

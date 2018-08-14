@@ -6,9 +6,9 @@ exports[`redux-form Calendar Component renders a Calendar component with expecte
   error={null}
   id="beyonce"
   name="halo"
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  onFocus={[MockFunction]}
   value={"2012-10-12"}
 />
 `;

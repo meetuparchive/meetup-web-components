@@ -11,7 +11,6 @@ exports[`AdminBar renders correctly 1`] = `
       align="left"
       content={
         <DropdownContent
-          event={undefined}
           group={
             Object {
               "duotoneUrl": Object {
@@ -179,7 +178,6 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       align="left"
       content={
         <DropdownContent
-          event={undefined}
           group={
             Object {
               "duotoneUrl": Object {
@@ -325,7 +323,6 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       align="left"
       content={
         <DropdownContent
-          event={undefined}
           group={
             Object {
               "duotoneUrl": Object {
@@ -462,7 +459,6 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       align="left"
       content={
         <DropdownContent
-          event={undefined}
           group={
             Object {
               "duotoneUrl": Object {
