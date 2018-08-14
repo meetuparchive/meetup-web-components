@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withLoading when this.props.type is checkbox matches snapshot 1`] = `
+<InputComponent
+  inputType="checkbox"
+>
+  <ToggleWrapper
+    isActive={false}
+    type="checkbox"
+  >
+    <ConditionalWrap
+      condition={false}
+      wrap={[Function]}
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        onKeyUp={[Function]}
+        tabIndex="0"
+        type="checkbox"
+        value="lol nothing matters"
+      />
+    </ConditionalWrap>
+  </ToggleWrapper>
+</InputComponent>
+`;
+
+exports[`withLoading when this.props.type is not checkbox or radio matches snapshot 1`] = `
+<PlainComponent>
+  <ToggleWrapper
+    isActive={false}
+    onToggle={[Function]}
+  >
+    <ConditionalWrap
+      condition={true}
+      wrap={[Function]}
+    >
+      <div
+        aria-pressed={false}
+        onKeyUp={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        <div
+          aria-pressed={false}
+          className="plainComponent"
+          onClick={[Function]}
+        />
+      </div>
+    </ConditionalWrap>
+  </ToggleWrapper>
+</PlainComponent>
+`;
+
+exports[`withLoading when this.props.type is radio matches snapshot 1`] = `
+<InputComponent
+  inputType="radio"
+>
+  <ToggleWrapper
+    isActive={false}
+    type="radio"
+  >
+    <ConditionalWrap
+      condition={false}
+      wrap={[Function]}
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        onKeyUp={null}
+        tabIndex="0"
+        type="radio"
+        value="lol nothing matters"
+      />
+    </ConditionalWrap>
+  </ToggleWrapper>
+</InputComponent>
+`;
