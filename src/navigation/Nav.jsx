@@ -66,7 +66,7 @@ export class Nav extends React.Component {
 	 */
 	onClickDropdownAction() {
 		this.setState(() => ({ showMobileDashboard: true }));
-		if (this.props.onOpenClickHandler) {
+		if (this.props.markAllAsReadOnOpen) {
 			this.markAllNotifAsRead();
 		}
 	}
@@ -82,7 +82,7 @@ export class Nav extends React.Component {
 	markAllNotifAsRead = () => {
 		const { notifications } = this.props.navItems;
 		const { list, notificationsDropdown } = notifications;
-		if (list) {
+		if (list.length > 0) {
 			list.sort((a, b) => a.updated < b.updated);
 			notificationsDropdown.markRead(list[0].id);
 		}
@@ -407,7 +407,7 @@ Nav.propTypes = {
 
 	/** The locale code of the current user */
 	localeCode: PropTypes.string,
-	onOpenClickHandler: PropTypes.bool,
+	markAllAsReadOnOpen: PropTypes.bool,
 };
 
 export default Nav;
