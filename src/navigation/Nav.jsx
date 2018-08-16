@@ -66,6 +66,9 @@ export class Nav extends React.Component {
 	 */
 	onClickDropdownAction() {
 		this.setState(() => ({ showMobileDashboard: true }));
+		if (this.props.markAllAsReadOnOpen) {
+			this.markAllNotifAsRead();
+		}
 	}
 
 	/**
@@ -75,6 +78,15 @@ export class Nav extends React.Component {
 	onDismissDropdown() {
 		this.setState(() => ({ showMobileDashboard: false }));
 	}
+
+	markAllNotifAsRead = () => {
+		const { notifications } = this.props.navItems;
+		const { list, notificationsDropdown } = notifications;
+		if (list.length > 0) {
+			list.sort((a, b) => a.updated < b.updated);
+			notificationsDropdown.markRead(list[0].id);
+		}
+	};
 
 	/**
 	 * @return {React.element} the navbar component
@@ -395,6 +407,7 @@ Nav.propTypes = {
 
 	/** The locale code of the current user */
 	localeCode: PropTypes.string,
+	markAllAsReadOnOpen: PropTypes.bool,
 };
 
 export default Nav;
