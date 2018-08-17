@@ -94,7 +94,15 @@ export class Nav extends React.Component {
 	 * @return {React.element} the navbar component
 	 */
 	render() {
-		const { media, self, navItems, localeCode, className, ...other } = this.props;
+		const {
+			media,
+			self,
+			navItems,
+			localeCode,
+			className,
+			markAllAsReadOnOpen, // eslint-disable-line no-unused-vars
+			...other
+		} = this.props;
 		const {
 			login,
 			create,
