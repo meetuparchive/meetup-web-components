@@ -10,6 +10,20 @@ export const AVATAR_PERSON_FB_CLASS = 'avatar--fbFriend';
 export const AVATAR_PERSON_NOPHOTO_CLASS = 'avatar--noPhoto';
 const AVATAR_ICON_BADGE_CLASS = 'svg--avatarBadge';
 
+export const getPhoto = (photo, size) => {
+	if (!photo) {
+		return undefined;
+	}
+	switch(size) {
+		case 'big':
+		case 'large':
+		case 'xxlarge': // clear handling of these 3 overlapping size handlers
+			return photo.photo_link || photo.highres_link; // use highres_link as a fallback
+		default:
+			return photo.thumb_link;
+	}
+};
+
 /**
  * An avatar for a member - just supply a member
  * @module AvatarMember
@@ -19,8 +33,9 @@ class AvatarMember extends React.PureComponent {
 		const { member, org, fbFriend, className, ...other } = this.props;
 		const { big, large, xxlarge } = other;
 
-		const photoLink = big || large || xxlarge ? 'photo_link' : 'thumb_link';
-		const showNoPhoto = (member.photo || {})[photoLink] == undefined;
+		const photoSize = big || large || xxlarge ? 'big' : 'default';
+		const photoLink = getPhoto(member.photo, photoSize);
+		const showNoPhoto = typeof photoLink !== 'string'; // _any_ non-string value should be considered invalid.
 
 		const classNames = cx(
 			AVATAR_PERSON_CLASS,
@@ -38,7 +53,7 @@ class AvatarMember extends React.PureComponent {
 		};
 
 		if (!showNoPhoto) {
-			allProps.src = member.photo[photoLink];
+			allProps.src = photoLink;
 		}
 
 		return (
