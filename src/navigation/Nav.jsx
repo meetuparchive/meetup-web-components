@@ -39,6 +39,7 @@ export class Nav extends React.Component {
 		super(props);
 		this.onDismissSignupModal = this.onDismissSignupModal.bind(this);
 		this.onClickSignupAction = this.onClickSignupAction.bind(this);
+		this.onClickMobileDropdownAction = this.onClickMobileDropdownAction.bind(this);
 		this.onClickDropdownAction = this.onClickDropdownAction.bind(this);
 		this.onDismissDropdown = this.onDismissDropdown.bind(this);
 		this.state = { isSignupModalOpen: false, showMobileDashboard: false };
@@ -64,12 +65,28 @@ export class Nav extends React.Component {
 	 * Triggers the Mobile Pro Dashbard to be rendered
 	 * @return {undefined}
 	 */
-	onClickDropdownAction() {
+	onClickMobileDropdownAction() {
 		this.setState(() => ({ showMobileDashboard: true }));
 		if (this.props.markAllAsReadOnOpen) {
 			this.markAllNotifAsRead();
 		}
 	}
+
+	/**
+	 * Triggers the notifications dropdown action
+	 * @return {undefined}
+	 */
+	onClickDropdownAction() {
+		const {notifications} = this.props.navItems;
+		const action = notifications.getNotificationsQuery();
+		if (action && action.meta && action.meta.request) {
+			action.meta.request.then(() => {
+				this.markAllNotifAsRead();
+			})
+		}
+		return action
+	}
+
 
 	/**
 	 * Triggers the Mobile Pro Dashbard to be closed
@@ -189,7 +206,7 @@ export class Nav extends React.Component {
 			self.is_pro_admin && {
 				shrink: true,
 				linkTo: media.isAtMediumUp ? proDashboard.link : '',
-				onAction: !media.isAtMediumUp && this.onClickDropdownAction,
+				onAction: !media.isAtMediumUp && this.onClickMobileDropdownAction,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
 				icon: (
@@ -264,7 +281,7 @@ export class Nav extends React.Component {
 				),
 				onClickAction:
 					media.isAtMediumUp && !isNotificationsLoaded
-						? notifications.getNotificationsQuery
+						? this.onClickDropdownAction()
 						: false,
 				dropdownContent: media.isAtMediumUp && notificationContent,
 				hasUpdates: notifications.unreadNotifications > 0,
