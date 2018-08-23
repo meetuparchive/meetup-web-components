@@ -4,8 +4,8 @@ import React from 'react';
 import Button from '../forms/Button';
 import Tooltip from './Tooltip';
 
-const InfoTooltipTrigger = () => (
-	<Button reset>
+const InfoTooltipTrigger = (props) => (
+	<Button reset onClick={props.onClick ? props.onClick : undefined}>
 		<span className="infoToggle-trigger align--center" role="img">
 			?
 		</span>
@@ -18,14 +18,15 @@ const InfoToggle = ({
 	tooltipId,
 	tooltipProps,
 	tooltipContent,
+	onClick,
 	...other
 }) => {
 	return (
 		<div className={className} {...other}>
-			<span>{label}</span>
+			<span className="infoToggle-label">{label}</span>
 			<Tooltip
 				id={tooltipId}
-				trigger={<InfoTooltipTrigger />}
+				trigger={<InfoTooltipTrigger onClick={onClick} />}
 				content={tooltipContent}
 				{...tooltipProps}
 			/>
