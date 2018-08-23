@@ -73,6 +73,7 @@ class FloatingPosition extends React.PureComponent {
 				contentWidth,
 				window.innerWidth
 			);
+			const arrowWidth = 19.5;
 			const offsetLeft = offset.left || 0;
 
 			if (!noPortal) {
@@ -82,13 +83,13 @@ class FloatingPosition extends React.PureComponent {
 
 				switch (adjustedAlignment) {
 					case 'left':
-						return `${left + scrollLeft + offsetLeft}px`;
+						return `${left - arrowWidth + width / 2 + scrollLeft + offsetLeft}px`;
 					case 'center':
 						return `${left + width / 2 + scrollLeft + offsetLeft}px`;
 					case 'right':
-						return `${left + width + scrollLeft + offsetLeft}px`;
+						return `${left + arrowWidth + width / 2 + scrollLeft + offsetLeft}px`;
 					default:
-						return `${left + width + scrollLeft + offsetLeft}px`;
+						return `${left + arrowWidth + width + scrollLeft + offsetLeft}px`;
 				}
 			}
 		};
