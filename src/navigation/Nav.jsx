@@ -77,14 +77,14 @@ export class Nav extends React.Component {
 	 * @return {undefined}
 	 */
 	onClickDropdownAction() {
-		const {notifications} = this.props.navItems;
+		const { notifications } = this.props.navItems;
 		const action = notifications.getNotificationsQuery();
 		if (action && action.meta && action.meta.request) {
 			action.meta.request.then(() => {
 				this.markAllNotifAsRead();
-			})
+			});
 		}
-		return action
+		return action;
 	}
 
 
