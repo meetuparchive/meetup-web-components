@@ -57,10 +57,8 @@ class FloatingPosition extends React.PureComponent {
 			? getTrigger().offsetParent
 			: getTrigger();
 		const positionData = positionTarget.getBoundingClientRect();
-		const contentHeight =
-			getContent && getContent().getBoundingClientRect().height;
-		const contentWidth =
-			getContent && getContent().getBoundingClientRect().width;
+		const contentHeight = getContent && getContent().getBoundingClientRect().height;
+		const contentWidth = getContent && getContent().getBoundingClientRect().width;
 		const scrollTop = window.scrollY || window.pageYOffset;
 		const scrollLeft = window.scrollX || window.pageXOffset;
 		const { offset = {} } = this.props;
@@ -83,11 +81,19 @@ class FloatingPosition extends React.PureComponent {
 
 				switch (adjustedAlignment) {
 					case 'left':
-						return `${left - arrowWidth + width / 2 + scrollLeft + offsetLeft}px`;
+						return `${left -
+							arrowWidth +
+							width / 2 +
+							scrollLeft +
+							offsetLeft}px`;
 					case 'center':
 						return `${left + width / 2 + scrollLeft + offsetLeft}px`;
 					case 'right':
-						return `${left + arrowWidth + width / 2 + scrollLeft + offsetLeft}px`;
+						return `${left +
+							arrowWidth +
+							width / 2 +
+							scrollLeft +
+							offsetLeft}px`;
 					default:
 						return `${left + arrowWidth + width + scrollLeft + offsetLeft}px`;
 				}
@@ -143,7 +149,8 @@ class FloatingPosition extends React.PureComponent {
 						<div>{children}</div>
 					) : (
 						<Portal>{children}</Portal>
-					)}
+					)
+				}
 			>
 				{this.props.children({
 					left: this.state.left,
