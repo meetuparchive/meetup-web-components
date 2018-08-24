@@ -32,7 +32,7 @@ storiesOf('Interactive/InfoToggle', module)
 				tooltipId={text('tooltipId', 'toolTipId')}
 				tooltipContent={defaultContent}
 				tooltipProps={object('tooltipProps', {})}
-				onClick={action("Info Toggle Click (optional)")}
+				onClick={action('Info Toggle Click (optional)')}
 			/>
 		);
 	})
