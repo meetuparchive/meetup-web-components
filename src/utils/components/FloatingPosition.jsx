@@ -53,6 +53,16 @@ class FloatingPosition extends React.PureComponent {
 			return;
 		}
 
+		const calcCenterAlignment = (left, width, scrollLeft, offsetLeft) => {
+			return `${left + width / 2 + scrollLeft + offsetLeft}px`;
+		};
+		const calcRightAlignment = (left, width, arrowWidth, scrollLeft, offsetLeft) => {
+			return `${left + arrowWidth + width / 2 + scrollLeft + offsetLeft}px`;
+		};
+		const calcLeftAlignment = (left, width, arrowWidth, scrollLeft, offsetLeft) => {
+			return `${left - arrowWidth / 2 + width / 2 + scrollLeft + offsetLeft}px`;
+		};
+
 		const positionTarget = getTrigger().offsetParent
 			? getTrigger().offsetParent
 			: getTrigger();
@@ -80,22 +90,25 @@ class FloatingPosition extends React.PureComponent {
 				}));
 
 				switch (adjustedAlignment) {
-					case 'left':
-						return `${left -
-							arrowWidth +
-							width / 2 +
-							scrollLeft +
-							offsetLeft}px`;
 					case 'center':
-						return `${left + width / 2 + scrollLeft + offsetLeft}px`;
+						return calcCenterAlignment(left, width, scrollLeft, offsetLeft);
 					case 'right':
-						return `${left +
-							arrowWidth +
-							width / 2 +
-							scrollLeft +
-							offsetLeft}px`;
+						return calcRightAlignment(
+							left,
+							width,
+							arrowWidth,
+							scrollLeft,
+							offsetLeft
+						);
+					case 'left':
 					default:
-						return `${left + arrowWidth + width + scrollLeft + offsetLeft}px`;
+						return calcLeftAlignment(
+							left,
+							width,
+							arrowWidth,
+							scrollLeft,
+							offsetLeft
+						);
 				}
 			}
 		};

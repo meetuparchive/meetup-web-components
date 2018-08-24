@@ -4,8 +4,8 @@ import React from 'react';
 import Button from '../forms/Button';
 import Tooltip from './Tooltip';
 
-const InfoTooltipTrigger = props => (
-	<Button reset onClick={props.onClick ? props.onClick : undefined}>
+export const InfoTooltipTrigger = props => (
+	<Button reset onClick={props.onClick}>
 		<span className="infoToggle-trigger align--center" role="img">
 			?
 		</span>
