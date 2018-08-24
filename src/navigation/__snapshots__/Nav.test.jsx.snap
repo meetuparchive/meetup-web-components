@@ -95,7 +95,6 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
       key="3"
       label="Notifications"
       linkTo="meetup.com/notifications"
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
@@ -136,7 +135,6 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"
-      onClickAction={false}
       shrink={true}
     />
   </Flex>
@@ -812,7 +810,6 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       key="4"
       label="Notifications"
       linkTo=""
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
@@ -914,7 +911,6 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
-      onClickAction={false}
       shrink={true}
     />
   </Flex>
@@ -1036,7 +1032,6 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
       key="4"
       label="Notifications"
       linkTo="meetup.com/notifications"
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
@@ -1079,7 +1074,6 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"
-      onClickAction={false}
       shrink={true}
     />
   </Flex>
@@ -1746,7 +1740,6 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       key="4"
       label="Notifications"
       linkTo=""
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
@@ -1848,7 +1841,6 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
-      onClickAction={false}
       shrink={true}
     />
   </Flex>
@@ -2532,7 +2524,6 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       key="4"
       label="Notifications"
       linkTo=""
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
@@ -2634,7 +2625,6 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
-      onClickAction={false}
       shrink={true}
     />
   </Flex>
@@ -2782,7 +2772,6 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
       key="3"
       label="Notifications"
       linkTo="meetup.com/notifications"
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
@@ -2824,7 +2813,6 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"
-      onClickAction={false}
       shrink={true}
     />
   </Flex>
@@ -3629,7 +3617,6 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       key="4"
       label="Notifications"
       linkTo=""
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
@@ -3731,7 +3718,6 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
-      onClickAction={false}
       shrink={true}
     />
   </Flex>
@@ -3822,7 +3808,6 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
       key="3"
       label="Notifications"
       linkTo="meetup.com/notifications"
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
@@ -3864,7 +3849,6 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"
-      onClickAction={false}
       shrink={true}
     />
   </Flex>
@@ -3955,7 +3939,6 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
       key="3"
       label="Notifications"
       linkTo="meetup.com/notifications"
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
@@ -3997,7 +3980,6 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"
-      onClickAction={false}
       shrink={true}
     />
   </Flex>
