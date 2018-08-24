@@ -24,7 +24,7 @@ type Props = {
 	label?: React$Node,
 	labelClassName?: string,
 	max?: number,
-	min: number,
+	min?: number,
 	name: string,
 	onChange: Value => void,
 	onBlur: (SyntheticInputEvent<HTMLInputElement>) => void,
@@ -63,12 +63,12 @@ export class NumberInput extends React.PureComponent<Props, State> {
 	}
 
 	_updateValueByStep = (isIncreasing: boolean) => {
-		const currentVal = this.state.value || this.props.min || 0;
-		const step = this.props.step;
+		const { min, max, step } = this.props;
+		const currentVal = this.state.value || min || 0;
 
 		const newValue = isIncreasing ? currentVal + step : currentVal - step;
-		const minConstrained = Math.max(newValue, this.props.min);
-		return Math.min(minConstrained, this.props.max || Infinity);
+		const minConstrained = Math.max(newValue, this.props.min || -Infinity);
+		return Math.min(minConstrained, max || Infinity);
 	};
 
 	_updateValue = (value: Value) => {

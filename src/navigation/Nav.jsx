@@ -87,7 +87,6 @@ export class Nav extends React.Component {
 		return action;
 	}
 
-
 	/**
 	 * Triggers the Mobile Pro Dashbard to be closed
 	 * @return {undefined}
@@ -281,8 +280,8 @@ export class Nav extends React.Component {
 				),
 				onClickAction:
 					media.isAtMediumUp && !isNotificationsLoaded
-						? this.onClickDropdownAction()
-						: false,
+						? this.onClickDropdownAction
+						: undefined,
 				dropdownContent: media.isAtMediumUp && notificationContent,
 				hasUpdates: notifications.unreadNotifications > 0,
 				updatesLabel: updatesLabel,
@@ -318,7 +317,7 @@ export class Nav extends React.Component {
 				onClickAction:
 					media.isAtMediumUp && !isGroupsLoaded
 						? profile.getSelfGroupsQuery
-						: false,
+						: undefined,
 				dropdownContent: media.isAtMediumUp && profileContent,
 			},
 		];
