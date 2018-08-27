@@ -29,6 +29,29 @@ export const getAdjustedAlignment = (
 	}
 };
 
+export const calculateContentPosition = (
+	trigger,
+	content,
+	addPortal,
+	contentHeight,
+	direction
+) => {
+	if (trigger && content) {
+		if (addPortal === false) {
+			if (direction === 'top') {
+				const top = contentHeight ? contentHeight * -1 : 0;
+				return { top };
+			} else {
+				const triggerElementHeight = trigger().getBoundingClientRect().height;
+				return { top: triggerElementHeight };
+			}
+		} else {
+			return { left: 0, top: 0 };
+		}
+	} else {
+		return undefined;
+	}
+};
 /**
  * @module FloatingPosition
  */
