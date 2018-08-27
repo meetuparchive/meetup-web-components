@@ -130,9 +130,9 @@ class Tooltip extends React.PureComponent {
 								id={id}
 								role="tooltip"
 								style={{
-									left: left,
-									top: top,
-									minWidth: minWidth,
+									left,
+									top,
+									minWidth,
 									maxWidth: maxWidth || boundedMaxWidth,
 								}}
 							>
