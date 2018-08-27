@@ -29,27 +29,30 @@ export const getAdjustedAlignment = (
 	}
 };
 
-export const calculateContentPosition = (
+export const calculateContentPosition = ({
 	trigger,
 	content,
 	addPortal,
 	contentHeight,
-	direction
-) => {
+	direction,
+	offset = {},
+}) => {
 	if (trigger && content) {
 		if (addPortal === false) {
 			if (direction === 'top') {
 				const top = contentHeight ? contentHeight * -1 : 0;
 				return { top };
 			} else {
-				const triggerElementHeight = trigger().getBoundingClientRect().height;
-				return { top: triggerElementHeight };
+				const offsetTop = offset.top || 0;
+				const positionTarget = trigger().offsetParent
+					? trigger().offsetParent
+					: trigger();
+				const targetElementHeight = positionTarget.getBoundingClientRect().height;
+				return { top: targetElementHeight + offsetTop };
 			}
 		} else {
 			return { left: 0, top: 0 };
 		}
-	} else {
-		return undefined;
 	}
 };
 /**
