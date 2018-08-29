@@ -50,7 +50,7 @@ export const calculateContentPosition = ({
 	offset = {},
 	alignment,
 	scrollLeft = 0,
-	scrollTop = 0
+	scrollTop = 0,
 }) => {
 	if (trigger && content) {
 		const positionTarget = trigger().offsetParent
