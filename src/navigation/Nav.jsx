@@ -78,6 +78,12 @@ export class Nav extends React.Component {
 	 */
 	onClickDropdownAction() {
 		const { notifications } = this.props.navItems;
+		const isNotificationsLoaded = Boolean(notifications.list);
+
+		if (isNotificationsLoaded) {
+			this.markAllNotifAsRead();
+			return;
+		}
 		const action = notifications.getNotificationsQuery();
 		if (action && action.meta && action.meta.request) {
 			action.meta.request.then(() => {
@@ -278,10 +284,7 @@ export class Nav extends React.Component {
 						className="display--block atMedium_display--none"
 					/>
 				),
-				onClickAction:
-					media.isAtMediumUp && !isNotificationsLoaded
-						? this.onClickDropdownAction
-						: undefined,
+				onClickAction: media.isAtMediumUp && this.onClickDropdownAction,
 				dropdownContent: media.isAtMediumUp && notificationContent,
 				hasUpdates: notifications.unreadNotifications > 0,
 				updatesLabel: updatesLabel,
