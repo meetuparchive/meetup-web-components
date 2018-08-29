@@ -8,6 +8,7 @@ import FloatingPosition, {
 	calcCenterAlignment,
 	calcRightAlignment,
 	calcLeftAlignment,
+	calcDefaultAlignment,
 	ARROW_WIDTH,
 } from './FloatingPosition';
 
@@ -373,7 +374,7 @@ describe('FloatingPosition', () => {
 							offset: { left: makeRandomNumber(0, 350) },
 						};
 						expect(calculateContentPosition(params).left).toEqual(
-							calcLeftAlignment(
+							calcDefaultAlignment(
 								randomLeft,
 								randomWidth,
 								ARROW_WIDTH,
@@ -391,7 +392,7 @@ describe('FloatingPosition', () => {
 							scrollLeft: makeRandomNumber(),
 						};
 						expect(calculateContentPosition(params).left).toEqual(
-							calcLeftAlignment(
+							calcDefaultAlignment(
 								randomLeft,
 								randomWidth,
 								ARROW_WIDTH,
