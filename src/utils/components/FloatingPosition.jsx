@@ -6,6 +6,18 @@ import rafSchedule from 'raf-schd';
 import ConditionalWrap from './ConditionalWrap';
 import withMatchMedia from './withMatchMedia';
 
+export const ARROW_WIDTH = 19.5;
+
+export const calcCenterAlignment = (left, width, scrollLeft, offsetLeft) => {
+	return `${left + width / 2 + scrollLeft + offsetLeft}px`;
+};
+export const calcRightAlignment = (left, width, arrowWidth, scrollLeft, offsetLeft) => {
+	return `${left + arrowWidth + width / 2 + scrollLeft + offsetLeft}px`;
+};
+export const calcLeftAlignment = (left, width, arrowWidth, scrollLeft, offsetLeft) => {
+	return `${left - arrowWidth / 2 + width / 2 + scrollLeft + offsetLeft}px`;
+};
+
 export const getAdjustedAlignment = (
 	preferredAlignment,
 	triggerPositionData,
@@ -29,6 +41,74 @@ export const getAdjustedAlignment = (
 	}
 };
 
+export const calculateContentPosition = ({
+	trigger,
+	content,
+	addPortal,
+	contentHeight,
+	direction,
+	offset = {},
+	alignment,
+	scrollLeft = 0,
+	scrollTop = 0,
+}) => {
+	if (trigger && content) {
+		const positionTarget = trigger().offsetParent
+			? trigger().offsetParent
+			: trigger();
+		const positionData = positionTarget.getBoundingClientRect();
+		const { left: leftPosition, top, width, height } = positionData;
+		const offsetLeft = offset.left || 0;
+		const offsetTop = offset.top || 0;
+		if (addPortal === false) {
+			if (direction === 'top') {
+				const top = contentHeight ? contentHeight * -1 : 0;
+				return { top };
+			} else {
+				const offsetTop = offset.top || 0;
+				const targetElementHeight = positionTarget.getBoundingClientRect().height;
+				return { top: targetElementHeight + offsetTop };
+			}
+		} else {
+			let left = 0;
+			const triggerTopPosition = scrollTop + top + height + offsetTop;
+			switch (alignment) {
+				case 'center':
+					left = calcCenterAlignment(
+						leftPosition,
+						width,
+						scrollLeft,
+						offsetLeft
+					);
+					break;
+				case 'right':
+					left = calcRightAlignment(
+						leftPosition,
+						width,
+						ARROW_WIDTH,
+						scrollLeft,
+						offsetLeft
+					);
+					break;
+				case 'left':
+				default:
+					left = calcLeftAlignment(
+						leftPosition,
+						width,
+						ARROW_WIDTH,
+						scrollLeft,
+						offsetLeft
+					);
+					break;
+			}
+			const topPosition =
+				direction === 'top'
+					? triggerTopPosition - contentHeight - height
+					: triggerTopPosition;
+			return { left, top: topPosition };
+		}
+	}
+};
 /**
  * @module FloatingPosition
  */
@@ -57,38 +137,47 @@ class FloatingPosition extends React.PureComponent {
 			? getTrigger().offsetParent
 			: getTrigger();
 		const positionData = positionTarget.getBoundingClientRect();
-		const contentHeight =
-			getContent && getContent().getBoundingClientRect().height;
-		const contentWidth =
-			getContent && getContent().getBoundingClientRect().width;
+		const contentHeight = getContent && getContent().getBoundingClientRect().height;
+		const contentWidth = getContent && getContent().getBoundingClientRect().width;
 		const scrollTop = window.scrollY || window.pageYOffset;
 		const scrollLeft = window.scrollX || window.pageXOffset;
 		const { offset = {} } = this.props;
 		const { left, top, width, height } = positionData;
 
 		const getLeftPos = (alignment, noPortal) => {
-			const adjustedAlignment = getAdjustedAlignment(
-				alignment,
-				positionData,
-				contentWidth,
-				window.innerWidth
-			);
-			const offsetLeft = offset.left || 0;
-
 			if (!noPortal) {
+				const adjustedAlignment = getAdjustedAlignment(
+					alignment,
+					positionData,
+					contentWidth,
+					window.innerWidth
+				);
+				const offsetLeft = offset.left || 0;
+
 				this.setState(() => ({
 					align: adjustedAlignment,
 				}));
 
 				switch (adjustedAlignment) {
-					case 'left':
-						return `${left + scrollLeft + offsetLeft}px`;
 					case 'center':
-						return `${left + width / 2 + scrollLeft + offsetLeft}px`;
+						return calcCenterAlignment(left, width, scrollLeft, offsetLeft);
 					case 'right':
-						return `${left + width + scrollLeft + offsetLeft}px`;
+						return calcRightAlignment(
+							left,
+							width,
+							ARROW_WIDTH,
+							scrollLeft,
+							offsetLeft
+						);
+					case 'left':
 					default:
-						return `${left + width + scrollLeft + offsetLeft}px`;
+						return calcLeftAlignment(
+							left,
+							width,
+							ARROW_WIDTH,
+							scrollLeft,
+							offsetLeft
+						);
 				}
 			}
 		};
@@ -142,7 +231,8 @@ class FloatingPosition extends React.PureComponent {
 						<div>{children}</div>
 					) : (
 						<Portal>{children}</Portal>
-					)}
+					)
+				}
 			>
 				{this.props.children({
 					left: this.state.left,
