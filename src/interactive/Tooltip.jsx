@@ -188,8 +188,8 @@ Tooltip.propTypes = {
 	/** The content that's rendered inside the tooltip */
 	content: PropTypes.element,
 
-	/** The horizontal alignment of the tooltip content bubble to the dropdown trigger */
-	align: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
+	/** The horizontal alignment of the tooltip content bubble to the dropdown trigger (defaults to left) */
+	align: PropTypes.oneOf(['left', 'right', 'center']),
 
 	/** How many additional pixels to push the tooltip content bubble */
 	offset: PropTypes.shape({

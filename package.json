@@ -140,13 +140,16 @@
   },
   "lint-staged": {
     "{src,src/**,src/**/**,assets/,assets/**}/*.{js,jsx,scss}": [
-      "prettier --write"
+	  "prettier --write",
+	  "git add"
     ],
     "assets/scss/**/*.scss": [
-      "stylelint --syntax scss --fix"
+	  "stylelint --syntax scss --fix",
+	  "git add"
     ],
     "**/*.{js,jsx}": [
-      "eslint"
+	  "eslint",
+	  "git add"
     ]
   }
 }

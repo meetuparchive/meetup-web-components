@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
-import { withKnobs, text, object } from '@storybook/addon-knobs';
+import { decorateWithBasics } from '../utils/decorators';
+import { withInfo } from '@storybook/addon-info';
+import { withKnobs, text, object, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import InfoToggle from './InfoToggle';
@@ -9,7 +10,7 @@ import InfoToggle from './InfoToggle';
 storiesOf('Interactive/InfoToggle', module)
 	.addDecorator(withKnobs)
 	.addDecorator(decorateWithBasics)
-	.addDecorator(decorateWithInfo)
+	.addDecorator(withInfo)
 	.add('default', () => {
 		const defaultContent = (
 			<div className="runningText padding--all">
@@ -48,6 +49,6 @@ storiesOf('Interactive/InfoToggle', module)
 					</p>
 				</div>
 			}
-			tooltipProps={{ align: 'center' }}
+			tooltipProps={{ align: select('align', ['left', 'right', 'center'], 'left') }}
 		/>
 	));

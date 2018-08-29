@@ -69,10 +69,14 @@ describe('FloatingPosition', () => {
 		const randomLeft = makeRandomNumber(0, 300);
 		const randomWidth = makeRandomNumber(0, 300);
 		const randomTop = makeRandomNumber(0, 500);
+
 		const randomParentHeight = makeRandomNumber(0, 800);
 		const randomParentLeft = makeRandomNumber(0, 800);
 		const randomParentWidth = makeRandomNumber(0, 800);
 		const randomParentTop = makeRandomNumber(0, 800);
+
+		const randomContentHeight = makeRandomNumber(0, 800);
+
 		const mockGetBoundingClientRect = () => ({
 			height: randomParentHeight,
 			left: randomParentLeft,
@@ -86,6 +90,12 @@ describe('FloatingPosition', () => {
 				left: randomLeft,
 				width: randomWidth,
 				top: randomTop,
+			}),
+		});
+
+		const mockContent = () => ({
+			getBoundingClientRect: () => ({
+				height: randomContentHeight,
 			}),
 		});
 
@@ -105,14 +115,14 @@ describe('FloatingPosition', () => {
 		it('should return undefined early if content is provided trigger is not', () => {
 			const params = {
 				trigger: null,
-				content: <div />,
+				content: mockContent,
 			};
 			expect(calculateContentPosition(params)).toEqual(undefined);
 		});
 		it('should return content position if trigger and content are both provided', () => {
 			const params = {
 				trigger: triggerWithoutOffsetParent,
-				content: <div />,
+				content: mockContent,
 				addPortal: false,
 			};
 			expect(calculateContentPosition(params)).toEqual({
@@ -124,25 +134,19 @@ describe('FloatingPosition', () => {
 			it('should return a left position of undefined', () => {
 				const params = {
 					trigger: triggerWithoutOffsetParent,
-					content: <div />,
+					content: mockContent,
 					addPortal: false,
-					contentHeight: 0,
 					direction: 'top',
 				};
 
-				expect(calculateContentPosition(params)).toEqual({
-					left: undefined,
-					top: 0,
-				});
+				expect(calculateContentPosition(params).left).toEqual(undefined);
 			});
 			describe('when the direction is top', () => {
 				it('should return a top position of the negative contentHeight', () => {
-					const randomContentHeight = makeRandomNumber();
 					const params = {
 						trigger: triggerWithoutOffsetParent,
-						content: <div />,
+						content: mockContent,
 						addPortal: false,
-						contentHeight: randomContentHeight,
 						direction: 'top',
 					};
 					expect(calculateContentPosition(params)).toEqual({
@@ -156,64 +160,71 @@ describe('FloatingPosition', () => {
 					it('should return a top position equal to the height of the trigger', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: false,
-							contentHeight: 0,
 							direction: 'fakeDirection',
 						};
-						expect(calculateContentPosition(params)).toEqual({
-							top: randomHeight,
-							left: undefined,
-						});
+						expect(calculateContentPosition(params).top).toEqual(
+							randomHeight
+						);
 					});
 				});
 				describe('when offset is provided and the trigger DOES NOT have an offset parent', () => {
 					it('should return a top position equal to the height plus the offset from the top of the trigger', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: false,
-							contentHeight: 0,
 							direction: 'fakeDirection',
 							offset: { top: makeRandomNumber(0, 200) },
 						};
-						expect(calculateContentPosition(params)).toEqual({
-							top: randomHeight + params.offset.top,
-							left: undefined,
-						});
+						expect(calculateContentPosition(params).top).toEqual(
+							randomHeight + params.offset.top
+						);
 					});
 				});
 				describe('when offset is provided and the trigger DOES have an offset parent', () => {
 					it('should return a top position equal to the height of the content plus the offset of the parent of the trigger', () => {
 						const params = {
 							trigger: triggerWithOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: false,
-							contentHeight: 0,
 							direction: 'fakeDirection',
 							offset: { top: makeRandomNumber(0, 150) },
 						};
-						expect(calculateContentPosition(params)).toEqual({
-							top: randomParentHeight + params.offset.top,
-							left: undefined,
-						});
+						expect(calculateContentPosition(params).top).toEqual(
+							randomParentHeight + params.offset.top
+						);
 					});
 				});
 			});
 		});
 		describe('when adding a portal', () => {
 			describe('when calculating alignment using getAdjustedAlignment', () => {
-				it('adjusts popup content position if it overflows the viewport', () => {
+				it('adjusts popup content position if it overflows the left side viewport', () => {
 					const MOCK_POSITION_DATA = { left: 0, width: 70 };
 					const expected = 'left';
-					const actual = getAdjustedAlignment(
-						'right',
+					const alignment = getAdjustedAlignment(
+						'center',
 						MOCK_POSITION_DATA,
 						384,
 						1000
 					);
 
-					expect(actual).toBe(expected);
+					expect(alignment).toEqual(expected);
+				});
+
+				it('adjusts popup content position if it overflows the right side viewport', () => {
+					const MOCK_POSITION_DATA = { left: 500, width: 70 };
+					const expected = 'right';
+					const alignment = getAdjustedAlignment(
+						'center',
+						MOCK_POSITION_DATA,
+						501,
+						1000
+					);
+
+					expect(alignment).toEqual(expected);
 				});
 
 				it('does not adjust popup content position if it fits in the viewport', () => {
@@ -226,7 +237,7 @@ describe('FloatingPosition', () => {
 						1000
 					);
 
-					expect(actual).toBe(expected);
+					expect(actual).toEqual(expected);
 				});
 			});
 			describe('returns a left position based on alignment', () => {
@@ -234,10 +245,10 @@ describe('FloatingPosition', () => {
 					it('should return a left alignment equal to the return value of calcCenterAlignment AND offset is provided', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: true,
 							direction: 'top',
-							alignment: 'center',
+							align: 'center',
 							scrollLeft: makeRandomNumber(),
 							offset: { left: makeRandomNumber(0, 350) },
 						};
@@ -253,10 +264,10 @@ describe('FloatingPosition', () => {
 					it('should return a left alignment equal to the return value of calcCenterAlignment AND offset is NOT provided', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: true,
 							direction: 'top',
-							alignment: 'center',
+							align: 'center',
 							scrollLeft: makeRandomNumber(),
 						};
 						expect(calculateContentPosition(params).left).toEqual(
@@ -273,10 +284,10 @@ describe('FloatingPosition', () => {
 					it('should return a left alignment equal to the return value of calcRightAlignment AND offset is provided', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: true,
 							direction: 'top',
-							alignment: 'right',
+							align: 'right',
 							scrollLeft: makeRandomNumber(),
 							offset: { left: makeRandomNumber(0, 350) },
 						};
@@ -293,10 +304,10 @@ describe('FloatingPosition', () => {
 					it('should return a left alignment equal to the return value of calcRightAlignment AND offset is NOT provided', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: true,
 							direction: 'top',
-							alignment: 'right',
+							align: 'right',
 							scrollLeft: makeRandomNumber(),
 						};
 						expect(calculateContentPosition(params).left).toEqual(
@@ -314,10 +325,10 @@ describe('FloatingPosition', () => {
 					it('should return a left alignment equal to the return value of calcLeftAlignment AND offset is provided', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: true,
 							direction: 'top',
-							alignment: 'left',
+							align: 'left',
 							scrollLeft: makeRandomNumber(),
 							offset: { left: makeRandomNumber(0, 350) },
 						};
@@ -334,10 +345,10 @@ describe('FloatingPosition', () => {
 					it('should return a left alignment equal to the return value of calcLeftAlignment AND offset is NOT provided', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: true,
 							direction: 'top',
-							alignment: 'left',
+							align: 'left',
 							scrollLeft: makeRandomNumber(),
 						};
 						expect(calculateContentPosition(params).left).toEqual(
@@ -355,7 +366,7 @@ describe('FloatingPosition', () => {
 					it('should return the default left alignment value equal to the return value of calcLeftAlignment AND offset is provided', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: true,
 							direction: 'top',
 							scrollLeft: makeRandomNumber(),
@@ -374,7 +385,7 @@ describe('FloatingPosition', () => {
 					it('should return a left alignment equal to the return value of calcLeftAlignment AND offset is NOT provided', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
-							content: <div />,
+							content: mockContent,
 							addPortal: true,
 							direction: 'top',
 							scrollLeft: makeRandomNumber(),
@@ -395,32 +406,28 @@ describe('FloatingPosition', () => {
 				describe('when the direction is top', () => {
 					describe('when offset is NOT provided and the trigger DOES NOT have an offset parent', () => {
 						it('should still return a top position equal to the top position of the trigger minus the content height minus the height of the target', () => {
-							const randomContentHeight = makeRandomNumber();
 							const randomScrollTop = makeRandomNumber();
 							const params = {
 								trigger: triggerWithoutOffsetParent,
-								content: <div />,
+								content: mockContent,
 								addPortal: true,
-								contentHeight: randomContentHeight,
 								direction: 'top',
 								scrollTop: randomScrollTop,
 							};
 							const triggerTopPosition =
 								params.scrollTop + randomTop + randomHeight;
 							expect(calculateContentPosition(params).top).toEqual(
-								triggerTopPosition - params.contentHeight - randomHeight
+								triggerTopPosition - randomContentHeight - randomHeight
 							);
 						});
 					});
 					describe('when offset is provided and the trigger DOES NOT have an offset parent', () => {
 						it('should return a top position equal to the top position of the trigger minus the content height minus the height of the target', () => {
-							const randomContentHeight = makeRandomNumber();
 							const randomScrollTop = makeRandomNumber();
 							const params = {
 								trigger: triggerWithoutOffsetParent,
-								content: <div />,
+								content: mockContent,
 								addPortal: true,
-								contentHeight: randomContentHeight,
 								direction: 'top',
 								scrollTop: randomScrollTop,
 								offset: { top: makeRandomNumber() },
@@ -431,19 +438,17 @@ describe('FloatingPosition', () => {
 								randomHeight +
 								params.offset.top;
 							expect(calculateContentPosition(params).top).toEqual(
-								triggerTopPosition - params.contentHeight - randomHeight
+								triggerTopPosition - randomContentHeight - randomHeight
 							);
 						});
 					});
 					describe('when offset is NOT provided and the trigger DOES have an offset parent', () => {
 						it('should still return a top position equal to the top position of the parent of the trigger minus the content height minus the height of the parent', () => {
-							const randomContentHeight = makeRandomNumber();
 							const randomScrollTop = makeRandomNumber();
 							const params = {
 								trigger: triggerWithOffsetParent,
-								content: <div />,
+								content: mockContent,
 								addPortal: true,
-								contentHeight: randomContentHeight,
 								direction: 'top',
 								scrollTop: randomScrollTop,
 							};
@@ -451,20 +456,18 @@ describe('FloatingPosition', () => {
 								params.scrollTop + randomParentTop + randomParentHeight;
 							expect(calculateContentPosition(params).top).toEqual(
 								triggerTopPosition -
-									params.contentHeight -
+									randomContentHeight -
 									randomParentHeight
 							);
 						});
 					});
 					describe('when offset is provided and the trigger DOES have an offset parent', () => {
 						it('should return a top position equal to the top position of the parent of the trigger minus the content height minus the height of the parent', () => {
-							const randomContentHeight = makeRandomNumber();
 							const randomScrollTop = makeRandomNumber();
 							const params = {
 								trigger: triggerWithOffsetParent,
-								content: <div />,
+								content: mockContent,
 								addPortal: true,
-								contentHeight: randomContentHeight,
 								direction: 'top',
 								scrollTop: randomScrollTop,
 								offset: { top: makeRandomNumber() },
@@ -476,7 +479,7 @@ describe('FloatingPosition', () => {
 								params.offset.top;
 							expect(calculateContentPosition(params).top).toEqual(
 								triggerTopPosition -
-									params.contentHeight -
+									randomContentHeight -
 									randomParentHeight
 							);
 						});
@@ -486,13 +489,11 @@ describe('FloatingPosition', () => {
 				describe('when the direction is NOT top', () => {
 					describe('when offset is NOT provided and the trigger DOES NOT have an offset parent', () => {
 						it('should still return a top position equal to the top position of the trigger', () => {
-							const randomContentHeight = makeRandomNumber();
 							const randomScrollTop = makeRandomNumber();
 							const params = {
 								trigger: triggerWithoutOffsetParent,
-								content: <div />,
+								content: mockContent,
 								addPortal: true,
-								contentHeight: randomContentHeight,
 								direction: 'fakeDirection',
 								scrollTop: randomScrollTop,
 							};
@@ -505,13 +506,11 @@ describe('FloatingPosition', () => {
 					});
 					describe('when offset is provided and the trigger DOES NOT have an offset parent', () => {
 						it('should return a top position equal to the top position of the trigger', () => {
-							const randomContentHeight = makeRandomNumber();
 							const randomScrollTop = makeRandomNumber();
 							const params = {
 								trigger: triggerWithoutOffsetParent,
-								content: <div />,
+								content: mockContent,
 								addPortal: true,
-								contentHeight: randomContentHeight,
 								direction: 'fakeDirection',
 								scrollTop: randomScrollTop,
 								offset: { top: makeRandomNumber() },
@@ -528,13 +527,11 @@ describe('FloatingPosition', () => {
 					});
 					describe('when offset is NOT provided and the trigger DOES have an offset parent', () => {
 						it('should still return a top position equal to the top position of the parent of the trigger', () => {
-							const randomContentHeight = makeRandomNumber();
 							const randomScrollTop = makeRandomNumber();
 							const params = {
 								trigger: triggerWithOffsetParent,
-								content: <div />,
+								content: mockContent,
 								addPortal: true,
-								contentHeight: randomContentHeight,
 								direction: 'fakeDirection',
 								scrollTop: randomScrollTop,
 							};
@@ -547,13 +544,11 @@ describe('FloatingPosition', () => {
 					});
 					describe('when offset is provided and the trigger DOES have an offset parent', () => {
 						it('should return a top position equal to the top position of the parent of the trigger', () => {
-							const randomContentHeight = makeRandomNumber();
 							const randomScrollTop = makeRandomNumber();
 							const params = {
 								trigger: triggerWithOffsetParent,
-								content: <div />,
+								content: mockContent,
 								addPortal: true,
-								contentHeight: randomContentHeight,
 								direction: 'fakeDirection',
 								scrollTop: randomScrollTop,
 								offset: { top: makeRandomNumber() },
