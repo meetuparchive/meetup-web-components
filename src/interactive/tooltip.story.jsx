@@ -204,7 +204,7 @@ storiesOf('Interactive/Tooltip', module)
 	.add(
 		'Overflowing viewport',
 		() => (
-			<div style={{ textAlign: 'left' }}>
+			<div style={{ textAlign: 'left', width: '100vw' }}>
 				<Tooltip
 					isActive
 					align="right"

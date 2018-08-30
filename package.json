@@ -28,7 +28,7 @@
     "test:base": "jest --color --config jest.config.json",
     "test:unit": "yarn run test:base",
     "test:updateSnap": "yarn test:base --updateSnapshot",
-    "test:watch": "yarn run test:base -- --watch --verbose",
+    "test:watch": "yarn run test:base --watch --verbose",
     "typecheck": "flow && flow stop"
   },
   "repository": {
@@ -140,13 +140,16 @@
   },
   "lint-staged": {
     "{src,src/**,src/**/**,assets/,assets/**}/*.{js,jsx,scss}": [
-      "prettier --write"
+	  "prettier --write",
+	  "git add"
     ],
     "assets/scss/**/*.scss": [
-      "stylelint --syntax scss --fix"
+	  "stylelint --syntax scss --fix",
+	  "git add"
     ],
     "**/*.{js,jsx}": [
-      "eslint"
+	  "eslint",
+	  "git add"
     ]
   }
 }
