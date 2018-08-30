@@ -171,7 +171,7 @@ describe('FloatingPosition', () => {
 					});
 				});
 				describe('when offset is provided and the trigger DOES NOT have an offset parent', () => {
-					it('should return a top position equal to the height plus the offset from the top of the trigger', () => {
+					it('should return a top position equal to the height of the trigger plus the offset from the top of the trigger', () => {
 						const params = {
 							trigger: triggerWithoutOffsetParent,
 							content: mockContent,
