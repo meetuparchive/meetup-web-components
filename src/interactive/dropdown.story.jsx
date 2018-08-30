@@ -82,20 +82,11 @@ storiesOf('Interactive/Dropdown', module)
 	.add(
 		'Basic Dropdown component',
 		() => (
-			<div
-				style={{
-					marginTop: '800px',
-					width: '500px',
-					height: '1000px',
-					marginLeft: '600px',
-				}}
-			>
-				<Dropdown
-					align="right"
-					trigger={<Button small>Open</Button>}
-					content={dropdownContent}
-				/>
-			</div>
+			<Dropdown
+				align="right"
+				trigger={<Button small>Open</Button>}
+				content={dropdownContent}
+			/>
 		),
 		{ info: { text: 'Aligned right by default' } }
 	)

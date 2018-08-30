@@ -35,16 +35,6 @@ export const calcLeftAlignment = (
 	return `${distanceFromLeftEdge - arrowWidth + width / 2 + scrollLeft + offsetLeft}px`;
 };
 
-export const calcDefaultAlignment = (
-	distanceFromLeftEdge,
-	width,
-	arrowWidth,
-	scrollLeft,
-	offsetLeft
-) => {
-	return `${distanceFromLeftEdge - arrowWidth + width + scrollLeft + offsetLeft}px`;
-};
-
 export const getAdjustedAlignment = (
 	preferredAlignment,
 	triggerPositionData,
@@ -74,7 +64,7 @@ export const calculateContentPosition = ({
 	addPortal,
 	direction,
 	offset = {},
-	align,
+	align = 'right',
 	scrollLeft = 0,
 	scrollTop = 0,
 }) => {
@@ -88,23 +78,26 @@ export const calculateContentPosition = ({
 		const offsetTop = offset.top || 0;
 		const contentHeight = content().getBoundingClientRect().height;
 		const contentWidth = content().getBoundingClientRect().width;
-
+		const alignment = getAdjustedAlignment(
+			align,
+			positionData,
+			contentWidth,
+			window.innerWidth
+		);
+		console.log(addPortal);
 		if (addPortal === false) {
 			if (direction === 'top') {
-				return { top: contentHeight * -1 };
+				return { top: contentHeight * -1, calculatedAlignment: alignment };
 			} else {
 				const targetElementHeight = positionTarget.getBoundingClientRect().height;
-				return { top: targetElementHeight + offsetTop };
+				return {
+					top: targetElementHeight + offsetTop,
+					calculatedAlignment: alignment,
+				};
 			}
 		} else {
 			let left = 0;
 			const triggerTopPosition = scrollTop + top + height + offsetTop;
-			const alignment = getAdjustedAlignment(
-				align,
-				positionData,
-				contentWidth,
-				window.innerWidth
-			);
 			switch (alignment) {
 				case 'center':
 					left = calcCenterAlignment(
@@ -114,15 +107,7 @@ export const calculateContentPosition = ({
 						offsetLeft
 					);
 					break;
-				case 'right':
-					left = calcRightAlignment(
-						leftPosition,
-						width,
-						ARROW_WIDTH,
-						scrollLeft,
-						offsetLeft
-					);
-					break;
+
 				case 'left':
 					left = calcLeftAlignment(
 						leftPosition,
@@ -132,8 +117,9 @@ export const calculateContentPosition = ({
 						offsetLeft
 					);
 					break;
+				case 'right':
 				default:
-					left = calcDefaultAlignment(
+					left = calcRightAlignment(
 						leftPosition,
 						width,
 						ARROW_WIDTH,
@@ -154,6 +140,9 @@ export const calculateContentPosition = ({
  * @module FloatingPosition
  */
 class FloatingPosition extends React.PureComponent {
+	static defaultProps = {
+		align: 'right',
+	};
 	constructor(props) {
 		super(props);
 

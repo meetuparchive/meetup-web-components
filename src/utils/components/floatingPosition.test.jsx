@@ -8,7 +8,6 @@ import FloatingPosition, {
 	calcCenterAlignment,
 	calcRightAlignment,
 	calcLeftAlignment,
-	calcDefaultAlignment,
 	ARROW_WIDTH,
 } from './FloatingPosition';
 
@@ -150,10 +149,9 @@ describe('FloatingPosition', () => {
 						addPortal: false,
 						direction: 'top',
 					};
-					expect(calculateContentPosition(params)).toEqual({
-						left: undefined,
-						top: -randomContentHeight,
-					});
+					expect(calculateContentPosition(params).top).toEqual(
+						-randomContentHeight
+					);
 				});
 			});
 			describe('when the direction is not top', () => {
@@ -197,6 +195,18 @@ describe('FloatingPosition', () => {
 							randomParentHeight + params.offset.top
 						);
 					});
+				});
+				it('should return an alignment', () => {
+					const params = {
+						trigger: triggerWithoutOffsetParent,
+						content: mockContent,
+						addPortal: false,
+						direction: 'fakeDirection',
+						offset: { top: makeRandomNumber(0, 150) },
+					};
+					expect(
+						calculateContentPosition(params).calculatedAlignment
+					).toBeTruthy();
 				});
 			});
 		});
@@ -374,7 +384,7 @@ describe('FloatingPosition', () => {
 							offset: { left: makeRandomNumber(0, 350) },
 						};
 						expect(calculateContentPosition(params).left).toEqual(
-							calcDefaultAlignment(
+							calcRightAlignment(
 								randomLeft,
 								randomWidth,
 								ARROW_WIDTH,
@@ -392,7 +402,7 @@ describe('FloatingPosition', () => {
 							scrollLeft: makeRandomNumber(),
 						};
 						expect(calculateContentPosition(params).left).toEqual(
-							calcDefaultAlignment(
+							calcRightAlignment(
 								randomLeft,
 								randomWidth,
 								ARROW_WIDTH,

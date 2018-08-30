@@ -68,6 +68,7 @@ class Tooltip extends React.PureComponent {
 			direction,
 			manualToggle,
 			withClose,
+			onClick, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -188,7 +189,7 @@ Tooltip.propTypes = {
 	/** The content that's rendered inside the tooltip */
 	content: PropTypes.element,
 
-	/** The horizontal alignment of the tooltip content bubble to the dropdown trigger (defaults to left) */
+	/** The horizontal alignment of the tooltip content bubble to the dropdown trigger (defaults to right) */
 	align: PropTypes.oneOf(['left', 'right', 'center']),
 
 	/** How many additional pixels to push the tooltip content bubble */
