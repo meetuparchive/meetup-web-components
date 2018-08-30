@@ -128,6 +128,7 @@ describe('FloatingPosition', () => {
 			expect(calculateContentPosition(params)).toEqual({
 				left: undefined,
 				top: randomHeight,
+				calculatedAlignment: 'right',
 			});
 		});
 		describe('when NOT adding a portal', () => {

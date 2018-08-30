@@ -84,7 +84,6 @@ export const calculateContentPosition = ({
 			contentWidth,
 			window.innerWidth
 		);
-		console.log(addPortal);
 		if (addPortal === false) {
 			if (direction === 'top') {
 				return { top: contentHeight * -1, calculatedAlignment: alignment };
