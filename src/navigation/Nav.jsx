@@ -103,10 +103,11 @@ export class Nav extends React.Component {
 	}
 
 	markAllNotifAsRead = notifications => {
-		const notif = notifications || this.props.navItems.notifications;
-		const { list, notificationsDropdown } = notif;
-		if (list && list.length) {
-			const newList = [...list];
+		const { notificationsDropdown, list } = this.props.navItems.notifications;
+		const notificationsList = notifications || list;
+
+		if (notificationsList && notificationsList.length) {
+			const newList = [...notificationsList];
 
 			newList.sort((a, b) => a.updated < b.updated);
 			notificationsDropdown.markRead(newList[0].id);
