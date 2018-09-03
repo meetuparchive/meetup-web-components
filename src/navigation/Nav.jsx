@@ -86,8 +86,9 @@ export class Nav extends React.Component {
 		}
 		const action = notifications.getNotificationsQuery();
 		if (action && action.meta && action.meta.request) {
-			action.meta.request.then(() => {
-				this.markAllNotifAsRead();
+			action.meta.request.then(([resp]) => {
+				const { value: notifications } = resp.response;
+				this.markAllNotifAsRead(notifications);
 			});
 		}
 		return action;
@@ -101,11 +102,12 @@ export class Nav extends React.Component {
 		this.setState(() => ({ showMobileDashboard: false }));
 	}
 
-	markAllNotifAsRead = () => {
-		const { notifications } = this.props.navItems;
-		const { list, notificationsDropdown } = notifications;
-		if (list && list.length) {
-			const newList = [...list];
+	markAllNotifAsRead = notifications => {
+		const { notificationsDropdown, list } = this.props.navItems.notifications;
+		const notificationsList = notifications || list;
+
+		if (notificationsList && notificationsList.length) {
+			const newList = [...notificationsList];
 
 			newList.sort((a, b) => a.updated < b.updated);
 			notificationsDropdown.markRead(newList[0].id);
