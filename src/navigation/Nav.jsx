@@ -109,7 +109,7 @@ export class Nav extends React.Component {
 		if (notificationsList && notificationsList.length) {
 			const newList = [...notificationsList];
 
-			newList.sort((a, b) => a.updated < b.updated);
+			newList.sort((a, b) => parseInt(b.updated) - parseInt(a.updated));
 			notificationsDropdown.markRead(newList[0].id);
 		}
 	};
