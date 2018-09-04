@@ -259,7 +259,16 @@ Tooltip.propTypes = {
 	/** Whether to render the dropdown content directly in the component instead of bulling it out and attaching to the document root */
 	noPortal: PropTypes.bool,
 	/** Required function to close the dropdown when working with a manually toggled tooltip */
-	onClose: PropTypes.func,
+	onClose: (props, propName, componentName) => {
+		if (
+			props.manualToggle === true &&
+			(props[propName] === undefined || typeof props[propName] !== 'function')
+		) {
+			return new Error(
+				'The onClose function is required if manualToggle is passed to this component!'
+			);
+		}
+	},
 };
 
 export default Tooltip;
