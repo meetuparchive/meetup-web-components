@@ -2,7 +2,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Tooltip from './Tooltip';
 import Button from '../forms/Button';
-import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
+import { withKnobs, text, object, select, boolean } from '@storybook/addon-knobs';
+import { decorateWithBasics } from '../utils/decorators';
+import { withInfo } from '@storybook/addon-info';
 
 const dropdownContent = (
 	<div className="runningText padding--all">
@@ -16,6 +18,9 @@ const dropdownContent = (
 		</p>
 	</div>
 );
+
+const align = (alignment = 'right') =>
+	select('align', ['left', 'center', 'right'], alignment);
 
 /**
  * @module ManualToggleDropdown
@@ -44,15 +49,15 @@ class ManualToggleDropdown extends React.PureComponent {
 			<Tooltip
 				manualToggle
 				isActive={this.state.tooltipOpen}
-				align="right"
-				id="testTooltip"
+				align={align()}
+				id={text('tooltipId', 'testTooltip')}
 				trigger={
 					<Button onClick={this.toggleDropdown} small>
 						Click to toggle
 					</Button>
 				}
 				content={dropdownContent}
-				withClose
+				withClose={boolean('withClose', true)}
 				onClose={this.closeDropdown}
 			/>
 		);
@@ -60,8 +65,9 @@ class ManualToggleDropdown extends React.PureComponent {
 }
 
 storiesOf('Interactive/Tooltip', module)
+	.addDecorator(withKnobs)
 	.addDecorator(decorateWithBasics)
-	.addDecorator(decorateWithInfo)
+	.addDecorator(withInfo)
 	.add(
 		'Basic Tooltip component',
 		() => (
@@ -74,8 +80,8 @@ storiesOf('Interactive/Tooltip', module)
 				}}
 			>
 				<Tooltip
-					align="right"
-					id="testTooltip"
+					align={align()}
+					id={text('tooltipId', 'testTooltip')}
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
 				/>
@@ -88,9 +94,9 @@ storiesOf('Interactive/Tooltip', module)
 		() => (
 			<div style={{ textAlign: 'center' }}>
 				<Tooltip
-					direction="top"
-					align="right"
-					id="testTooltip"
+					direction={text('direction', 'top')}
+					align={align()}
+					id={text('tooltipId', 'testTooltip')}
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
 				/>
@@ -104,8 +110,8 @@ storiesOf('Interactive/Tooltip', module)
 			<div style={{ textAlign: 'center' }}>
 				<Tooltip
 					isActive
-					align="center"
-					id="testTooltip"
+					align={align()}
+					id={text('tooltipId', 'testTooltip')}
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
 				/>
@@ -118,9 +124,9 @@ storiesOf('Interactive/Tooltip', module)
 		() => (
 			<div style={{ textAlign: 'center' }}>
 				<Tooltip
-					noPortal
-					align="right"
-					id="testTooltip"
+					noPortal={boolean('noPortal', true)}
+					align={align()}
+					id={text('tooltipId', 'testTooltip')}
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
 				/>
@@ -138,8 +144,8 @@ storiesOf('Interactive/Tooltip', module)
 		() => (
 			<div style={{ textAlign: 'center' }}>
 				<Tooltip
-					align="left"
-					id="testTooltip"
+					align={align('left')}
+					id={text('tooltipId', 'testTooltip')}
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
 				/>
@@ -152,8 +158,8 @@ storiesOf('Interactive/Tooltip', module)
 		() => (
 			<div style={{ textAlign: 'center' }}>
 				<Tooltip
-					align="center"
-					id="testTooltip"
+					align={align('center')}
+					id={text('tooltipId', 'testTooltip')}
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
 				/>
@@ -167,9 +173,9 @@ storiesOf('Interactive/Tooltip', module)
 			<div style={{ textAlign: 'center' }}>
 				<Tooltip
 					isActive
-					offset={{ top: 8, left: 16 }}
-					align="right"
-					id="testTooltip"
+					offset={object('offset', { top: 8, left: 16 })}
+					align={align()}
+					id={text('tooltipId', 'testTooltip')}
 					trigger={<Button small>Open</Button>}
 					content={
 						<div className="runningText padding--all">
@@ -194,9 +200,9 @@ storiesOf('Interactive/Tooltip', module)
 			<div style={{ textAlign: 'center' }}>
 				<Tooltip
 					isActive
-					withClose
-					align="center"
-					id="testTooltip"
+					withClose={boolean('withClose', true)}
+					align={align('center')}
+					id={text('tooltipId', 'testTooltip')}
 					trigger={<Button small>Open</Button>}
 					content={dropdownContent}
 				/>
@@ -213,8 +219,8 @@ storiesOf('Interactive/Tooltip', module)
 			<div style={{ textAlign: 'left', width: '100vw' }}>
 				<Tooltip
 					isActive
-					align="right"
-					id="testTooltip"
+					align={align()}
+					id={text('tooltipId', 'testTooltip')}
 					trigger={<Button small>Open</Button>}
 					content={
 						<div className="runningText padding--all">
