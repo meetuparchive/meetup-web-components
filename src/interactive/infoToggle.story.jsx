@@ -12,13 +12,12 @@ class ManualInfoToggle extends React.PureComponent {
 		tooltipOpen: false,
 	};
 
-	toggleTooltip = () => {
-		this.setState(prevState => ({ tooltipOpen: !prevState.tooltipOpen }));
+	changeTooltip = tooltipOpen => {
+		this.setState({ tooltipOpen });
 	};
 
-	closeTooltip = () => {
-		this.setState(() => ({ tooltipOpen: false }));
-	};
+	toggleTooltip = () => this.changeTooltip(!this.state.tooltipOpen);
+	closeTooltip = () => this.changeTooltip(false);
 
 	render() {
 		return (
