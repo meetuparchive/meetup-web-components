@@ -11,6 +11,7 @@ import {
 	FLEX_WRAP_CLASS,
 	FLEX_NOGUTTER_CLASS,
 	FLEX_ALIGN_CLASS,
+	FLEX_JUSTIFY_RIGHT_CLASS,
 	VALID_ALIGNMENTS,
 	VALID_BREAKPOINTS,
 	VALID_SPACE,
@@ -154,6 +155,13 @@ describe('Flex', function() {
 					flex.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_flex--columnReverse`)
 				).toBe(true);
 			});
+		});
+	});
+	describe('justifyItemsRight', () => {
+		it(`check that the component has ${FLEX_JUSTIFY_RIGHT_CLASS} class`, function() {
+			const flex = shallow(<FlexComponent justifyItemsRight />);
+			expect(flex.hasClass(FLEX_CLASS)).toBe(true);
+			expect(flex.hasClass(FLEX_JUSTIFY_RIGHT_CLASS)).toBe(true);
 		});
 	});
 });

@@ -44,6 +44,7 @@ export default class RadioButtonGroup extends PureComponent {
 			name,
 			className,
 			wrap,
+			justifyItemsRight,
 		} = this.props;
 
 		const switchDirectionAttr = switchDirection ? { switchDirection } : '';
@@ -54,6 +55,7 @@ export default class RadioButtonGroup extends PureComponent {
 				{...switchDirectionAttr}
 				className={className}
 				wrap={wrap}
+				justifyItemsRight={justifyItemsRight}
 			>
 				{React.Children.map(children, option => (
 					<FlexItem shrink>
