@@ -24,6 +24,12 @@ export const VALID_SPACE = {
 	flexStart: 'flexStart',
 };
 
+export const VALID_ITEM_JUSTIFY = {
+	left: 'left',
+	right: 'right',
+	center: 'center',
+};
+
 export const DIRECTION_ROW = 'row';
 export const DIRECTION_COLUMN = 'column';
 
@@ -33,6 +39,9 @@ export const FLEX_COLUMN_CLASS = `${FLEX_CLASS}--${DIRECTION_COLUMN}`;
 export const FLEX_WRAP_CLASS = `${FLEX_CLASS}--wrap`;
 export const FLEX_NOGUTTER_CLASS = `${FLEX_CLASS}--noGutters`;
 export const FLEX_ALIGN_CLASS = `${FLEX_CLASS}--align`;
+export const FLEX_JUSTIFY_LEFT_CLASS = `${FLEX_CLASS}--justifyLeft`;
+export const FLEX_JUSTIFY_RIGHT_CLASS = `${FLEX_CLASS}--justifyRight`;
+export const FLEX_JUSTIFY_CENTER_CLASS = `${FLEX_CLASS}--justifyCenter`;
 
 /**
  * Design System Component: Provides `Flex` styled container for ideal use with `FlexItem` content
@@ -56,6 +65,7 @@ export class FlexComponent extends React.Component {
 			className,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
+			justifyItems,
 			...other
 		} = this.props;
 
@@ -89,6 +99,9 @@ export class FlexComponent extends React.Component {
 				[`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`]: align,
 				[FLEX_WRAP_CLASS]: wrap,
 				'component--isLoading': isLoading,
+				[FLEX_JUSTIFY_LEFT_CLASS]: justifyItems === VALID_ITEM_JUSTIFY.left,
+				[FLEX_JUSTIFY_RIGHT_CLASS]: justifyItems === VALID_ITEM_JUSTIFY.right,
+				[FLEX_JUSTIFY_CENTER_CLASS]: justifyItems === VALID_ITEM_JUSTIFY.center,
 			},
 			className
 		);
