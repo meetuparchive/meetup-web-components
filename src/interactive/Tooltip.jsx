@@ -34,8 +34,8 @@ class Tooltip extends React.PureComponent {
 		}
 	}
 
-	static getDerivedStateFromProps(nextProps, prevState) {
-		if (nextProps.manualToggle && prevState.isActive !== nextProps.isActive) {
+	static getDerivedStateFromProps(nextProps, state) {
+		if (nextProps.manualToggle && state.isActive !== nextProps.isActive) {
 			return { isActive: nextProps.isActive };
 		}
 		return null;
