@@ -2,10 +2,49 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics } from '../utils/decorators';
 import { withInfo } from '@storybook/addon-info';
-import { withKnobs, text, object, select } from '@storybook/addon-knobs';
+import { withKnobs, text, object, select, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import InfoToggle from './InfoToggle';
+
+class ManualInfoToggle extends React.PureComponent {
+	state = {
+		tooltipOpen: false,
+	};
+
+	toggleTooltip = () => {
+		this.setState(prevState => ({ tooltipOpen: !prevState.tooltipOpen }));
+	};
+
+	closeTooltip = () => {
+		this.setState(() => ({ tooltipOpen: false }));
+	};
+
+	render() {
+		return (
+			<InfoToggle
+				label={text('label', 'Info toggle label')}
+				tooltipId={text('tooltipId', 'info-tooltip')}
+				tooltipContent={
+					<div className="runningText padding--all">
+						<p>
+							This is a tooltip is being passed props that adjust the
+							alignment of the popup bubble to point to the trigger.
+						</p>
+					</div>
+				}
+				onClick={this.toggleTooltip}
+				tooltipProps={{
+					align: select('align', ['left', 'right', 'center'], 'left'),
+					withClose: boolean('withClose', true),
+					manualToggle: boolean('manualToggle', true),
+					isActive: this.state.tooltipOpen,
+					onClose: this.closeTooltip,
+				}}
+			/>
+		);
+	}
+}
 
 storiesOf('Interactive/InfoToggle', module)
 	.addDecorator(withKnobs)
@@ -49,6 +88,10 @@ storiesOf('Interactive/InfoToggle', module)
 					</p>
 				</div>
 			}
-			tooltipProps={{ align: select('align', ['left', 'right', 'center'], 'left') }}
+			tooltipProps={{
+				align: select('align', ['left', 'right', 'center'], 'left'),
+				withClose: boolean('withClose', false),
+			}}
 		/>
-	));
+	))
+	.add('with manualToggle', () => <ManualInfoToggle />);
