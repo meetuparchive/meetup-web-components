@@ -33,6 +33,7 @@ export const FLEX_COLUMN_CLASS = `${FLEX_CLASS}--${DIRECTION_COLUMN}`;
 export const FLEX_WRAP_CLASS = `${FLEX_CLASS}--wrap`;
 export const FLEX_NOGUTTER_CLASS = `${FLEX_CLASS}--noGutters`;
 export const FLEX_ALIGN_CLASS = `${FLEX_CLASS}--align`;
+export const FLEX_JUSTIFY_RIGHT_CLASS = `${FLEX_CLASS}--justifyRight`;
 
 /**
  * Design System Component: Provides `Flex` styled container for ideal use with `FlexItem` content
@@ -56,6 +57,7 @@ export class FlexComponent extends React.Component {
 			className,
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
+			justifyItemsRight,
 			...other
 		} = this.props;
 
@@ -89,6 +91,7 @@ export class FlexComponent extends React.Component {
 				[`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`]: align,
 				[FLEX_WRAP_CLASS]: wrap,
 				'component--isLoading': isLoading,
+				[FLEX_JUSTIFY_RIGHT_CLASS]: justifyItemsRight,
 			},
 			className
 		);
