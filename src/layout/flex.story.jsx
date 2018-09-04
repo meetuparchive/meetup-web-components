@@ -495,6 +495,63 @@ storiesOf('Layout/Flex', module)
 			},
 		}
 	)
+	.add('justify items left', () => (
+		<Flex style={(flexParentStyles, { padding: 0 })} justifyItems="left">
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 1</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 2</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 3</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 4</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 5</div>
+			</FlexItem>
+		</Flex>
+	))
+	.add('justify items right', () => (
+		<Flex style={(flexParentStyles, { padding: 0 })} justifyItems="right">
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 1</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 2</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 3</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 4</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 5</div>
+			</FlexItem>
+		</Flex>
+	))
+	.add('justify items center', () => (
+		<Flex style={(flexParentStyles, { padding: 0 })} justifyItems="center">
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 1</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 2</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 3</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 4</div>
+			</FlexItem>
+			<FlexItem style={flexItemStyles}>
+				<div style={boxStyles}>Item 5</div>
+			</FlexItem>
+		</Flex>
+	))
 	.add('isLoading', () => (
 		<Flex isLoading style={flexParentStyles}>
 			<FlexItem style={flexItemStyles}>
