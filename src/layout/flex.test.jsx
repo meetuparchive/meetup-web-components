@@ -11,7 +11,9 @@ import {
 	FLEX_WRAP_CLASS,
 	FLEX_NOGUTTER_CLASS,
 	FLEX_ALIGN_CLASS,
+	FLEX_JUSTIFY_LEFT_CLASS,
 	FLEX_JUSTIFY_RIGHT_CLASS,
+	FLEX_JUSTIFY_CENTER_CLASS,
 	VALID_ALIGNMENTS,
 	VALID_BREAKPOINTS,
 	VALID_SPACE,
@@ -157,11 +159,25 @@ describe('Flex', function() {
 			});
 		});
 	});
-	describe('justifyItemsRight', () => {
+	describe('justifyItems left', () => {
+		it(`check that the component has ${FLEX_JUSTIFY_LEFT_CLASS} class`, function() {
+			const flex = shallow(<FlexComponent justifyItems="left" />);
+			expect(flex.hasClass(FLEX_CLASS)).toBe(true);
+			expect(flex.hasClass(FLEX_JUSTIFY_LEFT_CLASS)).toBe(true);
+		});
+	});
+	describe('justifyItems right', () => {
 		it(`check that the component has ${FLEX_JUSTIFY_RIGHT_CLASS} class`, function() {
-			const flex = shallow(<FlexComponent justifyItemsRight />);
+			const flex = shallow(<FlexComponent justifyItems="right" />);
 			expect(flex.hasClass(FLEX_CLASS)).toBe(true);
 			expect(flex.hasClass(FLEX_JUSTIFY_RIGHT_CLASS)).toBe(true);
+		});
+	});
+	describe('justifyItems center', () => {
+		it(`check that the component has ${FLEX_JUSTIFY_CENTER_CLASS} class`, function() {
+			const flex = shallow(<FlexComponent justifyItems="center" />);
+			expect(flex.hasClass(FLEX_CLASS)).toBe(true);
+			expect(flex.hasClass(FLEX_JUSTIFY_CENTER_CLASS)).toBe(true);
 		});
 	});
 });

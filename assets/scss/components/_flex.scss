@@ -2,7 +2,8 @@
 	@include flexParent("row", false);
 }
 
-.flex-item {
+.flex-item,
+.flex-item--justifyLeft {
 	@include flexChild("grow");
 	padding-left: var(--responsive-space);
 
@@ -119,6 +120,21 @@ $flexGrowFactors: 1, 2, 3, 4, 5, 6, 7;
 	.flex-item {
 		padding-left: 0;
 		padding-right: var(--responsive-space);
+
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+}
+
+.flex--justifyCenter {
+	.flex-item {
+		padding-left: calc(var(--responsive-space) / 2);
+		padding-right: calc(var(--responsive-space) / 2);
+
+		&:first-child {
+			padding-left: 0;
+		}
 
 		&:last-child {
 			padding-right: 0;
