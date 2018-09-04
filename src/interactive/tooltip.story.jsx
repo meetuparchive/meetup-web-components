@@ -35,6 +35,10 @@ class ManualToggleDropdown extends React.PureComponent {
 		this.setState(() => ({ tooltipOpen: !this.state.tooltipOpen }));
 	}
 
+	closeDropdown = () => {
+		this.setState(() => ({ tooltipOpen: false }));
+	};
+
 	render() {
 		return (
 			<Tooltip
@@ -48,6 +52,8 @@ class ManualToggleDropdown extends React.PureComponent {
 					</Button>
 				}
 				content={dropdownContent}
+				withClose
+				onClose={this.closeDropdown}
 			/>
 		);
 	}
