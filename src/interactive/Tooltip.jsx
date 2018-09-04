@@ -38,7 +38,7 @@ class Tooltip extends React.PureComponent {
 		if (nextProps.manualToggle && prevState.isActive !== nextProps.isActive) {
 			return { isActive: nextProps.isActive };
 		}
-		return prevState;
+		return null;
 	}
 
 	handleClickOutsideContent = e => {
@@ -59,7 +59,7 @@ class Tooltip extends React.PureComponent {
 				this.props.onClick(e);
 				return;
 			}
-			this.props.onClose && this.props.onClose();
+			this.props.onClose && this.props.onClose(e);
 			return;
 		}
 
@@ -265,7 +265,7 @@ Tooltip.propTypes = {
 			(props[propName] === undefined || typeof props[propName] !== 'function')
 		) {
 			return new Error(
-				'The onClose function is required if manualToggle is passed to this component!'
+				`The ${propName} function is required when manualToggle is true in this component!`
 			);
 		}
 	},
