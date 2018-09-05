@@ -22,36 +22,12 @@ class Tooltip extends React.PureComponent {
 		};
 	}
 
-	componentDidMount() {
-		if (this.props.manualToggle) {
-			document.addEventListener('click', this.handleClickOutsideContent);
-		}
-	}
-
-	componentWillUnmount() {
-		if (this.props.manualToggle) {
-			document.removeEventListener('click', this.handleClickOutsideContent);
-		}
-	}
-
 	static getDerivedStateFromProps(nextProps, state) {
 		if (nextProps.manualToggle && state.isActive !== nextProps.isActive) {
 			return { isActive: nextProps.isActive };
 		}
 		return null;
 	}
-
-	handleClickOutsideContent = e => {
-		// only close the content if a user click on anything but the trigger or the content
-		if (
-			this.contentRef &&
-			this.triggerRef &&
-			!this.contentRef.contains(e.target) &&
-			!this.triggerRef.contains(e.target)
-		) {
-			this.closeContent(e);
-		}
-	};
 
 	closeContent(e) {
 		if (this.props.manualToggle) {
