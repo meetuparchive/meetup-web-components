@@ -78,7 +78,7 @@ If you click the disclosure arrow, the version number will be displayed, e.g.
 You can then install this beta version into your consumer application with
 
 ```sh
-> yarn install meetup-web-components@<version tag>
+> yarn add meetup-web-components@<version tag>
 ```
 
 Each time you push a change to your `meetup-web-components` PR, you'll need to
