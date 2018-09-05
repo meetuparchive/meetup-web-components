@@ -6,6 +6,35 @@ import rafSchedule from 'raf-schd';
 import ConditionalWrap from './ConditionalWrap';
 import withMatchMedia from './withMatchMedia';
 
+export const ARROW_WIDTH = 19.5;
+
+export const calcCenterAlignment = (
+	distanceFromLeftEdge,
+	width,
+	scrollLeft,
+	offsetLeft
+) => {
+	return `${distanceFromLeftEdge + width / 2 + scrollLeft + offsetLeft}px`;
+};
+export const calcRightAlignment = (
+	distanceFromLeftEdge,
+	width,
+	arrowWidth,
+	scrollLeft,
+	offsetLeft
+) => {
+	return `${distanceFromLeftEdge + arrowWidth + width / 2 + scrollLeft + offsetLeft}px`;
+};
+export const calcLeftAlignment = (
+	distanceFromLeftEdge,
+	width,
+	arrowWidth,
+	scrollLeft,
+	offsetLeft
+) => {
+	return `${distanceFromLeftEdge - arrowWidth + width / 2 + scrollLeft + offsetLeft}px`;
+};
+
 export const getAdjustedAlignment = (
 	preferredAlignment,
 	triggerPositionData,
@@ -13,15 +42,15 @@ export const getAdjustedAlignment = (
 	viewportWidth
 ) => {
 	const { left, width } = triggerPositionData;
-	const overflowLeft = left + contentWidth > viewportWidth;
-	const overflowRight = left + width - contentWidth < 0;
+	const overflowLeft = left + width - contentWidth < 0;
+	const overflowRight = left + contentWidth > viewportWidth;
 
-	// if overflows viewport on the right side, go left
+	// if overflows viewport on the right side, right align the content
 	if (overflowRight && !overflowLeft) {
-		return 'left';
-		// if overflows viewport on the left side, go right
-	} else if (overflowLeft && !overflowRight) {
 		return 'right';
+		// if overflows viewport on the left side, left align the content
+	} else if (overflowLeft && !overflowRight) {
+		return 'left';
 		// but if there's no overflow OR there's overflow on
 		// both sides, just use whatever alignment was passed
 	} else {
@@ -29,10 +58,90 @@ export const getAdjustedAlignment = (
 	}
 };
 
+export const calculateContentPosition = ({
+	trigger,
+	content,
+	addPortal,
+	direction,
+	offset = {},
+	align = 'right',
+	scrollLeft = 0,
+	scrollTop = 0,
+}) => {
+	if (trigger && content) {
+		const positionTarget = trigger().offsetParent
+			? trigger().offsetParent
+			: trigger();
+		const positionData = positionTarget.getBoundingClientRect();
+		const { left: leftPosition, top, width, height } = positionData;
+		const offsetLeft = offset.left || 0;
+		const offsetTop = offset.top || 0;
+		const contentHeight = content().getBoundingClientRect().height;
+		const contentWidth = content().getBoundingClientRect().width;
+		const alignment = getAdjustedAlignment(
+			align,
+			positionData,
+			contentWidth,
+			window.innerWidth
+		);
+		if (addPortal === false) {
+			if (direction === 'top') {
+				return { top: contentHeight * -1, calculatedAlignment: alignment };
+			} else {
+				const targetElementHeight = positionTarget.getBoundingClientRect().height;
+				return {
+					top: targetElementHeight + offsetTop,
+					calculatedAlignment: alignment,
+				};
+			}
+		} else {
+			let left = 0;
+			const triggerTopPosition = scrollTop + top + height + offsetTop;
+			switch (alignment) {
+				case 'center':
+					left = calcCenterAlignment(
+						leftPosition,
+						width,
+						scrollLeft,
+						offsetLeft
+					);
+					break;
+
+				case 'left':
+					left = calcLeftAlignment(
+						leftPosition,
+						width,
+						ARROW_WIDTH,
+						scrollLeft,
+						offsetLeft
+					);
+					break;
+				case 'right':
+				default:
+					left = calcRightAlignment(
+						leftPosition,
+						width,
+						ARROW_WIDTH,
+						scrollLeft,
+						offsetLeft
+					);
+					break;
+			}
+			const topPosition =
+				direction === 'top'
+					? triggerTopPosition - contentHeight - height
+					: triggerTopPosition;
+			return { left, top: topPosition, calculatedAlignment: alignment };
+		}
+	}
+};
 /**
  * @module FloatingPosition
  */
 class FloatingPosition extends React.PureComponent {
+	static defaultProps = {
+		align: 'right',
+	};
 	constructor(props) {
 		super(props);
 
@@ -47,75 +156,26 @@ class FloatingPosition extends React.PureComponent {
 	}
 
 	getContentPosition() {
-		const { getTrigger, getContent } = this.props;
+		const { getTrigger, getContent, noPortal, direction, offset, align } = this.props;
 
-		if (!getTrigger() || !getContent()) {
-			return;
-		}
-
-		const positionTarget = getTrigger().offsetParent
-			? getTrigger().offsetParent
-			: getTrigger();
-		const positionData = positionTarget.getBoundingClientRect();
-		const contentHeight =
-			getContent && getContent().getBoundingClientRect().height;
-		const contentWidth =
-			getContent && getContent().getBoundingClientRect().width;
 		const scrollTop = window.scrollY || window.pageYOffset;
 		const scrollLeft = window.scrollX || window.pageXOffset;
-		const { offset = {} } = this.props;
-		const { left, top, width, height } = positionData;
 
-		const getLeftPos = (alignment, noPortal) => {
-			const adjustedAlignment = getAdjustedAlignment(
-				alignment,
-				positionData,
-				contentWidth,
-				window.innerWidth
-			);
-			const offsetLeft = offset.left || 0;
-
-			if (!noPortal) {
-				this.setState(() => ({
-					align: adjustedAlignment,
-				}));
-
-				switch (adjustedAlignment) {
-					case 'left':
-						return `${left + scrollLeft + offsetLeft}px`;
-					case 'center':
-						return `${left + width / 2 + scrollLeft + offsetLeft}px`;
-					case 'right':
-						return `${left + width + scrollLeft + offsetLeft}px`;
-					default:
-						return `${left + width + scrollLeft + offsetLeft}px`;
-				}
-			}
-		};
-
-		const getTopPos = (direction, noPortal) => {
-			const offsetTop = offset.top || 0;
-			const triggerTopPosition = scrollTop + top + height + offsetTop;
-
-			if (noPortal) {
-				return direction == 'top'
-					? parseInt(contentHeight * -1)
-					: height + offsetTop;
-			} else {
-				return direction == 'top'
-					? triggerTopPosition - contentHeight - height
-					: triggerTopPosition;
-			}
-		};
-
-		const ddPosition = {
-			left: getLeftPos(this.props.align, this.props.noPortal),
-			top: getTopPos(this.props.direction, this.props.noPortal),
-		};
+		const { left, top, calculatedAlignment } = calculateContentPosition({
+			trigger: getTrigger,
+			content: getContent,
+			addPortal: !noPortal,
+			direction,
+			offset,
+			align,
+			scrollLeft,
+			scrollTop,
+		});
 
 		this.setState(() => ({
-			left: ddPosition.left,
-			top: ddPosition.top,
+			left,
+			top,
+			align: calculatedAlignment,
 		}));
 	}
 
@@ -142,7 +202,8 @@ class FloatingPosition extends React.PureComponent {
 						<div>{children}</div>
 					) : (
 						<Portal>{children}</Portal>
-					)}
+					)
+				}
 			>
 				{this.props.children({
 					left: this.state.left,

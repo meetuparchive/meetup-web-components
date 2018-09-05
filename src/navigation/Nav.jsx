@@ -78,10 +78,17 @@ export class Nav extends React.Component {
 	 */
 	onClickDropdownAction() {
 		const { notifications } = this.props.navItems;
+		const isNotificationsLoaded = Boolean(notifications.list);
+
+		if (isNotificationsLoaded) {
+			this.markAllNotifAsRead();
+			return;
+		}
 		const action = notifications.getNotificationsQuery();
 		if (action && action.meta && action.meta.request) {
-			action.meta.request.then(() => {
-				this.markAllNotifAsRead();
+			action.meta.request.then(([resp]) => {
+				const { value: notifications } = resp.response;
+				this.markAllNotifAsRead(notifications);
 			});
 		}
 		return action;
@@ -95,13 +102,14 @@ export class Nav extends React.Component {
 		this.setState(() => ({ showMobileDashboard: false }));
 	}
 
-	markAllNotifAsRead = () => {
-		const { notifications } = this.props.navItems;
-		const { list, notificationsDropdown } = notifications;
-		if (list && list.length) {
-			const newList = [...list];
+	markAllNotifAsRead = notifications => {
+		const { notificationsDropdown, list } = this.props.navItems.notifications;
+		const notificationsList = notifications || list;
 
-			newList.sort((a, b) => a.updated < b.updated);
+		if (notificationsList && notificationsList.length) {
+			const newList = [...notificationsList];
+
+			newList.sort((a, b) => parseInt(b.updated) - parseInt(a.updated));
 			notificationsDropdown.markRead(newList[0].id);
 		}
 	};
@@ -278,10 +286,7 @@ export class Nav extends React.Component {
 						className="display--block atMedium_display--none"
 					/>
 				),
-				onClickAction:
-					media.isAtMediumUp && !isNotificationsLoaded
-						? this.onClickDropdownAction
-						: undefined,
+				onClickAction: media.isAtMediumUp && this.onClickDropdownAction,
 				dropdownContent: media.isAtMediumUp && notificationContent,
 				hasUpdates: notifications.unreadNotifications > 0,
 				updatesLabel: updatesLabel,

@@ -22,7 +22,47 @@ class Tooltip extends React.PureComponent {
 		};
 	}
 
+	componentDidMount() {
+		if (this.props.manualToggle) {
+			document.addEventListener('click', this.handleClickOutsideContent);
+		}
+	}
+
+	componentWillUnmount() {
+		if (this.props.manualToggle) {
+			document.removeEventListener('click', this.handleClickOutsideContent);
+		}
+	}
+
+	static getDerivedStateFromProps(nextProps, state) {
+		if (nextProps.manualToggle && state.isActive !== nextProps.isActive) {
+			return { isActive: nextProps.isActive };
+		}
+		return null;
+	}
+
+	handleClickOutsideContent = e => {
+		// only close the content if a user click on anything but the trigger or the content
+		if (
+			this.contentRef &&
+			this.triggerRef &&
+			!this.contentRef.contains(e.target) &&
+			!this.triggerRef.contains(e.target)
+		) {
+			this.closeContent(e);
+		}
+	};
+
 	closeContent(e) {
+		if (this.props.manualToggle) {
+			if (this.props.onClick) {
+				this.props.onClick(e);
+				return;
+			}
+			this.props.onClose && this.props.onClose(e);
+			return;
+		}
+
 		this.setState(() => ({ isActive: false }));
 
 		if (this.props.onBlur) {
@@ -51,7 +91,7 @@ class Tooltip extends React.PureComponent {
 			if (!this.contentRef.contains(document.activeElement)) {
 				this.closeContent(e);
 			}
-		}, 1);
+		}, 0);
 	}
 
 	render() {
@@ -71,16 +111,17 @@ class Tooltip extends React.PureComponent {
 			...other
 		} = this.props;
 
+		const { isActive } = this.state;
+
 		// Do not pass along to children
 		delete other.isActive;
+		delete other.onClick;
 
 		const classNames = {
 			dropdown: cx(className, 'popup', {
 				'popup--noPortal': noPortal,
 			}),
 		};
-
-		const isActive = manualToggle ? this.props.isActive : this.state.isActive;
 
 		const getTrigger = () => {
 			return this.triggerRef;
@@ -93,15 +134,15 @@ class Tooltip extends React.PureComponent {
 		return (
 			<div
 				className={classNames.dropdown}
-				onMouseLeave={this.closeContent}
+				onMouseLeave={manualToggle ? undefined : this.closeContent}
 				{...other}
 			>
 				<div
 					ref={el => (this.triggerRef = el)}
 					className="popup-trigger"
-					onFocus={this.openContent}
-					onBlur={this.onBlur}
-					onMouseEnter={this.openContent}
+					onFocus={manualToggle ? undefined : this.openContent}
+					onBlur={manualToggle ? undefined : this.onBlur}
+					onMouseEnter={manualToggle ? undefined : this.openContent}
 					aria-labelledby={id}
 				>
 					{trigger}
@@ -130,9 +171,9 @@ class Tooltip extends React.PureComponent {
 								id={id}
 								role="tooltip"
 								style={{
-									left: left,
-									top: top,
-									minWidth: minWidth,
+									left,
+									top,
+									minWidth,
 									maxWidth: maxWidth || boundedMaxWidth,
 								}}
 							>
@@ -188,8 +229,8 @@ Tooltip.propTypes = {
 	/** The content that's rendered inside the tooltip */
 	content: PropTypes.element,
 
-	/** The horizontal alignment of the tooltip content bubble to the dropdown trigger */
-	align: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
+	/** The horizontal alignment of the tooltip content bubble to the dropdown trigger (defaults to right) */
+	align: PropTypes.oneOf(['left', 'right', 'center']),
 
 	/** How many additional pixels to push the tooltip content bubble */
 	offset: PropTypes.shape({
@@ -217,6 +258,17 @@ Tooltip.propTypes = {
 
 	/** Whether to render the dropdown content directly in the component instead of bulling it out and attaching to the document root */
 	noPortal: PropTypes.bool,
+	/** Required function to close the dropdown when working with a manually toggled tooltip */
+	onClose: (props, propName, componentName) => {
+		if (
+			props.manualToggle === true &&
+			(props[propName] === undefined || typeof props[propName] !== 'function')
+		) {
+			return new Error(
+				`The ${propName} function is required when manualToggle is true in this component!`
+			);
+		}
+	},
 };
 
 export default Tooltip;
