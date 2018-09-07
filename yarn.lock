@@ -10245,9 +10245,9 @@ swarm-constants@2.2.122:
   version "2.2.122"
   resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-2.2.122.tgz#bdc7573e1f2691b8dfd3a730cdf01e5b91d8e6fc"
 
-swarm-icons@^3.4:
-  version "3.4.334"
-  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-3.4.334.tgz#a6fcb73605a481885e1e0367e9ad6273cccec6ae"
+swarm-icons@3.8.349:
+  version "3.8.349"
+  resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-3.8.349.tgz#af520f40843d3186b7eac66b174b6df2fcc21594"
 
 swarm-sasstools@5.0.417:
   version "5.0.417"

@@ -5,7 +5,13 @@ import Button from '../forms/Button';
 import Tooltip from './Tooltip';
 
 export const InfoTooltipTrigger = props => (
-	<Button reset onClick={props.onClick}>
+	<Button
+		reset
+		onClick={e => {
+			e.preventDefault();
+			props.onClick(e);
+		}}
+	>
 		<span className="infoToggle-trigger align--center" role="img">
 			?
 		</span>
