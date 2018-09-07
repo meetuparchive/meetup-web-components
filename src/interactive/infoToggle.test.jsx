@@ -56,6 +56,9 @@ describe('InfoToggle', () => {
 		});
 		const tooltip = toggle.find(Tooltip);
 		const renderedTooltip = shallow(tooltip.prop('trigger'));
-		expect(renderedTooltip.prop('onClick')).toEqual(onClick);
+		const mockEvent = { preventDefault: jest.fn() };
+		renderedTooltip.prop('onClick')(mockEvent);
+		expect(onClick).toHaveBeenCalled();
+		expect(mockEvent.preventDefault).toHaveBeenCalled();
 	});
 });
