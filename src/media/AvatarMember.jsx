@@ -10,11 +10,16 @@ export const AVATAR_PERSON_FB_CLASS = 'avatar--fbFriend';
 export const AVATAR_PERSON_NOPHOTO_CLASS = 'avatar--noPhoto';
 const AVATAR_ICON_BADGE_CLASS = 'svg--avatarBadge';
 
-export const getPhoto = (photo, size) => {
+export const getPhoto = (photo, size, photoSrc) => {
+	// custom photo link removes dependency on `size` prop and gives more flexibility for the component
+	// e.g. we could use large avatars with `thumb_link` to improve performance
+	if (photoSrc) {
+		return photoSrc;
+	}
 	if (!photo) {
 		return undefined;
 	}
-	switch(size) {
+	switch (size) {
 		case 'big':
 		case 'large':
 		case 'xxlarge': // clear handling of these 3 overlapping size handlers
@@ -30,11 +35,11 @@ export const getPhoto = (photo, size) => {
  */
 class AvatarMember extends React.PureComponent {
 	render() {
-		const { member, org, fbFriend, className, ...other } = this.props;
+		const { member, org, fbFriend, className, photoSrc, ...other } = this.props;
 		const { big, large, xxlarge } = other;
 
 		const photoSize = big || large || xxlarge ? 'big' : 'default';
-		const photoLink = getPhoto(member.photo, photoSize);
+		const photoLink = getPhoto(member.photo, photoSize, photoSrc);
 		const showNoPhoto = typeof photoLink !== 'string'; // _any_ non-string value should be considered invalid.
 
 		const classNames = cx(
@@ -99,6 +104,9 @@ AvatarMember.propTypes = {
 
 	/** Whether this avatar is for a person the user is friends with on FB */
 	fbFriend: PropTypes.bool,
+
+	/** Custom photo url */
+	photoSrc: PropTypes.string,
 };
 
 export default AvatarMember;
