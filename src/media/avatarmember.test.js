@@ -68,6 +68,30 @@ describe('AvatarMember', function() {
 		expect(avatarMember.find(Avatar).prop('src')).toBe(mockPhoto);
 	});
 
+	it('should render custom photo on small size', () => {
+		const customPhotoLink = 'custom/photo/link';
+		const avatarMember = shallow(
+			<AvatarMember member={MOCK_MEMBER} small photoSrc={customPhotoLink} />
+		);
+		expect(avatarMember.find(Avatar).prop('src')).toBe(customPhotoLink);
+	});
+
+	it('should render custom photo on default size', () => {
+		const customPhotoLink = 'custom/photo/link';
+		const avatarMember = shallow(
+			<AvatarMember member={MOCK_MEMBER} photoSrc={customPhotoLink} />
+		);
+		expect(avatarMember.find(Avatar).prop('src')).toBe(customPhotoLink);
+	});
+
+	it('should render custom photo on large size', () => {
+		const customPhotoLink = 'custom/photo/link';
+		const avatarMember = shallow(
+			<AvatarMember member={MOCK_MEMBER} large photoSrc={customPhotoLink} />
+		);
+		expect(avatarMember.find(Avatar).prop('src')).toBe(customPhotoLink);
+	});
+
 	it('should *not* render the noPhoto variant only when a photo is present', function() {
 		const mockMember = {
 			...MOCK_MEMBER,
@@ -107,13 +131,20 @@ describe('AvatarMember', function() {
 					...MOCK_MEMBER.photo,
 					highres_link: 'http://placekitten.com/g/500/500',
 					photo_link: undefined,
-				}
+				},
 			};
 			expect(getPhoto(member.photo, 'big')).toBe(member.photo.highres_link);
 		});
 
 		it('returns thumb_link for member.photo and small size', function() {
 			expect(getPhoto(MOCK_MEMBER.photo)).toBe(MOCK_MEMBER.photo.thumb_link);
+		});
+
+		it('returns custom photo if passed', function() {
+			const customPhotoLink = 'custom/photo/link';
+			expect(getPhoto(MOCK_MEMBER.photo, 'small', customPhotoLink)).toBe(
+				customPhotoLink
+			);
 		});
 	});
 });
