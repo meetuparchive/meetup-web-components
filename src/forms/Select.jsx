@@ -24,6 +24,9 @@ type Props = React.ElementConfig<HTMLSelectElement> & {
 	/** The class name/s to add to the `<label />` element */
 	labelClassName?: string,
 
+	/** The class name/s to add to the div element wrapping select input + icon */
+	selectClassName?: string,
+
 	/** What we render into the input's `<label />` */
 	label?: string,
 
@@ -44,6 +47,7 @@ export const SelectInput = (props: Props) => {
 		error,
 		helperText,
 		required,
+		selectClassName,
 		...other
 	} = props;
 
@@ -74,14 +78,16 @@ export const SelectInput = (props: Props) => {
 				</label>
 			)}
 			{helperText && <div className={classNames.helperText}>{helperText}</div>}
-			<select
-				name={name}
-				id={id || name}
-				required={Boolean(required)}
-				className={classNames.field}
-				{...other}
-			/>
-			<Icon className="select-customArrow" shape="chevron-down" size="xs" />
+			<div className={`selectWrapper ${selectClassName || ''}`}>
+				<select
+					name={name}
+					id={id || name}
+					required={Boolean(required)}
+					className={classNames.field}
+					{...other}
+				/>
+				<Icon className="select-customArrow" shape="chevron-down" size="xs" />
+			</div>
 		</div>
 	);
 };
