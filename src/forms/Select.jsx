@@ -78,7 +78,7 @@ export const SelectInput = (props: Props) => {
 				</label>
 			)}
 			{helperText && <div className={classNames.helperText}>{helperText}</div>}
-			<div className={cx('selectWrapper', selectClassName)}>
+			<div className={`selectWrapper ${selectClassName || ''}`}>
 				<select
 					name={name}
 					id={id || name}

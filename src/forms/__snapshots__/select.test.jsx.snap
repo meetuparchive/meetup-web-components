@@ -12,7 +12,7 @@ exports[`SelectInput basic renders into the DOM 1`] = `
     Test select
   </label>
   <div
-    className="selectWrapper"
+    className="selectWrapper "
   >
     <select
       className="select--reset span--100 padding--selectArrow"
