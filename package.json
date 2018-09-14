@@ -1,6 +1,6 @@
 {
   "name": "meetup-web-components",
-  "version": "0.0.0",
+  "version": "6.0.2542-beta",
   "license": "UNLICENSED",
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
@@ -140,16 +140,16 @@
   },
   "lint-staged": {
     "{src,src/**,src/**/**,assets/,assets/**}/*.{js,jsx,scss}": [
-	  "prettier --write",
-	  "git add"
+      "prettier --write",
+      "git add"
     ],
     "assets/scss/**/*.scss": [
-	  "stylelint --syntax scss --fix",
-	  "git add"
+      "stylelint --syntax scss --fix",
+      "git add"
     ],
     "**/*.{js,jsx}": [
-	  "eslint",
-	  "git add"
+      "eslint",
+      "git add"
     ]
   }
 }
