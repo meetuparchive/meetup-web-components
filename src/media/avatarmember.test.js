@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import AvatarMember, {
 	getPhoto,
+	getPhotoSize,
 	AVATAR_PERSON_CLASS,
 	AVATAR_PERSON_NOPHOTO_CLASS,
 } from './AvatarMember';
@@ -68,28 +69,52 @@ describe('AvatarMember', function() {
 		expect(avatarMember.find(Avatar).prop('src')).toBe(mockPhoto);
 	});
 
-	it('should render custom photo on small size', () => {
-		const customPhotoLink = 'custom/photo/link';
+	it('should render member photo on small size if photo size is passed', () => {
+		const mockPhoto = 'photo image';
+		const mockMember = {
+			...MOCK_MEMBER,
+			photo: { ...MOCK_MEMBER.photo, photo_link: mockPhoto },
+		};
 		const avatarMember = shallow(
-			<AvatarMember member={MOCK_MEMBER} small photoSrc={customPhotoLink} />
+			<AvatarMember member={mockMember} small imageSize="big" />
 		);
-		expect(avatarMember.find(Avatar).prop('src')).toBe(customPhotoLink);
+		expect(avatarMember.find(Avatar).prop('src')).toBe(mockPhoto);
 	});
 
-	it('should render custom photo on default size', () => {
-		const customPhotoLink = 'custom/photo/link';
+	it('should render thumb photo on default size if `default` photo size is passed', () => {
+		const mockPhoto = 'photo image';
+		const mockMember = {
+			...MOCK_MEMBER,
+			photo: { ...MOCK_MEMBER.photo, thumb_link: mockPhoto },
+		};
 		const avatarMember = shallow(
-			<AvatarMember member={MOCK_MEMBER} photoSrc={customPhotoLink} />
+			<AvatarMember member={mockMember} imageSize="default" />
 		);
-		expect(avatarMember.find(Avatar).prop('src')).toBe(customPhotoLink);
+		expect(avatarMember.find(Avatar).prop('src')).toBe(mockPhoto);
 	});
 
-	it('should render custom photo on large size', () => {
-		const customPhotoLink = 'custom/photo/link';
+	it('should render member photo on default size if `big` photo size is passed', () => {
+		const mockPhoto = 'photo image';
+		const mockMember = {
+			...MOCK_MEMBER,
+			photo: { ...MOCK_MEMBER.photo, photo_link: mockPhoto },
+		};
 		const avatarMember = shallow(
-			<AvatarMember member={MOCK_MEMBER} large photoSrc={customPhotoLink} />
+			<AvatarMember member={mockMember} imageSize="big" />
 		);
-		expect(avatarMember.find(Avatar).prop('src')).toBe(customPhotoLink);
+		expect(avatarMember.find(Avatar).prop('src')).toBe(mockPhoto);
+	});
+
+	it('should render thumb photo on large size if photo size is passed', () => {
+		const mockPhoto = 'photo image';
+		const mockMember = {
+			...MOCK_MEMBER,
+			photo: { ...MOCK_MEMBER.photo, thumb_link: mockPhoto },
+		};
+		const avatarMember = shallow(
+			<AvatarMember member={mockMember} large imageSize="default" />
+		);
+		expect(avatarMember.find(Avatar).prop('src')).toBe(mockPhoto);
 	});
 
 	it('should *not* render the noPhoto variant only when a photo is present', function() {
@@ -139,12 +164,18 @@ describe('AvatarMember', function() {
 		it('returns thumb_link for member.photo and small size', function() {
 			expect(getPhoto(MOCK_MEMBER.photo)).toBe(MOCK_MEMBER.photo.thumb_link);
 		});
+	});
 
-		it('returns custom photo if passed', function() {
-			const customPhotoLink = 'custom/photo/link';
-			expect(getPhoto(MOCK_MEMBER.photo, 'small', customPhotoLink)).toBe(
-				customPhotoLink
-			);
+	describe('getPhotoSize', () => {
+		it('returns imageSize if passed', () => {
+			const mockSize = 'default';
+			expect(getPhotoSize(mockSize, true)).toBe(mockSize);
+		});
+		it('returns `big` if image size is undefined and isBig = true', () => {
+			expect(getPhotoSize(undefined, true)).toBe('big');
+		});
+		it('returns `default` if image size is undefined and isBig = false', () => {
+			expect(getPhotoSize(undefined, false)).toBe('default');
 		});
 	});
 });

@@ -10,23 +10,26 @@ export const AVATAR_PERSON_FB_CLASS = 'avatar--fbFriend';
 export const AVATAR_PERSON_NOPHOTO_CLASS = 'avatar--noPhoto';
 const AVATAR_ICON_BADGE_CLASS = 'svg--avatarBadge';
 
-export const getPhoto = (photo, size, photoSrc) => {
-	// custom photo link removes dependency on `size` prop and gives more flexibility for the component
-	// e.g. we could use large avatars with `thumb_link` to improve performance
-	if (photoSrc) {
-		return photoSrc;
-	}
+const AVATAR_IMAGE_SIZE_LIST = ['big', 'default'];
+
+export const getPhoto = (photo, size) => {
 	if (!photo) {
 		return undefined;
 	}
 	switch (size) {
 		case 'big':
-		case 'large':
-		case 'xxlarge': // clear handling of these 3 overlapping size handlers
 			return photo.photo_link || photo.highres_link; // use highres_link as a fallback
 		default:
 			return photo.thumb_link;
 	}
+};
+
+// Use `imageSize` prop to control image resolution independently from component size
+export const getPhotoSize = (imageSize, isBig) => {
+	if (imageSize) {
+		return imageSize;
+	}
+	return isBig ? 'big' : 'default';
 };
 
 /**
@@ -35,11 +38,11 @@ export const getPhoto = (photo, size, photoSrc) => {
  */
 class AvatarMember extends React.PureComponent {
 	render() {
-		const { member, org, fbFriend, className, photoSrc, ...other } = this.props;
+		const { member, org, fbFriend, className, imageSize, ...other } = this.props;
 		const { big, large, xxlarge } = other;
 
-		const photoSize = big || large || xxlarge ? 'big' : 'default';
-		const photoLink = getPhoto(member.photo, photoSize, photoSrc);
+		const photoSize = getPhotoSize(imageSize, big || large || xxlarge);
+		const photoLink = getPhoto(member.photo, photoSize);
 		const showNoPhoto = typeof photoLink !== 'string'; // _any_ non-string value should be considered invalid.
 
 		const classNames = cx(
@@ -105,8 +108,8 @@ AvatarMember.propTypes = {
 	/** Whether this avatar is for a person the user is friends with on FB */
 	fbFriend: PropTypes.bool,
 
-	/** Custom photo url */
-	photoSrc: PropTypes.string,
+	/** Image size */
+	imageSize: PropTypes.oneOf(AVATAR_IMAGE_SIZE_LIST),
 };
 
 export default AvatarMember;
