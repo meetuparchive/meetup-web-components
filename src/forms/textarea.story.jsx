@@ -154,4 +154,19 @@ storiesOf('Forms/Textarea', module)
 				/>
 			</Section>
 		</Bounds>
+	))
+	.add('no resizing', () => (
+		<Bounds>
+			<Section>
+				<Textarea
+					disableResize
+					minHeight={100}
+					maxHeight={300}
+					label="Your biography"
+					id="yourBio"
+					name="bio"
+					placeholder="Tell me about your life"
+				/>
+			</Section>
+		</Bounds>
 	));
