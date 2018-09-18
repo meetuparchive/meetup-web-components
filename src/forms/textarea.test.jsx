@@ -153,7 +153,7 @@ describe('Textarea', function() {
 
 		expect(autosizePlugin.default).toHaveBeenCalled();
 	});
-	it('should set be able to min and max height', function() {
+	it('should be able to set min and max height', function() {
 		expect(textareaEl.getAttribute('style')).toEqual(
 			`min-height: ${MIN_HEIGHT}px; max-height: ${MAX_HEIGHT}px;`
 		);

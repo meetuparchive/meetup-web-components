@@ -347,3 +347,7 @@ $C_toggleHighlight: $C_blue;
 	position: absolute;
 	right: $space-half;
 }
+
+.textarea-no-resize {
+	resize: none;
+}

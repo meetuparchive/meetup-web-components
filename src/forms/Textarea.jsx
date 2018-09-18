@@ -91,6 +91,7 @@ export class Textarea extends React.PureComponent {
 			helperText,
 			required,
 			requiredText,
+			disableResize,
 			...other
 		} = this.props;
 
@@ -100,6 +101,7 @@ export class Textarea extends React.PureComponent {
 				{
 					'field--error': error,
 					'textarea--autoheight': autosize,
+					'textarea-no-resize': disableResize,
 				},
 				className
 			),
