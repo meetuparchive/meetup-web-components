@@ -30,11 +30,21 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
     <NavItem
       className="logo logo--script align--left"
       icon={
-        <img
-          alt="Meetup Logo"
-          height="44px"
-          src=""
-        />
+        <React.Fragment>
+          <Unknown
+            browserEvent="onLoad"
+            mark="ux-image-onload-script-logo"
+          >
+            <img
+              alt="Meetup Logo"
+              height="44px"
+              src=""
+            />
+          </Unknown>
+          <Unknown
+            mark="ux-image-inline-script-logo"
+          />
+        </React.Fragment>
       }
       linkClassName="display--inlineBlock"
       linkTo="meetup.com"
@@ -2665,11 +2675,21 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
     <NavItem
       className="logo logo--script align--left"
       icon={
-        <img
-          alt="Meetup Logo"
-          height="44px"
-          src=""
-        />
+        <React.Fragment>
+          <Unknown
+            browserEvent="onLoad"
+            mark="ux-image-onload-script-logo"
+          >
+            <img
+              alt="Meetup Logo"
+              height="44px"
+              src=""
+            />
+          </Unknown>
+          <Unknown
+            mark="ux-image-inline-script-logo"
+          />
+        </React.Fragment>
       }
       linkClassName="display--inlineBlock"
       linkTo="meetup.com"
@@ -2854,11 +2874,21 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
     <NavItem
       className="logo logo--script align--left"
       icon={
-        <img
-          alt="Meetup Logo"
-          height="44px"
-          src=""
-        />
+        <React.Fragment>
+          <Unknown
+            browserEvent="onLoad"
+            mark="ux-image-onload-script-logo"
+          >
+            <img
+              alt="Meetup Logo"
+              height="44px"
+              src=""
+            />
+          </Unknown>
+          <Unknown
+            mark="ux-image-inline-script-logo"
+          />
+        </React.Fragment>
       }
       linkClassName="display--inlineBlock"
       linkTo="meetup.com"
@@ -2918,11 +2948,21 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
     <NavItem
       className="logo logo--script align--left"
       icon={
-        <img
-          alt="Meetup Logo"
-          height="44px"
-          src=""
-        />
+        <React.Fragment>
+          <Unknown
+            browserEvent="onLoad"
+            mark="ux-image-onload-script-logo"
+          >
+            <img
+              alt="Meetup Logo"
+              height="44px"
+              src=""
+            />
+          </Unknown>
+          <Unknown
+            mark="ux-image-inline-script-logo"
+          />
+        </React.Fragment>
       }
       linkClassName="display--inlineBlock"
       linkTo="meetup.com"
