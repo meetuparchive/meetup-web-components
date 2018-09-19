@@ -4,7 +4,10 @@
   "license": "UNLICENSED",
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
-  "engine": "node >=6.5.0",
+  "engines": {
+    "node": "^8.11.4",
+    "yarn": "1.9.4"
+  },
   "scripts": {
     "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx --source-maps",
     "build:watch": "yarn build --watch",
