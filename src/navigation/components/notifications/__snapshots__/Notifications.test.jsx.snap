@@ -11,6 +11,7 @@ exports[`Notification component should match snapshot 1`] = `
       shrink={true}
     >
       <Avatar
+        alt="Avatar"
         className="notification-image"
         src="http://photos4.meetupstatic.com/photos/event/5/d/4/a/600_434003882.jpeg"
       />
