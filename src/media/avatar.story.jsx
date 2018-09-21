@@ -8,7 +8,7 @@ const MOCK_IMAGE_SRC = 'http://placekitten.com/g/400/400';
 storiesOf('Media/Avatar', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.add('default', () => <Avatar src={MOCK_IMAGE_SRC} />, {
+	.add('default', () => <Avatar src={MOCK_IMAGE_SRC} alt="kitten" />, {
 		info: { text: 'This is the basic usage with the component.' },
 	})
 	.add('small', () => <Avatar src={MOCK_IMAGE_SRC} small />)
@@ -24,6 +24,7 @@ storiesOf('Media/Avatar', module)
 					return action('go to http://google.com')(e);
 				}}
 				src={MOCK_IMAGE_SRC}
+				alt="kitten"
 			/>
 		),
 		{ info: { text: 'To link within the app, supply a `to` prop instead of `href`' } }
