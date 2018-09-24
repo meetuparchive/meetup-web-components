@@ -12,6 +12,7 @@ Object {
   "onChange": [Function],
   "onFocus": [Function],
   "onKeyDown": [Function],
+  "pattern": "[0-9]*",
   "required": true,
   "step": 1,
   "type": "number",
@@ -45,6 +46,7 @@ exports[`NumberInput basic exists 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          pattern="[0-9]*"
           required={true}
           step={1}
           type="number"
@@ -106,6 +108,7 @@ Object {
   "onChange": [Function],
   "onFocus": [Function],
   "onKeyDown": [Function],
+  "pattern": "[0-9]*",
   "required": true,
   "step": 1,
   "type": "number",
@@ -123,6 +126,7 @@ exports[`NumberInput basic should specify attributes that are passed in 1`] = `
   onChange={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
+  pattern="[0-9]*"
   placeholder="Guests"
   step={1}
   type="number"
