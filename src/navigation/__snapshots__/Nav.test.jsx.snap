@@ -32,7 +32,6 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
       icon={
         <React.Fragment>
           <Unknown
-            browserEvent="onLoad"
             mark="ux-image-onload-script-logo"
           >
             <img
@@ -2678,7 +2677,6 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
       icon={
         <React.Fragment>
           <Unknown
-            browserEvent="onLoad"
             mark="ux-image-onload-script-logo"
           >
             <img
@@ -2877,7 +2875,6 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
       icon={
         <React.Fragment>
           <Unknown
-            browserEvent="onLoad"
             mark="ux-image-onload-script-logo"
           >
             <img
@@ -2951,7 +2948,6 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
       icon={
         <React.Fragment>
           <Unknown
-            browserEvent="onLoad"
             mark="ux-image-onload-script-logo"
           >
             <img

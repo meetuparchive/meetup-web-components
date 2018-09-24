@@ -397,10 +397,7 @@ export class Nav extends React.Component {
 							linkClassName="display--inlineBlock"
 							icon={
 								<React.Fragment>
-									<UXCaptureEventMark
-										browserEvent="onLoad"
-										mark="ux-image-onload-script-logo"
-									>
+									<UXCaptureEventMark mark="ux-image-onload-script-logo">
 										<img
 											src={scriptLogo}
 											alt={logo.logoAccessible}
