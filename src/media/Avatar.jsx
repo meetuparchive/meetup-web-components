@@ -46,6 +46,7 @@ class Avatar extends React.PureComponent {
 
 		const aria = {
 			role: 'img',
+			'aria-label': alt,
 		};
 
 		const computedProps = {
@@ -82,6 +83,10 @@ class Avatar extends React.PureComponent {
 		);
 	}
 }
+
+Avatar.defaultProps = {
+	alt: 'Avatar',
+};
 
 Avatar.propTypes = {
 	/** Render Avatar at a smaller size */

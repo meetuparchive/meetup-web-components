@@ -964,6 +964,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
         >
           <FlexItem>
             <Avatar
+              alt="Avatar"
               className="display--block atMedium_display--none margin--left circular"
               small={true}
               src="https://placeimg.com/640/480/any"
