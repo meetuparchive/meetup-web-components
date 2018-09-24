@@ -182,6 +182,7 @@ export class NumberInput extends React.PureComponent<Props, State> {
 						<FlexItem>
 							<input
 								type="number"
+								pattern="[0-9]*"
 								id={id}
 								name={name}
 								max={max}
