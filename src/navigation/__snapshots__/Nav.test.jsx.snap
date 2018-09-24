@@ -31,7 +31,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
       className="logo logo--script align--left"
       icon={
         <React.Fragment>
-          <Unknown
+          <UXCaptureEventMark
             mark="ux-image-onload-script-logo"
           >
             <img
@@ -39,8 +39,8 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
               height="44px"
               src=""
             />
-          </Unknown>
-          <Unknown
+          </UXCaptureEventMark>
+          <UXCaptureInlineMark
             mark="ux-image-inline-script-logo"
           />
         </React.Fragment>
@@ -2676,7 +2676,7 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
       className="logo logo--script align--left"
       icon={
         <React.Fragment>
-          <Unknown
+          <UXCaptureEventMark
             mark="ux-image-onload-script-logo"
           >
             <img
@@ -2684,8 +2684,8 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
               height="44px"
               src=""
             />
-          </Unknown>
-          <Unknown
+          </UXCaptureEventMark>
+          <UXCaptureInlineMark
             mark="ux-image-inline-script-logo"
           />
         </React.Fragment>
@@ -2874,7 +2874,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
       className="logo logo--script align--left"
       icon={
         <React.Fragment>
-          <Unknown
+          <UXCaptureEventMark
             mark="ux-image-onload-script-logo"
           >
             <img
@@ -2882,8 +2882,8 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
               height="44px"
               src=""
             />
-          </Unknown>
-          <Unknown
+          </UXCaptureEventMark>
+          <UXCaptureInlineMark
             mark="ux-image-inline-script-logo"
           />
         </React.Fragment>
@@ -2947,7 +2947,7 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
       className="logo logo--script align--left"
       icon={
         <React.Fragment>
-          <Unknown
+          <UXCaptureEventMark
             mark="ux-image-onload-script-logo"
           >
             <img
@@ -2955,8 +2955,8 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
               height="44px"
               src=""
             />
-          </Unknown>
-          <Unknown
+          </UXCaptureEventMark>
+          <UXCaptureInlineMark
             mark="ux-image-inline-script-logo"
           />
         </React.Fragment>
