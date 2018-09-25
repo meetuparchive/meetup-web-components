@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+// @flow
+
 import React from 'react';
 import cx from 'classnames';
 
@@ -12,11 +13,37 @@ export const VALID_BREAKPOINTS = {
 	medium: 'atMedium',
 	large: 'atLarge',
 };
+type Props = {|
+	/** The child elements of the component */
+	children: React$Element<*>,
+	className?: string,
+	/** Whether the card's height is be determined by it's content instead of having a minimum height */
+	initialHeight?: boolean,
+
+	/** The card has a dropshadow */
+	hasShadow?: boolean,
+
+	/** The card has a dropshadow only on hover */
+	hasHoverShadow?: boolean,
+
+	/** Breakpoint at which the card should be inset from it's container instead of being flushed to the left and right edges of it's container */
+	flushUntil?: 'all' | 'medium' | 'large',
+
+	/** Whether the component is in a loading state */
+	isLoading?: boolean,
+
+	/** Props to pass to the `<Loading />` component */
+	loadingProps?: {
+		color?: string,
+		scrimColor?: string,
+		size?: MediaSizes,
+	},
+|};
 
 /**
  * @module CardComponent
  */
-export class CardComponent extends React.PureComponent {
+export class CardComponent extends React.PureComponent<Props> {
 	render() {
 		const {
 			children,
@@ -30,7 +57,9 @@ export class CardComponent extends React.PureComponent {
 			...other
 		} = this.props;
 
-		const flushBreakpoint = VALID_BREAKPOINTS[flushUntil] || VALID_BREAKPOINTS['all'];
+		const flushBreakpoint = flushUntil
+			? VALID_BREAKPOINTS[flushUntil]
+			: VALID_BREAKPOINTS['all'];
 
 		const classNames = cx(
 			CARD_CLASS,
@@ -52,30 +81,6 @@ export class CardComponent extends React.PureComponent {
 		);
 	}
 }
-
-CardComponent.propTypes = {
-	/** Whether the card's height is be determined by it's content instead of having a minimum height */
-	initialHeight: PropTypes.bool,
-
-	/** The card has a dropshadow */
-	hasShadow: PropTypes.bool,
-
-	/** The card has a dropshadow only on hover */
-	hasHoverShadow: PropTypes.bool,
-
-	/** Breakpoint at which the card should be inset from it's container instead of being flushed to the left and right edges of it's container */
-	flushUntil: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS))]),
-
-	/** Whether the component is in a loading state */
-	isLoading: PropTypes.bool,
-
-	/** Props to pass to the `<Loading />` component */
-	loadingProps: PropTypes.shape({
-		color: PropTypes.string,
-		scrimColor: PropTypes.string,
-		size: PropTypes.string,
-	}),
-};
 
 const Card = withLoading(CardComponent);
 Card.displayName = 'Card';
