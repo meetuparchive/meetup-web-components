@@ -7172,23 +7172,23 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
-mwp-app-render@17.2.2677:
-  version "17.2.2677"
-  resolved "https://registry.yarnpkg.com/mwp-app-render/-/mwp-app-render-17.2.2677.tgz#7293ce9638598742d461cfd70f96f361c62ed6b6"
+mwp-app-render@17.2.2680:
+  version "17.2.2680"
+  resolved "https://registry.yarnpkg.com/mwp-app-render/-/mwp-app-render-17.2.2680.tgz#4f1bc6bae0025300db057f9e5aae464564681e18"
   dependencies:
     browser-detect "0.2.22"
     escape-html "1.0.3"
     ux-capture "1.0.8"
 
-mwp-auth-plugin@^17.2.2677:
-  version "17.2.2677"
-  resolved "https://registry.yarnpkg.com/mwp-auth-plugin/-/mwp-auth-plugin-17.2.2677.tgz#2d71ed09adc01de7f02d7fafc586147f4c8befb2"
+mwp-auth-plugin@^17.2.2680:
+  version "17.2.2680"
+  resolved "https://registry.yarnpkg.com/mwp-auth-plugin/-/mwp-auth-plugin-17.2.2680.tgz#d226770bd3ae64645391f972e71f4f7bb3d9ad6b"
   dependencies:
     uuid "3.1.0"
 
-mwp-config@17.2.2677:
-  version "17.2.2677"
-  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-17.2.2677.tgz#23b2e36f1579302ccf18f54dc68644b467166b3a"
+mwp-config@17.2.2680:
+  version "17.2.2680"
+  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-17.2.2680.tgz#2a3c3552df6a05812581101d3524ccd0308964ca"
   dependencies:
     babel-core "6.25.0"
     babel-plugin-react-intl "2.3.1"
@@ -7204,15 +7204,15 @@ mwp-config@17.2.2677:
     stylelint-order "1.0.0"
     stylelint-scss "3.3.0"
 
-mwp-i18n@17.2.2677:
-  version "17.2.2677"
-  resolved "https://registry.yarnpkg.com/mwp-i18n/-/mwp-i18n-17.2.2677.tgz#46f1bdf5c87723f9bd82ccca68428e21523dedcc"
+mwp-i18n@17.2.2680:
+  version "17.2.2680"
+  resolved "https://registry.yarnpkg.com/mwp-i18n/-/mwp-i18n-17.2.2680.tgz#e9d7247268f3c06782379a57b49dfa5ceeb7466b"
 
-mwp-router@17.2.2677:
-  version "17.2.2677"
-  resolved "https://registry.yarnpkg.com/mwp-router/-/mwp-router-17.2.2677.tgz#cf0ceb7fb4a66c5e49bc24dffb87316f3db3084a"
+mwp-router@17.2.2680:
+  version "17.2.2680"
+  resolved "https://registry.yarnpkg.com/mwp-router/-/mwp-router-17.2.2680.tgz#2f462d699e8609b54be060504025e5e5f222d0ef"
   dependencies:
-    mwp-auth-plugin "^17.2.2677"
+    mwp-auth-plugin "^17.2.2680"
     react-side-effect "1.1.3"
 
 nan@^2.3.2, nan@^2.9.2:
