@@ -3994,3 +3994,69 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
   </Flex>
 </nav>
 `;
+
+exports[`Nav uxCapture renders the uxCapture markup when supplied prop 1`] = `
+<nav
+  aria-label="Header navigation"
+  className="padding--all globalNav"
+  groups={
+    Object {
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
+    }
+  }
+  role="navigation"
+>
+  <Flex
+    align="top"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="logo logo--script align--left"
+      icon={
+        <React.Fragment>
+          <UXCaptureEventMark
+            mark="ux-image-onload-script-logo"
+          >
+            <img
+              alt="Meetup Logo"
+              height="44px"
+              src=""
+            />
+          </UXCaptureEventMark>
+          <UXCaptureInlineMark
+            mark="ux-image-inline-script-logo"
+          />
+        </React.Fragment>
+      }
+      linkClassName="display--inlineBlock"
+      linkTo="meetup.com"
+    />
+    <NavItem
+      className="navItem--unauthenticated navItem--login"
+      key="0"
+      label="Login"
+      linkTo="meetup.com/login"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--unauthenticated"
+      key="1"
+      label="Sign up"
+      onAction={[Function]}
+      shrink={true}
+    />
+  </Flex>
+</nav>
+`;
