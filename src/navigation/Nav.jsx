@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 import cx from 'classnames';
+
+import UXCaptureInlineMark from 'mwp-app-render/lib/components/uxcapture/UXCaptureInlineMark';
+import UXCaptureEventMark from 'mwp-app-render/lib/components/uxcapture/UXCaptureEventMark';
 
 import swarmLogo from '../../assets/svg/logo--mSwarm--2color.svg';
 import scriptLogo from '../../assets/svg/logo--script.svg';
@@ -125,6 +128,7 @@ export class Nav extends React.Component {
 			localeCode,
 			className,
 			markAllAsReadOnOpen, // eslint-disable-line no-unused-vars
+			uxCapture,
 			...other
 		} = this.props;
 		const {
@@ -360,6 +364,17 @@ export class Nav extends React.Component {
 			);
 		});
 
+		const scriptLogoIcon = uxCapture ? (
+			<React.Fragment>
+				<UXCaptureEventMark mark="ux-image-onload-script-logo">
+					<img src={scriptLogo} alt={logo.logoAccessible} height="44px" />
+				</UXCaptureEventMark>
+				<UXCaptureInlineMark mark="ux-image-inline-script-logo" />
+			</React.Fragment>
+		) : (
+			<img src={scriptLogo} alt={logo.logoAccessible} height="44px" />
+		);
+
 		return (
 			<nav
 				aria-label="Header navigation"
@@ -392,13 +407,7 @@ export class Nav extends React.Component {
 							linkTo={logo.link}
 							className="logo logo--script align--left"
 							linkClassName="display--inlineBlock"
-							icon={
-								<img
-									src={scriptLogo}
-									alt={logo.logoAccessible}
-									height="44px"
-								/>
-							}
+							icon={scriptLogoIcon}
 						/>
 					)}
 
@@ -424,6 +433,7 @@ export class Nav extends React.Component {
 
 Nav.defaultProps = {
 	localeCode: 'en-US',
+	uxCapture: false,
 };
 
 Nav.propTypes = {
@@ -439,6 +449,9 @@ Nav.propTypes = {
 	/** The locale code of the current user */
 	localeCode: PropTypes.string,
 	markAllAsReadOnOpen: PropTypes.bool,
+
+	/** Add uxCapture marks in the nav */
+	uxCapture: PropTypes.bool,
 };
 
 export default Nav;
