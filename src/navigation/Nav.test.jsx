@@ -167,4 +167,14 @@ describe('Nav', () => {
 			})
 		).toMatchSnapshot();
 	});
+
+	describe('uxCapture', () => {
+		it('renders the uxCapture markup when supplied prop', () => {
+			expect(
+				wrapper({
+					uxCapture: true,
+				})
+			).toMatchSnapshot();
+		});
+	});
 });
