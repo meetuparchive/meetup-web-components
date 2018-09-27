@@ -66,6 +66,7 @@
     "@storybook/addon-knobs": "4.0.0-alpha.14",
     "@storybook/addon-links": "4.0.0-alpha.14",
     "@storybook/addon-notes": "4.0.0-alpha.14",
+    "@storybook/addon-options": "4.0.0-alpha.14",
     "@storybook/addons": "4.0.0-alpha.14",
     "@storybook/react": "4.0.0-alpha.14",
     "babel-cli": "6.24.1",
@@ -140,16 +141,16 @@
   },
   "lint-staged": {
     "{src,src/**,src/**/**,assets/,assets/**}/*.{js,jsx,scss}": [
-	  "prettier --write",
-	  "git add"
+      "prettier --write",
+      "git add"
     ],
     "assets/scss/**/*.scss": [
-	  "stylelint --syntax scss --fix",
-	  "git add"
+      "stylelint --syntax scss --fix",
+      "git add"
     ],
     "**/*.{js,jsx}": [
-	  "eslint",
-	  "git add"
+      "eslint",
+      "git add"
     ]
   }
 }
