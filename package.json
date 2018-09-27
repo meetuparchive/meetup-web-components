@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
-    "@storybook/addon-actions": "4.0.0-alpha.14",
+    "@storybook/addon-actions": "3.4.11",
     "@storybook/addon-info": "4.0.0-alpha.14",
     "@storybook/addon-knobs": "4.0.0-alpha.14",
     "@storybook/addon-links": "4.0.0-alpha.14",
@@ -140,16 +140,16 @@
   },
   "lint-staged": {
     "{src,src/**,src/**/**,assets/,assets/**}/*.{js,jsx,scss}": [
-	  "prettier --write",
-	  "git add"
+      "prettier --write",
+      "git add"
     ],
     "assets/scss/**/*.scss": [
-	  "stylelint --syntax scss --fix",
-	  "git add"
+      "stylelint --syntax scss --fix",
+      "git add"
     ],
     "**/*.{js,jsx}": [
-	  "eslint",
-	  "git add"
+      "eslint",
+      "git add"
     ]
   }
 }

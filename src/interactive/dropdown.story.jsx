@@ -1,5 +1,6 @@
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import Dropdown from './Dropdown';
 import Section from '../layout/Section';
@@ -168,6 +169,29 @@ storiesOf('Interactive/Dropdown', module)
 		'With menu items',
 		() => (
 			<Dropdown
+				align="center"
+				minWidth="160px"
+				maxWidth="250px"
+				trigger={<Button small>Open</Button>}
+				onSelect={(selectedItem, stateAndHelpers) => selectedItem.props.onClick()}
+				menuItems={[
+					<div onClick={action('item one click')}>
+						Item one has text that is really long and should wrap once we
+						reach max width
+					</div>,
+					<div onClick={action('item two click')}>Item two</div>,
+					<div onClick={action('item three click')}>Item three</div>,
+				]}
+				noPortal // to test text-wrapping
+			/>
+		),
+		{ info: { text: 'Use the `menuItems` prop to render a menu' } }
+	)
+	.add(
+		'With menu items and closeOnBodyClick',
+		() => (
+			<Dropdown
+				closeOnBodyClick
 				align="center"
 				minWidth="160px"
 				maxWidth="250px"
