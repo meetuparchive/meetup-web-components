@@ -44,7 +44,7 @@ type Props = {
 	/** The smallest width the dropdown content can be */
 	minWidth?: string | number,
 
-	/** Whether to render the dropdown content directly in the component instead of bulling it out and attaching to the document root */
+	/** Whether to render the dropdown content directly in the component instead of building it out and attaching to the document root */
 	noPortal?: boolean,
 
 	/** Props to pass to the `Downshift` component */
@@ -105,6 +105,10 @@ class Dropdown extends React.PureComponent<Props, State> {
 	};
 
 	onBodyClick = (e: SyntheticMouseEvent<*>) => {
+		if (this.props.closeOnBodyClick) {
+			this.closeContent(e);
+		}
+
 		if (!this.contentRef || !this.triggerRef) {
 			return;
 		}
@@ -113,7 +117,7 @@ class Dropdown extends React.PureComponent<Props, State> {
 			ref => !ref.contains(e.target)
 		);
 
-		if (isNotDropdownClick || (!isNotDropdownClick && this.props.closeOnBodyClick)) {
+		if (isNotDropdownClick) {
 			this.closeContent(e);
 		}
 	};
