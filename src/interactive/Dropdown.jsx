@@ -58,7 +58,11 @@ class Dropdown extends React.PureComponent {
 
 	onKeyDown(e) {
 		if (e.key === 'Enter' && this.state.isActive) {
-			this.closeContent();
+			// postpoining closure till next cycle
+			// otherwise closure cancels default keyboard events
+			setTimeout(() => {
+				this.closeContent();
+			}, 0);
 		}
 	}
 
