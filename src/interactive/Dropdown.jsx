@@ -53,7 +53,7 @@ type Props = {
 	/** Whether the dropdown should close when a click on the body is registered */
 	closeOnBodyClick?: boolean,
 
-	/**  */
+	/** Optional custom function to execute on dropdown click */
 	onClick?: (e: SyntheticMouseEvent<*>) => void,
 };
 
