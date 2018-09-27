@@ -18,11 +18,6 @@ export const LinkItem = ({ linkTo, navItemContent, className }) => (
 		{navItemContent}
 	</a>
 );
-export const ContentLoaderItem = ({ navItemContent, onClickAction }) => (
-	<Button aria-haspopup reset className={NAV_ITEM_CLASS} onClick={onClickAction}>
-		{navItemContent}
-	</Button>
-);
 export const DropdownItem = ({ navItemContent, dropdownContent }) => (
 	<Dropdown
 		noPortal
@@ -77,13 +72,10 @@ export const NavItem = props => {
 		</div>
 	);
 
-	const trigger = onClickAction ? (
-		<ContentLoaderItem
-			onClickAction={onClickAction}
-			navItemContent={navItemContent}
-		/>
-	) : (
-		navItemContent
+	const trigger = (
+		<Button aria-haspopup reset className={NAV_ITEM_CLASS} onClick={onClickAction}>
+			{navItemContent}
+		</Button>
 	);
 
 	return (
