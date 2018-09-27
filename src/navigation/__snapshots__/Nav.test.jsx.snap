@@ -4026,15 +4026,12 @@ exports[`Nav uxCapture renders the uxCapture markup when supplied prop 1`] = `
       className="logo logo--script align--left"
       icon={
         <React.Fragment>
-          <UXCaptureEventMark
+          <UXCaptureImageLoad
+            alt="Meetup Logo"
+            height="44px"
             mark="ux-image-onload-script-logo"
-          >
-            <img
-              alt="Meetup Logo"
-              height="44px"
-              src=""
-            />
-          </UXCaptureEventMark>
+            src=""
+          />
           <UXCaptureInlineMark
             mark="ux-image-inline-script-logo"
           />
