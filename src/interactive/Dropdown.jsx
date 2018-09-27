@@ -107,6 +107,7 @@ class Dropdown extends React.PureComponent<Props, State> {
 	onBodyClick = (e: SyntheticMouseEvent<*>) => {
 		if (this.props.closeOnBodyClick) {
 			this.closeContent(e);
+			return;
 		}
 
 		if (!this.contentRef || !this.triggerRef) {
