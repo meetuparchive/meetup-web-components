@@ -1,68 +1,115 @@
-import PropTypes from 'prop-types';
+// @flow
 import React from 'react';
 import cx from 'classnames';
 import Downshift from 'downshift';
 import FloatingPosition from '../utils/components/FloatingPosition';
 import { C_COOLGRAYLIGHTTRANSP } from 'swarm-constants/dist/js/constants.js';
 
-import bindAll from '../utils/bindAll';
-
 export const DROPDOWN_MENU_ITEM_CLASS = 'dropdownMenu-item';
 
-/**
- * @module Dropdown
- */
-class Dropdown extends React.PureComponent {
-	constructor(props) {
-		super(props);
+type Props = {
+	/** The element that opens the dropdown when clicked */
+	trigger: React$Node,
 
-		bindAll(
-			this,
-			'toggleContent',
-			'closeContent',
-			'onClick',
-			'onKeyDown',
-			'onBodyClick',
-			'onBodyKeyDown'
-		);
+	/** The content that's rendered inside the dropdown */
+	content?: React$Node,
 
-		this.state = {
-			isActive: props.isActive || false,
-		};
-	}
+	/** An array of elements that are rendered as a menu inside the dropdown */
+	menuItems?: Array<React$Element<*>>,
 
-	closeContent(e) {
+	/** The horizontal alignment of the dropdown content bubble to the dropdown trigger */
+	align: 'left' | 'right' | 'center',
+
+	/** Which side of the dropdown trigger the dropdown content bubble renders on */
+	direction: 'top' | 'bottom',
+
+	/** How many additional pixels to push the dropdown content bubble */
+	offset?: {
+		left: number,
+		top: number,
+	},
+
+	/** Class names to add to the wrapper of the dropdown trigger and content */
+	className?: string,
+
+	/** Whether the dropdown content is being shown */
+	isActive?: boolean,
+
+	/** A function that is used to control the toggling of the dropdown */
+	manualToggle?: (e: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>) => void,
+
+	/** The largest width the dropdown content can be */
+	maxWidth?: string | number,
+
+	/** The smallest width the dropdown content can be */
+	minWidth?: string | number,
+
+	/** Whether to render the dropdown content directly in the component instead of building it out and attaching to the document root */
+	noPortal?: boolean,
+
+	/** Props to pass to the `Downshift` component */
+	downshiftProps?: Object,
+
+	/** Whether the dropdown should close when a click on the body is registered */
+	closeOnBodyClick?: boolean,
+
+	/** Optional custom function to execute on dropdown click */
+	onClick?: (e: SyntheticMouseEvent<*>) => void,
+};
+
+type State = {
+	isActive: boolean,
+};
+
+class Dropdown extends React.PureComponent<Props, State> {
+	state = {
+		isActive: this.props.isActive || false,
+	};
+
+	static defaultProps = {
+		direction: 'bottom',
+		minWidth: '0px',
+		noPortal: false,
+		closeOnBodyClick: false,
+	};
+
+	closeContent = (e: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>) => {
 		if (this.props.manualToggle && this.props.isActive) {
 			this.props.manualToggle(e);
 		} else {
 			this.setState(() => ({ isActive: false }));
 		}
-	}
+	};
 
-	toggleContent(e) {
+	toggleContent = (e: SyntheticMouseEvent<*>) => {
 		if (this.props.manualToggle) {
 			this.props.manualToggle(e);
 		} else {
 			this.setState(() => ({ isActive: !this.state.isActive }));
 		}
-	}
+	};
 
-	onClick(e) {
+	onClick = (e: SyntheticMouseEvent<*>) => {
 		e.preventDefault();
 		this.toggleContent(e);
 
 		if (this.props.onClick) {
 			this.props.onClick(e);
 		}
-	}
+	};
 
-	onKeyDown(e) {
+	onKeyDown = (e: SyntheticKeyboardEvent<*>) => {
 		if (e.key === 'Enter' && this.state.isActive) {
-			this.closeContent();
+			this.closeContent(e);
 		}
-	}
+	};
 
-	onBodyClick(e) {
+	onBodyClick = (e: SyntheticMouseEvent<*>) => {
+		if (this.props.closeOnBodyClick) {
+			this.closeContent(e);
+			return;
+		}
+
 		if (!this.contentRef || !this.triggerRef) {
 			return;
 		}
@@ -74,23 +121,34 @@ class Dropdown extends React.PureComponent {
 		if (isNotDropdownClick) {
 			this.closeContent(e);
 		}
-	}
+	};
 
-	onBodyKeyDown(e) {
+	onBodyKeyDown = (e: SyntheticKeyboardEvent<*>) => {
 		if (e.key === 'Escape') {
-			this.closeContent();
+			this.closeContent(e);
+		}
+	};
+
+	componentDidMount() {
+		if (document.body) {
+			document.body.addEventListener('click', this.onBodyClick);
+		}
+		if (document.body) {
+			document.body.addEventListener('keydown', this.onBodyKeyDown);
 		}
 	}
 
-	componentDidMount() {
-		document.body.addEventListener('click', this.onBodyClick);
-		document.body.addEventListener('keydown', this.onBodyKeyDown);
+	componentWillUnmount() {
+		if (document.body) {
+			document.body.removeEventListener('click', this.onBodyClick);
+		}
+		if (document.body) {
+			document.body.removeEventListener('keydown', this.onBodyKeyDown);
+		}
 	}
 
-	componentWillUnmount() {
-		document.body.removeEventListener('click', this.onBodyClick);
-		document.body.removeEventListener('keydown', this.onBodyKeyDown);
-	}
+	triggerRef: ?HTMLDivElement;
+	contentRef: ?HTMLDivElement;
 
 	render() {
 		const {
@@ -111,6 +169,7 @@ class Dropdown extends React.PureComponent {
 		// Do not pass along to children
 		delete other.manualToggle;
 		delete other.isActive;
+		delete other.closeOnBodyClick;
 
 		const classNames = {
 			dropdown: cx(className, 'popup', {
@@ -194,31 +253,39 @@ class Dropdown extends React.PureComponent {
 											})}
 										>
 											{menuItems
-												? menuItems.map((item, index) => {
-														const {
-															className,
-															...other
-														} = item.props;
+												? menuItems.map(
+														(
+															item: React$Element<*>,
+															index
+														) => {
+															const {
+																className,
+																...other
+															} = item.props;
 
-														return React.cloneElement(item, {
-															...getItemProps({
+															return React.cloneElement(
 																item,
-																key: `menuItem-${index}`,
-																className: cx(
-																	className,
-																	DROPDOWN_MENU_ITEM_CLASS,
-																	'display--flex span--100'
-																),
-																style: {
-																	backgroundColor:
-																		highlightedIndex ===
-																			index &&
-																		C_COOLGRAYLIGHTTRANSP,
-																},
-																...other,
-															}),
-														});
-												  })
+																{
+																	...getItemProps({
+																		item,
+																		key: `menuItem-${index}`,
+																		className: cx(
+																			className,
+																			DROPDOWN_MENU_ITEM_CLASS,
+																			'display--flex span--100'
+																		),
+																		style: {
+																			backgroundColor:
+																				highlightedIndex ===
+																					index &&
+																				C_COOLGRAYLIGHTTRANSP,
+																		},
+																		...other,
+																	}),
+																}
+															);
+														}
+												  )
 												: content}
 										</div>
 									</div>
@@ -231,55 +298,5 @@ class Dropdown extends React.PureComponent {
 		);
 	}
 }
-
-Dropdown.defaultProps = {
-	direction: 'bottom',
-	minWidth: '0px',
-	noPortal: false,
-};
-
-Dropdown.propTypes = {
-	/** The element that opens the dropdown when clicked */
-	trigger: PropTypes.element.isRequired,
-
-	/** The content that's rendered inside the dropdown */
-	content: PropTypes.element,
-
-	/** An array of elements that are rendered as a menu inside the dropdown */
-	menuItems: PropTypes.arrayOf(PropTypes.element),
-
-	/** The horizontal alignment of the dropdown content bubble to the dropdown trigger */
-	align: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
-
-	/** Which side of the dropdown trigger the dropdown content bubble renders on */
-	direction: PropTypes.oneOf(['top', 'bottom']).isRequired,
-
-	/** How many additional pixels to push the dropdown content bubble */
-	offset: PropTypes.shape({
-		left: PropTypes.number,
-		top: PropTypes.number,
-	}),
-
-	/** Class names to add to the wrapper of the dropdown trigger and content */
-	className: PropTypes.string,
-
-	/** Whether the dropdown content is being shown */
-	isActive: PropTypes.bool,
-
-	/** A function that is used to control the toggling of the dropdown */
-	manualToggle: PropTypes.func,
-
-	/** The largest width the dropdown content can be */
-	maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-	/** The smallest width the dropdown content can be */
-	minWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-	/** Whether to render the dropdown content directly in the component instead of bulling it out and attaching to the document root */
-	noPortal: PropTypes.bool,
-
-	/** Props to pass to the `Downshift` component */
-	downshiftProps: PropTypes.object,
-};
 
 export default Dropdown;
