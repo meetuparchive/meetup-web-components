@@ -1,3 +1,10 @@
+# [6.1]
+
+-   **New feature** `Dropdown` component now supports a `closeOnMenuItemClick` boolean prop that specifies
+    whether `Dropdown` should close after a menu item is clicked on (assuming `menuItems` has been passed in).
+    Hopefully this reduces overhead and the necessity to implement `manualToggle` and manage `isActive` to achieve
+    this behavior.
+
 # [6.0]
 
 -   **BREAKING CHANGE** `NumberInput`'s `onChange` callback will now receive a
