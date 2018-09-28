@@ -121,6 +121,9 @@ class Dropdown extends React.PureComponent<Props, State> {
 			}
 			itemProps.onClick(e);
 
+			console.log(itemProps);
+			console.log('CLICK FIRED');
+
 			if (this.props.closeOnMenuItemClick) {
 				this.closeContent(e);
 			}
