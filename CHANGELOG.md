@@ -1,5 +1,10 @@
 # [6.0]
 
+-   **BREAKING CHANGE** `closeOnBodyClick` is being deprecated from `Dropdown` component. Continue using
+    `manualToggle` and `isActive` props instead.
+
+# [6.0]
+
 -   **BREAKING CHANGE** `NumberInput`'s `onChange` callback will now receive a
     `number | null` argument, not a `SyntheticInputEvent` (or the previous fake event).
     Consumers should update their `onChange` handlers to expect _only_ the number
