@@ -50,9 +50,6 @@ type Props = {
 	/** Props to pass to the `Downshift` component */
 	downshiftProps?: Object,
 
-	/** Whether the dropdown should close when a click on the body is registered */
-	closeOnBodyClick?: boolean,
-
 	/** Optional custom function to execute on dropdown click */
 	onClick?: (e: SyntheticMouseEvent<*>) => void,
 };
@@ -70,7 +67,6 @@ class Dropdown extends React.PureComponent<Props, State> {
 		direction: 'bottom',
 		minWidth: '0px',
 		noPortal: false,
-		closeOnBodyClick: false,
 	};
 
 	closeContent = (e: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>) => {
@@ -107,11 +103,6 @@ class Dropdown extends React.PureComponent<Props, State> {
 	};
 
 	onBodyClick = (e: SyntheticMouseEvent<*>) => {
-		if (this.props.closeOnBodyClick) {
-			this.closeContent(e);
-			return;
-		}
-
 		if (!this.contentRef || !this.triggerRef) {
 			return;
 		}
@@ -171,7 +162,6 @@ class Dropdown extends React.PureComponent<Props, State> {
 		// Do not pass along to children
 		delete other.manualToggle;
 		delete other.isActive;
-		delete other.closeOnBodyClick;
 
 		const classNames = {
 			dropdown: cx(className, 'popup', {
