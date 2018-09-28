@@ -191,7 +191,7 @@ storiesOf('Interactive/Dropdown', module)
 		'With menu items and closeOnBodyClick',
 		() => (
 			<Dropdown
-				closeOnBodyClick
+				closeOnMenuItemClick
 				align="center"
 				minWidth="160px"
 				maxWidth="250px"

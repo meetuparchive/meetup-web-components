@@ -50,8 +50,9 @@ type Props = {
 	/** Props to pass to the `Downshift` component */
 	downshiftProps?: Object,
 
-	/** Whether the dropdown should close when a click on the body is registered */
-	closeOnBodyClick?: boolean,
+	/** Whether the dropdown should close after a menuItem click is fired. Used only in case
+	 when menuItems are passed in. */
+	closeOnMenuItemClick?: boolean,
 
 	/** Optional custom function to execute on dropdown click */
 	onClick?: (e: SyntheticMouseEvent<*>) => void,
@@ -70,7 +71,7 @@ class Dropdown extends React.PureComponent<Props, State> {
 		direction: 'bottom',
 		minWidth: '0px',
 		noPortal: false,
-		closeOnBodyClick: false,
+		closeOnMenuItemClick: false,
 	};
 
 	closeContent = (e: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>) => {
@@ -106,18 +107,34 @@ class Dropdown extends React.PureComponent<Props, State> {
 		}
 	};
 
-	onBodyClick = (e: SyntheticMouseEvent<*>) => {
-		if (this.props.closeOnBodyClick) {
-			this.closeContent(e);
-			return;
-		}
+	/** Handles execution of menuItem action and then closes the dropdown
+	 	_if_ `closeOnMenuItemClick` is set to true and there are menuItems.
+	 	If there are menuItems but `closeOnMenuItemClick` is false it'll just
+	 	fire the action and keep the dropdown open. */
+	onDropdownMenuItemClick = (
+		e: SyntheticMouseEvent<*>,
+		itemProps: { onClick?: (SyntheticMouseEvent<*>) => void }
+	) => {
+		if (itemProps.onClick) {
+			if (!this.contentRef || !this.triggerRef) {
+				return;
+			}
+			itemProps.onClick(e);
 
-		if (!this.contentRef || !this.triggerRef) {
+			if (this.props.closeOnMenuItemClick) {
+				this.closeContent(e);
+			}
+		}
+	};
+
+	/** Handles closing the Dropdown on a click on the document body. */
+	onBodyClick = (e: SyntheticMouseEvent<*>) => {
+		if (!this.contentRef && !this.triggerRef) {
 			return;
 		}
 
 		const isNotDropdownClick = [this.contentRef, this.triggerRef].every(
-			ref => !ref.contains(e.target)
+			ref => ref && !ref.contains(e.target)
 		);
 
 		if (isNotDropdownClick) {
@@ -132,20 +149,16 @@ class Dropdown extends React.PureComponent<Props, State> {
 	};
 
 	componentDidMount() {
-		if (document.body) {
-			document.body.addEventListener('click', this.onBodyClick);
-		}
-		if (document.body) {
-			document.body.addEventListener('keydown', this.onBodyKeyDown);
+		if (window) {
+			window.addEventListener('click', this.onBodyClick);
+			window.addEventListener('keydown', this.onBodyKeyDown);
 		}
 	}
 
 	componentWillUnmount() {
-		if (document.body) {
-			document.body.removeEventListener('click', this.onBodyClick);
-		}
-		if (document.body) {
-			document.body.removeEventListener('keydown', this.onBodyKeyDown);
+		if (window) {
+			window.removeEventListener('click', this.onBodyClick);
+			window.removeEventListener('keydown', this.onBodyKeyDown);
 		}
 	}
 
@@ -171,7 +184,7 @@ class Dropdown extends React.PureComponent<Props, State> {
 		// Do not pass along to children
 		delete other.manualToggle;
 		delete other.isActive;
-		delete other.closeOnBodyClick;
+		delete other.closeOnMenuItemClick;
 
 		const classNames = {
 			dropdown: cx(className, 'popup', {
@@ -283,6 +296,11 @@ class Dropdown extends React.PureComponent<Props, State> {
 																				C_COOLGRAYLIGHTTRANSP,
 																		},
 																		...other,
+																		onClick: e =>
+																			this.onDropdownMenuItemClick(
+																				e,
+																				item.props
+																			),
 																	}),
 																}
 															);
