@@ -134,27 +134,6 @@ describe('Dropdown', () => {
 		});
 	});
 
-	describe('dropdown with menuItems and closeOnBodyClick', () => {
-		const menuItemDropdown = (
-			<Dropdown
-				closeOnBodyClick
-				align="center"
-				trigger={dropdownTrigger}
-				menuItems={[<div>one</div>, <div>two</div>, <div>three</div>]}
-			/>
-		);
-		const menuItemDropdownWrapper = mount(menuItemDropdown);
-		const trigger = menuItemDropdownWrapper.find('.popup-trigger');
-
-		it('closes the dropdown on menu item click', () => {
-			// open menu
-			trigger.simulate('click');
-			// click on some item menu
-			menuItemDropdownWrapper.find(Downshift).simulate('click');
-			expect(menuItemDropdownWrapper.state('isActive').toBeFalsy);
-		});
-	});
-
 	describe('manually toggle dropdown', () => {
 		let closedComponent, trigger;
 

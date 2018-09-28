@@ -1,3 +1,9 @@
+# [6.1]
+
+-   **BREAKING CHANGE** `closeOnBodyClick` prop for `Dropdown` component is deprecated.
+    Continue using `manualToggle` in conjunction with `isActive` to manage open/close state of
+    dropdown.
+
 # [6.0]
 
 -   **BREAKING CHANGE** `NumberInput`'s `onChange` callback will now receive a
