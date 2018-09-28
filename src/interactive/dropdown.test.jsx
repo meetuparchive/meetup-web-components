@@ -121,36 +121,65 @@ describe('Dropdown', () => {
 		const menuItemDropdownWrapper = mount(menuItemDropdown);
 		const trigger = menuItemDropdownWrapper.find('.popup-trigger');
 
-		it('renders the menuItems', () => {
+		it(`renders the menuItems WITHOUT closeOnItemClick, 
+			fires menuItem action and doesn't close dropdown`, () => {
+			// Open dropdown
 			trigger.simulate('click');
+			const spy = jest.spyOn(
+				menuItemDropdownWrapper.instance(),
+				'onDropdownMenuItemClick'
+			);
 			const menuItemsProp = menuItemDropdownWrapper
 				.find(Downshift)
 				.prop('menuItems');
 			const menuItemsRendered = menuItemDropdownWrapper.find(
 				`.${DROPDOWN_MENU_ITEM_CLASS}`
 			);
+			// Click on menuItem
+			menuItemDropdownWrapper
+				.find(`.${DROPDOWN_MENU_ITEM_CLASS}`)
+				.first()
+				.simulate('click');
 
+			expect(spy).toHaveBeenCalled();
 			expect(menuItemsRendered.length).toBe(menuItemsProp.length);
+			expect(menuItemDropdownWrapper.state('isActive').toBeTruthy);
 		});
 	});
 
-	describe('dropdown with menuItems and closeOnBodyClick', () => {
+	describe(`renders the menuItems WITH closeOnItemClick, 
+			  fires menuItem action and closes dropdown`, () => {
 		const menuItemDropdown = (
 			<Dropdown
-				closeOnBodyClick
+				closeOnMenuItemClick
 				align="center"
 				trigger={dropdownTrigger}
-				menuItems={[<div>one</div>, <div>two</div>, <div>three</div>]}
+				menuItems={[
+					<div onClick={jest.fn()}>one</div>,
+					<div>two</div>,
+					<div>three</div>,
+				]}
 			/>
 		);
 		const menuItemDropdownWrapper = mount(menuItemDropdown);
 		const trigger = menuItemDropdownWrapper.find('.popup-trigger');
 
 		it('closes the dropdown on menu item click', () => {
-			// open menu
+			const spy = jest.spyOn(
+				menuItemDropdownWrapper.instance(),
+				'onDropdownMenuItemClick'
+			);
+
+			// open dropdown
 			trigger.simulate('click');
+
 			// click on some item menu
-			menuItemDropdownWrapper.find(Downshift).simulate('click');
+			menuItemDropdownWrapper
+				.find(`.${DROPDOWN_MENU_ITEM_CLASS}`)
+				.first()
+				.simulate('click');
+
+			expect(spy).toHaveBeenCalled();
 			expect(menuItemDropdownWrapper.state('isActive').toBeFalsy);
 		});
 	});
