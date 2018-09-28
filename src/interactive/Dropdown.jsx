@@ -100,7 +100,9 @@ class Dropdown extends React.PureComponent<Props, State> {
 
 	onKeyDown = (e: SyntheticKeyboardEvent<*>) => {
 		if (e.key === 'Enter' && this.state.isActive) {
-			this.closeContent(e);
+			setTimeout(() => {
+				this.closeContent(e);
+			}, 0);
 		}
 	};
 
