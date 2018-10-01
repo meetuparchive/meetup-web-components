@@ -7172,23 +7172,23 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
-mwp-app-render@17.2.2704-beta:
-  version "17.2.2704-beta"
-  resolved "https://registry.yarnpkg.com/mwp-app-render/-/mwp-app-render-17.2.2704-beta.tgz#99f59f2cab551053be349a0f7acaaddeb17f8a1e"
+mwp-app-render@17.2.2705-beta:
+  version "17.2.2705-beta"
+  resolved "https://registry.yarnpkg.com/mwp-app-render/-/mwp-app-render-17.2.2705-beta.tgz#6eadb461d18b93de6a3b5529e313ec645f432f00"
   dependencies:
     browser-detect "0.2.22"
     escape-html "1.0.3"
     ux-capture "1.0.8"
 
-mwp-auth-plugin@^17.2.2704-beta:
-  version "17.2.2704-beta"
-  resolved "https://registry.yarnpkg.com/mwp-auth-plugin/-/mwp-auth-plugin-17.2.2704-beta.tgz#207c9408782e91c9c0bec4f4c905dbec975f77cc"
+mwp-auth-plugin@^17.2.2705-beta:
+  version "17.2.2705-beta"
+  resolved "https://registry.yarnpkg.com/mwp-auth-plugin/-/mwp-auth-plugin-17.2.2705-beta.tgz#af541163a1ed6142b3843e45aca807d08e16635a"
   dependencies:
     uuid "3.1.0"
 
-mwp-config@17.2.2704-beta:
-  version "17.2.2704-beta"
-  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-17.2.2704-beta.tgz#62b3e749e1534dac55f2e668f4d611494459c985"
+mwp-config@17.2.2705-beta:
+  version "17.2.2705-beta"
+  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-17.2.2705-beta.tgz#af93b8411a5213c1446535dec5f3ff7a61d1c07f"
   dependencies:
     babel-core "6.25.0"
     babel-plugin-react-intl "2.3.1"
@@ -7204,15 +7204,15 @@ mwp-config@17.2.2704-beta:
     stylelint-order "1.0.0"
     stylelint-scss "3.3.0"
 
-mwp-i18n@17.2.2704-beta:
-  version "17.2.2704-beta"
-  resolved "https://registry.yarnpkg.com/mwp-i18n/-/mwp-i18n-17.2.2704-beta.tgz#bac7b37c4b8b6f5b6a567cda91e0b991dca7dc0a"
+mwp-i18n@17.2.2705-beta:
+  version "17.2.2705-beta"
+  resolved "https://registry.yarnpkg.com/mwp-i18n/-/mwp-i18n-17.2.2705-beta.tgz#532213dbd63ff9fc07c0a7420ab3603d2d6a39a2"
 
-mwp-router@17.2.2704-beta:
-  version "17.2.2704-beta"
-  resolved "https://registry.yarnpkg.com/mwp-router/-/mwp-router-17.2.2704-beta.tgz#fb24d78481d45b26b3edcef07ccf9a99f1fd39cb"
+mwp-router@17.2.2705-beta:
+  version "17.2.2705-beta"
+  resolved "https://registry.yarnpkg.com/mwp-router/-/mwp-router-17.2.2705-beta.tgz#1099f88cbb33161dbcb013cc04175b8979467c8a"
   dependencies:
-    mwp-auth-plugin "^17.2.2704-beta"
+    mwp-auth-plugin "^17.2.2705-beta"
     react-side-effect "1.1.3"
 
 nan@^2.3.2, nan@^2.9.2:
