@@ -1,9 +1,12 @@
 import React from 'react';
-import Flex, { FlexComponent } from './Flex';
+import Flex from './Flex';
 import FlexItem, { FlexItemComponent } from './FlexItem';
-import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
+import { withKnobs, boolean, select, object, text } from '@storybook/addon-knobs';
 
+import { withInfo } from '@storybook/addon-info';
+import { C_COOLGRAYMEDIUM } from 'swarm-constants/dist/js/constants';
+import { MEDIA_SIZES } from '../utils/designConstants';
 const flexParentStyles = {
 	minHeight: '200px',
 	padding: '20px',
@@ -28,27 +31,38 @@ const boxStyles = {
 };
 
 storiesOf('Layout/FlexItem', module)
-	.addDecorator(decorateWithInfo)
+	.addDecorator(withInfo)
+	.addDecorator(withKnobs)
 	.addParameters({
 		info: {
-			propTables: [FlexComponent, FlexItemComponent],
-			propTablesExclude: [Flex, FlexItem],
+			propTables: [FlexItemComponent],
+			propTablesExclude: [FlexItem],
 		},
 	})
 	.add(
 		'Flex Item grow (default)',
 		() => (
-			<FlexComponent style={flexParentStyles}>
-				<FlexItemComponent style={flexItemStyles}>
+			<Flex
+				className={text('className', '')}
+				shrink={boolean('shrink', false)}
+				growFactor={select('growFactor', [1, 2, 3, 4, 5, 6, 7], undefined)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={flexParentStyles}
+			>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
-				</FlexItemComponent>
-				<FlexItemComponent style={flexItemStyles}>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 2</div>
-				</FlexItemComponent>
-				<FlexItemComponent style={flexItemStyles}>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 2</div>
-				</FlexItemComponent>
-			</FlexComponent>
+				</FlexItem>
+			</Flex>
 		),
 		{
 			info: {
@@ -60,17 +74,47 @@ storiesOf('Layout/FlexItem', module)
 	.add(
 		'Flex Item shrink',
 		() => (
-			<FlexComponent style={flexParentStyles}>
-				<FlexItemComponent shrink style={flexItemStyles}>
+			<Flex style={flexParentStyles}>
+				<FlexItem
+					className={text('className', '')}
+					shrink={boolean('shrink', true)}
+					growFactor={select('growFactor', [1, 2, 3, 4, 5, 6, 7], undefined)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={flexItemStyles}
+				>
 					<div style={boxStyles}>Item 1</div>
-				</FlexItemComponent>
-				<FlexItemComponent shrink style={flexItemStyles}>
+				</FlexItem>
+				<FlexItem
+					className={text('className', '')}
+					shrink={boolean('shrink', true)}
+					growFactor={select('growFactor', [1, 2, 3, 4, 5, 6, 7], undefined)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={flexItemStyles}
+				>
 					<div style={boxStyles}>Item 2</div>
-				</FlexItemComponent>
-				<FlexItemComponent shrink style={flexItemStyles}>
+				</FlexItem>
+				<FlexItem
+					className={text('className', '')}
+					shrink={boolean('shrink', true)}
+					growFactor={select('growFactor', [1, 2, 3, 4, 5, 6, 7], undefined)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={flexItemStyles}
+				>
 					<div style={boxStyles}>Item 2</div>
-				</FlexItemComponent>
-			</FlexComponent>
+				</FlexItem>
+			</Flex>
 		),
 		{
 			info: {
@@ -83,62 +127,38 @@ storiesOf('Layout/FlexItem', module)
 		'Flex Item growFactors',
 		() => (
 			<div style={{ height: '100vh', width: '100%' }}>
-				<FlexComponent style={flexParentStyles}>
-					<FlexItemComponent growFactor={1} style={flexItemStyles}>
+				<Flex align="center" style={{ ...flexParentStyles, height: '100%' }}>
+					<FlexItem
+						className={text('className', '')}
+						shrink={boolean('shrink', false)}
+						growFactor={select('growFactor (left)', [1, 2, 3, 4, 5, 6, 7], 1)}
+						isLoading={boolean('isLoading', false)}
+						loadingProps={object('loadingProps', {
+							color: C_COOLGRAYMEDIUM,
+							size: `${MEDIA_SIZES.l}px`,
+						})}
+						style={flexItemStyles}
+					>
 						<div style={boxStyles}>1</div>
-					</FlexItemComponent>
-					<FlexItemComponent growFactor={7} style={flexItemStyles}>
+					</FlexItem>
+					<FlexItem
+						className={text('className', '')}
+						shrink={boolean('shrink', false)}
+						growFactor={select(
+							'growFactor (right)',
+							[1, 2, 3, 4, 5, 6, 7],
+							7
+						)}
+						isLoading={boolean('isLoading', false)}
+						loadingProps={object('loadingProps', {
+							color: C_COOLGRAYMEDIUM,
+							size: `${MEDIA_SIZES.l}px`,
+						})}
+						style={flexItemStyles}
+					>
 						<div style={boxStyles}>7</div>
-					</FlexItemComponent>
-				</FlexComponent>
-				<FlexComponent style={flexParentStyles}>
-					<FlexItemComponent growFactor={1} style={flexItemStyles}>
-						<div style={boxStyles}>1</div>
-					</FlexItemComponent>
-					<FlexItemComponent growFactor={6} style={flexItemStyles}>
-						<div style={boxStyles}>6</div>
-					</FlexItemComponent>
-				</FlexComponent>
-				<FlexComponent style={flexParentStyles}>
-					<FlexItemComponent growFactor={1} style={flexItemStyles}>
-						<div style={boxStyles}>1</div>
-					</FlexItemComponent>
-					<FlexItemComponent growFactor={5} style={flexItemStyles}>
-						<div style={boxStyles}>5</div>
-					</FlexItemComponent>
-				</FlexComponent>
-				<FlexComponent style={flexParentStyles}>
-					<FlexItemComponent growFactor={1} style={flexItemStyles}>
-						<div style={boxStyles}>1</div>
-					</FlexItemComponent>
-					<FlexItemComponent growFactor={4} style={flexItemStyles}>
-						<div style={boxStyles}>4</div>
-					</FlexItemComponent>
-				</FlexComponent>
-				<FlexComponent style={flexParentStyles}>
-					<FlexItemComponent growFactor={1} style={flexItemStyles}>
-						<div style={boxStyles}>1</div>
-					</FlexItemComponent>
-					<FlexItemComponent growFactor={3} style={flexItemStyles}>
-						<div style={boxStyles}>3</div>
-					</FlexItemComponent>
-				</FlexComponent>
-				<FlexComponent style={flexParentStyles}>
-					<FlexItemComponent growFactor={1} style={flexItemStyles}>
-						<div style={boxStyles}>1</div>
-					</FlexItemComponent>
-					<FlexItemComponent growFactor={2} style={flexItemStyles}>
-						<div style={boxStyles}>2</div>
-					</FlexItemComponent>
-				</FlexComponent>
-				<FlexComponent style={flexParentStyles}>
-					<FlexItemComponent growFactor={1} style={flexItemStyles}>
-						<div style={boxStyles}>1</div>
-					</FlexItemComponent>
-					<FlexItemComponent growFactor={1} style={flexItemStyles}>
-						<div style={boxStyles}>1</div>
-					</FlexItemComponent>
-				</FlexComponent>
+					</FlexItem>
+				</Flex>
 			</div>
 		),
 		{
@@ -155,7 +175,17 @@ storiesOf('Layout/FlexItem', module)
 			<FlexItem style={flexItemStyles}>
 				<div style={boxStyles}>Item 1</div>
 			</FlexItem>
-			<FlexItem isLoading style={flexItemStyles}>
+			<FlexItem
+				className={text('className', '')}
+				shrink={boolean('shrink', false)}
+				growFactor={select('growFactor', [1, 2, 3, 4, 5, 6, 7], undefined)}
+				isLoading={boolean('isLoading', true)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={flexItemStyles}
+			>
 				<div style={boxStyles}>isLoading</div>
 			</FlexItem>
 			<FlexItem style={flexItemStyles}>
@@ -169,12 +199,15 @@ storiesOf('Layout/FlexItem', module)
 				<div style={boxStyles}>Item 1</div>
 			</FlexItem>
 			<FlexItem
-				isLoading
-				loadingProps={{
+				className={text('className', '')}
+				shrink={boolean('shrink', false)}
+				growFactor={select('growFactor', [1, 2, 3, 4, 5, 6, 7], undefined)}
+				isLoading={boolean('isLoading', true)}
+				loadingProps={object('loadingProps', {
 					color: 'red',
 					scrimColor: 'rgba(250, 250, 255, 0.8)',
 					size: '64px',
-				}}
+				})}
 				style={flexItemStyles}
 			>
 				<div style={boxStyles}>isLoading</div>
