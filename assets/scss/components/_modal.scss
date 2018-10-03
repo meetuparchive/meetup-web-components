@@ -58,6 +58,8 @@ $modal-width: 440px;
 }
 
 .view--modal {
+	-webkit-overflow-scrolling: touch;
+
 	.stripe-heroContent {
 		min-height: 0;
 		text-align: inherit;
