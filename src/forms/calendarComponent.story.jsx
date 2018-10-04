@@ -3,7 +3,7 @@ import CalendarComponent from './CalendarComponent';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
-import { LocalDate } from 'js-joda';
+import { LocalDate, convert } from 'js-joda';
 
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
@@ -88,8 +88,8 @@ storiesOf('Forms/CalendarComponent', module)
 					value={jodaDate}
 					datepickerOptions={{
 						allowInput: true,
-						minDate: jodaDate.minusDays(2),
-						maxDate: jodaDate.plusDays(7),
+						minDate: convert(jodaDate.minusDays(2)).toDate(),
+						maxDate: convert(jodaDate.plusDays(7)).toDate(),
 					}}
 				/>
 			</div>
