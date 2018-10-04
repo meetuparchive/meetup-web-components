@@ -22,9 +22,12 @@ storiesOf('Forms/CalendarComponent', module)
 					label="Start at"
 					value={jodaDate}
 					datepickerOptions={{
-						maxDate: boolean('max date today', false) && jodaDate,
+						maxDate:
+							boolean('max date today', false) &&
+							convert(jodaDate).toDate(),
 						minDate:
-							boolean('min date today', false) && jodaDate.plusWeeks(16),
+							boolean('min date today', false) &&
+							convert(jodaDate).toDate(),
 					}}
 				/>
 			</Chunk>
@@ -105,7 +108,7 @@ storiesOf('Forms/CalendarComponent', module)
 					value={date}
 					datepickerOptions={{
 						allowInput: true,
-						minDate: jodaDate,
+						minDate: convert(jodaDate).toDate(),
 					}}
 				/>
 			</div>
@@ -122,7 +125,7 @@ storiesOf('Forms/CalendarComponent', module)
 					error={'Woops, something went wrong.'}
 					datepickerOptions={{
 						allowInput: true,
-						minDate: jodaDate,
+						minDate: convert(jodaDate).toDate(),
 					}}
 				/>
 			</div>
