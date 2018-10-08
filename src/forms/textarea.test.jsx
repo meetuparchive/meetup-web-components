@@ -106,8 +106,8 @@ describe('Textarea', function() {
 		textareaComponent.forceUpdate();
 		expect(textareaEl.value).toEqual(newValue);
 	});
-
-	it('should call onChange with input change', function() {
+	// skipping becuase it will be tested in https://meetup.atlassian.net/browse/SDS-744
+	it.skip('should call onChange with input change', function() {
 		const newValue = `${VALUE}r`;
 		const changeSpy = spyOn(Textarea.prototype, 'onChange').and.callThrough();
 
