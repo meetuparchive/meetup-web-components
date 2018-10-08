@@ -1,36 +1,72 @@
+// @flow
 import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 import cx from 'classnames';
 import autosize from 'autosize';
 import CharCounter from './CharCounter';
 import withErrorList from '../utils/components/withErrorList';
 
+type Props = React.Element<HTMLTextAreaElement> & {
+	/** Adds an `id` attribute to the input, and associates it with the `<label />` */
+	id: string,
+	/** The `name` attribute for the input */
+	name: string,
+	/** Error content to render */
+	error?: string,
+	/** What we render into the input's `<label />` */
+	label?: string | React.Element<*>,
+	/** The class name/s to add to the `<label />` element */
+	labelClassName?: string,
+	/** The smallest height the `<textarea />` can be */
+	minHeight?: number,
+	/** The largest height the `<textarea />` can be */
+	maxHeight?: number,
+	/** Callback that happens when the textarea value changes */
+	onChange?: (e: Event) => void,
+	/** Number of rows high the textarea is */
+	rows?: number,
+	/** Value of the textarea */
+	value?: string,
+	/** Whether to grow the height of the textarea to fit all of the textarea content without scrolling */
+	autosize?: boolean,
+	/** An additional piece of helpful info rendered with the field */
+	helperText?: string | React.Element<*>,
+	/** Whether the field is required to have a value */
+	required?: boolean,
+	/** What to render in order to indicate the field is required */
+	requiredText?: string | React.Element<*>,
+};
+
+type State = {
+	value: string,
+};
+
+
 /**
  * Should override value with info from state
  * @return {Object} the new state for the component
  */
-export const overrideValue = nextProps => ({
+export const overrideValue = (nextProps: Props): State => ({
 	value: nextProps.value || '',
 });
 
 /**
  * @module Textarea
  */
-export class Textarea extends React.PureComponent {
-	constructor(props) {
-		super(props);
-		this.onChange = this.onChange.bind(this);
+export class Textarea extends React.PureComponent<Props, State> {
+	static defaultProps = {
+		requiredText: '*',
+	};
 
-		this.state = {
-			value: '',
-		};
-	}
+	state = {
+		value: '',
+	};
 
 	/**
 	 * @param {Object} nextProps the incoming props
 	 * @return {undefined} side effect only
 	 */
-	static getDerivedStateFromProps(nextProps) {
+	static getDerivedStateFromProps(nextProps: Props) {
 		return overrideValue(nextProps);
 	}
 
@@ -48,7 +84,7 @@ export class Textarea extends React.PureComponent {
 	 * @param {Object} prevProps the previous props
 	 * @return {undefined} side effect only
 	 */
-	componentDidUpdate(prevProps) {
+	componentDidUpdate(prevProps: Props) {
 		if (this.props.value !== prevProps.value) {
 			autosize.update(this.textarea);
 		}
@@ -59,9 +95,9 @@ export class Textarea extends React.PureComponent {
 	 * @param  {Object} e Event object
 	 * @return {undefined}
 	 */
-	onChange(e) {
+	onChange = (e: SyntheticInputEvent<EventTarget>): void => {
 		const { onChange } = this.props;
-		const value = e.target.value;
+		const { value } = e.target;
 
 		this.setState(() => ({
 			value,
@@ -71,6 +107,8 @@ export class Textarea extends React.PureComponent {
 			onChange(e);
 		}
 	}
+
+	textarea: ?HTMLTextAreaElement;
 
 	render() {
 		const {
@@ -157,53 +195,5 @@ export class Textarea extends React.PureComponent {
 		);
 	}
 }
-
-Textarea.defaultProps = {
-	requiredText: '*',
-};
-
-Textarea.propTypes = {
-	/** Adds an `id` attribute to the input, and associates it with the `<label />` */
-	id: PropTypes.string.isRequired,
-
-	/** The `name` attribute for the input */
-	name: PropTypes.string.isRequired,
-
-	/** Error content to render */
-	error: PropTypes.string,
-
-	/** What we render into the input's `<label />` */
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-
-	/** The class name/s to add to the `<label />` element */
-	labelClassName: PropTypes.string,
-
-	/** The smallest height the `<textarea />` can be */
-	minHeight: PropTypes.number,
-
-	/** The largest height the `<textarea />` can be */
-	maxHeight: PropTypes.number,
-
-	/** Callback that happens when the textarea value changes */
-	onChange: PropTypes.func,
-
-	/** Number of rows high the textarea is */
-	rows: PropTypes.number,
-
-	/** Value of the textarea */
-	value: PropTypes.string,
-
-	/** Whether to grow the height of the textarea to fit all of the textarea content without scrolling */
-	autosize: PropTypes.bool,
-
-	/** An additional piece of helpful info rendered with the field */
-	helperText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-
-	/** Whether the field is required to have a value */
-	required: PropTypes.bool,
-
-	/** What to render in order to indicate the field is required */
-	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-};
 
 export default withErrorList(Textarea);
