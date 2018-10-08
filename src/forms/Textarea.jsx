@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from 'prop-types';
 import * as React from 'react';
 import cx from 'classnames';
 import autosize from 'autosize';
@@ -40,7 +39,6 @@ type Props = React.Element<HTMLTextAreaElement> & {
 type State = {
 	value: string,
 };
-
 
 /**
  * Should override value with info from state
@@ -106,7 +104,7 @@ export class Textarea extends React.PureComponent<Props, State> {
 		if (onChange) {
 			onChange(e);
 		}
-	}
+	};
 
 	textarea: ?HTMLTextAreaElement;
 
