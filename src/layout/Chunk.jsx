@@ -7,7 +7,7 @@ import withLoading from '../utils/components/withLoading';
 
 type Props = {|
 	/** The child elements of the component */
-	children: React$Element<*>,
+	children: React$Node,
 	className?: string,
 	/** Whether the component is in a loading state */
 	isLoading?: boolean,

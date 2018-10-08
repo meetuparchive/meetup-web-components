@@ -139,7 +139,7 @@ storiesOf('Layout/FlexItem', module)
 						})}
 						style={flexItemStyles}
 					>
-						<div style={boxStyles}>1</div>
+						<div style={boxStyles}>Left</div>
 					</FlexItem>
 					<FlexItem
 						className={text('className', '')}
@@ -156,7 +156,7 @@ storiesOf('Layout/FlexItem', module)
 						})}
 						style={flexItemStyles}
 					>
-						<div style={boxStyles}>7</div>
+						<div style={boxStyles}>Right</div>
 					</FlexItem>
 				</Flex>
 			</div>

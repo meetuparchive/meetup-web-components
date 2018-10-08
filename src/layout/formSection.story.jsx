@@ -95,7 +95,7 @@ storiesOf('Layout/FormSection', module)
 		<Bounds>
 			<FormSection
 				withSeparator={boolean('withSeparator', false)}
-				isLoading={boolean('isLoading', false)}
+				isLoading={boolean('isLoading', true)}
 				className={text('className', '')}
 				loadingProps={object('loadingProps', {
 					color: 'red',

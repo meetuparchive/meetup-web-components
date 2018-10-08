@@ -31,7 +31,7 @@ type Props = {
 		size?: MediaSizes,
 	},
 	/** The child elements of the component */
-	children: React$Element<*>,
+	children: React$Node,
 
 	/** Nearest DOM element's class name */
 	className?: string,

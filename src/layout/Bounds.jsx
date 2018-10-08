@@ -9,7 +9,7 @@ export const BOUNDS_CLASS = 'bounds';
 
 type Props = {
 	/** The child elements of the component */
-	children: React$Element<*>,
+	children: React$Node,
 	className?: string,
 	/** Whether the bounds max-width should use the narrow variant */
 	narrow?: boolean,

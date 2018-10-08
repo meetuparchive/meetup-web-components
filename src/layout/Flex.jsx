@@ -48,7 +48,7 @@ type Props = {
 	className?: string,
 
 	/** The child elements of the component */
-	children: React$Element<*>,
+	children: React$Node,
 
 	/** Alignment of flex items along the axis of the flex direction */
 	align?: 'top' | 'bottom' | 'center',

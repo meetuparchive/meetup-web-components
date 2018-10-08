@@ -15,7 +15,7 @@ export const VALID_BREAKPOINTS = {
 };
 type Props = {|
 	/** The child elements of the component */
-	children: React$Element<*>,
+	children: React$Node,
 	className?: string,
 	/** Whether the card's height is be determined by it's content instead of having a minimum height */
 	initialHeight?: boolean,
