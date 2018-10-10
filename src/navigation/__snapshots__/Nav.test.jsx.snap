@@ -104,39 +104,33 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
           align="center"
           noGutters={true}
         >
-          <Button
-            aria-haspopup={true}
+          <FlexItem
             aria-label="Profile"
-            component="button"
-            reset={true}
-            type="button"
           >
-            <FlexItem>
-              <AvatarMember
-                member={
-                  Object {
-                    "id": 1243,
-                    "name": "mocky mcmockerson",
-                    "photo": Object {
-                      "photo_link": "http://placekitten.com/g/400/400",
-                      "thumb_link": "http://placekitten.com/g/200/200",
-                    },
-                  }
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
                 }
-                small={true}
-              />
-            </FlexItem>
-            <FlexItem
-              className="display--none atMedium_display--block"
-              shrink={true}
-            >
-              <Icon
-                className="padding--left-half"
-                shape="chevron-down"
-                size="xxs"
-              />
-            </FlexItem>
-          </Button>
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
         </Flex>
       }
       key="4"
@@ -889,39 +883,33 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
           align="center"
           noGutters={true}
         >
-          <Button
-            aria-haspopup={true}
+          <FlexItem
             aria-label="Profile"
-            component="button"
-            reset={true}
-            type="button"
           >
-            <FlexItem>
-              <AvatarMember
-                member={
-                  Object {
-                    "id": 1243,
-                    "name": "mocky mcmockerson",
-                    "photo": Object {
-                      "photo_link": "http://placekitten.com/g/400/400",
-                      "thumb_link": "http://placekitten.com/g/200/200",
-                    },
-                  }
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
                 }
-                small={true}
-              />
-            </FlexItem>
-            <FlexItem
-              className="display--none atMedium_display--block"
-              shrink={true}
-            >
-              <Icon
-                className="padding--left-half"
-                shape="chevron-down"
-                size="xxs"
-              />
-            </FlexItem>
-          </Button>
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
         </Flex>
       }
       key="5"
@@ -1061,40 +1049,34 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
           align="center"
           noGutters={true}
         >
-          <Button
-            aria-haspopup={true}
+          <FlexItem
             aria-label="Profile"
-            component="button"
-            reset={true}
-            type="button"
           >
-            <FlexItem>
-              <AvatarMember
-                member={
-                  Object {
-                    "id": 1243,
-                    "is_pro_admin": true,
-                    "name": "mocky mcmockerson",
-                    "photo": Object {
-                      "photo_link": "http://placekitten.com/g/400/400",
-                      "thumb_link": "http://placekitten.com/g/200/200",
-                    },
-                  }
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "is_pro_admin": true,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
                 }
-                small={true}
-              />
-            </FlexItem>
-            <FlexItem
-              className="display--none atMedium_display--block"
-              shrink={true}
-            >
-              <Icon
-                className="padding--left-half"
-                shape="chevron-down"
-                size="xxs"
-              />
-            </FlexItem>
-          </Button>
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
         </Flex>
       }
       key="5"
@@ -1838,39 +1820,33 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
           align="center"
           noGutters={true}
         >
-          <Button
-            aria-haspopup={true}
+          <FlexItem
             aria-label="Profile"
-            component="button"
-            reset={true}
-            type="button"
           >
-            <FlexItem>
-              <AvatarMember
-                member={
-                  Object {
-                    "id": 1243,
-                    "name": "mocky mcmockerson",
-                    "photo": Object {
-                      "photo_link": "http://placekitten.com/g/400/400",
-                      "thumb_link": "http://placekitten.com/g/200/200",
-                    },
-                  }
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
                 }
-                small={true}
-              />
-            </FlexItem>
-            <FlexItem
-              className="display--none atMedium_display--block"
-              shrink={true}
-            >
-              <Icon
-                className="padding--left-half"
-                shape="chevron-down"
-                size="xxs"
-              />
-            </FlexItem>
-          </Button>
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
         </Flex>
       }
       key="5"
@@ -2631,39 +2607,33 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
           align="center"
           noGutters={true}
         >
-          <Button
-            aria-haspopup={true}
+          <FlexItem
             aria-label="Profile"
-            component="button"
-            reset={true}
-            type="button"
           >
-            <FlexItem>
-              <AvatarMember
-                member={
-                  Object {
-                    "id": 1243,
-                    "name": "mocky mcmockerson",
-                    "photo": Object {
-                      "photo_link": "http://placekitten.com/g/400/400",
-                      "thumb_link": "http://placekitten.com/g/200/200",
-                    },
-                  }
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
                 }
-                small={true}
-              />
-            </FlexItem>
-            <FlexItem
-              className="display--none atMedium_display--block"
-              shrink={true}
-            >
-              <Icon
-                className="padding--left-half"
-                shape="chevron-down"
-                size="xxs"
-              />
-            </FlexItem>
-          </Button>
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
         </Flex>
       }
       key="5"
@@ -2828,39 +2798,33 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
           align="center"
           noGutters={true}
         >
-          <Button
-            aria-haspopup={true}
+          <FlexItem
             aria-label="Profile"
-            component="button"
-            reset={true}
-            type="button"
           >
-            <FlexItem>
-              <AvatarMember
-                member={
-                  Object {
-                    "id": 1243,
-                    "name": "mocky mcmockerson",
-                    "photo": Object {
-                      "photo_link": "http://placekitten.com/g/400/400",
-                      "thumb_link": "http://placekitten.com/g/200/200",
-                    },
-                  }
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
                 }
-                small={true}
-              />
-            </FlexItem>
-            <FlexItem
-              className="display--none atMedium_display--block"
-              shrink={true}
-            >
-              <Icon
-                className="padding--left-half"
-                shape="chevron-down"
-                size="xxs"
-              />
-            </FlexItem>
-          </Button>
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
         </Flex>
       }
       key="4"
@@ -3742,39 +3706,33 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
           align="center"
           noGutters={true}
         >
-          <Button
-            aria-haspopup={true}
+          <FlexItem
             aria-label="Profile"
-            component="button"
-            reset={true}
-            type="button"
           >
-            <FlexItem>
-              <AvatarMember
-                member={
-                  Object {
-                    "id": 1243,
-                    "name": "mocky mcmockerson",
-                    "photo": Object {
-                      "photo_link": "http://placekitten.com/g/400/400",
-                      "thumb_link": "http://placekitten.com/g/200/200",
-                    },
-                  }
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
                 }
-                small={true}
-              />
-            </FlexItem>
-            <FlexItem
-              className="display--none atMedium_display--block"
-              shrink={true}
-            >
-              <Icon
-                className="padding--left-half"
-                shape="chevron-down"
-                size="xxs"
-              />
-            </FlexItem>
-          </Button>
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
         </Flex>
       }
       key="5"
@@ -3882,39 +3840,33 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
           align="center"
           noGutters={true}
         >
-          <Button
-            aria-haspopup={true}
+          <FlexItem
             aria-label="Profile"
-            component="button"
-            reset={true}
-            type="button"
           >
-            <FlexItem>
-              <AvatarMember
-                member={
-                  Object {
-                    "id": 1243,
-                    "name": "mocky mcmockerson",
-                    "photo": Object {
-                      "photo_link": "http://placekitten.com/g/400/400",
-                      "thumb_link": "http://placekitten.com/g/200/200",
-                    },
-                  }
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
                 }
-                small={true}
-              />
-            </FlexItem>
-            <FlexItem
-              className="display--none atMedium_display--block"
-              shrink={true}
-            >
-              <Icon
-                className="padding--left-half"
-                shape="chevron-down"
-                size="xxs"
-              />
-            </FlexItem>
-          </Button>
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
         </Flex>
       }
       key="4"
@@ -4022,39 +3974,33 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
           align="center"
           noGutters={true}
         >
-          <Button
-            aria-haspopup={true}
+          <FlexItem
             aria-label="Profile"
-            component="button"
-            reset={true}
-            type="button"
           >
-            <FlexItem>
-              <AvatarMember
-                member={
-                  Object {
-                    "id": 1243,
-                    "name": "mocky mcmockerson",
-                    "photo": Object {
-                      "photo_link": "http://placekitten.com/g/400/400",
-                      "thumb_link": "http://placekitten.com/g/200/200",
-                    },
-                  }
+            <AvatarMember
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
                 }
-                small={true}
-              />
-            </FlexItem>
-            <FlexItem
-              className="display--none atMedium_display--block"
-              shrink={true}
-            >
-              <Icon
-                className="padding--left-half"
-                shape="chevron-down"
-                size="xxs"
-              />
-            </FlexItem>
-          </Button>
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
         </Flex>
       }
       key="4"

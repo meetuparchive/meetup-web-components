@@ -13,7 +13,6 @@ import Icon from '../media/Icon';
 import AvatarMember from '../media/AvatarMember';
 import Avatar from '../media/Avatar';
 import SignupModal from '../SignupModal';
-import Button from '../forms/Button';
 
 import NavItem from './components/NavItem';
 import ProfileDropdown from './components/profile/ProfileDropdown';
@@ -309,21 +308,19 @@ export class Nav extends React.Component {
 				}),
 				icon: (
 					<Flex noGutters align="center">
-						<Button aria-haspopup reset aria-label={profile.label}>
-							<FlexItem>
-								<AvatarMember small member={self} />
-							</FlexItem>
-							<FlexItem
-								shrink
-								className="display--none atMedium_display--block"
-							>
-								<Icon
-									shape="chevron-down"
-									size="xxs"
-									className="padding--left-half"
-								/>
-							</FlexItem>
-						</Button>
+						<FlexItem aria-label={profile.label}>
+							<AvatarMember small member={self} />
+						</FlexItem>
+						<FlexItem
+							shrink
+							className="display--none atMedium_display--block"
+						>
+							<Icon
+								shape="chevron-down"
+								size="xxs"
+								className="padding--left-half"
+							/>
+						</FlexItem>
 					</Flex>
 				),
 				onClickAction:
