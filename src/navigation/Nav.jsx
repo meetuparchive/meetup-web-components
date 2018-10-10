@@ -307,8 +307,8 @@ export class Nav extends React.Component {
 					'display--none': self.is_pro_admin && !media.isAtMediumUp,
 				}),
 				icon: (
-					<Flex noGutters align="center">
-						<FlexItem aria-label={profile.label}>
+					<Flex noGutters align="center" aria-label={profile.label}>
+						<FlexItem>
 							<AvatarMember small member={self} />
 						</FlexItem>
 						<FlexItem
