@@ -23,6 +23,28 @@ exports[`Textarea exists 1`] = `
 </div>
 `;
 
+exports[`Textarea should call onChange with input change 1`] = `
+<div
+  className="inputContainer"
+>
+  <textarea
+    className="span--100"
+    id="super"
+    name="superhero"
+    required={true}
+    rows={3}
+    style={
+      Object {
+        "maxHeight": 300,
+        "minHeight": 100,
+      }
+    }
+    type="text"
+    value="New text value!"
+  />
+</div>
+`;
+
 exports[`Textarea should have a label when label is given 1`] = `
 <div
   className="inputContainer"

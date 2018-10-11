@@ -103,7 +103,7 @@ describe('Textarea', function() {
 	it('should call onChange with input change', function() {
 		const value = 'New text value!';
 		shallowComponent.setProps({ value });
-		expect(shallowComponent.state().value).toBe(value);
+		expect(shallowComponent).toMatchSnapshot();
 	});
 
 	it('should call onChange `props` function when input is changed', function() {
