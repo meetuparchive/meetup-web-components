@@ -1,6 +1,6 @@
 import React from 'react';
 import * as autosizePlugin from 'autosize';
-import { Textarea, overrideValue } from './Textarea';
+import { Textarea } from './Textarea';
 import { shallow, mount } from 'enzyme';
 
 jest.mock('autosize', () => {
@@ -23,6 +23,7 @@ describe('Textarea', function() {
 		rows: 3,
 		minHeight: 100,
 		maxHeight: 300,
+		onChange: () => null,
 	};
 
 	beforeEach(() => {
@@ -32,12 +33,6 @@ describe('Textarea', function() {
 
 	it('exists', function() {
 		expect(shallowComponent).toMatchSnapshot();
-	});
-
-	it('should set state to value on `overrideValue`', function() {
-		shallowComponent.setProps({ value: undefined });
-		expect(shallowComponent.state().value).toBe('');
-		expect(overrideValue({})).toEqual({ value: '' });
 	});
 
 	it('should call autosize plugin `update` method on `componentDidUpdate`', function() {
@@ -91,12 +86,6 @@ describe('Textarea', function() {
 			<Textarea {...props} label="Super Hero" requiredText="required!" />
 		);
 		expect(component).toMatchSnapshot();
-	});
-
-	it('should set its value on input change', function() {
-		expect(shallowComponent).toMatchSnapshot();
-		shallowComponent.setProps({ value: 'New text value!' });
-		expect(shallowComponent).toMatchSnapshot();
 	});
 
 	// skipping becuase it will be tested in https://meetup.atlassian.net/browse/SDS-744

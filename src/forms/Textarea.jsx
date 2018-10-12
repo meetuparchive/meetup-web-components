@@ -36,21 +36,13 @@ type Props = React.Element<HTMLTextAreaElement> & {
 	requiredText?: string | React.Element<*>,
 };
 
-type State = {
-	value: string,
-};
-
 /**
  * @module Textarea
  */
-export class Textarea extends React.PureComponent<Props, State> {
+export class Textarea extends React.PureComponent<Props> {
 	static defaultProps = {
 		requiredText: '*',
 		style: {},
-		value: '',
-	};
-
-	state = {
 		value: '',
 	};
 
