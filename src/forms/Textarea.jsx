@@ -36,37 +36,15 @@ type Props = React.Element<HTMLTextAreaElement> & {
 	requiredText?: string | React.Element<*>,
 };
 
-type State = {
-	value: string,
-};
-
-/**
- * Should override value with info from state
- * @return {Object} the new state for the component
- */
-export const overrideValue = (nextProps: Props): State => ({
-	value: nextProps.value || '',
-});
-
 /**
  * @module Textarea
  */
-export class Textarea extends React.PureComponent<Props, State> {
+export class Textarea extends React.PureComponent<Props> {
 	static defaultProps = {
 		requiredText: '*',
-	};
-
-	state = {
+		style: {},
 		value: '',
 	};
-
-	/**
-	 * @param {Object} nextProps the incoming props
-	 * @return {undefined} side effect only
-	 */
-	static getDerivedStateFromProps(nextProps: Props) {
-		return overrideValue(nextProps);
-	}
 
 	/**
 	 * Turns on autosize if requested
@@ -88,41 +66,20 @@ export class Textarea extends React.PureComponent<Props, State> {
 		}
 	}
 
-	/**
-	 * called as user changes value, updates state with new value
-	 * @param  {Object} e Event object
-	 * @return {undefined}
-	 */
-	onChange = (e: SyntheticInputEvent<EventTarget>): void => {
-		const { onChange } = this.props;
-		const { value } = e.target;
-
-		this.setState(() => ({
-			value,
-		}));
-
-		if (onChange) {
-			onChange(e);
-		}
-	};
-
 	textarea: ?HTMLTextAreaElement;
 
 	render() {
 		const {
-			name,
-			value, // eslint-disable-line no-unused-vars
+			id,
+			value,
 			label,
 			labelClassName,
 			className,
 			error,
-			rows,
-			style = {},
+			style,
 			maxHeight,
 			minHeight,
 			maxLength,
-			id,
-			onChange, // eslint-disable-line no-unused-vars
 			autosize,
 			helperText,
 			required,
@@ -169,24 +126,21 @@ export class Textarea extends React.PureComponent<Props, State> {
 				)}
 				{helperText && <div className={classNames.helperText}>{helperText}</div>}
 				<textarea
+					id={id}
 					type="text"
-					name={name}
 					required={required}
 					className={classNames.textarea}
-					onChange={this.onChange}
-					rows={rows}
 					ref={textarea => {
 						this.textarea = textarea;
 					}}
 					style={{ minHeight, maxHeight, ...style }}
-					id={id}
-					value={this.state.value}
+					value={value}
 					{...other}
 				/>
 				{maxLength && (
 					<CharCounter
 						maxLength={parseInt(maxLength, 10)}
-						valueLength={parseInt(this.state.value.length, 10)}
+						valueLength={parseInt(value.length, 10)}
 					/>
 				)}
 			</div>

@@ -5,6 +5,21 @@ import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
 import { Textarea } from './Textarea';
 
+class FormControl extends React.Component {
+	state = {
+		value: '',
+	};
+
+	handleChange = e => this.setState({ value: e.target.value });
+
+	render() {
+		return React.cloneElement(this.props.children, {
+			onChange: this.handleChange,
+			value: this.state.value,
+		});
+	}
+}
+
 storiesOf('Forms/Textarea', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
@@ -14,12 +29,14 @@ storiesOf('Forms/Textarea', module)
 	.add('default', () => (
 		<Bounds>
 			<Section>
-				<Textarea
-					label="Your biography"
-					id="yourBio"
-					name="bio"
-					placeholder="Tell me about your life"
-				/>
+				<FormControl>
+					<Textarea
+						label="Your biography"
+						id="yourBio"
+						name="bio"
+						placeholder="Tell me about your life"
+					/>
+				</FormControl>
 			</Section>
 		</Bounds>
 	))
@@ -28,13 +45,15 @@ storiesOf('Forms/Textarea', module)
 		() => (
 			<Bounds>
 				<Section>
-					<Textarea
-						autosize
-						label="Your biography"
-						id="yourBio"
-						name="bio"
-						placeholder="Tell me about your life"
-					/>
+					<FormControl>
+						<Textarea
+							autosize
+							label="Your biography"
+							id="yourBio"
+							name="bio"
+							placeholder="Tell me about your life"
+						/>
+					</FormControl>
 				</Section>
 			</Bounds>
 		),
@@ -50,14 +69,16 @@ storiesOf('Forms/Textarea', module)
 		() => (
 			<Bounds>
 				<Section>
-					<Textarea
-						minHeight={100}
-						maxHeight={300}
-						label="Your biography"
-						id="yourBio"
-						name="bio"
-						placeholder="Tell me about your life"
-					/>
+					<FormControl>
+						<Textarea
+							minHeight={100}
+							maxHeight={300}
+							label="Your biography"
+							id="yourBio"
+							name="bio"
+							placeholder="Tell me about your life"
+						/>
+					</FormControl>
 				</Section>
 			</Bounds>
 		),
@@ -68,13 +89,15 @@ storiesOf('Forms/Textarea', module)
 		() => (
 			<Bounds>
 				<Section>
-					<Textarea
-						rows={3}
-						label="Your biography"
-						id="yourBio"
-						name="bio"
-						placeholder="Tell me about your life"
-					/>
+					<FormControl>
+						<Textarea
+							rows={3}
+							label="Your biography"
+							id="yourBio"
+							name="bio"
+							placeholder="Tell me about your life"
+						/>
+					</FormControl>
 				</Section>
 			</Bounds>
 		),
@@ -88,85 +111,97 @@ storiesOf('Forms/Textarea', module)
 	.add('error state', () => (
 		<Bounds>
 			<Section>
-				<Textarea
-					label="Your biography"
-					id="yourBio"
-					name="bio"
-					error="Not so fast. You have an error."
-					placeholder="Tell me about your life"
-					required
-					requiredText="(required)"
-				/>
+				<FormControl>
+					<Textarea
+						label="Your biography"
+						id="yourBio"
+						name="bio"
+						error="Not so fast. You have an error."
+						placeholder="Tell me about your life"
+						required
+						requiredText="(required)"
+					/>
+				</FormControl>
 			</Section>
 		</Bounds>
 	))
 	.add('with helper text', () => (
 		<Bounds>
 			<Section>
-				<Textarea
-					label="Your biography"
-					helperText="Lorem Ipsum is simply dummy text"
-					id="yourBio"
-					name="bio"
-					placeholder="Tell me about your life"
-				/>
+				<FormControl>
+					<Textarea
+						label="Your biography"
+						helperText="Lorem Ipsum is simply dummy text"
+						id="yourBio"
+						name="bio"
+						placeholder="Tell me about your life"
+					/>
+				</FormControl>
 			</Section>
 		</Bounds>
 	))
 	.add('with character limit', () => (
 		<Bounds>
 			<Section>
-				<Textarea
-					maxLength={140}
-					label="Your biography"
-					id="yourBio"
-					name="bio"
-					placeholder="Tell me about your life"
-				/>
+				<FormControl>
+					<Textarea
+						maxLength={140}
+						label="Your biography"
+						id="yourBio"
+						name="bio"
+						placeholder="Tell me about your life"
+					/>
+				</FormControl>
 			</Section>
 		</Bounds>
 	))
 	.add('auto resizing with min and max height', () => (
 		<Bounds>
 			<Section>
-				<Textarea
-					autosize
-					minHeight={100}
-					maxHeight={300}
-					label="Your biography"
-					id="yourBio"
-					name="bio"
-					placeholder="Tell me about your life"
-				/>
+				<FormControl>
+					<Textarea
+						autosize
+						minHeight={100}
+						maxHeight={300}
+						label="Your biography"
+						id="yourBio"
+						name="bio"
+						placeholder="Tell me about your life"
+					/>
+				</FormControl>
 			</Section>
 		</Bounds>
 	))
 	.add('auto resizing with rows set', () => (
 		<Bounds>
 			<Section>
-				<Textarea
-					autosize
-					rows={4}
-					label="Your biography"
-					id="yourBio"
-					name="bio"
-					placeholder="Tell me about your life"
-				/>
+				<FormControl>
+					<Textarea
+						autosize
+						rows={4}
+						label="Your biography"
+						id="yourBio"
+						name="bio"
+						placeholder="Tell me about your life"
+					/>
+				</FormControl>
 			</Section>
 		</Bounds>
 	))
 	.add('no resizing', () => (
 		<Bounds>
 			<Section>
-				<Textarea
-					disableResize
-					minHeight={100}
-					maxHeight={300}
-					label="Your biography"
-					id="yourBio"
-					name="bio"
-					placeholder="Tell me about your life"
-				/>
+				<FormControl>
+					<Textarea
+						disableResize
+						minHeight={100}
+						maxHeight={300}
+						label="Your biography"
+						id="yourBio"
+						name="bio"
+						placeholder="Tell me about your life"
+					/>
+				</FormControl>
 			</Section>
 		</Bounds>
 	));
