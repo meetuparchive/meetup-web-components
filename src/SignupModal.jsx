@@ -74,7 +74,7 @@ export const SignupModal = ({ onDismiss, signupOptions }) => {
 					>
 						<Flex>
 							<FlexItem shrink>
-								<img src={googleLogo} className="align--left" />
+								<img src={googleLogo} className="align--left" alt="Google"/>
 							</FlexItem>
 							<FlexItem className="flush--left">{google.label}</FlexItem>
 						</Flex>

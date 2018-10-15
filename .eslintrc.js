@@ -7,6 +7,7 @@ const config = {
 		'prettier/flowtype',
 		'prettier/react',
 		'plugin:flowtype/recommended',
+		'plugin:jsx-a11y/recommended',
 	],
 	parserOptions: {
 		ecmaVersion: 6,
@@ -23,7 +24,7 @@ const config = {
 		jasmine: true,
 		es6: true,
 	},
-	plugins: ['react', 'flowtype'],
+	plugins: ['react', 'flowtype', 'jsx-a11y'],
 	rules: {
 		'array-callback-return': 2,
 		'comma-dangle': 0,
