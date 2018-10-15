@@ -25,7 +25,7 @@ storiesOf('Layout/Card', module)
 	.addParameters({ info: { propTables: [CardComponent] } })
 	.add('default', () => (
 		<div style={wrapperStyle}>
-			<CardComponent
+			<Card
 				initialHeight={boolean('initialHeight', false)}
 				className={text('className', '')}
 				hasShadow={boolean('hasShadow', false)}
@@ -46,12 +46,12 @@ storiesOf('Layout/Card', module)
 						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
 					)}
 				</p>
-			</CardComponent>
+			</Card>
 		</div>
 	))
 	.add('initialHeight', () => (
 		<div style={wrapperStyle}>
-			<CardComponent
+			<Card
 				initialHeight={boolean('initialHeight', true)}
 				className={text('className', '')}
 				hasShadow={boolean('hasShadow', false)}
@@ -72,7 +72,7 @@ storiesOf('Layout/Card', module)
 						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
 					)}
 				</p>
-			</CardComponent>
+			</Card>
 		</div>
 	))
 	.add('Conditionally flush left and right (at medium breakpoint)', () => (
@@ -85,7 +85,7 @@ storiesOf('Layout/Card', module)
 				<h2 className="text--sectionTitle margin--bottom">
 					Headline will not flush
 				</h2>
-				<CardComponent
+				<Card
 					initialHeight={boolean('initialHeight', false)}
 					className={text('className', '')}
 					hasShadow={boolean('hasShadow', false)}
@@ -109,13 +109,13 @@ storiesOf('Layout/Card', module)
 							'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
 						)}
 					</p>
-				</CardComponent>
+				</Card>
 			</Section>
 		</Stripe>
 	))
 	.add('hasShadow', () => (
 		<div style={wrapperStyle}>
-			<CardComponent
+			<Card
 				initialHeight={boolean('initialHeight', false)}
 				className={text('className', '')}
 				hasShadow={boolean('hasShadow', true)}
@@ -136,12 +136,12 @@ storiesOf('Layout/Card', module)
 						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
 					)}
 				</p>
-			</CardComponent>
+			</Card>
 		</div>
 	))
 	.add('hasHoverShadow', () => (
 		<div style={wrapperStyle}>
-			<CardComponent
+			<Card
 				initialHeight={boolean('initialHeight', false)}
 				className={text('className', '')}
 				hasShadow={boolean('hasShadow', false)}
@@ -162,12 +162,12 @@ storiesOf('Layout/Card', module)
 						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
 					)}
 				</p>
-			</CardComponent>
+			</Card>
 		</div>
 	))
 	.add('hasShadow and hasHoverShadow', () => (
 		<div style={wrapperStyle}>
-			<CardComponent
+			<Card
 				initialHeight={boolean('initialHeight', false)}
 				className={text('className', '')}
 				hasShadow={boolean('hasShadow', true)}
@@ -188,7 +188,7 @@ storiesOf('Layout/Card', module)
 						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
 					)}
 				</p>
-			</CardComponent>
+			</Card>
 		</div>
 	))
 	.add('isLoading', () => (

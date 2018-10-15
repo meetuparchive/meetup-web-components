@@ -57,7 +57,7 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Static grid',
 		() => (
-			<GridListComponent
+			<GridList
 				autoHeight={boolean('autoHeight', undefined)}
 				autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 				columns={{
@@ -68,6 +68,11 @@ storiesOf('Layout/GridList', module)
 				itemClassNames={text('itemClassNames', undefined)}
 				className={text('className', undefined)}
 				style={{ padding: '20px' }}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				items={[
 					<div style={boxStyles}>GridItem</div>,
 					<div style={boxStyles}>GridItem</div>,
@@ -91,7 +96,7 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'GridList items with custom class names',
 		() => (
-			<GridListComponent
+			<GridList
 				autoHeight={boolean('autoHeight', undefined)}
 				autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 				columns={{
@@ -101,6 +106,11 @@ storiesOf('Layout/GridList', module)
 				}}
 				itemClassNames={text('itemClassNames', 'flush--all')}
 				className={text('className', undefined)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				style={{ padding: '20px' }}
 				items={[
 					<div style={boxStyles}>GridItem</div>,
@@ -125,7 +135,7 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Static autoHeight grid',
 		() => (
-			<GridListComponent
+			<GridList
 				autoHeight={boolean('autoHeight', true)}
 				autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 				columns={{
@@ -136,6 +146,11 @@ storiesOf('Layout/GridList', module)
 				itemClassNames={text('itemClassNames', undefined)}
 				className={text('className', undefined)}
 				style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				items={[
 					<TestMember member={MOCK_MEMBER} />,
 					<TestMember
@@ -162,7 +177,7 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Static wrapping autoHeight grid',
 		() => (
-			<GridListComponent
+			<GridList
 				autoHeight={boolean('autoHeight', undefined)}
 				autoHeightWithWrap={boolean('autoHeightWithWrap', true)}
 				columns={{
@@ -173,6 +188,11 @@ storiesOf('Layout/GridList', module)
 				itemClassNames={text('itemClassNames', undefined)}
 				className={text('className', undefined)}
 				style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				items={[
 					<TestMember member={MOCK_MEMBER} />,
 					<TestMember
@@ -199,7 +219,7 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Responsive grid',
 		() => (
-			<GridListComponent
+			<GridList
 				autoHeight={boolean('autoHeight', undefined)}
 				autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 				columns={{
@@ -209,6 +229,11 @@ storiesOf('Layout/GridList', module)
 				}}
 				itemClassNames={text('itemClassNames', undefined)}
 				className={text('className', undefined)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				style={{ padding: '20px' }}
 				items={[
 					<div style={boxStyles}>GridItem</div>,
@@ -233,7 +258,7 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Responsive autoHeight grid',
 		() => (
-			<GridListComponent
+			<GridList
 				autoHeight={boolean('autoHeight', true)}
 				autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 				columns={{
@@ -244,6 +269,11 @@ storiesOf('Layout/GridList', module)
 				itemClassNames={text('itemClassNames', undefined)}
 				className={text('className', undefined)}
 				style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				items={[
 					<TestMember member={MOCK_MEMBER} />,
 					<TestMember
@@ -273,7 +303,7 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Responsive wrapping autoHeight grid',
 		() => (
-			<GridListComponent
+			<GridList
 				autoHeight={boolean('autoHeight', undefined)}
 				autoHeightWithWrap={boolean('autoHeightWithWrap', true)}
 				columns={{
@@ -284,6 +314,11 @@ storiesOf('Layout/GridList', module)
 				itemClassNames={text('itemClassNames', undefined)}
 				className={text('className', undefined)}
 				style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				items={[
 					<TestMember member={MOCK_MEMBER} />,
 					<TestMember
