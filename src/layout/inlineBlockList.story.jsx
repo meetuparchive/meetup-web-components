@@ -1,10 +1,15 @@
 import React from 'react';
-import { decorateWithInfo } from '../utils/decorators';
+
+import { withKnobs, boolean, object, select, text } from '@storybook/addon-knobs';
+
+import { withInfo } from '@storybook/addon-info';
 import { storiesOf } from '@storybook/react';
 import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import InlineBlockList, { InlineBlockListComponent } from './InlineBlockList';
+import { C_COOLGRAYMEDIUM } from 'swarm-constants/dist/js/constants';
+import { MEDIA_SIZES } from '../utils/designConstants';
 
 const basicItems = [
 	'English',
@@ -21,13 +26,28 @@ const basicItems = [
 ];
 
 storiesOf('Layout/InlineBlockList', module)
-	.addDecorator(decorateWithInfo)
+	.addDecorator(withInfo)
+	.addDecorator(withKnobs)
 	.add(
 		'default',
 		() => (
 			<Bounds>
 				<Section>
-					<InlineBlockListComponent items={basicItems} />
+					<InlineBlockList
+						separator={text('separator', undefined)}
+						className={text('className', undefined)}
+						verticalAlign={select(
+							'verticalAlign',
+							['top', 'middle', 'bottom'],
+							undefined
+						)}
+						isLoading={boolean('isLoading', false)}
+						loadingProps={object('loadingProps', {
+							color: C_COOLGRAYMEDIUM,
+							size: `${MEDIA_SIZES.l}px`,
+						})}
+						items={basicItems}
+					/>
 				</Section>
 			</Bounds>
 		),
@@ -38,7 +58,21 @@ storiesOf('Layout/InlineBlockList', module)
 		() => (
 			<Bounds>
 				<Section>
-					<InlineBlockListComponent items={basicItems} separator="·" />
+					<InlineBlockListComponent
+						items={basicItems}
+						separator={text('separator', '.')}
+						className={text('className', undefined)}
+						verticalAlign={select(
+							'verticalAlign',
+							['top', 'middle', 'bottom'],
+							undefined
+						)}
+						isLoading={boolean('isLoading', false)}
+						loadingProps={object('loadingProps', {
+							color: C_COOLGRAYMEDIUM,
+							size: `${MEDIA_SIZES.l}px`,
+						})}
+					/>
 				</Section>
 				<Section>
 					<InlineBlockListComponent
@@ -55,7 +89,7 @@ storiesOf('Layout/InlineBlockList', module)
 		() => (
 			<Bounds>
 				<Section>
-					<InlineBlockListComponent
+					<InlineBlockList
 						items={[
 							<img
 								src="https://placekitten.com/g/72/72"
@@ -86,6 +120,18 @@ storiesOf('Layout/InlineBlockList', module)
 								alt="fluffy kitten"
 							/>,
 						]}
+						separator={text('separator', undefined)}
+						className={text('className', undefined)}
+						verticalAlign={select(
+							'verticalAlign',
+							['top', 'middle', 'bottom'],
+							undefined
+						)}
+						isLoading={boolean('isLoading', false)}
+						loadingProps={object('loadingProps', {
+							color: C_COOLGRAYMEDIUM,
+							size: `${MEDIA_SIZES.l}px`,
+						})}
 					/>
 				</Section>
 			</Bounds>
@@ -95,7 +141,21 @@ storiesOf('Layout/InlineBlockList', module)
 	.add('isLoading', () => (
 		<Bounds>
 			<Section>
-				<InlineBlockList isLoading items={basicItems} />
+				<InlineBlockList
+					separator={text('separator', undefined)}
+					className={text('className', undefined)}
+					verticalAlign={select(
+						'verticalAlign',
+						['top', 'middle', 'bottom'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', true)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					items={basicItems}
+				/>
 			</Section>
 		</Bounds>
 	))
@@ -103,12 +163,19 @@ storiesOf('Layout/InlineBlockList', module)
 		<Bounds>
 			<Section>
 				<InlineBlockList
-					isLoading
-					loadingProps={{
+					separator={text('separator', undefined)}
+					className={text('className', undefined)}
+					verticalAlign={select(
+						'verticalAlign',
+						['top', 'middle', 'bottom'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
 						color: 'red',
 						scrimColor: 'rgba(250, 250, 255, 0.8)',
 						size: '64px',
-					}}
+					})}
 					items={basicItems}
 				/>
 			</Section>
@@ -121,7 +188,18 @@ storiesOf('Layout/InlineBlockList', module)
 				<Section>
 					<Chunk>
 						<InlineBlockList
-							verticalAlign="top"
+							separator={text('separator', undefined)}
+							className={text('className', undefined)}
+							verticalAlign={select(
+								'verticalAlign',
+								['top', 'middle', 'bottom'],
+								'top'
+							)}
+							isLoading={boolean('isLoading', false)}
+							loadingProps={object('loadingProps', {
+								color: C_COOLGRAYMEDIUM,
+								size: `${MEDIA_SIZES.l}px`,
+							})}
 							items={[
 								<code>verticalAlign="top"</code>,
 								<img
