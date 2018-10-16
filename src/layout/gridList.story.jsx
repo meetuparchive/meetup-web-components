@@ -1,8 +1,12 @@
 import React from 'react';
-import { decorateWithInfo } from '../utils/decorators';
+import { withKnobs, boolean, object, text, number } from '@storybook/addon-knobs';
+
+import { withInfo } from '@storybook/addon-info';
 import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import GridList, { GridListComponent } from './GridList';
+import { C_COOLGRAYMEDIUM } from 'swarm-constants/dist/js/constants';
+import { MEDIA_SIZES } from '../utils/designConstants';
 
 const boxStyles = {
 	alignItems: 'center',
@@ -47,16 +51,28 @@ const TestMember = props => {
 };
 
 storiesOf('Layout/GridList', module)
-	.addDecorator(decorateWithInfo)
+	.addDecorator(withInfo)
+	.addDecorator(withKnobs)
 	.addParameters({ info: { propTables: [GridListComponent] } })
 	.add(
 		'Static grid',
 		() => (
-			<GridListComponent
+			<GridList
+				autoHeight={boolean('autoHeight', undefined)}
+				autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 				columns={{
-					default: 3,
+					default: number('columns (default size)', 3),
+					medium: number('columns (medium size)', undefined),
+					large: number('columns (large size)', undefined),
 				}}
+				itemClassNames={text('itemClassNames', undefined)}
+				className={text('className', undefined)}
 				style={{ padding: '20px' }}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				items={[
 					<div style={boxStyles}>GridItem</div>,
 					<div style={boxStyles}>GridItem</div>,
@@ -80,12 +96,22 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'GridList items with custom class names',
 		() => (
-			<GridListComponent
+			<GridList
+				autoHeight={boolean('autoHeight', undefined)}
+				autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 				columns={{
-					default: 3,
+					default: number('columns (default size)', 3),
+					medium: number('columns (medium size)', undefined),
+					large: number('columns (large size)', undefined),
 				}}
+				itemClassNames={text('itemClassNames', 'flush--all')}
+				className={text('className', undefined)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				style={{ padding: '20px' }}
-				itemClassNames="flush--all"
 				items={[
 					<div style={boxStyles}>GridItem</div>,
 					<div style={boxStyles}>GridItem</div>,
@@ -109,12 +135,22 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Static autoHeight grid',
 		() => (
-			<GridListComponent
-				autoHeight
+			<GridList
+				autoHeight={boolean('autoHeight', true)}
+				autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 				columns={{
-					default: 3,
+					default: number('columns (default size)', 3),
+					medium: number('columns (medium size)', undefined),
+					large: number('columns (large size)', undefined),
 				}}
+				itemClassNames={text('itemClassNames', undefined)}
+				className={text('className', undefined)}
 				style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				items={[
 					<TestMember member={MOCK_MEMBER} />,
 					<TestMember
@@ -141,12 +177,22 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Static wrapping autoHeight grid',
 		() => (
-			<GridListComponent
-				autoHeightWithWrap
+			<GridList
+				autoHeight={boolean('autoHeight', undefined)}
+				autoHeightWithWrap={boolean('autoHeightWithWrap', true)}
 				columns={{
-					default: 3,
+					default: number('columns (default size)', 3),
+					medium: number('columns (medium size)', undefined),
+					large: number('columns (large size)', undefined),
 				}}
+				itemClassNames={text('itemClassNames', undefined)}
+				className={text('className', undefined)}
 				style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				items={[
 					<TestMember member={MOCK_MEMBER} />,
 					<TestMember
@@ -173,12 +219,21 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Responsive grid',
 		() => (
-			<GridListComponent
+			<GridList
+				autoHeight={boolean('autoHeight', undefined)}
+				autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 				columns={{
-					default: 2,
-					medium: 4,
-					large: 6,
+					default: number('columns (default size)', 2),
+					medium: number('columns (medium size)', 4),
+					large: number('columns (large size)', 6),
 				}}
+				itemClassNames={text('itemClassNames', undefined)}
+				className={text('className', undefined)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				style={{ padding: '20px' }}
 				items={[
 					<div style={boxStyles}>GridItem</div>,
@@ -203,14 +258,22 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Responsive autoHeight grid',
 		() => (
-			<GridListComponent
-				autoHeight
+			<GridList
+				autoHeight={boolean('autoHeight', true)}
+				autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 				columns={{
-					default: 2,
-					medium: 4,
-					large: 6,
+					default: number('columns (default size)', 2),
+					medium: number('columns (medium size)', 4),
+					large: number('columns (large size)', 6),
 				}}
+				itemClassNames={text('itemClassNames', undefined)}
+				className={text('className', undefined)}
 				style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				items={[
 					<TestMember member={MOCK_MEMBER} />,
 					<TestMember
@@ -240,14 +303,22 @@ storiesOf('Layout/GridList', module)
 	.add(
 		'Responsive wrapping autoHeight grid',
 		() => (
-			<GridListComponent
-				autoHeightWithWrap
+			<GridList
+				autoHeight={boolean('autoHeight', undefined)}
+				autoHeightWithWrap={boolean('autoHeightWithWrap', true)}
 				columns={{
-					default: 2,
-					medium: 4,
-					large: 6,
+					default: number('columns (default size)', 2),
+					medium: number('columns (medium size)', 4),
+					large: number('columns (large size)', 6),
 				}}
+				itemClassNames={text('itemClassNames', undefined)}
+				className={text('className', undefined)}
 				style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				items={[
 					<TestMember member={MOCK_MEMBER} />,
 					<TestMember
@@ -281,10 +352,20 @@ storiesOf('Layout/GridList', module)
 	)
 	.add('isLoading', () => (
 		<GridList
-			isLoading
+			autoHeight={boolean('autoHeight', undefined)}
+			autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
 			columns={{
-				default: 3,
+				default: number('columns (default size)', 3),
+				medium: number('columns (medium size)', undefined),
+				large: number('columns (large size)', undefined),
 			}}
+			itemClassNames={text('itemClassNames', undefined)}
+			className={text('className', undefined)}
+			isLoading={boolean('isLoading', true)}
+			loadingProps={object('loadingProps', {
+				color: C_COOLGRAYMEDIUM,
+				size: `${MEDIA_SIZES.l}px`,
+			})}
 			style={{ padding: '20px' }}
 			items={[
 				<div style={boxStyles}>GridItem</div>,
@@ -301,15 +382,21 @@ storiesOf('Layout/GridList', module)
 	))
 	.add('isLoading with loadingProps', () => (
 		<GridList
-			isLoading
-			loadingProps={{
+			autoHeight={boolean('autoHeight', undefined)}
+			autoHeightWithWrap={boolean('autoHeightWithWrap', undefined)}
+			columns={{
+				default: number('columns (default size)', 3),
+				medium: number('columns (medium size)', undefined),
+				large: number('columns (large size)', undefined),
+			}}
+			itemClassNames={text('itemClassNames', undefined)}
+			className={text('className', undefined)}
+			isLoading={boolean('isLoading', true)}
+			loadingProps={object('loadingProps', {
 				color: 'red',
 				scrimColor: 'rgba(250, 250, 255, 0.8)',
 				size: '96px',
-			}}
-			columns={{
-				default: 3,
-			}}
+			})}
 			style={{ padding: '20px' }}
 			items={[
 				<div style={boxStyles}>GridItem</div>,

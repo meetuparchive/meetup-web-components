@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+// @flow
+
 import React from 'react';
 import cx from 'classnames';
 
@@ -43,11 +44,57 @@ export const FLEX_JUSTIFY_LEFT_CLASS = `${FLEX_CLASS}--justifyLeft`;
 export const FLEX_JUSTIFY_RIGHT_CLASS = `${FLEX_CLASS}--justifyRight`;
 export const FLEX_JUSTIFY_CENTER_CLASS = `${FLEX_CLASS}--justifyCenter`;
 
+type Props = {
+	className?: string,
+
+	/** The child elements of the component */
+	children: React$Node,
+
+	/** Alignment of flex items along the axis of the flex direction */
+	align?: 'top' | 'bottom' | 'center',
+
+	/** Justification of flex items along the axis of the flex direction */
+	justify?: 'center' | 'spaceAround' | 'spaceBetween' | 'flexEnd' | 'flexStart',
+
+	/** Whether flex items should wrap within their flex container */
+	wrap?: boolean,
+
+	/** Whether to render flex items without padding between them */
+	noGutters?: boolean,
+
+	/** Direction to lay out flex items */
+	direction?: 'row' | 'column',
+
+	/** The breakpoint at which the direction of the layout switches */
+	switchDirection?: 'all' | 'medium' | 'large',
+
+	/** When to reverse the order of flex items along the row axis */
+	rowReverse?: boolean | 'all' | 'medium' | 'large',
+
+	/** When to reverse the order of flex items along the column axis */
+	columnReverse?: boolean | 'all' | 'medium' | 'large',
+
+	justifyItems?: 'left' | 'center' | 'right',
+
+	/** Whether the component is in a loading state */
+	isLoading?: boolean,
+
+	/** Props to pass to the `<Loading />` component */
+	loadingProps?: {
+		color?: string,
+		scrimColor?: string,
+		size?: MediaSizes,
+	},
+};
+
 /**
  * Design System Component: Provides `Flex` styled container for ideal use with `FlexItem` content
  * @module FlexComponent
  */
-export class FlexComponent extends React.Component {
+export class FlexComponent extends React.Component<Props> {
+	static defaultProps = {
+		direction: DIRECTION_ROW,
+	};
 	/**
 	 * @return {React.element} the commend form React element
 	 */
@@ -69,10 +116,19 @@ export class FlexComponent extends React.Component {
 			...other
 		} = this.props;
 
-		const columnReverseBreakpoint =
-			VALID_BREAKPOINTS[columnReverse] || VALID_BREAKPOINTS['all'];
-		const rowReverseBreakpoint =
-			VALID_BREAKPOINTS[rowReverse] || VALID_BREAKPOINTS['all'];
+		let columnReverseBreakpoint;
+		if (typeof columnReverse === 'string') {
+			columnReverseBreakpoint = VALID_BREAKPOINTS[columnReverse];
+		} else {
+			columnReverseBreakpoint = VALID_BREAKPOINTS['all'];
+		}
+
+		let rowReverseBreakpoint;
+		if (typeof rowReverse === 'string') {
+			rowReverseBreakpoint = VALID_BREAKPOINTS[rowReverse];
+		} else {
+			rowReverseBreakpoint = VALID_BREAKPOINTS['all'];
+		}
 
 		const isColumn = direction === DIRECTION_COLUMN;
 		const classNames = cx(
@@ -80,11 +136,13 @@ export class FlexComponent extends React.Component {
 			{
 				// horizontal default
 				[FLEX_ROW_CLASS]: !isColumn,
+				// $FlowFixMe
 				[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_COLUMN_CLASS}`]:
 					!isColumn && switchDirection,
 
 				// vertical default
 				[FLEX_COLUMN_CLASS]: isColumn,
+				// $FlowFixMe
 				[`${VALID_BREAKPOINTS[switchDirection]}_${FLEX_ROW_CLASS}`]:
 					isColumn && switchDirection,
 
@@ -95,7 +153,9 @@ export class FlexComponent extends React.Component {
 				// other
 				[FLEX_WRAP_CLASS]: wrap,
 				[FLEX_NOGUTTER_CLASS]: noGutters,
+				// $FlowFixMe
 				[`${FLEX_CLASS}--${VALID_SPACE[justify]}`]: justify,
+				// $FlowFixMe
 				[`${FLEX_ALIGN_CLASS}${VALID_ALIGNMENTS[align]}`]: align,
 				[FLEX_WRAP_CLASS]: wrap,
 				'component--isLoading': isLoading,
@@ -113,52 +173,6 @@ export class FlexComponent extends React.Component {
 		);
 	}
 }
-
-FlexComponent.propTypes = {
-	/** Alignment of flex items along the axis of the flex direction */
-	align: PropTypes.oneOf(Object.keys(VALID_ALIGNMENTS)),
-
-	/** Justification of flex items along the axis of the flex direction */
-	justify: PropTypes.oneOf(Object.keys(VALID_SPACE)),
-
-	/** Whether flex items should wrap within their flex container */
-	wrap: PropTypes.bool,
-
-	/** Whether to render flex items without padding between them */
-	noGutters: PropTypes.bool,
-
-	/** Direction to lay out flex items */
-	direction: PropTypes.oneOf([DIRECTION_ROW, DIRECTION_COLUMN]),
-
-	/** The breakpoint at which the direction of the layout switches */
-	switchDirection: PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
-
-	/** When to reverse the order of flex items along the row axis */
-	rowReverse: PropTypes.oneOfType([
-		PropTypes.bool,
-		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
-	]),
-
-	/** When to reverse the order of flex items along the column axis */
-	columnReverse: PropTypes.oneOfType([
-		PropTypes.bool,
-		PropTypes.oneOf(Object.keys(VALID_BREAKPOINTS)),
-	]),
-
-	/** Whether the component is in a loading state */
-	isLoading: PropTypes.bool,
-
-	/** Props to pass to the `<Loading />` component */
-	loadingProps: PropTypes.shape({
-		color: PropTypes.string,
-		scrimColor: PropTypes.string,
-		size: PropTypes.string,
-	}),
-};
-
-FlexComponent.defaultProps = {
-	direction: DIRECTION_ROW,
-};
 
 const Flex = withLoading(FlexComponent);
 Flex.displayName = 'Flex';

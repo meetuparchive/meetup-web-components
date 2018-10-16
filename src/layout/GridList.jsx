@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+// @flow
+
 import React from 'react';
 import cx from 'classnames';
 
@@ -7,10 +8,46 @@ import ConditionalWrap from '../utils/components/ConditionalWrap';
 
 export const GRID_AUTOHEIGHT_CLASS = 'gridList--autoHeight';
 
+type Props = {
+	/** Whether the height of the items in the GridList should fill the available height */
+	autoHeight?: boolean,
+
+	/** Whether autoheight GridList items should wrap lines */
+	autoHeightWithWrap?: boolean,
+
+	/** Columns in the grid at each breakpoint */
+	columns: {
+		default: number,
+		medium?: number,
+		large?: number,
+	},
+
+	/** Items to render into a grid */
+	items: Array<React$Element<*>>,
+
+	/** Class names to add to each item's wrapper */
+	itemClassNames?: string,
+
+	/** Whether the component is in a loading state */
+	isLoading?: boolean,
+
+	/** Props to pass to the `<Loading />` component */
+	loadingProps?: {
+		color?: string,
+		scrimColor?: string,
+		size?: MediaSizes,
+	},
+
+	/** Nearest DOM element's class name */
+	className?: string,
+
+	/** The child elements of the component */
+	children: React$Node,
+};
 /**
  * @module GridListComponent
  */
-export class GridListComponent extends React.Component {
+export class GridListComponent extends React.Component<Props> {
 	render() {
 		const {
 			className,
@@ -18,7 +55,7 @@ export class GridListComponent extends React.Component {
 			items,
 			autoHeight,
 			autoHeightWithWrap,
-			itemClassNames,
+			itemClassNames = '',
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
 			...other
@@ -28,8 +65,10 @@ export class GridListComponent extends React.Component {
 			'gridList',
 			{
 				[`gridList--has${columns.default}`]: !!columns.default,
-				[`atMedium_gridList--has${columns.medium}`]: !!columns.medium,
-				[`atLarge_gridList--has${columns.large}`]: !!columns.large,
+				[`atMedium_gridList--has${columns.medium ||
+					columns.default}`]: !!columns.medium,
+				[`atLarge_gridList--has${columns.large ||
+					columns.default}`]: !!columns.large,
 			},
 			className
 		);
@@ -40,19 +79,17 @@ export class GridListComponent extends React.Component {
 			{
 				'flex--wrap': autoHeightWithWrap,
 				[`${GRID_AUTOHEIGHT_CLASS}--has${columns.default}`]: !!columns.default,
-				[`atMedium_${GRID_AUTOHEIGHT_CLASS}--has${
-					columns.medium
-				}`]: !!columns.medium,
-				[`atLarge_${GRID_AUTOHEIGHT_CLASS}--has${
-					columns.large
-				}`]: !!columns.large,
+				[`atMedium_${GRID_AUTOHEIGHT_CLASS}--has${columns.medium ||
+					0}`]: !!columns.medium,
+				[`atLarge_${GRID_AUTOHEIGHT_CLASS}--has${columns.large ||
+					0}`]: !!columns.large,
 			},
 			className
 		);
 
 		const listItemClassNames = cx('gridList-item', {
 			['flex-item']: autoHeight,
-			[itemClassNames]: itemClassNames,
+			[itemClassNames]: Boolean(itemClassNames),
 		});
 
 		return (
@@ -82,37 +119,6 @@ export class GridListComponent extends React.Component {
 		);
 	}
 }
-
-GridListComponent.propTypes = {
-	/** Whether the height of the items in the GridList should fill the available height */
-	autoHeight: PropTypes.bool,
-
-	/** Whether autoheight GridList items should wrap lines */
-	autoHeightWithWrap: PropTypes.bool,
-
-	/** Columns in the grid at each breakpoint */
-	columns: PropTypes.shape({
-		default: PropTypes.number.isRequired,
-		medium: PropTypes.number,
-		large: PropTypes.number,
-	}),
-
-	/** Items to render into a grid */
-	items: PropTypes.arrayOf(PropTypes.element).isRequired,
-
-	/** Class names to add to each item's wrapper */
-	itemClassNames: PropTypes.string,
-
-	/** Whether the component is in a loading state */
-	isLoading: PropTypes.bool,
-
-	/** Props to pass to the `<Loading />` component */
-	loadingProps: PropTypes.shape({
-		color: PropTypes.string,
-		scrimColor: PropTypes.string,
-		size: PropTypes.string,
-	}),
-};
 
 const GridList = withLoading(GridListComponent);
 GridList.displayName = 'GridList';

@@ -2,18 +2,24 @@ import React from 'react';
 import Bounds from './Bounds';
 import Section from './Section';
 import SectionTitle from './SectionTitle';
-import { decorateWithInfo } from '../utils/decorators';
+import { withKnobs, text } from '@storybook/addon-knobs';
+
+import { withInfo } from '@storybook/addon-info';
 import { storiesOf } from '@storybook/react';
 
 storiesOf('Layout/SectionTitle', module)
-	.addDecorator(decorateWithInfo)
+	.addDecorator(withInfo)
+	.addDecorator(withKnobs)
 	.add(
 		'Default',
 		() => (
 			<div style={{ height: '100vh', width: '100%' }}>
 				<Bounds>
 					<Section>
-						<SectionTitle title="Section One" />
+						<SectionTitle
+							title={text('title', 'Section One')}
+							className={text('className', '')}
+						/>
 						<div className="runningText">
 							<p>
 								Section content goes here. Lorem Ipsum is simply dummy
@@ -25,7 +31,10 @@ storiesOf('Layout/SectionTitle', module)
 						</div>
 					</Section>
 					<Section>
-						<SectionTitle title="Section Two" />
+						<SectionTitle
+							title={text('title', 'Section Two')}
+							className={text('className', '')}
+						/>
 						<div className="runningText">
 							<p>
 								More section content goes here. It is a long established
@@ -49,7 +58,8 @@ storiesOf('Layout/SectionTitle', module)
 				<Bounds>
 					<Section>
 						<SectionTitle
-							title="Section One"
+							title={text('title', 'Section One')}
+							className={text('className', '')}
 							action={
 								<a href="#see-all" className="link">
 									See all
