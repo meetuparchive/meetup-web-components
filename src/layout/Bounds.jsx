@@ -23,15 +23,12 @@ type Props = {
 	isLoading?: boolean,
 };
 
-type State = {};
 /**
  * Design System Component: Provides `bounds` container for components
  * @module BoundsComponent
  */
 
-export class BoundsComponent extends React.PureComponent<Props, State> {
-	state = {};
-
+export class BoundsComponent extends React.PureComponent<Props> {
 	render() {
 		const {
 			children,

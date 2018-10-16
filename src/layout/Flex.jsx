@@ -124,8 +124,8 @@ export class FlexComponent extends React.Component<Props> {
 		}
 
 		let rowReverseBreakpoint;
-		if (typeof columnReverse === 'string') {
-			rowReverseBreakpoint = VALID_BREAKPOINTS[columnReverse];
+		if (typeof rowReverse === 'string') {
+			rowReverseBreakpoint = VALID_BREAKPOINTS[rowReverse];
 		} else {
 			rowReverseBreakpoint = VALID_BREAKPOINTS['all'];
 		}

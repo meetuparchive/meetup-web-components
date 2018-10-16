@@ -55,7 +55,7 @@ export class GridListComponent extends React.Component<Props> {
 			items,
 			autoHeight,
 			autoHeightWithWrap,
-			itemClassNames,
+			itemClassNames = '',
 			loadingProps = {}, // eslint-disable-line no-unused-vars
 			isLoading,
 			...other
@@ -65,8 +65,10 @@ export class GridListComponent extends React.Component<Props> {
 			'gridList',
 			{
 				[`gridList--has${columns.default}`]: !!columns.default,
-				[`atMedium_gridList--has${columns.medium || 0}`]: !!columns.medium,
-				[`atLarge_gridList--has${columns.large || 0}`]: !!columns.large,
+				[`atMedium_gridList--has${columns.medium ||
+					columns.default}`]: !!columns.medium,
+				[`atLarge_gridList--has${columns.large ||
+					columns.default}`]: !!columns.large,
 			},
 			className
 		);
@@ -87,7 +89,7 @@ export class GridListComponent extends React.Component<Props> {
 
 		const listItemClassNames = cx('gridList-item', {
 			['flex-item']: autoHeight,
-			[itemClassNames || '']: Boolean(itemClassNames),
+			[itemClassNames]: Boolean(itemClassNames),
 		});
 
 		return (

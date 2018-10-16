@@ -135,7 +135,7 @@ describe('Flex', function() {
 				expect(flex.hasClass(FLEX_CLASS)).toBe(true);
 				expect(
 					flex.hasClass(`${VALID_BREAKPOINTS[breakpoint]}_flex--rowReverse`)
-				).toBe(true);
+				).toEqual(true);
 			});
 		});
 	});
