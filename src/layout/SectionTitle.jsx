@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+// @flow
+
 import React from 'react';
 import cx from 'classnames';
 import Chunk from './Chunk';
@@ -6,10 +7,21 @@ import Flex from './Flex';
 import FlexItem from './FlexItem';
 
 export const SECTIONTITLE_CLASS = 'sectionTitle';
+
+type Props = {
+	/** Text to display */
+	title: React$Element<*> | string,
+
+	/** A button-like element to associate an action with the Section */
+	action: React$Element<*>,
+
+	/** Nearest DOM element's class name */
+	className?: string,
+};
 /**
  * @module SectionTitle
  */
-class SectionTitle extends React.Component {
+class SectionTitle extends React.Component<Props> {
 	render() {
 		const { action, className, title, ...other } = this.props;
 
@@ -31,12 +43,5 @@ class SectionTitle extends React.Component {
 		);
 	}
 }
-SectionTitle.propTypes = {
-	/** Text to display */
-	title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
-
-	/** A button-like element to associate an action with the Section */
-	action: PropTypes.element,
-};
 
 export default SectionTitle;
