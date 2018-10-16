@@ -281,6 +281,13 @@
     prop-types "^15.6.1"
     react-emotion "^9.1.3"
 
+"@storybook/addon-options@4.0.0-alpha.14":
+  version "4.0.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-4.0.0-alpha.14.tgz#7596fde5dee0d43704ffd5fcbe89a67f3cf667a6"
+  dependencies:
+    "@storybook/addons" "4.0.0-alpha.14"
+    babel-runtime "^6.26.0"
+
 "@storybook/addons@4.0.0-alpha.14":
   version "4.0.0-alpha.14"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-4.0.0-alpha.14.tgz#682be365820a1f4c0b9a90be53916b43b20d36e5"

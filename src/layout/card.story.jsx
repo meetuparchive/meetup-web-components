@@ -4,38 +4,75 @@ import Card, { CardComponent } from './Card';
 import Section from './Section';
 import Stripe from './Stripe';
 import { storiesOf } from '@storybook/react';
-import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
+import { decorateWithBasics } from '../utils/decorators';
+import { withKnobs, select, boolean, text, object } from '@storybook/addon-knobs';
 
+import { withInfo } from '@storybook/addon-info';
+import { C_COOLGRAYMEDIUM } from 'swarm-constants/dist/js/constants';
+import { MEDIA_SIZES } from '../utils/designConstants';
 const wrapperStyle = { margin: '0 auto', maxWidth: '500px' };
 
+const flushUntilOptions = {
+	atAll: 'atAll',
+	medium: 'medium',
+	large: 'large',
+};
+
 storiesOf('Layout/Card', module)
+	.addDecorator(withInfo)
+	.addDecorator(withKnobs)
 	.addDecorator(decorateWithBasics)
-	.addDecorator(decorateWithInfo)
-	.addParameters({ info: { propTables: [CardComponent], propTablesExclude: [Card] } })
+	.addParameters({ info: { propTables: [CardComponent] } })
 	.add('default', () => (
 		<div style={wrapperStyle}>
-			<CardComponent>
+			<Card
+				initialHeight={boolean('initialHeight', false)}
+				className={text('className', '')}
+				hasShadow={boolean('hasShadow', false)}
+				hasHoverShadow={boolean('hasHoverShadow', false)}
+				flushUntil={select('flushUntil', flushUntilOptions, 'all')}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+			>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
 				<p className="margin--bottom">
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry.
+					{text(
+						'demoContent',
+						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+					)}
 				</p>
-			</CardComponent>
+			</Card>
 		</div>
 	))
 	.add('initialHeight', () => (
 		<div style={wrapperStyle}>
-			<CardComponent initialHeight>
+			<Card
+				initialHeight={boolean('initialHeight', true)}
+				className={text('className', '')}
+				hasShadow={boolean('hasShadow', false)}
+				hasHoverShadow={boolean('hasHoverShadow', false)}
+				flushUntil={select('flushUntil', flushUntilOptions, 'all')}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+			>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
 				<p className="margin--bottom">
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry.
+					{text(
+						'demoContent',
+						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+					)}
 				</p>
-			</CardComponent>
+			</Card>
 		</div>
 	))
 	.add('Conditionally flush left and right (at medium breakpoint)', () => (
@@ -48,8 +85,17 @@ storiesOf('Layout/Card', module)
 				<h2 className="text--sectionTitle margin--bottom">
 					Headline will not flush
 				</h2>
-				<CardComponent
-					flushUntil="medium"
+				<Card
+					initialHeight={boolean('initialHeight', false)}
+					className={text('className', '')}
+					hasShadow={boolean('hasShadow', false)}
+					hasHoverShadow={boolean('hasHoverShadow', false)}
+					flushUntil={select('flushUntil', flushUntilOptions, 'medium')}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
 					style={{
 						width: 'auto',
 					}} /* Used to override a storybook default. Not needed for regular usage */
@@ -58,61 +104,115 @@ storiesOf('Layout/Card', module)
 						Card flushes left and right on small viewports
 					</h2>
 					<p className="margin--bottom">
-						Lorem Ipsum is simply dummy text of the printing and typesetting
-						industry.
+						{text(
+							'demoContent',
+							'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+						)}
 					</p>
-				</CardComponent>
+				</Card>
 			</Section>
 		</Stripe>
 	))
 	.add('hasShadow', () => (
 		<div style={wrapperStyle}>
-			<CardComponent hasShadow>
+			<Card
+				initialHeight={boolean('initialHeight', false)}
+				className={text('className', '')}
+				hasShadow={boolean('hasShadow', true)}
+				hasHoverShadow={boolean('hasHoverShadow', false)}
+				flushUntil={select('flushUntil', flushUntilOptions, 'all')}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+			>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
 				<p className="margin--bottom">
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry.
+					{text(
+						'demoContent',
+						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+					)}
 				</p>
-			</CardComponent>
+			</Card>
 		</div>
 	))
 	.add('hasHoverShadow', () => (
 		<div style={wrapperStyle}>
-			<CardComponent hasHoverShadow>
+			<Card
+				initialHeight={boolean('initialHeight', false)}
+				className={text('className', '')}
+				hasShadow={boolean('hasShadow', false)}
+				hasHoverShadow={boolean('hasHoverShadow', true)}
+				flushUntil={select('flushUntil', flushUntilOptions, 'all')}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+			>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
 				<p className="margin--bottom">
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry.
+					{text(
+						'demoContent',
+						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+					)}
 				</p>
-			</CardComponent>
+			</Card>
 		</div>
 	))
 	.add('hasShadow and hasHoverShadow', () => (
 		<div style={wrapperStyle}>
-			<CardComponent hasShadow hasHoverShadow>
+			<Card
+				initialHeight={boolean('initialHeight', false)}
+				className={text('className', '')}
+				hasShadow={boolean('hasShadow', true)}
+				hasHoverShadow={boolean('hasHoverShadow', true)}
+				flushUntil={select('flushUntil', flushUntilOptions, 'all')}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+			>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
 				<p className="margin--bottom">
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry.
+					{text(
+						'demoContent',
+						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+					)}
 				</p>
-			</CardComponent>
+			</Card>
 		</div>
 	))
 	.add('isLoading', () => (
 		<div style={wrapperStyle}>
-			<Card isLoading>
+			<Card
+				initialHeight={boolean('initialHeight', false)}
+				className={text('className', '')}
+				hasShadow={boolean('hasShadow', false)}
+				hasHoverShadow={boolean('hasHoverShadow', false)}
+				flushUntil={select('flushUntil', flushUntilOptions, 'all')}
+				isLoading={boolean('isLoading', true)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+			>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
 				<p className="margin--bottom">
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry.
+					{text(
+						'demoContent',
+						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+					)}
 				</p>
 			</Card>
 		</div>
@@ -120,19 +220,26 @@ storiesOf('Layout/Card', module)
 	.add('isLoading with loadingProps', () => (
 		<div style={wrapperStyle}>
 			<Card
-				isLoading
-				loadingProps={{
+				initialHeight={boolean('initialHeight', false)}
+				className={text('className', '')}
+				hasShadow={boolean('hasShadow', false)}
+				hasHoverShadow={boolean('hasHoverShadow', false)}
+				flushUntil={select('flushUntil', flushUntilOptions, 'all')}
+				isLoading={boolean('isLoading', true)}
+				loadingProps={object('loadingProps', {
 					color: 'red',
 					scrimColor: 'rgba(250, 250, 255, 0.8)',
 					size: '96px',
-				}}
+				})}
 			>
 				<h2 className="text--sectionTitle margin--bottom">
 					This card contains content
 				</h2>
 				<p className="margin--bottom">
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry.
+					{text(
+						'demoContent',
+						'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+					)}
 				</p>
 			</Card>
 		</div>

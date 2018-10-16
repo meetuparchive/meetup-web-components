@@ -1,9 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Section, { SectionComponent } from './Section';
+import Section from './Section';
 import Flex from './Flex';
 import FlexItem from './FlexItem';
-import { decorateWithInfo } from '../utils/decorators';
+import { withKnobs, boolean, object, select, text } from '@storybook/addon-knobs';
+
+import { withInfo } from '@storybook/addon-info';
+import { C_COOLGRAYMEDIUM } from 'swarm-constants/dist/js/constants';
+import { MEDIA_SIZES } from '../utils/designConstants';
 
 const shadingStyles = {
 	backgroundColor: 'rgba(220, 192, 255, 0.45)',
@@ -12,13 +16,38 @@ const shadingStyles = {
 };
 
 storiesOf('Layout/Section', module)
-	.addDecorator(decorateWithInfo)
+	.addDecorator(withInfo)
+	.addDecorator(withKnobs)
 	.add(
 		'default',
 		() => (
 			<div style={{ height: '100vh', width: '100%', marginBottom: '20px' }}>
 				<div style={{ maxWidth: '850px', margin: 'auto', marginTop: '15px' }}>
-					<SectionComponent style={shadingStyles}>
+					<Section
+						hasSeparatorUntil={select(
+							'hasSeparatorUntil',
+							[true, false, 'all', 'medium', 'large'],
+							undefined
+						)}
+						noSeparator={select(
+							'noSeparator',
+							[true, false, 'all', 'medium', 'large'],
+							undefined
+						)}
+						flushUntil={select(
+							'flushUntil',
+							['all', 'medium', 'large'],
+							undefined
+						)}
+						isLoading={boolean('isLoading', false)}
+						className={text('className', '')}
+						hasSeparator={boolean('hasSeparator', false)}
+						loadingProps={object('loadingProps', {
+							color: C_COOLGRAYMEDIUM,
+							size: `${MEDIA_SIZES.l}px`,
+						})}
+						style={shadingStyles}
+					>
 						<div className="chunk">
 							<h2 className="text--sectionTitle">About us</h2>
 							<div className="runningText">
@@ -134,9 +163,9 @@ storiesOf('Layout/Section', module)
 								</li>
 							</ul>
 						</div>
-					</SectionComponent>
+					</Section>
 
-					<SectionComponent style={shadingStyles}>
+					<Section style={shadingStyles}>
 						<div className="chunk">
 							<h2 className="text--sectionTitle">Organized by</h2>
 							<ul className="inlineblockList inlineblockList--bulleted">
@@ -150,7 +179,7 @@ storiesOf('Layout/Section', module)
 								<li>Viki</li>
 							</ul>
 						</div>
-					</SectionComponent>
+					</Section>
 				</div>
 			</div>
 		),
@@ -159,7 +188,31 @@ storiesOf('Layout/Section', module)
 	.add('hasSeparator', () => (
 		<div style={{ width: '100%' }}>
 			<div style={{ maxWidth: '850px', margin: 'auto' }}>
-				<SectionComponent hasSeparator style={shadingStyles}>
+				<Section
+					hasSeparatorUntil={select(
+						'hasSeparatorUntil',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					noSeparator={select(
+						'noSeparator',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					flushUntil={select(
+						'flushUntil',
+						['all', 'medium', 'large'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', false)}
+					className={text('className', '')}
+					hasSeparator={boolean('hasSeparator', true)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={shadingStyles}
+				>
 					<div className="chunk">
 						<h2 className="text--sectionTitle">
 							These sections always get separators
@@ -174,14 +227,14 @@ storiesOf('Layout/Section', module)
 							including versions of Lorem Ipsum.
 						</p>
 					</div>
-				</SectionComponent>
-				<SectionComponent hasSeparator style={shadingStyles}>
+				</Section>
+				<Section hasSeparator style={shadingStyles}>
 					<div className="chunk">
 						<p className="text--bold">123 attending</p>
 						<p>Hosted by Amy, Rick, Mike, Natalie</p>
 					</div>
-				</SectionComponent>
-				<SectionComponent hasSeparator style={shadingStyles}>
+				</Section>
+				<Section hasSeparator style={shadingStyles}>
 					<div className="chunk">
 						<div className="runningText">
 							<p>
@@ -195,27 +248,67 @@ storiesOf('Layout/Section', module)
 							</p>
 						</div>
 					</div>
-				</SectionComponent>
+				</Section>
 			</div>
 		</div>
 	))
 	.add('Conditionally flush left and right (at medium breakpoint)', () => (
 		<div style={{ width: '100%', border: '1px dotted orange' }}>
-			<SectionComponent flushUntil="medium" style={shadingStyles}>
+			<Section
+				hasSeparatorUntil={select(
+					'hasSeparatorUntil',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				noSeparator={select(
+					'noSeparator',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				flushUntil={select('flushUntil', ['all', 'medium', 'large'], 'medium')}
+				isLoading={boolean('isLoading', false)}
+				className={text('className', '')}
+				hasSeparator={boolean('hasSeparator', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={shadingStyles}
+			>
 				<div className="chunk">
 					<p className="text--bold">
 						This section flushes to the left and right of the viewport until
 						the `medium` breakpoint
 					</p>
 				</div>
-			</SectionComponent>
-			<SectionComponent flushUntil="medium" style={shadingStyles}>
+			</Section>
+			<Section
+				hasSeparatorUntil={select(
+					'hasSeparatorUntil',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				noSeparator={select(
+					'noSeparator',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				flushUntil={select('flushUntil', ['all', 'medium', 'large'], 'medium')}
+				isLoading={boolean('isLoading', false)}
+				className={text('className', '')}
+				hasSeparator={boolean('hasSeparator', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={shadingStyles}
+			>
 				<div className="chunk">
 					<p className="text--bold">
 						This section has the same flushing behavior
 					</p>
 				</div>
-			</SectionComponent>
+			</Section>
 		</div>
 	))
 	.add('hasSeparatorUntil (large breakpoint)', () => (
@@ -223,43 +316,67 @@ storiesOf('Layout/Section', module)
 			<Flex direction="column" switchDirection="large">
 				<FlexItem>
 					<div style={{ maxWidth: '850px', margin: 'auto' }}>
-						<SectionComponent style={shadingStyles}>
+						<Section style={shadingStyles}>
 							<div className="chunk">
 								<p>NEVER gets separator</p>
 							</div>
-						</SectionComponent>
-						<SectionComponent style={shadingStyles}>
+						</Section>
+						<Section style={shadingStyles}>
 							<div className="chunk">
 								<p>NEVER gets separator</p>
 							</div>
-						</SectionComponent>
-						<SectionComponent hasSeparatorUntil="large" style={shadingStyles}>
+						</Section>
+						<Section
+							hasSeparatorUntil={select(
+								'hasSeparatorUntil',
+								[true, false, 'all', 'medium', 'large'],
+								'large'
+							)}
+							noSeparator={select(
+								'noSeparator',
+								[true, false, 'all', 'medium', 'large'],
+								undefined
+							)}
+							flushUntil={select(
+								'flushUntil',
+								['all', 'medium', 'large'],
+								undefined
+							)}
+							isLoading={boolean('isLoading', false)}
+							className={text('className', '')}
+							hasSeparator={boolean('hasSeparator', false)}
+							loadingProps={object('loadingProps', {
+								color: C_COOLGRAYMEDIUM,
+								size: `${MEDIA_SIZES.l}px`,
+							})}
+							style={shadingStyles}
+						>
 							<div className="chunk">
 								<p className="text--bold">
 									Gets separator, removes at "large" breakpoint
 								</p>
 							</div>
-						</SectionComponent>
+						</Section>
 					</div>
 				</FlexItem>
 
 				<FlexItem>
 					<div style={{ maxWidth: '850px', margin: 'auto' }}>
-						<SectionComponent style={shadingStyles}>
+						<Section style={shadingStyles}>
 							<div className="chunk">
 								<p>NEVER gets separator</p>
 							</div>
-						</SectionComponent>
-						<SectionComponent style={shadingStyles}>
+						</Section>
+						<Section style={shadingStyles}>
 							<div className="chunk">
 								<p>NEVER gets separator</p>
 							</div>
-						</SectionComponent>
-						<SectionComponent style={shadingStyles}>
+						</Section>
+						<Section style={shadingStyles}>
 							<div className="chunk">
 								<p>NEVER gets separator</p>
 							</div>
-						</SectionComponent>
+						</Section>
 					</div>
 				</FlexItem>
 			</Flex>
@@ -268,7 +385,31 @@ storiesOf('Layout/Section', module)
 	.add('isLoading', () => (
 		<div style={{ height: '100vh', width: '100%', marginBottom: '20px' }}>
 			<div style={{ maxWidth: '850px', margin: 'auto', marginTop: '15px' }}>
-				<Section isLoading style={shadingStyles}>
+				<Section
+					hasSeparatorUntil={select(
+						'hasSeparatorUntil',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					noSeparator={select(
+						'noSeparator',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					flushUntil={select(
+						'flushUntil',
+						['all', 'medium', 'large'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', true)}
+					className={text('className', '')}
+					hasSeparator={boolean('hasSeparator', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={shadingStyles}
+				>
 					<div className="chunk">
 						<h2 className="text--sectionTitle">About us</h2>
 						<div className="runningText">
@@ -382,12 +523,29 @@ storiesOf('Layout/Section', module)
 		<div style={{ height: '100vh', width: '100%', marginBottom: '20px' }}>
 			<div style={{ maxWidth: '850px', margin: 'auto', marginTop: '15px' }}>
 				<Section
-					isLoading
-					loadingProps={{
+					hasSeparatorUntil={select(
+						'hasSeparatorUntil',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					noSeparator={select(
+						'noSeparator',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					flushUntil={select(
+						'flushUntil',
+						['all', 'medium', 'large'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', true)}
+					className={text('className', '')}
+					hasSeparator={boolean('hasSeparator', false)}
+					loadingProps={object('loadingProps', {
 						color: 'red',
 						scrimColor: 'rgba(250, 250, 255, 0.8)',
 						size: '96px',
-					}}
+					})}
 					style={shadingStyles}
 				>
 					<div className="chunk">

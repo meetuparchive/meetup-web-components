@@ -1,8 +1,12 @@
 import React from 'react';
 import Flex, { FlexComponent } from './Flex';
 import FlexItem, { FlexItemComponent } from './FlexItem';
-import { decorateWithInfo } from '../utils/decorators';
 import { storiesOf } from '@storybook/react';
+import { withKnobs, boolean, text, object, select } from '@storybook/addon-knobs';
+
+import { withInfo } from '@storybook/addon-info';
+import { C_COOLGRAYMEDIUM } from 'swarm-constants/dist/js/constants';
+import { MEDIA_SIZES } from '../utils/designConstants';
 
 const flexParentStyles = {
 	height: '200px',
@@ -38,7 +42,8 @@ const infoReverse =
 	'You can change the direction of content flow for a specific breakpoint, or at all viewport sizes.';
 
 storiesOf('Layout/Flex', module)
-	.addDecorator(decorateWithInfo)
+	.addDecorator(withInfo)
+	.addDecorator(withKnobs)
 	.addParameters({
 		info: {
 			propTables: [FlexComponent, FlexItemComponent],
@@ -48,7 +53,44 @@ storiesOf('Layout/Flex', module)
 	.add(
 		'Row (default)',
 		() => (
-			<FlexComponent style={flexParentStyles}>
+			<Flex
+				className={text('className', '')}
+				align={select('align', ['top', 'bottom', 'center'], undefined)}
+				justify={select(
+					'justify',
+					['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+					undefined
+				)}
+				wrap={boolean('wrap', false)}
+				noGutters={boolean('noGutters', false)}
+				direction={select('direction', ['row', 'column'], 'row')}
+				switchDirection={select(
+					'switchDirection',
+					['all', 'medium', 'large'],
+					undefined
+				)}
+				rowReverse={select(
+					'rowReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				columnReverse={select(
+					'columnReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				justifyItems={select(
+					'justifyItems',
+					['left', 'center', 'right'],
+					undefined
+				)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={flexParentStyles}
+			>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -64,7 +106,7 @@ storiesOf('Layout/Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</FlexComponent>
+			</Flex>
 		),
 		{
 			info: {
@@ -76,7 +118,44 @@ storiesOf('Layout/Flex', module)
 	.add(
 		'Column',
 		() => (
-			<FlexComponent direction="column" style={flexParentStyles}>
+			<Flex
+				className={text('className', '')}
+				align={select('align', ['top', 'bottom', 'center'], undefined)}
+				justify={select(
+					'justify',
+					['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+					undefined
+				)}
+				wrap={boolean('wrap', false)}
+				noGutters={boolean('noGutters', false)}
+				direction={select('direction', ['row', 'column'], 'column')}
+				switchDirection={select(
+					'switchDirection',
+					['all', 'medium', 'large'],
+					undefined
+				)}
+				rowReverse={select(
+					'rowReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				columnReverse={select(
+					'columnReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				justifyItems={select(
+					'justifyItems',
+					['left', 'center', 'right'],
+					undefined
+				)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={flexParentStyles}
+			>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -92,7 +171,7 @@ storiesOf('Layout/Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</FlexComponent>
+			</Flex>
 		),
 		{
 			info: {
@@ -104,7 +183,44 @@ storiesOf('Layout/Flex', module)
 	.add(
 		'Wrap',
 		() => (
-			<FlexComponent wrap style={flexParentStyles}>
+			<Flex
+				className={text('className', '')}
+				align={select('align', ['top', 'bottom', 'center'], undefined)}
+				justify={select(
+					'justify',
+					['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+					undefined
+				)}
+				wrap={boolean('wrap', true)}
+				noGutters={boolean('noGutters', false)}
+				direction={select('direction', ['row', 'column'], 'column')}
+				switchDirection={select(
+					'switchDirection',
+					['all', 'medium', 'large'],
+					undefined
+				)}
+				rowReverse={select(
+					'rowReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				columnReverse={select(
+					'columnReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				justifyItems={select(
+					'justifyItems',
+					['left', 'center', 'right'],
+					undefined
+				)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={flexParentStyles}
+			>
 				<FlexItem shrink style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -150,7 +266,7 @@ storiesOf('Layout/Flex', module)
 				<FlexItem shrink style={flexItemStyles}>
 					<div style={boxStyles}>Item 15</div>
 				</FlexItem>
-			</FlexComponent>
+			</Flex>
 		),
 		{
 			info: {
@@ -162,7 +278,44 @@ storiesOf('Layout/Flex', module)
 	.add(
 		'No gutters',
 		() => (
-			<FlexComponent noGutters style={flexParentStyles}>
+			<Flex
+				className={text('className', '')}
+				align={select('align', ['top', 'bottom', 'center'], undefined)}
+				justify={select(
+					'justify',
+					['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+					undefined
+				)}
+				wrap={boolean('wrap', false)}
+				noGutters={boolean('noGutters', true)}
+				direction={select('direction', ['row', 'column'], 'row')}
+				switchDirection={select(
+					'switchDirection',
+					['all', 'medium', 'large'],
+					undefined
+				)}
+				rowReverse={select(
+					'rowReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				columnReverse={select(
+					'columnReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				justifyItems={select(
+					'justifyItems',
+					['left', 'center', 'right'],
+					undefined
+				)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={flexParentStyles}
+			>
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 1</div>
 				</FlexItem>
@@ -178,7 +331,7 @@ storiesOf('Layout/Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</FlexComponent>
+			</Flex>
 		),
 		{
 			info: {
@@ -191,7 +344,44 @@ storiesOf('Layout/Flex', module)
 		'Justify center',
 		() => (
 			<div style={{ width: '800px', border: '1px dotted red' }}>
-				<FlexComponent justify="center" style={flexParentStyles}>
+				<Flex
+					className={text('className', '')}
+					align={select('align', ['top', 'bottom', 'center'], undefined)}
+					justify={select(
+						'justify',
+						['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+						'center'
+					)}
+					wrap={boolean('wrap', false)}
+					noGutters={boolean('noGutters', false)}
+					direction={select('direction', ['row', 'column'], 'row')}
+					switchDirection={select(
+						'switchDirection',
+						['all', 'medium', 'large'],
+						undefined
+					)}
+					rowReverse={select(
+						'rowReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					columnReverse={select(
+						'columnReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					justifyItems={select(
+						'justifyItems',
+						['left', 'center', 'right'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={flexParentStyles}
+				>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -207,7 +397,7 @@ storiesOf('Layout/Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</FlexComponent>
+				</Flex>
 			</div>
 		),
 		{ info: { text: infoJustify } }
@@ -216,7 +406,44 @@ storiesOf('Layout/Flex', module)
 		'Justify spaceAround',
 		() => (
 			<div style={{ width: '800px', border: '1px dotted red' }}>
-				<FlexComponent justify="spaceAround" style={flexParentStyles}>
+				<Flex
+					className={text('className', '')}
+					align={select('align', ['top', 'bottom', 'center'], undefined)}
+					justify={select(
+						'justify',
+						['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+						'spaceAround'
+					)}
+					wrap={boolean('wrap', false)}
+					noGutters={boolean('noGutters', false)}
+					direction={select('direction', ['row', 'column'], 'row')}
+					switchDirection={select(
+						'switchDirection',
+						['all', 'medium', 'large'],
+						undefined
+					)}
+					rowReverse={select(
+						'rowReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					columnReverse={select(
+						'columnReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					justifyItems={select(
+						'justifyItems',
+						['left', 'center', 'right'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={flexParentStyles}
+				>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -232,7 +459,7 @@ storiesOf('Layout/Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</FlexComponent>
+				</Flex>
 			</div>
 		),
 		{ info: { text: infoJustify } }
@@ -241,7 +468,44 @@ storiesOf('Layout/Flex', module)
 		'Justify spaceBetween',
 		() => (
 			<div style={{ width: '800px', border: '1px dotted red' }}>
-				<FlexComponent justify="spaceBetween" style={flexParentStyles}>
+				<Flex
+					className={text('className', '')}
+					align={select('align', ['top', 'bottom', 'center'], undefined)}
+					justify={select(
+						'justify',
+						['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+						'spaceBetween'
+					)}
+					wrap={boolean('wrap', false)}
+					noGutters={boolean('noGutters', false)}
+					direction={select('direction', ['row', 'column'], 'row')}
+					switchDirection={select(
+						'switchDirection',
+						['all', 'medium', 'large'],
+						undefined
+					)}
+					rowReverse={select(
+						'rowReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					columnReverse={select(
+						'columnReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					justifyItems={select(
+						'justifyItems',
+						['left', 'center', 'right'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={flexParentStyles}
+				>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -257,7 +521,7 @@ storiesOf('Layout/Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</FlexComponent>
+				</Flex>
 			</div>
 		),
 		{ info: { text: infoJustify } }
@@ -266,7 +530,44 @@ storiesOf('Layout/Flex', module)
 		'Justify end',
 		() => (
 			<div style={{ width: '800px', border: '1px dotted red' }}>
-				<FlexComponent justify="flexEnd" style={flexParentStyles}>
+				<Flex
+					className={text('className', '')}
+					align={select('align', ['top', 'bottom', 'center'], undefined)}
+					justify={select(
+						'justify',
+						['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+						'flexEnd'
+					)}
+					wrap={boolean('wrap', false)}
+					noGutters={boolean('noGutters', false)}
+					direction={select('direction', ['row', 'column'], 'row')}
+					switchDirection={select(
+						'switchDirection',
+						['all', 'medium', 'large'],
+						undefined
+					)}
+					rowReverse={select(
+						'rowReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					columnReverse={select(
+						'columnReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					justifyItems={select(
+						'justifyItems',
+						['left', 'center', 'right'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={flexParentStyles}
+				>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -282,7 +583,7 @@ storiesOf('Layout/Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</FlexComponent>
+				</Flex>
 			</div>
 		),
 		{ info: { text: infoJustify } }
@@ -291,7 +592,44 @@ storiesOf('Layout/Flex', module)
 		'Align top',
 		() => (
 			<div style={{ border: '1px solid red' }}>
-				<FlexComponent align="top" style={flexParentStyles}>
+				<Flex
+					className={text('className', '')}
+					align={select('align', ['top', 'bottom', 'center'], 'top')}
+					justify={select(
+						'justify',
+						['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+						undefined
+					)}
+					wrap={boolean('wrap', false)}
+					noGutters={boolean('noGutters', false)}
+					direction={select('direction', ['row', 'column'], 'row')}
+					switchDirection={select(
+						'switchDirection',
+						['all', 'medium', 'large'],
+						undefined
+					)}
+					rowReverse={select(
+						'rowReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					columnReverse={select(
+						'columnReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					justifyItems={select(
+						'justifyItems',
+						['left', 'center', 'right'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={flexParentStyles}
+				>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -307,7 +645,7 @@ storiesOf('Layout/Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</FlexComponent>
+				</Flex>
 			</div>
 		),
 		{ info: { text: infoAlign } }
@@ -316,7 +654,44 @@ storiesOf('Layout/Flex', module)
 		'Align center',
 		() => (
 			<div style={{ border: '1px solid red' }}>
-				<FlexComponent align="center" style={flexParentStyles}>
+				<Flex
+					className={text('className', '')}
+					align={select('align', ['top', 'bottom', 'center'], 'center')}
+					justify={select(
+						'justify',
+						['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+						undefined
+					)}
+					wrap={boolean('wrap', false)}
+					noGutters={boolean('noGutters', false)}
+					direction={select('direction', ['row', 'column'], 'row')}
+					switchDirection={select(
+						'switchDirection',
+						['all', 'medium', 'large'],
+						undefined
+					)}
+					rowReverse={select(
+						'rowReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					columnReverse={select(
+						'columnReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					justifyItems={select(
+						'justifyItems',
+						['left', 'center', 'right'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={flexParentStyles}
+				>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -332,7 +707,7 @@ storiesOf('Layout/Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</FlexComponent>
+				</Flex>
 			</div>
 		),
 		{ info: { text: infoAlign } }
@@ -341,7 +716,44 @@ storiesOf('Layout/Flex', module)
 		'Align bottom',
 		() => (
 			<div style={{ border: '1px solid red' }}>
-				<FlexComponent align="bottom" style={flexParentStyles}>
+				<Flex
+					className={text('className', '')}
+					align={select('align', ['top', 'bottom', 'center'], 'bottom')}
+					justify={select(
+						'justify',
+						['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+						undefined
+					)}
+					wrap={boolean('wrap', false)}
+					noGutters={boolean('noGutters', false)}
+					direction={select('direction', ['row', 'column'], 'row')}
+					switchDirection={select(
+						'switchDirection',
+						['all', 'medium', 'large'],
+						undefined
+					)}
+					rowReverse={select(
+						'rowReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					columnReverse={select(
+						'columnReverse',
+						[true, false, 'all', 'medium', 'large'],
+						undefined
+					)}
+					justifyItems={select(
+						'justifyItems',
+						['left', 'center', 'right'],
+						undefined
+					)}
+					isLoading={boolean('isLoading', false)}
+					loadingProps={object('loadingProps', {
+						color: C_COOLGRAYMEDIUM,
+						size: `${MEDIA_SIZES.l}px`,
+					})}
+					style={flexParentStyles}
+				>
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 1</div>
 					</FlexItem>
@@ -357,7 +769,7 @@ storiesOf('Layout/Flex', module)
 					<FlexItem shrink style={flexItemStyles}>
 						<div style={boxStyles}>Item 5</div>
 					</FlexItem>
-				</FlexComponent>
+				</Flex>
 			</div>
 		),
 		{ info: { text: infoAlign } }
@@ -365,78 +777,42 @@ storiesOf('Layout/Flex', module)
 	.add(
 		'Row reverse',
 		() => (
-			<FlexComponent rowReverse="all" style={flexParentStyles}>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 1</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 3</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 4</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 5</div>
-				</FlexItem>
-			</FlexComponent>
-		),
-		{ info: { text: infoReverse } }
-	)
-	.add(
-		'Row reverse (at medium breakpoint)',
-		() => (
-			<FlexComponent rowReverse="medium" style={flexParentStyles}>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 1</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 3</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 4</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 5</div>
-				</FlexItem>
-			</FlexComponent>
-		),
-		{ info: { text: infoReverse } }
-	)
-	.add(
-		'Row reverse (at large breakpoint)',
-		() => (
-			<FlexComponent rowReverse="large" style={flexParentStyles}>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 1</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 2</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 3</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 4</div>
-				</FlexItem>
-				<FlexItem style={flexItemStyles}>
-					<div style={boxStyles}>Item 5</div>
-				</FlexItem>
-			</FlexComponent>
-		),
-		{ info: { text: infoReverse } }
-	)
-	.add(
-		'Column reverse',
-		() => (
-			<FlexComponent
-				direction="column"
-				columnReverse="all"
+			<Flex
+				className={text('className', '')}
+				align={select('align', ['top', 'bottom', 'center'], undefined)}
+				justify={select(
+					'justify',
+					['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+					undefined
+				)}
+				wrap={boolean('wrap', false)}
+				noGutters={boolean('noGutters', false)}
+				direction={select('direction', ['row', 'column'], 'row')}
+				switchDirection={select(
+					'switchDirection',
+					['all', 'medium', 'large'],
+					undefined
+				)}
+				rowReverse={select(
+					'rowReverse',
+					[true, false, 'all', 'medium', 'large'],
+					'all'
+				)}
+				columnReverse={select(
+					'columnReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				justifyItems={select(
+					'justifyItems',
+					['left', 'center', 'right'],
+					undefined
+				)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				style={flexParentStyles}
 			>
 				<FlexItem style={flexItemStyles}>
@@ -454,7 +830,187 @@ storiesOf('Layout/Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</FlexComponent>
+			</Flex>
+		),
+		{ info: { text: infoReverse } }
+	)
+	.add(
+		'Row reverse (at medium breakpoint)',
+		() => (
+			<Flex
+				className={text('className', '')}
+				align={select('align', ['top', 'bottom', 'center'], undefined)}
+				justify={select(
+					'justify',
+					['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+					undefined
+				)}
+				wrap={boolean('wrap', false)}
+				noGutters={boolean('noGutters', false)}
+				direction={select('direction', ['row', 'column'], 'row')}
+				switchDirection={select(
+					'switchDirection',
+					['all', 'medium', 'large'],
+					undefined
+				)}
+				rowReverse={select(
+					'rowReverse',
+					[true, false, 'all', 'medium', 'large'],
+					'medium'
+				)}
+				columnReverse={select(
+					'columnReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				justifyItems={select(
+					'justifyItems',
+					['left', 'center', 'right'],
+					undefined
+				)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={flexParentStyles}
+			>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 1</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 2</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 3</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 4</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 5</div>
+				</FlexItem>
+			</Flex>
+		),
+		{ info: { text: infoReverse } }
+	)
+	.add(
+		'Row reverse (at large breakpoint)',
+		() => (
+			<Flex
+				className={text('className', '')}
+				align={select('align', ['top', 'bottom', 'center'], undefined)}
+				justify={select(
+					'justify',
+					['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+					undefined
+				)}
+				wrap={boolean('wrap', false)}
+				noGutters={boolean('noGutters', false)}
+				direction={select('direction', ['row', 'column'], 'row')}
+				switchDirection={select(
+					'switchDirection',
+					['all', 'medium', 'large'],
+					undefined
+				)}
+				rowReverse={select(
+					'rowReverse',
+					[true, false, 'all', 'medium', 'large'],
+					'large'
+				)}
+				columnReverse={select(
+					'columnReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				justifyItems={select(
+					'justifyItems',
+					['left', 'center', 'right'],
+					undefined
+				)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={flexParentStyles}
+			>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 1</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 2</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 3</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 4</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 5</div>
+				</FlexItem>
+			</Flex>
+		),
+		{ info: { text: infoReverse } }
+	)
+	.add(
+		'Column reverse',
+		() => (
+			<Flex
+				className={text('className', '')}
+				align={select('align', ['top', 'bottom', 'center'], undefined)}
+				justify={select(
+					'justify',
+					['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+					undefined
+				)}
+				wrap={boolean('wrap', false)}
+				noGutters={boolean('noGutters', false)}
+				direction={select('direction', ['row', 'column'], 'column')}
+				switchDirection={select(
+					'switchDirection',
+					['all', 'medium', 'large'],
+					undefined
+				)}
+				rowReverse={select(
+					'rowReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				columnReverse={select(
+					'columnReverse',
+					[true, false, 'all', 'medium', 'large'],
+					'all'
+				)}
+				justifyItems={select(
+					'justifyItems',
+					['left', 'center', 'right'],
+					undefined
+				)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
+				style={flexParentStyles}
+			>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 1</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 2</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 3</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 4</div>
+				</FlexItem>
+				<FlexItem style={flexItemStyles}>
+					<div style={boxStyles}>Item 5</div>
+				</FlexItem>
+			</Flex>
 		),
 		{
 			info: {
@@ -466,9 +1022,42 @@ storiesOf('Layout/Flex', module)
 	.add(
 		'Switch flex-direction (at medium breakpoint)',
 		() => (
-			<FlexComponent
-				direction="column"
-				switchDirection="medium"
+			<Flex
+				className={text('className', '')}
+				align={select('align', ['top', 'bottom', 'center'], undefined)}
+				justify={select(
+					'justify',
+					['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+					undefined
+				)}
+				wrap={boolean('wrap', false)}
+				noGutters={boolean('noGutters', false)}
+				direction={select('direction', ['row', 'column'], 'column')}
+				switchDirection={select(
+					'switchDirection',
+					['all', 'medium', 'large'],
+					'medium'
+				)}
+				rowReverse={select(
+					'rowReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				columnReverse={select(
+					'columnReverse',
+					[true, false, 'all', 'medium', 'large'],
+					undefined
+				)}
+				justifyItems={select(
+					'justifyItems',
+					['left', 'center', 'right'],
+					undefined
+				)}
+				isLoading={boolean('isLoading', false)}
+				loadingProps={object('loadingProps', {
+					color: C_COOLGRAYMEDIUM,
+					size: `${MEDIA_SIZES.l}px`,
+				})}
 				style={flexParentStyles}
 			>
 				<FlexItem style={flexItemStyles}>
@@ -486,7 +1075,7 @@ storiesOf('Layout/Flex', module)
 				<FlexItem style={flexItemStyles}>
 					<div style={boxStyles}>Item 5</div>
 				</FlexItem>
-			</FlexComponent>
+			</Flex>
 		),
 		{
 			info: {
@@ -496,7 +1085,40 @@ storiesOf('Layout/Flex', module)
 		}
 	)
 	.add('justify items left', () => (
-		<Flex style={(flexParentStyles, { padding: 0 })} justifyItems="left">
+		<Flex
+			style={(flexParentStyles, { padding: 0 })}
+			className={text('className', '')}
+			align={select('align', ['top', 'bottom', 'center'], undefined)}
+			justify={select(
+				'justify',
+				['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+				undefined
+			)}
+			wrap={boolean('wrap', false)}
+			noGutters={boolean('noGutters', false)}
+			direction={select('direction', ['row', 'column'], 'row')}
+			switchDirection={select(
+				'switchDirection',
+				['all', 'medium', 'large'],
+				undefined
+			)}
+			rowReverse={select(
+				'rowReverse',
+				[true, false, 'all', 'medium', 'large'],
+				undefined
+			)}
+			columnReverse={select(
+				'columnReverse',
+				[true, false, 'all', 'medium', 'large'],
+				undefined
+			)}
+			justifyItems={select('justifyItems', ['left', 'center', 'right'], 'left')}
+			isLoading={boolean('isLoading', false)}
+			loadingProps={object('loadingProps', {
+				color: C_COOLGRAYMEDIUM,
+				size: `${MEDIA_SIZES.l}px`,
+			})}
+		>
 			<FlexItem style={flexItemStyles}>
 				<div style={boxStyles}>Item 1</div>
 			</FlexItem>
@@ -515,7 +1137,40 @@ storiesOf('Layout/Flex', module)
 		</Flex>
 	))
 	.add('justify items right', () => (
-		<Flex style={(flexParentStyles, { padding: 0 })} justifyItems="right">
+		<Flex
+			style={(flexParentStyles, { padding: 0 })}
+			className={text('className', '')}
+			align={select('align', ['top', 'bottom', 'center'], undefined)}
+			justify={select(
+				'justify',
+				['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+				undefined
+			)}
+			wrap={boolean('wrap', false)}
+			noGutters={boolean('noGutters', false)}
+			direction={select('direction', ['row', 'column'], 'row')}
+			switchDirection={select(
+				'switchDirection',
+				['all', 'medium', 'large'],
+				undefined
+			)}
+			rowReverse={select(
+				'rowReverse',
+				[true, false, 'all', 'medium', 'large'],
+				undefined
+			)}
+			columnReverse={select(
+				'columnReverse',
+				[true, false, 'all', 'medium', 'large'],
+				undefined
+			)}
+			justifyItems={select('justifyItems', ['left', 'center', 'right'], 'right')}
+			isLoading={boolean('isLoading', false)}
+			loadingProps={object('loadingProps', {
+				color: C_COOLGRAYMEDIUM,
+				size: `${MEDIA_SIZES.l}px`,
+			})}
+		>
 			<FlexItem style={flexItemStyles}>
 				<div style={boxStyles}>Item 1</div>
 			</FlexItem>
@@ -534,7 +1189,40 @@ storiesOf('Layout/Flex', module)
 		</Flex>
 	))
 	.add('justify items center', () => (
-		<Flex style={(flexParentStyles, { padding: 0 })} justifyItems="center">
+		<Flex
+			style={(flexParentStyles, { padding: 0 })}
+			className={text('className', '')}
+			align={select('align', ['top', 'bottom', 'center'], undefined)}
+			justify={select(
+				'justify',
+				['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+				undefined
+			)}
+			wrap={boolean('wrap', false)}
+			noGutters={boolean('noGutters', false)}
+			direction={select('direction', ['row', 'column'], 'row')}
+			switchDirection={select(
+				'switchDirection',
+				['all', 'medium', 'large'],
+				undefined
+			)}
+			rowReverse={select(
+				'rowReverse',
+				[true, false, 'all', 'medium', 'large'],
+				undefined
+			)}
+			columnReverse={select(
+				'columnReverse',
+				[true, false, 'all', 'medium', 'large'],
+				undefined
+			)}
+			justifyItems={select('justifyItems', ['left', 'center', 'right'], 'center')}
+			isLoading={boolean('isLoading', false)}
+			loadingProps={object('loadingProps', {
+				color: C_COOLGRAYMEDIUM,
+				size: `${MEDIA_SIZES.l}px`,
+			})}
+		>
 			<FlexItem style={flexItemStyles}>
 				<div style={boxStyles}>Item 1</div>
 			</FlexItem>
@@ -553,7 +1241,40 @@ storiesOf('Layout/Flex', module)
 		</Flex>
 	))
 	.add('isLoading', () => (
-		<Flex isLoading style={flexParentStyles}>
+		<Flex
+			className={text('className', '')}
+			align={select('align', ['top', 'bottom', 'center'], undefined)}
+			justify={select(
+				'justify',
+				['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+				undefined
+			)}
+			wrap={boolean('wrap', false)}
+			noGutters={boolean('noGutters', false)}
+			direction={select('direction', ['row', 'column'], 'row')}
+			switchDirection={select(
+				'switchDirection',
+				['all', 'medium', 'large'],
+				undefined
+			)}
+			rowReverse={select(
+				'rowReverse',
+				[true, false, 'all', 'medium', 'large'],
+				undefined
+			)}
+			columnReverse={select(
+				'columnReverse',
+				[true, false, 'all', 'medium', 'large'],
+				undefined
+			)}
+			justifyItems={select('justifyItems', ['left', 'center', 'right'], undefined)}
+			isLoading={boolean('isLoading', true)}
+			loadingProps={object('loadingProps', {
+				color: C_COOLGRAYMEDIUM,
+				size: `${MEDIA_SIZES.l}px`,
+			})}
+			style={flexParentStyles}
+		>
 			<FlexItem style={flexItemStyles}>
 				<div style={boxStyles}>Item 1</div>
 			</FlexItem>
@@ -573,12 +1294,38 @@ storiesOf('Layout/Flex', module)
 	))
 	.add('isLoading with loadingProps', () => (
 		<Flex
-			isLoading
-			loadingProps={{
+			className={text('className', '')}
+			align={select('align', ['top', 'bottom', 'center'], undefined)}
+			justify={select(
+				'justify',
+				['center', 'spaceAround', 'spaceBetween', 'flexEnd', 'flexStart'],
+				undefined
+			)}
+			wrap={boolean('wrap', false)}
+			noGutters={boolean('noGutters', false)}
+			direction={select('direction', ['row', 'column'], 'row')}
+			switchDirection={select(
+				'switchDirection',
+				['all', 'medium', 'large'],
+				undefined
+			)}
+			rowReverse={select(
+				'rowReverse',
+				[true, false, 'all', 'medium', 'large'],
+				undefined
+			)}
+			columnReverse={select(
+				'columnReverse',
+				[true, false, 'all', 'medium', 'large'],
+				undefined
+			)}
+			justifyItems={select('justifyItems', ['left', 'center', 'right'], undefined)}
+			isLoading={boolean('isLoading', true)}
+			loadingProps={object('loadingProps', {
 				color: 'red',
 				scrimColor: 'rgba(250, 250, 255, 0.8)',
 				size: '64px',
-			}}
+			})}
 			style={flexParentStyles}
 		>
 			<FlexItem style={flexItemStyles}>

@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+// @flow
+
 import React from 'react';
 import cx from 'classnames';
 
@@ -6,11 +7,28 @@ import withLoading from '../utils/components/withLoading';
 
 export const BOUNDS_CLASS = 'bounds';
 
+type Props = {
+	/** The child elements of the component */
+	children: React$Node,
+	className?: string,
+	/** Whether the bounds max-width should use the narrow variant */
+	narrow?: boolean,
+	/** Props to pass to the `<Loading />` component */
+	loadingProps?: {
+		color?: string,
+		scrimColor?: string,
+		size?: MediaSizes,
+	},
+	/** Whether the component is in a loading state */
+	isLoading?: boolean,
+};
+
 /**
  * Design System Component: Provides `bounds` container for components
  * @module BoundsComponent
  */
-export class BoundsComponent extends React.Component {
+
+export class BoundsComponent extends React.PureComponent<Props> {
 	render() {
 		const {
 			children,
@@ -37,20 +55,6 @@ export class BoundsComponent extends React.Component {
 		);
 	}
 }
-BoundsComponent.propTypes = {
-	/** Whether the bounds max-width should use the narrow variant */
-	narrow: PropTypes.bool,
-
-	/** Whether the component is in a loading state */
-	isLoading: PropTypes.bool,
-
-	/** Props to pass to the `<Loading />` component */
-	loadingProps: PropTypes.shape({
-		color: PropTypes.string,
-		scrimColor: PropTypes.string,
-		size: PropTypes.string,
-	}),
-};
 
 const Bounds = withLoading(BoundsComponent);
 Bounds.displayName = 'Bounds';
