@@ -65,6 +65,11 @@ export class GridListComponent extends React.Component<Props> {
 			'gridList',
 			{
 				[`gridList--has${columns.default}`]: !!columns.default,
+				/**
+				 * the columns.medium || columns.default stuff is needed for flow
+				 * A lot of the props in this component are assumed to be provided, but they're not required
+				 * which makes flow complain.
+				 */
 				[`atMedium_gridList--has${columns.medium ||
 					columns.default}`]: !!columns.medium,
 				[`atLarge_gridList--has${columns.large ||
