@@ -12,7 +12,11 @@ export const InfoTooltipTrigger = props => (
 			props.onClick(e);
 		}}
 	>
-		<span className="infoToggle-trigger align--center" role="img">
+		<span
+			className="infoToggle-trigger align--center"
+			role="img"
+			ariaLabel="More info"
+		>
 			?
 		</span>
 	</Button>
