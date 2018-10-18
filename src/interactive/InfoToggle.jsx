@@ -15,7 +15,7 @@ export const InfoTooltipTrigger = props => (
 		<span
 			className="infoToggle-trigger align--center"
 			role="img"
-			aria-label="More info"
+			aria-label={props.label}
 		>
 			?
 		</span>
@@ -36,7 +36,7 @@ const InfoToggle = ({
 			<span className="infoToggle-label">{label}</span>
 			<Tooltip
 				id={tooltipId}
-				trigger={<InfoTooltipTrigger onClick={onClick} />}
+				trigger={<InfoTooltipTrigger onClick={onClick} label={label} />}
 				content={tooltipContent}
 				{...tooltipProps}
 			/>
