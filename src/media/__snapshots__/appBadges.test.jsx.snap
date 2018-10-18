@@ -11,6 +11,7 @@ exports[`App Badges exists 1`] = `
       href="http://meetu.ps/2ZhShs"
     >
       <img
+        alt="ios"
         className="getTheApp-downloadImage span--100 margin--center"
         src=""
       />
@@ -23,6 +24,7 @@ exports[`App Badges exists 1`] = `
       href="http://meetu.ps/2ZhSyb"
     >
       <img
+        alt="android"
         className="getTheApp-downloadImage span--100 margin--center"
         src=""
       />
