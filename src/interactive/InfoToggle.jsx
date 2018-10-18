@@ -27,6 +27,7 @@ const InfoToggle = ({
 	label,
 	tooltipId,
 	tooltipProps,
+	tooltipTriggerProps,
 	tooltipContent,
 	onClick,
 	...other
@@ -36,7 +37,9 @@ const InfoToggle = ({
 			<span className="infoToggle-label">{label}</span>
 			<Tooltip
 				id={tooltipId}
-				trigger={<InfoTooltipTrigger onClick={onClick} label={label} />}
+				trigger={
+					<InfoTooltipTrigger onClick={onClick} {...tooltipTriggerProps} />
+				}
 				content={tooltipContent}
 				{...tooltipProps}
 			/>
