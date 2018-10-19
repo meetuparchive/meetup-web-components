@@ -56,11 +56,13 @@ type Props = {
 
 type State = {
 	isActive: boolean,
+	isKeyPressed: boolean,
 };
 
 class Dropdown extends React.PureComponent<Props, State> {
 	state = {
 		isActive: this.props.isActive || false,
+		isKeyPressed: false,
 	};
 
 	static defaultProps = {
@@ -100,6 +102,7 @@ class Dropdown extends React.PureComponent<Props, State> {
 				this.closeContent(e);
 			}, 0);
 		}
+		this.setState({ isKeyPressed: true });
 	};
 
 	onBodyClick = (e: SyntheticMouseEvent<*>) => {
@@ -121,6 +124,8 @@ class Dropdown extends React.PureComponent<Props, State> {
 			this.closeContent(e);
 		}
 	};
+
+	onMouseLeave = () => this.setState({ isKeyPressed: false });
 
 	componentDidMount() {
 		if (document.body) {
@@ -193,6 +198,7 @@ class Dropdown extends React.PureComponent<Props, State> {
 					<div
 						className={classNames.dropdown}
 						onKeyDown={this.onKeyDown}
+						onMouseLeave={this.onMouseLeave}
 						{...other}
 					>
 						<div
@@ -268,6 +274,8 @@ class Dropdown extends React.PureComponent<Props, State> {
 																		),
 																		style: {
 																			backgroundColor:
+																				this.state
+																					.isKeyPressed &&
 																				highlightedIndex ===
 																					index &&
 																				C_COOLGRAYLIGHTTRANSP,
