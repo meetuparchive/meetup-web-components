@@ -5,7 +5,7 @@ import autosize from 'autosize';
 import CharCounter from './CharCounter';
 import withErrorList from '../utils/components/withErrorList';
 
-type Props = React.Element<HTMLTextAreaElement> & {
+export type Props = React.Element<HTMLTextAreaElement> & {
 	/** Adds an `id` attribute to the input, and associates it with the `<label />` */
 	id: string,
 	/** The `name` attribute for the input */

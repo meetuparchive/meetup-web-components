@@ -1,14 +1,10 @@
 // @flow
 import * as React from 'react';
 import Textarea from './Textarea';
+import type Props from './Textarea';
 
 type State = {
 	value: string,
-};
-
-type Props = {
-	onChange?: (e: SyntheticInputEvent<*>) => null,
-	value?: string,
 };
 
 /**
