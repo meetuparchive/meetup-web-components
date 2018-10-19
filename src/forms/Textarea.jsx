@@ -128,6 +128,7 @@ export class Textarea extends React.PureComponent<Props, State> {
 			required,
 			requiredText,
 			disableResize,
+			placeholder,
 			...other
 		} = this.props;
 
@@ -170,6 +171,7 @@ export class Textarea extends React.PureComponent<Props, State> {
 				{helperText && <div className={classNames.helperText}>{helperText}</div>}
 				<textarea
 					type="text"
+					aria-label={placeholder || name}
 					name={name}
 					required={required}
 					className={classNames.textarea}
