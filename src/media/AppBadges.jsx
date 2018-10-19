@@ -25,6 +25,7 @@ const AppBadges = ({ className, language, getAppStorePhoto, ...other }) => {
 					<img
 						className="getTheApp-downloadImage span--100 margin--center"
 						src={getAppStorePhoto('ios', language)}
+						alt="ios"
 					/>
 				</a>
 			</FlexItem>
@@ -33,6 +34,7 @@ const AppBadges = ({ className, language, getAppStorePhoto, ...other }) => {
 					<img
 						className="getTheApp-downloadImage span--100 margin--center"
 						src={getAppStorePhoto('android', language)}
+						alt="android"
 					/>
 				</a>
 			</FlexItem>

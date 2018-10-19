@@ -109,6 +109,7 @@ class Tooltip extends React.PureComponent {
 
 		return (
 			<div
+				id={id}
 				className={classNames.dropdown}
 				onMouseLeave={manualToggle ? undefined : this.closeContent}
 				{...other}
@@ -144,7 +145,6 @@ class Tooltip extends React.PureComponent {
 									'display--block': isActive,
 								})}
 								aria-hidden={!isActive}
-								id={id}
 								role="tooltip"
 								style={{
 									left,

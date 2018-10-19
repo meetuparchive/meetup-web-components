@@ -66,6 +66,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
 >
   <div
     className="popup"
+    id="testDropdown"
     onMouseLeave={[Function]}
   >
     <div
@@ -111,7 +112,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
             <div
               aria-hidden={false}
               className="popup-content tooltip-content popup-content--right display--block"
-              id="testDropdown"
               role="tooltip"
               style={
                 Object {
