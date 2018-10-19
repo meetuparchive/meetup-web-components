@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UncontrolledTextarea should set its value on input change 1`] = `
+<WithErrorList(Textarea)
+  id="super"
+  maxHeight={300}
+  minHeight={100}
+  name="superhero"
+  onChange={[Function]}
+  required={true}
+  rows={3}
+  value="Batman"
+/>
+`;
+
+exports[`UncontrolledTextarea should set its value on input change 2`] = `
+<WithErrorList(Textarea)
+  id="super"
+  maxHeight={300}
+  minHeight={100}
+  name="superhero"
+  onChange={[Function]}
+  required={true}
+  rows={3}
+  value="Batman"
+/>
+`;
