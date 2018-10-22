@@ -217,7 +217,9 @@ export class Nav extends React.Component {
 			self.is_pro_admin && {
 				shrink: true,
 				linkTo: media.isAtMediumUp ? proDashboard.link : '',
-				onAction: !media.isAtMediumUp && this.onClickMobileDropdownAction,
+				onAction:
+					(!media.isAtMediumUp && this.onClickMobileDropdownAction) ||
+					undefined,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
 				icon: (
