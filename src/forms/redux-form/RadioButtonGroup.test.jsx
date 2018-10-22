@@ -13,9 +13,11 @@ describe('redux-form RadioButtonGroup', () => {
 			const meta = {
 				error: 'error',
 			};
+			const isActive = true;
 			expect(
 				propMapper({
 					input,
+					isActive,
 					meta,
 					otherProp: 'otherProp',
 				})

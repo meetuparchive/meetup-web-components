@@ -2,6 +2,7 @@
 
 exports[`redux-form RadioButtonGroup propMapper should map the props as expected 1`] = `
 Object {
+  "isActive": true,
   "name": "test-name",
   "onBlur": "onBlur",
   "onChange": "onChange",

@@ -45,6 +45,7 @@ export default class RadioButtonGroup extends PureComponent {
 			className,
 			wrap,
 			justifyItems,
+			isActive,
 		} = this.props;
 
 		const switchDirectionAttr = switchDirection ? { switchDirection } : '';
@@ -63,7 +64,9 @@ export default class RadioButtonGroup extends PureComponent {
 							onChange: this.handleChange,
 							...option.props,
 							name,
-							checked: option.props.value === this.state.selectedValue,
+							checked: isActive
+								? option.props.value === this.state.selectedValue
+								: false,
 						})}
 					</FlexItem>
 				))}
@@ -89,8 +92,12 @@ RadioButtonGroup.propTypes = {
 
 	/** Callback that happens when the input changes */
 	onChange: PropTypes.func,
+
+	/** defines whether buttons enabled or disabled */
+	isActive: PropTypes.boolean,
 };
 
 RadioButtonGroup.defaultProps = {
 	direction: 'row',
+	isActive: true,
 };

@@ -23,6 +23,11 @@ describe('RadioButtonGroup', () => {
 		expect(getWrapper()).toMatchSnapshot();
 	});
 
+	it('should not have indicator when `isActive` is set to false', () => {
+		const wrapper = getWrapper({ isActive: false });
+		expect(wrapper.find('div.radio-indicator').length).toEqual(0);
+	});
+
 	it('should apply switchDirection, direction, and wrap props', () => {
 		expect(
 			getWrapper({ switchDirection: 'medium', direction: 'column', wrap: true })
