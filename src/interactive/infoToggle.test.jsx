@@ -47,18 +47,4 @@ describe('InfoToggle', () => {
 		const tooltip = toggle.find(Tooltip);
 		expect(tooltip.prop('trigger')).toEqual(trigger);
 	});
-	it('should add an onClick prop to the trigger if provided', () => {
-		const onClick = jest.fn();
-		const trigger = <InfoTooltipTrigger onClick={onClick} />;
-		const toggle = renderComponent({
-			trigger,
-			onClick,
-		});
-		const tooltip = toggle.find(Tooltip);
-		const renderedTooltip = shallow(tooltip.prop('trigger'));
-		const mockEvent = { preventDefault: jest.fn() };
-		renderedTooltip.prop('onClick')(mockEvent);
-		expect(onClick).toHaveBeenCalled();
-		expect(mockEvent.preventDefault).toHaveBeenCalled();
-	});
 });
