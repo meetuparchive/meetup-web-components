@@ -57,6 +57,16 @@ describe('Tooltip', () => {
 		expect(onMouseLeave).toHaveBeenCalled();
 	});
 
+	it('should toggle the content when the trigger is clicked', () => {
+		const component = shallow(<Tooltip />);
+		const trigger = component.find('.popup-trigger').first();
+		expect(component).toMatchSnapshot();
+		expect(component.state().isActive).toBe(false);
+		trigger.simulate('click');
+		expect(component).toMatchSnapshot();
+		expect(component.state().isActive).toBe(true);
+	});
+
 	it('should call onFocus and onBlur functions if passed as props', () => {
 		const onFocus = jest.fn();
 		const onBlur = jest.fn();

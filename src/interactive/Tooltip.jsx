@@ -60,6 +60,10 @@ class Tooltip extends React.PureComponent {
 		}
 	}
 
+	handleClick = () => {
+		this.setState(state => ({ isActive: !state.isActive }));
+	};
+
 	onBlur(e) {
 		if (!this.contentRef) return;
 
@@ -74,6 +78,7 @@ class Tooltip extends React.PureComponent {
 		const {
 			className,
 			trigger,
+			children,
 			content,
 			align,
 			offset,
@@ -119,6 +124,7 @@ class Tooltip extends React.PureComponent {
 					onFocus={manualToggle ? undefined : this.openContent}
 					onBlur={manualToggle ? undefined : this.onBlur}
 					onMouseEnter={manualToggle ? undefined : this.openContent}
+					onClick={this.handleClick}
 					aria-labelledby={id}
 				>
 					{trigger}
@@ -178,7 +184,7 @@ class Tooltip extends React.PureComponent {
 											reset
 										/>
 									)}
-									{content}
+									{children || content}
 								</div>
 							</div>
 						)}
@@ -202,7 +208,7 @@ Tooltip.propTypes = {
 	/** The element that opens the tooltip when hovered or focused */
 	trigger: PropTypes.element.isRequired,
 
-	/** The content that's rendered inside the tooltip */
+	/** The content that's rendered inside the tooltip, deprecated */
 	content: PropTypes.element,
 
 	/** The horizontal alignment of the tooltip content bubble to the dropdown trigger (defaults to right) */
