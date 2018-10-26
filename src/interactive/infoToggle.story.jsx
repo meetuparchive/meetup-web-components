@@ -24,15 +24,7 @@ class ManualInfoToggle extends React.PureComponent {
 			<InfoToggle
 				label={text('label', 'Info toggle label')}
 				tooltipId={text('tooltipId', 'info-tooltip')}
-				tooltipContent={
-					<div className="runningText padding--all">
-						<p>
-							This is a tooltip is being passed props that adjust the
-							alignment of the popup bubble to point to the trigger.
-						</p>
-					</div>
-				}
-				onClick={this.toggleTooltip}
+				onClick={() => console.log('toggle clicked')}
 				tooltipProps={{
 					align: select('align', ['left', 'right', 'center'], 'left'),
 					withClose: boolean('withClose', true),
@@ -40,7 +32,14 @@ class ManualInfoToggle extends React.PureComponent {
 					isActive: this.state.tooltipOpen,
 					onClose: this.closeTooltip,
 				}}
-			/>
+			>
+				<div className="runningText padding--all">
+					<p>
+						This is a tooltip is being passed props that adjust the alignment
+						of the popup bubble to point to the trigger.
+					</p>
+				</div>
+			</InfoToggle>
 		);
 	}
 }
