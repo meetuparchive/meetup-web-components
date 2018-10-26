@@ -1,5 +1,4 @@
 // @flow
-import PropTypes from 'prop-types';
 import * as React from 'react';
 
 import Button from '../forms/Button';
@@ -52,20 +51,6 @@ InfoToggle.defaultProps = {
 	tooltipProps: {
 		align: 'right',
 	},
-};
-
-InfoToggle.propTypes = {
-	/** The content that's rendered inside the tooltip's content bubble */
-	tooltipContent: PropTypes.element,
-
-	/** The label rendered next to the Tooltip's trigger */
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-
-	/** The unique identifier for the Tooltip */
-	tooltipId: PropTypes.string.isRequired,
-
-	/** Props to pass to the Tooltip component */
-	tooltipProps: PropTypes.object,
 };
 
 export default InfoToggle;
