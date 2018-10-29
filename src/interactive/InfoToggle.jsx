@@ -41,7 +41,7 @@ const InfoToggle = ({
 		<div className={className} {...other}>
 			<span className="infoToggle-label">{label}</span>
 			<Tooltip trigger={<InfoTooltipTrigger />} {...tooltipOptions}>
-				{tooltipContent || children}
+				{children || tooltipContent}
 			</Tooltip>
 		</div>
 	);
