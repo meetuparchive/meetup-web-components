@@ -83,8 +83,9 @@ storiesOf('Interactive/Tooltip', module)
 					align={align()}
 					id={text('tooltipId', 'testTooltip')}
 					trigger={<Button small>Open</Button>}
-					content={dropdownContent}
-				/>
+				>
+					{dropdownContent}
+				</Tooltip>
 			</div>
 		),
 		{ info: { text: 'Aligned right by default' } }

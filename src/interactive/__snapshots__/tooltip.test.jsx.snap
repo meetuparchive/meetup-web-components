@@ -32,6 +32,42 @@ exports[`Tooltip aligned tooltip matches snapshot 1`] = `
 />
 `;
 
+exports[`Tooltip should toggle the content when the trigger is clicked 1`] = `
+<div
+  className="popup"
+  onMouseLeave={[Function]}
+>
+  <div
+    className="popup-trigger"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+  />
+</div>
+`;
+
+exports[`Tooltip should toggle the content when the trigger is clicked 2`] = `
+<div
+  className="popup"
+  onMouseLeave={[Function]}
+>
+  <div
+    className="popup-trigger"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+  />
+  <WithMatchMedia(FloatingPosition)
+    direction="bottom"
+    getContent={[Function]}
+    getTrigger={[Function]}
+    noPortal={false}
+  />
+</div>
+`;
+
 exports[`Tooltip tooltip with a close button should render correctly 1`] = `
 <Tooltip
   align="right"
@@ -72,6 +108,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
       aria-labelledby="testDropdown"
       className="popup-trigger"
       onBlur={[Function]}
+      onClick={[Function]}
       onFocus={[Function]}
       onMouseEnter={[Function]}
     >
