@@ -36,7 +36,7 @@ type Props = {
 	isActive?: boolean,
 
 	/** A function that is used to control the toggling of the dropdown */
-	manualToggle?: (e: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>) => void,
+	manualToggle?: (e: SyntheticEvent<*>) => void,
 
 	/** The largest width the dropdown content can be */
 	maxWidth?: string | number,
@@ -79,7 +79,7 @@ class Dropdown extends React.PureComponent<Props, State> {
 		}
 	};
 
-	toggleContent = (e: SyntheticMouseEvent<*>) => {
+	toggleContent = (e: SyntheticEvent<*>) => {
 		if (this.props.manualToggle) {
 			this.props.manualToggle(e);
 		} else {
@@ -101,6 +101,9 @@ class Dropdown extends React.PureComponent<Props, State> {
 			setTimeout(() => {
 				this.closeContent(e);
 			}, 0);
+		}
+		if (e.key === ' ') {
+			this.toggleContent(e);
 		}
 		this.setState({ isKeyPressed: true });
 	};
