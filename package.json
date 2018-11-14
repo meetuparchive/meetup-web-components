@@ -9,7 +9,8 @@
     "yarn": "1.9.4"
   },
   "scripts": {
-    "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx --source-maps",
+    "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx --source-maps && yarn run build:css",
+    "build:css": "node-sass --importer ./util/sassRelativeImporter.js --include-path scss ./assets/scss/main.scss ./assets/css/main.css",
     "build:watch": "yarn build --watch",
     "coveralls": "if [ \"${TRAVIS_PULL_REQUEST}\" = \"false\" ] && [ \"${COVERALLS_REPO_TOKEN}\" != \"\" ]; then cat coverage/lcov.info | coveralls; fi",
     "lint": "yarn run lint:base --fix",
