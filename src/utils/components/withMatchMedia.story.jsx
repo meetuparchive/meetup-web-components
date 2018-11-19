@@ -29,6 +29,13 @@ class TestComponent extends React.Component {
 							the breakpoint props it provides to conditionally render
 							elements based on viewport size.
 						</p>
+						<p>
+							Note: Consider using{' '}
+							<code className="text--red">connectWithMatchMedia</code> from{' '}
+							<code>mwp-app-render</code> instead, which uses the user agent
+							string to detect the device and smartly set a default media on
+							initial render, before we detect the media from the viewport.
+						</p>
 						<p className="text--bold">
 							Resize your browser to see it in action.
 						</p>
