@@ -22,7 +22,7 @@ export const DashboardDropdownComponent = ({ mobileTabs, dismissAction }) => {
 		analytics,
 		members,
 		groups,
-		events,
+		events = {},
 		templates,
 		publicProfile,
 		contact,
