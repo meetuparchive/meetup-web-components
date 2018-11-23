@@ -17,6 +17,11 @@ const MOCK_PROPS = {
 			link: 'meetup.com',
 			label: 'Groups',
 		},
+		events: {
+			link: 'meetup.com',
+			label: 'Events',
+			show: true,
+		},
 		templates: {
 			link: 'meetup.com',
 			label: 'Templates',
@@ -46,8 +51,27 @@ const MOCK_PROPS = {
 };
 
 describe('Profile Dropdown', () => {
-	const wrapper = shallow(<DashboardDropdown {...MOCK_PROPS} />);
 	it('should match snapshot', () => {
+		const wrapper = shallow(<DashboardDropdown {...MOCK_PROPS} />);
+		expect(wrapper).toMatchSnapshot();
+	});
+
+	it('should match snapshot when events is hidden', () => {
+		const wrapper = shallow(
+			<DashboardDropdown
+				{...MOCK_PROPS}
+				mobileTabs={{
+					...MOCK_PROPS.mobileTabs,
+					...{
+						events: {
+							link: 'meetup.com',
+							label: 'Events',
+							show: true,
+						},
+					},
+				}}
+			/>
+		);
 		expect(wrapper).toMatchSnapshot();
 	});
 });
