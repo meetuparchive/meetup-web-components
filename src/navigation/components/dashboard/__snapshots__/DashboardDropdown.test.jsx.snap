@@ -159,15 +159,6 @@ exports[`Profile Dropdown should match snapshot when events is hidden 1`] = `
           <a
             href="meetup.com"
           >
-            Events
-          </a>
-        </li>
-        <li
-          className="list-item padding--bottom"
-        >
-          <a
-            href="meetup.com"
-          >
             Templates
           </a>
         </li>

@@ -66,7 +66,7 @@ describe('Profile Dropdown', () => {
 						events: {
 							link: 'meetup.com',
 							label: 'Events',
-							show: true,
+							show: false,
 						},
 					},
 				}}
