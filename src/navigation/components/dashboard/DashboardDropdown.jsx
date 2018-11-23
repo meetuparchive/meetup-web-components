@@ -22,6 +22,7 @@ export const DashboardDropdownComponent = ({ mobileTabs, dismissAction }) => {
 		analytics,
 		members,
 		groups,
+		events,
 		templates,
 		publicProfile,
 		contact,
@@ -40,6 +41,11 @@ export const DashboardDropdownComponent = ({ mobileTabs, dismissAction }) => {
 						<li className="list-item padding--bottom">
 							<a href={groups.link}>{groups.label}</a>
 						</li>
+						{events.show && (
+							<li className="list-item padding--bottom">
+								<a href={events.link}>{events.label}</a>
+							</li>
+						)}
 						<li className="list-item padding--bottom">
 							<a href={templates.link}>{templates.label}</a>
 						</li>
@@ -78,6 +84,11 @@ DashboardDropdownComponent.propTypes = {
 		groups: PropTypes.shape({
 			link: PropTypes.string.isRequired,
 			label: PropTypes.string.isRequired,
+		}),
+		events: PropTypes.shape({
+			link: PropTypes.string.isRequired,
+			label: PropTypes.string.isRequired,
+			show: PropTypes.bool.isRequired,
 		}),
 		templates: PropTypes.shape({
 			link: PropTypes.string.isRequired,
