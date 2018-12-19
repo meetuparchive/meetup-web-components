@@ -6,7 +6,7 @@
   "author": "Meetup",
   "engines": {
     "node": "^8.11.4",
-    "yarn": "1.9.4"
+    "yarn": "^1.9.4"
   },
   "scripts": {
     "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx --source-maps",
@@ -113,10 +113,10 @@
     "js-joda": "1.8.2",
     "lint-staged": "7.2.0",
     "meetup-web-mocks": "1.0.242",
-    "mwp-app-render": "17.2.2710",
-    "mwp-config": "17.2.2710",
-    "mwp-i18n": "17.2.2710",
-    "mwp-router": "17.2.2710",
+    "mwp-app-render": "18.0.2805",
+    "mwp-config": "18.0.2805",
+    "mwp-i18n": "18.0.2805",
+    "mwp-router": "18.0.2805",
     "node-sass": "4.5.3",
     "npm-run-all": "4.0.2",
     "prettier": "1.13.5",
