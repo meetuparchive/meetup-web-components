@@ -10368,10 +10368,10 @@ swarm-animation@0.0.95:
     jasmine-jquery "^2.1.1"
     jquery "^3.2.1"
 
-swarm-constants@2.2.128-beta:
-  version "2.2.128-beta"
-  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-2.2.128-beta.tgz#da3c2364925f65ab33689bfae1818b0c5079d19b"
-  integrity sha512-j0UHxNl1vhVUrCEWJVFU0NCJYrYGM6d1hxjr6xcGOypKLCR/T1S1FdVkEwOr8TokCdMZmexnVd8+RpfdeB9Xpg==
+swarm-constants@2.2.129-beta:
+  version "2.2.129-beta"
+  resolved "https://registry.yarnpkg.com/swarm-constants/-/swarm-constants-2.2.129-beta.tgz#faf81fd70faf44168ddec9467f255334d846fee3"
+  integrity sha512-iJjD8ygHdkppOtAvRrAc0SDXrTGGXJzKpUcMV5m4C2/Nq4j8nzXUvrtNQJ4HHjk5m3Ny6a65elsr1OrKgO3adw==
 
 swarm-icons@3.8.349:
   version "3.8.349"

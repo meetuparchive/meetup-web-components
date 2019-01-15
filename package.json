@@ -140,7 +140,7 @@
     "style-loader": "0.18.2",
     "stylelint-config-prettier": "3.3.0",
     "swarm-animation": "0.0.95",
-    "swarm-constants": "2.2.128-beta",
+    "swarm-constants": "2.2.129-beta",
     "swarm-icons": "3.8.349",
     "swarm-sasstools": "5.0.428",
     "uri-js": "3.0.2",
