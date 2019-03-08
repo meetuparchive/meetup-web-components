@@ -69,6 +69,7 @@ class Checkbox extends React.PureComponent {
 			onFocus, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
 			controlled, // eslint-disable-line no-unused-vars
+			iconShape,
 			...other
 		} = this.props;
 		const stateChecked = this.getChecked();
@@ -118,7 +119,7 @@ class Checkbox extends React.PureComponent {
 							{stateChecked && (
 								<Icon
 									className="display--flex flex--center checkbox-indicator"
-									shape="check"
+									shape={iconShape || 'check'}
 									size="xs"
 								/>
 							)}
@@ -171,6 +172,9 @@ Checkbox.propTypes = {
 
 	/** Callback that happens when the input gets :focus */
 	onFocus: PropTypes.func,
+
+	/** Optional icon for checked state, defaults to 'check'  */
+	iconShape: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
