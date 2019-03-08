@@ -12,7 +12,7 @@ tag-message:
 
 publish-beta:
 ifeq ($(TRAVIS_BRANCH), master)
-ifeq ($(TRAVIS_PULL_REQUEST), true)
+ifneq ($(TRAVIS_PULL_REQUEST), false)
 	# git config --global user.email "web-platform-bot@meetup.com"
 	# git config --global user.name "muptravis"
 	# eval "$(ssh-agent)"
