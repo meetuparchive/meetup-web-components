@@ -1101,7 +1101,7 @@ select {
   -webkit-appearance: none;
   background-color: white;
   border-radius: 4px;
-  border: 1px solid rgba(46, 62, 72, 0.12);
+  border: 1px solid rgba(46, 62, 72, 0.35);
   box-shadow: none;
   box-sizing: border-box;
   margin: 0 0 4px 0;
@@ -1121,7 +1121,7 @@ select {
   
   [type='color']:hover, [type='date']:hover, [type='datetime']:hover, [type='datetime-local']:hover, [type='email']:hover, [type='month']:hover, [type='number']:hover, [type='password']:hover, [type='search']:hover, [type='tel']:hover, [type='text']:hover, [type='time']:hover, [type='url']:hover, [type='week']:hover, input:not([type]):hover, textarea:hover,
   select:hover {
-    border-color: rgba(46, 62, 72, 0.35); }
+    border-color: rgba(46, 62, 72, 0.6); }
   
   [type='color']:focus, [type='date']:focus, [type='datetime']:focus, [type='datetime-local']:focus, [type='email']:focus, [type='month']:focus, [type='number']:focus, [type='password']:focus, [type='search']:focus, [type='tel']:focus, [type='text']:focus, [type='time']:focus, [type='url']:focus, [type='week']:focus, input:not([type]):focus, textarea:focus,
   select:focus {
@@ -1148,6 +1148,9 @@ select {
       [type='color'][disabled]:hover, .inverted [type='date'][disabled]:hover, .inverted [type='datetime'][disabled]:hover, .inverted [type='datetime-local'][disabled]:hover, .inverted [type='email'][disabled]:hover, .inverted [type='month'][disabled]:hover, .inverted [type='number'][disabled]:hover, .inverted [type='password'][disabled]:hover, .inverted [type='search'][disabled]:hover, .inverted [type='tel'][disabled]:hover, .inverted [type='text'][disabled]:hover, .inverted [type='time'][disabled]:hover, .inverted [type='url'][disabled]:hover, .inverted [type='week'][disabled]:hover, .inverted input:not([type])[disabled]:hover, .inverted textarea[disabled]:hover, .inverted
       select[disabled]:hover {
         background-color: rgba(255, 255, 255, 0.2); }
+
+input {
+  color: #2e3e48; }
 
 input,
 select {
@@ -1485,10 +1488,12 @@ in order to also set the color of icons inline with text.
 		<ul class="inlineblockList inlineblockList--bulleted chunk text--heavy">
 			<li>Normal heavy text</li>
 			<li class="text--red">Colorful heavy text</li>
+			<li class="text--dark-red">Colorful heavy text</li>
 			<li class="text--pink">Colorful heavy text</li>
-			<li class="text--yellow">Colorful heavy text</li>
 			<li class="text--teal">Colorful heavy text</li>
 			<li class="text--blue">Colorful heavy text</li>
+			<li class="text--yellow">Colorful heavy text</li>
+			<li class="text--orange">Colorful heavy text</li>
 		</ul>
 	</div>
 </section>
@@ -1502,6 +1507,15 @@ in order to also set the color of icons inline with text.
   .text--red svg {
     stroke: transparent;
     fill: #f13a59 !important; }
+
+
+.text--dark-red {
+  color: #d32d4a !important; }
+  
+  .text--dark-red,
+  .text--dark-red svg {
+    stroke: transparent;
+    fill: #d32d4a !important; }
 
 
 .text--pink {
@@ -1538,6 +1552,15 @@ in order to also set the color of icons inline with text.
   .text--yellow svg {
     stroke: transparent;
     fill: #ffe533 !important; }
+
+
+.text--orange {
+  color: #ff5b0f !important; }
+  
+  .text--orange,
+  .text--orange svg {
+    stroke: transparent;
+    fill: #ff5b0f !important; }
 
 /*doc
 ---
@@ -3004,8 +3027,8 @@ $('#fadeInLink').on('click', function(e) {
       width: 72px; } }
 
 .avatar--xxlarge {
-  height: var(--responsiveMedia-xxl);
-  width: var(--responsiveMedia-xxl); }
+  height: var(--space-6);
+  width: var(--space-6); }
 
 .avatar--person {
   border-radius: 999px;
@@ -3946,6 +3969,8 @@ Card-like boxes.
   padding: 16px;
   position: absolute;
   top: 0; }
+  .icon--field .svg-icon {
+    fill: #2e3e48; }
 
 input:focus + .icon--field,
 input:focus + .icon--field svg {
@@ -4057,7 +4082,7 @@ input.field--reset:active {
   -webkit-appearance: none;
   background-color: white;
   border-radius: 4px;
-  border: 1px solid rgba(46, 62, 72, 0.12);
+  border: 1px solid rgba(46, 62, 72, 0.35);
   box-shadow: none;
   box-sizing: border-box;
   margin: 0 0 4px 0;
@@ -4072,7 +4097,7 @@ input.field--reset:active {
       background-color: #f6f7f8;
       border-color: transparent; }
   .fauxInput:hover {
-    border-color: rgba(46, 62, 72, 0.35); }
+    border-color: rgba(46, 62, 72, 0.6); }
   .fauxInput.focused {
     border-color: #2e3e48;
     box-shadow: none;
