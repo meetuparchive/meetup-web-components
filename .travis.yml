@@ -34,7 +34,6 @@ script:
 after_success:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
-  - echo "GIT_TAG=$GIT_TAG"
   - eval "$(ssh-agent)"
   - echo "$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
   - chmod 600 /tmp/github_deploy_key
@@ -52,7 +51,7 @@ after_success:
   - >
     [ "${TRAVIS_BRANCH}" != "master" ] &&
     echo "skipping versioning" ||
-  - yarn run build
+  - yarn build
   - npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID"
   - npm publish --tag $NPM_TAG
   - git tag $GIT_TAG -f -a -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" || true
