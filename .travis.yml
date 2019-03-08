@@ -4,8 +4,6 @@ node_js:
   - "8.11"
 cache:
   yarn: true
-  directories:
-    - node_modules
 
 # exclude tags
 branches:
@@ -24,14 +22,10 @@ before_install:
   - yarn --version
 
 before_script:
-  - npm rebuild node-sass #need to rebuild here https://github.com/sass/node-sass/issues/1387#issuecomment-185451183
-  - yarn run storybook-static
   - git diff --exit-code yarn.lock
 
 script:
   - yarn test:ci
-
-after_success:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
   - eval "$(ssh-agent)"
@@ -51,18 +45,20 @@ after_success:
   - >
     [ "${TRAVIS_BRANCH}" != "master" ] &&
     echo "skipping versioning" ||
-  - yarn build
   - npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID"
   - npm publish --tag $NPM_TAG
   - git tag $GIT_TAG -f -a -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" || true
   - git push --tags git@github.com:$TRAVIS_REPO_SLUG.git
 
+after_success:
+  - yarn run storybook-static
+
 deploy:
-   provider: pages
-   skip_cleanup: true
-   github_token: $GITHUB_TOKEN
-   local_dir: .storybook-out/
-   verbose: true
-   on:
-      branch: master
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: .storybook-out/
+  verbose: true
+  on:
+    branch: master
 
