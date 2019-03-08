@@ -21,9 +21,9 @@ ifeq ($(TRAVIS_PULL_REQUEST), true)
 	echo "GIT_TAG=$(GIT_TAG)"
 	echo "NPM_TAG=$(NPM_TAG)"
 	npm version $(GIT_TAG) -m "$(shell make tag-message)"
-	# npm publish --tag $NPM_TAG
-	# git tag $GIT_TAG -f -a -m "$(make tag-message)" || true
-	# git push --tags git@github.com:$TRAVIS_REPO_SLUG.git
+	# npm publish --tag $(NPM_TAG)
+	# git tag $(GIT_TAG) -amf "$(shell make tag-message)"
+	# git push --tags git@github.com:$(TRAVIS_REPO_SLUG).git
 else
 	@echo "merge build - no beta required"
 endif
