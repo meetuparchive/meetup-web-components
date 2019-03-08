@@ -11,18 +11,21 @@ tag-message:
 	@echo "Version $(GIT_TAG) built by Travis CI $(TRAVIS_BUILD_WEB_URL)"
 
 publish-beta:
+	@echo "GIT_TAG=$(GIT_TAG)"
+	@echo "NPM_TAG=$(NPM_TAG)"
 ifeq ($(TRAVIS_BRANCH), master)
 ifneq ($(TRAVIS_PULL_REQUEST), false)
-	# git config --global user.email "web-platform-bot@meetup.com"
-	# git config --global user.name "muptravis"
-	# eval "$(ssh-agent)"
-	# echo "$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
-	# chmod 600 /tmp/github_deploy_key
-	# ssh-add /tmp/github_deploy_key
-	echo "GIT_TAG=$(GIT_TAG)"
-	echo "NPM_TAG=$(NPM_TAG)"
+	# Publish new version on NPM
 	npm version $(GIT_TAG) -m "$(shell make tag-message)"
 	npm publish --tag $(NPM_TAG)
+	
+	# Push new tag to GitHub
+	git config --global user.email "web-platform-bot@meetup.com"
+	git config --global user.name "muptravis"
+	eval "$(ssh-agent)"
+	echo "$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
+	chmod 600 /tmp/github_deploy_key
+	ssh-add /tmp/github_deploy_key
 	git tag $(GIT_TAG) -fam "$(shell make tag-message)"
 	git push --tags git@github.com:$(TRAVIS_REPO_SLUG).git
 else
