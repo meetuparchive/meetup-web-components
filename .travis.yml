@@ -25,7 +25,9 @@ before_script:
   - git diff --exit-code yarn.lock
 
 script:
+  # Run tests
   - yarn test:ci
+  # Deploy beta from PR
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
   - eval "$(ssh-agent)"
@@ -51,14 +53,19 @@ script:
   - git push --tags git@github.com:$TRAVIS_REPO_SLUG.git
 
 after_success:
-  - yarn run storybook-static
+  - yarn run storybook-static # prep for deploy
 
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: .storybook-out/
-  verbose: true
-  on:
-    branch: master
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: .storybook-out/
+    verbose: true
+    on:
+      branch: master
+  # - provider: npm
+  #   skip_cleanup: true
+
+
+
 
