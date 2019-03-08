@@ -28,32 +28,12 @@ script:
   # Run tests
   - yarn test:ci
   # Deploy beta from PR
-  - git config --global user.email "builds@travis-ci.com"
-  - git config --global user.name "Travis CI"
-  - eval "$(ssh-agent)"
-  - echo "$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
-  - chmod 600 /tmp/github_deploy_key
-  - ssh-add /tmp/github_deploy_key
-  - >
-    [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
-    export GIT_TAG=$(make version) ||
-    export GIT_TAG=$(make version)-beta
-  - >
-    [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&
-    export NPM_TAG=latest ||
-    export NPM_TAG=beta
-  - echo "GIT_TAG=$GIT_TAG"
-  - echo "NPM_TAG=$NPM_TAG"
-  - >
-    [ "${TRAVIS_BRANCH}" != "master" ] &&
-    echo "skipping versioning" ||
-  - npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID"
-  - npm publish --tag $NPM_TAG
-  - git tag $GIT_TAG -f -a -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID" || true
-  - git push --tags git@github.com:$TRAVIS_REPO_SLUG.git
+  - [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "true" ] && make publish-beta || echo "no beta publish"
 
 after_success:
   - yarn run storybook-static # prep for deploy
+  # update package version for publish
+  - npm version $GIT_TAG -m "Version $GIT_TAG built by Travis CI - https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_JOB_ID"
 
 deploy:
   - provider: pages
@@ -63,9 +43,14 @@ deploy:
     verbose: true
     on:
       branch: master
-  # - provider: npm
-  #   skip_cleanup: true
+  - provider: npm
+    email: "web-platform-bot@meetup.com"
+    api_key: # travis encrypted key: 1164......1623
+      secure: "oTp5TQnr7ep0Z9hfWRGrfQTtK436EWtxd4S8PGQMKWppsKI5h/5PX2AbGQ4FgnBlomsl6Px+4Xivr7p05hDmB+FB//MnmBsD3QnBBdcE/DrwvsWXEf+RogQpL/UAtyOJbh8X4EyoVLu1gpJFZcrwJP1PritrdN6x5kD/vIh3046zflUcyeycSXAKFM77WzttxZLGlpoe+yOCc0X/aNdp8A5I3xiPt2fMFy0IUPvNt1hH6gjlW0Vo+5rCoknKbaGBRVlY2MopZ/SOtoD3QTMyJaTNl2DbnRWeVP530WYFDhtjQZ2/wxSixJCTvOEBmbPjR/yOYazgMUNYBVrsHBA0+KSJTyRHTYZEgcYKbusYNcVzxADJvj9qKi8FixB9WhRpcya3T2K/fQ0Vah1c/zBPZRoi0LHc7W4EXkKNL8U9VZwTB6BV40hoZIk5fZSjVAksojuEEIwil5wsAdxRJRMD7NwREaEJXW2GdzlLHWcPYsgrSp9+OpcZ7ueuo5V6/Uf8ui9rHr6p5bg/g/2RbPSreI1MEBE/iP/0vIv1DoXENHsZIb/Ol1lHHIF3G1LRBkACRyUJH3xZQ2pVG6yGKXtrRhTgHLevKbxmmgxM7DLZYmyRGgETzExo7xMlyImPlvUKl9F7tQ442DRYoHJwyHprfGSEzEWHTow7wr6TMLmaSMg="
+    skip_cleanup: true
+    on:
+      branch: master
 
-
+ 
 
 
