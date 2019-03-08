@@ -207,7 +207,7 @@ exports[`Footer exists 1`] = `
           items={
             Array [
               <span>
-                © Meetup 2018
+                © Meetup 2019
               </span>,
               <span>
                 Mock legal copy
