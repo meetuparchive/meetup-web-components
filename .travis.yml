@@ -28,7 +28,7 @@ script:
   # Run tests
   - yarn test:ci
   # Deploy beta from PR
-  - [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "true" ] && make publish-beta || echo "no beta publish"
+  - make publish-beta
 
 after_success:
   - yarn run storybook-static # prep for deploy
