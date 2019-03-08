@@ -27,6 +27,7 @@ before_script:
 script:
   # Run tests
   - yarn test:ci
+  - make tag-gh
   # Deploy beta from PR
   - make publish-beta
 
