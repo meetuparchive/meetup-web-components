@@ -35,5 +35,5 @@ ifeq ($(TRAVIS_BRANCH), master)
 	@echo "GIT_TAG=$(GIT_TAG)"
 	git tag $(GIT_TAG) -fam "$(shell make tag-message)"
 	git status
-	git push origin master --follow-tags --no-verify
+	git push git@github.com:$(TRAVIS_REPO_SLUG).git master --follow-tags --no-verify 
 endif
