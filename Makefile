@@ -34,5 +34,6 @@ tag-gh:
 ifeq ($(TRAVIS_BRANCH), master)
 	@echo "GIT_TAG=$(GIT_TAG)"
 	git tag $(GIT_TAG) -fam "$(shell make tag-message)"
-	git push --follow-tags git@github.com:$(TRAVIS_REPO_SLUG).git
+	git status
+	git push master --follow-tags git@github.com:$(TRAVIS_REPO_SLUG).git
 endif
