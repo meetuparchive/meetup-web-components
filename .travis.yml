@@ -30,7 +30,7 @@ script:
   - git config --global user.email "web-platform-bot@meetup.com"
   - git config --global user.name "muptravis"
   - eval "$(ssh-agent -s)"
-	- ssh-add - <<< "${SSH_PRIVATE_KEY}"
+  - ssh-add - <<< "${SSH_PRIVATE_KEY}"
   - make tag-gh
   # Deploy beta from PR
   - make publish-beta
