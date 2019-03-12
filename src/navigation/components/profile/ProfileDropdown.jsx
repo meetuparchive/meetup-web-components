@@ -10,6 +10,7 @@ import Icon from '../../../media/Icon';
 
 export const PROFILE_CLASS = 'profileDropdown-content';
 export const PROFILE_GROUP_LIST_ITEM_CLASS = 'profileDropdown-content-group';
+export const PROFILE_GROUP_DRAFT_LIST_ITEM_CLASS = 'profileDropdown-draft-group';
 
 /**
  * Creates profile dropdown used in navbar have,
@@ -23,10 +24,27 @@ export const ProfileDropdownComponent = ({
 	profile,
 	logout,
 	groups,
+	groupDraft,
 	groupHome,
 	allGroupsLabel,
 	allGroupsLink,
 }) => {
+	const groupDraftsContent = groupDraft => (
+		<li
+			key={groupDraft.urlname}
+			className={cx(PROFILE_GROUP_DRAFT_LIST_ITEM_CLASS, 'list-item')}
+		>
+			<p>{groupDraft.name}</p>
+			<div>
+				<span>{groupDraft.status}</span>
+				<a href={groupHome(groupDraft.urlname)}>
+					<strong>{groupDraft.actionTitle}</strong>{' '}
+				</a>
+				<Icon className="text--blue" shape="arrow-right" size="xs" />
+			</div>
+		</li>
+	);
+
 	const groupsContent = groups.map(group => (
 		<li
 			key={group.urlname}
@@ -46,7 +64,10 @@ export const ProfileDropdownComponent = ({
 			{showGroups && (
 				<FlexItem growFactor={2}>
 					<Chunk>
-						<ul className="list">{groupsContent}</ul>
+						<ul className="list">
+							{groupDraft && groupDraftsContent(groupDraft)}
+							{groupsContent}
+						</ul>
 					</Chunk>
 					<a href={allGroupsLink} className="button button--small text--small">
 						{allGroupsLabel}
@@ -100,6 +121,7 @@ ProfileDropdownComponent.propTypes = {
 		label: PropTypes.string.isRequired,
 	}),
 	groups: PropTypes.arrayOf(PropTypes.object),
+	groupDraft: PropTypes.object,
 	groupHome: PropTypes.func.isRequired,
 	allGroupsLabel: PropTypes.string.isRequired,
 	allGroupsLink: PropTypes.string.isRequired,

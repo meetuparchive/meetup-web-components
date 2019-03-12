@@ -142,6 +142,23 @@ storiesOf('Site Chrome/Nav', module)
 			/>
 		);
 	})
+	.add('authenticated but with draft group at the top', () => {
+		const groupDraft = {
+			urlname: 'meetup.com/groups',
+			name: 'Name of the group',
+			status: 'In progress',
+			actionTitle: 'Finish group',
+		};
+		return (
+			<TestNav
+				self={MOCK_MEMBER}
+				navItems={navItems}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+				groupDraft={groupDraft}
+			/>
+		);
+	})
 	.add('authenticated Pro admins', () => (
 		<TestNav
 			self={{
