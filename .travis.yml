@@ -6,6 +6,7 @@ cache:
   yarn: true
 
 # exclude tags
+# if: tag IS blank
 branches:
   only:
     - master
