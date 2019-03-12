@@ -26,8 +26,8 @@ ifeq ($(TRAVIS_BRANCH), master)
 	@echo "GIT_TAG=$(GIT_TAG)"
 	git config --global user.email "web-platform-bot@meetup.com"
 	git config --global user.name "muptravis"
-	eval "$(ssh-agent)"
-	echo "$(GITHUB_DEPLOY_KEY)" > /tmp/github_deploy_key
+	eval "$$(ssh-agent)"
+	echo "$$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
 	chmod 600 /tmp/github_deploy_key
 	ssh-add /tmp/github_deploy_key
 	git tag $(GIT_TAG) -fam "$(shell make tag-message)"
