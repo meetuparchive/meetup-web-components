@@ -16,7 +16,6 @@ ifeq ($(TRAVIS_BRANCH), master)
 ifneq ($(TRAVIS_PULL_REQUEST), false)
 	npm version $(GIT_TAG) -m "$(shell make tag-message)"
 	npm publish --tag $(NPM_TAG)
-
 else
 	@echo "merge build - no beta required"
 endif
@@ -28,7 +27,7 @@ ifeq ($(TRAVIS_BRANCH), master)
 	git config --global user.email "web-platform-bot@meetup.com"
 	git config --global user.name "muptravis"
 	eval "$(ssh-agent)"
-	echo "$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
+	echo "$(GITHUB_DEPLOY_KEY)" > /tmp/github_deploy_key
 	chmod 600 /tmp/github_deploy_key
 	ssh-add /tmp/github_deploy_key
 	git tag $(GIT_TAG) -fam "$(shell make tag-message)"
