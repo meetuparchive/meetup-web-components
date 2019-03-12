@@ -26,7 +26,7 @@ before_script:
 
 script:
   # Run tests
-  - yarn test:ci
+  # - yarn test:ci
   - git config --global user.email "web-platform-bot@meetup.com"
   - git config --global user.name "muptravis"
   - eval "$(ssh-agent)"
