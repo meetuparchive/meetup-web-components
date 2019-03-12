@@ -29,8 +29,10 @@ script:
   # - yarn test:ci
   - git config --global user.email "web-platform-bot@meetup.com"
   - git config --global user.name "muptravis"
-  - eval "$(ssh-agent -s)"
-  - ssh-add - <<< "${SSH_PRIVATE_KEY}"
+  - eval "$(ssh-agent)"
+  - echo "$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
+  - chmod 600 /tmp/github_deploy_key
+  - ssh-add /tmp/github_deploy_key
   - make tag-gh
   # Deploy beta from PR
   - make publish-beta
