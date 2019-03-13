@@ -25,4 +25,5 @@ ifeq ($(TRAVIS_PULL_REQUEST), false)
 	@echo "pushing master:$(VERSION_TAG)"
 	git push git@github.com:$(TRAVIS_REPO_SLUG).git HEAD:master --follow-tags --no-verify 
 endif
+	@echo "skipping git push for PR build"
 endif
