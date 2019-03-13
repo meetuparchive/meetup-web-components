@@ -27,13 +27,6 @@ before_script:
 script:
   # Run tests
   # - yarn test:ci
-  - git config --global user.email "web-platform-bot@meetup.com"
-  - git config --global user.name "muptravis"
-  - git config --global push.default matching
-  - eval "$(ssh-agent)"
-  - echo "$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
-  - chmod 600 /tmp/github_deploy_key
-  - ssh-add /tmp/github_deploy_key
   - make npm-version
   - make push-gh
   # Deploy beta from PR
