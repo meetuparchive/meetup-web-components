@@ -13,17 +13,11 @@ CI_BUILD_NUMBER ?= $(USER)-snapshot
 VERSION ?= 6.1.$(CI_BUILD_NUMBER)
 TRAVIS_REPO_SLUG ?= meetup/meetup-web-components
 
-.git/credentials:
-	# Get the credentials from a file
-	git config credential.helper "store --file=.git/credentials"
-	# This associates the API Key with the account
-	echo "https://$${GITHUB_DEPLOY_KEY}:@github.com" > .git/credentials
-
 version:
 	@echo $(VERSION)
 
 tag-message:
-	@echo "chore: Version %s built by Travis CI $(TRAVIS_BUILD_WEB_URL) [skip ci]"
+	@echo "chore: Version %s built by Travis CI\n\n$(TRAVIS_BUILD_WEB_URL)\n[skip ci]"
 
 npm-version:
 	npm version $(VERSION_TAG) -m "$(shell make tag-message)"
@@ -38,9 +32,8 @@ else
 endif
 endif
 
-push-gh: .git/credentials
+push-gh:
 ifeq ($(TRAVIS_BRANCH), master)
 	@echo "pushing $(VERSION_BRANCHl):$(VERSION_TAG)"
-	# git push git@github.com:$(TRAVIS_REPO_SLUG).git HEAD:$(VERSION_BRANCH) --follow-tags --no-verify 
-	git push origin HEAD:$(VERSION_BRANCH) --follow-tags --no-verify 
+	git push git@github.com:$(TRAVIS_REPO_SLUG).git HEAD:$(VERSION_BRANCH) --follow-tags --no-verify 
 endif
