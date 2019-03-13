@@ -42,7 +42,8 @@ class Checkbox extends React.PureComponent {
 
 	render() {
 		const {
-			checked,
+			checked, // eslint-disable-line no-unused-vars
+			controlled, // eslint-disable-line no-unused-vars
 			children,
 			id,
 			label,
@@ -69,7 +70,7 @@ class Checkbox extends React.PureComponent {
 			</SwarmCheckbox>
 		) : (
 			<SwarmCheckbox
-				checked={checked}
+				checked={stateChecked}
 				label={label}
 				id={elId}
 				disabled={disabled}
