@@ -10,13 +10,21 @@ VERSION_TAG ?= $(VERSION)-beta
 endif
 endif
 
+define COMMIT_MESSAGE
+chore: Version %s built by Travis CI
+
+$(TRAVIS_BUILD_WEB_URL)
+[skip ci]
+endef
+export COMMIT_MESSAGE
+
 CI_BUILD_NUMBER ?= $(USER)-snapshot
 TRAVIS_REPO_SLUG ?= meetup/meetup-web-components
 
 # 'npm version' updates package.json and commits tag to git
 publish:
 	@echo "publishing $(VERSION_TAG)"
-	npm version $(VERSION_TAG) -m "chore: Version %s built by Travis CI\n\n$(TRAVIS_BUILD_WEB_URL)\n[skip ci]"
+	npm version $(VERSION_TAG) -m "$$COMMIT_MESSAGE"
 	npm publish --tag $(NPM_TAG)
 
 push-gh:
