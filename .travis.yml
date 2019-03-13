@@ -35,7 +35,7 @@ script:
   - chmod 600 /tmp/github_deploy_key
   - ssh-add /tmp/github_deploy_key
   - make npm-version
-  - make tag-gh
+  - make push-gh
   # Deploy beta from PR
   - make publish-beta
 
