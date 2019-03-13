@@ -5,7 +5,6 @@ node_js:
 cache:
   yarn: true
 
-# exclude tags
 branches:
   only:
     - master
@@ -16,7 +15,7 @@ env:
     - CI_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 
 before_install:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > $HOME/.npmrc
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
   - export PATH=$HOME/.yarn/bin:$PATH
 
@@ -26,36 +25,30 @@ before_script:
 script:
   # Run tests
   - yarn test:ci
+  # configure git to tag release
   - git config --global user.email "web-platform-bot@meetup.com"
   - git config --global user.name "muptravis"
+  - git config --global push.default matching
+  # configure ssh auth to push tags to GH
   - eval "$(ssh-agent)"
   - echo "$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
   - chmod 600 /tmp/github_deploy_key
   - ssh-add /tmp/github_deploy_key
-  - make tag-gh
-  - make npm-version
-  # Deploy beta from PR
-  - make publish-beta
+  # version the release
+  - make publish
+  - make push-gh
 
 after_success:
   - yarn run storybook-static # prep for deploy
 
 deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    local_dir: .storybook-out/
-    verbose: true
-    on:
-      branch: master
-  - provider: npm
-    email: "web-platform-bot@meetup.com"
-    api_key: # travis encrypted key generated for web-platform-bot npm user: 1164......1623
-      secure: "oTp5TQnr7ep0Z9hfWRGrfQTtK436EWtxd4S8PGQMKWppsKI5h/5PX2AbGQ4FgnBlomsl6Px+4Xivr7p05hDmB+FB//MnmBsD3QnBBdcE/DrwvsWXEf+RogQpL/UAtyOJbh8X4EyoVLu1gpJFZcrwJP1PritrdN6x5kD/vIh3046zflUcyeycSXAKFM77WzttxZLGlpoe+yOCc0X/aNdp8A5I3xiPt2fMFy0IUPvNt1hH6gjlW0Vo+5rCoknKbaGBRVlY2MopZ/SOtoD3QTMyJaTNl2DbnRWeVP530WYFDhtjQZ2/wxSixJCTvOEBmbPjR/yOYazgMUNYBVrsHBA0+KSJTyRHTYZEgcYKbusYNcVzxADJvj9qKi8FixB9WhRpcya3T2K/fQ0Vah1c/zBPZRoi0LHc7W4EXkKNL8U9VZwTB6BV40hoZIk5fZSjVAksojuEEIwil5wsAdxRJRMD7NwREaEJXW2GdzlLHWcPYsgrSp9+OpcZ7ueuo5V6/Uf8ui9rHr6p5bg/g/2RbPSreI1MEBE/iP/0vIv1DoXENHsZIb/Ol1lHHIF3G1LRBkACRyUJH3xZQ2pVG6yGKXtrRhTgHLevKbxmmgxM7DLZYmyRGgETzExo7xMlyImPlvUKl9F7tQ442DRYoHJwyHprfGSEzEWHTow7wr6TMLmaSMg="
-    skip_cleanup: true
-    on:
-      branch: master
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: .storybook-out/
+  verbose: true
+  on:
+    branch: master
 
- 
 
 
