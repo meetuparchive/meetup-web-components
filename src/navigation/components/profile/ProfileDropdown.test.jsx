@@ -37,19 +37,4 @@ describe('Profile Dropdown', () => {
 	it('should match snapshot', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
-
-	it('should show the draft group at the top ProfileDropdown for authenticated screens', () => {
-		const mockPropsModified = MOCK_PROPS;
-
-		mockPropsModified.groupDraft = {
-			urlname: 'meetup.com/groups',
-			name: 'Name of the group',
-			status: 'In progress',
-			actionTitle: 'Finish group',
-		};
-
-		const wrapperWithDrafts = shallow(<ProfileDropdown {...MOCK_PROPS} />);
-
-		expect(wrapperWithDrafts.find('.profileDropdown-draft-group').length).toBe(1);
-	});
 });

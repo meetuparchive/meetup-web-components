@@ -7,10 +7,10 @@ import Chunk from '../../../layout/Chunk';
 import Flex from '../../../layout/Flex';
 import FlexItem from '../../../layout/FlexItem';
 import Icon from '../../../media/Icon';
+import GroupDraftItem from '../groupDraftItem/GroupDraftItem';
 
 export const PROFILE_CLASS = 'profileDropdown-content';
 export const PROFILE_GROUP_LIST_ITEM_CLASS = 'profileDropdown-content-group';
-export const PROFILE_GROUP_DRAFT_LIST_ITEM_CLASS = 'profileDropdown-draft-group';
 
 /**
  * Creates profile dropdown used in navbar have,
@@ -24,27 +24,10 @@ export const ProfileDropdownComponent = ({
 	profile,
 	logout,
 	groups,
-	groupDraft,
 	groupHome,
 	allGroupsLabel,
 	allGroupsLink,
 }) => {
-	const groupDraftsContent = groupDraft => (
-		<li
-			key={groupDraft.urlname}
-			className={cx(PROFILE_GROUP_DRAFT_LIST_ITEM_CLASS, 'list-item')}
-		>
-			<p>{groupDraft.name}</p>
-			<div>
-				<span>{groupDraft.status}</span>
-				<a href={groupHome(groupDraft.urlname)}>
-					<strong>{groupDraft.actionTitle}</strong>{' '}
-				</a>
-				<Icon className="text--blue" shape="arrow-right" size="xs" />
-			</div>
-		</li>
-	);
-
 	const groupsContent = groups.map(group => (
 		<li
 			key={group.urlname}
@@ -65,7 +48,9 @@ export const ProfileDropdownComponent = ({
 				<FlexItem growFactor={2}>
 					<Chunk>
 						<ul className="list">
-							{groupDraft && groupDraftsContent(groupDraft)}
+							{profile.groupDraft && (
+								<GroupDraftItem groupDraft={profile.groupDraft} />
+							)}
 							{groupsContent}
 						</ul>
 					</Chunk>
@@ -121,7 +106,6 @@ ProfileDropdownComponent.propTypes = {
 		label: PropTypes.string.isRequired,
 	}),
 	groups: PropTypes.arrayOf(PropTypes.object),
-	groupDraft: PropTypes.object,
 	groupHome: PropTypes.func.isRequired,
 	allGroupsLabel: PropTypes.string.isRequired,
 	allGroupsLink: PropTypes.string.isRequired,

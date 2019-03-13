@@ -127,7 +127,6 @@ export class Nav extends React.Component {
 			navItems,
 			localeCode,
 			className,
-			groupDraft,
 			markAllAsReadOnOpen, // eslint-disable-line no-unused-vars
 			uxCapture,
 			...other
@@ -186,7 +185,6 @@ export class Nav extends React.Component {
 				allGroupsLink={profile.profileDropdown.allGroupsLink}
 				profile={profile}
 				groups={groups.list}
-				groupDraft={groupDraft}
 			/>
 		) : (
 			<DropdownLoader label={dropdownLoaderLabel} />
@@ -461,9 +459,6 @@ Nav.propTypes = {
 
 	/** Add uxCapture marks in the nav */
 	uxCapture: PropTypes.bool,
-
-	/** Add draft group at the top of the ProfileDropdown.jsx */
-	groupDraft: PropTypes.object,
 };
 
 export default Nav;
