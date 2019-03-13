@@ -6,6 +6,7 @@ cache:
   yarn: true
 
 # exclude tags
+# if: tag IS blank
 branches:
   only:
     - master
@@ -16,7 +17,7 @@ env:
     - CI_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 
 before_install:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > $HOME/.npmrc
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
   - export PATH=$HOME/.yarn/bin:$PATH
 
@@ -26,15 +27,18 @@ before_script:
 script:
   # Run tests
   - yarn test:ci
+  # configure git to tag release
   - git config --global user.email "web-platform-bot@meetup.com"
   - git config --global user.name "muptravis"
+  - git config --global push.default matching
+  # configure ssh auth to push tags to GH
   - eval "$(ssh-agent)"
   - echo "$GITHUB_DEPLOY_KEY" > /tmp/github_deploy_key
   - chmod 600 /tmp/github_deploy_key
   - ssh-add /tmp/github_deploy_key
-  - make tag-gh
+  # version the release
   - make npm-version
-  # Deploy beta from PR
+  - make push-gh
   - make publish-beta
 
 after_success:
