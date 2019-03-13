@@ -1,39 +1,28 @@
+VERSION ?= 6.1.$(CI_BUILD_NUMBER)
+
 ifeq ($(TRAVIS_BRANCH), master)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-VERSION_TAG ?= $(shell make version)
-VERSION_BRANCH = $(TRAVIS_BRANCH)
+NPM_TAG ?= latest
+VERSION_TAG ?= $(VERSION)
 else
-VERSION_TAG ?= $(shell make version)-beta
-VERSION_BRANCH = $(TRAVIS_PULL_REQUEST_BRANCH)
+NPM_TAG ?= beta
+VERSION_TAG ?= $(VERSION)-beta
 endif
 endif
 
-NPM_TAG ?= beta
 CI_BUILD_NUMBER ?= $(USER)-snapshot
-VERSION ?= 6.1.$(CI_BUILD_NUMBER)
 TRAVIS_REPO_SLUG ?= meetup/meetup-web-components
 
-version:
-	@echo $(VERSION)
-
-tag-message:
-	@echo "chore: Version %s built by Travis CI\n\n$(TRAVIS_BUILD_WEB_URL)\n[skip ci]"
-
-npm-version:
-	npm version $(VERSION_TAG) -m "$(shell make tag-message)"
-
-publish-beta:
-	@echo "NPM_TAG=$(NPM_TAG)"
-ifeq ($(TRAVIS_BRANCH), master)
-ifneq ($(TRAVIS_PULL_REQUEST), false)
+# 'npm version' updates package.json and commits tag to git
+publish:
+	@echo "publishing $(VERSION_TAG)"
+	npm version $(VERSION_TAG) -m "chore: Version %s built by Travis CI\n\n$(TRAVIS_BUILD_WEB_URL)\n[skip ci]"
 	npm publish --tag $(NPM_TAG)
-else
-	@echo "merge to master - no beta required"
-endif
-endif
 
 push-gh:
 ifeq ($(TRAVIS_BRANCH), master)
-	@echo "pushing $(VERSION_BRANCHl):$(VERSION_TAG)"
-	git push git@github.com:$(TRAVIS_REPO_SLUG).git HEAD:$(VERSION_BRANCH) --follow-tags --no-verify 
+ifeq ($(TRAVIS_PULL_REQUEST), false)
+	@echo "pushing master:$(VERSION_TAG)"
+	git push git@github.com:$(TRAVIS_REPO_SLUG).git HEAD:master --follow-tags --no-verify 
+endif
 endif
