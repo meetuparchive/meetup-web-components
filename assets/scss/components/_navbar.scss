@@ -213,8 +213,27 @@ $maxScalingBP: $breakpoint-m / 1px;
 }
 
 .profileDropdown-content {
+	width: 512px;
 	.list-item {
 		padding-bottom: $space-half !important;
 		padding-top: $space-half !important;
+	}
+	.profileDropdown-draft-group {
+		padding-top: 0 !important;
+	}
+}
+
+.profileDropdown-draft-group {
+	div {
+		color: $C_foursquare;
+		font-size: $font-size-small;
+	}
+	a {
+		cursor: pointer;
+		padding-right: 5px;
+		text-decoration: underline;
+	}
+	span {
+		padding-right: 10px;
 	}
 }
