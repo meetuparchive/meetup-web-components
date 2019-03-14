@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Dropdown should match snapshot 1`] = `
+<li
+  className="profileDropdown-draft-group list-item"
+  key="create"
+>
+  <p>
+    Name of the group
+  </p>
+  <div>
+    <span>
+      In progress
+    </span>
+    <a
+      className="draftprofiledropdown"
+      href="create"
+    >
+      <strong>
+        Finish group
+      </strong>
+       
+      <Icon
+        className="text--blue"
+        shape="arrow-right"
+        size="xs"
+      />
+    </a>
+  </div>
+</li>
+`;

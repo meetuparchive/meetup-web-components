@@ -142,6 +142,27 @@ storiesOf('Site Chrome/Nav', module)
 			/>
 		);
 	})
+	.add('authenticated but with draft group at the top', () => {
+		const profile = {
+			...navItems.profile,
+			groupDraft: {
+				editLink: 'create',
+				name: 'Name of the group',
+				status: 'In progress',
+				actionTitle: 'Finish group',
+			},
+		};
+		const navItemsModified = { ...navItems, profile };
+
+		return (
+			<TestNav
+				self={MOCK_MEMBER}
+				navItems={navItemsModified}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			/>
+		);
+	})
 	.add('authenticated Pro admins', () => (
 		<TestNav
 			self={{

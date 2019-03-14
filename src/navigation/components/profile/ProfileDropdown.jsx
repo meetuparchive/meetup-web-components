@@ -7,6 +7,7 @@ import Chunk from '../../../layout/Chunk';
 import Flex from '../../../layout/Flex';
 import FlexItem from '../../../layout/FlexItem';
 import Icon from '../../../media/Icon';
+import GroupDraftItem from '../groupDraftItem/GroupDraftItem';
 
 export const PROFILE_CLASS = 'profileDropdown-content';
 export const PROFILE_GROUP_LIST_ITEM_CLASS = 'profileDropdown-content-group';
@@ -46,7 +47,12 @@ export const ProfileDropdownComponent = ({
 			{showGroups && (
 				<FlexItem growFactor={2}>
 					<Chunk>
-						<ul className="list">{groupsContent}</ul>
+						<ul className="list">
+							{profile.groupDraft && (
+								<GroupDraftItem groupDraft={profile.groupDraft} />
+							)}
+							{groupsContent}
+						</ul>
 					</Chunk>
 					<a href={allGroupsLink} className="button button--small text--small">
 						{allGroupsLabel}
