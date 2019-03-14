@@ -34,7 +34,9 @@ type Props = React.ElementConfig<HTMLSelectElement> & {
 export const SelectInput = (props: Props) => {
 	const { id, label, name, error, helperText, required, ...other } = props;
 
-	const requiredText = typeof required === 'string' ? required : '*';
+	const requiredProps = required
+		? { requiredText: typeof required === 'string' ? required : '*' }
+		: {};
 
 	return (
 		<SwarmSelect
@@ -43,8 +45,7 @@ export const SelectInput = (props: Props) => {
 			name={name}
 			error={error}
 			helperText={helperText}
-			required={required}
-			requiredText={requiredText}
+			{...requiredProps}
 			{...other}
 		/>
 	);
