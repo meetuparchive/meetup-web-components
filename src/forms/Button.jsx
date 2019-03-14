@@ -1,13 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import cx from 'classnames';
-import Flex from '../layout/Flex';
-import FlexItem from '../layout/FlexItem';
 
-export const BUTTON_CLASS = 'button';
-export const BUTTON_ICON_WRAPPER_CLASS = 'button-icon-wrapper';
-export const BUTTON_LABEL_CLASS = 'button-label';
-export const BUTTON_ICON_CLASS = 'button-icon';
+import { Button as SwarmButton } from '@meetup/swarm-components';
 
 /**
  * @module Button
@@ -15,91 +9,34 @@ export const BUTTON_ICON_CLASS = 'button-icon';
 class Button extends React.PureComponent {
 	render() {
 		const {
-			children,
-			className,
-			reset,
-			fullWidth,
-			primary,
-			neutral,
+			// removing reset & fullWidth props from other to prevent an invalid boolean being passed to <button>
+			reset, // eslint-disable-line no-unused-vars
+			fullWidth, // eslint-disable-line no-unused-vars
 			icon,
-			right,
-			small,
-			bordered,
-			hasHoverShadow,
+			hasHoverShadow, // eslint-disable-line no-unused-vars
 			component,
-			disabled,
-			type,
 			...other
 		} = this.props;
-		const classNames = {
-			button: cx(
-				BUTTON_CLASS,
-				{
-					'button--fullWidth': fullWidth,
-					'button--primary': primary,
-					'button--small': small,
-					'button--reset': reset,
-					'button--bordered': bordered,
-					'button--hasHoverShadow': hasHoverShadow,
-					'button--neutral': neutral,
-					'button--disabled': disabled,
-					'button--iconOnly': icon && !children,
-				},
-				className
-			),
-			iconWrap: cx(BUTTON_ICON_WRAPPER_CLASS, {
-				[`${BUTTON_ICON_WRAPPER_CLASS}--right`]: right,
-			}),
-		};
-		const opts = right ? { rowReverse: 'all' } : {};
 
-		const iconChildren = (
-			<Flex className={classNames.iconWrap} justify="center" {...opts}>
-				{icon && (
-					<FlexItem
-						shrink
-						className={`${BUTTON_ICON_CLASS} valign--middle flush--left`}
-					>
-						{icon}
-					</FlexItem>
-				)}
-				{children && (
-					<FlexItem
-						shrink
-						className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}
-					>
-						{children}
-					</FlexItem>
-				)}
-			</Flex>
-		);
+		// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
+		// since this functionality is built into button in order to enforce strict sizes on button icons
+		const props = { icon: icon && icon.props && icon.props.shape };
 
-		const Component = component;
-
-		if (disabled) {
-			delete other.onClick;
+		if (component !== 'button') {
+			console.warn(
+				'All components are button elements. Future iterations will support links as independent components and the logic will be handled here'
+			);
 		}
 
 		return (
-			<Component className={classNames.button} type={type} {...other}>
-				{icon ? iconChildren : children}
-			</Component>
+			<SwarmButton {...props} {...other}>
+				Test
+			</SwarmButton>
 		);
 	}
 }
 
-Button.defaultProps = {
-	component: 'button',
-	type: 'button',
-};
-
 Button.propTypes = {
-	/** Behaves like a button in the browser, but just looks like regular text or icons */
-	reset: PropTypes.bool,
-
-	/** Forces button to span the full width of it's container */
-	fullWidth: PropTypes.bool,
-
 	/** Used to highlight the most important action on a screen. Not intended to be used more than once on a screen/modal/section. */
 	primary: PropTypes.bool,
 
@@ -118,16 +55,10 @@ Button.propTypes = {
 	/** Sometimes used in place of a Neutral button on shaded backgrounds to maintain the appropriate visual weight */
 	bordered: PropTypes.bool,
 
-	/** Button "lifts" on hover with a shadow */
-	hasHoverShadow: PropTypes.bool,
-
 	/** Which component or html element type to use */
 	component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 
 	/** Whether to use disabled attribute and disabled button styles */
 	disabled: PropTypes.bool,
-
-	/** HTML type attribute. e.g.: `<button type="submit"/>`  */
-	type: PropTypes.string,
 };
 export default Button;
