@@ -6,7 +6,7 @@ import GroupDraftItem from './GroupDraftItem';
 const MOCK_PROPS = {
 	groupHome: jest.fn(),
 	groupDraft: {
-		urlname: 'create',
+		editLink: 'create',
 		name: 'Name of the group',
 		status: 'In progress',
 		actionTitle: 'Finish group',
