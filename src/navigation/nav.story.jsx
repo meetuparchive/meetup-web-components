@@ -146,7 +146,7 @@ storiesOf('Site Chrome/Nav', module)
 		const profile = {
 			...navItems.profile,
 			groupDraft: {
-				urlname: '/create',
+				urlname: 'create',
 				name: 'Name of the group',
 				status: 'In progress',
 				actionTitle: 'Finish group',

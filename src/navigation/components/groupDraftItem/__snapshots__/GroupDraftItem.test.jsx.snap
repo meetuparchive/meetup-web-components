@@ -3,7 +3,7 @@
 exports[`Profile Dropdown should match snapshot 1`] = `
 <li
   className="profileDropdown-draft-group list-item"
-  key="meetup.com/groups"
+  key="create"
 >
   <p>
     Name of the group
@@ -14,7 +14,7 @@ exports[`Profile Dropdown should match snapshot 1`] = `
     </span>
     <a
       className="draftprofiledropdown"
-      href="meetup.com/groups"
+      href="create"
     >
       <strong>
         Finish group
