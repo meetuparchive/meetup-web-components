@@ -4961,9 +4961,35 @@ input.field--reset:active {
 .notification--read {
   background: #f6f7f8 !important; }
 
-.profileDropdown-content .list-item {
-  padding-bottom: 8px !important;
-  padding-top: 8px !important; }
+.profileDropdown-content {
+  width: 512px; }
+  .profileDropdown-content .list-item {
+    padding-bottom: 8px !important;
+    padding-top: 8px !important; }
+  .profileDropdown-content .profileDropdown-draft-group {
+    padding-top: 0 !important; }
+
+.profileDropdown-draft-group div {
+  color: #0cbadf;
+  font-size: 14px; }
+
+.profileDropdown-draft-group a {
+  cursor: pointer;
+  padding-right: 5px;
+  text-decoration: underline; }
+
+.profileDropdown-draft-group span {
+  padding-right: 7px; }
+
+.profileDropdown-draft-group strong {
+  font-weight: 600; }
+
+.profileDropdown-draft-group svg {
+  height: 10px;
+  margin-left: 3px;
+  stroke: #0cbadf;
+  stroke-width: 0.3px;
+  width: 10px; }
 
 .meetup-signupModal-wrapper {
   margin: 16px 24px; }
