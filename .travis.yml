@@ -38,8 +38,9 @@ script:
   - make publish
   - make push-gh
 
-after_success:
-  - yarn run storybook-static # prep for deploy
+# prep for deploy
+after_success: 
+  - yarn run storybook-static
 
 deploy:
   provider: pages

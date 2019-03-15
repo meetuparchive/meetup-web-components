@@ -21,8 +21,11 @@ export COMMIT_MESSAGE
 CI_BUILD_NUMBER ?= $(USER)-snapshot
 TRAVIS_REPO_SLUG ?= meetup/meetup-web-components
 
+lib:
+	yarn build
+
 # 'npm version' updates package.json and commits tag to git
-publish:
+publish: lib
 	@echo "publishing $(VERSION_TAG)"
 	npm version $(VERSION_TAG) -m "$$COMMIT_MESSAGE"
 	npm publish --tag $(NPM_TAG)
