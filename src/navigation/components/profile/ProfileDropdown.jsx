@@ -24,6 +24,7 @@ export const ProfileDropdownComponent = ({
 	profile,
 	logout,
 	groups,
+	groupDraft,
 	groupHome,
 	allGroupsLabel,
 	allGroupsLink,
@@ -37,7 +38,7 @@ export const ProfileDropdownComponent = ({
 		</li>
 	));
 
-	const showGroups = Boolean(groups && groups.length);
+	const showGroups = Boolean((groups && groups.length) || groupDraft);
 
 	return (
 		<Flex
@@ -48,9 +49,7 @@ export const ProfileDropdownComponent = ({
 				<FlexItem growFactor={2}>
 					<Chunk>
 						<ul className="list">
-							{profile.groupDraft && (
-								<GroupDraftItem groupDraft={profile.groupDraft} />
-							)}
+							{groupDraft && <GroupDraftItem groupDraft={groupDraft} />}
 							{groupsContent}
 						</ul>
 					</Chunk>
