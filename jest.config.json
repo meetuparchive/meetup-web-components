@@ -17,7 +17,7 @@
   },
   "testRegex": "src/.*\\.test\\.jsx?$",
   "transformIgnorePatterns": [
-    "node_modules(?!\/meetup-web-components)"
+    "node_modules(?!\/meetup-web-components|\/@meetup\/swarm-components)"
   ],
   "snapshotSerializers": [
     "<rootDir>/node_modules/enzyme-to-json/serializer"
