@@ -143,8 +143,8 @@ storiesOf('Site Chrome/Nav', module)
 		);
 	})
 	.add('authenticated but with draft group at the top', () => {
-		const profile = {
-			...navItems.profile,
+		const navItemsModified = {
+			...navItems,
 			groupDraft: {
 				editLink: 'create',
 				name: 'Name of the group',
@@ -152,7 +152,6 @@ storiesOf('Site Chrome/Nav', module)
 				actionTitle: 'Finish group',
 			},
 		};
-		const navItemsModified = { ...navItems, profile };
 
 		return (
 			<TestNav
