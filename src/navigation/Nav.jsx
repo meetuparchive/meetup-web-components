@@ -327,7 +327,10 @@ export class Nav extends React.Component {
 				),
 				onClickAction:
 					media.isAtMediumUp && !isGroupsLoaded
-						? (profile.getSelfGroupsQuery, profile.getSelfGroupDraftQuery)
+						? (...args) => {
+								profile.getSelfGroupsQuery(...args);
+								profile.getSelfGroupDraftQuery(...args);
+						  }
 						: undefined,
 				dropdownContent: media.isAtMediumUp && profileContent,
 			},
