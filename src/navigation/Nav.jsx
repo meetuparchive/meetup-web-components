@@ -196,6 +196,7 @@ export class Nav extends React.Component {
 			shrink: true,
 			linkTo: create.link,
 			label: create.label,
+			linkClassName: create.linkClassName,
 			className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup`,
 		};
 
@@ -344,6 +345,7 @@ export class Nav extends React.Component {
 					linkTo={item.linkTo}
 					label={item.label}
 					className={item.className}
+					linkClassName={item.linkClassName}
 					onAction={item.onAction}
 				/>
 			);
@@ -364,6 +366,7 @@ export class Nav extends React.Component {
 						dropdownContent={item.dropdownContent}
 						onAction={item.onAction}
 						hasUpdates={item.hasUpdates}
+						linkClassName={item.linkClassName}
 					/>
 				)
 			);
