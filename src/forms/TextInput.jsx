@@ -85,7 +85,7 @@ export const TextInput = (props: Props): React$Element<*> => {
 			{label && (
 				<label htmlFor={id || name}>
 					{label}
-					{required ? <span> {requiredText}</span> : ''}
+					{required && <> {requiredText}</>}
 				</label>
 			)}
 
