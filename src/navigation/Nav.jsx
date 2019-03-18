@@ -140,6 +140,7 @@ export class Nav extends React.Component {
 			messages,
 			notifications,
 			groups,
+			groupDraft,
 			profile,
 			updatesLabel,
 			logo,
@@ -185,6 +186,7 @@ export class Nav extends React.Component {
 				allGroupsLink={profile.profileDropdown.allGroupsLink}
 				profile={profile}
 				groups={groups.list}
+				groupDraft={groupDraft}
 			/>
 		) : (
 			<DropdownLoader label={dropdownLoaderLabel} />
@@ -194,6 +196,7 @@ export class Nav extends React.Component {
 			shrink: true,
 			linkTo: create.link,
 			label: create.label,
+			linkClassName: create.linkClassName,
 			className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup`,
 		};
 
@@ -325,7 +328,10 @@ export class Nav extends React.Component {
 				),
 				onClickAction:
 					media.isAtMediumUp && !isGroupsLoaded
-						? profile.getSelfGroupsQuery
+						? (...args) => {
+								profile.getSelfGroupsQuery(...args);
+								profile.getSelfGroupDraftQuery(...args);
+						  }
 						: undefined,
 				dropdownContent: media.isAtMediumUp && profileContent,
 			},
@@ -339,6 +345,7 @@ export class Nav extends React.Component {
 					linkTo={item.linkTo}
 					label={item.label}
 					className={item.className}
+					linkClassName={item.linkClassName}
 					onAction={item.onAction}
 				/>
 			);
@@ -359,6 +366,7 @@ export class Nav extends React.Component {
 						dropdownContent={item.dropdownContent}
 						onAction={item.onAction}
 						hasUpdates={item.hasUpdates}
+						linkClassName={item.linkClassName}
 					/>
 				)
 			);

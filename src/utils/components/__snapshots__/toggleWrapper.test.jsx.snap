@@ -4,19 +4,25 @@ exports[`withLoading when this.props.type is checkbox matches snapshot 1`] = `
 <ToggleWrapper
   isActive={false}
   type="checkbox"
-/>
+>
+  <Component />
+</ToggleWrapper>
 `;
 
 exports[`withLoading when this.props.type is not checkbox or radio matches snapshot 1`] = `
 <ToggleWrapper
   isActive={false}
   onToggle={[MockFunction]}
-/>
+>
+  <Component />
+</ToggleWrapper>
 `;
 
 exports[`withLoading when this.props.type is radio matches snapshot 1`] = `
 <ToggleWrapper
   isActive={false}
   type="radio"
-/>
+>
+  <Component />
+</ToggleWrapper>
 `;
