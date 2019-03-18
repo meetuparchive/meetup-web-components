@@ -178,10 +178,9 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.7.1.tgz#e44e596d03c9f16ba3b127ad333a8a072bcb5a0a"
 
-"@meetup/swarm-components@0.4.4":
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.4.4.tgz#3196f5bb5c29a8b767ae82125d729161d9c24c94"
-  integrity sha512-3RS2qpQ61wt+2bU9W01IHtHy31jJjNP8siZcf62KC0ZQolAx1oR4423o74y1LoIbm9PGcBS5Fcx2TdDJNTHHeA==
+"@meetup/swarm-components@0.4.7":
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.4.7.tgz#781e6e0a10cc79efc1d92924754b86a4597f3aee"
   dependencies:
     "@meetup/swarm-constants" "^0.2.3"
     classnames "^2.2.6"
@@ -191,12 +190,10 @@
 "@meetup/swarm-constants@^0.2.3":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.2.3.tgz#f7bdd2a6fc3f95963d8b11b32480a0a56150d011"
-  integrity sha512-kwmDas/0e2GdtTbg3azV1kE93YVIxR6adZgRlKMJ1LKc1UhQqA2TZrunDu0PQfX9+aqCCZtHUDnThl7lfGstLQ==
 
 "@meetup/swarm-styles@0.1.6":
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.1.6.tgz#b5f0bcaf674b1f76344be10c935bcdb60fb5b4a9"
-  integrity sha512-+BLu3NvvbVkqn4F6xcIHZHrUk5qB7qjcJgtV+NCagv4t09EuTgiiX5HFMCPqfSoe11A7bM0mRHZZdgbImvY0nw==
   dependencies:
     "@meetup/swarm-constants" "^0.2.3"
 
@@ -1161,7 +1158,6 @@ ast-types@0.10.1:
 ast-types@0.9.6:
   version "0.9.6"
   resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.9.6.tgz#102c9e9e9005d3e7e3829bf0c4fa24ee862ee9b9"
-  integrity sha1-ECyenpAF0+fjgpvwxPok7oYu6bk=
 
 astral-regex@^1.0.0:
   version "1.0.0"
@@ -2932,7 +2928,6 @@ clean-css@4.1.x:
 clean-css@4.2.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
-  integrity sha512-4ZxI6dy4lrY6FHzfiy1aEOXgu4LIsW2MhwG0VBKdcoGoH/XLFgaHSdLTGr4O8Be6A8r3MOphEiI8Gc1n0ecf3g==
   dependencies:
     source-map "~0.6.0"
 
@@ -3089,7 +3084,6 @@ commander@2.15.x, commander@^2.11.0, commander@^2.14.1, commander@^2.8.1, comman
 commander@2.17.x, commander@~2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
-  integrity sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==
 
 commander@2.9.0:
   version "2.9.0"
@@ -4053,7 +4047,6 @@ es6-symbol@^3.1.1, es6-symbol@~3.1.1:
 es6-templates@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/es6-templates/-/es6-templates-0.2.3.tgz#5cb9ac9fb1ded6eb1239342b81d792bbb4078ee4"
-  integrity sha1-XLmsn7He1usSOTQrgdeSu7QHjuQ=
   dependencies:
     recast "~0.11.12"
     through "~2.3.6"
@@ -5208,7 +5201,6 @@ he@1.1.x, he@^1.1.1:
 he@1.2.x:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
-  integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
 history@^4.7.2:
   version "4.7.2"
@@ -5280,7 +5272,6 @@ html-entities@^1.2.0:
 html-loader@^0.5.5:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/html-loader/-/html-loader-0.5.5.tgz#6356dbeb0c49756d8ebd5ca327f16ff06ab5faea"
-  integrity sha512-7hIW7YinOYUpo//kSYcPB6dCKoceKLmOwjEMmhIobHuWGDVl0Nwe4l68mdG/Ru0wcUxQjVMEoZpkalZ/SE7zog==
   dependencies:
     es6-templates "^0.2.3"
     fastparse "^1.1.1"
@@ -5303,7 +5294,6 @@ html-minifier@^3.2.3:
 html-minifier@^3.5.8:
   version "3.5.21"
   resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.5.21.tgz#d0040e054730e354db008463593194015212d20c"
-  integrity sha512-LKUKwuJDhxNa3uf/LPR/KVjm/l3rBqtYeCOAekvG8F1vItxMUpueGd94i/asDDr8/1u7InxzFA5EeGjhhG5mMA==
   dependencies:
     camel-case "3.0.x"
     clean-css "4.2.x"
@@ -9218,7 +9208,6 @@ recast@^0.12.6:
 recast@~0.11.12:
   version "0.11.23"
   resolved "https://registry.yarnpkg.com/recast/-/recast-0.11.23.tgz#451fd3004ab1e4df9b4e4b66376b2a21912462d3"
-  integrity sha1-RR/TAEqx5N+bTktmN2sqIZEkYtM=
   dependencies:
     ast-types "0.9.6"
     esprima "~3.1.0"
@@ -10580,7 +10569,6 @@ swarm-icons@3.8.349:
 swarm-icons@^3.8.354:
   version "3.8.354"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-3.8.354.tgz#c248865e8ddedaeed8ef62eac3c1c98ff82fa2e2"
-  integrity sha512-kM7sQcRKSYQvO6/e9ggASA98a6qXVZIepbSzER74r+LeSWQqlfDSdcNu8TzaDL2D7TEC2wqoxp4JGu50ZQAR/w==
 
 swarm-sasstools@5.0.428:
   version "5.0.428"
@@ -10855,7 +10843,6 @@ uglify-js@3.3.x:
 uglify-js@3.4.x:
   version "3.4.9"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.4.9.tgz#af02f180c1207d76432e473ed24a28f4a782bae3"
-  integrity sha512-8CJsbKOtEbnJsTyv6LE6m6ZKniqMiFWmm9sRbopbkGs3gMPPfd3Fh8iIA4Ykv5MgaTbqHr4BaoGLJLZNhsrW1Q==
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
