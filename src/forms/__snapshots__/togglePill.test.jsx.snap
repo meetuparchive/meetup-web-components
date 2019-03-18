@@ -1,3 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TogglePill renders a component with expected attributes 1`] = `undefined`;
+exports[`TogglePill renders a component with expected attributes 1`] = `
+<TogglePill
+  id="hikingCategory"
+  isActive={false}
+  labelClassName="someClass"
+  name="meetupCategories"
+  onChange={[MockFunction]}
+  value="hiking"
+>
+  <ToggleWrapper
+    isActive={false}
+    onToggle={[MockFunction]}
+    type="checkbox"
+  >
+    <ConditionalWrap
+      condition={false}
+      wrap={[Function]}
+    >
+      <div
+        className="toggleButton"
+      >
+        <input
+          checked={false}
+          className="toggleButton-input visibility--a11yHide"
+          id="hikingCategory"
+          name="meetupCategories"
+          onChange={[Function]}
+          onKeyUp={[Function]}
+          tabIndex="0"
+          type="checkbox"
+          value="hiking"
+        />
+        <label
+          className="toggleButton-label someClass"
+          htmlFor="hikingCategory"
+        >
+          Hiking!
+        </label>
+      </div>
+    </ConditionalWrap>
+  </ToggleWrapper>
+</TogglePill>
+`;
