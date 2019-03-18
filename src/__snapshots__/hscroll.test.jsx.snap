@@ -2,7 +2,7 @@
 
 exports[`Default Hscroll exists 1`] = `
 <div
-  className="hscrollContainer"
+  className="hscrollContainer hscrollGradient--hidden"
   onScroll={[Function]}
 >
   <div

@@ -37,6 +37,7 @@ describe('Default Hscroll', () => {
 
 describe('Gradient Hscroll', () => {
 	const component = shallow(<Hscroll hasGradient>{listItems}</Hscroll>);
+	const gradientEls = component.find('.hscrollGradientWrap');
 	const MOCK_EVENT = {
 		target: {
 			scrollLeft: '10px',
@@ -44,13 +45,11 @@ describe('Gradient Hscroll', () => {
 	};
 
 	it('has graident class when `gradient` prop is supplied', () => {
-		const gradientEls = component.find('.hscrollGradientWrap');
 		expect(gradientEls.length).toBe(1);
 	});
 
 	it(`adds a the className ${HIDE_GRADIENT_CLASSNAME} when the hscroll has been scrolled`, () => {
 		component.instance().onScroll(MOCK_EVENT);
-		component.update();
 		expect(component.hasClass(HIDE_GRADIENT_CLASSNAME)).toBe(true);
 	});
 });

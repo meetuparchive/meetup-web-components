@@ -36,7 +36,7 @@ class Hscroll extends React.PureComponent {
 			'hscrollContainer',
 			{
 				hscrollGradientWrap: hasGradient && !unclipAt,
-				[HIDE_GRADIENT_CLASSNAME]: this.state.isScrolled,
+				[HIDE_GRADIENT_CLASSNAME]: !this.state.isScrolled,
 			},
 			className
 		);
