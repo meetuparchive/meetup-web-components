@@ -108,123 +108,184 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
           wrap={[Function]}
         >
           <Portal>
-            <div
-              aria-hidden={false}
-              className="popup-content tooltip-content popup-content--right display--block"
-              id="testDropdown"
-              role="tooltip"
-              style={
-                Object {
-                  "left": "0px",
-                  "maxWidth": "200px",
-                  "minWidth": "0px",
-                  "top": "0px",
-                }
+            <Portal
+              containerInfo={
+                <div>
+                  <div
+                    aria-hidden="false"
+                    class="popup-content tooltip-content popup-content--right display--block"
+                    id="testDropdown"
+                    role="tooltip"
+                    style="left: 0px; top: 0px; min-width: 0px; max-width: 200px;"
+                  >
+                    <div
+                      class="popup-bubble tooltip-bubble inverted popup-bubble--active popup-bubble--right"
+                    >
+                      <button
+                        class="button button--reset button--iconOnly tooltip-closeBtn"
+                        type="button"
+                      >
+                        <div
+                          class="flex flex--row flex--center button-icon-wrapper"
+                        >
+                          <div
+                            class="flex-item flex-item--shrink button-icon valign--middle flush--left"
+                          >
+                            <span
+                              class="svg svg--cross text--secondary"
+                            >
+                              <svg
+                                class="svg-icon valign--middle"
+                                height="24"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                              >
+                                <use
+                                  xlink:href="#icon-cross--small"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      </button>
+                      <section
+                        class="section"
+                      >
+                        <div
+                          class="chunk"
+                        >
+                          <h2
+                            class="text--big text--bold"
+                          >
+                            Dropdown content
+                          </h2>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                </div>
               }
             >
               <div
-                className="popup-bubble tooltip-bubble inverted popup-bubble--active popup-bubble--right"
-              >
-                <Button
-                  className="tooltip-closeBtn"
-                  component="button"
-                  icon={
-                    <Icon
-                      className="text--secondary"
-                      shape="cross"
-                      size="s"
-                    />
+                aria-hidden={false}
+                className="popup-content tooltip-content popup-content--right display--block"
+                id="testDropdown"
+                role="tooltip"
+                style={
+                  Object {
+                    "left": "0px",
+                    "maxWidth": "200px",
+                    "minWidth": "0px",
+                    "top": "0px",
                   }
-                  onClick={[Function]}
-                  reset={true}
-                  type="button"
+                }
+              >
+                <div
+                  className="popup-bubble tooltip-bubble inverted popup-bubble--active popup-bubble--right"
                 >
-                  <button
-                    className="button button--reset button--iconOnly tooltip-closeBtn"
+                  <Button
+                    className="tooltip-closeBtn"
+                    component="button"
+                    icon={
+                      <Icon
+                        className="text--secondary"
+                        shape="cross"
+                        size="s"
+                      />
+                    }
                     onClick={[Function]}
+                    reset={true}
                     type="button"
                   >
-                    <Flex
-                      className="button-icon-wrapper"
-                      justify="center"
+                    <button
+                      className="button button--reset button--iconOnly tooltip-closeBtn"
+                      onClick={[Function]}
+                      type="button"
                     >
-                      <FlexComponent
+                      <Flex
                         className="button-icon-wrapper"
-                        direction="row"
                         justify="center"
                       >
-                        <div
-                          className="flex flex--row flex--center button-icon-wrapper"
+                        <FlexComponent
+                          className="button-icon-wrapper"
+                          direction="row"
+                          justify="center"
                         >
-                          <FlexItem
-                            className="button-icon valign--middle flush--left"
-                            shrink={true}
+                          <div
+                            className="flex flex--row flex--center button-icon-wrapper"
                           >
-                            <FlexItemComponent
+                            <FlexItem
                               className="button-icon valign--middle flush--left"
                               shrink={true}
                             >
-                              <div
-                                className="flex-item flex-item--shrink button-icon valign--middle flush--left"
+                              <FlexItemComponent
+                                className="button-icon valign--middle flush--left"
+                                shrink={true}
                               >
-                                <Icon
-                                  className="text--secondary"
-                                  shape="cross"
-                                  size="s"
+                                <div
+                                  className="flex-item flex-item--shrink button-icon valign--middle flush--left"
                                 >
-                                  <span
-                                    className="svg svg--cross text--secondary"
+                                  <Icon
+                                    className="text--secondary"
+                                    shape="cross"
+                                    size="s"
                                   >
-                                    <svg
-                                      className="svg-icon valign--middle"
-                                      height="24"
-                                      preserveAspectRatio="xMinYMin meet"
-                                      role="img"
-                                      style={Object {}}
-                                      viewBox="0 0 24 24"
-                                      width="24"
+                                    <span
+                                      className="svg svg--cross text--secondary"
                                     >
-                                      <use
-                                        xlinkHref="#icon-cross--small"
-                                      />
-                                    </svg>
-                                  </span>
-                                </Icon>
-                              </div>
-                            </FlexItemComponent>
-                          </FlexItem>
-                        </div>
-                      </FlexComponent>
-                    </Flex>
-                  </button>
-                </Button>
-                <Section
-                  noSeparator={true}
-                >
-                  <SectionComponent
+                                      <svg
+                                        className="svg-icon valign--middle"
+                                        height="24"
+                                        preserveAspectRatio="xMinYMin meet"
+                                        role="img"
+                                        style={Object {}}
+                                        viewBox="0 0 24 24"
+                                        width="24"
+                                      >
+                                        <use
+                                          xlinkHref="#icon-cross--small"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </Icon>
+                                </div>
+                              </FlexItemComponent>
+                            </FlexItem>
+                          </div>
+                        </FlexComponent>
+                      </Flex>
+                    </button>
+                  </Button>
+                  <Section
                     noSeparator={true}
                   >
-                    <section
-                      className="section"
+                    <SectionComponent
+                      noSeparator={true}
                     >
-                      <Chunk>
-                        <ChunkComponent>
-                          <div
-                            className="chunk"
-                          >
-                            <h2
-                              className="text--big text--bold"
+                      <section
+                        className="section"
+                      >
+                        <Chunk>
+                          <ChunkComponent>
+                            <div
+                              className="chunk"
                             >
-                              Dropdown content
-                            </h2>
-                          </div>
-                        </ChunkComponent>
-                      </Chunk>
-                    </section>
-                  </SectionComponent>
-                </Section>
+                              <h2
+                                className="text--big text--bold"
+                              >
+                                Dropdown content
+                              </h2>
+                            </div>
+                          </ChunkComponent>
+                        </Chunk>
+                      </section>
+                    </SectionComponent>
+                  </Section>
+                </div>
               </div>
-            </div>
+            </Portal>
           </Portal>
         </ConditionalWrap>
       </FloatingPosition>
