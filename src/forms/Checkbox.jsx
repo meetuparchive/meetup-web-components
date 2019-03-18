@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { default as SwarmCheckbox } from '@meetup/swarm-components/lib/Checkbox';
+import { Checkbox as SwarmCheckbox } from '@meetup/swarm-components';
 
 /**
  * @module Checkbox
@@ -41,40 +41,32 @@ class Checkbox extends React.PureComponent {
 	}
 
 	render() {
+		// use the "eslint-disable-line" because we don't want
+		// the `checked` and `controlled` props passed in `other`
+		// to the `SwarmCheckbox` component
 		const {
 			checked, // eslint-disable-line no-unused-vars
 			controlled, // eslint-disable-line no-unused-vars
-			children,
 			id,
 			label,
 			disabled,
-			name, // TODO: should v2 Checkbox support 'name'?
-			value, // TODO: Should v2 Checkbox support 'value'?
-			// iconShape, // TODO: should v2 Checkbox support 'iconShape'?
+			name,
+			value = '',
 			...other
 		} = this.props;
 
 		const elId = id || `${name}-${value}`;
 		const stateChecked = this.getChecked();
 
-		return children ? (
+		return (
 			<SwarmCheckbox
 				checked={stateChecked}
 				label={label}
 				id={elId}
 				disabled={disabled}
 				onChange={this.onChange}
-				{...other}
-			>
-				{children}
-			</SwarmCheckbox>
-		) : (
-			<SwarmCheckbox
-				checked={stateChecked}
-				label={label}
-				id={elId}
-				disabled={disabled}
-				onChange={this.onChange}
+				name={name}
+				value={value}
 				{...other}
 			/>
 		);
@@ -98,13 +90,10 @@ Checkbox.propTypes = {
 	name: PropTypes.string.isRequired,
 
 	/** The `value` attribute for the input */
-	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]), // checkboxes don't need values
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 
 	/** Callback that happens when the input changes */
 	onChange: PropTypes.func,
-
-	/** Optional icon for checked state, defaults to 'check'  */
-	iconShape: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
