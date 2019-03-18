@@ -4619,9 +4619,9 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-flow-bin@0.74.0:
-  version "0.74.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.74.0.tgz#8017bb00efb37cbe8d81fbb7f464038bde06adc9"
+flow-bin@0.76.0:
+  version "0.76.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.76.0.tgz#eb00036991c3abc106743fcbc7ee321f02aa4faa"
 
 flush-write-stream@^1.0.0:
   version "1.0.3"
@@ -6281,6 +6281,10 @@ js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
 
+"js-tokens@^3.0.0 || ^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
+
 js-yaml@3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.6.1.tgz#6e5fe67d8b205ce4d22fad05b7781e8dadcc4b30"
@@ -6796,6 +6800,12 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3
   dependencies:
     js-tokens "^3.0.0"
 
+loose-envify@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
+  dependencies:
+    js-tokens "^3.0.0 || ^4.0.0"
+
 loud-rejection@^1.0.0, loud-rejection@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/loud-rejection/-/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
@@ -7182,7 +7192,6 @@ mute-stream@0.0.7:
 mwp-app-render@18.0.2805:
   version "18.0.2805"
   resolved "https://registry.yarnpkg.com/mwp-app-render/-/mwp-app-render-18.0.2805.tgz#12d4e3110b79fa65bb63cd1ab9238939648ff8ff"
-  integrity sha512-rqxivGPuDIfCGbuAeqi4mcH+hfqpqP+iSxvukDTycK1egwmYswJyVVPlKCbnCs8jpjlOSRFaCKcJYF0AtV4oZA==
   dependencies:
     browser-detect "0.2.22"
     escape-html "1.0.3"
@@ -7191,14 +7200,12 @@ mwp-app-render@18.0.2805:
 mwp-auth-plugin@^18.0.2805:
   version "18.0.2805"
   resolved "https://registry.yarnpkg.com/mwp-auth-plugin/-/mwp-auth-plugin-18.0.2805.tgz#0574aaf99d715324d3d68085ac18b2674c33cdb6"
-  integrity sha512-/UfMDnAJ+6ThF+TC6qTsCAZbEeTII6/99AjrrfjBfB0ZxQTSC6kTD3wuiuzNfIhYGlewKBOxEZnDrdDU568MdQ==
   dependencies:
     uuid "3.1.0"
 
 mwp-config@18.0.2805:
   version "18.0.2805"
   resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-18.0.2805.tgz#5c12dd6c07f5267e2525ab0c09f950f6e3978b55"
-  integrity sha512-OUAfS4ty3yDvgtk9dwRxdKVGFIj+A7y6D8/IXefRe2dCVDR5az1oXpN4D/QeFDxGRnvm+P1qzPlMwK4Pj+tkvA==
   dependencies:
     babel-core "6.25.0"
     babel-plugin-react-intl "2.3.1"
@@ -7217,12 +7224,10 @@ mwp-config@18.0.2805:
 mwp-i18n@18.0.2805:
   version "18.0.2805"
   resolved "https://registry.yarnpkg.com/mwp-i18n/-/mwp-i18n-18.0.2805.tgz#6488e512f6bf30b9facb7969dfd2fc5198e76c24"
-  integrity sha512-hg9UW8AH6K8fiAzLS64G3eFKHYW9VGj7DSBXicfE5EbbDovfY9UfcxXtaremn4RmZCIZP9pTFVq2l4ZPhGUAmQ==
 
 mwp-router@18.0.2805:
   version "18.0.2805"
   resolved "https://registry.yarnpkg.com/mwp-router/-/mwp-router-18.0.2805.tgz#d2d01c1c34346033e0aad026417a68394e9e0b33"
-  integrity sha512-BEAB36zEBoGCYnuA0oSn3xjTbuTbkhbpenY4CIMHlLhV5SOAjCmyWrYg++DMGg1KDpqDgN1a+6owj6UQljuH1w==
   dependencies:
     mwp-auth-plugin "^18.0.2805"
     react-side-effect "1.1.3"
@@ -8516,6 +8521,14 @@ prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8,
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.6.2:
+  version "15.7.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.8.1"
+
 proxy-addr@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-2.0.3.tgz#355f262505a621646b3130a728eb647e22055341"
@@ -8728,14 +8741,14 @@ react-docgen@^3.0.0-beta12:
     node-dir "^0.1.10"
     recast "^0.12.6"
 
-react-dom@16.3.1:
-  version "16.3.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.1.tgz#6a3c90a4fb62f915bdbcf6204422d93a7d4ca573"
+react-dom@16.7.0:
+  version "16.7.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.7.0.tgz#a17b2a7ca89ee7390bc1ed5eb81783c7461748b8"
   dependencies:
-    fbjs "^0.8.16"
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.0"
+    prop-types "^15.6.2"
+    scheduler "^0.12.0"
 
 react-emotion@^9.1.3:
   version "9.2.5"
@@ -8802,6 +8815,10 @@ react-intl@2.4.0:
 react-is@^16.4.1:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.1.tgz#d624c4650d2c65dbd52c72622bbf389435d9776e"
+
+react-is@^16.8.1:
+  version "16.8.4"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
 
 react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
@@ -8937,14 +8954,14 @@ react-transition-group@^2.0.0:
     loose-envify "^1.3.1"
     prop-types "^15.6.1"
 
-react@16.3.1:
-  version "16.3.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.3.1.tgz#4a2da433d471251c69b6033ada30e2ed1202cfd8"
+react@16.7.0:
+  version "16.7.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.7.0.tgz#b674ec396b0a5715873b350446f7ea0802ab6381"
   dependencies:
-    fbjs "^0.8.16"
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.0"
+    prop-types "^15.6.2"
+    scheduler "^0.12.0"
 
 reactcss@^1.2.0:
   version "1.2.3"
@@ -9597,6 +9614,13 @@ sass-rem@^1.2.4:
 sax@^1.2.4, sax@~1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+
+scheduler@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.12.0.tgz#8ab17699939c0aedc5a196a657743c496538647b"
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
 
 schema-utils@^0.3.0:
   version "0.3.0"
@@ -10894,7 +10918,6 @@ uuid@^3.3.2:
 ux-capture@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/ux-capture/-/ux-capture-3.0.0.tgz#e0ef5c923877f1177bac71f4fb351807b9dc586c"
-  integrity sha512-+fvogSTre8yM2UGf2VCNMJ3ri9mPSP6AhjFyOmth6NWRHLs4nyn1+fyunnFIZPrJS5972SxCCWeT44pvj+Zd3A==
 
 v8flags@^2.0.10:
   version "2.1.1"
