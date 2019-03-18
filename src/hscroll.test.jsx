@@ -48,9 +48,10 @@ describe('Gradient Hscroll', () => {
 		expect(gradientEls.length).toBe(1);
 	});
 
-	it(`adds a the className ${HIDE_GRADIENT_CLASSNAME} when the hscroll has been scrolled`, () => {
+	it(`removes the className ${HIDE_GRADIENT_CLASSNAME} when the hscroll has been scrolled`, () => {
 		component.instance().onScroll(MOCK_EVENT);
-		expect(component.hasClass(HIDE_GRADIENT_CLASSNAME)).toBe(true);
+		component.update();
+		expect(component.hasClass(HIDE_GRADIENT_CLASSNAME)).toBe(false);
 	});
 });
 

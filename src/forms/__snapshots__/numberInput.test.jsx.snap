@@ -21,7 +21,7 @@ Object {
 `;
 
 exports[`NumberInput basic exists 1`] = `
-<React.Fragment>
+<Fragment>
   <label
     className="label--field label--required"
     data-requiredtext="*"
@@ -93,7 +93,7 @@ exports[`NumberInput basic exists 1`] = `
       </FlexItem>
     </Flex>
   </div>
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`NumberInput basic input should have expected props 1`] = `
