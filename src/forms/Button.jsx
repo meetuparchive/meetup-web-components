@@ -6,35 +6,30 @@ import { Button as SwarmButton } from '@meetup/swarm-components';
 /**
  * @module Button
  */
-class Button extends React.PureComponent {
-	render() {
-		const {
-			// removing reset & fullWidth props from other to prevent an invalid boolean being passed to <button>
-			reset, // eslint-disable-line no-unused-vars
-			fullWidth, // eslint-disable-line no-unused-vars
-			icon,
-			hasHoverShadow, // eslint-disable-line no-unused-vars
-			component,
-			...other
-		} = this.props;
+const Button = props => {
+	const {
+		// removing reset & fullWidth props from other to prevent an invalid boolean being passed to <button>
+		reset, // eslint-disable-line no-unused-vars
+		fullWidth, // eslint-disable-line no-unused-vars
+		icon,
+		hasHoverShadow, // eslint-disable-line no-unused-vars
+		component,
+		...other
+	} = props;
 
-		// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
-		// since this functionality is built into button in order to enforce strict sizes on button icons
-		const props = { icon: icon && icon.props && icon.props.shape };
+	// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
+	// since this functionality is built into button in order to enforce strict sizes on button icons
+	const iconShape = ((icon || {}).props || {}).shape;
 
-		if (component !== 'button') {
-			console.warn(
-				'All Swarm UI v2 Button components are button elements. Future iterations will support links as independent components and the logic will be handled here'
-			);
-		}
-
-		return (
-			<SwarmButton {...props} {...other}>
-				Test
-			</SwarmButton>
+	if (component !== 'button') {
+		console.warn(
+			'All Swarm UI v2 Button components are button elements. Future iterations',
+			'will support links as independent components and the logic will be handled here'
 		);
 	}
-}
+
+	return <SwarmButton icon={iconShape} {...other} />;
+};
 
 Button.propTypes = {
 	/** Used to highlight the most important action on a screen. Not intended to be used more than once on a screen/modal/section. */

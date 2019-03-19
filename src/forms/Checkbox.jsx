@@ -6,15 +6,15 @@ import { Checkbox as SwarmCheckbox } from '@meetup/swarm-components';
  * @module Checkbox
  */
 class Checkbox extends React.PureComponent {
-	constructor(props) {
-		super(props);
+	state = { checked: Boolean(this.props.checked) };
 
-		this.state = {
-			checked: props.checked || false,
-		};
+	onChange = e => {
+		this.props.onChange && this.props.onChange(e);
 
-		this.onChange = this.onChange.bind(this);
-	}
+		if (this.props.controlled) {
+			this.setState({ checked: e.target.checked });
+		}
+	};
 
 	componentWillReceiveProps(nextProps) {
 		const { checked, controlled } = nextProps;
@@ -24,20 +24,8 @@ class Checkbox extends React.PureComponent {
 		}
 	}
 
-	onChange(e) {
-		this.props.onChange && this.props.onChange(e);
-
-		if (this.props.controlled) {
-			this.setState({ checked: e.target.checked });
-		}
-	}
-
 	getChecked() {
-		if (this.props.controlled) {
-			return this.state.checked;
-		}
-
-		return this.props.checked;
+		return this.props.controlled ? this.state.checked : this.props.checked;
 	}
 
 	render() {
