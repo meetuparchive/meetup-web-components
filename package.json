@@ -67,7 +67,7 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
-    "@meetup/swarm-styles": "0.1.6",
+    "@meetup/swarm-styles": "0.1.7",
     "@storybook/addon-actions": "4.0.0-alpha.14",
     "@storybook/addon-info": "4.0.0-alpha.14",
     "@storybook/addon-knobs": "4.0.0-alpha.14",
