@@ -191,9 +191,9 @@
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.2.3.tgz#f7bdd2a6fc3f95963d8b11b32480a0a56150d011"
 
-"@meetup/swarm-styles@0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.1.6.tgz#b5f0bcaf674b1f76344be10c935bcdb60fb5b4a9"
+"@meetup/swarm-styles@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.1.7.tgz#deb89c3a2f7b458408323fd535897f0dbb8744f5"
   dependencies:
     "@meetup/swarm-constants" "^0.2.3"
 
