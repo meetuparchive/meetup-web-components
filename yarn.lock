@@ -194,6 +194,7 @@
 "@meetup/swarm-styles@0.1.7":
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.1.7.tgz#deb89c3a2f7b458408323fd535897f0dbb8744f5"
+  integrity sha512-ZAK/KDDc+CE/qFIcPjFXGwup8UkDFVJijKEvTNt57kEMYKGMTkryIvcoj/eqpe635PqXZUlfZrJ4QNao/0BJsg==
   dependencies:
     "@meetup/swarm-constants" "^0.2.3"
 
