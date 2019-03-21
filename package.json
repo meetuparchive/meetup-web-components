@@ -1,6 +1,6 @@
 {
   "name": "meetup-web-components",
-  "version": "6.1.2702",
+  "version": "6.1.2704",
   "license": "UNLICENSED",
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
@@ -21,7 +21,7 @@
     "postcheckout": "yarn install",
     "postmerge": "yarn install",
     "precommit": "lint-staged && yarn flow",
-    "prepush": "yarn build",
+    "prepush": "yarn build:css",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook-static": "build-storybook -c .storybook -o .storybook-out",
     "gh-pages": "gh-pages -d .storybook-out -b gh-pages",
