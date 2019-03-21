@@ -5,9 +5,7 @@ node_js:
 cache:
   yarn: true
 
-branches:
-  only:
-    - master
+if: branch = master OR type = pull_request
 
 env:
   global:
