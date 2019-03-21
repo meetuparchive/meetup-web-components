@@ -130,6 +130,7 @@ export class ModalComponent extends React.Component {
 	render() {
 		const {
 			className,
+			modalClassName,
 			children,
 			fullscreen,
 			fixed,
@@ -151,7 +152,7 @@ export class ModalComponent extends React.Component {
 
 		const classNames = cx(className, 'modal');
 
-		const modalClasses = cx('view view--modal', {
+		const modalClasses = cx('view view--modal', modalClassName, {
 			'view--modalFull': fullscreen,
 			'view--modalFixed': fixed && !this.state.isMobileSize,
 			'view--modalSnap': !fullscreen,
@@ -263,6 +264,9 @@ ModalComponent.propTypes = {
 
 	/** Whether the modal's hero area is dark instead of light */
 	inverted: PropTypes.bool,
+
+	/** Used to add a class to the inner `view--modal` div if a styling override is needed */
+	modalClassName: PropTypes.string,
 
 	/** Callback that happens when a user dismisses the modal */
 	onDismiss: PropTypes.func.isRequired,

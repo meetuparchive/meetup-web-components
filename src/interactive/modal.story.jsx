@@ -109,6 +109,7 @@ storiesOf('Interactive/Modal', module)
 					onDismiss={onDismiss}
 					initialFocus="#firstFocus"
 					focusTrapActive={false}
+					modalClassName="custom-class"
 				>
 					{content}
 				</ModalComponent>
