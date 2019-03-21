@@ -387,57 +387,36 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                               aria-checked={false}
                               aria-labelledby="label-firstsection"
                               className="toggleSwitch"
-                              component="button"
                               disabled={false}
                               onClick={[Function]}
                               reset={true}
                               role="switch"
                               tabIndex={-1}
-                              type="button"
                             >
-                              <button
+                              <Button
                                 aria-checked={false}
                                 aria-labelledby="label-firstsection"
-                                className="button button--reset toggleSwitch"
+                                className="toggleSwitch"
+                                disabled={false}
                                 onClick={[Function]}
                                 role="switch"
                                 tabIndex={-1}
-                                type="button"
                               >
-                                <span
-                                  className="toggleSwitch-knob flex flex--center flex--alignCenter"
+                                <button
+                                  aria-checked={false}
+                                  aria-labelledby="label-firstsection"
+                                  className="toggleSwitch"
+                                  data-icon="left"
+                                  data-swarm-button="default"
+                                  data-swarm-size="default"
+                                  disabled={false}
+                                  onClick={[Function]}
+                                  role="switch"
+                                  tabIndex={-1}
                                 >
-                                  <Icon
-                                    color="rgba(46, 62, 72, 0.6)"
-                                    label="Toggle switch label"
-                                    shape="cross"
-                                    size="xxs"
-                                  >
-                                    <span
-                                      className="svg svg--cross"
-                                    >
-                                      <svg
-                                        className="svg-icon valign--middle"
-                                        height="12"
-                                        label="Toggle switch label"
-                                        preserveAspectRatio="xMinYMin meet"
-                                        role="img"
-                                        style={
-                                          Object {
-                                            "fill": "rgba(46, 62, 72, 0.6)",
-                                          }
-                                        }
-                                        viewBox="0 0 12 12"
-                                        width="12"
-                                      >
-                                        <use
-                                          xlinkHref="#icon-cross--small"
-                                        />
-                                      </svg>
-                                    </span>
-                                  </Icon>
-                                </span>
-                              </button>
+                                  Test
+                                </button>
+                              </Button>
                             </Button>
                           </div>
                         </div>
