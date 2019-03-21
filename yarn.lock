@@ -178,9 +178,10 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.7.1.tgz#e44e596d03c9f16ba3b127ad333a8a072bcb5a0a"
 
-"@meetup/swarm-components@0.4.7":
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.4.7.tgz#781e6e0a10cc79efc1d92924754b86a4597f3aee"
+"@meetup/swarm-components@0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.4.8.tgz#e81ea754df929a9b61195dc040d5b1d7f167afc0"
+  integrity sha512-xGmg/UiXNKlehW8rPOFqtgnRnB6SYeCtV3khxCzMI0rzhIRrUkiBodrmh7QY2GTA95t/n6+Z3TeAmdZihUkgXw==
   dependencies:
     "@meetup/swarm-constants" "^0.2.3"
     classnames "^2.2.6"
