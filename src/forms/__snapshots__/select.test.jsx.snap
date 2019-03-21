@@ -1,56 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SelectInput basic renders into the DOM 1`] = `
-<div
-  className="inputContainer"
+<Select
+  id="testSelect"
+  label="Test select"
+  name="testSelect"
+  requiredText="yo check it"
 >
-  <label
-    className="label--field label--required"
-    data-requiredtext="yo check it"
-    htmlFor="testSelect"
+  <option
+    value="1"
   >
-    Test select
-  </label>
-  <div
-    className="selectWrapper "
+    One
+  </option>
+  ,
+  <option
+    value="2"
   >
-    <select
-      className="select--reset span--100 padding--selectArrow"
-      id="testSelect"
-      name="testSelect"
-      required={true}
-    >
-      <option
-        value="1"
-      >
-        One
-      </option>
-      ,
-      <option
-        value="2"
-      >
-        Two
-      </option>
-      ,
-      <option
-        value="3"
-      >
-        Three
-      </option>
-      ,
-      <option
-        disabled={true}
-        value="4"
-      >
-        Four
-      </option>
-      ,
-    </select>
-    <Icon
-      className="select-customArrow"
-      shape="chevron-down"
-      size="xs"
-    />
-  </div>
-</div>
+    Two
+  </option>
+  ,
+  <option
+    value="3"
+  >
+    Three
+  </option>
+  ,
+  <option
+    disabled={true}
+    value="4"
+  >
+    Four
+  </option>
+  ,
+</Select>
 `;

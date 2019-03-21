@@ -58,13 +58,11 @@ exports[`NumberInput basic exists 1`] = `
       >
         <Button
           className="button--reset decrementButton"
-          component="button"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           reset={true}
           tabIndex="-1"
-          type="button"
         >
           <Icon
             shape="minus"
@@ -77,13 +75,11 @@ exports[`NumberInput basic exists 1`] = `
       >
         <Button
           className="button--reset incrementButton"
-          component="button"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           reset={true}
           tabIndex="-1"
-          type="button"
         >
           <Icon
             shape="plus"
