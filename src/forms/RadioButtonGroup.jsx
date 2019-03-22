@@ -1,73 +1,68 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import Flex from '../layout/Flex';
-import FlexItem from '../layout/FlexItem';
-
 /**
  * @class RadioButtonGroup
  */
 export default class RadioButtonGroup extends PureComponent {
 	constructor(props) {
 		super(props);
-		this.state = {
-			selectedValue: props.selectedValue,
+
+		const initialState = {
+			value: props.selectedValue,
 		};
-		this.handleChange = this.handleChange.bind(this);
+
+		React.Children.forEach(props.children, radio => {
+			initialState[radio.props.value] = radio.props.value === props.selectedValue;
+		});
+
+		this.state = initialState;
+		this.onChange = this.onChange.bind(this);
+		this.isSelected = this.isSelected.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if ('selectedValue' in nextProps) {
-			this.setState({
-				selectedValue: nextProps.selectedValue,
+			const newState = {};
+
+			Object.keys(this.state).forEach(stateKey => {
+				if (stateKey === 'value') {
+					newState.value = nextProps.selectedValue;
+				} else {
+					newState[stateKey] = stateKey === nextProps.selectedValue;
+				}
 			});
+
+			this.setState(newState);
 		}
 	}
 
-	handleChange(event) {
-		const { onChange } = this.props;
+	onChange(e) {
+		this.props.onChange && this.props.onChange(e);
 
+		// TODO: also update state of individual buttons
 		this.setState({
-			selectedValue: event.target.value,
+			value: e.target.value,
 		});
+	}
 
-		if (onChange) {
-			onChange(event);
-		}
+	isSelected(radio) {
+		return radio.props.value === this.state.value;
 	}
 
 	render() {
-		const {
-			direction,
-			switchDirection,
-			children,
-			name,
-			className,
-			wrap,
-			justifyItems,
-		} = this.props;
-
-		const switchDirectionAttr = switchDirection ? { switchDirection } : '';
+		const { children, className } = this.props;
 
 		return (
-			<Flex
-				direction={direction}
-				{...switchDirectionAttr}
-				className={className}
-				wrap={wrap}
-				justifyItems={justifyItems}
-			>
-				{React.Children.map(children, option => (
-					<FlexItem shrink>
-						{React.cloneElement(option, {
-							onChange: this.handleChange,
-							...option.props,
-							name,
-							checked: option.props.value === this.state.selectedValue,
-						})}
-					</FlexItem>
-				))}
-			</Flex>
+			<div className={className}>
+				{React.Children.map(children, radio =>
+					React.cloneElement(radio, {
+						onChange: this.onChange,
+						checked: this.isSelected(radio),
+						...radio.props,
+					})
+				)}
+			</div>
 		);
 	}
 }
@@ -84,13 +79,6 @@ RadioButtonGroup.propTypes = {
 	/** Additional class name/s to add to the wrapper element */
 	className: PropTypes.string,
 
-	/** The axis the radio buttons will be layed out on */
-	direction: PropTypes.oneOf(['row', 'column']),
-
 	/** Callback that happens when the input changes */
 	onChange: PropTypes.func,
-};
-
-RadioButtonGroup.defaultProps = {
-	direction: 'row',
 };

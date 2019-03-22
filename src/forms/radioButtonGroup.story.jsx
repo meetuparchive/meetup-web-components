@@ -16,11 +16,6 @@ storiesOf('Forms/RadioButtonGroup', module)
 		'Basic usage',
 		() => {
 			const classNameKnob = text('className', '');
-			const directionKnob = select(
-				'Direction',
-				{ row: 'row', column: 'column' },
-				'row'
-			);
 			const selectedValueKnob = select(
 				'Selected',
 				{ one: 'Option 1', two: 'Option 2', three: 'Option 3' },
@@ -28,17 +23,14 @@ storiesOf('Forms/RadioButtonGroup', module)
 			);
 			return (
 				<RadioButtonGroup
-					name="option"
+					name="optionGroup"
 					onChange={action('radio button change')}
-					onBlur={action('radio button blur')}
-					onFocus={action('radio button focus')}
 					className={classNameKnob}
-					direction={directionKnob}
 					selectedValue={selectedValueKnob}
 				>
-					<RadioButton value="one" label="Option 1" />
-					<RadioButton value="two" label="Option 2" />
-					<RadioButton value="three" label="Option 3" />
+					<RadioButton value="one" label="Option 1" name="option" />
+					<RadioButton value="two" label="Option 2" name="option" />
+					<RadioButton value="three" label="Option 3" name="option" />
 				</RadioButtonGroup>
 			);
 		},
@@ -52,8 +44,6 @@ storiesOf('Forms/RadioButtonGroup', module)
 		<RadioButtonGroup
 			name="option"
 			onChange={action('radio button change')}
-			onBlur={action('radio button blur')}
-			onFocus={action('radio button focus')}
 			selectedValue="first"
 		>
 			<TogglePill id="toggle1" name="ranking" value="first" useRadio>
@@ -70,11 +60,7 @@ storiesOf('Forms/RadioButtonGroup', module)
 	.add('with column at breakpoint', () => (
 		<RadioButtonGroup
 			name="option"
-			direction="column"
-			switchDirection="medium"
 			onChange={action('radio button change')}
-			onBlur={action('radio button blur')}
-			onFocus={action('radio button focus')}
 			selectedValue="third"
 		>
 			<TogglePill
