@@ -81,8 +81,9 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
             data-icon="left"
             data-swarm-button="default"
             data-swarm-size="small"
+            small={true}
           >
-            Test
+            Open
           </button>
         </Button>
       </Button>
@@ -122,7 +123,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                     >
                       <button
                         class="tooltip-closeBtn"
-                        data-icon="left"
+                        data-icon="only"
                         data-swarm-button="default"
                         data-swarm-size="default"
                       >
@@ -140,7 +141,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                               xlink:href="#icon-cross--small"
                             />
                           </svg>
-                          Test
                         </span>
                       </button>
                       <section
@@ -197,7 +197,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                     >
                       <button
                         className="tooltip-closeBtn"
-                        data-icon="left"
+                        data-icon="only"
                         data-swarm-button="default"
                         data-swarm-size="default"
                         onClick={[Function]}
@@ -226,7 +226,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                               />
                             </svg>
                           </Icon>
-                          Test
                         </span>
                       </button>
                     </Button>
