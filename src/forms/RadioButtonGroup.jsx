@@ -13,7 +13,6 @@ export default class RadioButtonGroup extends PureComponent {
 		};
 
 		this.handleChange = this.handleChange.bind(this);
-		this.isSelected = this.isSelected.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -32,10 +31,6 @@ export default class RadioButtonGroup extends PureComponent {
 		});
 	}
 
-	isSelected(radio) {
-		return radio.props.value === this.state.selectedValue;
-	}
-
 	render() {
 		const { children, className } = this.props;
 
@@ -45,7 +40,7 @@ export default class RadioButtonGroup extends PureComponent {
 					React.cloneElement(radio, {
 						onChange: this.handleChange,
 						...radio.props,
-						checked: this.isSelected(radio),
+						checked: radio.props.value === this.state.selectedValue,
 					})
 				)}
 			</div>
