@@ -8,46 +8,32 @@ export default class RadioButtonGroup extends PureComponent {
 	constructor(props) {
 		super(props);
 
-		const initialState = {
-			value: props.selectedValue,
+		this.state = {
+			selectedValue: props.selectedValue,
 		};
 
-		React.Children.forEach(props.children, radio => {
-			initialState[radio.props.value] = radio.props.value === props.selectedValue;
-		});
-
-		this.state = initialState;
-		this.onChange = this.onChange.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 		this.isSelected = this.isSelected.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if ('selectedValue' in nextProps) {
-			const newState = {};
-
-			Object.keys(this.state).forEach(stateKey => {
-				if (stateKey === 'value') {
-					newState.value = nextProps.selectedValue;
-				} else {
-					newState[stateKey] = stateKey === nextProps.selectedValue;
-				}
+			this.setState({
+				selectedValue: nextProps.selectedValue,
 			});
-
-			this.setState(newState);
 		}
 	}
 
-	onChange(e) {
+	handleChange(e) {
 		this.props.onChange && this.props.onChange(e);
 
-		// TODO: also update state of individual buttons
 		this.setState({
-			value: e.target.value,
+			selectedValue: e.target.value,
 		});
 	}
 
 	isSelected(radio) {
-		return radio.props.value === this.state.value;
+		return radio.props.value === this.state.selectedValue;
 	}
 
 	render() {
@@ -57,9 +43,9 @@ export default class RadioButtonGroup extends PureComponent {
 			<div className={className}>
 				{React.Children.map(children, radio =>
 					React.cloneElement(radio, {
-						onChange: this.onChange,
-						checked: this.isSelected(radio),
+						onChange: this.handleChange,
 						...radio.props,
+						checked: this.isSelected(radio),
 					})
 				)}
 			</div>

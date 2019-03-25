@@ -31,7 +31,7 @@ describe('RadioButtonGroup', () => {
 			const instance = wrapper.instance();
 
 			instance.componentWillReceiveProps({ selectedValue: 'two' });
-			expect(wrapper.state('value')).toBe('two');
+			expect(wrapper.state('selectedValue')).toBe('two');
 		});
 
 		it('should not update state for nextProps other than selectedValue', () => {
@@ -44,7 +44,7 @@ describe('RadioButtonGroup', () => {
 		});
 	});
 
-	describe('onChange', () => {
+	describe('handleChange', () => {
 		const MOCK_EVENT = {
 			target: {
 				value: 'two',
@@ -52,18 +52,19 @@ describe('RadioButtonGroup', () => {
 		};
 
 		it('should update the state for selectedValue', () => {
-			const wrapper = getWrapper();
+			const wrapper = getWrapper({
+				selectedValue: 'one',
+			});
 			const instance = wrapper.instance();
-			instance.setState({ value: 'one' });
-			instance.onChange(MOCK_EVENT);
-			expect(wrapper.state('value')).toBe('two');
+			instance.handleChange(MOCK_EVENT);
+			expect(wrapper.state('selectedValue')).toBe('two');
 		});
 
 		it('should call the onChange prop', () => {
 			const onChange = jest.fn();
 			const wrapper = getWrapper({ onChange });
 			const instance = wrapper.instance();
-			instance.onChange(MOCK_EVENT);
+			instance.handleChange(MOCK_EVENT);
 			expect(onChange).toHaveBeenCalledWith(MOCK_EVENT);
 		});
 	});
