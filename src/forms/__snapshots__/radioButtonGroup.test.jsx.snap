@@ -1,24 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RadioButtonGroup should match the snapshot 1`] = `
-<div
+<Flex
   className="some-class"
+  direction="row"
 >
-  <RadioButton
-    checked={true}
+  <FlexItem
     key=".0"
-    label="label 1"
-    name="button1"
-    onChange={[Function]}
-    value="one"
-  />
-  <RadioButton
-    checked={false}
+    shrink={true}
+  >
+    <RadioButton
+      checked={true}
+      label="label 1"
+      name="nodejs"
+      onChange={[Function]}
+      value="one"
+    />
+  </FlexItem>
+  <FlexItem
     key=".1"
-    label="label 2"
-    name="button2"
-    onChange={[Function]}
-    value="two"
-  />
-</div>
+    shrink={true}
+  >
+    <RadioButton
+      checked={false}
+      label="label 2"
+      name="nodejs"
+      onChange={[Function]}
+      value="two"
+    />
+  </FlexItem>
+</Flex>
 `;

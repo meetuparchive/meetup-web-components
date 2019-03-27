@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Flex from '../layout/Flex';
+import FlexItem from '../layout/FlexItem';
 
 /**
  * @class RadioButtonGroup
@@ -32,18 +34,21 @@ export default class RadioButtonGroup extends PureComponent {
 	}
 
 	render() {
-		const { children, className } = this.props;
+		const { children, className, direction } = this.props;
 
 		return (
-			<div className={className}>
-				{React.Children.map(children, radio =>
-					React.cloneElement(radio, {
-						onChange: this.handleChange,
-						...radio.props,
-						checked: radio.props.value === this.state.selectedValue,
-					})
-				)}
-			</div>
+			<Flex direction={direction} className={className}>
+				{React.Children.map(children, radio => (
+					<FlexItem shrink>
+						{React.cloneElement(radio, {
+							onChange: this.handleChange,
+							...radio.props,
+							name,
+							checked: radio.props.value === this.state.selectedValue,
+						})}
+					</FlexItem>
+				))}
+			</Flex>
 		);
 	}
 }
@@ -60,6 +65,13 @@ RadioButtonGroup.propTypes = {
 	/** Additional class name/s to add to the wrapper element */
 	className: PropTypes.string,
 
+	/** The axis the radio buttons will be layed out on */
+	direction: PropTypes.oneOf(['row', 'column']),
+
 	/** Callback that happens when the input changes */
 	onChange: PropTypes.func,
+};
+
+RadioButtonGroup.defaultProps = {
+	direction: 'row',
 };
