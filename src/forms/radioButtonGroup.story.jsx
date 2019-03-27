@@ -23,7 +23,7 @@ storiesOf('Forms/RadioButtonGroup', module)
 			);
 			const selectedValueKnob = select(
 				'Selected',
-				{ one: 'Option 1', two: 'Option 2', three: 'Option 3' },
+				{ one: 'one', two: 'two', three: 'three' },
 				'one'
 			);
 			return (
