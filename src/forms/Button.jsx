@@ -23,7 +23,6 @@ class Button extends React.PureComponent {
 		const props = { icon: icon && icon.props && icon.props.shape };
 
 		if (component !== undefined && component !== 'button' && component !== 'a') {
-			console.log('****', component);
 			console.warn(
 				'All Swarm UI v2 Button components are button elements. Future iterations will support links as independent components and the logic will be handled here'
 			);

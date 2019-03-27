@@ -83,4 +83,19 @@ describe('Button', () => {
 			expect(buttonTagComponent.prop('to')).toBe(link);
 		});
 	});
+
+	describe('deprecation warning', () => {
+		it('should warn when a Link is passed as a component', () => {
+			global.console = { warn: jest.fn() };
+			const Link = () => null;
+			shallow(<Button component={Link}>Click</Button>);
+			expect(console.warn).toBeCalled();
+		});
+
+		it('should not warn when no component prop is specified', () => {
+			global.console = { warn: jest.fn() };
+			shallow(<Button>Click</Button>);
+			expect(console.warn).not.toBeCalled();
+		});
+	});
 });
