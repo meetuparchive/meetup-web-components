@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Button as SwarmButton } from '@meetup/swarm-components';
+import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-components';
 
 /**
  * @module Button
@@ -22,17 +22,17 @@ class Button extends React.PureComponent {
 		// since this functionality is built into button in order to enforce strict sizes on button icons
 		const props = { icon: icon && icon.props && icon.props.shape };
 
-		if (component !== 'button') {
+		if (component !== undefined && component !== 'button' && component !== 'a') {
 			console.warn(
 				'All Swarm UI v2 Button components are button elements. Future iterations will support links as independent components and the logic will be handled here'
 			);
 		}
 
-		return (
-			<SwarmButton {...props} {...other}>
-				Test
-			</SwarmButton>
-		);
+		if (component === 'a') {
+			return <SwarmLink {...props} {...other} />;
+		}
+
+		return <SwarmButton {...props} {...other} />;
 	}
 }
 
