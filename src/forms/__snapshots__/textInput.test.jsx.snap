@@ -1,27 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextInput renders a required HTML <input> with expected attributes for mock data 1`] = `
-<div>
-  <label
-    htmlFor="superhero"
-  >
-    Super Hero
-    <span>
-       
-      *
-    </span>
-  </label>
-  <div
-    data-swarm-select-wrapper="1"
-  >
-    <TextInput
-      id="superhero"
-      name="superhero"
-      onChange={[Function]}
-      onInvalid={[Function]}
-      required={true}
-      value="Batman"
-    />
+<TextInput
+  id="superhero"
+  label="Super Hero"
+  maxLength={20}
+  name="superhero"
+  onChange={[MockFunction]}
+  requiredText="*"
+  value="Batman"
+>
+  <div>
+    <label
+      htmlFor="superhero"
+    >
+      Super Hero
+    </label>
+    <div
+      data-swarm-select-wrapper="1"
+    >
+      <TextInput
+        id="superhero"
+        maxLength={20}
+        name="superhero"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        value="Batman"
+      >
+        <div
+          data-swarm-text-input-wrapper="default"
+        >
+          <input
+            data-swarm-text-input="default"
+            id="superhero"
+            maxLength={20}
+            name="superhero"
+            onChange={[Function]}
+            onInvalid={[Function]}
+            type="text"
+            value="Batman"
+          />
+        </div>
+      </TextInput>
+    </div>
   </div>
-</div>
+</TextInput>
 `;
