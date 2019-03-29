@@ -365,95 +365,60 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                     onClick={[Function]}
                     tabIndex="-1"
                   >
-                    <ToggleWrapper
-                      isActive={false}
-                    >
-                      <ConditionalWrap
-                        condition={true}
-                        wrap={[Function]}
+                    <div>
+                      <Toggle
+                        aria-labelledby="label-firstsection"
+                        checked={false}
+                        disabled={false}
+                        id="switch-firstsection"
+                        name="firstsection"
+                        onClick={[Function]}
+                        tabIndex="-1"
                       >
-                        <div
-                          aria-pressed={false}
-                          onKeyUp={[Function]}
-                          role="button"
-                          tabIndex="0"
+                        <button
+                          aria-checked={false}
+                          aria-labelledby="label-firstsection"
+                          aria-readonly={false}
+                          checked={false}
+                          data-swarm-toggle="unchecked"
+                          disabled={false}
+                          id="switch-firstsection"
+                          name="firstsection"
+                          onClick={[Function]}
+                          role="checkbox"
+                          tabIndex="-1"
+                          type="button"
                         >
-                          <div
-                            id="switch-firstsection"
-                            onClick={[Function]}
-                            tabIndex="-1"
+                          <span
+                            data-swarm-toggle-switch-disc={true}
                           >
-                            <Button
-                              aria-checked={false}
-                              aria-labelledby="label-firstsection"
-                              className="toggleSwitch"
-                              disabled={false}
-                              onClick={[Function]}
-                              reset={true}
-                              role="switch"
-                              tabIndex={-1}
+                            <Icon
+                              color="var(--color-gray-4)"
+                              shape="cross"
+                              size="xs"
                             >
-                              <Button
-                                aria-checked={false}
-                                aria-labelledby="label-firstsection"
-                                className="toggleSwitch"
-                                disabled={false}
-                                onClick={[Function]}
-                                role="switch"
-                                tabIndex={-1}
+                              <svg
+                                className="svg-icon valign--middle"
+                                height="16"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="img"
+                                style={
+                                  Object {
+                                    "fill": "var(--color-gray-4)",
+                                  }
+                                }
+                                viewBox="0 0 16 16"
+                                width="16"
                               >
-                                <button
-                                  aria-checked={false}
-                                  aria-labelledby="label-firstsection"
-                                  className="toggleSwitch"
-                                  data-icon="left"
-                                  data-swarm-button="default"
-                                  data-swarm-size="default"
-                                  disabled={false}
-                                  onClick={[Function]}
-                                  role="switch"
-                                  tabIndex={-1}
-                                >
-                                  <span
-                                    className="toggleSwitch-knob flex flex--center flex--alignCenter"
-                                  >
-                                    <Icon
-                                      color="rgba(46, 62, 72, 0.6)"
-                                      label="Toggle switch label"
-                                      shape="cross"
-                                      size="xxs"
-                                    >
-                                      <span
-                                        className="svg svg--cross"
-                                      >
-                                        <svg
-                                          className="svg-icon valign--middle"
-                                          height="12"
-                                          label="Toggle switch label"
-                                          preserveAspectRatio="xMinYMin meet"
-                                          role="img"
-                                          style={
-                                            Object {
-                                              "fill": "rgba(46, 62, 72, 0.6)",
-                                            }
-                                          }
-                                          viewBox="0 0 12 12"
-                                          width="12"
-                                        >
-                                          <use
-                                            xlinkHref="#icon-cross--small"
-                                          />
-                                        </svg>
-                                      </span>
-                                    </Icon>
-                                  </span>
-                                </button>
-                              </Button>
-                            </Button>
-                          </div>
-                        </div>
-                      </ConditionalWrap>
-                    </ToggleWrapper>
+                                <use
+                                  xlinkHref="#icon-cross--small"
+                                />
+                              </svg>
+                            </Icon>
+                          </span>
+                        </button>
+                      </Toggle>
+                    </div>
                   </ToggleSwitch>
                 </div>
               </FlexItemComponent>
