@@ -414,7 +414,39 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                                   role="switch"
                                   tabIndex={-1}
                                 >
-                                  Test
+                                  <span
+                                    className="toggleSwitch-knob flex flex--center flex--alignCenter"
+                                  >
+                                    <Icon
+                                      color="rgba(46, 62, 72, 0.6)"
+                                      label="Toggle switch label"
+                                      shape="cross"
+                                      size="xxs"
+                                    >
+                                      <span
+                                        className="svg svg--cross"
+                                      >
+                                        <svg
+                                          className="svg-icon valign--middle"
+                                          height="12"
+                                          label="Toggle switch label"
+                                          preserveAspectRatio="xMinYMin meet"
+                                          role="img"
+                                          style={
+                                            Object {
+                                              "fill": "rgba(46, 62, 72, 0.6)",
+                                            }
+                                          }
+                                          viewBox="0 0 12 12"
+                                          width="12"
+                                        >
+                                          <use
+                                            xlinkHref="#icon-cross--small"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </Icon>
+                                  </span>
                                 </button>
                               </Button>
                             </Button>
