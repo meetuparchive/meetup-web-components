@@ -52,13 +52,13 @@ storiesOf('Forms/RadioButtonGroup', module)
 			onChange={action('radio button change')}
 			selectedValue="first"
 		>
-			<TogglePill id="toggle1" name="ranking" value="first" useRadio>
+			<TogglePill id="toggle1" name="ranking1" value="first" useRadio>
 				First
 			</TogglePill>
-			<TogglePill id="toggle2" name="ranking" value="second" useRadio>
+			<TogglePill id="toggle2" name="ranking2" value="second" useRadio>
 				I'm Second
 			</TogglePill>
-			<TogglePill id="toggle3" name="ranking" value="third" useRadio>
+			<TogglePill id="toggle3" name="ranking3" value="third" useRadio>
 				3rd.
 			</TogglePill>
 		</RadioButtonGroup>

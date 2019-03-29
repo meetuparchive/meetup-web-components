@@ -26,10 +26,18 @@ export default class RadioButtonGroup extends PureComponent {
 	}
 
 	handleChange(e) {
+		let value = e.target.value;
+
 		this.props.onChange && this.props.onChange(e);
 
+		// THIS IS AN INTENTIONAL TERRIBLE HACK
+		// WE WANT TO SUPPORT OLD BEHAVIOR FOR NOW
+		if (e.target.value === undefined) {
+			value = e.target.parentNode.value;
+		}
+
 		this.setState({
-			selectedValue: e.target.value,
+			selectedValue: value,
 		});
 	}
 
@@ -38,16 +46,29 @@ export default class RadioButtonGroup extends PureComponent {
 
 		return (
 			<Flex direction={direction} className={className}>
-				{React.Children.map(children, radio => (
-					<FlexItem shrink>
-						{React.cloneElement(radio, {
+				{React.Children.map(children, child => {
+					let childProps = {};
+					const isSelected = child.props.value === this.state.selectedValue;
+
+					if (child.type.name === 'TogglePill') {
+						childProps = {
+							onClick: this.handleChange,
+							...child.props,
+							isActive: isSelected,
+						};
+					} else {
+						childProps = {
 							onChange: this.handleChange,
-							...radio.props,
-							name,
-							checked: radio.props.value === this.state.selectedValue,
-						})}
-					</FlexItem>
-				))}
+							...child.props,
+							checked: isSelected,
+						};
+					}
+					return (
+						<FlexItem shrink>
+							{React.cloneElement(child, childProps)}
+						</FlexItem>
+					);
+				})}
 			</Flex>
 		);
 	}

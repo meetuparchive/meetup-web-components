@@ -9,13 +9,9 @@ import { TogglePill as SwarmUITogglePill } from '@meetup/swarm-components';
  */
 export class TogglePill extends React.PureComponent {
 	render() {
-		const { isActive, onChange, ...other } = this.props;
+		const { isActive, ...other } = this.props;
 
-		return (
-			<SwarmUITogglePill checked={isActive} onChange={onChange} {...other}>
-				{this.props.children}
-			</SwarmUITogglePill>
-		);
+		return <SwarmUITogglePill checked={isActive} {...other} />;
 	}
 }
 
