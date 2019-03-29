@@ -203,21 +203,26 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
                     size="xs"
                   >
                     <span
-                      className="svg svg--chevron-down indicator"
+                      className="indicator"
                     >
-                      <svg
-                        className="svg-icon valign--middle"
-                        height="16"
-                        preserveAspectRatio="xMinYMin meet"
-                        role="img"
-                        style={Object {}}
-                        viewBox="0 0 16 16"
-                        width="16"
+                      <Icon
+                        shape="chevron-down"
+                        size="xs"
                       >
-                        <use
-                          xlinkHref="#icon-chevron-down--small"
-                        />
-                      </svg>
+                        <svg
+                          className="svg-icon valign--middle"
+                          height="16"
+                          preserveAspectRatio="xMinYMin meet"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 16 16"
+                          width="16"
+                        >
+                          <use
+                            xlinkHref="#icon-chevron-down--small"
+                          />
+                        </svg>
+                      </Icon>
                     </span>
                   </Icon>
                 </div>
