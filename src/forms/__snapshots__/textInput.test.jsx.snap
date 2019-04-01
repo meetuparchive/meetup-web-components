@@ -7,7 +7,6 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
   maxLength={20}
   name="superhero"
   onChange={[MockFunction]}
-  requiredText="*"
   value="Batman"
 >
   <div>
