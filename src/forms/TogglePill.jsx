@@ -31,7 +31,7 @@ TogglePill.propTypes = {
 	name: PropTypes.string.isRequired,
 
 	/** The `value` attribute for the input */
-	value: PropTypes.string.isRequired,
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
 
 	children: PropTypes.node.isRequired,
 

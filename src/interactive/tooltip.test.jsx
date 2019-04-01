@@ -190,6 +190,7 @@ describe('Tooltip', () => {
 				id={dropdownId}
 				trigger={dropdownTrigger}
 				content={dropdownContent}
+				onClose={jest.fn()}
 			/>
 		);
 		const manualTooltipWrapper = mount(manualTooltip);
