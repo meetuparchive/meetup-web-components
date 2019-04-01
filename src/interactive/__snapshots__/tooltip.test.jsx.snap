@@ -81,7 +81,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
             data-icon="left"
             data-swarm-button="default"
             data-swarm-size="small"
-            small={true}
           >
             Open
           </button>
