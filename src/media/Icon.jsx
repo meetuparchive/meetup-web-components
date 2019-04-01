@@ -14,6 +14,10 @@ import { VALID_SHAPES } from 'swarm-icons/dist/js/shapeConstants';
  * @module Icon
  */
 class Icon extends React.PureComponent {
+	componentDidCatch(error, info) {
+		console.log(`${error}: \n ${info.componentStack}`);
+	}
+
 	render() {
 		const { className, circled, ...other } = this.props;
 

@@ -2,15 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Radio as SwarmRadio } from '@meetup/swarm-components';
 
-const RadioButton = ({ label, name, value, ...other }) => (
-	<SwarmRadio
-		name={name}
-		value={value}
-		label={label}
-		id={`RadioButton-${name}-${value}`}
-		{...other}
-	/>
-);
+class RadioButton extends React.PureComponent {
+	componentDidCatch(error, info) {
+		console.log(`${error}: \n ${info.componentStack}`);
+	}
+
+	render() {
+		const { label, name, value, ...other } = this.props;
+		return (
+			<SwarmRadio
+				name={name}
+				value={value}
+				label={label}
+				id={`RadioButton-${name}-${value}`}
+				{...other}
+			/>
+		);
+	}
+}
 
 RadioButton.displayName = 'RadioButton';
 

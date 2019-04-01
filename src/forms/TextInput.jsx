@@ -27,93 +27,96 @@ type Props = {
 	required?: boolean,
 	requiredText?: string | React$Node,
 	validityMessage?: string,
+	labelClassName?: string,
 	value: string,
 };
 
 /**
  * @module TextInput
  */
-export const TextInput = (props: Props): React$Element<*> => {
-	const {
-		disabled,
-		error,
-		helperText,
-		id,
-		isSearch,
-		name,
-		label,
-		onChange,
-		pattern,
-		placeholder,
-		refCallback,
-		required,
-		requiredText,
-		validityMessage,
-		value,
-		...other
-	} = props;
+export class TextInput extends React.Component<Props> {
+	componentDidCatch(error: any, info: any) {
+		console.log(`${error}: \n ${info.componentStack}`);
+	}
 
-	const handleOnChange = e => {
-		if (onChange) {
-			onChange(e);
+	render() {
+		const {
+			disabled,
+			error,
+			helperText,
+			id,
+			isSearch,
+			name,
+			label,
+			onChange,
+			pattern,
+			placeholder,
+			refCallback,
+			required,
+			requiredText = '*',
+			validityMessage,
+			value,
+			...other
+		} = this.props;
+
+		const handleOnChange = e => {
+			if (onChange) {
+				onChange(e);
+			}
+
+			e.target.setCustomValidity('');
+		};
+
+		const handleInvalid = e => {
+			if (!validityMessage) return;
+			e.target.setCustomValidity(validityMessage);
+		};
+
+		const optionalInputProps = {};
+		// WC-158
+		// Only add a `value` prop if it is defined.
+		// Workaround for IE11 support (see ticket)
+		if (value !== undefined) {
+			optionalInputProps.value = value;
 		}
 
-		e.target.setCustomValidity('');
-	};
+		// If a refCallback is provided in input props
+		// add a ref to the <input> tag
+		if (refCallback) {
+			optionalInputProps.ref = refCallback;
+		}
 
-	const handleInvalid = e => {
-		if (!validityMessage) return;
-		e.target.setCustomValidity(validityMessage);
-	};
+		return (
+			<div>
+				{label && (
+					<label htmlFor={id || name}>
+						{label}
+						{required && <span> {requiredText}</span>}
+					</label>
+				)}
 
-	const optionalInputProps = {};
-	// WC-158
-	// Only add a `value` prop if it is defined.
-	// Workaround for IE11 support (see ticket)
-	if (value !== undefined) {
-		optionalInputProps.value = value;
-	}
+				{helperText && <p data-swarm-select-helper-text="1">{helperText}</p>}
 
-	// If a refCallback is provided in input props
-	// add a ref to the <input> tag
-	if (refCallback) {
-		optionalInputProps.ref = refCallback;
-	}
-
-	return (
-		<div>
-			{label && (
-				<label htmlFor={id || name}>
-					{label}
-					{required && <span> {requiredText}</span>}
-				</label>
-			)}
-
-			{helperText && <p data-swarm-select-helper-text="1">{helperText}</p>}
-
-			<div data-swarm-select-wrapper="1">
-				<SwarmTextInput
-					isSearch={isSearch}
-					name={name}
-					error={error}
-					required={required}
-					placeholder={placeholder}
-					onChange={handleOnChange}
-					onInvalid={handleInvalid}
-					pattern={pattern}
-					disabled={disabled}
-					id={id}
-					{...optionalInputProps}
-					{...other}
-				/>
+				<div data-swarm-select-wrapper="1">
+					<SwarmTextInput
+						isSearch={isSearch}
+						name={name}
+						error={error}
+						required={required}
+						placeholder={placeholder}
+						onChange={handleOnChange}
+						onInvalid={handleInvalid}
+						pattern={pattern}
+						disabled={disabled}
+						id={id}
+						{...optionalInputProps}
+						{...other}
+					/>
+				</div>
 			</div>
-		</div>
-	);
-};
-
-TextInput.defaultProps = {
-	requiredText: '*',
-};
+		);
+	}
+}
 
 TextInput.propTypes = {
 	/** The `name` attribute for the input */

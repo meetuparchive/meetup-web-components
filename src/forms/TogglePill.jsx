@@ -8,6 +8,10 @@ import { TogglePill as SwarmUITogglePill } from '@meetup/swarm-components';
  * @module TogglePill
  */
 export class TogglePill extends React.PureComponent {
+	componentDidCatch(error, info) {
+		console.log(`${error}: \n ${info.componentStack}`);
+	}
+
 	render() {
 		const { isActive, ...other } = this.props;
 

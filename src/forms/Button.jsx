@@ -7,6 +7,10 @@ import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-co
  * @module Button
  */
 class Button extends React.PureComponent {
+	componentDidCatch(error, info) {
+		console.log(`${error}: \n ${info.componentStack}`);
+	}
+
 	render() {
 		const {
 			// removing reset & fullWidth props from other to prevent an invalid boolean being passed to <button>

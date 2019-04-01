@@ -31,25 +31,31 @@ type Props = React.ElementConfig<HTMLSelectElement> & {
 /*
  * MWC custom <select> component
  */
-export const SelectInput = (props: Props) => {
-	const { id, label, name, error, helperText, required, ...other } = props;
+export class SelectInput extends React.PureComponent<Props> {
+	componentDidCatch(error: any, info: any) {
+		console.log(`${error}: \n ${info.componentStack}`);
+	}
 
-	const requiredProps = required
-		? { requiredText: typeof required === 'string' ? required : '*' }
-		: {};
+	render() {
+		const { id, label, name, error, helperText, required, ...other } = this.props;
 
-	return (
-		<SwarmSelect
-			id={id || name}
-			label={label}
-			name={name}
-			error={error}
-			helperText={helperText}
-			{...requiredProps}
-			{...other}
-		/>
-	);
-};
+		const requiredProps = required
+			? { requiredText: typeof required === 'string' ? required : '*' }
+			: {};
+
+		return (
+			<SwarmSelect
+				id={id || name}
+				label={label}
+				name={name}
+				error={error}
+				helperText={helperText}
+				{...requiredProps}
+				{...other}
+			/>
+		);
+	}
+}
 
 const SelectWithErrors = withErrorList(SelectInput);
 SelectWithErrors.displayName = 'Select';

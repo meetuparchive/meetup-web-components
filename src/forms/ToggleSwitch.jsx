@@ -7,6 +7,10 @@ import { Toggle } from '@meetup/swarm-components';
  * @module ToggleSwitch
  */
 class ToggleSwitch extends React.Component {
+	componentDidCatch(error, info) {
+		console.log(`${error}: \n ${info.componentStack}`);
+	}
+
 	render() {
 		const { isActive, label, labelledBy, id, name, ...other } = this.props;
 

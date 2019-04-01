@@ -24,6 +24,10 @@ class Checkbox extends React.PureComponent {
 		}
 	}
 
+	componentDidCatch(error, info) {
+		console.log(`${error}: \n ${info.componentStack}`);
+	}
+
 	onChange(e) {
 		this.props.onChange && this.props.onChange(e);
 
