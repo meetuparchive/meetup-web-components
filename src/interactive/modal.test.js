@@ -59,9 +59,9 @@ describe('Modal', () => {
 		).toBe(1);
 	});
 
-	it('creates an svg icon with `svg--cross` for dismissal', () => {
+	it('creates an svg icon for dismissal', () => {
 		const closeButton = modalEl.getElementsByClassName(MODAL_CLOSE_BUTTON)[0];
-		const icon = closeButton.getElementsByClassName('svg--cross');
+		const icon = closeButton.getElementsByTagName('svg');
 
 		expect(icon.length).toBe(1);
 	});
