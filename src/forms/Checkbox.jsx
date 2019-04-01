@@ -52,6 +52,7 @@ class Checkbox extends React.PureComponent {
 			checked, // eslint-disable-line no-unused-vars
 			controlled, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
+			labelClassName, // eslint-disable-line no-unused-vars
 			id,
 			label,
 			disabled,

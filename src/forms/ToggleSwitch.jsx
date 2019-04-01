@@ -12,7 +12,15 @@ class ToggleSwitch extends React.Component {
 	}
 
 	render() {
-		const { isActive, label, labelledBy, id, name, ...other } = this.props;
+		const {
+			labelClassName, // eslint-disable-line no-unused-vars
+			isActive,
+			label,
+			labelledBy,
+			id,
+			name,
+			...other
+		} = this.props;
 
 		const labelProps = labelledBy ? { 'aria-labelledby': labelledBy } : {};
 

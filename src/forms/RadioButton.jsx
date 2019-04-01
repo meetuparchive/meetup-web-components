@@ -8,7 +8,13 @@ class RadioButton extends React.PureComponent {
 	}
 
 	render() {
-		const { label, name, value, ...other } = this.props;
+		const {
+			labelClassName, // eslint-disable-line no-unused-vars
+			label,
+			name,
+			value,
+			...other
+		} = this.props;
 		return (
 			<SwarmRadio
 				name={name}

@@ -48,6 +48,7 @@ export class TextInput extends React.Component<Props> {
 			isSearch,
 			name,
 			label,
+			labelClassName, // eslint-disable-line no-unused-vars
 			onChange,
 			pattern,
 			placeholder,

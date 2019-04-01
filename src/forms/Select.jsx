@@ -26,6 +26,9 @@ type Props = React.ElementConfig<HTMLSelectElement> & {
 
 	/** What to render in order to indicate the field is required. Supply a string for a custom error message */
 	required?: boolean | string,
+
+	/** DEPRECATED */
+	labelClassName?: string,
 };
 
 /*
@@ -37,7 +40,16 @@ export class SelectInput extends React.PureComponent<Props> {
 	}
 
 	render() {
-		const { id, label, name, error, helperText, required, ...other } = this.props;
+		const {
+			labelClassName, // eslint-disable-line no-unused-vars
+			id,
+			label,
+			name,
+			error,
+			helperText,
+			required,
+			...other
+		} = this.props;
 
 		const requiredProps = required
 			? { requiredText: typeof required === 'string' ? required : '*' }

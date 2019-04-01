@@ -13,7 +13,11 @@ export class TogglePill extends React.PureComponent {
 	}
 
 	render() {
-		const { isActive, ...other } = this.props;
+		const {
+			isActive,
+			labelClassName, // eslint-disable-line no-unused-vars
+			...other
+		} = this.props;
 
 		return <SwarmUITogglePill checked={isActive} {...other} />;
 	}
