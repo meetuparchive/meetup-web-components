@@ -169,7 +169,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                               size="xs"
                             >
                               <svg
-                                className="svg-icon valign--middle"
+                                className="svg svg--chevron-down svg-icon valign--middle"
                                 height="16"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
@@ -352,7 +352,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                               size="xs"
                             >
                               <svg
-                                className="svg-icon valign--middle"
+                                className="svg svg--chevron-down svg-icon valign--middle"
                                 height="16"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
@@ -535,7 +535,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                               size="xs"
                             >
                               <svg
-                                className="svg-icon valign--middle"
+                                className="svg svg--chevron-down svg-icon valign--middle"
                                 height="16"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
@@ -786,7 +786,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                               size="xs"
                             >
                               <svg
-                                className="svg-icon valign--middle"
+                                className="svg svg--chevron-down svg-icon valign--middle"
                                 height="16"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
@@ -969,7 +969,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                               size="xs"
                             >
                               <svg
-                                className="svg-icon valign--middle"
+                                className="svg svg--chevron-down svg-icon valign--middle"
                                 height="16"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
@@ -1152,7 +1152,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                               size="xs"
                             >
                               <svg
-                                className="svg-icon valign--middle"
+                                className="svg svg--chevron-down svg-icon valign--middle"
                                 height="16"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"

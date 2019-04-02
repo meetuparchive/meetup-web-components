@@ -210,7 +210,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
                         size="xs"
                       >
                         <svg
-                          className="svg-icon valign--middle"
+                          className="svg svg--chevron-down svg-icon valign--middle"
                           height="16"
                           preserveAspectRatio="xMinYMin meet"
                           role="img"
@@ -403,7 +403,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                               size="xs"
                             >
                               <svg
-                                className="svg-icon valign--middle"
+                                className="svg svg--cross svg-icon valign--middle"
                                 height="16"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"

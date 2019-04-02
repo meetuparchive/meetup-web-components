@@ -128,7 +128,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       >
                         <span>
                           <svg
-                            class="svg-icon valign--middle"
+                            class="svg svg--cross svg-icon valign--middle"
                             height="16"
                             preserveAspectRatio="xMinYMin meet"
                             role="img"
@@ -208,7 +208,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                             size="xs"
                           >
                             <svg
-                              className="svg-icon valign--middle"
+                              className="svg svg--cross svg-icon valign--middle"
                               height="16"
                               preserveAspectRatio="xMinYMin meet"
                               role="img"
