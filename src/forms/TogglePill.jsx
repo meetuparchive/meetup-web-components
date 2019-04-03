@@ -16,10 +16,15 @@ export class TogglePill extends React.PureComponent {
 		const {
 			isActive,
 			labelClassName, // eslint-disable-line no-unused-vars
+			onChange,
+			onClick,
 			...other
 		} = this.props;
 
-		return <SwarmUITogglePill checked={isActive} {...other} />;
+		const clickCallback = onClick ? onClick : onChange ? onChange : false;
+		return (
+			<SwarmUITogglePill checked={isActive} onClick={clickCallback} {...other} />
+		);
 	}
 }
 
@@ -37,6 +42,12 @@ TogglePill.propTypes = {
 
 	/** Whether the pill is toggled on/selected */
 	isActive: PropTypes.bool,
+
+	/** Deprecated; use `onClick` */
+	onChange: PropTypes.func,
+
+	/** Custom callback when clicked */
+	onClick: PropTypes.func,
 };
 
 TogglePill.defaultProps = {

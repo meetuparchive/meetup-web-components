@@ -29,7 +29,7 @@ describe('TogglePill', () => {
 
 	it('executes onChange when clicked', () => {
 		expect(onChangeMock).not.toHaveBeenCalled();
-		togglePillComponent.simulate('change');
+		togglePillComponent.simulate('click');
 		expect(onChangeMock).toHaveBeenCalled();
 	});
 });

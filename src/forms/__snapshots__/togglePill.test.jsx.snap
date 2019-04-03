@@ -12,7 +12,7 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
     checked={false}
     id="hikingCategory"
     name="meetupCategories"
-    onChange={[MockFunction]}
+    onClick={[MockFunction]}
     value="hiking"
   >
     <button
@@ -21,7 +21,7 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
       data-swarm-toggle-pill="unchecked"
       id="hikingCategory"
       name="meetupCategories"
-      onChange={[MockFunction]}
+      onClick={[MockFunction]}
       role="checkbox"
       value="hiking"
     >
