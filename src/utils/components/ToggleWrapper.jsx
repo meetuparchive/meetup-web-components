@@ -27,7 +27,7 @@ class ToggleWrapper extends React.Component {
 		}
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (nextProps.isActive !== this.props.isActive) {
 			this.toggleActive();
 		}

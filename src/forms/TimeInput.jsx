@@ -16,7 +16,7 @@ export default class TimeInput extends React.PureComponent {
 	};
 
 	// description updates state to stay in sync with new props from the parent
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (this.props.value !== nextProps.value) {
 			this.setState({ value: nextProps.value });
 		}
