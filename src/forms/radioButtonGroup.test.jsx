@@ -34,7 +34,7 @@ describe('RadioButtonGroup', () => {
 			const wrapper = getWrapper();
 			const instance = wrapper.instance();
 			instance.setState({ selectedValue: 'one' });
-			instance.componentWillReceiveProps({ selectedValue: 'two' });
+			instance.UNSAFE_componentWillReceiveProps({ selectedValue: 'two' });
 			expect(wrapper.state('selectedValue')).toBe('two');
 		});
 
@@ -42,7 +42,7 @@ describe('RadioButtonGroup', () => {
 			const wrapper = getWrapper();
 			const instance = wrapper.instance();
 			jest.spyOn(instance, 'setState');
-			instance.componentWillReceiveProps({ testProp: true, other: 'other' });
+			instance.UNSAFE_componentWillReceiveProps({ testProp: true, other: 'other' });
 			expect(instance.setState).not.toHaveBeenCalled();
 		});
 	});
