@@ -94,7 +94,7 @@ describe('Toaster', function() {
 		const toasterComponent = component.find(Toaster).instance();
 
 		expect(toasterComponent.state.toasts.length).toEqual(1);
-		toasterComponent.componentWillReceiveProps(newProps);
+		toasterComponent.UNSAFE_componentWillReceiveProps(newProps);
 		expect(toasterComponent.state.toasts.length).toEqual(2);
 	});
 });
@@ -124,9 +124,7 @@ describe('Toast', function() {
 
 	it('should render an action if one is passed in', () => {
 		const action = jest.fn();
-		const component = mount(
-			<ToastWithAction action={action} actionLabel="Action" />
-		);
+		const component = mount(<ToastWithAction action={action} actionLabel="Action" />);
 		const actionBtn = component.find(`.${TOAST_ACTION_CLASS}`).first();
 
 		expect(actionBtn.exists()).toBe(true);
@@ -134,9 +132,7 @@ describe('Toast', function() {
 
 	it('should call the function in the action when clicked', () => {
 		const action = jest.fn();
-		const component = mount(
-			<ToastWithAction action={action} actionLabel="Action" />
-		);
+		const component = mount(<ToastWithAction action={action} actionLabel="Action" />);
 		const actionBtn = component.find(`.${TOAST_ACTION_CLASS}`).first();
 
 		expect(action).not.toHaveBeenCalled();
