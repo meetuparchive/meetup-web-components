@@ -97,7 +97,7 @@ class AccordionPanel extends React.Component {
 	 * @description set height state when the panel receives a change
 	 * @returns {undefined}
 	 */
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (nextProps.isOpen !== this.props.isOpen) {
 			this.setState(
 				() => this.getPanelStyle(!nextProps.isOpen, this.contentEl),

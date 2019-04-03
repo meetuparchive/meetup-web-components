@@ -9,7 +9,7 @@ if: branch = master OR type = pull_request
 
 env:
   global:
-    # build number used by Makefile and Coveralls
+    # build number used by Makefile
     - CI_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 
 before_install:
@@ -34,7 +34,7 @@ script:
   - yarn test:ci && make publish && make push-gh
 
 # prep for deploy
-after_success: 
+after_success:
   - yarn run storybook-static
 
 deploy:

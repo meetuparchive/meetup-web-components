@@ -17,7 +17,7 @@ export default class RadioButtonGroup extends PureComponent {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if ('selectedValue' in nextProps) {
 			this.setState({
 				selectedValue: nextProps.selectedValue,

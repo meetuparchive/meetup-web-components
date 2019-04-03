@@ -81,7 +81,7 @@ class Toaster extends React.PureComponent {
 		this.restartTimeouts();
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		const currentToasts = this.state.toasts;
 		const allToasts = currentToasts.concat(nextProps.toasts);
 

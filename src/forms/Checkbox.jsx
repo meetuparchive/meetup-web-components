@@ -16,7 +16,7 @@ class Checkbox extends React.PureComponent {
 		this.onChange = this.onChange.bind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		const { checked, controlled } = nextProps;
 
 		if (this.props.controlled !== controlled && controlled) {
