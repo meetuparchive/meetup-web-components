@@ -52,7 +52,7 @@
     "swarm-sasstools": "^5.0.425"
   },
   "dependencies": {
-    "@meetup/swarm-components": "0.5.17",
+    "@meetup/swarm-components": "0.6.1",
     "autosize": "3.0.21",
     "downshift": "1.31.12",
     "focus-trap-react": "3.1.2",
@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
-    "@meetup/swarm-styles": "0.1.15",
+    "@meetup/swarm-styles": "0.2.1",
     "@storybook/addon-actions": "4.0.0-alpha.14",
     "@storybook/addon-info": "4.0.0-alpha.14",
     "@storybook/addon-knobs": "4.0.0-alpha.14",
@@ -105,6 +105,7 @@
     "eslint-plugin-react": "7.11.0",
     "file-loader": "1.1.11",
     "flow-bin": "0.76.0",
+    "flow-typed": "2.5.1",
     "gh-pages": "1.0.0",
     "husky": "0.14.3",
     "inquirer": "3.2.0",
