@@ -147,7 +147,7 @@ We may need to do this for other checkbox, radio component wrappers.
 ### Layout conventions
 
 The `src/` directory contains layout helpers, like `Section` and `Chunk`. These are
-documented in Storybook, but a [more detailed guide can be found here](https://meetup.atlassian.net/wiki/display/SDS/Guide+to+Layout+Components).
+documented in Storybook, but a [more detailed guide can be found here](https://meetup.github.io/swarm-design-system/design/layout/layoutBasics/).
 
 
 ## Testing
