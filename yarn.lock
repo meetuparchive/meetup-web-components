@@ -192,26 +192,27 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.7.1.tgz#e44e596d03c9f16ba3b127ad333a8a072bcb5a0a"
 
-"@meetup/swarm-components@0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.6.1.tgz#9cc3dab9d6d0d21c89fdc783509a48dcdad3a936"
-  integrity sha512-TbFcAun86jI+8w1es385Qu7P1F8NlIQ7NE8nUVvhiX1SxhWL4WkGDKf6UJdrm9Xr54wUDZmpxAee/eudCJejMA==
+"@meetup/swarm-components@0.6.4":
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.6.4.tgz#7933a36621dad9aff0908a9f2a8966b9efdfbf11"
+  integrity sha512-c+Jq2sv+y24jrtBeiDgcNZe7A+fsW+LFFKJ9PhFickcJ7wWkg3Cc4+QddxRcMpNtqZDQrhkSTnMKwJpssr2uBQ==
   dependencies:
-    "@meetup/swarm-constants" "^0.2.6"
-    classnames "^2.2.6"
-    html-loader "^0.5.5"
-    swarm-icons "^3.8.354"
+    "@meetup/swarm-constants" "^0.2.8"
+    classnames "2.2.6"
+    html-loader "0.5.5"
+    swarm-icons "3.8.354"
 
-"@meetup/swarm-constants@^0.2.6":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.2.6.tgz#314c495a98cd28b7846f0b475590dc9aca1f179e"
+"@meetup/swarm-constants@^0.2.8":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.2.8.tgz#1fe7eab2cf64e1b6d31aa19a6934ac9e0d3f959b"
+  integrity sha512-2MfB9CmZPD4lTXBBXJqRJDOaZUbVLeMJuXAGTs03eiJz4JusgI0PFNqj7IrE7fGJT2ZCGZ0yIutZTfsXRa3CEA==
 
-"@meetup/swarm-styles@0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.2.1.tgz#2d005ef9d4cb79bc413d32e3cc92f8a3a8139d99"
-  integrity sha512-w/gkmQ9DbsMOHcLJkdbRNpho/8uGzeskqrc1sfSWv/rK1gtdEOSgO0EWx/omniU+8Y8u4NjJyqZRjQkH0NqzsA==
+"@meetup/swarm-styles@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.2.4.tgz#9ce858e2c43e4b19d6f1c3c54e5c2bbe33772397"
+  integrity sha512-jPKE7WV6hYAXdOAmSWFCn4tTrvifXCFP66c7Ejy0dTgXHGJYGkK0VKnLPDb72iDaSkZ5rCK0h2naKZIyOiCM2Q==
   dependencies:
-    "@meetup/swarm-constants" "^0.2.6"
+    "@meetup/swarm-constants" "^0.2.8"
 
 "@meetup/ux-capture@4.2.1":
   version "4.2.1"
@@ -3029,7 +3030,7 @@ classnames@2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
-classnames@^2.2.5, classnames@^2.2.6:
+classnames@2.2.6, classnames@^2.2.5:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
 
@@ -5512,9 +5513,10 @@ html-entities@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
 
-html-loader@^0.5.5:
+html-loader@0.5.5:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/html-loader/-/html-loader-0.5.5.tgz#6356dbeb0c49756d8ebd5ca327f16ff06ab5faea"
+  integrity sha512-7hIW7YinOYUpo//kSYcPB6dCKoceKLmOwjEMmhIobHuWGDVl0Nwe4l68mdG/Ru0wcUxQjVMEoZpkalZ/SE7zog==
   dependencies:
     es6-templates "^0.2.3"
     fastparse "^1.1.1"
@@ -10854,9 +10856,10 @@ swarm-icons@3.8.349:
   version "3.8.349"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-3.8.349.tgz#af520f40843d3186b7eac66b174b6df2fcc21594"
 
-swarm-icons@^3.8.354:
+swarm-icons@3.8.354:
   version "3.8.354"
   resolved "https://registry.yarnpkg.com/swarm-icons/-/swarm-icons-3.8.354.tgz#c248865e8ddedaeed8ef62eac3c1c98ff82fa2e2"
+  integrity sha512-kM7sQcRKSYQvO6/e9ggASA98a6qXVZIepbSzER74r+LeSWQqlfDSdcNu8TzaDL2D7TEC2wqoxp4JGu50ZQAR/w==
 
 swarm-sasstools@5.0.428:
   version "5.0.428"
