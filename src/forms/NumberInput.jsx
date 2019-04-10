@@ -50,13 +50,7 @@ export class NumberInput extends React.PureComponent<Props> {
 					</FieldLabel>
 				)}
 				{helperText && <FieldHelper>{helperText}</FieldHelper>}
-				<SwarmNumeric
-					type="number"
-					pattern="[0-9]*"
-					id={id}
-					required={required}
-					{...other}
-				/>
+				<SwarmNumeric id={id} required={required} {...other} />
 			</React.Fragment>
 		);
 	}
