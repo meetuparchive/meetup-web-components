@@ -1,12 +1,12 @@
-VERSION ?= 6.1.$(CI_BUILD_NUMBER)
+BUILD_VERSION ?= 6.1.$(CI_BUILD_NUMBER)
 
 ifeq ($(TRAVIS_BRANCH), master)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
 NPM_TAG ?= latest
-VERSION_TAG ?= $(VERSION)
+VERSION_TAG ?= $(BUILD_VERSION)
 else
 NPM_TAG ?= beta
-VERSION_TAG ?= $(VERSION)-beta
+VERSION_TAG ?= $(BUILD_VERSION)-beta
 endif
 endif
 
