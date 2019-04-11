@@ -30,7 +30,7 @@ publish: lib
 	@echo "build version: $(BUILD_VERSION)"
 	@echo "commit message: $$COMMIT_MESSAGE"
 	@echo "publishing $$VERSION_TAG"
-	npm version $(VERSION_TAG) -m "$$COMMIT_MESSAGE"
+	npm version "$$VERSION_TAG" -m "$$COMMIT_MESSAGE"
 	npm publish --tag $$NPM_TAG
 
 push-gh:
