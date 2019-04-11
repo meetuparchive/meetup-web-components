@@ -1,4 +1,4 @@
-VERSION ?= 6.1.$(CI_BUILD_NUMBER)
+VERSION ?= 6.1.$($$TRAVIS_BUILD_NUMBER)
 
 ifeq ($(TRAVIS_BRANCH), master)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
