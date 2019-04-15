@@ -1,5 +1,10 @@
 import React from 'react';
 import * as autosizePlugin from 'autosize';
+import {
+	FieldLabel,
+	FieldHelper,
+	Textarea as SwarmTextarea,
+} from '@meetup/swarm-components';
 import { Textarea, overrideValue } from './Textarea';
 import { shallow, mount } from 'enzyme';
 
@@ -66,7 +71,7 @@ describe('Textarea', function() {
 
 	it('should have a label when label is given', () => {
 		const component = shallow(<Textarea {...props} label="Super Hero" />);
-		expect(component.find('label').length).toBe(1);
+		expect(component.find(FieldLabel).length).toBe(1);
 		expect(component).toMatchSnapshot();
 	});
 
@@ -78,7 +83,7 @@ describe('Textarea', function() {
 				helperText="Enter your favorite hero"
 			/>
 		);
-		expect(component.find('.helperTextContainer').length).toBe(1);
+		expect(component.find(FieldHelper).length).toBe(1);
 		expect(component).toMatchSnapshot();
 	});
 
@@ -123,9 +128,10 @@ describe('Textarea', function() {
 
 	it('should be able to set min and max height', function() {
 		const component = shallow(<Textarea {...props} autosize onChange={onChange} />);
-		expect(component.find('textarea').get(0).props.style).toEqual({
+		expect(component.find(SwarmTextarea).get(0).props.style).toEqual({
 			minHeight: 100,
 			maxHeight: 300,
+			resize: 'auto',
 		});
 	});
 });

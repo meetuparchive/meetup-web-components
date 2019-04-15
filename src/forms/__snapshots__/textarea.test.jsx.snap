@@ -4,17 +4,18 @@ exports[`Textarea exists 1`] = `
 <div
   className="inputContainer"
 >
-  <textarea
-    className="span--100"
+  <Textarea
     id="super"
     name="superhero"
     onChange={[Function]}
     required={true}
+    requiredText="*"
     rows={3}
     style={
       Object {
         "maxHeight": 300,
         "minHeight": 100,
+        "resize": "auto",
       }
     }
     type="text"
@@ -27,22 +28,22 @@ exports[`Textarea should have a label when label is given 1`] = `
 <div
   className="inputContainer"
 >
-  <label
-    className="label--field"
+  <FieldLabel
     htmlFor="super"
   >
     Super Hero
-  </label>
-  <textarea
-    className="span--100"
+  </FieldLabel>
+  <Textarea
     id="super"
     name="superhero"
     onChange={[Function]}
+    requiredText="*"
     rows={3}
     style={
       Object {
         "maxHeight": 300,
         "minHeight": 100,
+        "resize": "auto",
       }
     }
     type="text"
@@ -55,22 +56,22 @@ exports[`Textarea should have a required attribute when specified 1`] = `
 <div
   className="inputContainer"
 >
-  <label
-    className="label--field"
+  <FieldLabel
     htmlFor="super"
   >
     Super Hero
-  </label>
-  <textarea
-    className="span--100"
+  </FieldLabel>
+  <Textarea
     id="super"
     name="superhero"
     onChange={[Function]}
+    requiredText="required!"
     rows={3}
     style={
       Object {
         "maxHeight": 300,
         "minHeight": 100,
+        "resize": "auto",
       }
     }
     type="text"
@@ -83,27 +84,25 @@ exports[`Textarea should have helper text when helper text is given 1`] = `
 <div
   className="inputContainer"
 >
-  <label
-    className="label--field flush--bottom"
+  <FieldLabel
     htmlFor="super"
   >
     Super Hero
-  </label>
-  <div
-    className="helperTextContainer"
-  >
+  </FieldLabel>
+  <FieldHelper>
     Enter your favorite hero
-  </div>
-  <textarea
-    className="span--100"
+  </FieldHelper>
+  <Textarea
     id="super"
     name="superhero"
     onChange={[Function]}
+    requiredText="*"
     rows={3}
     style={
       Object {
         "maxHeight": 300,
         "minHeight": 100,
+        "resize": "auto",
       }
     }
     type="text"
@@ -116,17 +115,18 @@ exports[`Textarea should set its value on input change 1`] = `
 <div
   className="inputContainer"
 >
-  <textarea
-    className="span--100"
+  <Textarea
     id="super"
     name="superhero"
     onChange={[Function]}
     required={true}
+    requiredText="*"
     rows={3}
     style={
       Object {
         "maxHeight": 300,
         "minHeight": 100,
+        "resize": "auto",
       }
     }
     type="text"
@@ -139,17 +139,18 @@ exports[`Textarea should set its value on input change 2`] = `
 <div
   className="inputContainer"
 >
-  <textarea
-    className="span--100"
+  <Textarea
     id="super"
     name="superhero"
     onChange={[Function]}
     required={true}
+    requiredText="*"
     rows={3}
     style={
       Object {
         "maxHeight": 300,
         "minHeight": 100,
+        "resize": "auto",
       }
     }
     type="text"

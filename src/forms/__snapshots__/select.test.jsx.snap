@@ -1,36 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SelectInput basic renders into the DOM 1`] = `
-<Select
-  id="testSelect"
-  label="Test select"
-  name="testSelect"
-  requiredText="yo check it"
->
-  <option
-    value="1"
+<Fragment>
+  <FieldLabel>
+    Test select
+  </FieldLabel>
+  <Select
+    id="testSelect"
+    label="Test select"
+    name="testSelect"
+    requiredText="yo check it"
   >
-    One
-  </option>
-  ,
-  <option
-    value="2"
-  >
-    Two
-  </option>
-  ,
-  <option
-    value="3"
-  >
-    Three
-  </option>
-  ,
-  <option
-    disabled={true}
-    value="4"
-  >
-    Four
-  </option>
-  ,
-</Select>
+    <option
+      value="1"
+    >
+      One
+    </option>
+    ,
+    <option
+      value="2"
+    >
+      Two
+    </option>
+    ,
+    <option
+      value="3"
+    >
+      Three
+    </option>
+    ,
+    <option
+      disabled={true}
+      value="4"
+    >
+      Four
+    </option>
+    ,
+  </Select>
+</Fragment>
 `;
