@@ -18,8 +18,6 @@ type Props = React.Element<HTMLTextAreaElement> & {
 	error?: string,
 	/** What we render into the input's `<label />` */
 	label?: string | React.Element<*>,
-	/** The class name/s to add to the `<label />` element */
-	labelClassName?: string,
 	/** The smallest height the `<textarea />` can be */
 	minHeight?: number,
 	/** The largest height the `<textarea />` can be */
@@ -30,14 +28,10 @@ type Props = React.Element<HTMLTextAreaElement> & {
 	rows?: number,
 	/** Value of the textarea */
 	value?: string,
-	/** Whether to grow the height of the textarea to fit all of the textarea content without scrolling */
-	autosize?: boolean,
 	/** An additional piece of helpful info rendered with the field */
 	helperText?: string | React.Element<*>,
 	/** Whether the field is required to have a value */
 	required?: boolean,
-	/** What to render in order to indicate the field is required */
-	requiredText?: string | React.Element<*>,
 };
 
 type State = {
