@@ -2,6 +2,7 @@
 import * as React from 'react';
 
 import { default as SwarmSelect } from '@meetup/swarm-components/lib/Select';
+import { FieldHelper, FieldLabel } from '@meetup/swarm-components';
 
 import withErrorList from '../utils/components/withErrorList';
 
@@ -46,7 +47,7 @@ export class SelectInput extends React.PureComponent<Props> {
 			label,
 			name,
 			error,
-			helperText,
+			helperText, // eslint-disable-line no-unused-vars
 			required,
 			...other
 		} = this.props;
@@ -56,15 +57,18 @@ export class SelectInput extends React.PureComponent<Props> {
 			: {};
 
 		return (
-			<SwarmSelect
-				id={id || name}
-				label={label}
-				name={name}
-				error={error}
-				helperText={helperText}
-				{...requiredProps}
-				{...other}
-			/>
+			<React.Fragment>
+				{label && <FieldLabel>{label}</FieldLabel>}
+				{helperText && <FieldHelper>{label}</FieldHelper>}
+				<SwarmSelect
+					id={id || name}
+					label={label}
+					name={name}
+					error={error}
+					{...requiredProps}
+					{...other}
+				/>
+			</React.Fragment>
 		);
 	}
 }
