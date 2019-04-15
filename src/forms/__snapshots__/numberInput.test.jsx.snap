@@ -7,10 +7,8 @@ Object {
   "min": 1,
   "name": "amountCount",
   "onChange": [MockFunction],
-  "pattern": "[0-9]*",
   "required": true,
   "step": 1,
-  "type": "number",
   "value": 0,
 }
 `;
@@ -29,10 +27,8 @@ exports[`NumberInput basic exists 1`] = `
     min={1}
     name="amountCount"
     onChange={[MockFunction]}
-    pattern="[0-9]*"
     required={true}
     step={1}
-    type="number"
     value={2}
   />
 </Fragment>
@@ -45,10 +41,8 @@ Object {
   "min": 1,
   "name": "amountCount",
   "onChange": [MockFunction],
-  "pattern": "[0-9]*",
   "required": true,
   "step": 1,
-  "type": "number",
   "value": 2,
 }
 `;
@@ -59,10 +53,8 @@ exports[`NumberInput basic should specify attributes that are passed in 1`] = `
   min={0}
   name="amountCount"
   onChange={[MockFunction]}
-  pattern="[0-9]*"
   placeholder="Guests"
   step={1}
-  type="number"
   value={2}
 />
 `;

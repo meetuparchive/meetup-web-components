@@ -1,9 +1,13 @@
 // @flow
 import * as React from 'react';
-import cx from 'classnames';
 import autosize from 'autosize';
-import CharCounter from './CharCounter';
 import withErrorList from '../utils/components/withErrorList';
+
+import {
+	Textarea as SwarmTextarea,
+	FieldLabel,
+	FieldHelper,
+} from '@meetup/swarm-components';
 
 type Props = React.Element<HTMLTextAreaElement> & {
 	/** Adds an `id` attribute to the input, and associates it with the `<label />` */
@@ -113,9 +117,7 @@ export class Textarea extends React.PureComponent<Props, State> {
 			name,
 			value, // eslint-disable-line no-unused-vars
 			label,
-			labelClassName,
-			className,
-			error,
+			labelClassName, // eslint-disable-line no-unused-vars
 			rows,
 			style = {},
 			maxHeight,
@@ -123,34 +125,11 @@ export class Textarea extends React.PureComponent<Props, State> {
 			maxLength,
 			id,
 			onChange, // eslint-disable-line no-unused-vars
-			autosize,
 			helperText,
 			required,
-			requiredText,
 			disableResize,
 			...other
 		} = this.props;
-
-		const classNames = {
-			textarea: cx(
-				'span--100',
-				{
-					'field--error': error,
-					'textarea--autoheight': autosize,
-					'textarea-no-resize': disableResize,
-				},
-				className
-			),
-			label: cx(
-				'label--field',
-				{
-					'label--required': required,
-					'flush--bottom': helperText,
-				},
-				labelClassName
-			),
-			helperText: cx('helperTextContainer', { required }),
-		};
 
 		// Character limits should be a "soft" limit.
 		// Avoid passing maxLength as an HTML attribute
@@ -158,37 +137,27 @@ export class Textarea extends React.PureComponent<Props, State> {
 
 		return (
 			<div className="inputContainer">
-				{label && (
-					<label
-						className={classNames.label}
-						htmlFor={id}
-						data-requiredtext={required && requiredText}
-					>
-						{label}
-					</label>
-				)}
-				{helperText && <div className={classNames.helperText}>{helperText}</div>}
-				<textarea
+				{label && <FieldLabel htmlFor={id}>{label}</FieldLabel>}
+				{helperText && <FieldHelper>{helperText}</FieldHelper>}
+				<SwarmTextarea
 					type="text"
 					name={name}
 					required={required}
-					className={classNames.textarea}
 					onChange={this.onChange}
 					rows={rows}
 					ref={textarea => {
 						this.textarea = textarea;
 					}}
-					style={{ minHeight, maxHeight, ...style }}
+					style={{
+						minHeight,
+						maxHeight,
+						resize: disableResize ? 'none' : 'auto',
+						...style,
+					}}
 					id={id}
 					value={this.state.value}
 					{...other}
 				/>
-				{maxLength && (
-					<CharCounter
-						maxLength={parseInt(maxLength, 10)}
-						valueLength={parseInt(this.state.value.length, 10)}
-					/>
-				)}
 			</div>
 		);
 	}
