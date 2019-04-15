@@ -192,27 +192,27 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.7.1.tgz#e44e596d03c9f16ba3b127ad333a8a072bcb5a0a"
 
-"@meetup/swarm-components@0.6.4":
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.6.4.tgz#7933a36621dad9aff0908a9f2a8966b9efdfbf11"
-  integrity sha512-c+Jq2sv+y24jrtBeiDgcNZe7A+fsW+LFFKJ9PhFickcJ7wWkg3Cc4+QddxRcMpNtqZDQrhkSTnMKwJpssr2uBQ==
+"@meetup/swarm-components@0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.7.1.tgz#92762fefb50cae81ed3d372b79045df46d8a717c"
+  integrity sha512-Ps9ML6HaDhqGNN8B/5FUkeqA9k2MCfPDHNLMf5JUhVvrl+BHxjbvyxI27R0wtKY8BoyUO+Ro/VxMq4dRJM7pQg==
   dependencies:
-    "@meetup/swarm-constants" "^0.2.8"
+    "@meetup/swarm-constants" "^0.2.11"
     classnames "2.2.6"
     html-loader "0.5.5"
     swarm-icons "3.8.354"
 
-"@meetup/swarm-constants@^0.2.8":
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.2.8.tgz#1fe7eab2cf64e1b6d31aa19a6934ac9e0d3f959b"
-  integrity sha512-2MfB9CmZPD4lTXBBXJqRJDOaZUbVLeMJuXAGTs03eiJz4JusgI0PFNqj7IrE7fGJT2ZCGZ0yIutZTfsXRa3CEA==
+"@meetup/swarm-constants@^0.2.11":
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.2.11.tgz#6171ba612449271fb5616ab52c8abc7a4bb01b7e"
+  integrity sha512-cB5j3RkYP82Ad5jHlhHDlRLW2eSg525FPQNpvVAo8Xqzmq73OkW80N3AEl/0zSFwCLejpYLi3WIQtCmLMB06kg==
 
-"@meetup/swarm-styles@0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.2.4.tgz#9ce858e2c43e4b19d6f1c3c54e5c2bbe33772397"
-  integrity sha512-jPKE7WV6hYAXdOAmSWFCn4tTrvifXCFP66c7Ejy0dTgXHGJYGkK0VKnLPDb72iDaSkZ5rCK0h2naKZIyOiCM2Q==
+"@meetup/swarm-styles@0.2.8":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.2.8.tgz#c7538b006dfc14290004e3b6710b9a9140213f42"
+  integrity sha512-JqHw2oIEk05PPLfnAe87hDpLPwiH7N1j0aeznkh/cW46YeYtD2dOHHLPNmEuVs+GQTvRHCgHZFVQDx6Onp2SZg==
   dependencies:
-    "@meetup/swarm-constants" "^0.2.8"
+    "@meetup/swarm-constants" "^0.2.11"
 
 "@meetup/ux-capture@4.2.1":
   version "4.2.1"
