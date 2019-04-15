@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import autosize from 'autosize';
 import withErrorList from '../utils/components/withErrorList';
 
 import {
@@ -67,26 +66,6 @@ export class Textarea extends React.PureComponent<Props, State> {
 	}
 
 	/**
-	 * Turns on autosize if requested
-	 * @return {undefined} side effect only
-	 */
-	componentDidMount() {
-		if (this.props.autosize) {
-			autosize(this.textarea);
-		}
-	}
-
-	/**
-	 * @param {Object} prevProps the previous props
-	 * @return {undefined} side effect only
-	 */
-	componentDidUpdate(prevProps: Props) {
-		if (this.props.value !== prevProps.value) {
-			autosize.update(this.textarea);
-		}
-	}
-
-	/**
 	 * called as user changes value, updates state with new value
 	 * @param  {Object} e Event object
 	 * @return {undefined}
@@ -121,6 +100,8 @@ export class Textarea extends React.PureComponent<Props, State> {
 			onChange, // eslint-disable-line no-unused-vars
 			helperText,
 			required,
+			requiredText, // eslint-disable-line no-unused-vars
+			autosize, // eslint-disable-line no-unused-vars
 			disableResize,
 			...other
 		} = this.props;
@@ -139,9 +120,6 @@ export class Textarea extends React.PureComponent<Props, State> {
 					required={required}
 					onChange={this.onChange}
 					rows={rows}
-					ref={textarea => {
-						this.textarea = textarea;
-					}}
 					style={{
 						minHeight,
 						maxHeight,
