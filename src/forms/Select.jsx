@@ -56,13 +56,14 @@ export class SelectInput extends React.PureComponent<Props> {
 			? { requiredText: typeof required === 'string' ? required : '*' }
 			: {};
 
+		const fieldId = id || name;
+
 		return (
 			<React.Fragment>
-				{label && <FieldLabel>{label}</FieldLabel>}
-				{helperText && <FieldHelper>{label}</FieldHelper>}
+				{label && <FieldLabel htmlFor={fieldId}>{label}</FieldLabel>}
+				{helperText && <FieldHelper>{helperText}</FieldHelper>}
 				<SwarmSelect
-					id={id || name}
-					label={label}
+					id={fieldId}
 					name={name}
 					error={error}
 					{...requiredProps}
