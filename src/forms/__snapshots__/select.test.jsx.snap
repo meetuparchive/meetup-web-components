@@ -2,12 +2,13 @@
 
 exports[`SelectInput basic renders into the DOM 1`] = `
 <Fragment>
-  <FieldLabel>
+  <FieldLabel
+    htmlFor="testSelect"
+  >
     Test select
   </FieldLabel>
   <Select
     id="testSelect"
-    label="Test select"
     name="testSelect"
     requiredText="yo check it"
   >
