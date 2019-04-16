@@ -14,7 +14,6 @@ class Button extends React.PureComponent {
 	render() {
 		const {
 			// removing reset & fullWidth props from other to prevent an invalid boolean being passed to <button>
-			reset, // eslint-disable-line no-unused-vars
 			fullWidth, // eslint-disable-line no-unused-vars
 			icon,
 			hasHoverShadow, // eslint-disable-line no-unused-vars
