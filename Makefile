@@ -1,4 +1,4 @@
-VERSION ?= 6.1.$(CI_BUILD_NUMBER)
+VERSION ?= 7.0.$(CI_BUILD_NUMBER)
 
 ifeq ($(TRAVIS_BRANCH), master)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
@@ -34,7 +34,7 @@ push-gh:
 ifeq ($(TRAVIS_BRANCH), master)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
 	@echo "pushing master:$(VERSION_TAG)"
-	git push git@github.com:$(TRAVIS_REPO_SLUG).git HEAD:master --follow-tags --no-verify 
+	git push git@github.com:$(TRAVIS_REPO_SLUG).git HEAD:master --follow-tags --no-verify
 endif
 	@echo "skipping git push for PR build"
 endif

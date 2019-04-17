@@ -1,3 +1,7 @@
+# [7.0]
+
+-   **BREAKING CHANGE** Dropping support for React <16.8.0.
+
 # [6.1]
 
 -   **BREAKING CHANGE** `closeOnBodyClick` prop for `Dropdown` component is deprecated.
