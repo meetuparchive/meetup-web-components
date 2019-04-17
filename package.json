@@ -1,6 +1,6 @@
 {
   "name": "meetup-web-components",
-  "version": "6.1.2763",
+  "version": "7.0.2796",
   "license": "UNLICENSED",
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
@@ -45,8 +45,8 @@
   "peerDependencies": {
     "classnames": "^2.2.6",
     "js-joda": "^1.9.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "swarm-animation": "^0.0.95",
     "swarm-icons": "^3.8.354",
     "swarm-sasstools": "^5.0.425"
@@ -122,8 +122,8 @@
     "prop-types": "15.6.0",
     "raf": "3.4.0",
     "raw-loader": "0.5.1",
-    "react": "16.7.0",
-    "react-dom": "16.7.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "react-helmet": "5.2.0",
     "react-intl": "2.4.0",
     "react-redux": "5.0.7",

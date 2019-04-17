@@ -123,7 +123,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       <button
                         class="tooltip-closeBtn"
                         data-icon="only"
-                        data-swarm-button="default"
+                        data-swarm-button="reset"
                         data-swarm-size="default"
                       >
                         <span>
@@ -132,7 +132,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                             height="16"
                             preserveAspectRatio="xMinYMin meet"
                             role="img"
-                            style="fill: var(--color-viridian);"
+                            style="fill: var(--color-gray-7);"
                             viewBox="0 0 16 16"
                             width="16"
                           >
@@ -193,17 +193,18 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       className="tooltip-closeBtn"
                       icon="cross"
                       onClick={[Function]}
+                      reset={true}
                     >
                       <button
                         className="tooltip-closeBtn"
                         data-icon="only"
-                        data-swarm-button="default"
+                        data-swarm-button="reset"
                         data-swarm-size="default"
                         onClick={[Function]}
                       >
                         <span>
                           <Icon
-                            color="var(--color-viridian)"
+                            color="var(--color-gray-7)"
                             shape="cross"
                             size="xs"
                           >
@@ -214,7 +215,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                               role="img"
                               style={
                                 Object {
-                                  "fill": "var(--color-viridian)",
+                                  "fill": "var(--color-gray-7)",
                                 }
                               }
                               viewBox="0 0 16 16"
