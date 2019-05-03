@@ -2,9 +2,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { TextInput as SwarmTextInput } from '@meetup/swarm-components/lib/TextInput';
+import { TextInput as SwarmTextInput, FieldLabel } from '@meetup/swarm-components';
 
 import withErrorList from '../utils/components/withErrorList';
+import a11yPassThrough from '../utils/a11yPassThrough';
 
 export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
 
@@ -48,7 +49,7 @@ export class TextInput extends React.Component<Props> {
 			isSearch,
 			name,
 			label,
-			labelClassName, // eslint-disable-line no-unused-vars
+			labelClassName,
 			onChange,
 			pattern,
 			placeholder,
@@ -90,10 +91,13 @@ export class TextInput extends React.Component<Props> {
 		return (
 			<div>
 				{label && (
-					<label htmlFor={id || name}>
+					<FieldLabel
+						htmlFor={id || name}
+						className={a11yPassThrough(labelClassName)}
+					>
 						{label}
 						{required && <span> {requiredText}</span>}
-					</label>
+					</FieldLabel>
 				)}
 
 				{helperText && <p data-swarm-select-helper-text="1">{helperText}</p>}

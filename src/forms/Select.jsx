@@ -5,6 +5,7 @@ import { default as SwarmSelect } from '@meetup/swarm-components/lib/Select';
 import { FieldHelper, FieldLabel } from '@meetup/swarm-components';
 
 import withErrorList from '../utils/components/withErrorList';
+import a11yPassThrough from '../utils/a11yPassThrough';
 
 type Props = React.ElementConfig<HTMLSelectElement> & {
 	/** Optional `id` attribute for the input, and associates it with the `<label />` */
@@ -42,7 +43,7 @@ export class SelectInput extends React.PureComponent<Props> {
 
 	render() {
 		const {
-			labelClassName, // eslint-disable-line no-unused-vars
+			labelClassName,
 			id,
 			label,
 			name,
@@ -58,9 +59,18 @@ export class SelectInput extends React.PureComponent<Props> {
 
 		const fieldId = id || name;
 
+		console.log('props', this.props);
+
 		return (
 			<React.Fragment>
-				{label && <FieldLabel htmlFor={fieldId}>{label}</FieldLabel>}
+				{label && (
+					<FieldLabel
+						htmlFor={fieldId}
+						className={a11yPassThrough(labelClassName)}
+					>
+						{label}
+					</FieldLabel>
+				)}
 				{helperText && <FieldHelper>{helperText}</FieldHelper>}
 				<SwarmSelect
 					id={fieldId}

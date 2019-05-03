@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import withErrorList from '../utils/components/withErrorList';
+import a11yPassThrough from '../utils/a11yPassThrough';
 
 import {
 	Textarea as SwarmTextarea,
@@ -112,7 +113,11 @@ export class Textarea extends React.PureComponent<Props, State> {
 
 		return (
 			<div className="inputContainer">
-				{label && <FieldLabel htmlFor={id}>{label}</FieldLabel>}
+				{label && (
+					<FieldLabel htmlFor={id} className={a11yPassThrough(labelClassName)}>
+						{label}
+					</FieldLabel>
+				)}
 				{helperText && <FieldHelper>{helperText}</FieldHelper>}
 				<SwarmTextarea
 					type="text"
