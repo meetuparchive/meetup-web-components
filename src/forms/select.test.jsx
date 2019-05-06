@@ -24,7 +24,9 @@ describe('SelectInput basic', () => {
 	it('renders into the DOM', () => {
 		expect(component).toMatchSnapshot();
 	});
+});
 
+describe('A11y class pass through on labelClassName', () => {
 	it('should hide the label when a11yHide is passed as a label class', () => {
 		const component = shallow(
 			<SelectInput
@@ -32,6 +34,21 @@ describe('SelectInput basic', () => {
 				name="testSelect"
 				required="yo check it"
 				labelClassName="visibility--a11yHide"
+			>
+				{testOptions}
+			</SelectInput>
+		);
+
+		expect(component).toMatchSnapshot();
+	});
+
+	it('should only pass the a11y class', () => {
+		const component = shallow(
+			<SelectInput
+				label="Test select"
+				name="testSelect"
+				required="yo check it"
+				labelClassName="visibility--a11yHide someOtherClass"
 			>
 				{testOptions}
 			</SelectInput>
