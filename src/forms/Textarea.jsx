@@ -91,7 +91,7 @@ export class Textarea extends React.PureComponent<Props, State> {
 			name,
 			value, // eslint-disable-line no-unused-vars
 			label,
-			labelClassName, // eslint-disable-line no-unused-vars
+			labelClassName,
 			rows,
 			style = {},
 			maxHeight,

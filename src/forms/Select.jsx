@@ -59,8 +59,6 @@ export class SelectInput extends React.PureComponent<Props> {
 
 		const fieldId = id || name;
 
-		console.log('props', this.props);
-
 		return (
 			<React.Fragment>
 				{label && (
