@@ -28,6 +28,7 @@ exports[`Textarea should have a label when label is given 1`] = `
   className="inputContainer"
 >
   <FieldLabel
+    className=""
     htmlFor="super"
   >
     Super Hero
@@ -55,6 +56,7 @@ exports[`Textarea should have a required attribute when specified 1`] = `
   className="inputContainer"
 >
   <FieldLabel
+    className=""
     htmlFor="super"
   >
     Super Hero
@@ -82,6 +84,7 @@ exports[`Textarea should have helper text when helper text is given 1`] = `
   className="inputContainer"
 >
   <FieldLabel
+    className=""
     htmlFor="super"
   >
     Super Hero
