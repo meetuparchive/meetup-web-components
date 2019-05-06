@@ -102,7 +102,6 @@ export class Textarea extends React.PureComponent<Props, State> {
 			helperText,
 			required,
 			requiredText, // eslint-disable-line no-unused-vars
-			autosize, // eslint-disable-line no-unused-vars
 			disableResize,
 			...other
 		} = this.props;
