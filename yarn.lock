@@ -192,10 +192,10 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.7.1.tgz#e44e596d03c9f16ba3b127ad333a8a072bcb5a0a"
 
-"@meetup/swarm-components@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.11.0.tgz#558eddfcac7f164aa17952766d515539ff753027"
-  integrity sha512-+DkE7c6JQzmKS6FuMdTuRsSUFxM23LWGcFT8U8BBspV7PoEaRA91F1694yN2OukUSlNYwawzJZQbetZXHTtD7Q==
+"@meetup/swarm-components@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.11.1.tgz#0fbfb95b195f122e196fafdf6de33d7bcafe8605"
+  integrity sha512-M0rP0iFNUb6l/dWv8h2awArD82UVytuf8eYXHaq5P4TBJ5XYEga24MXBZjWwZAE8zAddOFkEP45o8j+jorj5Lw==
   dependencies:
     "@meetup/swarm-constants" "^0.3.1"
     autosize "^4.0.2"
@@ -207,10 +207,10 @@
   resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.3.1.tgz#345aab5ae1169f4e2166e5c9cf04c045dd5684d4"
   integrity sha512-/wFYvj0cZH22cxcpGGrMbqDmwxkz3peeK/XmIUUlwdFtckPjDuierIAhubIKz8gFd72tDFiHBle4hLGJ7142WQ==
 
-"@meetup/swarm-styles@0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.3.3.tgz#b436923d313fecb2d6c71b8c16068409d99c2f4c"
-  integrity sha512-MZcbYShORZt8fZ7jcXweLomw6TmHIYpJUYP43EtOTy7bpWH0SkceX2sIwd7EzCGBj5equauz7w8PTEqVbQxXYA==
+"@meetup/swarm-styles@0.3.6":
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.3.6.tgz#0591e609a59f93bf7514a1ce640a1d873e37a856"
+  integrity sha512-GovWVbvtD0th2nfz8ChzkM/uNwDMLczOYhqxBvyJ7WF2drCSx6CvigEXCM+YSeXusrwDq7Q5Y6QufSVUHeJCXg==
   dependencies:
     "@meetup/swarm-constants" "^0.3.1"
 
