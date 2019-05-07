@@ -54,36 +54,6 @@ export class Textarea extends React.PureComponent<Props, State> {
 		requiredText: '*',
 	};
 
-	state = {
-		value: '',
-	};
-
-	/**
-	 * @param {Object} nextProps the incoming props
-	 * @return {undefined} side effect only
-	 */
-	static getDerivedStateFromProps(nextProps: Props) {
-		return overrideValue(nextProps);
-	}
-
-	/**
-	 * called as user changes value, updates state with new value
-	 * @param  {Object} e Event object
-	 * @return {undefined}
-	 */
-	onChange = (e: SyntheticInputEvent<EventTarget>): void => {
-		const { onChange } = this.props;
-		const { value } = e.target;
-
-		this.setState(() => ({
-			value,
-		}));
-
-		if (onChange) {
-			onChange(e);
-		}
-	};
-
 	textarea: ?HTMLTextAreaElement;
 
 	render() {
@@ -122,7 +92,6 @@ export class Textarea extends React.PureComponent<Props, State> {
 					type="text"
 					name={name}
 					required={required}
-					onChange={this.onChange}
 					rows={rows}
 					style={{
 						minHeight,
