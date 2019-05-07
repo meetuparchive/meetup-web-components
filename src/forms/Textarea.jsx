@@ -100,7 +100,7 @@ export class Textarea extends React.PureComponent<Props, State> {
 						...style,
 					}}
 					id={id}
-					value={this.state.value}
+					value={value}
 					{...other}
 				/>
 			</div>
