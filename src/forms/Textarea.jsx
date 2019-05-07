@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import withErrorList from '../utils/components/withErrorList';
 import a11yPassThrough from '../utils/a11yPassThrough';
 
 import {
@@ -34,78 +33,58 @@ type Props = React.Element<HTMLTextAreaElement> & {
 	required?: boolean,
 };
 
-type State = {
-	value: string,
-};
-
-/**
- * Should override value with info from state
- * @return {Object} the new state for the component
- */
-export const overrideValue = (nextProps: Props): State => ({
-	value: nextProps.value || '',
-});
-
 /**
  * @module Textarea
  */
-export class Textarea extends React.PureComponent<Props, State> {
-	static defaultProps = {
-		requiredText: '*',
-	};
+export const Textarea = (props: Props) => {
+	const {
+		name,
+		value, // eslint-disable-line no-unused-vars
+		label,
+		labelClassName,
+		rows,
+		style = {},
+		maxHeight,
+		minHeight,
+		maxLength,
+		id,
+		onChange, // eslint-disable-line no-unused-vars
+		helperText,
+		required,
+		requiredText = '*', // eslint-disable-line no-unused-vars
+		disableResize,
+		...other
+	} = props;
 
-	textarea: ?HTMLTextAreaElement;
+	// Character limits should be a "soft" limit.
+	// Avoid passing maxLength as an HTML attribute
+	if (maxLength) delete other.maxLength;
 
-	render() {
-		const {
-			name,
-			value, // eslint-disable-line no-unused-vars
-			label,
-			labelClassName,
-			rows,
-			style = {},
-			maxHeight,
-			minHeight,
-			maxLength,
-			id,
-			onChange, // eslint-disable-line no-unused-vars
-			helperText,
-			required,
-			requiredText, // eslint-disable-line no-unused-vars
-			disableResize,
-			...other
-		} = this.props;
+	return (
+		<div className="inputContainer">
+			{label && (
+				<FieldLabel htmlFor={id} className={a11yPassThrough(labelClassName)}>
+					{label}
+				</FieldLabel>
+			)}
+			{helperText && <FieldHelper>{helperText}</FieldHelper>}
+			<SwarmTextarea
+				type="text"
+				name={name}
+				required={required}
+				rows={rows}
+				style={{
+					minHeight,
+					maxHeight,
+					resize: disableResize ? 'none' : 'auto',
+					...style,
+				}}
+				id={id}
+				value={value}
+				{...other}
+			/>
+		</div>
+	);
+};
 
-		// Character limits should be a "soft" limit.
-		// Avoid passing maxLength as an HTML attribute
-		if (maxLength) delete other.maxLength;
-
-		return (
-			<div className="inputContainer">
-				{label && (
-					<FieldLabel htmlFor={id} className={a11yPassThrough(labelClassName)}>
-						{label}
-					</FieldLabel>
-				)}
-				{helperText && <FieldHelper>{helperText}</FieldHelper>}
-				<SwarmTextarea
-					type="text"
-					name={name}
-					required={required}
-					rows={rows}
-					style={{
-						minHeight,
-						maxHeight,
-						resize: disableResize ? 'none' : 'auto',
-						...style,
-					}}
-					id={id}
-					value={value}
-					{...other}
-				/>
-			</div>
-		);
-	}
-}
-
-export default withErrorList(Textarea);
+export default Textarea;
