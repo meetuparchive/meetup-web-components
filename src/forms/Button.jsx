@@ -32,10 +32,10 @@ class Button extends React.PureComponent {
 		}
 
 		if (component === 'a') {
-			return <SwarmLink {...props} {...other} />;
+			return <SwarmLink {...props} grow={fullWidth} {...other} />;
 		}
 
-		return <SwarmButton {...props} {...other} />;
+		return <SwarmButton {...props} grow={fullWidth} {...other} />;
 	}
 }
 
