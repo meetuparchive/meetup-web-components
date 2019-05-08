@@ -3,6 +3,8 @@ import React from 'react';
 
 import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-components';
 
+const BUTTON_COMPONENT_TYPES = ['a', 'button', 'Link'];
+
 /**
  * @module Button
  */
@@ -23,25 +25,27 @@ class Button extends React.PureComponent {
 
 		// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
 		// since this functionality is built into button in order to enforce strict sizes on button icons
-		const props = { icon: icon && icon.props && icon.props.shape };
+		const buttonProps = { icon: icon && icon.props && icon.props.shape };
 
-		if (
-			component !== undefined &&
-			component !== 'button' &&
-			component !== 'a' &&
-			component.name !== 'Link'
-		) {
-			console.warn(
-				'Using invalid component prop for `Button`. All Swarm UI v2 Button components are button, anchor, or Link elements.'
+		// this.props.component is either a string or a Link component with a `component.name` prop
+		const componentName = component
+			? component.name
+				? component.name
+				: component
+			: undefined;
+
+		if (componentName && !BUTTON_COMPONENT_TYPES.includes(componentName)) {
+			console.error(
+				'Invalid component prop for <Button>. All Swarm UI v2 Button components are button, anchor, or Link elements.'
 			);
 		}
 
 		// support for react-router Link component
-		if (component.name === 'Link' && to !== undefined) {
+		if (componentName === 'Link' && to !== undefined) {
 			const { children, replace, innerRef, ...buttonProps } = other;
 
 			return (
-				<SwarmButton {...props} grow={fullWidth} {...buttonProps}>
+				<SwarmButton {...buttonProps} grow={fullWidth} {...buttonProps}>
 					<Link
 						to={to}
 						replace={replace}
@@ -51,10 +55,10 @@ class Button extends React.PureComponent {
 				</SwarmButton>
 			);
 		} else if (component === 'a') {
-			return <SwarmLink {...props} grow={fullWidth} {...other} />;
+			return <SwarmLink {...buttonProps} grow={fullWidth} {...other} />;
 		}
 
-		return <SwarmButton {...props} grow={fullWidth} {...other} />;
+		return <SwarmButton {...buttonProps} grow={fullWidth} {...other} />;
 	}
 }
 
