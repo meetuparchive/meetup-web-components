@@ -19,6 +19,7 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
       aria-checked={false}
       checked={false}
       data-swarm-toggle-pill="unchecked"
+      data-swarm-width="default"
       id="hikingCategory"
       name="meetupCategories"
       onClick={[MockFunction]}

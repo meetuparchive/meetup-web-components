@@ -1,7 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Link from 'react-router-dom/Link';
+import Icon from '../media/Icon';
 
 import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-components';
+
+import {
+	FILLS,
+	getButtonType,
+	getSwarmSize,
+	getIconPosition,
+} from '@meetup/swarm-components/lib/utils/buttonUtils';
+
+const BUTTON_COMPONENT_TYPES = ['a', 'button', 'Link'];
 
 /**
  * @module Button
@@ -13,29 +24,69 @@ class Button extends React.PureComponent {
 
 	render() {
 		const {
-			// removing reset & fullWidth props from other to prevent an invalid boolean being passed to <button>
-			fullWidth, // eslint-disable-line no-unused-vars
+			fullWidth,
 			icon,
 			hasHoverShadow, // eslint-disable-line no-unused-vars
 			component,
+			to,
 			...other
 		} = this.props;
 
 		// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
-		// since this functionality is built into button in order to enforce strict sizes on button icons
-		const props = { icon: icon && icon.props && icon.props.shape };
+		const iconShape = icon && icon.props && icon.props.shape;
 
-		if (component !== undefined && component !== 'button' && component !== 'a') {
-			console.warn(
-				'All Swarm UI v2 Button components are button elements. Future iterations will support links as independent components and the logic will be handled here'
+		// this.props.component is either a string or a Link component with a `component.name` prop
+		const componentName = component
+			? component.name
+				? component.name
+				: component
+			: undefined;
+
+		if (componentName && !BUTTON_COMPONENT_TYPES.includes(componentName)) {
+			console.error(
+				'Invalid component prop for <Button>. All Swarm UI v2 Button components are button, anchor, or Link elements.'
 			);
 		}
 
-		if (component === 'a') {
-			return <SwarmLink {...props} grow={fullWidth} {...other} />;
+		// support for react-router Link component
+		if (componentName === 'Link' && to !== undefined) {
+			const { children, right, ...linkProps } = other;
+			const buttonType = getButtonType(this.props);
+			const color = FILLS[buttonType];
+
+			return (
+				<Link
+					data-swarm-button={buttonType}
+					data-swarm-size={getSwarmSize(this.props)}
+					data-icon={getIconPosition(this.props)}
+					data-swarm-width={fullWidth ? 'grow' : 'default'}
+					to={to}
+					{...linkProps}
+				>
+					{icon ? (
+						<span>
+							{right ? (
+								<React.Fragment>
+									{children}
+									<Icon shape={iconShape} size="xs" color={color} />
+								</React.Fragment>
+							) : (
+								<React.Fragment>
+									<Icon shape={iconShape} size="xs" color={color} />
+									{children}
+								</React.Fragment>
+							)}
+						</span>
+					) : (
+						children
+					)}
+				</Link>
+			);
+		} else if (component === 'a') {
+			return <SwarmLink icon={iconShape} grow={fullWidth} {...other} />;
 		}
 
-		return <SwarmButton {...props} grow={fullWidth} {...other} />;
+		return <SwarmButton icon={iconShape} grow={fullWidth} {...other} />;
 	}
 }
 
@@ -47,7 +98,7 @@ Button.propTypes = {
 	neutral: PropTypes.bool,
 
 	/** Takes an `Icon` element to render inside of the button */
-	icon: PropTypes.any,
+	icon: PropTypes.element,
 
 	/** Renders the icon on the right side of the button text */
 	right: PropTypes.bool,

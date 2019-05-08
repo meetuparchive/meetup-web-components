@@ -63,6 +63,20 @@ describe('Button', () => {
 				).toBe('right');
 			});
 		});
+		describe('right aligned icon on Link', () => {
+			it('should set icon container to reverse', () => {
+				const icon = <Icon shape="chevron-right" />;
+				const button = mount(
+					<Button icon={icon} component={Link} primary right>
+						Click me
+					</Button>
+				);
+
+				expect(
+					button.getDOMNode().attributes.getNamedItem('data-icon').value
+				).toBe('right');
+			});
+		});
 	});
 
 	describe('wrapper component prop', () => {
@@ -74,28 +88,21 @@ describe('Button', () => {
 		});
 
 		it('should render the correct `to` value for <Link> component', () => {
-			const buttonTagComponent = shallow(
+			const buttonLinkComponent = shallow(
 				<Button to={link} component={Link}>
 					Button label
 				</Button>
 			);
 
-			expect(buttonTagComponent.prop('to')).toBe(link);
+			expect(buttonLinkComponent.prop('to')).toBe(link);
 		});
 	});
 
-	describe('deprecation warning', () => {
-		it('should warn when a Link is passed as a component', () => {
-			global.console = { warn: jest.fn() };
-			const Link = () => null;
-			shallow(<Button component={Link}>Click</Button>);
-			expect(console.warn).toBeCalled();
-		});
-
-		it('should not warn when no component prop is specified', () => {
-			global.console = { warn: jest.fn() };
-			shallow(<Button>Click</Button>);
-			expect(console.warn).not.toBeCalled();
+	describe('deprecation error', () => {
+		it('should error when a Link is passed as a component', () => {
+			global.console = { error: jest.fn() };
+			shallow(<Button component="div">Click</Button>);
+			expect(console.error).toBeCalled();
 		});
 	});
 });

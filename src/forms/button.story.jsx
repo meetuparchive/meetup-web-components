@@ -151,6 +151,16 @@ storiesOf('Forms/Button', module)
 			Button Label
 		</Button>
 	))
+	.add('Icon - as <Link> component', () => (
+		<Button
+			onClick={action('clicked')}
+			icon={<Icon shape="search" size="xxs" />}
+			component={Link}
+			to="www.meetup.com"
+		>
+			Button Label
+		</Button>
+	))
 	.add('Icon - fullWidth', () => (
 		<Button
 			onClick={action('clicked')}
