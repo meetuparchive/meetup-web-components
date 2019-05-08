@@ -13,11 +13,11 @@ class Button extends React.PureComponent {
 
 	render() {
 		const {
-			// removing reset & fullWidth props from other to prevent an invalid boolean being passed to <button>
-			fullWidth, // eslint-disable-line no-unused-vars
+			fullWidth,
 			icon,
 			hasHoverShadow, // eslint-disable-line no-unused-vars
 			component,
+			to,
 			...other
 		} = this.props;
 
@@ -25,13 +25,32 @@ class Button extends React.PureComponent {
 		// since this functionality is built into button in order to enforce strict sizes on button icons
 		const props = { icon: icon && icon.props && icon.props.shape };
 
-		if (component !== undefined && component !== 'button' && component !== 'a') {
+		if (
+			component !== undefined &&
+			component !== 'button' &&
+			component !== 'a' &&
+			component !== 'Link'
+		) {
 			console.warn(
-				'All Swarm UI v2 Button components are button elements. Future iterations will support links as independent components and the logic will be handled here'
+				'Using invalid component type for `Button`. All Swarm UI v2 Button components are button, anchor, or Link elements.'
 			);
 		}
 
-		if (component === 'a') {
+		// support for react-router Link component
+		if (component === 'Link' && to !== undefined) {
+			const { children, replace, innerRef, ...buttonProps } = other;
+
+			return (
+				<SwarmButton {...props} grow={fullWidth} {...buttonProps}>
+					<Link
+						to={to}
+						replace={replace}
+						innerRef={innerRef}
+						children={children}
+					/>
+				</SwarmButton>
+			);
+		} else if (component === 'a') {
 			return <SwarmLink {...props} grow={fullWidth} {...other} />;
 		}
 
