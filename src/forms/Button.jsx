@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Link from 'react-router-dom/Link';
 import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-components';
 
 const BUTTON_COMPONENT_TYPES = ['a', 'button', 'Link'];
@@ -82,7 +83,7 @@ Button.propTypes = {
 	bordered: PropTypes.bool,
 
 	/** Which component or html element type to use */
-	component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+	component: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Link)]),
 
 	/** Whether to use disabled attribute and disabled button styles */
 	disabled: PropTypes.bool,
