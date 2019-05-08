@@ -29,15 +29,15 @@ class Button extends React.PureComponent {
 			component !== undefined &&
 			component !== 'button' &&
 			component !== 'a' &&
-			component !== 'Link'
+			component.name !== 'Link'
 		) {
 			console.warn(
-				'Using invalid component type for `Button`. All Swarm UI v2 Button components are button, anchor, or Link elements.'
+				'Using invalid component prop for `Button`. All Swarm UI v2 Button components are button, anchor, or Link elements.'
 			);
 		}
 
 		// support for react-router Link component
-		if (component === 'Link' && to !== undefined) {
+		if (component.name === 'Link' && to !== undefined) {
 			const { children, replace, innerRef, ...buttonProps } = other;
 
 			return (
