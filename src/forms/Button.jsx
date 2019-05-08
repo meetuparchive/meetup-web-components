@@ -83,7 +83,7 @@ Button.propTypes = {
 	bordered: PropTypes.bool,
 
 	/** Which component or html element type to use */
-	component: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Link)]),
+	component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 
 	/** Whether to use disabled attribute and disabled button styles */
 	disabled: PropTypes.bool,
