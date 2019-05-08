@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Link from 'react-router-dom/Link';
+import Icon from '../media/Icon';
 
 import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-components';
 
@@ -97,7 +98,7 @@ Button.propTypes = {
 	neutral: PropTypes.bool,
 
 	/** Takes an `Icon` element to render inside of the button */
-	icon: PropTypes.any,
+	icon: PropTypes.element,
 
 	/** Renders the icon on the right side of the button text */
 	right: PropTypes.bool,

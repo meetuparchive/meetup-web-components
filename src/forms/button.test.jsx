@@ -63,6 +63,20 @@ describe('Button', () => {
 				).toBe('right');
 			});
 		});
+		describe('right aligned icon on Link', () => {
+			it('should set icon container to reverse', () => {
+				const icon = <Icon shape="chevron-right" />;
+				const button = mount(
+					<Button icon={icon} component={Link} primary right>
+						Click me
+					</Button>
+				);
+
+				expect(
+					button.getDOMNode().attributes.getNamedItem('data-icon').value
+				).toBe('right');
+			});
+		});
 	});
 
 	describe('wrapper component prop', () => {
