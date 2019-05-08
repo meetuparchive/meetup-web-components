@@ -74,13 +74,13 @@ describe('Button', () => {
 		});
 
 		it('should render the correct `to` value for <Link> component', () => {
-			const buttonTagComponent = shallow(
+			const buttonLinkComponent = shallow(
 				<Button to={link} component={Link}>
 					Button label
 				</Button>
 			);
 
-			expect(buttonTagComponent.find(Link).prop('to')).toBe(link);
+			expect(buttonLinkComponent.prop('to')).toBe(link);
 		});
 	});
 

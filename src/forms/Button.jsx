@@ -1,8 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import Link from 'react-router-dom/Link';
+
 import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-components';
+
+import {
+	FILLS,
+	getButtonType,
+	getSwarmSize,
+	getIconPosition,
+} from '@meetup/swarm-components/lib/utils/buttonUtils';
 
 const BUTTON_COMPONENT_TYPES = ['a', 'button', 'Link'];
 
@@ -25,8 +32,7 @@ class Button extends React.PureComponent {
 		} = this.props;
 
 		// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
-		// since this functionality is built into button in order to enforce strict sizes on button icons
-		const buttonProps = { icon: icon && icon.props && icon.props.shape };
+		const iconShape = icon && icon.props && icon.props.shape;
 
 		// this.props.component is either a string or a Link component with a `component.name` prop
 		const componentName = component
@@ -43,23 +49,43 @@ class Button extends React.PureComponent {
 
 		// support for react-router Link component
 		if (componentName === 'Link' && to !== undefined) {
-			const { children, replace, innerRef, ...buttonProps } = other;
+			const { children, right, ...linkProps } = other;
+			const buttonType = getButtonType(this.props);
+			const color = FILLS[buttonType];
 
 			return (
-				<SwarmButton {...buttonProps} grow={fullWidth} {...buttonProps}>
-					<Link
-						to={to}
-						replace={replace}
-						innerRef={innerRef}
-						children={children}
-					/>
-				</SwarmButton>
+				<Link
+					data-swarm-button={buttonType}
+					data-swarm-size={getSwarmSize(this.props)}
+					data-icon={getIconPosition(this.props)}
+					data-swarm-width={fullWidth ? 'grow' : 'default'}
+					to={to}
+					{...linkProps}
+				>
+					{icon ? (
+						<span>
+							{right ? (
+								<React.Fragment>
+									{children}
+									<Icon shape={iconShape} size="xs" color={color} />
+								</React.Fragment>
+							) : (
+								<React.Fragment>
+									<Icon shape={iconShape} size="xs" color={color} />
+									{children}
+								</React.Fragment>
+							)}
+						</span>
+					) : (
+						children
+					)}
+				</Link>
 			);
 		} else if (component === 'a') {
-			return <SwarmLink {...buttonProps} grow={fullWidth} {...other} />;
+			return <SwarmLink icon={iconShape} grow={fullWidth} {...other} />;
 		}
 
-		return <SwarmButton {...buttonProps} grow={fullWidth} {...other} />;
+		return <SwarmButton icon={iconShape} grow={fullWidth} {...other} />;
 	}
 }
 
