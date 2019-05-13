@@ -33,4 +33,17 @@ storiesOf('Forms/TogglePill', module)
 		>
 			Toggle Pill Label
 		</TogglePill>
+	))
+	.add('reset', () => (
+		<div>
+			<TogglePill
+				checked
+				id="togglePillId"
+				name="togglePillName"
+				value="toggle-pill"
+				reset
+			>
+				Toggle Pill Label
+			</TogglePill>
+		</div>
 	));
