@@ -96,7 +96,6 @@ export class Textarea extends React.PureComponent<Props, State> {
 			style = {},
 			maxHeight,
 			minHeight,
-			maxLength,
 			id,
 			onChange, // eslint-disable-line no-unused-vars
 			helperText,
@@ -105,10 +104,6 @@ export class Textarea extends React.PureComponent<Props, State> {
 			disableResize,
 			...other
 		} = this.props;
-
-		// Character limits should be a "soft" limit.
-		// Avoid passing maxLength as an HTML attribute
-		if (maxLength) delete other.maxLength;
 
 		return (
 			<div className="inputContainer">
