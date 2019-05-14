@@ -30,7 +30,12 @@ storiesOf('Forms/Button', module)
 		</Button>
 	))
 	.add('Default - as <Link> component', () => (
-		<Button onClick={action('clicked')} component={Link} to="https://meetup.com/">
+		<Button
+			onClick={action('clicked')}
+			component={Link}
+			to="https://meetup.com/"
+			primary
+		>
 			Button Label
 		</Button>
 	))

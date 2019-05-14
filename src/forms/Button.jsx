@@ -49,7 +49,17 @@ class Button extends React.PureComponent {
 
 		// support for react-router Link component
 		if (componentName === 'Link' && to !== undefined) {
-			const { children, right, ...linkProps } = other;
+			const {
+				children,
+				right,
+				primary, // eslint-disable-line no-unused-vars
+				small, // eslint-disable-line no-unused-vars
+				bordered, // eslint-disable-line no-unused-vars
+				neutral, // eslint-disable-line no-unused-vars
+				inverted, // eslint-disable-line no-unused-vars
+				grow, // eslint-disable-line no-unused-vars
+				...linkProps
+			} = other;
 			const buttonType = getButtonType(this.props);
 
 			return (
