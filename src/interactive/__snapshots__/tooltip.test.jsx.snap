@@ -134,7 +134,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                             height="16"
                             preserveAspectRatio="xMinYMin meet"
                             role="img"
-                            style="fill: var(--color-gray-7);"
                             viewBox="0 0 16 16"
                             width="16"
                           >
@@ -207,7 +206,6 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       >
                         <span>
                           <Icon
-                            color="var(--color-gray-7)"
                             shape="cross"
                             size="xs"
                           >
@@ -216,11 +214,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                               height="16"
                               preserveAspectRatio="xMinYMin meet"
                               role="img"
-                              style={
-                                Object {
-                                  "fill": "var(--color-gray-7)",
-                                }
-                              }
+                              style={Object {}}
                               viewBox="0 0 16 16"
                               width="16"
                             >

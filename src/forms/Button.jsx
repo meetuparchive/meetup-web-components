@@ -6,7 +6,6 @@ import Icon from '../media/Icon';
 import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-components';
 
 import {
-	FILLS,
 	getButtonType,
 	getSwarmSize,
 	getIconPosition,
@@ -52,7 +51,6 @@ class Button extends React.PureComponent {
 		if (componentName === 'Link' && to !== undefined) {
 			const { children, right, ...linkProps } = other;
 			const buttonType = getButtonType(this.props);
-			const color = FILLS[buttonType];
 
 			return (
 				<Link
@@ -68,11 +66,11 @@ class Button extends React.PureComponent {
 							{right ? (
 								<React.Fragment>
 									{children}
-									<Icon shape={iconShape} size="xs" color={color} />
+									<Icon shape={iconShape} size="xs" />
 								</React.Fragment>
 							) : (
 								<React.Fragment>
-									<Icon shape={iconShape} size="xs" color={color} />
+									<Icon shape={iconShape} size="xs" />
 									{children}
 								</React.Fragment>
 							)}
