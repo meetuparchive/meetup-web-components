@@ -52,7 +52,7 @@
     "swarm-sasstools": "^5.0.425"
   },
   "dependencies": {
-    "@meetup/swarm-components": "0.13.6",
+    "@meetup/swarm-components": "0.13.11",
     "downshift": "1.31.12",
     "focus-trap-react": "3.1.2",
     "raf-schd": "2.1.0",
@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "3.0.1",
-    "@meetup/swarm-styles": "0.5.6",
+    "@meetup/swarm-styles": "0.5.10",
     "@storybook/addon-actions": "4.0.0-alpha.14",
     "@storybook/addon-info": "4.0.0-alpha.14",
     "@storybook/addon-knobs": "4.0.0-alpha.14",

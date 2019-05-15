@@ -43,8 +43,10 @@ class Button extends React.PureComponent {
 
 		if (componentName && !BUTTON_COMPONENT_TYPES.includes(componentName)) {
 			console.error(
-				'Invalid component prop for <Button>. All Swarm UI v2 Button components are button, anchor, or Link elements.'
+				'Invalid component prop for <Button>. All Swarm UI v2 Button components are button, anchor, or Link elements.',
+				component
 			);
+			console.error('<Button /> props', this.props);
 		}
 
 		// support for react-router Link component
