@@ -31,7 +31,7 @@ class Button extends React.PureComponent {
 		// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
 		const iconShape = icon && icon.props && icon.props.shape;
 
-		if (!!component && to == undefined) {
+		if (!!component && to == undefined && this.props.href == undefined) {
 			console.error(
 				'Invalid component prop for <Button>. All Swarm UI v2 Button components are button, anchor, or Link elements.'
 			);
