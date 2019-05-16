@@ -23,13 +23,12 @@ class Button extends React.PureComponent {
 	render() {
 		const {
 			fullWidth,
+			component,
 			icon,
 			hasHoverShadow, // eslint-disable-line no-unused-vars
 			to,
 			...other
 		} = this.props;
-
-		const { component } = this.props;
 
 		// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
 		const iconShape = icon && icon.props && icon.props.shape;
