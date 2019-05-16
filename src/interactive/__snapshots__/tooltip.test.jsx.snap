@@ -82,6 +82,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
             data-swarm-button="default"
             data-swarm-size="small"
             data-swarm-width="default"
+            type="button"
           >
             Open
           </button>
@@ -127,6 +128,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                         data-swarm-button="reset"
                         data-swarm-size="default"
                         data-swarm-width="default"
+                        type="button"
                       >
                         <span>
                           <svg
@@ -203,6 +205,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                         data-swarm-size="default"
                         data-swarm-width="default"
                         onClick={[Function]}
+                        type="button"
                       >
                         <span>
                           <Icon

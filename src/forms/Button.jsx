@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Link from 'react-router-dom/Link';
 import Icon from '../media/Icon';
 
 import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-components';
@@ -26,10 +25,11 @@ class Button extends React.PureComponent {
 			fullWidth,
 			icon,
 			hasHoverShadow, // eslint-disable-line no-unused-vars
-			component,
 			to,
 			...other
 		} = this.props;
+
+		const { component } = this.props;
 
 		// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
 		const iconShape = icon && icon.props && icon.props.shape;
@@ -64,8 +64,10 @@ class Button extends React.PureComponent {
 			} = other;
 			const buttonType = getButtonType(this.props);
 
+			const Component = component;
+
 			return (
-				<Link
+				<Component
 					data-swarm-button={buttonType}
 					data-swarm-size={getSwarmSize(this.props)}
 					data-icon={getIconPosition(this.props)}
@@ -90,7 +92,7 @@ class Button extends React.PureComponent {
 					) : (
 						children
 					)}
-				</Link>
+				</Component>
 			);
 		} else if (component === 'a') {
 			return <SwarmLink icon={iconShape} grow={fullWidth} {...other} />;
