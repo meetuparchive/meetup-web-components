@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import Icon from './Icon';
 import { MEDIA_SIZES } from '../utils/designConstants';
+const ICON_MEDIA_SIZES = {
+	...MEDIA_SIZES,
+	xs: '20',
+};
 
 describe('Icon', () => {
 	const label = 'Icon Label',
@@ -40,12 +44,12 @@ describe('Icon', () => {
 			);
 			const iconEl = ReactDOM.findDOMNode(icon);
 			const svgEl = iconEl.querySelector('svg');
-			const value = MEDIA_SIZES[size];
+			const value = ICON_MEDIA_SIZES[size];
 			expect(svgEl.getAttribute('width')).toEqual(value);
 			expect(svgEl.getAttribute('height')).toEqual(value);
 			if (size === 'auto') {
 				expect(svgEl.getAttribute('viewBox')).toEqual(
-					`0 0 ${MEDIA_SIZES['xl']} ${MEDIA_SIZES['xl']}`
+					`0 0 ${ICON_MEDIA_SIZES['xl']} ${ICON_MEDIA_SIZES['xl']}`
 				);
 			} else {
 				expect(svgEl.getAttribute('viewBox')).toEqual(`0 0 ${value} ${value}`);
@@ -53,7 +57,7 @@ describe('Icon', () => {
 		};
 
 		it('renders each size correctly', () => {
-			Object.keys(MEDIA_SIZES).forEach(sizeChecker);
+			Object.keys(ICON_MEDIA_SIZES).forEach(sizeChecker);
 		});
 	});
 

@@ -64,19 +64,17 @@ class Button extends React.PureComponent {
 					{...linkProps}
 				>
 					{icon ? (
-						<span>
-							{right ? (
-								<React.Fragment>
-									{children}
-									<Icon shape={iconShape} size="xs" />
-								</React.Fragment>
-							) : (
-								<React.Fragment>
-									<Icon shape={iconShape} size="xs" />
-									{children}
-								</React.Fragment>
-							)}
-						</span>
+						right ? (
+							<React.Fragment>
+								{children}
+								<Icon shape={iconShape} size="xs" />
+							</React.Fragment>
+						) : (
+							<React.Fragment>
+								<Icon shape={iconShape} size="xs" />
+								{children}
+							</React.Fragment>
+						)
 					) : (
 						children
 					)}

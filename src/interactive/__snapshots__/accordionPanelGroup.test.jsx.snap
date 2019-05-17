@@ -170,12 +170,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                             >
                               <svg
                                 className="svg svg--chevron-down svg-icon valign--middle"
-                                height="16"
+                                height="20"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
                                 style={Object {}}
-                                viewBox="0 0 16 16"
-                                width="16"
+                                viewBox="0 0 20 20"
+                                width="20"
                               >
                                 <use
                                   xlinkHref="#icon-chevron-down--small"
@@ -353,12 +353,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                             >
                               <svg
                                 className="svg svg--chevron-down svg-icon valign--middle"
-                                height="16"
+                                height="20"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
                                 style={Object {}}
-                                viewBox="0 0 16 16"
-                                width="16"
+                                viewBox="0 0 20 20"
+                                width="20"
                               >
                                 <use
                                   xlinkHref="#icon-chevron-down--small"
@@ -536,12 +536,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                             >
                               <svg
                                 className="svg svg--chevron-down svg-icon valign--middle"
-                                height="16"
+                                height="20"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
                                 style={Object {}}
-                                viewBox="0 0 16 16"
-                                width="16"
+                                viewBox="0 0 20 20"
+                                width="20"
                               >
                                 <use
                                   xlinkHref="#icon-chevron-down--small"
@@ -787,12 +787,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                             >
                               <svg
                                 className="svg svg--chevron-down svg-icon valign--middle"
-                                height="16"
+                                height="20"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
                                 style={Object {}}
-                                viewBox="0 0 16 16"
-                                width="16"
+                                viewBox="0 0 20 20"
+                                width="20"
                               >
                                 <use
                                   xlinkHref="#icon-chevron-down--small"
@@ -970,12 +970,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                             >
                               <svg
                                 className="svg svg--chevron-down svg-icon valign--middle"
-                                height="16"
+                                height="20"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
                                 style={Object {}}
-                                viewBox="0 0 16 16"
-                                width="16"
+                                viewBox="0 0 20 20"
+                                width="20"
                               >
                                 <use
                                   xlinkHref="#icon-chevron-down--small"
@@ -1153,12 +1153,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                             >
                               <svg
                                 className="svg svg--chevron-down svg-icon valign--middle"
-                                height="16"
+                                height="20"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
                                 style={Object {}}
-                                viewBox="0 0 16 16"
-                                width="16"
+                                viewBox="0 0 20 20"
+                                width="20"
                               >
                                 <use
                                   xlinkHref="#icon-chevron-down--small"
