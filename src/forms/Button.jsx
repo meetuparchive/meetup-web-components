@@ -10,8 +10,6 @@ import {
 	getIconPosition,
 } from '@meetup/swarm-components/lib/utils/buttonUtils';
 
-const BUTTON_COMPONENT_TYPES = ['a', 'button', 'Link'];
-
 /**
  * @module Button
  */
@@ -33,23 +31,14 @@ class Button extends React.PureComponent {
 		// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
 		const iconShape = icon && icon.props && icon.props.shape;
 
-		// this.props.component is either a string or a Link component with a `component.name` prop
-		const componentName = component
-			? component.name
-				? component.name
-				: component
-			: undefined;
-
-		if (componentName && !BUTTON_COMPONENT_TYPES.includes(componentName)) {
+		if (!!component && to == undefined && this.props.href == undefined) {
 			console.error(
-				'Invalid component prop for <Button>. All Swarm UI v2 Button components are button, anchor, or Link elements.',
-				component
+				'Invalid component prop for <Button>. All Swarm UI v2 Button components are button, anchor, or Link elements.'
 			);
-			console.error('<Button /> props', this.props);
 		}
 
 		// support for react-router Link component
-		if (componentName === 'Link' && to !== undefined) {
+		if (!!component && to !== undefined) {
 			const {
 				children,
 				right,
