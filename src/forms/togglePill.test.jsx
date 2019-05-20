@@ -1,27 +1,19 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import TogglePill, { TOGGLE_PILL_CLASS } from './TogglePill';
-import Icon from '../media/Icon';
+import TogglePill from './TogglePill';
 
 describe('TogglePill', () => {
 	const id = 'hikingCategory',
 		name = 'meetupCategories',
 		label = 'Hiking!',
-		value = 'hiking',
-		labelClass = 'someClass';
+		value = 'hiking';
 
 	let togglePillComponent;
 	const onChangeMock = jest.fn();
 
 	beforeEach(() => {
 		togglePillComponent = mount(
-			<TogglePill
-				onChange={onChangeMock}
-				id={id}
-				name={name}
-				labelClassName={labelClass}
-				value={value}
-			>
+			<TogglePill onChange={onChangeMock} id={id} name={name} value={value}>
 				{label}
 			</TogglePill>
 		);
@@ -35,63 +27,9 @@ describe('TogglePill', () => {
 		expect(togglePillComponent).toMatchSnapshot();
 	});
 
-	it('has appropriate toggle pill class', () => {
-		expect(togglePillComponent.find(TOGGLE_PILL_CLASS)).not.toBeNull();
-	});
-
 	it('executes onChange when clicked', () => {
-		const toggleInput = togglePillComponent.find('input');
-
 		expect(onChangeMock).not.toHaveBeenCalled();
-		toggleInput.simulate('change');
+		togglePillComponent.simulate('click');
 		expect(onChangeMock).toHaveBeenCalled();
-	});
-
-	describe('TogglePill with topic icon', () => {
-		const id = 'parentingTopic',
-			name = 'topics',
-			label = 'Moms and Dads',
-			value = 'parenting';
-
-		beforeEach(() => {
-			togglePillComponent = mount(
-				<TogglePill topic id={id} name={name} value={value}>
-					{label}
-				</TogglePill>
-			);
-		});
-
-		afterEach(() => {
-			togglePillComponent = null;
-		});
-
-		it('creates an Icon component', function() {
-			expect(togglePillComponent.find(Icon).length).toBeGreaterThan(0);
-		});
-	});
-
-	describe('TogglePill with radio input', () => {
-		const id = 'parentingTopic',
-			name = 'topics',
-			label = 'Moms and Dads',
-			value = 'parenting';
-
-		beforeEach(() => {
-			togglePillComponent = mount(
-				<TogglePill useRadio id={id} name={name} value={value}>
-					{label}
-				</TogglePill>
-			);
-		});
-
-		afterEach(() => {
-			togglePillComponent = null;
-		});
-
-		it('creates a Toggle Pill with a radio input', function() {
-			expect(
-				togglePillComponent.find('input[type="radio"]').length
-			).toBeGreaterThan(0);
-		});
 	});
 });

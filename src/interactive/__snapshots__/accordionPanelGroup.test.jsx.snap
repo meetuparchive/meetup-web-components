@@ -162,21 +162,26 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down indicator indicator--animateActive"
+                            className="indicator indicator--animateActive"
                           >
-                            <svg
-                              className="svg-icon valign--middle"
-                              height="16"
-                              preserveAspectRatio="xMinYMin meet"
-                              role="img"
-                              style={Object {}}
-                              viewBox="0 0 16 16"
-                              width="16"
+                            <Icon
+                              shape="chevron-down"
+                              size="xs"
                             >
-                              <use
-                                xlinkHref="#icon-chevron-down--small"
-                              />
-                            </svg>
+                              <svg
+                                className="svg svg--chevron-down svg-icon valign--middle"
+                                height="20"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="img"
+                                style={Object {}}
+                                viewBox="0 0 20 20"
+                                width="20"
+                              >
+                                <use
+                                  xlinkHref="#icon-chevron-down--small"
+                                />
+                              </svg>
+                            </Icon>
                           </span>
                         </Icon>
                       </div>
@@ -340,21 +345,26 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down indicator"
+                            className="indicator"
                           >
-                            <svg
-                              className="svg-icon valign--middle"
-                              height="16"
-                              preserveAspectRatio="xMinYMin meet"
-                              role="img"
-                              style={Object {}}
-                              viewBox="0 0 16 16"
-                              width="16"
+                            <Icon
+                              shape="chevron-down"
+                              size="xs"
                             >
-                              <use
-                                xlinkHref="#icon-chevron-down--small"
-                              />
-                            </svg>
+                              <svg
+                                className="svg svg--chevron-down svg-icon valign--middle"
+                                height="20"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="img"
+                                style={Object {}}
+                                viewBox="0 0 20 20"
+                                width="20"
+                              >
+                                <use
+                                  xlinkHref="#icon-chevron-down--small"
+                                />
+                              </svg>
+                            </Icon>
                           </span>
                         </Icon>
                       </div>
@@ -518,21 +528,26 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down indicator"
+                            className="indicator"
                           >
-                            <svg
-                              className="svg-icon valign--middle"
-                              height="16"
-                              preserveAspectRatio="xMinYMin meet"
-                              role="img"
-                              style={Object {}}
-                              viewBox="0 0 16 16"
-                              width="16"
+                            <Icon
+                              shape="chevron-down"
+                              size="xs"
                             >
-                              <use
-                                xlinkHref="#icon-chevron-down--small"
-                              />
-                            </svg>
+                              <svg
+                                className="svg svg--chevron-down svg-icon valign--middle"
+                                height="20"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="img"
+                                style={Object {}}
+                                viewBox="0 0 20 20"
+                                width="20"
+                              >
+                                <use
+                                  xlinkHref="#icon-chevron-down--small"
+                                />
+                              </svg>
+                            </Icon>
                           </span>
                         </Icon>
                       </div>
@@ -764,21 +779,26 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down indicator indicator--animateActive"
+                            className="indicator indicator--animateActive"
                           >
-                            <svg
-                              className="svg-icon valign--middle"
-                              height="16"
-                              preserveAspectRatio="xMinYMin meet"
-                              role="img"
-                              style={Object {}}
-                              viewBox="0 0 16 16"
-                              width="16"
+                            <Icon
+                              shape="chevron-down"
+                              size="xs"
                             >
-                              <use
-                                xlinkHref="#icon-chevron-down--small"
-                              />
-                            </svg>
+                              <svg
+                                className="svg svg--chevron-down svg-icon valign--middle"
+                                height="20"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="img"
+                                style={Object {}}
+                                viewBox="0 0 20 20"
+                                width="20"
+                              >
+                                <use
+                                  xlinkHref="#icon-chevron-down--small"
+                                />
+                              </svg>
+                            </Icon>
                           </span>
                         </Icon>
                       </div>
@@ -942,21 +962,26 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down indicator"
+                            className="indicator"
                           >
-                            <svg
-                              className="svg-icon valign--middle"
-                              height="16"
-                              preserveAspectRatio="xMinYMin meet"
-                              role="img"
-                              style={Object {}}
-                              viewBox="0 0 16 16"
-                              width="16"
+                            <Icon
+                              shape="chevron-down"
+                              size="xs"
                             >
-                              <use
-                                xlinkHref="#icon-chevron-down--small"
-                              />
-                            </svg>
+                              <svg
+                                className="svg svg--chevron-down svg-icon valign--middle"
+                                height="20"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="img"
+                                style={Object {}}
+                                viewBox="0 0 20 20"
+                                width="20"
+                              >
+                                <use
+                                  xlinkHref="#icon-chevron-down--small"
+                                />
+                              </svg>
+                            </Icon>
                           </span>
                         </Icon>
                       </div>
@@ -1120,21 +1145,26 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                           size="xs"
                         >
                           <span
-                            className="svg svg--chevron-down indicator"
+                            className="indicator"
                           >
-                            <svg
-                              className="svg-icon valign--middle"
-                              height="16"
-                              preserveAspectRatio="xMinYMin meet"
-                              role="img"
-                              style={Object {}}
-                              viewBox="0 0 16 16"
-                              width="16"
+                            <Icon
+                              shape="chevron-down"
+                              size="xs"
                             >
-                              <use
-                                xlinkHref="#icon-chevron-down--small"
-                              />
-                            </svg>
+                              <svg
+                                className="svg svg--chevron-down svg-icon valign--middle"
+                                height="20"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="img"
+                                style={Object {}}
+                                viewBox="0 0 20 20"
+                                width="20"
+                              >
+                                <use
+                                  xlinkHref="#icon-chevron-down--small"
+                                />
+                              </svg>
+                            </Icon>
                           </span>
                         </Icon>
                       </div>

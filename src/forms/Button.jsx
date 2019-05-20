@@ -1,105 +1,94 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import cx from 'classnames';
-import Flex from '../layout/Flex';
-import FlexItem from '../layout/FlexItem';
+import Icon from '../media/Icon';
 
-export const BUTTON_CLASS = 'button';
-export const BUTTON_ICON_WRAPPER_CLASS = 'button-icon-wrapper';
-export const BUTTON_LABEL_CLASS = 'button-label';
-export const BUTTON_ICON_CLASS = 'button-icon';
+import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-components';
+
+import {
+	getButtonType,
+	getSwarmSize,
+	getIconPosition,
+} from '@meetup/swarm-components/lib/utils/buttonUtils';
 
 /**
  * @module Button
  */
 class Button extends React.PureComponent {
+	componentDidCatch(error, info) {
+		console.log(`${error}: \n ${info.componentStack}`);
+	}
+
 	render() {
 		const {
-			children,
-			className,
-			reset,
 			fullWidth,
-			primary,
-			neutral,
-			icon,
-			right,
-			small,
-			bordered,
-			hasHoverShadow,
 			component,
-			disabled,
-			type,
+			icon,
+			hasHoverShadow, // eslint-disable-line no-unused-vars
+			to,
 			...other
 		} = this.props;
-		const classNames = {
-			button: cx(
-				BUTTON_CLASS,
-				{
-					'button--fullWidth': fullWidth,
-					'button--primary': primary,
-					'button--small': small,
-					'button--reset': reset,
-					'button--bordered': bordered,
-					'button--hasHoverShadow': hasHoverShadow,
-					'button--neutral': neutral,
-					'button--disabled': disabled,
-					'button--iconOnly': icon && !children,
-				},
-				className
-			),
-			iconWrap: cx(BUTTON_ICON_WRAPPER_CLASS, {
-				[`${BUTTON_ICON_WRAPPER_CLASS}--right`]: right,
-			}),
-		};
-		const opts = right ? { rowReverse: 'all' } : {};
 
-		const iconChildren = (
-			<Flex className={classNames.iconWrap} justify="center" {...opts}>
-				{icon && (
-					<FlexItem
-						shrink
-						className={`${BUTTON_ICON_CLASS} valign--middle flush--left`}
-					>
-						{icon}
-					</FlexItem>
-				)}
-				{children && (
-					<FlexItem
-						shrink
-						className={`${BUTTON_LABEL_CLASS} valign--middle align--center atMedium_align--left`}
-					>
-						{children}
-					</FlexItem>
-				)}
-			</Flex>
-		);
+		// checking for the icon component signature if passed as icon={<Icon shape="search"/>} and grabbing the shape prop
+		const iconShape = icon && icon.props && icon.props.shape;
 
-		const Component = component;
-
-		if (disabled) {
-			delete other.onClick;
+		if (!!component && to == undefined && this.props.href == undefined) {
+			console.error(
+				'Invalid component prop for <Button>. All Swarm UI v2 Button components are button, anchor, or Link elements.'
+			);
 		}
 
-		return (
-			<Component className={classNames.button} type={type} {...other}>
-				{icon ? iconChildren : children}
-			</Component>
-		);
+		// support for react-router Link component
+		if (!!component && to !== undefined) {
+			const {
+				children,
+				right,
+				primary, // eslint-disable-line no-unused-vars
+				small, // eslint-disable-line no-unused-vars
+				bordered, // eslint-disable-line no-unused-vars
+				neutral, // eslint-disable-line no-unused-vars
+				inverted, // eslint-disable-line no-unused-vars
+				grow, // eslint-disable-line no-unused-vars
+				...linkProps
+			} = other;
+			const buttonType = getButtonType(this.props);
+
+			const Component = component;
+
+			return (
+				<Component
+					data-swarm-button={buttonType}
+					data-swarm-size={getSwarmSize(this.props)}
+					data-icon={getIconPosition(this.props)}
+					data-swarm-width={fullWidth ? 'grow' : 'default'}
+					to={to}
+					{...linkProps}
+				>
+					{icon ? (
+						right ? (
+							<React.Fragment>
+								{children}
+								<Icon shape={iconShape} size="xs" />
+							</React.Fragment>
+						) : (
+							<React.Fragment>
+								<Icon shape={iconShape} size="xs" />
+								{children}
+							</React.Fragment>
+						)
+					) : (
+						children
+					)}
+				</Component>
+			);
+		} else if (component === 'a') {
+			return <SwarmLink icon={iconShape} grow={fullWidth} {...other} />;
+		}
+
+		return <SwarmButton icon={iconShape} grow={fullWidth} {...other} />;
 	}
 }
 
-Button.defaultProps = {
-	component: 'button',
-	type: 'button',
-};
-
 Button.propTypes = {
-	/** Behaves like a button in the browser, but just looks like regular text or icons */
-	reset: PropTypes.bool,
-
-	/** Forces button to span the full width of it's container */
-	fullWidth: PropTypes.bool,
-
 	/** Used to highlight the most important action on a screen. Not intended to be used more than once on a screen/modal/section. */
 	primary: PropTypes.bool,
 
@@ -107,7 +96,7 @@ Button.propTypes = {
 	neutral: PropTypes.bool,
 
 	/** Takes an `Icon` element to render inside of the button */
-	icon: PropTypes.any,
+	icon: PropTypes.element,
 
 	/** Renders the icon on the right side of the button text */
 	right: PropTypes.bool,
@@ -118,16 +107,10 @@ Button.propTypes = {
 	/** Sometimes used in place of a Neutral button on shaded backgrounds to maintain the appropriate visual weight */
 	bordered: PropTypes.bool,
 
-	/** Button "lifts" on hover with a shadow */
-	hasHoverShadow: PropTypes.bool,
-
 	/** Which component or html element type to use */
 	component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 
 	/** Whether to use disabled attribute and disabled button styles */
 	disabled: PropTypes.bool,
-
-	/** HTML type attribute. e.g.: `<button type="submit"/>`  */
-	type: PropTypes.string,
 };
 export default Button;
