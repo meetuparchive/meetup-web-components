@@ -5,6 +5,12 @@ import Bounds from '../layout/Bounds';
 import Section from '../layout/Section';
 import { Textarea } from './Textarea';
 
+const StateHolder = props => {
+	const [value, setValue] = React.useState();
+
+	return props.children(value, setValue);
+};
+
 storiesOf('Forms/Textarea', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
@@ -28,13 +34,18 @@ storiesOf('Forms/Textarea', module)
 		() => (
 			<Bounds>
 				<Section>
-					<Textarea
-						autosize
-						label="Your biography"
-						id="yourBio"
-						name="bio"
-						placeholder="Tell me about your life"
-					/>
+					<StateHolder>
+						{(value, setValue) => (
+							<Textarea
+								autosize
+								label="Your biography"
+								id="yourBio"
+								name="bio"
+								onChange={e => setValue(e.target.value)}
+								value={value}
+							/>
+						)}
+					</StateHolder>
 				</Section>
 			</Bounds>
 		),
