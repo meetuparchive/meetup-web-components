@@ -1,8 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button is a HTML button element exists 1`] = `
-<button
-  className="button"
-  type="button"
-/>
-`;
+exports[`Button is a HTML button element exists 1`] = `<Button />`;

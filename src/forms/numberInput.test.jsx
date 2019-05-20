@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { NumberInput, FAUX_INPUT_CLASS, FOCUSED_INPUT_CLASS } from './NumberInput';
+import { NumberInput } from './NumberInput';
 
 describe('NumberInput', function() {
 	const onChange = jest.fn();
@@ -56,40 +56,6 @@ describe('NumberInput', function() {
 	});
 
 	describe('onChange/onFocus', function() {
-		it(`should add class ${FOCUSED_INPUT_CLASS} when the faux input is focused`, () => {
-			const wrapper = render();
-			expect(wrapper.state('isFieldFocused')).toBe(false);
-			expect(
-				wrapper.find(`.${FAUX_INPUT_CLASS}`).hasClass(FOCUSED_INPUT_CLASS)
-			).toBe(false);
-			const inputEl = wrapper.find(`#${NAME_ATTR}`);
-			inputEl.simulate('focus');
-			expect(wrapper.state('isFieldFocused')).toBe(true);
-			expect(
-				wrapper.find(`.${FAUX_INPUT_CLASS}`).hasClass(FOCUSED_INPUT_CLASS)
-			).toBe(true);
-		});
-
-		it(`should remove class ${FOCUSED_INPUT_CLASS} when the faux input loses focused`, () => {
-			const wrapper = render();
-			// when field has been focused, it should have focus class
-			expect(wrapper.state('isFieldFocused')).toBe(false);
-			expect(
-				wrapper.find(`.${FAUX_INPUT_CLASS}`).hasClass(FOCUSED_INPUT_CLASS)
-			).toBe(false);
-			const inputEl = wrapper.find(`#${NAME_ATTR}`);
-			inputEl.simulate('focus');
-			expect(
-				wrapper.find(`.${FAUX_INPUT_CLASS}`).hasClass(FOCUSED_INPUT_CLASS)
-			).toBe(true);
-
-			// on blur it should be removed
-			inputEl.simulate('blur');
-			expect(
-				wrapper.find(`.${FAUX_INPUT_CLASS}`).hasClass(FOCUSED_INPUT_CLASS)
-			).toBe(false);
-		});
-
 		it('should not update its value when new value is `e` or `E`', function() {
 			const wrapper = render();
 			const inputEl = wrapper.find(`#${NAME_ATTR}`);
