@@ -1,31 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Radio as SwarmRadio } from '@meetup/swarm-components';
+import cx from 'classnames';
+import Flex from '../layout/Flex';
+import FlexItem from '../layout/FlexItem';
 
-class RadioButton extends React.PureComponent {
-	componentDidCatch(error, info) {
-		console.log(`${error}: \n ${info.componentStack}`);
-	}
+const RadioButton = ({ label, className, ...inputProps }) => {
+	const id = `RadioButton-${inputProps.name}-${inputProps.value}`;
 
-	render() {
-		const {
-			labelClassName, // eslint-disable-line no-unused-vars
-			label,
-			name,
-			value,
-			...other
-		} = this.props;
-		return (
-			<SwarmRadio
-				name={name}
-				value={value}
-				label={label}
-				id={`RadioButton-${name}-${value}`}
-				{...other}
-			/>
-		);
-	}
-}
+	const classNames = {
+		labelClassNames: cx(
+			'toggleLabel label--minor display--block',
+			inputProps.labelClassName
+		),
+		fauxCheckboxClassNames: cx(
+			'display--flex flex--alignCenter flex--center align--center fauxToggle fauxToggle--radio',
+			{
+				checked: inputProps.checked,
+				disabled: inputProps.disabled,
+			}
+		),
+	};
+
+	return (
+		<label className={classNames.labelClassNames} htmlFor={id}>
+			<Flex align="center" className={className} noGutters>
+				<FlexItem shrink>
+					<input
+						readOnly
+						type="radio"
+						className="radio visibility--a11yHide"
+						id={id}
+						{...inputProps}
+					/>
+					<span className={classNames.fauxCheckboxClassNames}>
+						{inputProps.checked && <span className="radio-indicator" />}
+					</span>
+				</FlexItem>
+				<FlexItem className="toggleLabel-container" shrink>
+					<span
+						className={cx({
+							'text--hint': inputProps.disabled,
+							'text--bold': inputProps.checked,
+						})}
+					>
+						{label}
+					</span>
+				</FlexItem>
+			</Flex>
+		</label>
+	);
+};
 
 RadioButton.displayName = 'RadioButton';
 
@@ -35,15 +59,6 @@ RadioButton.propTypes = {
 
 	/** Additional class name/s to add to the wrapper element  */
 	className: PropTypes.string,
-	/**
-	 * Used to associate a group of radio buttons.
-	 * Only one radio button in a group can be selected.
-	 */
-	name: PropTypes.string,
-	/**
-	 * Value of the input.
-	 */
-	value: PropTypes.string,
 };
 
 export default RadioButton;

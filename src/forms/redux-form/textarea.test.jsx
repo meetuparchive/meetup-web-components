@@ -9,6 +9,7 @@ describe('redux-form Textarea', () => {
 			label: 'Super Hero',
 			name: 'superhero',
 			value: 'Wonder Woman and Robin',
+			autosize: true,
 			maxLength: 20,
 			required: true,
 		},

@@ -4,32 +4,36 @@ import { shallow } from 'enzyme';
 import RadioButtonGroup from './RadioButtonGroup';
 import RadioButton from './RadioButton';
 
-const DEFAULT_PROPS = {
-	className: 'some-class',
-	selectedValue: 'one',
-	name: 'name',
-};
-
-const getWrapper = (props = {}) =>
-	shallow(
-		<RadioButtonGroup {...DEFAULT_PROPS} {...props}>
-			<RadioButton value="one" label="label 1" name="button1" />
-			<RadioButton value="two" label="label 2" name="button2" />
-		</RadioButtonGroup>
-	);
-
 describe('RadioButtonGroup', () => {
+	const DEFAULT_PROPS = {
+		direction: 'row',
+		className: 'some-class',
+		selectedValue: 'one',
+		name: 'name',
+	};
+	const getWrapper = (props = {}) =>
+		shallow(
+			<RadioButtonGroup {...DEFAULT_PROPS} {...props}>
+				<RadioButton value="one" label="label 1" />
+				<RadioButton value="two" label="label 2" />
+			</RadioButtonGroup>
+		);
+
 	it('should match the snapshot', () => {
 		expect(getWrapper()).toMatchSnapshot();
 	});
 
-	describe('componentWillReceiveProps', () => {
-		it('should update state.value if the next props contains selectedValue', () => {
-			const wrapper = getWrapper({
-				selectedValue: 'one',
-			});
-			const instance = wrapper.instance();
+	it('should apply switchDirection, direction, and wrap props', () => {
+		expect(
+			getWrapper({ switchDirection: 'medium', direction: 'column', wrap: true })
+		).toMatchSnapshot();
+	});
 
+	describe('componentWillReceiveProps', () => {
+		it('should update state.selectedValue if the next props contain selectedValue', () => {
+			const wrapper = getWrapper();
+			const instance = wrapper.instance();
+			instance.setState({ selectedValue: 'one' });
 			instance.UNSAFE_componentWillReceiveProps({ selectedValue: 'two' });
 			expect(wrapper.state('selectedValue')).toBe('two');
 		});
@@ -37,7 +41,6 @@ describe('RadioButtonGroup', () => {
 		it('should not update state for nextProps other than selectedValue', () => {
 			const wrapper = getWrapper();
 			const instance = wrapper.instance();
-
 			jest.spyOn(instance, 'setState');
 			instance.UNSAFE_componentWillReceiveProps({ testProp: true, other: 'other' });
 			expect(instance.setState).not.toHaveBeenCalled();
@@ -52,10 +55,9 @@ describe('RadioButtonGroup', () => {
 		};
 
 		it('should update the state for selectedValue', () => {
-			const wrapper = getWrapper({
-				selectedValue: 'one',
-			});
+			const wrapper = getWrapper();
 			const instance = wrapper.instance();
+			instance.setState({ selectedValue: 'one' });
 			instance.handleChange(MOCK_EVENT);
 			expect(wrapper.state('selectedValue')).toBe('two');
 		});

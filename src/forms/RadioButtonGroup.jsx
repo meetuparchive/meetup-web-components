@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 
@@ -9,11 +10,9 @@ import FlexItem from '../layout/FlexItem';
 export default class RadioButtonGroup extends PureComponent {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			selectedValue: props.selectedValue,
 		};
-
 		this.handleChange = this.handleChange.bind(this);
 	}
 
@@ -25,50 +24,49 @@ export default class RadioButtonGroup extends PureComponent {
 		}
 	}
 
-	handleChange(e) {
-		let value = e.target.value;
-
-		this.props.onChange && this.props.onChange(e);
-
-		// THIS IS AN INTENTIONAL TERRIBLE HACK
-		// WE WANT TO SUPPORT OLD BEHAVIOR FOR NOW
-		if (e.target.value === undefined) {
-			value = e.target.parentNode.value;
-		}
+	handleChange(event) {
+		const { onChange } = this.props;
 
 		this.setState({
-			selectedValue: value,
+			selectedValue: event.target.value,
 		});
+
+		if (onChange) {
+			onChange(event);
+		}
 	}
 
 	render() {
-		const { children, className, direction } = this.props;
+		const {
+			direction,
+			switchDirection,
+			children,
+			name,
+			className,
+			wrap,
+			justifyItems,
+		} = this.props;
+
+		const switchDirectionAttr = switchDirection ? { switchDirection } : '';
 
 		return (
-			<Flex direction={direction} className={className}>
-				{React.Children.map(children, child => {
-					let childProps = {};
-					const isSelected = child.props.value === this.state.selectedValue;
-
-					if (child.type.name === 'TogglePill') {
-						childProps = {
-							onClick: this.handleChange,
-							...child.props,
-							isActive: isSelected,
-						};
-					} else {
-						childProps = {
+			<Flex
+				direction={direction}
+				{...switchDirectionAttr}
+				className={className}
+				wrap={wrap}
+				justifyItems={justifyItems}
+			>
+				{React.Children.map(children, option => (
+					<FlexItem shrink>
+						{React.cloneElement(option, {
 							onChange: this.handleChange,
-							...child.props,
-							checked: isSelected,
-						};
-					}
-					return (
-						<FlexItem shrink>
-							{React.cloneElement(child, childProps)}
-						</FlexItem>
-					);
-				})}
+							...option.props,
+							name,
+							checked: option.props.value === this.state.selectedValue,
+						})}
+					</FlexItem>
+				))}
 			</Flex>
 		);
 	}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
+import { storiesOf, action } from '@storybook/react';
 
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
@@ -14,6 +14,14 @@ storiesOf('Forms/ToggleSwitch', module)
 	.add('Default', () => <ToggleSwitch name="testToggle" />)
 	.add('Checked', () => <ToggleSwitch name="testToggle" isActive />)
 	.add('With label', () => <ToggleSwitch name="testToggle" label="Turn it on?" />)
+	.add('With onCallback and offCallback', () => (
+		<ToggleSwitch
+			name="testToggle"
+			label="Turn it on?"
+			onCallback={action('its on!')}
+			offCallback={action('its off.')}
+		/>
+	))
 	.add('With label outside of component', () => (
 		<ul className="list">
 			<li className="list-item">

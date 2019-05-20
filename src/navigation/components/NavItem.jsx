@@ -9,11 +9,7 @@ import FlexItem from '../../layout/FlexItem';
 const NAV_ITEM_CLASS = 'navItemLink';
 
 export const ActionItem = ({ navItemContent, action }) => (
-	<Button
-		reset
-		className={cx(NAV_ITEM_CLASS, 'text--secondary', 'padding--none')}
-		onClick={action}
-	>
+	<Button reset className={cx(NAV_ITEM_CLASS, 'text--secondary')} onClick={action}>
 		{navItemContent}
 	</Button>
 );

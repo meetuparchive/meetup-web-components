@@ -1,18 +1,16 @@
 // @flow
 import * as React from 'react';
+import cx from 'classnames';
 
-import { default as SwarmSelect } from '@meetup/swarm-components/lib/Select';
-import { FieldHelper, FieldLabel } from '@meetup/swarm-components';
-
+import Icon from '../media/Icon';
 import withErrorList from '../utils/components/withErrorList';
-import a11yPassThrough from '../utils/a11yPassThrough';
 
 type Props = React.ElementConfig<HTMLSelectElement> & {
-	/** Optional `id` attribute for the input, and associates it with the `<label />` */
-	id?: string,
+	/** Additional class name/s to add to the `<select/>` element  */
+	className?: string,
 
 	/** The `name` attribute for the input, and associates it with the `<label />` */
-	name: string, // required - will be used as 'id' as well if `id` attribute is not provied
+	name: string, // required - will be used as 'id' as well
 
 	/** Required - this component is stateless. A callback that happens when the input changes */
 	onChange: (e: SyntheticInputEvent<*>) => void,
@@ -23,64 +21,76 @@ type Props = React.ElementConfig<HTMLSelectElement> & {
 	/** An additional piece of helpful info rendered with the field */
 	helperText?: string,
 
+	/** The class name/s to add to the `<label />` element */
+	labelClassName?: string,
+
+	/** The class name/s to add to the div element wrapping select input + icon */
+	selectClassName?: string,
+
 	/** What we render into the input's `<label />` */
 	label?: string,
 
 	/** What to render in order to indicate the field is required. Supply a string for a custom error message */
 	required?: boolean | string,
-
-	/** DEPRECATED */
-	labelClassName?: string,
 };
 
 /*
  * MWC custom <select> component
  */
-export class SelectInput extends React.PureComponent<Props> {
-	componentDidCatch(error: any, info: any) {
-		console.log(`${error}: \n ${info.componentStack}`);
-	}
+export const SelectInput = (props: Props) => {
+	const {
+		className,
+		id,
+		labelClassName,
+		label,
+		name,
+		error,
+		helperText,
+		required,
+		selectClassName,
+		...other
+	} = props;
 
-	render() {
-		const {
-			labelClassName,
-			id,
-			label,
-			name,
-			error,
-			helperText, // eslint-disable-line no-unused-vars
-			required,
-			...other
-		} = this.props;
+	const classNames = {
+		label: cx(
+			'label--field',
+			{ 'label--required': required, 'flush--bottom': helperText },
+			labelClassName
+		),
+		field: cx(
+			'select--reset span--100 padding--selectArrow',
+			{ 'field--error': error },
+			className
+		),
+		helperText: cx('helperTextContainer', { required }),
+	};
+	const requiredText = typeof required === 'string' ? required : '*';
 
-		const requiredProps = required
-			? { requiredText: typeof required === 'string' ? required : '*' }
-			: {};
-
-		const fieldId = id || name;
-
-		return (
-			<React.Fragment>
-				{label && (
-					<FieldLabel
-						htmlFor={fieldId}
-						className={a11yPassThrough(labelClassName)}
-					>
-						{label}
-					</FieldLabel>
-				)}
-				{helperText && <FieldHelper>{helperText}</FieldHelper>}
-				<SwarmSelect
-					id={fieldId}
+	return (
+		<div className="inputContainer">
+			{label && (
+				<label
+					className={classNames.label}
+					htmlFor={name}
+					data-requiredtext={requiredText}
+				>
+					{label}
+				</label>
+			)}
+			{helperText && <div className={classNames.helperText}>{helperText}</div>}
+			<div className={`selectWrapper ${selectClassName || ''}`}>
+				<select
 					name={name}
-					error={error}
-					{...requiredProps}
+					id={id || name}
+					required={Boolean(required)}
+					className={classNames.field}
 					{...other}
 				/>
-			</React.Fragment>
-		);
-	}
-}
+				<Icon className="select-customArrow" shape="chevron-down" size="xs" />
+			</div>
+		</div>
+	);
+};
 
 const SelectWithErrors = withErrorList(SelectInput);
 SelectWithErrors.displayName = 'Select';

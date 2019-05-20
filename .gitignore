@@ -19,7 +19,6 @@ lib
 .*.swp
 *.log
 .vscode/
-.idea
 
 # Generated icon library file
 /src/media/iconLibrary.story.jsx

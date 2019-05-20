@@ -1,20 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToggleSwitch basic renders checked toggle switch 1`] = `
-<div>
-  <Toggle
-    checked={true}
-    id="testToggle"
-    name="testToggle"
-  />
-</div>
+<ToggleWrapper
+  isActive={false}
+>
+  <Component />
+</ToggleWrapper>
 `;
 
 exports[`ToggleSwitch basic renders inactive toggle switch 1`] = `
-<div>
-  <Toggle
-    id="testToggle"
-    name="testToggle"
-  />
-</div>
+<ToggleWrapper
+  isActive={false}
+>
+  <Component />
+</ToggleWrapper>
 `;

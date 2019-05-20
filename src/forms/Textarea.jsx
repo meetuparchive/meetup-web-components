@@ -1,13 +1,9 @@
 // @flow
 import * as React from 'react';
+import cx from 'classnames';
+import autosize from 'autosize';
+import CharCounter from './CharCounter';
 import withErrorList from '../utils/components/withErrorList';
-import a11yPassThrough from '../utils/a11yPassThrough';
-
-import {
-	Textarea as SwarmTextarea,
-	FieldLabel,
-	FieldHelper,
-} from '@meetup/swarm-components';
 
 type Props = React.Element<HTMLTextAreaElement> & {
 	/** Adds an `id` attribute to the input, and associates it with the `<label />` */
@@ -18,6 +14,8 @@ type Props = React.Element<HTMLTextAreaElement> & {
 	error?: string,
 	/** What we render into the input's `<label />` */
 	label?: string | React.Element<*>,
+	/** The class name/s to add to the `<label />` element */
+	labelClassName?: string,
 	/** The smallest height the `<textarea />` can be */
 	minHeight?: number,
 	/** The largest height the `<textarea />` can be */
@@ -28,10 +26,14 @@ type Props = React.Element<HTMLTextAreaElement> & {
 	rows?: number,
 	/** Value of the textarea */
 	value?: string,
+	/** Whether to grow the height of the textarea to fit all of the textarea content without scrolling */
+	autosize?: boolean,
 	/** An additional piece of helpful info rendered with the field */
 	helperText?: string | React.Element<*>,
 	/** Whether the field is required to have a value */
 	required?: boolean,
+	/** What to render in order to indicate the field is required */
+	requiredText?: string | React.Element<*>,
 };
 
 type State = {
@@ -67,6 +69,26 @@ export class Textarea extends React.PureComponent<Props, State> {
 	}
 
 	/**
+	 * Turns on autosize if requested
+	 * @return {undefined} side effect only
+	 */
+	componentDidMount() {
+		if (this.props.autosize) {
+			autosize(this.textarea);
+		}
+	}
+
+	/**
+	 * @param {Object} prevProps the previous props
+	 * @return {undefined} side effect only
+	 */
+	componentDidUpdate(prevProps: Props) {
+		if (this.props.value !== prevProps.value) {
+			autosize.update(this.textarea);
+		}
+	}
+
+	/**
 	 * called as user changes value, updates state with new value
 	 * @param  {Object} e Event object
 	 * @return {undefined}
@@ -92,43 +114,81 @@ export class Textarea extends React.PureComponent<Props, State> {
 			value, // eslint-disable-line no-unused-vars
 			label,
 			labelClassName,
+			className,
+			error,
 			rows,
 			style = {},
 			maxHeight,
 			minHeight,
+			maxLength,
 			id,
 			onChange, // eslint-disable-line no-unused-vars
+			autosize,
 			helperText,
 			required,
-			requiredText, // eslint-disable-line no-unused-vars
+			requiredText,
 			disableResize,
 			...other
 		} = this.props;
 
+		const classNames = {
+			textarea: cx(
+				'span--100',
+				{
+					'field--error': error,
+					'textarea--autoheight': autosize,
+					'textarea-no-resize': disableResize,
+				},
+				className
+			),
+			label: cx(
+				'label--field',
+				{
+					'label--required': required,
+					'flush--bottom': helperText,
+				},
+				labelClassName
+			),
+			helperText: cx('helperTextContainer', { required }),
+		};
+
+		// Character limits should be a "soft" limit.
+		// Avoid passing maxLength as an HTML attribute
+		if (maxLength) delete other.maxLength;
+
 		return (
 			<div className="inputContainer">
 				{label && (
-					<FieldLabel htmlFor={id} className={a11yPassThrough(labelClassName)}>
+					<label
+						className={classNames.label}
+						htmlFor={id}
+						data-requiredtext={required && requiredText}
+					>
 						{label}
-					</FieldLabel>
+					</label>
 				)}
-				{helperText && <FieldHelper>{helperText}</FieldHelper>}
-				<SwarmTextarea
+				{helperText && <div className={classNames.helperText}>{helperText}</div>}
+				<textarea
 					type="text"
 					name={name}
 					required={required}
+					className={classNames.textarea}
 					onChange={this.onChange}
 					rows={rows}
-					style={{
-						minHeight,
-						maxHeight,
-						resize: disableResize ? 'none' : 'auto',
-						...style,
+					ref={textarea => {
+						this.textarea = textarea;
 					}}
+					style={{ minHeight, maxHeight, ...style }}
 					id={id}
 					value={this.state.value}
 					{...other}
 				/>
+				{maxLength && (
+					<CharCounter
+						maxLength={parseInt(maxLength, 10)}
+						valueLength={parseInt(this.state.value.length, 10)}
+					/>
+				)}
 			</div>
 		);
 	}
