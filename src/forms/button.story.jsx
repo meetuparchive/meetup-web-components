@@ -30,12 +30,7 @@ storiesOf('Forms/Button', module)
 		</Button>
 	))
 	.add('Default - as <Link> component', () => (
-		<Button
-			onClick={action('clicked')}
-			component={Link}
-			to="https://meetup.com/"
-			primary
-		>
+		<Button onClick={action('clicked')} component={Link} to="https://meetup.com/">
 			Button Label
 		</Button>
 	))
@@ -153,16 +148,6 @@ storiesOf('Forms/Button', module)
 	))
 	.add('Icon', () => (
 		<Button onClick={action('clicked')} icon={<Icon shape="search" size="xxs" />}>
-			Button Label
-		</Button>
-	))
-	.add('Icon - as <Link> component', () => (
-		<Button
-			onClick={action('clicked')}
-			icon={<Icon shape="search" size="xxs" />}
-			component={Link}
-			to="www.meetup.com"
-		>
 			Button Label
 		</Button>
 	))

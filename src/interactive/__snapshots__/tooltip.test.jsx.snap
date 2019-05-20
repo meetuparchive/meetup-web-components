@@ -22,7 +22,9 @@ exports[`Tooltip aligned tooltip matches snapshot 1`] = `
   noPortal={false}
   trigger={
     <Button
+      component="button"
       small={true}
+      type="button"
     >
       Open
     </Button>
@@ -53,7 +55,9 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
   noPortal={false}
   trigger={
     <Button
+      component="button"
       small={true}
+      type="button"
     >
       Open
     </Button>
@@ -72,21 +76,16 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
       onMouseEnter={[Function]}
     >
       <Button
+        component="button"
         small={true}
+        type="button"
       >
-        <Button
-          small={true}
+        <button
+          className="button button--small"
+          type="button"
         >
-          <button
-            data-icon="left"
-            data-swarm-button="default"
-            data-swarm-size="small"
-            data-swarm-width="default"
-            type="button"
-          >
-            Open
-          </button>
-        </Button>
+          Open
+        </button>
       </Button>
     </div>
     <WithMatchMedia(FloatingPosition)
@@ -123,27 +122,33 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       class="popup-bubble tooltip-bubble inverted popup-bubble--active popup-bubble--right"
                     >
                       <button
-                        class="tooltip-closeBtn"
-                        data-icon="only"
-                        data-swarm-button="reset"
-                        data-swarm-size="default"
-                        data-swarm-width="default"
+                        class="button button--reset button--iconOnly tooltip-closeBtn"
                         type="button"
                       >
-                        <span>
-                          <svg
-                            class="svg svg--cross svg-icon valign--middle"
-                            height="20"
-                            preserveAspectRatio="xMinYMin meet"
-                            role="img"
-                            viewBox="0 0 20 20"
-                            width="20"
+                        <div
+                          class="flex flex--row flex--center button-icon-wrapper"
+                        >
+                          <div
+                            class="flex-item flex-item--shrink button-icon valign--middle flush--left"
                           >
-                            <use
-                              xlink:href="#icon-cross--small"
-                            />
-                          </svg>
-                        </span>
+                            <span
+                              class="svg svg--cross text--secondary"
+                            >
+                              <svg
+                                class="svg-icon valign--middle"
+                                height="24"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24"
+                              >
+                                <use
+                                  xlink:href="#icon-cross--small"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
                       </button>
                       <section
                         class="section"
@@ -182,6 +187,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                 >
                   <Button
                     className="tooltip-closeBtn"
+                    component="button"
                     icon={
                       <Icon
                         className="text--secondary"
@@ -191,44 +197,66 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                     }
                     onClick={[Function]}
                     reset={true}
+                    type="button"
                   >
-                    <Button
-                      className="tooltip-closeBtn"
-                      icon="cross"
+                    <button
+                      className="button button--reset button--iconOnly tooltip-closeBtn"
                       onClick={[Function]}
-                      reset={true}
+                      type="button"
                     >
-                      <button
-                        className="tooltip-closeBtn"
-                        data-icon="only"
-                        data-swarm-button="reset"
-                        data-swarm-size="default"
-                        data-swarm-width="default"
-                        onClick={[Function]}
-                        type="button"
+                      <Flex
+                        className="button-icon-wrapper"
+                        justify="center"
                       >
-                        <span>
-                          <Icon
-                            shape="cross"
-                            size="xs"
+                        <FlexComponent
+                          className="button-icon-wrapper"
+                          direction="row"
+                          justify="center"
+                        >
+                          <div
+                            className="flex flex--row flex--center button-icon-wrapper"
                           >
-                            <svg
-                              className="svg svg--cross svg-icon valign--middle"
-                              height="20"
-                              preserveAspectRatio="xMinYMin meet"
-                              role="img"
-                              style={Object {}}
-                              viewBox="0 0 20 20"
-                              width="20"
+                            <FlexItem
+                              className="button-icon valign--middle flush--left"
+                              shrink={true}
                             >
-                              <use
-                                xlinkHref="#icon-cross--small"
-                              />
-                            </svg>
-                          </Icon>
-                        </span>
-                      </button>
-                    </Button>
+                              <FlexItemComponent
+                                className="button-icon valign--middle flush--left"
+                                shrink={true}
+                              >
+                                <div
+                                  className="flex-item flex-item--shrink button-icon valign--middle flush--left"
+                                >
+                                  <Icon
+                                    className="text--secondary"
+                                    shape="cross"
+                                    size="s"
+                                  >
+                                    <span
+                                      className="svg svg--cross text--secondary"
+                                    >
+                                      <svg
+                                        className="svg-icon valign--middle"
+                                        height="24"
+                                        preserveAspectRatio="xMinYMin meet"
+                                        role="img"
+                                        style={Object {}}
+                                        viewBox="0 0 24 24"
+                                        width="24"
+                                      >
+                                        <use
+                                          xlinkHref="#icon-cross--small"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </Icon>
+                                </div>
+                              </FlexItemComponent>
+                            </FlexItem>
+                          </div>
+                        </FlexComponent>
+                      </Flex>
+                    </button>
                   </Button>
                   <Section
                     noSeparator={true}

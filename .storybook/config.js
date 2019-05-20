@@ -3,9 +3,6 @@ import '../assets/scss/storybook.scss';
 import infoAddon from '@storybook/addon-info';
 import { setOptions } from '@storybook/addon-options';
 
-import '@meetup/swarm-styles/dist/global.css';
-import '@meetup/swarm-styles/dist/main.css';
-
 const componentStories = require.context('../src', true, /\.story\.jsx$/);
 
 function loadStories() {

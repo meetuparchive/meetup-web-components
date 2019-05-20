@@ -34,16 +34,72 @@ storiesOf('Forms/TogglePill', module)
 			Toggle Pill Label
 		</TogglePill>
 	))
-	.add('reset', () => (
+	.add('small', () => (
+		<TogglePill
+			onChange={onChange}
+			id="togglePillId"
+			name="togglePillName"
+			value="toggle-pill"
+			small
+		>
+			Toggle Pill Label
+		</TogglePill>
+	))
+	.add('with labelClassName', () => (
+		<TogglePill
+			onChange={onChange}
+			id="togglePillId"
+			name="togglePillName"
+			value="toggle-pill"
+			labelClassName="span--100"
+		>
+			I will span--100
+		</TogglePill>
+	))
+	.add('Topic pill', () => (
+		<TogglePill
+			topic
+			onChange={onChange}
+			id="togglePillId"
+			name="togglePillName"
+			value="toggle-pill"
+		>
+			Toggle Pill Label
+		</TogglePill>
+	))
+	.add('Topic pill selected', () => (
+		<TogglePill
+			topic
+			onChange={onChange}
+			id="togglePillId"
+			name="togglePillName"
+			value="toggle-pill"
+			isActive
+		>
+			Toggle Pill Label
+		</TogglePill>
+	))
+	.add('Radio button', () => (
 		<div>
 			<TogglePill
-				checked
-				id="togglePillId"
-				name="togglePillName"
+				onChange={onChange}
+				id="togglePill1"
+				name="pills"
 				value="toggle-pill"
-				reset
+				isActive
+				useRadio
 			>
-				Toggle Pill Label
+				Toggle Pill A
+			</TogglePill>
+			<TogglePill
+				onChange={onChange}
+				id="togglePill2"
+				name="pills"
+				value="toggle-pill"
+				isActive
+				useRadio
+			>
+				Toggle Pill B
 			</TogglePill>
 		</div>
 	));

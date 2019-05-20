@@ -1,29 +1,91 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import cx from 'classnames';
+import Icon from '../media/Icon';
+import ToggleWrapper from '../utils/components/ToggleWrapper';
 
-import { TogglePill as SwarmUITogglePill } from '@meetup/swarm-components';
+export const TOGGLE_PILL_CLASS = 'toggleButton';
 
 /**
  * Toggle Pill component
+ * @see {@link https://github.com/meetup/sassquatch2/blob/develop/sass/ui-components/_toggle-pill.scss}
+ * @see {@link http://meetup.github.io/sassquatch2/ui_components.html#togglePills}
  * @module TogglePill
  */
 export class TogglePill extends React.PureComponent {
-	componentDidCatch(error, info) {
-		console.log(`${error}: \n ${info.componentStack}`);
-	}
-
 	render() {
 		const {
 			isActive,
-			labelClassName, // eslint-disable-line no-unused-vars
+			children,
+			className,
+			labelClassName,
+			topic,
+			id,
+			small,
+			name,
+			useRadio,
+			value,
 			onChange,
-			onClick,
 			...other
 		} = this.props;
 
-		const clickCallback = onClick ? onClick : onChange ? onChange : false;
+		delete other.large;
+
+		const inputType = useRadio ? 'radio' : 'checkbox';
+
+		const classNames = cx(
+			TOGGLE_PILL_CLASS,
+			{
+				'toggleButton--topic': topic,
+				'toggleButton--radio': useRadio,
+			},
+			className
+		);
+
+		const labelClassNames = cx(
+			'toggleButton-label',
+			{
+				'toggleButton-label--small': small,
+			},
+			labelClassName
+		);
+
+		const topicChildren = isActive => (
+			<Icon
+				className={cx('toggleButton-icon', {
+					'toggleButton-icon--active': isActive,
+					'toggleButton-icon--inactive': !isActive,
+				})}
+				shape={isActive ? 'heart' : 'heart-outline'}
+				size="xxs"
+				label="Active Topic Icon"
+			/>
+		);
+		// ---
+
 		return (
-			<SwarmUITogglePill checked={isActive} onClick={clickCallback} {...other} />
+			<ToggleWrapper type={inputType} isActive={isActive} onToggle={onChange}>
+				{({ tabIndex, isActive, toggleActive, onKeyUp }) => (
+					<div className={classNames}>
+						<input
+							className="toggleButton-input visibility--a11yHide"
+							type={inputType}
+							id={id}
+							name={name}
+							value={value}
+							checked={isActive}
+							onChange={toggleActive}
+							onKeyUp={onKeyUp}
+							tabIndex={tabIndex}
+							{...other}
+						/>
+						<label className={labelClassNames} htmlFor={id}>
+							{children}
+							{topic ? topicChildren(isActive) : null}
+						</label>
+					</div>
+				)}
+			</ToggleWrapper>
 		);
 	}
 }
@@ -36,18 +98,21 @@ TogglePill.propTypes = {
 	name: PropTypes.string.isRequired,
 
 	/** The `value` attribute for the input */
-	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+	value: PropTypes.string.isRequired,
 
 	children: PropTypes.node.isRequired,
 
 	/** Whether the pill is toggled on/selected */
 	isActive: PropTypes.bool,
 
-	/** Deprecated; use `onClick` */
-	onChange: PropTypes.func,
+	/** Whether to use input[type="radio"] to limit the selection to one toggle pill in a group */
+	useRadio: PropTypes.bool,
 
-	/** Custom callback when clicked */
-	onClick: PropTypes.func,
+	/** Whether the pill should be rendered in a way that visually indicates it's a topic */
+	topic: PropTypes.bool,
+
+	/** The class name/s to add to the `<label />` element */
+	labelClassName: PropTypes.string,
 };
 
 TogglePill.defaultProps = {

@@ -4,7 +4,8 @@ exports[`Textarea exists 1`] = `
 <div
   className="inputContainer"
 >
-  <Textarea
+  <textarea
+    className="span--100"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -14,7 +15,6 @@ exports[`Textarea exists 1`] = `
       Object {
         "maxHeight": 300,
         "minHeight": 100,
-        "resize": "auto",
       }
     }
     type="text"
@@ -27,13 +27,14 @@ exports[`Textarea should have a label when label is given 1`] = `
 <div
   className="inputContainer"
 >
-  <FieldLabel
-    className=""
+  <label
+    className="label--field"
     htmlFor="super"
   >
     Super Hero
-  </FieldLabel>
-  <Textarea
+  </label>
+  <textarea
+    className="span--100"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -42,7 +43,6 @@ exports[`Textarea should have a label when label is given 1`] = `
       Object {
         "maxHeight": 300,
         "minHeight": 100,
-        "resize": "auto",
       }
     }
     type="text"
@@ -55,13 +55,14 @@ exports[`Textarea should have a required attribute when specified 1`] = `
 <div
   className="inputContainer"
 >
-  <FieldLabel
-    className=""
+  <label
+    className="label--field"
     htmlFor="super"
   >
     Super Hero
-  </FieldLabel>
-  <Textarea
+  </label>
+  <textarea
+    className="span--100"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -70,7 +71,6 @@ exports[`Textarea should have a required attribute when specified 1`] = `
       Object {
         "maxHeight": 300,
         "minHeight": 100,
-        "resize": "auto",
       }
     }
     type="text"
@@ -83,16 +83,19 @@ exports[`Textarea should have helper text when helper text is given 1`] = `
 <div
   className="inputContainer"
 >
-  <FieldLabel
-    className=""
+  <label
+    className="label--field flush--bottom"
     htmlFor="super"
   >
     Super Hero
-  </FieldLabel>
-  <FieldHelper>
+  </label>
+  <div
+    className="helperTextContainer"
+  >
     Enter your favorite hero
-  </FieldHelper>
-  <Textarea
+  </div>
+  <textarea
+    className="span--100"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -101,7 +104,6 @@ exports[`Textarea should have helper text when helper text is given 1`] = `
       Object {
         "maxHeight": 300,
         "minHeight": 100,
-        "resize": "auto",
       }
     }
     type="text"
@@ -114,7 +116,8 @@ exports[`Textarea should set its value on input change 1`] = `
 <div
   className="inputContainer"
 >
-  <Textarea
+  <textarea
+    className="span--100"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -124,7 +127,6 @@ exports[`Textarea should set its value on input change 1`] = `
       Object {
         "maxHeight": 300,
         "minHeight": 100,
-        "resize": "auto",
       }
     }
     type="text"
@@ -137,7 +139,8 @@ exports[`Textarea should set its value on input change 2`] = `
 <div
   className="inputContainer"
 >
-  <Textarea
+  <textarea
+    className="span--100"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -147,7 +150,6 @@ exports[`Textarea should set its value on input change 2`] = `
       Object {
         "maxHeight": 300,
         "minHeight": 100,
-        "resize": "auto",
       }
     }
     type="text"

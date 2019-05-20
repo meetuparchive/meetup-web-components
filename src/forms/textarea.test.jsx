@@ -1,11 +1,15 @@
 import React from 'react';
-import {
-	FieldLabel,
-	FieldHelper,
-	Textarea as SwarmTextarea,
-} from '@meetup/swarm-components';
+import * as autosizePlugin from 'autosize';
 import { Textarea, overrideValue } from './Textarea';
 import { shallow, mount } from 'enzyme';
+
+jest.mock('autosize', () => {
+	return jest.fn();
+});
+
+// Mock out the autosize update function
+const mockAutosize = require('autosize');
+mockAutosize.update = jest.fn();
 
 const onChange = jest.fn();
 
@@ -36,6 +40,14 @@ describe('Textarea', function() {
 		expect(overrideValue({})).toEqual({ value: '' });
 	});
 
+	it('should call autosize plugin `update` method on `componentDidUpdate`', function() {
+		const component = shallow(<Textarea {...props} autosize />).instance();
+		const nextProps = { value: 'hello world' };
+		component.componentDidUpdate(nextProps);
+
+		expect(mockAutosize.update).toHaveBeenCalled();
+	});
+
 	it('should have a name attribute', () => {
 		// hostNodes needed because mount traverses the tree and renders each node,
 		// since this attribute is nested on the child node it would be rendered twice
@@ -54,7 +66,7 @@ describe('Textarea', function() {
 
 	it('should have a label when label is given', () => {
 		const component = shallow(<Textarea {...props} label="Super Hero" />);
-		expect(component.find(FieldLabel).length).toBe(1);
+		expect(component.find('label').length).toBe(1);
 		expect(component).toMatchSnapshot();
 	});
 
@@ -66,7 +78,7 @@ describe('Textarea', function() {
 				helperText="Enter your favorite hero"
 			/>
 		);
-		expect(component.find(FieldHelper).length).toBe(1);
+		expect(component.find('.helperTextContainer').length).toBe(1);
 		expect(component).toMatchSnapshot();
 	});
 
@@ -104,12 +116,16 @@ describe('Textarea', function() {
 		expect(onChange).toHaveBeenCalled();
 	});
 
+	it('should call autosize plugin when this.props.autosize is true', function() {
+		shallowComponent.instance().componentDidMount();
+		expect(autosizePlugin.default).toHaveBeenCalled();
+	});
+
 	it('should be able to set min and max height', function() {
-		const component = shallow(<Textarea {...props} onChange={onChange} />);
-		expect(component.find(SwarmTextarea).get(0).props.style).toEqual({
+		const component = shallow(<Textarea {...props} autosize onChange={onChange} />);
+		expect(component.find('textarea').get(0).props.style).toEqual({
 			minHeight: 100,
 			maxHeight: 300,
-			resize: 'auto',
 		});
 	});
 });

@@ -1,54 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextInput renders a required HTML <input> with expected attributes for mock data 1`] = `
-<TextInput
-  id="superhero"
-  label="Super Hero"
-  maxLength={20}
-  name="superhero"
-  onChange={[MockFunction]}
-  value="Batman"
+<div
+  className="inputContainer"
 >
-  <div>
-    <FieldLabel
-      className=""
-      htmlFor="superhero"
-    >
-      <label
-        className=""
-        data-swarm-field-label={true}
-        htmlFor="superhero"
-      >
-        Super Hero
-      </label>
-    </FieldLabel>
-    <div
-      data-swarm-select-wrapper="1"
-    >
-      <TextInput
-        id="superhero"
-        maxLength={20}
-        name="superhero"
-        onChange={[Function]}
-        onInvalid={[Function]}
-        value="Batman"
-      >
-        <div
-          data-swarm-text-input-wrapper="default"
-        >
-          <input
-            data-swarm-text-input="default"
-            id="superhero"
-            maxLength={20}
-            name="superhero"
-            onChange={[Function]}
-            onInvalid={[Function]}
-            type="text"
-            value="Batman"
-          />
-        </div>
-      </TextInput>
-    </div>
+  <label
+    className="label--field label--required"
+    data-requiredtext="*"
+    htmlFor="superhero"
+  >
+    Super Hero
+  </label>
+  <div
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <input
+      className="span--100"
+      id="superhero"
+      name="superhero"
+      onChange={[Function]}
+      onInvalid={[Function]}
+      required={true}
+      type="text"
+      value="Batman"
+    />
   </div>
-</TextInput>
+</div>
 `;

@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`RadioButtonGroup should apply switchDirection, direction, and wrap props 1`] = `
+<Flex
+  className="some-class"
+  direction="column"
+  switchDirection="medium"
+  wrap={true}
+>
+  <FlexItem
+    key=".0"
+    shrink={true}
+  >
+    <RadioButton
+      checked={true}
+      label="label 1"
+      name="name"
+      onChange={[Function]}
+      value="one"
+    />
+  </FlexItem>
+  <FlexItem
+    key=".1"
+    shrink={true}
+  >
+    <RadioButton
+      checked={false}
+      label="label 2"
+      name="name"
+      onChange={[Function]}
+      value="two"
+    />
+  </FlexItem>
+</Flex>
+`;
+
 exports[`RadioButtonGroup should match the snapshot 1`] = `
 <Flex
   className="some-class"
@@ -12,7 +46,7 @@ exports[`RadioButtonGroup should match the snapshot 1`] = `
     <RadioButton
       checked={true}
       label="label 1"
-      name="button1"
+      name="name"
       onChange={[Function]}
       value="one"
     />
@@ -24,7 +58,7 @@ exports[`RadioButtonGroup should match the snapshot 1`] = `
     <RadioButton
       checked={false}
       label="label 2"
-      name="button2"
+      name="name"
       onChange={[Function]}
       value="two"
     />

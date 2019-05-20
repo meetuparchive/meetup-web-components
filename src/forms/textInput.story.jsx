@@ -1,5 +1,5 @@
 import React from 'react';
-import TextInput from './TextInput';
+import { TextInput } from './TextInput';
 import Button from './Button';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';

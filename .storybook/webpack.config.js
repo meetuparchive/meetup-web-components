@@ -6,7 +6,6 @@ const SVG_PATH = path.resolve(__dirname, '../assets', 'svg');
 const SRC_PATH = path.resolve(__dirname, '../src');
 const IMG_PATH = path.resolve(__dirname, '../assets', 'images');
 const PLATFORM_PATH = /node_modules\/meetup-web-platform/;
-const SWARM_STYLES_PATH = /node_modules\/@meetup\/swarm-styles/;
 
 module.exports = {
 	module: {
@@ -15,43 +14,43 @@ module.exports = {
 				enforce: 'pre',
 				test: /\.jsx?$/,
 				loader: 'eslint-loader?{fix:true}',
-				include: SRC_PATH,
+				include: SRC_PATH
 			},
 			{
 				test: /\.css$/,
 				loaders: ['style-loader', 'css-loader'],
-				include: CSS_PATH,
+				include: CSS_PATH
 			},
 			{
 				test: /\.scss$/,
 				loaders: ['style-loader', 'css-loader', 'sass-loader'],
-				include: SCSS_PATH,
-			},
-			{
-				test: /\.css$/,
-				loaders: ['style-loader', 'css-loader'],
-				include: SWARM_STYLES_PATH,
+				include: SCSS_PATH
 			},
 			{
 				test: /\.svg$/,
 				loaders: ['file-loader'],
-				include: SVG_PATH,
+				include: SVG_PATH
 			},
 			{
 				test: /\.jsx?$/,
 				loader: 'babel-loader',
-				include: [SRC_PATH, PLATFORM_PATH],
+				include: [
+					SRC_PATH,
+					PLATFORM_PATH
+				]
 			},
 			{
 				test: /\.(png|jpg|gif)$/,
 				loader: 'file-loader',
 				include: [IMG_PATH],
-			},
-		],
+			}
+		]
 	},
 
 	resolve: {
-		extensions: ['.js', '.jsx'],
+		extensions: ['.js', '.jsx']
 	},
 	watch: true,
+
 };
+

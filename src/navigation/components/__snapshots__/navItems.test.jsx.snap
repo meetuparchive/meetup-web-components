@@ -32,7 +32,9 @@ exports[`NavItem renders a dropdown when \`dropdownContent\` is passed as a prop
       <Button
         aria-haspopup={true}
         className="navItemLink"
+        component="button"
         reset={true}
+        type="button"
       >
         <div>
           <span

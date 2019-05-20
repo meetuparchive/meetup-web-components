@@ -1,7 +1,13 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Link from 'react-router-dom/Link';
-import Button from './Button';
+import { variantTest } from '../utils/testUtils';
+import Button, {
+	BUTTON_CLASS,
+	BUTTON_ICON_WRAPPER_CLASS,
+	BUTTON_ICON_CLASS,
+	BUTTON_LABEL_CLASS,
+} from './Button';
 import Icon from '../media/Icon';
 
 describe('Button', () => {
@@ -12,32 +18,10 @@ describe('Button', () => {
 		});
 	});
 
-	it('has a default state', () => {
-		const button = mount(<Button>Click Me</Button>);
-		expect(
-			button.getDOMNode().attributes.getNamedItem('data-swarm-button').value
-		).toBe('default');
-	});
+	it('applies variant classes for each variant prop', () => {
+		const variants = ['primary', 'fullWidth', 'small', 'bordered'];
 
-	it('has a primary state', () => {
-		const button = mount(<Button primary>Click Me</Button>);
-		expect(
-			button.getDOMNode().attributes.getNamedItem('data-swarm-button').value
-		).toBe('primary');
-	});
-
-	it('has a neutral state', () => {
-		const button = mount(<Button neutral>Click Me</Button>);
-		expect(
-			button.getDOMNode().attributes.getNamedItem('data-swarm-button').value
-		).toBe('neutral');
-	});
-
-	it('has a bordered state', () => {
-		const button = mount(<Button bordered>Click Me</Button>);
-		expect(
-			button.getDOMNode().attributes.getNamedItem('data-swarm-button').value
-		).toBe('bordered');
+		variantTest(Button, BUTTON_CLASS, variants);
 	});
 
 	it('executes onClick when clicked', () => {
@@ -48,61 +32,82 @@ describe('Button', () => {
 		expect(onClick).toHaveBeenCalled();
 	});
 
+	it('does not execute onClick when disabled', () => {
+		const onClick = jest.fn();
+		const button = shallow(<Button onClick={onClick} disabled />);
+
+		button.simulate('click');
+		expect(onClick).not.toHaveBeenCalled();
+	});
+
 	describe('Button with icon', () => {
-		describe('right aligned', () => {
-			it('should set icon container to reverse', () => {
-				const icon = <Icon shape="chevron-right" />;
-				const button = mount(
-					<Button icon={icon} primary right>
-						Click me
-					</Button>
-				);
+		const icon = <Icon shape="chevron-right" />,
+			label = 'Icon Button';
+		let button;
 
-				expect(
-					button.getDOMNode().attributes.getNamedItem('data-icon').value
-				).toBe('right');
-			});
+		beforeEach(() => {
+			button = shallow(
+				<Button icon={icon} primary>
+					{label}
+				</Button>
+			);
 		});
-		describe('right aligned icon on Link', () => {
+
+		afterEach(() => {
+			button = null;
+		});
+
+		it('should render wrapper for icons and label', () => {
+			expect(button.find(`.${BUTTON_ICON_WRAPPER_CLASS}`).exists()).toBe(true);
+		});
+
+		it('should render an element with icon class', () => {
+			expect(button.find(`.${BUTTON_ICON_CLASS}`).exists()).toBe(true);
+		});
+
+		it('should render an element with label class', () => {
+			expect(button.find(`.${BUTTON_LABEL_CLASS}`).exists()).toBe(true);
+		});
+
+		describe('right', () => {
 			it('should set icon container to reverse', () => {
 				const icon = <Icon shape="chevron-right" />;
-				const button = mount(
-					<Button icon={icon} component={Link} primary right>
-						Click me
+				const button = shallow(
+					<Button icon={icon} primary right>
+						{label}
 					</Button>
 				);
-
 				expect(
-					button.getDOMNode().attributes.getNamedItem('data-icon').value
-				).toBe('right');
+					button.find(`.${BUTTON_ICON_WRAPPER_CLASS}`).prop('rowReverse')
+				).toBe('all');
 			});
 		});
 	});
 
 	describe('wrapper component prop', () => {
 		const link = 'https://meetup.com/';
-		const buttonTagComponent = shallow(<Button href={link}>Button label</Button>);
+		const buttonTagComponent = shallow(
+			<Button component="a" href={link}>
+				Button label
+			</Button>
+		);
+
+		it('should render element from wrapperEl prop', () => {
+			expect(buttonTagComponent.find('a').length).toBe(1);
+		});
 
 		it('should render the correct `href` value for anchor tag', () => {
 			expect(buttonTagComponent.prop('href')).toBe(link);
 		});
 
 		it('should render the correct `to` value for <Link> component', () => {
-			const buttonLinkComponent = shallow(
+			const buttonTagComponent = shallow(
 				<Button to={link} component={Link}>
 					Button label
 				</Button>
 			);
 
-			expect(buttonLinkComponent.prop('to')).toBe(link);
-		});
-	});
-
-	describe('deprecation error', () => {
-		it('should error when a Link is passed as a component', () => {
-			global.console = { error: jest.fn() };
-			shallow(<Button component="div">Click</Button>);
-			expect(console.error).toBeCalled();
+			expect(buttonTagComponent.prop('to')).toBe(link);
 		});
 	});
 });

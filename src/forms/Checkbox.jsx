@@ -1,6 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Checkbox as SwarmCheckbox } from '@meetup/swarm-components';
+import cx from 'classnames';
+import Flex from '../layout/Flex';
+import FlexItem from '../layout/FlexItem';
+import Icon from '../media/Icon';
+
+export const FAUX_TOGGLE_CLASS = 'fauxToggle';
+export const FOCUSED_CHECKBOX_CLASS = 'focused';
+export const DISABLED_CHECKBOX_CLASS = 'disabled';
 
 /**
  * @module Checkbox
@@ -8,24 +15,22 @@ import { Checkbox as SwarmCheckbox } from '@meetup/swarm-components';
 class Checkbox extends React.PureComponent {
 	constructor(props) {
 		super(props);
-
-		this.state = {
+		const state = {
+			focused: false,
 			checked: props.checked || false,
 		};
 
 		this.onChange = this.onChange.bind(this);
+		this.onBlur = this.onBlur.bind(this);
+		this.onFocus = this.onFocus.bind(this);
+		this.state = state;
 	}
 
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		const { checked, controlled } = nextProps;
-
 		if (this.props.controlled !== controlled && controlled) {
 			this.setState({ checked });
 		}
-	}
-
-	componentDidCatch(error, info) {
-		console.log(`${error}: \n ${info.componentStack}`);
 	}
 
 	onChange(e) {
@@ -36,45 +41,103 @@ class Checkbox extends React.PureComponent {
 		}
 	}
 
-	getChecked() {
-		if (this.props.controlled) {
-			return this.state.checked;
-		}
+	onBlur(e) {
+		this.setState({ focused: false });
+	}
 
+	onFocus(e) {
+		this.setState({ focused: true });
+	}
+
+	getChecked() {
+		if (this.props.controlled) return this.state.checked;
 		return this.props.checked;
 	}
 
 	render() {
-		// use the "eslint-disable-line" because we don't want
-		// the `checked` and `controlled` props passed in `other`
-		// to the `SwarmCheckbox` component
 		const {
 			checked, // eslint-disable-line no-unused-vars
-			controlled, // eslint-disable-line no-unused-vars
-			onChange, // eslint-disable-line no-unused-vars
-			labelClassName, // eslint-disable-line no-unused-vars
+			children,
+			className,
+			labelClassName,
 			id,
 			label,
-			disabled,
 			name,
-			value = '',
+			value,
+			disabled,
+			onBlur, // eslint-disable-line no-unused-vars
+			onFocus, // eslint-disable-line no-unused-vars
+			onChange, // eslint-disable-line no-unused-vars
+			controlled, // eslint-disable-line no-unused-vars
+			iconShape,
 			...other
 		} = this.props;
-
-		const elId = id || `${name}-${value}`;
 		const stateChecked = this.getChecked();
 
+		const classNames = cx('minTouchHeight', className);
+
+		const labelClassNames = cx(
+			'toggleLabel label--minor display--block',
+			labelClassName
+		);
+
+		const fauxCheckboxClassNames = cx(
+			'display--block align--center',
+			FAUX_TOGGLE_CLASS,
+			`${FAUX_TOGGLE_CLASS}--checkbox`,
+			{
+				checked: stateChecked,
+				disabled,
+				[FOCUSED_CHECKBOX_CLASS]: this.state.focused,
+				'checked--disabled': stateChecked && disabled,
+				'checked--focused': this.state.focused && disabled,
+			}
+		);
+
+		const elId = id || `${name}-${value}`;
+
 		return (
-			<SwarmCheckbox
-				checked={stateChecked}
-				label={label}
-				id={elId}
-				disabled={disabled}
-				onChange={this.onChange}
-				name={name}
-				value={value}
-				{...other}
-			/>
+			<label className={labelClassNames} htmlFor={elId}>
+				<Flex align="center" className={classNames} {...other}>
+					<FlexItem shrink>
+						<input
+							type="checkbox"
+							name={name}
+							value={value}
+							checked={stateChecked}
+							disabled={disabled}
+							className="checkbox visibility--a11yHide"
+							id={elId}
+							onBlur={this.onBlur}
+							onFocus={this.onFocus}
+							onChange={this.onChange}
+						/>
+						<span
+							ref={el => (this.fauxCheckboxEl = el)}
+							className={fauxCheckboxClassNames}
+						>
+							{stateChecked && (
+								<Icon
+									className="display--flex flex--center checkbox-indicator"
+									shape={iconShape || 'check'}
+									size="xs"
+								/>
+							)}
+						</span>
+					</FlexItem>
+					<FlexItem className="toggleLabel-container">
+						<span
+							className={cx({
+								['text--hint']: disabled,
+								['text--bold']: stateChecked,
+							})}
+						>
+							{label}
+						</span>
+						{children}
+					</FlexItem>
+				</Flex>
+			</label>
 		);
 	}
 }
@@ -92,14 +155,26 @@ Checkbox.propTypes = {
 	/** What we render into the input's `<label />` */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
+	/** The class name/s to add to the `<label />` element */
+	labelClassName: PropTypes.string,
+
 	/** The `name` attribute for the input */
 	name: PropTypes.string.isRequired,
 
 	/** The `value` attribute for the input */
-	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]), // checkboxes don't need values
 
 	/** Callback that happens when the input changes */
 	onChange: PropTypes.func,
+
+	/** Callback that happens when the input loses :focus */
+	onBlur: PropTypes.func,
+
+	/** Callback that happens when the input gets :focus */
+	onFocus: PropTypes.func,
+
+	/** Optional icon for checked state, defaults to 'check'  */
+	iconShape: PropTypes.string,
 };
 
 Checkbox.defaultProps = {

@@ -1,53 +1,177 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RadioButton checked should render an disabled radio button 1`] = `
-<Radio
-  checked={true}
-  className="some-class"
-  disabled={false}
-  id="RadioButton-name-value"
-  label="This is a label"
-  name="name"
-  otherProp="other"
-  value="value"
-/>
+<label
+  className="toggleLabel label--minor display--block"
+  htmlFor="RadioButton-name-value"
+>
+  <Flex
+    align="center"
+    className="some-class"
+    noGutters={true}
+  >
+    <FlexItem
+      shrink={true}
+    >
+      <input
+        checked={true}
+        className="radio visibility--a11yHide"
+        disabled={false}
+        id="RadioButton-name-value"
+        name="name"
+        otherProp="other"
+        readOnly={true}
+        type="radio"
+        value="value"
+      />
+      <span
+        className="display--flex flex--alignCenter flex--center align--center fauxToggle fauxToggle--radio checked"
+      >
+        <span
+          className="radio-indicator"
+        />
+      </span>
+    </FlexItem>
+    <FlexItem
+      className="toggleLabel-container"
+      shrink={true}
+    >
+      <span
+        className="text--bold"
+      >
+        This is a label
+      </span>
+    </FlexItem>
+  </Flex>
+</label>
 `;
 
 exports[`RadioButton checked should render an enabled radio button 1`] = `
-<Radio
-  checked={true}
-  className="some-class"
-  disabled={true}
-  id="RadioButton-name-value"
-  label="This is a label"
-  name="name"
-  otherProp="other"
-  value="value"
-/>
+<label
+  className="toggleLabel label--minor display--block"
+  htmlFor="RadioButton-name-value"
+>
+  <Flex
+    align="center"
+    className="some-class"
+    noGutters={true}
+  >
+    <FlexItem
+      shrink={true}
+    >
+      <input
+        checked={true}
+        className="radio visibility--a11yHide"
+        disabled={true}
+        id="RadioButton-name-value"
+        name="name"
+        otherProp="other"
+        readOnly={true}
+        type="radio"
+        value="value"
+      />
+      <span
+        className="display--flex flex--alignCenter flex--center align--center fauxToggle fauxToggle--radio checked disabled"
+      >
+        <span
+          className="radio-indicator"
+        />
+      </span>
+    </FlexItem>
+    <FlexItem
+      className="toggleLabel-container"
+      shrink={true}
+    >
+      <span
+        className="text--hint text--bold"
+      >
+        This is a label
+      </span>
+    </FlexItem>
+  </Flex>
+</label>
 `;
 
 exports[`RadioButton unchecked should render an disabled radio button 1`] = `
-<Radio
-  checked={false}
-  className="some-class"
-  disabled={false}
-  id="RadioButton-name-value"
-  label="This is a label"
-  name="name"
-  otherProp="other"
-  value="value"
-/>
+<label
+  className="toggleLabel label--minor display--block"
+  htmlFor="RadioButton-name-value"
+>
+  <Flex
+    align="center"
+    className="some-class"
+    noGutters={true}
+  >
+    <FlexItem
+      shrink={true}
+    >
+      <input
+        checked={false}
+        className="radio visibility--a11yHide"
+        disabled={false}
+        id="RadioButton-name-value"
+        name="name"
+        otherProp="other"
+        readOnly={true}
+        type="radio"
+        value="value"
+      />
+      <span
+        className="display--flex flex--alignCenter flex--center align--center fauxToggle fauxToggle--radio"
+      />
+    </FlexItem>
+    <FlexItem
+      className="toggleLabel-container"
+      shrink={true}
+    >
+      <span
+        className=""
+      >
+        This is a label
+      </span>
+    </FlexItem>
+  </Flex>
+</label>
 `;
 
 exports[`RadioButton unchecked should render an enabled radio button 1`] = `
-<Radio
-  checked={false}
-  className="some-class"
-  disabled={true}
-  id="RadioButton-name-value"
-  label="This is a label"
-  name="name"
-  otherProp="other"
-  value="value"
-/>
+<label
+  className="toggleLabel label--minor display--block"
+  htmlFor="RadioButton-name-value"
+>
+  <Flex
+    align="center"
+    className="some-class"
+    noGutters={true}
+  >
+    <FlexItem
+      shrink={true}
+    >
+      <input
+        checked={false}
+        className="radio visibility--a11yHide"
+        disabled={true}
+        id="RadioButton-name-value"
+        name="name"
+        otherProp="other"
+        readOnly={true}
+        type="radio"
+        value="value"
+      />
+      <span
+        className="display--flex flex--alignCenter flex--center align--center fauxToggle fauxToggle--radio disabled"
+      />
+    </FlexItem>
+    <FlexItem
+      className="toggleLabel-container"
+      shrink={true}
+    >
+      <span
+        className="text--hint"
+      >
+        This is a label
+      </span>
+    </FlexItem>
+  </Flex>
+</label>
 `;

@@ -2,12 +2,9 @@
 
 exports[`redux-form TogglePill renders a TogglePill component with expected attributes from mock data 1`] = `
 <TogglePill
-  id="parenting"
   isActive={false}
   label="Parenting"
   name="parenting"
   value={false}
->
-  Parenting!
-</TogglePill>
+/>
 `;

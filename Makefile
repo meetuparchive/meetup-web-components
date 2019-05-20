@@ -1,14 +1,12 @@
-BUILD_VERSION ?= 7.0.$(CI_BUILD_NUMBER)
+VERSION ?= 7.0.$(CI_BUILD_NUMBER)
 
-# default to beta publishing
-VERSION_TAG ?= $(BUILD_VERSION)-beta
-NPM_TAG ?= beta
-
-# publish full version for master merges
 ifeq ($(TRAVIS_BRANCH), master)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
-NPM_TAG = latest
-VERSION_TAG = $(BUILD_VERSION)
+NPM_TAG ?= latest
+VERSION_TAG ?= $(VERSION)
+else
+NPM_TAG ?= beta
+VERSION_TAG ?= $(VERSION)-beta
 endif
 endif
 
@@ -28,9 +26,6 @@ lib:
 
 # 'npm version' updates package.json and commits tag to git
 publish: lib
-	@echo "CI Build $(CI_BUILD_NUMBER)"
-	@echo "build version: $(BUILD_VERSION)"
-	@echo "commit message: $$COMMIT_MESSAGE"
 	@echo "publishing $(VERSION_TAG)"
 	npm version $(VERSION_TAG) -m "$$COMMIT_MESSAGE"
 	npm publish --tag $(NPM_TAG)

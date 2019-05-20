@@ -1,7 +1,11 @@
 import React from 'react';
 import { shallow, render, mount } from 'enzyme';
 
-import Checkbox from './Checkbox';
+import Checkbox, {
+	FAUX_TOGGLE_CLASS,
+	FOCUSED_CHECKBOX_CLASS,
+	DISABLED_CHECKBOX_CLASS,
+} from './Checkbox';
 
 const fakeOnChange = jest.fn();
 
@@ -11,6 +15,9 @@ const JSXcheckboxUnchecked = (
 const JSXcheckboxChecked = (
 	<Checkbox label="Hello!" name="greeting" id="hello" value="hello" checked />
 );
+const JSXcheckboxDisabled = (
+	<Checkbox label="Hello!" name="greeting" id="hello" value="hello" disabled />
+);
 const JSXcheckboxUncheckedWithOnChange = (
 	<Checkbox
 		label="Hello!"
@@ -18,7 +25,6 @@ const JSXcheckboxUncheckedWithOnChange = (
 		id="hello"
 		value="hello"
 		onChange={fakeOnChange}
-		controlled
 	/>
 );
 
@@ -55,13 +61,10 @@ describe('Checkbox', function() {
 
 			expect(checkbox.props().checked).toBe(false);
 			expect(fakeOnChange).not.toHaveBeenCalled();
-
 			checkbox.simulate('change', { target: { checked: true } });
-			component.update();
-
-			expect(fakeOnChange).toHaveBeenCalled();
-			expect(component.state().checked).toBe(true);
 			expect(component.find('input').props().checked).toBe(true);
+			expect(component.instance().state.checked).toBe(true);
+			expect(fakeOnChange).toHaveBeenCalled();
 		});
 
 		it('calls onChange and does not set state', function() {
@@ -112,6 +115,39 @@ describe('Checkbox', function() {
 			const icon = component.find('svg');
 
 			expect(icon.length).toBe(1);
+		});
+
+		it(`should add class '${FOCUSED_CHECKBOX_CLASS}' when the faux input is focused`, () => {
+			const component = mount(JSXcheckboxUnchecked);
+			const fauxInput = component.find(`.${FAUX_TOGGLE_CLASS}`);
+			const input = component.find('input');
+
+			expect(fauxInput.hasClass(FOCUSED_CHECKBOX_CLASS)).toBe(false);
+			input.simulate('focus');
+			expect(
+				component.find(`.${FAUX_TOGGLE_CLASS}`).hasClass(FOCUSED_CHECKBOX_CLASS)
+			).toBe(true);
+		});
+
+		it(`should remove class '${FOCUSED_CHECKBOX_CLASS}' when the faux input loses focus`, () => {
+			const component = mount(JSXcheckboxUnchecked);
+			const input = component.find('input');
+
+			input.simulate('focus');
+			expect(
+				component.find(`.${FAUX_TOGGLE_CLASS}`).hasClass(FOCUSED_CHECKBOX_CLASS)
+			).toBe(true);
+			input.simulate('blur');
+			expect(
+				component.find(`.${FAUX_TOGGLE_CLASS}`).hasClass(FOCUSED_CHECKBOX_CLASS)
+			).toBe(false);
+		});
+
+		it(`should add class ${DISABLED_CHECKBOX_CLASS} when the faux input is disabled`, () => {
+			const component = mount(JSXcheckboxDisabled);
+			const fauxInput = component.find(`.${FAUX_TOGGLE_CLASS}`);
+
+			expect(fauxInput.hasClass(DISABLED_CHECKBOX_CLASS)).toBe(true);
 		});
 	});
 });
