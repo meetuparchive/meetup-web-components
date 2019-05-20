@@ -1,87 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Checkbox basic renders checked checkbox 1`] = `
-<label
-  className="toggleLabel label--minor display--block"
-  htmlFor="hello"
->
-  <Flex
-    align="center"
-    className="minTouchHeight"
-  >
-    <FlexItem
-      shrink={true}
-    >
-      <input
-        checked={true}
-        className="checkbox visibility--a11yHide"
-        id="hello"
-        name="greeting"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="checkbox"
-        value="hello"
-      />
-      <span
-        className="display--block align--center fauxToggle fauxToggle--checkbox checked"
-      >
-        <Icon
-          className="display--flex flex--center checkbox-indicator"
-          shape="check"
-          size="xs"
-        />
-      </span>
-    </FlexItem>
-    <FlexItem
-      className="toggleLabel-container"
-    >
-      <span
-        className="text--bold"
-      >
-        Hello!
-      </span>
-    </FlexItem>
-  </Flex>
-</label>
+<Checkbox
+  checked={true}
+  id="hello"
+  label="Hello!"
+  name="greeting"
+  onChange={[Function]}
+  value="hello"
+/>
 `;
 
 exports[`Checkbox basic renders unchecked checkbox 1`] = `
-<label
-  className="toggleLabel label--minor display--block"
-  htmlFor="hello"
->
-  <Flex
-    align="center"
-    className="minTouchHeight"
-  >
-    <FlexItem
-      shrink={true}
-    >
-      <input
-        checked={false}
-        className="checkbox visibility--a11yHide"
-        id="hello"
-        name="greeting"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="checkbox"
-        value="hello"
-      />
-      <span
-        className="display--block align--center fauxToggle fauxToggle--checkbox"
-      />
-    </FlexItem>
-    <FlexItem
-      className="toggleLabel-container"
-    >
-      <span
-        className=""
-      >
-        Hello!
-      </span>
-    </FlexItem>
-  </Flex>
-</label>
+<Checkbox
+  checked={false}
+  id="hello"
+  label="Hello!"
+  name="greeting"
+  onChange={[Function]}
+  value="hello"
+/>
 `;
