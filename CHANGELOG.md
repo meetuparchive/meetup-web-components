@@ -1,3 +1,8 @@
+# [8.0]
+
+-   **BREAKING CHANGE** Using updated design system components from `@meetup/swarm-components`
+    in [swarm-ui](https://github.com/meetup/swarm-ui)
+
 # [7.0]
 
 -   **BREAKING CHANGE** Dropping support for React <16.8.0.
