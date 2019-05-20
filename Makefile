@@ -1,4 +1,4 @@
-BUILD_VERSION ?= 7.0.$(CI_BUILD_NUMBER)
+BUILD_VERSION ?= 8.0.$(CI_BUILD_NUMBER)
 
 # default to beta publishing
 VERSION_TAG ?= $(BUILD_VERSION)-beta
