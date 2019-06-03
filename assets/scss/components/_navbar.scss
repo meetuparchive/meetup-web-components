@@ -149,6 +149,15 @@ $maxScalingBP: $breakpoint-m / 1px;
 	}
 }
 
+.navItemLink--experiences {
+	@include atMediaUp(medium) {
+		.navItem-label {
+			color: #5c5cff !important; // Experiences purple
+			font-weight: $W_bold;
+		}
+	}
+}
+
 .counterBadge {
 	$_dotSize: $space-half;
 	background-color: $C_teal;

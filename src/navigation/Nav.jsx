@@ -218,6 +218,12 @@ export class Nav extends React.Component {
 		];
 
 		let authItems = [
+			media.isAtMediumUp && {
+				shrink: true,
+				linkTo: experiences.link,
+				label: experiences.label,
+				linkClassName: 'navItemLink--experiences',
+			},
 			self.is_pro_admin && {
 				shrink: true,
 				linkTo: media.isAtMediumUp ? proDashboard.link : '',
@@ -253,12 +259,6 @@ export class Nav extends React.Component {
 				),
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
-			media.isAtMediumUp && {
-				shrink: true,
-				linkTo: experiences.link,
-				label: experiences.label,
-				linkClassName: experiences.linkClassName,
-			},
 			{
 				shrink: true,
 				linkTo: explore.link,
