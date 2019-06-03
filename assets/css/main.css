@@ -4910,6 +4910,11 @@ input.field--reset:active {
       color: #00a2c7 !important;
       font-weight: 600; } }
 
+@media only screen and (min-width: 640px) {
+  .navItemLink--experiences .navItem-label {
+    color: #00a2c7 !important;
+    font-weight: 600; } }
+
 .counterBadge {
   background-color: #00d480;
   border: 3px solid white;
