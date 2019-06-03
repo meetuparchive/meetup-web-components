@@ -26,6 +26,34 @@ export const SIGNUP_MODAL_EMAIL_CLASS = `${SIGNUP_MODAL_CLASS}-email`;
  * @returns {React.element} SignupModal
  */
 export const SignupModal = ({ onDismiss, signupOptions, ...other }) => {
+	const facebookOnClick = () => {
+		window.dataLayer = window.dataLayer || [];
+		window.dataLayer.push({
+			event: 'registrationStart',
+			form: {
+				type: 'facebookAuthButton',
+			},
+		});
+	};
+	const emailOnClick = () => {
+			window.dataLayer = window.dataLayer || [];
+			window.dataLayer.push({
+				event: 'registrationStart',
+				form: {
+					type: 'email',
+				},
+			});
+	};
+	const googleOnClick = () => {
+			window.dataLayer = window.dataLayer || [];
+			window.dataLayer.push({
+				event: 'registrationStart',
+				form: {
+					type: 'googleAuthButton',
+				},
+			});
+	};
+
 	const { google, facebook, email, login, title, orLabel } = signupOptions;
 	return (
 		<Modal className={SIGNUP_MODAL_CLASS} onDismiss={onDismiss} fixed {...other}>
@@ -51,6 +79,7 @@ export const SignupModal = ({ onDismiss, signupOptions, ...other }) => {
 							SIGNUP_MODAL_FACEBOOK_CLASS,
 							'button button--fullWidth button--hasHoverShadow padding--halfLeft text--bold text--white'
 						)}
+						onClick={facebookOnClick}
 					>
 						<Flex>
 							<FlexItem shrink className="inverted">
@@ -71,6 +100,7 @@ export const SignupModal = ({ onDismiss, signupOptions, ...other }) => {
 							SIGNUP_MODAL_GOOGLE_CLASS,
 							'button button--bordered button--fullWidth padding--halfLeft text--bold'
 						)}
+						onClick={googleOnClick}
 					>
 						<Flex>
 							<FlexItem shrink>
@@ -95,6 +125,7 @@ export const SignupModal = ({ onDismiss, signupOptions, ...other }) => {
 							SIGNUP_MODAL_EMAIL_CLASS,
 							'button button--bordered button--fullWidth padding--halfLeft text--bold'
 						)}
+						onClick={emailOnClick}
 					>
 						<Flex>
 							<FlexItem shrink>
