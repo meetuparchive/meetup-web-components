@@ -253,7 +253,7 @@ export class Nav extends React.Component {
 				),
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
-			{
+			media.isAtMediumUp && {
 				shrink: true,
 				linkTo: experiences.link,
 				label: experiences.label,
