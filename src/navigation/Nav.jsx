@@ -145,6 +145,7 @@ export class Nav extends React.Component {
 			updatesLabel,
 			logo,
 			dropdownLoaderLabel,
+			experiences,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all globalNav', className);
@@ -252,6 +253,12 @@ export class Nav extends React.Component {
 				),
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
+			{
+				shrink: true,
+				linkTo: experiences.link,
+				label: experiences.label,
+				linkClassName: experiences.linkClassName,
+			},
 			{
 				shrink: true,
 				linkTo: explore.link,
