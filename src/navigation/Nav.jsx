@@ -145,6 +145,7 @@ export class Nav extends React.Component {
 			updatesLabel,
 			logo,
 			dropdownLoaderLabel,
+			experiences,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all globalNav', className);
@@ -252,6 +253,17 @@ export class Nav extends React.Component {
 				),
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
+			// If you want to use pill elsewhere, consider making a Pill
+			// component that takes a color prop.
+			media.isAtMediumUp &&
+				experiences &&
+				experiences.link && {
+					shrink: true,
+					linkTo: experiences.link,
+					label: experiences.label,
+					linkClassName: 'navItemLink--experiences',
+					icon: <div className="pill">NEW</div>,
+				},
 			{
 				shrink: true,
 				linkTo: explore.link,

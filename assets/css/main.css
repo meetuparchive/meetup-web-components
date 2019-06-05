@@ -4910,6 +4910,17 @@ input.field--reset:active {
       color: #00a2c7 !important;
       font-weight: 600; } }
 
+.pill {
+  background: var(--color-viridian);
+  border-radius: 8px;
+  color: white;
+  float: right;
+  font-size: 11px;
+  margin-left: 8px;
+  margin-top: 2px;
+  padding: 3px 4px 1px;
+  width: auto; }
+
 .counterBadge {
   background-color: #00d480;
   border: 3px solid white;
