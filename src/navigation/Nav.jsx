@@ -262,7 +262,7 @@ export class Nav extends React.Component {
 					linkTo: experiences.link,
 					label: experiences.label,
 					linkClassName: 'navItemLink--experiences',
-					icon: <div className="purplePill">NEW</div>,
+					icon: <div className="pill">NEW</div>,
 				},
 			{
 				shrink: true,

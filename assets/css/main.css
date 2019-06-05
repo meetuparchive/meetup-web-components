@@ -4911,7 +4911,7 @@ input.field--reset:active {
       font-weight: 600; } }
 
 .pill {
-  background: #5c5cff;
+  background: var(--color-viridian);
   border-radius: 8px;
   color: white;
   float: right;

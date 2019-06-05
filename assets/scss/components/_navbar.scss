@@ -149,7 +149,7 @@ $maxScalingBP: $breakpoint-m / 1px;
 	}
 }
 .pill {
-	background: #5c5cff;
+	background: var(--color-viridian);
 	border-radius: 8px;
 	color: $C_white;
 	float: right;
