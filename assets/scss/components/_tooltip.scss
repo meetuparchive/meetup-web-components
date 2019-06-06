@@ -9,5 +9,10 @@
 
 .tooltip-closeBtn {
 	float: right;
-	padding: $space-quarter;
+	padding: 5px !important;
+
+	.svg-icon {
+		height: 24px;
+		width: 24px;
+	}
 }

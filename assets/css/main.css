@@ -4775,7 +4775,10 @@ input.field--reset:active {
 
 .tooltip-closeBtn {
   float: right;
-  padding: 4px; }
+  padding: 5px !important; }
+  .tooltip-closeBtn .svg-icon {
+    height: 24px;
+    width: 24px; }
 
 .typeahead {
   position: relative; }
