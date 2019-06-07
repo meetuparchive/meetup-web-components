@@ -177,4 +177,19 @@ describe('Nav', () => {
 			).toMatchSnapshot();
 		});
 	});
+
+	describe('signUp Modal', () => {
+		it('passes clickHandlers for every signup Provider', () => {
+			const navObject = wrapper();
+			navObject.setState({ isSignupModalOpen: true });
+
+			expect(navObject.find('SignupModal').props()).toEqual(
+				expect.objectContaining({
+					googleOnClick: expect.any(Function),
+					facebookOnClick: expect.any(Function),
+					emailOnClick: expect.any(Function),
+				})
+			);
+		});
+	});
 });
