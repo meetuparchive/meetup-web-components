@@ -35,7 +35,6 @@ exports[`SignupModal should match the snapshot 1`] = `
       <a
         className="meetup-signupModal-facebook button button--fullWidth button--hasHoverShadow padding--halfLeft text--bold text--white"
         href="facebook.com"
-        onClick={[Function]}
       >
         <Flex>
           <FlexItem
@@ -60,7 +59,6 @@ exports[`SignupModal should match the snapshot 1`] = `
       <a
         className="meetup-signupModal-google button button--bordered button--fullWidth padding--halfLeft text--bold"
         href="google.com"
-        onClick={[Function]}
       >
         <Flex>
           <FlexItem
@@ -88,7 +86,6 @@ exports[`SignupModal should match the snapshot 1`] = `
       <a
         className="meetup-signupModal-email button button--bordered button--fullWidth padding--halfLeft text--bold"
         href="meetup.com/email"
-        onClick={[Function]}
       >
         <Flex>
           <FlexItem

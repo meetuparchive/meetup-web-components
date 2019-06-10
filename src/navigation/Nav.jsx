@@ -442,6 +442,9 @@ export class Nav extends React.Component {
 						<SignupModal
 							signupOptions={signup.signupModal}
 							onDismiss={this.onDismissSignupModal}
+							googleOnClick={signup.signupModal.googleOnClick}
+							facebookOnClick={signup.signupModal.facebookOnClick}
+							emailOnClick={signup.signupModal.emailOnClick}
 						/>
 					)}
 					{this.state.showMobileDashboard && (

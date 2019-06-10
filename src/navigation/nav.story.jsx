@@ -34,6 +34,9 @@ export const navItems = {
 				label: 'Login',
 				link: 'meetup.com/login',
 			},
+			googleOnClick: jest.fn(),
+			facebookOnClick: jest.fn(),
+			emailOnClick: jest.fn(),
 		},
 	},
 	proDashboard: {
