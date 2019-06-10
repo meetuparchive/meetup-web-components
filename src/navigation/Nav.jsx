@@ -255,7 +255,7 @@ export class Nav extends React.Component {
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
 			// If you want to use pill elsewhere, consider making a Pill
 			// component that takes a color prop.
-			media.isAtMediumUp &&
+			media.isAtLargeUp &&
 				experiences &&
 				experiences.link && {
 					shrink: true,
