@@ -4901,7 +4901,8 @@ input.field--reset:active {
       border-right: 1px solid rgba(255, 255, 255, 0.2); }
     .navItemLink--dashboard .navItem-label {
       color: #00a2c7 !important;
-      font-weight: 600; } }
+      font-weight: 600;
+      margin-top: -1px; } }
 
 @media only screen and (min-width: 640px) {
   .navItemLink--createMeetup {
@@ -4911,7 +4912,8 @@ input.field--reset:active {
       border-right: 1px solid rgba(255, 255, 255, 0.2); }
     .navItemLink--createMeetup .navItem-label {
       color: #00a2c7 !important;
-      font-weight: 600; } }
+      font-weight: 600;
+      margin-top: -1px; } }
 
 .pill {
   background: var(--color-viridian);
