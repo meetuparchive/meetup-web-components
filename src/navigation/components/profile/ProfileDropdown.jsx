@@ -1,8 +1,11 @@
 import React from 'react';
+import Link from 'react-router-dom/Link';
+import withRouter from 'react-router-dom/withRouter';
+
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { C_TEXT_PRIMARYINVERTED } from 'swarm-constants/dist/js/constants';
 
+import Button from '../../../forms/Button';
 import Chunk from '../../../layout/Chunk';
 import Flex from '../../../layout/Flex';
 import FlexItem from '../../../layout/FlexItem';
@@ -53,15 +56,10 @@ export const ProfileDropdownComponent = ({
 							{groupsContent}
 						</ul>
 					</Chunk>
-					<a href={allGroupsLink} className="button button--small text--small">
+					<Button small to={allGroupsLink} component={Link}>
 						{allGroupsLabel}
-						<Icon
-							className="margin--left"
-							shape="chevron-right"
-							size="xs"
-							color={C_TEXT_PRIMARYINVERTED}
-						/>
-					</a>
+						<Icon className="margin--left" shape="chevron-right" size="xs" />
+					</Button>
 				</FlexItem>
 			)}
 			<FlexItem
@@ -110,4 +108,4 @@ ProfileDropdownComponent.propTypes = {
 	allGroupsLink: PropTypes.string.isRequired,
 };
 
-export default ProfileDropdownComponent;
+export default withRouter(ProfileDropdownComponent);
