@@ -1,8 +1,10 @@
 import React from 'react';
+import { Router, Route } from 'react-router';
 import { storiesOf } from '@storybook/react';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 import { MOCK_NOTIFICATIONS_LIST } from 'meetup-web-mocks/lib/notifications/api';
 import withMatchMedia from '../utils/components/withMatchMedia';
+import { createMemoryHistory } from 'history';
 
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 
@@ -89,7 +91,7 @@ export const navItems = {
 			settings: { link: 'meetup.com/settings', label: 'Settings' },
 			help: { link: 'meetup.com/help', label: 'Help' },
 			logout: { link: 'meetup.com/logout', label: 'Logout' },
-			allGroupsLabel: 'All Groups',
+			allGroupsLabel: 'See all groups',
 			allGroupsLink: 'meetup.com/groups',
 			groupHome: () => {},
 		},
@@ -100,6 +102,11 @@ storiesOf('Site Chrome/Nav', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
 	.addParameters({ info: { propTables: [Nav] } })
+	.addDecorator(story => (
+		<Router history={createMemoryHistory('/')}>
+			<Route path="/" component={() => story()} />
+		</Router>
+	))
 	.add('authenticated', () => (
 		<TestNav
 			self={MOCK_MEMBER}

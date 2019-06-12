@@ -33,7 +33,7 @@ const MOCK_PROPS = {
 };
 
 describe('Profile Dropdown', () => {
-	const wrapper = shallow(<ProfileDropdown {...MOCK_PROPS} />);
+	const wrapper = shallow(<ProfileDropdown.WrappedComponent {...MOCK_PROPS} />);
 	it('should match snapshot', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
