@@ -1,6 +1,4 @@
 import React from 'react';
-import Link from 'react-router-dom/Link';
-import withRouter from 'react-router-dom/withRouter';
 
 import cx from 'classnames';
 import PropTypes from 'prop-types';
@@ -56,7 +54,7 @@ export const ProfileDropdownComponent = ({
 							{groupsContent}
 						</ul>
 					</Chunk>
-					<Button small to={allGroupsLink} component={Link}>
+					<Button small href={allGroupsLink} component="a">
 						{allGroupsLabel}
 						<Icon className="margin--left" shape="chevron-right" size="xs" />
 					</Button>
@@ -108,4 +106,4 @@ ProfileDropdownComponent.propTypes = {
 	allGroupsLink: PropTypes.string.isRequired,
 };
 
-export default withRouter(ProfileDropdownComponent);
+export default ProfileDropdownComponent;
