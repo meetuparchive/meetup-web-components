@@ -47,9 +47,9 @@ exports[`Profile Dropdown should match snapshot 1`] = `
       </ul>
     </Chunk>
     <Button
-      component={[Function]}
+      component="a"
+      href="meetup.com/find"
       small={true}
-      to="meetup.com/find"
     >
       All Groups
       <Icon

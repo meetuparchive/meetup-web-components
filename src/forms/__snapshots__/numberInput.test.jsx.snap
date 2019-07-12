@@ -50,7 +50,6 @@ Object {
 exports[`NumberInput basic should specify attributes that are passed in 1`] = `
 <NumericalInput
   id="amountCount"
-  min={0}
   name="amountCount"
   onChange={[MockFunction]}
   placeholder="Guests"
