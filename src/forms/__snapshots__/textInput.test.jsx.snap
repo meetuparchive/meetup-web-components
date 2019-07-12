@@ -39,13 +39,23 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
           <input
             data-swarm-text-input="default"
             id="superhero"
-            maxLength={20}
             name="superhero"
             onChange={[Function]}
             onInvalid={[Function]}
             type="text"
             value="Batman"
           />
+          <CharCount
+            charLength={6}
+            maxLength={20}
+          >
+            <p
+              className="text--tiny"
+              data-swarm-textarea-char-count={true}
+            >
+              14
+            </p>
+          </CharCount>
         </div>
       </TextInput>
     </div>

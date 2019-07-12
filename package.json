@@ -27,7 +27,7 @@
     "publish-docs": "yarn run storybook-static && yarn run gh-pages",
     "stylelint": "stylelint assets/scss/**/*.scss --syntax scss",
     "test": "npm-run-all --parallel lint:base",
-    "test:ci": "yarn lint:base && yarn",
+    "test:ci": "yarn lint:base && yarn test:base",
     "test:base": "jest --color --config jest.config.json",
     "test:unit": "yarn run test:base",
     "test:updateSnap": "yarn test:base --updateSnapshot",

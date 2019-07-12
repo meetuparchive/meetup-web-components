@@ -817,7 +817,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
     <NavItem
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={
-        <withRouter(ProfileDropdownComponent)
+        <ProfileDropdownComponent
           allGroupsLabel="See all groups"
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
@@ -1752,7 +1752,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
     <NavItem
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={
-        <withRouter(ProfileDropdownComponent)
+        <ProfileDropdownComponent
           allGroupsLabel="See all groups"
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
@@ -2538,7 +2538,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
     <NavItem
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={
-        <withRouter(ProfileDropdownComponent)
+        <ProfileDropdownComponent
           allGroupsLabel="See all groups"
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
@@ -3635,7 +3635,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
     <NavItem
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={
-        <withRouter(ProfileDropdownComponent)
+        <ProfileDropdownComponent
           allGroupsLabel="See all groups"
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
