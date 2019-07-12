@@ -17,86 +17,91 @@ const updatedNotif = MOCK_NOTIFICATIONS_LIST.map(notif => {
 	return { ...notif, formattedTimeSince: timeSince.toDateString() };
 });
 
-export const navItems = {
-	dropdownLoaderLabel: 'Loading',
-	updatesLabel: 'Updates',
-	logo: { logoAccessible: 'Meetup Logo', link: 'meetup.com' },
-	login: { link: 'meetup.com/login', label: 'Login' },
-	create: { link: 'meetup.com/create', label: 'Create a Meetup' },
-	signup: {
-		label: 'Sign up',
-		signupModal: {
-			orLabel: 'Or',
-			title: 'Signup',
-			google: { link: 'google.com', label: 'Google' },
-			facebook: { link: 'facebook.com', label: 'Facebook' },
-			email: { link: 'meetup.com/email', label: 'Email' },
-			login: {
-				text: 'Already a member?',
-				label: 'Login',
-				link: 'meetup.com/login',
+export const navItemsFactory = () => {
+	return {
+		dropdownLoaderLabel: 'Loading',
+		updatesLabel: 'Updates',
+		logo: { logoAccessible: 'Meetup Logo', link: 'meetup.com' },
+		login: { link: 'meetup.com/login', label: 'Login' },
+		create: { link: 'meetup.com/create', label: 'Create a Meetup' },
+		signup: {
+			label: 'Sign up',
+			signupModal: {
+				orLabel: 'Or',
+				title: 'Signup',
+				google: { link: 'google.com', label: 'Google' },
+				facebook: { link: 'facebook.com', label: 'Facebook' },
+				email: { link: 'meetup.com/email', label: 'Email' },
+				login: {
+					text: 'Already a member?',
+					label: 'Login',
+					link: 'meetup.com/login',
+				},
+				googleOnClick: () => null,
+				facebookOnClick: () => null,
+				emailOnClick: () => null,
+				onOpen: () => null,
 			},
-			googleOnClick: () => null,
-			facebookOnClick: () => null,
-			emailOnClick: () => null,
 		},
-	},
-	proDashboard: {
-		link: 'meetup.com/pro',
-		label: 'Pro Dashboard',
-		mobileLabel: 'Dashboard',
-		mainAccount: { urlname: '/mason-mocks', name: 'Mason Mocks' },
-		mobileTabs: {
-			analytics: { link: 'meetup.com/analytics', label: 'Analytics' },
-			members: { link: 'meetup.com/members', label: 'Members' },
-			groups: { link: 'meetup.com/groups', label: 'Groups' },
-			templates: { link: 'meetup.com/templates', label: 'Templates' },
-			profile: { link: 'meetup.com/profile', label: 'Profile' },
-			publicProfile: { link: 'meetup.com/settings', label: 'Public Profile' },
-			contact: { link: 'meetup.com/contact', label: 'Contact' },
-			help: { link: 'meetup.com/help', label: 'Help' },
-			logout: { link: 'meetup.com/logout', label: 'Logout' },
+		proDashboard: {
+			link: 'meetup.com/pro',
+			label: 'Pro Dashboard',
+			mobileLabel: 'Dashboard',
+			mainAccount: { urlname: '/mason-mocks', name: 'Mason Mocks' },
+			mobileTabs: {
+				analytics: { link: 'meetup.com/analytics', label: 'Analytics' },
+				members: { link: 'meetup.com/members', label: 'Members' },
+				groups: { link: 'meetup.com/groups', label: 'Groups' },
+				templates: { link: 'meetup.com/templates', label: 'Templates' },
+				profile: { link: 'meetup.com/profile', label: 'Profile' },
+				publicProfile: { link: 'meetup.com/settings', label: 'Public Profile' },
+				contact: { link: 'meetup.com/contact', label: 'Contact' },
+				help: { link: 'meetup.com/help', label: 'Help' },
+				logout: { link: 'meetup.com/logout', label: 'Logout' },
+			},
 		},
-	},
-	explore: { link: 'meetup.com/find/events', label: 'Explore' },
-	groups: {
-		link: 'meetup.com/groups',
-		label: 'Groups',
-		list: [
-			{ urlname: '/mason-mocks', name: 'Mason Mocks' },
-			{ urlname: '/chicken-scratch', name: 'Chicken Scratch' },
-		],
-	},
-	messages: {
-		link: 'meetup.com/messages',
-		label: 'Messages',
-		unreadMessage: 1,
-	},
-	notifications: {
-		link: 'meetup.com/notifications',
-		label: 'Notifications',
-		unreadNotifications: 0,
-		list: [...updatedNotif],
-		notificationsDropdown: {
-			markRead: () => {},
-			emptyContentLabel: "You don't have any notifications yet",
-			generateClassicUrl: () => {},
+		explore: { link: 'meetup.com/find/events', label: 'Explore' },
+		groups: {
+			link: 'meetup.com/groups',
+			label: 'Groups',
+			list: [
+				{ urlname: '/mason-mocks', name: 'Mason Mocks' },
+				{ urlname: '/chicken-scratch', name: 'Chicken Scratch' },
+			],
 		},
-	},
-	profile: {
-		link: 'meetup.com/profile',
-		label: 'Profile',
-		getSelfGroupsQuery: () => {},
-		profileDropdown: {
-			settings: { link: 'meetup.com/settings', label: 'Settings' },
-			help: { link: 'meetup.com/help', label: 'Help' },
-			logout: { link: 'meetup.com/logout', label: 'Logout' },
-			allGroupsLabel: 'See all groups',
-			allGroupsLink: 'meetup.com/groups',
-			groupHome: () => {},
+		messages: {
+			link: 'meetup.com/messages',
+			label: 'Messages',
+			unreadMessage: 1,
 		},
-	},
+		notifications: {
+			link: 'meetup.com/notifications',
+			label: 'Notifications',
+			unreadNotifications: 0,
+			list: [...updatedNotif],
+			notificationsDropdown: {
+				markRead: () => {},
+				emptyContentLabel: "You don't have any notifications yet",
+				generateClassicUrl: () => {},
+			},
+		},
+		profile: {
+			link: 'meetup.com/profile',
+			label: 'Profile',
+			getSelfGroupsQuery: () => {},
+			profileDropdown: {
+				settings: { link: 'meetup.com/settings', label: 'Settings' },
+				help: { link: 'meetup.com/help', label: 'Help' },
+				logout: { link: 'meetup.com/logout', label: 'Logout' },
+				allGroupsLabel: 'See all groups',
+				allGroupsLink: 'meetup.com/groups',
+				groupHome: () => {},
+			},
+		},
+	};
 };
+
+const navItems = navItemsFactory();
 
 storiesOf('Site Chrome/Nav', module)
 	.addDecorator(decorateWithBasics)
