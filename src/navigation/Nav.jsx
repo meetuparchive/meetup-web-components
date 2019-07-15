@@ -61,6 +61,9 @@ export class Nav extends React.Component {
 	 * @return {undefined}
 	 */
 	onClickSignupAction() {
+		if (this.props.navItems.signup.signupModal.onOpen)
+			this.props.navItems.signup.signupModal.onOpen();
+
 		this.setState(() => ({ isSignupModalOpen: true }));
 	}
 
