@@ -14,6 +14,9 @@ describe('Tabs', function() {
 				<TabsTab className={TEST_TABSTAB_CLASS}>First tab</TabsTab>
 				<TabsTab isSelected>Second tab</TabsTab>
 				<TabsTab>Third tab</TabsTab>
+				<TabsTab isSelected isLeft>
+					Forth tab
+				</TabsTab>
 			</Tabs>
 		);
 		componentWithVariants = TestUtils.renderIntoDocument(
@@ -21,6 +24,9 @@ describe('Tabs', function() {
 				<TabsTab>First tab</TabsTab>
 				<TabsTab isSelected>Second tab</TabsTab>
 				<TabsTab>Third tab</TabsTab>
+				<TabsTab isSelected isLeft>
+					Forth tab
+				</TabsTab>
 			</Tabs>
 		);
 	});
@@ -38,6 +44,17 @@ describe('Tabs', function() {
 
 		expect(selectedTabNodes).toHaveLength(1);
 		expect(firstTabClass).toContain('tabs-tab--selected');
+	});
+
+	it('applies selected tab class correctly for left selector layout', function() {
+		const selectedTabNodes = TestUtils.scryRenderedDOMComponentsWithClass(
+			componentBasic,
+			'tabs-tab--selectedLeft'
+		);
+		const firstTabClass = selectedTabNodes[0].classList;
+
+		expect(selectedTabNodes).toHaveLength(1);
+		expect(firstTabClass).toContain('tabs-tab--selectedLeft');
 	});
 
 	it('applies variant classes correctly', function() {
