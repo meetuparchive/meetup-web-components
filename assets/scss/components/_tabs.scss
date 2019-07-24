@@ -70,3 +70,19 @@ $tabBorderWidth: 3px;
 		border-right: $tabBorderWidth solid;
 	}
 }
+
+.tabs-tab--selectedLeft {
+	border-bottom: $tabBorderWidth solid $C_accent;
+	box-shadow: none;
+	color: $C_accent;
+	font-weight: $W_medium;
+
+	.tabs--isVertical & {
+		border-bottom: 0;
+		border-left: $tabBorderWidth solid;
+	}
+}
+
+.tabs-tab--notSelectedLeft {
+	padding-left: $tabBorderWidth !important;
+}
