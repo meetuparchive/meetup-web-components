@@ -14,7 +14,7 @@ describe('Tabs', function() {
 				<TabsTab className={TEST_TABSTAB_CLASS}>First tab</TabsTab>
 				<TabsTab isSelected>Second tab</TabsTab>
 				<TabsTab>Third tab</TabsTab>
-				<TabsTab isSelected isLeftSelectorLayout>
+				<TabsTab isSelected isLeft>
 					Forth tab
 				</TabsTab>
 			</Tabs>
@@ -24,7 +24,7 @@ describe('Tabs', function() {
 				<TabsTab>First tab</TabsTab>
 				<TabsTab isSelected>Second tab</TabsTab>
 				<TabsTab>Third tab</TabsTab>
-				<TabsTab isSelected isLeftSelectorLayout>
+				<TabsTab isSelected isLeft>
 					Forth tab
 				</TabsTab>
 			</Tabs>

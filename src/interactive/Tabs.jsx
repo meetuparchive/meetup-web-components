@@ -7,21 +7,12 @@ import cx from 'classnames';
  */
 export class TabsTab extends React.Component {
 	render() {
-		const {
-			children,
-			isSelected,
-			className,
-			isLeftSelectorLayout,
-			...other
-		} = this.props;
-		const selectedClass = isLeftSelectorLayout
-			? {
-					'tabs-tab--selectedLeft': isSelected,
-					'tabs-tab--notSelectedLeft': !isSelected,
-			  }
-			: { 'tabs-tab--selected': isSelected };
-
-		const classNames = cx('tabs-tab', selectedClass, className);
+		const { children, isSelected, className, isLeft, ...other } = this.props;
+		const classNames = cx('tabs-tab', className, {
+			'tabs-tab--selectedLeft': isSelected && isLeft,
+			'tabs-tab--notSelectedLeft': !isSelected && isLeft,
+			'tabs-tab--selected': isSelected && !isLeft,
+		});
 
 		return (
 			<li className={classNames} {...other}>
@@ -35,7 +26,7 @@ TabsTab.propTypes = {
 	isSelected: PropTypes.bool,
 
 	/** Whether the Tabs selector is layed on left or right part*/
-	isLeftSelectorLayout: PropTypes.bool,
+	isLeft: PropTypes.bool,
 };
 
 /**
