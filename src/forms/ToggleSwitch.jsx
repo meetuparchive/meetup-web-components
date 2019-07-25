@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { Toggle } from '@meetup/swarm-components';
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 /**
  * @module ToggleSwitch
@@ -56,4 +57,4 @@ ToggleSwitch.propTypes = {
 	name: PropTypes.string.isRequired,
 };
 
-export default ToggleSwitch;
+export default DeprecationWarning(ToggleSwitch);

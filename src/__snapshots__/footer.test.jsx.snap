@@ -285,7 +285,7 @@ exports[`Footer should render FooterCategory with linkSet 1`] = `
 `;
 
 exports[`LanguageSelectInput exists 1`] = `
-<SelectInput
+<_class
   label="Language"
   labelClassName="visibility--a11yHide"
   name="languagePicker"
@@ -353,7 +353,6 @@ exports[`LanguageSelectInput exists 1`] = `
       },
     ]
   }
-  requiredText="*"
 />
 `;
 

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`redux-form TextInput renders a TextInput component with expected attributes from mock data 1`] = `
-<WithErrorList(TextInput)
+<WithErrorList(_class)
   error={null}
   label="Super Hero"
   maxLength={20}

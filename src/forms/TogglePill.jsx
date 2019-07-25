@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { TogglePill as SwarmUITogglePill } from '@meetup/swarm-components';
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 /**
  * Toggle Pill component
@@ -54,4 +55,4 @@ TogglePill.defaultProps = {
 	isActive: false,
 };
 
-export default TogglePill;
+export default DeprecationWarning(TogglePill);

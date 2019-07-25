@@ -5,6 +5,7 @@ import React from 'react';
 import { TextInput as SwarmTextInput, FieldLabel } from '@meetup/swarm-components';
 
 import withErrorList from '../utils/components/withErrorList';
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 import a11yPassThrough from '../utils/a11yPassThrough';
 
 export const FIELD_WITH_ICON_CLASS = 'field--withIcon';
@@ -173,4 +174,4 @@ TextInput.propTypes = {
 	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
-export default withErrorList(TextInput);
+export default withErrorList(DeprecationWarning(TextInput));

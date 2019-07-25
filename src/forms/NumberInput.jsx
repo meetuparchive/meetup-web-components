@@ -6,6 +6,7 @@ import {
 	FieldLabel,
 } from '@meetup/swarm-components';
 import withErrorList from '../utils/components/withErrorList';
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 export const DECREMENT_BTN_CLASS = 'decrementButton';
 export const FAUX_INPUT_CLASS = 'fauxInput';
@@ -56,4 +57,4 @@ export class NumberInput extends React.PureComponent<Props> {
 	}
 }
 
-export default withErrorList(NumberInput);
+export default withErrorList(DeprecationWarning(NumberInput));

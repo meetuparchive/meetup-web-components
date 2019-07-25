@@ -6,6 +6,7 @@ import { FieldHelper, FieldLabel } from '@meetup/swarm-components';
 
 import withErrorList from '../utils/components/withErrorList';
 import a11yPassThrough from '../utils/a11yPassThrough';
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 type Props = React.ElementConfig<HTMLSelectElement> & {
 	/** Optional `id` attribute for the input, and associates it with the `<label />` */
@@ -82,7 +83,7 @@ export class SelectInput extends React.PureComponent<Props> {
 	}
 }
 
-const SelectWithErrors = withErrorList(SelectInput);
+const SelectWithErrors = withErrorList(DeprecationWarning(SelectInput));
 SelectWithErrors.displayName = 'Select';
 
 export default SelectWithErrors;
