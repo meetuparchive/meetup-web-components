@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 /**
  * @class RadioButtonGroup
  */
-export default class RadioButtonGroup extends PureComponent {
+export class RadioButtonGroup extends PureComponent {
 	constructor(props) {
 		super(props);
 
@@ -96,3 +97,5 @@ RadioButtonGroup.propTypes = {
 RadioButtonGroup.defaultProps = {
 	direction: 'row',
 };
+
+export default DeprecationWarning(RadioButtonGroup);

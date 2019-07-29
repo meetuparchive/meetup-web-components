@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Link from 'react-router-dom/Link';
-import Button from './Button';
+import { Button } from './Button';
 import Icon from '../media/Icon';
 
 describe('Button', () => {

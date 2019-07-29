@@ -1,11 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RadioButton checked should render an disabled radio button 1`] = `
-<Radio
+<RadioButton
   checked={true}
   className="some-class"
   disabled={false}
-  id="RadioButton-name-value"
   label="This is a label"
   name="name"
   otherProp="other"
@@ -14,11 +13,10 @@ exports[`RadioButton checked should render an disabled radio button 1`] = `
 `;
 
 exports[`RadioButton checked should render an enabled radio button 1`] = `
-<Radio
+<RadioButton
   checked={true}
   className="some-class"
   disabled={true}
-  id="RadioButton-name-value"
   label="This is a label"
   name="name"
   otherProp="other"
@@ -27,11 +25,10 @@ exports[`RadioButton checked should render an enabled radio button 1`] = `
 `;
 
 exports[`RadioButton unchecked should render an disabled radio button 1`] = `
-<Radio
+<RadioButton
   checked={false}
   className="some-class"
   disabled={false}
-  id="RadioButton-name-value"
   label="This is a label"
   name="name"
   otherProp="other"
@@ -40,11 +37,10 @@ exports[`RadioButton unchecked should render an disabled radio button 1`] = `
 `;
 
 exports[`RadioButton unchecked should render an enabled radio button 1`] = `
-<Radio
+<RadioButton
   checked={false}
   className="some-class"
   disabled={true}
-  id="RadioButton-name-value"
   label="This is a label"
   name="name"
   otherProp="other"

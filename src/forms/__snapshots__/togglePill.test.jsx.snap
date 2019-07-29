@@ -1,35 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TogglePill renders a component with expected attributes 1`] = `
-<TogglePill
+<_class
   id="hikingCategory"
-  isActive={false}
   name="meetupCategories"
   onChange={[MockFunction]}
   value="hiking"
 >
   <TogglePill
-    checked={false}
     id="hikingCategory"
+    isActive={false}
     name="meetupCategories"
-    onClick={[MockFunction]}
+    onChange={[MockFunction]}
     value="hiking"
   >
-    <button
-      aria-checked={false}
+    <TogglePill
       checked={false}
-      data-swarm-toggle-pill="unchecked"
-      data-swarm-width="default"
       id="hikingCategory"
       name="meetupCategories"
       onClick={[MockFunction]}
-      role="checkbox"
       value="hiking"
     >
-      <span>
-        Hiking!
-      </span>
-    </button>
+      <button
+        aria-checked={false}
+        checked={false}
+        data-swarm-toggle-pill="unchecked"
+        data-swarm-width="default"
+        id="hikingCategory"
+        name="meetupCategories"
+        onClick={[MockFunction]}
+        role="checkbox"
+        value="hiking"
+      >
+        <span>
+          Hiking!
+        </span>
+      </button>
+    </TogglePill>
   </TogglePill>
-</TogglePill>
+</_class>
 `;

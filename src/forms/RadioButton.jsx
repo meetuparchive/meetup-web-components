@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Radio as SwarmRadio } from '@meetup/swarm-components';
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 
-class RadioButton extends React.PureComponent {
+export class RadioButton extends React.PureComponent {
 	componentDidCatch(error, info) {
 		console.log(`${error}: \n ${info.componentStack}`);
 	}
@@ -46,4 +47,4 @@ RadioButton.propTypes = {
 	value: PropTypes.string,
 };
 
-export default RadioButton;
+export default DeprecationWarning(RadioButton);

@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import RadioButtonGroup from './RadioButtonGroup';
-import RadioButton from './RadioButton';
+import { RadioButtonGroup } from './RadioButtonGroup';
+import { RadioButton } from './RadioButton';
 
 const DEFAULT_PROPS = {
 	className: 'some-class',

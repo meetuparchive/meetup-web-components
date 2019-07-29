@@ -10,10 +10,11 @@ import {
 	getIconPosition,
 } from '@meetup/swarm-components/lib/utils/buttonUtils';
 
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 /**
  * @module Button
  */
-class Button extends React.PureComponent {
+export class Button extends React.PureComponent {
 	componentDidCatch(error, info) {
 		console.log(`${error}: \n ${info.componentStack}`);
 	}
@@ -113,4 +114,4 @@ Button.propTypes = {
 	/** Whether to use disabled attribute and disabled button styles */
 	disabled: PropTypes.bool,
 };
-export default Button;
+export default DeprecationWarning(Button);
