@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Checkbox as SwarmCheckbox } from '@meetup/swarm-components';
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 /**
  * @module Checkbox
  */
-class Checkbox extends React.PureComponent {
+export class Checkbox extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
@@ -106,4 +107,4 @@ Checkbox.defaultProps = {
 	controlled: true,
 };
 
-export default Checkbox;
+export default DeprecationWarning(Checkbox);

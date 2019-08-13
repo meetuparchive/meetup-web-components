@@ -46,7 +46,7 @@ exports[`Profile Dropdown should match snapshot 1`] = `
         </li>
       </ul>
     </Chunk>
-    <Button
+    <_class
       component="a"
       href="meetup.com/find"
       small={true}
@@ -57,7 +57,7 @@ exports[`Profile Dropdown should match snapshot 1`] = `
         shape="chevron-right"
         size="xs"
       />
-    </Button>
+    </_class>
   </FlexItem>
   <FlexItem
     className="text--secondary margin--left"

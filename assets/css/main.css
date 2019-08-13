@@ -4585,6 +4585,18 @@ input.field--reset:active {
     border-bottom: 0;
     border-right: 3px solid; }
 
+.tabs-tab--selectedLeft {
+  border-bottom: 3px solid #00a2c7;
+  box-shadow: none;
+  color: #00a2c7;
+  font-weight: 500; }
+  .tabs--isVertical .tabs-tab--selectedLeft {
+    border-bottom: 0;
+    border-left: 3px solid; }
+
+.tabs-tab--notSelectedLeft {
+  padding-left: 3px !important; }
+
 .toaster {
   box-sizing: border-box;
   position: absolute;
