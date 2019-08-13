@@ -305,8 +305,9 @@ export class Nav extends React.Component {
 						className="display--block atMedium_display--none"
 					/>
 				),
-				onClickAction: media.isAtMediumUp && this.onClickDropdownAction,
-				dropdownContent: media.isAtMediumUp && notificationContent,
+				onClickAction:
+					(media.isAtMediumUp && this.onClickDropdownAction) || undefined,
+				dropdownContent: (media.isAtMediumUp && notificationContent) || undefined,
 				hasUpdates: notifications.unreadNotifications > 0,
 				updatesLabel: updatesLabel,
 			},
@@ -345,7 +346,7 @@ export class Nav extends React.Component {
 								profile.getSelfGroupDraftQuery(...args);
 						  }
 						: undefined,
-				dropdownContent: media.isAtMediumUp && profileContent,
+				dropdownContent: media.isAtMediumUp ? profileContent : undefined,
 			},
 		];
 
