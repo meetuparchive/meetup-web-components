@@ -17,14 +17,20 @@ import React from 'react';
 
 // All questions and concerns should be directed to #swarm in slack
 
+// 'global' record of which components have already logged a warning
+const hasBeenWarned = {};
+
 function DeprecationWarning(WrappedComponent) {
 	return class extends React.Component {
 		componentDidMount() {
-			console.warn(
-				`The ${
-					WrappedComponent.name
-				} component has been deprecated and will be removed from meetup-web-components on October 3, 2019. Please upgrade to the latest from https://github.com/meetup/swarm-ui`
-			);
+			if (!hasBeenWarned[WrappedComponent.name]) {
+				console.warn(
+					`The ${
+						WrappedComponent.name
+					} component has been deprecated and will be removed from meetup-web-components on October 3, 2019. Please upgrade to the latest from https://github.com/meetup/swarm-ui`
+				);
+				hasBeenWarned[WrappedComponent.name] = true;
+			}
 		}
 
 		render() {
