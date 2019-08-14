@@ -29,7 +29,7 @@ exports[`NavItem renders a dropdown when \`dropdownContent\` is passed as a prop
       </p>
     }
     navItemContent={
-      <_class
+      <Button
         aria-haspopup={true}
         className="navItemLink"
         reset={true}
@@ -43,7 +43,7 @@ exports[`NavItem renders a dropdown when \`dropdownContent\` is passed as a prop
             </p>
           </span>
         </div>
-      </_class>
+      </Button>
     }
   />
 </FlexItem>

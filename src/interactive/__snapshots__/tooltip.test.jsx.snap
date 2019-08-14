@@ -21,11 +21,11 @@ exports[`Tooltip aligned tooltip matches snapshot 1`] = `
   minWidth="0px"
   noPortal={false}
   trigger={
-    <_class
+    <Button
       small={true}
     >
       Open
-    </_class>
+    </Button>
   }
 />
 `;
@@ -52,11 +52,11 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
   minWidth="0px"
   noPortal={false}
   trigger={
-    <_class
+    <Button
       small={true}
     >
       Open
-    </_class>
+    </Button>
   }
   withClose={true}
 >
@@ -71,7 +71,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
       onFocus={[Function]}
       onMouseEnter={[Function]}
     >
-      <_class
+      <Button
         small={true}
       >
         <Button
@@ -91,7 +91,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
             </button>
           </Button>
         </Button>
-      </_class>
+      </Button>
     </div>
     <WithMatchMedia(FloatingPosition)
       align="right"
@@ -184,7 +184,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                 <div
                   className="popup-bubble tooltip-bubble inverted popup-bubble--active popup-bubble--right"
                 >
-                  <_class
+                  <Button
                     className="tooltip-closeBtn"
                     icon={
                       <Icon
@@ -246,7 +246,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                         </button>
                       </Button>
                     </Button>
-                  </_class>
+                  </Button>
                   <Section
                     noSeparator={true}
                   >

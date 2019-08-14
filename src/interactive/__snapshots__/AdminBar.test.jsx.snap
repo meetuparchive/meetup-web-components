@@ -63,7 +63,7 @@ exports[`AdminBar renders correctly 1`] = `
       minWidth="100px"
       noPortal={true}
       trigger={
-        <_class
+        <Button
           icon={
             <Icon
               shape="cog"
@@ -73,7 +73,7 @@ exports[`AdminBar renders correctly 1`] = `
           id="admin-label-btn"
         >
           Admin
-        </_class>
+        </Button>
       }
       withClose={true}
     />
@@ -85,7 +85,7 @@ exports[`AdminBar renders correctly 1`] = `
       align="left"
       content={
         <Section>
-          <_class
+          <SelectInput
             name="highlightValue"
             onChange={[Function]}
             options={
@@ -132,12 +132,12 @@ exports[`AdminBar renders correctly 1`] = `
       minWidth="0px"
       noPortal={true}
       trigger={
-        <_class
+        <Button
           id="highlight-label-btn"
         >
           Highlight 
           1
-        </_class>
+        </Button>
       }
       withClose={true}
     />
@@ -213,7 +213,7 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       minWidth="100px"
       noPortal={true}
       trigger={
-        <_class
+        <Button
           icon={
             <Icon
               shape="cog"
@@ -223,7 +223,7 @@ exports[`AdminBar renders correctly when QLd 1`] = `
           id="admin-label-btn"
         >
           Admin
-        </_class>
+        </Button>
       }
       withClose={true}
     />
@@ -235,7 +235,7 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       align="left"
       content={
         <Section>
-          <_class
+          <SelectInput
             name="highlightValue"
             onChange={[Function]}
             options={
@@ -282,12 +282,12 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       minWidth="0px"
       noPortal={true}
       trigger={
-        <_class
+        <Button
           id="highlight-label-btn"
         >
           Highlight 
           1
-        </_class>
+        </Button>
       }
       withClose={true}
     />
@@ -354,7 +354,7 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       minWidth="100px"
       noPortal={true}
       trigger={
-        <_class
+        <Button
           icon={
             <Icon
               shape="cog"
@@ -364,7 +364,7 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
           id="admin-label-btn"
         >
           Admin
-        </_class>
+        </Button>
       }
       withClose={true}
     />
@@ -376,7 +376,7 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       align="left"
       content={
         <Section>
-          <_class
+          <SelectInput
             name="highlightValue"
             onChange={[Function]}
             options={
@@ -423,12 +423,12 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       minWidth="0px"
       noPortal={true}
       trigger={
-        <_class
+        <Button
           id="highlight-label-btn"
         >
           Highlight 
           1
-        </_class>
+        </Button>
       }
       withClose={true}
     />
@@ -486,7 +486,7 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       minWidth="100px"
       noPortal={true}
       trigger={
-        <_class
+        <Button
           icon={
             <Icon
               shape="cog"
@@ -496,7 +496,7 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
           id="admin-label-btn"
         >
           Admin
-        </_class>
+        </Button>
       }
       withClose={true}
     />
@@ -508,7 +508,7 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       align="left"
       content={
         <Section>
-          <_class
+          <SelectInput
             name="highlightValue"
             onChange={[Function]}
             options={
@@ -555,12 +555,12 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       minWidth="0px"
       noPortal={true}
       trigger={
-        <_class
+        <Button
           id="highlight-label-btn"
         >
           Highlight 
           1
-        </_class>
+        </Button>
       }
       withClose={true}
     />

@@ -21,7 +21,7 @@ import React from 'react';
 const hasBeenWarned = {};
 
 function DeprecationWarning(WrappedComponent) {
-	return class extends React.Component {
+	class Wrapped extends React.Component {
 		componentDidMount() {
 			if (!hasBeenWarned[WrappedComponent.name]) {
 				console.warn(
@@ -36,7 +36,9 @@ function DeprecationWarning(WrappedComponent) {
 		render() {
 			return <WrappedComponent {...this.props} />;
 		}
-	};
+	}
+	Wrapped.displayName = WrappedComponent.name;
+	return Wrapped;
 }
 
 export default DeprecationWarning;

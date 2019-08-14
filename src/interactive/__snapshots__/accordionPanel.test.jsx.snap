@@ -361,7 +361,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                   className="flex-item flex-item--shrink accordionPanel-icon"
                   onClick={[Function]}
                 >
-                  <_class
+                  <ToggleSwitch
                     disabled={false}
                     id="switch-firstsection"
                     isActive={false}
@@ -434,7 +434,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                         </Toggle>
                       </div>
                     </ToggleSwitch>
-                  </_class>
+                  </ToggleSwitch>
                 </div>
               </FlexItemComponent>
             </FlexItem>

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TogglePill renders a component with expected attributes 1`] = `
-<_class
+<TogglePill
   id="hikingCategory"
   name="meetupCategories"
   onChange={[MockFunction]}
@@ -38,5 +38,5 @@ exports[`TogglePill renders a component with expected attributes 1`] = `
       </button>
     </TogglePill>
   </TogglePill>
-</_class>
+</TogglePill>
 `;
