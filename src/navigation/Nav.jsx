@@ -204,8 +204,18 @@ export class Nav extends React.Component {
 			className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup`,
 		};
 
+		const experiencesLink = experiences &&
+			experiences.link && {
+				shrink: true,
+				linkTo: experiences.link,
+				label: experiences.label,
+				linkClassName: 'navItemLink--experiences',
+				icon: <div className="pill">NEW</div>,
+			};
+
 		let unauthItems = [
 			media.isAtMediumUp && createMeetupLink,
+			media.isAtMediumUp && experiencesLink,
 			{
 				shrink: true,
 				linkTo: login.link,
@@ -256,17 +266,7 @@ export class Nav extends React.Component {
 				),
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
-			// If you want to use pill elsewhere, consider making a Pill
-			// component that takes a color prop.
-			media.isAtLargeUp &&
-				experiences &&
-				experiences.link && {
-					shrink: true,
-					linkTo: experiences.link,
-					label: experiences.label,
-					linkClassName: 'navItemLink--experiences',
-					icon: <div className="pill">NEW</div>,
-				},
+			media.isAtMediumUp && experiencesLink,
 			{
 				shrink: true,
 				linkTo: explore.link,
