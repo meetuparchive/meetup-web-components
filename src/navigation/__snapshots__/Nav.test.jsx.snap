@@ -2914,6 +2914,13 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
       shrink={true}
     />
     <NavItem
+      icon={
+        <div
+          className="pill"
+        >
+          NEW
+        </div>
+      }
       key="1"
       label="Experiences"
       linkClassName="navItemLink--experiences"
