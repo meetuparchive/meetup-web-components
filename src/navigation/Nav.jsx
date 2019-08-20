@@ -360,6 +360,7 @@ export class Nav extends React.Component {
 					shrink={item.shrink}
 					linkTo={item.linkTo}
 					label={item.label}
+					icon={item.icon}
 					className={item.className}
 					linkClassName={item.linkClassName}
 					onAction={item.onAction}
