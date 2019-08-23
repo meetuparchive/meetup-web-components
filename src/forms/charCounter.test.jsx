@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import CharCounter from './CharCounter';
+import { CharCounter } from './CharCounter';
 
 describe('CharCounter', () => {
 	it('exists', () => {

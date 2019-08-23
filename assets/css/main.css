@@ -4585,6 +4585,18 @@ input.field--reset:active {
     border-bottom: 0;
     border-right: 3px solid; }
 
+.tabs-tab--selectedLeft {
+  border-bottom: 3px solid #00a2c7;
+  box-shadow: none;
+  color: #00a2c7;
+  font-weight: 500; }
+  .tabs--isVertical .tabs-tab--selectedLeft {
+    border-bottom: 0;
+    border-left: 3px solid; }
+
+.tabs-tab--notSelectedLeft {
+  padding-left: 3px !important; }
+
 .toaster {
   box-sizing: border-box;
   position: absolute;
@@ -4775,7 +4787,10 @@ input.field--reset:active {
 
 .tooltip-closeBtn {
   float: right;
-  padding: 4px; }
+  padding: 5px !important; }
+  .tooltip-closeBtn .svg-icon {
+    height: 24px;
+    width: 24px; }
 
 .typeahead {
   position: relative; }
@@ -4898,7 +4913,8 @@ input.field--reset:active {
       border-right: 1px solid rgba(255, 255, 255, 0.2); }
     .navItemLink--dashboard .navItem-label {
       color: #00a2c7 !important;
-      font-weight: 600; } }
+      font-weight: 600;
+      margin-top: -1px; } }
 
 @media only screen and (min-width: 640px) {
   .navItemLink--createMeetup {
@@ -4908,7 +4924,19 @@ input.field--reset:active {
       border-right: 1px solid rgba(255, 255, 255, 0.2); }
     .navItemLink--createMeetup .navItem-label {
       color: #00a2c7 !important;
-      font-weight: 600; } }
+      font-weight: 600;
+      margin-top: -1px; } }
+
+.pill {
+  background: var(--color-viridian);
+  border-radius: 8px;
+  color: white;
+  float: right;
+  font-size: 11px;
+  margin-left: 8px;
+  margin-top: 2px;
+  padding: 3px 4px 1px;
+  width: auto; }
 
 .counterBadge {
   background-color: #00d480;

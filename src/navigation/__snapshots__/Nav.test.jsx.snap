@@ -189,6 +189,20 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       shrink={true}
     />
     <NavItem
+      icon={
+        <div
+          className="pill"
+        >
+          NEW
+        </div>
+      }
+      key="1"
+      label="Experiences"
+      linkClassName="navItemLink--experiences"
+      linkTo="meetup.com/experiences"
+      shrink={true}
+    />
+    <NavItem
       className="navItem--authenticated"
       icon={
         <Icon
@@ -197,7 +211,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
           size="s"
         />
       }
-      key="1"
+      key="2"
       label="Explore"
       linkTo="meetup.com/find/events"
       shrink={true}
@@ -211,7 +225,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="3"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -226,7 +240,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
           size="s"
         />
       }
-      key="3"
+      key="4"
       label="Messages"
       linkTo="meetup.com/messages"
       shrink={true}
@@ -808,7 +822,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
           size="s"
         />
       }
-      key="4"
+      key="5"
       label="Notifications"
       linkTo=""
       onClickAction={[Function]}
@@ -818,7 +832,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={
         <ProfileDropdownComponent
-          allGroupsLabel="All Groups"
+          allGroupsLabel="See all groups"
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
           groups={
@@ -851,7 +865,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
               "label": "Profile",
               "link": "meetup.com/profile",
               "profileDropdown": Object {
-                "allGroupsLabel": "All Groups",
+                "allGroupsLabel": "See all groups",
                 "allGroupsLink": "meetup.com/groups",
                 "groupHome": [Function],
                 "help": Object {
@@ -910,7 +924,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="5"
+      key="6"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
@@ -1024,7 +1038,6 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
-      dropdownContent={false}
       hasUpdates={false}
       icon={
         <Icon
@@ -1036,12 +1049,10 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
       key="4"
       label="Notifications"
       linkTo="meetup.com/notifications"
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups display--none"
-      dropdownContent={false}
       icon={
         <Flex
           align="center"
@@ -1124,6 +1135,20 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       shrink={true}
     />
     <NavItem
+      icon={
+        <div
+          className="pill"
+        >
+          NEW
+        </div>
+      }
+      key="1"
+      label="Experiences"
+      linkClassName="navItemLink--experiences"
+      linkTo="meetup.com/experiences"
+      shrink={true}
+    />
+    <NavItem
       className="navItem--authenticated"
       icon={
         <Icon
@@ -1132,7 +1157,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
           size="s"
         />
       }
-      key="1"
+      key="2"
       label="Explore"
       linkTo="meetup.com/find/events"
       shrink={true}
@@ -1146,7 +1171,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="3"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -1161,7 +1186,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
           size="s"
         />
       }
-      key="3"
+      key="4"
       label="Messages"
       linkTo="meetup.com/messages"
       shrink={true}
@@ -1743,7 +1768,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
           size="s"
         />
       }
-      key="4"
+      key="5"
       label="Notifications"
       linkTo=""
       onClickAction={[Function]}
@@ -1753,7 +1778,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={
         <ProfileDropdownComponent
-          allGroupsLabel="All Groups"
+          allGroupsLabel="See all groups"
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
           groups={
@@ -1786,7 +1811,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
               "label": "Profile",
               "link": "meetup.com/profile",
               "profileDropdown": Object {
-                "allGroupsLabel": "All Groups",
+                "allGroupsLabel": "See all groups",
                 "allGroupsLink": "meetup.com/groups",
                 "groupHome": [Function],
                 "help": Object {
@@ -1845,7 +1870,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="5"
+      key="6"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
@@ -1910,6 +1935,20 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       shrink={true}
     />
     <NavItem
+      icon={
+        <div
+          className="pill"
+        >
+          NEW
+        </div>
+      }
+      key="1"
+      label="Experiences"
+      linkClassName="navItemLink--experiences"
+      linkTo="meetup.com/experiences"
+      shrink={true}
+    />
+    <NavItem
       className="navItem--authenticated"
       icon={
         <Icon
@@ -1918,7 +1957,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
           size="s"
         />
       }
-      key="1"
+      key="2"
       label="Explore"
       linkTo="meetup.com/find/events"
       shrink={true}
@@ -1932,7 +1971,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="3"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -1947,7 +1986,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
           size="s"
         />
       }
-      key="3"
+      key="4"
       label="Messages"
       linkTo="meetup.com/messages"
       shrink={true}
@@ -2529,7 +2568,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
           size="s"
         />
       }
-      key="4"
+      key="5"
       label="Notifications"
       linkTo=""
       onClickAction={[Function]}
@@ -2539,7 +2578,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={
         <ProfileDropdownComponent
-          allGroupsLabel="All Groups"
+          allGroupsLabel="See all groups"
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
           groups={
@@ -2572,7 +2611,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
               "label": "Profile",
               "link": "meetup.com/profile",
               "profileDropdown": Object {
-                "allGroupsLabel": "All Groups",
+                "allGroupsLabel": "See all groups",
                 "allGroupsLink": "meetup.com/groups",
                 "groupHome": [Function],
                 "help": Object {
@@ -2631,7 +2670,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="5"
+      key="6"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
@@ -2770,7 +2809,6 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
-      dropdownContent={false}
       hasUpdates={false}
       icon={
         <Icon
@@ -2782,12 +2820,10 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
       key="3"
       label="Notifications"
       linkTo="meetup.com/notifications"
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
-      dropdownContent={false}
       icon={
         <Flex
           align="center"
@@ -2878,15 +2914,29 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
       shrink={true}
     />
     <NavItem
-      className="navItem--unauthenticated navItem--login"
+      icon={
+        <div
+          className="pill"
+        >
+          NEW
+        </div>
+      }
       key="1"
+      label="Experiences"
+      linkClassName="navItemLink--experiences"
+      linkTo="meetup.com/experiences"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--unauthenticated navItem--login"
+      key="2"
       label="Login"
       linkTo="meetup.com/login"
       shrink={true}
     />
     <NavItem
       className="navItem--unauthenticated"
-      key="2"
+      key="3"
       label="Sign up"
       onAction={[Function]}
       shrink={true}
@@ -3007,6 +3057,20 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       shrink={true}
     />
     <NavItem
+      icon={
+        <div
+          className="pill"
+        >
+          NEW
+        </div>
+      }
+      key="1"
+      label="Experiences"
+      linkClassName="navItemLink--experiences"
+      linkTo="meetup.com/experiences"
+      shrink={true}
+    />
+    <NavItem
       className="navItem--authenticated"
       icon={
         <Icon
@@ -3015,7 +3079,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
           size="s"
         />
       }
-      key="1"
+      key="2"
       label="Explore"
       linkTo="meetup.com/find/events"
       shrink={true}
@@ -3029,7 +3093,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="3"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -3044,7 +3108,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
           size="s"
         />
       }
-      key="3"
+      key="4"
       label="Messages"
       linkTo="meetup.com/messages"
       shrink={true}
@@ -3626,7 +3690,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
           size="s"
         />
       }
-      key="4"
+      key="5"
       label="Notifications"
       linkTo=""
       onClickAction={[Function]}
@@ -3636,7 +3700,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
       dropdownContent={
         <ProfileDropdownComponent
-          allGroupsLabel="All Groups"
+          allGroupsLabel="See all groups"
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
           groups={
@@ -3669,7 +3733,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
               "label": "Profile",
               "link": "meetup.com/profile",
               "profileDropdown": Object {
-                "allGroupsLabel": "All Groups",
+                "allGroupsLabel": "See all groups",
                 "allGroupsLink": "meetup.com/groups",
                 "groupHome": [Function],
                 "help": Object {
@@ -3728,7 +3792,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="5"
+      key="6"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
@@ -3810,7 +3874,6 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
-      dropdownContent={false}
       hasUpdates={false}
       icon={
         <Icon
@@ -3822,12 +3885,10 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
       key="3"
       label="Notifications"
       linkTo="meetup.com/notifications"
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
-      dropdownContent={false}
       icon={
         <Flex
           align="center"
@@ -3943,7 +4004,6 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
-      dropdownContent={false}
       hasUpdates={false}
       icon={
         <Icon
@@ -3955,12 +4015,10 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
       key="3"
       label="Notifications"
       linkTo="meetup.com/notifications"
-      onClickAction={false}
       shrink={true}
     />
     <NavItem
       className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
-      dropdownContent={false}
       icon={
         <Flex
           align="center"

@@ -2,134 +2,58 @@
 
 exports[`NumberInput basic can be initialized to 0 1`] = `
 Object {
-  "className": "field--reset span--100",
-  "disabled": undefined,
   "id": "amountCount",
   "max": 10,
   "min": 1,
   "name": "amountCount",
-  "onBlur": [Function],
-  "onChange": [Function],
-  "onFocus": [Function],
-  "onKeyDown": [Function],
-  "pattern": "[0-9]*",
+  "onChange": [MockFunction],
   "required": true,
   "step": 1,
-  "type": "number",
   "value": 0,
 }
 `;
 
 exports[`NumberInput basic exists 1`] = `
 <Fragment>
-  <label
-    className="label--field label--required"
+  <FieldLabel
     data-requiredtext="*"
     htmlFor="amountCount"
   >
     Are you bringing any guests?
-  </label>
-  <div
-    className="fauxInput"
-  >
-    <Flex
-      align="center"
-    >
-      <FlexItem>
-        <input
-          className="field--reset span--100"
-          id="amountCount"
-          max={10}
-          min={1}
-          name="amountCount"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          pattern="[0-9]*"
-          required={true}
-          step={1}
-          type="number"
-          value={2}
-        />
-      </FlexItem>
-      <FlexItem
-        shrink={true}
-      >
-        <Button
-          className="button--reset decrementButton"
-          component="button"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          reset={true}
-          tabIndex="-1"
-          type="button"
-        >
-          <Icon
-            shape="minus"
-            size="xs"
-          />
-        </Button>
-      </FlexItem>
-      <FlexItem
-        shrink={true}
-      >
-        <Button
-          className="button--reset incrementButton"
-          component="button"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          reset={true}
-          tabIndex="-1"
-          type="button"
-        >
-          <Icon
-            shape="plus"
-            size="xs"
-          />
-        </Button>
-      </FlexItem>
-    </Flex>
-  </div>
+  </FieldLabel>
+  <NumericalInput
+    id="amountCount"
+    max={10}
+    min={1}
+    name="amountCount"
+    onChange={[MockFunction]}
+    required={true}
+    step={1}
+    value={2}
+  />
 </Fragment>
 `;
 
 exports[`NumberInput basic input should have expected props 1`] = `
 Object {
-  "className": "field--reset span--100",
-  "disabled": undefined,
   "id": "amountCount",
   "max": 10,
   "min": 1,
   "name": "amountCount",
-  "onBlur": [Function],
-  "onChange": [Function],
-  "onFocus": [Function],
-  "onKeyDown": [Function],
-  "pattern": "[0-9]*",
+  "onChange": [MockFunction],
   "required": true,
   "step": 1,
-  "type": "number",
   "value": 2,
 }
 `;
 
 exports[`NumberInput basic should specify attributes that are passed in 1`] = `
-<input
-  className="field--reset span--100"
+<NumericalInput
   id="amountCount"
-  min={0}
   name="amountCount"
-  onBlur={[Function]}
-  onChange={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  pattern="[0-9]*"
+  onChange={[MockFunction]}
   placeholder="Guests"
   step={1}
-  type="number"
   value={2}
 />
 `;

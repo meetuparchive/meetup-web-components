@@ -1,8 +1,9 @@
 import React from 'react';
+
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { C_TEXT_PRIMARYINVERTED } from 'swarm-constants/dist/js/constants';
 
+import Button from '../../../forms/Button';
 import Chunk from '../../../layout/Chunk';
 import Flex from '../../../layout/Flex';
 import FlexItem from '../../../layout/FlexItem';
@@ -53,15 +54,10 @@ export const ProfileDropdownComponent = ({
 							{groupsContent}
 						</ul>
 					</Chunk>
-					<a href={allGroupsLink} className="button button--small text--small">
+					<Button small href={allGroupsLink} component="a">
 						{allGroupsLabel}
-						<Icon
-							className="margin--left"
-							shape="chevron-right"
-							size="xs"
-							color={C_TEXT_PRIMARYINVERTED}
-						/>
-					</a>
+						<Icon className="margin--left" shape="chevron-right" size="xs" />
+					</Button>
 				</FlexItem>
 			)}
 			<FlexItem

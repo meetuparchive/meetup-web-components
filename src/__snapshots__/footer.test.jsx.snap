@@ -353,7 +353,6 @@ exports[`LanguageSelectInput exists 1`] = `
       },
     ]
   }
-  requiredText="*"
 />
 `;
 

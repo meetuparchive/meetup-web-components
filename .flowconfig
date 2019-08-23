@@ -5,6 +5,7 @@
 ./node_modules/stylelint/*
 .*.json
 ./node_modules/radium/*
+./node_modules/@meetup/swarm-components/*
 
 [include]
 

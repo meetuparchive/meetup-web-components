@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
 import Button from '../forms/Button';
-import Icon from '../media/Icon';
+import { Icon as SwarmIcon } from '@meetup/swarm-components';
 
 import Tooltip from './Tooltip';
 
@@ -169,7 +169,7 @@ describe('Tooltip', () => {
 			/>
 		);
 		const wrapper = mount(openTooltipWithCloseJSX);
-		const closeBtn = wrapper.find(Icon);
+		const closeBtn = wrapper.find(SwarmIcon);
 
 		it('should render correctly', () => {
 			expect(wrapper).toMatchSnapshot();
@@ -190,6 +190,7 @@ describe('Tooltip', () => {
 				id={dropdownId}
 				trigger={dropdownTrigger}
 				content={dropdownContent}
+				onClose={jest.fn()}
 			/>
 		);
 		const manualTooltipWrapper = mount(manualTooltip);

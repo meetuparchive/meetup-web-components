@@ -3,29 +3,35 @@ import { shallow } from 'enzyme';
 import { MOCK_MEMBER } from 'meetup-web-mocks/lib/api';
 
 import { Nav } from './Nav';
-import { navItems } from './nav.story';
+import { navItemsFactory } from './nav.story';
 
-const MOCK_PROPS = {
-	navItems,
-	media: {
-		isAtSmallUp: false,
-		isAtMediumUp: false,
-		isAtLargeUp: false,
-	},
-	self: { status: 'prereg' },
-	groups: {
-		link: 'meetup.com/groups',
-		label: 'Groups',
-		list: [
-			{ urlname: '/mason-mocks', name: 'Mason Mocks' },
-			{ urlname: '/chicken-scratch', name: 'Chicken Scratch' },
-		],
-	},
-};
-
-const wrapper = props => shallow(<Nav {...MOCK_PROPS} {...props} />);
+let navItems;
+let mockProps;
+let wrapper;
 
 describe('Nav', () => {
+	beforeEach(() => {
+		navItems = navItemsFactory();
+		mockProps = {
+			navItems,
+			media: {
+				isAtSmallUp: false,
+				isAtMediumUp: false,
+				isAtLargeUp: false,
+			},
+			self: { status: 'prereg' },
+			groups: {
+				link: 'meetup.com/groups',
+				label: 'Groups',
+				list: [
+					{ urlname: '/mason-mocks', name: 'Mason Mocks' },
+					{ urlname: '/chicken-scratch', name: 'Chicken Scratch' },
+				],
+			},
+		};
+		wrapper = props => shallow(<Nav {...mockProps} {...props} />);
+	});
+
 	it('should match the snapshot for unauthenticated small screens', () => {
 		expect(wrapper()).toMatchSnapshot();
 	});
@@ -175,6 +181,31 @@ describe('Nav', () => {
 					uxCapture: true,
 				})
 			).toMatchSnapshot();
+		});
+	});
+
+	describe('signUp Modal', () => {
+		it('passes clickHandlers for every signup Provider', () => {
+			const navObject = wrapper();
+			navObject.setState({ isSignupModalOpen: true });
+
+			expect(navObject.find('SignupModal').props()).toEqual(
+				expect.objectContaining({
+					googleOnClick: expect.any(Function),
+					facebookOnClick: expect.any(Function),
+					emailOnClick: expect.any(Function),
+				})
+			);
+		});
+
+		it('calls onOpen handler when modal is open', () => {
+			const mockOnOpen = jest.fn();
+			mockProps.navItems.signup.signupModal.onOpen = mockOnOpen;
+			const navObject = wrapper(mockProps);
+
+			navObject.instance().onClickSignupAction();
+
+			expect(mockOnOpen).toHaveBeenCalled();
 		});
 	});
 });

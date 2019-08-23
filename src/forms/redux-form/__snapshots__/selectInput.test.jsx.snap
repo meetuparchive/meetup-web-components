@@ -22,6 +22,5 @@ exports[`redux-form SelectInput renders a SelectInput component with expected at
     ]
   }
   required={true}
-  requiredText="*"
 />
 `;

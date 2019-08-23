@@ -133,6 +133,7 @@ $maxScalingBP: $breakpoint-m / 1px;
 		.navItem-label {
 			color: $C_accent !important;
 			font-weight: $W_bold;
+			margin-top: -1px;
 		}
 	}
 }
@@ -145,10 +146,21 @@ $maxScalingBP: $breakpoint-m / 1px;
 		.navItem-label {
 			color: $C_accent !important;
 			font-weight: $W_bold;
+			margin-top: -1px;
 		}
 	}
 }
-
+.pill {
+	background: var(--color-viridian);
+	border-radius: 8px;
+	color: $C_white;
+	float: right;
+	font-size: 11px;
+	margin-left: 8px;
+	margin-top: 2px;
+	padding: 3px 4px 1px;
+	width: auto;
+}
 .counterBadge {
 	$_dotSize: $space-half;
 	background-color: $C_teal;

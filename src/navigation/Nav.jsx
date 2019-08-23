@@ -61,6 +61,9 @@ export class Nav extends React.Component {
 	 * @return {undefined}
 	 */
 	onClickSignupAction() {
+		if (this.props.navItems.signup.signupModal.onOpen)
+			this.props.navItems.signup.signupModal.onOpen();
+
 		this.setState(() => ({ isSignupModalOpen: true }));
 	}
 
@@ -145,6 +148,7 @@ export class Nav extends React.Component {
 			updatesLabel,
 			logo,
 			dropdownLoaderLabel,
+			experiences,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all globalNav', className);
@@ -200,8 +204,18 @@ export class Nav extends React.Component {
 			className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup`,
 		};
 
+		const experiencesLink = experiences &&
+			experiences.link && {
+				shrink: true,
+				linkTo: experiences.link,
+				label: experiences.label,
+				linkClassName: 'navItemLink--experiences',
+				icon: <div className="pill">NEW</div>,
+			};
+
 		let unauthItems = [
 			media.isAtMediumUp && createMeetupLink,
+			media.isAtMediumUp && experiencesLink,
 			{
 				shrink: true,
 				linkTo: login.link,
@@ -252,6 +266,7 @@ export class Nav extends React.Component {
 				),
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
+			media.isAtMediumUp && experiencesLink,
 			{
 				shrink: true,
 				linkTo: explore.link,
@@ -293,8 +308,9 @@ export class Nav extends React.Component {
 						className="display--block atMedium_display--none"
 					/>
 				),
-				onClickAction: media.isAtMediumUp && this.onClickDropdownAction,
-				dropdownContent: media.isAtMediumUp && notificationContent,
+				onClickAction:
+					(media.isAtMediumUp && this.onClickDropdownAction) || undefined,
+				dropdownContent: (media.isAtMediumUp && notificationContent) || undefined,
 				hasUpdates: notifications.unreadNotifications > 0,
 				updatesLabel: updatesLabel,
 			},
@@ -333,7 +349,7 @@ export class Nav extends React.Component {
 								profile.getSelfGroupDraftQuery(...args);
 						  }
 						: undefined,
-				dropdownContent: media.isAtMediumUp && profileContent,
+				dropdownContent: media.isAtMediumUp ? profileContent : undefined,
 			},
 		];
 
@@ -344,6 +360,7 @@ export class Nav extends React.Component {
 					shrink={item.shrink}
 					linkTo={item.linkTo}
 					label={item.label}
+					icon={item.icon}
 					className={item.className}
 					linkClassName={item.linkClassName}
 					onAction={item.onAction}
@@ -430,6 +447,9 @@ export class Nav extends React.Component {
 						<SignupModal
 							signupOptions={signup.signupModal}
 							onDismiss={this.onDismissSignupModal}
+							googleOnClick={signup.signupModal.googleOnClick}
+							facebookOnClick={signup.signupModal.facebookOnClick}
+							emailOnClick={signup.signupModal.emailOnClick}
 						/>
 					)}
 					{this.state.showMobileDashboard && (

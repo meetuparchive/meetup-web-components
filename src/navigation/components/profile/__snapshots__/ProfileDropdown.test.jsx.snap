@@ -46,18 +46,18 @@ exports[`Profile Dropdown should match snapshot 1`] = `
         </li>
       </ul>
     </Chunk>
-    <a
-      className="button button--small text--small"
+    <Button
+      component="a"
       href="meetup.com/find"
+      small={true}
     >
       All Groups
       <Icon
         className="margin--left"
-        color="rgb(255, 255, 255)"
         shape="chevron-right"
         size="xs"
       />
-    </a>
+    </Button>
   </FlexItem>
   <FlexItem
     className="text--secondary margin--left"

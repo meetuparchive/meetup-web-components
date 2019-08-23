@@ -64,7 +64,6 @@ exports[`AdminBar renders correctly 1`] = `
       noPortal={true}
       trigger={
         <Button
-          component="button"
           icon={
             <Icon
               shape="cog"
@@ -72,7 +71,6 @@ exports[`AdminBar renders correctly 1`] = `
             />
           }
           id="admin-label-btn"
-          type="button"
         >
           Admin
         </Button>
@@ -118,7 +116,6 @@ exports[`AdminBar renders correctly 1`] = `
                 },
               ]
             }
-            requiredText="*"
             value="1"
           />
           <a
@@ -136,9 +133,7 @@ exports[`AdminBar renders correctly 1`] = `
       noPortal={true}
       trigger={
         <Button
-          component="button"
           id="highlight-label-btn"
-          type="button"
         >
           Highlight 
           1
@@ -219,7 +214,6 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       noPortal={true}
       trigger={
         <Button
-          component="button"
           icon={
             <Icon
               shape="cog"
@@ -227,7 +221,6 @@ exports[`AdminBar renders correctly when QLd 1`] = `
             />
           }
           id="admin-label-btn"
-          type="button"
         >
           Admin
         </Button>
@@ -273,7 +266,6 @@ exports[`AdminBar renders correctly when QLd 1`] = `
                 },
               ]
             }
-            requiredText="*"
             value="1"
           />
           <a
@@ -291,9 +283,7 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       noPortal={true}
       trigger={
         <Button
-          component="button"
           id="highlight-label-btn"
-          type="button"
         >
           Highlight 
           1
@@ -365,7 +355,6 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       noPortal={true}
       trigger={
         <Button
-          component="button"
           icon={
             <Icon
               shape="cog"
@@ -373,7 +362,6 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
             />
           }
           id="admin-label-btn"
-          type="button"
         >
           Admin
         </Button>
@@ -419,7 +407,6 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
                 },
               ]
             }
-            requiredText="*"
             value="1"
           />
           <a
@@ -437,9 +424,7 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       noPortal={true}
       trigger={
         <Button
-          component="button"
           id="highlight-label-btn"
-          type="button"
         >
           Highlight 
           1
@@ -502,7 +487,6 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       noPortal={true}
       trigger={
         <Button
-          component="button"
           icon={
             <Icon
               shape="cog"
@@ -510,7 +494,6 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
             />
           }
           id="admin-label-btn"
-          type="button"
         >
           Admin
         </Button>
@@ -556,7 +539,6 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
                 },
               ]
             }
-            requiredText="*"
             value="1"
           />
           <a
@@ -574,9 +556,7 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       noPortal={true}
       trigger={
         <Button
-          component="button"
           id="highlight-label-btn"
-          type="button"
         >
           Highlight 
           1

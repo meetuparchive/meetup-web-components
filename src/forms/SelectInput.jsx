@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Select from './Select';
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 /**
  * Deprecated - use <Select> directly, supply `value` from parent
  * @module SelectInput
  * @deprecated
  */
-export default class SelectInput extends React.PureComponent {
+export class SelectInput extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -105,3 +106,5 @@ SelectInput.propTypes = {
 	/** What to render in order to indicate the field is required */
 	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
+
+export default DeprecationWarning(SelectInput);
