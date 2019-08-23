@@ -100,7 +100,15 @@ export const Footer = ({
 				<Bounds narrow className="bounds--footer">
 					<Section hasSeparator>
 						<Chunk>
-							<a href={createMeetup.link} className="link link--white">
+							<a
+								href={createMeetup.link}
+								className={cx(
+									'link',
+									'link--white',
+									createMeetup.gmtTracker,
+									createMeetup.e2eTracker
+								)}
+							>
 								{createMeetup.text}
 							</a>
 						</Chunk>
@@ -248,6 +256,8 @@ Footer.propTypes = {
 	createMeetup: PropTypes.shape({
 		link: PropTypes.string.isRequired,
 		text: PropTypes.string.isRequired,
+		gmtTracker: PropTypes.string,
+		e2eTracker: PropTypes.string,
 	}).isRequired,
 
 	/** Renders a light footer background instead of dark. Used for 404's and error pages  */
