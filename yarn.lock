@@ -192,9 +192,9 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.7.1.tgz#e44e596d03c9f16ba3b127ad333a8a072bcb5a0a"
 
-"@meetup/ux-capture@4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@meetup/ux-capture/-/ux-capture-4.2.1.tgz#c2af639ff7b48d40d86b9830c573781c2b3e1e97"
+"@meetup/ux-capture@4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@meetup/ux-capture/-/ux-capture-4.2.2.tgz#8763daf530f0bf5fc71c237ac6264278f7c27beb"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1311,37 +1311,13 @@ babel-cli@6.24.1:
   optionalDependencies:
     chokidar "^1.6.1"
 
-babel-code-frame@^6.11.0, babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
+babel-code-frame@^6.11.0, babel-code-frame@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
   dependencies:
     chalk "^1.1.3"
     esutils "^2.0.2"
     js-tokens "^3.0.2"
-
-babel-core@6.25.0:
-  version "6.25.0"
-  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.25.0.tgz#7dd42b0463c742e9d5296deb3ec67a9322dad729"
-  dependencies:
-    babel-code-frame "^6.22.0"
-    babel-generator "^6.25.0"
-    babel-helpers "^6.24.1"
-    babel-messages "^6.23.0"
-    babel-register "^6.24.1"
-    babel-runtime "^6.22.0"
-    babel-template "^6.25.0"
-    babel-traverse "^6.25.0"
-    babel-types "^6.25.0"
-    babylon "^6.17.2"
-    convert-source-map "^1.1.0"
-    debug "^2.1.1"
-    json5 "^0.5.0"
-    lodash "^4.2.0"
-    minimatch "^3.0.2"
-    path-is-absolute "^1.0.0"
-    private "^0.1.6"
-    slash "^1.0.0"
-    source-map "^0.5.0"
 
 babel-core@6.26.3, babel-core@^6.0.0, babel-core@^6.24.1, babel-core@^6.26.0:
   version "6.26.3"
@@ -1378,7 +1354,7 @@ babel-eslint@8.2.3:
     eslint-scope "~3.7.1"
     eslint-visitor-keys "^1.0.0"
 
-babel-generator@^6.18.0, babel-generator@^6.25.0, babel-generator@^6.26.0:
+babel-generator@^6.18.0, babel-generator@^6.26.0:
   version "6.26.1"
   resolved "https://registry.yarnpkg.com/babel-generator/-/babel-generator-6.26.1.tgz#1844408d3b8f0d35a404ea7ac180f087a601bd90"
   dependencies:
@@ -2079,7 +2055,7 @@ babel-plugin-transform-remove-undefined@^0.4.1:
   dependencies:
     babel-helper-evaluate-path "^0.4.3"
 
-babel-plugin-transform-runtime@6.23.0, babel-plugin-transform-runtime@^6.23.0:
+babel-plugin-transform-runtime@^6.23.0:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-runtime/-/babel-plugin-transform-runtime-6.23.0.tgz#88490d446502ea9b8e7efb0fe09ec4d99479b1ee"
   dependencies:
@@ -2329,7 +2305,7 @@ babel-standalone@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-standalone/-/babel-standalone-6.26.0.tgz#15fb3d35f2c456695815ebf1ed96fe7f015b6886"
 
-babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.25.0, babel-template@^6.26.0:
+babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-template/-/babel-template-6.26.0.tgz#de03e2d16396b069f46dd9fff8521fb1a0e35e02"
   dependencies:
@@ -2339,7 +2315,7 @@ babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.25.0, babel-te
     babylon "^6.18.0"
     lodash "^4.17.4"
 
-babel-traverse@^6.0.0, babel-traverse@^6.18.0, babel-traverse@^6.24.1, babel-traverse@^6.25.0, babel-traverse@^6.26.0:
+babel-traverse@^6.0.0, babel-traverse@^6.18.0, babel-traverse@^6.24.1, babel-traverse@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.26.0.tgz#46a9cbd7edcc62c8e5c064e2d2d8d0f4035766ee"
   dependencies:
@@ -2353,7 +2329,7 @@ babel-traverse@^6.0.0, babel-traverse@^6.18.0, babel-traverse@^6.24.1, babel-tra
     invariant "^2.2.2"
     lodash "^4.17.4"
 
-babel-types@^6.0.0, babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.24.1, babel-types@^6.25.0, babel-types@^6.26.0:
+babel-types@^6.0.0, babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.24.1, babel-types@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-types/-/babel-types-6.26.0.tgz#a3b073f94ab49eb6fa55cd65227a334380632497"
   dependencies:
@@ -2370,7 +2346,7 @@ babylon@7.0.0-beta.44:
   version "7.0.0-beta.44"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.44.tgz#89159e15e6e30c5096e22d738d8c0af8a0e8ca1d"
 
-babylon@^6.17.2, babylon@^6.18.0:
+babylon@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
 
@@ -2497,11 +2473,11 @@ brorand@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
 
-browser-detect@0.2.22:
-  version "0.2.22"
-  resolved "https://registry.yarnpkg.com/browser-detect/-/browser-detect-0.2.22.tgz#fc5ec8a08c287bb9eca6c00f817cb4b67871d066"
+browser-detect@0.2.28:
+  version "0.2.28"
+  resolved "https://registry.yarnpkg.com/browser-detect/-/browser-detect-0.2.28.tgz#5688fc22f638390614ebea4646483403fb20ebfb"
   dependencies:
-    core-js "^2.5.1"
+    core-js "^2.5.7"
 
 browser-process-hrtime@^0.1.2:
   version "0.1.2"
@@ -3202,7 +3178,7 @@ copy-to-clipboard@^3.0.8:
   dependencies:
     toggle-selection "^1.0.3"
 
-core-js@2.5.7, core-js@^2.4.0, core-js@^2.4.1, core-js@^2.5.0, core-js@^2.5.1, core-js@^2.5.7:
+core-js@2.5.7, core-js@^2.4.0, core-js@^2.4.1, core-js@^2.5.0, core-js@^2.5.7:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
 
@@ -3510,7 +3486,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@2.6.9, debug@^2.1.1, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.6, debug@^2.6.8, debug@^2.6.9:
+debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.6, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -7214,35 +7190,26 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
-mwp-app-render@21.0.2897:
-  version "21.0.2897"
-  resolved "https://registry.yarnpkg.com/mwp-app-render/-/mwp-app-render-21.0.2897.tgz#a4ba10e63314b676c34eaef377056974f8dc64a3"
+mwp-app-render@22.4.3051-beta:
+  version "22.4.3051-beta"
+  resolved "https://registry.yarnpkg.com/mwp-app-render/-/mwp-app-render-22.4.3051-beta.tgz#da372a40fb59bdd6f3af49ec1d7b16eea0b55c91"
   dependencies:
-    "@meetup/ux-capture" "4.2.1"
-    browser-detect "0.2.22"
+    "@meetup/ux-capture" "4.2.2"
+    browser-detect "0.2.28"
     escape-html "1.0.3"
 
-mwp-config@21.0.2897:
-  version "21.0.2897"
-  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-21.0.2897.tgz#428bf96ef3c9261e57f1623857ae6598a5498d36"
+mwp-config@22.4.3051-beta:
+  version "22.4.3051-beta"
+  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-22.4.3051-beta.tgz#b86dd5d72423fdaf7ea9ce4fd89415e40e987985"
   dependencies:
-    babel-core "6.25.0"
-    babel-plugin-react-intl "2.3.1"
-    babel-plugin-transform-class-properties "6.24.1"
-    babel-plugin-transform-flow-strip-types "6.22.0"
-    babel-plugin-transform-runtime "6.23.0"
-    babel-preset-env "1.6.0"
-    babel-preset-flow "6.23.0"
-    babel-preset-react "6.24.1"
-    babel-preset-stage-2 "6.24.1"
     convict "4.0.1"
     stylelint "9.4.0"
     stylelint-order "1.0.0"
     stylelint-scss "3.3.0"
 
-mwp-i18n@21.0.2897:
-  version "21.0.2897"
-  resolved "https://registry.yarnpkg.com/mwp-i18n/-/mwp-i18n-21.0.2897.tgz#c2d10ae592231ee9f5b170247d9f31132a924a40"
+mwp-i18n@22.4.3051-beta:
+  version "22.4.3051-beta"
+  resolved "https://registry.yarnpkg.com/mwp-i18n/-/mwp-i18n-22.4.3051-beta.tgz#fec8842b823726f9525eeb303e4f62fdc0ce1443"
 
 nan@^2.3.2, nan@^2.9.2:
   version "2.10.0"
