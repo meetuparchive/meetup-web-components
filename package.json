@@ -5,7 +5,7 @@
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
   "engines": {
-    "node": "^8.11.4",
+    "node": "^10.16.3",
     "yarn": "^1.9.4"
   },
   "scripts": {
