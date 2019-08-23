@@ -6949,9 +6949,9 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
 
-meetup-web-mocks@1.0.262:
-  version "1.0.262"
-  resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-1.0.262.tgz#cf3f529e29a8c943d857d02a35d84235485d6a21"
+meetup-web-mocks@1.0.267-beta:
+  version "1.0.267-beta"
+  resolved "https://registry.yarnpkg.com/meetup-web-mocks/-/meetup-web-mocks-1.0.267-beta.tgz#aa9154ae0f6df376b6ffc192fbca90136462a353"
 
 mem@^1.1.0:
   version "1.1.0"
