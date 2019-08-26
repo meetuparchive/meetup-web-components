@@ -6817,7 +6817,7 @@ lodash._getnative@^3.0.0:
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
 
-lodash.assign@^4.0.3, lodash.assign@^4.0.6:
+lodash.assign@^4.0.3, lodash.assign@^4.0.6, lodash.assign@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
 
@@ -6825,7 +6825,7 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
 
-lodash.clonedeep@4.5.0:
+lodash.clonedeep@4.5.0, lodash.clonedeep@^4.3.2:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
 
@@ -6868,6 +6868,10 @@ lodash.keys@^3.1.2:
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
+
+lodash.mergewith@^4.6.0:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz#617121f89ac55f59047c7aec1ccd6654c6590f55"
 
 lodash.pick@^4.4.0:
   version "4.4.0"
@@ -7358,28 +7362,28 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
-mwp-app-render@22.4.3051-beta:
-  version "22.4.3051-beta"
-  resolved "https://registry.yarnpkg.com/mwp-app-render/-/mwp-app-render-22.4.3051-beta.tgz#da372a40fb59bdd6f3af49ec1d7b16eea0b55c91"
+mwp-app-render@22.4.3053-beta:
+  version "22.4.3053-beta"
+  resolved "https://registry.yarnpkg.com/mwp-app-render/-/mwp-app-render-22.4.3053-beta.tgz#95625ee271dab346627364533f77b6d47066d3c7"
   dependencies:
     "@meetup/ux-capture" "4.2.2"
     browser-detect "0.2.28"
     escape-html "1.0.3"
 
-mwp-config@22.4.3051-beta:
-  version "22.4.3051-beta"
-  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-22.4.3051-beta.tgz#b86dd5d72423fdaf7ea9ce4fd89415e40e987985"
+mwp-config@22.4.3053-beta:
+  version "22.4.3053-beta"
+  resolved "https://registry.yarnpkg.com/mwp-config/-/mwp-config-22.4.3053-beta.tgz#031bb82469357eab9d5ceb3efc8f4d19c86039bf"
   dependencies:
     convict "4.0.1"
     stylelint "9.4.0"
     stylelint-order "1.0.0"
     stylelint-scss "3.3.0"
 
-mwp-i18n@22.4.3051-beta:
-  version "22.4.3051-beta"
-  resolved "https://registry.yarnpkg.com/mwp-i18n/-/mwp-i18n-22.4.3051-beta.tgz#fec8842b823726f9525eeb303e4f62fdc0ce1443"
+mwp-i18n@22.4.3053-beta:
+  version "22.4.3053-beta"
+  resolved "https://registry.yarnpkg.com/mwp-i18n/-/mwp-i18n-22.4.3053-beta.tgz#83f6be2cb3b4f964e83fd15f8ecd7910622817e7"
 
-nan@^2.13.2:
+nan@^2.10.0:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
 
@@ -7575,9 +7579,9 @@ node-releases@^1.0.0-alpha.11:
   dependencies:
     semver "^5.3.0"
 
-node-sass@4.12.0:
-  version "4.12.0"
-  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.12.0.tgz#0914f531932380114a30cc5fa4fa63233a25f017"
+node-sass@4.10.0:
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.10.0.tgz#dcc2b364c0913630945ccbf7a2bbf1f926effca4"
   dependencies:
     async-foreach "^0.1.3"
     chalk "^1.1.1"
@@ -7586,10 +7590,12 @@ node-sass@4.12.0:
     get-stdin "^4.0.1"
     glob "^7.0.3"
     in-publish "^2.0.0"
-    lodash "^4.17.11"
+    lodash.assign "^4.2.0"
+    lodash.clonedeep "^4.3.2"
+    lodash.mergewith "^4.6.0"
     meow "^3.7.0"
     mkdirp "^0.5.1"
-    nan "^2.13.2"
+    nan "^2.10.0"
     node-gyp "^3.8.0"
     npmlog "^4.0.0"
     request "^2.88.0"
