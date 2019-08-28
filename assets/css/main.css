@@ -609,43 +609,61 @@ pre,
 * set media sizes based on our modular scale:
 */
 :root {
-  --responsive-space: $space;
-  --mediaScale: $mediaScale;
-  --responsiveMedia-xs: floor(map-get($media-map, xs) * $mediaScale);
-  --responsiveMedia-s: floor(map-get($media-map, s) * $mediaScale);
-  --responsiveMedia-m: floor(map-get($media-map, m) * $mediaScale);
-  --responsiveMedia-l: floor(map-get($media-map, l) * $mediaScale);
-  --responsiveMedia-xl: floor(map-get($media-map, xl) * $mediaScale);
-  --responsiveMedia-xxl: floor(map-get($media-map, xxl) * $mediaScale); }
+  --responsive-space: 16px;
+  --mediaScale: 1;
+  responsiveMedia- xs: 16px;
+  --responsiveMedia-xs: responsiveMedia- xs;
+  responsiveMedia- s: 24px;
+  --responsiveMedia-s: responsiveMedia- s;
+  responsiveMedia- m: 36px;
+  --responsiveMedia-m: responsiveMedia- m;
+  responsiveMedia- l: 48px;
+  --responsiveMedia-l: responsiveMedia- l;
+  responsiveMedia- xl: 72px;
+  --responsiveMedia-xl: responsiveMedia- xl;
+  responsiveMedia- xxl: 120px;
+  --responsiveMedia-xxl: responsiveMedia- xxl; }
 
 @media only screen and (min-width: 640px) {
   :root {
-    --responsive-space: $responsiveBaseValue; } }
+    --responsive-space: 18px; } }
 
 @media only screen and (min-width: 840px) {
   :root {
-    --responsive-space: $responsiveBaseValue; } }
+    --responsive-space: 20px; } }
 
 /* stylelint-disable number-max-precision */
 @media only screen and (min-width: 640px) {
   :root {
-    --mediaScale: $responsiveScaleValue;
-    --responsiveMedia-xs: floor(map-get($media-map, xs) * $responsiveScaleValue);
-    --responsiveMedia-s: floor(map-get($media-map, s) * $responsiveScaleValue);
-    --responsiveMedia-m: floor(map-get($media-map, m) * $responsiveScaleValue);
-    --responsiveMedia-l: floor(map-get($media-map, l) * $responsiveScaleValue);
-    --responsiveMedia-xl: floor(map-get($media-map, xl) * $responsiveScaleValue);
-    --responsiveMedia-xxl: floor(map-get($media-map, xxl) * $responsiveScaleValue); } }
+    --mediaScale: 1.125;
+    responsiveMedia- xs: 18px;
+    --responsiveMedia-xs: responsiveMedia- xs;
+    responsiveMedia- s: 27px;
+    --responsiveMedia-s: responsiveMedia- s;
+    responsiveMedia- m: 40px;
+    --responsiveMedia-m: responsiveMedia- m;
+    responsiveMedia- l: 54px;
+    --responsiveMedia-l: responsiveMedia- l;
+    responsiveMedia- xl: 81px;
+    --responsiveMedia-xl: responsiveMedia- xl;
+    responsiveMedia- xxl: 135px;
+    --responsiveMedia-xxl: responsiveMedia- xxl; } }
 
 @media only screen and (min-width: 840px) {
   :root {
-    --mediaScale: $responsiveScaleValue;
-    --responsiveMedia-xs: floor(map-get($media-map, xs) * $responsiveScaleValue);
-    --responsiveMedia-s: floor(map-get($media-map, s) * $responsiveScaleValue);
-    --responsiveMedia-m: floor(map-get($media-map, m) * $responsiveScaleValue);
-    --responsiveMedia-l: floor(map-get($media-map, l) * $responsiveScaleValue);
-    --responsiveMedia-xl: floor(map-get($media-map, xl) * $responsiveScaleValue);
-    --responsiveMedia-xxl: floor(map-get($media-map, xxl) * $responsiveScaleValue); } }
+    --mediaScale: 1.25;
+    responsiveMedia- xs: 20px;
+    --responsiveMedia-xs: responsiveMedia- xs;
+    responsiveMedia- s: 30px;
+    --responsiveMedia-s: responsiveMedia- s;
+    responsiveMedia- m: 45px;
+    --responsiveMedia-m: responsiveMedia- m;
+    responsiveMedia- l: 60px;
+    --responsiveMedia-l: responsiveMedia- l;
+    responsiveMedia- xl: 90px;
+    --responsiveMedia-xl: responsiveMedia- xl;
+    responsiveMedia- xxl: 150px;
+    --responsiveMedia-xxl: responsiveMedia- xxl; } }
 
 /* stylelint-enable */
 html {
@@ -5513,43 +5531,61 @@ pre,
 * set media sizes based on our modular scale:
 */
 :root {
-  --responsive-space: $space;
-  --mediaScale: $mediaScale;
-  --responsiveMedia-xs: floor(map-get($media-map, xs) * $mediaScale);
-  --responsiveMedia-s: floor(map-get($media-map, s) * $mediaScale);
-  --responsiveMedia-m: floor(map-get($media-map, m) * $mediaScale);
-  --responsiveMedia-l: floor(map-get($media-map, l) * $mediaScale);
-  --responsiveMedia-xl: floor(map-get($media-map, xl) * $mediaScale);
-  --responsiveMedia-xxl: floor(map-get($media-map, xxl) * $mediaScale); }
+  --responsive-space: 16px;
+  --mediaScale: 1;
+  responsiveMedia- xs: 16px;
+  --responsiveMedia-xs: responsiveMedia- xs;
+  responsiveMedia- s: 24px;
+  --responsiveMedia-s: responsiveMedia- s;
+  responsiveMedia- m: 36px;
+  --responsiveMedia-m: responsiveMedia- m;
+  responsiveMedia- l: 48px;
+  --responsiveMedia-l: responsiveMedia- l;
+  responsiveMedia- xl: 72px;
+  --responsiveMedia-xl: responsiveMedia- xl;
+  responsiveMedia- xxl: 120px;
+  --responsiveMedia-xxl: responsiveMedia- xxl; }
 
 @media only screen and (min-width: 640px) {
   :root {
-    --responsive-space: $responsiveBaseValue; } }
+    --responsive-space: 18px; } }
 
 @media only screen and (min-width: 840px) {
   :root {
-    --responsive-space: $responsiveBaseValue; } }
+    --responsive-space: 20px; } }
 
 /* stylelint-disable number-max-precision */
 @media only screen and (min-width: 640px) {
   :root {
-    --mediaScale: $responsiveScaleValue;
-    --responsiveMedia-xs: floor(map-get($media-map, xs) * $responsiveScaleValue);
-    --responsiveMedia-s: floor(map-get($media-map, s) * $responsiveScaleValue);
-    --responsiveMedia-m: floor(map-get($media-map, m) * $responsiveScaleValue);
-    --responsiveMedia-l: floor(map-get($media-map, l) * $responsiveScaleValue);
-    --responsiveMedia-xl: floor(map-get($media-map, xl) * $responsiveScaleValue);
-    --responsiveMedia-xxl: floor(map-get($media-map, xxl) * $responsiveScaleValue); } }
+    --mediaScale: 1.125;
+    responsiveMedia- xs: 18px;
+    --responsiveMedia-xs: responsiveMedia- xs;
+    responsiveMedia- s: 27px;
+    --responsiveMedia-s: responsiveMedia- s;
+    responsiveMedia- m: 40px;
+    --responsiveMedia-m: responsiveMedia- m;
+    responsiveMedia- l: 54px;
+    --responsiveMedia-l: responsiveMedia- l;
+    responsiveMedia- xl: 81px;
+    --responsiveMedia-xl: responsiveMedia- xl;
+    responsiveMedia- xxl: 135px;
+    --responsiveMedia-xxl: responsiveMedia- xxl; } }
 
 @media only screen and (min-width: 840px) {
   :root {
-    --mediaScale: $responsiveScaleValue;
-    --responsiveMedia-xs: floor(map-get($media-map, xs) * $responsiveScaleValue);
-    --responsiveMedia-s: floor(map-get($media-map, s) * $responsiveScaleValue);
-    --responsiveMedia-m: floor(map-get($media-map, m) * $responsiveScaleValue);
-    --responsiveMedia-l: floor(map-get($media-map, l) * $responsiveScaleValue);
-    --responsiveMedia-xl: floor(map-get($media-map, xl) * $responsiveScaleValue);
-    --responsiveMedia-xxl: floor(map-get($media-map, xxl) * $responsiveScaleValue); } }
+    --mediaScale: 1.25;
+    responsiveMedia- xs: 20px;
+    --responsiveMedia-xs: responsiveMedia- xs;
+    responsiveMedia- s: 30px;
+    --responsiveMedia-s: responsiveMedia- s;
+    responsiveMedia- m: 45px;
+    --responsiveMedia-m: responsiveMedia- m;
+    responsiveMedia- l: 60px;
+    --responsiveMedia-l: responsiveMedia- l;
+    responsiveMedia- xl: 90px;
+    --responsiveMedia-xl: responsiveMedia- xl;
+    responsiveMedia- xxl: 150px;
+    --responsiveMedia-xxl: responsiveMedia- xxl; } }
 
 /* stylelint-enable */
 /*doc
