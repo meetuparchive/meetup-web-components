@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx --source-maps && yarn run build:css",
-    "build:css": "node-sass --importer ./util/sassRelativeImporter.js --include-path scss ./assets/scss/main.scss ./assets/css/main.css",
+    "build:css": "node-sass --importer /util/sassRelativeImporter.js --include-path scss ./assets/scss/main.scss ./assets/css/main.css",
     "build:watch": "yarn build --watch",
     "lint": "yarn run lint:base --fix",
     "lint:base": "eslint src/ --ext .js,.jsx",
@@ -115,7 +115,7 @@
     "mwp-app-render": "22.4.3063-beta",
     "mwp-config": "22.4.3063-beta",
     "mwp-i18n": "22.4.3063-beta",
-    "node-sass": "4.10.0",
+    "node-sass": "4.9.0",
     "npm-run-all": "4.0.2",
     "prettier": "1.13.5",
     "prop-types": "15.6.0",
