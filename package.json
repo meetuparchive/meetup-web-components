@@ -49,7 +49,7 @@
     "react-dom": "^16.8.0",
     "swarm-animation": "^0.0.95",
     "swarm-icons": "^3.8.354",
-    "swarm-sasstools": "^5.0.432-beta"
+    "swarm-sasstools": "^5.0.433-beta"
   },
   "dependencies": {
     "@meetup/swarm-components": "0.13.19",
@@ -139,7 +139,7 @@
     "swarm-animation": "0.0.95",
     "swarm-constants": "2.2.122",
     "swarm-icons": "3.8.349",
-    "swarm-sasstools": "5.0.432-beta",
+    "swarm-sasstools": "5.0.433-beta",
     "webpack": "4.14.0"
   },
   "lint-staged": {
