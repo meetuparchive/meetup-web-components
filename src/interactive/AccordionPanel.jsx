@@ -56,8 +56,22 @@ class AccordionPanel extends React.Component {
 	_handleToggle(e) {
 		e.preventDefault();
 
-		const { isOpen, setClickedPanel, onClickCallback, panelIndex } = this.props;
-
+		const {
+			isOpen,
+			setClickedPanel,
+			onClickCallback,
+			panelIndex,
+			disableAndOpen,
+			isDisabledPanelOpen,
+		} = this.props;
+		if (disableAndOpen) {
+			setClickedPanel &&
+				setClickedPanel(e, {
+					panelIndex: panelIndex,
+					isDisabledPanelOpen: true,
+				});
+			return this.getPanelStyle(isDisabledPanelOpen, this.contentEl);
+		}
 		setClickedPanel &&
 			setClickedPanel(e, {
 				panelIndex: panelIndex,
@@ -150,6 +164,8 @@ class AccordionPanel extends React.Component {
 			classNamesActive,
 			className,
 			onToggleClick, // eslint-disable-line no-unused-vars
+			disableAndOpen,
+			isDisabledPanelOpen,
 			...other
 		} = this.props;
 
@@ -183,8 +199,8 @@ class AccordionPanel extends React.Component {
 				<div
 					role="tab"
 					aria-controls={`panel-${panelId}`}
-					aria-expanded={isOpen}
-					aria-selected={isOpen}
+					aria-expanded={isOpen && !isDisabledPanelOpen}
+					aria-selected={isOpen && !isDisabledPanelOpen}
 					className={classNames.trigger}
 					tabIndex={0}
 					onKeyUp={this.onKeyUp}
@@ -212,8 +228,8 @@ class AccordionPanel extends React.Component {
 							) : (
 								<ToggleSwitch
 									tabIndex="-1"
-									isActive={isOpen}
-									disabled={!!onToggleClick}
+									isActive={isOpen && !disableAndOpen}
+									disabled={!!onToggleClick || !!disableAndOpen}
 									id={`switch-${panelId}`}
 									labelledBy={`label-${panelId}`}
 									name={panelId}
@@ -228,7 +244,7 @@ class AccordionPanel extends React.Component {
 					role="tabpanel"
 					id={`panel-${panelId}`}
 					aria-labelledby={`label-${panelId}`}
-					aria-hidden={!isOpen}
+					aria-hidden={!isOpen && !isDisabledPanelOpen}
 					className={classNames.content}
 					style={{ height: this.state.height }}
 					onTransitionEnd={this.onTransitionEnd}
@@ -293,6 +309,9 @@ AccordionPanel.propTypes = {
 
 	/** Whether to use a ToggleSwitch as an indicator instead of an icon */
 	indicatorSwitch: PropTypes.bool,
+
+	/** Prevent ToggleSwitch active but show content after click  */
+	disableAndOpen: PropTypes.bool,
 };
 
 export default AccordionPanel;

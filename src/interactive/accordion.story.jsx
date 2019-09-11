@@ -209,4 +209,60 @@ storiesOf('Interactive/Accordion', module)
 					'Overrides default multiSelectable prop in AccordionPanelGroup so only one panel can be open at a time',
 			},
 		}
+	)
+	.add(
+		'with disabled and open ',
+		() => (
+			<div className="span--100 padding--all">
+				<AccordionPanelGroup
+					indicatorSwitch
+					accordionPanels={[
+						<AccordionPanel
+							disableAndOpen
+							label="First in default group"
+							onClickCallback={callbackAction('first panel click')}
+							panelContent={
+								<div className="runningText">
+									<p>Hello, any kind of content can go in here</p>
+								</div>
+							}
+						/>,
+						<AccordionPanel
+							label="Second in default group"
+							onClickCallback={callbackAction('second panel click')}
+							panelContent={
+								<div>
+									<div className="runningText">
+										<p>
+											Any kind of content can go in here, even
+											inputs.
+										</p>
+									</div>
+									<div className="chunk">
+										<label htmlFor="test-textinput">
+											I'm a label
+										</label>
+										<input
+											id="test-textinput"
+											type="text"
+											placeholder="Input placeholder"
+										/>
+									</div>
+								</div>
+							}
+						/>,
+						<AccordionPanel
+							label="Third in default group"
+							onClickCallback={callbackAction('third panel click')}
+							panelContent={
+								<div className="runningText">
+									<p>Goodbye</p>
+								</div>
+							}
+						/>,
+					]}
+				/>
+			</div>
+		),
+		{ info: { text: 'add an onClickCallback prop to a panel' } }
 	);

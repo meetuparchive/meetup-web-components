@@ -9,6 +9,7 @@ describe('AccordionPanelGroup', () => {
 		<AccordionPanel
 			label="First Section"
 			isOpen
+			isDisabledPanelOpen
 			panelContent={
 				<div className="runningText">
 					<p>
