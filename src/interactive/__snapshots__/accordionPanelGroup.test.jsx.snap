@@ -107,8 +107,8 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         <div>
           <div
             aria-controls="panel-firstsection"
-            aria-expanded={false}
-            aria-selected={false}
+            aria-expanded={true}
+            aria-selected={true}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
             onKeyUp={[Function]}
@@ -713,8 +713,8 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         <div>
           <div
             aria-controls="panel-firstsection"
-            aria-expanded={false}
-            aria-selected={false}
+            aria-expanded={true}
+            aria-selected={true}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
             onKeyUp={[Function]}
