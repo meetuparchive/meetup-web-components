@@ -165,7 +165,7 @@ class AccordionPanel extends React.Component {
 			className,
 			onToggleClick, // eslint-disable-line no-unused-vars
 			disableAndOpen,
-			isDisabledPanelOpen,
+			isDisabledPanelOpen, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -199,8 +199,8 @@ class AccordionPanel extends React.Component {
 				<div
 					role="tab"
 					aria-controls={`panel-${panelId}`}
-					aria-expanded={isOpen && !isDisabledPanelOpen}
-					aria-selected={isOpen && !isDisabledPanelOpen}
+					aria-expanded={isOpen}
+					aria-selected={isOpen}
 					className={classNames.trigger}
 					tabIndex={0}
 					onKeyUp={this.onKeyUp}
@@ -244,7 +244,7 @@ class AccordionPanel extends React.Component {
 					role="tabpanel"
 					id={`panel-${panelId}`}
 					aria-labelledby={`label-${panelId}`}
-					aria-hidden={!isOpen && !isDisabledPanelOpen}
+					aria-hidden={!isOpen}
 					className={classNames.content}
 					style={{ height: this.state.height }}
 					onTransitionEnd={this.onTransitionEnd}
