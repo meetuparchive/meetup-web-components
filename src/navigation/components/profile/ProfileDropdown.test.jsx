@@ -18,6 +18,10 @@ const MOCK_PROPS = {
 		link: 'meetup.com',
 		label: 'Profile',
 	},
+	payments: {
+		link: 'meetup.com',
+		label: 'Payments made',
+	},
 	settings: {
 		link: 'meetup.com',
 		label: 'Settings',

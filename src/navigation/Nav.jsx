@@ -182,6 +182,7 @@ export class Nav extends React.Component {
 
 		const profileContent = isGroupsLoaded ? (
 			<ProfileDropdown
+				payments={profile.profileDropdown.payments}
 				settings={profile.profileDropdown.settings}
 				help={profile.profileDropdown.help}
 				logout={profile.profileDropdown.logout}
