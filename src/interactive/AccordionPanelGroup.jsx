@@ -20,7 +20,7 @@ export const getNewPanelState = (isMultiselect, statesList, clickedPanelData) =>
 			return defaultState;
 		}
 
-		return clickedPanelData.isOpen;
+		return clickedPanelData.isDisabledPanelOpen || clickedPanelData.isOpen;
 	});
 
 /**
@@ -96,6 +96,7 @@ class AccordionPanelGroup extends React.Component {
 								indicatorIcon,
 								indicatorIconActive,
 								indicatorSwitch,
+								isDisabledPanelOpen: this.state.panelStatesList[i],
 							},
 							panel.props.children
 						)}
