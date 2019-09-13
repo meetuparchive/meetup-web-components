@@ -91,6 +91,10 @@ export const navItemsFactory = () => {
 			label: 'Profile',
 			getSelfGroupsQuery: () => {},
 			profileDropdown: {
+				payments: {
+					link: 'meetup.com/payments/payments_made',
+					label: 'Payments made',
+				},
 				settings: { link: 'meetup.com/settings', label: 'Settings' },
 				help: { link: 'meetup.com/help', label: 'Help' },
 				logout: { link: 'meetup.com/logout', label: 'Logout' },

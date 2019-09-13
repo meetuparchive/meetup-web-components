@@ -20,6 +20,7 @@ export const PROFILE_GROUP_LIST_ITEM_CLASS = 'profileDropdown-content-group';
  * @return {React.element} composed component
  */
 export const ProfileDropdownComponent = ({
+	payments,
 	settings,
 	help,
 	profile,
@@ -69,6 +70,9 @@ export const ProfileDropdownComponent = ({
 						<a href={profile.link}>{profile.label}</a>
 					</li>
 					<li className="list-item">
+						<a href={payments.link}>{payments.label}</a>
+					</li>
+					<li className="list-item">
 						<a href={settings.link}>{settings.label}</a>
 					</li>
 					<li className="list-item">
@@ -85,6 +89,10 @@ export const ProfileDropdownComponent = ({
 
 ProfileDropdownComponent.propTypes = {
 	profile: PropTypes.shape({
+		link: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired,
+	}),
+	payments: PropTypes.shape({
 		link: PropTypes.string.isRequired,
 		label: PropTypes.string.isRequired,
 	}),
