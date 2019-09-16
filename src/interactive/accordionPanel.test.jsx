@@ -233,5 +233,22 @@ describe('AccordionPanel', function() {
 			expect(handleToggleSpy).not.toHaveBeenCalled();
 			expect(onToggleClickSpy).toHaveBeenCalled();
 		});
+		it('ToggleSwitch should be disabled if disableAndOpen params passed', () => {
+			const panelOnToggleClick = mount(
+				<AccordionPanel
+					indicatorSwitch
+					disableAndOpen
+					label="First Section"
+					indicatorAlign="left"
+					panelContent={
+						<div className="runningText">
+							<p>{textContent1}</p>
+						</div>
+					}
+				/>
+			);
+			const switchNode = panelOnToggleClick.find(ToggleSwitch);
+			expect(switchNode.props().disabled).toBe(true);
+		});
 	});
 });

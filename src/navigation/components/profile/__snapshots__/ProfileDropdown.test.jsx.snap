@@ -81,6 +81,15 @@ exports[`Profile Dropdown should match snapshot 1`] = `
         <a
           href="meetup.com"
         >
+          Payments made
+        </a>
+      </li>
+      <li
+        className="list-item"
+      >
+        <a
+          href="meetup.com"
+        >
           Settings
         </a>
       </li>

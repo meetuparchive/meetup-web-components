@@ -8,6 +8,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconSize="xs"
+        isDisabledPanelOpen={true}
         isOpen={true}
         label="First Section"
         panelContent={
@@ -88,6 +89,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconSize="xs"
+        isDisabledPanelOpen={true}
         isOpen={true}
         label="First Section"
         panelContent={
@@ -255,6 +257,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconSize="xs"
+        isDisabledPanelOpen={false}
         isOpen={false}
         label="Next Section"
         panelContent={
@@ -454,6 +457,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconSize="xs"
+        isDisabledPanelOpen={false}
         isOpen={false}
         label="Third Section"
         panelContent={
@@ -625,6 +629,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconSize="xs"
+        isDisabledPanelOpen={true}
         isOpen={true}
         label="First Section"
         panelContent={
@@ -705,6 +710,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconSize="xs"
+        isDisabledPanelOpen={true}
         isOpen={true}
         label="First Section"
         panelContent={
@@ -872,6 +878,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconSize="xs"
+        isDisabledPanelOpen={false}
         isOpen={false}
         label="Next Section"
         panelContent={
@@ -1071,6 +1078,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         indicatorAlign="right"
         indicatorIcon="chevron-down"
         indicatorIconSize="xs"
+        isDisabledPanelOpen={false}
         isOpen={false}
         label="Third Section"
         panelContent={
