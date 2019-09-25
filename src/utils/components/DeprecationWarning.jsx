@@ -27,7 +27,7 @@ function DeprecationWarning(WrappedComponent) {
 				console.warn(
 					`The ${
 						WrappedComponent.name
-					} component has been deprecated and will be removed from meetup-web-components on October 3, 2019. Please upgrade to the latest from https://github.com/meetup/swarm-ui`
+					} component has been deprecated and will be removed from meetup-web-components on October 21, 2019. Please upgrade to the latest from https://github.com/meetup/swarm-ui`
 				);
 				hasBeenWarned[WrappedComponent.name] = true;
 			}

@@ -3,7 +3,7 @@ import React from 'react';
 import Downshift from 'downshift';
 import cx from 'classnames';
 
-import TextInput from './TextInput';
+import { TextInput } from '@meetup/swarm-components';
 
 export const TA_DROPDOWN_CLASSNAME = 'typeahead-dropdown';
 export const TA_ITEM_CLASSNAME = 'typeahead-item';
@@ -104,7 +104,6 @@ class Typeahead extends React.PureComponent {
 						<TextInput
 							{...getInputProps({
 								...inputProps,
-								className: 'typeahead-input',
 								onFocus: openOnFocus && openMenu,
 							})}
 						/>
