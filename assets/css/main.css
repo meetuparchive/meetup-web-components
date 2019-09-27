@@ -16,51 +16,51 @@
  */
 /* Default values */
 :root {
-  --c-white: white;
-  --c-lightGray: #f6f7f8;
-  --c-mediumGray: #757575;
-  --c-darkGray: #353e48;
-  --c-coolGrayLight: #e4e9ed;
+  --c-white: rgb(255, 255, 255);
+  --c-lightGray: rgb(246, 247, 248);
+  --c-mediumGray: rgb(117, 117, 117);
+  --c-darkGray: rgb(53, 62, 72);
+  --c-coolGrayLight: rgb(228, 233, 237);
   --c-coolGrayLightTransp: rgba(41, 77, 107, 0.12);
-  --c-coolGrayMedium: #979fa4;
+  --c-coolGrayMedium: rgb(151, 159, 164);
   --c-coolGrayMediumTransp: rgba(84, 96, 107, 0.6);
-  --c-red: #f13a59;
-  --c-darkRed: #d32d4a;
-  --c-pink: #ff99d1;
-  --c-yellow: #ffe533;
-  --c-lightBlue: #4dd1ed;
-  --c-purple: #371eac;
-  --c-blue: #00a2c7;
-  --c-plum: #7000b0;
-  --c-orange: #ff5b0f;
-  --c-teal: #00d480;
-  --c-shamrock: #59db33;
-  --c-black: #0f1721;
-  --c-facebook: #3b5998;
-  --c-twitter: #33ccff;
-  --c-linkedin: #4875b4;
-  --c-tumblr: #2b4964;
-  --c-flickr: #fe0883;
-  --c-foursquare: #0cbadf;
-  --c-googleplus: #c63d2d;
-  --c-googleplusbutton: white;
-  --c-instagram: #4e433c;
-  --c-reddit: #cee3f8;
-  --c-wepay: #4891dc;
-  --c-yahoo: #7b0099;
-  --c-outlook: #0072c6;
-  --c-textPrimary: #2e3e48;
+  --c-red: rgb(241, 58, 89);
+  --c-darkRed: rgb(211, 45, 74);
+  --c-pink: rgb(255, 153, 209);
+  --c-yellow: rgb(255, 229, 51);
+  --c-lightBlue: rgb(77, 209, 237);
+  --c-purple: rgb(55, 30, 172);
+  --c-blue: rgb(0, 162, 199);
+  --c-plum: rgb(112, 0, 176);
+  --c-orange: rgb(255, 91, 15);
+  --c-teal: rgb(0, 212, 128);
+  --c-shamrock: rgb(89, 219, 51);
+  --c-black: rgb(15, 23, 33);
+  --c-facebook: rgb(59, 89, 152);
+  --c-twitter: rgb(51, 204, 255);
+  --c-linkedin: rgb(72, 117, 180);
+  --c-tumblr: rgb(43, 73, 100);
+  --c-flickr: rgb(254, 8, 131);
+  --c-foursquare: rgb(12, 186, 223);
+  --c-googleplus: rgb(198, 61, 45);
+  --c-googleplusbutton: rgb(255, 255, 255);
+  --c-instagram: rgb(78, 67, 60);
+  --c-reddit: rgb(206, 227, 248);
+  --c-wepay: rgb(72, 145, 220);
+  --c-yahoo: rgb(123, 0, 153);
+  --c-outlook: rgb(0, 114, 198);
+  --c-textPrimary: rgb(46, 62, 72);
   --c-textSecondary: rgba(46, 62, 72, 0.6);
   --c-textTertiary: rgba(46, 62, 72, 0.35);
   --c-textHint: rgba(46, 62, 72, 0.35);
   --c-textDisabled: rgba(46, 62, 72, 0.12);
-  --c-textPrimaryInverted: white;
+  --c-textPrimaryInverted: rgb(255, 255, 255);
   --c-textSecondaryInverted: rgba(255, 255, 255, 0.7);
   --c-textTertiaryInverted: rgba(255, 255, 255, 0.35);
   --c-textHintInverted: rgba(255, 255, 255, 0.35);
   --c-textDisabledInverted: rgba(255, 255, 255, 0.12);
-  --c-attention: #ff5b0f;
-  --c-success: #00d480;
+  --c-attention: rgb(255, 91, 15);
+  --c-success: rgb(0, 212, 128);
   --c-border: rgba(46, 62, 72, 0.12);
   --c-borderDark: rgba(46, 62, 72, 0.54);
   --c-borderInverted: rgba(255, 255, 255, 0.2);
@@ -71,9 +71,9 @@
   --c-dimmingOverlay: rgba(46, 62, 72, 0.4);
   --c-tappable: rgba(56, 56, 15, 0.09);
   --c-tappableInverted: rgba(255, 246, 196, 0.27);
-  --c-contentBG: white;
-  --c-contentBGInverted: #0f1721;
-  --c-collectionBG: #f6f7f8;
+  --c-contentBG: rgb(255, 255, 255);
+  --c-contentBGInverted: rgb(15, 23, 33);
+  --c-collectionBG: rgb(246, 247, 248);
   --font-family-normal: 'Graphik Meetup', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
   --font-family-mono: Monaco, 'Andale Mono', 'Courier New', monospace;
   --font-lineHeight-normal: 1.45;
@@ -369,40 +369,33 @@ big,
   color: #2e3e48;
   font-weight: 600;
   line-height: 1.1; }
-  .text--pageTitle, .text--pageTitle svg,
-  .text--sectionTitle, .text--sectionTitle svg,
+  .text--pageTitle,
+  .text--pageTitle svg,
+  .text--sectionTitle,
+  .text--sectionTitle svg,
   big,
-  .text--big, big svg,
+  .text--big,
+  big svg,
   .text--big svg,
-  .text--display, .text--display svg,
-  .text--display2, .text--display2 svg,
-  .text--display3, .text--display3 svg {
+  .text--display,
+  .text--display svg,
+  .text--display2,
+  .text--display2 svg,
+  .text--display3,
+  .text--display3 svg {
     stroke: transparent;
     fill: #2e3e48; }
-  .inverted .text--pageTitle,
-  .inverted .text--sectionTitle,
-  .inverted big,
-  .inverted
-  .text--big,
-  .inverted .text--display,
-  .inverted .text--display2,
-  .inverted .text--display3 {
+  .inverted .text--pageTitle, .inverted .text--sectionTitle, .inverted big,
+  .inverted .text--big, .inverted .text--display, .inverted .text--display2, .inverted .text--display3 {
     color: white; }
     .inverted .text--pageTitle,
-    .inverted .text--pageTitle svg,
-    .inverted .text--sectionTitle,
-    .inverted .text--sectionTitle svg,
-    .inverted big,
-    .inverted
-    .text--big,
+    .inverted .text--pageTitle svg, .inverted .text--sectionTitle,
+    .inverted .text--sectionTitle svg, .inverted big,
+    .inverted .text--big,
     .inverted big svg,
-    .inverted
-    .text--big svg,
-    .inverted .text--display,
-    .inverted .text--display svg,
-    .inverted .text--display2,
-    .inverted .text--display2 svg,
-    .inverted .text--display3,
+    .inverted .text--big svg, .inverted .text--display,
+    .inverted .text--display svg, .inverted .text--display2,
+    .inverted .text--display2 svg, .inverted .text--display3,
     .inverted .text--display3 svg {
       stroke: transparent;
       fill: white; }
@@ -410,15 +403,19 @@ big,
 .text--pageTitle {
   font-size: 32px; }
 
+
 .text--sectionTitle {
   font-size: 20px;
   line-height: 1.45; }
 
+
 .text--display {
   font-size: 42px; }
 
+
 .text--display2 {
   font-size: 34px; }
+
 
 .text--display3 {
   font-size: 28px; }
@@ -430,7 +427,9 @@ big,
   line-height: 1.6;
   letter-spacing: -0.02em;
   word-spacing: 0.1em; }
-  .text--labelSecondary, .text--label, .text--labelSecondary svg, .text--label svg {
+  .text--labelSecondary, .text--label,
+  .text--labelSecondary svg,
+  .text--label svg {
     stroke: transparent;
     fill: #2e3e48; }
   .inverted .text--labelSecondary, .inverted .text--label {
@@ -446,7 +445,8 @@ big,
 .text--labelSecondary {
   color: rgba(46, 62, 72, 0.6);
   font-weight: 500; }
-  .text--labelSecondary, .text--labelSecondary svg {
+  .text--labelSecondary,
+  .text--labelSecondary svg {
     stroke: transparent;
     fill: rgba(46, 62, 72, 0.6); }
   .inverted .text--labelSecondary {
@@ -459,7 +459,8 @@ big,
 /* stylelint-disable selector-max-combinators, selector-max-compound-selectors */
 .text--bold {
   font-weight: 500 !important; }
-  .text--bold .inverted .runningText, .text--bold .inverted.runningText {
+  .text--bold .inverted .runningText,
+  .text--bold .inverted.runningText {
     font-weight: 600 !important; }
 
 /* stylelint-enable */
@@ -468,7 +469,10 @@ big,
 
 .text--caption, .text--secondary, .notification--read {
   color: rgba(46, 62, 72, 0.6); }
-  .text--caption, .text--secondary, .notification--read, .text--caption svg, .text--secondary svg, .notification--read svg {
+  .text--caption, .text--secondary, .notification--read,
+  .text--caption svg,
+  .text--secondary svg,
+  .notification--read svg {
     stroke: transparent;
     fill: rgba(46, 62, 72, 0.6); }
   .inverted .text--caption, .inverted .text--secondary, .inverted .notification--read {
@@ -482,7 +486,9 @@ big,
 
 .text--hint, .text--tertiary {
   color: rgba(46, 62, 72, 0.35); }
-  .text--hint, .text--tertiary, .text--hint svg, .text--tertiary svg {
+  .text--hint, .text--tertiary,
+  .text--hint svg,
+  .text--tertiary svg {
     stroke: transparent;
     fill: rgba(46, 62, 72, 0.35); }
   .inverted .text--hint, .inverted .text--tertiary {
@@ -492,6 +498,7 @@ big,
     .inverted .text--tertiary svg {
       stroke: transparent;
       fill: rgba(255, 255, 255, 0.35); }
+
 
 big,
 .text--big {
@@ -513,8 +520,10 @@ button.link, .runningText a {
   color: #00a2c7;
   text-decoration: none; }
   a.link,
-  button.link, .runningText a, a.link svg,
-  button.link svg, .runningText a svg {
+  button.link, .runningText a,
+  a.link svg,
+  button.link svg,
+  .runningText a svg {
     stroke: transparent;
     fill: #00a2c7; }
   a.link:link,
@@ -525,36 +534,35 @@ button.link, .runningText a {
   button.link:focus, .runningText a:focus, a.link:active,
   button.link:active, .runningText a:active {
     text-decoration: underline; }
-  a.link .button,
-  button.link .button, .runningText a .button {
+  a.link .button, button.link .button, .runningText a .button {
     text-decoration: none; }
-  .inverted a.link, .inverted
-  button.link, .inverted .runningText a, .runningText .inverted a {
+  .inverted a.link,
+  .inverted button.link, .inverted .runningText a, .runningText .inverted a {
     color: white;
     text-decoration: underline; }
-    .inverted a.link, .inverted
-    button.link, .inverted .runningText a, .runningText .inverted a,
+    .inverted a.link,
+    .inverted button.link, .inverted .runningText a, .runningText .inverted a,
     .inverted a.link svg,
-    .inverted
-    button.link svg,
-    .inverted .runningText a svg, .runningText
-    .inverted a svg {
+    .inverted button.link svg,
+    .inverted .runningText a svg,
+    .runningText .inverted a svg {
       stroke: transparent;
       fill: white; }
-    .inverted a.link:link, .inverted
-    button.link:link, .inverted .runningText a:link, .runningText .inverted a:link {
+    .inverted a.link:link,
+    .inverted button.link:link, .inverted .runningText a:link, .runningText .inverted a:link {
       text-decoration: underline; }
-    .inverted a.link:hover, .inverted
-    button.link:hover, .inverted .runningText a:hover, .runningText .inverted a:hover, .inverted a.link:focus, .inverted
-    button.link:focus, .inverted .runningText a:focus, .runningText .inverted a:focus, .inverted a.link:active, .inverted
-    button.link:active, .inverted .runningText a:active, .runningText .inverted a:active {
+    .inverted a.link:hover,
+    .inverted button.link:hover, .inverted .runningText a:hover, .runningText .inverted a:hover, .inverted a.link:focus,
+    .inverted button.link:focus, .inverted .runningText a:focus, .runningText .inverted a:focus, .inverted a.link:active,
+    .inverted button.link:active, .inverted .runningText a:active, .runningText .inverted a:active {
       text-decoration: none; }
 
 .text--error,
 .text--attention {
   color: #ff5b0f; }
   .text--error,
-  .text--attention, .text--error svg,
+  .text--attention,
+  .text--error svg,
   .text--attention svg {
     stroke: transparent;
     fill: #ff5b0f; }
@@ -1688,7 +1696,9 @@ ul.bullets,
   padding-left: 1.33em;
   /* indent by default */ }
   @media only screen and (min-width: 1024px) {
-    .runningText ul, .runningText ol {
+    
+    .runningText ul,
+    .runningText ol {
       padding-left: inherit; } }
 
 /* stylelint-disable selector-no-qualifying-type */
@@ -4674,7 +4684,7 @@ input.field--reset:active {
   font-weight: 400;
   justify-content: center;
   margin: 4px 0;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     .toggleButton-label {
       min-height: 0;
@@ -5263,40 +5273,33 @@ big,
   color: #2e3e48;
   font-weight: 600;
   line-height: 1.1; }
-  .text--pageTitle, .text--pageTitle svg,
-  .text--sectionTitle, .text--sectionTitle svg,
+  .text--pageTitle,
+  .text--pageTitle svg,
+  .text--sectionTitle,
+  .text--sectionTitle svg,
   big,
-  .text--big, big svg,
+  .text--big,
+  big svg,
   .text--big svg,
-  .text--display, .text--display svg,
-  .text--display2, .text--display2 svg,
-  .text--display3, .text--display3 svg {
+  .text--display,
+  .text--display svg,
+  .text--display2,
+  .text--display2 svg,
+  .text--display3,
+  .text--display3 svg {
     stroke: transparent;
     fill: #2e3e48; }
-  .inverted .text--pageTitle,
-  .inverted .text--sectionTitle,
-  .inverted big,
-  .inverted
-  .text--big,
-  .inverted .text--display,
-  .inverted .text--display2,
-  .inverted .text--display3 {
+  .inverted .text--pageTitle, .inverted .text--sectionTitle, .inverted big,
+  .inverted .text--big, .inverted .text--display, .inverted .text--display2, .inverted .text--display3 {
     color: white; }
     .inverted .text--pageTitle,
-    .inverted .text--pageTitle svg,
-    .inverted .text--sectionTitle,
-    .inverted .text--sectionTitle svg,
-    .inverted big,
-    .inverted
-    .text--big,
+    .inverted .text--pageTitle svg, .inverted .text--sectionTitle,
+    .inverted .text--sectionTitle svg, .inverted big,
+    .inverted .text--big,
     .inverted big svg,
-    .inverted
-    .text--big svg,
-    .inverted .text--display,
-    .inverted .text--display svg,
-    .inverted .text--display2,
-    .inverted .text--display2 svg,
-    .inverted .text--display3,
+    .inverted .text--big svg, .inverted .text--display,
+    .inverted .text--display svg, .inverted .text--display2,
+    .inverted .text--display2 svg, .inverted .text--display3,
     .inverted .text--display3 svg {
       stroke: transparent;
       fill: white; }
@@ -5304,15 +5307,19 @@ big,
 .text--pageTitle {
   font-size: 32px; }
 
+
 .text--sectionTitle {
   font-size: 20px;
   line-height: 1.45; }
 
+
 .text--display {
   font-size: 42px; }
 
+
 .text--display2 {
   font-size: 34px; }
+
 
 .text--display3 {
   font-size: 28px; }
@@ -5324,7 +5331,9 @@ big,
   line-height: 1.6;
   letter-spacing: -0.02em;
   word-spacing: 0.1em; }
-  .text--labelSecondary, .text--label, .text--labelSecondary svg, .text--label svg {
+  .text--labelSecondary, .text--label,
+  .text--labelSecondary svg,
+  .text--label svg {
     stroke: transparent;
     fill: #2e3e48; }
   .inverted .text--labelSecondary, .inverted .text--label {
@@ -5340,7 +5349,8 @@ big,
 .text--labelSecondary {
   color: rgba(46, 62, 72, 0.6);
   font-weight: 500; }
-  .text--labelSecondary, .text--labelSecondary svg {
+  .text--labelSecondary,
+  .text--labelSecondary svg {
     stroke: transparent;
     fill: rgba(46, 62, 72, 0.6); }
   .inverted .text--labelSecondary {
@@ -5353,7 +5363,8 @@ big,
 /* stylelint-disable selector-max-combinators, selector-max-compound-selectors */
 .text--bold {
   font-weight: 500 !important; }
-  .text--bold .inverted .runningText, .text--bold .inverted.runningText {
+  .text--bold .inverted .runningText,
+  .text--bold .inverted.runningText {
     font-weight: 600 !important; }
 
 /* stylelint-enable */
@@ -5362,7 +5373,10 @@ big,
 
 .text--caption, .text--secondary, .notification--read {
   color: rgba(46, 62, 72, 0.6); }
-  .text--caption, .text--secondary, .notification--read, .text--caption svg, .text--secondary svg, .notification--read svg {
+  .text--caption, .text--secondary, .notification--read,
+  .text--caption svg,
+  .text--secondary svg,
+  .notification--read svg {
     stroke: transparent;
     fill: rgba(46, 62, 72, 0.6); }
   .inverted .text--caption, .inverted .text--secondary, .inverted .notification--read {
@@ -5376,7 +5390,9 @@ big,
 
 .text--hint, .text--tertiary {
   color: rgba(46, 62, 72, 0.35); }
-  .text--hint, .text--tertiary, .text--hint svg, .text--tertiary svg {
+  .text--hint, .text--tertiary,
+  .text--hint svg,
+  .text--tertiary svg {
     stroke: transparent;
     fill: rgba(46, 62, 72, 0.35); }
   .inverted .text--hint, .inverted .text--tertiary {
@@ -5386,6 +5402,7 @@ big,
     .inverted .text--tertiary svg {
       stroke: transparent;
       fill: rgba(255, 255, 255, 0.35); }
+
 
 big,
 .text--big {
@@ -5407,8 +5424,10 @@ button.link, .runningText a {
   color: #00a2c7;
   text-decoration: none; }
   a.link,
-  button.link, .runningText a, a.link svg,
-  button.link svg, .runningText a svg {
+  button.link, .runningText a,
+  a.link svg,
+  button.link svg,
+  .runningText a svg {
     stroke: transparent;
     fill: #00a2c7; }
   a.link:link,
@@ -5419,36 +5438,35 @@ button.link, .runningText a {
   button.link:focus, .runningText a:focus, a.link:active,
   button.link:active, .runningText a:active {
     text-decoration: underline; }
-  a.link .button,
-  button.link .button, .runningText a .button {
+  a.link .button, button.link .button, .runningText a .button {
     text-decoration: none; }
-  .inverted a.link, .inverted
-  button.link, .inverted .runningText a, .runningText .inverted a {
+  .inverted a.link,
+  .inverted button.link, .inverted .runningText a, .runningText .inverted a {
     color: white;
     text-decoration: underline; }
-    .inverted a.link, .inverted
-    button.link, .inverted .runningText a, .runningText .inverted a,
+    .inverted a.link,
+    .inverted button.link, .inverted .runningText a, .runningText .inverted a,
     .inverted a.link svg,
-    .inverted
-    button.link svg,
-    .inverted .runningText a svg, .runningText
-    .inverted a svg {
+    .inverted button.link svg,
+    .inverted .runningText a svg,
+    .runningText .inverted a svg {
       stroke: transparent;
       fill: white; }
-    .inverted a.link:link, .inverted
-    button.link:link, .inverted .runningText a:link, .runningText .inverted a:link {
+    .inverted a.link:link,
+    .inverted button.link:link, .inverted .runningText a:link, .runningText .inverted a:link {
       text-decoration: underline; }
-    .inverted a.link:hover, .inverted
-    button.link:hover, .inverted .runningText a:hover, .runningText .inverted a:hover, .inverted a.link:focus, .inverted
-    button.link:focus, .inverted .runningText a:focus, .runningText .inverted a:focus, .inverted a.link:active, .inverted
-    button.link:active, .inverted .runningText a:active, .runningText .inverted a:active {
+    .inverted a.link:hover,
+    .inverted button.link:hover, .inverted .runningText a:hover, .runningText .inverted a:hover, .inverted a.link:focus,
+    .inverted button.link:focus, .inverted .runningText a:focus, .runningText .inverted a:focus, .inverted a.link:active,
+    .inverted button.link:active, .inverted .runningText a:active, .runningText .inverted a:active {
       text-decoration: none; }
 
 .text--error,
 .text--attention {
   color: #ff5b0f; }
   .text--error,
-  .text--attention, .text--error svg,
+  .text--attention,
+  .text--error svg,
   .text--attention svg {
     stroke: transparent;
     fill: #ff5b0f; }
@@ -5745,8 +5763,8 @@ Class                   | Description
 .bordered,
 .border--top {
   border-top: 1px solid rgba(46, 62, 72, 0.12); }
-  .inverted
-  .bordered, .inverted
+  
+  .inverted .bordered, .inverted
   .border--top {
     border-top: 1px solid rgba(255, 255, 255, 0.2); }
 
