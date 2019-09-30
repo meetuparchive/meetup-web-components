@@ -7,6 +7,7 @@ Table of Contents
 =================
 
   * [Releases](#releases)
+    * [Pro Web Pinned Version](#pro-web-pinned-version)
     * [Development/Beta release](#developmentbeta-releases)
   * [Getting started](#getting-started)
     * [Components](#components)
@@ -52,6 +53,23 @@ Manual pushes to `master` and PR merges to master will be built by Travis, and
 will kick off the yarn publish routine. The currently-published version of the
 package is shown on the repo homepage on GitHub in a badge at the top of the
 README.
+
+### Pro Web Pinned Version
+
+**CURRENT PRO VERSION: `6.2.0`**
+
+`pro-web` is not on the latest version of MWC that uses `swarm-ui`.
+Instead, the `pro-web` version of MWC is based off a branch called 
+`pro-web-6.x.x`. It's manually published to npm as version `6.2.0`
+and is tagged as `pro` in the registry, so all that is needed to
+install is `yarn add meetup-web-components@pro -W`. 
+
+If changes are needed for the `pro-web` version, do the following:
+
+- Checkout, commit+push changes to the `pro-web-6.x.x` branch. 
+- Bump the version number in the `package.json` file and commit+push.
+- Edit this README to update the current version.
+- Finally, run `npm publish --tag pro` as the `meetupbot` npm user.
 
 ### Development/Beta releases
 
