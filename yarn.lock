@@ -192,32 +192,38 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.7.1.tgz#e44e596d03c9f16ba3b127ad333a8a072bcb5a0a"
 
-"@meetup/swarm-components@0.13.19":
-  version "0.13.19"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.13.19.tgz#9d1ff569cd1f8cbb01ef750c726bcaa9ec485cef"
-  integrity sha512-PJmmLL5UCHeEdi5BuliXyvO40ctfxN5J9ikbY848hx7DfXMJvZEg8AKdZt+z8Iy7HZ2KEoDLDX7UUcQxQFfyJA==
+"@meetup/swarm-components@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.19.0.tgz#045ee433d76404a86b702a43f07ed5041bf024c1"
+  integrity sha512-GkKSjSZb1ydyoLqhbfkqARIEhoZtuCMkGb2UJwND3hFYCZQrHRVR/F1c1qkNbITtAnsyzyizOauMwnkoGPnkMA==
   dependencies:
-    "@meetup/swarm-constants" "^0.3.2"
+    "@meetup/swarm-constants" "^0.6.0"
+    "@meetup/swarm-icons" "^0.2.1"
+    "@reach/menu-button" "^0.1.18"
     autosize "^4.0.2"
     classnames "2.2.6"
     swarm-icons "3.8.354"
 
-"@meetup/swarm-constants@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.3.1.tgz#345aab5ae1169f4e2166e5c9cf04c045dd5684d4"
-  integrity sha512-/wFYvj0cZH22cxcpGGrMbqDmwxkz3peeK/XmIUUlwdFtckPjDuierIAhubIKz8gFd72tDFiHBle4hLGJ7142WQ==
-
-"@meetup/swarm-constants@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.3.2.tgz#b942d7bf9814a3c0933ae058dba791f23ec9dd00"
-  integrity sha512-lWi9JPVh0TsIeMI05G2zw3jqOwxe/MMCz4rsgWHN5R0/mxkkQjzTQbSJ6L+l/zzrG+EjjrW1QPW/iBzjP8LzIg==
-
-"@meetup/swarm-styles@0.5.13":
-  version "0.5.13"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.5.13.tgz#3195d683e6260ac1aeab6b0ae54870de27968440"
-  integrity sha512-JhqOS0PnDWwu1Z9znj7qzmAjuvGJwEq+z3wk41azW+VTfzrCPpFveOLdSW0qvaQImhyDg1nGKDk/5a09qaaEww==
+"@meetup/swarm-constants@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.6.0.tgz#679f214dbe99c32fb1a396e408853ba9885f9a03"
+  integrity sha512-6yHNDzxwFHr0jiNDqBaHytZO7BaEn88MOrDUP9mHIwz37EHLHSbngnqASeZh9hmI74aS2zn9I5u880Wgz5P6YA==
   dependencies:
-    "@meetup/swarm-constants" "^0.3.1"
+    "@meetup/swarm-icons" "^0.2.1"
+
+"@meetup/swarm-icons@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-icons/-/swarm-icons-0.2.1.tgz#69f33e9d8875ba1428287a7c69f0c0632aa17af5"
+  integrity sha512-fs8OAgPsdnwiTvpxOPQ416W8UwGRYeEnq35aHZz/A3xuL6omKSXw9SbK8jFUW5V9nh2nMZ6SpsgNOT6enHzb6g==
+
+"@meetup/swarm-styles@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.11.1.tgz#df6fb88f960e930a544900774f1555c7e311b280"
+  integrity sha512-Mq/DVhRadkLKgpdhjt0FjQFOt0YysEmFHPawLeo/GfboA7t6a68YKBEuyAXGgScqziF7FWMHnO9Dx9zzd/B1+A==
+  dependencies:
+    "@meetup/swarm-constants" "^0.6.0"
+    "@meetup/swarm-icons" "^0.2.1"
+    "@reach/menu-button" "^0.1.18"
 
 "@meetup/ux-capture@4.2.1":
   version "4.2.1"
@@ -257,6 +263,55 @@
     node-fetch "^2.1.1"
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
+
+"@reach/component-component@0.1.3", "@reach/component-component@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@reach/component-component/-/component-component-0.1.3.tgz#5d156319572dc38995b246f81878bc2577c517e5"
+  integrity sha512-a1USH7L3bEfDdPN4iNZGvMEFuBfkdG+QNybeyDv8RloVFgZYRoM+KGXyy2KOfEnTUM8QWDRSROwaL3+ts5Angg==
+
+"@reach/menu-button@^0.1.18":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/@reach/menu-button/-/menu-button-0.1.18.tgz#cb9e3bf1c2a2bdb5d618697b87ad353dfbca123e"
+  integrity sha512-MGdN8SWaQ0u0xj6KWUnK9fFc1VBg8NhNnFhEd2sp3D56XJcr08HU5GeVq/MFf5C97mxRnIPIKGnMPPeGAn9OFA==
+  dependencies:
+    "@reach/component-component" "0.1.3"
+    "@reach/portal" "^0.2.1"
+    "@reach/rect" "0.2.1"
+    "@reach/utils" "^0.2.3"
+    "@reach/window-size" "^0.1.4"
+    warning "^4.0.2"
+
+"@reach/observe-rect@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@reach/observe-rect/-/observe-rect-1.0.3.tgz#2ea3dcc369ab22bd9f050a92ea319321356a61e8"
+  integrity sha1-LqPcw2mrIr2fBQqS6jGTITVqYeg=
+
+"@reach/portal@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@reach/portal/-/portal-0.2.1.tgz#07720b999e0063a9e179c14dbdc60fd991cfc9fa"
+  integrity sha512-pUQ0EtCcYm4ormEjJmdk4uzZCxOpaRHB8FDKJXy6q6GqRqQwZ4lAT1f2Tvw0DAmULmyZTpe1/heXY27Tdnct+Q==
+  dependencies:
+    "@reach/component-component" "^0.1.3"
+
+"@reach/rect@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@reach/rect/-/rect-0.2.1.tgz#7343020174c90e2290b844d17c03fd9c78e6b601"
+  integrity sha512-aZ9RsNHDMQ3zETonikqu9/85iXxj+LPqZ9Gr9UAncj3AufYmGeWG3XG6b37B+7ORH+mkhVpLU2ZlIWxmOe9Cqg==
+  dependencies:
+    "@reach/component-component" "^0.1.3"
+    "@reach/observe-rect" "^1.0.3"
+
+"@reach/utils@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.2.3.tgz#820f6a6af4301b4c5065cfc04bb89e6a3d1d723f"
+  integrity sha512-zM9rA8jDchr05giMhL95dPeYkK67cBQnIhCVrOKKqgWGsv+2GE/HZqeptvU4zqs0BvIqsThwov+YxVNVh5csTQ==
+
+"@reach/window-size@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@reach/window-size/-/window-size-0.1.4.tgz#3257b646548f61c2708a661a683620fbe0a706cb"
+  integrity sha512-JZshEuGsLvi6fUIJ7Unx12yNeM5SmqWjber2MLr9tfwf1hpNv73EiPBOIJyV0DjW7GXzjcOEvwnqysm59s2s/A==
+  dependencies:
+    "@reach/component-component" "^0.1.3"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -11416,6 +11471,13 @@ warning@^3.0.0:
 warning@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.1.tgz#66ce376b7fbfe8a887c22bdf0e7349d73d397745"
+  dependencies:
+    loose-envify "^1.0.0"
+
+warning@^4.0.2:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+  integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
   dependencies:
     loose-envify "^1.0.0"
 

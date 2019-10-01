@@ -2,13 +2,12 @@
 import React from 'react';
 import cx from 'classnames';
 
-import Button from '../forms/Button';
+import { Button } from '@meetup/swarm-components';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
-import Icon from '../media/Icon';
 import Section from '../layout/Section';
 import Tooltip from './Tooltip';
-import SelectInput from '../forms/SelectInput';
+import { Select } from '@meetup/swarm-components';
 
 type DropdownProps = {
 	group: Group,
@@ -157,10 +156,6 @@ export class AdminBar extends React.PureComponent<Props, State> {
 
 		const host: string =
 			nodeEnv === 'production' || isProdApi ? 'meetup.com' : 'dev.meetup.com';
-		const highlightOptions = ['1', '2', '3', '4', '5', 'lowlight'].map(h => ({
-			label: h,
-			value: h,
-		}));
 
 		return (
 			<Flex
@@ -206,10 +201,7 @@ export class AdminBar extends React.PureComponent<Props, State> {
 								noPortal
 								id="admin-label-btn"
 								trigger={
-									<Button
-										id="admin-label-btn"
-										icon={<Icon shape="cog" size="xs" />}
-									>
+									<Button id="admin-label-btn" icon="settings">
 										Admin
 									</Button>
 								}
@@ -242,12 +234,19 @@ export class AdminBar extends React.PureComponent<Props, State> {
 								}
 								content={
 									<Section>
-										<SelectInput
+										<Select
 											name="highlightValue"
 											onChange={this.onHighlightValueChange}
-											options={highlightOptions}
 											value={this.state.highlightValue}
-										/>
+										>
+											{['1', '2', '3', '4', '5', 'lowlight'].map(
+												h => (
+													<option value={h} key={h}>
+														{h}
+													</option>
+												)
+											)}
+										</Select>
 										<a
 											className="button margin--bottom"
 											onClick={this.highlightGroup.bind(

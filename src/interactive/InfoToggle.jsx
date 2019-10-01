@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Button from '../forms/Button';
+import { Button } from '@meetup/swarm-components';
 import Tooltip from './Tooltip';
 
 export const InfoTooltipTrigger = props => (

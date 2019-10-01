@@ -3,11 +3,10 @@ import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
-import Button from '../../../forms/Button';
+import { LinkButton } from '@meetup/swarm-components';
 import Chunk from '../../../layout/Chunk';
 import Flex from '../../../layout/Flex';
 import FlexItem from '../../../layout/FlexItem';
-import Icon from '../../../media/Icon';
 import GroupDraftItem from '../groupDraftItem/GroupDraftItem';
 
 export const PROFILE_CLASS = 'profileDropdown-content';
@@ -55,10 +54,9 @@ export const ProfileDropdownComponent = ({
 							{groupsContent}
 						</ul>
 					</Chunk>
-					<Button small href={allGroupsLink} component="a">
+					<LinkButton icon="ArrowRight" right small href={allGroupsLink}>
 						{allGroupsLabel}
-						<Icon className="margin--left" shape="chevron-right" size="xs" />
-					</Button>
+					</LinkButton>
 				</FlexItem>
 			)}
 			<FlexItem
