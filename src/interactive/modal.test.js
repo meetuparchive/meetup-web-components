@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 
-import Button from '../forms/Button';
 import {
 	ModalComponent,
 	MODAL_CLOSE_BUTTON,
@@ -49,14 +48,6 @@ describe('Modal', () => {
 
 	it('displays modal content', () => {
 		expect(modalEl.innerHTML).toContain(content);
-	});
-
-	it('creates a Button component for dismissal', () => {
-		const buttons = TestUtils.scryRenderedComponentsWithType(modal, Button);
-		expect(
-			buttons.filter(button => button.props.className.includes(MODAL_CLOSE_BUTTON))
-				.length
-		).toBe(1);
 	});
 
 	it('creates an svg icon for dismissal', () => {
