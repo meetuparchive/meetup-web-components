@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import Button from '../forms/Button';
-import Icon from '../media/Icon';
+import { Button } from '@meetup/swarm-components';
 import FloatingPosition from '../utils/components/FloatingPosition';
 
 /**
@@ -169,12 +168,7 @@ class Tooltip extends React.PureComponent {
 										<Button
 											className="tooltip-closeBtn"
 											onClick={this.closeContent}
-											icon={
-												<Icon
-													shape="cross"
-													className="text--secondary"
-												/>
-											}
+											icon="close"
 											reset
 										/>
 									)}

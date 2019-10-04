@@ -64,12 +64,7 @@ exports[`AdminBar renders correctly 1`] = `
       noPortal={true}
       trigger={
         <Button
-          icon={
-            <Icon
-              shape="cog"
-              size="xs"
-            />
-          }
+          icon="settings"
           id="admin-label-btn"
         >
           Admin
@@ -85,39 +80,42 @@ exports[`AdminBar renders correctly 1`] = `
       align="left"
       content={
         <Section>
-          <SelectInput
+          <Select
             name="highlightValue"
             onChange={[Function]}
-            options={
-              Array [
-                Object {
-                  "label": "1",
-                  "value": "1",
-                },
-                Object {
-                  "label": "2",
-                  "value": "2",
-                },
-                Object {
-                  "label": "3",
-                  "value": "3",
-                },
-                Object {
-                  "label": "4",
-                  "value": "4",
-                },
-                Object {
-                  "label": "5",
-                  "value": "5",
-                },
-                Object {
-                  "label": "lowlight",
-                  "value": "lowlight",
-                },
-              ]
-            }
             value="1"
-          />
+          >
+            <option
+              value="1"
+            >
+              1
+            </option>
+            <option
+              value="2"
+            >
+              2
+            </option>
+            <option
+              value="3"
+            >
+              3
+            </option>
+            <option
+              value="4"
+            >
+              4
+            </option>
+            <option
+              value="5"
+            >
+              5
+            </option>
+            <option
+              value="lowlight"
+            >
+              lowlight
+            </option>
+          </Select>
           <a
             className="button margin--bottom"
             onClick={[Function]}
@@ -214,12 +212,7 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       noPortal={true}
       trigger={
         <Button
-          icon={
-            <Icon
-              shape="cog"
-              size="xs"
-            />
-          }
+          icon="settings"
           id="admin-label-btn"
         >
           Admin
@@ -235,39 +228,42 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       align="left"
       content={
         <Section>
-          <SelectInput
+          <Select
             name="highlightValue"
             onChange={[Function]}
-            options={
-              Array [
-                Object {
-                  "label": "1",
-                  "value": "1",
-                },
-                Object {
-                  "label": "2",
-                  "value": "2",
-                },
-                Object {
-                  "label": "3",
-                  "value": "3",
-                },
-                Object {
-                  "label": "4",
-                  "value": "4",
-                },
-                Object {
-                  "label": "5",
-                  "value": "5",
-                },
-                Object {
-                  "label": "lowlight",
-                  "value": "lowlight",
-                },
-              ]
-            }
             value="1"
-          />
+          >
+            <option
+              value="1"
+            >
+              1
+            </option>
+            <option
+              value="2"
+            >
+              2
+            </option>
+            <option
+              value="3"
+            >
+              3
+            </option>
+            <option
+              value="4"
+            >
+              4
+            </option>
+            <option
+              value="5"
+            >
+              5
+            </option>
+            <option
+              value="lowlight"
+            >
+              lowlight
+            </option>
+          </Select>
           <a
             className="button margin--bottom"
             onClick={[Function]}
@@ -355,12 +351,7 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       noPortal={true}
       trigger={
         <Button
-          icon={
-            <Icon
-              shape="cog"
-              size="xs"
-            />
-          }
+          icon="settings"
           id="admin-label-btn"
         >
           Admin
@@ -376,39 +367,42 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       align="left"
       content={
         <Section>
-          <SelectInput
+          <Select
             name="highlightValue"
             onChange={[Function]}
-            options={
-              Array [
-                Object {
-                  "label": "1",
-                  "value": "1",
-                },
-                Object {
-                  "label": "2",
-                  "value": "2",
-                },
-                Object {
-                  "label": "3",
-                  "value": "3",
-                },
-                Object {
-                  "label": "4",
-                  "value": "4",
-                },
-                Object {
-                  "label": "5",
-                  "value": "5",
-                },
-                Object {
-                  "label": "lowlight",
-                  "value": "lowlight",
-                },
-              ]
-            }
             value="1"
-          />
+          >
+            <option
+              value="1"
+            >
+              1
+            </option>
+            <option
+              value="2"
+            >
+              2
+            </option>
+            <option
+              value="3"
+            >
+              3
+            </option>
+            <option
+              value="4"
+            >
+              4
+            </option>
+            <option
+              value="5"
+            >
+              5
+            </option>
+            <option
+              value="lowlight"
+            >
+              lowlight
+            </option>
+          </Select>
           <a
             className="button margin--bottom"
             onClick={[Function]}
@@ -487,12 +481,7 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       noPortal={true}
       trigger={
         <Button
-          icon={
-            <Icon
-              shape="cog"
-              size="xs"
-            />
-          }
+          icon="settings"
           id="admin-label-btn"
         >
           Admin
@@ -508,39 +497,42 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       align="left"
       content={
         <Section>
-          <SelectInput
+          <Select
             name="highlightValue"
             onChange={[Function]}
-            options={
-              Array [
-                Object {
-                  "label": "1",
-                  "value": "1",
-                },
-                Object {
-                  "label": "2",
-                  "value": "2",
-                },
-                Object {
-                  "label": "3",
-                  "value": "3",
-                },
-                Object {
-                  "label": "4",
-                  "value": "4",
-                },
-                Object {
-                  "label": "5",
-                  "value": "5",
-                },
-                Object {
-                  "label": "lowlight",
-                  "value": "lowlight",
-                },
-              ]
-            }
             value="1"
-          />
+          >
+            <option
+              value="1"
+            >
+              1
+            </option>
+            <option
+              value="2"
+            >
+              2
+            </option>
+            <option
+              value="3"
+            >
+              3
+            </option>
+            <option
+              value="4"
+            >
+              4
+            </option>
+            <option
+              value="5"
+            >
+              5
+            </option>
+            <option
+              value="lowlight"
+            >
+              lowlight
+            </option>
+          </Select>
           <a
             className="button margin--bottom"
             onClick={[Function]}
