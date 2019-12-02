@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { convert, LocalDate } from 'js-joda';
+import { convert, LocalDate } from '@js-joda/core';
 import Flatpickr from 'react-flatpickr';
 
 import { CalendarComponent } from './CalendarComponent';
@@ -75,9 +75,7 @@ describe('CalendarComponent', () => {
 		);
 
 		expect(spyableChange).not.toHaveBeenCalled();
-		component
-			.instance()
-			.onFlatPickerChange([]);
+		component.instance().onFlatPickerChange([]);
 		expect(spyableChange).not.toHaveBeenCalled();
 	});
 });

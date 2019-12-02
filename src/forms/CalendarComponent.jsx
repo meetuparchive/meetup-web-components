@@ -5,7 +5,7 @@ import withErrorList from '../utils/components/withErrorList';
 
 import Flatpickr from 'react-flatpickr';
 
-import { convert, LocalDate, nativeJs } from 'js-joda';
+import { convert, LocalDate, nativeJs } from '@js-joda/core';
 
 type Props = React.ElementProps<'input'> & {
 	labelClassName: string,

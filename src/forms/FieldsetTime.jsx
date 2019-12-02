@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import cx from 'classnames';
-import { LocalTime, ChronoField } from 'js-joda';
+import { LocalTime, ChronoField } from '@js-joda/core';
 
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';

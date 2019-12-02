@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { convert, LocalDate, nativeJs } from 'js-joda';
+import { convert, LocalDate, nativeJs } from '@js-joda/core';
 import CalendarComponent from '../CalendarComponent';
 
 type FieldProps = {
