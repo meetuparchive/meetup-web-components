@@ -3,7 +3,7 @@ import CalendarComponent from './CalendarComponent';
 import { storiesOf } from '@storybook/react';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
-import { LocalDate, convert } from 'js-joda';
+import { LocalDate, convert } from '@js-joda/core';
 
 import Section from '../layout/Section';
 import Chunk from '../layout/Chunk';
