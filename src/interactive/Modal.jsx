@@ -3,7 +3,8 @@ import React from 'react';
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
 
-import { Button } from '@meetup/swarm-components';
+import Icon from '../media/Icon';
+import Button from '../forms/Button';
 import Stripe from '../layout/Stripe';
 import withLoading from '../utils/components/withLoading';
 import { MEDIA_QUERIES } from '../utils/designConstants';
@@ -188,12 +189,9 @@ export class ModalComponent extends React.Component {
 					'padding--all modal-closeButtonContainer'
 				)}
 			>
-				<Button
-					onClick={this.onDismiss}
-					reset
-					icon="close"
-					className={dismissButtonClasses}
-				/>
+				<Button onClick={this.onDismiss} reset className={dismissButtonClasses}>
+					<Icon shape="cross" size="s" />
+				</Button>
 			</div>
 		);
 

@@ -208,7 +208,21 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
                       <Icon
                         shape="chevron-down"
                         size="xs"
-                      />
+                      >
+                        <svg
+                          className="svg svg--chevron-down svg-icon valign--middle"
+                          height="20"
+                          preserveAspectRatio="xMinYMin meet"
+                          role="img"
+                          style={Object {}}
+                          viewBox="0 0 20 20"
+                          width="20"
+                        >
+                          <use
+                            xlinkHref="#icon-chevron-down--small"
+                          />
+                        </svg>
+                      </Icon>
                     </span>
                   </Icon>
                 </div>
@@ -396,7 +410,25 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                                 color="var(--color-gray-4)"
                                 shape="cross"
                                 size="xs"
-                              />
+                              >
+                                <svg
+                                  className="svg svg--cross svg-icon valign--middle"
+                                  height="20"
+                                  preserveAspectRatio="xMinYMin meet"
+                                  role="img"
+                                  style={
+                                    Object {
+                                      "fill": "var(--color-gray-4)",
+                                    }
+                                  }
+                                  viewBox="0 0 20 20"
+                                  width="20"
+                                >
+                                  <use
+                                    xlinkHref="#icon-cross--small"
+                                  />
+                                </svg>
+                              </Icon>
                             </span>
                           </button>
                         </Toggle>
