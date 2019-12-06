@@ -314,13 +314,13 @@
   resolved "https://registry.yarnpkg.com/@js-joda/core/-/core-1.12.0.tgz#f310b0f89382adb54cf6d636dc38f295736d7835"
   integrity sha512-XfqsWzY2jRUcVesKJ/vbZPDzfBZo2jHBWofabPozJQFguSQ0XEaUbdFPBeUICUmfeRsQn/Z+/SPTHSboT0XO3A==
 
-"@meetup/swarm-components@0.21.1":
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.21.1.tgz#f178dd0ed78d214a5665b979a98f1ddc88dae844"
-  integrity sha512-xhXPXbb42r+p0LYtUpN0OfSDQK9YqgaoyuIiNE0TYWfb+y49FIWviMatXkdlj/OjE/g/ggWcUAx/OGQE+CktyQ==
+"@meetup/swarm-components@0.21.4":
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-components/-/swarm-components-0.21.4.tgz#59b9aff0d58fe74b058b302afcbeeceaef4104d5"
+  integrity sha512-j9wIp3tWxVzoJATcHjjJRyrT9laJMXda+fFwWx8BF4d9Z1bGz3V6zY9IjoEsl1wtEQZNnMPmFbLfN8SMPtUXFQ==
   dependencies:
-    "@meetup/swarm-constants" "^0.7.0"
-    "@meetup/swarm-icons" "^0.3.0"
+    "@meetup/swarm-constants" "^0.8.0"
+    "@meetup/swarm-icons" "^0.3.1"
     "@reach/menu-button" "^0.1.18"
     autosize "^4.0.2"
     classnames "2.2.6"
@@ -334,10 +334,10 @@
   dependencies:
     "@meetup/swarm-icons" "^0.2.1"
 
-"@meetup/swarm-constants@^0.7.0":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.7.1.tgz#e564569e037e1a7a8dbebdb2f3b58fe3104dbbf2"
-  integrity sha512-6B6zR+JTAWK1+skQvqLv4pUAsrSrrwbqQ7QGZBCfApLg8eD7l4LP1x/sinSs0+J2gWyLkmMJMWGl9eM6Uc823Q==
+"@meetup/swarm-constants@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.8.0.tgz#3f185518e274ede28c94a62317296eaa23e9e4e4"
+  integrity sha512-vgP6ZuNyKgm02a8EmQ+mW9lSP6R6eQsI7/GXLyMvCusc/wgmepVB5GaF3QDhQF96yAgwtFpUge+egymMCPwKXA==
   dependencies:
     "@meetup/swarm-icons" "^0.3.1"
 
@@ -346,7 +346,7 @@
   resolved "https://registry.yarnpkg.com/@meetup/swarm-icons/-/swarm-icons-0.2.1.tgz#69f33e9d8875ba1428287a7c69f0c0632aa17af5"
   integrity sha512-fs8OAgPsdnwiTvpxOPQ416W8UwGRYeEnq35aHZz/A3xuL6omKSXw9SbK8jFUW5V9nh2nMZ6SpsgNOT6enHzb6g==
 
-"@meetup/swarm-icons@^0.3.0", "@meetup/swarm-icons@^0.3.1":
+"@meetup/swarm-icons@^0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@meetup/swarm-icons/-/swarm-icons-0.3.1.tgz#92494a0d7e4f0329c3e15f78b309e66a6fb0d5e0"
   integrity sha512-sdsnQD1i/tXKFv0eo0pWIRiGtX+bpNud3aSig8Y5gxaUpE26H9bnILg4+2vBfrgvekzATto54hiI0vnZXZEn1Q==
