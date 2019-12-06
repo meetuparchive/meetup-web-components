@@ -136,13 +136,15 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       >
                         <span>
                           <svg
-                            data-swarm-icon="true"
-                            height="18"
-                            viewBox="0 0 18 18"
-                            width="18"
+                            class="svg svg--cross svg-icon valign--middle"
+                            height="20"
+                            preserveAspectRatio="xMinYMin meet"
+                            role="img"
+                            viewBox="0 0 20 20"
+                            width="20"
                           >
-                            <path
-                              d="M10.414 9l3.536 3.536a1 1 0 01-1.414 1.414L9 10.414 5.464 13.95a1 1 0 01-1.414-1.414L7.586 9 4.05 5.464A1 1 0 115.464 4.05L9 7.586l3.536-3.536a1 1 0 111.414 1.414L10.414 9z"
+                            <use
+                              xlink:href="#icon-cross--small"
                             />
                           </svg>
                         </span>
@@ -184,42 +186,66 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                 >
                   <Button
                     className="tooltip-closeBtn"
-                    icon="close"
+                    icon={
+                      <Icon
+                        className="text--secondary"
+                        shape="cross"
+                        size="s"
+                      />
+                    }
                     onClick={[Function]}
                     reset={true}
                   >
-                    <button
+                    <Button
                       className="tooltip-closeBtn"
-                      data-icon="only"
-                      data-swarm-button="reset"
-                      data-swarm-size="default"
-                      data-swarm-width="default"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      <span>
+                      icon={
                         <Icon
-                          shape="close"
-                          size="xs"
+                          className="text--secondary"
+                          shape="cross"
+                          size="s"
+                        />
+                      }
+                      onClick={[Function]}
+                      reset={true}
+                    >
+                      <Button
+                        className="tooltip-closeBtn"
+                        icon="cross"
+                        onClick={[Function]}
+                        reset={true}
+                      >
+                        <button
+                          className="tooltip-closeBtn"
+                          data-icon="only"
+                          data-swarm-button="reset"
+                          data-swarm-size="default"
+                          data-swarm-width="default"
+                          onClick={[Function]}
+                          type="button"
                         >
-                          <Close
-                            size="xs"
-                          >
-                            <svg
-                              data-swarm-icon={true}
-                              height="18"
+                          <span>
+                            <Icon
+                              shape="cross"
                               size="xs"
-                              viewBox="0 0 18 18"
-                              width="18"
                             >
-                              <path
-                                d="M10.414 9l3.536 3.536a1 1 0 01-1.414 1.414L9 10.414 5.464 13.95a1 1 0 01-1.414-1.414L7.586 9 4.05 5.464A1 1 0 115.464 4.05L9 7.586l3.536-3.536a1 1 0 111.414 1.414L10.414 9z"
-                              />
-                            </svg>
-                          </Close>
-                        </Icon>
-                      </span>
-                    </button>
+                              <svg
+                                className="svg svg--cross svg-icon valign--middle"
+                                height="20"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="img"
+                                style={Object {}}
+                                viewBox="0 0 20 20"
+                                width="20"
+                              >
+                                <use
+                                  xlinkHref="#icon-cross--small"
+                                />
+                              </svg>
+                            </Icon>
+                          </span>
+                        </button>
+                      </Button>
+                    </Button>
                   </Button>
                   <Section
                     noSeparator={true}

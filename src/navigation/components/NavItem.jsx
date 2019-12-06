@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-import { Button } from '@meetup/swarm-components';
+import Button from '../../forms/Button';
 import Dropdown from '../../interactive/Dropdown';
 import FlexItem from '../../layout/FlexItem';
 
