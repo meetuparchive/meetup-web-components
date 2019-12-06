@@ -379,7 +379,6 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                             aria-checked={false}
                             aria-labelledby="label-firstsection"
                             aria-readonly={false}
-                            checked={false}
                             data-swarm-toggle="unchecked"
                             disabled={false}
                             id="switch-firstsection"
@@ -393,9 +392,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                               data-swarm-toggle-switch-disc={true}
                             >
                               <Icon
-                                color="var(--color-gray-4)"
                                 shape="cross"
-                                size="xs"
                               />
                             </span>
                           </button>

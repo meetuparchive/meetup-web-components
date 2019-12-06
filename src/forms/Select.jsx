@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 
-import { default as SwarmSelect } from '@meetup/swarm-components/lib/Select';
+import { Select as SwarmSelect } from '@meetup/swarm-components/lib/Select';
 import { FieldHelper, FieldLabel } from '@meetup/swarm-components';
 
 import withErrorList from '../utils/components/withErrorList';

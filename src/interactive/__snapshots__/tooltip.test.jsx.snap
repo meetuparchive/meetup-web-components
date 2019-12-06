@@ -200,15 +200,11 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       <span>
                         <Icon
                           shape="close"
-                          size="xs"
                         >
-                          <Close
-                            size="xs"
-                          >
+                          <Close>
                             <svg
                               data-swarm-icon={true}
                               height="18"
-                              size="xs"
                               viewBox="0 0 18 18"
                               width="18"
                             >
