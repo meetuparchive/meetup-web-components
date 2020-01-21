@@ -1,8 +1,6 @@
 #### Related issues
-Fixes https://meetup.atlassian.net/browse/<XXX-###>
+Fixes PIVOTAL-xxx
 
 #### Description
 
-
 #### Screenshots (if applicable)
-
