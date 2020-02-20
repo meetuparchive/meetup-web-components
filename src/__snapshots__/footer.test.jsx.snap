@@ -125,9 +125,9 @@ exports[`Footer exists 1`] = `
                         Apps
                       </a>,
                       <a
-                        href="/meetup_api"
+                        href="/blog"
                       >
-                        API
+                        Blog
                       </a>,
                     ]
                   }
@@ -395,15 +395,6 @@ exports[`SocialIconsList renders for de-DE locale 1`] = `
           size="s"
         />
       </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
-          size="s"
-        />
-      </a>,
     ]
   }
 />
@@ -445,15 +436,6 @@ exports[`SocialIconsList renders for en-AU locale 1`] = `
         <Icon
           className="margin--left"
           shape="external-instagram"
-          size="s"
-        />
-      </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
           size="s"
         />
       </a>,
@@ -501,15 +483,6 @@ exports[`SocialIconsList renders for en-US locale 1`] = `
           size="s"
         />
       </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
-          size="s"
-        />
-      </a>,
     ]
   }
 />
@@ -551,15 +524,6 @@ exports[`SocialIconsList renders for es locale 1`] = `
         <Icon
           className="margin--left"
           shape="external-instagram"
-          size="s"
-        />
-      </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
           size="s"
         />
       </a>,
@@ -607,15 +571,6 @@ exports[`SocialIconsList renders for es-ES locale 1`] = `
           size="s"
         />
       </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
-          size="s"
-        />
-      </a>,
     ]
   }
 />
@@ -657,15 +612,6 @@ exports[`SocialIconsList renders for fr-FR locale 1`] = `
         <Icon
           className="margin--left"
           shape="external-instagram"
-          size="s"
-        />
-      </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
           size="s"
         />
       </a>,
@@ -713,15 +659,6 @@ exports[`SocialIconsList renders for it-IT locale 1`] = `
           size="s"
         />
       </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
-          size="s"
-        />
-      </a>,
     ]
   }
 />
@@ -763,15 +700,6 @@ exports[`SocialIconsList renders for ja-JP locale 1`] = `
         <Icon
           className="margin--left"
           shape="external-instagram"
-          size="s"
-        />
-      </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
           size="s"
         />
       </a>,
@@ -819,15 +747,6 @@ exports[`SocialIconsList renders for ko-KR locale 1`] = `
           size="s"
         />
       </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
-          size="s"
-        />
-      </a>,
     ]
   }
 />
@@ -869,15 +788,6 @@ exports[`SocialIconsList renders for nl-NL locale 1`] = `
         <Icon
           className="margin--left"
           shape="external-instagram"
-          size="s"
-        />
-      </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
           size="s"
         />
       </a>,
@@ -925,15 +835,6 @@ exports[`SocialIconsList renders for pl-PL locale 1`] = `
           size="s"
         />
       </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
-          size="s"
-        />
-      </a>,
     ]
   }
 />
@@ -975,15 +876,6 @@ exports[`SocialIconsList renders for pt-BR locale 1`] = `
         <Icon
           className="margin--left"
           shape="external-instagram"
-          size="s"
-        />
-      </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
           size="s"
         />
       </a>,
@@ -1031,15 +923,6 @@ exports[`SocialIconsList renders for ru-RU locale 1`] = `
           size="s"
         />
       </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
-          size="s"
-        />
-      </a>,
     ]
   }
 />
@@ -1084,15 +967,6 @@ exports[`SocialIconsList renders for th-TH locale 1`] = `
           size="s"
         />
       </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
-          size="s"
-        />
-      </a>,
     ]
   }
 />
@@ -1134,15 +1008,6 @@ exports[`SocialIconsList renders for tr-TR locale 1`] = `
         <Icon
           className="margin--left"
           shape="external-instagram"
-          size="s"
-        />
-      </a>,
-      <a
-        href="https://medium.com/meetup"
-      >
-        <Icon
-          className="margin--left"
-          shape="external-medium"
           size="s"
         />
       </a>,

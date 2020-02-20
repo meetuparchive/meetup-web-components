@@ -50,9 +50,6 @@ export const SocialIconsList = ({ localeCode }) => {
 		<a href={socialLinks.instagram}>
 			<Icon className="margin--left" shape="external-instagram" size="s" />
 		</a>,
-		<a href={socialLinks.medium}>
-			<Icon className="margin--left" shape="external-medium" size="s" />
-		</a>,
 	];
 
 	return <InlineBlockList items={socialIcons} />;
