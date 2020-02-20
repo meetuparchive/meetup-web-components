@@ -3,12 +3,7 @@ import { shallow, mount } from 'enzyme';
 
 import config from 'mwp-config';
 
-import {
-	Footer,
-	FooterCategory,
-	LanguageSelectInput,
-	SocialIconsList,
-} from './Footer';
+import { Footer, FooterCategory, LanguageSelectInput, SocialIconsList } from './Footer';
 
 const DEFAULT_LANG = 'en-US';
 const onLanguageSelect = jest.fn();
@@ -38,7 +33,7 @@ const footerLinkSets = [
 			<a href="/pro">Meetup Pro</a>,
 			<a href="/jobs">Careers</a>,
 			<a href="/apps">Apps</a>,
-			<a href="/meetup_api">API</a>,
+			<a href="/blog">Blog</a>,
 		],
 	},
 ];
@@ -100,23 +95,17 @@ describe('Footer authenticated user', () => {
 
 describe('LanguageSelectInput', () => {
 	it('exists', () => {
-		const langSelectInput = shallow(
-			<LanguageSelectInput language={DEFAULT_LANG} />
-		);
+		const langSelectInput = shallow(<LanguageSelectInput language={DEFAULT_LANG} />);
 		expect(langSelectInput).toMatchSnapshot();
 	});
 	it('should render the correct language value', () => {
-		const langSelectInput = mount(
-			<LanguageSelectInput language={DEFAULT_LANG} />
-		);
+		const langSelectInput = mount(<LanguageSelectInput language={DEFAULT_LANG} />);
 		const selectWrapper = langSelectInput.find('select');
 		expect(selectWrapper.prop('value')).toEqual(DEFAULT_LANG);
 	});
 	it('should call onLanguageSelect', () => {
 		const footerWrapper = mount(<Footer {...MOCK_DEFAULT_STATE} />);
-		const selectWrapper = footerWrapper
-			.find(LanguageSelectInput)
-			.find('select');
+		const selectWrapper = footerWrapper.find(LanguageSelectInput).find('select');
 		expect(onLanguageSelect).not.toHaveBeenCalled();
 		selectWrapper.simulate('change');
 		expect(onLanguageSelect).toHaveBeenCalled();
@@ -127,9 +116,7 @@ describe('SocialIconsList', () => {
 	const allLocales = config.locales;
 	allLocales.forEach(localeCode => {
 		it(`renders for ${localeCode} locale`, () => {
-			const socialIconList = shallow(
-				<SocialIconsList localeCode={localeCode} />
-			);
+			const socialIconList = shallow(<SocialIconsList localeCode={localeCode} />);
 			expect(socialIconList).toMatchSnapshot();
 		});
 	});
