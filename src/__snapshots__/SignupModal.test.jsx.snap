@@ -77,6 +77,28 @@ exports[`SignupModal should match the snapshot 1`] = `
         </Flex>
       </a>
     </Chunk>
+    <Chunk>
+      <a
+        className="meetup-signupModal-apple button button--bordered button--fullWidth padding--halfLeft text--bold"
+        href="apple.com"
+      >
+        <Flex>
+          <FlexItem
+            shrink={true}
+          >
+            <img
+              className="align--left"
+              src=""
+            />
+          </FlexItem>
+          <FlexItem
+            className="flush--left"
+          >
+            Apple
+          </FlexItem>
+        </Flex>
+      </a>
+    </Chunk>
     <div
       className="meetup-signupModal-or margin--bottom align--center text--labelSecondary text--normal"
     >
