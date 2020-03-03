@@ -216,7 +216,7 @@ export class ModalComponent extends React.Component {
 						style={{
 							marginTop: this.state.topPosition,
 							maxHeight: fixed
-								? `calc(100% - ${this.state.topPosition} * 2)`
+								? `calc(100% - ${this.state.topPosition})`
 								: 'auto',
 						}}
 					>
