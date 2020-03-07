@@ -194,6 +194,7 @@ describe('Nav', () => {
 					googleOnClick: expect.any(Function),
 					facebookOnClick: expect.any(Function),
 					emailOnClick: expect.any(Function),
+					appleOnClick: expect.any(Function),
 				})
 			);
 		});

@@ -31,6 +31,7 @@ export const navItemsFactory = () => {
 				title: 'Signup',
 				google: { link: 'google.com', label: 'Google' },
 				facebook: { link: 'facebook.com', label: 'Facebook' },
+				apple: { link: 'apple.com', label: 'Apple' },
 				email: { link: 'meetup.com/email', label: 'Email' },
 				login: {
 					text: 'Already a member?',
@@ -39,6 +40,7 @@ export const navItemsFactory = () => {
 				},
 				googleOnClick: () => null,
 				facebookOnClick: () => null,
+				appleOnClick: () => null,
 				emailOnClick: () => null,
 				onOpen: () => null,
 			},
