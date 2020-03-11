@@ -92,23 +92,28 @@ export const SignupModal = ({
 						</Flex>
 					</a>
 				</Chunk>
-				<Chunk>
-					<a
-						href={apple.link}
-						className={cx(
-							SIGNUP_MODAL_APPLE_CLASS,
-							'button button--bordered button--fullWidth padding--halfLeft text--bold'
-						)}
-						onClick={appleOnClick}
-					>
-						<Flex>
-							<FlexItem shrink>
-								<img src={appleLogo} className="align--left" />
-							</FlexItem>
-							<FlexItem className="flush--left">{apple.label}</FlexItem>
-						</Flex>
-					</a>
-				</Chunk>
+				{apple &&
+					apple.shouldRender && (
+						<Chunk>
+							<a
+								href={apple.link}
+								className={cx(
+									SIGNUP_MODAL_APPLE_CLASS,
+									'button button--bordered button--fullWidth padding--halfLeft text--bold'
+								)}
+								onClick={appleOnClick}
+							>
+								<Flex>
+									<FlexItem shrink>
+										<img src={appleLogo} className="align--left" />
+									</FlexItem>
+									<FlexItem className="flush--left">
+										{apple.label}
+									</FlexItem>
+								</Flex>
+							</a>
+						</Chunk>
+					)}
 				<div
 					className={cx(
 						SIGNUP_MODAL_OR_CLASS,

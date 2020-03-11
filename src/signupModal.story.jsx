@@ -10,6 +10,7 @@ export const signupOptions = {
 	apple: {
 		link: 'apple.com',
 		label: 'Apple',
+		shouldRender: true,
 	},
 	google: {
 		link: 'google.com',
