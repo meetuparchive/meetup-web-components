@@ -5037,6 +5037,12 @@ input.field--reset:active {
   .meetup-signupModal-facebook:hover {
     background-color: #3b5998; }
 
+.meetup-signupModal-apple img {
+  margin: -14px -14px; }
+
+.meetup-signupModal-apple div {
+  align-items: center; }
+
 .meetup-signupModal-or {
   text-transform: uppercase; }
 

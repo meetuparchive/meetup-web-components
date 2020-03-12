@@ -7,6 +7,11 @@ import { SignupModal } from './SignupModal';
 export const signupOptions = {
 	orLabel: 'Or',
 	title: 'Sign up',
+	apple: {
+		link: 'apple.com',
+		label: 'Apple',
+		shouldRender: true,
+	},
 	google: {
 		link: 'google.com',
 		label: 'Google',

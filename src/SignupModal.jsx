@@ -10,6 +10,7 @@ import FlexItem from './layout/FlexItem';
 import Icon from './media/Icon';
 
 import googleLogo from '../assets/svg/logo_google.svg';
+import appleLogo from '../assets/svg/logo_apple.svg';
 
 import { C_MEDIUMGRAY } from 'swarm-constants/dist/js/constants';
 
@@ -19,6 +20,7 @@ export const SIGNUP_MODAL_OR_CLASS = `${SIGNUP_MODAL_CLASS}-or`;
 export const SIGNUP_MODAL_WRAPPER_CLASS = `${SIGNUP_MODAL_CLASS}-wrapper`;
 export const SIGNUP_MODAL_FACEBOOK_CLASS = `${SIGNUP_MODAL_CLASS}-facebook`;
 export const SIGNUP_MODAL_GOOGLE_CLASS = `${SIGNUP_MODAL_CLASS}-google`;
+export const SIGNUP_MODAL_APPLE_CLASS = `${SIGNUP_MODAL_CLASS}-apple`;
 export const SIGNUP_MODAL_EMAIL_CLASS = `${SIGNUP_MODAL_CLASS}-email`;
 
 /**
@@ -29,11 +31,12 @@ export const SignupModal = ({
 	onDismiss,
 	signupOptions,
 	googleOnClick,
+	appleOnClick,
 	facebookOnClick,
 	emailOnClick,
 	...other
 }) => {
-	const { google, facebook, email, login, title, orLabel } = signupOptions;
+	const { apple, google, facebook, email, login, title, orLabel } = signupOptions;
 	return (
 		<Modal className={SIGNUP_MODAL_CLASS} onDismiss={onDismiss} fixed {...other}>
 			<div className={SIGNUP_MODAL_WRAPPER_CLASS}>
@@ -89,6 +92,28 @@ export const SignupModal = ({
 						</Flex>
 					</a>
 				</Chunk>
+				{apple &&
+					apple.shouldRender && (
+						<Chunk>
+							<a
+								href={apple.link}
+								className={cx(
+									SIGNUP_MODAL_APPLE_CLASS,
+									'button button--bordered button--fullWidth padding--halfLeft text--bold'
+								)}
+								onClick={appleOnClick}
+							>
+								<Flex>
+									<FlexItem shrink>
+										<img src={appleLogo} className="align--left" />
+									</FlexItem>
+									<FlexItem className="flush--left">
+										{apple.label}
+									</FlexItem>
+								</Flex>
+							</a>
+						</Chunk>
+					)}
 				<div
 					className={cx(
 						SIGNUP_MODAL_OR_CLASS,
