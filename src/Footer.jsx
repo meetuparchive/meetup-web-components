@@ -178,7 +178,7 @@ export const Footer = ({
 							className="text--small align--center atMedium_align--left footerList-legal"
 							separator="·"
 							items={[
-								<span>{`© Meetup ${new Date().getFullYear()} LLC`}</span>
+								<span>{`© ${new Date().getFullYear()} Meetup LLC`}</span>,
 							].filter(item => item)}
 						/>
 						<InlineBlockList

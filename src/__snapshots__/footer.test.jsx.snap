@@ -207,7 +207,7 @@ exports[`Footer exists 1`] = `
           items={
             Array [
               <span>
-                © Meetup 2020 LLC
+                © 2020 Meetup LLC
               </span>,
             ]
           }
