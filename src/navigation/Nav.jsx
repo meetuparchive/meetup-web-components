@@ -168,7 +168,17 @@ export class Nav extends React.Component {
 			search,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
-		const classNames = cx('padding--all globalNav', className);
+		// paddings similar to new gatsby Navbar
+		const classNames = cx(
+			'globalNav',
+			{
+				'padding--all': !isSearchEnabled,
+				'padding--left padding--right padding--halfBottom': isSearchEnabled,
+				'padding--halfTop': isSearchEnabled && media.isAtMediumUp,
+				'padding--top': isSearchEnabled && !media.isAtMediumUp,
+			},
+			className
+		);
 		const proLogo = ((proDashboard.mainAccount || {}).group_photo || {}).thumb_link;
 		const proLetter = ((proDashboard.mainAccount || {}).name || '')
 			.slice(0, 1)
@@ -445,7 +455,7 @@ export class Nav extends React.Component {
 					opacity: 0,
 					paddingTop: 0,
 					transition:
-						'max-height .2s ease-out, opacity .2s ease-in-out, padding .2s ease-in-out',
+						'max-height .2s ease-out, opacity .1s ease-in-out, padding .1s ease-in-out',
 			  };
 
 		return (

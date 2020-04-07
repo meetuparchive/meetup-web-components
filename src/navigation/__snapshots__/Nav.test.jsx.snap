@@ -3,7 +3,7 @@
 exports[`Nav NavSearch renders search icon for mobile 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--left padding--right padding--halfBottom padding--top"
   groups={
     Object {
       "label": "Groups",
@@ -69,7 +69,7 @@ exports[`Nav NavSearch renders search icon for mobile 1`] = `
         "maxHeight": 0,
         "opacity": 0,
         "paddingTop": 0,
-        "transition": "max-height .2s ease-out, opacity .2s ease-in-out, padding .2s ease-in-out",
+        "transition": "max-height .2s ease-out, opacity .1s ease-in-out, padding .1s ease-in-out",
       }
     }
   >
@@ -81,7 +81,7 @@ exports[`Nav NavSearch renders search icon for mobile 1`] = `
 exports[`Nav NavSearch renders search input for desktop 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--left padding--right padding--halfBottom padding--halfTop"
   groups={
     Object {
       "label": "Groups",
@@ -169,7 +169,7 @@ exports[`Nav NavSearch renders search input for desktop 1`] = `
 exports[`Nav should match the snapshot for authenticated large screens 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -311,7 +311,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
 exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -1113,7 +1113,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
 exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -1276,7 +1276,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
 exports[`Nav should match the snapshot for groups loading state 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -2069,7 +2069,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
 exports[`Nav should match the snapshot for notifications loading state 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -2879,7 +2879,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
 exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -2936,7 +2936,7 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
 exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -3066,7 +3066,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
 exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -3144,7 +3144,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
 exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -3201,7 +3201,7 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
 exports[`Nav should match the snapshot for unread notifications 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -4011,7 +4011,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
 exports[`Nav should match the snapshot with logo photo 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -4141,7 +4141,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
 exports[`Nav should match the snapshot without a logo photo 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -4271,7 +4271,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
 exports[`Nav uxCapture renders the uxCapture markup when supplied prop 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
