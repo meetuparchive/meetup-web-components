@@ -18,9 +18,11 @@ import NavItem from './components/NavItem';
 import ProfileDropdown from './components/profile/ProfileDropdown';
 import NotificationsDropdown from './components/notifications/NotificationsDropdown';
 import DashboardDropdown from './components/dashboard/DashboardDropdown';
+import NavbarSearch from './components/search/NavbarSearch';
 
 const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
 const CLASS_AUTH_ITEM = 'navItem--authenticated';
+const SEARCH_INPUT_MAX_WIDTH = 500;
 
 export const DropdownLoader = ({ label }) => (
 	<div className="valignChildren--center align--center" aria-live="polite">
@@ -45,7 +47,12 @@ export class Nav extends React.Component {
 		this.onClickMobileDropdownAction = this.onClickMobileDropdownAction.bind(this);
 		this.onClickDropdownAction = this.onClickDropdownAction.bind(this);
 		this.onDismissDropdown = this.onDismissDropdown.bind(this);
-		this.state = { isSignupModalOpen: false, showMobileDashboard: false };
+		this.onSearchIconClick = this.onSearchIconClick.bind(this);
+		this.state = {
+			isSignupModalOpen: false,
+			showMobileDashboard: false,
+			isSearchOpened: false,
+		};
 	}
 
 	/**
@@ -108,6 +115,10 @@ export class Nav extends React.Component {
 		this.setState(() => ({ showMobileDashboard: false }));
 	}
 
+	onSearchIconClick() {
+		this.setState(state => ({ isSearchOpened: !state.isSearchOpened }));
+	}
+
 	markAllNotifAsRead = notifications => {
 		const { notificationsDropdown, list } = this.props.navItems.notifications;
 		const notificationsList = notifications || list;
@@ -132,8 +143,13 @@ export class Nav extends React.Component {
 			className,
 			markAllAsReadOnOpen, // eslint-disable-line no-unused-vars
 			uxCapture,
+			isSearchEnabled,
+			onSearchCallback,
 			...other
 		} = this.props;
+
+		const { isSignupModalOpen, showMobileDashboard, isSearchOpened } = this.state;
+
 		const {
 			login,
 			create,
@@ -149,6 +165,7 @@ export class Nav extends React.Component {
 			logo,
 			dropdownLoaderLabel,
 			experiences,
+			search,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('padding--all globalNav', className);
@@ -229,6 +246,13 @@ export class Nav extends React.Component {
 				label: signup.label,
 				className: CLASS_UNAUTH_ITEM,
 			},
+			isSearchEnabled &&
+				!media.isAtMediumUp && {
+					shrink: true,
+					icon: search.icon,
+					className: `${search.className} navItem--searchIcon`,
+					onAction: this.onSearchIconClick,
+				},
 		];
 
 		let authItems = [
@@ -408,6 +432,22 @@ export class Nav extends React.Component {
 			<img {...scriptLogoAttr} />
 		);
 
+		const searchInputStyle = isSearchOpened
+			? {
+					overflow: 'hidden',
+					transition: 'max-height .2s ease-out, opacity .4s ease-in-out',
+					height: 'auto',
+					maxHeight: '60px',
+					opacity: 1,
+			  }
+			: {
+					maxHeight: 0,
+					opacity: 0,
+					paddingTop: 0,
+					transition:
+						'max-height .2s ease-out, opacity .2s ease-in-out, padding .2s ease-in-out',
+			  };
+
 		return (
 			<nav
 				aria-label="Header navigation"
@@ -437,6 +477,7 @@ export class Nav extends React.Component {
 
 					{showScriptLogo && (
 						<NavItem
+							shrink={isSearchEnabled && media.isAtMediumUp}
 							linkTo={logo.link}
 							className="logo logo--script align--left"
 							linkClassName="display--inlineBlock"
@@ -444,7 +485,17 @@ export class Nav extends React.Component {
 						/>
 					)}
 
-					{this.state.isSignupModalOpen && (
+					{isSearchEnabled &&
+						media.isAtMediumUp && (
+							<FlexItem>
+								<NavbarSearch
+									onSearchCallback={onSearchCallback}
+									style={{ maxWidth: SEARCH_INPUT_MAX_WIDTH }}
+								/>
+							</FlexItem>
+						)}
+
+					{isSignupModalOpen && (
 						<SignupModal
 							signupOptions={signup.signupModal}
 							onDismiss={this.onDismissSignupModal}
@@ -454,7 +505,7 @@ export class Nav extends React.Component {
 							emailOnClick={signup.signupModal.emailOnClick}
 						/>
 					)}
-					{this.state.showMobileDashboard && (
+					{showMobileDashboard && (
 						<DashboardDropdown
 							dismissAction={this.onDismissDropdown}
 							mobileTabs={proDashboard.mobileTabs}
@@ -463,6 +514,15 @@ export class Nav extends React.Component {
 
 					{isLoggedOut ? unauthItems : authItems}
 				</Flex>
+				{isSearchEnabled &&
+					!media.isAtMediumUp && (
+						<div
+							className={cx({ 'padding--top': isSearchOpened })}
+							style={searchInputStyle}
+						>
+							<NavbarSearch onSearchCallback={onSearchCallback} />
+						</div>
+					)}
 			</nav>
 		);
 	}
@@ -489,6 +549,9 @@ Nav.propTypes = {
 
 	/** Add uxCapture marks in the nav */
 	uxCapture: PropTypes.bool,
+
+	isSearchEnabled: PropTypes.bool,
+	onSearchCallback: PropTypes.func,
 };
 
 export default Nav;

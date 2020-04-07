@@ -209,4 +209,50 @@ describe('Nav', () => {
 			expect(mockOnOpen).toHaveBeenCalled();
 		});
 	});
+
+	describe('NavSearch', () => {
+		const searchItem = {
+			icon: 'icon',
+			className: 'class',
+		};
+
+		it('renders search input for desktop', () => {
+			const component = wrapper({
+				isSearchEnabled: true,
+				media: { isAtMediumUp: true },
+				navItems: {
+					...navItems,
+					search: searchItem,
+				},
+			});
+
+			expect(component).toMatchSnapshot();
+		});
+
+		it('renders search icon for mobile', () => {
+			const component = wrapper({
+				isSearchEnabled: true,
+				media: { isAtMediumUp: false },
+				navItems: {
+					...navItems,
+					search: searchItem,
+				},
+			});
+
+			expect(component).toMatchSnapshot();
+		});
+
+		it('onSearchIconClick changes state', () => {
+			const component = wrapper({
+				isSearchEnabled: true,
+				navItems: {
+					...navItems,
+					search: searchItem,
+				},
+			});
+
+			component.instance().onSearchIconClick();
+			expect(component.state('isSearchOpened')).toBe(true);
+		});
+	});
 });
