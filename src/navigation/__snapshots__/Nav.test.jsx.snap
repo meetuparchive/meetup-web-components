@@ -1,9 +1,175 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Nav NavSearch renders search icon for mobile 1`] = `
+<nav
+  aria-label="Header navigation"
+  className="globalNav padding--left padding--right padding--halfBottom padding--top"
+  groups={
+    Object {
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
+    }
+  }
+  role="navigation"
+>
+  <Flex
+    align="top"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="logo logo--script align--left"
+      icon={
+        <img
+          alt="Meetup Logo"
+          height="44px"
+          src=""
+        />
+      }
+      linkClassName="display--inlineBlock"
+      linkTo="meetup.com"
+      shrink={false}
+    />
+    <NavItem
+      className="navItem--unauthenticated navItem--login"
+      key="0"
+      label="Login"
+      linkTo="meetup.com/login"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--unauthenticated"
+      key="1"
+      label="Sign up"
+      onAction={[Function]}
+      shrink={true}
+    />
+    <NavItem
+      className="class navItem--searchIcon"
+      icon="icon"
+      key="2"
+      onAction={[Function]}
+      shrink={true}
+    />
+  </Flex>
+  <div
+    className=""
+    style={
+      Object {
+        "maxHeight": 0,
+        "opacity": 0,
+        "paddingTop": 0,
+        "transition": "max-height .2s ease-out, opacity .1s ease-in-out, padding .1s ease-in-out",
+      }
+    }
+  >
+    <NavbarSearchComponent />
+  </div>
+</nav>
+`;
+
+exports[`Nav NavSearch renders search input for desktop 1`] = `
+<nav
+  aria-label="Header navigation"
+  className="globalNav padding--left padding--right padding--halfBottom padding--halfTop"
+  groups={
+    Object {
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
+    }
+  }
+  role="navigation"
+>
+  <Flex
+    align="center"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="logo logo--script align--left"
+      icon={
+        <img
+          alt="Meetup Logo"
+          height="44px"
+          src=""
+        />
+      }
+      linkClassName="display--inlineBlock"
+      linkTo="meetup.com"
+      shrink={true}
+    />
+    <FlexItem>
+      <NavbarSearchComponent
+        style={
+          Object {
+            "maxWidth": 500,
+          }
+        }
+      />
+    </FlexItem>
+    <NavItem
+      className="navItem--unauthenticated navItemLink--createMeetup"
+      key="0"
+      label="Create a Meetup"
+      linkTo="meetup.com/create"
+      shrink={true}
+    />
+    <NavItem
+      icon={
+        <div
+          className="pill"
+        >
+          NEW
+        </div>
+      }
+      key="1"
+      label="Experiences"
+      linkClassName="navItemLink--experiences"
+      linkTo="meetup.com/experiences"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--unauthenticated navItem--login"
+      key="2"
+      label="Login"
+      linkTo="meetup.com/login"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--unauthenticated"
+      key="3"
+      label="Sign up"
+      onAction={[Function]}
+      shrink={true}
+    />
+  </Flex>
+</nav>
+`;
+
 exports[`Nav should match the snapshot for authenticated large screens 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -145,7 +311,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
 exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -947,7 +1113,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
 exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -1110,7 +1276,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
 exports[`Nav should match the snapshot for groups loading state 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -1903,7 +2069,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
 exports[`Nav should match the snapshot for notifications loading state 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -2713,7 +2879,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
 exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -2770,7 +2936,7 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
 exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -2900,7 +3066,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
 exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -2978,7 +3144,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
 exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -3035,7 +3201,7 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
 exports[`Nav should match the snapshot for unread notifications 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -3845,7 +4011,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
 exports[`Nav should match the snapshot with logo photo 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -3975,7 +4141,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
 exports[`Nav should match the snapshot without a logo photo 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -4105,7 +4271,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
 exports[`Nav uxCapture renders the uxCapture markup when supplied prop 1`] = `
 <nav
   aria-label="Header navigation"
-  className="padding--all globalNav"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
