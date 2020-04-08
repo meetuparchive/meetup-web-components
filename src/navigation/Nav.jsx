@@ -23,6 +23,7 @@ import NavbarSearch from './components/search/NavbarSearch';
 const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
 const CLASS_AUTH_ITEM = 'navItem--authenticated';
 const SEARCH_INPUT_MAX_WIDTH = 500;
+const SEARCH_INPUT_HEIGHT = 44;
 
 export const DropdownLoader = ({ label }) => (
 	<div className="valignChildren--center align--center" aria-live="polite">
@@ -168,17 +169,7 @@ export class Nav extends React.Component {
 			search,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
-		// paddings similar to new gatsby Navbar
-		const classNames = cx(
-			'globalNav',
-			{
-				'padding--all': !isSearchEnabled,
-				'padding--left padding--right padding--halfBottom': isSearchEnabled,
-				'padding--halfTop': isSearchEnabled && media.isAtMediumUp,
-				'padding--top': isSearchEnabled && !media.isAtMediumUp,
-			},
-			className
-		);
+		const classNames = cx('globalNav padding--all', className);
 		const proLogo = ((proDashboard.mainAccount || {}).group_photo || {}).thumb_link;
 		const proLetter = ((proDashboard.mainAccount || {}).name || '')
 			.slice(0, 1)
@@ -500,7 +491,11 @@ export class Nav extends React.Component {
 							<FlexItem>
 								<NavbarSearch
 									onSearchCallback={onSearchCallback}
-									style={{ maxWidth: SEARCH_INPUT_MAX_WIDTH }}
+									placeholder={search.placeholder}
+									style={{
+										maxWidth: SEARCH_INPUT_MAX_WIDTH,
+										height: SEARCH_INPUT_HEIGHT,
+									}}
 								/>
 							</FlexItem>
 						)}
@@ -530,7 +525,11 @@ export class Nav extends React.Component {
 							className={cx({ 'padding--top': isSearchOpened })}
 							style={searchInputStyle}
 						>
-							<NavbarSearch onSearchCallback={onSearchCallback} />
+							<NavbarSearch
+								onSearchCallback={onSearchCallback}
+								placeholder={search.placeholder}
+								style={{ height: SEARCH_INPUT_HEIGHT }}
+							/>
 						</div>
 					)}
 			</nav>
