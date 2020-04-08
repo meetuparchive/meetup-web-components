@@ -3,7 +3,7 @@
 exports[`Nav NavSearch renders search icon for mobile 1`] = `
 <nav
   aria-label="Header navigation"
-  className="globalNav padding--left padding--right padding--halfBottom padding--top"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -73,7 +73,13 @@ exports[`Nav NavSearch renders search icon for mobile 1`] = `
       }
     }
   >
-    <NavbarSearchComponent />
+    <NavbarSearchComponent
+      style={
+        Object {
+          "height": 44,
+        }
+      }
+    />
   </div>
 </nav>
 `;
@@ -81,7 +87,7 @@ exports[`Nav NavSearch renders search icon for mobile 1`] = `
 exports[`Nav NavSearch renders search input for desktop 1`] = `
 <nav
   aria-label="Header navigation"
-  className="globalNav padding--left padding--right padding--halfBottom padding--halfTop"
+  className="globalNav padding--all"
   groups={
     Object {
       "label": "Groups",
@@ -122,6 +128,7 @@ exports[`Nav NavSearch renders search input for desktop 1`] = `
       <NavbarSearchComponent
         style={
           Object {
+            "height": 44,
             "maxWidth": 500,
           }
         }
