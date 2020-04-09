@@ -7,6 +7,8 @@ type Props = {
 	onSearchCallback: (value: string) => void,
 };
 
+export const NAVBAR_SEARCH_INPUT_ID = 'navbar_search_input_id';
+
 export const NavbarSearchComponent = ({ onSearchCallback, ...other }: Props) => {
 	const [value, setValue] = useState('');
 
@@ -27,7 +29,7 @@ export const NavbarSearchComponent = ({ onSearchCallback, ...other }: Props) => 
 
 	return (
 		<TextInput
-			id="searchAll"
+			id={NAVBAR_SEARCH_INPUT_ID}
 			name="navbar_search"
 			iconShape="search"
 			isSearch

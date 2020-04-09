@@ -18,7 +18,7 @@ import NavItem from './components/NavItem';
 import ProfileDropdown from './components/profile/ProfileDropdown';
 import NotificationsDropdown from './components/notifications/NotificationsDropdown';
 import DashboardDropdown from './components/dashboard/DashboardDropdown';
-import NavbarSearch from './components/search/NavbarSearch';
+import NavbarSearch, { NAVBAR_SEARCH_INPUT_ID } from './components/search/NavbarSearch';
 
 const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
 const CLASS_AUTH_ITEM = 'navItem--authenticated';
@@ -118,6 +118,12 @@ export class Nav extends React.Component {
 
 	onSearchIconClick() {
 		this.setState(state => ({ isSearchOpened: !state.isSearchOpened }));
+		if (typeof document !== 'undefined') {
+			const inputEl = document.getElementById(NAVBAR_SEARCH_INPUT_ID);
+			if (inputEl) {
+				inputEl.focus();
+			}
+		}
 	}
 
 	markAllNotifAsRead = notifications => {
