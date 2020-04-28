@@ -4,10 +4,6 @@
   "license": "UNLICENSED",
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
-  "engines": {
-    "node": "^10.16.3",
-    "yarn": "^1.9.4"
-  },
   "scripts": {
     "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx --source-maps && yarn run build:css",
     "build:css": "node-sass --importer ./util/sassRelativeImporter.js --include-path scss ./assets/scss/main.scss ./assets/css/main.css",
