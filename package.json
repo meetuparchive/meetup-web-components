@@ -5,8 +5,8 @@
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
   "engines": {
-    "node": "^10.16.3",
-    "yarn": "^1.9.4"
+    "node": "^12.14.1",
+    "yarn": "^1.17.3"
   },
   "scripts": {
     "build": "babel src --out-dir lib --ignore test.js,test.jsx,story.jsx --source-maps && yarn run build:css",
@@ -113,7 +113,7 @@
     "jest": "23.5.0",
     "js-joda": "1.9.2",
     "lint-staged": "7.2.0",
-    "meetup-web-mocks": "1.0.270",
+    "meetup-web-mocks": "1.1.310",
     "mwp-app-render": "22.4.3075",
     "mwp-config": "22.4.3075",
     "mwp-i18n": "22.4.3075",
