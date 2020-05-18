@@ -1,7 +1,6 @@
-sudo: false
 language: node_js
 node_js:
-  - '10.16'
+  - '10.20'
 cache:
   yarn: true
 
@@ -45,6 +44,3 @@ deploy:
   verbose: true
   on:
     branch: master
-
-
-
