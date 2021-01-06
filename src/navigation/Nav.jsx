@@ -152,6 +152,7 @@ export class Nav extends React.Component {
 			uxCapture,
 			isSearchEnabled,
 			onSearchCallback,
+			isNewNavActive,
 			...other
 		} = this.props;
 
@@ -276,7 +277,6 @@ export class Nav extends React.Component {
 								<Avatar
 									src={proLogo}
 									className="display--block atMedium_display--none margin--left circular"
-									small
 								/>
 							) : (
 								<div className="proDashboard-noLogo atMedium_display--none circular margin--left text--secondary">
@@ -301,8 +301,8 @@ export class Nav extends React.Component {
 			media.isAtMediumUp && experiencesLink,
 			{
 				shrink: true,
-				linkTo: explore.link,
-				label: explore.label,
+				linkTo: !isNewNavActive && explore.link,
+				label: !isNewNavActive && explore.label,
 				className: CLASS_AUTH_ITEM,
 				icon: <Icon shape="search" size="s" className="atMedium_display--none" />,
 			},
@@ -316,9 +316,11 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: messages.link,
-				label: messages.label,
+				label: !isNewNavActive && messages.label,
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
-				icon: (
+				icon: isNewNavActive ? (
+					messages.icon
+				) : (
 					<Icon
 						shape="messages"
 						size="s"
@@ -330,10 +332,12 @@ export class Nav extends React.Component {
 			},
 			{
 				shrink: true,
-				linkTo: media.isAtMediumUp ? '' : notifications.link,
-				label: notifications.label,
+				linkTo: !isNewNavActive && media.isAtMediumUp ? '' : notifications.link,
+				label: !isNewNavActive && notifications.label,
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
-				icon: (
+				icon: isNewNavActive ? (
+					notifications.icon
+				) : (
 					<Icon
 						shape="notifications"
 						size="s"
@@ -341,8 +345,13 @@ export class Nav extends React.Component {
 					/>
 				),
 				onClickAction:
-					(media.isAtMediumUp && this.onClickDropdownAction) || undefined,
-				dropdownContent: (media.isAtMediumUp && notificationContent) || undefined,
+					(!isNewNavActive &&
+						media.isAtMediumUp &&
+						this.onClickDropdownAction) ||
+					undefined,
+				dropdownContent:
+					(!isNewNavActive && media.isAtMediumUp && notificationContent) ||
+					undefined,
 				hasUpdates: notifications.unreadNotifications > 0,
 				updatesLabel: updatesLabel,
 			},
@@ -360,7 +369,7 @@ export class Nav extends React.Component {
 				icon: (
 					<Flex noGutters align="center" aria-label={profile.label}>
 						<FlexItem>
-							<AvatarMember small member={self} />
+							<AvatarMember small={!isNewNavActive} member={self} />
 						</FlexItem>
 						<FlexItem
 							shrink
@@ -567,6 +576,8 @@ Nav.propTypes = {
 
 	isSearchEnabled: PropTypes.bool,
 	onSearchCallback: PropTypes.func,
+
+	isNewNavActive: PropTypes.bool,
 };
 
 export default Nav;

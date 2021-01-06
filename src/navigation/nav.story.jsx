@@ -23,7 +23,7 @@ export const navItemsFactory = () => {
 		updatesLabel: 'Updates',
 		logo: { logoAccessible: 'Meetup Logo', link: 'meetup.com' },
 		login: { link: 'meetup.com/login', label: 'Login' },
-		create: { link: 'meetup.com/create', label: 'Create a Meetup' },
+		create: { link: 'meetup.com/create', label: 'Start a new group' },
 		signup: {
 			label: 'Sign up',
 			signupModal: {
@@ -63,7 +63,6 @@ export const navItemsFactory = () => {
 			},
 		},
 		explore: { link: 'meetup.com/find/events', label: 'Explore' },
-		experiences: { link: 'meetup.com/experiences', label: 'Experiences' },
 		groups: {
 			link: 'meetup.com/groups',
 			label: 'Groups',
@@ -75,12 +74,14 @@ export const navItemsFactory = () => {
 		messages: {
 			link: 'meetup.com/messages',
 			label: 'Messages',
+			icon: 'icon msg!',
 			unreadMessage: 1,
 		},
 		notifications: {
 			link: 'meetup.com/notifications',
 			label: 'Notifications',
 			unreadNotifications: 0,
+			icon: 'notifs icon',
 			list: [...updatedNotif],
 			notificationsDropdown: {
 				markRead: () => {},
@@ -122,6 +123,15 @@ storiesOf('Site Chrome/Nav', module)
 	.add('authenticated', () => (
 		<TestNav
 			self={MOCK_MEMBER}
+			navItems={navItems}
+			style={{ width: '100%' }}
+			media={{ isAtMediumUp: true, isAtLargeUp: true }}
+		/>
+	))
+	.add('new nav', () => (
+		<TestNav
+			self={MOCK_MEMBER}
+			isNewNavActive
 			navItems={navItems}
 			style={{ width: '100%' }}
 			media={{ isAtMediumUp: true, isAtLargeUp: true }}
