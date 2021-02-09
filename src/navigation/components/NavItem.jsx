@@ -50,6 +50,7 @@ export const NavItem = props => {
 		className,
 		labelClassName,
 		linkClassName,
+		counterBadgeClassName,
 		dropdownContent,
 		icon,
 		hasUpdates,
@@ -62,6 +63,7 @@ export const NavItem = props => {
 	const classNames = {
 		navItem: cx('navItem', className),
 		label: cx('navItem-label', labelClassName),
+		counterBadge: counterBadgeClassName || 'counterBadge',
 	};
 
 	const navItemContent = (
@@ -69,7 +71,7 @@ export const NavItem = props => {
 			{icon}
 			{label && <span className={classNames.label}>{label}</span>}
 			{hasUpdates && (
-				<span className="counterBadge">
+				<span className={classNames.counterBadge}>
 					<span className="visibility--a11yHide">{updatesLabel}</span>
 				</span>
 			)}
@@ -112,6 +114,7 @@ NavItem.propTypes = {
 	className: PropTypes.string,
 	labelClassName: PropTypes.string,
 	linkClassName: PropTypes.string,
+	counterBadgeClassName: PropTypes.string,
 	icon: PropTypes.element,
 	hasUpdates: PropTypes.bool,
 };

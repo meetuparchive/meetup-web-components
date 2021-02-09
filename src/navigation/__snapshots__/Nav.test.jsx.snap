@@ -1117,6 +1117,230 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
 </nav>
 `;
 
+exports[`Nav should match the snapshot for authenticated medium screens and new nav 1`] = `
+<nav
+  aria-label="Header navigation"
+  className="globalNav padding--all"
+  groups={
+    Object {
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
+    }
+  }
+  role="navigation"
+>
+  <Flex
+    align="center"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="logo logo--swarm align--left"
+      icon={
+        <img
+          alt="Meetup Logo"
+          height="48px"
+          src=""
+        />
+      }
+      linkClassName="display--inlineBlock"
+      linkTo="meetup.com"
+    />
+    <NavItem
+      className="navItem--unauthenticated navItemLink--createMeetup"
+      key="0"
+      label="Create a Meetup"
+      linkTo="meetup.com/create"
+      shrink={true}
+    />
+    <NavItem
+      icon={
+        <div
+          className="pill"
+        >
+          NEW
+        </div>
+      }
+      key="1"
+      label="Experiences"
+      linkClassName="navItemLink--experiences"
+      linkTo="meetup.com/experiences"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated"
+      icon={
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
+        />
+      }
+      key="2"
+      label="Explore"
+      linkTo="meetup.com/find/events"
+      shrink={true}
+    />
+    <NavItem
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="3"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={<MessageBlank />}
+      key="4"
+      label=""
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName="navItem--counterBadge"
+      hasUpdates={false}
+      icon={<Notif />}
+      key="5"
+      label=""
+      linkTo="meetup.com/notifications"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
+      dropdownContent={
+        <ProfileDropdownComponent
+          allGroupsLabel="See all groups"
+          allGroupsLink="meetup.com/groups"
+          groupHome={[Function]}
+          groups={
+            Array [
+              Object {
+                "name": "Mason Mocks",
+                "urlname": "/mason-mocks",
+              },
+              Object {
+                "name": "Chicken Scratch",
+                "urlname": "/chicken-scratch",
+              },
+            ]
+          }
+          help={
+            Object {
+              "label": "Help",
+              "link": "meetup.com/help",
+            }
+          }
+          logout={
+            Object {
+              "label": "Logout",
+              "link": "meetup.com/logout",
+            }
+          }
+          payments={
+            Object {
+              "label": "Payments made",
+              "link": "meetup.com/payments/payments_made",
+            }
+          }
+          profile={
+            Object {
+              "getSelfGroupsQuery": [Function],
+              "label": "Profile",
+              "link": "meetup.com/profile",
+              "profileDropdown": Object {
+                "allGroupsLabel": "See all groups",
+                "allGroupsLink": "meetup.com/groups",
+                "groupHome": [Function],
+                "help": Object {
+                  "label": "Help",
+                  "link": "meetup.com/help",
+                },
+                "logout": Object {
+                  "label": "Logout",
+                  "link": "meetup.com/logout",
+                },
+                "payments": Object {
+                  "label": "Payments made",
+                  "link": "meetup.com/payments/payments_made",
+                },
+                "settings": Object {
+                  "label": "Settings",
+                  "link": "meetup.com/settings",
+                },
+              },
+            }
+          }
+          settings={
+            Object {
+              "label": "Settings",
+              "link": "meetup.com/settings",
+            }
+          }
+        />
+      }
+      icon={
+        <Flex
+          align="center"
+          aria-label="Profile"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              medium={true}
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={false}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="6"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo=""
+      shrink={true}
+    />
+  </Flex>
+</nav>
+`;
+
 exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
 <nav
   aria-label="Header navigation"
@@ -1271,6 +1495,137 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
         </Flex>
       }
       key="5"
+      label="Profile"
+      labelClassName="navItem-label display--block atMedium_display--none"
+      linkTo="meetup.com/profile"
+      shrink={true}
+    />
+  </Flex>
+</nav>
+`;
+
+exports[`Nav should match the snapshot for authenticated small screens and new nav 1`] = `
+<nav
+  aria-label="Header navigation"
+  className="globalNav padding--all"
+  groups={
+    Object {
+      "label": "Groups",
+      "link": "meetup.com/groups",
+      "list": Array [
+        Object {
+          "name": "Mason Mocks",
+          "urlname": "/mason-mocks",
+        },
+        Object {
+          "name": "Chicken Scratch",
+          "urlname": "/chicken-scratch",
+        },
+      ],
+    }
+  }
+  role="navigation"
+>
+  <Flex
+    align="top"
+    className="span--100 navBar"
+    justify="spaceBetween"
+  >
+    <NavItem
+      className="navItem--authenticated"
+      icon={
+        <Icon
+          className="atMedium_display--none"
+          shape="search"
+          size="s"
+        />
+      }
+      key="0"
+      label="Explore"
+      linkTo="meetup.com/find/events"
+      shrink={true}
+    />
+    <NavItem
+      className="atMedium_display--none navItem--authenticated"
+      icon={
+        <Icon
+          className="display--block"
+          shape="groups"
+          size="s"
+        />
+      }
+      key="1"
+      label="Groups"
+      linkTo="meetup.com/groups"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--messages navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block"
+          shape="messages"
+          size="s"
+        />
+      }
+      key="2"
+      label="Messages"
+      linkTo="meetup.com/messages"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--notifications navItem--authenticated"
+      hasUpdates={false}
+      icon={
+        <Icon
+          className="display--block"
+          shape="notifications"
+          size="s"
+        />
+      }
+      key="3"
+      label="Notifications"
+      linkTo="meetup.com/notifications"
+      shrink={true}
+    />
+    <NavItem
+      className="navItem--authenticated profileDropdown profileDropdown--hasGroups"
+      icon={
+        <Flex
+          align="center"
+          aria-label="Profile"
+          noGutters={true}
+        >
+          <FlexItem>
+            <AvatarMember
+              medium={false}
+              member={
+                Object {
+                  "id": 1243,
+                  "name": "mocky mcmockerson",
+                  "photo": Object {
+                    "photo_link": "http://placekitten.com/g/400/400",
+                    "thumb_link": "http://placekitten.com/g/200/200",
+                  },
+                }
+              }
+              small={true}
+            />
+          </FlexItem>
+          <FlexItem
+            className="display--none atMedium_display--block"
+            shrink={true}
+          >
+            <Icon
+              className="padding--left-half"
+              shape="chevron-down"
+              size="xxs"
+            />
+          </FlexItem>
+        </Flex>
+      }
+      key="4"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"

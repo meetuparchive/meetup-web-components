@@ -214,6 +214,11 @@
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@meetup/swarm-constants/-/swarm-constants-0.3.2.tgz#b942d7bf9814a3c0933ae058dba791f23ec9dd00"
 
+"@meetup/swarm-icons@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@meetup/swarm-icons/-/swarm-icons-0.6.0.tgz#6c975ea002f4bc60677589fd137734a4a6e71004"
+  integrity sha512-T212ytKv2hR68QddvDR9mhhbdE6jPqZtPNCT38iU4oPlLSX1agMCKReKkd3SGkL7lpl2531ipfmSxtIjAXsFDQ==
+
 "@meetup/swarm-styles@0.5.13":
   version "0.5.13"
   resolved "https://registry.yarnpkg.com/@meetup/swarm-styles/-/swarm-styles-0.5.13.tgz#3195d683e6260ac1aeab6b0ae54870de27968440"

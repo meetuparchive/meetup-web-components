@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@meetup/swarm-components": "0.13.19",
+    "@meetup/swarm-icons": "0.6.0",
     "downshift": "1.31.12",
     "focus-trap-react": "3.1.2",
     "raf-schd": "2.1.0",

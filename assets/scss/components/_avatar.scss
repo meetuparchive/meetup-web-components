@@ -86,6 +86,11 @@ $avatarBg: $C_coolGrayLight;
 	width: var(--responsiveMedia-s);
 }
 
+.avatar--medium {
+	height: $block-1;
+	width: $block-1;
+}
+
 .avatar--large {
 	height: $space-4;
 	width: $space-4;

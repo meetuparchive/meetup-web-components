@@ -73,6 +73,20 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 	}
 }
 
+.navItem--counterBadge {
+	$_newDotSize: 14px;
+	background-color: rgb(246, 88, 88);
+	border: 2px solid $C-white;
+	border-radius: 10px;
+	bottom: 11px;
+	box-sizing: border-box;
+	display: inline-block;
+	height: $_newDotSize;
+	position: relative;
+	right: 12px;
+	width: $_newDotSize;
+}
+
 $maxLabelSize: 12;
 $minLabelSize: 9;
 $maxScalingBP: $breakpoint-m / 1px;

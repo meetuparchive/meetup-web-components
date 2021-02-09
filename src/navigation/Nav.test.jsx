@@ -174,6 +174,26 @@ describe('Nav', () => {
 		).toMatchSnapshot();
 	});
 
+	it('should match the snapshot for authenticated medium screens and new nav', () => {
+		expect(
+			wrapper({
+				media: { isAtMediumUp: true },
+				self: MOCK_MEMBER,
+				isNewNavActive: true,
+			})
+		).toMatchSnapshot();
+	});
+
+	it('should match the snapshot for authenticated small screens and new nav', () => {
+		expect(
+			wrapper({
+				media: { isAtMediumUp: false },
+				self: MOCK_MEMBER,
+				isNewNavActive: true,
+			})
+		).toMatchSnapshot();
+	});
+
 	describe('uxCapture', () => {
 		it('renders the uxCapture markup when supplied prop', () => {
 			expect(
