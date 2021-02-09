@@ -75,7 +75,7 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 
 .navItem--counterBadge {
 	$_newDotSize: 14px;
-	background-color: rgb(246, 88, 88);
+	background-color: #f65858;
 	border: 2px solid $C-white;
 	border-radius: 10px;
 	bottom: 11px;
@@ -160,7 +160,7 @@ $maxScalingBP: $breakpoint-m / 1px;
 		.navItem-label {
 			color: $C_accent !important;
 			font-weight: $W_bold;
-			margin-top: -1px;
+			margin-top: -2px;
 		}
 	}
 }
