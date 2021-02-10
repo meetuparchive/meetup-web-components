@@ -93,6 +93,9 @@ AvatarMember.propTypes = {
 	/** Would like to deprecate this in favor of xxlarge */
 	big: PropTypes.bool,
 
+	/** Render Avatar at a medium size */
+	medium: PropTypes.bool,
+
 	/** Render Avatar at a larger size */
 	large: PropTypes.bool,
 

@@ -17,6 +17,7 @@ class Avatar extends React.PureComponent {
 	render() {
 		const {
 			small,
+			medium,
 			large,
 			big, // would like to deprecate this
 			xxlarge,
@@ -32,6 +33,7 @@ class Avatar extends React.PureComponent {
 			'avatar',
 			{
 				'avatar--small': small,
+				'avatar--medium': medium,
 				'avatar--large': large,
 				'avatar--xxlarge': big || xxlarge,
 			},
@@ -91,6 +93,9 @@ Avatar.defaultProps = {
 Avatar.propTypes = {
 	/** Render Avatar at a smaller size */
 	small: PropTypes.bool,
+
+	/** Render Avatar at a medium size */
+	medium: PropTypes.bool,
 
 	/** Render Avatar at a larger size */
 	large: PropTypes.bool,

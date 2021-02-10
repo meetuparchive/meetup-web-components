@@ -127,6 +127,29 @@ storiesOf('Site Chrome/Nav', module)
 			media={{ isAtMediumUp: true, isAtLargeUp: true }}
 		/>
 	))
+	.add('authenticated new nav', () => (
+		<TestNav
+			self={MOCK_MEMBER}
+			navItems={navItems}
+			style={{ width: '100%' }}
+			media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			isNewNavActive
+		/>
+	))
+	.add('authenticated new nav with unread notifications', () => {
+		const notifications = { ...navItems.notifications };
+		notifications.unreadNotifications = 1;
+		const items = { ...navItems, notifications };
+		return (
+			<TestNav
+				self={MOCK_MEMBER}
+				navItems={items}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+				isNewNavActive
+			/>
+		);
+	})
 	.add('authenticated but members groups has not been loaded', () => {
 		const groups = { ...navItems.groups, list: undefined };
 		const items = { ...navItems, groups };

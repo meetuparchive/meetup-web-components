@@ -3028,6 +3028,10 @@ $('#fadeInLink').on('click', function(e) {
   height: var(--responsiveMedia-s);
   width: var(--responsiveMedia-s); }
 
+.avatar--medium {
+  height: 48px;
+  width: 48px; }
+
 .avatar--large {
   height: 56px;
   width: 56px; }
@@ -4886,6 +4890,18 @@ input.field--reset:active {
     font-size: 14px;
     max-width: 20vw; }
 
+.navItem--counterBadge {
+  background-color: #f65858;
+  border: 2px solid white;
+  border-radius: 10px;
+  bottom: 11px;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 14px;
+  position: relative;
+  right: 12px;
+  width: 14px; }
+
 .navItem-label {
   color: rgba(46, 62, 72, 0.6);
   display: block;
@@ -4935,7 +4951,7 @@ input.field--reset:active {
     .navItemLink--createMeetup .navItem-label {
       color: #00a2c7 !important;
       font-weight: 600;
-      margin-top: -1px; } }
+      margin-top: -2px; } }
 
 .pill {
   background: var(--color-viridian);

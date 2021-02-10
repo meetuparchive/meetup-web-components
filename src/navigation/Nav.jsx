@@ -4,6 +4,7 @@ import cx from 'classnames';
 
 import UXCaptureInlineMark from 'mwp-app-render/lib/components/uxcapture/UXCaptureInlineMark';
 import UXCaptureImageLoad from 'mwp-app-render/lib/components/uxcapture/UXCaptureImageLoad';
+import { MessageBlank as Message, Notif } from '@meetup/swarm-icons/lib/components/line';
 
 import swarmLogo from '../../assets/svg/logo--mSwarm--2color.svg';
 import scriptLogo from '../../assets/svg/logo--script.svg';
@@ -152,6 +153,7 @@ export class Nav extends React.Component {
 			uxCapture,
 			isSearchEnabled,
 			onSearchCallback,
+			isNewNavActive,
 			...other
 		} = this.props;
 
@@ -316,33 +318,54 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: messages.link,
-				label: messages.label,
+				label: isNewNavActive && media.isAtMediumUp ? '' : messages.label,
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
-				icon: (
-					<Icon
-						shape="messages"
-						size="s"
-						className="display--block atMedium_display--none"
-					/>
-				),
+				icon:
+					isNewNavActive && media.isAtMediumUp ? (
+						<Message />
+					) : (
+						<Icon
+							shape="messages"
+							size="s"
+							className={cx(
+								'display--block',
+								!isNewNavActive && 'atMedium_display--none'
+							)}
+						/>
+					),
 				hasUpdates: messages.unreadMessages > 0,
 				updatesLabel: updatesLabel,
 			},
 			{
 				shrink: true,
-				linkTo: media.isAtMediumUp ? '' : notifications.link,
-				label: notifications.label,
+				linkTo: media.isAtMediumUp && !isNewNavActive ? '' : notifications.link,
+				label: isNewNavActive && media.isAtMediumUp ? '' : notifications.label,
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
-				icon: (
-					<Icon
-						shape="notifications"
-						size="s"
-						className="display--block atMedium_display--none"
-					/>
-				),
+				counterBadgeClassName:
+					isNewNavActive && media.isAtMediumUp
+						? 'navItem--counterBadge'
+						: undefined,
+				icon:
+					isNewNavActive && media.isAtMediumUp ? (
+						<Notif />
+					) : (
+						<Icon
+							shape="notifications"
+							size="s"
+							className={cx(
+								'display--block',
+								!isNewNavActive && 'atMedium_display--none'
+							)}
+						/>
+					),
 				onClickAction:
-					(media.isAtMediumUp && this.onClickDropdownAction) || undefined,
-				dropdownContent: (media.isAtMediumUp && notificationContent) || undefined,
+					(!isNewNavActive &&
+						media.isAtMediumUp &&
+						this.onClickDropdownAction) ||
+					undefined,
+				dropdownContent:
+					(!isNewNavActive && media.isAtMediumUp && notificationContent) ||
+					undefined,
 				hasUpdates: notifications.unreadNotifications > 0,
 				updatesLabel: updatesLabel,
 			},
@@ -360,7 +383,11 @@ export class Nav extends React.Component {
 				icon: (
 					<Flex noGutters align="center" aria-label={profile.label}>
 						<FlexItem>
-							<AvatarMember small member={self} />
+							<AvatarMember
+								small={!(isNewNavActive && media.isAtMediumUp)}
+								medium={isNewNavActive && media.isAtMediumUp}
+								member={self}
+							/>
 						</FlexItem>
 						<FlexItem
 							shrink
@@ -410,6 +437,7 @@ export class Nav extends React.Component {
 						label={item.label}
 						labelClassName={item.labelClassName}
 						className={item.className}
+						counterBadgeClassName={item.counterBadgeClassName}
 						icon={item.icon}
 						onClickAction={item.onClickAction}
 						dropdownContent={item.dropdownContent}
@@ -567,6 +595,9 @@ Nav.propTypes = {
 
 	isSearchEnabled: PropTypes.bool,
 	onSearchCallback: PropTypes.func,
+
+	/** Flag to indicate that new Nav should be shown (same as in build-meetup/homepage) */
+	isNewNavActive: PropTypes.bool,
 };
 
 export default Nav;
