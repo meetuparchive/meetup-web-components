@@ -30,6 +30,10 @@ export const ProfileDropdownComponent = ({
 	groupHome,
 	allGroupsLabel,
 	allGroupsLink,
+	savedEvents,
+	yourEvents,
+	yourGroups,
+	isNewNavActive,
 }) => {
 	const groupsContent = groups.map(group => (
 		<li
@@ -42,10 +46,84 @@ export const ProfileDropdownComponent = ({
 
 	const showGroups = Boolean((groups && groups.length) || groupDraft);
 
+	const oldNav = (
+		<FlexItem
+			growFactor={1}
+			className={cx('text--secondary', { 'margin--left': showGroups })}
+		>
+			<ul className="list">
+				<li className="list-item">
+					<a href={profile.link}>{profile.label}</a>
+				</li>
+				<li className="list-item">
+					<a href={payments.link}>{payments.label}</a>
+				</li>
+				<li className="list-item">
+					<a href={settings.link}>{settings.label}</a>
+				</li>
+				<li className="list-item">
+					<a href={help.link}>{help.label}</a>
+				</li>
+				<li className="list-item">
+					<a href={logout.link}>{logout.label}</a>
+				</li>
+			</ul>
+		</FlexItem>
+	);
+
+	const newNav = isNewNavActive && (
+		<FlexItem growFactor={1} className={cx({ 'margin--left': showGroups })}>
+			<ul>
+				<li>
+					<a className="links-item" href={savedEvents.link}>
+						{savedEvents.label}
+					</a>
+				</li>
+				<li>
+					<a className="links-item" href={yourGroups.link}>
+						{yourGroups.label}
+					</a>
+				</li>
+				<li>
+					<a className="links-item" href={yourEvents.link}>
+						{yourEvents.label}
+					</a>
+				</li>
+			</ul>
+			<hr className="links-divider" />
+			<ul>
+				<li>
+					<a className="links-item" href={profile.link}>
+						{profile.label}
+					</a>
+				</li>
+				<li>
+					<a className="links-item" href={settings.link}>
+						{settings.label}
+					</a>
+				</li>
+				<li>
+					<a className="links-item" href={help.link}>
+						{help.label}
+					</a>
+				</li>
+				<li>
+					<a className="links-item" href={logout.link}>
+						{logout.label}
+					</a>
+				</li>
+			</ul>
+		</FlexItem>
+	);
+
 	return (
 		<Flex
 			justify="spaceBetween"
-			className={cx(PROFILE_CLASS, 'align--left', 'padding--all')}
+			className={cx(PROFILE_CLASS, 'align--left', {
+				'padding--all': !isNewNavActive,
+				wide: !isNewNavActive || showGroups,
+				'new-padding': isNewNavActive,
+			})}
 		>
 			{showGroups && (
 				<FlexItem growFactor={2}>
@@ -61,28 +139,7 @@ export const ProfileDropdownComponent = ({
 					</Button>
 				</FlexItem>
 			)}
-			<FlexItem
-				growFactor={1}
-				className={cx('text--secondary', { 'margin--left': showGroups })}
-			>
-				<ul className="list">
-					<li className="list-item">
-						<a href={profile.link}>{profile.label}</a>
-					</li>
-					<li className="list-item">
-						<a href={payments.link}>{payments.label}</a>
-					</li>
-					<li className="list-item">
-						<a href={settings.link}>{settings.label}</a>
-					</li>
-					<li className="list-item">
-						<a href={help.link}>{help.label}</a>
-					</li>
-					<li className="list-item">
-						<a href={logout.link}>{logout.label}</a>
-					</li>
-				</ul>
-			</FlexItem>
+			{isNewNavActive ? newNav : oldNav}
 		</Flex>
 	);
 };
@@ -108,10 +165,23 @@ ProfileDropdownComponent.propTypes = {
 		link: PropTypes.string.isRequired,
 		label: PropTypes.string.isRequired,
 	}),
+	savedEvents: PropTypes.shape({
+		link: PropTypes.string,
+		label: PropTypes.string,
+	}),
+	yourGroups: PropTypes.shape({
+		link: PropTypes.string,
+		label: PropTypes.string,
+	}),
+	yourEvents: PropTypes.shape({
+		link: PropTypes.string,
+		label: PropTypes.string,
+	}),
 	groups: PropTypes.arrayOf(PropTypes.object),
 	groupHome: PropTypes.func.isRequired,
 	allGroupsLabel: PropTypes.string.isRequired,
 	allGroupsLink: PropTypes.string.isRequired,
+	isNewNavActive: PropTypes.bool,
 };
 
 export default ProfileDropdownComponent;

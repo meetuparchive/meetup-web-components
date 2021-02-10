@@ -239,13 +239,43 @@ $maxScalingBP: $breakpoint-m / 1px;
 }
 
 .profileDropdown-content {
-	width: 512px;
+	&.wide {
+		width: 512px;
+	}
+	&.new-padding {
+		padding: 12px 16px;
+	}
+
 	.list-item {
 		padding-bottom: $space-half !important;
 		padding-top: $space-half !important;
 	}
 	.profileDropdown-draft-group {
 		padding-top: 0 !important;
+	}
+
+	.links-divider {
+		border-top: thin;
+		margin-bottom: 12px;
+		margin-top: 12px;
+	}
+
+	.links-item {
+		box-sizing: border-box;
+		color: inherit;
+		display: inline-block;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.43;
+		margin: 0;
+		min-width: 0;
+		padding-bottom: 4px;
+		padding-top: 4px;
+		text-decoration: none;
+
+		&:hover {
+			color: #008294;
+		}
 	}
 }
 

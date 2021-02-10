@@ -34,6 +34,18 @@ const MOCK_PROPS = {
 		link: 'meetup.com',
 		label: 'Logout',
 	},
+	savedEvents: {
+		link: 'meetup.com',
+		label: 'Saved events',
+	},
+	yourGroups: {
+		link: 'meetup.com',
+		label: 'Your groups',
+	},
+	yourEvents: {
+		link: 'meetup.com',
+		label: 'Your events',
+	},
 };
 
 describe('Profile Dropdown', () => {

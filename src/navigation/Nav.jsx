@@ -215,9 +215,13 @@ export class Nav extends React.Component {
 				groupHome={profile.profileDropdown.groupHome}
 				allGroupsLabel={profile.profileDropdown.allGroupsLabel}
 				allGroupsLink={profile.profileDropdown.allGroupsLink}
+				savedEvents={profile.profileDropdown.savedEvents}
+				yourGroups={profile.profileDropdown.yourGroups}
+				yourEvents={profile.profileDropdown.yourEvents}
 				profile={profile}
 				groups={groups.list}
 				groupDraft={groupDraft}
+				isNewNavActive={isNewNavActive}
 			/>
 		) : (
 			<DropdownLoader label={dropdownLoaderLabel} />
@@ -444,6 +448,7 @@ export class Nav extends React.Component {
 						onAction={item.onAction}
 						hasUpdates={item.hasUpdates}
 						linkClassName={item.linkClassName}
+						isNewNavActive={isNewNavActive}
 					/>
 				)
 			);
