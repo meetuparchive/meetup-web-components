@@ -2,7 +2,7 @@
 
 exports[`Profile Dropdown should match snapshot 1`] = `
 <Flex
-  className="profileDropdown-content align--left padding--all"
+  className="profileDropdown-content align--left padding--all wide"
   justify="spaceBetween"
 >
   <FlexItem
