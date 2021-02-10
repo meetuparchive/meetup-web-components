@@ -100,6 +100,9 @@ export const navItemsFactory = () => {
 				settings: { link: 'meetup.com/settings', label: 'Settings' },
 				help: { link: 'meetup.com/help', label: 'Help' },
 				logout: { link: 'meetup.com/logout', label: 'Logout' },
+				savedEvents: { link: 'meetup.com/saved-events', label: 'Saved events' },
+				yourGroups: { link: 'meetup.com/groups', label: 'Your groups' },
+				yourEvents: { link: 'meetup.com/your-events', label: 'Your events' },
 				allGroupsLabel: 'See all groups',
 				allGroupsLink: 'meetup.com/groups',
 				groupHome: () => {},
@@ -184,6 +187,20 @@ storiesOf('Site Chrome/Nav', module)
 				navItems={items}
 				style={{ width: '100%' }}
 				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			/>
+		);
+	})
+	.add('authenticated new nav but notifications and groups are empty', () => {
+		const notifications = { ...navItems.notifications, list: [] };
+		const groups = { ...navItems.groups, list: [] };
+		const items = { ...navItems, notifications, groups };
+		return (
+			<TestNav
+				self={MOCK_MEMBER}
+				navItems={items}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+				isNewNavActive
 			/>
 		);
 	})

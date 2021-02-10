@@ -5015,13 +5015,38 @@ input.field--reset:active {
 .notification--read {
   background: #f6f7f8 !important; }
 
-.profileDropdown-content {
+.profileDropdown-content.wide {
   width: 512px; }
-  .profileDropdown-content .list-item {
-    padding-bottom: 8px !important;
-    padding-top: 8px !important; }
-  .profileDropdown-content .profileDropdown-draft-group {
-    padding-top: 0 !important; }
+
+.profileDropdown-content.new-padding {
+  padding: 12px 16px; }
+
+.profileDropdown-content .list-item {
+  padding-bottom: 8px !important;
+  padding-top: 8px !important; }
+
+.profileDropdown-content .profileDropdown-draft-group {
+  padding-top: 0 !important; }
+
+.profileDropdown-content .links-divider {
+  border-top: thin;
+  margin-bottom: 12px;
+  margin-top: 12px; }
+
+.profileDropdown-content .links-item {
+  box-sizing: border-box;
+  color: inherit;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+  margin: 0;
+  min-width: 0;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  text-decoration: none; }
+  .profileDropdown-content .links-item:hover {
+    color: #008294; }
 
 .profileDropdown-draft-group div {
   color: #0cbadf;

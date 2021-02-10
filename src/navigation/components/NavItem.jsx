@@ -22,12 +22,12 @@ export const LinkItem = ({ linkTo, navItemContent, className }) => (
 		{navItemContent}
 	</a>
 );
-export const DropdownItem = ({ navItemContent, dropdownContent }) => (
+export const DropdownItem = ({ navItemContent, dropdownContent, isNewNavActive }) => (
 	<Dropdown
 		noPortal
 		align="right"
 		maxWidth="544px"
-		minWidth="384px"
+		minWidth={isNewNavActive ? '190px' : '384px'}
 		trigger={navItemContent}
 		content={dropdownContent}
 	/>
@@ -57,6 +57,7 @@ export const NavItem = props => {
 		onClickAction,
 		onAction,
 		updatesLabel,
+		isNewNavActive,
 		...other
 	} = props;
 
@@ -97,6 +98,7 @@ export const NavItem = props => {
 				<DropdownItem
 					dropdownContent={dropdownContent}
 					navItemContent={trigger}
+					isNewNavActive={isNewNavActive}
 				/>
 			)}
 			{onAction && <ActionItem action={onAction} navItemContent={navItemContent} />}
@@ -117,6 +119,7 @@ NavItem.propTypes = {
 	counterBadgeClassName: PropTypes.string,
 	icon: PropTypes.element,
 	hasUpdates: PropTypes.bool,
+	isNewNavActive: PropTypes.bool,
 };
 
 export default NavItem;
