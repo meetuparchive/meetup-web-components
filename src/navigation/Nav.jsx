@@ -262,6 +262,7 @@ export class Nav extends React.Component {
 			isSearchEnabled &&
 				!media.isAtMediumUp && {
 					shrink: true,
+					icon: search.icon,
 					className: `${search.className} navItem--searchIcon`,
 					onAction: this.onSearchIconClick,
 				},
