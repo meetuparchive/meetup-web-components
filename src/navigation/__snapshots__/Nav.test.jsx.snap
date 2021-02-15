@@ -74,6 +74,7 @@ exports[`Nav NavSearch renders search icon for mobile 1`] = `
     }
   >
     <NavbarSearchComponent
+      isNewNavActive={false}
       style={
         Object {
           "height": 44,
@@ -1210,21 +1211,6 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      isNewNavActive={true}
-      key="2"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -1234,7 +1220,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
         />
       }
       isNewNavActive={true}
-      key="3"
+      key="2"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -1244,7 +1230,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       hasUpdates={false}
       icon={<MessageBlank />}
       isNewNavActive={true}
-      key="4"
+      key="3"
       label=""
       linkTo="meetup.com/messages"
       shrink={true}
@@ -1255,7 +1241,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       hasUpdates={false}
       icon={<Notif />}
       isNewNavActive={true}
-      key="5"
+      key="4"
       label=""
       linkTo="meetup.com/notifications"
       shrink={true}
@@ -1399,7 +1385,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
         </Flex>
       }
       isNewNavActive={true}
-      key="6"
+      key="5"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
@@ -1600,21 +1586,6 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
     justify="spaceBetween"
   >
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      isNewNavActive={true}
-      key="0"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -1624,7 +1595,7 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
         />
       }
       isNewNavActive={true}
-      key="1"
+      key="0"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -1640,7 +1611,7 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
         />
       }
       isNewNavActive={true}
-      key="2"
+      key="1"
       label="Messages"
       linkTo="meetup.com/messages"
       shrink={true}
@@ -1656,7 +1627,7 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
         />
       }
       isNewNavActive={true}
-      key="3"
+      key="2"
       label="Notifications"
       linkTo="meetup.com/notifications"
       shrink={true}
@@ -1698,7 +1669,7 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
         </Flex>
       }
       isNewNavActive={true}
-      key="4"
+      key="3"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"

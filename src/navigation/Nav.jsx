@@ -305,7 +305,7 @@ export class Nav extends React.Component {
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
 			media.isAtMediumUp && experiencesLink,
-			{
+			!isNewNavActive && {
 				shrink: true,
 				linkTo: explore.link,
 				label: explore.label,
@@ -535,6 +535,7 @@ export class Nav extends React.Component {
 										maxWidth: SEARCH_INPUT_MAX_WIDTH,
 										height: SEARCH_INPUT_HEIGHT,
 									}}
+									isNewNavActive={isNewNavActive}
 								/>
 							</FlexItem>
 						)}
@@ -568,6 +569,7 @@ export class Nav extends React.Component {
 								onSearchCallback={onSearchCallback}
 								placeholder={search.placeholder}
 								style={{ height: SEARCH_INPUT_HEIGHT }}
+								isNewNavActive={false}
 							/>
 						</div>
 					)}

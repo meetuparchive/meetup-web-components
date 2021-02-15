@@ -88,6 +88,10 @@ export const navItemsFactory = () => {
 				generateClassicUrl: () => {},
 			},
 		},
+		search: {
+			className: 'align--center',
+			placeholder: 'Search for keywords',
+		},
 		profile: {
 			link: 'meetup.com/profile',
 			label: 'Profile',
@@ -137,6 +141,16 @@ storiesOf('Site Chrome/Nav', module)
 			style={{ width: '100%' }}
 			media={{ isAtMediumUp: true, isAtLargeUp: true }}
 			isNewNavActive
+		/>
+	))
+	.add('authenticated new nav with search', () => (
+		<TestNav
+			self={MOCK_MEMBER}
+			navItems={navItems}
+			style={{ width: '100%' }}
+			media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			isNewNavActive
+			isSearchEnabled
 		/>
 	))
 	.add('authenticated new nav with unread notifications', () => {
