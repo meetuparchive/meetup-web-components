@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a panelIndex 1`] = `null`;
