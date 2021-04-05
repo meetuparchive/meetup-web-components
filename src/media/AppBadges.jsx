@@ -5,8 +5,8 @@ import cx from 'classnames';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 
-export const IOS_DOWNLOAD_LINK = 'http://meetu.ps/2ZhShs';
-export const ANDROID_DOWNLOAD_LINK = 'http://meetu.ps/2ZhSyb';
+export const IOS_DOWNLOAD_LINK = 'https://meetu.ps/2ZhShs';
+export const ANDROID_DOWNLOAD_LINK = 'https://meetu.ps/2ZhSyb';
 const getAppStoreDownloadPhoto = (platform, language) =>
 	// eslint-disable-next-line global-require, import/no-dynamic-require
 	require(`../../assets/images/app_download/${platform}/download_${language}.png`);
