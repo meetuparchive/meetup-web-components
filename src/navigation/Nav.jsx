@@ -268,11 +268,17 @@ export class Nav extends React.Component {
 				},
 		];
 
+		// Bugfix. We cannot use as action boolean value in case if media is not atMediumUp
+		const emptyFunction = () => {};
+		const proAdminAction = media.isAtMediumUp
+			? emptyFunction
+			: this.onClickMobileDropdownAction;
+
 		let authItems = [
 			self.is_pro_admin && {
 				shrink: true,
 				linkTo: media.isAtMediumUp ? proDashboard.link : '',
-				onAction: !media.isAtMediumUp && this.onClickMobileDropdownAction,
+				onAction: proAdminAction,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
 				icon: (
