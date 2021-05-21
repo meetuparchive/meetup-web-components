@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import cx from 'classnames';
 import PropTypes from 'prop-types';
@@ -34,6 +34,7 @@ export const ProfileDropdownComponent = ({
 	yourEvents,
 	yourGroups,
 	isNewNavActive,
+	isNewNavsOrder,
 }) => {
 	const groupsContent = groups.map(group => (
 		<li
@@ -74,21 +75,38 @@ export const ProfileDropdownComponent = ({
 	const newNav = isNewNavActive && (
 		<FlexItem growFactor={1} className={cx({ 'margin--left': showGroups })}>
 			<ul>
-				<li>
-					<a className="links-item" href={savedEvents.link}>
-						{savedEvents.label}
-					</a>
-				</li>
-				<li>
-					<a className="links-item" href={yourGroups.link}>
-						{yourGroups.label}
-					</a>
-				</li>
-				<li>
-					<a className="links-item" href={yourEvents.link}>
-						{yourEvents.label}
-					</a>
-				</li>
+				{isNewNavsOrder ? (
+					<Fragment>
+						<li>
+							<a className="links-item" href={yourEvents.link}>
+								{yourEvents.label}
+							</a>
+						</li>
+						<li>
+							<a className="links-item" href={yourGroups.link}>
+								{yourGroups.label}
+							</a>
+						</li>
+					</Fragment>
+				) : (
+					<Fragment>
+						<li>
+							<a className="links-item" href={savedEvents.link}>
+								{savedEvents.label}
+							</a>
+						</li>
+						<li>
+							<a className="links-item" href={yourGroups.link}>
+								{yourGroups.label}
+							</a>
+						</li>
+						<li>
+							<a className="links-item" href={yourEvents.link}>
+								{yourEvents.label}
+							</a>
+						</li>
+					</Fragment>
+				)}
 			</ul>
 			<hr className="links-divider" />
 			<ul>
