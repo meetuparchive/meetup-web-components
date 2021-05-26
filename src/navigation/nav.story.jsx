@@ -218,6 +218,24 @@ storiesOf('Site Chrome/Nav', module)
 			/>
 		);
 	})
+	.add(
+		'authenticated new nav and new navs order but notifications and groups are empty',
+		() => {
+			const notifications = { ...navItems.notifications, list: [] };
+			const groups = { ...navItems.groups, list: [] };
+			const items = { ...navItems, notifications, groups };
+			return (
+				<TestNav
+					self={MOCK_MEMBER}
+					navItems={items}
+					style={{ width: '100%' }}
+					media={{ isAtMediumUp: true, isAtLargeUp: true }}
+					isNewNavActive
+					isNewNavsOrder
+				/>
+			);
+		}
+	)
 	.add('authenticated but with draft group at the top', () => {
 		const navItemsModified = {
 			...navItems,

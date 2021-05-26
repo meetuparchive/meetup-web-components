@@ -154,6 +154,7 @@ export class Nav extends React.Component {
 			isSearchEnabled,
 			onSearchCallback,
 			isNewNavActive,
+			isNewNavsOrder,
 			...other
 		} = this.props;
 
@@ -222,6 +223,9 @@ export class Nav extends React.Component {
 				groups={groups.list}
 				groupDraft={groupDraft}
 				isNewNavActive={isNewNavActive}
+				isNewNavsOrder={
+					isNewNavsOrder && (localeCode ? localeCode.includes('en') : false)
+				}
 			/>
 		) : (
 			<DropdownLoader label={dropdownLoaderLabel} />
