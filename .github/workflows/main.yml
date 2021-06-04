@@ -60,3 +60,15 @@ jobs:
         env:
           CI_BUILD_NUMBER: ${{ github.run_number }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Update storybook
+        if: success() && github.ref == 'refs/heads/master'
+        run: |
+          yarn run storybook-static
+
+      - name: Deploy
+        if: success() && github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./.storybook-out
