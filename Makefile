@@ -34,12 +34,3 @@ publish: lib
 	@echo "publishing $(VERSION_TAG)"
 	npm version $(VERSION_TAG) -m "$$COMMIT_MESSAGE"
 	npm publish --tag $(NPM_TAG)
-
-push-gh:
-ifeq ($(TRAVIS_BRANCH), master)
-ifeq ($(TRAVIS_PULL_REQUEST), false)
-	@echo "pushing master:$(VERSION_TAG)"
-	git push git@github.com:$(TRAVIS_REPO_SLUG).git HEAD:master --follow-tags --no-verify
-endif
-	@echo "skipping git push for PR build"
-endif
