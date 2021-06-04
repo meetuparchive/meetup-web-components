@@ -1,7 +1,8 @@
-[![npm version](https://badge.fury.io/js/meetup-web-components.svg)](https://badge.fury.io/js/meetup-web-components) 
-[![Build Status](https://travis-ci.com/meetup/meetup-web-components.svg?branch=master)](https://travis-ci.com/meetup/meetup-web-components)
-
 # meetup-web-components
+
+[![npm version](https://badge.fury.io/js/meetup-web-components.svg)](https://badge.fury.io/js/meetup-web-components)
+[![main](https://github.com/meetup/meetup-web-components/actions/workflows/main.yml/badge.svg)](https://github.com/meetup/meetup-web-components/actions/workflows/main.yml)
+
 Meetup library of React UI components for the web.
 
 Table of Contents
@@ -60,14 +61,14 @@ README.
 **CURRENT PRO VERSION: `6.2.0`**
 
 `pro-web` is not on the latest version of MWC that uses `swarm-ui`.
-Instead, the `pro-web` version of MWC is based off a branch called 
+Instead, the `pro-web` version of MWC is based off a branch called
 `pro-web-6.x.x`. It's manually published to npm as version `6.2.0`
 and is tagged as `pro` in the registry, so all that is needed to
-install is `yarn add meetup-web-components@pro -W`. 
+install is `yarn add meetup-web-components@pro -W`.
 
 If changes are needed for the `pro-web` version, do the following:
 
-- Checkout, commit+push changes to the `pro-web-6.x.x` branch. 
+- Checkout, commit+push changes to the `pro-web-6.x.x` branch.
 - Bump the version number in the `package.json` file and commit+push.
 - Edit this README to update the current version.
 - Finally, run `npm publish --tag pro` as the `meetupbot` npm user.
