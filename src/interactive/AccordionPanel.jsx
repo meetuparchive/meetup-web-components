@@ -22,6 +22,7 @@ class AccordionPanel extends React.Component {
 		this.onKeyUp = this.onKeyUp.bind(this);
 		this.onToggleClick = this.onToggleClick.bind(this);
 		this.onTransitionEnd = this.onTransitionEnd.bind(this);
+		this.handleLockedLabelClick = this.handleLockedLabelClick.bind(this);
 
 		this.state = {
 			height: props.isOpen ? 'auto' : '0px',
@@ -63,7 +64,9 @@ class AccordionPanel extends React.Component {
 			panelIndex,
 			disableAndOpen,
 			isDisabledPanelOpen,
+			isLocked,
 		} = this.props;
+		if (isLocked) return;
 		if (disableAndOpen) {
 			setClickedPanel &&
 				setClickedPanel(e, {
@@ -148,6 +151,12 @@ class AccordionPanel extends React.Component {
 		}
 	}
 
+	handleLockedLabelClick(e) {
+		e.preventDefault();
+
+		this.props.onLockedLabelClick(e);
+	}
+
 	render() {
 		const {
 			panelContent,
@@ -166,6 +175,9 @@ class AccordionPanel extends React.Component {
 			onToggleClick, // eslint-disable-line no-unused-vars
 			disableAndOpen,
 			isDisabledPanelOpen, // eslint-disable-line no-unused-vars
+			isLocked,
+			lockedLabel,
+			onLockedLabelClick, // eslint-disable-line no-unused-vars
 			...other
 		} = this.props;
 
@@ -210,9 +222,34 @@ class AccordionPanel extends React.Component {
 						className={classNames.accordionPanel}
 						rowReverse={indicatorAlign === 'left' && 'all'}
 						tabIndex={-1}
+						align="center"
 						{...other}
 					>
-						<FlexItem id={`label-${panelId}`}>{label}</FlexItem>
+						{isLocked ? (
+							<Flex
+								wrap
+								direction="column"
+								className="accordionPanel-locked"
+							>
+								<FlexItem id={`label-${panelId}`} shrink>
+									{label}
+								</FlexItem>
+								<FlexItem
+									shrink
+									onClick={this.handleLockedLabelClick}
+									className="accordionPanel-locked-container"
+								>
+									<div className="accordionPanel-locked-badge">
+										<Icon shape="lock" size="xs" color="#008294" />
+										<span className="accordionPanel-locked-label">
+											{lockedLabel}
+										</span>
+									</div>
+								</FlexItem>
+							</Flex>
+						) : (
+							<FlexItem id={`label-${panelId}`}>{label}</FlexItem>
+						)}
 
 						<FlexItem
 							className="accordionPanel-icon"
@@ -312,6 +349,15 @@ AccordionPanel.propTypes = {
 
 	/** Prevent ToggleSwitch active but show content after click  */
 	disableAndOpen: PropTypes.bool,
+
+	/** Whether the panel is locked due to some conditional requirements */
+	isLocked: PropTypes.bool,
+
+	/** Label of CTA badge for unlocking the panel */
+	lockedLabel: PropTypes.string,
+
+	/** A callback that happens after the locked label has been clicked  */
+	onLockedLabelClick: PropTypes.func,
 };
 
 export default AccordionPanel;

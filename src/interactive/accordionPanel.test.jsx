@@ -251,4 +251,52 @@ describe('AccordionPanel', function() {
 			expect(switchNode.props().disabled).toBe(true);
 		});
 	});
+
+	describe('Locked panel with toggle switch', () => {
+		let panelToggleSwitchLocked;
+		const onLockedLabelClickMock = jest.fn();
+		const onClickCallbackMock = jest.fn();
+
+		beforeEach(() => {
+			panelToggleSwitchLocked = mount(
+				<AccordionPanel
+					indicatorSwitch
+					label="First Section"
+					indicatorAlign="left"
+					panelContent={
+						<div className="runningText">
+							<p>{textContent1}</p>
+						</div>
+					}
+					isLocked
+					lockedLabel="Unlock me!"
+					onLockedLabelClick={onLockedLabelClickMock}
+					onClickCallback={onClickCallbackMock}
+				/>
+			);
+		});
+
+		afterEach(() => {
+			panelToggleSwitchLocked = null;
+			onLockedLabelClickMock.mockClear();
+		});
+
+		it('renders locked toggle panel', () => {
+			expect(panelToggleSwitchLocked).toMatchSnapshot();
+		});
+
+		it('should call onLockedLabelClick callback when user clicks on locked label', () => {
+			const lockedLabel = panelToggleSwitchLocked.find(
+				'.accordionPanel-locked-label'
+			);
+			lockedLabel.simulate('click');
+			expect(onLockedLabelClickMock).toHaveBeenCalledTimes(1);
+		});
+
+		it('shouln`t call onClickCallback when user clicks and panel is locked', () => {
+			const switchNode = panelToggleSwitchLocked.find(ToggleSwitch);
+			switchNode.find('button').simulate('click');
+			expect(onClickCallback).toHaveBeenCalledTimes(0);
+		});
+	});
 });

@@ -116,18 +116,20 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             tabIndex={0}
           >
             <Flex
+              align="center"
               className="padding--bottom padding--top accordionPanel accordionPanel--active"
               rowReverse={false}
               tabIndex={-1}
             >
               <FlexComponent
+                align="center"
                 className="padding--bottom padding--top accordionPanel accordionPanel--active"
                 direction="row"
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  className="flex flex--row padding--bottom padding--top accordionPanel accordionPanel--active"
+                  className="flex flex--row flex--alignCenter padding--bottom padding--top accordionPanel accordionPanel--active"
                   tabIndex={-1}
                 >
                   <FlexItem
@@ -300,18 +302,20 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             tabIndex={0}
           >
             <Flex
+              align="center"
               className="padding--bottom padding--top accordionPanel"
               rowReverse={false}
               tabIndex={-1}
             >
               <FlexComponent
+                align="center"
                 className="padding--bottom padding--top accordionPanel"
                 direction="row"
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  className="flex flex--row padding--bottom padding--top accordionPanel"
+                  className="flex flex--row flex--alignCenter padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
                   <FlexItem
@@ -484,18 +488,20 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             tabIndex={0}
           >
             <Flex
+              align="center"
               className="padding--bottom padding--top accordionPanel"
               rowReverse={false}
               tabIndex={-1}
             >
               <FlexComponent
+                align="center"
                 className="padding--bottom padding--top accordionPanel"
                 direction="row"
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  className="flex flex--row padding--bottom padding--top accordionPanel"
+                  className="flex flex--row flex--alignCenter padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
                   <FlexItem
@@ -737,18 +743,20 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             tabIndex={0}
           >
             <Flex
+              align="center"
               className="padding--bottom padding--top accordionPanel accordionPanel--active"
               rowReverse={false}
               tabIndex={-1}
             >
               <FlexComponent
+                align="center"
                 className="padding--bottom padding--top accordionPanel accordionPanel--active"
                 direction="row"
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  className="flex flex--row padding--bottom padding--top accordionPanel accordionPanel--active"
+                  className="flex flex--row flex--alignCenter padding--bottom padding--top accordionPanel accordionPanel--active"
                   tabIndex={-1}
                 >
                   <FlexItem
@@ -921,18 +929,20 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             tabIndex={0}
           >
             <Flex
+              align="center"
               className="padding--bottom padding--top accordionPanel"
               rowReverse={false}
               tabIndex={-1}
             >
               <FlexComponent
+                align="center"
                 className="padding--bottom padding--top accordionPanel"
                 direction="row"
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  className="flex flex--row padding--bottom padding--top accordionPanel"
+                  className="flex flex--row flex--alignCenter padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
                   <FlexItem
@@ -1105,18 +1115,20 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             tabIndex={0}
           >
             <Flex
+              align="center"
               className="padding--bottom padding--top accordionPanel"
               rowReverse={false}
               tabIndex={-1}
             >
               <FlexComponent
+                align="center"
                 className="padding--bottom padding--top accordionPanel"
                 direction="row"
                 rowReverse={false}
                 tabIndex={-1}
               >
                 <div
-                  className="flex flex--row padding--bottom padding--top accordionPanel"
+                  className="flex flex--row flex--alignCenter padding--bottom padding--top accordionPanel"
                   tabIndex={-1}
                 >
                   <FlexItem
