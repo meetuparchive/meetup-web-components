@@ -1,5 +1,296 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AccordionPanel Locked panel with toggle switch renders locked toggle panel 1`] = `
+<AccordionPanel
+  indicatorAlign="left"
+  indicatorIcon="chevron-down"
+  indicatorIconSize="xs"
+  indicatorSwitch={true}
+  isLocked={true}
+  isOpen={false}
+  label="First Section"
+  lockedLabel="Unlock me!"
+  onClickCallback={[MockFunction]}
+  onLockedLabelClick={[MockFunction]}
+  panelContent={
+    <div
+      className="runningText"
+    >
+      <p>
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+      </p>
+    </div>
+  }
+>
+  <div>
+    <div
+      aria-controls="panel-firstsection"
+      aria-expanded={false}
+      aria-selected={false}
+      className="accordionPanel-label display--block span--100"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="tab"
+      tabIndex={0}
+    >
+      <Flex
+        align="center"
+        className="padding--bottom padding--top accordionPanel"
+        rowReverse="all"
+        tabIndex={-1}
+      >
+        <FlexComponent
+          align="center"
+          className="padding--bottom padding--top accordionPanel"
+          direction="row"
+          rowReverse="all"
+          tabIndex={-1}
+        >
+          <div
+            className="flex flex--row atAll_flex--rowReverse flex--alignCenter padding--bottom padding--top accordionPanel"
+            tabIndex={-1}
+          >
+            <Flex
+              className="accordionPanel-locked"
+              direction="column"
+              wrap={true}
+            >
+              <FlexComponent
+                className="accordionPanel-locked"
+                direction="column"
+                wrap={true}
+              >
+                <div
+                  className="flex flex--column flex--wrap accordionPanel-locked"
+                >
+                  <FlexItem
+                    id="label-firstsection"
+                    shrink={true}
+                  >
+                    <FlexItemComponent
+                      id="label-firstsection"
+                      shrink={true}
+                    >
+                      <div
+                        className="flex-item flex-item--shrink"
+                        id="label-firstsection"
+                      >
+                        First Section
+                      </div>
+                    </FlexItemComponent>
+                  </FlexItem>
+                  <FlexItem
+                    className="accordionPanel-locked-container"
+                    onClick={[Function]}
+                    shrink={true}
+                  >
+                    <FlexItemComponent
+                      className="accordionPanel-locked-container"
+                      onClick={[Function]}
+                      shrink={true}
+                    >
+                      <div
+                        className="flex-item flex-item--shrink accordionPanel-locked-container"
+                        onClick={[Function]}
+                      >
+                        <div
+                          className="accordionPanel-locked-badge"
+                        >
+                          <Icon
+                            color="#008294"
+                            shape="lock"
+                            size="xs"
+                          >
+                            <span>
+                              <Icon
+                                color="#008294"
+                                shape="lock"
+                                size="xs"
+                              >
+                                <svg
+                                  className="svg svg--lock svg-icon valign--middle"
+                                  height="20"
+                                  preserveAspectRatio="xMinYMin meet"
+                                  role="img"
+                                  style={
+                                    Object {
+                                      "fill": "#008294",
+                                    }
+                                  }
+                                  viewBox="0 0 20 20"
+                                  width="20"
+                                >
+                                  <use
+                                    xlinkHref="#icon-lock--small"
+                                  />
+                                </svg>
+                              </Icon>
+                            </span>
+                          </Icon>
+                          <span
+                            className="accordionPanel-locked-label"
+                          >
+                            Unlock me!
+                          </span>
+                        </div>
+                      </div>
+                    </FlexItemComponent>
+                  </FlexItem>
+                </div>
+              </FlexComponent>
+            </Flex>
+            <FlexItem
+              className="accordionPanel-icon"
+              onClick={[Function]}
+              shrink={true}
+            >
+              <FlexItemComponent
+                className="accordionPanel-icon"
+                onClick={[Function]}
+                shrink={true}
+              >
+                <div
+                  className="flex-item flex-item--shrink accordionPanel-icon"
+                  onClick={[Function]}
+                >
+                  <ToggleSwitch
+                    disabled={false}
+                    id="switch-firstsection"
+                    isActive={false}
+                    labelledBy="label-firstsection"
+                    name="firstsection"
+                    onClick={[Function]}
+                    tabIndex="-1"
+                  >
+                    <ToggleSwitch
+                      disabled={false}
+                      id="switch-firstsection"
+                      isActive={false}
+                      labelledBy="label-firstsection"
+                      name="firstsection"
+                      onClick={[Function]}
+                      tabIndex="-1"
+                    >
+                      <div>
+                        <Toggle
+                          aria-labelledby="label-firstsection"
+                          checked={false}
+                          disabled={false}
+                          id="switch-firstsection"
+                          name="firstsection"
+                          onClick={[Function]}
+                          tabIndex="-1"
+                        >
+                          <button
+                            aria-checked={false}
+                            aria-labelledby="label-firstsection"
+                            aria-readonly={false}
+                            checked={false}
+                            data-swarm-toggle="unchecked"
+                            disabled={false}
+                            id="switch-firstsection"
+                            name="firstsection"
+                            onClick={[Function]}
+                            role="checkbox"
+                            tabIndex="-1"
+                            type="button"
+                          >
+                            <span
+                              data-swarm-toggle-switch-disc={true}
+                            >
+                              <Icon
+                                color="var(--color-gray-4)"
+                                shape="cross"
+                                size="xs"
+                              >
+                                <svg
+                                  className="svg svg--cross svg-icon valign--middle"
+                                  height="20"
+                                  preserveAspectRatio="xMinYMin meet"
+                                  role="img"
+                                  style={
+                                    Object {
+                                      "fill": "var(--color-gray-4)",
+                                    }
+                                  }
+                                  viewBox="0 0 20 20"
+                                  width="20"
+                                >
+                                  <use
+                                    xlinkHref="#icon-cross--small"
+                                  />
+                                </svg>
+                              </Icon>
+                            </span>
+                          </button>
+                        </Toggle>
+                      </div>
+                    </ToggleSwitch>
+                  </ToggleSwitch>
+                </div>
+              </FlexItemComponent>
+            </FlexItem>
+          </div>
+        </FlexComponent>
+      </Flex>
+    </div>
+    <Chunk
+      aria-hidden={true}
+      aria-labelledby="label-firstsection"
+      className="accordionPanel-animator accordionPanel-animator--collapse"
+      id="panel-firstsection"
+      onTransitionEnd={[Function]}
+      role="tabpanel"
+      style={
+        Object {
+          "height": "0px",
+        }
+      }
+    >
+      <ChunkComponent
+        aria-hidden={true}
+        aria-labelledby="label-firstsection"
+        className="accordionPanel-animator accordionPanel-animator--collapse"
+        id="panel-firstsection"
+        onTransitionEnd={[Function]}
+        role="tabpanel"
+        style={
+          Object {
+            "height": "0px",
+          }
+        }
+      >
+        <div
+          aria-hidden={true}
+          aria-labelledby="label-firstsection"
+          className="chunk accordionPanel-animator accordionPanel-animator--collapse"
+          id="panel-firstsection"
+          onTransitionEnd={[Function]}
+          role="tabpanel"
+          style={
+            Object {
+              "height": "0px",
+            }
+          }
+        >
+          <div
+            className="accordionPanel-content"
+          >
+            <div
+              className="runningText"
+            >
+              <p>
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+              </p>
+            </div>
+          </div>
+        </div>
+      </ChunkComponent>
+    </Chunk>
+  </div>
+</AccordionPanel>
+`;
+
 exports[`AccordionPanel Panel basic behavior exists and renders with mock props 1`] = `
 <div>
   <div
@@ -13,6 +304,7 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
     tabIndex={0}
   >
     <Flex
+      align="center"
       className="padding--bottom padding--top accordionPanel"
       rowReverse={false}
       tabIndex={-1}
@@ -76,6 +368,7 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
     tabIndex={0}
   >
     <Flex
+      align="center"
       className="padding--bottom padding--top accordionPanel"
       rowReverse="all"
       tabIndex={-1}
@@ -155,18 +448,20 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
       tabIndex={0}
     >
       <Flex
+        align="center"
         className="padding--bottom padding--top accordionPanel"
         rowReverse="all"
         tabIndex={-1}
       >
         <FlexComponent
+          align="center"
           className="padding--bottom padding--top accordionPanel"
           direction="row"
           rowReverse="all"
           tabIndex={-1}
         >
           <div
-            className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
+            className="flex flex--row atAll_flex--rowReverse flex--alignCenter padding--bottom padding--top accordionPanel"
             tabIndex={-1}
           >
             <FlexItem
@@ -319,18 +614,20 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
       tabIndex={0}
     >
       <Flex
+        align="center"
         className="padding--bottom padding--top accordionPanel"
         rowReverse="all"
         tabIndex={-1}
       >
         <FlexComponent
+          align="center"
           className="padding--bottom padding--top accordionPanel"
           direction="row"
           rowReverse="all"
           tabIndex={-1}
         >
           <div
-            className="flex flex--row atAll_flex--rowReverse padding--bottom padding--top accordionPanel"
+            className="flex flex--row atAll_flex--rowReverse flex--alignCenter padding--bottom padding--top accordionPanel"
             tabIndex={-1}
           >
             <FlexItem
