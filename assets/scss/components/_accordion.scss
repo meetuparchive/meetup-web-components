@@ -77,6 +77,9 @@
 }
 
 .accordionPanel-locked-badge {
+	align-items: center;
+	display: flex;
+	margin-top: -2px;
 	padding: 4px 8px;
 }
 
@@ -89,5 +92,9 @@
 	.accordionPanel-locked-container {
 		margin-left: 16px;
 		margin-top: -4px;
+	}
+
+	.accordionPanel-locked-badge {
+		margin-top: 0;
 	}
 }
