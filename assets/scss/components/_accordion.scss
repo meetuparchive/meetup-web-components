@@ -81,8 +81,10 @@
 }
 
 @include atMediaUp(medium) {
-	flex-direction: row;
-	flex-wrap: nowrap;
+	.accordionPanel-locked {
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
 
 	.accordionPanel-locked-container {
 		margin-left: 16px;
