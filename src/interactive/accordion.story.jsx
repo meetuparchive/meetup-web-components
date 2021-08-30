@@ -41,6 +41,18 @@ const panelThreeProps = {
 	label: 'Third in default group',
 };
 
+const lockedPanelProps = {
+	panelContent: (
+		<div className="runningText">
+			<p>{textContent2}</p>
+		</div>
+	),
+	label: 'Locked panel',
+	isLocked: true,
+	lockedLabel: 'Unlock me!',
+	onLockedLabelClick: callbackAction('Locked label click'),
+};
+
 const defaultPanels = [
 	<AccordionPanel {...panelOneProps} />,
 	<AccordionPanel {...panelTwoProps} />,
@@ -132,6 +144,20 @@ storiesOf('Interactive/Accordion', module)
 		() => (
 			<div className="span--100 padding--all">
 				<AccordionPanelGroup indicatorSwitch accordionPanels={defaultPanels} />
+			</div>
+		),
+		{ info: { text: 'Show the indicator as a switch' } }
+	)
+	.add(
+		'ToggleSwitch indicator with locked panel',
+		() => (
+			<div className="span--100 padding--all">
+				<AccordionPanelGroup
+					indicatorSwitch
+					accordionPanels={defaultPanels
+						.slice(0, 2)
+						.concat(<AccordionPanel {...lockedPanelProps} />)}
+				/>
 			</div>
 		),
 		{ info: { text: 'Show the indicator as a switch' } }
