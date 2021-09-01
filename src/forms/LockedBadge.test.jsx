@@ -23,6 +23,9 @@ describe('LockedBadge', function() {
 	it('renders locked badge with default styles', () => {
 		expect(render()).toMatchSnapshot();
 	});
+	it('renders locked badge with neutral styles', () => {
+		expect(render({ ...MOCK_PROPS, variant: 'neutral' })).toMatchSnapshot();
+	});
 	it('calls onClickCallback when user clicks on badge', () => {
 		const badge = render();
 		expect(onClickCallbackMock).not.toHaveBeenCalled();

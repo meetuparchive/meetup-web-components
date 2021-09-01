@@ -6,3 +6,11 @@ exports[`LockedBadge renders locked badge with default styles 1`] = `
   onClick={[MockFunction]}
 />
 `;
+
+exports[`LockedBadge renders locked badge with neutral styles 1`] = `
+<LockedBadge
+  label="Default label"
+  onClick={[MockFunction]}
+  variant="neutral"
+/>
+`;

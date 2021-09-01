@@ -13,6 +13,19 @@ export class LockedBadge extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
+		this.variants = {
+			default: {
+				iconColor: '#008294',
+				labelColor: '#008294',
+				backgroundColor: '#dcebee',
+			},
+			neutral: {
+				iconColor: '#000000',
+				labelColor: '#212121',
+				backgroundColor: '#f6f7f8',
+			},
+		};
+
 		this.handleClick = this.handleClick.bind(this);
 	}
 
@@ -30,7 +43,10 @@ export class LockedBadge extends React.PureComponent {
 		const {
 			label,
 			onClick, // eslint-disable-line no-unused-vars
+			variant = 'default',
 		} = this.props;
+
+		const { iconColor, labelColor, backgroundColor } = this.variants[variant];
 
 		return (
 			<Flex>
@@ -38,10 +54,13 @@ export class LockedBadge extends React.PureComponent {
 					shrink
 					onClick={this.handleClick}
 					className="lockedBadge-container"
+					style={{ backgroundColor }}
 				>
 					<div className="lockedBadge-badge">
-						<Icon shape="lock" size="xs" color="#008294" />
-						<span className="lockedBadge-label">{label}</span>
+						<Icon shape="lock" size="xs" color={iconColor} />
+						<span className="lockedBadge-label" style={{ color: labelColor }}>
+							{label}
+						</span>
 					</div>
 				</FlexItem>
 			</Flex>
@@ -50,6 +69,9 @@ export class LockedBadge extends React.PureComponent {
 }
 
 LockedBadge.propTypes = {
+	/** Style theme for badge */
+	variant: PropTypes.oneOf(['default', 'neutral']),
+
 	/** Label of CTA badge for unlocking the panel */
 	label: PropTypes.string.isRequired,
 

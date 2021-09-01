@@ -10,4 +10,7 @@ const callbackAction = () => action('Click event');
 storiesOf('Forms/LockedBadge', module)
 	.addDecorator(decorateWithBasics)
 	.addDecorator(decorateWithInfo)
-	.add('Default', () => <LockedBadge label="My badge" onClick={callbackAction()} />);
+	.add('Default', () => <LockedBadge label="My badge" onClick={callbackAction()} />)
+	.add('Neutral', () => (
+		<LockedBadge variant="neutral" label="My badge" onClick={callbackAction()} />
+	));
