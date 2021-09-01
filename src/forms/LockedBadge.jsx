@@ -57,7 +57,12 @@ export class LockedBadge extends React.PureComponent {
 					style={{ backgroundColor }}
 				>
 					<div className="lockedBadge-badge">
-						<Icon shape="lock" size="xs" color={iconColor} />
+						<Icon
+							shape="lock"
+							size="xs"
+							color={iconColor}
+							className="lockedBadge-icon-container"
+						/>
 						<span className="lockedBadge-label" style={{ color: labelColor }}>
 							{label}
 						</span>

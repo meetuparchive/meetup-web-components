@@ -11,10 +11,12 @@
 	padding-left: 6px;
 }
 
+.lockedBadge-icon-container {
+	display: inline-flex;
+}
+
 .lockedBadge-badge {
-	align-items: center;
 	display: flex;
-	margin-top: -2px;
 	padding: 4px 8px;
 }
 
@@ -22,9 +24,5 @@
 	.lockedBadge-container {
 		margin-left: 16px;
 		margin-top: -4px;
-	}
-
-	.lockedBadge-badge {
-		margin-top: 0;
 	}
 }
