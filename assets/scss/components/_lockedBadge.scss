@@ -1,0 +1,32 @@
+.lockedBadge-container {
+	background: #dcebee;
+	border-radius: 8px;
+	cursor: pointer;
+	margin-top: 4px;
+	padding: 0;
+}
+
+.lockedBadge-label {
+	color: #008294;
+	font-size: 14px;
+	line-height: 1.4;
+	padding-left: 6px;
+}
+
+.lockedBadge-badge {
+	align-items: center;
+	display: flex;
+	margin-top: -2px;
+	padding: 4px 8px;
+}
+
+@include atMediaUp(medium) {
+	.lockedBadge-container {
+		margin-left: 16px;
+		margin-top: -4px;
+	}
+
+	.lockedBadge-badge {
+		margin-top: 0;
+	}
+}
