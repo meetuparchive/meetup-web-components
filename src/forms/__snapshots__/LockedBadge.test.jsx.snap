@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LockedBadge renders locked badge with default styles 1`] = `
+<LockedBadge
+  label="Default label"
+  onClick={[MockFunction]}
+/>
+`;

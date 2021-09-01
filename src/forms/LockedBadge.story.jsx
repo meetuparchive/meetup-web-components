@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-// import { decorateAction } from '@storybook/addon-actions';
 import { action } from '@storybook/addon-actions';
 import { decorateWithBasics, decorateWithInfo } from '../utils/decorators';
 

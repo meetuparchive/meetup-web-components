@@ -51,10 +51,10 @@ export class LockedBadge extends React.PureComponent {
 
 LockedBadge.propTypes = {
 	/** Label of CTA badge for unlocking the panel */
-	label: PropTypes.string,
+	label: PropTypes.string.isRequired,
 
 	/** A callback that happens after the locked label has been clicked  */
-	onClick: PropTypes.func,
+	onClick: PropTypes.func.isRequired,
 };
 
 export default DeprecationWarning(LockedBadge);
