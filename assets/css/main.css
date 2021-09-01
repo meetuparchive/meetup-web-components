@@ -3001,33 +3001,10 @@ $('#fadeInLink').on('click', function(e) {
 .accordionPanel-locked {
   margin-right: auto; }
 
-.accordionPanel-locked-container {
-  background: #dcebee;
-  border-radius: 8px;
-  margin-top: 4px;
-  padding: 0; }
-
-.accordionPanel-locked-label {
-  color: #008294;
-  font-size: 14px;
-  line-height: 1.4;
-  padding-left: 6px; }
-
-.accordionPanel-locked-badge {
-  align-items: center;
-  display: flex;
-  margin-top: -2px;
-  padding: 4px 8px; }
-
 @media only screen and (min-width: 640px) {
   .accordionPanel-locked {
     flex-direction: row;
-    flex-wrap: nowrap; }
-  .accordionPanel-locked-container {
-    margin-left: 16px;
-    margin-top: -4px; }
-  .accordionPanel-locked-badge {
-    margin-top: 0; } }
+    flex-wrap: nowrap; } }
 
 .avatar--person,
 .avatar {
@@ -5151,6 +5128,29 @@ input.field--reset:active {
 .greenbar {
   background-color: var(--c-teal);
   width: 100%; }
+
+.lockedBadge-container {
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 4px;
+  padding: 0; }
+
+.lockedBadge-label {
+  font-size: 14px;
+  line-height: 1.4;
+  padding-left: 6px; }
+
+.lockedBadge-icon-container {
+  display: inline-flex; }
+
+.lockedBadge-badge {
+  display: flex;
+  padding: 4px 8px; }
+
+@media only screen and (min-width: 640px) {
+  .lockedBadge-container {
+    margin-left: 16px;
+    margin-top: -4px; } }
 
 /**
 * modifierClasses/all.scss
