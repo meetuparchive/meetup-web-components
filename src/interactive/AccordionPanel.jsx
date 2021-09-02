@@ -232,7 +232,11 @@ class AccordionPanel extends React.Component {
 								direction="column"
 								className="accordionPanel-locked"
 							>
-								<FlexItem id={`label-${panelId}`} shrink>
+								<FlexItem
+									id={`label-${panelId}`}
+									className="accordionPanel-locked-panel-label"
+									shrink
+								>
 									{label}
 								</FlexItem>
 								<LockedBadge
