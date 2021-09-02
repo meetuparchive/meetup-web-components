@@ -286,9 +286,7 @@ describe('AccordionPanel', function() {
 		});
 
 		it('should call onLockedLabelClick callback when user clicks on locked label', () => {
-			const lockedLabel = panelToggleSwitchLocked.find(
-				'.accordionPanel-locked-label'
-			);
+			const lockedLabel = panelToggleSwitchLocked.find('.lockedBadge-badge');
 			lockedLabel.simulate('click');
 			expect(onLockedLabelClickMock).toHaveBeenCalledTimes(1);
 		});

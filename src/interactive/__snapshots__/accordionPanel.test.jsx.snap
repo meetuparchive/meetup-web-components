@@ -79,63 +79,106 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                       </div>
                     </FlexItemComponent>
                   </FlexItem>
-                  <FlexItem
-                    className="accordionPanel-locked-container"
-                    onClick={[Function]}
-                    shrink={true}
+                  <LockedBadge
+                    label="Unlock me!"
+                    onClick={[MockFunction]}
                   >
-                    <FlexItemComponent
-                      className="accordionPanel-locked-container"
-                      onClick={[Function]}
-                      shrink={true}
+                    <LockedBadge
+                      label="Unlock me!"
+                      onClick={[MockFunction]}
                     >
-                      <div
-                        className="flex-item flex-item--shrink accordionPanel-locked-container"
-                        onClick={[Function]}
-                      >
-                        <div
-                          className="accordionPanel-locked-badge"
+                      <Flex>
+                        <FlexComponent
+                          direction="row"
                         >
-                          <Icon
-                            color="#008294"
-                            shape="lock"
-                            size="xs"
+                          <div
+                            className="flex flex--row"
                           >
-                            <span>
-                              <Icon
-                                color="#008294"
-                                shape="lock"
-                                size="xs"
+                            <FlexItem
+                              className="lockedBadge-container"
+                              onClick={[Function]}
+                              shrink={true}
+                              style={
+                                Object {
+                                  "backgroundColor": "#dcebee",
+                                }
+                              }
+                            >
+                              <FlexItemComponent
+                                className="lockedBadge-container"
+                                onClick={[Function]}
+                                shrink={true}
+                                style={
+                                  Object {
+                                    "backgroundColor": "#dcebee",
+                                  }
+                                }
                               >
-                                <svg
-                                  className="svg svg--lock svg-icon valign--middle"
-                                  height="20"
-                                  preserveAspectRatio="xMinYMin meet"
-                                  role="img"
+                                <div
+                                  className="flex-item flex-item--shrink lockedBadge-container"
+                                  onClick={[Function]}
                                   style={
                                     Object {
-                                      "fill": "#008294",
+                                      "backgroundColor": "#dcebee",
                                     }
                                   }
-                                  viewBox="0 0 20 20"
-                                  width="20"
                                 >
-                                  <use
-                                    xlinkHref="#icon-lock--small"
-                                  />
-                                </svg>
-                              </Icon>
-                            </span>
-                          </Icon>
-                          <span
-                            className="accordionPanel-locked-label"
-                          >
-                            Unlock me!
-                          </span>
-                        </div>
-                      </div>
-                    </FlexItemComponent>
-                  </FlexItem>
+                                  <div
+                                    className="lockedBadge-badge"
+                                  >
+                                    <Icon
+                                      className="lockedBadge-icon-container"
+                                      color="#008294"
+                                      shape="lock"
+                                      size="xs"
+                                    >
+                                      <span
+                                        className="lockedBadge-icon-container"
+                                      >
+                                        <Icon
+                                          color="#008294"
+                                          shape="lock"
+                                          size="xs"
+                                        >
+                                          <svg
+                                            className="svg svg--lock svg-icon valign--middle"
+                                            height="20"
+                                            preserveAspectRatio="xMinYMin meet"
+                                            role="img"
+                                            style={
+                                              Object {
+                                                "fill": "#008294",
+                                              }
+                                            }
+                                            viewBox="0 0 20 20"
+                                            width="20"
+                                          >
+                                            <use
+                                              xlinkHref="#icon-lock--small"
+                                            />
+                                          </svg>
+                                        </Icon>
+                                      </span>
+                                    </Icon>
+                                    <span
+                                      className="lockedBadge-label"
+                                      style={
+                                        Object {
+                                          "color": "#008294",
+                                        }
+                                      }
+                                    >
+                                      Unlock me!
+                                    </span>
+                                  </div>
+                                </div>
+                              </FlexItemComponent>
+                            </FlexItem>
+                          </div>
+                        </FlexComponent>
+                      </Flex>
+                    </LockedBadge>
+                  </LockedBadge>
                 </div>
               </FlexComponent>
             </Flex>

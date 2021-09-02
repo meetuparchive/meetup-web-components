@@ -7,6 +7,7 @@ import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 import Icon from '../media/Icon';
 import ToggleSwitch from '../forms/ToggleSwitch';
+import LockedBadge from '../forms/LockedBadge';
 
 export const PANEL_CLASS = 'accordionPanel';
 export const ACTIVEPANEL_CLASS = 'accordionPanel--active';
@@ -234,18 +235,10 @@ class AccordionPanel extends React.Component {
 								<FlexItem id={`label-${panelId}`} shrink>
 									{label}
 								</FlexItem>
-								<FlexItem
-									shrink
-									onClick={this.handleLockedLabelClick}
-									className="accordionPanel-locked-container"
-								>
-									<div className="accordionPanel-locked-badge">
-										<Icon shape="lock" size="xs" color="#008294" />
-										<span className="accordionPanel-locked-label">
-											{lockedLabel}
-										</span>
-									</div>
-								</FlexItem>
+								<LockedBadge
+									label={lockedLabel}
+									onClick={onLockedLabelClick}
+								/>
 							</Flex>
 						) : (
 							<FlexItem id={`label-${panelId}`}>{label}</FlexItem>
