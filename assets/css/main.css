@@ -3001,10 +3001,16 @@ $('#fadeInLink').on('click', function(e) {
 .accordionPanel-locked {
   margin-right: auto; }
 
+.accordionPanel-locked-panel-label {
+  margin-bottom: 5px; }
+
 @media only screen and (min-width: 640px) {
   .accordionPanel-locked {
+    align-items: center;
     flex-direction: row;
-    flex-wrap: nowrap; } }
+    flex-wrap: nowrap; }
+  .accordionPanel-locked-panel-label {
+    margin-bottom: 0; } }
 
 .avatar--person,
 .avatar {
@@ -5132,25 +5138,24 @@ input.field--reset:active {
 .lockedBadge-container {
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 4px;
   padding: 0; }
 
 .lockedBadge-label {
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.43;
   padding-left: 6px; }
 
 .lockedBadge-icon-container {
   display: inline-flex; }
 
 .lockedBadge-badge {
+  align-items: center;
   display: flex;
-  padding: 4px 8px; }
+  padding: 6px 8px; }
 
 @media only screen and (min-width: 640px) {
   .lockedBadge-container {
-    margin-left: 16px;
-    margin-top: -4px; } }
+    margin-left: 16px; } }
 
 /**
 * modifierClasses/all.scss

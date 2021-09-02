@@ -62,9 +62,18 @@
 	margin-right: auto;
 }
 
+.accordionPanel-locked-panel-label {
+	margin-bottom: 5px;
+}
+
 @include atMediaUp(medium) {
 	.accordionPanel-locked {
+		align-items: center;
 		flex-direction: row;
 		flex-wrap: nowrap;
+	}
+
+	.accordionPanel-locked-panel-label {
+		margin-bottom: 0;
 	}
 }
