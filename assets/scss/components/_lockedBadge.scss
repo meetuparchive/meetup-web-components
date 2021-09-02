@@ -1,13 +1,12 @@
 .lockedBadge-container {
 	border-radius: 8px;
 	cursor: pointer;
-	margin-top: 4px;
 	padding: 0;
 }
 
 .lockedBadge-label {
 	font-size: 14px;
-	line-height: 1.4;
+	line-height: 1.43;
 	padding-left: 6px;
 }
 
@@ -16,13 +15,13 @@
 }
 
 .lockedBadge-badge {
+	align-items: center;
 	display: flex;
-	padding: 4px 8px;
+	padding: 6px 8px;
 }
 
 @include atMediaUp(medium) {
 	.lockedBadge-container {
 		margin-left: 16px;
-		margin-top: -4px;
 	}
 }

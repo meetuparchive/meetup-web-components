@@ -64,6 +64,7 @@
 
 @include atMediaUp(medium) {
 	.accordionPanel-locked {
+		align-items: center;
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}
