@@ -3001,11 +3001,16 @@ $('#fadeInLink').on('click', function(e) {
 .accordionPanel-locked {
   margin-right: auto; }
 
+.accordionPanel-locked-panel-label {
+  margin-bottom: 5px; }
+
 @media only screen and (min-width: 640px) {
   .accordionPanel-locked {
     align-items: center;
     flex-direction: row;
-    flex-wrap: nowrap; } }
+    flex-wrap: nowrap; }
+  .accordionPanel-locked-panel-label {
+    margin-bottom: 0; } }
 
 .avatar--person,
 .avatar {
