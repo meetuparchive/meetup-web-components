@@ -64,15 +64,17 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                   className="flex flex--column flex--wrap accordionPanel-locked"
                 >
                   <FlexItem
+                    className="accordionPanel-locked-panel-label"
                     id="label-firstsection"
                     shrink={true}
                   >
                     <FlexItemComponent
+                      className="accordionPanel-locked-panel-label"
                       id="label-firstsection"
                       shrink={true}
                     >
                       <div
-                        className="flex-item flex-item--shrink"
+                        className="flex-item flex-item--shrink accordionPanel-locked-panel-label"
                         id="label-firstsection"
                       >
                         First Section
