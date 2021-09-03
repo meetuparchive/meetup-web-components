@@ -485,6 +485,7 @@ export class Nav extends React.Component {
 					opacity: 1,
 			  }
 			: {
+					overflow: 'hidden',
 					maxHeight: 0,
 					opacity: 0,
 					paddingTop: 0,

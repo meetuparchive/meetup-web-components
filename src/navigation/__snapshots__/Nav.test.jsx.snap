@@ -68,6 +68,7 @@ exports[`Nav NavSearch renders search icon for mobile 1`] = `
       Object {
         "maxHeight": 0,
         "opacity": 0,
+        "overflow": "hidden",
         "paddingTop": 0,
         "transition": "max-height .2s ease-out, opacity .1s ease-in-out, padding .1s ease-in-out",
       }
