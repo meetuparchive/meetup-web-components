@@ -3010,7 +3010,8 @@ $('#fadeInLink').on('click', function(e) {
     flex-direction: row;
     flex-wrap: nowrap; }
   .accordionPanel-locked-panel-label {
-    margin-bottom: 0; } }
+    margin-bottom: 0;
+    margin-right: 16px; } }
 
 .avatar--person,
 .avatar {
@@ -5152,10 +5153,6 @@ input.field--reset:active {
   align-items: center;
   display: flex;
   padding: 6px 8px; }
-
-@media only screen and (min-width: 640px) {
-  .lockedBadge-container {
-    margin-left: 16px; } }
 
 /**
 * modifierClasses/all.scss
