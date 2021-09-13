@@ -88,6 +88,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                     <LockedBadge
                       label="Unlock me!"
                       onClick={[MockFunction]}
+                      preventDefault={true}
                     >
                       <Flex>
                         <FlexComponent
