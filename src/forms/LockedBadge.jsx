@@ -34,7 +34,9 @@ export class LockedBadge extends React.PureComponent {
 	}
 
 	handleClick(e) {
-		e.preventDefault();
+		if (this.props.preventDefault) {
+			e.preventDefault();
+		}
 
 		this.props.onClick(e);
 	}
@@ -82,6 +84,13 @@ LockedBadge.propTypes = {
 
 	/** A callback that happens after the locked label has been clicked  */
 	onClick: PropTypes.func.isRequired,
+
+	/** Optional flag for using 'event.preventDefault' method  */
+	preventDefault: PropTypes.bool,
+};
+
+LockedBadge.defaultProps = {
+	preventDefault: true,
 };
 
 export default DeprecationWarning(LockedBadge);
