@@ -4,6 +4,7 @@ exports[`LockedBadge renders locked badge with default styles 1`] = `
 <LockedBadge
   label="Default label"
   onClick={[MockFunction]}
+  preventDefault={true}
 />
 `;
 
@@ -11,6 +12,7 @@ exports[`LockedBadge renders locked badge with neutral styles 1`] = `
 <LockedBadge
   label="Default label"
   onClick={[MockFunction]}
+  preventDefault={true}
   variant="neutral"
 />
 `;
