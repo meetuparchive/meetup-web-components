@@ -5,7 +5,7 @@
   "description": "Meetup Web UI Component Library",
   "author": "Meetup",
   "engines": {
-    "node": "^10.24.1",
+    "node": ">=10.24.1",
     "yarn": "^1.9.4"
   },
   "scripts": {
@@ -32,7 +32,8 @@
     "test:unit": "yarn run test:base",
     "test:updateSnap": "yarn test:base --updateSnapshot",
     "test:watch": "yarn run test:base --watch --verbose",
-    "typecheck": "flow && flow stop"
+    "typecheck": "flow && flow stop",
+    "build:tailwind": "npx tailwindcss-cli@latest -i ./assets/css/tailwind.css -o ./assets/css/tailwind.min.css -c ./tailwind.config.js"
   },
   "repository": {
     "type": "git",

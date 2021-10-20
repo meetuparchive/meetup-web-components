@@ -40,9 +40,7 @@ export const SignupModal = ({
 	return (
 		<Modal className={SIGNUP_MODAL_CLASS} onDismiss={onDismiss} fixed {...other}>
 			<div className={SIGNUP_MODAL_WRAPPER_CLASS}>
-				<Chunk>
-					<h1 className="text--big">{title}</h1>
-				</Chunk>
+				<h1 className="text--big tw-mb-2">{title}</h1>
 				<Chunk>
 					<div className="text--secondary display--inlineBlock marginHalf--right">
 						{login.text}

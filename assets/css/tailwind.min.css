@@ -1,0 +1,97 @@
+.tw-mb-2 {
+  margin-bottom: 0.5rem
+}
+
+@-webkit-keyframes tw-spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes tw-spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@-webkit-keyframes tw-ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0
+  }
+}
+
+@keyframes tw-ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0
+  }
+}
+
+@-webkit-keyframes tw-pulse {
+  50% {
+    opacity: .5
+  }
+}
+
+@keyframes tw-pulse {
+  50% {
+    opacity: .5
+  }
+}
+
+@-webkit-keyframes tw-bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
+            animation-timing-function: cubic-bezier(0.8,0,1,1)
+  }
+
+  50% {
+    transform: none;
+    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
+            animation-timing-function: cubic-bezier(0,0,0.2,1)
+  }
+}
+
+@keyframes tw-bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
+            animation-timing-function: cubic-bezier(0.8,0,1,1)
+  }
+
+  50% {
+    transform: none;
+    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
+            animation-timing-function: cubic-bezier(0,0,0.2,1)
+  }
+}
+
+*, ::before, ::after {
+  --tw-shadow: 0 0 #0000
+}
+
+*, ::before, ::after {
+  --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000
+}
+
+@media (min-width: 0px) {
+}
+
+@media (min-width: 577px) {
+}
+
+@media (min-width: 769px) {
+}
+
+@media (min-width: 993px) {
+}
+
+@media (min-width: 1201px) {
+}
