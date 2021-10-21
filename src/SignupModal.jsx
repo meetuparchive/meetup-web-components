@@ -69,6 +69,7 @@ export const SignupModal = ({
 							href={apple.link}
 							className={btnClassName}
 							onClick={appleOnClick}
+							data-testid="apple"
 						>
 							<img src={appleIcon} />
 							<div className="tw-flex-grow tw-text-center">

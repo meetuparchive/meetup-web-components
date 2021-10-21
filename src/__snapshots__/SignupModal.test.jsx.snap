@@ -9,125 +9,87 @@ exports[`SignupModal should match the snapshot 1`] = `
   <div
     className="meetup-signupModal-wrapper"
   >
-    <Chunk>
+    <div
+      className="tw-flex tw-flex-col tw-items-center tw-mb-8"
+    >
+      <img
+        alt="Meetup logo"
+        className="tw-mb-2"
+        height="48"
+        src=""
+        width="48"
+      />
       <h1
-        className="text--big"
+        className="text--big tw-mb-2"
       >
         Sign up
       </h1>
-    </Chunk>
-    <Chunk>
-      <div
-        className="text--secondary display--inlineBlock marginHalf--right"
-      >
+      <div>
         Already a member?
+        <a
+          className="tw-text-viridian tw-ml-1"
+          href="meetup.com/login"
+        >
+          Login
+        </a>
       </div>
-      <a
-        className="padding--halfLeft link display--inlineBlock"
-        href="meetup.com/login"
-      >
-        Login
-      </a>
-    </Chunk>
-    <Chunk
-      className="margin--top"
-    >
-      <a
-        className="meetup-signupModal-facebook button button--fullWidth button--hasHoverShadow padding--halfLeft text--bold text--white"
-        href="facebook.com"
-      >
-        <Flex>
-          <FlexItem
-            className="inverted"
-            shrink={true}
-          >
-            <Icon
-              className="align--left"
-              shape="external-facebook"
-              size="xs"
-            />
-          </FlexItem>
-          <FlexItem
-            className="flush--left"
-          >
-            Facebook
-          </FlexItem>
-        </Flex>
-      </a>
-    </Chunk>
-    <Chunk>
-      <a
-        className="meetup-signupModal-google button button--bordered button--fullWidth padding--halfLeft text--bold"
-        href="google.com"
-      >
-        <Flex>
-          <FlexItem
-            shrink={true}
-          >
-            <img
-              className="align--left"
-              src=""
-            />
-          </FlexItem>
-          <FlexItem
-            className="flush--left"
-          >
-            Google
-          </FlexItem>
-        </Flex>
-      </a>
-    </Chunk>
-    <Chunk>
-      <a
-        className="meetup-signupModal-apple button button--bordered button--fullWidth padding--halfLeft text--bold"
-        href="apple.com"
-      >
-        <Flex>
-          <FlexItem
-            shrink={true}
-          >
-            <img
-              className="align--left"
-              src=""
-            />
-          </FlexItem>
-          <FlexItem
-            className="flush--left"
-          >
-            Apple
-          </FlexItem>
-        </Flex>
-      </a>
-    </Chunk>
-    <div
-      className="meetup-signupModal-or margin--bottom align--center text--labelSecondary text--normal"
-    >
-      Or
     </div>
-    <Chunk>
-      <a
-        className="meetup-signupModal-email button button--bordered button--fullWidth padding--halfLeft text--bold"
-        href="meetup.com/email"
+    <a
+      className="tw-font-normal tw-box-border tw-border tw-border-gray2 tw-border-solid tw-p-4 tw-mb-4 tw-rounded-lg tw-flex tw-flex-row"
+      href="facebook.com"
+    >
+      <img
+        src=""
+      />
+      <div
+        className="tw-flex-grow tw-text-center"
       >
-        <Flex>
-          <FlexItem
-            shrink={true}
-          >
-            <Icon
-              className="align--left"
-              color="rgb(117, 117, 117)"
-              shape="mail"
-              size="xs"
-            />
-          </FlexItem>
-          <FlexItem
-            className="flush--left"
-          >
-            Email
-          </FlexItem>
-        </Flex>
-      </a>
-    </Chunk>
+        Continue with Facebook
+         
+      </div>
+    </a>
+    <a
+      className="tw-font-normal tw-box-border tw-border tw-border-gray2 tw-border-solid tw-p-4 tw-mb-4 tw-rounded-lg tw-flex tw-flex-row"
+      href="google.com"
+    >
+      <img
+        src=""
+      />
+      <div
+        className="tw-flex-grow tw-text-center"
+      >
+        Continue with Google
+         
+      </div>
+    </a>
+    <a
+      className="tw-font-normal tw-box-border tw-border tw-border-gray2 tw-border-solid tw-p-4 tw-mb-4 tw-rounded-lg tw-flex tw-flex-row"
+      data-testid="apple"
+      href="apple.com"
+    >
+      <img
+        src=""
+      />
+      <div
+        className="tw-flex-grow tw-text-center"
+      >
+        Continue with Apple
+      </div>
+    </a>
+    <a
+      className="tw-font-normal tw-box-border tw-border tw-border-gray2 tw-border-solid tw-p-4 tw-mb-4 tw-rounded-lg tw-flex tw-flex-row"
+      href="meetup.com/email"
+    >
+      <img
+        src=""
+      />
+      <div
+        className="tw-flex-grow tw-text-center"
+      >
+        Sign up with email
+         
+      </div>
+    </a>
   </div>
 </Modal>
 `;

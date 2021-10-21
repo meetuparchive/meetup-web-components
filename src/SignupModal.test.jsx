@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { SignupModal, SIGNUP_MODAL_APPLE_CLASS } from './SignupModal';
+import { SignupModal } from './SignupModal';
 import { signupOptions } from './signupModal.story';
 
 describe('SignupModal', () => {
@@ -27,7 +27,7 @@ describe('SignupModal', () => {
 					},
 				};
 				const wrapper = getWrapper(props);
-				const appleUrl = wrapper.find(`.${SIGNUP_MODAL_APPLE_CLASS}`);
+				const appleUrl = wrapper.find({ 'data-testid': 'apple' });
 				expect(appleUrl.length).toBe(0);
 			});
 		});
@@ -41,7 +41,7 @@ describe('SignupModal', () => {
 					},
 				};
 				const wrapper = getWrapper(props);
-				const appleUrl = wrapper.find(`.${SIGNUP_MODAL_APPLE_CLASS}`);
+				const appleUrl = wrapper.find({ 'data-testid': 'apple' });
 				expect(appleUrl.length).toBe(1);
 			});
 		});
