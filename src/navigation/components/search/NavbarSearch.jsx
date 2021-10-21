@@ -33,9 +33,12 @@ export const NavbarSearchComponent = ({
 		setValue(e.target.value);
 	}, []);
 
-	const onClick = useCallback(() => {
-		onSearchCallback(value)
-	}, [value, onSearchCallback]);
+	const onClick = useCallback(
+		() => {
+			onSearchCallback(value);
+		},
+		[value, onSearchCallback]
+	);
 
 	const newSearchBar = (
 		<div className="navbar-search">
