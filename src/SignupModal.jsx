@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Modal from './interactive/Modal';
 
 /* images */
-import swarmLogo from '../assets/svg/logo--mSwarm-2color.svg';
+import swarmLogo from '../assets/svg/logo--mSwarm--2color.svg';
 import facebookIcon from '../assets/svg/facebook.svg';
 import googleIcon from '../assets/svg/google.svg';
 import appleIcon from '../assets/svg/apple.svg';
@@ -46,11 +46,7 @@ export const SignupModal = ({
 					<h1 className="text--big tw-mb-2">{title}</h1>
 					<div>
 						{login.text}
-						<a
-							href={login.link}
-							className="tw-text-viridian tw-ml-1"
-							onClick={this.loginOnClickHandler}
-						>
+						<a href={login.link} className="tw-text-viridian tw-ml-1">
 							{login.label}
 						</a>
 					</div>
@@ -80,11 +76,7 @@ export const SignupModal = ({
 							</div>
 						</a>
 					)}
-				<a
-					href={email.link}
-					className={btnClassName}
-					onClick={this.emailOnClickHandler}
-				>
+				<a href={email.link} className={btnClassName} onClick={emailOnClick}>
 					<img src={emailIcon} />
 					<div className="tw-flex-grow tw-text-center">{email.label} </div>
 				</a>
