@@ -1,0 +1,167 @@
+.tw-mb-2 {
+  margin-bottom: 0.5rem
+}
+
+.tw-mb-4 {
+  margin-bottom: 1rem
+}
+
+.tw-mb-8 {
+  margin-bottom: 2rem
+}
+
+.tw-ml-1 {
+  margin-left: 0.25rem
+}
+
+.tw-box-border {
+  box-sizing: border-box
+}
+
+.tw-flex {
+  display: flex
+}
+
+.tw-flex-grow {
+  flex-grow: 1
+}
+
+@-webkit-keyframes tw-spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes tw-spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@-webkit-keyframes tw-ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0
+  }
+}
+
+@keyframes tw-ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0
+  }
+}
+
+@-webkit-keyframes tw-pulse {
+  50% {
+    opacity: .5
+  }
+}
+
+@keyframes tw-pulse {
+  50% {
+    opacity: .5
+  }
+}
+
+@-webkit-keyframes tw-bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
+            animation-timing-function: cubic-bezier(0.8,0,1,1)
+  }
+
+  50% {
+    transform: none;
+    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
+            animation-timing-function: cubic-bezier(0,0,0.2,1)
+  }
+}
+
+@keyframes tw-bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
+            animation-timing-function: cubic-bezier(0.8,0,1,1)
+  }
+
+  50% {
+    transform: none;
+    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
+            animation-timing-function: cubic-bezier(0,0,0.2,1)
+  }
+}
+
+.tw-flex-row {
+  flex-direction: row
+}
+
+.tw-flex-col {
+  flex-direction: column
+}
+
+.tw-items-center {
+  align-items: center
+}
+
+.tw-rounded-lg {
+  border-radius: 0.5rem
+}
+
+.tw-border {
+  border-width: 1px
+}
+
+.tw-border-solid {
+  border-style: solid
+}
+
+.tw-border-gray2 {
+  --tw-border-opacity: 1;
+  border-color: rgba(230, 230, 230, var(--tw-border-opacity))
+}
+
+.tw-p-4 {
+  padding: 1rem
+}
+
+.tw-text-center {
+  text-align: center
+}
+
+.tw-font-normal {
+  font-weight: 400
+}
+
+.tw-text-viridian {
+  --tw-text-opacity: 1;
+  color: rgba(0, 130, 148, var(--tw-text-opacity))
+}
+
+*, ::before, ::after {
+  --tw-shadow: 0 0 #0000
+}
+
+*, ::before, ::after {
+  --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000
+}
+
+@media (min-width: 0px) {
+}
+
+@media (min-width: 577px) {
+}
+
+@media (min-width: 769px) {
+}
+
+@media (min-width: 993px) {
+}
+
+@media (min-width: 1201px) {
+}

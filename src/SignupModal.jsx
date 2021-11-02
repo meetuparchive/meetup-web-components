@@ -1,27 +1,19 @@
 import React from 'react';
-import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 /* meetup web components */
 import Modal from './interactive/Modal';
-import Chunk from './layout/Chunk';
-import Flex from './layout/Flex';
-import FlexItem from './layout/FlexItem';
-import Icon from './media/Icon';
 
-import googleLogo from '../assets/svg/logo_google.svg';
-import appleLogo from '../assets/svg/logo_apple.svg';
-
-import { C_MEDIUMGRAY } from 'swarm-constants/dist/js/constants';
+/* images */
+import swarmLogo from '../assets/svg/logo--mSwarm--2color.svg';
+import facebookIcon from '../assets/svg/facebook.svg';
+import googleIcon from '../assets/svg/google.svg';
+import appleIcon from '../assets/svg/apple.svg';
+import emailIcon from '../assets/svg/email.svg';
 
 /* consts */
 export const SIGNUP_MODAL_CLASS = 'meetup-signupModal';
-export const SIGNUP_MODAL_OR_CLASS = `${SIGNUP_MODAL_CLASS}-or`;
 export const SIGNUP_MODAL_WRAPPER_CLASS = `${SIGNUP_MODAL_CLASS}-wrapper`;
-export const SIGNUP_MODAL_FACEBOOK_CLASS = `${SIGNUP_MODAL_CLASS}-facebook`;
-export const SIGNUP_MODAL_GOOGLE_CLASS = `${SIGNUP_MODAL_CLASS}-google`;
-export const SIGNUP_MODAL_APPLE_CLASS = `${SIGNUP_MODAL_CLASS}-apple`;
-export const SIGNUP_MODAL_EMAIL_CLASS = `${SIGNUP_MODAL_CLASS}-email`;
 
 /**
  * @param {Object} props component properties
@@ -36,114 +28,59 @@ export const SignupModal = ({
 	emailOnClick,
 	...other
 }) => {
-	const { apple, google, facebook, email, login, title, orLabel } = signupOptions;
+	const { apple, google, facebook, email, login, title } = signupOptions;
+	const btnClassName =
+		'tw-font-normal tw-box-border tw-border tw-border-gray2 tw-border-solid tw-p-4 tw-mb-4 tw-rounded-lg tw-flex tw-flex-row';
+
 	return (
 		<Modal className={SIGNUP_MODAL_CLASS} onDismiss={onDismiss} fixed {...other}>
 			<div className={SIGNUP_MODAL_WRAPPER_CLASS}>
-				<Chunk>
-					<h1 className="text--big">{title}</h1>
-				</Chunk>
-				<Chunk>
-					<div className="text--secondary display--inlineBlock marginHalf--right">
+				<div className="tw-flex tw-flex-col tw-items-center tw-mb-8">
+					<img
+						alt="Meetup logo"
+						src={swarmLogo}
+						className="tw-mb-2"
+						height="48"
+						width="48"
+					/>
+					<h1 className="text--big tw-mb-2">{title}</h1>
+					<div>
 						{login.text}
+						<a href={login.link} className="tw-text-viridian tw-ml-1">
+							{login.label}
+						</a>
 					</div>
-					<a
-						href={login.link}
-						className="padding--halfLeft link display--inlineBlock"
-					>
-						{login.label}
-					</a>
-				</Chunk>
-				<Chunk className="margin--top">
-					<a
-						href={facebook.link}
-						className={cx(
-							SIGNUP_MODAL_FACEBOOK_CLASS,
-							'button button--fullWidth button--hasHoverShadow padding--halfLeft text--bold text--white'
-						)}
-						onClick={facebookOnClick}
-					>
-						<Flex>
-							<FlexItem shrink className="inverted">
-								<Icon
-									shape="external-facebook"
-									size="xs"
-									className="align--left"
-								/>
-							</FlexItem>
-							<FlexItem className="flush--left">{facebook.label}</FlexItem>
-						</Flex>
-					</a>
-				</Chunk>
-				<Chunk>
-					<a
-						href={google.link}
-						className={cx(
-							SIGNUP_MODAL_GOOGLE_CLASS,
-							'button button--bordered button--fullWidth padding--halfLeft text--bold'
-						)}
-						onClick={googleOnClick}
-					>
-						<Flex>
-							<FlexItem shrink>
-								<img src={googleLogo} className="align--left" />
-							</FlexItem>
-							<FlexItem className="flush--left">{google.label}</FlexItem>
-						</Flex>
-					</a>
-				</Chunk>
+				</div>
+				<a
+					href={facebook.link}
+					className={btnClassName}
+					onClick={facebookOnClick}
+				>
+					<img src={facebookIcon} />
+					<div className="tw-flex-grow tw-text-center">{facebook.label} </div>
+				</a>
+				<a href={google.link} className={btnClassName} onClick={googleOnClick}>
+					<img src={googleIcon} />
+					<div className="tw-flex-grow tw-text-center">{google.label} </div>
+				</a>
 				{apple &&
 					apple.shouldRender && (
-						<Chunk>
-							<a
-								href={apple.link}
-								className={cx(
-									SIGNUP_MODAL_APPLE_CLASS,
-									'button button--bordered button--fullWidth padding--halfLeft text--bold'
-								)}
-								onClick={appleOnClick}
-							>
-								<Flex>
-									<FlexItem shrink>
-										<img src={appleLogo} className="align--left" />
-									</FlexItem>
-									<FlexItem className="flush--left">
-										{apple.label}
-									</FlexItem>
-								</Flex>
-							</a>
-						</Chunk>
+						<a
+							href={apple.link}
+							className={btnClassName}
+							onClick={appleOnClick}
+							data-testid="apple"
+						>
+							<img src={appleIcon} />
+							<div className="tw-flex-grow tw-text-center">
+								{apple.label}
+							</div>
+						</a>
 					)}
-				<div
-					className={cx(
-						SIGNUP_MODAL_OR_CLASS,
-						'margin--bottom align--center text--labelSecondary text--normal'
-					)}
-				>
-					{orLabel}
-				</div>
-				<Chunk>
-					<a
-						href={email.link}
-						className={cx(
-							SIGNUP_MODAL_EMAIL_CLASS,
-							'button button--bordered button--fullWidth padding--halfLeft text--bold'
-						)}
-						onClick={emailOnClick}
-					>
-						<Flex>
-							<FlexItem shrink>
-								<Icon
-									shape="mail"
-									size="xs"
-									className="align--left"
-									color={C_MEDIUMGRAY}
-								/>
-							</FlexItem>
-							<FlexItem className="flush--left">{email.label}</FlexItem>
-						</Flex>
-					</a>
-				</Chunk>
+				<a href={email.link} className={btnClassName} onClick={emailOnClick}>
+					<img src={emailIcon} />
+					<div className="tw-flex-grow tw-text-center">{email.label} </div>
+				</a>
 			</div>
 		</Modal>
 	);

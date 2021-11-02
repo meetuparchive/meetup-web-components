@@ -9,20 +9,20 @@ export const signupOptions = {
 	title: 'Sign up',
 	apple: {
 		link: 'apple.com',
-		label: 'Apple',
+		label: 'Continue with Apple',
 		shouldRender: true,
 	},
 	google: {
 		link: 'google.com',
-		label: 'Google',
+		label: 'Continue with Google',
 	},
 	facebook: {
 		link: 'facebook.com',
-		label: 'Facebook',
+		label: 'Continue with Facebook',
 	},
 	email: {
 		link: 'meetup.com/email',
-		label: 'Email',
+		label: 'Sign up with email',
 	},
 	login: {
 		text: 'Already a member?',
