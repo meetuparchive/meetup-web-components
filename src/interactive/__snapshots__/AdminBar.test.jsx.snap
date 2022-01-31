@@ -13,10 +13,6 @@ exports[`AdminBar renders correctly 1`] = `
         <DropdownContent
           group={
             Object {
-              "duotoneUrl": Object {
-                "large": "http://a.b",
-                "small": "http://a.b",
-              },
               "event_sample": Array [],
               "group_photo": Object {
                 "id": 1234,
@@ -176,10 +172,6 @@ exports[`AdminBar renders correctly when QLd 1`] = `
         <DropdownContent
           group={
             Object {
-              "duotoneUrl": Object {
-                "large": "http://a.b",
-                "small": "http://a.b",
-              },
               "event_sample": Array [],
               "group_photo": Object {
                 "id": 1234,
@@ -317,10 +309,6 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
         <DropdownContent
           group={
             Object {
-              "duotoneUrl": Object {
-                "large": "http://a.b",
-                "small": "http://a.b",
-              },
               "event_sample": Array [],
               "group_photo": Object {
                 "id": 1234,
@@ -449,10 +437,6 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
         <DropdownContent
           group={
             Object {
-              "duotoneUrl": Object {
-                "large": "http://a.b",
-                "small": "http://a.b",
-              },
               "event_sample": Array [],
               "group_photo": Object {
                 "id": 1234,

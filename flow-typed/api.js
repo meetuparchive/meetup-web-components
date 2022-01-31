@@ -448,7 +448,6 @@ declare type Group = {
 	urlname: string,
 	who: string,
 	timezone: string,
-	duotoneUrl: Object,
 	key_photo: Object,
 	group_photo: Object,
 	link: string,
