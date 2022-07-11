@@ -91,12 +91,11 @@ class AccordionPanelGroup extends React.Component {
 								...panel.props,
 								panelIndex: i,
 								setClickedPanel: this.handlePanelClick,
-								isOpen: this.state.panelStatesList[i],
 								indicatorAlign,
 								indicatorIcon,
 								indicatorIconActive,
 								indicatorSwitch,
-								isDisabledPanelOpen: this.state.panelStatesList[i],
+								isDisabledPanelOpen: panel.props.isOpen,
 							},
 							panel.props.children
 						)}
