@@ -23,7 +23,7 @@ export const navItemsFactory = () => {
 		updatesLabel: 'Updates',
 		logo: { logoAccessible: 'Meetup Logo', link: 'meetup.com' },
 		login: { link: 'meetup.com/login', label: 'Login' },
-		create: { link: 'meetup.com/create', label: 'Create a Meetup' },
+		create: { link: 'meetup.com/start', label: 'Create a New Group' },
 		signup: {
 			label: 'Sign up',
 			signupModal: {
@@ -63,7 +63,7 @@ export const navItemsFactory = () => {
 			},
 		},
 		explore: { link: 'meetup.com/find/events', label: 'Explore' },
-		experiences: { link: 'meetup.com/experiences', label: 'Experiences' },
+		// experiences: { link: 'meetup.com/experiences', label: 'Experiences' },
 		groups: {
 			link: 'meetup.com/groups',
 			label: 'Groups',
@@ -267,6 +267,22 @@ storiesOf('Site Chrome/Nav', module)
 			media={{ isAtMediumUp: true, isAtLargeUp: true }}
 		/>
 	))
+	.add('authenticated Pro admins with unread notifications', () => {
+		const notifications = { ...navItems.notifications };
+		notifications.unreadNotifications = 1;
+		const items = { ...navItems, notifications };
+		return (
+			<TestNav
+				self={{
+					is_pro_admin: true,
+					...MOCK_MEMBER,
+				}}
+				navItems={items}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			/>
+		);
+	})
 	.add('unauthenticated', () => (
 		<TestNav
 			self={{ status: 'prereg' }}

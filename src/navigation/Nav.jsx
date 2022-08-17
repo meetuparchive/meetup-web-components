@@ -21,6 +21,10 @@ import NotificationsDropdown from './components/notifications/NotificationsDropd
 import DashboardDropdown from './components/dashboard/DashboardDropdown';
 import NavbarSearch, { NAVBAR_SEARCH_INPUT_ID } from './components/search/NavbarSearch';
 
+import MESSAGE_ICON from '../../assets/svg/message.svg';
+import NOTIFICATION_ICON from '../../assets/svg/notification.svg';
+import PRO_DASHBOARD_ICON from '../../assets/svg/proDashboard.svg';
+
 const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
 const CLASS_AUTH_ITEM = 'navItem--authenticated';
 const SEARCH_INPUT_MAX_WIDTH = 500;
@@ -155,6 +159,7 @@ export class Nav extends React.Component {
 			onSearchCallback,
 			isNewNavActive,
 			isNewNavsOrder,
+			isProEasyCreateGroup = true, // REMOVE TRUE
 			...other
 		} = this.props;
 
@@ -190,6 +195,13 @@ export class Nav extends React.Component {
 		);
 		const isGroupsLoaded = Boolean(groups.list);
 		const isNotificationsLoaded = Boolean(notifications.list);
+		const isProAdminEasyCreateGroup =
+			isProEasyCreateGroup && Boolean(self.is_pro_admin) && media.isAtMediumUp;
+		let notificationsCounterBadgeClassName = undefined;
+		if (isNewNavActive && media.isAtMediumUp)
+			notificationsCounterBadgeClassName = 'navItem--counterBadge';
+		if (isProAdminEasyCreateGroup)
+			notificationsCounterBadgeClassName = 'navItem--counterBadgePro';
 
 		const notificationContent = isNotificationsLoaded ? (
 			<NotificationsDropdown
@@ -248,6 +260,72 @@ export class Nav extends React.Component {
 				icon: <div className="pill">NEW</div>,
 			};
 
+		let messagesIcon = (
+			<Icon
+				shape="messages"
+				size="s"
+				className={cx(
+					'display--block',
+					!isNewNavActive && 'atMedium_display--none'
+				)}
+			/>
+		);
+		if (isNewNavActive && media.isAtMediumUp) messagesIcon = <Message />;
+		if (isProAdminEasyCreateGroup)
+			messagesIcon = (
+				<FlexItem align="center">
+					<img src={MESSAGE_ICON} />
+				</FlexItem>
+			);
+
+		let notificationsIcon = (
+			<Icon
+				shape="notifications"
+				size="s"
+				className={cx(
+					'display--block',
+					!isNewNavActive && 'atMedium_display--none'
+				)}
+			/>
+		);
+		if (isNewNavActive && media.isAtMediumUp) notificationsIcon = <Notif />;
+		if (isProAdminEasyCreateGroup)
+			notificationsIcon = (
+				<FlexItem align="center">
+					<img src={NOTIFICATION_ICON} />
+				</FlexItem>
+			);
+
+		const proDashboardIcon =
+			media.isAtMediumUp && isProEasyCreateGroup ? (
+				<FlexItem align="center">
+					<img src={PRO_DASHBOARD_ICON} />
+				</FlexItem>
+			) : (
+				<Flex noGutters align="center">
+					<FlexItem>
+						{proLogo ? (
+							<Avatar
+								src={proLogo}
+								className="display--block margin--left circular"
+								small
+							/>
+						) : (
+							<div className="proDashboard-noLogo circular margin--left text--secondary">
+								{proLetter}
+							</div>
+						)}
+					</FlexItem>
+					<FlexItem shrink className="display--block">
+						<Icon
+							shape="chevron-down"
+							size="xxs"
+							className="padding--halfLeft"
+						/>
+					</FlexItem>
+				</Flex>
+			);
+
 		let unauthItems = [
 			media.isAtMediumUp && createMeetupLink,
 			media.isAtMediumUp && experiencesLink,
@@ -273,49 +351,32 @@ export class Nav extends React.Component {
 		];
 
 		let authItems = [
+			isProAdminEasyCreateGroup && createMeetupLink,
 			self.is_pro_admin && {
 				shrink: true,
 				linkTo: media.isAtMediumUp ? proDashboard.link : '',
 				onAction: !media.isAtMediumUp && this.onClickMobileDropdownAction,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
-				className: `${CLASS_AUTH_ITEM} navItemLink--dashboard atMedium_display--block`,
-				icon: (
-					<Flex noGutters align="center">
-						<FlexItem>
-							{proLogo ? (
-								<Avatar
-									src={proLogo}
-									className="display--block atMedium_display--none margin--left circular"
-									small
-								/>
-							) : (
-								<div className="proDashboard-noLogo atMedium_display--none circular margin--left text--secondary">
-									{proLetter}
-								</div>
-							)}
-						</FlexItem>
-						<FlexItem
-							shrink
-							className="display--block atMedium_display--none"
-						>
-							<Icon
-								shape="chevron-down"
-								size="xxs"
-								className="padding--halfLeft"
-							/>
-						</FlexItem>
-					</Flex>
-				),
+				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
+				className: `${CLASS_AUTH_ITEM} atMedium_display--block`,
+				icon: proDashboardIcon,
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
 			media.isAtMediumUp && experiencesLink,
-			!isNewNavActive && {
-				shrink: true,
-				linkTo: explore.link,
-				label: explore.label,
-				className: CLASS_AUTH_ITEM,
-				icon: <Icon shape="search" size="s" className="atMedium_display--none" />,
-			},
+			!isNewNavActive &&
+				!isProAdminEasyCreateGroup && {
+					shrink: true,
+					linkTo: explore.link,
+					label: explore.label,
+					className: CLASS_AUTH_ITEM,
+					icon: (
+						<Icon
+							shape="search"
+							size="s"
+							className="atMedium_display--none"
+						/>
+					),
+				},
 			{
 				shrink: true,
 				linkTo: groups.link,
@@ -327,52 +388,34 @@ export class Nav extends React.Component {
 				shrink: true,
 				linkTo: messages.link,
 				label: isNewNavActive && media.isAtMediumUp ? '' : messages.label,
+				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
-				icon:
-					isNewNavActive && media.isAtMediumUp ? (
-						<Message />
-					) : (
-						<Icon
-							shape="messages"
-							size="s"
-							className={cx(
-								'display--block',
-								!isNewNavActive && 'atMedium_display--none'
-							)}
-						/>
-					),
+				icon: messagesIcon,
 				hasUpdates: messages.unreadMessages > 0,
 				updatesLabel: updatesLabel,
 			},
 			{
 				shrink: true,
-				linkTo: media.isAtMediumUp && !isNewNavActive ? '' : notifications.link,
+				linkTo:
+					media.isAtMediumUp && !isNewNavActive && !isProAdminEasyCreateGroup
+						? ''
+						: notifications.link,
 				label: isNewNavActive && media.isAtMediumUp ? '' : notifications.label,
+				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
-				counterBadgeClassName:
-					isNewNavActive && media.isAtMediumUp
-						? 'navItem--counterBadge'
-						: undefined,
-				icon:
-					isNewNavActive && media.isAtMediumUp ? (
-						<Notif />
-					) : (
-						<Icon
-							shape="notifications"
-							size="s"
-							className={cx(
-								'display--block',
-								!isNewNavActive && 'atMedium_display--none'
-							)}
-						/>
-					),
+				counterBadgeClassName: notificationsCounterBadgeClassName,
+				icon: notificationsIcon,
 				onClickAction:
 					(!isNewNavActive &&
+						!isProAdminEasyCreateGroup &&
 						media.isAtMediumUp &&
 						this.onClickDropdownAction) ||
 					undefined,
 				dropdownContent:
-					(!isNewNavActive && media.isAtMediumUp && notificationContent) ||
+					(!isNewNavActive &&
+						!isProAdminEasyCreateGroup &&
+						media.isAtMediumUp &&
+						notificationContent) ||
 					undefined,
 				hasUpdates: notifications.unreadNotifications > 0,
 				updatesLabel: updatesLabel,
@@ -392,7 +435,10 @@ export class Nav extends React.Component {
 					<Flex noGutters align="center" aria-label={profile.label}>
 						<FlexItem>
 							<AvatarMember
-								small={!(isNewNavActive && media.isAtMediumUp)}
+								small={
+									!(isNewNavActive && media.isAtMediumUp) &&
+									!isProAdminEasyCreateGroup
+								}
 								medium={isNewNavActive && media.isAtMediumUp}
 								member={self}
 							/>
@@ -610,6 +656,9 @@ Nav.propTypes = {
 
 	/** Flag to indicate that new Nav should be shown (same as in build-meetup/homepage) */
 	isNewNavActive: PropTypes.bool,
+
+	/** Flag to indicate Pro easy create group Nav */
+	isProEasyCreateGroup: PropTypes.bool,
 };
 
 export default Nav;

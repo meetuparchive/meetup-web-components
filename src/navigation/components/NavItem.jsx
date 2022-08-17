@@ -68,7 +68,7 @@ export const NavItem = props => {
 	};
 
 	const navItemContent = (
-		<div>
+		<div className="relative">
 			{icon}
 			{label && <span className={classNames.label}>{label}</span>}
 			{hasUpdates && (
