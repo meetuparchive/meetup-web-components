@@ -4917,6 +4917,15 @@ input.field--reset:active {
   right: 12px;
   width: 14px; }
 
+.navItem--counterBadgePro {
+  background-color: #f65858;
+  border-radius: 10px;
+  bottom: 39px;
+  height: 10px;
+  position: absolute;
+  right: 26px;
+  width: 10px; }
+
 .navItem-label {
   color: rgba(46, 62, 72, 0.6);
   display: block;
@@ -4934,6 +4943,13 @@ input.field--reset:active {
       .navItem-label:hover, .navItem-label:active {
         color: #00a2c7; } }
 
+@media only screen and (min-width: 640px) {
+  .navItem-label-pro {
+    font-size: 12px;
+    font-weight: 600; }
+    .navItem-label-pro:hover, .navItem-label-pro:active {
+      color: var(--color-gray-6) !important; } }
+
 .navItemLink {
   align-items: center;
   display: flex;
@@ -4947,15 +4963,10 @@ input.field--reset:active {
       height: auto; } }
 
 @media only screen and (min-width: 640px) {
-  .navItemLink--dashboard {
-    border-right: 1px solid rgba(46, 62, 72, 0.12);
-    padding-right: 16px; }
-    .inverted .navItemLink--dashboard {
-      border-right: 1px solid rgba(255, 255, 255, 0.2); }
-    .navItemLink--dashboard .navItem-label {
-      color: #00a2c7 !important;
-      font-weight: 600;
-      margin-top: -1px; } }
+  .navItemLink-pro:hover .navItem-label-pro, .navItemLink-pro:active .navItem-label-pro {
+    filter: brightness(0) saturate(100%) invert(44%) sepia(60%) saturate(1563%) hue-rotate(153deg) brightness(85%) contrast(103%); }
+  .navItemLink-pro:hover .proIcon, .navItemLink-pro:active .proIcon {
+    filter: brightness(0) saturate(100%) invert(44%) sepia(60%) saturate(1563%) hue-rotate(153deg) brightness(85%) contrast(103%); } }
 
 @media only screen and (min-width: 640px) {
   .navItemLink--createMeetup {
@@ -4964,7 +4975,7 @@ input.field--reset:active {
     .inverted .navItemLink--createMeetup {
       border-right: 1px solid rgba(255, 255, 255, 0.2); }
     .navItemLink--createMeetup .navItem-label {
-      color: #00a2c7 !important;
+      color: var(--color-viridian);
       font-weight: 600;
       margin-top: -2px; } }
 
@@ -7338,6 +7349,9 @@ Breakpoints        | Property       | Variants
 
 .tw-p-4 {
   padding: 1rem; }
+
+.tw-pl-2 {
+  padding-left: 0.5rem; }
 
 .tw-text-center {
   text-align: center; }
