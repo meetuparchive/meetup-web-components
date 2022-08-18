@@ -262,11 +262,7 @@ export class Nav extends React.Component {
 		const getMessagesIcon = () => {
 			if (isNewNavActive && media.isAtMediumUp) return <Message />;
 			if (isProAdminEasyCreateGroup) {
-				return (
-					<FlexItem align="center">
-						<img className="proIcon" src={MESSAGE_ICON} />
-					</FlexItem>
-				);
+				return <img className="proIcon" src={MESSAGE_ICON} />;
 			}
 			return (
 				<Icon
@@ -283,11 +279,7 @@ export class Nav extends React.Component {
 		const getNotificationsIcon = () => {
 			if (isNewNavActive && media.isAtMediumUp) return <Notif />;
 			if (isProAdminEasyCreateGroup) {
-				return (
-					<FlexItem align="center">
-						<img className="proIcon" src={NOTIFICATION_ICON} />
-					</FlexItem>
-				);
+				return <img className="proIcon" src={NOTIFICATION_ICON} />;
 			}
 			return (
 				<Icon
@@ -303,9 +295,7 @@ export class Nav extends React.Component {
 
 		const proDashboardIcon =
 			media.isAtMediumUp && isProEasyCreateGroup ? (
-				<FlexItem align="center">
-					<img className="proIcon" src={PRO_DASHBOARD_ICON} />
-				</FlexItem>
+				<img className="proIcon" src={PRO_DASHBOARD_ICON} />
 			) : (
 				<Flex noGutters align="center">
 					<FlexItem>

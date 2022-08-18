@@ -4968,6 +4968,9 @@ input.field--reset:active {
   .navItemLink-pro:hover .proIcon, .navItemLink-pro:active .proIcon {
     filter: brightness(0) saturate(100%) invert(44%) sepia(60%) saturate(1563%) hue-rotate(153deg) brightness(85%) contrast(103%); } }
 
+.proIcon {
+  margin: 0 auto; }
+
 @media only screen and (min-width: 640px) {
   .navItemLink--createMeetup {
     border-right: 1px solid rgba(46, 62, 72, 0.12);

@@ -177,6 +177,10 @@ $maxScalingBP: $breakpoint-m / 1px;
 	}
 }
 
+.proIcon {
+	margin: 0 auto;
+}
+
 .navItemLink--createMeetup {
 	@include atMediaUp(medium) {
 		@include standardBorder("right");
