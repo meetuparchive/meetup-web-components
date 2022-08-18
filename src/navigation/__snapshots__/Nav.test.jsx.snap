@@ -139,7 +139,7 @@ exports[`Nav NavSearch renders search input for desktop 1`] = `
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a New Group"
+      label="Start a new group"
       linkTo="meetup.com/start"
       shrink={true}
     />
@@ -360,7 +360,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a New Group"
+      label="Start a new group"
       linkTo="meetup.com/start"
       shrink={true}
     />
@@ -1194,7 +1194,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       className="navItem--unauthenticated navItemLink--createMeetup"
       isNewNavActive={true}
       key="0"
-      label="Create a New Group"
+      label="Start a new group"
       linkTo="meetup.com/start"
       shrink={true}
     />
@@ -1716,7 +1716,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a New Group"
+      label="Start a new group"
       linkTo="meetup.com/start"
       shrink={true}
     />
@@ -2557,7 +2557,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a New Group"
+      label="Start a new group"
       linkTo="meetup.com/start"
       shrink={true}
     />
@@ -3578,7 +3578,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a New Group"
+      label="Start a new group"
       linkTo="meetup.com/start"
       shrink={true}
     />
@@ -3721,7 +3721,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a New Group"
+      label="Start a new group"
       linkTo="meetup.com/start"
       shrink={true}
     />

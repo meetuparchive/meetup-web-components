@@ -23,7 +23,7 @@ export const navItemsFactory = () => {
 		updatesLabel: 'Updates',
 		logo: { logoAccessible: 'Meetup Logo', link: 'meetup.com' },
 		login: { link: 'meetup.com/login', label: 'Login' },
-		create: { link: 'meetup.com/start', label: 'Create a New Group' },
+		create: { link: 'meetup.com/start', label: 'Start a new group' },
 		signup: {
 			label: 'Sign up',
 			signupModal: {
