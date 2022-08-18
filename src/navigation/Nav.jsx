@@ -249,7 +249,8 @@ export class Nav extends React.Component {
 			linkTo: create.link,
 			label: create.label,
 			linkClassName: create.linkClassName,
-			className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup`,
+			className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup ${isProAdminEasyCreateGroup &&
+				'navItemLink--createMeetupPro'}`,
 		};
 
 		const experiencesLink = experiences &&

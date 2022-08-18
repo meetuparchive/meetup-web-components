@@ -189,6 +189,13 @@ $maxScalingBP: $breakpoint-m / 1px;
 		}
 	}
 }
+.navItemLink--createMeetupPro {
+	@include atMediaUp(medium) {
+		align-items: center;
+		display: flex;
+		height: 40px;
+	}
+}
 .pill {
 	background: var(--color-viridian);
 	border-radius: 8px;
