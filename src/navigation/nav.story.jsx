@@ -265,6 +265,7 @@ storiesOf('Site Chrome/Nav', module)
 			navItems={navItems}
 			style={{ width: '100%' }}
 			media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			isProEasyCreateGroup
 		/>
 	))
 	.add('authenticated Pro admins with unread notifications', () => {
@@ -280,6 +281,7 @@ storiesOf('Site Chrome/Nav', module)
 				navItems={items}
 				style={{ width: '100%' }}
 				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+				isProEasyCreateGroup
 			/>
 		);
 	})

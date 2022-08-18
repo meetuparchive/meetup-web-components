@@ -159,7 +159,7 @@ export class Nav extends React.Component {
 			onSearchCallback,
 			isNewNavActive,
 			isNewNavsOrder,
-			isProEasyCreateGroup = true, // REMOVE TRUE
+			isProEasyCreateGroup,
 			...other
 		} = this.props;
 
