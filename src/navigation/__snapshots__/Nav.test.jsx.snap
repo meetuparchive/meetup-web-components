@@ -259,6 +259,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={false}
       icon={
         <Icon
@@ -422,6 +423,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName=""
       dropdownContent={
         <NotificationsDropdownComponent
           emptyContentLabel="You don't have any notifications yet"
@@ -1500,6 +1502,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={false}
       icon={
         <Icon
@@ -1619,6 +1622,7 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={false}
       icon={
         <Icon
@@ -1775,6 +1779,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName=""
       dropdownContent={
         <NotificationsDropdownComponent
           emptyContentLabel="You don't have any notifications yet"
@@ -2615,6 +2620,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName=""
       dropdownContent={
         <NotificationsDropdownComponent
           emptyContentLabel="You don't have any notifications yet"
@@ -3471,6 +3477,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={false}
       icon={
         <Icon
@@ -3777,6 +3784,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName=""
       dropdownContent={
         <NotificationsDropdownComponent
           emptyContentLabel="You don't have any notifications yet"
@@ -4576,6 +4584,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={false}
       icon={
         <Icon
@@ -4706,6 +4715,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
     />
     <NavItem
       className="navItem--notifications navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={false}
       icon={
         <Icon
