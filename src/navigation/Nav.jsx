@@ -198,12 +198,6 @@ export class Nav extends React.Component {
 		const isProAdminEasyCreateGroup =
 			isProEasyCreateGroup && Boolean(self.is_pro_admin) && media.isAtMediumUp;
 
-		const setNotificationsCounterBadgeClassName = () => {
-			if (isNewNavActive && media.isAtMediumUp) return 'navItem--counterBadge';
-			if (isProAdminEasyCreateGroup) return 'navItem--counterBadgePro';
-			return;
-		};
-
 		const notificationContent = isNotificationsLoaded ? (
 			<NotificationsDropdown
 				self={self}
@@ -249,8 +243,11 @@ export class Nav extends React.Component {
 			linkTo: create.link,
 			label: create.label,
 			linkClassName: create.linkClassName,
-			className: `${CLASS_UNAUTH_ITEM} navItemLink--createMeetup ${isProAdminEasyCreateGroup &&
-				'navItemLink--createMeetupPro'}`,
+			className: cx(
+				CLASS_UNAUTH_ITEM,
+				'navItemLink--createMeetup',
+				isProAdminEasyCreateGroup && 'navItemLink--createMeetupPro'
+			),
 		};
 
 		const experiencesLink = experiences &&
@@ -414,7 +411,10 @@ export class Nav extends React.Component {
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
 				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
-				counterBadgeClassName: setNotificationsCounterBadgeClassName(),
+				counterBadgeClassName: cx(
+					isNewNavActive && media.isAtMediumUp && 'navItem--counterBadge',
+					isProAdminEasyCreateGroup && 'navItem--counterBadgePro'
+				),
 				icon: getNotificationsIcon(),
 				onClickAction:
 					(!isNewNavActive &&

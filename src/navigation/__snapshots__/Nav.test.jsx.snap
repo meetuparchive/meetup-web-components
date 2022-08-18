@@ -139,8 +139,8 @@ exports[`Nav NavSearch renders search input for desktop 1`] = `
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a Meetup"
-      linkTo="meetup.com/create"
+      label="Create a New Group"
+      linkTo="meetup.com/start"
       shrink={true}
     />
     <NavItem
@@ -300,7 +300,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
@@ -359,8 +359,8 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a Meetup"
-      linkTo="meetup.com/create"
+      label="Create a New Group"
+      linkTo="meetup.com/start"
       shrink={true}
     />
     <NavItem
@@ -1132,7 +1132,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
@@ -1192,8 +1192,8 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       className="navItem--unauthenticated navItemLink--createMeetup"
       isNewNavActive={true}
       key="0"
-      label="Create a Meetup"
-      linkTo="meetup.com/create"
+      label="Create a New Group"
+      linkTo="meetup.com/start"
       shrink={true}
     />
     <NavItem
@@ -1378,7 +1378,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
@@ -1424,7 +1424,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="navItem--authenticated navItemLink--dashboard atMedium_display--block"
+      className="navItem--authenticated atMedium_display--block"
       icon={
         <Flex
           align="center"
@@ -1433,13 +1433,13 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
           <FlexItem>
             <Avatar
               alt="Avatar"
-              className="display--block atMedium_display--none margin--left circular"
+              className="display--block margin--left circular"
               small={true}
               src="https://placeimg.com/640/480/any"
             />
           </FlexItem>
           <FlexItem
-            className="display--block atMedium_display--none"
+            className="display--block"
             shrink={true}
           >
             <Icon
@@ -1542,7 +1542,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
@@ -1643,7 +1643,6 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
         >
           <FlexItem>
             <AvatarMember
-              medium={false}
               member={
                 Object {
                   "id": 1243,
@@ -1662,7 +1661,7 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
@@ -1713,8 +1712,8 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a Meetup"
-      linkTo="meetup.com/create"
+      label="Create a New Group"
+      linkTo="meetup.com/start"
       shrink={true}
     />
     <NavItem
@@ -2486,7 +2485,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
@@ -2553,8 +2552,8 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a Meetup"
-      linkTo="meetup.com/create"
+      label="Create a New Group"
+      linkTo="meetup.com/start"
       shrink={true}
     />
     <NavItem
@@ -3326,7 +3325,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
@@ -3513,7 +3512,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
@@ -3572,8 +3571,8 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a Meetup"
-      linkTo="meetup.com/create"
+      label="Create a New Group"
+      linkTo="meetup.com/start"
       shrink={true}
     />
     <NavItem
@@ -3715,8 +3714,8 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
     <NavItem
       className="navItem--unauthenticated navItemLink--createMeetup"
       key="0"
-      label="Create a Meetup"
-      linkTo="meetup.com/create"
+      label="Create a New Group"
+      linkTo="meetup.com/start"
       shrink={true}
     />
     <NavItem
@@ -4488,7 +4487,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
@@ -4618,7 +4617,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
@@ -4748,7 +4747,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
             shrink={true}
           >
             <Icon
-              className="padding--left-half"
+              className="tw-pl-2"
               shape="chevron-down"
               size="xxs"
             />
