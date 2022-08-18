@@ -387,6 +387,8 @@ export class Nav extends React.Component {
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
 				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
+				counterBadgeClassName:
+					isProAdminEasyCreateGroup && 'navItem--counterBadgeProMessages',
 				icon: getMessagesIcon(),
 				hasUpdates: messages.unreadMessages > 0,
 				updatesLabel: updatesLabel,
@@ -403,7 +405,7 @@ export class Nav extends React.Component {
 				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
 				counterBadgeClassName: cx(
 					isNewNavActive && media.isAtMediumUp && 'navItem--counterBadge',
-					isProAdminEasyCreateGroup && 'navItem--counterBadgePro'
+					isProAdminEasyCreateGroup && 'navItem--counterBadgeProNotifications'
 				),
 				icon: getNotificationsIcon(),
 				onClickAction:

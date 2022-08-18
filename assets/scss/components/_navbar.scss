@@ -73,29 +73,36 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 	}
 }
 
-.navItem--counterBadge {
+%navItem--counterBadgePlaceholder {
 	$_newDotSize: 14px;
 	background-color: #f65858;
 	border: 2px solid $C-white;
 	border-radius: 10px;
-	bottom: 11px;
 	box-sizing: border-box;
 	display: inline-block;
 	height: $_newDotSize;
-	position: relative;
-	right: 12px;
 	width: $_newDotSize;
 }
 
-.navItem--counterBadgePro {
-	$_newProDotSize: 10px;
-	background-color: #f65858;
-	border-radius: 10px;
-	bottom: 39px;
-	height: $_newProDotSize;
+.navItem--counterBadge {
+	@extend %navItem--counterBadgePlaceholder;
+	bottom: 11px;
+	position: relative;
+	right: 12px;
+}
+
+.navItem--counterBadgeProNotifications {
+	@extend %navItem--counterBadgePlaceholder;
+	bottom: 38px;
 	position: absolute;
-	right: 26px;
-	width: $_newProDotSize;
+	right: 22px;
+}
+
+.navItem--counterBadgeProMessages {
+	@extend %navItem--counterBadgePlaceholder;
+	bottom: 38px;
+	position: absolute;
+	right: 12px;
 }
 
 $maxLabelSize: 12;
