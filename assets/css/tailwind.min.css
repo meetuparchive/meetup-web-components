@@ -125,6 +125,10 @@
   padding: 1rem
 }
 
+.tw-pl-2 {
+  padding-left: 0.5rem
+}
+
 .tw-text-center {
   text-align: center
 }

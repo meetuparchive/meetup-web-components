@@ -274,7 +274,7 @@ export class Nav extends React.Component {
 		if (isProAdminEasyCreateGroup)
 			messagesIcon = (
 				<FlexItem align="center">
-					<img src={MESSAGE_ICON} />
+					<img className="proIcon" src={MESSAGE_ICON} />
 				</FlexItem>
 			);
 
@@ -292,14 +292,14 @@ export class Nav extends React.Component {
 		if (isProAdminEasyCreateGroup)
 			notificationsIcon = (
 				<FlexItem align="center">
-					<img src={NOTIFICATION_ICON} />
+					<img className="proIcon" src={NOTIFICATION_ICON} />
 				</FlexItem>
 			);
 
 		const proDashboardIcon =
 			media.isAtMediumUp && isProEasyCreateGroup ? (
 				<FlexItem align="center">
-					<img src={PRO_DASHBOARD_ICON} />
+					<img className="proIcon" src={PRO_DASHBOARD_ICON} />
 				</FlexItem>
 			) : (
 				<Flex noGutters align="center">
@@ -359,6 +359,7 @@ export class Nav extends React.Component {
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: `${CLASS_AUTH_ITEM} atMedium_display--block`,
+				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
 				icon: proDashboardIcon,
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
@@ -390,6 +391,7 @@ export class Nav extends React.Component {
 				label: isNewNavActive && media.isAtMediumUp ? '' : messages.label,
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
+				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
 				icon: messagesIcon,
 				hasUpdates: messages.unreadMessages > 0,
 				updatesLabel: updatesLabel,
@@ -403,6 +405,7 @@ export class Nav extends React.Component {
 				label: isNewNavActive && media.isAtMediumUp ? '' : notifications.label,
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
+				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
 				counterBadgeClassName: notificationsCounterBadgeClassName,
 				icon: notificationsIcon,
 				onClickAction:
@@ -435,11 +438,11 @@ export class Nav extends React.Component {
 					<Flex noGutters align="center" aria-label={profile.label}>
 						<FlexItem>
 							<AvatarMember
-								small={
-									!(isNewNavActive && media.isAtMediumUp) &&
-									!isProAdminEasyCreateGroup
+								small={!(isNewNavActive && media.isAtMediumUp)}
+								medium={
+									(isNewNavActive && media.isAtMediumUp) ||
+									isProAdminEasyCreateGroup
 								}
-								medium={isNewNavActive && media.isAtMediumUp}
 								member={self}
 							/>
 						</FlexItem>
@@ -447,11 +450,7 @@ export class Nav extends React.Component {
 							shrink
 							className="display--none atMedium_display--block"
 						>
-							<Icon
-								shape="chevron-down"
-								size="xxs"
-								className="padding--left-half"
-							/>
+							<Icon shape="chevron-down" size="xxs" className="tw-pl-2" />
 						</FlexItem>
 					</Flex>
 				),

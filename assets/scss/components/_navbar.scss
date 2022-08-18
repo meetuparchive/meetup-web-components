@@ -91,10 +91,10 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 	$_newProDotSize: 10px;
 	background-color: #f65858;
 	border-radius: 10px;
-	bottom: 36px;
+	bottom: 39px;
 	height: $_newProDotSize;
 	position: absolute;
-	right: 25px;
+	right: 26px;
 	width: $_newProDotSize;
 }
 
@@ -158,6 +158,22 @@ $maxScalingBP: $breakpoint-m / 1px;
 	@include atMediaUp(medium) {
 		display: inline;
 		height: auto;
+	}
+}
+
+.navItemLink-pro {
+	@include atMediaUp(medium) {
+		&:hover,
+		&:active {
+			.navItem-label-pro {
+				filter: brightness(0) saturate(100%) invert(44%) sepia(60%)
+					saturate(1563%) hue-rotate(153deg) brightness(85%) contrast(103%);
+			}
+			.proIcon {
+				filter: brightness(0) saturate(100%) invert(44%) sepia(60%)
+					saturate(1563%) hue-rotate(153deg) brightness(85%) contrast(103%);
+			}
+		}
 	}
 }
 
