@@ -4975,6 +4975,17 @@ input.field--reset:active {
   margin: 0 auto; }
 
 @media only screen and (min-width: 640px) {
+  .navItemLink--dashboard {
+    border-right: 1px solid rgba(46, 62, 72, 0.12);
+    padding-right: 16px; }
+    .inverted .navItemLink--dashboard {
+      border-right: 1px solid rgba(255, 255, 255, 0.2); }
+    .navItemLink--dashboard .navItem-label {
+      color: #00a2c7 !important;
+      font-weight: 600;
+      margin-top: -1px; } }
+
+@media only screen and (min-width: 640px) {
   .navItemLink--createMeetup {
     border-right: 1px solid rgba(46, 62, 72, 0.12);
     padding-right: 16px; }

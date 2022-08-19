@@ -293,33 +293,28 @@ export class Nav extends React.Component {
 			);
 		};
 
-		const proDashboardIcon =
-			media.isAtMediumUp && isProEasyCreateGroup ? (
-				<img className="proIcon" src={PRO_DASHBOARD_ICON} />
-			) : (
-				<Flex noGutters align="center">
-					<FlexItem>
-						{proLogo ? (
-							<Avatar
-								src={proLogo}
-								className="display--block margin--left circular"
-								small
-							/>
-						) : (
-							<div className="proDashboard-noLogo circular margin--left text--secondary">
-								{proLetter}
-							</div>
-						)}
-					</FlexItem>
-					<FlexItem shrink className="display--block">
-						<Icon
-							shape="chevron-down"
-							size="xxs"
-							className="padding--halfLeft"
+		const proDashboardIcon = isProAdminEasyCreateGroup ? (
+			<img className="proIcon" src={PRO_DASHBOARD_ICON} />
+		) : (
+			<Flex noGutters align="center">
+				<FlexItem>
+					{proLogo ? (
+						<Avatar
+							src={proLogo}
+							className="display--block margin--left circular atMedium_display--none"
+							small
 						/>
-					</FlexItem>
-				</Flex>
-			);
+					) : (
+						<div className="proDashboard-noLogo circular margin--left text--secondary atMedium_display--none">
+							{proLetter}
+						</div>
+					)}
+				</FlexItem>
+				<FlexItem shrink className="display--block atMedium_display--none">
+					<Icon shape="chevron-down" size="xxs" className="padding--halfLeft" />
+				</FlexItem>
+			</Flex>
+		);
 
 		let unauthItems = [
 			media.isAtMediumUp && createMeetupLink,
@@ -353,7 +348,11 @@ export class Nav extends React.Component {
 				onAction: !media.isAtMediumUp && this.onClickMobileDropdownAction,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
-				className: `${CLASS_AUTH_ITEM} atMedium_display--block`,
+				className: cx(
+					CLASS_AUTH_ITEM,
+					'atMedium_display--block',
+					!isProAdminEasyCreateGroup && 'navItemLink--dashboard'
+				),
 				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
 				icon: proDashboardIcon,
 			},
