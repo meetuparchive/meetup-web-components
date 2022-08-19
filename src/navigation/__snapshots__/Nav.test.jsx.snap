@@ -301,7 +301,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />
@@ -1134,7 +1134,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />
@@ -1380,7 +1380,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />
@@ -1545,7 +1545,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />
@@ -1665,7 +1665,7 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />
@@ -2490,7 +2490,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />
@@ -3331,7 +3331,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />
@@ -3519,7 +3519,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />
@@ -4495,7 +4495,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />
@@ -4626,7 +4626,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />
@@ -4757,7 +4757,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
             shrink={true}
           >
             <Icon
-              className="tw-pl-2"
+              className="padding--halfLeft"
               shape="chevron-down"
               size="xxs"
             />

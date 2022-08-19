@@ -450,7 +450,11 @@ export class Nav extends React.Component {
 							shrink
 							className="display--none atMedium_display--block"
 						>
-							<Icon shape="chevron-down" size="xxs" className="tw-pl-2" />
+							<Icon
+								shape="chevron-down"
+								size="xxs"
+								className="padding--halfLeft"
+							/>
 						</FlexItem>
 					</Flex>
 				),
