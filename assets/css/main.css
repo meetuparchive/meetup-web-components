@@ -4912,21 +4912,19 @@ input.field--reset:active {
   box-sizing: border-box;
   display: inline-block;
   height: 14px;
-  width: 14px; }
+  width: 14px;
+  position: absolute; }
 
 .navItem--counterBadge {
-  bottom: 11px;
-  position: relative;
-  right: 12px; }
+  bottom: 12px;
+  right: -3px; }
 
 .navItem--counterBadgeProNotifications {
   bottom: 38px;
-  position: absolute;
   right: 22px; }
 
 .navItem--counterBadgeProMessages {
   bottom: 38px;
-  position: absolute;
   right: 12px; }
 
 .navItem-label {

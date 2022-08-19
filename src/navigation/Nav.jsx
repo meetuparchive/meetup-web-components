@@ -4,7 +4,6 @@ import cx from 'classnames';
 
 import UXCaptureInlineMark from 'mwp-app-render/lib/components/uxcapture/UXCaptureInlineMark';
 import UXCaptureImageLoad from 'mwp-app-render/lib/components/uxcapture/UXCaptureImageLoad';
-import { MessageBlank as Message, Notif } from '@meetup/swarm-icons/lib/components/line';
 
 import swarmLogo from '../../assets/svg/logo--mSwarm--2color.svg';
 import scriptLogo from '../../assets/svg/logo--script.svg';
@@ -261,10 +260,9 @@ export class Nav extends React.Component {
 			};
 
 		const getMessagesIcon = () => {
-			if (isProAdminEasyCreateGroup) {
+			if (isProAdminEasyCreateGroup || isNewNavActiveDesktop) {
 				return <img className="proIcon" src={MESSAGE_ICON} />;
 			}
-			if (isNewNavActiveDesktop) return <Message />;
 
 			return (
 				<Icon
@@ -279,10 +277,9 @@ export class Nav extends React.Component {
 		};
 
 		const getNotificationsIcon = () => {
-			if (isProAdminEasyCreateGroup) {
+			if (isProAdminEasyCreateGroup || isNewNavActiveDesktop) {
 				return <img className="proIcon" src={NOTIFICATION_ICON} />;
 			}
-			if (isNewNavActiveDesktop) return <Notif />;
 
 			return (
 				<Icon
@@ -392,8 +389,12 @@ export class Nav extends React.Component {
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
 				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
-				counterBadgeClassName:
-					isProAdminEasyCreateGroup && 'navItem--counterBadgeProMessages',
+				counterBadgeClassName: cx(
+					isNewNavActiveDesktop &&
+						!isProAdminEasyCreateGroup &&
+						'navItem--counterBadge',
+					isProAdminEasyCreateGroup && 'navItem--counterBadgeProMessages'
+				),
 				icon: getMessagesIcon(),
 				hasUpdates: messages.unreadMessages > 0,
 				updatesLabel: updatesLabel,

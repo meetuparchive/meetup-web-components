@@ -81,27 +81,25 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 	box-sizing: border-box;
 	display: inline-block;
 	height: $_newDotSize;
+	position: absolute;
 	width: $_newDotSize;
 }
 
 .navItem--counterBadge {
 	@extend %navItem--counterBadgePlaceholder;
-	bottom: 11px;
-	position: relative;
-	right: 12px;
+	bottom: 12px;
+	right: -3px;
 }
 
 .navItem--counterBadgeProNotifications {
 	@extend %navItem--counterBadgePlaceholder;
 	bottom: 38px;
-	position: absolute;
 	right: 22px;
 }
 
 .navItem--counterBadgeProMessages {
 	@extend %navItem--counterBadgePlaceholder;
 	bottom: 38px;
-	position: absolute;
 	right: 12px;
 }
 
