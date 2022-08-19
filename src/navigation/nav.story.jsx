@@ -256,7 +256,7 @@ storiesOf('Site Chrome/Nav', module)
 			/>
 		);
 	})
-	.add('authenticated Pro admins', () => (
+	.add('authenticated Pro admins (pro-web)', () => (
 		<TestNav
 			self={{
 				is_pro_admin: true,
@@ -268,7 +268,7 @@ storiesOf('Site Chrome/Nav', module)
 			isProEasyCreateGroup
 		/>
 	))
-	.add('authenticated Pro admins with unread notifications', () => {
+	.add('authenticated Pro admins with unread notifications (pro-web)', () => {
 		const notifications = { ...navItems.notifications };
 		notifications.unreadNotifications = 1;
 		const items = { ...navItems, notifications };
@@ -285,7 +285,7 @@ storiesOf('Site Chrome/Nav', module)
 			/>
 		);
 	})
-	.add('previous authenticated Pro admins with unread notifications', () => {
+	.add('previous authenticated Pro admins with unread notifications (pro-web)', () => {
 		const notifications = { ...navItems.notifications };
 		notifications.unreadNotifications = 1;
 		const items = { ...navItems, notifications };
@@ -298,6 +298,43 @@ storiesOf('Site Chrome/Nav', module)
 				navItems={items}
 				style={{ width: '100%' }}
 				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			/>
+		);
+	})
+	.add('authenticated Pro admins with unread notifications (mup-web)', () => {
+		const notifications = { ...navItems.notifications };
+		notifications.unreadNotifications = 1;
+		const items = { ...navItems, notifications };
+		return (
+			<TestNav
+				self={{
+					is_pro_admin: true,
+					...MOCK_MEMBER,
+				}}
+				navItems={items}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+				isProEasyCreateGroup
+				isNewNavActive
+				isNewNavsOrder
+			/>
+		);
+	})
+	.add('previous authenticated Pro admins with unread notifications (mup-web)', () => {
+		const notifications = { ...navItems.notifications };
+		notifications.unreadNotifications = 1;
+		const items = { ...navItems, notifications };
+		return (
+			<TestNav
+				self={{
+					is_pro_admin: true,
+					...MOCK_MEMBER,
+				}}
+				navItems={items}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+				isNewNavActive
+				isNewNavsOrder
 			/>
 		);
 	})

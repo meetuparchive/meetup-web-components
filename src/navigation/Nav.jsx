@@ -195,6 +195,7 @@ export class Nav extends React.Component {
 		);
 		const isGroupsLoaded = Boolean(groups.list);
 		const isNotificationsLoaded = Boolean(notifications.list);
+		const isNewNavActiveDesktop = isNewNavActive && media.isAtMediumUp;
 		const isProAdminEasyCreateGroup =
 			isProEasyCreateGroup && Boolean(self.is_pro_admin) && media.isAtMediumUp;
 
@@ -260,10 +261,11 @@ export class Nav extends React.Component {
 			};
 
 		const getMessagesIcon = () => {
-			if (isNewNavActive && media.isAtMediumUp) return <Message />;
 			if (isProAdminEasyCreateGroup) {
 				return <img className="proIcon" src={MESSAGE_ICON} />;
 			}
+			if (isNewNavActiveDesktop) return <Message />;
+
 			return (
 				<Icon
 					shape="messages"
@@ -277,10 +279,11 @@ export class Nav extends React.Component {
 		};
 
 		const getNotificationsIcon = () => {
-			if (isNewNavActive && media.isAtMediumUp) return <Notif />;
 			if (isProAdminEasyCreateGroup) {
 				return <img className="proIcon" src={NOTIFICATION_ICON} />;
 			}
+			if (isNewNavActiveDesktop) return <Notif />;
+
 			return (
 				<Icon
 					shape="notifications"
@@ -382,7 +385,10 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: messages.link,
-				label: isNewNavActive && media.isAtMediumUp ? '' : messages.label,
+				label:
+					isNewNavActiveDesktop && !isProAdminEasyCreateGroup
+						? ''
+						: messages.label,
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
 				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
@@ -398,12 +404,17 @@ export class Nav extends React.Component {
 					media.isAtMediumUp && !isNewNavActive && !isProAdminEasyCreateGroup
 						? ''
 						: notifications.link,
-				label: isNewNavActive && media.isAtMediumUp ? '' : notifications.label,
+				label:
+					isNewNavActiveDesktop && !isProAdminEasyCreateGroup
+						? ''
+						: notifications.label,
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
 				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
 				counterBadgeClassName: cx(
-					isNewNavActive && media.isAtMediumUp && 'navItem--counterBadge',
+					isNewNavActiveDesktop &&
+						!isProAdminEasyCreateGroup &&
+						'navItem--counterBadge',
 					isProAdminEasyCreateGroup && 'navItem--counterBadgeProNotifications'
 				),
 				icon: getNotificationsIcon(),
@@ -437,10 +448,9 @@ export class Nav extends React.Component {
 					<Flex noGutters align="center" aria-label={profile.label}>
 						<FlexItem>
 							<AvatarMember
-								small={!(isNewNavActive && media.isAtMediumUp)}
+								small={!isNewNavActiveDesktop}
 								medium={
-									(isNewNavActive && media.isAtMediumUp) ||
-									isProAdminEasyCreateGroup
+									isNewNavActiveDesktop || isProAdminEasyCreateGroup
 								}
 								member={self}
 							/>
