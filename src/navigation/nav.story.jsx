@@ -75,7 +75,7 @@ export const navItemsFactory = () => {
 		messages: {
 			link: 'meetup.com/messages',
 			label: 'Messages',
-			unreadMessage: 1,
+			unreadMessages: 1,
 		},
 		notifications: {
 			link: 'meetup.com/notifications',

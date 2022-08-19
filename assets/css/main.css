@@ -4905,26 +4905,29 @@ input.field--reset:active {
     font-size: 14px;
     max-width: 20vw; }
 
-.navItem--counterBadge {
+.navItem--counterBadge, .navItem--counterBadgeProNotifications, .navItem--counterBadgeProMessages {
   background-color: #f65858;
   border: 2px solid white;
   border-radius: 10px;
-  bottom: 11px;
   box-sizing: border-box;
   display: inline-block;
   height: 14px;
-  position: relative;
-  right: 12px;
   width: 14px; }
 
-.navItem--counterBadgePro {
-  background-color: #f65858;
-  border-radius: 10px;
-  bottom: 39px;
-  height: 10px;
+.navItem--counterBadge {
+  bottom: 11px;
+  position: relative;
+  right: 12px; }
+
+.navItem--counterBadgeProNotifications {
+  bottom: 38px;
   position: absolute;
-  right: 26px;
-  width: 10px; }
+  right: 22px; }
+
+.navItem--counterBadgeProMessages {
+  bottom: 38px;
+  position: absolute;
+  right: 12px; }
 
 .navItem-label {
   color: rgba(46, 62, 72, 0.6);
@@ -7358,9 +7361,6 @@ Breakpoints        | Property       | Variants
 
 .tw-p-4 {
   padding: 1rem; }
-
-.tw-pl-2 {
-  padding-left: 0.5rem; }
 
 .tw-text-center {
   text-align: center; }
