@@ -4912,8 +4912,8 @@ input.field--reset:active {
   box-sizing: border-box;
   display: inline-block;
   height: 14px;
-  width: 14px;
-  position: absolute; }
+  position: absolute;
+  width: 14px; }
 
 .navItem--counterBadge {
   bottom: 12px;
