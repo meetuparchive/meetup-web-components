@@ -188,6 +188,19 @@ $maxScalingBP: $breakpoint-m / 1px;
 	margin: 0 auto;
 }
 
+.navItemLink--dashboard {
+	@include atMediaUp(medium) {
+		@include standardBorder("right");
+		padding-right: $space;
+
+		.navItem-label {
+			color: $C_accent !important;
+			font-weight: $W_bold;
+			margin-top: -1px;
+		}
+	}
+}
+
 .navItemLink--createMeetup {
 	@include atMediaUp(medium) {
 		@include standardBorder("right");

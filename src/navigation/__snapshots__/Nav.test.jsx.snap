@@ -1426,7 +1426,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="navItem--authenticated atMedium_display--block"
+      className="navItem--authenticated atMedium_display--block navItemLink--dashboard"
       icon={
         <Flex
           align="center"
@@ -1435,13 +1435,13 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
           <FlexItem>
             <Avatar
               alt="Avatar"
-              className="display--block margin--left circular"
+              className="display--block margin--left circular atMedium_display--none"
               small={true}
               src="https://placeimg.com/640/480/any"
             />
           </FlexItem>
           <FlexItem
-            className="display--block"
+            className="display--block atMedium_display--none"
             shrink={true}
           >
             <Icon

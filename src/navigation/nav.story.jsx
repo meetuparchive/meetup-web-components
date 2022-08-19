@@ -285,6 +285,22 @@ storiesOf('Site Chrome/Nav', module)
 			/>
 		);
 	})
+	.add('previous authenticated Pro admins with unread notifications', () => {
+		const notifications = { ...navItems.notifications };
+		notifications.unreadNotifications = 1;
+		const items = { ...navItems, notifications };
+		return (
+			<TestNav
+				self={{
+					is_pro_admin: true,
+					...MOCK_MEMBER,
+				}}
+				navItems={items}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+			/>
+		);
+	})
 	.add('unauthenticated', () => (
 		<TestNav
 			self={{ status: 'prereg' }}
