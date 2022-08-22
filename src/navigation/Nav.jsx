@@ -4,7 +4,6 @@ import cx from 'classnames';
 
 import UXCaptureInlineMark from 'mwp-app-render/lib/components/uxcapture/UXCaptureInlineMark';
 import UXCaptureImageLoad from 'mwp-app-render/lib/components/uxcapture/UXCaptureImageLoad';
-import { MessageBlank as Message, Notif } from '@meetup/swarm-icons/lib/components/line';
 
 import swarmLogo from '../../assets/svg/logo--mSwarm--2color.svg';
 import scriptLogo from '../../assets/svg/logo--script.svg';
@@ -195,6 +194,7 @@ export class Nav extends React.Component {
 		);
 		const isGroupsLoaded = Boolean(groups.list);
 		const isNotificationsLoaded = Boolean(notifications.list);
+		const isNewNavActiveDesktop = isNewNavActive && media.isAtMediumUp;
 		const isProAdminEasyCreateGroup =
 			isProEasyCreateGroup && Boolean(self.is_pro_admin) && media.isAtMediumUp;
 
@@ -260,10 +260,10 @@ export class Nav extends React.Component {
 			};
 
 		const getMessagesIcon = () => {
-			if (isNewNavActive && media.isAtMediumUp) return <Message />;
-			if (isProAdminEasyCreateGroup) {
+			if (isProAdminEasyCreateGroup || isNewNavActiveDesktop) {
 				return <img className="proIcon" src={MESSAGE_ICON} />;
 			}
+
 			return (
 				<Icon
 					shape="messages"
@@ -277,10 +277,10 @@ export class Nav extends React.Component {
 		};
 
 		const getNotificationsIcon = () => {
-			if (isNewNavActive && media.isAtMediumUp) return <Notif />;
-			if (isProAdminEasyCreateGroup) {
+			if (isProAdminEasyCreateGroup || isNewNavActiveDesktop) {
 				return <img className="proIcon" src={NOTIFICATION_ICON} />;
 			}
+
 			return (
 				<Icon
 					shape="notifications"
@@ -382,12 +382,19 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: messages.link,
-				label: isNewNavActive && media.isAtMediumUp ? '' : messages.label,
+				label:
+					isNewNavActiveDesktop && !isProAdminEasyCreateGroup
+						? ''
+						: messages.label,
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
 				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
-				counterBadgeClassName:
-					isProAdminEasyCreateGroup && 'navItem--counterBadgeProMessages',
+				counterBadgeClassName: cx(
+					isNewNavActiveDesktop &&
+						!isProAdminEasyCreateGroup &&
+						'navItem--counterBadge',
+					isProAdminEasyCreateGroup && 'navItem--counterBadgeProMessages'
+				),
 				icon: getMessagesIcon(),
 				hasUpdates: messages.unreadMessages > 0,
 				updatesLabel: updatesLabel,
@@ -398,12 +405,17 @@ export class Nav extends React.Component {
 					media.isAtMediumUp && !isNewNavActive && !isProAdminEasyCreateGroup
 						? ''
 						: notifications.link,
-				label: isNewNavActive && media.isAtMediumUp ? '' : notifications.label,
+				label:
+					isNewNavActiveDesktop && !isProAdminEasyCreateGroup
+						? ''
+						: notifications.label,
 				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
 				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
 				counterBadgeClassName: cx(
-					isNewNavActive && media.isAtMediumUp && 'navItem--counterBadge',
+					isNewNavActiveDesktop &&
+						!isProAdminEasyCreateGroup &&
+						'navItem--counterBadge',
 					isProAdminEasyCreateGroup && 'navItem--counterBadgeProNotifications'
 				),
 				icon: getNotificationsIcon(),
@@ -437,10 +449,9 @@ export class Nav extends React.Component {
 					<Flex noGutters align="center" aria-label={profile.label}>
 						<FlexItem>
 							<AvatarMember
-								small={!(isNewNavActive && media.isAtMediumUp)}
+								small={!isNewNavActiveDesktop}
 								medium={
-									(isNewNavActive && media.isAtMediumUp) ||
-									isProAdminEasyCreateGroup
+									isNewNavActiveDesktop || isProAdminEasyCreateGroup
 								}
 								member={self}
 							/>

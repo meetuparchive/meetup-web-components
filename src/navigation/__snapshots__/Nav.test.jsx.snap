@@ -244,6 +244,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={true}
       icon={
         <Icon
@@ -408,6 +409,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={true}
       icon={
         <Icon
@@ -1230,8 +1232,14 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName="navItem--counterBadge"
       hasUpdates={true}
-      icon={<MessageBlank />}
+      icon={
+        <img
+          className="proIcon"
+          src=""
+        />
+      }
       isNewNavActive={true}
       key="3"
       label=""
@@ -1242,7 +1250,12 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       className="navItem--notifications navItem--authenticated"
       counterBadgeClassName="navItem--counterBadge"
       hasUpdates={false}
-      icon={<Notif />}
+      icon={
+        <img
+          className="proIcon"
+          src=""
+        />
+      }
       isNewNavActive={true}
       key="4"
       label=""
@@ -1487,6 +1500,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={true}
       icon={
         <Icon
@@ -1606,6 +1620,7 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={true}
       icon={
         <Icon
@@ -1764,6 +1779,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={true}
       icon={
         <Icon
@@ -2605,6 +2621,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={true}
       icon={
         <Icon
@@ -3462,6 +3479,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={true}
       icon={
         <Icon
@@ -3769,6 +3787,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={true}
       icon={
         <Icon
@@ -4569,6 +4588,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={true}
       icon={
         <Icon
@@ -4700,6 +4720,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
     />
     <NavItem
       className="navItem--messages navItem--authenticated"
+      counterBadgeClassName=""
       hasUpdates={true}
       icon={
         <Icon
