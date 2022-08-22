@@ -4921,11 +4921,11 @@ input.field--reset:active {
 
 .navItem--counterBadgeProNotifications {
   bottom: 38px;
-  right: 22px; }
+  right: 24px; }
 
 .navItem--counterBadgeProMessages {
   bottom: 38px;
-  right: 12px; }
+  right: 14px; }
 
 .navItem-label {
   color: rgba(46, 62, 72, 0.6);
@@ -4946,7 +4946,7 @@ input.field--reset:active {
 
 @media only screen and (min-width: 640px) {
   .navItem-label-pro {
-    font-size: 12px;
+    font-size: 12px !important;
     font-weight: 600; }
     .navItem-label-pro:hover, .navItem-label-pro:active {
       color: var(--color-gray-6) !important; } }
