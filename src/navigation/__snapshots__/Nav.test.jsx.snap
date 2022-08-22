@@ -255,6 +255,8 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
       }
       key="2"
       label="Messages"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -271,6 +273,8 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
       }
       key="3"
       label="Notifications"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/notifications"
       shrink={true}
     />
@@ -420,6 +424,8 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       }
       key="4"
       label="Messages"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -1003,6 +1009,8 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       }
       key="5"
       label="Notifications"
+      labelClassName=""
+      linkClassName=""
       linkTo=""
       onClickAction={[Function]}
       shrink={true}
@@ -1243,6 +1251,8 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       isNewNavActive={true}
       key="3"
       label=""
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -1259,6 +1269,8 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       isNewNavActive={true}
       key="4"
       label=""
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/notifications"
       shrink={true}
     />
@@ -1466,6 +1478,8 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
         </Flex>
       }
       key="0"
+      labelClassName=""
+      linkClassName=""
       linkTo=""
       onAction={[Function]}
       shrink={true}
@@ -1511,6 +1525,8 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
       }
       key="3"
       label="Messages"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -1527,6 +1543,8 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
       }
       key="4"
       label="Notifications"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/notifications"
       shrink={true}
     />
@@ -1632,6 +1650,8 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
       isNewNavActive={true}
       key="1"
       label="Messages"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -1649,6 +1669,8 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
       isNewNavActive={true}
       key="2"
       label="Notifications"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/notifications"
       shrink={true}
     />
@@ -1790,6 +1812,8 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       }
       key="4"
       label="Messages"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -2373,6 +2397,8 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       }
       key="5"
       label="Notifications"
+      labelClassName=""
+      linkClassName=""
       linkTo=""
       onClickAction={[Function]}
       shrink={true}
@@ -2632,6 +2658,8 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       }
       key="4"
       label="Messages"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -3215,6 +3243,8 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       }
       key="5"
       label="Notifications"
+      labelClassName=""
+      linkClassName=""
       linkTo=""
       onClickAction={[Function]}
       shrink={true}
@@ -3490,6 +3520,8 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
       }
       key="2"
       label="Messages"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -3506,6 +3538,8 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
       }
       key="3"
       label="Notifications"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/notifications"
       shrink={true}
     />
@@ -3798,6 +3832,8 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       }
       key="4"
       label="Messages"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -4381,6 +4417,8 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       }
       key="5"
       label="Notifications"
+      labelClassName=""
+      linkClassName=""
       linkTo=""
       onClickAction={[Function]}
       shrink={true}
@@ -4599,6 +4637,8 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
       }
       key="2"
       label="Messages"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -4615,6 +4655,8 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
       }
       key="3"
       label="Notifications"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/notifications"
       shrink={true}
     />
@@ -4731,6 +4773,8 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
       }
       key="2"
       label="Messages"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/messages"
       shrink={true}
     />
@@ -4747,6 +4791,8 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
       }
       key="3"
       label="Notifications"
+      labelClassName=""
+      linkClassName=""
       linkTo="meetup.com/notifications"
       shrink={true}
     />

@@ -347,13 +347,13 @@ export class Nav extends React.Component {
 				linkTo: media.isAtMediumUp ? proDashboard.link : '',
 				onAction: !media.isAtMediumUp && this.onClickMobileDropdownAction,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
-				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
+				labelClassName: cx(isProAdminEasyCreateGroup && 'navItem-label-pro'),
 				className: cx(
 					CLASS_AUTH_ITEM,
 					'atMedium_display--block',
 					!isProAdminEasyCreateGroup && 'navItemLink--dashboard'
 				),
-				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
+				linkClassName: cx(isProAdminEasyCreateGroup && 'navItemLink-pro'),
 				icon: proDashboardIcon,
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
@@ -386,9 +386,9 @@ export class Nav extends React.Component {
 					isNewNavActiveDesktop && !isProAdminEasyCreateGroup
 						? ''
 						: messages.label,
-				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
+				labelClassName: cx(isProAdminEasyCreateGroup && 'navItem-label-pro'),
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
-				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
+				linkClassName: cx(isProAdminEasyCreateGroup && 'navItemLink-pro'),
 				counterBadgeClassName: cx(
 					isNewNavActiveDesktop &&
 						!isProAdminEasyCreateGroup &&
@@ -409,9 +409,9 @@ export class Nav extends React.Component {
 					isNewNavActiveDesktop && !isProAdminEasyCreateGroup
 						? ''
 						: notifications.label,
-				labelClassName: isProAdminEasyCreateGroup && 'navItem-label-pro',
+				labelClassName: cx(isProAdminEasyCreateGroup && 'navItem-label-pro'),
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
-				linkClassName: isProAdminEasyCreateGroup && 'navItemLink-pro',
+				linkClassName: cx(isProAdminEasyCreateGroup && 'navItemLink-pro'),
 				counterBadgeClassName: cx(
 					isNewNavActiveDesktop &&
 						!isProAdminEasyCreateGroup &&
@@ -590,7 +590,9 @@ export class Nav extends React.Component {
 					)}
 
 					{isSearchEnabled &&
-						media.isAtMediumUp && (
+						(isProEasyCreateGroup
+							? media.isAtLargeUp
+							: media.isAtMediumUp) && (
 							<FlexItem>
 								<NavbarSearch
 									onSearchCallback={onSearchCallback}
