@@ -246,7 +246,9 @@ export class Nav extends React.Component {
 			className: cx(
 				CLASS_UNAUTH_ITEM,
 				'navItemLink--createMeetup',
-				isProAdminEasyCreateGroup && 'navItemLink--createMeetupPro'
+				isProAdminEasyCreateGroup &&
+					Boolean(create.label) &&
+					'navItemLink--createMeetupPro'
 			),
 		};
 
