@@ -464,6 +464,7 @@ export class Nav extends React.Component {
 								shape="chevron-down"
 								size="xxs"
 								className="padding--halfLeft"
+								id="profileChevronIcon"
 							/>
 						</FlexItem>
 					</Flex>
