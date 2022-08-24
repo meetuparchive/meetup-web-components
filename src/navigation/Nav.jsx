@@ -250,6 +250,7 @@ export class Nav extends React.Component {
 					Boolean(create.label) &&
 					'navItemLink--createMeetupPro'
 			),
+			onLinkClick: create.onLinkClick,
 		};
 
 		const experiencesLink = experiences &&
@@ -357,6 +358,7 @@ export class Nav extends React.Component {
 				),
 				linkClassName: cx(isProAdminEasyCreateGroup && 'navItemLink-pro'),
 				icon: proDashboardIcon,
+				onLinkClick: proDashboard.onLinkClick,
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
 			media.isAtMediumUp && experiencesLink,
@@ -400,6 +402,7 @@ export class Nav extends React.Component {
 				icon: getMessagesIcon(),
 				hasUpdates: messages.unreadMessages > 0,
 				updatesLabel: updatesLabel,
+				onLinkClick: messages.onLinkClick,
 			},
 			{
 				shrink: true,
@@ -435,6 +438,7 @@ export class Nav extends React.Component {
 					undefined,
 				hasUpdates: notifications.unreadNotifications > 0,
 				updatesLabel: updatesLabel,
+				onLinkClick: notifications.onLinkClick,
 			},
 			{
 				shrink: true,
@@ -515,6 +519,7 @@ export class Nav extends React.Component {
 						hasUpdates={item.hasUpdates}
 						linkClassName={item.linkClassName}
 						isNewNavActive={isNewNavActive}
+						onLinkClick={item.onLinkClick}
 					/>
 				)
 			);
@@ -579,6 +584,7 @@ export class Nav extends React.Component {
 									height="48px"
 								/>
 							}
+							onLinkClick={logo.onLinkClick}
 						/>
 					)}
 
@@ -589,6 +595,7 @@ export class Nav extends React.Component {
 							className="logo logo--script align--left"
 							linkClassName="display--inlineBlock"
 							icon={scriptLogoIcon}
+							onLinkClick={logo.onLinkClick}
 						/>
 					)}
 

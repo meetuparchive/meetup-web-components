@@ -17,8 +17,8 @@ export const ActionItem = ({ navItemContent, action }) => (
 		{navItemContent}
 	</Button>
 );
-export const LinkItem = ({ linkTo, navItemContent, className }) => (
-	<a href={linkTo} className={cx(NAV_ITEM_CLASS, className)}>
+export const LinkItem = ({ linkTo, navItemContent, className, onLinkClick }) => (
+	<a href={linkTo} className={cx(NAV_ITEM_CLASS, className)} onClick={onLinkClick}>
 		{navItemContent}
 	</a>
 );
@@ -58,6 +58,7 @@ export const NavItem = props => {
 		onAction,
 		updatesLabel,
 		isNewNavActive,
+		onLinkClick,
 		...other
 	} = props;
 
@@ -92,6 +93,7 @@ export const NavItem = props => {
 					className={linkClassName}
 					linkTo={linkTo}
 					navItemContent={navItemContent}
+					onLinkClick={onLinkClick}
 				/>
 			)}
 			{dropdownContent && (
@@ -120,6 +122,7 @@ NavItem.propTypes = {
 	icon: PropTypes.element,
 	hasUpdates: PropTypes.bool,
 	isNewNavActive: PropTypes.bool,
+	onLinkClick: PropTypes.func,
 };
 
 export default NavItem;
