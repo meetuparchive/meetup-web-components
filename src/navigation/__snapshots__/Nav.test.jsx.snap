@@ -1399,7 +1399,6 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
                   },
                 }
               }
-              small={false}
             />
           </FlexItem>
           <FlexItem

@@ -197,6 +197,11 @@ export class Nav extends React.Component {
 		const isProAdminEasyCreateGroup =
 			Boolean(self.is_pro_admin) && media.isAtMediumUp;
 
+		const profileAvatarSize =
+			isNewNavActiveDesktop || isProAdminEasyCreateGroup
+				? { medium: true }
+				: { small: true };
+
 		const notificationContent = isNotificationsLoaded ? (
 			<NotificationsDropdown
 				self={self}
@@ -453,13 +458,7 @@ export class Nav extends React.Component {
 				icon: (
 					<Flex noGutters align="center" aria-label={profile.label}>
 						<FlexItem>
-							<AvatarMember
-								small={!isNewNavActiveDesktop}
-								medium={
-									isNewNavActiveDesktop || isProAdminEasyCreateGroup
-								}
-								member={self}
-							/>
+							<AvatarMember member={self} {...profileAvatarSize} />
 						</FlexItem>
 						<FlexItem
 							shrink

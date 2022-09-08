@@ -256,18 +256,6 @@ storiesOf('Site Chrome/Nav', module)
 			/>
 		);
 	})
-	.add('authenticated Pro admins (pro-web)', () => (
-		<TestNav
-			self={{
-				is_pro_admin: true,
-				...MOCK_MEMBER,
-			}}
-			navItems={navItems}
-			style={{ width: '100%' }}
-			media={{ isAtMediumUp: true, isAtLargeUp: true }}
-			isProEasyCreateGroup
-		/>
-	))
 	.add('authenticated Pro admins with unread notifications (pro-web)', () => {
 		const notifications = { ...navItems.notifications };
 		notifications.unreadNotifications = 1;
@@ -281,63 +269,31 @@ storiesOf('Site Chrome/Nav', module)
 				navItems={items}
 				style={{ width: '100%' }}
 				media={{ isAtMediumUp: true, isAtLargeUp: true }}
-				isProEasyCreateGroup
 			/>
 		);
 	})
-	.add('previous authenticated Pro admins with unread notifications (pro-web)', () => {
-		const notifications = { ...navItems.notifications };
-		notifications.unreadNotifications = 1;
-		const items = { ...navItems, notifications };
-		return (
-			<TestNav
-				self={{
-					is_pro_admin: true,
-					...MOCK_MEMBER,
-				}}
-				navItems={items}
-				style={{ width: '100%' }}
-				media={{ isAtMediumUp: true, isAtLargeUp: true }}
-			/>
-		);
-	})
-	.add('authenticated Pro admins with unread notifications (mup-web)', () => {
-		const notifications = { ...navItems.notifications };
-		notifications.unreadNotifications = 1;
-		const items = { ...navItems, notifications };
-		return (
-			<TestNav
-				self={{
-					is_pro_admin: true,
-					...MOCK_MEMBER,
-				}}
-				navItems={items}
-				style={{ width: '100%' }}
-				media={{ isAtMediumUp: true, isAtLargeUp: true }}
-				isProEasyCreateGroup
-				isNewNavActive
-				isNewNavsOrder
-			/>
-		);
-	})
-	.add('previous authenticated Pro admins with unread notifications (mup-web)', () => {
-		const notifications = { ...navItems.notifications };
-		notifications.unreadNotifications = 1;
-		const items = { ...navItems, notifications };
-		return (
-			<TestNav
-				self={{
-					is_pro_admin: true,
-					...MOCK_MEMBER,
-				}}
-				navItems={items}
-				style={{ width: '100%' }}
-				media={{ isAtMediumUp: true, isAtLargeUp: true }}
-				isNewNavActive
-				isNewNavsOrder
-			/>
-		);
-	})
+	.add(
+		'authenticated Pro admins with unread notifications and search (mup-web)',
+		() => {
+			const notifications = { ...navItems.notifications };
+			notifications.unreadNotifications = 1;
+			const items = { ...navItems, notifications };
+			return (
+				<TestNav
+					self={{
+						is_pro_admin: true,
+						...MOCK_MEMBER,
+					}}
+					navItems={items}
+					style={{ width: '100%' }}
+					media={{ isAtMediumUp: true, isAtLargeUp: true }}
+					isNewNavActive
+					isNewNavsOrder
+					isSearchEnabled
+				/>
+			);
+		}
+	)
 	.add('unauthenticated', () => (
 		<TestNav
 			self={{ status: 'prereg' }}
