@@ -158,7 +158,6 @@ export class Nav extends React.Component {
 			onSearchCallback,
 			isNewNavActive,
 			isNewNavsOrder,
-			isProEasyCreateGroup,
 			...other
 		} = this.props;
 
@@ -196,7 +195,12 @@ export class Nav extends React.Component {
 		const isNotificationsLoaded = Boolean(notifications.list);
 		const isNewNavActiveDesktop = isNewNavActive && media.isAtMediumUp;
 		const isProAdminEasyCreateGroup =
-			isProEasyCreateGroup && Boolean(self.is_pro_admin) && media.isAtMediumUp;
+			Boolean(self.is_pro_admin) && media.isAtMediumUp;
+
+		const profileAvatarSize =
+			isNewNavActiveDesktop || isProAdminEasyCreateGroup
+				? { medium: true }
+				: { small: true };
 
 		const notificationContent = isNotificationsLoaded ? (
 			<NotificationsDropdown
@@ -454,13 +458,7 @@ export class Nav extends React.Component {
 				icon: (
 					<Flex noGutters align="center" aria-label={profile.label}>
 						<FlexItem>
-							<AvatarMember
-								small={!isNewNavActiveDesktop}
-								medium={
-									isNewNavActiveDesktop || isProAdminEasyCreateGroup
-								}
-								member={self}
-							/>
+							<AvatarMember member={self} {...profileAvatarSize} />
 						</FlexItem>
 						<FlexItem
 							shrink
@@ -600,9 +598,7 @@ export class Nav extends React.Component {
 					)}
 
 					{isSearchEnabled &&
-						(isProEasyCreateGroup
-							? media.isAtLargeUp
-							: media.isAtMediumUp) && (
+						(self.is_pro_admin ? media.isAtLargeUp : media.isAtMediumUp) && (
 							<FlexItem>
 								<NavbarSearch
 									onSearchCallback={onSearchCallback}
@@ -681,9 +677,6 @@ Nav.propTypes = {
 
 	/** Flag to indicate that new Nav should be shown (same as in build-meetup/homepage) */
 	isNewNavActive: PropTypes.bool,
-
-	/** Flag to indicate Pro easy create group Nav */
-	isProEasyCreateGroup: PropTypes.bool,
 };
 
 export default Nav;
