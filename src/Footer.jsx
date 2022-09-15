@@ -97,7 +97,11 @@ export const Footer = ({
 				<Bounds narrow className="bounds--footer">
 					<Section hasSeparator>
 						<Chunk>
-							<a href={createMeetup.link} className="link link--white">
+							<a
+								href={createMeetup.link}
+								className="link link--white"
+								onClick={createMeetup.onLinkClick}
+							>
 								{createMeetup.text}
 							</a>
 						</Chunk>
@@ -244,6 +248,7 @@ Footer.propTypes = {
 	createMeetup: PropTypes.shape({
 		link: PropTypes.string.isRequired,
 		text: PropTypes.string.isRequired,
+		onLinkClick: PropTypes.func,
 	}).isRequired,
 
 	/** Renders a light footer background instead of dark. Used for 404's and error pages  */
