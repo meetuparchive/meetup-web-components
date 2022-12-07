@@ -458,7 +458,11 @@ export class Nav extends React.Component {
 				icon: (
 					<Flex noGutters align="center" aria-label={profile.label}>
 						<FlexItem>
-							<AvatarMember member={self} {...profileAvatarSize} />
+							<AvatarMember
+								member={self}
+								{...profileAvatarSize}
+								badgeType={profile.badgeType}
+							/>
 						</FlexItem>
 						<FlexItem
 							shrink
