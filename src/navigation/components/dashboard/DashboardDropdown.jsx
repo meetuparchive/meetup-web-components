@@ -20,13 +20,14 @@ export const DashboardDropdownComponent = ({ mobileTabs, dismissAction }) => {
 		profile,
 		logout,
 		analytics,
-		members,
 		groups,
 		events,
 		templates,
 		publicProfile,
 		contact,
 	} = mobileTabs;
+	const { members } = mobileTabs || {};
+
 	return (
 		<Modal onDismiss={dismissAction}>
 			<Flex justify="spaceBetween" className="align--left padding--all">
@@ -35,9 +36,11 @@ export const DashboardDropdownComponent = ({ mobileTabs, dismissAction }) => {
 						<li className="list-item padding--bottom">
 							<a href={analytics.link}>{analytics.label}</a>
 						</li>
-						<li className="list-item padding--bottom">
-							<a href={members.link}>{members.label}</a>
-						</li>
+						{Boolean(members) && (
+							<li className="list-item padding--bottom">
+								<a href={members.link}>{members.label}</a>
+							</li>
+						)}
 						<li className="list-item padding--bottom">
 							<a href={groups.link}>{groups.label}</a>
 						</li>

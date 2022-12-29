@@ -54,4 +54,11 @@ describe('Profile Dropdown', () => {
 		const wrapper = shallow(<DashboardDropdown {...MOCK_PROPS} />);
 		expect(wrapper).toMatchSnapshot();
 	});
+	it('should match snapshot without members tab', () => {
+		const mobileTabs = { ...MOCK_PROPS.mobileTabs };
+		delete mobileTabs.members;
+		const updatedProps = { ...MOCK_PROPS, mobileTabs };
+		const wrapper = shallow(<DashboardDropdown {...updatedProps} />);
+		expect(wrapper).toMatchSnapshot();
+	});
 });
