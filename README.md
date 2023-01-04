@@ -19,7 +19,7 @@ Table of Contents
     * [Verifying child elements](#verifying-child-elements)
   * [Linting](#linting)
   * [Storybook](#storybook)
-  * [Release notes](https://github.com/meetup/meetup-web-components/blob/master/CHANGELOG.md)
+  * [Release notes](https://github.com/meetup/meetup-web-components/blob/main/CHANGELOG.md)
 
 ## Component checklist
 This checklist can be used as a guide for adding components that are easy to reuse and maintain. The categories come from a talk I saw [Elyse Holladay](https://elyseholladay.github.io/) give at Clarity Conf 2017.
@@ -48,10 +48,10 @@ This checklist can be used as a guide for adding components that are easy to reu
 ## Releases
 
 This package uses semver versioning to tag releases, although the patch version
-is determined exclusively by the Travis build number for pushes to `master`.
+is determined exclusively by the Travis build number for pushes to `main`.
 Major and minor versions are hard-coded into the [Makefile](Makefile#L2).
 
-Manual pushes to `master` and PR merges to master will be built by Travis, and
+Manual pushes to `main` and PR merges to main will be built by Travis, and
 will kick off the yarn publish routine. The currently-published version of the
 package is shown on the repo homepage on GitHub in a badge at the top of the
 README.
