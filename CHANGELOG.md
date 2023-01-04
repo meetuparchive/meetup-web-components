@@ -102,7 +102,7 @@
 # [4.3]
 
 -   **BREAKING CHANGE** Removed the `responsiveVarContext` mixin. Usage must be replaced
-    with the `customPropertyValue( <property>, var(--responsiveSpace), $space)` mixin. - [Example usage of customPropertyValue](https://github.com/meetup/meetup-web-components/blob/master/assets/scss/components/_inlineblockList.scss#L49) - [customPropertyValue documentation](https://meetup.github.io/swarm-sasstools/sassdoc/index.html#mixin-customPropertyValue)
+    with the `customPropertyValue( <property>, var(--responsiveSpace), $space)` mixin. - [Example usage of customPropertyValue](https://github.com/meetup/meetup-web-components/blob/main/assets/scss/components/_inlineblockList.scss#L49) - [customPropertyValue documentation](https://meetup.github.io/swarm-sasstools/sassdoc/index.html#mixin-customPropertyValue)
 -   **Change** Upgraded to a version of `swarm-sasstools` where we replace
     responsive sizing/spacing mixins with CSS custom properties
 

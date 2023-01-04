@@ -1,5 +1,5 @@
 // event list query params from eventlistselectors
-// https://github.com/meetup/mup-web/blob/master/src/app/group/event/list/eventsListSelectors.js#L61
+// https://github.com/meetup/mup-web/blob/main/src/app/group/event/list/eventsListSelectors.js#L61
 declare type EventsListParams = {
 	status: GroupEventStatus,
 	desc: boolean,
