@@ -158,6 +158,7 @@ export class Nav extends React.Component {
 			onSearchCallback,
 			isNewNavActive,
 			isNewNavsOrder,
+			isProInNavFFEnabled,
 			...other
 		} = this.props;
 
@@ -300,6 +301,26 @@ export class Nav extends React.Component {
 			);
 		};
 
+		const getMessagesLabel = () => {
+			if (isProInNavFFEnabled) {
+				return messages.label;
+			}
+
+			return isNewNavActiveDesktop && !isProAdminEasyCreateGroup
+				? ''
+				: messages.label;
+		};
+
+		const getNotificataionsLabel = () => {
+			if (isProInNavFFEnabled) {
+				return notifications.label;
+			}
+
+			return isNewNavActiveDesktop && !isProAdminEasyCreateGroup
+				? ''
+				: notifications.label;
+		};
+
 		const proDashboardIcon = isProAdminEasyCreateGroup ? (
 			<img className="proIcon" src={PRO_DASHBOARD_ICON} />
 		) : (
@@ -390,10 +411,7 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: messages.link,
-				label:
-					isNewNavActiveDesktop && !isProAdminEasyCreateGroup
-						? ''
-						: messages.label,
+				label: getMessagesLabel(),
 				labelClassName: cx(isProAdminEasyCreateGroup && 'navItem-label-pro'),
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
 				linkClassName: cx(isProAdminEasyCreateGroup && 'navItemLink-pro'),
@@ -414,10 +432,7 @@ export class Nav extends React.Component {
 					media.isAtMediumUp && !isNewNavActive && !isProAdminEasyCreateGroup
 						? ''
 						: notifications.link,
-				label:
-					isNewNavActiveDesktop && !isProAdminEasyCreateGroup
-						? ''
-						: notifications.label,
+				label: getNotificataionsLabel(),
 				labelClassName: cx(isProAdminEasyCreateGroup && 'navItem-label-pro'),
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
 				linkClassName: cx(isProAdminEasyCreateGroup && 'navItemLink-pro'),
@@ -681,6 +696,9 @@ Nav.propTypes = {
 
 	/** Flag to indicate that new Nav should be shown (same as in build-meetup/homepage) */
 	isNewNavActive: PropTypes.bool,
+
+	// Flag to indicate if updated Core nav is shown and for adding Pro to the Core Nav
+	isProInNavFFEnabled: PropTypes.bool,
 };
 
 export default Nav;
