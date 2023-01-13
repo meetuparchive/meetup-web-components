@@ -158,7 +158,7 @@ export class Nav extends React.Component {
 			onSearchCallback,
 			isNewNavActive,
 			isNewNavsOrder,
-			isProInNavFFEnabled,
+			isProInNavFFEnabled = false,
 			...other
 		} = this.props;
 
@@ -197,6 +197,7 @@ export class Nav extends React.Component {
 		const isNewNavActiveDesktop = isNewNavActive && media.isAtMediumUp;
 		const isProAdminEasyCreateGroup =
 			Boolean(self.is_pro_admin) && media.isAtMediumUp;
+		const isProInNavDesktop = isProInNavFFEnabled && media.isAtMediumUp;
 
 		const profileAvatarSize =
 			isNewNavActiveDesktop || isProAdminEasyCreateGroup
@@ -302,7 +303,7 @@ export class Nav extends React.Component {
 		};
 
 		const getMessagesLabel = () => {
-			if (isProInNavFFEnabled) {
+			if (isProInNavDesktop) {
 				return messages.label;
 			}
 
@@ -312,7 +313,7 @@ export class Nav extends React.Component {
 		};
 
 		const getNotificataionsLabel = () => {
-			if (isProInNavFFEnabled) {
+			if (isProInNavDesktop) {
 				return notifications.label;
 			}
 
@@ -412,14 +413,20 @@ export class Nav extends React.Component {
 				shrink: true,
 				linkTo: messages.link,
 				label: getMessagesLabel(),
-				labelClassName: cx(isProAdminEasyCreateGroup && 'navItem-label-pro'),
+				labelClassName: cx(
+					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
+						'navItem-label-pro'
+				),
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
-				linkClassName: cx(isProAdminEasyCreateGroup && 'navItemLink-pro'),
+				linkClassName: cx(
+					(isProAdminEasyCreateGroup || isProInNavDesktop) && 'navItemLink-pro'
+				),
 				counterBadgeClassName: cx(
 					isNewNavActiveDesktop &&
 						!isProAdminEasyCreateGroup &&
 						'navItem--counterBadge',
-					isProAdminEasyCreateGroup && 'navItem--counterBadgeProMessages'
+					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
+						'navItem--counterBadgeProMessages'
 				),
 				icon: getMessagesIcon(),
 				hasUpdates: messages.unreadMessages > 0,
@@ -433,14 +440,20 @@ export class Nav extends React.Component {
 						? ''
 						: notifications.link,
 				label: getNotificataionsLabel(),
-				labelClassName: cx(isProAdminEasyCreateGroup && 'navItem-label-pro'),
+				labelClassName: cx(
+					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
+						'navItem-label-pro'
+				),
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
-				linkClassName: cx(isProAdminEasyCreateGroup && 'navItemLink-pro'),
+				linkClassName: cx(
+					(isProAdminEasyCreateGroup || isProInNavDesktop) && 'navItemLink-pro'
+				),
 				counterBadgeClassName: cx(
 					isNewNavActiveDesktop &&
 						!isProAdminEasyCreateGroup &&
 						'navItem--counterBadge',
-					isProAdminEasyCreateGroup && 'navItem--counterBadgeProNotifications'
+					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
+						'navItem--counterBadgeProNotifications'
 				),
 				icon: getNotificationsIcon(),
 				onClickAction:
