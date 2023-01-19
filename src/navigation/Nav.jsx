@@ -424,6 +424,7 @@ export class Nav extends React.Component {
 				counterBadgeClassName: cx(
 					isNewNavActiveDesktop &&
 						!isProAdminEasyCreateGroup &&
+						!isProInNavDesktop &&
 						'navItem--counterBadge',
 					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
 						'navItem--counterBadgeProMessages'
@@ -436,7 +437,10 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo:
-					media.isAtMediumUp && !isNewNavActive && !isProAdminEasyCreateGroup
+					media.isAtMediumUp &&
+					!isNewNavActive &&
+					!isProAdminEasyCreateGroup &&
+					!isProInNavDesktop
 						? ''
 						: notifications.link,
 				label: getNotificataionsLabel(),
@@ -451,6 +455,7 @@ export class Nav extends React.Component {
 				counterBadgeClassName: cx(
 					isNewNavActiveDesktop &&
 						!isProAdminEasyCreateGroup &&
+						!isProInNavDesktop &&
 						'navItem--counterBadge',
 					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
 						'navItem--counterBadgeProNotifications'
@@ -459,12 +464,14 @@ export class Nav extends React.Component {
 				onClickAction:
 					(!isNewNavActive &&
 						!isProAdminEasyCreateGroup &&
+						!isProInNavDesktop &&
 						media.isAtMediumUp &&
 						this.onClickDropdownAction) ||
 					undefined,
 				dropdownContent:
 					(!isNewNavActive &&
 						!isProAdminEasyCreateGroup &&
+						!isProInNavDesktop &&
 						media.isAtMediumUp &&
 						notificationContent) ||
 					undefined,
