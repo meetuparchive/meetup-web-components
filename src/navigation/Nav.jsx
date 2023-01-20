@@ -199,7 +199,10 @@ export class Nav extends React.Component {
 		const isProAdminEasyCreateGroup =
 			Boolean(self.is_pro_admin) && media.isAtMediumUp;
 		const isProInNavDesktop =
-			isProInNavFFEnabled && media.isAtMediumUp && Boolean(!self.is_pro_admin);
+			isProInNavFFEnabled &&
+			media.isAtMediumUp &&
+			Boolean(!self.is_pro_admin) &&
+			Boolean(!self.is_pro_org);
 
 		const profileAvatarSize =
 			isNewNavActiveDesktop || isProAdminEasyCreateGroup
@@ -325,7 +328,11 @@ export class Nav extends React.Component {
 		};
 
 		const getTryProIcon = () => {
-			return <div className="pill">PRO</div>;
+			return (
+				<div className="tw-text-white tw-bg-viridian tw-px-1 tw-py-0\.5 tw-rounded tw-font-semibold tw-my-0\.5">
+					PRO
+				</div>
+			);
 		};
 
 		const proDashboardIcon = isProAdminEasyCreateGroup ? (
@@ -420,7 +427,7 @@ export class Nav extends React.Component {
 				linkTo: trypPro.link,
 				label: trypPro.label,
 				icon: getTryProIcon(),
-				onLinkClick: messages.onLinkClick,
+				onLinkClick: trypPro.onLinkClick,
 			},
 			{
 				shrink: true,
