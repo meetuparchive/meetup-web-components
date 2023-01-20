@@ -180,6 +180,7 @@ export class Nav extends React.Component {
 			dropdownLoaderLabel,
 			experiences,
 			search,
+			trypPro,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('globalNav padding--all', className);
@@ -322,6 +323,10 @@ export class Nav extends React.Component {
 				: notifications.label;
 		};
 
+		const getTryProIcon = () => {
+			return <div className="pill">PRO</div>;
+		};
+
 		const proDashboardIcon = isProAdminEasyCreateGroup ? (
 			<img className="proIcon" src={PRO_DASHBOARD_ICON} />
 		) : (
@@ -408,6 +413,13 @@ export class Nav extends React.Component {
 				label: groups.label,
 				className: `atMedium_display--none ${CLASS_AUTH_ITEM}`,
 				icon: <Icon shape="groups" size="s" className="display--block" />,
+			},
+			isProInNavDesktop && {
+				shrink: true,
+				linkTo: trypPro.link,
+				label: trypPro.label,
+				icon: getTryProIcon(),
+				onLinkClick: messages.onLinkClick,
 			},
 			{
 				shrink: true,
