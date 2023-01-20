@@ -198,7 +198,8 @@ export class Nav extends React.Component {
 		const isNewNavActiveDesktop = isNewNavActive && media.isAtMediumUp;
 		const isProAdminEasyCreateGroup =
 			Boolean(self.is_pro_admin) && media.isAtMediumUp;
-		const isProInNavDesktop = isProInNavFFEnabled && media.isAtMediumUp;
+		const isProInNavDesktop =
+			isProInNavFFEnabled && media.isAtMediumUp && Boolean(!self.is_pro_admin);
 
 		const profileAvatarSize =
 			isNewNavActiveDesktop || isProAdminEasyCreateGroup
