@@ -180,7 +180,7 @@ export class Nav extends React.Component {
 			dropdownLoaderLabel,
 			experiences,
 			search,
-			trypPro,
+			tryPro,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('globalNav padding--all', className);
@@ -329,7 +329,7 @@ export class Nav extends React.Component {
 
 		const getTryProIcon = () => {
 			return (
-				<div className="tw-text-white tw-bg-viridian tw-px-1 tw-py-0\.5 tw-rounded tw-font-semibold tw-my-0\.5">
+				<div className="tw-text-white tw-bg-viridian tw-px-1 tw-py-0.5 tw-rounded tw-font-semibold tw-my-0.5 tw-mx-4 tw-text-xs">
 					PRO
 				</div>
 			);
@@ -424,10 +424,13 @@ export class Nav extends React.Component {
 			},
 			isProInNavDesktop && {
 				shrink: true,
-				linkTo: trypPro.link,
-				label: trypPro.label,
+				linkTo: tryPro.link,
+				label: tryPro.label,
+				className: 'navItem',
+				labelClassName: `navItem-label-pro ${CLASS_AUTH_ITEM}`,
 				icon: getTryProIcon(),
-				onLinkClick: trypPro.onLinkClick,
+				onLinkClick: tryPro.onLinkClick,
+				linkClassName: 'navItemLink-pro',
 			},
 			{
 				shrink: true,

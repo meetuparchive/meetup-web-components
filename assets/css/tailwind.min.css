@@ -19,6 +19,16 @@
   margin-bottom: 0.125rem
 }
 
+.tw-mx-4 {
+  margin-left: 1rem; 
+  margin-right: 1rem
+ }
+
+ .tw-text-xs {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+ }
+
 .tw-box-border {
   box-sizing: border-box
 }
