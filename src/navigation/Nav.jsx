@@ -422,12 +422,11 @@ export class Nav extends React.Component {
 					(isProAdminEasyCreateGroup || isProInNavDesktop) && 'navItemLink-pro'
 				),
 				counterBadgeClassName: cx(
-					isNewNavActiveDesktop &&
-						!isProAdminEasyCreateGroup &&
-						!isProInNavDesktop &&
-						'navItem--counterBadge',
 					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
-						'navItem--counterBadgeProMessages'
+						'navItem--counterBadgeProMessages',
+					isNewNavActiveDesktop &&
+						(!isProAdminEasyCreateGroup || !isProInNavDesktop) &&
+						'navItem--counterBadge'
 				),
 				icon: getMessagesIcon(),
 				hasUpdates: messages.unreadMessages > 0,
@@ -453,12 +452,11 @@ export class Nav extends React.Component {
 					(isProAdminEasyCreateGroup || isProInNavDesktop) && 'navItemLink-pro'
 				),
 				counterBadgeClassName: cx(
-					isNewNavActiveDesktop &&
-						!isProAdminEasyCreateGroup &&
-						!isProInNavDesktop &&
-						'navItem--counterBadge',
 					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
-						'navItem--counterBadgeProNotifications'
+						'navItem--counterBadgeProNotifications',
+					isNewNavActiveDesktop &&
+						(!isProAdminEasyCreateGroup || !isProInNavDesktop) &&
+						'navItem--counterBadge'
 				),
 				icon: getNotificationsIcon(),
 				onClickAction:

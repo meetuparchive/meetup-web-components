@@ -309,4 +309,23 @@ storiesOf('Site Chrome/Nav', module)
 			style={{ width: '100%' }}
 			media={{ isAtMediumUp: true, isAtLargeUp: true }}
 		/>
-	));
+	))
+	.add('authenticated with updated nav design with unread notifications', () => {
+		const notifications = { ...navItems.notifications };
+		notifications.unreadNotifications = 1;
+		const items = { ...navItems, notifications };
+		return (
+			<TestNav
+				self={{
+					is_pro_admin: true,
+					...MOCK_MEMBER,
+				}}
+				navItems={items}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+				isNewNavActive
+				isNewNavsOrder
+				isProInNavFFEnabled
+			/>
+		);
+	});
