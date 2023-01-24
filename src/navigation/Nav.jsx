@@ -180,6 +180,7 @@ export class Nav extends React.Component {
 			dropdownLoaderLabel,
 			experiences,
 			search,
+			tryPro,
 		} = navItems;
 		const isLoggedOut = self.status === 'prereg' || !self.name;
 		const classNames = cx('globalNav padding--all', className);
@@ -197,7 +198,11 @@ export class Nav extends React.Component {
 		const isNewNavActiveDesktop = isNewNavActive && media.isAtMediumUp;
 		const isProAdminEasyCreateGroup =
 			Boolean(self.is_pro_admin) && media.isAtMediumUp;
-		const isProInNavDesktop = isProInNavFFEnabled && media.isAtMediumUp;
+		const isProInNavDesktop =
+			isProInNavFFEnabled &&
+			media.isAtMediumUp &&
+			Boolean(!self.is_pro_admin) &&
+			Boolean(!self.is_pro_org);
 
 		const profileAvatarSize =
 			isNewNavActiveDesktop || isProAdminEasyCreateGroup
@@ -322,6 +327,14 @@ export class Nav extends React.Component {
 				: notifications.label;
 		};
 
+		const getTryProIcon = () => {
+			return (
+				<div className="tw-text-white tw-bg-viridian tw-px-1 tw-py-0.5 tw-rounded tw-font-semibold tw-my-0.5 tw-mx-4 tw-text-xs">
+					PRO
+				</div>
+			);
+		};
+
 		const proDashboardIcon = isProAdminEasyCreateGroup ? (
 			<img className="proIcon" src={PRO_DASHBOARD_ICON} />
 		) : (
@@ -408,6 +421,16 @@ export class Nav extends React.Component {
 				label: groups.label,
 				className: `atMedium_display--none ${CLASS_AUTH_ITEM}`,
 				icon: <Icon shape="groups" size="s" className="display--block" />,
+			},
+			isProInNavDesktop && {
+				shrink: true,
+				linkTo: tryPro.link,
+				label: tryPro.label,
+				className: 'navItem',
+				labelClassName: `navItem-label-pro ${CLASS_AUTH_ITEM}`,
+				icon: getTryProIcon(),
+				onLinkClick: tryPro.onLinkClick,
+				linkClassName: 'navItemLink-pro',
 			},
 			{
 				shrink: true,

@@ -72,6 +72,11 @@ export const navItemsFactory = () => {
 				{ urlname: '/chicken-scratch', name: 'Chicken Scratch' },
 			],
 		},
+		tryPro: {
+			link:
+				'meetup.com/lp/meetup-pro/?fromUpgrade=true&utm_medium=display&utm_source=meetup&utm_content=lp_pro&utm_campaign=meetup_orgeng_c2p_pro',
+			label: 'Try for free',
+		},
 		messages: {
 			link: 'meetup.com/messages',
 			label: 'Messages',
@@ -236,6 +241,20 @@ storiesOf('Site Chrome/Nav', module)
 			);
 		}
 	)
+	.add('authenticated with pro in nav button', () => {
+		return (
+			<TestNav
+				self={MOCK_MEMBER}
+				navItems={navItems}
+				style={{ width: '100%' }}
+				media={{ isAtMediumUp: true, isAtLargeUp: true }}
+				isNewNavActive
+				isNewNavsOrder
+				isSearchEnabled
+				isProInNavFFEnabled
+			/>
+		);
+	})
 	.add('authenticated but with draft group at the top', () => {
 		const navItemsModified = {
 			...navItems,

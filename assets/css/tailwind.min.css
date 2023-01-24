@@ -14,6 +14,21 @@
   margin-left: 0.25rem
 }
 
+.tw-my-0\.5  {
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem
+}
+
+.tw-mx-4 {
+  margin-left: 1rem; 
+  margin-right: 1rem
+ }
+
+ .tw-text-xs {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+ }
+
 .tw-box-border {
   box-sizing: border-box
 }
@@ -25,6 +40,18 @@
 .tw-flex-grow {
   flex-grow: 1
 }
+
+.tw-text-white {
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity))
+}
+
+.tw-bg-viridian {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 130, 148, var(--tw-bg-opacity))
+}
+
+
 
 @-webkit-keyframes tw-spin {
   to {
@@ -104,6 +131,10 @@
   align-items: center
 }
 
+.tw-rounded {
+  border-radius: 0.25rem
+}
+
 .tw-rounded-lg {
   border-radius: 0.5rem
 }
@@ -123,6 +154,20 @@
 
 .tw-p-4 {
   padding: 1rem
+}
+
+.tw-px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem
+}
+
+.tw-py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem
+}
+
+.tw-font-semibold {
+  font-weight: 600
 }
 
 .tw-text-center {
