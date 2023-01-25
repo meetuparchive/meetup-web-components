@@ -17,8 +17,19 @@ export const ActionItem = ({ navItemContent, action }) => (
 		{navItemContent}
 	</Button>
 );
-export const LinkItem = ({ linkTo, navItemContent, className, onLinkClick }) => (
-	<a href={linkTo} className={cx(NAV_ITEM_CLASS, className)} onClick={onLinkClick}>
+export const LinkItem = ({
+	linkTo,
+	navItemContent,
+	className,
+	onLinkClick,
+	isTryProButton,
+}) => (
+	<a
+		href={linkTo}
+		className={cx(NAV_ITEM_CLASS, className)}
+		onClick={onLinkClick}
+		target={isTryProButton ? '_blank' : ''}
+	>
 		{navItemContent}
 	</a>
 );
@@ -59,6 +70,7 @@ export const NavItem = props => {
 		updatesLabel,
 		isNewNavActive,
 		onLinkClick,
+		isTryProButton,
 		...other
 	} = props;
 
@@ -94,6 +106,7 @@ export const NavItem = props => {
 					linkTo={linkTo}
 					navItemContent={navItemContent}
 					onLinkClick={onLinkClick}
+					isTryProButton={isTryProButton}
 				/>
 			)}
 			{dropdownContent && (
@@ -123,6 +136,7 @@ NavItem.propTypes = {
 	hasUpdates: PropTypes.bool,
 	isNewNavActive: PropTypes.bool,
 	onLinkClick: PropTypes.func,
+	isTryProButton: PropTypes.bool,
 };
 
 export default NavItem;
