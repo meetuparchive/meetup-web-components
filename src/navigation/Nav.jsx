@@ -431,7 +431,7 @@ export class Nav extends React.Component {
 				icon: getTryProIcon(),
 				onLinkClick: tryPro.onLinkClick,
 				linkClassName: 'navItemLink-pro',
-				isTryProButton: true,
+				isTargetBlank: true,
 			},
 			{
 				shrink: true,
@@ -581,7 +581,7 @@ export class Nav extends React.Component {
 						linkClassName={item.linkClassName}
 						isNewNavActive={isNewNavActive}
 						onLinkClick={item.onLinkClick}
-						isTryProButton={item.isTryProButton}
+						isTargetBlank={item.isTargetBlank}
 					/>
 				)
 			);

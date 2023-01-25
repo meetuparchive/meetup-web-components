@@ -22,13 +22,13 @@ export const LinkItem = ({
 	navItemContent,
 	className,
 	onLinkClick,
-	isTryProButton,
+	isTargetBlank,
 }) => (
 	<a
 		href={linkTo}
 		className={cx(NAV_ITEM_CLASS, className)}
 		onClick={onLinkClick}
-		target={isTryProButton ? '_blank' : ''}
+		target={isTargetBlank ? '_blank' : ''}
 	>
 		{navItemContent}
 	</a>
@@ -70,7 +70,7 @@ export const NavItem = props => {
 		updatesLabel,
 		isNewNavActive,
 		onLinkClick,
-		isTryProButton,
+		isTargetBlank,
 		...other
 	} = props;
 
@@ -106,7 +106,7 @@ export const NavItem = props => {
 					linkTo={linkTo}
 					navItemContent={navItemContent}
 					onLinkClick={onLinkClick}
-					isTryProButton={isTryProButton}
+					isTargetBlank={isTargetBlank}
 				/>
 			)}
 			{dropdownContent && (
@@ -136,7 +136,7 @@ NavItem.propTypes = {
 	hasUpdates: PropTypes.bool,
 	isNewNavActive: PropTypes.bool,
 	onLinkClick: PropTypes.func,
-	isTryProButton: PropTypes.bool,
+	isTargetBlank: PropTypes.bool,
 };
 
 export default NavItem;
