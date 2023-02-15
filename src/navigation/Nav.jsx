@@ -168,7 +168,7 @@ export class Nav extends React.Component {
 			create,
 			signup,
 			proDashboard,
-			explore,
+			explore, // eslint-disable-line no-unused-vars
 			messages,
 			notifications,
 			groups,
@@ -363,20 +363,6 @@ export class Nav extends React.Component {
 				onLinkClick: proDashboard.onLinkClick,
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
-			!isNewNavActive &&
-				!isProAdminDesktop && {
-					shrink: true,
-					linkTo: explore.link,
-					label: explore.label,
-					className: CLASS_AUTH_ITEM,
-					icon: (
-						<Icon
-							shape="search"
-							size="s"
-							className="atMedium_display--none"
-						/>
-					),
-				},
 			{
 				shrink: true,
 				linkTo: groups.link,
