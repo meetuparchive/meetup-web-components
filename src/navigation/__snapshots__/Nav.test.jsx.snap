@@ -201,20 +201,6 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
       linkTo="meetup.com"
     />
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      key="0"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -223,7 +209,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
           size="s"
         />
       }
-      key="1"
+      key="0"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -239,7 +225,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="1"
       label="Messages"
       labelClassName=""
       linkClassName=""
@@ -257,7 +243,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
           size="s"
         />
       }
-      key="3"
+      key="2"
       label="Notifications"
       labelClassName=""
       linkClassName=""
@@ -300,7 +286,7 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="4"
+      key="3"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"
@@ -357,20 +343,6 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      key="1"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -379,7 +351,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="1"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -394,7 +366,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
         </div>
       }
       isTargetBlank={true}
-      key="3"
+      key="2"
       label="Try for free"
       labelClassName="navItem-label-pro navItem--authenticated"
       linkClassName="navItemLink-pro"
@@ -406,13 +378,12 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       counterBadgeClassName="navItem--counterBadgeProMessages"
       hasUpdates={true}
       icon={
-        <Icon
-          className="display--block atMedium_display--none"
-          shape="messages"
-          size="s"
+        <img
+          className="proIcon"
+          src=""
         />
       }
-      key="4"
+      key="3"
       label="Messages"
       labelClassName="navItem-label-pro"
       linkClassName="navItemLink-pro"
@@ -424,13 +395,12 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       counterBadgeClassName="navItem--counterBadgeProNotifications"
       hasUpdates={false}
       icon={
-        <Icon
-          className="display--block atMedium_display--none"
-          shape="notifications"
-          size="s"
+        <img
+          className="proIcon"
+          src=""
         />
       }
-      key="5"
+      key="4"
       label="Notifications"
       labelClassName="navItem-label-pro"
       linkClassName="navItemLink-pro"
@@ -548,6 +518,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
         >
           <FlexItem>
             <AvatarMember
+              medium={true}
               member={
                 Object {
                   "id": 1243,
@@ -558,7 +529,6 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
                   },
                 }
               }
-              small={true}
             />
           </FlexItem>
           <FlexItem
@@ -574,7 +544,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="6"
+      key="5"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
@@ -911,20 +881,6 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      key="1"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -933,7 +889,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="1"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -949,7 +905,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
           size="s"
         />
       }
-      key="3"
+      key="2"
       label="Messages"
       labelClassName=""
       linkClassName=""
@@ -967,7 +923,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
           size="s"
         />
       }
-      key="4"
+      key="3"
       label="Notifications"
       labelClassName=""
       linkClassName=""
@@ -1011,7 +967,7 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="5"
+      key="4"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"
@@ -1186,20 +1142,6 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      key="1"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -1208,7 +1150,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="1"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -1223,7 +1165,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
         </div>
       }
       isTargetBlank={true}
-      key="3"
+      key="2"
       label="Try for free"
       labelClassName="navItem-label-pro navItem--authenticated"
       linkClassName="navItemLink-pro"
@@ -1235,13 +1177,12 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       counterBadgeClassName="navItem--counterBadgeProMessages"
       hasUpdates={true}
       icon={
-        <Icon
-          className="display--block atMedium_display--none"
-          shape="messages"
-          size="s"
+        <img
+          className="proIcon"
+          src=""
         />
       }
-      key="4"
+      key="3"
       label="Messages"
       labelClassName="navItem-label-pro"
       linkClassName="navItemLink-pro"
@@ -1253,13 +1194,12 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       counterBadgeClassName="navItem--counterBadgeProNotifications"
       hasUpdates={false}
       icon={
-        <Icon
-          className="display--block atMedium_display--none"
-          shape="notifications"
-          size="s"
+        <img
+          className="proIcon"
+          src=""
         />
       }
-      key="5"
+      key="4"
       label="Notifications"
       labelClassName="navItem-label-pro"
       linkClassName="navItemLink-pro"
@@ -1377,6 +1317,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
         >
           <FlexItem>
             <AvatarMember
+              medium={true}
               member={
                 Object {
                   "id": 1243,
@@ -1387,7 +1328,6 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
                   },
                 }
               }
-              small={true}
             />
           </FlexItem>
           <FlexItem
@@ -1403,7 +1343,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="6"
+      key="5"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
@@ -1468,20 +1408,6 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      key="1"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -1490,7 +1416,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="1"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -1505,7 +1431,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
         </div>
       }
       isTargetBlank={true}
-      key="3"
+      key="2"
       label="Try for free"
       labelClassName="navItem-label-pro navItem--authenticated"
       linkClassName="navItemLink-pro"
@@ -1517,13 +1443,12 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       counterBadgeClassName="navItem--counterBadgeProMessages"
       hasUpdates={true}
       icon={
-        <Icon
-          className="display--block atMedium_display--none"
-          shape="messages"
-          size="s"
+        <img
+          className="proIcon"
+          src=""
         />
       }
-      key="4"
+      key="3"
       label="Messages"
       labelClassName="navItem-label-pro"
       linkClassName="navItemLink-pro"
@@ -1535,13 +1460,12 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       counterBadgeClassName="navItem--counterBadgeProNotifications"
       hasUpdates={false}
       icon={
-        <Icon
-          className="display--block atMedium_display--none"
-          shape="notifications"
-          size="s"
+        <img
+          className="proIcon"
+          src=""
         />
       }
-      key="5"
+      key="4"
       label="Notifications"
       labelClassName="navItem-label-pro"
       linkClassName="navItemLink-pro"
@@ -1659,6 +1583,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
         >
           <FlexItem>
             <AvatarMember
+              medium={true}
               member={
                 Object {
                   "id": 1243,
@@ -1669,7 +1594,6 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
                   },
                 }
               }
-              small={true}
             />
           </FlexItem>
           <FlexItem
@@ -1685,7 +1609,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="6"
+      key="5"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
@@ -1780,20 +1704,6 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
     justify="spaceBetween"
   >
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      key="0"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -1802,7 +1712,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
           size="s"
         />
       }
-      key="1"
+      key="0"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -1818,7 +1728,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
           size="s"
         />
       }
-      key="2"
+      key="1"
       label="Messages"
       labelClassName=""
       linkClassName=""
@@ -1836,7 +1746,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
           size="s"
         />
       }
-      key="3"
+      key="2"
       label="Notifications"
       labelClassName=""
       linkClassName=""
@@ -1879,7 +1789,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
           </FlexItem>
         </Flex>
       }
-      key="4"
+      key="3"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"
@@ -2065,20 +1975,6 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      key="1"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -2087,7 +1983,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="1"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -2102,7 +1998,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
         </div>
       }
       isTargetBlank={true}
-      key="3"
+      key="2"
       label="Try for free"
       labelClassName="navItem-label-pro navItem--authenticated"
       linkClassName="navItemLink-pro"
@@ -2114,13 +2010,12 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       counterBadgeClassName="navItem--counterBadgeProMessages"
       hasUpdates={true}
       icon={
-        <Icon
-          className="display--block atMedium_display--none"
-          shape="messages"
-          size="s"
+        <img
+          className="proIcon"
+          src=""
         />
       }
-      key="4"
+      key="3"
       label="Messages"
       labelClassName="navItem-label-pro"
       linkClassName="navItemLink-pro"
@@ -2132,13 +2027,12 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       counterBadgeClassName="navItem--counterBadgeProNotifications"
       hasUpdates={false}
       icon={
-        <Icon
-          className="display--block atMedium_display--none"
-          shape="notifications"
-          size="s"
+        <img
+          className="proIcon"
+          src=""
         />
       }
-      key="5"
+      key="4"
       label="Notifications"
       labelClassName="navItem-label-pro"
       linkClassName="navItemLink-pro"
@@ -2256,6 +2150,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
         >
           <FlexItem>
             <AvatarMember
+              medium={true}
               member={
                 Object {
                   "id": 1243,
@@ -2266,7 +2161,6 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
                   },
                 }
               }
-              small={true}
             />
           </FlexItem>
           <FlexItem
@@ -2282,7 +2176,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="6"
+      key="5"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo=""
@@ -2320,20 +2214,6 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      key="0"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -2342,7 +2222,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
           size="s"
         />
       }
-      key="1"
+      key="0"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -2358,7 +2238,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="1"
       label="Messages"
       labelClassName=""
       linkClassName=""
@@ -2376,7 +2256,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
           size="s"
         />
       }
-      key="3"
+      key="2"
       label="Notifications"
       labelClassName=""
       linkClassName=""
@@ -2419,7 +2299,7 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="4"
+      key="3"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"
@@ -2457,20 +2337,6 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
     justify="spaceBetween"
   >
     <NavItem
-      className="navItem--authenticated"
-      icon={
-        <Icon
-          className="atMedium_display--none"
-          shape="search"
-          size="s"
-        />
-      }
-      key="0"
-      label="Explore"
-      linkTo="meetup.com/find/events"
-      shrink={true}
-    />
-    <NavItem
       className="atMedium_display--none navItem--authenticated"
       icon={
         <Icon
@@ -2479,7 +2345,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
           size="s"
         />
       }
-      key="1"
+      key="0"
       label="Groups"
       linkTo="meetup.com/groups"
       shrink={true}
@@ -2495,7 +2361,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
           size="s"
         />
       }
-      key="2"
+      key="1"
       label="Messages"
       labelClassName=""
       linkClassName=""
@@ -2513,7 +2379,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
           size="s"
         />
       }
-      key="3"
+      key="2"
       label="Notifications"
       labelClassName=""
       linkClassName=""
@@ -2556,7 +2422,7 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
           </FlexItem>
         </Flex>
       }
-      key="4"
+      key="3"
       label="Profile"
       labelClassName="navItem-label display--block atMedium_display--none"
       linkTo="meetup.com/profile"
