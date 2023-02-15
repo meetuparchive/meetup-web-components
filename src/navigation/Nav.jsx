@@ -158,7 +158,6 @@ export class Nav extends React.Component {
 			onSearchCallback,
 			isNewNavActive,
 			isNewNavsOrder,
-			isProInNavFFEnabled = false,
 			...other
 		} = this.props;
 
@@ -199,7 +198,6 @@ export class Nav extends React.Component {
 		const isProAdminEasyCreateGroup =
 			Boolean(self.is_pro_admin) && media.isAtMediumUp;
 		const isProInNavDesktop =
-			isProInNavFFEnabled &&
 			media.isAtMediumUp &&
 			Boolean(!self.is_pro_admin) &&
 			Boolean(!self.is_pro_org);
@@ -741,9 +739,6 @@ Nav.propTypes = {
 
 	/** Flag to indicate that new Nav should be shown (same as in build-meetup/homepage) */
 	isNewNavActive: PropTypes.bool,
-
-	// Flag to indicate if updated Core nav is shown and for adding Pro to the Core Nav
-	isProInNavFFEnabled: PropTypes.bool,
 };
 
 export default Nav;
