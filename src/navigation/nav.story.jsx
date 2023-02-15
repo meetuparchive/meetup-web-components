@@ -63,7 +63,6 @@ export const navItemsFactory = () => {
 			},
 		},
 		explore: { link: 'meetup.com/find/events', label: 'Explore' },
-		experiences: { link: 'meetup.com/experiences', label: 'Experiences' },
 		groups: {
 			link: 'meetup.com/groups',
 			label: 'Groups',

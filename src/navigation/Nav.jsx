@@ -177,7 +177,6 @@ export class Nav extends React.Component {
 			updatesLabel,
 			logo,
 			dropdownLoaderLabel,
-			experiences,
 			search,
 			tryPro,
 		} = navItems;
@@ -261,15 +260,6 @@ export class Nav extends React.Component {
 			),
 			onLinkClick: create.onLinkClick,
 		};
-
-		const experiencesLink = experiences &&
-			experiences.link && {
-				shrink: true,
-				linkTo: experiences.link,
-				label: experiences.label,
-				linkClassName: 'navItemLink--experiences',
-				icon: <div className="pill">NEW</div>,
-			};
 
 		const getMessagesIcon = () => {
 			if (isProAdminEasyCreateGroup || isNewNavActiveDesktop) {
@@ -358,7 +348,6 @@ export class Nav extends React.Component {
 
 		let unauthItems = [
 			media.isAtMediumUp && createMeetupLink,
-			media.isAtMediumUp && experiencesLink,
 			{
 				shrink: true,
 				linkTo: login.link,
@@ -398,7 +387,6 @@ export class Nav extends React.Component {
 				onLinkClick: proDashboard.onLinkClick,
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
-			media.isAtMediumUp && experiencesLink,
 			!isNewNavActive &&
 				!isProAdminEasyCreateGroup && {
 					shrink: true,
