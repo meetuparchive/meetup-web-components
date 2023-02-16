@@ -4972,6 +4972,9 @@ input.field--reset:active {
 .proIcon {
   margin: 0 auto; }
 
+.tryProIcon {
+  margin: 2px 16px; }
+
 @media only screen and (min-width: 640px) {
   .navItemLink--dashboard {
     border-right: 1px solid rgba(46, 62, 72, 0.12);
@@ -7278,18 +7281,6 @@ Breakpoints        | Property       | Variants
 @media only screen and (min-width: 840px) {
   .atLarge_border--none {
     border-width: 0 !important; } }
-
-.tw-mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem; }
-
-.tw-my-0 {
-  margin-top: 0px;
-  margin-bottom: 0px; }
-
-.tw-my-0\.5 {
-  margin-top: 0.125rem;
-  margin-bottom: 0.125rem; }
 
 .tw-mb-2 {
   margin-bottom: 0.5rem; }
