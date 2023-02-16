@@ -186,6 +186,10 @@ $maxScalingBP: $breakpoint-m / 1px;
 	margin: 0 auto;
 }
 
+.tryProIcon {
+	margin: 2px 16px;
+}
+
 .navItemLink--dashboard {
 	@include atMediaUp(medium) {
 		@include standardBorder("right");
