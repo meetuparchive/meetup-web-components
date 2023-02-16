@@ -63,7 +63,6 @@ export const navItemsFactory = () => {
 			},
 		},
 		explore: { link: 'meetup.com/find/events', label: 'Explore' },
-		experiences: { link: 'meetup.com/experiences', label: 'Experiences' },
 		groups: {
 			link: 'meetup.com/groups',
 			label: 'Groups',
@@ -241,20 +240,6 @@ storiesOf('Site Chrome/Nav', module)
 			);
 		}
 	)
-	.add('authenticated with pro in nav button', () => {
-		return (
-			<TestNav
-				self={MOCK_MEMBER}
-				navItems={navItems}
-				style={{ width: '100%' }}
-				media={{ isAtMediumUp: true, isAtLargeUp: true }}
-				isNewNavActive
-				isNewNavsOrder
-				isSearchEnabled
-				isProInNavFFEnabled
-			/>
-		);
-	})
 	.add('authenticated but with draft group at the top', () => {
 		const navItemsModified = {
 			...navItems,

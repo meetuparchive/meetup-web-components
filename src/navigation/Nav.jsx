@@ -158,7 +158,6 @@ export class Nav extends React.Component {
 			onSearchCallback,
 			isNewNavActive,
 			isNewNavsOrder,
-			isProInNavFFEnabled = false,
 			...other
 		} = this.props;
 
@@ -169,7 +168,7 @@ export class Nav extends React.Component {
 			create,
 			signup,
 			proDashboard,
-			explore,
+			explore, // eslint-disable-line no-unused-vars
 			messages,
 			notifications,
 			groups,
@@ -178,7 +177,6 @@ export class Nav extends React.Component {
 			updatesLabel,
 			logo,
 			dropdownLoaderLabel,
-			experiences,
 			search,
 			tryPro,
 		} = navItems;
@@ -195,20 +193,15 @@ export class Nav extends React.Component {
 		);
 		const isGroupsLoaded = Boolean(groups.list);
 		const isNotificationsLoaded = Boolean(notifications.list);
-		const isNewNavActiveDesktop = isNewNavActive && media.isAtMediumUp;
-		const isProAdminEasyCreateGroup =
-			Boolean(self.is_pro_admin) && media.isAtMediumUp;
-		const isProInNavDesktop =
-			isProInNavFFEnabled &&
+		const isProAdminDesktop = Boolean(self.is_pro_admin) && media.isAtMediumUp;
+		const isCoreDesktop =
 			media.isAtMediumUp &&
 			Boolean(!self.is_pro_admin) &&
 			Boolean(!self.is_pro_org);
 
-		const profileAvatarSize =
-			isNewNavActiveDesktop || isProAdminEasyCreateGroup
-				? { medium: true }
-				: { small: true };
+		const profileAvatarSize = media.isAtMediumUp ? { medium: true } : { small: true };
 
+		// eslint-disable-next-line no-unused-vars
 		const notificationContent = isNotificationsLoaded ? (
 			<NotificationsDropdown
 				self={self}
@@ -257,24 +250,15 @@ export class Nav extends React.Component {
 			className: cx(
 				CLASS_UNAUTH_ITEM,
 				'navItemLink--createMeetup',
-				isProAdminEasyCreateGroup &&
+				isProAdminDesktop &&
 					Boolean(create.label) &&
 					'navItemLink--createMeetupPro'
 			),
 			onLinkClick: create.onLinkClick,
 		};
 
-		const experiencesLink = experiences &&
-			experiences.link && {
-				shrink: true,
-				linkTo: experiences.link,
-				label: experiences.label,
-				linkClassName: 'navItemLink--experiences',
-				icon: <div className="pill">NEW</div>,
-			};
-
 		const getMessagesIcon = () => {
-			if (isProAdminEasyCreateGroup || isNewNavActiveDesktop) {
+			if (media.isAtMediumUp) {
 				return <img className="proIcon" src={MESSAGE_ICON} />;
 			}
 
@@ -291,7 +275,7 @@ export class Nav extends React.Component {
 		};
 
 		const getNotificationsIcon = () => {
-			if (isProAdminEasyCreateGroup || isNewNavActiveDesktop) {
+			if (media.isAtMediumUp) {
 				return <img className="proIcon" src={NOTIFICATION_ICON} />;
 			}
 
@@ -307,26 +291,6 @@ export class Nav extends React.Component {
 			);
 		};
 
-		const getMessagesLabel = () => {
-			if (isProInNavDesktop) {
-				return messages.label;
-			}
-
-			return isNewNavActiveDesktop && !isProAdminEasyCreateGroup
-				? ''
-				: messages.label;
-		};
-
-		const getNotificataionsLabel = () => {
-			if (isProInNavDesktop) {
-				return notifications.label;
-			}
-
-			return isNewNavActiveDesktop && !isProAdminEasyCreateGroup
-				? ''
-				: notifications.label;
-		};
-
 		const getTryProIcon = () => {
 			return (
 				<div className="tw-text-white tw-bg-viridian tw-px-1 tw-py-0.5 tw-rounded tw-font-semibold tw-my-0.5 tw-mx-4 tw-text-xs">
@@ -335,7 +299,7 @@ export class Nav extends React.Component {
 			);
 		};
 
-		const proDashboardIcon = isProAdminEasyCreateGroup ? (
+		const proDashboardIcon = media.isAtMediumUp ? (
 			<img className="proIcon" src={PRO_DASHBOARD_ICON} />
 		) : (
 			<Flex noGutters align="center">
@@ -360,7 +324,6 @@ export class Nav extends React.Component {
 
 		let unauthItems = [
 			media.isAtMediumUp && createMeetupLink,
-			media.isAtMediumUp && experiencesLink,
 			{
 				shrink: true,
 				linkTo: login.link,
@@ -383,38 +346,23 @@ export class Nav extends React.Component {
 		];
 
 		let authItems = [
-			isProAdminEasyCreateGroup && createMeetupLink,
+			isProAdminDesktop && createMeetupLink,
 			self.is_pro_admin && {
 				shrink: true,
 				linkTo: media.isAtMediumUp ? proDashboard.link : '',
 				onAction: !media.isAtMediumUp && this.onClickMobileDropdownAction,
 				label: media.isAtMediumUp ? proDashboard.label : proDashboard.mobileLabel,
-				labelClassName: cx(isProAdminEasyCreateGroup && 'navItem-label-pro'),
+				labelClassName: cx(media.isAtMediumUp && 'navItem-label-pro'),
 				className: cx(
 					CLASS_AUTH_ITEM,
 					'atMedium_display--block',
-					!isProAdminEasyCreateGroup && 'navItemLink--dashboard'
+					!media.isAtMediumUp && 'navItemLink--dashboard'
 				),
-				linkClassName: cx(isProAdminEasyCreateGroup && 'navItemLink-pro'),
+				linkClassName: cx(media.isAtMediumUp && 'navItemLink-pro'),
 				icon: proDashboardIcon,
 				onLinkClick: proDashboard.onLinkClick,
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
-			media.isAtMediumUp && experiencesLink,
-			!isNewNavActive &&
-				!isProAdminEasyCreateGroup && {
-					shrink: true,
-					linkTo: explore.link,
-					label: explore.label,
-					className: CLASS_AUTH_ITEM,
-					icon: (
-						<Icon
-							shape="search"
-							size="s"
-							className="atMedium_display--none"
-						/>
-					),
-				},
 			{
 				shrink: true,
 				linkTo: groups.link,
@@ -422,7 +370,7 @@ export class Nav extends React.Component {
 				className: `atMedium_display--none ${CLASS_AUTH_ITEM}`,
 				icon: <Icon shape="groups" size="s" className="display--block" />,
 			},
-			isProInNavDesktop && {
+			isCoreDesktop && {
 				shrink: true,
 				linkTo: tryPro.link,
 				label: tryPro.label,
@@ -436,22 +384,12 @@ export class Nav extends React.Component {
 			{
 				shrink: true,
 				linkTo: messages.link,
-				label: getMessagesLabel(),
-				labelClassName: cx(
-					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
-						'navItem-label-pro'
-				),
+				label: messages.label,
+				labelClassName: cx(media.isAtMediumUp && 'navItem-label-pro'),
 				className: `navItem--messages ${CLASS_AUTH_ITEM}`,
-				linkClassName: cx(
-					(isProAdminEasyCreateGroup || isProInNavDesktop) && 'navItemLink-pro'
-				),
+				linkClassName: cx(media.isAtMediumUp && 'navItemLink-pro'),
 				counterBadgeClassName: cx(
-					isNewNavActiveDesktop &&
-						!isProAdminEasyCreateGroup &&
-						!isProInNavDesktop &&
-						'navItem--counterBadge',
-					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
-						'navItem--counterBadgeProMessages'
+					media.isAtMediumUp && 'navItem--counterBadgeProMessages'
 				),
 				icon: getMessagesIcon(),
 				hasUpdates: messages.unreadMessages > 0,
@@ -460,48 +398,20 @@ export class Nav extends React.Component {
 			},
 			{
 				shrink: true,
-				linkTo:
-					media.isAtMediumUp &&
-					!isNewNavActive &&
-					!isProAdminEasyCreateGroup &&
-					!isProInNavDesktop
-						? ''
-						: notifications.link,
-				label: getNotificataionsLabel(),
-				labelClassName: cx(
-					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
-						'navItem-label-pro'
-				),
+				linkTo: notifications.link,
+				label: notifications.label,
+				labelClassName: cx(media.isAtMediumUp && 'navItem-label-pro'),
 				className: cx('navItem--notifications', CLASS_AUTH_ITEM),
-				linkClassName: cx(
-					(isProAdminEasyCreateGroup || isProInNavDesktop) && 'navItemLink-pro'
-				),
+				linkClassName: cx(media.isAtMediumUp && 'navItemLink-pro'),
 				counterBadgeClassName: cx(
-					isNewNavActiveDesktop &&
-						!isProAdminEasyCreateGroup &&
-						!isProInNavDesktop &&
-						'navItem--counterBadge',
-					(isProAdminEasyCreateGroup || isProInNavDesktop) &&
-						'navItem--counterBadgeProNotifications'
+					media.isAtMediumUp && 'navItem--counterBadgeProNotifications'
 				),
 				icon: getNotificationsIcon(),
-				onClickAction:
-					(!isNewNavActive &&
-						!isProAdminEasyCreateGroup &&
-						!isProInNavDesktop &&
-						media.isAtMediumUp &&
-						this.onClickDropdownAction) ||
-					undefined,
-				dropdownContent:
-					(!isNewNavActive &&
-						!isProAdminEasyCreateGroup &&
-						!isProInNavDesktop &&
-						media.isAtMediumUp &&
-						notificationContent) ||
-					undefined,
 				hasUpdates: notifications.unreadNotifications > 0,
 				updatesLabel: updatesLabel,
 				onLinkClick: notifications.onLinkClick,
+				// if would like to have notification dropdown
+				// add onClickAction:this.onClickDropdownAction and dropdownContent:notificationContent
 			},
 			{
 				shrink: true,
@@ -741,9 +651,6 @@ Nav.propTypes = {
 
 	/** Flag to indicate that new Nav should be shown (same as in build-meetup/homepage) */
 	isNewNavActive: PropTypes.bool,
-
-	// Flag to indicate if updated Core nav is shown and for adding Pro to the Core Nav
-	isProInNavFFEnabled: PropTypes.bool,
 };
 
 export default Nav;
