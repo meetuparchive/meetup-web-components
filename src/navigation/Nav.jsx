@@ -293,7 +293,7 @@ export class Nav extends React.Component {
 
 		const getTryProIcon = () => {
 			return (
-				<div className="tw-text-white tw-bg-viridian tw-px-1 tw-py-0.5 tw-rounded tw-font-semibold tw-my-0.5 tw-mx-4 tw-text-xs">
+				<div className="tryProIcon tw-text-white tw-bg-viridian tw-px-1 tw-py-0.5 tw-rounded tw-font-semibold tw-text-xs">
 					PRO
 				</div>
 			);
