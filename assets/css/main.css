@@ -7358,11 +7358,20 @@ Breakpoints        | Property       | Variants
 .tw-items-center {
   align-items: center; }
 
+.tw-place-items-center {
+  place-items: center; }
+
 .tw-rounded {
   border-radius: 0.25rem; }
 
 .tw-rounded-lg {
   border-radius: 0.5rem; }
+
+.tw-rounded-2xl {
+  border-radius: 1rem; }
+
+.tw-rounded-full {
+  border-radius: 9999px; }
 
 .tw-border {
   border-width: 1px; }
@@ -7400,8 +7409,15 @@ Breakpoints        | Property       | Variants
   font-size: 0.75rem;
   line-height: 1rem; }
 
+.tw-text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem; }
+
 .tw-font-normal {
   font-weight: 400; }
+
+.tw-font-medium {
+  font-weight: 500; }
 
 .tw-font-semibold {
   font-weight: 600; }
