@@ -23,7 +23,11 @@ export const ContactCSModal = ({ onDismiss, modalItems }) => {
 				<img src={MLFace} className="tw-rounded-full tw-mb-4" />
 				<h1 className="tw-font-medium tw-mb-2 tw-text-sm">{modalItems.title}</h1>
 				<p className="tw-text-sm tw-mb-4">{modalItems.subText}</p>
-				<a className={btnClassName} href="" onClick={modalItems.onClick}>
+				<a
+					className={btnClassName}
+					href={modalItems.link}
+					onClick={modalItems.onClick}
+				>
 					<div>{modalItems.buttonText}</div>
 				</a>
 			</div>
