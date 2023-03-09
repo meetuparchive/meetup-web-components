@@ -176,6 +176,7 @@ class Tooltip extends React.PureComponent {
 												/>
 											}
 											reset
+											aria-label="Close"
 										/>
 									)}
 									{content}

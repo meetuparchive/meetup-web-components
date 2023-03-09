@@ -11,6 +11,7 @@ export const InfoTooltipTrigger = props => (
 			e.preventDefault();
 			props.onClick(e);
 		}}
+		aria-label="Help"
 	>
 		<span className="infoToggle-trigger align--center" role="img">
 			?
