@@ -189,7 +189,12 @@ export class ModalComponent extends React.Component {
 					'padding--all modal-closeButtonContainer'
 				)}
 			>
-				<Button onClick={this.onDismiss} reset className={dismissButtonClasses}>
+				<Button
+					onClick={this.onDismiss}
+					reset
+					className={dismissButtonClasses}
+					aria-label="Close"
+				>
 					<Icon shape="cross" size="s" />
 				</Button>
 			</div>
