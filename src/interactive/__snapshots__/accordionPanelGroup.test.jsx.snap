@@ -107,7 +107,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         <div>
           <div
             aria-controls="panel-firstsection"
-            aria-expanded={true}
             aria-selected={true}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
@@ -293,7 +292,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         <div>
           <div
             aria-controls="panel-nextsection"
-            aria-expanded={false}
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
@@ -479,7 +477,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         <div>
           <div
             aria-controls="panel-thirdsection"
-            aria-expanded={false}
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
@@ -734,7 +731,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         <div>
           <div
             aria-controls="panel-firstsection"
-            aria-expanded={true}
             aria-selected={true}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
@@ -920,7 +916,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         <div>
           <div
             aria-controls="panel-nextsection"
-            aria-expanded={false}
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
@@ -1106,7 +1101,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         <div>
           <div
             aria-controls="panel-thirdsection"
-            aria-expanded={false}
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}

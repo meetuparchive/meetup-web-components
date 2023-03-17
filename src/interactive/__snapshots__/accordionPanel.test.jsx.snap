@@ -25,7 +25,6 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
   <div>
     <div
       aria-controls="panel-firstsection"
-      aria-expanded={false}
       aria-selected={false}
       className="accordionPanel-label display--block span--100"
       onClick={[Function]}
@@ -341,7 +340,6 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
 <div>
   <div
     aria-controls="panel-firstsection"
-    aria-expanded={false}
     aria-selected={false}
     className="accordionPanel-label display--block span--100"
     onClick={[Function]}
@@ -405,7 +403,6 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
 <div>
   <div
     aria-controls="panel-firstsection"
-    aria-expanded={false}
     aria-selected={false}
     className="accordionPanel-label display--block span--100"
     onClick={[Function]}
@@ -485,7 +482,6 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
   <div>
     <div
       aria-controls="panel-firstsection"
-      aria-expanded={false}
       aria-selected={false}
       className="accordionPanel-label display--block span--100"
       onClick={[Function]}
@@ -651,7 +647,6 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
   <div>
     <div
       aria-controls="panel-firstsection"
-      aria-expanded={false}
       aria-selected={false}
       className="accordionPanel-label display--block span--100"
       onClick={[Function]}
