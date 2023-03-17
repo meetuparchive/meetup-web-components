@@ -53,7 +53,13 @@ export const NavbarSearchComponent = ({
 					{...other}
 				/>
 			</div>
-			<button className="navbar-search-btn" onClick={onClick}>
+			<button
+				className="navbar-search-btn"
+				onClick={onClick}
+				aria-label="search"
+				role="presentation"
+				title="search"
+			>
 				<Search style={{ fill: 'white', height: '30px' }} />
 			</button>
 		</div>
