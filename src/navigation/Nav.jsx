@@ -362,6 +362,7 @@ export class Nav extends React.Component {
 				linkClassName: cx(media.isAtMediumUp && 'navItemLink-pro'),
 				icon: proDashboardIcon,
 				onLinkClick: proDashboard.onLinkClick,
+				actionAttributes: proDashboard.actionAttributes,
 			},
 			media.isAtMediumUp && !self.is_pro_admin && createMeetupLink,
 			{
@@ -396,6 +397,7 @@ export class Nav extends React.Component {
 				hasUpdates: messages.unreadMessages > 0,
 				updatesLabel: updatesLabel,
 				onLinkClick: messages.onLinkClick,
+				actionAttributes: messages.actionAttributes,
 			},
 			{
 				shrink: true,
@@ -413,6 +415,7 @@ export class Nav extends React.Component {
 				onLinkClick: notifications.onLinkClick,
 				// if would like to have notification dropdown
 				// add onClickAction:this.onClickDropdownAction and dropdownContent:notificationContent
+				actionAttributes: notifications.actionAttributes,
 			},
 			{
 				shrink: true,
@@ -455,6 +458,7 @@ export class Nav extends React.Component {
 						  }
 						: undefined,
 				dropdownContent: media.isAtMediumUp ? profileContent : undefined,
+				actionAttributes: profile.actionAttributes,
 			},
 		];
 
