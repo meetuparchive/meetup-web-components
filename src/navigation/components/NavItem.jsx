@@ -8,11 +8,12 @@ import FlexItem from '../../layout/FlexItem';
 
 const NAV_ITEM_CLASS = 'navItemLink';
 
-export const ActionItem = ({ navItemContent, action }) => (
+export const ActionItem = ({ navItemContent, action, attributes }) => (
 	<Button
 		reset
 		className={cx(NAV_ITEM_CLASS, 'text--secondary', 'padding--none')}
 		onClick={action}
+		{...attributes}
 	>
 		{navItemContent}
 	</Button>
@@ -23,6 +24,7 @@ export const LinkItem = ({
 	className,
 	onLinkClick,
 	isTargetBlank,
+	attributes,
 }) => (
 	<a
 		href={linkTo}
@@ -31,6 +33,7 @@ export const LinkItem = ({
 		target={isTargetBlank ? '_blank' : ''}
 		aria-label={NAV_ITEM_CLASS}
 		title={NAV_ITEM_CLASS}
+		{...attributes}
 	>
 		{navItemContent}
 	</a>
@@ -73,6 +76,7 @@ export const NavItem = props => {
 		isNewNavActive,
 		onLinkClick,
 		isTargetBlank,
+		actionAttributes,
 		...other
 	} = props;
 
@@ -95,7 +99,13 @@ export const NavItem = props => {
 	);
 
 	const trigger = (
-		<Button aria-haspopup reset className={NAV_ITEM_CLASS} onClick={onClickAction}>
+		<Button
+			aria-haspopup
+			reset
+			className={NAV_ITEM_CLASS}
+			onClick={onClickAction}
+			{...actionAttributes}
+		>
 			{navItemContent}
 		</Button>
 	);
@@ -109,6 +119,7 @@ export const NavItem = props => {
 					navItemContent={navItemContent}
 					onLinkClick={onLinkClick}
 					isTargetBlank={isTargetBlank}
+					attributes={actionAttributes}
 				/>
 			)}
 			{dropdownContent && (
@@ -118,7 +129,13 @@ export const NavItem = props => {
 					isNewNavActive={isNewNavActive}
 				/>
 			)}
-			{onAction && <ActionItem action={onAction} navItemContent={navItemContent} />}
+			{onAction && (
+				<ActionItem
+					action={onAction}
+					navItemContent={navItemContent}
+					attributes={actionAttributes}
+				/>
+			)}
 		</FlexItem>
 	);
 };
@@ -139,6 +156,7 @@ NavItem.propTypes = {
 	isNewNavActive: PropTypes.bool,
 	onLinkClick: PropTypes.func,
 	isTargetBlank: PropTypes.bool,
+	actionAttributes: PropTypes.object,
 };
 
 export default NavItem;

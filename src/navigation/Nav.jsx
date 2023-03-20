@@ -255,6 +255,7 @@ export class Nav extends React.Component {
 					'navItemLink--createMeetupPro'
 			),
 			onLinkClick: create.onLinkClick,
+			actionAttributes: create.actionAttributes,
 		};
 
 		const getMessagesIcon = () => {
@@ -492,6 +493,7 @@ export class Nav extends React.Component {
 						isNewNavActive={isNewNavActive}
 						onLinkClick={item.onLinkClick}
 						isTargetBlank={item.isTargetBlank}
+						actionAttributes={item.actionAttributes}
 					/>
 				)
 			);
