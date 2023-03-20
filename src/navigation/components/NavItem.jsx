@@ -29,6 +29,8 @@ export const LinkItem = ({
 		className={cx(NAV_ITEM_CLASS, className)}
 		onClick={onLinkClick}
 		target={isTargetBlank ? '_blank' : ''}
+		aria-label={NAV_ITEM_CLASS}
+		title={NAV_ITEM_CLASS}
 	>
 		{navItemContent}
 	</a>
