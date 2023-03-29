@@ -1,23 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Checkbox basic renders checked checkbox 1`] = `
-<Checkbox
-  checked={true}
-  id="hello"
-  label="Hello!"
-  name="greeting"
-  onChange={[Function]}
-  value="hello"
-/>
+<label
+  data-swarm-checkbox="default"
+  htmlFor="hello"
+>
+  <span
+    aria-checked={true}
+    aria-label="checkbox"
+    data-swarm-checkbox-field="checked"
+    role="checkbox"
+  >
+    <Icon
+      color="#ffffff"
+      shape="check"
+    />
+  </span>
+  <input
+    checked={true}
+    id="hello"
+    name="greeting"
+    onChange={[Function]}
+    type="checkbox"
+    value="hello"
+  />
+  <span>
+    Hello!
+  </span>
+</label>
 `;
 
 exports[`Checkbox basic renders unchecked checkbox 1`] = `
-<Checkbox
-  checked={false}
-  id="hello"
-  label="Hello!"
-  name="greeting"
-  onChange={[Function]}
-  value="hello"
-/>
+<label
+  data-swarm-checkbox="default"
+  htmlFor="hello"
+>
+  <span
+    aria-checked={false}
+    aria-label="checkbox"
+    data-swarm-checkbox-field="unchecked"
+    role="checkbox"
+  />
+  <input
+    checked={false}
+    id="hello"
+    name="greeting"
+    onChange={[Function]}
+    type="checkbox"
+    value="hello"
+  />
+  <span>
+    Hello!
+  </span>
+</label>
 `;
