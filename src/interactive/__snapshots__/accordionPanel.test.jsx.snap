@@ -130,7 +130,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                   >
                                     <Icon
                                       className="lockedBadge-icon-container"
-                                      color="#008294"
+                                      color="#00798A"
                                       shape="lock"
                                       size="xs"
                                     >
@@ -138,7 +138,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                         className="lockedBadge-icon-container"
                                       >
                                         <Icon
-                                          color="#008294"
+                                          color="#00798A"
                                           shape="lock"
                                           size="xs"
                                         >
@@ -149,7 +149,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                             role="img"
                                             style={
                                               Object {
-                                                "fill": "#008294",
+                                                "fill": "#00798A",
                                               }
                                             }
                                             viewBox="0 0 20 20"
@@ -166,7 +166,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                       className="lockedBadge-label"
                                       style={
                                         Object {
-                                          "color": "#008294",
+                                          "color": "#00798A",
                                         }
                                       }
                                     >
