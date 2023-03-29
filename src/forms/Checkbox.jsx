@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Checkbox as SwarmCheckbox } from '@meetup/swarm-components';
+import Icon from '@meetup/swarm-components/lib/Icon';
 import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 /**
@@ -48,12 +48,10 @@ export class Checkbox extends React.PureComponent {
 	render() {
 		// use the "eslint-disable-line" because we don't want
 		// the `checked` and `controlled` props passed in `other`
-		// to the `SwarmCheckbox` component
 		const {
 			checked, // eslint-disable-line no-unused-vars
 			controlled, // eslint-disable-line no-unused-vars
 			onChange, // eslint-disable-line no-unused-vars
-			labelClassName, // eslint-disable-line no-unused-vars
 			id,
 			label,
 			disabled,
@@ -66,16 +64,36 @@ export class Checkbox extends React.PureComponent {
 		const stateChecked = this.getChecked();
 
 		return (
-			<SwarmCheckbox
-				checked={stateChecked}
-				label={label}
-				id={elId}
-				disabled={disabled}
-				onChange={this.onChange}
-				name={name}
-				value={value}
+			<label
+				data-swarm-checkbox={disabled ? 'disabled' : 'default'}
+				htmlFor={elId}
 				{...other}
-			/>
+			>
+				<span
+					data-swarm-checkbox-field={stateChecked ? 'checked' : 'unchecked'}
+					role="checkbox"
+					aria-checked={stateChecked}
+					aria-label="checkbox"
+				>
+					{stateChecked && (
+						<Icon
+							shape="check"
+							color={disabled ? 'var(--color-gray-6)' : '#ffffff'}
+						/>
+					)}
+				</span>
+				<input
+					type="checkbox"
+					id={elId}
+					checked={stateChecked}
+					disabled={disabled}
+					onChange={this.onChange}
+					readOnly={!this.onChange || disabled}
+					name={name}
+					value={`${value}`}
+				/>
+				<span>{label}</span>
+			</label>
 		);
 	}
 }
