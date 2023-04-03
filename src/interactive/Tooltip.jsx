@@ -119,7 +119,8 @@ class Tooltip extends React.PureComponent {
 					onFocus={manualToggle ? undefined : this.openContent}
 					onBlur={manualToggle ? undefined : this.onBlur}
 					onMouseEnter={manualToggle ? undefined : this.openContent}
-					aria-labelledby={id}
+					aria-labelledby={isActive ? id : undefined}
+					role={isActive ? 'button' : undefined}
 				>
 					{trigger}
 				</div>
