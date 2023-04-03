@@ -127,7 +127,7 @@
 
 .tw-bg-viridian {
   --tw-bg-opacity: 1;
-  background-color: rgba(0, 130, 148, var(--tw-bg-opacity))
+  background-color: rgba(0, 121, 138, var(--tw-bg-opacity))
 }
 
 .tw-p-4 {
@@ -168,7 +168,7 @@
 
 .tw-text-viridian {
   --tw-text-opacity: 1;
-  color: rgba(0, 130, 148, var(--tw-text-opacity))
+  color: rgba(0, 121, 138, var(--tw-text-opacity))
 }
 
 .tw-text-white {

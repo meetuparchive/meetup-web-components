@@ -5096,7 +5096,7 @@ input.field--reset:active {
   padding-top: 4px;
   text-decoration: none; }
   .profileDropdown-content .links-item:hover {
-    color: #008294; }
+    color: #00798A; }
 
 .profileDropdown-draft-group div {
   color: #0cbadf;
@@ -7376,7 +7376,7 @@ Breakpoints        | Property       | Variants
 
 .tw-bg-viridian {
   --tw-bg-opacity: 1;
-  background-color: rgba(0, 130, 148, var(--tw-bg-opacity)); }
+  background-color: rgba(0, 121, 138, var(--tw-bg-opacity)); }
 
 .tw-p-4 {
   padding: 1rem; }
@@ -7408,7 +7408,7 @@ Breakpoints        | Property       | Variants
 
 .tw-text-viridian {
   --tw-text-opacity: 1;
-  color: rgba(0, 130, 148, var(--tw-text-opacity)); }
+  color: rgba(0, 121, 138, var(--tw-text-opacity)); }
 
 .tw-text-white {
   --tw-text-opacity: 1;
