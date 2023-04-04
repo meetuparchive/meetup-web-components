@@ -62,7 +62,7 @@ describe('AccordionPanel', function() {
 		});
 
 		it('calls handlePanelClick callback onClick', function() {
-			const accPanel = panel.find('[role="tab"]');
+			const accPanel = panel.find('[aria-controls="panel-firstsection"]');
 			const isOpen = panel.prop('isOpen');
 			const mockClick = {
 				target: accPanel,
@@ -79,7 +79,7 @@ describe('AccordionPanel', function() {
 		});
 
 		it('calls setPanelState callback onKeyUp', function() {
-			const accPanel = panel.find('[role="tab"]');
+			const accPanel = panel.find('[aria-controls="panel-firstsection"]');
 			const isOpen = panel.prop('isOpen');
 			const mockKeyUp = { key: 'Enter', preventDefault: jest.fn() };
 
@@ -92,7 +92,7 @@ describe('AccordionPanel', function() {
 		});
 
 		it('calls onClickCallback onClick', function() {
-			const accPanel = panel.find('[role="tab"]');
+			const accPanel = panel.find('[aria-controls="panel-firstsection"]');
 			const isOpen = panel.prop('isOpen');
 			const fakeEvent = {
 				target: panel,

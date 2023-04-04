@@ -27,9 +27,9 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
       aria-controls="panel-firstsection"
       aria-selected={false}
       className="accordionPanel-label display--block span--100"
+      data-testid="age"
       onClick={[Function]}
       onKeyUp={[Function]}
-      role="tab"
       tabIndex={0}
     >
       <Flex
@@ -342,9 +342,9 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
     aria-controls="panel-firstsection"
     aria-selected={false}
     className="accordionPanel-label display--block span--100"
+    data-testid="age"
     onClick={[Function]}
     onKeyUp={[Function]}
-    role="tab"
     tabIndex={0}
   >
     <Flex
@@ -405,9 +405,9 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
     aria-controls="panel-firstsection"
     aria-selected={false}
     className="accordionPanel-label display--block span--100"
+    data-testid="age"
     onClick={[Function]}
     onKeyUp={[Function]}
-    role="tab"
     tabIndex={0}
   >
     <Flex
@@ -484,9 +484,9 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
       aria-controls="panel-firstsection"
       aria-selected={false}
       className="accordionPanel-label display--block span--100"
+      data-testid="age"
       onClick={[Function]}
       onKeyUp={[Function]}
-      role="tab"
       tabIndex={0}
     >
       <Flex
@@ -649,9 +649,9 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
       aria-controls="panel-firstsection"
       aria-selected={false}
       className="accordionPanel-label display--block span--100"
+      data-testid="age"
       onClick={[Function]}
       onKeyUp={[Function]}
-      role="tab"
       tabIndex={0}
     >
       <Flex

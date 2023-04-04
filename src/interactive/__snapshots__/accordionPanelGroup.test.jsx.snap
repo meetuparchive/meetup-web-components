@@ -79,11 +79,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
   <ul
     aria-multiselectable={true}
     className="accordionPanelGroup list"
-    role="tabList"
+    role="tablist"
   >
     <li
       className="list-item flush--top"
       key="0"
+      role="tab"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -109,9 +110,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             aria-controls="panel-firstsection"
             aria-selected={true}
             className="accordionPanel-label display--block span--100"
+            data-testid="age"
             onClick={[Function]}
             onKeyUp={[Function]}
-            role="tab"
             tabIndex={0}
           >
             <Flex
@@ -253,6 +254,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
     <li
       className="list-item flush--top"
       key="1"
+      role="tab"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -294,9 +296,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             aria-controls="panel-nextsection"
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
+            data-testid="age"
             onClick={[Function]}
             onKeyUp={[Function]}
-            role="tab"
             tabIndex={0}
           >
             <Flex
@@ -454,6 +456,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
     <li
       className="list-item flush--top"
       key="2"
+      role="tab"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -479,9 +482,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
             aria-controls="panel-thirdsection"
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
+            data-testid="age"
             onClick={[Function]}
             onKeyUp={[Function]}
-            role="tab"
             tabIndex={0}
           >
             <Flex
@@ -703,11 +706,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
   <ul
     aria-multiselectable={true}
     className="accordionPanelGroup list"
-    role="tabList"
+    role="tablist"
   >
     <li
       className="list-item flush--top"
       key="0"
+      role="tab"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -733,9 +737,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             aria-controls="panel-firstsection"
             aria-selected={true}
             className="accordionPanel-label display--block span--100"
+            data-testid="age"
             onClick={[Function]}
             onKeyUp={[Function]}
-            role="tab"
             tabIndex={0}
           >
             <Flex
@@ -877,6 +881,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
     <li
       className="list-item flush--top"
       key="1"
+      role="tab"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -918,9 +923,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             aria-controls="panel-nextsection"
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
+            data-testid="age"
             onClick={[Function]}
             onKeyUp={[Function]}
-            role="tab"
             tabIndex={0}
           >
             <Flex
@@ -1078,6 +1083,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
     <li
       className="list-item flush--top"
       key="2"
+      role="tab"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -1103,9 +1109,9 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
             aria-controls="panel-thirdsection"
             aria-selected={false}
             className="accordionPanel-label display--block span--100"
+            data-testid="age"
             onClick={[Function]}
             onKeyUp={[Function]}
-            role="tab"
             tabIndex={0}
           >
             <Flex
