@@ -211,7 +211,6 @@ class AccordionPanel extends React.Component {
 			<div>
 				<div
 					aria-controls={`panel-${panelId}`}
-					data-testid="age"
 					aria-selected={isOpen}
 					className={classNames.trigger}
 					tabIndex={0}
