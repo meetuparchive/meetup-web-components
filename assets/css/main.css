@@ -3929,8 +3929,8 @@ Card-like boxes.
 .flatpickr-day.selected,
 .flatpickr-day.selected:focus,
 .flatpickr-day.selected:hover {
-  background: #00798A;
-  border-color: #00798A;
+  background: #00798a;
+  border-color: #00798a;
   box-shadow: none;
   color: white; }
 
