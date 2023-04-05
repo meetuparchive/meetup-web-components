@@ -29,7 +29,6 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
       className="accordionPanel-label display--block span--100"
       onClick={[Function]}
       onKeyUp={[Function]}
-      role="tab"
       tabIndex={0}
     >
       <Flex
@@ -344,7 +343,6 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
     className="accordionPanel-label display--block span--100"
     onClick={[Function]}
     onKeyUp={[Function]}
-    role="tab"
     tabIndex={0}
   >
     <Flex
@@ -407,7 +405,6 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
     className="accordionPanel-label display--block span--100"
     onClick={[Function]}
     onKeyUp={[Function]}
-    role="tab"
     tabIndex={0}
   >
     <Flex
@@ -486,7 +483,6 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
       className="accordionPanel-label display--block span--100"
       onClick={[Function]}
       onKeyUp={[Function]}
-      role="tab"
       tabIndex={0}
     >
       <Flex
@@ -651,7 +647,6 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
       className="accordionPanel-label display--block span--100"
       onClick={[Function]}
       onKeyUp={[Function]}
-      role="tab"
       tabIndex={0}
     >
       <Flex

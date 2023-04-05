@@ -210,7 +210,6 @@ class AccordionPanel extends React.Component {
 		return (
 			<div>
 				<div
-					role="tab"
 					aria-controls={`panel-${panelId}`}
 					aria-selected={isOpen}
 					className={classNames.trigger}
