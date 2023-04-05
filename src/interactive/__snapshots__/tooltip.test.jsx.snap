@@ -134,6 +134,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                         data-swarm-button="reset"
                         data-swarm-size="default"
                         data-swarm-width="default"
+                        role="button"
                         type="button"
                       >
                         <span>
@@ -198,6 +199,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                     }
                     onClick={[Function]}
                     reset={true}
+                    role="button"
                   >
                     <Button
                       aria-label="Close"
@@ -211,6 +213,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       }
                       onClick={[Function]}
                       reset={true}
+                      role="button"
                     >
                       <Button
                         aria-label="Close"
@@ -218,6 +221,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                         icon="cross"
                         onClick={[Function]}
                         reset={true}
+                        role="button"
                       >
                         <button
                           aria-label="Close"
@@ -227,6 +231,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                           data-swarm-size="default"
                           data-swarm-width="default"
                           onClick={[Function]}
+                          role="button"
                           type="button"
                         >
                           <span>
