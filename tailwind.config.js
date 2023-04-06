@@ -37,7 +37,7 @@ module.exports = {
 			beachHighlight: '#F7FEFF',
 			tooltipBlue: '#3679E4',
 			tooltipDark: '#353e48',
-			confirmGreen: '#07b203',
+			confirmGreen: '#06A002',
 			warningOrange: '#E5800B',
 			gray1: '#F6F7F8',
 			gray2: '#E6E6E6',

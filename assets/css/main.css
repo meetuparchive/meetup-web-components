@@ -3066,7 +3066,7 @@ $('#fadeInLink').on('click', function(e) {
 
 .avatar--noPhoto {
   align-items: center;
-  background-color: #d2dae1;
+  background-color: #697278;
   display: inline-flex;
   justify-content: center;
   position: relative;
