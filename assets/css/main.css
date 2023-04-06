@@ -4288,7 +4288,7 @@ input.field--reset:active {
   .svg-icon,
   .svg-icon svg {
     stroke: transparent;
-    fill: rgba(46, 62, 72, 0.6); }
+    fill: rgba(46, 62, 72, 0.75); }
   .inverted .svg-icon,
   .inverted .svg-icon svg {
     stroke: transparent;
@@ -4456,7 +4456,7 @@ input.field--reset:active {
 .modal-closeButton,
 .modal-closeButton svg {
   stroke: transparent;
-  fill: rgba(46, 62, 72, 0.6); }
+  fill: rgba(46, 62, 72, 0.75); }
 
 .inverted .modal-closeButton,
 .inverted .modal-closeButton svg {
@@ -4875,7 +4875,7 @@ input.field--reset:active {
   .navItem,
   .navItem svg {
     stroke: transparent;
-    fill: rgba(46, 62, 72, 0.6); }
+    fill: rgba(46, 62, 72, 0.75); }
 
 .circular {
   border-radius: 100%; }
