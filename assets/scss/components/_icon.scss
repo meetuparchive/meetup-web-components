@@ -1,3 +1,6 @@
+$C_svgIcon: rgba(46, 62, 72, 0.75);
+$C_svgIconInverted: rgba(255, 255, 255, 0.7);
+
 @mixin _iconColor($color, $invertedColor) {
 	@include color-svg($color);
 
@@ -26,7 +29,7 @@
 
 .svg-icon {
 	// SVG element
-	@include _iconColor($C_textSecondary, $C_textSecondaryInverted);
+	@include _iconColor($C_svgIcon, $C_svgIconInverted);
 	display: inline-flex;
 	font-size: 0;
 
