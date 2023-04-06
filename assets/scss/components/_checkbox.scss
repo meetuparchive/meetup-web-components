@@ -10,3 +10,7 @@
 		top: $space / 2;
 	}
 }
+
+[data-swarm-checkbox]:focus-within > span:first-of-type {
+	box-shadow: 0 0 1px 2px #426b8f !important;
+}
