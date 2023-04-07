@@ -3935,8 +3935,8 @@ Card-like boxes.
   color: white; }
 
 .checkbox-container {
-  display: flex;
-  align-items: center; }
+  align-items: center;
+  display: flex; }
   .checkbox-container input {
     display: none; }
 
