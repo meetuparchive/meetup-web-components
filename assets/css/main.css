@@ -3952,7 +3952,7 @@ Card-like boxes.
   height: 20px;
   justify-content: center;
   line-height: 1.45;
-  margin: 0 var(--size-space-half) 0 0;
+  margin: 0 8px 0 0 !important;
   width: 20px; }
   .ieRoot_lt_IE10 .checkbox {
     top: 8px; }
