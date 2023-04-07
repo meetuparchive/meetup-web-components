@@ -32,6 +32,7 @@ class ToggleSwitch extends React.Component {
 					id={id || name}
 					name={name}
 					checked={isActive}
+					className="toggleSwitch"
 					{...labelProps}
 					{...other}
 				/>

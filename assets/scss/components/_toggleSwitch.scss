@@ -2,68 +2,15 @@ $trackWidth: $media-l;
 $knobSize: $trackWidth / 2;
 
 .toggleSwitch {
-	background-color: $C_coolGrayLight;
-	border-radius: 999px;
-	height: $media-s;
-	position: relative;
-	width: $media-l;
-
-	&:hover {
-		background-color: darken($C_coolGrayLight, 5%);
+	&[data-swarm-toggle="unchecked"]:not(:disabled) {
+		border-color: #707070 !important;
+	
+		[data-swarm-toggle-switch-disc] {
+			border-color: inherit;
+	
+			svg {
+				fill:  #707070 !important;
+			}
+		}
 	}
-
-	&:focus {
-		background-color: $C_coolGrayLight;
-	}
-
-	&:active {
-		background-color: darken($C_coolGrayLight, 10%);
-	}
-}
-
-.toggleSwitch--active {
-	background: $C_darkGray;
-
-	&:hover {
-		background-color: darken($C_darkGray, 5%);
-	}
-
-	&:focus {
-		background-color: $C_darkGray;
-	}
-
-	&:active {
-		background-color: darken($C_darkGray, 10%);
-	}
-}
-
-.button.toggleSwitch--disabled {
-	background: $C_lightGray;
-
-	&:hover,
-	&:focus,
-	&:active {
-		background-color: $C_lightGray;
-	}
-}
-
-.toggleSwitch-knob {
-	background: white;
-	border-radius: 999px;
-	box-shadow: 0 0 2px $C_coolGrayMediumTransp;
-	height: $knobSize;
-	left: 0;
-	position: absolute;
-	top: 0;
-	transform: translateX(0);
-	transition: transform $duration--short $easing--standard;
-	width: $knobSize;
-}
-
-.toggleSwitch-knob--active {
-	transform: translateX($knobSize);
-}
-
-.toggleSwitch-knob--disabled {
-	box-shadow: 0 0 2px $C_border;
 }
