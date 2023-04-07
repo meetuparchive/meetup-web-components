@@ -4824,6 +4824,9 @@ input.field--reset:active {
       fill: #707070 !important; }
 >>>>>>> fe3f93ae (generated styles)
 
+.toggleSwitch[data-swarm-toggle="checked"] [data-swarm-toggle-switch-disc] {
+  border-color: #707070; }
+
 .tooltip-bubble {
   background-color: #353e48; }
   .tooltip-bubble::after {
