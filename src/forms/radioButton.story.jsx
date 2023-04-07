@@ -16,6 +16,7 @@ storiesOf('Forms/RadioButton', module)
 				name="option"
 				value="1"
 				checked={boolean('checked', true)}
+				disabled={boolean('disabled', true)}
 				className={text('className', '')}
 				label={text('label', 'This is a radio')}
 			/>

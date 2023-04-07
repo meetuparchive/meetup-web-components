@@ -1,49 +1,109 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RadioButton checked should render an disabled radio button 1`] = `
-<RadioButton
-  checked={true}
-  className="some-class"
-  disabled={false}
-  label="This is a label"
-  name="name"
-  otherProp="other"
-  value="value"
-/>
+<label
+  className="radio-container"
+>
+  <span
+    aria-checked={true}
+    className="radio checked"
+    role="checkbox"
+    tabIndex={0}
+  >
+    <span
+      className="radio-indicator"
+    />
+  </span>
+  <input
+    checked={true}
+    className="some-class"
+    disabled={false}
+    name="name"
+    otherProp="other"
+    type="radio"
+    value="value"
+  />
+  <span>
+    This is a label
+  </span>
+</label>
 `;
 
 exports[`RadioButton checked should render an enabled radio button 1`] = `
-<RadioButton
-  checked={true}
-  className="some-class"
-  disabled={true}
-  label="This is a label"
-  name="name"
-  otherProp="other"
-  value="value"
-/>
+<label
+  className="radio-container disabled"
+>
+  <span
+    aria-checked={true}
+    className="radio checked"
+    role="checkbox"
+    tabIndex={0}
+  >
+    <span
+      className="radio-indicator"
+    />
+  </span>
+  <input
+    checked={true}
+    className="some-class"
+    disabled={true}
+    name="name"
+    otherProp="other"
+    type="radio"
+    value="value"
+  />
+  <span>
+    This is a label
+  </span>
+</label>
 `;
 
 exports[`RadioButton unchecked should render an disabled radio button 1`] = `
-<RadioButton
-  checked={false}
-  className="some-class"
-  disabled={false}
-  label="This is a label"
-  name="name"
-  otherProp="other"
-  value="value"
-/>
+<label
+  className="radio-container"
+>
+  <span
+    aria-checked={false}
+    className="radio"
+    role="checkbox"
+    tabIndex={0}
+  />
+  <input
+    checked={false}
+    className="some-class"
+    disabled={false}
+    name="name"
+    otherProp="other"
+    type="radio"
+    value="value"
+  />
+  <span>
+    This is a label
+  </span>
+</label>
 `;
 
 exports[`RadioButton unchecked should render an enabled radio button 1`] = `
-<RadioButton
-  checked={false}
-  className="some-class"
-  disabled={true}
-  label="This is a label"
-  name="name"
-  otherProp="other"
-  value="value"
-/>
+<label
+  className="radio-container disabled"
+>
+  <span
+    aria-checked={false}
+    className="radio"
+    role="checkbox"
+    tabIndex={0}
+  />
+  <input
+    checked={false}
+    className="some-class"
+    disabled={true}
+    name="name"
+    otherProp="other"
+    type="radio"
+    value="value"
+  />
+  <span>
+    This is a label
+  </span>
+</label>
 `;

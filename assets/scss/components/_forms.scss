@@ -50,20 +50,6 @@ input:focus + .icon--field {
 	color: $C_textSecondary;
 }
 
-.radio {
-	cursor: pointer;
-	display: inline-block;
-	font-size: $font-size;
-	height: $font-size;
-	line-height: 1;
-	line-height: $line-height;
-	margin: 0 $space-half 0 0;
-
-	@include browser-lessThanIE(10) {
-		top: $space / 2;
-	}
-}
-
 //
 // Helper text
 //
@@ -252,13 +238,6 @@ $C_toggleHighlight: $C_blue;
 .fauxToggle--radio,
 .radio-indicator {
 	border-radius: 50%;
-}
-
-.radio-indicator {
-	background-color: white;
-	display: block;
-	height: 8px;
-	width: 8px;
 }
 
 .checkbox-indicator {

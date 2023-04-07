@@ -3935,21 +3935,54 @@ Card-like boxes.
   color: white; }
 
 .checkbox {
+  align-items: center;
+  background-color: white;
+  border: 1px solid #707070;
+  border-radius: 4px;
+  box-sizing: border-box;
   cursor: pointer;
+  display: flex;
   font-size: 16px;
+  height: 20px;
+  justify-content: center;
   line-height: 1.45;
   margin: 0 8px 0 0;
-  border: 1px solid #707070;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  height: 20px;
-  width: 20px;
-  box-sizing: border-box; }
+  width: 20px; }
   .ieRoot_lt_IE10 .checkbox {
     top: 8px; }
+
+.radio-container {
+  align-items: center;
+  display: flex; }
+  .radio-container input {
+    display: none; }
+
+.radio {
+  align-items: center;
+  border: 1px solid #707070;
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  height: 19px;
+  justify-content: center;
+  margin: 0 8px 0 0;
+  width: 19px; }
+  .ieRoot_lt_IE10 .radio {
+    top: 8px; }
+  .radio.checked {
+    background-color: #00798a; }
+  .radio.disabled {
+    background-color: var(--color-gray-3);
+    border-color: var(--color-gray-3); }
+    .radio.disabled span {
+      background-color: var(--color-gray-3); }
+
+.radio-indicator {
+  background-color: white;
+  display: block;
+  height: 7px;
+  width: 7px; }
 
 .dropdownMenu-item {
   border-bottom: 1px solid rgba(46, 62, 72, 0.12);
@@ -4031,17 +4064,6 @@ input:focus + .icon--field svg {
 
 .label--disabled {
   color: rgba(46, 62, 72, 0.6); }
-
-.radio {
-  cursor: pointer;
-  display: inline-block;
-  font-size: 16px;
-  height: 16px;
-  line-height: 1;
-  line-height: 1.45;
-  margin: 0 8px 0 0; }
-  .ieRoot_lt_IE10 .radio {
-    top: 8px; }
 
 .helperTextContainer {
   padding-bottom: 4px; }
@@ -4212,12 +4234,6 @@ input.field--reset:active {
 .fauxToggle--radio,
 .radio-indicator {
   border-radius: 50%; }
-
-.radio-indicator {
-  background-color: white;
-  display: block;
-  height: 8px;
-  width: 8px; }
 
 .checkbox-indicator {
   height: 100%; }
