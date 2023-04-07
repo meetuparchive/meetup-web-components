@@ -1,16 +1,17 @@
-$trackWidth: $media-l;
-$knobSize: $trackWidth / 2;
-
 .toggleSwitch {
 	&[data-swarm-toggle="unchecked"]:not(:disabled) {
 		border-color: #707070 !important;
-	
+
 		[data-swarm-toggle-switch-disc] {
 			border-color: inherit;
-	
+
 			svg {
-				fill:  #707070 !important;
+				fill: #707070 !important;
 			}
 		}
+	}
+
+	&[data-swarm-toggle="checked"] [data-swarm-toggle-switch-disc] {
+		border-color: #707070;
 	}
 }

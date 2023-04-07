@@ -4770,6 +4770,9 @@ input.field--reset:active {
     .toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) [data-swarm-toggle-switch-disc] svg {
       fill: #707070 !important; }
 
+.toggleSwitch[data-swarm-toggle="checked"] [data-swarm-toggle-switch-disc] {
+  border-color: #707070; }
+
 .tooltip-bubble {
   background-color: #353e48; }
   .tooltip-bubble::after {
