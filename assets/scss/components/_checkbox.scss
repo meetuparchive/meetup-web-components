@@ -19,7 +19,7 @@
 	height: 20px;
 	justify-content: center;
 	line-height: $line-height;
-	margin: 0 $space-half 0 0;
+	margin: 0 var(--size-space-half) 0 0;
 	width: 20px;
 
 	@include browser-lessThanIE(10) {
