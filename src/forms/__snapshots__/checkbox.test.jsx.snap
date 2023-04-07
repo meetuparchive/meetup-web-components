@@ -8,6 +8,7 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
   <span
     aria-checked={true}
     aria-label="checkbox"
+    className="checkbox"
     data-swarm-checkbox-field="checked"
     role="checkbox"
   >
@@ -38,7 +39,7 @@ exports[`Checkbox basic renders unchecked checkbox 1`] = `
   <span
     aria-checked={false}
     aria-label="checkbox"
-    data-swarm-checkbox-field="unchecked"
+    className="checkbox"
     role="checkbox"
   />
   <input

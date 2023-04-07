@@ -70,16 +70,14 @@ export class Checkbox extends React.PureComponent {
 				{...other}
 			>
 				<span
-					data-swarm-checkbox-field={stateChecked ? 'checked' : 'unchecked'}
+					data-swarm-checkbox-field={stateChecked ? 'checked' : undefined}
+					className="checkbox"
 					role="checkbox"
 					aria-checked={stateChecked}
 					aria-label="checkbox"
 				>
 					{stateChecked && (
-						<Icon
-							shape="check"
-							color={disabled ? 'var(--color-gray-6)' : '#ffffff'}
-						/>
+						<Icon shape="check" color={disabled ? '#707070' : '#ffffff'} />
 					)}
 				</span>
 				<input

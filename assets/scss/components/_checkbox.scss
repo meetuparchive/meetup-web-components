@@ -1,10 +1,17 @@
 .checkbox {
+	align-items: center;
+	background-color: white;
+	border: 1px solid $C_secondary;
+	border-radius: 4px;
+	box-sizing: border-box;
 	cursor: pointer;
-	display: inline-block;
+	display: flex;
 	font-size: $font-size;
-	height: $font-size;
+	height: 20px;
+	justify-content: center;
 	line-height: $line-height;
 	margin: 0 $space-half 0 0;
+	width: 20px;
 
 	@include browser-lessThanIE(10) {
 		top: $space / 2;
