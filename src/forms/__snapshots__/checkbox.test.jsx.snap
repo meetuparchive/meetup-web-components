@@ -2,7 +2,7 @@
 
 exports[`Checkbox basic renders checked checkbox 1`] = `
 <label
-  data-swarm-checkbox="default"
+  className="checkbox-container"
   htmlFor="hello"
 >
   <span
@@ -33,7 +33,7 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
 
 exports[`Checkbox basic renders unchecked checkbox 1`] = `
 <label
-  data-swarm-checkbox="default"
+  className="checkbox-container"
   htmlFor="hello"
 >
   <span

@@ -64,11 +64,7 @@ export class Checkbox extends React.PureComponent {
 		const stateChecked = this.getChecked();
 
 		return (
-			<label
-				data-swarm-checkbox={disabled ? 'disabled' : 'default'}
-				htmlFor={elId}
-				{...other}
-			>
+			<label className="checkbox-container" htmlFor={elId} {...other}>
 				<span
 					data-swarm-checkbox-field={stateChecked ? 'checked' : undefined}
 					className="checkbox"

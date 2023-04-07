@@ -3934,6 +3934,12 @@ Card-like boxes.
   box-shadow: none;
   color: white; }
 
+.checkbox-container {
+  display: flex;
+  align-items: center; }
+  .checkbox-container input {
+    display: none; }
+
 .checkbox {
   align-items: center;
   background-color: white;
@@ -3950,6 +3956,9 @@ Card-like boxes.
   width: 20px; }
   .ieRoot_lt_IE10 .checkbox {
     top: 8px; }
+  .checkbox:disabled {
+    background-color: var(--color-gray-3);
+    border: 1px solid var(--color-gray-3); }
 
 .radio-container {
   align-items: center;
