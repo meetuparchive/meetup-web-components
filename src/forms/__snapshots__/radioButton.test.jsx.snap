@@ -31,11 +31,11 @@ exports[`RadioButton checked should render an disabled radio button 1`] = `
 
 exports[`RadioButton checked should render an enabled radio button 1`] = `
 <label
-  className="radio-container disabled"
+  className="radio-container"
 >
   <span
     aria-checked={true}
-    className="radio checked"
+    className="radio checked disabled"
     role="checkbox"
     tabIndex={0}
   >
@@ -85,11 +85,11 @@ exports[`RadioButton unchecked should render an disabled radio button 1`] = `
 
 exports[`RadioButton unchecked should render an enabled radio button 1`] = `
 <label
-  className="radio-container disabled"
+  className="radio-container"
 >
   <span
     aria-checked={false}
-    className="radio"
+    className="radio disabled"
     role="checkbox"
     tabIndex={0}
   />
