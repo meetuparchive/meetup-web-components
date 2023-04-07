@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import cn from 'classnames';
 import Icon from '@meetup/swarm-components/lib/Icon';
 import DeprecationWarning from '../utils/components/DeprecationWarning';
 
@@ -57,6 +58,7 @@ export class Checkbox extends React.PureComponent {
 			disabled,
 			name,
 			value = '',
+			className: customStyle,
 			...other
 		} = this.props;
 
@@ -64,7 +66,11 @@ export class Checkbox extends React.PureComponent {
 		const stateChecked = this.getChecked();
 
 		return (
-			<label className="checkbox-container" htmlFor={elId} {...other}>
+			<label
+				className={cn('checkbox-container', customStyle)}
+				htmlFor={elId}
+				{...other}
+			>
 				<span
 					data-swarm-checkbox-field={stateChecked ? 'checked' : undefined}
 					className="checkbox"
