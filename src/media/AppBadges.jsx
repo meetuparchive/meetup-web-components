@@ -21,7 +21,7 @@ const AppBadges = ({ className, language, getAppStorePhoto, ...other }) => {
 	return (
 		<Flex className={classNames} {...other}>
 			<FlexItem className="getTheApp-ios">
-				<a href={IOS_DOWNLOAD_LINK}>
+				<a href={IOS_DOWNLOAD_LINK} target="_blank" rel="noopener noreferrer">
 					<img
 						className="getTheApp-downloadImage span--100 margin--center"
 						src={getAppStorePhoto('ios', language)}
@@ -29,7 +29,7 @@ const AppBadges = ({ className, language, getAppStorePhoto, ...other }) => {
 				</a>
 			</FlexItem>
 			<FlexItem className="getTheApp-android">
-				<a href={ANDROID_DOWNLOAD_LINK}>
+				<a href={ANDROID_DOWNLOAD_LINK} target="_blank" rel="noopener noreferrer">
 					<img
 						className="getTheApp-downloadImage span--100 margin--center"
 						src={getAppStorePhoto('android', language)}

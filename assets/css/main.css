@@ -3934,15 +3934,67 @@ Card-like boxes.
   box-shadow: none;
   color: white; }
 
+.checkbox-container {
+  align-items: center;
+  display: flex; }
+  .checkbox-container input {
+    display: none; }
+
 .checkbox {
+  align-items: center;
+  background-color: white;
+  border: 1px solid #707070;
+  border-radius: 4px;
+  box-sizing: border-box;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
   font-size: 16px;
-  height: 16px;
+  height: 20px;
+  justify-content: center;
   line-height: 1.45;
-  margin: 0 8px 0 0; }
+  margin: 0 8px 0 0 !important;
+  width: 20px; }
   .ieRoot_lt_IE10 .checkbox {
     top: 8px; }
+  .checkbox:disabled {
+    background-color: var(--color-gray-3);
+    border: 1px solid var(--color-gray-3); }
+
+[data-swarm-checkbox]:focus-within > span:first-of-type {
+  box-shadow: 0 0 1px 2px #426b8f !important; }
+
+.radio-container {
+  align-items: center;
+  display: flex; }
+  .radio-container input {
+    display: none; }
+
+.radio {
+  align-items: center;
+  border: 1px solid #707070;
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  height: 19px;
+  justify-content: center;
+  margin: 0 8px 0 0;
+  width: 19px; }
+  .ieRoot_lt_IE10 .radio {
+    top: 8px; }
+  .radio.checked {
+    background-color: #00798a; }
+  .radio.disabled {
+    background-color: var(--color-gray-3);
+    border-color: var(--color-gray-3); }
+    .radio.disabled span {
+      background-color: var(--color-gray-3); }
+
+.radio-indicator {
+  background-color: white;
+  display: block;
+  height: 7px;
+  width: 7px; }
 
 .dropdownMenu-item {
   border-bottom: 1px solid rgba(46, 62, 72, 0.12);
@@ -4024,17 +4076,6 @@ input:focus + .icon--field svg {
 
 .label--disabled {
   color: rgba(46, 62, 72, 0.6); }
-
-.radio {
-  cursor: pointer;
-  display: inline-block;
-  font-size: 16px;
-  height: 16px;
-  line-height: 1;
-  line-height: 1.45;
-  margin: 0 8px 0 0; }
-  .ieRoot_lt_IE10 .radio {
-    top: 8px; }
 
 .helperTextContainer {
   padding-bottom: 4px; }
@@ -4206,12 +4247,6 @@ input.field--reset:active {
 .radio-indicator {
   border-radius: 50%; }
 
-.radio-indicator {
-  background-color: white;
-  display: block;
-  height: 8px;
-  width: 8px; }
-
 .checkbox-indicator {
   height: 100%; }
 
@@ -4288,7 +4323,7 @@ input.field--reset:active {
   .svg-icon,
   .svg-icon svg {
     stroke: transparent;
-    fill: rgba(46, 62, 72, 0.6); }
+    fill: rgba(46, 62, 72, 0.75); }
   .inverted .svg-icon,
   .inverted .svg-icon svg {
     stroke: transparent;
@@ -4456,7 +4491,7 @@ input.field--reset:active {
 .modal-closeButton,
 .modal-closeButton svg {
   stroke: transparent;
-  fill: rgba(46, 62, 72, 0.6); }
+  fill: rgba(46, 62, 72, 0.75); }
 
 .inverted .modal-closeButton,
 .inverted .modal-closeButton svg {
@@ -4875,7 +4910,7 @@ input.field--reset:active {
   .navItem,
   .navItem svg {
     stroke: transparent;
-    fill: rgba(46, 62, 72, 0.6); }
+    fill: rgba(46, 62, 72, 0.75); }
 
 .circular {
   border-radius: 100%; }

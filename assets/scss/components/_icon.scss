@@ -26,7 +26,7 @@
 
 .svg-icon {
 	// SVG element
-	@include _iconColor($C_textSecondary, $C_textSecondaryInverted);
+	@include _iconColor($C_svgIcon, $C_svgIconInverted);
 	display: inline-flex;
 	font-size: 0;
 
