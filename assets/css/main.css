@@ -3993,6 +3993,9 @@ Card-like boxes.
   height: 7px;
   width: 7px; }
 
+[data-swarm-checkbox]:focus-within > span:first-of-type {
+  box-shadow: 0 0 1px 2px #426b8f !important; }
+
 .dropdownMenu-item {
   border-bottom: 1px solid rgba(46, 62, 72, 0.12);
   box-sizing: border-box;
