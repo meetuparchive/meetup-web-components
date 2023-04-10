@@ -1,0 +1,42 @@
+.radio-container {
+	align-items: center;
+	display: flex;
+	input {
+		display: none;
+	}
+}
+
+.radio {
+	align-items: center;
+	border: 1px solid $C_secondary;
+	border-radius: 50%;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: flex;
+	height: 19px;
+	justify-content: center;
+	margin: 0 $space-half 0 0;
+	width: 19px;
+
+	@include browser-lessThanIE(10) {
+		top: $space / 2;
+	}
+
+	&.checked {
+		background-color: $C_viridian;
+	}
+	&.disabled {
+		background-color: var(--color-gray-3);
+		border-color: var(--color-gray-3);
+		span {
+			background-color: var(--color-gray-3);
+		}
+	}
+}
+
+.radio-indicator {
+	background-color: white;
+	display: block;
+	height: 7px;
+	width: 7px;
+}

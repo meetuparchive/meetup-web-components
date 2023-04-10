@@ -36,7 +36,12 @@ storiesOf('Forms/RadioButtonGroup', module)
 				>
 					<RadioButton value="one" label="Option 1" name="radioButton" />
 					<RadioButton value="two" label="Option 2" name="radioButton" />
-					<RadioButton value="three" label="Option 3" name="radioButton" />
+					<RadioButton
+						value="three"
+						label="Disabled"
+						name="radioButton"
+						disabled
+					/>
 				</RadioButtonGroup>
 			);
 		},
