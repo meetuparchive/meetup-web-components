@@ -26,6 +26,7 @@ export class RadioButton extends React.PureComponent {
 					tabIndex={0}
 					role="checkbox"
 					aria-checked={checked}
+					aria-labelledby={id}
 				>
 					{checked && <span className="radio-indicator" />}
 				</span>
