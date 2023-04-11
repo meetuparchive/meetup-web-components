@@ -335,21 +335,21 @@ $calendarWidth: 310px;
 .flatpickr-day:focus,
 .flatpickr-day.prevMonthDay:focus,
 .flatpickr-day.nextMonthDay:focus {
-	background: #707070;
-	border-color: #707070;
+	background: $C_secondary;
+	border-color: $C_secondary;
 	color: #fff;
 	cursor: pointer;
 	outline: 0;
 }
 
 .flatpickr-day.today {
-	border-color: #00798a;
+	border-color: $C_viridian;
 }
 
 .flatpickr-day.today:hover,
 .flatpickr-day.today:focus {
-	background: #00798a;
-	border-color: #00798a;
+	background: $C_viridian;
+	border-color: $C_viridian;
 	color: #fff;
 }
 
