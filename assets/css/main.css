@@ -3844,17 +3844,17 @@ Card-like boxes.
 .flatpickr-day.nextMonthDay:focus {
   background: #707070;
   border-color: #707070;
+  color: #fff;
   cursor: pointer;
-  outline: 0;
-  color: #fff; }
+  outline: 0; }
 
 .flatpickr-day.today {
-  border-color: #00798A; }
+  border-color: #00798a; }
 
 .flatpickr-day.today:hover,
 .flatpickr-day.today:focus {
-  background: #00798A;
-  border-color: #00798A;
+  background: #00798a;
+  border-color: #00798a;
   color: #fff; }
 
 .flatpickr-day.disabled,
