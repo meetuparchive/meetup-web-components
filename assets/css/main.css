@@ -3842,18 +3842,19 @@ Card-like boxes.
 .flatpickr-day:focus,
 .flatpickr-day.prevMonthDay:focus,
 .flatpickr-day.nextMonthDay:focus {
-  background: #e6e6e6;
-  border-color: #e6e6e6;
+  background: #707070;
+  border-color: #707070;
   cursor: pointer;
-  outline: 0; }
+  outline: 0;
+  color: #fff; }
 
 .flatpickr-day.today {
-  border-color: #959ea9; }
+  border-color: #00798A; }
 
 .flatpickr-day.today:hover,
 .flatpickr-day.today:focus {
-  background: #959ea9;
-  border-color: #959ea9;
+  background: #00798A;
+  border-color: #00798A;
   color: #fff; }
 
 .flatpickr-day.disabled,
