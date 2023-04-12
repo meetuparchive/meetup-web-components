@@ -2,6 +2,7 @@
 
 exports[`App Badges exists 1`] = `
 <Flex
+  IsMobile={false}
   className="getTheApp-downloadLinks"
 >
   <FlexItem
