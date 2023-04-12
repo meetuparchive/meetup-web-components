@@ -1,27 +1,22 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import AppBadges, { IOS_DOWNLOAD_LINK, ANDROID_DOWNLOAD_LINK } from './AppBadges';
+import AppBadges, {
+	IOS_DOWNLOAD_LINK,
+	ANDROID_DOWNLOAD_LINK,
+} from './AppBadges';
 
 const testLanguage = 'fr';
-const isAndroidDevice = false;
-const isIosDevice = false;
-const IsMobile = false;
 
 describe('App Badges', () => {
-	const appBadgesComponent = shallow(
-		<AppBadges
-			language={testLanguage}
-			isAndroidDevice={isAndroidDevice}
-			isIosDevice={isIosDevice}
-			IsMobile={IsMobile}
-		/>
-	);
+	const appBadgesComponent = shallow(<AppBadges language={testLanguage} />);
 	it('exists', () => {
 		expect(appBadgesComponent).toMatchSnapshot();
 	});
 	it('should link to the itunes store', () => {
-		const itunesStoreLink = appBadgesComponent.find(`a[href="${IOS_DOWNLOAD_LINK}"]`);
+		const itunesStoreLink = appBadgesComponent.find(
+			`a[href="${IOS_DOWNLOAD_LINK}"]`
+		);
 		expect(itunesStoreLink.exists()).toBe(true);
 	});
 	it('should link to the google play store', () => {
