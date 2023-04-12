@@ -30,7 +30,7 @@ const AppBadges = ({
 		<Flex className={classNames} {...other}>
 			{(isIosDevice || !isMobile) && (
 				<FlexItem className="getTheApp-ios">
-					<a href={IOS_DOWNLOAD_LINK}>
+					<a href={IOS_DOWNLOAD_LINK} rel="noopener noreferrer" target="_blank">
 						<img
 							className="getTheApp-downloadImage span--100 margin--center"
 							src={getAppStorePhoto('ios', language)}
@@ -40,7 +40,11 @@ const AppBadges = ({
 			)}
 			{(isAndroidDevice || !isMobile) && (
 				<FlexItem className="getTheApp-android">
-					<a href={ANDROID_DOWNLOAD_LINK}>
+					<a
+						href={ANDROID_DOWNLOAD_LINK}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
 						<img
 							className="getTheApp-downloadImage span--100 margin--center"
 							src={getAppStorePhoto('android', language)}
