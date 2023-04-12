@@ -2,12 +2,13 @@
 
 exports[`Checkbox basic renders checked checkbox 1`] = `
 <label
-  data-swarm-checkbox="default"
+  className="checkbox-container"
   htmlFor="hello"
 >
   <span
     aria-checked={true}
     aria-label="checkbox"
+    className="checkbox"
     data-swarm-checkbox-field="checked"
     role="checkbox"
   >
@@ -32,13 +33,13 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
 
 exports[`Checkbox basic renders unchecked checkbox 1`] = `
 <label
-  data-swarm-checkbox="default"
+  className="checkbox-container"
   htmlFor="hello"
 >
   <span
     aria-checked={false}
     aria-label="checkbox"
-    data-swarm-checkbox-field="unchecked"
+    className="checkbox"
     role="checkbox"
   />
   <input

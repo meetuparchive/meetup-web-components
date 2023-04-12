@@ -92,11 +92,11 @@ $modal-width: 440px;
 }
 
 .modal-closeButton {
-	@include color-svg($C_textSecondary);
+	@include color-svg($C_svgIcon);
 }
 
 .inverted .modal-closeButton {
-	@include color-svg($C_textSecondaryInverted);
+	@include color-svg($C_svgIconInverted);
 }
 
 .modal-closeButton:focus,

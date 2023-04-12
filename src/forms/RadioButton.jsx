@@ -1,7 +1,6 @@
 import React from 'react';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { Radio as SwarmRadio } from '@meetup/swarm-components';
-import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 export class RadioButton extends React.PureComponent {
 	componentDidCatch(error, info) {
@@ -10,20 +9,38 @@ export class RadioButton extends React.PureComponent {
 
 	render() {
 		const {
-			labelClassName, // eslint-disable-line no-unused-vars
+			checked,
 			label,
-			name,
+			id,
+			disabled,
 			value,
+			children,
+			name,
 			...other
 		} = this.props;
+
 		return (
-			<SwarmRadio
-				name={name}
-				value={value}
-				label={label}
-				id={`RadioButton-${name}-${value}`}
-				{...other}
-			/>
+			<label className="radio-container">
+				<span
+					className={cx('radio', { checked, disabled })}
+					tabIndex={0}
+					role="checkbox"
+					aria-checked={checked}
+					aria-labelledby={id}
+				>
+					{checked && <span className="radio-indicator" />}
+				</span>
+				<input
+					type="radio"
+					id={id}
+					name={name}
+					checked={checked}
+					disabled={disabled}
+					value={value}
+					{...other}
+				/>
+				<span>{label || children}</span>
+			</label>
 		);
 	}
 }
@@ -47,4 +64,4 @@ RadioButton.propTypes = {
 	value: PropTypes.string,
 };
 
-export default DeprecationWarning(RadioButton);
+export default RadioButton;

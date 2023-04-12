@@ -24,7 +24,7 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 }
 
 .navItem {
-	@include color-svg($C_textSecondary);
+	@include color-svg($C_svgIcon);
 	color: $C_textPrimary;
 	padding-left: 0;
 	position: relative;
