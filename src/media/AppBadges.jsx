@@ -15,43 +15,27 @@ const getAppStoreDownloadPhoto = (platform, language) =>
  * Renders iOS and Android app badges
  * @class AppBadges
  */
-const AppBadges = ({
-	className,
-	language,
-	getAppStorePhoto,
-	isAndroidDevice,
-	isIosDevice,
-	isMobile,
-	...other
-}) => {
+const AppBadges = ({ className, language, getAppStorePhoto, ...other }) => {
 	const classNames = cx('getTheApp-downloadLinks', className);
 
 	return (
 		<Flex className={classNames} {...other}>
-			{(isIosDevice || !isMobile) && (
-				<FlexItem className="getTheApp-ios">
-					<a href={IOS_DOWNLOAD_LINK} rel="noopener noreferrer" target="_blank">
-						<img
-							className="getTheApp-downloadImage span--100 margin--center"
-							src={getAppStorePhoto('ios', language)}
-						/>
-					</a>
-				</FlexItem>
-			)}
-			{(isAndroidDevice || !isMobile) && (
-				<FlexItem className="getTheApp-android">
-					<a
-						href={ANDROID_DOWNLOAD_LINK}
-						rel="noopener noreferrer"
-						target="_blank"
-					>
-						<img
-							className="getTheApp-downloadImage span--100 margin--center"
-							src={getAppStorePhoto('android', language)}
-						/>
-					</a>
-				</FlexItem>
-			)}
+			<FlexItem className="getTheApp-ios">
+				<a href={IOS_DOWNLOAD_LINK} target="_blank" rel="noopener noreferrer">
+					<img
+						className="getTheApp-downloadImage span--100 margin--center"
+						src={getAppStorePhoto('ios', language)}
+					/>
+				</a>
+			</FlexItem>
+			<FlexItem className="getTheApp-android">
+				<a href={ANDROID_DOWNLOAD_LINK} target="_blank" rel="noopener noreferrer">
+					<img
+						className="getTheApp-downloadImage span--100 margin--center"
+						src={getAppStorePhoto('android', language)}
+					/>
+				</a>
+			</FlexItem>
 		</Flex>
 	);
 };
@@ -66,15 +50,6 @@ AppBadges.propTypes = {
 
 	/** The language the badge image is in */
 	language: PropTypes.string.isRequired,
-
-	/** Checks if the user is using an iOS device*/
-	isIosDevice: PropTypes.bool,
-
-	/** Checks if the user is using an Android device*/
-	isAndroidDevice: PropTypes.bool,
-
-	/** Checks if the user is using a mobile device*/
-	isMobile: PropTypes.bool,
 };
 
 export default AppBadges;
