@@ -219,6 +219,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                         <Toggle
                           aria-labelledby="label-firstsection"
                           checked={false}
+                          className="toggleSwitch"
                           disabled={false}
                           id="switch-firstsection"
                           name="firstsection"
@@ -230,6 +231,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                             aria-labelledby="label-firstsection"
                             aria-readonly={false}
                             checked={false}
+                            className="toggleSwitch"
                             data-swarm-toggle="unchecked"
                             disabled={false}
                             id="switch-firstsection"
@@ -716,6 +718,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                         <Toggle
                           aria-labelledby="label-firstsection"
                           checked={false}
+                          className="toggleSwitch"
                           disabled={false}
                           id="switch-firstsection"
                           name="firstsection"
@@ -727,6 +730,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                             aria-labelledby="label-firstsection"
                             aria-readonly={false}
                             checked={false}
+                            className="toggleSwitch"
                             data-swarm-toggle="unchecked"
                             disabled={false}
                             id="switch-firstsection"

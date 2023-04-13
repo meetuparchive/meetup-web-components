@@ -4799,50 +4799,15 @@ input.field--reset:active {
 .toggleButton-input:focus + .toggleButton-label {
   outline: 1px dotted rgba(46, 62, 72, 0.54); }
 
-.toggleSwitch {
-  background-color: #e4e9ed;
-  border-radius: 999px;
-  height: 24px;
-  position: relative;
-  width: 48px; }
-  .toggleSwitch:hover {
-    background-color: #d5dde3; }
-  .toggleSwitch:focus {
-    background-color: #e4e9ed; }
-  .toggleSwitch:active {
-    background-color: #c5d0d9; }
+.toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) {
+  border-color: #707070 !important; }
+  .toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) [data-swarm-toggle-switch-disc] {
+    border-color: inherit; }
+    .toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) [data-swarm-toggle-switch-disc] svg {
+      fill: #707070 !important; }
 
-.toggleSwitch--active {
-  background: #353e48; }
-  .toggleSwitch--active:hover {
-    background-color: #2a3139; }
-  .toggleSwitch--active:focus {
-    background-color: #353e48; }
-  .toggleSwitch--active:active {
-    background-color: #1f252b; }
-
-.button.toggleSwitch--disabled {
-  background: #f6f7f8; }
-  .button.toggleSwitch--disabled:hover, .button.toggleSwitch--disabled:focus, .button.toggleSwitch--disabled:active {
-    background-color: #f6f7f8; }
-
-.toggleSwitch-knob {
-  background: white;
-  border-radius: 999px;
-  box-shadow: 0 0 2px rgba(84, 96, 107, 0.6);
-  height: 24px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  transform: translateX(0);
-  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-  width: 24px; }
-
-.toggleSwitch-knob--active {
-  transform: translateX(24px); }
-
-.toggleSwitch-knob--disabled {
-  box-shadow: 0 0 2px rgba(46, 62, 72, 0.12); }
+.toggleSwitch[data-swarm-toggle="checked"] [data-swarm-toggle-switch-disc] {
+  border-color: #707070; }
 
 .tooltip-bubble {
   background-color: #353e48; }
