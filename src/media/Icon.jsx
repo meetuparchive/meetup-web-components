@@ -19,11 +19,16 @@ class Icon extends React.PureComponent {
 	}
 
 	render() {
-		const { className, circled, role, ...other } = this.props;
+		const { className, circled, role, ariaLabel, ...other } = this.props;
 
 		return (
 			<span className={className}>
-				<SwarmIcon circle={circled} role={role || 'presentation'} {...other} />
+				<SwarmIcon
+					circle={circled}
+					role={role || 'presentation'}
+					aria-label={ariaLabel}
+					{...other}
+				/>
 			</span>
 		);
 	}
