@@ -217,60 +217,49 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                       tabIndex="-1"
                     >
                       <div>
-                        <Toggle
+                        <button
+                          aria-checked={false}
                           aria-labelledby="label-firstsection"
-                          checked={false}
+                          aria-readonly={false}
                           className="toggleSwitch"
+                          data-swarm-toggle="unchecked"
                           disabled={false}
-                          id="switch-firstsection"
-                          name="firstsection"
                           onClick={[Function]}
+                          role="checkbox"
                           tabIndex="-1"
+                          type="button"
                         >
-                          <button
-                            aria-checked={false}
-                            aria-labelledby="label-firstsection"
-                            aria-readonly={false}
-                            checked={false}
-                            className="toggleSwitch"
-                            data-swarm-toggle="unchecked"
-                            disabled={false}
-                            id="switch-firstsection"
-                            name="firstsection"
-                            onClick={[Function]}
-                            role="checkbox"
-                            tabIndex="-1"
-                            type="button"
+                          <span
+                            data-swarm-toggle-switch-disc={true}
                           >
-                            <span
-                              data-swarm-toggle-switch-disc={true}
+                            <Icon
+                              shape="cross"
+                              size="s"
                             >
-                              <Icon
-                                color="var(--color-gray-4)"
-                                shape="cross"
-                                size="xs"
-                              >
-                                <svg
-                                  className="svg svg--cross svg-icon valign--middle"
-                                  height="20"
-                                  preserveAspectRatio="xMinYMin meet"
-                                  role="img"
-                                  style={
-                                    Object {
-                                      "fill": "var(--color-gray-4)",
-                                    }
-                                  }
-                                  viewBox="0 0 20 20"
-                                  width="20"
+                              <span>
+                                <Icon
+                                  role="presentation"
+                                  shape="cross"
+                                  size="s"
                                 >
-                                  <use
-                                    xlinkHref="#icon-cross--small"
-                                  />
-                                </svg>
-                              </Icon>
-                            </span>
-                          </button>
-                        </Toggle>
+                                  <svg
+                                    className="svg svg--cross svg-icon valign--middle"
+                                    height="24"
+                                    preserveAspectRatio="xMinYMin meet"
+                                    role="presentation"
+                                    style={Object {}}
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                  >
+                                    <use
+                                      xlinkHref="#icon-cross--small"
+                                    />
+                                  </svg>
+                                </Icon>
+                              </span>
+                            </Icon>
+                          </span>
+                        </button>
                       </div>
                     </ToggleSwitch>
                   </ToggleSwitch>
@@ -717,60 +706,49 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                       tabIndex="-1"
                     >
                       <div>
-                        <Toggle
+                        <button
+                          aria-checked={false}
                           aria-labelledby="label-firstsection"
-                          checked={false}
+                          aria-readonly={false}
                           className="toggleSwitch"
+                          data-swarm-toggle="unchecked"
                           disabled={false}
-                          id="switch-firstsection"
-                          name="firstsection"
                           onClick={[Function]}
+                          role="checkbox"
                           tabIndex="-1"
+                          type="button"
                         >
-                          <button
-                            aria-checked={false}
-                            aria-labelledby="label-firstsection"
-                            aria-readonly={false}
-                            checked={false}
-                            className="toggleSwitch"
-                            data-swarm-toggle="unchecked"
-                            disabled={false}
-                            id="switch-firstsection"
-                            name="firstsection"
-                            onClick={[Function]}
-                            role="checkbox"
-                            tabIndex="-1"
-                            type="button"
+                          <span
+                            data-swarm-toggle-switch-disc={true}
                           >
-                            <span
-                              data-swarm-toggle-switch-disc={true}
+                            <Icon
+                              shape="cross"
+                              size="s"
                             >
-                              <Icon
-                                color="var(--color-gray-4)"
-                                shape="cross"
-                                size="xs"
-                              >
-                                <svg
-                                  className="svg svg--cross svg-icon valign--middle"
-                                  height="20"
-                                  preserveAspectRatio="xMinYMin meet"
-                                  role="img"
-                                  style={
-                                    Object {
-                                      "fill": "var(--color-gray-4)",
-                                    }
-                                  }
-                                  viewBox="0 0 20 20"
-                                  width="20"
+                              <span>
+                                <Icon
+                                  role="presentation"
+                                  shape="cross"
+                                  size="s"
                                 >
-                                  <use
-                                    xlinkHref="#icon-cross--small"
-                                  />
-                                </svg>
-                              </Icon>
-                            </span>
-                          </button>
-                        </Toggle>
+                                  <svg
+                                    className="svg svg--cross svg-icon valign--middle"
+                                    height="24"
+                                    preserveAspectRatio="xMinYMin meet"
+                                    role="presentation"
+                                    style={Object {}}
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                  >
+                                    <use
+                                      xlinkHref="#icon-cross--small"
+                                    />
+                                  </svg>
+                                </Icon>
+                              </span>
+                            </Icon>
+                          </span>
+                        </button>
                       </div>
                     </ToggleSwitch>
                   </ToggleSwitch>

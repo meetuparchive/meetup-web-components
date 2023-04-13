@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Toggle } from '@meetup/swarm-components';
+import Icon from '../media/Icon';
 import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 /**
@@ -15,27 +15,38 @@ class ToggleSwitch extends React.Component {
 	render() {
 		const {
 			labelClassName, // eslint-disable-line no-unused-vars
-			isActive,
+			isActive: checked = false,
 			label,
 			labelledBy,
 			id,
 			name,
+			disabled,
 			...other
 		} = this.props;
 
 		const labelProps = labelledBy ? { 'aria-labelledby': labelledBy } : {};
 
+		const checkedStatus = checked ? 'checked' : 'unchecked';
+		const fillIcon = checked ? 'check' : 'cross';
+
 		return (
 			<div>
 				{label && <label htmlFor={id || name}>{label}</label>}
-				<Toggle
-					id={id || name}
-					name={name}
-					checked={isActive}
+				<button
+					data-swarm-toggle={checkedStatus}
+					role="checkbox"
+					type="button"
 					className="toggleSwitch"
+					aria-checked={checked}
+					aria-readonly={disabled}
+					disabled={disabled}
 					{...labelProps}
 					{...other}
-				/>
+				>
+					<span data-swarm-toggle-switch-disc>
+						<Icon shape={fillIcon} />
+					</span>
+				</button>
 			</div>
 		);
 	}
