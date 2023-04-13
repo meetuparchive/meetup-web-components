@@ -8,37 +8,54 @@ exports[`A11y class pass through on labelClassName should hide the label when a1
   >
     Test select
   </FieldLabel>
-  <Select
-    id="testSelect"
-    name="testSelect"
-    requiredText="yo check it"
+  <div
+    data-swarm-select="default"
   >
-    <option
-      value="1"
+    <div
+      data-swarm-select-wrapper={true}
     >
-      One
-    </option>
-    ,
-    <option
-      value="2"
-    >
-      Two
-    </option>
-    ,
-    <option
-      value="3"
-    >
-      Three
-    </option>
-    ,
-    <option
-      disabled={true}
-      value="4"
-    >
-      Four
-    </option>
-    ,
-  </Select>
+      <select
+        id="testSelect"
+        name="testSelect"
+        required="yo check it"
+      >
+        <option
+          value="1"
+        >
+          One
+        </option>
+        ,
+        <option
+          value="2"
+        >
+          Two
+        </option>
+        ,
+        <option
+          value="3"
+        >
+          Three
+        </option>
+        ,
+        <option
+          disabled={true}
+          value="4"
+        >
+          Four
+        </option>
+        ,
+      </select>
+      <span
+        data-swarm-select-arrow="arrow-down"
+      >
+        <Icon
+          ariaLabel="Open select"
+          shape="chevron-down"
+          size="s"
+        />
+      </span>
+    </div>
+  </div>
 </Fragment>
 `;
 
@@ -50,37 +67,54 @@ exports[`A11y class pass through on labelClassName should only pass the a11y cla
   >
     Test select
   </FieldLabel>
-  <Select
-    id="testSelect"
-    name="testSelect"
-    requiredText="yo check it"
+  <div
+    data-swarm-select="default"
   >
-    <option
-      value="1"
+    <div
+      data-swarm-select-wrapper={true}
     >
-      One
-    </option>
-    ,
-    <option
-      value="2"
-    >
-      Two
-    </option>
-    ,
-    <option
-      value="3"
-    >
-      Three
-    </option>
-    ,
-    <option
-      disabled={true}
-      value="4"
-    >
-      Four
-    </option>
-    ,
-  </Select>
+      <select
+        id="testSelect"
+        name="testSelect"
+        required="yo check it"
+      >
+        <option
+          value="1"
+        >
+          One
+        </option>
+        ,
+        <option
+          value="2"
+        >
+          Two
+        </option>
+        ,
+        <option
+          value="3"
+        >
+          Three
+        </option>
+        ,
+        <option
+          disabled={true}
+          value="4"
+        >
+          Four
+        </option>
+        ,
+      </select>
+      <span
+        data-swarm-select-arrow="arrow-down"
+      >
+        <Icon
+          ariaLabel="Open select"
+          shape="chevron-down"
+          size="s"
+        />
+      </span>
+    </div>
+  </div>
 </Fragment>
 `;
 
@@ -92,36 +126,53 @@ exports[`SelectInput basic renders into the DOM 1`] = `
   >
     Test select
   </FieldLabel>
-  <Select
-    id="testSelect"
-    name="testSelect"
-    requiredText="yo check it"
+  <div
+    data-swarm-select="default"
   >
-    <option
-      value="1"
+    <div
+      data-swarm-select-wrapper={true}
     >
-      One
-    </option>
-    ,
-    <option
-      value="2"
-    >
-      Two
-    </option>
-    ,
-    <option
-      value="3"
-    >
-      Three
-    </option>
-    ,
-    <option
-      disabled={true}
-      value="4"
-    >
-      Four
-    </option>
-    ,
-  </Select>
+      <select
+        id="testSelect"
+        name="testSelect"
+        required="yo check it"
+      >
+        <option
+          value="1"
+        >
+          One
+        </option>
+        ,
+        <option
+          value="2"
+        >
+          Two
+        </option>
+        ,
+        <option
+          value="3"
+        >
+          Three
+        </option>
+        ,
+        <option
+          disabled={true}
+          value="4"
+        >
+          Four
+        </option>
+        ,
+      </select>
+      <span
+        data-swarm-select-arrow="arrow-down"
+      >
+        <Icon
+          ariaLabel="Open select"
+          shape="chevron-down"
+          size="s"
+        />
+      </span>
+    </div>
+  </div>
 </Fragment>
 `;

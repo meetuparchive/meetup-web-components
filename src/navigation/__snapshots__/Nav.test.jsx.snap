@@ -379,6 +379,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       hasUpdates={true}
       icon={
         <img
+          alt="Messages"
           className="proIcon"
           src=""
         />
@@ -396,6 +397,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       hasUpdates={false}
       icon={
         <img
+          alt="Notifications"
           className="proIcon"
           src=""
         />
@@ -640,6 +642,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       hasUpdates={true}
       icon={
         <img
+          alt="Messages"
           className="proIcon"
           src=""
         />
@@ -658,6 +661,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       hasUpdates={false}
       icon={
         <img
+          alt="Notifications"
           className="proIcon"
           src=""
         />
@@ -1178,6 +1182,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       hasUpdates={true}
       icon={
         <img
+          alt="Messages"
           className="proIcon"
           src=""
         />
@@ -1195,6 +1200,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       hasUpdates={false}
       icon={
         <img
+          alt="Notifications"
           className="proIcon"
           src=""
         />
@@ -1444,6 +1450,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       hasUpdates={true}
       icon={
         <img
+          alt="Messages"
           className="proIcon"
           src=""
         />
@@ -1461,6 +1468,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       hasUpdates={false}
       icon={
         <img
+          alt="Notifications"
           className="proIcon"
           src=""
         />
@@ -2011,6 +2019,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       hasUpdates={true}
       icon={
         <img
+          alt="Messages"
           className="proIcon"
           src=""
         />
@@ -2028,6 +2037,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       hasUpdates={false}
       icon={
         <img
+          alt="Notifications"
           className="proIcon"
           src=""
         />

@@ -1,10 +1,12 @@
 .toggleSwitch {
+	/* stylelint-disable */
+	/* stylelint disabling is a temporary solution to override styles from swarm ui */
 	&[data-swarm-toggle="unchecked"]:not(:disabled) {
 		border-color: #707070 !important;
-
 		[data-swarm-toggle-switch-disc] {
 			border-color: inherit;
-
+			margin-left: -1px;
+			margin-top: 0;
 			svg {
 				fill: #707070 !important;
 			}
@@ -13,5 +15,7 @@
 
 	&[data-swarm-toggle="checked"] [data-swarm-toggle-switch-disc] {
 		border-color: #707070;
+		margin-top: 0;
 	}
+	/* stylelint-enable */
 }

@@ -260,7 +260,9 @@ export class Nav extends React.Component {
 
 		const getMessagesIcon = () => {
 			if (media.isAtMediumUp) {
-				return <img className="proIcon" src={MESSAGE_ICON} />;
+				return (
+					<img className="proIcon" alt={messages.label} src={MESSAGE_ICON} />
+				);
 			}
 
 			return (
@@ -277,7 +279,13 @@ export class Nav extends React.Component {
 
 		const getNotificationsIcon = () => {
 			if (media.isAtMediumUp) {
-				return <img className="proIcon" src={NOTIFICATION_ICON} />;
+				return (
+					<img
+						className="proIcon"
+						alt={notifications.label}
+						src={NOTIFICATION_ICON}
+					/>
+				);
 			}
 
 			return (
@@ -301,7 +309,7 @@ export class Nav extends React.Component {
 		};
 
 		const proDashboardIcon = media.isAtMediumUp ? (
-			<img className="proIcon" src={PRO_DASHBOARD_ICON} />
+			<img className="proIcon" alt={proDashboard.label} src={PRO_DASHBOARD_ICON} />
 		) : (
 			<Flex noGutters align="center">
 				<FlexItem>

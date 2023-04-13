@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
 
-import { default as SwarmSelect } from '@meetup/swarm-components/lib/Select';
 import { FieldHelper, FieldLabel } from '@meetup/swarm-components';
 
+import Icon from '../media/Icon';
 import withErrorList from '../utils/components/withErrorList';
 import a11yPassThrough from '../utils/a11yPassThrough';
 import DeprecationWarning from '../utils/components/DeprecationWarning';
@@ -30,6 +30,9 @@ type Props = React.ElementConfig<HTMLSelectElement> & {
 	/** What to render in order to indicate the field is required. Supply a string for a custom error message */
 	required?: boolean | string,
 
+	/** Disabled input status */
+	disabled?: boolean | string,
+
 	/** DEPRECATED */
 	labelClassName?: string,
 };
@@ -51,14 +54,16 @@ export class SelectInput extends React.PureComponent<Props> {
 			error,
 			helperText, // eslint-disable-line no-unused-vars
 			required,
+			disabled,
 			...other
 		} = this.props;
 
 		const requiredProps = required
-			? { requiredText: typeof required === 'string' ? required : '*' }
+			? { required: typeof required === 'string' ? required : '*' }
 			: {};
 
 		const fieldId = id || name;
+		const selectState = disabled ? 'disabled' : error ? 'error' : 'default';
 
 		return (
 			<React.Fragment>
@@ -71,13 +76,20 @@ export class SelectInput extends React.PureComponent<Props> {
 					</FieldLabel>
 				)}
 				{helperText && <FieldHelper>{helperText}</FieldHelper>}
-				<SwarmSelect
-					id={fieldId}
-					name={name}
-					error={error}
-					{...requiredProps}
-					{...other}
-				/>
+				<div data-swarm-select={selectState}>
+					<div data-swarm-select-wrapper>
+						<select
+							name={name}
+							id={id || name}
+							disabled={disabled}
+							{...requiredProps}
+							{...other}
+						/>
+						<span data-swarm-select-arrow="arrow-down">
+							<Icon shape="chevron-down" ariaLabel="Open select" />
+						</span>
+					</div>
+				</div>
 			</React.Fragment>
 		);
 	}

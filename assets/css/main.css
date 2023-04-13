@@ -4799,15 +4799,21 @@ input.field--reset:active {
 .toggleButton-input:focus + .toggleButton-label {
   outline: 1px dotted rgba(46, 62, 72, 0.54); }
 
-.toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) {
-  border-color: #707070 !important; }
-  .toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) [data-swarm-toggle-switch-disc] {
-    border-color: inherit; }
-    .toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) [data-swarm-toggle-switch-disc] svg {
-      fill: #707070 !important; }
-
-.toggleSwitch[data-swarm-toggle="checked"] [data-swarm-toggle-switch-disc] {
-  border-color: #707070; }
+.toggleSwitch {
+  /* stylelint-disable */
+  /* stylelint disabling is a temporary solution to override styles from swarm ui */
+  /* stylelint-enable */ }
+  .toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) {
+    border-color: #707070 !important; }
+    .toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) [data-swarm-toggle-switch-disc] {
+      border-color: inherit;
+      margin-left: -1px;
+      margin-top: 0; }
+      .toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) [data-swarm-toggle-switch-disc] svg {
+        fill: #707070 !important; }
+  .toggleSwitch[data-swarm-toggle="checked"] [data-swarm-toggle-switch-disc] {
+    border-color: #707070;
+    margin-top: 0; }
 
 .tooltip-bubble {
   background-color: #353e48; }
