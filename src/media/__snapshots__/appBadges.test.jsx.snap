@@ -13,6 +13,7 @@ exports[`App Badges exists 1`] = `
       target="_blank"
     >
       <img
+        alt="Meetup iOS App Download"
         className="getTheApp-downloadImage span--100 margin--center"
         src=""
       />
@@ -27,6 +28,7 @@ exports[`App Badges exists 1`] = `
       target="_blank"
     >
       <img
+        alt="Meetup Android App Download"
         className="getTheApp-downloadImage span--100 margin--center"
         src=""
       />
