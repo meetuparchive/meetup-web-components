@@ -168,6 +168,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                             className="indicator indicator--animateActive"
                           >
                             <Icon
+                              role="presentation"
                               shape="chevron-down"
                               size="xs"
                             >
@@ -175,7 +176,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                                 className="svg svg--chevron-down svg-icon valign--middle"
                                 height="20"
                                 preserveAspectRatio="xMinYMin meet"
-                                role="img"
+                                role="presentation"
                                 style={Object {}}
                                 viewBox="0 0 20 20"
                                 width="20"
@@ -353,6 +354,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                             className="indicator"
                           >
                             <Icon
+                              role="presentation"
                               shape="chevron-down"
                               size="xs"
                             >
@@ -360,7 +362,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                                 className="svg svg--chevron-down svg-icon valign--middle"
                                 height="20"
                                 preserveAspectRatio="xMinYMin meet"
-                                role="img"
+                                role="presentation"
                                 style={Object {}}
                                 viewBox="0 0 20 20"
                                 width="20"
@@ -538,6 +540,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                             className="indicator"
                           >
                             <Icon
+                              role="presentation"
                               shape="chevron-down"
                               size="xs"
                             >
@@ -545,7 +548,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
                                 className="svg svg--chevron-down svg-icon valign--middle"
                                 height="20"
                                 preserveAspectRatio="xMinYMin meet"
-                                role="img"
+                                role="presentation"
                                 style={Object {}}
                                 viewBox="0 0 20 20"
                                 width="20"
@@ -792,6 +795,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                             className="indicator indicator--animateActive"
                           >
                             <Icon
+                              role="presentation"
                               shape="chevron-down"
                               size="xs"
                             >
@@ -799,7 +803,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                                 className="svg svg--chevron-down svg-icon valign--middle"
                                 height="20"
                                 preserveAspectRatio="xMinYMin meet"
-                                role="img"
+                                role="presentation"
                                 style={Object {}}
                                 viewBox="0 0 20 20"
                                 width="20"
@@ -977,6 +981,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                             className="indicator"
                           >
                             <Icon
+                              role="presentation"
                               shape="chevron-down"
                               size="xs"
                             >
@@ -984,7 +989,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                                 className="svg svg--chevron-down svg-icon valign--middle"
                                 height="20"
                                 preserveAspectRatio="xMinYMin meet"
-                                role="img"
+                                role="presentation"
                                 style={Object {}}
                                 viewBox="0 0 20 20"
                                 width="20"
@@ -1162,6 +1167,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                             className="indicator"
                           >
                             <Icon
+                              role="presentation"
                               shape="chevron-down"
                               size="xs"
                             >
@@ -1169,7 +1175,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
                                 className="svg svg--chevron-down svg-icon valign--middle"
                                 height="20"
                                 preserveAspectRatio="xMinYMin meet"
-                                role="img"
+                                role="presentation"
                                 style={Object {}}
                                 viewBox="0 0 20 20"
                                 width="20"
