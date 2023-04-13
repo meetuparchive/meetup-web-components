@@ -19,11 +19,11 @@ class Icon extends React.PureComponent {
 	}
 
 	render() {
-		const { className, circled, ...other } = this.props;
+		const { className, circled, role, ...other } = this.props;
 
 		return (
 			<span className={className}>
-				<SwarmIcon circle={circled} {...other} />
+				<SwarmIcon circle={circled} role={role || 'presentation'} {...other} />
 			</span>
 		);
 	}
@@ -45,6 +45,12 @@ Icon.propTypes = {
 
 	/** What color the icon should be filled with */
 	color: PropTypes.string,
+
+	/** Gives icon role */
+	role: PropTypes.bool,
+
+	/** If an Icon is used on its own without supporting text to explain what it is/does, be a good citizen and pass in an `aria-label` */
+	ariaLabel: PropTypes.string,
 };
 
 export default Icon;
