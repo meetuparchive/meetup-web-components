@@ -52,7 +52,7 @@ Icon.propTypes = {
 	color: PropTypes.string,
 
 	/** Gives icon role */
-	role: PropTypes.bool,
+	role: PropTypes.string,
 
 	/** If an Icon is used on its own without supporting text to explain what it is/does, be a good citizen and pass in an `aria-label` */
 	ariaLabel: PropTypes.string,
