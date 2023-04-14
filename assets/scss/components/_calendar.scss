@@ -363,11 +363,6 @@ $calendarWidth: 310px;
 	cursor: default;
 }
 
-.flatpickr-day.prevMonthDay,
-.flatpickr-day.nextMonthDay {
-	visibility: hidden;
-}
-
 .flatpickr-day.disabled,
 .flatpickr-day.disabled:hover {
 	color: rgba(57, 57, 57, 0.1);
