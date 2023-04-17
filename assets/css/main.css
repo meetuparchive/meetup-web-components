@@ -1805,6 +1805,10 @@ Class							  | Description
   animation: spin 0.8s linear;
   animation-iteration-count: infinite; }
 
+:root {
+  --color-meetup-red: #e32359 !important;
+  --color-viridian: #00798a !important; }
+
 /*doc
 ---
 title: Bounds
@@ -3460,6 +3464,13 @@ $('#fadeInLink').on('click', function(e) {
 .button--iconOnly {
   padding: 8px 16px; }
 
+[data-swarm-button="primary"] {
+  background-color: #e32359 !important;
+  border: 1px solid #e32359 !important; }
+  [data-swarm-button="primary"]:hover {
+    background-color: #e63a6a !important;
+    border: 1px solid #e63a6a !important; }
+
 /*doc
 ---
 title: Cards
@@ -4799,7 +4810,6 @@ input.field--reset:active {
 .toggleButton-input:focus + .toggleButton-label {
   outline: 1px dotted rgba(46, 62, 72, 0.54); }
 
-<<<<<<< HEAD
 .toggleSwitch {
   /* stylelint-disable */
   /* stylelint disabling is a temporary solution to override styles from swarm ui */
@@ -4815,17 +4825,6 @@ input.field--reset:active {
   .toggleSwitch[data-swarm-toggle="checked"] [data-swarm-toggle-switch-disc] {
     border-color: #707070;
     margin-top: 0; }
-=======
-.toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) {
-  border-color: #707070 !important; }
-  .toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) [data-swarm-toggle-switch-disc] {
-    border-color: inherit; }
-    .toggleSwitch[data-swarm-toggle="unchecked"]:not(:disabled) [data-swarm-toggle-switch-disc] svg {
-      fill: #707070 !important; }
->>>>>>> fe3f93ae (generated styles)
-
-.toggleSwitch[data-swarm-toggle="checked"] [data-swarm-toggle-switch-disc] {
-  border-color: #707070; }
 
 .tooltip-bubble {
   background-color: #353e48; }
