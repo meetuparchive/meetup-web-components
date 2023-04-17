@@ -1805,6 +1805,10 @@ Class							  | Description
   animation: spin 0.8s linear;
   animation-iteration-count: infinite; }
 
+:root {
+  --color-meetup-red: #e32359 !important;
+  --color-viridian: #00798a !important; }
+
 /*doc
 ---
 title: Bounds
@@ -3459,6 +3463,13 @@ $('#fadeInLink').on('click', function(e) {
 
 .button--iconOnly {
   padding: 8px 16px; }
+
+[data-swarm-button="primary"] {
+  background-color: #e32359 !important;
+  border: 1px solid #e32359 !important; }
+  [data-swarm-button="primary"]:hover {
+    background-color: #e63a6a !important;
+    border: 1px solid #e63a6a !important; }
 
 /*doc
 ---

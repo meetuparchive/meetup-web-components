@@ -219,3 +219,14 @@
 .button--iconOnly {
 	padding: $space-half $space;
 }
+
+[data-swarm-button="primary"] {
+	$hover: lighten($color-meetup-red, 5%);
+	background-color: $color-meetup-red !important;
+	border: 1px solid $color-meetup-red !important;
+
+	&:hover {
+		background-color: $hover !important;
+		border: 1px solid $hover !important;
+	}
+}
