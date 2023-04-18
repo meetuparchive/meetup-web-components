@@ -1,6 +1,7 @@
 $C_accent: $C_blue;
 $C_secondary: #707070;
 $C_viridian: #00798a;
+$C_meetupRed: #e32359;
 
 $C_buttonBGNeutral: $C_coolGrayLightTransp;
 $C_buttonBGNeutral--disabled: transparentize($C_coolGrayLightTransp, 0.04);
@@ -10,3 +11,9 @@ $C_buttonBGNeutralInverted--disabled: transparentize($C_borderInverted, 0.17);
 
 $C_svgIcon: rgba(46, 62, 72, 0.75);
 $C_svgIconInverted: rgba(255, 255, 255, 0.7);
+
+:root {
+	--color-meetup-red: #{$C_meetupRed} !important;
+	--color-viridian: #{$C_viridian} !important;
+	--color-gray-6: #{$C_secondary} !important;
+}

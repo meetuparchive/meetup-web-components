@@ -1807,7 +1807,8 @@ Class							  | Description
 
 :root {
   --color-meetup-red: #e32359 !important;
-  --color-viridian: #00798a !important; }
+  --color-viridian: #00798a !important;
+  --color-gray-6: #707070 !important; }
 
 /*doc
 ---
