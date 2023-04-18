@@ -8,11 +8,3 @@ $animate_easeOutQuad: cubic-bezier(
 	0.44,
 	1
 ); // stylelint-disable-line number-max-precision
-
-$color-meetup-red: #e32359;
-$color-viridian: #00798a;
-
-:root {
-	--color-meetup-red: #{$color-meetup-red} !important;
-	--color-viridian: #{$color-viridian} !important;
-}
