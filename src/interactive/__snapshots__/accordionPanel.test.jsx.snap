@@ -101,7 +101,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                               shrink={true}
                               style={
                                 Object {
-                                  "backgroundColor": "#dcebee",
+                                  "backgroundColor": "#e4f4f3",
                                 }
                               }
                             >
@@ -111,7 +111,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                 shrink={true}
                                 style={
                                   Object {
-                                    "backgroundColor": "#dcebee",
+                                    "backgroundColor": "#e4f4f3",
                                   }
                                 }
                               >
@@ -120,7 +120,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                   onClick={[Function]}
                                   style={
                                     Object {
-                                      "backgroundColor": "#dcebee",
+                                      "backgroundColor": "#e4f4f3",
                                     }
                                   }
                                 >

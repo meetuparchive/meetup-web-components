@@ -17,7 +17,7 @@ export class LockedBadge extends React.PureComponent {
 			default: {
 				iconColor: '#00798A',
 				labelColor: '#00798A',
-				backgroundColor: '#dcebee',
+				backgroundColor: '#e4f4f3',
 			},
 			neutral: {
 				iconColor: '#000000',
