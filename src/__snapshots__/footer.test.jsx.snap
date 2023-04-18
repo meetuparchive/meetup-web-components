@@ -180,8 +180,7 @@ exports[`Footer exists 1`] = `
                     <Chunk
                       className="align--center atMedium_align--left margin--top"
                     >
-                      <AppBadges
-                        getAppStorePhoto={[Function]}
+                      <WithMatchMedia(AppBadges)
                         language="en"
                       />
                     </Chunk>

@@ -5,6 +5,8 @@ import cx from 'classnames';
 import Flex from '../layout/Flex';
 import FlexItem from '../layout/FlexItem';
 
+import withMatchMedia from '../utils/components/withMatchMedia';
+
 export const IOS_DOWNLOAD_LINK = 'https://meetu.ps/2ZhShs';
 export const ANDROID_DOWNLOAD_LINK = 'https://meetu.ps/2ZhSyb';
 const getAppStoreDownloadPhoto = (platform, language) =>
@@ -15,16 +17,13 @@ const getAppStoreDownloadPhoto = (platform, language) =>
  * Renders iOS and Android app badges
  * @class AppBadges
  */
-const AppBadges = ({
-	className,
-	language,
-	getAppStorePhoto,
-	isIosPhone,
-	isAndroidPhone,
-	isMobile,
-	...other
-}) => {
+const AppBadges = ({ className, language, getAppStorePhoto, media, ...other }) => {
 	const classNames = cx('getTheApp-downloadLinks', className);
+	const isMobile = Boolean(!media.isAtMediumUp);
+	const isIos = /ipad|iphone|ipod/i.test(navigator.userAgent);
+	const isAndroid = /android/i.test(navigator.userAgent);
+	const isIosPhone = Boolean(isIos && isMobile);
+	const isAndroidPhone = Boolean(isAndroid && isMobile);
 
 	return (
 		<Flex className={classNames} {...other}>
@@ -69,14 +68,8 @@ AppBadges.propTypes = {
 	/** The language the badge image is in */
 	language: PropTypes.string.isRequired,
 
-	/** Checks if the user is using an iOS device*/
-	isIosPhone: PropTypes.bool,
-
-	/** Checks if the user is using an Android device*/
-	isAndroidPhone: PropTypes.bool,
-
-	/** Checks if the user is using a mobile device*/
-	isMobile: PropTypes.bool,
+	/** Info about viewport size */
+	media: PropTypes.object,
 };
 
-export default AppBadges;
+export default withMatchMedia(AppBadges);
