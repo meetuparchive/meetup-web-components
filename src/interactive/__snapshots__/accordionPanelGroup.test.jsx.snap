@@ -79,10 +79,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
   <ul
     aria-multiselectable={true}
     className="accordionPanelGroup list"
+    role="tree"
   >
     <li
       className="list-item flush--top"
       key="0"
+      role="treeitem"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -252,6 +254,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
     <li
       className="list-item flush--top"
       key="1"
+      role="treeitem"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -453,6 +456,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
     <li
       className="list-item flush--top"
       key="2"
+      role="treeitem"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -702,10 +706,12 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
   <ul
     aria-multiselectable={true}
     className="accordionPanelGroup list"
+    role="tree"
   >
     <li
       className="list-item flush--top"
       key="0"
+      role="treeitem"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -875,6 +881,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
     <li
       className="list-item flush--top"
       key="1"
+      role="treeitem"
     >
       <AccordionPanel
         indicatorAlign="right"
@@ -1076,6 +1083,7 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
     <li
       className="list-item flush--top"
       key="2"
+      role="treeitem"
     >
       <AccordionPanel
         indicatorAlign="right"
