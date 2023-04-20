@@ -84,7 +84,7 @@ class AccordionPanelGroup extends React.Component {
 				{...other}
 			>
 				{accordionPanels.map((panel, i) => (
-					<li key={i} className="list-item flush--top" /* role="tab"*/>
+					<li key={i} className="list-item flush--top">
 						{React.cloneElement(
 							panel,
 							{
