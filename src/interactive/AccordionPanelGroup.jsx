@@ -78,13 +78,13 @@ class AccordionPanelGroup extends React.Component {
 
 		return (
 			<ul
-				role="tablist"
+				role="tree"
 				aria-multiselectable={multiSelectable}
 				className={classNames}
 				{...other}
 			>
 				{accordionPanels.map((panel, i) => (
-					<li key={i} className="list-item flush--top" role="tab">
+					<li key={i} className="list-item flush--top" role="treeitem">
 						{React.cloneElement(
 							panel,
 							{
