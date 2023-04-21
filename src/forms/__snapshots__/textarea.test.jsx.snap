@@ -5,6 +5,7 @@ exports[`Textarea exists 1`] = `
   className="inputContainer"
 >
   <Textarea
+    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -34,7 +35,6 @@ exports[`Textarea should have a label when label is given 1`] = `
     Super Hero
   </FieldLabel>
   <Textarea
-    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -63,7 +63,6 @@ exports[`Textarea should have a required attribute when specified 1`] = `
     Super Hero
   </FieldLabel>
   <Textarea
-    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -95,7 +94,6 @@ exports[`Textarea should have helper text when helper text is given 1`] = `
     Enter your favorite hero
   </FieldHelper>
   <Textarea
-    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -118,6 +116,7 @@ exports[`Textarea should set its value on input change 1`] = `
   className="inputContainer"
 >
   <Textarea
+    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -141,6 +140,7 @@ exports[`Textarea should set its value on input change 2`] = `
   className="inputContainer"
 >
   <Textarea
+    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}

@@ -115,7 +115,7 @@ export class TextInput extends React.Component<Props> {
 						pattern={pattern}
 						disabled={disabled}
 						id={id}
-						aria-label={label ? id || name : undefined}
+						aria-label={label ? undefined : id || name}
 						{...optionalInputProps}
 						{...other}
 					/>

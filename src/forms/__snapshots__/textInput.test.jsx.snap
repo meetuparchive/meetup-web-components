@@ -26,7 +26,6 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
       data-swarm-select-wrapper="1"
     >
       <TextInput
-        aria-label="superhero"
         id="superhero"
         maxLength={20}
         name="superhero"
@@ -38,7 +37,6 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
           data-swarm-text-input-wrapper="default"
         >
           <input
-            aria-label="superhero"
             data-swarm-text-input="default"
             id="superhero"
             name="superhero"

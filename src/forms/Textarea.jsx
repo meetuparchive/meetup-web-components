@@ -127,7 +127,7 @@ export class Textarea extends React.PureComponent<Props, State> {
 					}}
 					id={id}
 					value={this.state.value}
-					aria-label={label ? id : undefined}
+					aria-label={label ? undefined : id}
 					{...other}
 				/>
 			</div>
