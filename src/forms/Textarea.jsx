@@ -107,11 +107,9 @@ export class Textarea extends React.PureComponent<Props, State> {
 
 		return (
 			<div className="inputContainer">
-				{label && (
-					<FieldLabel htmlFor={id} className={a11yPassThrough(labelClassName)}>
-						{label}
-					</FieldLabel>
-				)}
+				<FieldLabel htmlFor={id} className={a11yPassThrough(labelClassName)}>
+					{label}
+				</FieldLabel>
 				{helperText && <FieldHelper>{helperText}</FieldHelper>}
 				<SwarmTextarea
 					type="text"
