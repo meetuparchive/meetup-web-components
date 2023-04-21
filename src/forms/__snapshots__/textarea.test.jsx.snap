@@ -4,11 +4,8 @@ exports[`Textarea exists 1`] = `
 <div
   className="inputContainer"
 >
-  <FieldLabel
-    className=""
-    htmlFor="super"
-  />
   <Textarea
+    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -118,11 +115,8 @@ exports[`Textarea should set its value on input change 1`] = `
 <div
   className="inputContainer"
 >
-  <FieldLabel
-    className=""
-    htmlFor="super"
-  />
   <Textarea
+    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -145,11 +139,8 @@ exports[`Textarea should set its value on input change 2`] = `
 <div
   className="inputContainer"
 >
-  <FieldLabel
-    className=""
-    htmlFor="super"
-  />
   <Textarea
+    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}
