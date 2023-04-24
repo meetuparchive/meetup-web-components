@@ -4,46 +4,38 @@ import { shallow } from 'enzyme';
 import AppBadges, { IOS_DOWNLOAD_LINK, ANDROID_DOWNLOAD_LINK } from './AppBadges';
 
 const testLanguage = 'fr';
-const isIos = /ipad|iphone|ipod/i.test(navigator.userAgent);
-const isAndroid = /android/i.test(navigator.userAgent);
+const isAndroidPhone = false;
+const isIosPhone = false;
+const IsMobile = false;
 
 describe('App Badges', () => {
 	const appBadgesComponent = shallow(
-		<AppBadges language={testLanguage} media={{ isAtMediumUp: true }} />
+		<AppBadges
+			language={testLanguage}
+			isAndroidPhone={isAndroidPhone}
+			isIosPhone={isIosPhone}
+			IsMobile={IsMobile}
+		/>
 	);
 	it('exists', () => {
 		expect(appBadgesComponent).toMatchSnapshot();
 	});
 	it('should link to the itunes store', () => {
-		if (isIos) {
-			const itunesStoreLink = appBadgesComponent.find(
-				`a[href="${IOS_DOWNLOAD_LINK}"]`
-			);
-			expect(itunesStoreLink.exists()).toBe(true);
-		}
+		const itunesStoreLink = appBadgesComponent.find(`a[href="${IOS_DOWNLOAD_LINK}"]`);
+		expect(itunesStoreLink.exists()).toBe(true);
 	});
 	it('should link to the google play store', () => {
-		if (isAndroid) {
-			const googlePlayStoreLink = appBadgesComponent.find(
-				`a[href="${ANDROID_DOWNLOAD_LINK}"]`
-			);
-			expect(googlePlayStoreLink.exists()).toBe(true);
-		}
+		const googlePlayStoreLink = appBadgesComponent.find(
+			`a[href="${ANDROID_DOWNLOAD_LINK}"]`
+		);
+		expect(googlePlayStoreLink.exists()).toBe(true);
 	});
 	it('should render the correct itunes and google play store images based on language', () => {
 		const getAppStorePhoto = jest.fn();
 		shallow(
-			<AppBadges
-				language={testLanguage}
-				getAppStorePhoto={getAppStorePhoto}
-				media={{ isAtMediumUp: true }}
-			/>
+			<AppBadges language={testLanguage} getAppStorePhoto={getAppStorePhoto} />
 		);
-		if (isAndroid) {
-			expect(getAppStorePhoto).toHaveBeenCalledWith('android', testLanguage);
-		}
-		if (isIos) {
-			expect(getAppStorePhoto).toHaveBeenCalledWith('ios', testLanguage);
-		}
+		expect(getAppStorePhoto).toHaveBeenCalledWith('android', testLanguage);
+		expect(getAppStorePhoto).toHaveBeenCalledWith('ios', testLanguage);
 	});
 });
