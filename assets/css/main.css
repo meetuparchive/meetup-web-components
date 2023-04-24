@@ -3878,10 +3878,6 @@ Card-like boxes.
   color: rgba(46, 62, 72, 0.35);
   cursor: default; }
 
-.flatpickr-day.prevMonthDay,
-.flatpickr-day.nextMonthDay {
-  visibility: hidden; }
-
 .flatpickr-day.disabled,
 .flatpickr-day.disabled:hover {
   color: rgba(57, 57, 57, 0.1);
