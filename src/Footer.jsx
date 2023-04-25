@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import locales from 'mwp-config/locales';
-
-import localizedLanguageMap from 'mwp-i18n/lib/localizedLanguageMap';
 
 import AppBadges from './media/AppBadges';
 import Bounds from './layout/Bounds';
@@ -14,7 +11,6 @@ import InlineBlockList from './layout/InlineBlockList';
 import GridList from './layout/GridList';
 import Icon from './media/Icon';
 import Section from './layout/Section';
-import SelectInput from './forms/SelectInput';
 import Stripe from './layout/Stripe';
 import withMatchMedia from './utils/components/withMatchMedia';
 
@@ -54,20 +50,6 @@ export const SocialIconsList = ({ localeCode }) => {
 
 	return <InlineBlockList items={socialIcons} />;
 };
-
-export const LanguageSelectInput = props => (
-	<SelectInput
-		onChange={props.onChange}
-		options={locales.map(language => ({
-			label: localizedLanguageMap[language],
-			value: language,
-		}))}
-		name="languagePicker"
-		value={props.currentLocaleCode}
-		label="Language"
-		labelClassName="visibility--a11yHide"
-	/>
-);
 
 export const Footer = ({
 	className,
@@ -147,16 +129,6 @@ export const Footer = ({
 													: null
 											}
 										>
-											{!isLoggedIn && (
-												<FlexItem shrink className="margin--top">
-													<Chunk>
-														<LanguageSelectInput
-															currentLocaleCode={localeCode}
-															onChange={onLanguageSelect}
-														/>
-													</Chunk>
-												</FlexItem>
-											)}
 											<FlexItem shrink>
 												<Chunk className="align--center atMedium_align--left margin--top">
 													<AppBadges language={languageShort} />

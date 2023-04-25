@@ -2,9 +2,6 @@ import PropTypes from 'prop-types';
 import * as React from 'react';
 import cx from 'classnames';
 
-import UXCaptureInlineMark from 'mwp-app-render/lib/components/uxcapture/UXCaptureInlineMark';
-import UXCaptureImageLoad from 'mwp-app-render/lib/components/uxcapture/UXCaptureImageLoad';
-
 import swarmLogo from '../../assets/svg/logo--mSwarm--2color.svg';
 import scriptLogo from '../../assets/svg/logo--script.svg';
 import Flex from '../layout/Flex';
@@ -153,7 +150,6 @@ export class Nav extends React.Component {
 			localeCode,
 			className,
 			markAllAsReadOnOpen, // eslint-disable-line no-unused-vars
-			uxCapture,
 			isSearchEnabled,
 			onSearchCallback,
 			isNewNavActive,
@@ -517,17 +513,7 @@ export class Nav extends React.Component {
 			height: '44px',
 		};
 
-		const scriptLogoIcon = uxCapture ? (
-			<React.Fragment>
-				<UXCaptureImageLoad
-					mark="ux-image-onload-script-logo"
-					{...scriptLogoAttr}
-				/>
-				<UXCaptureInlineMark mark="ux-image-inline-script-logo" />
-			</React.Fragment>
-		) : (
-			<img {...scriptLogoAttr} />
-		);
+		const scriptLogoIcon = <img {...scriptLogoAttr} />;
 
 		const searchInputStyle = isSearchOpened
 			? {
@@ -640,7 +626,6 @@ export class Nav extends React.Component {
 
 Nav.defaultProps = {
 	localeCode: 'en-US',
-	uxCapture: false,
 };
 
 Nav.propTypes = {
@@ -656,9 +641,6 @@ Nav.propTypes = {
 	/** The locale code of the current user */
 	localeCode: PropTypes.string,
 	markAllAsReadOnOpen: PropTypes.bool,
-
-	/** Add uxCapture marks in the nav */
-	uxCapture: PropTypes.bool,
 
 	isSearchEnabled: PropTypes.bool,
 	onSearchCallback: PropTypes.func,
