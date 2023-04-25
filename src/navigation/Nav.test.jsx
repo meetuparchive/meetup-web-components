@@ -194,16 +194,6 @@ describe('Nav', () => {
 		).toMatchSnapshot();
 	});
 
-	describe('uxCapture', () => {
-		it('renders the uxCapture markup when supplied prop', () => {
-			expect(
-				wrapper({
-					uxCapture: true,
-				})
-			).toMatchSnapshot();
-		});
-	});
-
 	describe('signUp Modal', () => {
 		it('passes clickHandlers for every signup Provider', () => {
 			const navObject = wrapper();
