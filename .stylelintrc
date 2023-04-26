@@ -1,7 +1,5 @@
 {
 	"extends": [
-		"mwp-config/stylelint/stylelint-config-base",
-		"mwp-config/stylelint/stylelint-config-swarmProject",
 		"stylelint-config-prettier"
 	]
 }
