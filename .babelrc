@@ -1,12 +1,7 @@
 {
   "presets": [
-    "es2015",
-    "react",
-    "flow",
-    "stage-2"
-  ],
-  "plugins": [
-    "transform-class-properties",
-    "react-docgen"
+    "@babel/preset-react",
+    "@babel/preset-flow",
+    "@babel/preset-env"
   ]
 }
