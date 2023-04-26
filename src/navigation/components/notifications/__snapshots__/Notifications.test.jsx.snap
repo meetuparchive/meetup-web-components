@@ -22,7 +22,7 @@ exports[`Notification component should match snapshot 1`] = `
       <h4
         className="text--small"
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "<b>Meetup Engineering</b> just announced a new Meetup for Apr 6. Only 13 spots.",
           }
         }

@@ -100,7 +100,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                               onClick={[Function]}
                               shrink={true}
                               style={
-                                Object {
+                                {
                                   "backgroundColor": "#e4f4f3",
                                 }
                               }
@@ -110,7 +110,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                 onClick={[Function]}
                                 shrink={true}
                                 style={
-                                  Object {
+                                  {
                                     "backgroundColor": "#e4f4f3",
                                   }
                                 }
@@ -119,7 +119,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                   className="flex-item flex-item--shrink lockedBadge-container"
                                   onClick={[Function]}
                                   style={
-                                    Object {
+                                    {
                                       "backgroundColor": "#e4f4f3",
                                     }
                                   }
@@ -148,7 +148,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                             preserveAspectRatio="xMinYMin meet"
                                             role="presentation"
                                             style={
-                                              Object {
+                                              {
                                                 "fill": "#00798A",
                                               }
                                             }
@@ -165,7 +165,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                     <span
                                       className="lockedBadge-label"
                                       style={
-                                        Object {
+                                        {
                                           "color": "#00798A",
                                         }
                                       }
@@ -247,7 +247,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                                     height="24"
                                     preserveAspectRatio="xMinYMin meet"
                                     role="presentation"
-                                    style={Object {}}
+                                    style={{}}
                                     viewBox="0 0 24 24"
                                     width="24"
                                   >
@@ -278,7 +278,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
       onTransitionEnd={[Function]}
       role="tabpanel"
       style={
-        Object {
+        {
           "height": "0px",
         }
       }
@@ -291,7 +291,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
         onTransitionEnd={[Function]}
         role="tabpanel"
         style={
-          Object {
+          {
             "height": "0px",
           }
         }
@@ -304,7 +304,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
           onTransitionEnd={[Function]}
           role="tabpanel"
           style={
-            Object {
+            {
               "height": "0px",
             }
           }
@@ -369,7 +369,7 @@ exports[`AccordionPanel Panel basic behavior exists and renders with mock props 
     onTransitionEnd={[Function]}
     role="tabpanel"
     style={
-      Object {
+      {
         "height": "0px",
       }
     }
@@ -431,7 +431,7 @@ exports[`AccordionPanel Panel with custom icon exists and renders a custom icon 
     onTransitionEnd={[Function]}
     role="tabpanel"
     style={
-      Object {
+      {
         "height": "0px",
       }
     }
@@ -540,7 +540,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
                           height="20"
                           preserveAspectRatio="xMinYMin meet"
                           role="presentation"
-                          style={Object {}}
+                          style={{}}
                           viewBox="0 0 20 20"
                           width="20"
                         >
@@ -566,7 +566,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
       onTransitionEnd={[Function]}
       role="tabpanel"
       style={
-        Object {
+        {
           "height": "0px",
         }
       }
@@ -579,7 +579,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
         onTransitionEnd={[Function]}
         role="tabpanel"
         style={
-          Object {
+          {
             "height": "0px",
           }
         }
@@ -592,7 +592,7 @@ exports[`AccordionPanel Panel with right aligned icon exists and renders icon le
           onTransitionEnd={[Function]}
           role="tabpanel"
           style={
-            Object {
+            {
               "height": "0px",
             }
           }
@@ -736,7 +736,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                                     height="24"
                                     preserveAspectRatio="xMinYMin meet"
                                     role="presentation"
-                                    style={Object {}}
+                                    style={{}}
                                     viewBox="0 0 24 24"
                                     width="24"
                                   >
@@ -767,7 +767,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
       onTransitionEnd={[Function]}
       role="tabpanel"
       style={
-        Object {
+        {
           "height": "0px",
         }
       }
@@ -780,7 +780,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
         onTransitionEnd={[Function]}
         role="tabpanel"
         style={
-          Object {
+          {
             "height": "0px",
           }
         }
@@ -793,7 +793,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
           onTransitionEnd={[Function]}
           role="tabpanel"
           style={
-            Object {
+            {
               "height": "0px",
             }
           }

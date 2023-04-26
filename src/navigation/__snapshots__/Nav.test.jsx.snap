@@ -5,15 +5,15 @@ exports[`Nav NavSearch renders search icon for mobile 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -65,7 +65,7 @@ exports[`Nav NavSearch renders search icon for mobile 1`] = `
   <div
     className=""
     style={
-      Object {
+      {
         "maxHeight": 0,
         "opacity": 0,
         "overflow": "hidden",
@@ -77,7 +77,7 @@ exports[`Nav NavSearch renders search icon for mobile 1`] = `
     <NavbarSearchComponent
       isNewNavActive={false}
       style={
-        Object {
+        {
           "height": 44,
         }
       }
@@ -91,15 +91,15 @@ exports[`Nav NavSearch renders search input for desktop 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -129,7 +129,7 @@ exports[`Nav NavSearch renders search input for desktop 1`] = `
     <FlexItem>
       <NavbarSearchComponent
         style={
-          Object {
+          {
             "height": 44,
             "maxWidth": 500,
           }
@@ -166,15 +166,15 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -261,10 +261,10 @@ exports[`Nav should match the snapshot for authenticated large screens 1`] = `
           <FlexItem>
             <AvatarMember
               member={
-                Object {
+                {
                   "id": 1243,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },
@@ -301,15 +301,15 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -417,69 +417,69 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
           groups={
-            Array [
-              Object {
+            [
+              {
                 "name": "Mason Mocks",
                 "urlname": "/mason-mocks",
               },
-              Object {
+              {
                 "name": "Chicken Scratch",
                 "urlname": "/chicken-scratch",
               },
             ]
           }
           help={
-            Object {
+            {
               "label": "Help",
               "link": "meetup.com/help",
             }
           }
           logout={
-            Object {
+            {
               "label": "Logout",
               "link": "meetup.com/logout",
             }
           }
           payments={
-            Object {
+            {
               "label": "Payments made",
               "link": "meetup.com/payments/payments_made",
             }
           }
           profile={
-            Object {
+            {
               "getSelfGroupsQuery": [Function],
               "label": "Profile",
               "link": "meetup.com/profile",
-              "profileDropdown": Object {
+              "profileDropdown": {
                 "allGroupsLabel": "See all groups",
                 "allGroupsLink": "meetup.com/groups",
                 "groupHome": [Function],
-                "help": Object {
+                "help": {
                   "label": "Help",
                   "link": "meetup.com/help",
                 },
-                "logout": Object {
+                "logout": {
                   "label": "Logout",
                   "link": "meetup.com/logout",
                 },
-                "payments": Object {
+                "payments": {
                   "label": "Payments made",
                   "link": "meetup.com/payments/payments_made",
                 },
-                "savedEvents": Object {
+                "savedEvents": {
                   "label": "Saved events",
                   "link": "meetup.com/saved-events",
                 },
-                "settings": Object {
+                "settings": {
                   "label": "Settings",
                   "link": "meetup.com/settings",
                 },
-                "yourEvents": Object {
+                "yourEvents": {
                   "label": "Your events",
                   "link": "meetup.com/your-events",
                 },
-                "yourGroups": Object {
+                "yourGroups": {
                   "label": "Your groups",
                   "link": "meetup.com/groups",
                 },
@@ -487,25 +487,25 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
             }
           }
           savedEvents={
-            Object {
+            {
               "label": "Saved events",
               "link": "meetup.com/saved-events",
             }
           }
           settings={
-            Object {
+            {
               "label": "Settings",
               "link": "meetup.com/settings",
             }
           }
           yourEvents={
-            Object {
+            {
               "label": "Your events",
               "link": "meetup.com/your-events",
             }
           }
           yourGroups={
-            Object {
+            {
               "label": "Your groups",
               "link": "meetup.com/groups",
             }
@@ -522,10 +522,10 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
             <AvatarMember
               medium={true}
               member={
-                Object {
+                {
                   "id": 1243,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },
@@ -561,15 +561,15 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -682,70 +682,70 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
           groups={
-            Array [
-              Object {
+            [
+              {
                 "name": "Mason Mocks",
                 "urlname": "/mason-mocks",
               },
-              Object {
+              {
                 "name": "Chicken Scratch",
                 "urlname": "/chicken-scratch",
               },
             ]
           }
           help={
-            Object {
+            {
               "label": "Help",
               "link": "meetup.com/help",
             }
           }
           isNewNavActive={true}
           logout={
-            Object {
+            {
               "label": "Logout",
               "link": "meetup.com/logout",
             }
           }
           payments={
-            Object {
+            {
               "label": "Payments made",
               "link": "meetup.com/payments/payments_made",
             }
           }
           profile={
-            Object {
+            {
               "getSelfGroupsQuery": [Function],
               "label": "Profile",
               "link": "meetup.com/profile",
-              "profileDropdown": Object {
+              "profileDropdown": {
                 "allGroupsLabel": "See all groups",
                 "allGroupsLink": "meetup.com/groups",
                 "groupHome": [Function],
-                "help": Object {
+                "help": {
                   "label": "Help",
                   "link": "meetup.com/help",
                 },
-                "logout": Object {
+                "logout": {
                   "label": "Logout",
                   "link": "meetup.com/logout",
                 },
-                "payments": Object {
+                "payments": {
                   "label": "Payments made",
                   "link": "meetup.com/payments/payments_made",
                 },
-                "savedEvents": Object {
+                "savedEvents": {
                   "label": "Saved events",
                   "link": "meetup.com/saved-events",
                 },
-                "settings": Object {
+                "settings": {
                   "label": "Settings",
                   "link": "meetup.com/settings",
                 },
-                "yourEvents": Object {
+                "yourEvents": {
                   "label": "Your events",
                   "link": "meetup.com/your-events",
                 },
-                "yourGroups": Object {
+                "yourGroups": {
                   "label": "Your groups",
                   "link": "meetup.com/groups",
                 },
@@ -753,25 +753,25 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
             }
           }
           savedEvents={
-            Object {
+            {
               "label": "Saved events",
               "link": "meetup.com/saved-events",
             }
           }
           settings={
-            Object {
+            {
               "label": "Settings",
               "link": "meetup.com/settings",
             }
           }
           yourEvents={
-            Object {
+            {
               "label": "Your events",
               "link": "meetup.com/your-events",
             }
           }
           yourGroups={
-            Object {
+            {
               "label": "Your groups",
               "link": "meetup.com/groups",
             }
@@ -788,10 +788,10 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
             <AvatarMember
               medium={true}
               member={
-                Object {
+                {
                   "id": 1243,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },
@@ -828,15 +828,15 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -945,11 +945,11 @@ exports[`Nav should match the snapshot for authenticated pro admins 1`] = `
           <FlexItem>
             <AvatarMember
               member={
-                Object {
+                {
                   "id": 1243,
                   "is_pro_admin": true,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },
@@ -986,15 +986,15 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -1072,10 +1072,10 @@ exports[`Nav should match the snapshot for authenticated small screens and new n
           <FlexItem>
             <AvatarMember
               member={
-                Object {
+                {
                   "id": 1243,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },
@@ -1113,7 +1113,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
       "list": undefined,
@@ -1220,69 +1220,69 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
           groups={
-            Array [
-              Object {
+            [
+              {
                 "name": "Mason Mocks",
                 "urlname": "/mason-mocks",
               },
-              Object {
+              {
                 "name": "Chicken Scratch",
                 "urlname": "/chicken-scratch",
               },
             ]
           }
           help={
-            Object {
+            {
               "label": "Help",
               "link": "meetup.com/help",
             }
           }
           logout={
-            Object {
+            {
               "label": "Logout",
               "link": "meetup.com/logout",
             }
           }
           payments={
-            Object {
+            {
               "label": "Payments made",
               "link": "meetup.com/payments/payments_made",
             }
           }
           profile={
-            Object {
+            {
               "getSelfGroupsQuery": [Function],
               "label": "Profile",
               "link": "meetup.com/profile",
-              "profileDropdown": Object {
+              "profileDropdown": {
                 "allGroupsLabel": "See all groups",
                 "allGroupsLink": "meetup.com/groups",
                 "groupHome": [Function],
-                "help": Object {
+                "help": {
                   "label": "Help",
                   "link": "meetup.com/help",
                 },
-                "logout": Object {
+                "logout": {
                   "label": "Logout",
                   "link": "meetup.com/logout",
                 },
-                "payments": Object {
+                "payments": {
                   "label": "Payments made",
                   "link": "meetup.com/payments/payments_made",
                 },
-                "savedEvents": Object {
+                "savedEvents": {
                   "label": "Saved events",
                   "link": "meetup.com/saved-events",
                 },
-                "settings": Object {
+                "settings": {
                   "label": "Settings",
                   "link": "meetup.com/settings",
                 },
-                "yourEvents": Object {
+                "yourEvents": {
                   "label": "Your events",
                   "link": "meetup.com/your-events",
                 },
-                "yourGroups": Object {
+                "yourGroups": {
                   "label": "Your groups",
                   "link": "meetup.com/groups",
                 },
@@ -1290,25 +1290,25 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
             }
           }
           savedEvents={
-            Object {
+            {
               "label": "Saved events",
               "link": "meetup.com/saved-events",
             }
           }
           settings={
-            Object {
+            {
               "label": "Settings",
               "link": "meetup.com/settings",
             }
           }
           yourEvents={
-            Object {
+            {
               "label": "Your events",
               "link": "meetup.com/your-events",
             }
           }
           yourGroups={
-            Object {
+            {
               "label": "Your groups",
               "link": "meetup.com/groups",
             }
@@ -1325,10 +1325,10 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
             <AvatarMember
               medium={true}
               member={
-                Object {
+                {
                   "id": 1243,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },
@@ -1364,15 +1364,15 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -1380,7 +1380,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
     }
   }
   notifications={
-    Object {
+    {
       "label": "Notifications",
       "link": "meetup.com/notifications",
       "list": undefined,
@@ -1488,69 +1488,69 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
           groups={
-            Array [
-              Object {
+            [
+              {
                 "name": "Mason Mocks",
                 "urlname": "/mason-mocks",
               },
-              Object {
+              {
                 "name": "Chicken Scratch",
                 "urlname": "/chicken-scratch",
               },
             ]
           }
           help={
-            Object {
+            {
               "label": "Help",
               "link": "meetup.com/help",
             }
           }
           logout={
-            Object {
+            {
               "label": "Logout",
               "link": "meetup.com/logout",
             }
           }
           payments={
-            Object {
+            {
               "label": "Payments made",
               "link": "meetup.com/payments/payments_made",
             }
           }
           profile={
-            Object {
+            {
               "getSelfGroupsQuery": [Function],
               "label": "Profile",
               "link": "meetup.com/profile",
-              "profileDropdown": Object {
+              "profileDropdown": {
                 "allGroupsLabel": "See all groups",
                 "allGroupsLink": "meetup.com/groups",
                 "groupHome": [Function],
-                "help": Object {
+                "help": {
                   "label": "Help",
                   "link": "meetup.com/help",
                 },
-                "logout": Object {
+                "logout": {
                   "label": "Logout",
                   "link": "meetup.com/logout",
                 },
-                "payments": Object {
+                "payments": {
                   "label": "Payments made",
                   "link": "meetup.com/payments/payments_made",
                 },
-                "savedEvents": Object {
+                "savedEvents": {
                   "label": "Saved events",
                   "link": "meetup.com/saved-events",
                 },
-                "settings": Object {
+                "settings": {
                   "label": "Settings",
                   "link": "meetup.com/settings",
                 },
-                "yourEvents": Object {
+                "yourEvents": {
                   "label": "Your events",
                   "link": "meetup.com/your-events",
                 },
-                "yourGroups": Object {
+                "yourGroups": {
                   "label": "Your groups",
                   "link": "meetup.com/groups",
                 },
@@ -1558,25 +1558,25 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
             }
           }
           savedEvents={
-            Object {
+            {
               "label": "Saved events",
               "link": "meetup.com/saved-events",
             }
           }
           settings={
-            Object {
+            {
               "label": "Settings",
               "link": "meetup.com/settings",
             }
           }
           yourEvents={
-            Object {
+            {
               "label": "Your events",
               "link": "meetup.com/your-events",
             }
           }
           yourGroups={
-            Object {
+            {
               "label": "Your groups",
               "link": "meetup.com/groups",
             }
@@ -1593,10 +1593,10 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
             <AvatarMember
               medium={true}
               member={
-                Object {
+                {
                   "id": 1243,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },
@@ -1632,15 +1632,15 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -1689,15 +1689,15 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -1772,10 +1772,10 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 1`] = 
           <FlexItem>
             <AvatarMember
               member={
-                Object {
+                {
                   "id": 1243,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },
@@ -1812,15 +1812,15 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -1876,15 +1876,15 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -1933,15 +1933,15 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -1949,10 +1949,10 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
     }
   }
   notifications={
-    Object {
+    {
       "label": "Notifications",
       "link": "meetup.com/notifications",
-      "list": Array [],
+      "list": [],
       "unreadNotifications": 3,
     }
   }
@@ -2057,69 +2057,69 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
           allGroupsLink="meetup.com/groups"
           groupHome={[Function]}
           groups={
-            Array [
-              Object {
+            [
+              {
                 "name": "Mason Mocks",
                 "urlname": "/mason-mocks",
               },
-              Object {
+              {
                 "name": "Chicken Scratch",
                 "urlname": "/chicken-scratch",
               },
             ]
           }
           help={
-            Object {
+            {
               "label": "Help",
               "link": "meetup.com/help",
             }
           }
           logout={
-            Object {
+            {
               "label": "Logout",
               "link": "meetup.com/logout",
             }
           }
           payments={
-            Object {
+            {
               "label": "Payments made",
               "link": "meetup.com/payments/payments_made",
             }
           }
           profile={
-            Object {
+            {
               "getSelfGroupsQuery": [Function],
               "label": "Profile",
               "link": "meetup.com/profile",
-              "profileDropdown": Object {
+              "profileDropdown": {
                 "allGroupsLabel": "See all groups",
                 "allGroupsLink": "meetup.com/groups",
                 "groupHome": [Function],
-                "help": Object {
+                "help": {
                   "label": "Help",
                   "link": "meetup.com/help",
                 },
-                "logout": Object {
+                "logout": {
                   "label": "Logout",
                   "link": "meetup.com/logout",
                 },
-                "payments": Object {
+                "payments": {
                   "label": "Payments made",
                   "link": "meetup.com/payments/payments_made",
                 },
-                "savedEvents": Object {
+                "savedEvents": {
                   "label": "Saved events",
                   "link": "meetup.com/saved-events",
                 },
-                "settings": Object {
+                "settings": {
                   "label": "Settings",
                   "link": "meetup.com/settings",
                 },
-                "yourEvents": Object {
+                "yourEvents": {
                   "label": "Your events",
                   "link": "meetup.com/your-events",
                 },
-                "yourGroups": Object {
+                "yourGroups": {
                   "label": "Your groups",
                   "link": "meetup.com/groups",
                 },
@@ -2127,25 +2127,25 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
             }
           }
           savedEvents={
-            Object {
+            {
               "label": "Saved events",
               "link": "meetup.com/saved-events",
             }
           }
           settings={
-            Object {
+            {
               "label": "Settings",
               "link": "meetup.com/settings",
             }
           }
           yourEvents={
-            Object {
+            {
               "label": "Your events",
               "link": "meetup.com/your-events",
             }
           }
           yourGroups={
-            Object {
+            {
               "label": "Your groups",
               "link": "meetup.com/groups",
             }
@@ -2162,10 +2162,10 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
             <AvatarMember
               medium={true}
               member={
-                Object {
+                {
                   "id": 1243,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },
@@ -2201,15 +2201,15 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -2284,10 +2284,10 @@ exports[`Nav should match the snapshot with logo photo 1`] = `
           <FlexItem>
             <AvatarMember
               member={
-                Object {
+                {
                   "id": 1243,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },
@@ -2324,15 +2324,15 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
   aria-label="Header navigation"
   className="globalNav padding--all"
   groups={
-    Object {
+    {
       "label": "Groups",
       "link": "meetup.com/groups",
-      "list": Array [
-        Object {
+      "list": [
+        {
           "name": "Mason Mocks",
           "urlname": "/mason-mocks",
         },
-        Object {
+        {
           "name": "Chicken Scratch",
           "urlname": "/chicken-scratch",
         },
@@ -2407,10 +2407,10 @@ exports[`Nav should match the snapshot without a logo photo 1`] = `
           <FlexItem>
             <AvatarMember
               member={
-                Object {
+                {
                   "id": 1243,
                   "name": "mocky mcmockerson",
-                  "photo": Object {
+                  "photo": {
                     "photo_link": "http://placekitten.com/g/400/400",
                     "thumb_link": "http://placekitten.com/g/200/200",
                   },

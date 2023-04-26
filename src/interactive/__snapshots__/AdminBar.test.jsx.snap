@@ -12,15 +12,15 @@ exports[`AdminBar renders correctly 1`] = `
       content={
         <DropdownContent
           group={
-            Object {
-              "event_sample": Array [],
-              "group_photo": Object {
+            {
+              "event_sample": [],
+              "group_photo": {
                 "id": 1234,
                 "photo_link": "http://placekitten.com/400/300",
                 "thumb_link": "http://placekitten.com/400/300",
               },
               "id": 1234,
-              "key_photo": Object {
+              "key_photo": {
                 "id": 1234,
                 "photo_link": "http://placekitten.com/400/300",
                 "thumb_link": "http://placekitten.com/400/300",
@@ -28,11 +28,11 @@ exports[`AdminBar renders correctly 1`] = `
               "link": "http://example.com/fake-hq-faff",
               "members": 999,
               "name": "fake HQ FAFF",
-              "organizer": Object {
+              "organizer": {
                 "bio": "Org bio lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu tellus sit amet erat blandit volutpat.",
                 "id": 164510652,
                 "name": "Grayson Cheese",
-                "photo": Object {
+                "photo": {
                   "base_url": "http://photos1.dev.meetupstatic.com",
                   "highres_link": "http://photos1.dev.meetupstatic.com/photos/member/a/c/7/b/highres_257204155.jpeg",
                   "id": 257204155,
@@ -81,28 +81,28 @@ exports[`AdminBar renders correctly 1`] = `
             name="highlightValue"
             onChange={[Function]}
             options={
-              Array [
-                Object {
+              [
+                {
                   "label": "1",
                   "value": "1",
                 },
-                Object {
+                {
                   "label": "2",
                   "value": "2",
                 },
-                Object {
+                {
                   "label": "3",
                   "value": "3",
                 },
-                Object {
+                {
                   "label": "4",
                   "value": "4",
                 },
-                Object {
+                {
                   "label": "5",
                   "value": "5",
                 },
-                Object {
+                {
                   "label": "lowlight",
                   "value": "lowlight",
                 },
@@ -167,15 +167,15 @@ exports[`AdminBar renders correctly when QLd 1`] = `
       content={
         <DropdownContent
           group={
-            Object {
-              "event_sample": Array [],
-              "group_photo": Object {
+            {
+              "event_sample": [],
+              "group_photo": {
                 "id": 1234,
                 "photo_link": "http://placekitten.com/400/300",
                 "thumb_link": "http://placekitten.com/400/300",
               },
               "id": 1234,
-              "key_photo": Object {
+              "key_photo": {
                 "id": 1234,
                 "photo_link": "http://placekitten.com/400/300",
                 "thumb_link": "http://placekitten.com/400/300",
@@ -223,28 +223,28 @@ exports[`AdminBar renders correctly when QLd 1`] = `
             name="highlightValue"
             onChange={[Function]}
             options={
-              Array [
-                Object {
+              [
+                {
                   "label": "1",
                   "value": "1",
                 },
-                Object {
+                {
                   "label": "2",
                   "value": "2",
                 },
-                Object {
+                {
                   "label": "3",
                   "value": "3",
                 },
-                Object {
+                {
                   "label": "4",
                   "value": "4",
                 },
-                Object {
+                {
                   "label": "5",
                   "value": "5",
                 },
-                Object {
+                {
                   "label": "lowlight",
                   "value": "lowlight",
                 },
@@ -300,15 +300,15 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
       content={
         <DropdownContent
           group={
-            Object {
-              "event_sample": Array [],
-              "group_photo": Object {
+            {
+              "event_sample": [],
+              "group_photo": {
                 "id": 1234,
                 "photo_link": "http://placekitten.com/400/300",
                 "thumb_link": "http://placekitten.com/400/300",
               },
               "id": 1234,
-              "key_photo": Object {
+              "key_photo": {
                 "id": 1234,
                 "photo_link": "http://placekitten.com/400/300",
                 "thumb_link": "http://placekitten.com/400/300",
@@ -356,28 +356,28 @@ exports[`AdminBar renders correctly when isProdApi 1`] = `
             name="highlightValue"
             onChange={[Function]}
             options={
-              Array [
-                Object {
+              [
+                {
                   "label": "1",
                   "value": "1",
                 },
-                Object {
+                {
                   "label": "2",
                   "value": "2",
                 },
-                Object {
+                {
                   "label": "3",
                   "value": "3",
                 },
-                Object {
+                {
                   "label": "4",
                   "value": "4",
                 },
-                Object {
+                {
                   "label": "5",
                   "value": "5",
                 },
-                Object {
+                {
                   "label": "lowlight",
                   "value": "lowlight",
                 },
@@ -424,15 +424,15 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
       content={
         <DropdownContent
           group={
-            Object {
-              "event_sample": Array [],
-              "group_photo": Object {
+            {
+              "event_sample": [],
+              "group_photo": {
                 "id": 1234,
                 "photo_link": "http://placekitten.com/400/300",
                 "thumb_link": "http://placekitten.com/400/300",
               },
               "id": 1234,
-              "key_photo": Object {
+              "key_photo": {
                 "id": 1234,
                 "photo_link": "http://placekitten.com/400/300",
                 "thumb_link": "http://placekitten.com/400/300",
@@ -480,28 +480,28 @@ exports[`AdminBar renders correctly when no org exists 1`] = `
             name="highlightValue"
             onChange={[Function]}
             options={
-              Array [
-                Object {
+              [
+                {
                   "label": "1",
                   "value": "1",
                 },
-                Object {
+                {
                   "label": "2",
                   "value": "2",
                 },
-                Object {
+                {
                   "label": "3",
                   "value": "3",
                 },
-                Object {
+                {
                   "label": "4",
                   "value": "4",
                 },
-                Object {
+                {
                   "label": "5",
                   "value": "5",
                 },
-                Object {
+                {
                   "label": "lowlight",
                   "value": "lowlight",
                 },

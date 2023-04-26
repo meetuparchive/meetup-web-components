@@ -46,7 +46,7 @@ exports[`Footer exists 1`] = `
                 <FooterCategory
                   header="Your Account"
                   items={
-                    Array [
+                    [
                       <a
                         href="/register"
                       >
@@ -72,7 +72,7 @@ exports[`Footer exists 1`] = `
                 <FooterCategory
                   header="Discover"
                   items={
-                    Array [
+                    [
                       <a
                         href="/groups"
                       >
@@ -103,7 +103,7 @@ exports[`Footer exists 1`] = `
                 <FooterCategory
                   header="Meetup"
                   items={
-                    Array [
+                    [
                       <a
                         href="/about"
                       >
@@ -194,7 +194,7 @@ exports[`Footer exists 1`] = `
         <InlineBlockList
           className="text--small align--center atMedium_align--left footerList-legal"
           items={
-            Array [
+            [
               <span>
                 © 2023 Meetup LLC
               </span>,
@@ -205,7 +205,7 @@ exports[`Footer exists 1`] = `
         <InlineBlockList
           className="text--small align--center atMedium_align--left margin--top"
           items={
-            Array [
+            [
               <a
                 href="/terms"
               >
@@ -241,14 +241,14 @@ exports[`Footer should render FooterCategory with linkSet 1`] = `
   <GridList
     className="text--secondary text--small"
     columns={
-      Object {
+      {
         "default": 2,
         "medium": 1,
       }
     }
     itemClassNames="footer-item"
     items={
-      Array [
+      [
         <a
           href="/register"
         >

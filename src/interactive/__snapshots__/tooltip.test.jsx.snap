@@ -106,7 +106,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
         direction="bottom"
         getContent={[Function]}
         getTrigger={[Function]}
-        media={Object {}}
+        media={{}}
         noPortal={false}
       >
         <ConditionalWrap
@@ -176,7 +176,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                 id="testDropdown"
                 role="tooltip"
                 style={
-                  Object {
+                  {
                     "left": "0px",
                     "maxWidth": "200px",
                     "minWidth": "0px",
@@ -244,7 +244,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                                 height="20"
                                 preserveAspectRatio="xMinYMin meet"
                                 role="img"
-                                style={Object {}}
+                                style={{}}
                                 viewBox="0 0 20 20"
                                 width="20"
                               >

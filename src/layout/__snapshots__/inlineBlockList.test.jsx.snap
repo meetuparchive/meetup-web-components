@@ -10,7 +10,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="0"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }
@@ -20,7 +20,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="1"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }
@@ -30,7 +30,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="2"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }
@@ -40,7 +40,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="3"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }
@@ -50,7 +50,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="4"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }
@@ -60,7 +60,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="5"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }
@@ -70,7 +70,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="6"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }
@@ -80,7 +80,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="7"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }
@@ -90,7 +90,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="8"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }
@@ -100,7 +100,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="9"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }
@@ -110,7 +110,7 @@ exports[`InlineBlockList exists 1`] = `
     <li
       key="10"
       style={
-        Object {
+        {
           "verticalAlign": undefined,
         }
       }

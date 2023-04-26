@@ -34,8 +34,8 @@ describe('Toaster', function() {
 	});
 
 	it('should handle mouseEnter and mouseLeave', function() {
-		const clearTimeoutsSpy = spyOn(Toaster.prototype, 'clearTimeouts');
-		const setTimerSpy = spyOn(Toaster.prototype, 'setTimer');
+		const clearTimeoutsSpy = jest.spyOn(Toaster.prototype, 'clearTimeouts');
+		const setTimerSpy = jest.spyOn(Toaster.prototype, 'setTimer');
 		const toasterComponent = shallow(
 			<Toaster toasts={[<Toast>Your toast is ready</Toast>]} />
 		);
@@ -67,7 +67,7 @@ describe('Toaster', function() {
 	});
 
 	it('should clear timeouts when the component unmounts', function() {
-		const clearTimeoutsSpy = spyOn(Toaster.prototype, 'clearTimeouts');
+		const clearTimeoutsSpy = jest.spyOn(Toaster.prototype, 'clearTimeouts');
 		const component = mount(<ToastWithProps />);
 
 		component.unmount();
@@ -75,7 +75,7 @@ describe('Toaster', function() {
 	});
 
 	it('should clear the timeouts when specified', function() {
-		const dismissToastSpy = spyOn(Toaster.prototype, 'dismissToast');
+		const dismissToastSpy = jest.spyOn(Toaster.prototype, 'dismissToast');
 		const component = mount(<ToastWithProps />);
 		const toasterComponent = component.find(Toaster).instance();
 
@@ -141,7 +141,7 @@ describe('Toast', function() {
 	});
 
 	it('should call dismissToast when the dismiss button is clicked', () => {
-		const dismissToastSpy = spyOn(Toaster.prototype, 'dismissToast');
+		const dismissToastSpy = jest.spyOn(Toaster.prototype, 'dismissToast');
 		const onDismiss = jest.fn();
 		const component = mount(<ToastWithProps onDismiss={onDismiss} />);
 		const dismissBtn = component.find(`.${TOAST_DISMISS_BTN_CLASS}`).first();

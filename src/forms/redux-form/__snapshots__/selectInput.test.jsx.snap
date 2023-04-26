@@ -6,16 +6,16 @@ exports[`redux-form SelectInput renders a SelectInput component with expected at
   label="Countries"
   name="formSelectCountries"
   options={
-    Array [
-      Object {
+    [
+      {
         "label": "One",
         "value": "1",
       },
-      Object {
+      {
         "label": "Two",
         "value": "2",
       },
-      Object {
+      {
         "label": "Three",
         "value": "3",
       },

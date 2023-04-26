@@ -27,7 +27,7 @@ describe('Modal', () => {
 			onDismiss: e => {},
 		};
 
-		spyOn(spyable, 'onDismiss');
+		jest.spyOn(spyable, 'onDismiss');
 
 		modal = TestUtils.renderIntoDocument(
 			<ModalComponent onDismiss={spyable.onDismiss}>{content}</ModalComponent>

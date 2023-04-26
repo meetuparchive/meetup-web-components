@@ -7,7 +7,7 @@ exports[`FormSection exists and contains form section wrapping elements with pro
   <Card
     flushUntil="large"
     initialHeight={true}
-    loadingProps={Object {}}
+    loadingProps={{}}
   >
     <Bounds
       narrow={true}

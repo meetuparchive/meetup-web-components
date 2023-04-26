@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`redux-form RadioButtonGroup propMapper should map the props as expected 1`] = `
-Object {
+{
   "name": "test-name",
   "onBlur": "onBlur",
   "onChange": "onChange",
