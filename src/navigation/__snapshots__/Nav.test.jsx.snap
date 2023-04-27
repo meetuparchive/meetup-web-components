@@ -48,7 +48,7 @@ exports[`Nav NavSearch renders search icon for mobile 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--unauthenticated"
+      className="navItem--unauthenticated navItem--signup"
       key="1"
       label="Sign up"
       onAction={[Function]}
@@ -151,7 +151,7 @@ exports[`Nav NavSearch renders search input for desktop 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--unauthenticated"
+      className="navItem--unauthenticated navItem--signup"
       key="2"
       label="Sign up"
       onAction={[Function]}
@@ -1674,7 +1674,7 @@ exports[`Nav should match the snapshot for unauthenticated large screens 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--unauthenticated"
+      className="navItem--unauthenticated navItem--signup"
       key="1"
       label="Sign up"
       onAction={[Function]}
@@ -1861,7 +1861,7 @@ exports[`Nav should match the snapshot for unauthenticated medium screens 2`] = 
       shrink={true}
     />
     <NavItem
-      className="navItem--unauthenticated"
+      className="navItem--unauthenticated navItem--signup"
       key="2"
       label="Sign up"
       onAction={[Function]}
@@ -1918,7 +1918,7 @@ exports[`Nav should match the snapshot for unauthenticated small screens 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--unauthenticated"
+      className="navItem--unauthenticated navItem--signup"
       key="1"
       label="Sign up"
       onAction={[Function]}
@@ -2495,7 +2495,7 @@ exports[`Nav uxCapture renders the uxCapture markup when supplied prop 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--unauthenticated"
+      className="navItem--unauthenticated navItem--signup"
       key="1"
       label="Sign up"
       onAction={[Function]}
