@@ -99,6 +99,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
       direction="bottom"
       getContent={[Function]}
       getTrigger={[Function]}
+      handleClose={[Function]}
       noPortal={false}
     >
       <FloatingPosition
@@ -106,6 +107,7 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
         direction="bottom"
         getContent={[Function]}
         getTrigger={[Function]}
+        handleClose={[Function]}
         media={Object {}}
         noPortal={false}
       >
