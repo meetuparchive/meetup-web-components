@@ -100,6 +100,7 @@ export const NavItem = props => {
 
 	const trigger = (
 		<div
+			role="button"
 			aria-haspopup
 			className={NAV_ITEM_CLASS}
 			onClick={onClickAction}
