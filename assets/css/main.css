@@ -3465,10 +3465,14 @@ $('#fadeInLink').on('click', function(e) {
 .button--iconOnly {
   padding: 8px 16px; }
 
+[data-swarm-button]:focus-visible {
+  outline: Highlight auto 1px !important;
+  outline: -webkit-focus-ring-color auto 1px !important; }
+
 [data-swarm-button="primary"] {
   background-color: #e32359 !important;
   border: 1px solid #e32359 !important; }
-  [data-swarm-button="primary"]:hover {
+  [data-swarm-button="primary"]:hover, [data-swarm-button="primary"]:focus {
     background-color: #e63a6a !important;
     border: 1px solid #e63a6a !important; }
 

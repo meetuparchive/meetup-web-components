@@ -220,13 +220,22 @@
 	padding: $space-half $space;
 }
 
+[data-swarm-button] {
+	// stylelint-disable-next-line selector-pseudo-class-no-unknown
+	&:focus-visible {
+		outline: Highlight auto 1px !important;
+		outline: -webkit-focus-ring-color auto 1px !important;
+	}
+}
+
 [data-swarm-button="primary"] {
-	$hover: lighten($C_meetupRed, 5%);
+	$active: lighten($C_meetupRed, 5%);
 	background-color: $C_meetupRed !important;
 	border: 1px solid $C_meetupRed !important;
 
-	&:hover {
-		background-color: $hover !important;
-		border: 1px solid $hover !important;
+	&:hover,
+	&:focus {
+		background-color: $active !important;
+		border: 1px solid $active !important;
 	}
 }
