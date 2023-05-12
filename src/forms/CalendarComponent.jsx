@@ -161,7 +161,7 @@ export class CalendarComponent extends React.Component<Props> {
 						if (!dayElem.ariaCurrent) {
 							dayElem.ariaPressed = isSelected;
 						} else if (isSelected) {
-							dayElem.ariaPressed = true; // apply aria-pressed attr to current date only in case it's true
+							dayElem.ariaPressed = true; // apply aria-pressed attr to current date only in case it's currently selected
 						}
 					}}
 					{...other}
