@@ -114,6 +114,7 @@ export class CalendarComponent extends React.Component<Props> {
 		const options = {
 			altInput: true,
 			altFormat: 'D M d, Y',
+			ariaDateFormat: 'D M d, Y',
 			nextArrow: `<span class="svg svg--chevron-right">
 				<svg preserveAspectRatio="xMinYMin meet" width="12" height="12" viewBox="0 0 12 12" className="svg-icon valign--middle" role="img" aria-label="Next month">
 				<title>Next month</title>
@@ -154,6 +155,15 @@ export class CalendarComponent extends React.Component<Props> {
 					className={classNames.field}
 					onChange={this.onFlatPickerChange}
 					value={this.getPickrValue(value)}
+					onDayCreate={(_, __, ___, dayElem) => {
+						const isSelected = dayElem.classList.contains('selected');
+						dayElem.role = 'button';
+						if (!dayElem.ariaCurrent) {
+							dayElem.ariaPressed = isSelected;
+						} else if (isSelected) {
+							dayElem.ariaPressed = true; // apply aria-pressed attr to current date only in case it's currently selected
+						}
+					}}
 					{...other}
 				/>
 			</span>
