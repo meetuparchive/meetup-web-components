@@ -4365,7 +4365,7 @@ input.field--reset:active {
   transform-origin: center center; }
 
 .infoToggle-trigger {
-  background-color: var(--c-textHint);
+  background-color: var(--c-textSecondary);
   border-radius: 50%;
   color: var(--c-white);
   font-size: 10px;
