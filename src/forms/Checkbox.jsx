@@ -77,6 +77,7 @@ export class Checkbox extends React.PureComponent {
 					role="checkbox"
 					aria-checked={stateChecked}
 					aria-label="checkbox"
+					tabindex={0}
 				>
 					{stateChecked && (
 						<Icon shape="check" color={disabled ? '#707070' : '#ffffff'} />

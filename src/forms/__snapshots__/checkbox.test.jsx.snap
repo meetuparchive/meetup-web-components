@@ -11,6 +11,7 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
     className="checkbox"
     data-swarm-checkbox-field="checked"
     role="checkbox"
+    tabindex={0}
   >
     <Icon
       color="#ffffff"
@@ -41,6 +42,7 @@ exports[`Checkbox basic renders unchecked checkbox 1`] = `
     aria-label="checkbox"
     className="checkbox"
     role="checkbox"
+    tabindex={0}
   />
   <input
     checked={false}
