@@ -3083,8 +3083,8 @@ $('#fadeInLink').on('click', function(e) {
   justify-content: center;
   width: 100%; }
   .avatarIcon--noPhoto svg {
+    fill: var(--c-black);
     height: 40%;
-    opacity: 0.6;
     width: 40%; }
 
 .avatar--fbFriend {
