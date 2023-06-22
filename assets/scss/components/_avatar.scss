@@ -138,8 +138,8 @@ $avatarBg: $C_coolGrayLight;
 	// as it's possible to have additional `Icon`
 	// children in `Avatar`
 	svg {
+		fill: var(--c-black);
 		height: 40%;
-		opacity: alpha($C_textSecondary);
 		// sets SVG size relative to wrapper
 		width: 40%;
 	}
