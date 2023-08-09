@@ -14,6 +14,7 @@ import emailIcon from '../assets/svg/email.svg';
 /* consts */
 export const SIGNUP_MODAL_CLASS = 'meetup-signupModal';
 export const SIGNUP_MODAL_WRAPPER_CLASS = `${SIGNUP_MODAL_CLASS}-wrapper`;
+const HIDE_FACEBOOK = true;
 
 /**
  * @param {Object} props component properties
@@ -51,14 +52,18 @@ export const SignupModal = ({
 						</a>
 					</div>
 				</div>
-				<a
-					href={facebook.link}
-					className={btnClassName}
-					onClick={facebookOnClick}
-				>
-					<img src={facebookIcon} />
-					<div className="tw-flex-grow tw-text-center">{facebook.label} </div>
-				</a>
+				{!HIDE_FACEBOOK && (
+					<a
+						href={facebook.link}
+						className={btnClassName}
+						onClick={facebookOnClick}
+					>
+						<img src={facebookIcon} />
+						<div className="tw-flex-grow tw-text-center">
+							{facebook.label}{' '}
+						</div>
+					</a>
+				)}
 				<a href={google.link} className={btnClassName} onClick={googleOnClick}>
 					<img src={googleIcon} />
 					<div className="tw-flex-grow tw-text-center">{google.label} </div>
