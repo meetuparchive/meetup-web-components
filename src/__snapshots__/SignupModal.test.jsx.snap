@@ -36,20 +36,6 @@ exports[`SignupModal should match the snapshot 1`] = `
     </div>
     <a
       className="tw-font-normal tw-box-border tw-border tw-border-gray2 tw-border-solid tw-p-4 tw-mb-4 tw-rounded-lg tw-flex tw-flex-row"
-      href="facebook.com"
-    >
-      <img
-        src=""
-      />
-      <div
-        className="tw-flex-grow tw-text-center"
-      >
-        Continue with Facebook
-         
-      </div>
-    </a>
-    <a
-      className="tw-font-normal tw-box-border tw-border tw-border-gray2 tw-border-solid tw-p-4 tw-mb-4 tw-rounded-lg tw-flex tw-flex-row"
       href="google.com"
     >
       <img
