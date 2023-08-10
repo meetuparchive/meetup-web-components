@@ -27,6 +27,7 @@ export const SignupModal = ({
 	appleOnClick,
 	facebookOnClick,
 	emailOnClick,
+	hideFacebook,
 	...other
 }) => {
 	const { apple, google, facebook, email, login, title } = signupOptions;
@@ -52,7 +53,7 @@ export const SignupModal = ({
 						</a>
 					</div>
 				</div>
-				{!HIDE_FACEBOOK && (
+				{!hideFacebook && (
 					<a
 						href={facebook.link}
 						className={btnClassName}
@@ -89,6 +90,11 @@ export const SignupModal = ({
 			</div>
 		</Modal>
 	);
+};
+
+SignupModal.defaultProps = {
+	/** app.shortcut.com/meetup/story/91014/web-hide-facebook-registration-option */
+	hideFacebook: false,
 };
 
 SignupModal.propTypes = {

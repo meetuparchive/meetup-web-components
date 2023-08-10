@@ -608,6 +608,7 @@ export class Nav extends React.Component {
 							googleOnClick={signup.signupModal.googleOnClick}
 							facebookOnClick={signup.signupModal.facebookOnClick}
 							emailOnClick={signup.signupModal.emailOnClick}
+							hideFacebook
 						/>
 					)}
 					{showMobileDashboard && (
