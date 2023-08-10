@@ -14,7 +14,6 @@ import emailIcon from '../assets/svg/email.svg';
 /* consts */
 export const SIGNUP_MODAL_CLASS = 'meetup-signupModal';
 export const SIGNUP_MODAL_WRAPPER_CLASS = `${SIGNUP_MODAL_CLASS}-wrapper`;
-const HIDE_FACEBOOK = true;
 
 /**
  * @param {Object} props component properties
