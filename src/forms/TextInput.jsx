@@ -34,6 +34,7 @@ type Props = {
 	labelClassName?: string,
 	value: string,
 	currencyLabel?: string,
+	currencyLabelStyle?: string,
 	defaultValue?: string,
 };
 
@@ -63,6 +64,7 @@ export class TextInput extends React.Component<Props> {
 			validityMessage,
 			placeholder,
 			currencyLabel,
+			currencyLabelStyle,
 			value,
 			...other
 		} = this.props;
@@ -118,6 +120,7 @@ export class TextInput extends React.Component<Props> {
 					pattern={pattern}
 					disabled={disabled}
 					currencyLabel={currencyLabel}
+					currencyLabelStyle={currencyLabelStyle}
 					id={id || ''}
 					aria-label={label ? undefined : id || name}
 					{...optionalInputProps}
@@ -176,6 +179,9 @@ TextInput.propTypes = {
 
 	/** What to render in order to indicate the field is required */
 	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** Currency right label for price input */
+	currencyLabel: PropTypes.string,
 };
 
 export default withErrorList(DeprecationWarning(TextInput));

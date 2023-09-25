@@ -3,6 +3,8 @@
 import React, { useState, useCallback } from 'react';
 import Icon from '@meetup/swarm-components/lib/Icon';
 import cn from 'classnames';
+import withErrorList from '../utils/components/withErrorList';
+import DeprecationWarning from '../utils/components/DeprecationWarning';
 
 export const getFormFieldState = (props: {
 	disabled?: boolean,
@@ -89,6 +91,7 @@ type TextInputProps = {
 	currencyLabel?: string,
 	className?: string,
 	defaultValue?: string,
+	currencyLabelStyle?: string,
 };
 
 /**
@@ -108,6 +111,7 @@ const SwarmTextInput = (props: TextInputProps) => {
 		maxLength,
 		currencyLabel,
 		className,
+		currencyLabelStyle,
 		...other
 	} = props;
 	const wrapperState = iconShape ? 'icon' : 'default';
@@ -156,7 +160,7 @@ const SwarmTextInput = (props: TextInputProps) => {
 	return (
 		<div
 			data-swarm-text-input-wrapper={wrapperState}
-			className={cn({ ['text-input-container']: !!currencyLabel })}
+			className={cn({ 'text-input-container': !!currencyLabel })}
 		>
 			<input
 				data-swarm-text-input={inputState}
@@ -177,9 +181,13 @@ const SwarmTextInput = (props: TextInputProps) => {
 				</span>
 			)}
 			{maxLength && <CharCount maxLength={maxLength} charLength={charLength} />}
-			{currencyLabel && <span className="currency-label">{currencyLabel}</span>}
+			{currencyLabel && (
+				<span className={cn('currency-label', currencyLabelStyle)}>
+					{currencyLabel}
+				</span>
+			)}
 		</div>
 	);
 };
 
-export default SwarmTextInput;
+export default withErrorList(DeprecationWarning(SwarmTextInput));
