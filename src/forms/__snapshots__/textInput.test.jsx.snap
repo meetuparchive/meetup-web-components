@@ -22,43 +22,42 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
         Super Hero
       </label>
     </FieldLabel>
-    <div
-      data-swarm-select-wrapper="1"
+    <SwarmTextInput
+      error={false}
+      id="superhero"
+      maxLength={20}
+      name="superhero"
+      onChange={[Function]}
+      onInvalid={[Function]}
+      value="Batman"
     >
-      <TextInput
-        id="superhero"
-        maxLength={20}
-        name="superhero"
-        onChange={[Function]}
-        onInvalid={[Function]}
-        value="Batman"
+      <div
+        className=""
+        data-swarm-text-input-wrapper="default"
       >
-        <div
-          data-swarm-text-input-wrapper="default"
+        <input
+          className=""
+          data-swarm-text-input="default"
+          id="superhero"
+          name="superhero"
+          onChange={[Function]}
+          onInvalid={[Function]}
+          type="text"
+          value="Batman"
+        />
+        <CharCount
+          charLength={6}
+          maxLength={20}
         >
-          <input
-            data-swarm-text-input="default"
-            id="superhero"
-            name="superhero"
-            onChange={[Function]}
-            onInvalid={[Function]}
-            type="text"
-            value="Batman"
-          />
-          <CharCount
-            charLength={6}
-            maxLength={20}
+          <p
+            className="text--tiny"
+            data-swarm-textarea-char-count={true}
           >
-            <p
-              className="text--tiny"
-              data-swarm-textarea-char-count={true}
-            >
-              14
-            </p>
-          </CharCount>
-        </div>
-      </TextInput>
-    </div>
+            14
+          </p>
+        </CharCount>
+      </div>
+    </SwarmTextInput>
   </div>
 </TextInput>
 `;
