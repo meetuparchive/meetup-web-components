@@ -5211,6 +5211,43 @@ input.field--reset:active {
   display: flex;
   padding: 6px 8px; }
 
+.text-input-container {
+  display: flex !important; }
+
+.input-with-currency-label {
+  border-bottom-right-radius: 0 !important;
+  border-right: 0 !important;
+  border-top-right-radius: 0 !important;
+  margin-bottom: 0; }
+
+.currency-label {
+  align-items: center;
+  background-color: var(--color-gray-2);
+  border: 1px solid var(--color-gray-5);
+  border-bottom-right-radius: 4px;
+  border-left: 0;
+  border-top-right-radius: 4px;
+  display: flex;
+  font-weight: 500;
+  justify-items: center;
+  padding: 0 calc(var(--responsive-space) / 2); }
+
+[data-swarm-text-input]:hover + .currency-label {
+  border-color: var(--color-gray-6);
+  outline: none; }
+
+[data-swarm-text-input]:focus + .currency-label {
+  border-color: var(--color-viridian);
+  outline: none; }
+
+[data-swarm-text-input="disabled"] + .currency-label {
+  background-color: var(--color-gray-3);
+  border-color: var(--color-gray-3) !important;
+  color: var(--color-gray-6); }
+
+[data-swarm-text-input="error"] + .currency-label {
+  border-color: var(--color-alert-red); }
+
 /**
 * modifierClasses/all.scss
 * -------------------

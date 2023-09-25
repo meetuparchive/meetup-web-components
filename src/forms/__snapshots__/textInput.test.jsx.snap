@@ -22,43 +22,79 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
         Super Hero
       </label>
     </FieldLabel>
-    <div
-      data-swarm-select-wrapper="1"
+    <WithErrorList(SwarmTextInput)
+      error={false}
+      id="superhero"
+      maxLength={20}
+      name="superhero"
+      onChange={[Function]}
+      onInvalid={[Function]}
+      value="Batman"
     >
-      <TextInput
-        id="superhero"
-        maxLength={20}
-        name="superhero"
-        onChange={[Function]}
-        onInvalid={[Function]}
-        value="Batman"
-      >
-        <div
-          data-swarm-text-input-wrapper="default"
+      <div>
+        <SwarmTextInput
+          aria-describedby="superhero-error"
+          aria-invalid={false}
+          error={false}
+          id="superhero"
+          maxLength={20}
+          name="superhero"
+          onChange={[Function]}
+          onInvalid={[Function]}
+          value="Batman"
         >
-          <input
-            data-swarm-text-input="default"
+          <SwarmTextInput
+            aria-describedby="superhero-error"
+            aria-invalid={false}
+            error={false}
             id="superhero"
+            maxLength={20}
             name="superhero"
             onChange={[Function]}
             onInvalid={[Function]}
-            type="text"
             value="Batman"
-          />
-          <CharCount
-            charLength={6}
-            maxLength={20}
           >
-            <p
-              className="text--tiny"
-              data-swarm-textarea-char-count={true}
+            <div
+              className=""
+              data-swarm-text-input-wrapper="default"
             >
-              14
-            </p>
-          </CharCount>
-        </div>
-      </TextInput>
-    </div>
+              <input
+                aria-describedby="superhero-error"
+                aria-invalid={false}
+                className=""
+                data-swarm-text-input="default"
+                id="superhero"
+                name="superhero"
+                onChange={[Function]}
+                onInvalid={[Function]}
+                type="text"
+                value="Batman"
+              />
+              <CharCount
+                charLength={6}
+                maxLength={20}
+              >
+                <p
+                  className="text--tiny"
+                  data-swarm-textarea-char-count={true}
+                >
+                  14
+                </p>
+              </CharCount>
+            </div>
+          </SwarmTextInput>
+        </SwarmTextInput>
+        <ErrorList
+          error={false}
+          id="superhero-error"
+        >
+          <ul
+            aria-live="assertive"
+            id="superhero-error"
+          />
+        </ErrorList>
+      </div>
+    </WithErrorList(SwarmTextInput)>
   </div>
 </TextInput>
 `;

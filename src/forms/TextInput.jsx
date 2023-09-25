@@ -2,7 +2,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { TextInput as SwarmTextInput, FieldLabel } from '@meetup/swarm-components';
+import { FieldLabel } from '@meetup/swarm-components';
+
+import SwarmTextInput from './SwarmTextInput';
 
 import withErrorList from '../utils/components/withErrorList';
 import DeprecationWarning from '../utils/components/DeprecationWarning';
@@ -31,6 +33,9 @@ type Props = {
 	validityMessage?: string,
 	labelClassName?: string,
 	value: string,
+	currencyLabel?: string,
+	currencyLabelStyle?: string,
+	defaultValue?: string,
 };
 
 /**
@@ -53,11 +58,13 @@ export class TextInput extends React.Component<Props> {
 			labelClassName,
 			onChange,
 			pattern,
-			placeholder,
 			refCallback,
 			required,
 			requiredText = '*',
 			validityMessage,
+			placeholder,
+			currencyLabel,
+			currencyLabelStyle,
 			value,
 			...other
 		} = this.props;
@@ -102,24 +109,23 @@ export class TextInput extends React.Component<Props> {
 				)}
 
 				{helperText && <p data-swarm-select-helper-text="1">{helperText}</p>}
-
-				<div data-swarm-select-wrapper="1">
-					<SwarmTextInput
-						isSearch={isSearch}
-						name={name}
-						error={error}
-						required={required}
-						placeholder={placeholder}
-						onChange={handleOnChange}
-						onInvalid={handleInvalid}
-						pattern={pattern}
-						disabled={disabled}
-						id={id}
-						aria-label={label ? undefined : id || name}
-						{...optionalInputProps}
-						{...other}
-					/>
-				</div>
+				<SwarmTextInput
+					isSearch={isSearch}
+					name={name}
+					error={!!error}
+					required={required}
+					placeholder={placeholder}
+					onChange={handleOnChange}
+					onInvalid={handleInvalid}
+					pattern={pattern}
+					disabled={disabled}
+					currencyLabel={currencyLabel}
+					currencyLabelStyle={currencyLabelStyle}
+					id={id || ''}
+					aria-label={label ? undefined : id || name}
+					{...optionalInputProps}
+					{...other}
+				/>
 			</div>
 		);
 	}
@@ -173,6 +179,9 @@ TextInput.propTypes = {
 
 	/** What to render in order to indicate the field is required */
 	requiredText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
+	/** Currency right label for price input */
+	currencyLabel: PropTypes.string,
 };
 
 export default withErrorList(DeprecationWarning(TextInput));
