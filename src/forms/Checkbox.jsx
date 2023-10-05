@@ -38,6 +38,16 @@ export class Checkbox extends React.PureComponent {
 		}
 	}
 
+	handleKeyPress = e => {
+		if (e.key === 'Enter') {
+			this.props.onChange && this.props.onChange(e);
+
+			if (this.props.controlled) {
+				this.setState({ checked: !this.state.checked });
+			}
+		}
+	};
+
 	getChecked() {
 		if (this.props.controlled) {
 			return this.state.checked;
@@ -77,7 +87,8 @@ export class Checkbox extends React.PureComponent {
 					role="checkbox"
 					aria-checked={stateChecked}
 					aria-label="checkbox"
-					tabindex={0}
+					tabIndex={0}
+					onKeyPress={this.handleKeyPress}
 				>
 					{stateChecked && (
 						<Icon shape="check" color={disabled ? '#707070' : '#ffffff'} />

@@ -19,6 +19,14 @@ storiesOf('Forms/Checkbox', module)
 	.add('with label', () => (
 		<Checkbox label="Ketchup" value="ketchup" name="condiment" />
 	))
+	.add('with onChange handler', () => (
+		<Checkbox
+			label="Mayo"
+			value="mayo"
+			name="condiment"
+			onChange={() => console.log('changed')}
+		/>
+	))
 	.add('checked', () => (
 		<Checkbox label="Mustard" checked value="mustard" name="condiment" />
 	))

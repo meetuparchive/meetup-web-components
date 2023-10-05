@@ -10,8 +10,9 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
     aria-label="checkbox"
     className="checkbox"
     data-swarm-checkbox-field="checked"
+    onKeyPress={[Function]}
     role="checkbox"
-    tabindex={0}
+    tabIndex={0}
   >
     <Icon
       color="#ffffff"
@@ -41,8 +42,9 @@ exports[`Checkbox basic renders unchecked checkbox 1`] = `
     aria-checked={false}
     aria-label="checkbox"
     className="checkbox"
+    onKeyPress={[Function]}
     role="checkbox"
-    tabindex={0}
+    tabIndex={0}
   />
   <input
     checked={false}
