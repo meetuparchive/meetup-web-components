@@ -39,7 +39,7 @@ export class Checkbox extends React.PureComponent {
 	}
 
 	handleKeyPress = e => {
-		if (e.key === 'Enter') {
+		if (e.key === ' ') {
 			this.props.onChange && this.props.onChange(e);
 
 			if (this.props.controlled) {
@@ -86,7 +86,6 @@ export class Checkbox extends React.PureComponent {
 					className="checkbox"
 					role="checkbox"
 					aria-checked={stateChecked}
-					aria-label="checkbox"
 					tabIndex={0}
 					onKeyPress={this.handleKeyPress}
 				>
@@ -102,6 +101,9 @@ export class Checkbox extends React.PureComponent {
 					onChange={this.onChange}
 					readOnly={!this.onChange || disabled}
 					name={name}
+					aria-label={
+						typeof label === 'string' ? `${label} - checkbox` : 'checkbox'
+					}
 					value={`${value}`}
 				/>
 				<span>{label}</span>
