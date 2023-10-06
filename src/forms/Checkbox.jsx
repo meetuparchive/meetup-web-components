@@ -39,7 +39,7 @@ export class Checkbox extends React.PureComponent {
 	}
 
 	handleKeyPress = e => {
-		if (e.key === 'Enter') {
+		if (e.key === ' ') {
 			this.props.onChange && this.props.onChange(e);
 
 			if (this.props.controlled) {
@@ -68,7 +68,6 @@ export class Checkbox extends React.PureComponent {
 			disabled,
 			name,
 			value = '',
-			ariaLabel,
 			className: customStyle,
 			...other
 		} = this.props;
@@ -102,7 +101,7 @@ export class Checkbox extends React.PureComponent {
 					onChange={this.onChange}
 					readOnly={!this.onChange || disabled}
 					name={name}
-					aria-label={ariaLabel || 'checkbox'}
+					aria-label={`${label} - checkbox ` || 'checkbox'}
 					value={`${value}`}
 				/>
 				<span>{label}</span>
@@ -123,9 +122,6 @@ Checkbox.propTypes = {
 
 	/** What we render into the input's `<label />` */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-
-	/** aria-label for input */
-	ariaLabel: PropTypes.string,
 
 	/** The `name` attribute for the input */
 	name: PropTypes.string.isRequired,
