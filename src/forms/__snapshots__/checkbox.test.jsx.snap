@@ -19,7 +19,7 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
     />
   </span>
   <input
-    aria-label="Hello! - checkbox "
+    aria-label="Hello! - checkbox"
     checked={true}
     id="hello"
     name="greeting"
@@ -46,7 +46,7 @@ exports[`Checkbox basic renders unchecked checkbox 1`] = `
     tabIndex={0}
   />
   <input
-    aria-label="Hello! - checkbox "
+    aria-label="Hello! - checkbox"
     checked={false}
     id="hello"
     name="greeting"
