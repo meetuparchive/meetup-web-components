@@ -101,7 +101,9 @@ export class Checkbox extends React.PureComponent {
 					onChange={this.onChange}
 					readOnly={!this.onChange || disabled}
 					name={name}
-					aria-label={`${label} - checkbox ` || 'checkbox'}
+					aria-label={
+						typeof label === 'string' ? `${label} - checkbox ` : 'checkbox'
+					}
 					value={`${value}`}
 				/>
 				<span>{label}</span>
