@@ -209,6 +209,7 @@ class Dropdown extends React.PureComponent<Props, State> {
 							})}
 							onClick={this.onClick}
 							role={undefined}
+							type={undefined}
 						>
 							{trigger}
 						</div>
