@@ -208,7 +208,7 @@ class Dropdown extends React.PureComponent<Props, State> {
 								'popup-trigger--active': isOpen,
 							})}
 							onClick={this.onClick}
-							role={undefined}
+							role="tooltip"
 							type={undefined}
 						>
 							{trigger}
