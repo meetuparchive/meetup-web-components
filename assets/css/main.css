@@ -7356,6 +7356,9 @@ Breakpoints        | Property       | Variants
 .tw-box-border {
   box-sizing: border-box; }
 
+.tw-block {
+  display: block; }
+
 .tw-flex {
   display: flex; }
 
@@ -7451,6 +7454,9 @@ Breakpoints        | Property       | Variants
 .tw-py-0\.5 {
   padding-top: 0.125rem;
   padding-bottom: 0.125rem; }
+
+.tw-pb-1 {
+  padding-bottom: 0.25rem; }
 
 .tw-text-center {
   text-align: center; }
