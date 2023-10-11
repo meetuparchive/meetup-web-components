@@ -11,11 +11,11 @@ exports[`TextInput renders a required HTML <input> with expected attributes for 
 >
   <div>
     <FieldLabel
-      className=""
+      className="tw-pb-1 tw-block"
       htmlFor="superhero"
     >
       <label
-        className=""
+        className="tw-pb-1 tw-block"
         data-swarm-field-label={true}
         htmlFor="superhero"
       >
