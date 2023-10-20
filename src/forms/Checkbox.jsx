@@ -69,6 +69,7 @@ export class Checkbox extends React.PureComponent {
 			name,
 			value = '',
 			className: customStyle,
+			ariaLabel,
 			...other
 		} = this.props;
 
@@ -102,7 +103,8 @@ export class Checkbox extends React.PureComponent {
 					readOnly={!this.onChange || disabled}
 					name={name}
 					aria-label={
-						typeof label === 'string' ? `${label} - checkbox` : 'checkbox'
+						ariaLabel ||
+						(typeof label === 'string' ? `${label} - checkbox` : 'checkbox')
 					}
 					value={`${value}`}
 				/>
@@ -133,6 +135,9 @@ Checkbox.propTypes = {
 
 	/** Callback that happens when the input changes */
 	onChange: PropTypes.func,
+
+	/** The `ariaLabel` attribute for the input */
+	ariaLabel: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
