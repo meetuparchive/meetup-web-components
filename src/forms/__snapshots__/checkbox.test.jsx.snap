@@ -7,10 +7,11 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
 >
   <span
     aria-checked={true}
-    aria-label="checkbox"
     className="checkbox"
     data-swarm-checkbox-field="checked"
+    onKeyPress={[Function]}
     role="checkbox"
+    tabIndex={0}
   >
     <Icon
       color="#ffffff"
@@ -18,6 +19,7 @@ exports[`Checkbox basic renders checked checkbox 1`] = `
     />
   </span>
   <input
+    aria-label="Hello! - checkbox"
     checked={true}
     id="hello"
     name="greeting"
@@ -38,11 +40,13 @@ exports[`Checkbox basic renders unchecked checkbox 1`] = `
 >
   <span
     aria-checked={false}
-    aria-label="checkbox"
     className="checkbox"
+    onKeyPress={[Function]}
     role="checkbox"
+    tabIndex={0}
   />
   <input
+    aria-label="Hello! - checkbox"
     checked={false}
     id="hello"
     name="greeting"

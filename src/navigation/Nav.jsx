@@ -343,7 +343,7 @@ export class Nav extends React.Component {
 				shrink: true,
 				onAction: this.onClickSignupAction,
 				label: signup.label,
-				className: CLASS_UNAUTH_ITEM,
+				className: `${CLASS_UNAUTH_ITEM} navItem--signup`,
 			},
 			isSearchEnabled &&
 				!media.isAtMediumUp && {

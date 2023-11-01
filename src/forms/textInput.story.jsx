@@ -36,6 +36,25 @@ storiesOf('Forms/TextInput', module)
 			disabled
 		/>
 	))
+	.add('with currency label', () => (
+		<TextInput
+			label="Your name"
+			id="fullname"
+			name="name"
+			value="test "
+			currencyLabel="USD"
+		/>
+	))
+	.add('disabled with currency label', () => (
+		<TextInput
+			label="Your name"
+			id="fullname"
+			name="name"
+			disabled
+			value="test "
+			currencyLabel="USD"
+		/>
+	))
 	.add('error state', () => (
 		<TextInput
 			label="Your name"
@@ -127,7 +146,7 @@ storiesOf('Forms/TextInput', module)
 		},
 		{
 			info: {
-				text: `Note: updating field with charcounter relies on parent to give value, 
+				text: `Note: updating field with charcounter relies on parent to give value,
             thats why you cant interact with the field in this story`,
 			},
 		}

@@ -16,6 +16,7 @@ class Tooltip extends React.PureComponent {
 		this.onBlur = this.onBlur.bind(this);
 		this.closeContent = this.closeContent.bind(this);
 		this.openContent = this.openContent.bind(this);
+		this.handleClose = this.handleClose.bind(this);
 
 		this.state = {
 			isActive: props.isActive || false,
@@ -68,6 +69,13 @@ class Tooltip extends React.PureComponent {
 				this.closeContent(e);
 			}
 		}, 0);
+	}
+
+	handleClose(e) {
+		if (e.key === 'Escape') {
+			this.props.onClose && this.props.onClose(e);
+			this.setState(() => ({ isActive: false }));
+		}
 	}
 
 	render() {
@@ -132,6 +140,7 @@ class Tooltip extends React.PureComponent {
 						align={align}
 						offset={offset}
 						direction={direction}
+						handleClose={this.handleClose}
 					>
 						{({ top, left, align, boundedMaxWidth }) => (
 							<div

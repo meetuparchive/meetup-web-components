@@ -18,6 +18,10 @@
   box-sizing: border-box
 }
 
+.tw-block {
+  display: block
+}
+
 .tw-flex {
   display: flex
 }
@@ -147,6 +151,10 @@
 .tw-py-0\.5 {
   padding-top: 0.125rem;
   padding-bottom: 0.125rem
+}
+
+.tw-pb-1 {
+  padding-bottom: 0.25rem
 }
 
 .tw-text-center {

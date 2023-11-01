@@ -3,7 +3,7 @@
 exports[`A11y class pass through on labelClassName should hide the label when a11yHide is passed as a label class 1`] = `
 <Fragment>
   <FieldLabel
-    className="visibility--a11yHide"
+    className="tw-pb-1 tw-block visibility--a11yHide"
     htmlFor="testSelect"
   >
     Test select
@@ -62,7 +62,7 @@ exports[`A11y class pass through on labelClassName should hide the label when a1
 exports[`A11y class pass through on labelClassName should only pass the a11y class 1`] = `
 <Fragment>
   <FieldLabel
-    className="visibility--a11yHide"
+    className="tw-pb-1 tw-block visibility--a11yHide"
     htmlFor="testSelect"
   >
     Test select
@@ -121,7 +121,7 @@ exports[`A11y class pass through on labelClassName should only pass the a11y cla
 exports[`SelectInput basic renders into the DOM 1`] = `
 <Fragment>
   <FieldLabel
-    className=""
+    className="tw-pb-1 tw-block"
     htmlFor="testSelect"
   >
     Test select

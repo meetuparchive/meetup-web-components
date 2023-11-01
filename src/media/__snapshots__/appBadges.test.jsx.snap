@@ -1,9 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App Badges exists 1`] = `
-<AppBadges
-  getAppStorePhoto={[Function]}
-  language="fr"
-  media={Object {}}
-/>
+<Flex
+  IsMobile={false}
+  className="getTheApp-downloadLinks"
+>
+  <FlexItem
+    className="getTheApp-ios"
+  >
+    <a
+      href="https://meetu.ps/2ZhShs"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        alt="Meetup iOS App Download"
+        className="getTheApp-downloadImage span--100 margin--center"
+        src=""
+      />
+    </a>
+  </FlexItem>
+  <FlexItem
+    className="getTheApp-android"
+  >
+    <a
+      href="https://meetu.ps/2ZhSyb"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        alt="Meetup Android App Download"
+        className="getTheApp-downloadImage span--100 margin--center"
+        src=""
+      />
+    </a>
+  </FlexItem>
+</Flex>
 `;

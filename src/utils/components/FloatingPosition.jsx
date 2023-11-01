@@ -183,12 +183,16 @@ class FloatingPosition extends React.PureComponent {
 		this.scheduleUpdate();
 		window.addEventListener('resize', this.scheduleUpdate);
 		document.addEventListener('scroll', this.scheduleUpdate, true);
+		this.props.handleClose &&
+			document.addEventListener('keydown', this.props.handleClose);
 	}
 
 	componentWillUnmount() {
 		this.scheduleUpdate.cancel();
 		window.removeEventListener('resize', this.scheduleUpdate);
 		document.removeEventListener('scroll', this.scheduleUpdate, true);
+		this.props.handleClose &&
+			document.addEventListener('keydown', this.props.handleClose);
 	}
 
 	render() {

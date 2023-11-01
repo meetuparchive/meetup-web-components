@@ -4,11 +4,8 @@ exports[`Textarea exists 1`] = `
 <div
   className="inputContainer"
 >
-  <FieldLabel
-    className=""
-    htmlFor="super"
-  />
   <Textarea
+    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -32,7 +29,7 @@ exports[`Textarea should have a label when label is given 1`] = `
   className="inputContainer"
 >
   <FieldLabel
-    className=""
+    className="tw-pb-1 tw-block"
     htmlFor="super"
   >
     Super Hero
@@ -60,7 +57,7 @@ exports[`Textarea should have a required attribute when specified 1`] = `
   className="inputContainer"
 >
   <FieldLabel
-    className=""
+    className="tw-pb-1 tw-block"
     htmlFor="super"
   >
     Super Hero
@@ -88,7 +85,7 @@ exports[`Textarea should have helper text when helper text is given 1`] = `
   className="inputContainer"
 >
   <FieldLabel
-    className=""
+    className="tw-pb-1 tw-block"
     htmlFor="super"
   >
     Super Hero
@@ -118,11 +115,8 @@ exports[`Textarea should set its value on input change 1`] = `
 <div
   className="inputContainer"
 >
-  <FieldLabel
-    className=""
-    htmlFor="super"
-  />
   <Textarea
+    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}
@@ -145,11 +139,8 @@ exports[`Textarea should set its value on input change 2`] = `
 <div
   className="inputContainer"
 >
-  <FieldLabel
-    className=""
-    htmlFor="super"
-  />
   <Textarea
+    aria-label="super"
     id="super"
     name="superhero"
     onChange={[Function]}

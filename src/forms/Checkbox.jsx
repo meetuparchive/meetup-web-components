@@ -38,6 +38,16 @@ export class Checkbox extends React.PureComponent {
 		}
 	}
 
+	handleKeyPress = e => {
+		if (e.key === ' ') {
+			this.props.onChange && this.props.onChange(e);
+
+			if (this.props.controlled) {
+				this.setState({ checked: !this.state.checked });
+			}
+		}
+	};
+
 	getChecked() {
 		if (this.props.controlled) {
 			return this.state.checked;
@@ -59,6 +69,7 @@ export class Checkbox extends React.PureComponent {
 			name,
 			value = '',
 			className: customStyle,
+			ariaLabel,
 			...other
 		} = this.props;
 
@@ -76,7 +87,8 @@ export class Checkbox extends React.PureComponent {
 					className="checkbox"
 					role="checkbox"
 					aria-checked={stateChecked}
-					aria-label="checkbox"
+					tabIndex={0}
+					onKeyPress={this.handleKeyPress}
 				>
 					{stateChecked && (
 						<Icon shape="check" color={disabled ? '#707070' : '#ffffff'} />
@@ -90,6 +102,10 @@ export class Checkbox extends React.PureComponent {
 					onChange={this.onChange}
 					readOnly={!this.onChange || disabled}
 					name={name}
+					aria-label={
+						ariaLabel ||
+						(typeof label === 'string' ? `${label} - checkbox` : 'checkbox')
+					}
 					value={`${value}`}
 				/>
 				<span>{label}</span>
@@ -119,6 +135,9 @@ Checkbox.propTypes = {
 
 	/** Callback that happens when the input changes */
 	onChange: PropTypes.func,
+
+	/** The `ariaLabel` attribute for the input */
+	ariaLabel: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
