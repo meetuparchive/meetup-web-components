@@ -94,7 +94,13 @@ export class Checkbox extends React.PureComponent {
 					onKeyPress={this.handleKeyPress}
 				>
 					{stateChecked && (
-						<Icon shape="check" color={disabled ? '#707070' : '#ffffff'} />
+						<Icon
+							shape="check"
+							color={disabled ? '#707070' : '#ffffff'}
+							aria-label={`${
+								typeof label === 'string' ? label : 'checkbox'
+							} - ${stateChecked}`}
+						/>
 					)}
 				</span>
 				<input
