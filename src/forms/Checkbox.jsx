@@ -99,7 +99,7 @@ export class Checkbox extends React.PureComponent {
 							color={disabled ? '#707070' : '#ffffff'}
 							aria-label={`${
 								typeof label === 'string' ? label : 'checkbox'
-							} - ${stateChecked}`}
+							} - ${stateChecked ? 'checked' : 'unchecked'}`}
 						/>
 					)}
 				</span>
