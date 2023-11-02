@@ -108,7 +108,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         <div>
           <div
             aria-controls="panel-firstsection"
-            aria-selected={true}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
             onKeyUp={[Function]}
@@ -294,7 +293,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         <div>
           <div
             aria-controls="panel-nextsection"
-            aria-selected={false}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
             onKeyUp={[Function]}
@@ -480,7 +478,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable gives panels a
         <div>
           <div
             aria-controls="panel-thirdsection"
-            aria-selected={false}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
             onKeyUp={[Function]}
@@ -735,7 +732,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         <div>
           <div
             aria-controls="panel-firstsection"
-            aria-selected={true}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
             onKeyUp={[Function]}
@@ -921,7 +917,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         <div>
           <div
             aria-controls="panel-nextsection"
-            aria-selected={false}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
             onKeyUp={[Function]}
@@ -1107,7 +1102,6 @@ exports[`AccordionPanelGroup AccordionPanelGroup, multiselectable renders panels
         <div>
           <div
             aria-controls="panel-thirdsection"
-            aria-selected={false}
             className="accordionPanel-label display--block span--100"
             onClick={[Function]}
             onKeyUp={[Function]}

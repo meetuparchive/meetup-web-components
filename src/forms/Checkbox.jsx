@@ -87,6 +87,9 @@ export class Checkbox extends React.PureComponent {
 					className="checkbox"
 					role="checkbox"
 					aria-checked={stateChecked}
+					aria-label={
+						typeof label === 'string' ? `${label} - checkbox` : 'checkbox'
+					}
 					tabIndex={0}
 					onKeyPress={this.handleKeyPress}
 				>
