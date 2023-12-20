@@ -73,6 +73,14 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 	}
 }
 
+.navItem--connections {
+	display: none;
+
+	@media screen and (min-width: 768px) {
+		display: block;
+	}
+}
+
 %navItem--counterBadgePlaceholder {
 	$_newDotSize: 10px;
 	background-color: #e32359;
@@ -337,10 +345,21 @@ $maxScalingBP: $breakpoint-m / 1px;
 		padding-top: 4px;
 		text-decoration: none;
 
+		/* stylelint-disable  selector-max-compound-selectors, selector-max-combinators, selector-max-class */
+		&--connections {
+			display: none;
+			@media screen and (max-width: 768px) {
+				display: block;
+			}
+			.navItem--counterBadgeConnections {
+				position: initial;
+			}
+		}
 		&:hover {
 			color: #00798a;
 		}
 	}
+	/* stylelint-enable */
 }
 
 .profileDropdown-draft-group {

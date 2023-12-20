@@ -116,6 +116,10 @@ export const navItemsFactory = () => {
 				savedEvents: { link: 'meetup.com/saved-events', label: 'Saved events' },
 				yourGroups: { link: 'meetup.com/groups', label: 'Your groups' },
 				yourEvents: { link: 'meetup.com/your-events', label: 'Your events' },
+				yourConnections: {
+					link: 'meetup.com/your-connections',
+					label: 'Your connections',
+				},
 				allGroupsLabel: 'See all groups',
 				allGroupsLink: 'meetup.com/groups',
 				groupHome: () => {},

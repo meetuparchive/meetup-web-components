@@ -374,7 +374,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
+      className="navItem--connections navItem--authenticated"
       counterBadgeClassName="navItem--counterBadgeConnections"
       hasUpdates={true}
       icon={
@@ -446,6 +446,7 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
               },
             ]
           }
+          hasNewConnections={true}
           help={
             Object {
               "label": "Help",
@@ -493,6 +494,10 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
                   "label": "Settings",
                   "link": "meetup.com/settings",
                 },
+                "yourConnections": Object {
+                  "label": "Your connections",
+                  "link": "meetup.com/your-connections",
+                },
                 "yourEvents": Object {
                   "label": "Your events",
                   "link": "meetup.com/your-events",
@@ -514,6 +519,12 @@ exports[`Nav should match the snapshot for authenticated medium screens 1`] = `
             Object {
               "label": "Settings",
               "link": "meetup.com/settings",
+            }
+          }
+          yourConnections={
+            Object {
+              "label": "Your connections",
+              "link": "meetup.com/your-connections",
             }
           }
           yourEvents={
@@ -655,7 +666,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
+      className="navItem--connections navItem--authenticated"
       counterBadgeClassName="navItem--counterBadgeConnections"
       hasUpdates={true}
       icon={
@@ -730,6 +741,7 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
               },
             ]
           }
+          hasNewConnections={true}
           help={
             Object {
               "label": "Help",
@@ -778,6 +790,10 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
                   "label": "Settings",
                   "link": "meetup.com/settings",
                 },
+                "yourConnections": Object {
+                  "label": "Your connections",
+                  "link": "meetup.com/your-connections",
+                },
                 "yourEvents": Object {
                   "label": "Your events",
                   "link": "meetup.com/your-events",
@@ -799,6 +815,12 @@ exports[`Nav should match the snapshot for authenticated medium screens and new 
             Object {
               "label": "Settings",
               "link": "meetup.com/settings",
+            }
+          }
+          yourConnections={
+            Object {
+              "label": "Your connections",
+              "link": "meetup.com/your-connections",
             }
           }
           yourEvents={
@@ -1214,7 +1236,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
+      className="navItem--connections navItem--authenticated"
       counterBadgeClassName="navItem--counterBadgeConnections"
       hasUpdates={true}
       icon={
@@ -1286,6 +1308,7 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
               },
             ]
           }
+          hasNewConnections={true}
           help={
             Object {
               "label": "Help",
@@ -1333,6 +1356,10 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
                   "label": "Settings",
                   "link": "meetup.com/settings",
                 },
+                "yourConnections": Object {
+                  "label": "Your connections",
+                  "link": "meetup.com/your-connections",
+                },
                 "yourEvents": Object {
                   "label": "Your events",
                   "link": "meetup.com/your-events",
@@ -1354,6 +1381,12 @@ exports[`Nav should match the snapshot for groups loading state 1`] = `
             Object {
               "label": "Settings",
               "link": "meetup.com/settings",
+            }
+          }
+          yourConnections={
+            Object {
+              "label": "Your connections",
+              "link": "meetup.com/your-connections",
             }
           }
           yourEvents={
@@ -1500,7 +1533,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
+      className="navItem--connections navItem--authenticated"
       counterBadgeClassName="navItem--counterBadgeConnections"
       hasUpdates={true}
       icon={
@@ -1572,6 +1605,7 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
               },
             ]
           }
+          hasNewConnections={true}
           help={
             Object {
               "label": "Help",
@@ -1619,6 +1653,10 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
                   "label": "Settings",
                   "link": "meetup.com/settings",
                 },
+                "yourConnections": Object {
+                  "label": "Your connections",
+                  "link": "meetup.com/your-connections",
+                },
                 "yourEvents": Object {
                   "label": "Your events",
                   "link": "meetup.com/your-events",
@@ -1640,6 +1678,12 @@ exports[`Nav should match the snapshot for notifications loading state 1`] = `
             Object {
               "label": "Settings",
               "link": "meetup.com/settings",
+            }
+          }
+          yourConnections={
+            Object {
+              "label": "Your connections",
+              "link": "meetup.com/your-connections",
             }
           }
           yourEvents={
@@ -2087,7 +2131,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
       shrink={true}
     />
     <NavItem
-      className="navItem--authenticated"
+      className="navItem--connections navItem--authenticated"
       counterBadgeClassName="navItem--counterBadgeConnections"
       hasUpdates={true}
       icon={
@@ -2159,6 +2203,7 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
               },
             ]
           }
+          hasNewConnections={true}
           help={
             Object {
               "label": "Help",
@@ -2206,6 +2251,10 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
                   "label": "Settings",
                   "link": "meetup.com/settings",
                 },
+                "yourConnections": Object {
+                  "label": "Your connections",
+                  "link": "meetup.com/your-connections",
+                },
                 "yourEvents": Object {
                   "label": "Your events",
                   "link": "meetup.com/your-events",
@@ -2227,6 +2276,12 @@ exports[`Nav should match the snapshot for unread notifications 1`] = `
             Object {
               "label": "Settings",
               "link": "meetup.com/settings",
+            }
+          }
+          yourConnections={
+            Object {
+              "label": "Your connections",
+              "link": "meetup.com/your-connections",
             }
           }
           yourEvents={

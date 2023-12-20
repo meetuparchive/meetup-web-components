@@ -232,6 +232,7 @@ export class Nav extends React.Component {
 				savedEvents={profile.profileDropdown.savedEvents}
 				yourGroups={profile.profileDropdown.yourGroups}
 				yourEvents={profile.profileDropdown.yourEvents}
+				yourConnections={profile.profileDropdown.yourConnections}
 				profile={profile}
 				groups={groups.list}
 				groupDraft={groupDraft}
@@ -239,6 +240,7 @@ export class Nav extends React.Component {
 				isNewNavsOrder={
 					isNewNavsOrder && (localeCode ? localeCode.includes('en') : false)
 				}
+				hasNewConnections={connections.hasNewConnections}
 			/>
 		) : (
 			<DropdownLoader label={dropdownLoaderLabel} />
@@ -402,7 +404,7 @@ export class Nav extends React.Component {
 				linkTo: connections.link,
 				label: connections.label,
 				labelClassName: 'navItem-label-pro',
-				className: CLASS_AUTH_ITEM,
+				className: cx('navItem--connections', CLASS_AUTH_ITEM),
 				linkClassName: 'navItemLink-pro',
 				counterBadgeClassName: 'navItem--counterBadgeConnections',
 				icon: getConnectionsIcon(),
