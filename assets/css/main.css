@@ -4927,27 +4927,31 @@ input.field--reset:active {
     font-size: 14px;
     max-width: 20vw; }
 
-.navItem--counterBadge, .navItem--counterBadgeProNotifications, .navItem--counterBadgeProMessages {
-  background-color: #f65858;
-  border: 2px solid white;
+.navItem--counterBadge, .navItem--counterBadgeConnections, .navItem--counterBadgeProNotifications, .navItem--counterBadgeProMessages {
+  background-color: #e32359;
+  border: 1px solid white;
   border-radius: 10px;
   box-sizing: border-box;
   display: inline-block;
-  height: 14px;
+  height: 10px;
   position: absolute;
-  width: 14px; }
+  width: 10px; }
 
 .navItem--counterBadge {
-  bottom: 12px;
-  right: -3px; }
+  bottom: 14px;
+  right: -5px; }
+
+.navItem--counterBadgeConnections {
+  bottom: 40px;
+  right: 22px; }
 
 .navItem--counterBadgeProNotifications {
-  bottom: 38px;
-  right: 24px; }
+  bottom: 40px;
+  right: 28px; }
 
 .navItem--counterBadgeProMessages {
-  bottom: 38px;
-  right: 14px; }
+  bottom: 40px;
+  right: 18px; }
 
 .navItem-label {
   color: rgba(46, 62, 72, 0.6);
