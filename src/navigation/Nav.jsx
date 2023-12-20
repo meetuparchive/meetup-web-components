@@ -22,6 +22,7 @@ import NavbarSearch, { NAVBAR_SEARCH_INPUT_ID } from './components/search/Navbar
 
 import MESSAGE_ICON from '../../assets/svg/message.svg';
 import NOTIFICATION_ICON from '../../assets/svg/notification.svg';
+import CONNECTIONS_ICON from '../../assets/svg/connections.svg';
 import PRO_DASHBOARD_ICON from '../../assets/svg/proDashboard.svg';
 
 const CLASS_UNAUTH_ITEM = 'navItem--unauthenticated';
@@ -170,6 +171,7 @@ export class Nav extends React.Component {
 			proDashboard,
 			explore, // eslint-disable-line no-unused-vars
 			messages,
+			connections,
 			notifications,
 			groups,
 			groupDraft,
@@ -276,6 +278,10 @@ export class Nav extends React.Component {
 				/>
 			);
 		};
+
+		const getConnectionsIcon = () => (
+			<img className="proIcon" alt={connections.label} src={CONNECTIONS_ICON} />
+		);
 
 		const getNotificationsIcon = () => {
 			if (media.isAtMediumUp) {
@@ -390,6 +396,19 @@ export class Nav extends React.Component {
 				onLinkClick: tryPro.onLinkClick,
 				linkClassName: 'navItemLink-pro',
 				isTargetBlank: true,
+			},
+			media.isAtMediumUp && {
+				shrink: true,
+				linkTo: connections.link,
+				label: connections.label,
+				labelClassName: 'navItem-label-pro',
+				className: CLASS_AUTH_ITEM,
+				linkClassName: 'navItemLink-pro',
+				counterBadgeClassName: 'navItem--counterBadgeConnections',
+				icon: getConnectionsIcon(),
+				hasUpdates: connections.hasNewConnections > 0,
+				updatesLabel: updatesLabel,
+				onLinkClick: messages.onLinkClick,
 			},
 			{
 				shrink: true,

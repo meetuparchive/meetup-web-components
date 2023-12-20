@@ -74,9 +74,9 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 }
 
 %navItem--counterBadgePlaceholder {
-	$_newDotSize: 14px;
-	background-color: #f65858;
-	border: 2px solid $C-white;
+	$_newDotSize: 10px;
+	background-color: #e32359;
+	border: 1px solid $C-white;
 	border-radius: 10px;
 	box-sizing: border-box;
 	display: inline-block;
@@ -87,20 +87,26 @@ $zindex--aboveFloatingContent: map-get($zindex-map, "floating-content") + 1;
 
 .navItem--counterBadge {
 	@extend %navItem--counterBadgePlaceholder;
-	bottom: 12px;
-	right: -3px;
+	bottom: 14px;
+	right: -5px;
+}
+
+.navItem--counterBadgeConnections {
+	@extend %navItem--counterBadgePlaceholder;
+	bottom: 40px;
+	right: 22px;
 }
 
 .navItem--counterBadgeProNotifications {
 	@extend %navItem--counterBadgePlaceholder;
-	bottom: 38px;
-	right: 24px;
+	bottom: 40px;
+	right: 28px;
 }
 
 .navItem--counterBadgeProMessages {
 	@extend %navItem--counterBadgePlaceholder;
-	bottom: 38px;
-	right: 14px;
+	bottom: 40px;
+	right: 18px;
 }
 
 $maxLabelSize: 12;

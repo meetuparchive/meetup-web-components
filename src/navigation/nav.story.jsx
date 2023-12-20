@@ -76,6 +76,11 @@ export const navItemsFactory = () => {
 				'meetup.com/lp/meetup-pro/?fromUpgrade=true&utm_medium=display&utm_source=meetup&utm_content=lp_pro&utm_campaign=meetup_orgeng_c2p_pro',
 			label: 'Try for free',
 		},
+		connections: {
+			link: 'meetup.com/your-connections',
+			label: 'Connections',
+			hasNewConnections: true,
+		},
 		messages: {
 			link: 'meetup.com/messages',
 			label: 'Messages',
