@@ -4927,27 +4927,37 @@ input.field--reset:active {
     font-size: 14px;
     max-width: 20vw; }
 
-.navItem--counterBadge, .navItem--counterBadgeProNotifications, .navItem--counterBadgeProMessages {
-  background-color: #f65858;
-  border: 2px solid white;
+.navItem--connections {
+  display: none; }
+  @media screen and (min-width: 768px) {
+    .navItem--connections {
+      display: block; } }
+
+.navItem--counterBadge, .navItem--counterBadgeConnections, .navItem--counterBadgeProNotifications, .navItem--counterBadgeProMessages {
+  background-color: #e32359;
+  border: 1px solid white;
   border-radius: 10px;
   box-sizing: border-box;
   display: inline-block;
-  height: 14px;
+  height: 10px;
   position: absolute;
-  width: 14px; }
+  width: 10px; }
 
 .navItem--counterBadge {
-  bottom: 12px;
-  right: -3px; }
+  bottom: 14px;
+  right: -5px; }
+
+.navItem--counterBadgeConnections {
+  bottom: 40px;
+  right: 22px; }
 
 .navItem--counterBadgeProNotifications {
-  bottom: 38px;
-  right: 24px; }
+  bottom: 40px;
+  right: 28px; }
 
 .navItem--counterBadgeProMessages {
-  bottom: 38px;
-  right: 14px; }
+  bottom: 40px;
+  right: 18px; }
 
 .navItem-label {
   color: rgba(46, 62, 72, 0.6);
@@ -5087,38 +5097,43 @@ input.field--reset:active {
 .notification--read {
   background: #f6f7f8 !important; }
 
-.profileDropdown-content.wide {
-  width: 512px; }
-
-.profileDropdown-content.new-padding {
-  padding: 12px 16px; }
-
-.profileDropdown-content .list-item {
-  padding-bottom: 8px !important;
-  padding-top: 8px !important; }
-
-.profileDropdown-content .profileDropdown-draft-group {
-  padding-top: 0 !important; }
-
-.profileDropdown-content .links-divider {
-  border-top: thin;
-  margin-bottom: 12px;
-  margin-top: 12px; }
-
-.profileDropdown-content .links-item {
-  box-sizing: border-box;
-  color: inherit;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.43;
-  margin: 0;
-  min-width: 0;
-  padding-bottom: 4px;
-  padding-top: 4px;
-  text-decoration: none; }
-  .profileDropdown-content .links-item:hover {
-    color: #00798a; }
+.profileDropdown-content {
+  /* stylelint-enable */ }
+  .profileDropdown-content.wide {
+    width: 512px; }
+  .profileDropdown-content.new-padding {
+    padding: 12px 16px; }
+  .profileDropdown-content .list-item {
+    padding-bottom: 8px !important;
+    padding-top: 8px !important; }
+  .profileDropdown-content .profileDropdown-draft-group {
+    padding-top: 0 !important; }
+  .profileDropdown-content .links-divider {
+    border-top: thin;
+    margin-bottom: 12px;
+    margin-top: 12px; }
+  .profileDropdown-content .links-item {
+    box-sizing: border-box;
+    color: inherit;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.43;
+    margin: 0;
+    min-width: 0;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    text-decoration: none;
+    /* stylelint-disable  selector-max-compound-selectors, selector-max-combinators, selector-max-class */ }
+    .profileDropdown-content .links-item--connections {
+      display: none; }
+      @media screen and (max-width: 768px) {
+        .profileDropdown-content .links-item--connections {
+          display: block; } }
+      .profileDropdown-content .links-item--connections .navItem--counterBadgeConnections {
+        position: initial; }
+    .profileDropdown-content .links-item:hover {
+      color: #00798a; }
 
 .profileDropdown-draft-group div {
   color: #0cbadf;

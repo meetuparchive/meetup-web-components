@@ -76,6 +76,11 @@ export const navItemsFactory = () => {
 				'meetup.com/lp/meetup-pro/?fromUpgrade=true&utm_medium=display&utm_source=meetup&utm_content=lp_pro&utm_campaign=meetup_orgeng_c2p_pro',
 			label: 'Try for free',
 		},
+		connections: {
+			link: 'meetup.com/your-connections',
+			label: 'Connections',
+			hasNewConnections: true,
+		},
 		messages: {
 			link: 'meetup.com/messages',
 			label: 'Messages',
@@ -111,6 +116,10 @@ export const navItemsFactory = () => {
 				savedEvents: { link: 'meetup.com/saved-events', label: 'Saved events' },
 				yourGroups: { link: 'meetup.com/groups', label: 'Your groups' },
 				yourEvents: { link: 'meetup.com/your-events', label: 'Your events' },
+				yourConnections: {
+					link: 'meetup.com/your-connections',
+					label: 'Your connections',
+				},
 				allGroupsLabel: 'See all groups',
 				allGroupsLink: 'meetup.com/groups',
 				groupHome: () => {},

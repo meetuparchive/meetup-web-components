@@ -35,6 +35,8 @@ export const ProfileDropdownComponent = ({
 	yourGroups,
 	isNewNavActive,
 	isNewNavsOrder,
+	yourConnections,
+	hasNewConnections,
 }) => {
 	const groupsContent = groups.map(group => (
 		<li
@@ -87,6 +89,21 @@ export const ProfileDropdownComponent = ({
 								{yourGroups.label}
 							</a>
 						</li>
+						{!!yourConnections && (
+							<li>
+								<a
+									className="links-item links-item--connections"
+									href={yourConnections.link}
+								>
+									{yourConnections.label}{' '}
+									{hasNewConnections ? (
+										<span className="navItem--counterBadgeConnections" />
+									) : (
+										'🆕'
+									)}
+								</a>
+							</li>
+						)}
 					</Fragment>
 				) : (
 					<Fragment>
