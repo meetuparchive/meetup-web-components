@@ -16,11 +16,12 @@ export class RadioButton extends React.PureComponent {
 			value,
 			children,
 			name,
+			labelClassName,
 			...other
 		} = this.props;
 
 		return (
-			<label className="radio-container">
+			<label className={cx('radio-container', labelClassName)}>
 				<span
 					className={cx('radio', { checked, disabled })}
 					tabIndex={0}
@@ -50,6 +51,9 @@ RadioButton.displayName = 'RadioButton';
 RadioButton.propTypes = {
 	/** What we render into the input's `<label />` */
 	label: PropTypes.string.isRequired,
+
+	/** Class name for label wrapper */
+	labelClassName: PropTypes.string,
 
 	/** Additional class name/s to add to the wrapper element  */
 	className: PropTypes.string,
