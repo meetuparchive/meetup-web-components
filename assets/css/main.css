@@ -3478,12 +3478,15 @@ $('#fadeInLink').on('click', function(e) {
 
 /* with icon */
 [data-swarm-button][data-icon="left"] .svg-icon,
-[data-swarm-button][data-icon="left"] [data-swarm-icon] {
+[data-swarm-button][data-icon="left"] [data-swarm-icon], [data-swarm-link][data-icon="left"] .svg-icon {
   margin-right: var(--space-half); }
 
 [data-swarm-button][data-icon="right"] .svg-icon,
-[data-swarm-button][data-icon="right"] [data-swarm-icon] {
+[data-swarm-button][data-icon="right"] [data-swarm-icon], [data-swarm-link][data-icon="right"] .svg-icon {
   margin-left: var(--space-half); }
+
+[data-swarm-link][data-icon="only"] {
+  padding: var(--space-half); }
 
 /*doc
 ---

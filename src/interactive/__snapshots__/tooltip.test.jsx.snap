@@ -78,19 +78,16 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
         <Button
           small={true}
         >
-          <Button
+          <button
+            data-icon="left"
+            data-swarm-button="default"
+            data-swarm-size="small"
+            data-swarm-width="default"
             small={true}
+            type="button"
           >
-            <button
-              data-icon="left"
-              data-swarm-button="default"
-              data-swarm-size="small"
-              data-swarm-width="default"
-              type="button"
-            >
-              Open
-            </button>
-          </Button>
+            Open
+          </button>
         </Button>
       </Button>
     </div>
@@ -140,18 +137,22 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                         type="button"
                       >
                         <span>
-                          <svg
-                            class="svg svg--cross svg-icon valign--middle"
-                            height="20"
-                            preserveAspectRatio="xMinYMin meet"
-                            role="img"
-                            viewBox="0 0 20 20"
-                            width="20"
-                          >
-                            <use
-                              xlink:href="#icon-cross--small"
-                            />
-                          </svg>
+                          <span>
+                            <span>
+                              <svg
+                                class="svg svg--cross svg-icon valign--middle"
+                                height="20"
+                                preserveAspectRatio="xMinYMin meet"
+                                role="presentation"
+                                viewBox="0 0 20 20"
+                                width="20"
+                              >
+                                <use
+                                  xlink:href="#icon-cross--small"
+                                />
+                              </svg>
+                            </span>
+                          </span>
                         </span>
                       </button>
                       <section
@@ -217,47 +218,49 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       reset={true}
                       role="button"
                     >
-                      <Button
+                      <button
                         aria-label="Close"
                         className="tooltip-closeBtn"
-                        icon="cross"
+                        data-icon="only"
+                        data-swarm-button="reset"
+                        data-swarm-size="default"
+                        data-swarm-width="default"
                         onClick={[Function]}
                         reset={true}
                         role="button"
+                        type="button"
                       >
-                        <button
-                          aria-label="Close"
-                          className="tooltip-closeBtn"
-                          data-icon="only"
-                          data-swarm-button="reset"
-                          data-swarm-size="default"
-                          data-swarm-width="default"
-                          onClick={[Function]}
-                          role="button"
-                          type="button"
-                        >
+                        <span>
                           <span>
                             <Icon
                               shape="cross"
                               size="xs"
                             >
-                              <svg
-                                className="svg svg--cross svg-icon valign--middle"
-                                height="20"
-                                preserveAspectRatio="xMinYMin meet"
-                                role="img"
-                                style={Object {}}
-                                viewBox="0 0 20 20"
-                                width="20"
-                              >
-                                <use
-                                  xlinkHref="#icon-cross--small"
-                                />
-                              </svg>
+                              <span>
+                                <Icon
+                                  role="presentation"
+                                  shape="cross"
+                                  size="xs"
+                                >
+                                  <svg
+                                    className="svg svg--cross svg-icon valign--middle"
+                                    height="20"
+                                    preserveAspectRatio="xMinYMin meet"
+                                    role="presentation"
+                                    style={Object {}}
+                                    viewBox="0 0 20 20"
+                                    width="20"
+                                  >
+                                    <use
+                                      xlinkHref="#icon-cross--small"
+                                    />
+                                  </svg>
+                                </Icon>
+                              </span>
                             </Icon>
                           </span>
-                        </button>
-                      </Button>
+                        </span>
+                      </button>
                     </Button>
                   </Button>
                   <Section
