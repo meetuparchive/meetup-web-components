@@ -3476,6 +3476,15 @@ $('#fadeInLink').on('click', function(e) {
     background-color: #e63a6a !important;
     border: 1px solid #e63a6a !important; }
 
+/* with icon */
+[data-swarm-button][data-icon="left"] .svg-icon,
+[data-swarm-button][data-icon="left"] [data-swarm-icon] {
+  margin-right: var(--space-half); }
+
+[data-swarm-button][data-icon="right"] .svg-icon,
+[data-swarm-button][data-icon="right"] [data-swarm-icon] {
+  margin-left: var(--space-half); }
+
 /*doc
 ---
 title: Cards

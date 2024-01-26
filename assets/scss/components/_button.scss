@@ -239,3 +239,36 @@
 		border: 1px solid $active !important;
 	}
 }
+
+/* with icon */
+%swarm-button-icon-left {
+	margin-right: var(--space-half);
+}
+%swarm-button-icon-right {
+	margin-left: var(--space-half);
+}
+%swarm-button-icon-only {
+	padding: var(--space-half);
+}
+
+[data-swarm-button][data-icon="left"] .svg-icon,
+[data-swarm-button][data-icon="left"] [data-swarm-icon] {
+	@extend %swarm-button-icon-left;
+}
+
+[data-swarm-button][data-icon="right"] .svg-icon,
+[data-swarm-button][data-icon="right"] [data-swarm-icon] {
+	@extend %swarm-button-icon-right;
+}
+
+[data-swarm-link][data-icon="left"] .svg-icon {
+	@extend %swarm-button-icon-left;
+}
+
+[data-swarm-link][data-icon="right"] .svg-icon {
+	@extend %swarm-button-icon-right;
+}
+
+[data-swarm-link][data-icon="only"] {
+	@extend %swarm-button-icon-only;
+}
