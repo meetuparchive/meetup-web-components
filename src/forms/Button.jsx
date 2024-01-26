@@ -106,15 +106,15 @@ export class Button extends React.PureComponent {
 				{icon ? (
 					<span>
 						{right ? (
-							<span>
+							<React.Fragment>
 								{children}
 								<Icon shape={iconShape} size="xs" {...iconProps} />
-							</span>
+							</React.Fragment>
 						) : (
-							<span>
+							<React.Fragment>
 								<Icon shape={iconShape} size="xs" {...iconProps} />
 								{children}
-							</span>
+							</React.Fragment>
 						)}
 					</span>
 				) : iconOnly ? (

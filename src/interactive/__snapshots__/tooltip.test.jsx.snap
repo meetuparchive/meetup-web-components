@@ -138,20 +138,18 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                       >
                         <span>
                           <span>
-                            <span>
-                              <svg
-                                class="svg svg--cross svg-icon valign--middle"
-                                height="20"
-                                preserveAspectRatio="xMinYMin meet"
-                                role="presentation"
-                                viewBox="0 0 20 20"
-                                width="20"
-                              >
-                                <use
-                                  xlink:href="#icon-cross--small"
-                                />
-                              </svg>
-                            </span>
+                            <svg
+                              class="svg svg--cross svg-icon valign--middle"
+                              height="20"
+                              preserveAspectRatio="xMinYMin meet"
+                              role="presentation"
+                              viewBox="0 0 20 20"
+                              width="20"
+                            >
+                              <use
+                                xlink:href="#icon-cross--small"
+                              />
+                            </svg>
                           </span>
                         </span>
                       </button>
@@ -231,34 +229,32 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                         type="button"
                       >
                         <span>
-                          <span>
-                            <Icon
-                              shape="cross"
-                              size="xs"
-                            >
-                              <span>
-                                <Icon
+                          <Icon
+                            shape="cross"
+                            size="xs"
+                          >
+                            <span>
+                              <Icon
+                                role="presentation"
+                                shape="cross"
+                                size="xs"
+                              >
+                                <svg
+                                  className="svg svg--cross svg-icon valign--middle"
+                                  height="20"
+                                  preserveAspectRatio="xMinYMin meet"
                                   role="presentation"
-                                  shape="cross"
-                                  size="xs"
+                                  style={Object {}}
+                                  viewBox="0 0 20 20"
+                                  width="20"
                                 >
-                                  <svg
-                                    className="svg svg--cross svg-icon valign--middle"
-                                    height="20"
-                                    preserveAspectRatio="xMinYMin meet"
-                                    role="presentation"
-                                    style={Object {}}
-                                    viewBox="0 0 20 20"
-                                    width="20"
-                                  >
-                                    <use
-                                      xlinkHref="#icon-cross--small"
-                                    />
-                                  </svg>
-                                </Icon>
-                              </span>
-                            </Icon>
-                          </span>
+                                  <use
+                                    xlinkHref="#icon-cross--small"
+                                  />
+                                </svg>
+                              </Icon>
+                            </span>
+                          </Icon>
                         </span>
                       </button>
                     </Button>
