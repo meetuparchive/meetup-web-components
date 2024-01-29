@@ -285,7 +285,7 @@ export class Nav extends React.Component {
 		const getConnectionsIcon = () => (
 			<img
 				className="proIcon"
-				alt={connections && connections.label}
+				alt={connections ? connections.label : 'Connections icon'}
 				src={CONNECTIONS_ICON}
 			/>
 		);

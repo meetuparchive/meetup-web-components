@@ -10,6 +10,24 @@ import {
 	getIconPosition,
 } from '@meetup/swarm-components/lib/utils/buttonUtils';
 
+const ChildrenWithIcon = ({ children, right, iconShape, iconProps, iconOnly }) => {
+	if (iconShape) {
+		return right ? (
+			<React.Fragment>
+				{children}
+				<Icon shape={iconShape} size="xs" {...iconProps} />
+			</React.Fragment>
+		) : (
+			<React.Fragment>
+				<Icon shape={iconShape} size="xs" {...iconProps} />
+				{children}
+			</React.Fragment>
+		);
+	}
+
+	return children;
+};
+
 import DeprecationWarning from '../utils/components/DeprecationWarning';
 /**
  * @module Button
@@ -69,21 +87,15 @@ export class Button extends React.PureComponent {
 					to={to}
 					{...linkProps}
 				>
-					{icon ? (
-						right ? (
-							<React.Fragment>
-								{children}
-								<Icon shape={iconShape} size="xs" {...iconProps} />
-							</React.Fragment>
-						) : (
-							<React.Fragment>
-								<Icon shape={iconShape} size="xs" {...iconProps} />
-								{children}
-							</React.Fragment>
-						)
-					) : (
-						children
-					)}
+					<span>
+						<ChildrenWithIcon
+							children={children}
+							iconShape={iconShape}
+							right={right}
+							iconProps={iconProps}
+							iconOnly={iconOnly}
+						/>
+					</span>
 				</Component>
 			);
 		} else if (component === 'a') {
@@ -103,25 +115,15 @@ export class Button extends React.PureComponent {
 				ref={forwardedRef}
 				{...other}
 			>
-				{icon ? (
-					<span>
-						{right ? (
-							<React.Fragment>
-								{children}
-								<Icon shape={iconShape} size="xs" {...iconProps} />
-							</React.Fragment>
-						) : (
-							<React.Fragment>
-								<Icon shape={iconShape} size="xs" {...iconProps} />
-								{children}
-							</React.Fragment>
-						)}
-					</span>
-				) : iconOnly ? (
-					<span>{children}</span>
-				) : (
-					children
-				)}
+				<span>
+					<ChildrenWithIcon
+						children={children}
+						iconShape={iconShape}
+						right={right}
+						iconProps={iconProps}
+						iconOnly={iconOnly}
+					/>
+				</span>
 			</button>
 		);
 	}

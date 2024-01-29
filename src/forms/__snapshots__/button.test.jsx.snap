@@ -7,5 +7,9 @@ exports[`Button is a HTML button element exists 1`] = `
   data-swarm-size="default"
   data-swarm-width="default"
   type="button"
-/>
+>
+  <span>
+    <ChildrenWithIcon />
+  </span>
+</button>
 `;
