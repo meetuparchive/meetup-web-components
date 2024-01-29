@@ -86,11 +86,9 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
             small={true}
             type="button"
           >
-            <span>
-              <ChildrenWithIcon>
-                Open
-              </ChildrenWithIcon>
-            </span>
+            <ChildrenWithIcon>
+              Open
+            </ChildrenWithIcon>
           </button>
         </Button>
       </Button>
@@ -141,20 +139,18 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                         type="button"
                       >
                         <span>
-                          <span>
-                            <svg
-                              class="svg svg--cross svg-icon valign--middle"
-                              height="20"
-                              preserveAspectRatio="xMinYMin meet"
-                              role="presentation"
-                              viewBox="0 0 20 20"
-                              width="20"
-                            >
-                              <use
-                                xlink:href="#icon-cross--small"
-                              />
-                            </svg>
-                          </span>
+                          <svg
+                            class="svg svg--cross svg-icon valign--middle"
+                            height="20"
+                            preserveAspectRatio="xMinYMin meet"
+                            role="presentation"
+                            viewBox="0 0 20 20"
+                            width="20"
+                          >
+                            <use
+                              xlink:href="#icon-cross--small"
+                            />
+                          </svg>
                         </span>
                       </button>
                       <section
@@ -232,38 +228,36 @@ exports[`Tooltip tooltip with a close button should render correctly 1`] = `
                         role="button"
                         type="button"
                       >
-                        <span>
-                          <ChildrenWithIcon
-                            iconShape="cross"
+                        <ChildrenWithIcon
+                          iconShape="cross"
+                        >
+                          <Icon
+                            shape="cross"
+                            size="xs"
                           >
-                            <Icon
-                              shape="cross"
-                              size="xs"
-                            >
-                              <span>
-                                <Icon
+                            <span>
+                              <Icon
+                                role="presentation"
+                                shape="cross"
+                                size="xs"
+                              >
+                                <svg
+                                  className="svg svg--cross svg-icon valign--middle"
+                                  height="20"
+                                  preserveAspectRatio="xMinYMin meet"
                                   role="presentation"
-                                  shape="cross"
-                                  size="xs"
+                                  style={Object {}}
+                                  viewBox="0 0 20 20"
+                                  width="20"
                                 >
-                                  <svg
-                                    className="svg svg--cross svg-icon valign--middle"
-                                    height="20"
-                                    preserveAspectRatio="xMinYMin meet"
-                                    role="presentation"
-                                    style={Object {}}
-                                    viewBox="0 0 20 20"
-                                    width="20"
-                                  >
-                                    <use
-                                      xlinkHref="#icon-cross--small"
-                                    />
-                                  </svg>
-                                </Icon>
-                              </span>
-                            </Icon>
-                          </ChildrenWithIcon>
-                        </span>
+                                  <use
+                                    xlinkHref="#icon-cross--small"
+                                  />
+                                </svg>
+                              </Icon>
+                            </span>
+                          </Icon>
+                        </ChildrenWithIcon>
                       </button>
                     </Button>
                   </Button>

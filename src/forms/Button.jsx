@@ -86,14 +86,12 @@ export class Button extends React.PureComponent {
 					to={to}
 					{...linkProps}
 				>
-					<span>
-						<ChildrenWithIcon
-							children={children}
-							iconShape={iconShape}
-							right={right}
-							iconProps={iconProps}
-						/>
-					</span>
+					<ChildrenWithIcon
+						children={children}
+						iconShape={iconShape}
+						right={right}
+						iconProps={iconProps}
+					/>
 				</Component>
 			);
 		} else if (component === 'a') {
@@ -113,14 +111,12 @@ export class Button extends React.PureComponent {
 				ref={forwardedRef}
 				{...other}
 			>
-				<span>
-					<ChildrenWithIcon
-						children={children}
-						iconShape={iconShape}
-						right={right}
-						iconProps={iconProps}
-					/>
-				</span>
+				<ChildrenWithIcon
+					children={children}
+					iconShape={iconShape}
+					right={right}
+					iconProps={iconProps}
+				/>
 			</button>
 		);
 	}
