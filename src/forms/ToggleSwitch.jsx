@@ -21,6 +21,7 @@ class ToggleSwitch extends React.Component {
 			id,
 			name,
 			disabled,
+			ariaLabel,
 			...other
 		} = this.props;
 
@@ -40,6 +41,12 @@ class ToggleSwitch extends React.Component {
 					aria-checked={checked}
 					aria-readonly={disabled}
 					disabled={disabled}
+					aria-label={
+						ariaLabel ||
+						(typeof label === 'string'
+							? `${label} - toggle switch`
+							: 'toggle switch')
+					}
 					{...labelProps}
 					{...other}
 				>

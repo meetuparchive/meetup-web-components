@@ -218,6 +218,7 @@ exports[`AccordionPanel Locked panel with toggle switch renders locked toggle pa
                       <div>
                         <button
                           aria-checked={false}
+                          aria-label="toggle switch"
                           aria-labelledby="label-firstsection"
                           aria-readonly={false}
                           className="toggleSwitch"
@@ -703,6 +704,7 @@ exports[`AccordionPanel Panel with toggle switch exists and renders a toggle swi
                       <div>
                         <button
                           aria-checked={false}
+                          aria-label="toggle switch"
                           aria-labelledby="label-firstsection"
                           aria-readonly={false}
                           className="toggleSwitch"

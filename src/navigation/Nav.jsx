@@ -1,3 +1,4 @@
+// eslint-disable no-undef
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import cx from 'classnames';
@@ -240,7 +241,7 @@ export class Nav extends React.Component {
 				isNewNavsOrder={
 					isNewNavsOrder && (localeCode ? localeCode.includes('en') : false)
 				}
-				hasNewConnections={connections.hasNewConnections}
+				hasNewConnections={connections && connections.hasNewConnections}
 			/>
 		) : (
 			<DropdownLoader label={dropdownLoaderLabel} />
@@ -282,7 +283,11 @@ export class Nav extends React.Component {
 		};
 
 		const getConnectionsIcon = () => (
-			<img className="proIcon" alt={connections.label} src={CONNECTIONS_ICON} />
+			<img
+				className="proIcon"
+				alt={connections ? connections.label : 'Connections icon'}
+				src={CONNECTIONS_ICON}
+			/>
 		);
 
 		const getNotificationsIcon = () => {
@@ -399,19 +404,20 @@ export class Nav extends React.Component {
 				linkClassName: 'navItemLink-pro',
 				isTargetBlank: true,
 			},
-			media.isAtMediumUp && {
-				shrink: true,
-				linkTo: connections.link,
-				label: connections.label,
-				labelClassName: 'navItem-label-pro',
-				className: cx('navItem--connections', CLASS_AUTH_ITEM),
-				linkClassName: 'navItemLink-pro',
-				counterBadgeClassName: 'navItem--counterBadgeConnections',
-				icon: getConnectionsIcon(),
-				hasUpdates: connections.hasNewConnections > 0,
-				updatesLabel: updatesLabel,
-				onLinkClick: messages.onLinkClick,
-			},
+			media.isAtMediumUp &&
+				!!connections && {
+					shrink: true,
+					linkTo: connections.link,
+					label: connections.label,
+					labelClassName: 'navItem-label-pro',
+					className: cx('navItem--connections', CLASS_AUTH_ITEM),
+					linkClassName: 'navItemLink-pro',
+					counterBadgeClassName: 'navItem--counterBadgeConnections',
+					icon: getConnectionsIcon(),
+					hasUpdates: connections.hasNewConnections > 0,
+					updatesLabel: updatesLabel,
+					onLinkClick: messages.onLinkClick,
+				},
 			{
 				shrink: true,
 				linkTo: messages.link,

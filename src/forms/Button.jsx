@@ -2,13 +2,31 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from '../media/Icon';
 
-import { Button as SwarmButton, LinkButton as SwarmLink } from '@meetup/swarm-components';
+import { LinkButton as SwarmLink } from '@meetup/swarm-components';
 
 import {
 	getButtonType,
 	getSwarmSize,
 	getIconPosition,
 } from '@meetup/swarm-components/lib/utils/buttonUtils';
+
+const ChildrenWithIcon = ({ children, right, iconShape, iconProps }) => {
+	if (iconShape) {
+		return right ? (
+			<React.Fragment>
+				{children}
+				<Icon shape={iconShape} size="xs" {...iconProps} />
+			</React.Fragment>
+		) : (
+			<React.Fragment>
+				<Icon shape={iconShape} size="xs" {...iconProps} />
+				{children}
+			</React.Fragment>
+		);
+	}
+
+	return children;
+};
 
 import DeprecationWarning from '../utils/components/DeprecationWarning';
 /**
@@ -26,6 +44,10 @@ export class Button extends React.PureComponent {
 			icon,
 			hasHoverShadow, // eslint-disable-line no-unused-vars
 			to,
+			children,
+			forwardedRef,
+			right,
+			iconProps,
 			...other
 		} = this.props;
 
@@ -64,28 +86,39 @@ export class Button extends React.PureComponent {
 					to={to}
 					{...linkProps}
 				>
-					{icon ? (
-						right ? (
-							<React.Fragment>
-								{children}
-								<Icon shape={iconShape} size="xs" />
-							</React.Fragment>
-						) : (
-							<React.Fragment>
-								<Icon shape={iconShape} size="xs" />
-								{children}
-							</React.Fragment>
-						)
-					) : (
-						children
-					)}
+					<ChildrenWithIcon
+						children={children}
+						iconShape={iconShape}
+						right={right}
+						iconProps={iconProps}
+					/>
 				</Component>
 			);
 		} else if (component === 'a') {
 			return <SwarmLink icon={iconShape} grow={fullWidth} {...other} />;
 		}
 
-		return <SwarmButton icon={iconShape} grow={fullWidth} {...other} />;
+		const buttonType = getButtonType(this.props);
+		const width = fullWidth ? 'grow' : 'default';
+
+		return (
+			<button
+				data-swarm-button={buttonType}
+				data-swarm-size={getSwarmSize(this.props)}
+				data-icon={getIconPosition(this.props)}
+				data-swarm-width={width}
+				type="button"
+				ref={forwardedRef}
+				{...other}
+			>
+				<ChildrenWithIcon
+					children={children}
+					iconShape={iconShape}
+					right={right}
+					iconProps={iconProps}
+				/>
+			</button>
+		);
 	}
 }
 
