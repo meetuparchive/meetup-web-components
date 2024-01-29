@@ -10,7 +10,7 @@ import {
 	getIconPosition,
 } from '@meetup/swarm-components/lib/utils/buttonUtils';
 
-const ChildrenWithIcon = ({ children, right, iconShape, iconProps, iconOnly }) => {
+const ChildrenWithIcon = ({ children, right, iconShape, iconProps }) => {
 	if (iconShape) {
 		return right ? (
 			<React.Fragment>
@@ -45,7 +45,6 @@ export class Button extends React.PureComponent {
 			hasHoverShadow, // eslint-disable-line no-unused-vars
 			to,
 			children,
-			iconOnly,
 			forwardedRef,
 			right,
 			iconProps,
@@ -93,7 +92,6 @@ export class Button extends React.PureComponent {
 							iconShape={iconShape}
 							right={right}
 							iconProps={iconProps}
-							iconOnly={iconOnly}
 						/>
 					</span>
 				</Component>
@@ -121,7 +119,6 @@ export class Button extends React.PureComponent {
 						iconShape={iconShape}
 						right={right}
 						iconProps={iconProps}
-						iconOnly={iconOnly}
 					/>
 				</span>
 			</button>
